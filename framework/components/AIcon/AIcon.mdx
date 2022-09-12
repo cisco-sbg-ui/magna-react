@@ -1,0 +1,42 @@
+---
+name: Icons
+route: /components/icon
+components: AIcon
+---
+
+# Icons
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {AIcon} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`<>
+  <AIcon className="status-yellow--text">warning</AIcon>
+  <AIcon size={32} className="status-red--text">
+    block
+  </AIcon>
+  <AIcon size="large">add</AIcon>
+</>
+`}
+/>
+
+## Props
+
+The `AIcon` component inherits passed props.
+
+<Props of="AIcon" />
+
+## Gallery
+
+<IconGallery />
+
+## Accessibility Notes
+
+By default, `AIcon` components use the [aria-label](https://www.w3.org/TR/wai-aria/#aria-label) attribute to label the icon by name. This can be overridden by setting the `label` prop on the component.

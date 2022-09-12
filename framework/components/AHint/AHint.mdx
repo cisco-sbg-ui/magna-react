@@ -1,0 +1,41 @@
+---
+name: Hints
+route: /extend/hint
+components: AHint
+---
+
+# Hint Component
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {AHint} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`<>
+  <div>
+    <div>[Form Component]</div>
+    <AHint>Hint Text</AHint>
+  </div>
+  <div className="mt-4">
+    <div>[Form Component]</div>
+    <AHint validationState="warning">Warning Hint Text</AHint>
+  </div>
+  <div className="mt-4">
+    <div>[Form Component]</div>
+    <AHint validationState="danger">Danger Hint Text</AHint>
+  </div>
+</>
+`}
+/>
+
+## Hint Props
+
+The `AHint` component inherits passed props.
+
+<Props of="AHint" />

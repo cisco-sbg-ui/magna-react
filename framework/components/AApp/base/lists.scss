@@ -1,0 +1,28 @@
+.a-app {
+  ol,
+  ul {
+    margin: 0;
+    padding: 0 0 0 $spacing;
+    &.unstyled {
+      list-style: none;
+      padding: 0;
+      li {
+        padding: 0;
+      }
+
+      ul,
+      ol {
+        list-style: none;
+        padding: 0;
+
+        li {
+          padding: 0 0 0 $spacing * 0.75;
+        }
+      }
+    }
+
+    li {
+      padding: 0 0 0 $spacing * 0.75;
+    }
+  }
+}

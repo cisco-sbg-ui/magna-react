@@ -1,0 +1,67 @@
+---
+name: Mounts
+route: /components/mount
+components: AMount
+---
+
+# Mounts
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {AMount} from "@cisco-sbg-ui/magna-react";
+```
+
+It is necessary for `AMount` to be a descendant of `AApp`.
+
+## Usage
+
+<Playground
+  code={`() => {
+  const button1Ref = useRef(null);
+  const button2Ref = useRef(null);
+  const [isOpen1, setIsOpen1] = useState(false);
+  const [isOpen2, setIsOpen2] = useState(false);
+  return (
+    <>
+      Without \`AMount\`, there are scrolling issues in nested scrolling containers:
+      <div style={{overflowY: "scroll", height: 100, border: "solid 1px #999", position: "relative"}}>
+        <AButton ref={button1Ref} onClick={() => setIsOpen1(!isOpen1)}>Open Menu</AButton>
+        <p style={{backgroundColor: "#888"}}>block</p>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <AMenu anchorRef={button1Ref} open={isOpen1}>
+          <AListItem>Menu Option 1</AListItem>
+          <AListItem>Menu Option 2</AListItem>
+        </AMenu>
+      </div>
+      With \`AMount\`, the issue is resolved:
+      <AMount style={{overflowY: "scroll", height: 100, border: "solid 1px #999", position: "relative"}}>
+        <AButton ref={button2Ref} onClick={() => setIsOpen2(!isOpen2)}>Open Menu</AButton>
+        <p style={{backgroundColor: "#888"}}>block</p>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <AMenu anchorRef={button2Ref} open={isOpen2}>
+          <AListItem>Menu Option 1</AListItem>
+          <AListItem>Menu Option 2</AListItem>
+        </AMenu>
+      </AMount>
+    </>
+  );
+}
+`}
+/>
+
+## Props
+
+`AMount` inherits passed props.
+
+<Props of="AMount" />

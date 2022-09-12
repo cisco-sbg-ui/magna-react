@@ -1,0 +1,86 @@
+@import "../../styles";
+
+$toast-min-height: 80px;
+$toast-min-width: 260px;
+$toast-max-width: 300px;
+$toast-padding: 10px 15px;
+$toast-margin: 0 10px;
+$toast-border-width: 5px;
+$toast-title-font-weight: $font-weight-bold;
+$toast-icon-font-size: $font-size;
+
+@include theme(a-toast) using ($theme) {
+  color: map-deep-get($theme, "base", "color");
+  background: map-deep-get($theme, "control", "fill-color");
+  border-color: map-deep-get($theme, "control", "stroke-color");
+
+  &--success .a-toast__icon {
+    color: $color-good;
+  }
+
+  &--warning .a-toast__icon {
+    color: $color-warning;
+  }
+
+  &--danger .a-toast__icon {
+    color: $color-error;
+  }
+
+  &--information .a-toast__icon {
+    color: $color-information;
+  }
+}
+
+.a-toast {
+  display: flex;
+  position: relative;
+  border-width: $toast-border-width;
+  border-style: solid;
+  border-radius: $border-radius--sm;
+  min-height: $toast-min-height;
+  min-width: $toast-min-width;
+  max-width: $toast-max-width;
+  padding: $toast-padding;
+  align-items: flex-start;
+
+  &__body {
+    margin: $toast-margin;
+    font-size: $font-size--sm;
+    flex-grow: 1;
+  }
+
+  &__title {
+    font-weight: $toast-title-font-weight;
+    font-size: $font-size--sm;
+  }
+
+  &__icon {
+    margin-top: 3px;
+  }
+
+  &__close {
+    cursor: pointer;
+  }
+
+  &--bottom-right {
+    max-width: $toast-max-width;
+
+    & .a-toast__content {
+      min-height: $toast-min-height;
+    }
+  }
+
+  &--top {
+    max-width: calc(100vw - 20px);
+    width: $toast-max-width * 2;
+
+    & .a-toast__content {
+      min-height: unset;
+    }
+  }
+}
+
+.a-app--animated .a-toast {
+  animation-name: fade-in;
+  animation-duration: $transition-duration--fast;
+}

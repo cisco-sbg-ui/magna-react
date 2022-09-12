@@ -1,0 +1,51 @@
+@use "sass:math";
+
+@import "../../styles";
+@import "./mixins";
+
+.a-container {
+  @include make-container;
+  @include make-container-max-widths;
+
+  &--fluid {
+    max-width: 100%;
+  }
+}
+
+// Row
+//
+// Rows contain and clear the floats of your columns.
+.a-row {
+  @include make-row;
+
+  &--dense {
+    margin-right: math.div(-$form-grid-gutter, 2);
+    margin-left: math.div(-$form-grid-gutter, 2);
+
+    > .a-col,
+    > [class*="a-col-"] {
+      padding: math.div($form-grid-gutter, 2);
+    }
+  }
+}
+
+// Remove the negative margin from default .row, then the horizontal padding
+// from all immediate children columns (to prevent runaway style inheritance).
+.a-row--no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+
+  > .a-col,
+  > [class*="a-col-"] {
+    padding: 0;
+  }
+}
+
+// Columns
+//
+// Common styles for small and large grid columns
+@include make-grid-columns;
+
+.a-spacer {
+  flex-grow: 1 !important;
+}

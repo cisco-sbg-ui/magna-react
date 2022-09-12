@@ -1,0 +1,84 @@
+---
+name: Progressbars
+route: /components/progressbar
+components: AProgressbar
+---
+
+# Progressbars
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {AProgressbar} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`() => {
+  const [percentage, setPercentage] = useState(0);
+  const [intervalObject, setIntervalObject] = useState();
+  return (
+    <div style={{width: 200}}>
+      <h3>File1.txt</h3>
+      <AProgressbar striped displayText percentage={percentage} />
+      <h3>File2.txt</h3>
+      <AProgressbar striped displayText percentage={percentage - 20} />
+      <AButton
+        onClick={() => {
+          clearInterval(intervalObject);
+          setPercentage(0);
+          setIntervalObject(
+            setInterval(
+              () => setPercentage((percentage) => percentage + 20),
+              1000
+            )
+          );
+        }}>
+        Upload
+      </AButton>
+    </div>
+  );
+}
+`}
+/>
+
+## Progressbar Props
+
+The `AProgressbar` component inherits passed props.
+
+<Props of="AProgressbar" />
+
+## States
+
+<Playground
+  code={`<div className="d-flex flex-column" style={{width: 300}}>
+  Default: <AProgressbar percentage={50} />
+  With Text: <AProgressbar displayText percentage={50} />
+  Disabled: <AProgressbar disabled percentage={50} />
+  Striped: <AProgressbar striped percentage={50} />
+  With Text and Disabled:{" "}
+  <AProgressbar disabled displayText percentage={50} />
+  With Text and Striped: <AProgressbar
+    striped
+    displayText
+    percentage={50}
+  />
+  Disabled and Striped: <AProgressbar striped disabled percentage={50} />
+  With Text and Disabled and Striped: <AProgressbar
+    displayText
+    striped
+    disabled
+    percentage={50}
+  />
+</div>
+`}
+/>
+
+## Accessibility Notes
+
+By default, `AProgressbar` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [progressbar](https://www.w3.org/TR/wai-aria/#progressbar).
+
+The `AProgressbar` component uses the [aria-valuemin](https://www.w3.org/TR/wai-aria/#aria-valuemin), [aria-valuemax](https://www.w3.org/TR/wai-aria/#aria-valuemax), and [aria-valuenow](https://www.w3.org/TR/wai-aria/#aria-valuenow) attributes to communicate the progressbar's progression.

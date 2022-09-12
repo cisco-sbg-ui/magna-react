@@ -1,0 +1,154 @@
+@use "sass:math";
+
+@import "../../styles";
+
+$table__top-pane--padding-bottom: 8px;
+$table__total--padding-top: 15px;
+$table__title--font-size: 18px;
+$table-row-height: 40px;
+$table-row-height-tight: 30px;
+$table-cell-padding-left-right: 15px;
+$table-cell-min-width: 90px;
+$table-header-font-size: 12px;
+$table-header-line-height: 15px;
+$table-body-font-size: 13px;
+$table-body-line-height: 16.5px;
+$table-link-font-size: rem(0.8125);
+$table-cell-padding-top-bottom: math.div(
+  $table-row-height - $table-body-font-size,
+  2
+);
+$table-cell-tight-padding-top-bottom: math.div(
+  $table-row-height-tight - $table-body-font-size,
+  2
+);
+
+// Pending `condensed` feature:
+//$table-row-height-condensed: 30px;
+//$table-row-selected-color: $color-category--blue--wash3; // dusk: $color-gray--dark5
+//$table-cell-condensed-padding-left-right: 10px;
+// New in 2.1.0
+// Dusk: $table-grouped-rows-header-bg: $color-blue7;
+
+@include theme(a-simple-table) using ($theme) {
+  background: map-deep-get($theme, "table", "bg");
+
+  &--striped {
+    tbody tr:nth-child(even):not(:hover) {
+      background-color: map-deep-get($theme, "table", "row-stripe-color");
+    }
+  }
+
+  tbody tr:hover {
+    background-color: map-deep-get($theme, "table", "row-hover-color");
+  }
+
+  th {
+    color: map-deep-get($theme, "table", "header-color");
+    border-color: map-deep-get($theme, "control", "stroke-color");
+  }
+
+  td {
+    border-color: map-deep-get($theme, "control", "stroke-color");
+  }
+
+  &--alt-links {
+    a {
+      color: map-deep-get($theme, "base", "color");
+    }
+  }
+}
+
+.a-simple-table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+
+  &__top-pane {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-bottom: $table__top-pane--padding-bottom;
+  }
+
+  &__title {
+    font-size: $table__title--font-size;
+  }
+
+  &__total {
+    padding-top: $table__total--padding-top;
+  }
+
+  tbody {
+    vertical-align: top;
+  }
+
+  tr {
+    height: $table-row-height;
+    vertical-align: inherit;
+  }
+
+  th,
+  td {
+    padding-left: $table-cell-padding-left-right;
+    padding-right: $table-cell-padding-left-right;
+    min-width: $table-cell-min-width;
+    vertical-align: inherit;
+  }
+
+  th {
+    font-weight: normal;
+    text-align: left;
+    font-size: $table-header-font-size;
+    font-weight: bold;
+    line-height: $table-header-line-height;
+    border-width: $border-width;
+    border-style: solid;
+  }
+
+  td {
+    font-size: $table-body-font-size;
+    line-height: $table-body-line-height;
+    border-width: $border-width;
+    border-style: solid;
+    padding-top: $table-cell-padding-top-bottom;
+    padding-bottom: $table-cell-padding-top-bottom;
+    word-break: break-word;
+    &:not(:first-child) {
+      border-left: none;
+    }
+    &:not(:last-child) {
+      border-right: none;
+    }
+  }
+
+  &--tight {
+    tr {
+      height: $table-row-height-tight;
+    }
+
+    td {
+      padding-top: $table-cell-tight-padding-top-bottom;
+      padding-bottom: $table-cell-tight-padding-top-bottom;
+    }
+  }
+  /*
+  &--condensed {
+    .tr {
+      height: $table-row-height-condensed;
+    }
+
+    th,
+    td {
+      padding-top: 0;
+      padding-right: $table-cell-condensed-padding-left-right;
+      padding-bottom: 0;
+      padding-left: $table-cell-condensed-padding-left-right;
+      vertical-align: middle;
+    }
+  }
+*/
+  a {
+    font-size: $table-link-font-size;
+  }
+}

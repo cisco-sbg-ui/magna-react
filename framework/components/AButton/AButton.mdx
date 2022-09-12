@@ -1,0 +1,146 @@
+---
+name: Buttons
+route: /components/button
+components: AButton
+---
+
+# Buttons
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {AButton} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`() => {
+  const [count, setCount] = useState(0);
+  return (
+    <div>
+      <AButton onClick={() => setCount(count + 1)}>Click Me</AButton>
+      <p>Button has been clicked {count} times.</p>
+    </div>
+  );
+}
+`}
+/>
+
+## Button Props
+
+The `AButton` component inherits passed props.
+
+<Props of="AButton" />
+
+## Variants
+
+<Playground
+  fullWidthPreview
+  code={`<div className="d-flex">
+  <div>
+    <p>
+      <AButton>Primary</AButton>
+    </p>
+    <p>
+      <AButton>
+        <AIcon left>edit</AIcon>
+        Primary with Icon
+      </AButton>
+    </p>
+    <p>
+      <AButton icon>
+        <AIcon>sync</AIcon>
+      </AButton>
+    </p>
+    <p>
+      <AButton disabled>Primary Disabled</AButton>
+    </p>
+  </div>
+  <div className="ml-4">
+    <p>
+      <AButton secondary>Secondary</AButton>
+    </p>
+    <p>
+      <AButton secondary>
+        <AIcon left>edit</AIcon>
+        Secondary with Icon
+      </AButton>
+    </p>
+    <p>
+      <AButton secondary icon>
+        <AIcon>sync</AIcon>
+      </AButton>
+    </p>
+    <p>
+      <AButton secondary disabled>
+        Secondary Disabled
+      </AButton>
+    </p>
+  </div>
+  <div className="ml-4">
+    <p>
+      <AButton tertiary>Tertiary</AButton>
+    </p>
+    <p>
+      <AButton tertiary>
+        <AIcon left>edit</AIcon>
+        Tertiary with Icon
+      </AButton>
+    </p>
+    <p>
+      <AButton tertiary icon>
+        <AIcon>sync</AIcon>
+      </AButton>
+    </p>
+    <p>
+      <AButton tertiary disabled>
+        Tertiary Disabled
+      </AButton>
+    </p>
+  </div>
+  <div className="ml-4">
+    <p>
+      <AButton tertiaryAlt>Tertiary Alt</AButton>
+    </p>
+    <p>
+      <AButton tertiaryAlt>
+        <AIcon left>edit</AIcon>
+        Tertiary Alt with Icon
+      </AButton>
+    </p>
+    <p>
+      <AButton tertiaryAlt icon>
+        <AIcon>sync</AIcon>
+      </AButton>
+    </p>
+    <p>
+      <AButton tertiaryAlt disabled>
+        Tertiary Alt Disabled
+      </AButton>
+    </p>
+  </div>
+</div>
+`}
+/>
+
+## Link Buttons
+
+If the `href` property is used, the component will render as an HTML anchor.
+
+<Playground
+  code={`<AButton secondary href="https://www.cisco.com">
+  Launch Cisco.com
+</AButton>`}
+/>
+
+## Router Integrations
+
+Set the `component` property to your router's link type, for example:
+
+```
+// With react-router:
+<AButton component={RouterLink} to="/">Button 1</AButton>
+```

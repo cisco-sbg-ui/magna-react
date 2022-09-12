@@ -1,0 +1,54 @@
+@import "../../styles";
+
+@include theme(a-autocomplete) using ($theme) {
+  &__menu-items.a-menu {
+    border-color: map-deep-get($theme, "select", "border-color--focus");
+  }
+}
+
+.a-autocomplete {
+  &__input {
+    background: transparent;
+    box-sizing: border-box;
+    color: currentColor;
+    width: 100%;
+    position: relative;
+    padding: 2px 0 0 0;
+    border: none;
+    appearance: none;
+    text-indent: 1px;
+    align-self: stretch;
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__menu-item.a-list-item {
+    min-height: 28px;
+    line-height: $line-height--lg;
+    padding: 2px 0 0 0;
+    text-indent: 6px;
+  }
+
+  &__prepend-icon {
+    padding: 4px;
+    align-self: stretch;
+  }
+
+  & .a-loader {
+    height: 20px;
+    margin: 0 4px;
+  }
+
+  &--loading {
+    .a-autocomplete__menu-items {
+      left: -45px;
+    }
+  }
+
+  &.a-input-base--clearable {
+    .a-autocomplete__menu-items {
+      right: -25px;
+    }
+  }
+}

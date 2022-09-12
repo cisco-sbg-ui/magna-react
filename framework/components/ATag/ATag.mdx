@@ -1,0 +1,105 @@
+---
+name: Tags
+route: /components/tag
+components: ATag
+---
+
+# Tags
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {ATag} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`() => {
+  const [selectedOption, setSelectedOption] = useState("Option 1");
+  const [active, setActive] = useState(false);
+  const tagRef = useRef(null);
+  return (
+    <div style={{minHeight: 120}}>
+      <ATag>Simple Tag</ATag>
+      <ATag className="status-red white--text ma-1">
+        <AIcon left>critical-stop</AIcon>Status Tag
+      </ATag>
+      <ATag href="/" target="_blank" className="ma-1">
+        Linked Tag
+      </ATag>
+      <ATag className="cisco-blue white--text ma-1">
+        <AIcon left>user</AIcon>User Tag
+        <AIcon
+          right
+          className="cursor-pointer"
+          onClick={() => alert("Close icon clicked!")}>
+          close
+        </AIcon>
+      </ATag>
+      <ATag
+        className="ma-1 grape white--text"
+        ref={tagRef}
+        onClick={() => setActive(!active)}>
+        {selectedOption} Tag
+        <AIcon right className="cursor-pointer">
+          chevron-down
+        </AIcon>
+      </ATag>
+      <AMenu
+        anchorRef={tagRef}
+        open={active}
+        onClose={() => setActive(false)}
+        style={{right: 5}}>
+        <AListItem
+          onClick={() => {
+            setSelectedOption("Option 1");
+            setActive(!active);
+          }}>
+          Option 1
+        </AListItem>
+        <AListItem
+          onClick={() => {
+            setSelectedOption("Option 2");
+            setActive(!active);
+          }}>
+          Option 2
+        </AListItem>
+        <AListItem
+          onClick={() => {
+            setSelectedOption("Option 3");
+            setActive(!active);
+          }}>
+          Option 3
+        </AListItem>
+      </AMenu>
+    </div>
+  );
+}
+`}
+/>
+
+## Tag Props
+
+The `ATag` component inherits passed props.
+
+<Props of="ATag" />
+
+## Router Integrations
+
+Set the `component` property to your router's link type, for example:
+
+```
+// With react-router:
+<ATag component={RouterLink} to="/">Tag 1</ATag>
+```
+
+## Accessibility Notes
+
+The `ATag` `click` event handler is triggered both by the `click` event and by the `keyDown` event for the `Enter` key.
+
+Each `ATag` component is tab-focusable with a visual overlay when either the `href` or `onClick` properties are used.
+
+If the `ATag` has an `onClick` handler specified, it is assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [button](https://www.w3.org/TR/wai-aria/#button).

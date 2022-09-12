@@ -1,0 +1,22 @@
+@import "../../styles";
+
+.a-textarea {
+  &--auto-grow .a-textarea__field {
+    overflow: hidden;
+  }
+
+  &__field {
+    background: transparent;
+    color: currentColor;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    padding: 4px 20px 2px 6px;
+    border: none;
+    appearance: none;
+    resize: vertical;
+    &:focus {
+      outline: none;
+    }
+  }
+}

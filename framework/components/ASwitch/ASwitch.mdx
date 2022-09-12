@@ -1,0 +1,102 @@
+---
+name: Switches
+route: /components/switch
+components: ASwitch
+---
+
+# Switches
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {ASwitch} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`() => {
+  const [checked, setChecked] = useState(false);
+  const [disabled, setDisabled] = useState(false);
+  const [wrap, setWrap] = useState(false);
+  return (
+    <div>
+      <h3>Example</h3>
+      <ASwitch checked={checked} disabled={disabled} wrap={wrap}>
+        {LoremIpsum}
+      </ASwitch>
+      <ADivider />
+      <h3>Options</h3>
+      <div className="d-flex mt-4 flex-column">
+        <ASwitch checked={checked} onClick={() => setChecked(!checked)}>
+          Checked State
+        </ASwitch>
+        <ASwitch checked={disabled} onClick={() => setDisabled(!disabled)}>
+          Disabled State
+        </ASwitch>
+        <ASwitch checked={wrap} onClick={() => setWrap(!wrap)}>
+          Wrap Label
+        </ASwitch>
+      </div>
+    </div>
+  );
+}
+`}
+/>
+
+## Switch Props
+
+The `ASwitch` component inherits passed props.
+
+<Props of="ASwitch" />
+
+## Validation
+
+<Playground
+  code={`() => {
+  const [checked, setChecked] = useState(false);
+  return (
+    <div>
+      <h3>Switch with Validation</h3>
+      <ASwitch
+        checked={checked}
+        onClick={() => setChecked(!checked)}
+        required
+        rules={[
+          {
+            test: (v) => !v || "This feature is potentially unsafe",
+            level: "warning"
+          }
+        ]}>
+        Enable potentially unsafe feature.
+      </ASwitch>
+    </div>
+  );
+}
+`}
+/>
+
+## States
+
+<Playground
+  code={`<div className="d-flex flex-column">
+  <ASwitch>Default</ASwitch>
+  <ASwitch checked>Checked</ASwitch>
+  <ASwitch disabled>Disabled</ASwitch>
+  <ASwitch disabled checked>
+    Disabled and Checked
+  </ASwitch>
+  <ASwitch>Very long truncated text. {LoremIpsum}</ASwitch>
+  <ASwitch wrap>Very long wrapping text. {LoremIpsum}</ASwitch>
+</div>
+`}
+/>
+
+## Accessibility Notes
+
+By default, `ASwitch` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [switch](https://www.w3.org/TR/wai-aria/#switch).
+
+The `ASwitch` component uses the [aria-checked](https://www.w3.org/TR/wai-aria/#aria-checked) attribute to express the input checked state.
+The `ASwitch` component uses the [aria-disabled](https://www.w3.org/TR/wai-aria/#aria-disabled) attribute to express the input disabled state.

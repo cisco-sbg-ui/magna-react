@@ -1,0 +1,584 @@
+---
+name: Menu Base
+route: /extend/menu-base
+components: AMenuBase
+---
+
+# Menu Base
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {AMenuBase} from "@cisco-sbg-ui/magna-react";
+```
+
+It is necessary for `AMenuBase` to be a descendant of `AApp` for mounting.
+
+## Position
+
+<Playground
+  fullWidthPreview
+  code={`() => {
+  const boxStyle = {
+    border: "solid 3px #0f0",
+    width: 30,
+    height: 30,
+    background:
+      "linear-gradient(45deg, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 43%,#fff 45%,#fff 55%,rgba(0,0,0,0) 57%,rgba(0,0,0,0) 100%), linear-gradient(135deg, #0f0 0%,#0f0 43%,#fff 45%,#fff 55%,#0f0 57%,#0f0 100%)"
+  };
+  const buttonRef1 = useRef(null);
+  const buttonRef2 = useRef(null);
+  const buttonRef3 = useRef(null);
+  const buttonRef4 = useRef(null);
+  const buttonRef5 = useRef(null);
+  const buttonRef6 = useRef(null);
+  const buttonRef7 = useRef(null);
+  const buttonRef8 = useRef(null);
+  const buttonRef9 = useRef(null);
+  const buttonRef10 = useRef(null);
+  const buttonRef11 = useRef(null);
+  const buttonRef12 = useRef(null);
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
+  const [open3, setOpen3] = useState(false);
+  const [open4, setOpen4] = useState(false);
+  const [open5, setOpen5] = useState(false);
+  const [open6, setOpen6] = useState(false);
+  const [open7, setOpen7] = useState(false);
+  const [open8, setOpen8] = useState(false);
+  const [open9, setOpen9] = useState(false);
+  const [open10, setOpen10] = useState(false);
+  const [open11, setOpen11] = useState(false);
+  const [open12, setOpen12] = useState(false);
+  return (
+    <AContainer>
+      <ARow>
+        <ACol cols="2" />
+        <ACol className="text-right">
+          <AButton ref={buttonRef12} onClick={() => setOpen12(!open12)}>
+            Top-Left
+          </AButton>
+          <AMenuBase
+            anchorRef={buttonRef12}
+            open={open12}
+            placement="top-left">
+            <div style={boxStyle} />
+          </AMenuBase>
+        </ACol>
+        <ACol className="text-center">
+          <AButton ref={buttonRef1} onClick={() => setOpen1(!open1)}>
+            Top
+          </AButton>
+          <AMenuBase anchorRef={buttonRef1} open={open1} placement="top">
+            <div style={boxStyle} />
+          </AMenuBase>
+        </ACol>
+        <ACol>
+          <AButton ref={buttonRef2} onClick={() => setOpen2(!open2)}>
+            Top-Right
+          </AButton>
+          <AMenuBase
+            anchorRef={buttonRef2}
+            open={open2}
+            placement="top-right">
+            <div style={boxStyle} />
+          </AMenuBase>
+        </ACol>
+        <ACol cols="2" />
+      </ARow>
+      <ARow>
+        <ACol className="text-right">
+          <AButton ref={buttonRef11} onClick={() => setOpen11(!open11)}>
+            Left-Top
+          </AButton>
+          <AMenuBase
+            anchorRef={buttonRef11}
+            open={open11}
+            placement="left-top">
+            <div style={boxStyle} />
+          </AMenuBase>
+        </ACol>
+        <ACol cols="6" />
+        <ACol>
+          <AButton ref={buttonRef3} onClick={() => setOpen3(!open3)}>
+            Right-Top
+          </AButton>
+          <AMenuBase
+            anchorRef={buttonRef3}
+            open={open3}
+            placement="right-top">
+            <div style={boxStyle} />
+          </AMenuBase>
+        </ACol>
+      </ARow>
+      <ARow>
+        <ACol className="text-right">
+          <AButton ref={buttonRef10} onClick={() => setOpen10(!open10)}>
+            Left
+          </AButton>
+          <AMenuBase anchorRef={buttonRef10} open={open10} placement="left">
+            <div style={boxStyle} />
+          </AMenuBase>
+        </ACol>
+        <ACol cols="6" />
+        <ACol>
+          <AButton ref={buttonRef4} onClick={() => setOpen4(!open4)}>
+            Right
+          </AButton>
+          <AMenuBase anchorRef={buttonRef4} open={open4} placement="right">
+            <div style={boxStyle} />
+          </AMenuBase>
+        </ACol>
+      </ARow>
+      <ARow>
+        <ACol className="text-right">
+          <AButton ref={buttonRef9} onClick={() => setOpen9(!open9)}>
+            Left-Bottom
+          </AButton>
+          <AMenuBase
+            anchorRef={buttonRef9}
+            open={open9}
+            placement="left-bottom">
+            <div style={boxStyle} />
+          </AMenuBase>
+        </ACol>
+        <ACol cols="6" />
+        <ACol>
+          <AButton ref={buttonRef5} onClick={() => setOpen5(!open5)}>
+            Right-Bottom
+          </AButton>
+          <AMenuBase
+            anchorRef={buttonRef5}
+            open={open5}
+            placement="right-bottom">
+            <div style={boxStyle} />
+          </AMenuBase>
+        </ACol>
+      </ARow>
+      <ARow>
+        <ACol cols="2" />
+        <ACol className="text-right">
+          <AButton ref={buttonRef8} onClick={() => setOpen8(!open8)}>
+            Bottom-Left
+          </AButton>
+          <AMenuBase
+            anchorRef={buttonRef8}
+            open={open8}
+            placement="bottom-left">
+            <div style={boxStyle} />
+          </AMenuBase>
+        </ACol>
+        <ACol className="text-center">
+          <AButton ref={buttonRef7} onClick={() => setOpen7(!open7)}>
+            Bottom
+          </AButton>
+          <AMenuBase anchorRef={buttonRef7} open={open7} placement="bottom">
+            <div style={boxStyle} />
+          </AMenuBase>
+        </ACol>
+        <ACol>
+          <AButton ref={buttonRef6} onClick={() => setOpen6(!open6)}>
+            Bottom-Right
+          </AButton>
+          <AMenuBase
+            anchorRef={buttonRef6}
+            open={open6}
+            placement="bottom-right">
+            <div style={boxStyle} />
+          </AMenuBase>
+        </ACol>
+        <ACol cols="2" />
+      </ARow>
+    </AContainer>
+  );
+}
+`}
+/>
+
+## Menu Base Props
+
+The `AMenuBase` component inherits passed props.
+
+<Props of="AMenuBase" />
+
+## `onClose` Handling
+
+<Playground
+  code={`() => {
+  const boxStyle = {
+    border: "solid 3px #0f0",
+    width: 30,
+    height: 30,
+    background:
+      "linear-gradient(45deg, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 43%,#fff 45%,#fff 55%,rgba(0,0,0,0) 57%,rgba(0,0,0,0) 100%), linear-gradient(135deg, #0f0 0%,#0f0 43%,#fff 45%,#fff 55%,#0f0 57%,#0f0 100%)"
+  };
+  const buttonRef = useRef(null);
+  const [open, setOpen] = useState(false);
+  return (
+    <AContainer fluid>
+      <ARow>
+        <ACol className="text-center">
+          <p className="onclose-1__instruction">
+            Clicking outside of the anchor or menu will close the menu in this
+            example.
+          </p>
+          <AButton ref={buttonRef} onClick={() => setOpen(!open)}>
+            Bottom
+          </AButton>
+          <AMenuBase
+            anchorRef={buttonRef}
+            open={open}
+            placement="bottom"
+            onClose={() => setOpen(false)}>
+            <div style={boxStyle} />
+          </AMenuBase>
+        </ACol>
+      </ARow>
+    </AContainer>
+  );
+}
+`}
+/>
+
+## Edge Detection
+
+<Playground
+  fullWidthPreview
+  code={`() => {
+  const boxStyle = {
+    border: "solid 3px #0f0",
+    width: 150,
+    height: 150,
+    background:
+      "linear-gradient(45deg, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 43%,#fff 45%,#fff 55%,rgba(0,0,0,0) 57%,rgba(0,0,0,0) 100%), linear-gradient(135deg, #0f0 0%,#0f0 43%,#fff 45%,#fff 55%,#0f0 57%,#0f0 100%)"
+  };
+  const buttonRef4 = useRef(null);
+  const buttonRef9 = useRef(null);
+  const [open4, setOpen4] = useState(false);
+  const [open9, setOpen9] = useState(false);
+  return (
+    <AContainer fluid className="pa-0 ma-0">
+      <ARow>
+        <ACol>
+          <AButton
+            className="mb-6"
+            ref={buttonRef9}
+            onClick={() => setOpen9(!open9)}>
+            Left
+          </AButton>
+          <AMenuBase anchorRef={buttonRef9} open={open9} placement="left">
+            <div style={boxStyle} />
+          </AMenuBase>
+        </ACol>
+        <ACol cols="6">
+          Menus will not overflow the document. You may need to use your
+          browser's dev tools to trigger edge detection for this example.
+        </ACol>
+        <ACol className="text-right">
+          <AButton
+            className="mb-6"
+            ref={buttonRef4}
+            onClick={() => setOpen4(!open4)}>
+            Right
+          </AButton>
+          <AMenuBase anchorRef={buttonRef4} open={open4} placement="right">
+            <div style={boxStyle} />
+          </AMenuBase>
+        </ACol>
+      </ARow>
+    </AContainer>
+  );
+}
+`}
+/>
+
+## Pointers
+
+<Playground
+  fullWidthPreview
+  code={`() => {
+  const boxStyle = {
+    border: "solid 3px #0f0",
+    width: 30,
+    height: 30,
+    background:
+      "linear-gradient(45deg, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 43%,#fff 45%,#fff 55%,rgba(0,0,0,0) 57%,rgba(0,0,0,0) 100%), linear-gradient(135deg, #0f0 0%,#0f0 43%,#fff 45%,#fff 55%,#0f0 57%,#0f0 100%)"
+  };
+  const buttonRef1 = useRef(null);
+  const buttonRef2 = useRef(null);
+  const buttonRef3 = useRef(null);
+  const buttonRef4 = useRef(null);
+  const buttonRef5 = useRef(null);
+  const buttonRef6 = useRef(null);
+  const buttonRef7 = useRef(null);
+  const buttonRef8 = useRef(null);
+  const buttonRef9 = useRef(null);
+  const buttonRef10 = useRef(null);
+  const buttonRef11 = useRef(null);
+  const buttonRef12 = useRef(null);
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
+  const [open3, setOpen3] = useState(false);
+  const [open4, setOpen4] = useState(false);
+  const [open5, setOpen5] = useState(false);
+  const [open6, setOpen6] = useState(false);
+  const [open7, setOpen7] = useState(false);
+  const [open8, setOpen8] = useState(false);
+  const [open9, setOpen9] = useState(false);
+  const [open10, setOpen10] = useState(false);
+  const [open11, setOpen11] = useState(false);
+  const [open12, setOpen12] = useState(false);
+  return (
+    <>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: \`
+    .pointers.a-menu-base--top,
+    .pointers.a-menu-base--top-left,
+    .pointers.a-menu-base--top-right {
+      margin-top: -11px;
+    }
+    .pointers.a-menu-base--top .a-menu-base__pointer,
+    .pointers.a-menu-base--top-left .a-menu-base__pointer,
+    .pointers.a-menu-base--top-right .a-menu-base__pointer {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 12px 6px 0 6px;
+      border-color: #0f0 transparent transparent transparent;
+      position: absolute;
+      bottom: -11px;
+    }
+    .pointers.a-menu-base--right,
+    .pointers.a-menu-base--right-top,
+    .pointers.a-menu-base--right-bottom {
+      margin-left: 11px;
+    }
+    .pointers.a-menu-base--right .a-menu-base__pointer,
+    .pointers.a-menu-base--right-top .a-menu-base__pointer,
+    .pointers.a-menu-base--right-bottom .a-menu-base__pointer {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 6px 12px 6px 0;
+      border-color: transparent #0f0 transparent transparent;
+      position: absolute;
+      left: -11px;
+    }
+    .pointers.a-menu-base--bottom,
+    .pointers.a-menu-base--bottom-left,
+    .pointers.a-menu-base--bottom-right {
+      margin-top: 11px;
+    }
+    .pointers.a-menu-base--bottom .a-menu-base__pointer,
+    .pointers.a-menu-base--bottom-left .a-menu-base__pointer,
+    .pointers.a-menu-base--bottom-right .a-menu-base__pointer {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 6px 12px 6px;
+      border-color: transparent transparent #0f0 transparent;
+      position: absolute;
+      top: -11px;
+    }
+    .pointers.a-menu-base--left,
+    .pointers.a-menu-base--left-top,
+    .pointers.a-menu-base--left-bottom {
+      margin-left: -11px;
+    }
+    .pointers.a-menu-base--left .a-menu-base__pointer,
+    .pointers.a-menu-base--left-top .a-menu-base__pointer,
+    .pointers.a-menu-base--left-bottom .a-menu-base__pointer {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 6px 0 6px 12px;
+      border-color: transparent transparent transparent #0f0;
+      position: absolute;
+      right: -11px;
+    }
+  \`
+        }}
+      />
+      <AContainer>
+        <ARow>
+          <ACol cols="2" />
+          <ACol className="text-right">
+            <AButton ref={buttonRef12} onClick={() => setOpen12(!open12)}>
+              Top-Left
+            </AButton>
+            <AMenuBase
+              anchorRef={buttonRef12}
+              className="pointers"
+              open={open12}
+              placement="top-left"
+              pointer>
+              <div style={boxStyle} />
+            </AMenuBase>
+          </ACol>
+          <ACol className="text-center">
+            <AButton ref={buttonRef1} onClick={() => setOpen1(!open1)}>
+              Top
+            </AButton>
+            <AMenuBase
+              anchorRef={buttonRef1}
+              className="pointers"
+              open={open1}
+              placement="top"
+              pointer>
+              <div style={boxStyle} />
+            </AMenuBase>
+          </ACol>
+          <ACol>
+            <AButton ref={buttonRef2} onClick={() => setOpen2(!open2)}>
+              Top-Right
+            </AButton>
+            <AMenuBase
+              anchorRef={buttonRef2}
+              className="pointers"
+              open={open2}
+              placement="top-right"
+              pointer>
+              <div style={boxStyle} />
+            </AMenuBase>
+          </ACol>
+          <ACol cols="2" />
+        </ARow>
+        <ARow>
+          <ACol className="text-right">
+            <AButton ref={buttonRef11} onClick={() => setOpen11(!open11)}>
+              Left-Top
+            </AButton>
+            <AMenuBase
+              anchorRef={buttonRef11}
+              className="pointers"
+              open={open11}
+              placement="left-top"
+              pointer>
+              <div style={boxStyle} />
+            </AMenuBase>
+          </ACol>
+          <ACol cols="6" />
+          <ACol>
+            <AButton ref={buttonRef3} onClick={() => setOpen3(!open3)}>
+              Right-Top
+            </AButton>
+            <AMenuBase
+              anchorRef={buttonRef3}
+              className="pointers"
+              open={open3}
+              placement="right-top"
+              pointer>
+              <div style={boxStyle} />
+            </AMenuBase>
+          </ACol>
+        </ARow>
+        <ARow>
+          <ACol className="text-right">
+            <AButton ref={buttonRef10} onClick={() => setOpen10(!open10)}>
+              Left
+            </AButton>
+            <AMenuBase
+              anchorRef={buttonRef10}
+              className="pointers"
+              open={open10}
+              placement="left"
+              pointer>
+              <div style={boxStyle} />
+            </AMenuBase>
+          </ACol>
+          <ACol cols="6" />
+          <ACol>
+            <AButton ref={buttonRef4} onClick={() => setOpen4(!open4)}>
+              Right
+            </AButton>
+            <AMenuBase
+              anchorRef={buttonRef4}
+              className="pointers"
+              open={open4}
+              placement="right"
+              pointer>
+              <div style={boxStyle} />
+            </AMenuBase>
+          </ACol>
+        </ARow>
+        <ARow>
+          <ACol className="text-right">
+            <AButton ref={buttonRef9} onClick={() => setOpen9(!open9)}>
+              Left-Bottom
+            </AButton>
+            <AMenuBase
+              anchorRef={buttonRef9}
+              className="pointers"
+              open={open9}
+              placement="left-bottom"
+              pointer>
+              <div style={boxStyle} />
+            </AMenuBase>
+          </ACol>
+          <ACol cols="6" />
+          <ACol>
+            <AButton ref={buttonRef5} onClick={() => setOpen5(!open5)}>
+              Right-Bottom
+            </AButton>
+            <AMenuBase
+              anchorRef={buttonRef5}
+              className="pointers"
+              open={open5}
+              placement="right-bottom"
+              pointer>
+              <div style={boxStyle} />
+            </AMenuBase>
+          </ACol>
+        </ARow>
+        <ARow>
+          <ACol cols="2" />
+          <ACol className="text-right">
+            <AButton ref={buttonRef8} onClick={() => setOpen8(!open8)}>
+              Bottom-Left
+            </AButton>
+            <AMenuBase
+              anchorRef={buttonRef8}
+              className="pointers"
+              open={open8}
+              placement="bottom-left"
+              pointer>
+              <div style={boxStyle} />
+            </AMenuBase>
+          </ACol>
+          <ACol className="text-center">
+            <AButton ref={buttonRef7} onClick={() => setOpen7(!open7)}>
+              Bottom
+            </AButton>
+            <AMenuBase
+              anchorRef={buttonRef7}
+              className="pointers"
+              open={open7}
+              placement="bottom"
+              pointer>
+              <div style={boxStyle} />
+            </AMenuBase>
+          </ACol>
+          <ACol>
+            <AButton ref={buttonRef6} onClick={() => setOpen6(!open6)}>
+              Bottom-Right
+            </AButton>
+            <AMenuBase
+              anchorRef={buttonRef6}
+              className="pointers"
+              open={open6}
+              placement="bottom-right"
+              pointer>
+              <div style={boxStyle} />
+            </AMenuBase>
+          </ACol>
+          <ACol cols="2" />
+        </ARow>
+      </AContainer>
+    </>
+  );
+}
+`}
+/>

@@ -1,0 +1,25 @@
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'none';script-src 'self' 'unsafe-eval' 'unsafe-inline';connect-src 'self' https://*.algolia.net https://*.algolianet.com;img-src 'self';style-src 'self' 'unsafe-inline';base-uri 'self';form-action 'self';prefetch-src 'self';font-src https://brand-assets.security.cisco.com;frame-ancestors 'none';"
+        }
+      ]
+    }
+  ]
+}

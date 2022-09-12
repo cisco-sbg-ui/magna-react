@@ -1,0 +1,352 @@
+---
+name: Tooltips
+route: /components/tooltip
+components: ATooltip
+---
+
+# Tooltips
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {ATooltip} from "@cisco-sbg-ui/magna-react";
+```
+
+It is necessary for `ATooltip` to be a descendant of `AApp` for mounting.
+
+## Usage
+
+<Playground
+  code={`() => {
+  const buttonRef = useRef(null);
+  const titleRef = useRef(null);
+  const [openButton, setOpenButton] = useState(false);
+  const [openTitle, setOpenTitle] = useState(false);
+  return (
+    <>
+      <APanel className="mt-10">
+        <APanelHeader>
+          <APanelTitle
+            ref={titleRef}
+            aria-describedby="tooltip_usage_2"
+            className="text-truncate"
+            onMouseEnter={() => setOpenTitle(true)}
+            onMouseLeave={() => setOpenTitle(false)}>
+            {LoremIpsum}
+          </APanelTitle>
+          <AButton
+            icon
+            tertiaryAlt
+            ref={buttonRef}
+            onMouseEnter={() => setOpenButton(true)}
+            onMouseLeave={() => setOpenButton(false)}
+            aria-describedby="tooltip_usage_1">
+            <AIcon>information</AIcon>
+          </AButton>
+        </APanelHeader>
+        <APanelBody>
+          Hover over the title to see the full text. Hover over the icon to
+          see a tooltip with pointer.
+        </APanelBody>
+      </APanel>
+      <ATooltip
+        anchorRef={titleRef}
+        id="tooltip_usage_2"
+        open={openTitle}
+        placement="top"
+        style={{maxWidth: "50%"}}>
+        {LoremIpsum}
+      </ATooltip>
+      <ATooltip
+        anchorRef={buttonRef}
+        id="tooltip_usage_1"
+        open={openButton}
+        placement="bottom-right"
+        pointer>
+        Tooltip
+      </ATooltip>
+    </>
+  );
+}
+`}
+/>
+
+## Tooltip Props
+
+The `ATooltip` component inherits passed props.
+
+<Props of="ATooltip" />
+
+## Position
+
+<Playground
+  fullWidthPreview
+  code={`() => {
+  const buttonRef1 = useRef(null);
+  const buttonRef2 = useRef(null);
+  const buttonRef3 = useRef(null);
+  const buttonRef4 = useRef(null);
+  const buttonRef5 = useRef(null);
+  const buttonRef6 = useRef(null);
+  const buttonRef7 = useRef(null);
+  const buttonRef8 = useRef(null);
+  const buttonRef9 = useRef(null);
+  const buttonRef10 = useRef(null);
+  const buttonRef11 = useRef(null);
+  const buttonRef12 = useRef(null);
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
+  const [open3, setOpen3] = useState(false);
+  const [open4, setOpen4] = useState(false);
+  const [open5, setOpen5] = useState(false);
+  const [open6, setOpen6] = useState(false);
+  const [open7, setOpen7] = useState(false);
+  const [open8, setOpen8] = useState(false);
+  const [open9, setOpen9] = useState(false);
+  const [open10, setOpen10] = useState(false);
+  const [open11, setOpen11] = useState(false);
+  const [open12, setOpen12] = useState(false);
+  return (
+    <AContainer className="pa-6">
+      <ARow>
+        <ACol cols="2" />
+        <ACol className="text-right">
+          <AButton ref={buttonRef12} onClick={() => setOpen12(!open12)}>
+            Top-Left
+          </AButton>
+          <ATooltip
+            anchorRef={buttonRef12}
+            open={open12}
+            placement="top-left">
+            Tooltip
+          </ATooltip>
+        </ACol>
+        <ACol className="text-center">
+          <AButton ref={buttonRef1} onClick={() => setOpen1(!open1)}>
+            Top
+          </AButton>
+          <ATooltip anchorRef={buttonRef1} open={open1} placement="top">
+            Tooltip
+          </ATooltip>
+        </ACol>
+        <ACol>
+          <AButton ref={buttonRef2} onClick={() => setOpen2(!open2)}>
+            Top-Right
+          </AButton>
+          <ATooltip anchorRef={buttonRef2} open={open2} placement="top-right">
+            Tooltip
+          </ATooltip>
+        </ACol>
+        <ACol cols="2" />
+      </ARow>
+      <ARow>
+        <ACol className="text-right">
+          <AButton ref={buttonRef11} onClick={() => setOpen11(!open11)}>
+            Left-Top
+          </AButton>
+          <ATooltip
+            anchorRef={buttonRef11}
+            open={open11}
+            placement="left-top">
+            Tooltip
+          </ATooltip>
+        </ACol>
+        <ACol cols="6" />
+        <ACol>
+          <AButton ref={buttonRef3} onClick={() => setOpen3(!open3)}>
+            Right-Top
+          </AButton>
+          <ATooltip anchorRef={buttonRef3} open={open3} placement="right-top">
+            Tooltip
+          </ATooltip>
+        </ACol>
+      </ARow>
+      <ARow>
+        <ACol className="text-right">
+          <AButton ref={buttonRef10} onClick={() => setOpen10(!open10)}>
+            Left
+          </AButton>
+          <ATooltip anchorRef={buttonRef10} open={open10} placement="left">
+            Tooltip
+          </ATooltip>
+        </ACol>
+        <ACol cols="6" />
+        <ACol>
+          <AButton ref={buttonRef4} onClick={() => setOpen4(!open4)}>
+            Right
+          </AButton>
+          <ATooltip anchorRef={buttonRef4} open={open4} placement="right">
+            Tooltip
+          </ATooltip>
+        </ACol>
+      </ARow>
+      <ARow>
+        <ACol className="text-right">
+          <AButton ref={buttonRef9} onClick={() => setOpen9(!open9)}>
+            Left-Bottom
+          </AButton>
+          <ATooltip
+            anchorRef={buttonRef9}
+            open={open9}
+            placement="left-bottom">
+            Tooltip
+          </ATooltip>
+        </ACol>
+        <ACol cols="6" />
+        <ACol>
+          <AButton ref={buttonRef5} onClick={() => setOpen5(!open5)}>
+            Right-Bottom
+          </AButton>
+          <ATooltip
+            anchorRef={buttonRef5}
+            open={open5}
+            placement="right-bottom">
+            Tooltip
+          </ATooltip>
+        </ACol>
+      </ARow>
+      <ARow>
+        <ACol cols="2" />
+        <ACol className="text-right">
+          <AButton ref={buttonRef8} onClick={() => setOpen8(!open8)}>
+            Bottom-Left
+          </AButton>
+          <ATooltip
+            anchorRef={buttonRef8}
+            open={open8}
+            placement="bottom-left">
+            Tooltip
+          </ATooltip>
+        </ACol>
+        <ACol className="text-center">
+          <AButton ref={buttonRef7} onClick={() => setOpen7(!open7)}>
+            Bottom
+          </AButton>
+          <ATooltip anchorRef={buttonRef7} open={open7} placement="bottom">
+            Tooltip
+          </ATooltip>
+        </ACol>
+        <ACol>
+          <AButton ref={buttonRef6} onClick={() => setOpen6(!open6)}>
+            Bottom-Right
+          </AButton>
+          <ATooltip
+            anchorRef={buttonRef6}
+            open={open6}
+            placement="bottom-right">
+            Tooltip
+          </ATooltip>
+        </ACol>
+        <ACol cols="2" />
+      </ARow>
+    </AContainer>
+  );
+}
+`}
+/>
+
+## Pointer
+
+<Playground
+  code={`() => {
+  const buttonRef1 = useRef(null);
+  const buttonRef2 = useRef(null);
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
+  return (
+    <>
+      <p>
+        If the anchor is larger than the tooltip, the pointer is placed in the
+        center of the tooltip.
+      </p>
+      <p>
+        If the tooltip is larger than the anchor, the pointer is placed in the
+        center of the anchor.
+      </p>
+      <AButton secondary ref={buttonRef1} onClick={() => setOpen1(!open1)}>
+        Large, Short Anchor Has Less Wide, Taller Tooltips
+      </AButton>
+      <ATooltip
+        anchorRef={buttonRef1}
+        open={open1}
+        placement="bottom-left"
+        pointer>
+        Tooltip Less Wide Than Anchor
+      </ATooltip>
+      <ATooltip
+        anchorRef={buttonRef1}
+        open={open1}
+        placement="right-top"
+        pointer>
+        Tooltip Taller
+        <br />
+        Than Anchor
+      </ATooltip>
+      <br />
+      <AButton
+        icon
+        secondary
+        ref={buttonRef2}
+        className="mt-10 mb-6"
+        onClick={() => setOpen2(!open2)}>
+        <AIcon>information</AIcon>
+      </AButton>
+      <ATooltip
+        anchorRef={buttonRef2}
+        open={open2}
+        placement="bottom-left"
+        pointer>
+        Tooltip Wider Than Anchor
+      </ATooltip>
+      <ATooltip
+        anchorRef={buttonRef2}
+        open={open2}
+        placement="right-top"
+        pointer>
+        Tooltip Shorter Than Anchor
+      </ATooltip>
+    </>
+  );
+}
+`}
+/>
+
+## `onClose` Handling
+
+<Playground
+  code={`() => {
+  const buttonRef = useRef(null);
+  const [open, setOpen] = useState(false);
+  return (
+    <AContainer fluid>
+      <ARow>
+        <ACol className="text-center">
+          <p className="onclose-1__instruction">
+            Clicking outside of the anchor or tooltip will close the tooltip
+            in this example.
+          </p>
+          <AButton ref={buttonRef} onClick={() => setOpen(!open)}>
+            Bottom
+          </AButton>
+          <ATooltip
+            anchorRef={buttonRef}
+            open={open}
+            placement="bottom"
+            onClose={() => setOpen(false)}>
+            Tooltip
+          </ATooltip>
+        </ACol>
+      </ARow>
+    </AContainer>
+  );
+}
+`}
+/>
+
+## Accessibility Notes
+
+By default, `ATooltip` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [tooltip](https://www.w3.org/TR/wai-aria/#tooltip).
+
+For better accessibility: add an `id` to the tooltip and set the `aria-describedby` attribute on the anchor to the new `id`.

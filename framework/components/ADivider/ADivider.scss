@@ -1,0 +1,20 @@
+@import "../../styles";
+
+@include theme(a-divider) using ($theme) {
+  border-color: map-deep-get($theme, "divider", "color-default");
+
+  &--color-light {
+    border-color: map-deep-get($theme, "divider", "color-light");
+  }
+
+  &--color-lighter {
+    border-color: map-deep-get($theme, "divider", "color-lighter");
+  }
+}
+
+.a-divider {
+  position: relative;
+  border-width: $border-width 0 0 0;
+  border-style: solid;
+  margin: 20px 0;
+}

@@ -1,0 +1,146 @@
+---
+name: Paginations
+route: /components/pagination
+components: APagination
+---
+
+# Paginations
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {APagination} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage 1
+
+<Playground
+  code={`() => {
+  const [currentPage1, setCurrentPage1] = useState(1);
+  return (
+    <div>
+      <h3>My Pages</h3>
+      <div style={{border: "solid 2px #333"}} className="my-2 pa-2">
+        Page {currentPage1}
+      </div>
+      <APagination
+        onNext={currentPage1 < 3 && (() => setCurrentPage1(currentPage1 + 1))}
+        onPrevious={
+          currentPage1 > 1 && (() => setCurrentPage1(currentPage1 - 1))
+        }
+      />
+    </div>
+  );
+}
+`}
+/>
+
+## Usage 2
+
+<Playground
+  code={`() => {
+  const [currentPage2, setCurrentPage2] = useState(1);
+  return (
+    <div>
+      <h3 className="mt-4">My Many Pages</h3>
+      <div style={{border: "solid 2px #333"}} className="my-2 pa-2">
+        Page {currentPage2}
+      </div>
+      <APagination
+        onPageChange={(value) => {
+          setCurrentPage2(value);
+        }}
+        page={currentPage2}
+        showText={false}
+        total={15}
+      />
+    </div>
+  );
+}
+`}
+/>
+
+## Usage 3
+
+<Playground
+  code={`() => {
+  const [currentPage3, setCurrentPage3] = useState(1);
+  const [resultsPerPage3, setResultsPerPage3] = useState(5);
+  return (
+    <div>
+      <h3 className="mt-4">My API's Data</h3>
+      <div style={{border: "solid 2px #333"}} className="my-2 pa-2">
+        <ul>
+          {Array.from(
+            Array(resultsPerPage3),
+            (_, x) => (currentPage3 - 1) * resultsPerPage3 + x + 1
+          )
+            .map((x) => <li key={x}>Result #{x}</li>)
+            .slice(0, 145)}
+        </ul>
+      </div>
+      <APagination
+        onPageChange={(value) => {
+          setCurrentPage3(value);
+        }}
+        onResultsPerPageChange={(value) => setResultsPerPage3(value)}
+        page={currentPage3}
+        resultsPerPage={resultsPerPage3}
+        total={145}
+      />
+    </div>
+  );
+}
+`}
+/>
+
+## Pagination Props
+
+The `APagination` component inherits passed props.
+
+<Props of="APagination" />
+
+## Locale formatting
+
+<Playground
+  code={`() => {
+  const [currentPage2, setCurrentPage2] = useState(1);
+  const [currentPage3, setCurrentPage3] = useState(1000);
+  const [resultsPerPage3, setResultsPerPage3] = useState(5);
+  return (
+    <>
+    <div>
+      <APagination
+        localeFormatting
+        onPageChange={(value) => {
+          setCurrentPage2(value);
+        }}
+        page={currentPage2}
+        showText={false}
+        total={1500}
+      />
+    </div>
+    <ADivider />
+    <div>
+      <APagination
+        localeFormatting
+        onPageChange={(value) => {
+          setCurrentPage3(value);
+        }}
+        onResultsPerPageChange={(value) => setResultsPerPage3(value)}
+        page={currentPage3}
+        resultsPerPage={resultsPerPage3}
+        total={14500}
+      />
+    </div>
+    </>
+  );
+}
+`}
+/>
+
+## Accessibility Notes
+
+Buttons utilize the `aria-label` attribute to communicate functionality.

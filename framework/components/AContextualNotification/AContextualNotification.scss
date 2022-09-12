@@ -1,0 +1,62 @@
+@import "../../styles";
+
+$context-padding: $base-padding-small;
+$context-border-left-width: 5px;
+$context-icon-margin: 2px 10px 0 0;
+$context-arrow-width: rem(1);
+$context-arrow-height: rem(0.5);
+$context-arrow-margin: rem(0.3);
+$context-arrow-top: 30%;
+$context-arrow-left: 10%;
+
+@include theme(a-context) using ($theme) {
+  color: map-deep-get($theme, "label", "color");
+  background-color: map-deep-get($theme, "control", "fill-color");
+}
+
+.a-context {
+  display: inline-flex;
+  align-items: flex-start;
+  position: relative;
+  width: 100%;
+  min-height: 40px;
+  border: $border-width solid transparent;
+  border-left: $context-border-left-width solid transparent;
+  margin: 10px 0;
+  padding: $context-padding;
+  border-radius: $border-radius--sm;
+  &__icon {
+    margin: $context-icon-margin;
+    height: 14px;
+    width: 14px;
+  }
+
+  &--state-warning {
+    border-color: map-get($status-orange, "base");
+
+    .a-context__icon {
+      color: map-get($status-orange, "base");
+    }
+  }
+  &--state-danger {
+    border-color: map-get($status-red, "base");
+
+    .a-context__icon {
+      color: map-get($status-red, "base");
+    }
+  }
+  &--state-success {
+    border-color: map-get($status-green, "base");
+
+    .a-context__icon {
+      color: map-get($status-green, "base");
+    }
+  }
+  &--state-info {
+    border-color: map-get($cisco-blue, "base");
+
+    .a-context__icon {
+      color: map-get($status-blue, "base");
+    }
+  }
+}

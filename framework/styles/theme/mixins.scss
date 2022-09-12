@@ -1,0 +1,19 @@
+// prettier-ignore
+@mixin theme($component) {
+  .theme--default .#{$component} {
+    @content($atomic-default);
+  }
+  .theme--dusk .#{$component} {
+    @content($atomic-dusk);
+  }
+}
+
+// prettier-ignore
+@mixin themeElement($component) {
+  .theme--default #{$component} {
+    @content($atomic-default);
+  }
+  .theme--dusk #{$component} {
+    @content($atomic-dusk);
+  }
+}

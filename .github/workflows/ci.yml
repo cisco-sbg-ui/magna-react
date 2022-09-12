@@ -1,0 +1,32 @@
+name: CI
+
+on: push
+
+jobs:
+  test:
+    name: CI
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - name: NPM Install
+        run: npm ci --ignore-scripts --prefer-offline
+      - name: Run Cypress Postinstall Script
+        run: npm run cypress:install
+      - name: Run ESBuild Postinstall Script
+        run: npm run esbuild:install
+      - name: Build
+        run: npm run build
+      - name: Test
+        run: npm run cover:merge
+      - name: Upload Coverage
+        run: npm run upload-coverage

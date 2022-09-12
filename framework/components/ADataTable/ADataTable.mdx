@@ -1,0 +1,383 @@
+---
+name: Data Tables
+route: /components/data-table
+components: ADataTable, useInfiniteScroll
+---
+
+# Data Tables
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {ADataTable} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+### Basic
+
+<Playground
+  code={`() => {
+  const [sort, setSort] = useState();
+  const headers = [
+    {
+      name: "alpha",
+      key: "a",
+      align: "end",
+      className: "text-capitalize",
+      sortable: true
+    },
+    {
+      name: "Bravo",
+      key: "b",
+      align: "center",
+      sortable: true,
+      sort: false
+    },
+    {
+      name: "Charlie",
+      key: "c",
+      sortable: true,
+      sort: (a, b) =>
+        a.toUpperCase() === b.toUpperCase()
+          ? 0
+          : a.toUpperCase() > b.toUpperCase()
+          ? 1
+          : -1
+    },
+    {
+      name: "Delta",
+      align: "center",
+      cell: {
+        component: (item) => (
+          <a href="/" target="_blank">
+            Details
+          </a>
+        )
+      }
+    }
+  ];
+  const items = [
+    {
+      a: 11.1,
+      b: 526,
+      c: "aardvark"
+    },
+    {
+      a: 8.9,
+      b: 611,
+      c: "Argentina"
+    },
+    {
+      a: 10.5,
+      b: 475,
+      c: "Zanzibar"
+    }
+  ];
+  return (
+    <ADataTable
+      striped
+      tight
+      headers={headers}
+      items={items}
+      className="mx-auto"
+      style={{maxWidth: 500}}
+      sort={sort}
+      onSort={(s) => setSort(s)}
+    />
+  );
+}
+`}
+/>
+
+### Infinite Scrolling
+
+<Playground
+  noInline
+  code={`
+  // This is a mock API used to hide pagination
+  // implementation details for this example
+  const randomColors = mockImport('randomColors');
+
+  // Used to cap the table to 125 items. In a real
+  // use-case, the API will probably determine if
+  // the data is exhausted.
+  const MAX_ITEMS = 125;
+
+  // So that we don't block the footer from being accessible,
+  // the infinite scrolling should be capped as well
+  const INFINITE_SCROLL_MAX = 75;
+
+  const InfiniteScrollDemo = () => {
+    const [isLoading, setIsLoading] = useState(true);
+    const [showLoadMore, setShowLoadMore] = useState(false);
+    const [items, setItems] = useState([]);
+    const addNextItems = (nextItems) => {
+      setItems(prevItems => [...prevItems, ...nextItems]);
+    }
+
+    // Initially load the table with
+    // random colors
+    useEffect(() => {
+      randomColors.get(25).then(colors => {
+        addNextItems(colors);
+        setIsLoading(false);
+      });
+    }, []);
+    return (
+      <>
+        <ADataTable
+          striped
+          tight
+          maxHeight='300px'
+          aria-live="polite"
+          onScrollToEnd={(entry) => {
+            if (items.length >= MAX_ITEMS) {
+              return;
+            }
+
+            // Although the user won't be able to infinitely scroll,
+            // we still want to enable them to fetch more content
+            if (items.length >= INFINITE_SCROLL_MAX && items.length < MAX_ITEMS) {
+              setShowLoadMore(true);
+              return;
+            }
+
+            // Fetch next colors for infinite scrolling functionality
+            setIsLoading(true);
+            randomColors.get(25).then(nextColors => {
+              addNextItems(nextColors);
+              setIsLoading(false);
+            });
+          }}
+          items={items}
+          headers={[
+            { name: 'r', key: 'r', },
+            { name: 'g', key: 'g', },
+            { name: 'b', key: 'b', },
+            {
+              name: 'hex',
+              key: 'hex',
+              cell: {
+                component: (rowData) => (
+                  <div style={{display: 'flex', alignItems: 'center'}}>
+                    <div style={{
+                      background: rowData.hex,
+                      width: '25px',
+                      height: '25px',
+                      marginRight: '5px',
+                      }} />
+                    <p>{rowData.hex}</p>
+                  </div>
+                )
+              }
+            }
+          ]}
+        />
+        {isLoading && (
+          <div style={{display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
+              <ADotLoader />
+          </div>
+        )}
+        {showLoadMore && (
+          <div style={{display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
+            <AButton
+              onClick={() => {
+                setShowLoadMore(false);
+                setIsLoading(true);
+                randomColors.get(25).then(nextColors => {
+                  addNextItems(nextColors);
+                  setIsLoading(false);
+                })
+              }}
+            >
+              Load More
+            </AButton>
+          </div>
+        )}
+      </>
+    )
+  };
+  render(<InfiniteScrollDemo />);`}
+/>
+
+## Expandable Rows
+
+<Playground
+  code={`() => {
+  const [sort, setSort] = useState();
+  const headers = [
+    {
+      name: "alpha",
+      key: "a",
+      align: "start",
+      className: "text-capitalize",
+      sortable: true
+    },
+    {
+      name: "Bravo",
+      key: "b",
+      align: "start",
+      sortable: true,
+      sort: false
+    },
+    {
+      name: "Charlie",
+      key: "c",
+      sortable: true,
+      sort: (a, b) =>
+        a.toUpperCase() === b.toUpperCase()
+          ? 0
+          : a.toUpperCase() > b.toUpperCase()
+          ? 1
+          : -1
+    },
+    {
+      name: "Delta",
+      align: "center",
+      cell: {
+        component: (item) => (
+          <a href="/" target="_blank">
+            Details
+          </a>
+        )
+      }
+    }
+  ];
+  const items = [
+    {
+      a: 11.1,
+      b: 526,
+      c: "aardvark"
+    },
+    {
+      a: 8.9,
+      b: 611,
+      c: "Argentina"
+    },
+    {
+      a: 10.5,
+      b: 475,
+      c: "Zanzibar"
+    }
+  ];
+  const expandableConfig = {
+    component: (props) => (
+      <p>
+        Additional information about {props.a} and {props.b}.
+      </p>
+    )
+  };
+  return (
+    <ADataTable
+      striped
+      tight
+      headers={headers}
+      items={items}
+      expandable={expandableConfig}
+      className="mx-auto"
+      style={{maxWidth: 500}}
+      sort={sort}
+      onSort={(s) => setSort(s)}
+    />
+  );
+}
+`}
+/>
+
+## Conditional Expandable Rows
+
+<Playground
+  code={`() => {
+  const [sort, setSort] = useState();
+  const headers = [
+    {
+      name: "alpha",
+      key: "a",
+      align: "start",
+      className: "text-capitalize",
+      sortable: true
+    },
+    {
+      name: "Bravo",
+      key: "b",
+      align: "center",
+      sortable: true,
+      sort: false
+    },
+    {
+      name: "Charlie",
+      key: "c",
+      sortable: true,
+      sort: (a, b) =>
+        a.toUpperCase() === b.toUpperCase()
+          ? 0
+          : a.toUpperCase() > b.toUpperCase()
+          ? 1
+          : -1
+    },
+    {
+      name: "Delta",
+      align: "center",
+      cell: {
+        component: (item) => (
+          <a href="/" target="_blank">
+            Details
+          </a>
+        )
+      }
+    }
+  ];
+  const items = [
+    {
+      a: 11.1,
+      b: 526,
+      c: "aardvark"
+    },
+    {
+      a: 8.9,
+      b: 611,
+      c: "Argentina"
+    },
+    {
+      a: 10.5,
+      b: 475,
+      c: "Zanzibar"
+    }
+  ];
+  const expandableConfig = {
+    isRowExpandable: (rowData) => rowData.a > 10,
+    component: (props) => (
+      <p>
+        Column "a" of row {props.c} has a value greater than 10.
+      </p>
+    )
+  }
+  return (
+    <ADataTable
+      striped
+      tight
+      headers={headers}
+      items={items}
+      expandable={expandableConfig}
+      className="mx-auto"
+      style={{maxWidth: 500}}
+      sort={sort}
+      onSort={(s) => setSort(s)}
+    />
+  );
+}
+`}
+/>
+
+## Data Table Props
+
+The `ADataTable` component inherits passed props.
+
+<Props of="ADataTable" />
+
+## Accessibility Notes
+
+When using infinite scroll within the `ADataTable`, it is recommended to set a maxinumum infinite scrolling threshold in your implementation so that screen readers and keyboard users can also have a good user experience. To continue loading more content after reaching the target threshold, you can use the "Load More" pattern by rendering a button that will then begin to explicitly load more table content with the user's consent.

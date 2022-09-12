@@ -1,0 +1,37 @@
+@import "../../styles";
+
+@include theme(a-breadcrumb) using ($theme) {
+  &__item {
+    & + .a-breadcrumb__item::before {
+      color: map-deep-get($theme, "base", "color");
+    }
+  }
+}
+
+.a-breadcrumb {
+  list-style: none;
+  background-color: transparent;
+  margin: 8px 0 12px;
+  padding: 0;
+
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+
+  li.a-breadcrumb__item {
+    padding: 0;
+    float: left;
+    font-size: $font-size--xs;
+    & + .a-breadcrumb__item::before {
+      display: inline-block;
+      padding: 0 5px;
+      content: "/";
+    }
+
+    .a-icon {
+      width: 16px;
+    }
+  }
+}

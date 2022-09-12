@@ -1,0 +1,209 @@
+@import "../../styles";
+
+@include theme(a-slider) using ($theme) {
+  &__track {
+    &--low,
+    &--high {
+      background-color: map-deep-get($theme, "control", "stroke-color");
+    }
+  }
+
+  &__handle {
+    background-color: map-deep-get($theme, "base", "inverse-color");
+    border-color: map-get($cisco-blue, "base");
+    &:hover {
+      border-color: map-get($grey, "darken-4");
+      box-shadow: inset 0 0 0 4px map-deep-get($theme, "base", "inverse-color"),
+        inset 0 0 0 5px map-get($grey, "darken-4");
+    }
+
+    &:focus {
+      box-shadow: map-deep-get($theme, "base", "box-shadow");
+    }
+
+    &:active {
+      border-color: map-get($grey, "darken-4");
+      box-shadow: inset 0 0 0 4px map-deep-get($theme, "base", "inverse-color"),
+        inset 0 0 0 8px map-get($grey, "darken-4");
+    }
+  }
+
+  &--warning {
+    & .a-slider__selection {
+      background-color: $color-warning;
+    }
+
+    & .a-slider__handle {
+      border-color: $color-warning;
+      &:hover {
+        border-color: map-get($grey, "darken-4");
+        box-shadow: inset 0 0 0 2px
+            map-deep-get($theme, "base", "inverse-color"),
+          inset 0 0 0 2.5px map-get($grey, "darken-4");
+      }
+
+      &:focus {
+        box-shadow: $warning-box-shadow;
+      }
+
+      &:active {
+        border-color: map-get($grey, "darken-4");
+        box-shadow: inset 0 0 0 4px
+            map-deep-get($theme, "base", "inverse-color"),
+          inset 0 0 0 8px map-get($grey, "darken-4");
+      }
+    }
+  }
+
+  &--danger {
+    & .a-slider__selection {
+      background-color: $color-error;
+    }
+
+    & .a-slider__handle {
+      border-color: $color-error;
+      &:hover {
+        border-color: map-get($grey, "darken-4");
+        box-shadow: inset 0 0 0 2px
+            map-deep-get($theme, "base", "inverse-color"),
+          inset 0 0 0 2.5px map-get($grey, "darken-4");
+      }
+
+      &:focus {
+        box-shadow: $danger-box-shadow;
+      }
+
+      &:active {
+        border-color: map-get($grey, "darken-4");
+        box-shadow: inset 0 0 0 4px
+            map-deep-get($theme, "base", "inverse-color"),
+          inset 0 0 0 8px map-get($grey, "darken-4");
+      }
+    }
+  }
+
+  &--disabled {
+    opacity: map-deep-get($theme, "slider", "opacity-disabled");
+    & .a-slider__selection {
+      background-color: map-deep-get($theme, "slider", "selection-bg-disabled");
+    }
+    & .a-slider__handle {
+      border-color: map-deep-get($theme, "slider", "handle-border-disabled");
+      &:hover,
+      &:active {
+        border-color: map-deep-get($theme, "slider", "handle-border-disabled");
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+.a-slider {
+  &__control {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__track {
+    height: 6px;
+    top: 10.5px;
+    left: 8.5px;
+    right: 8.5px;
+    position: absolute;
+    cursor: pointer;
+    border-radius: 4px;
+    &--low,
+    &--high {
+      height: 100%;
+      top: 0;
+      bottom: 0;
+      position: absolute;
+      box-sizing: border-box;
+      border-radius: 4px;
+    }
+  }
+
+  &__selection {
+    background: map-get($cisco-blue, "base");
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    box-sizing: border-box;
+    border-radius: 4px;
+  }
+
+  &__handles {
+    position: absolute;
+    left: 8.5px;
+    right: 8.5px;
+    top: 5px;
+  }
+
+  &__handle {
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    width: 17px;
+    height: 17px;
+    border-width: $border-width;
+    border-style: solid;
+    transform: translateX(-8.5px);
+    &:hover {
+      border-width: $border-width;
+      border-style: solid;
+    }
+
+    &:active {
+      border-width: $border-width;
+      border-style: solid;
+      z-index: 1;
+    }
+  }
+
+  &__tick {
+    white-space: nowrap;
+    padding: 22px 8.5px 0;
+    display: flex;
+    justify-content: space-between;
+    height: 47px;
+  }
+
+  &__tick-label {
+    padding-top: 4px;
+    display: inline-block;
+
+    span {
+      transform: translateX(-50%);
+      position: absolute;
+    }
+
+    &:first-child span {
+      transform: translateX(-8.5px);
+    }
+
+    &:last-child span {
+      transform: translateX(calc(-100% + 8.5px));
+    }
+  }
+
+  &--disabled {
+    & .a-slider__track {
+      cursor: not-allowed;
+    }
+    & .a-slider__handle {
+      border-width: $border-width;
+      border-style: solid;
+      &:hover,
+      &:active {
+        border-width: $border-width;
+        border-style: solid;
+      }
+    }
+  }
+}
+
+.a-slider-container {
+  height: 60px;
+}

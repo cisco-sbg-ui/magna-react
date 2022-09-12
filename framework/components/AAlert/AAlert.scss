@@ -1,0 +1,145 @@
+@import "../../styles";
+
+$alert-min-height: 50px;
+$alert-icon-font-size: $font-size;
+$alert-icon-margin: 0 16px;
+$alert-margin: 0;
+$alert-padding: 15px 0;
+$alert-body-font-size: $font-size--sm;
+$alert-message-max-width: 700px;
+$alert-close-icon: map-get($status-blue, "wash-1");
+$alert-close-icon--hover: map-get($status-blue, "burnt-1");
+$alert-success-close-icon: map-get($status-green, "wash-1");
+$alert-success-close-icon--hover: map-get($status-green, "burnt-1");
+$alert-warning-close-icon: map-get($status-orange, "wash-1");
+$alert-warning-close-icon--hover: map-get($status-orange, "burnt-1");
+$alert-danger-close-icon: map-get($status-red, "wash-1");
+$alert-danger-close-icon--hover: map-get($status-red, "burnt-1");
+
+@include theme(a-alert) using ($theme) {
+  background-color: map-deep-get($theme, "alert", "bg");
+  border-color: map-deep-get($theme, "alert", "border-color");
+  color: map-deep-get($theme, "base", "color");
+
+  &__icon {
+    &.a-alert__icon--close {
+      &:focus {
+        box-shadow: map-deep-get($theme, "base", "box-shadow");
+      }
+    }
+  }
+  &:focus {
+    box-shadow: map-deep-get($theme, "base", "box-shadow");
+  }
+  &--state-success {
+    background-color: map-deep-get($theme, "alert", "success-bg");
+    border-color: map-deep-get($theme, "alert", "success-border-color");
+    color: map-deep-get($theme, "base", "color");
+    .a-alert__icon--close:focus {
+      box-shadow: $success-box-shadow;
+    }
+    &:focus {
+      box-shadow: $success-box-shadow;
+    }
+  }
+  &--state-warning {
+    background-color: map-deep-get($theme, "alert", "warning-bg");
+    border-color: map-deep-get($theme, "alert", "warning-border-color");
+    color: map-deep-get($theme, "base", "color");
+    .a-alert__icon--close:focus {
+      box-shadow: $warning-box-shadow;
+    }
+    &:focus {
+      box-shadow: $warning-box-shadow;
+    }
+  }
+  &--state-danger {
+    background-color: map-deep-get($theme, "alert", "danger-bg");
+    border-color: map-deep-get($theme, "alert", "danger-border-color");
+    color: map-deep-get($theme, "base", "color");
+    .a-alert__icon--close:focus {
+      box-shadow: $danger-box-shadow;
+    }
+    &:focus {
+      box-shadow: $danger-box-shadow;
+    }
+  }
+}
+
+.a-alert {
+  display: inline-flex;
+  align-items: flex-start;
+  position: relative;
+  width: 100%;
+  min-height: $alert-min-height;
+  border-width: $border-width;
+  border-style: solid;
+  border-radius: $border-radius--sm;
+  margin: $alert-margin;
+  padding: $alert-padding;
+  &__icon {
+    font-size: $alert-icon-font-size;
+    margin: $alert-icon-margin;
+    color: map-get($status-blue, "base");
+    &--close {
+      cursor: pointer;
+      color: $alert-close-icon;
+      &:hover {
+        color: $alert-close-icon--hover;
+      }
+    }
+  }
+  &__message {
+    font-size: $alert-body-font-size;
+    max-width: $alert-message-max-width;
+    margin-right: auto;
+    align-self: center;
+    @include flex-fluid;
+    @include text-break-word;
+  }
+  &--state-success {
+    .a-alert__icon {
+      color: map-get($status-green, "base");
+
+      &--close {
+        color: $alert-success-close-icon;
+        &:hover {
+          color: $alert-success-close-icon--hover;
+        }
+        &:focus {
+          box-shadow: $success-box-shadow;
+        }
+      }
+    }
+  }
+  &--state-warning {
+    .a-alert__icon {
+      color: map-get($status-orange, "base");
+
+      &--close {
+        color: $alert-warning-close-icon;
+        &:hover {
+          color: $alert-warning-close-icon--hover;
+        }
+        &:focus {
+          box-shadow: $warning-box-shadow;
+        }
+      }
+    }
+  }
+  &--state-danger {
+    .a-alert__icon {
+      color: map-get($status-red, "base");
+
+      &--close {
+        color: $alert-danger-close-icon;
+        &:hover {
+          color: $alert-danger-close-icon--hover;
+        }
+        &:focus {
+          box-shadow: $danger-box-shadow;
+        }
+      }
+    }
+  }
+}

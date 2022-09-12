@@ -1,0 +1,134 @@
+@import "../../styles";
+
+@include theme(a-tree) using ($theme) {
+  &__root {
+    &--active {
+      background-color: map-deep-get($theme, "tree", "background-color--hover");
+      box-shadow: map-deep-get($theme, "tree", "box-shadow");
+      color: map-deep-get($theme, "tree", "color");
+    }
+
+    &--focus {
+      background-color: map-deep-get($theme, "tree", "background-color--focus");
+    }
+
+    > .a-tree__chevron.a-button:focus {
+      box-shadow: none;
+      overflow: visible;
+
+      &:after {
+        content: "";
+        box-shadow: 0 0 2px 2px currentColor;
+        opacity: 0.4;
+        position: absolute;
+        width: 22px;
+        height: 22px;
+        left: 4px;
+        top: 4px;
+      }
+    }
+  }
+
+  &__content {
+    color: currentColor;
+
+    &:hover,
+    &:focus {
+      color: currentColor;
+      text-decoration: none;
+    }
+  }
+
+  &--hoverable {
+    .a-tree__root {
+      &--hover {
+        background-color: map-deep-get(
+          $theme,
+          "tree",
+          "background-color--hover"
+        );
+        box-shadow: map-deep-get($theme, "tree", "box-shadow");
+        color: map-deep-get($theme, "tree", "color");
+
+        .a-tree__content {
+          color: map-deep-get($theme, "tree", "color");
+        }
+      }
+
+      &--focus {
+        background-color: map-deep-get(
+          $theme,
+          "tree",
+          "background-color--focus"
+        );
+      }
+    }
+  }
+
+  &--dense {
+    .a-tree__root > .a-button:focus:after {
+      width: 16px;
+      height: 16px;
+      left: 4px;
+      top: 4px;
+    }
+  }
+}
+
+.a-tree {
+  &__root {
+    display: flex;
+    height: 30px;
+    position: relative;
+    align-items: center;
+
+    &--leaf {
+      padding-left: 30px;
+    }
+
+    > .a-button {
+      position: relative;
+      flex-shrink: 0;
+    }
+  }
+
+  &__content {
+    flex-grow: 1;
+    padding-right: 30px;
+    user-select: none;
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 29px;
+
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+
+  &__level {
+    width: 17px;
+    flex-shrink: 0;
+  }
+
+  &--dense {
+    .a-tree__root {
+      height: 24px;
+
+      &--leaf {
+        padding-left: 24px;
+      }
+
+      > .a-button {
+        padding: 7px;
+      }
+    }
+
+    .a-tree__content {
+      line-height: 24px;
+    }
+  }
+}

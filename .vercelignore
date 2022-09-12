@@ -1,0 +1,12 @@
+.github/
+.next/
+.nyc_output/
+build/
+coverage/
+cypress/
+lib/
+scripts/
+
+codecov.yml
+cypress.json
+README.md

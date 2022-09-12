@@ -1,0 +1,209 @@
+@use "sass:math";
+
+$font-family: CiscoSans, Arial, sans-serif !default;
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+  "Liberation Mono", "Courier New", monospace !default;
+// -----------------------------------------------------------------------------
+// Font-size: xxs, xs, sm, base, lg, xl
+// -----------------------------------------------------------------------------
+$font-size: 16px !default; // Base
+$font-size--xl: rem(1.5) !default; // 24px
+$font-size--lg: rem(1.25) !default; // 20px
+$font-size--md: rem(1.125) !default; // 18px
+$font-size--sm: rem(0.875) !default; // 14px
+$font-size--xs: rem(0.75) !default; // 12px
+$font-size--xxs: rem(0.625) !default; // 10px
+// -----------------------------------------------------------------------------
+// Font-size: h1-h4
+// -----------------------------------------------------------------------------
+$h1-font-size: rem(1.5); // 24px
+$h2-font-size: rem(1.25) !default; // 20px
+$h3-font-size: rem(1.125) !default; // 18px
+$h4-font-size: rem(1) !default; // 16px
+$h5-font-size: rem(0.875) !default; // 14px
+// -----------------------------------------------------------------------------
+// Font-weight, line-height
+// -----------------------------------------------------------------------------
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-bold: 700 !default;
+$font-weight-xbold: 800 !default;
+$font-weight: $font-weight-normal !default;
+
+$font-weight--bold: bold !default;
+$line-height: 1.5 !default;
+$line-height--lg: rem(1.5) !default; // 24px
+// -----------------------------------------------------------------------------
+// Spacing, padding, border radius
+// -----------------------------------------------------------------------------
+$border-radius: rem(0.25) !default; // 4px
+$border-radius--lg: rem(0.375) !default; // 6px
+$border-radius--sm: rem(0.1875) !default; // 3px
+$border-radius--xs: rem(0.125) !default; // 2px
+$border-width: thin !default; // ~1px
+$spacer: 5px !default;
+$spacing: rem(1.25) !default; // 20px
+$spacers: () !default;
+@for $i from 0 through 12 {
+  $spacers: map-merge(
+    $spacers,
+    (
+      $i: $spacer * $i
+    )
+  );
+}
+// -----------------------------------------------------------------------------
+// Heading
+// -----------------------------------------------------------------------------
+$headings-font-family: inherit !default;
+$headings-font-weight: 300 !default;
+$headings-line-height: 1.1 !default;
+$headings-margin: $spacer * 2 !default;
+$headings-color: inherit !default;
+// -----------------------------------------------------------------------------
+// Display Heading
+// -----------------------------------------------------------------------------
+$display1-size: rem(3.75) !default; // 60px
+$display2-size: rem(2) !default; // 32px
+
+$display1-weight: 300 !default;
+$display2-weight: 300 !default;
+// -----------------------------------------------------------------------------
+// Subheadings, Emphasis
+// -----------------------------------------------------------------------------
+$small-font-size: 80% !default;
+$mark-padding: rem(0.1875) !default;
+$mark-bg: map-get($status-yellow, "wash-3") !default;
+// -----------------------------------------------------------------------------
+// Grid breakpoints
+// -----------------------------------------------------------------------------
+$page-width--min: 320px !default;
+$page-width--max: 1440px !default;
+$grid-breakpoints: () !default;
+$grid-breakpoints: map-merge(
+  (
+    "xs": 479px,
+    "sm": 767px,
+    "md": 992px,
+    "lg": 1200px,
+    "xl": 1440px
+  ),
+  $grid-breakpoints
+);
+$grid-columns: 12 !default;
+$grid-gutter: $spacer * 5 !default;
+$form-grid-gutter: $spacer * 2 !default;
+$grid-gutter-width: 30px !default;
+
+$container-padding-x: math.div($grid-gutter, 2) !default;
+
+$grid-gutters: () !default;
+$grid-gutters: map-merge(
+  (
+    "xs": math.div($grid-gutter, 12),
+    "sm": math.div($grid-gutter, 6),
+    "md": math.div($grid-gutter, 3),
+    "lg": math.div($grid-gutter * 2, 3),
+    "xl": $grid-gutter
+  ),
+  $grid-gutters
+);
+
+$container-max-widths: (
+  "md": map-get($grid-breakpoints, "md") * 0.9375,
+  "lg": map-get($grid-breakpoints, "lg") * 0.9375,
+  "xl": map-get($grid-breakpoints, "xl") * 0.9375
+);
+
+$display-breakpoints: (
+  "print-only": "only print",
+  "screen-only": "only screen",
+  "xs-only":
+    "only screen and (max-width: #{map-get($grid-breakpoints, 'sm') - 1})",
+  "sm-only":
+    "only screen and (min-width: #{map-get($grid-breakpoints, 'sm')}) and (max-width: #{map-get($grid-breakpoints, 'md') - 1})",
+  "sm-and-down":
+    "only screen and (max-width: #{map-get($grid-breakpoints, 'md') - 1})",
+  "sm-and-up":
+    "only screen and (min-width: #{map-get($grid-breakpoints, 'sm')})",
+  "md-only":
+    "only screen and (min-width: #{map-get($grid-breakpoints, 'md')}) and (max-width: #{map-get($grid-breakpoints, 'lg') - 1})",
+  "md-and-down":
+    "only screen and (max-width: #{map-get($grid-breakpoints, 'lg') - 1})",
+  "md-and-up":
+    "only screen and (min-width: #{map-get($grid-breakpoints, 'md')})",
+  "lg-only":
+    "only screen and (min-width: #{map-get($grid-breakpoints, 'lg')}) and (max-width: #{map-get($grid-breakpoints, 'xl') - 1})",
+  "lg-and-down":
+    "only screen and (max-width: #{map-get($grid-breakpoints, 'xl') - 1})",
+  "lg-and-up":
+    "only screen and (min-width: #{map-get($grid-breakpoints, 'lg')})",
+  "xl-only": "only screen and (min-width: #{map-get($grid-breakpoints, 'xl')})"
+);
+// -----------------------------------------------------------------------------
+// Alert colors
+// -----------------------------------------------------------------------------
+$color-information: map-get($status-blue, "base");
+$color-information-alt: map-get($cisco-blue, "base");
+$color-good: map-get($status-green, "base");
+$color-warning: map-get($status-orange, "base");
+$color-warning-alt: map-get($status-yellow, "base");
+$color-error: map-get($status-red, "base");
+// -----------------------------------------------------------------------------
+// Alert box shadow
+// -----------------------------------------------------------------------------
+$default-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+$info-box-shadow: 0 0 2px 2px rgba(100, 187, 227, 0.4);
+$success-box-shadow: 0 0 2px 2px rgba(108, 192, 74, 0.4);
+$warning-box-shadow: 0 0 2px 2px rgba(255, 115, 0, 0.4);
+$warning-alt-box-shadow: 0 0 2px 2px rgba(255, 204, 0, 0.4);
+$danger-box-shadow: 0 0 2px 2px rgba(207, 32, 48, 0.4);
+// -----------------------------------------------------------------------------
+// Base Padding
+// -----------------------------------------------------------------------------
+$base-padding: rem(0.9375); // 15px
+$base-padding-top: rem(0.9375);
+$base-padding-right: rem(0.9375);
+$base-padding-bottom: rem(0.9375);
+$base-padding-left: rem(0.9375);
+$base-padding-small: rem(0.625); // 10px
+$base-padding-small-top: rem(0.625);
+$base-padding-small-right: rem(0.625);
+$base-padding-small-bottom: rem(0.625);
+$base-padding-small-left: rem(0.625);
+$base-padding-xsmall: rem(0.3125); // 5px
+// -----------------------------------------------------------------------------
+// Alpha channel
+// -----------------------------------------------------------------------------
+$alpha-1: 0.1;
+$alpha-15: 0.15;
+$alpha-2: 0.2;
+$alpha-3: 0.3;
+$alpha-4: 0.4;
+$alpha-5: 0.5;
+$alpha-6: 0.6;
+$alpha-7: 0.7;
+$alpha-8: 0.8;
+$alpha-9: 0.9;
+// -----------------------------------------------------------------------------
+// Transitions
+// -----------------------------------------------------------------------------
+$transition-duration--extra-slow: 0.5s;
+$transition-duration--slow: 0.4s;
+$transition-duration: 0.3s;
+$transition-duration--fast: 0.2s;
+$transition-duration--extra-fast: 0.1s;
+
+$transition-timing-function--standard: cubic-bezier(0.2, 0, 0.4, 1);
+$transition-timing-function--entrance: cubic-bezier(0, 0, 0.4, 1);
+$transition-timing-function--exit: cubic-bezier(0.2, 0, 0.4, 1);
+
+$enable-transitions: true;
+$enable-prefers-reduced-motion-media-query: true;
+$transition-base: all $transition-duration--fast ease-in-out;
+$transition-fade: opacity 0.15s linear;
+$transition-collapse: height 0.35s ease;
+$transition-item: color $transition-duration--extra-fast
+    $transition-timing-function--standard,
+  background-color $transition-duration--fast
+    $transition-timing-function--standard;

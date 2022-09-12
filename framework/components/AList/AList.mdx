@@ -1,0 +1,169 @@
+---
+name: Lists
+route: /components/list
+components: AList, AListItem, AListItemAvatar, AListItemSubtitle, AListItemAction, AListItemContent
+---
+
+# Lists
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {
+  AList,
+  AListItem,
+  AListItemAvatar,
+  AListItemSubtitle,
+  AListItemTitle,
+  AListItemContent,
+  AListItemAction
+} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  fullWidthPreview
+  code={`<div className="d-flex align-start">
+  <AList className="mr-2" style={{flexBasis: "33%"}}>
+    <AListItem twoLine>
+      <AListItemAvatar>
+        <AIcon size={16} className="status-red--text">
+          critical-stop
+        </AIcon>
+      </AListItemAvatar>
+      <AListItemContent>
+        <AListItemTitle>Source Application</AListItemTitle>
+        <AListItemSubtitle>
+          Danger. Text to describe the notification or an issue that needs to
+          be addressed. Very, very, very, very, very long text.
+        </AListItemSubtitle>
+      </AListItemContent>
+      <AListItemAction>
+        <AButton tertiaryAlt icon onClick={() => {}}>
+          <AIcon size={10}>close</AIcon>
+        </AButton>
+      </AListItemAction>
+    </AListItem>
+    <ADivider light className="ma-0" />
+    <AListItem onClick={() => {}}>Logout</AListItem>
+  </AList>
+  <AList className="ml-2 mr-2 pl-2" style={{flexBasis: "33%"}}>
+    <AListItem twoLine>
+      <AListItemAvatar className="ma-2 ml-0">
+        <div
+          className="d-flex align-center justify-center"
+          style={{
+            width: 48,
+            height: 48,
+            color: "#f2f2f2",
+            borderRadius: 4,
+            backgroundColor: "#750b76"
+          }}>
+          AMP
+        </div>
+      </AListItemAvatar>
+      <AListItemContent>
+        <AListItemTitle>AMP for Endpoints</AListItemTitle>
+        <AListItemSubtitle>
+          <a href="#">New in 5.4.2</a> | <a href="#">API Docs</a>
+        </AListItemSubtitle>
+      </AListItemContent>
+    </AListItem>
+    <ADivider light className="ma-0" />
+    <AListItem twoLine>
+      <AListItemAvatar className="ma-2 ml-0">
+        <div
+          className="d-flex align-center justify-center ma-0"
+          style={{
+            width: 48,
+            height: 48,
+            color: "#f2f2f2",
+            borderRadius: 4,
+            backgroundColor: "#191970"
+          }}>
+          Cdo
+        </div>
+      </AListItemAvatar>
+      <AListItemContent>
+        <AListItemTitle>Cisco Defense Orchestrator</AListItemTitle>
+        <AListItemSubtitle>
+          <a href="#">What's New</a> | <a href="#">API Docs</a>
+        </AListItemSubtitle>
+      </AListItemContent>
+    </AListItem>
+  </AList>
+  <AList className="ml-2" style={{flexBasis: "33%"}}>
+    <AListItem href="#" target="_blank">
+      One
+    </AListItem>
+    <AListItem href="#" target="_blank">
+      Two
+    </AListItem>
+    <AListItem twoLine href="#" target="_blank">
+      <AListItemAvatar>
+        <AIcon size={16}>sign-out</AIcon>
+      </AListItemAvatar>
+      <AListItemContent>Log Out</AListItemContent>
+    </AListItem>
+  </AList>
+</div>
+`}
+/>
+
+## List Props
+
+The `AList` component inherits passed props.
+
+<Props of="AList" />
+
+## List Item Props
+
+The `AListItem` component inherits passed props.
+
+<Props of="AListItem" />
+
+## List Item Avatar Props
+
+The `AListItemAvatar` component inherits passed props.
+
+<Props of="AListItemAvatar" />
+
+## List Item Subtitle Props
+
+The `AListItemSubtitle` component inherits passed props.
+
+<Props of="AListItemSubtitle" />
+
+## List Item Title Props
+
+The `AListItemTitle` component inherits passed props.
+
+<Props of="AListItemTitle" />
+
+## List Item Content Props
+
+The `AListItemContent` component inherits passed props.
+
+<Props of="AListItemContent" />
+
+## List Item Action Props
+
+The `AListItemAction` component inherits passed props.
+
+<Props of="AListItemAction" />
+
+## Router Integrations
+
+On `AListItem`, set the `component` property to your router's link type, for example:
+
+```
+// With react-router:
+<AListItem component={RouterLink} to="/">List Item 1</AListItem>
+```
+
+## Accessibility Notes
+
+The `AListItem` `click` event handler is triggered both by the `click` event and by the `keyDown` event for the `Enter` key.

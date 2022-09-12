@@ -1,0 +1,100 @@
+---
+name: Radios
+route: /components/radio
+components: ARadio
+---
+
+# Radio Buttons
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {ARadio} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`() => {
+  const [checked, setChecked] = useState(false);
+  const [disabled, setDisabled] = useState(false);
+  const [wrap, setWrap] = useState(false);
+  return (
+    <div>
+      <h3>Example</h3>
+      <ARadio checked={checked} disabled={disabled} wrap={wrap}>
+        {LoremIpsum}
+      </ARadio>
+      <ADivider />
+      <h3>Options</h3>
+      <div className="d-flex mt-4 flex-column">
+        <ACheckbox checked={checked} onClick={() => setChecked(!checked)}>
+          Checked State
+        </ACheckbox>
+        <ACheckbox checked={disabled} onClick={() => setDisabled(!disabled)}>
+          Disabled State
+        </ACheckbox>
+        <ACheckbox checked={wrap} onClick={() => setWrap(!wrap)}>
+          Wrap Label
+        </ACheckbox>
+      </div>
+    </div>
+  );
+}
+`}
+/>
+
+## Radio Props
+
+The `ARadio` component inherits passed props.
+
+<Props of="ARadio" />
+
+## States
+
+<Playground
+  code={`<div className="d-flex flex-column">
+  <ARadio>Default</ARadio>
+  <ARadio checked>Checked</ARadio>
+  <ARadio disabled>Disabled</ARadio>
+  <ARadio disabled checked>
+    Disabled and Checked
+  </ARadio>
+  <ARadio>Very long truncated text. {LoremIpsum}</ARadio>
+  <ARadio wrap>Very long wrapping text. {LoremIpsum}</ARadio>
+</div>
+`}
+/>
+
+## Radio Groups
+
+<Playground
+  code={`() => {
+  const options = ["One", "Two", "Three"];
+  const [selectedValue, setSelectedValue] = useState(null);
+  return (
+    <div>
+      {options.map((option, index) => (
+        <ARadio
+          name="myRadioGroup"
+          key={\`myRadioGroup_\${index}\`}
+          checked={option === selectedValue}
+          onClick={() => setSelectedValue(option)}>
+          {option}
+        </ARadio>
+      ))}
+      <ADivider />
+      Selected Value: {selectedValue}
+    </div>
+  );
+}
+`}
+/>
+
+## Accessibility Notes
+
+By default, `ARadio` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [radio](https://www.w3.org/TR/wai-aria/#radio).
+
+The `ARadio` component uses the [aria-checked](https://www.w3.org/TR/wai-aria/#aria-checked) attribute to control the input state.

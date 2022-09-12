@@ -1,0 +1,128 @@
+---
+name: Sliders
+route: /components/slider
+components: ASlider
+---
+
+# Tags
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {ASlider} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  fullWidthPreview
+  code={`() => {
+  const [value, setValue] = useState(2);
+  return (
+    <ASlider
+      label="Likert Variant"
+      value={value}
+      onChange={(v) => setValue(v)}
+      ticks={["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree", "N/A"]}
+      hint={\`Value: \${value}\`}
+      rules={[{
+        test: v => [3,4].includes(v) || "You must agree"
+      }]}
+      max={5}
+    />
+  );
+}
+`}
+/>
+
+## Range
+
+<Playground
+  fullWidthPreview
+  code={`() => {
+  const [value, setValue] = useState([0, 1000]);
+  return (
+    <ASlider
+      label="Percentage"
+      value={value}
+      onChange={(v) => setValue(v)}
+      ticks={[0, 250, 500, 750, 1000]}
+      hint={\`Value: \${value}\`}
+      max={1000}
+      step={15}
+    />
+  );
+}
+`}
+/>
+
+## Slider Props
+
+The `ASlider` component inherits passed props.
+
+<Props of="ASlider" />
+
+## States
+
+<Playground
+  code={`() => {
+  const [value, setValue] = useState([25, 75]);
+  return (
+    <>
+      <ASlider
+        className="mb-6"
+        label="Default Slider"
+        value={value}
+        onChange={(v) => setValue(v)}
+        ticks={[0, 50, 100]}
+        hint="Default"
+      />
+      <ASlider
+        className="mb-6"
+        label="Disabled Slider"
+        value={value}
+        onChange={(v) => setValue(v)}
+        ticks={[0, 50, 100]}
+        hint="Disabled"
+        disabled
+      />
+      <ASlider
+        className="mb-6"
+        label="Warning Slider"
+        value={value}
+        onChange={(v) => setValue(v)}
+        ticks={[0, 50, 100]}
+        hint="Warning"
+        validationState="warning"
+      />
+      <ASlider
+        className="mb-6"
+        label="Danger Slider"
+        value={value}
+        onChange={(v) => setValue(v)}
+        ticks={[0, 50, 100]}
+        hint="Danger"
+        validationState="danger"
+      />
+    </>
+  );
+}
+`}
+/>
+
+## Accessibility Notes
+
+`ASlider` follows the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) recommendations
+for [slider](https://www.w3.org/TR/wai-aria/#slider), with appropriate `role`, `aria-valuemin`,
+`aria-valuemax`, `aria-valuenow`, `aria-readonly` attributes on the slider thumbs.
+
+Each slider thumb on `ASlider` has the following keyboard event handlers:
+
+- arrow-right, arrow-up: increases slider value one step.
+- arrow-left, arrow-down: decreases slider value one step.
+- page-up: increase slider 10 steps.
+- page-down: decrease slider 10 steps.
+- home: decrease slider to minimum.
+- end: increase slider to maximum.

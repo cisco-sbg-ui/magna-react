@@ -1,0 +1,87 @@
+@import "../../styles";
+
+@include theme(a-text-input) using ($theme) {
+  &__prepend-icon,
+  &__append-icon {
+    &.interactable:focus {
+      box-shadow: map-deep-get($theme, "base", "box-shadow");
+    }
+  }
+}
+
+.a-text-input {
+  &--type-number {
+    .a-text-input__input {
+      -moz-appearance: textfield;
+
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+
+    & .a-text-input__spinner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 20px;
+      width: 23px;
+      &__up,
+      &__down {
+        height: 10px;
+        align-self: stretch;
+        fill: currentColor;
+        user-select: none;
+      }
+    }
+  }
+
+  &__prepend-icon,
+  &__append-icon {
+    &.interactable {
+      box-shadow: none;
+      cursor: pointer;
+    }
+  }
+
+  &__prepend-icon {
+    padding: 0 5px;
+    width: 14px;
+    align-self: stretch;
+  }
+
+  &__append-icon {
+    padding: 0 5px;
+    width: 14px;
+    align-self: stretch;
+  }
+
+  &__input {
+    background: transparent;
+    box-sizing: border-box;
+    color: currentColor;
+    width: 100%;
+    position: relative;
+    padding: 2px 20px 0 6px;
+    border: none;
+    appearance: none;
+    text-indent: 1px;
+    align-self: stretch;
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &.a-input-base--append {
+    .a-text-input__input {
+      padding-right: 0;
+    }
+  }
+
+  &.a-input-base--prepend {
+    .a-text-input__input {
+      padding-left: 0;
+    }
+  }
+}

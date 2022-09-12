@@ -1,0 +1,209 @@
+---
+name: InView
+route: /components/inview
+components: AInView
+---
+
+# In View
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {AInView} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+### Basic
+
+<Playground
+    code={`() => {
+        // The container of the AInView component ...
+        // ... should almost always be scrollable
+        const containerStyling = {
+            position: 'relative',
+            maxHeight: '300px',
+            overflowY: 'scroll',
+        };
+        const bannerStyling = {
+            position: 'sticky',
+            top: '10px',
+        };
+        const [onScreen, setOnScreen] = useState(false);
+        const scrollContainer = useRef();
+        return (
+            <div>
+                <div style={bannerStyling} aria-live>
+                    Status: {onScreen ? 'On Screen' : 'Off Screen'}<AIcon right={true} size="small">{onScreen ? 'checkmark' : 'close'}</AIcon>
+                    <ADivider />
+                </div>
+                <div ref={scrollContainer} style={containerStyling} data-testid="scroll-container">
+                    <div style={{height: '500px'}}>
+                        <AInView
+                            root={scrollContainer.current}
+                            onChange={({ inView }) => setOnScreen(inView)}
+                        >
+                            <p>Observed Element</p>
+                        </AInView>
+                    </div>
+                </div>
+            </div>
+        )
+    }`}
+/>
+
+### Asynchronous Actions
+
+<Playground
+  code={`() => {
+  const [status, setStatus] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const wait = (t = 1000) =>
+    new Promise((resolve) => setTimeout(() => resolve('Success'), t));
+  return (
+    <div style={{overflowY: 'scroll', maxHeight: '300px'}} data-testid="scroll-container">
+        <div style={{position: 'relative'}}>
+            <p>Scroll down to lazyily call an asychronous function when the card enters the view.</p>
+            <ADivider role="presentation" style={{height: '500px'}} />
+            <AInView
+                triggerOnce
+                onChange={({ inView }) => {
+                    if (inView) {
+                        setIsLoading(true);
+                        wait().then((status) => {
+                            setIsLoading(false);
+                            setStatus(status);
+                        })
+                    }
+                }}>
+                <APanel>
+                    <APanelHeader>
+                        <APanelTitle>Status Check</APanelTitle>
+                    </APanelHeader>
+                    <APanelBody>
+                        <div aria-live="polite">
+                            {isLoading ? <ADotLoader size="small" /> : <p>{status}</p>}
+                        </div>
+                    </APanelBody>
+                </APanel>
+            </AInView>
+        </div>
+    </div>
+  );
+}
+`}
+/>
+
+### Infinite Scrolling
+
+<Playground
+    code={`() => {
+        const createNextItems = () => [...new Array(15)].fill('Item');
+        const [items, setItems] = useState(createNextItems());
+        const [isLoading, setIsLoading] = useState(false);
+        // Helper function to mock an async request
+        const wait = (t = 1000) => new Promise((resolve) =>
+            setTimeout(() => resolve(createNextItems()), t));
+        // Fetches items and sets inner component state
+        const getNextItems = () => {
+            setIsLoading(true);
+            wait().then((nextItems) => {
+                setItems(prevItems => [...prevItems, ...nextItems]);
+                setIsLoading(false);
+            });
+        };
+        // If the list is not exhausted and the ...
+        // ... last item is in view, fetch next batch
+        const handleViewChange = ({ inView }) => {
+            if (inView && items.length <= 50) {
+                getNextItems();
+            }
+        };
+        return (
+            <>
+                <ul style={{maxHeight: '250px', overflowY: 'scroll', }}>
+                    {items.map((text, i) => {
+                        const isLast = i === items.length - 1;
+                        return isLast ? (
+                            <AInView
+                                key={i}
+                                triggerOnce
+                                onChange={handleViewChange}>
+                                <li>
+                                    {text} #{i}
+                                </li>
+                            </AInView>
+                        ) : <li key={i}>{text} #{i}</li>;
+                    })}
+                </ul>
+                {isLoading && items.length < 50 && <ADotLoader size="small" />}
+            </>
+        )
+    }`}
+/>
+
+### Optimistic Infinite Scrolling
+
+In the following example, a margin is specified to indicate that the trigger can run when the observed element is within 200 pixels of the container's viewport, i.e., the `<ul>` element.
+
+<Playground
+    code={`() => {
+        const createNextItems = () => [...new Array(15)].fill('Item');
+        const scrollContainer = useRef();
+        const [items, setItems] = useState(createNextItems());
+        const [isLoading, setIsLoading] = useState(false);
+        // Helper function to mock an async request
+        const wait = (t = 1000) => new Promise((resolve) =>
+            setTimeout(() => resolve(createNextItems()), t));
+        // Fetches items and sets inner component state
+        const getNextItems = () => {
+            setIsLoading(true);
+            wait().then((nextItems) => {
+                setItems(prevItems => [...prevItems, ...nextItems]);
+                setIsLoading(false);
+            });
+        };
+        // If the list is not exhausted and the ...
+        // ... last item is in view, fetch next batch
+        const handleViewChange = ({ inView }) => {
+            if (inView && items.length <= 50) {
+                getNextItems();
+            }
+        };
+        return (
+            <>
+                <ul ref={scrollContainer} style={{maxHeight: '250px', overflowY: 'scroll', }}>
+                    {items.map((text, i) => {
+                        const isLast = i === items.length - 1;
+                        return isLast ? (
+                            <AInView
+                                key={i}
+                                triggerOnce
+                                onChange={handleViewChange}
+                                rootMargin="200px"
+                                root={scrollContainer.current}>
+                                <li>
+                                    {text} #{i}
+                                </li>
+                            </AInView>
+                        ) : <li key={i}>{text} #{i}</li>;
+                    })}
+                </ul>
+                {isLoading && <ADotLoader size="small" />}
+            </>
+        )
+    }`}
+/>
+
+
+## In View Props
+
+The `AInView` component inherits passed props.
+
+<Props of="AInView" />
+
+## Accessibility Notes
+
+If the content inside of `AInView` will change due to a change in the child component's view status, it is suggested to add an `aria-live` attribute onto your child component to indicate to screen readers that content is dynamically changing.

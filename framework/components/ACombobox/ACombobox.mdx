@@ -1,0 +1,291 @@
+---
+name: Comboboxes
+route: /components/combobox
+components: ACombobox
+---
+
+# Comboboxes
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {ACombobox} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`() => {
+  const items = [
+    {id: 1, name: "Bread, Cereal, Rice, and Pasta"},
+    {id: 2, name: "Vegetables"},
+    {id: 3, name: "Fruit", selected: true},
+    {id: 4, name: "Milk, Yogurt, and Cheese"},
+    {id: 5, name: "Meat, Poultry, Fish", disabled: true},
+    {id: 6, name: "Fats, Oils, and Sweets"}
+  ];
+  const [value, setValue] = useState("");
+  const [filteredItems, setFilteredItems] = useState(items);
+  return (
+    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+      <h3>Combobox with Objects</h3>
+      <ACombobox
+        clearable
+        label="Food Group"
+        items={filteredItems}
+        itemValue="id"
+        itemText="name"
+        placeholder="Pick a Food Group"
+        onSelected={(item) => {
+          setValue(item.name);
+        }}
+        value={value}
+        onChange={(e) => {
+          setFilteredItems(
+            items.filter((x) =>
+              x.name.toLowerCase().includes(e.target.value.toLowerCase())
+            )
+          );
+          setValue(e.target.value);
+        }}
+      />
+    </div>
+  );
+}
+`}
+/>
+
+## Combobox Props
+
+The `ACombobox` component inherits passed props.
+
+<Props of="ACombobox" />
+
+## Validation
+
+<Playground
+  code={`() => {
+  const items = [
+    "Bread, Cereal, Rice, and Pasta",
+    "Vegetables",
+    "Fruit",
+    "Milk, Yogurt, and Cheese",
+    "Meat, Poultry, Fish",
+    "Fats, Oils, and Sweets"
+  ];
+  const [value, setValue] = useState("");
+  const [filteredItems, setFilteredItems] = useState(items);
+  const [validateOnBlur, setValidateOnBlur] = useState(true);
+  return (
+    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+      <ACombobox
+        clearable
+        label="Food Group"
+        items={filteredItems}
+        placeholder="Pick a Food Group"
+        onSelected={(item) => {
+          setValue(item);
+        }}
+        required
+        rules={[
+          {
+            test: (v) => /[A-Z]+/.test(v) || "Must have a capital letter",
+            level: "warning"
+          }
+        ]}
+        value={value}
+        onChange={(e) => {
+          setFilteredItems(
+            items.filter((x) =>
+              x.toLowerCase().includes(e.target.value.toLowerCase())
+            )
+          );
+          setValue(e.target.value);
+        }}
+        validateOnBlur={validateOnBlur}
+      />
+      <ADivider />
+      <ASwitch
+        checked={validateOnBlur}
+        onClick={() => setValidateOnBlur(!validateOnBlur)}>
+        Postpone validation until blur
+      </ASwitch>
+    </div>
+  );
+}
+`}
+/>
+
+## States
+
+<Playground
+  code={`<>
+  <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+    <h3>Default</h3>
+    <ACombobox
+      clearable
+      label="Food Group"
+      items={[
+        "Bread, Cereal, Rice, and Pasta",
+        "Vegetables",
+        "Fruit",
+        "Milk, Yogurt, and Cheese",
+        "Meat, Poultry, Fish",
+        "Fats, Oils, and Sweets"
+      ]}
+      placeholder="Pick a Food Group"
+      hint="Hint: Clearable"
+    />
+  </div>
+  <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+    <h3>Disabled Combobox</h3>
+    <ACombobox
+      disabled
+      label="Food Group"
+      placeholder="Pick a Food Group"
+      hint="Hint: Disabled"
+    />
+  </div>
+  <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+    <h3>Read-only Combobox</h3>
+    <ACombobox
+      readOnly
+      label="Food Group"
+      placeholder="Pick a Food Group"
+      hint="Hint: Read-only"
+    />
+  </div>
+  <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+    <h3>Warning Combobox</h3>
+    <ACombobox
+      label="Food Group"
+      placeholder="Pick a Food Group"
+      hint="Hint: Warning"
+      validationState="warning"
+    />
+  </div>
+  <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+    <h3>Danger Combobox</h3>
+    <ACombobox
+      label="Food Group"
+      placeholder="Pick a Food Group"
+      hint="Hint: Danger"
+      validationState="danger"
+    />
+  </div>
+  <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+    <h3>No Data Combobox</h3>
+    <ACombobox
+      label="Food Group"
+      placeholder="Pick a Food Group"
+      noDataContent="Check again when we restock!"
+      hint="Hint: No Data"
+    />
+  </div>
+</>
+`}
+/>
+
+## Prepend/Append Content
+
+<Playground
+  code={`() => {
+  const items = [
+    "Bread, Cereal, Rice, and Pasta",
+    "Vegetables",
+    "Fruit",
+    "Milk, Yogurt, and Cheese",
+    "Meat, Poultry, Fish",
+    "Fats, Oils, and Sweets"
+  ];
+  const [value, setValue] = useState("");
+  const [filteredItems, setFilteredItems] = useState(items);
+  return (
+    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+      <ACombobox
+        prependContent={<AListItem twoLine className="my-1 mx-2">Advertisement</AListItem>}
+        appendContent={<><ADivider className="ma-0" /><AListItem><AIcon size={12} left>add</AIcon>Add Role</AListItem></>}
+        clearable
+        label="Food Group"
+        items={filteredItems}
+        placeholder="Pick a Food Group"
+        onSelected={(item) => {
+          setValue(item);
+        }}
+        value={value}
+        onChange={(e) => {
+          setFilteredItems(
+            items.filter((x) =>
+              x.toLowerCase().includes(e.target.value.toLowerCase())
+            )
+          );
+          setValue(e.target.value);
+        }}
+      />
+    </div>
+  );
+}
+`}
+/>
+
+## Menu Item Templates
+
+<Playground
+  code={`() => {
+  const items = [
+    {id: 1, name: "Bread, Cereal, Rice, and Pasta", healthy: true},
+    {id: 2, name: "Vegetables", healthy: true},
+    {id: 3, name: "Fruit", selected: true, healthy: true},
+    {id: 4, name: "Milk, Yogurt, and Cheese", healthy: true},
+    {id: 5, name: "Meat, Poultry, Fish", disabled: true, healthy: true},
+    {id: 6, name: "Fats, Oils, and Sweets", healthy: false}
+  ];
+  const [value, setValue] = useState("");
+  const [filteredItems, setFilteredItems] = useState(items);
+  const {isDark} = useATheme();
+  return (
+    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+      <ACombobox
+        itemTemplate={({className, index, item, onClick, ...rest}) => (
+          <AListItem {...rest} twoLine className={className + (isDark ? " white--text" : " grey--darken-7--text")} style={{backgroundColor: "transparent"}}>
+            <AListItemContent onClick={onClick}>
+              <AListItemTitle>{item.name}</AListItemTitle>
+              <AListItemSubtitle>Healthy? {item.healthy ? "Yes" : "No"}</AListItemSubtitle>
+            </AListItemContent>
+            <AListItemAction>
+              <AButton icon tertiary><AIcon>edit</AIcon></AButton>
+            </AListItemAction>
+          </AListItem>
+        )}
+        clearable
+        label="Food Group"
+        itemText="name"
+        itemValue="id"
+        items={filteredItems}
+        placeholder="Pick a Food Group"
+        onSelected={(item) => {
+          setValue(item.name);
+        }}
+        value={value}
+        onChange={(e) => {
+          setFilteredItems(
+            items.filter((x) =>
+              x.name.toLowerCase().includes(e.target.value.toLowerCase())
+            )
+          );
+          setValue(e.target.value);
+        }}
+      />
+    </div>
+  );
+}
+`}
+/>
+
+## Accessibility Notes
+
+`ACombobox` inherits the accessibility features of `AMenu`.
+
+the `ACombobox` will select and focus previous/next items on `up` or `down` keys for the `keydown` event.

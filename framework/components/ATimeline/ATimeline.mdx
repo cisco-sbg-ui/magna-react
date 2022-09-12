@@ -1,0 +1,132 @@
+---
+name: Timelines
+route: /components/timeline
+components: ATimeline, ATimelineItem, ATimelineItemBody, ATimelineItemTitle
+---
+
+# Timeline
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {
+  ATimeline,
+  ATimelineItem,
+  ATimelineItemBody,
+  ATimelineItemTitle
+} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`<ATimeline>
+  <ATimelineItem time="2020-01-01 01:00:00 UTC">
+    <ATimelineItemTitle>Title</ATimelineItemTitle>
+    <ATimelineItemBody>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+      eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </ATimelineItemBody>
+  </ATimelineItem>
+  <ATimelineItem variant="success" time="2020-01-01 02:00:00 UTC">
+    <ATimelineItemTitle>Title</ATimelineItemTitle>
+    <ATimelineItemBody>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+      eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </ATimelineItemBody>
+  </ATimelineItem>
+  <ATimelineItem variant="info" time="2020-01-01 03:00:00 UTC">
+    <ATimelineItemTitle>Title</ATimelineItemTitle>
+    <ATimelineItemBody>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+      eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </ATimelineItemBody>
+  </ATimelineItem>
+  <ATimelineItem variant="warning" time="2020-01-01 04:00:00 UTC">
+    <ATimelineItemTitle>Title</ATimelineItemTitle>
+    <ATimelineItemBody>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+      eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </ATimelineItemBody>
+  </ATimelineItem>
+  <ATimelineItem variant="danger" time="2020-01-01 05:00:00 UTC">
+    <ATimelineItemTitle>Title</ATimelineItemTitle>
+    <ATimelineItemBody>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+      eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </ATimelineItemBody>
+  </ATimelineItem>
+</ATimeline>
+`}
+/>
+
+## Timeline Props
+
+The `ATimeline` component inherits passed props.
+
+<Props of="ATimeline" />
+
+## TimelineItem Props
+
+The `ATimelineItem` component inherits passed props.
+
+<Props of="ATimelineItem" />
+
+## TimelineItemBody Props
+
+The `ATimelineItemBody` component inherits passed props.
+
+<Props of="ATimelineItemBody" />
+
+## TimelineItemTitle Props
+
+The `ATimelineItemTitle` component inherits passed props.
+
+<Props of="ATimelineItemTitle" />
+
+## Centered Style
+
+<Playground
+  code={`<div className="mb-1">
+  <ATimeline centered>
+    <ATimelineItem time="2020-01-01 01:00:00 UTC">
+      <ATimelineItemTitle>Title</ATimelineItemTitle>
+      <ATimelineItemBody>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </ATimelineItemBody>
+    </ATimelineItem>
+    <ATimelineItem variant="success" time="2020-01-01 02:00:00 UTC">
+      <ATimelineItemTitle>Title</ATimelineItemTitle>
+      <ATimelineItemBody>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </ATimelineItemBody>
+    </ATimelineItem>
+    <ATimelineItem variant="info" time="2020-01-01 03:00:00 UTC">
+      <ATimelineItemTitle>Title</ATimelineItemTitle>
+      <ATimelineItemBody>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </ATimelineItemBody>
+    </ATimelineItem>
+    <ATimelineItem variant="warning" time="2020-01-01 04:00:00 UTC">
+      <ATimelineItemTitle>Title</ATimelineItemTitle>
+      <ATimelineItemBody>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </ATimelineItemBody>
+    </ATimelineItem>
+    <ATimelineItem variant="danger" time="2020-01-01 05:00:00 UTC">
+      <ATimelineItemTitle>Title</ATimelineItemTitle>
+      <ATimelineItemBody>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </ATimelineItemBody>
+    </ATimelineItem>
+  </ATimeline>
+</div>
+`}
+/>

@@ -1,0 +1,111 @@
+---
+name: Dialogs
+route: /components/dialog
+components: ADialog
+---
+
+# Dialogs
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {ADialog} from "@cisco-sbg-ui/magna-react";
+```
+
+It is necessary for `ADialog` to be a descendant of `AApp` for mounting.
+
+## Usage
+
+<Playground
+  code={`() => {
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
+  return (
+    <div style={{minHeight: 500}}>
+      <AButton onClick={() => setOpen1(true)}>Open Dialog 1</AButton>
+      <ADialog onClickOutside={() => setOpen1(false)} open={open1}>
+        <APanel type="dialog">
+          <APanelHeader>
+            <APanelTitle>Feature: Panels</APanelTitle>
+            <AButton onClick={() => setOpen1(false)} tertiaryAlt icon>
+              <AIcon>close</AIcon>
+            </AButton>
+          </APanelHeader>
+          <APanelBody>
+            Panels create a sense of discreteness in the content.
+          </APanelBody>
+          <APanelFooter>Use panels today!</APanelFooter>
+        </APanel>
+      </ADialog>
+      <AButton onClick={() => setOpen2(true)} className="ml-3">
+        Open Dialog 2
+      </AButton>
+      <ADialog onClickOutside={() => setOpen2(false)} open={open2}>
+        <APanel type="dialog">
+          <APanelHeader>
+            <APanelTitle>Feature: Panels</APanelTitle>
+            <AButton onClick={() => setOpen2(false)} tertiaryAlt icon>
+              <AIcon>close</AIcon>
+            </AButton>
+          </APanelHeader>
+          <APanelBody>
+            Panels create a sense of discreteness in the content.
+          </APanelBody>
+          <APanelFooter>Use panels today!</APanelFooter>
+        </APanel>
+      </ADialog>
+    </div>
+  );
+}
+`}
+/>
+
+## Dialog Props
+
+The `ADialog` component inherits passed props to the dialog content wrapper.
+
+<Props of="ADialog" />
+
+## Autofocused Child
+
+<Playground
+  code={`() => {
+  const [open1, setOpen1] = useState(false);
+  return (
+    <div>
+      <AButton onClick={() => setOpen1(true)}>Open Dialog 1</AButton>
+      <ADialog onClickOutside={() => setOpen1(false)} open={open1}>
+        <APanel type="dialog">
+          <APanelHeader>
+            <APanelTitle>Feature: Panels</APanelTitle>
+            <AButton onClick={() => setOpen1(false)} tertiaryAlt icon>
+              <AIcon>close</AIcon>
+            </AButton>
+          </APanelHeader>
+          <APanelBody>
+            <p>
+              When a child is auto-focused, the dialog ensures focus is
+              maintained on that element.
+            </p>
+            <ATextInput label="Name" autoFocus />
+          </APanelBody>
+          <APanelFooter>
+            <AButton>Submit</AButton>
+          </APanelFooter>
+        </APanel>
+      </ADialog>
+    </div>
+  );
+}
+`}
+/>
+
+## Accessibility Notes
+
+`ADialog` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [document](https://www.w3.org/TR/wai-aria/#document). It is an industry standard to avoid using the role of [dialog](https://www.w3.org/TR/wai-aria/#dialog) due to the way screen readers treat content with the dialog role versus how dialogs are actually used in applications, specifically regarding text content and reading keys.
+
+When the `ADialog` is open, focus is set to the dialog content wrapper unless a child element is focused. When the `ADialog` is closed, focus is returned to the previously focused element.
+
+The `onClickOutside` handler will also handle the `keydown` event for the `esc` key.

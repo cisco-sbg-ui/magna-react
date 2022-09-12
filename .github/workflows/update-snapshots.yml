@@ -1,0 +1,36 @@
+name: Update Snapshots
+
+on: workflow_dispatch
+
+jobs:
+  test:
+    name: Update Snapshots
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - name: NPM Install
+        run: npm ci --ignore-scripts --prefer-offline
+      - name: Run Cypress Postinstall Script
+        run: npm run cypress:install
+      - name: Run ESBuild Postinstall Script
+        run: npm run esbuild:install
+      - name: Build
+        run: npm run build
+      - name: Update Snapshots
+        run: npm run updateSnapshots
+      - name: Commit New Snapshots
+        uses: stefanzweifel/git-auto-commit-action@v4.11.0
+        with:
+          commit_message: "test: update snapshots"

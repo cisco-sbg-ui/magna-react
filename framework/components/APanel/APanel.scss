@@ -1,0 +1,86 @@
+@import "../../styles";
+
+@include theme(a-panel) using ($theme) {
+  background: map-deep-get($theme, "panel", "bg");
+  border-color: map-deep-get($theme, "base", "stroke-color");
+  color: map-deep-get($theme, "base", "color");
+
+  &--color-gray {
+    background: map-deep-get($theme, "panel", "bg-gray");
+  }
+
+  &--color-white {
+    background: $white;
+    color: map-get($grey, "darken-7");
+  }
+
+  &--type-dialog {
+    background: map-deep-get($theme, "control", "fill-color");
+
+    .a-panel__header {
+      background-color: map-deep-get($theme, "panel", "dialog-header-bg");
+    }
+
+    .a-panel__footer {
+      background-color: map-deep-get($theme, "panel", "dialog-footer-bg");
+    }
+  }
+}
+
+.a-panel {
+  border-width: $border-width;
+  border-style: solid;
+  border-radius: $border-radius--sm;
+  height: auto;
+  display: block;
+  position: relative;
+  margin: 15px;
+  overflow: hidden;
+
+  &--color-gray {
+    border: none;
+  }
+
+  &--color-white {
+    border: none;
+  }
+
+  &--type-dialog {
+    .a-panel__header {
+      box-shadow: $default-box-shadow;
+      padding-bottom: 15px;
+      padding-top: 16px;
+    }
+
+    .a-panel__body {
+      padding-bottom: 20px;
+    }
+
+    .a-panel__footer {
+      padding-top: 20px;
+    }
+  }
+
+  &__header {
+    display: flex;
+    padding: 20px 20px 0 20px;
+  }
+
+  &__title {
+    font-size: rem(1.125);
+    text-align: left;
+    @include flex-fluid;
+    &--size-small {
+      font-size: $font-size--sm;
+    }
+  }
+
+  &__body {
+    padding: 15px 20px 15px 20px;
+  }
+
+  &__footer {
+    text-align: right;
+    padding: 0 20px 20px 20px;
+  }
+}

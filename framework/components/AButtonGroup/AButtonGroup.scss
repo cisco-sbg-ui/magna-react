@@ -1,0 +1,78 @@
+@import "../../styles";
+
+$btn-group-button-margin: 0;
+$btn-group-type-iconic-width: rem(1.75);
+$btn-group-type-iconic-padding: 0;
+$btn-group-icon-font-size: rem(1);
+
+@include theme(a-button-group) using ($theme) {
+  .a-button + .a-button--primary.a-button {
+    border-left: $border-width solid transparent;
+  }
+
+  &__wrapper > .a-button--primary.a-button {
+    background-color: transparent;
+    color: map-deep-get($theme, "button", "group", "color");
+    box-shadow: none;
+    border: $border-width solid map-deep-get($theme, "base", "stroke-color");
+
+    &--selected {
+      border: $border-width solid
+        map-deep-get($theme, "base", "color--selected");
+      background-color: map-deep-get($theme, "base", "color--selected");
+      color: map-deep-get($theme, "base", "inverse-color");
+    }
+
+    &:hover {
+      color: map-deep-get($theme, "base", "inverse-color");
+      background-color: map-deep-get($theme, "base", "color--hover");
+      border-color: map-deep-get($theme, "base", "color--hover");
+    }
+
+    &:focus {
+      border-color: map-deep-get($theme, "base", "brand-color");
+      box-shadow: map-deep-get($theme, "base", "box-shadow");
+    }
+
+    &:active {
+      color: map-deep-get($theme, "base", "inverse-color");
+      background-color: map-deep-get($theme, "base", "color--active");
+      border-color: map-deep-get($theme, "base", "color--active");
+    }
+  }
+}
+
+.a-button-group {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  vertical-align: top;
+  white-space: nowrap;
+
+  .a-button--icon {
+    padding: 6px;
+  }
+
+  .a-button + .a-button {
+    margin: $btn-group-button-margin;
+  }
+
+  &__wrapper > .a-button:not(:last-child),
+  &__wrapper > .a-button-group:not(:last-child) > .a-button {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  &__wrapper > .a-button:not(:first-child),
+  &__wrapper > .a-button-group:not(:first-child) > .a-button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .a-button + .a-button,
+  .a-button + .a-button-group,
+  .a-button-group + .a-button,
+  .a-button-group + .a-button-group {
+    margin-left: -1px;
+  }
+}

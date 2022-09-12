@@ -1,0 +1,21 @@
+// -----------------------------------------------------------------------------
+// Carousel
+// -----------------------------------------------------------------------------
+$carousel-dot-color: map-get($grey, "lighten-3"); //#dfdfdf;
+$carousel-dot-color-selected: map-get($cisco-blue, "base"); // #049fd9;
+// -----------------------------------------------------------------------------
+// Sidebar
+// -----------------------------------------------------------------------------
+$base-icon-color: map-get($grey, "lighten-3"); // Icons (#dfdfdf);
+$sidebar-bg: linear-gradient(
+  125.59deg,
+  map-get($dusk, "3") 0%,
+  map-get($dusk, "6") 100%
+); // #29384b, #17202b
+$sidebar-bg-gray: $sidebar-bg;
+$sidebar__list-menu-icon-color: map-get($grey, "darken-5"); // #58585b;
+$sidebar__list-menu-bg: map-get($grey, "lighten-3"); // #dfdfdf;
+// -----------------------------------------------------------------------------
+// Universal Time Code
+// -----------------------------------------------------------------------------
+$utc-color: $base-color;

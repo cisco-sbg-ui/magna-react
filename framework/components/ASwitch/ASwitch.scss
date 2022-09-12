@@ -1,0 +1,249 @@
+@import "../../styles";
+
+$switch-width: 38px;
+$switch-height: 15px;
+$switch-border-radius: 11px;
+$switch__label-margin: 0 0 0 10px;
+$switch__circle-width: 21px;
+$switch__circle-height: 21px;
+$switch__circle-border-radius: 30px;
+$switch-transition: background-color $transition-duration--slow ease-out;
+$switch-after-transition: transform $transition-duration--fast
+  cubic-bezier(0.2, 0.8, 0.2, 1.2);
+
+@include theme(a-switch) using ($theme) {
+  &__box {
+    background-color: map-deep-get($theme, "switch", "bg");
+  }
+
+  &__input {
+    ~ .a-switch__box {
+      &:after {
+        background-color: map-deep-get($theme, "base", "inverse-color");
+        border: $border-width solid
+          map-deep-get($theme, "switch", "circle-border-color");
+      }
+    }
+
+    &:enabled {
+      ~ .a-switch__box {
+        &:hover {
+          &:after {
+            border: $border-width solid map-get($cisco-blue, "burnt-1");
+            box-shadow: inset 0 0 0 5px
+                map-deep-get($theme, "base", "inverse-color"),
+              inset 0 0 0 6px
+                map-deep-get($theme, "switch", "circle--inner-box-shadow-hover");
+          }
+        }
+
+        &:active {
+          &:after {
+            border: $border-width solid
+              map-deep-get($theme, "switch", "circle--inner-border-active");
+            box-shadow: inset 0 0 0 5px
+                map-deep-get($theme, "base", "inverse-color"),
+              inset 0 0 0 10px map-get($grey, "lighten-2");
+          }
+
+          &:hover:after {
+            border: $border-width solid
+              map-deep-get(
+                $theme,
+                "switch",
+                "circle--inner-border-active-hover"
+              );
+            box-shadow: inset 0 0 0 5px
+                map-deep-get($theme, "base", "inverse-color"),
+              inset 0 0 0 10px map-deep-get($theme, "base", "color--selected");
+          }
+        }
+      }
+    }
+
+    &:focus {
+      ~ .a-switch__box {
+        box-shadow: map-deep-get($theme, "base", "box-shadow");
+
+        &:after {
+          box-shadow: map-deep-get($theme, "base", "box-shadow");
+        }
+      }
+    }
+
+    &:checked {
+      ~ .a-switch__box {
+        background-color: map-deep-get($theme, "switch", "bg--checked");
+
+        &:after {
+          border: $border-width solid
+            map-deep-get($theme, "switch", "circle-border-color--checked");
+        }
+      }
+    }
+
+    &:enabled:checked {
+      ~ .a-switch__box {
+        &:hover {
+          &:after {
+            border: $border-width solid
+              map-deep-get(
+                $theme,
+                "switch",
+                "circle-border-color--checked--hover"
+              );
+            box-shadow: inset 0 0 0 5px
+                map-deep-get($theme, "base", "inverse-color"),
+              inset 0 0 0 6px
+                map-deep-get(
+                  $theme,
+                  "switch",
+                  "circle--inner-box-shadow-checked-hover"
+                );
+          }
+        }
+
+        &:active {
+          &:after {
+            border: $border-width solid
+              map-deep-get(
+                $theme,
+                "switch",
+                "circle--inner-border-checked-active"
+              );
+            box-shadow: inset 0 0 0 5px
+                map-deep-get($theme, "base", "inverse-color"),
+              inset 0 0 0 10px
+                map-deep-get(
+                  $theme,
+                  "switch",
+                  "circle--inner-box-shadow-checked-active"
+                );
+          }
+
+          &:hover:after {
+            border: $border-width solid
+              map-deep-get(
+                $theme,
+                "switch",
+                "circle--inner-border-checked-active-hover"
+              );
+            box-shadow: inset 0 0 0 5px
+                map-deep-get($theme, "base", "inverse-color"),
+              inset 0 0 0 10px
+                map-deep-get(
+                  $theme,
+                  "switch",
+                  "circle--inner-box-shadow-checked-active-hover"
+                );
+          }
+        }
+      }
+    }
+
+    &:disabled {
+      ~ .a-switch__box {
+        opacity: map-deep-get($theme, "switch", "opacity-disabled");
+        background-color: map-deep-get($theme, "switch", "bg--disabled");
+
+        &:after {
+          border: $border-width solid
+            map-deep-get($theme, "switch", "circle-border-color--disabled");
+        }
+      }
+
+      ~ .a-switch__label {
+        color: map-deep-get($theme, "switch", "label-color--disabled");
+      }
+    }
+
+    &:disabled:checked {
+      ~ .a-switch__box {
+        background-color: map-deep-get(
+          $theme,
+          "switch",
+          "bg--disabled--checked"
+        );
+
+        &:after {
+          border: $border-width solid
+            map-deep-get(
+              $theme,
+              "switch",
+              "circle-border-color--disabled--checked"
+            );
+        }
+      }
+    }
+  }
+}
+
+.a-switch {
+  &__wrap {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px 0;
+  }
+
+  &__box {
+    display: flex;
+    position: relative;
+    width: $switch-width;
+    height: $switch-height;
+    border-radius: $switch-border-radius;
+    align-items: center;
+    justify-content: center;
+
+    &:after {
+      display: block;
+      position: absolute;
+      width: $switch__circle-width;
+      height: $switch__circle-height;
+      left: 0;
+      border-radius: $switch__circle-border-radius;
+      content: "";
+    }
+  }
+
+  &__input {
+    @include hidden-input;
+
+    &:checked {
+      ~ .a-switch__box {
+        &:after {
+          transform: translateX(82%);
+        }
+      }
+    }
+  }
+
+  &__label {
+    margin: $switch__label-margin;
+    display: inline-block;
+    flex: 1 1 0%;
+    position: relative;
+    @include text-truncate;
+  }
+
+  &__label--wrap {
+    white-space: normal;
+    overflow: visible;
+  }
+
+  &--disabled .a-switch__wrap {
+    cursor: default;
+  }
+}
+
+.a-app--animated .a-switch {
+  &__input {
+    ~ .a-switch__box {
+      @include transition($switch-transition);
+
+      &:after {
+        @include transition($switch-after-transition);
+      }
+    }
+  }
+}

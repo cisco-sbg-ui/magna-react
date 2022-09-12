@@ -1,0 +1,231 @@
+@import "../../styles";
+
+$btn-font-weight: $font-weight;
+$btn-line-height: $line-height;
+$btn-padding: 0 $base-padding;
+$btn-margin: 0;
+$btn-min-width: rem(4.6875); // 75px
+$btn-tertiary-icon-padding: rem(0.1875) $base-padding-small;
+$btn-transition: color $transition-duration--extra-fast
+    $transition-timing-function--standard,
+  background-color $transition-duration--extra-fast
+    $transition-timing-function--standard,
+  border-color $transition-duration--extra-fast
+    $transition-timing-function--standard,
+  box-shadow $transition-duration--extra-fast
+    $transition-timing-function--standard !default;
+
+@include theme(a-button) using ($theme) {
+  &--primary {
+    color: map-deep-get($theme, "button", "primary", "color");
+    background-color: map-deep-get($theme, "button", "primary", "bg");
+    border-color: map-deep-get($theme, "button", "primary", "border");
+
+    &:hover {
+      color: map-deep-get($theme, "button", "primary", "color");
+      background-color: map-deep-get($theme, "button", "primary", "bg--hover");
+      border-color: map-deep-get($theme, "button", "primary", "border--hover");
+    }
+
+    &:focus {
+      color: map-deep-get($theme, "button", "primary", "color");
+      background-color: map-deep-get($theme, "button", "primary", "bg--focus");
+      border-color: map-deep-get($theme, "button", "primary", "border--focus");
+      box-shadow: map-deep-get($theme, "base", "box-shadow");
+    }
+
+    &:active {
+      color: map-deep-get($theme, "button", "primary", "color");
+      background-color: map-deep-get($theme, "button", "primary", "bg--active");
+      border-color: map-deep-get($theme, "button", "primary", "border--active");
+    }
+
+    &.disabled,
+    &:disabled {
+      box-shadow: none;
+      color: map-deep-get($theme, "button", "primary", "color--disabled");
+      background-color: map-deep-get(
+        $theme,
+        "button",
+        "primary",
+        "bg--disabled"
+      );
+      border-color: map-deep-get(
+        $theme,
+        "button",
+        "primary",
+        "border--disabled"
+      );
+      opacity: map-deep-get($theme, "button", "primary", "opacity--disabled");
+    }
+  }
+
+  &--secondary {
+    color: map-deep-get($theme, "button", "secondary", "color");
+    background-color: transparent;
+    border-color: map-deep-get($theme, "button", "secondary", "border");
+
+    &:hover {
+      color: map-deep-get($theme, "button", "secondary", "color--hover");
+      background-color: map-deep-get(
+        $theme,
+        "button",
+        "secondary",
+        "bg--hover"
+      );
+      border-color: map-deep-get(
+        $theme,
+        "button",
+        "secondary",
+        "border--hover"
+      );
+    }
+
+    &:focus {
+      color: map-deep-get($theme, "button", "secondary", "color--focus");
+      background-color: map-deep-get(
+        $theme,
+        "button",
+        "secondary",
+        "bg--focus"
+      );
+      border-color: map-deep-get(
+        $theme,
+        "button",
+        "secondary",
+        "border--focus"
+      );
+      box-shadow: map-deep-get($theme, "base", "box-shadow");
+    }
+
+    &:active {
+      color: map-deep-get($theme, "button", "secondary", "color--active");
+      background-color: map-deep-get(
+        $theme,
+        "button",
+        "secondary",
+        "bg--active"
+      );
+      border-color: map-deep-get(
+        $theme,
+        "button",
+        "secondary",
+        "border--active"
+      );
+    }
+
+    &.disabled,
+    &:disabled {
+      box-shadow: none;
+      color: map-deep-get($theme, "button", "secondary", "color--disabled");
+      background-color: transparent;
+      border-color: map-deep-get(
+        $theme,
+        "button",
+        "secondary",
+        "border--disabled"
+      );
+      opacity: map-deep-get($theme, "button", "primary", "opacity--disabled");
+    }
+  }
+
+  &--tertiary {
+    color: map-deep-get($theme, "button", "tertiary", "color");
+
+    &:hover {
+      color: map-deep-get($theme, "button", "tertiary", "color--hover");
+      background-color: map-deep-get($theme, "button", "tertiary", "bg--hover");
+    }
+
+    &:focus {
+      color: map-deep-get($theme, "button", "tertiary", "color--focus");
+      box-shadow: map-deep-get($theme, "base", "box-shadow");
+      border-color: map-deep-get($theme, "button", "tertiary", "border--focus");
+    }
+
+    &:active {
+      color: map-deep-get($theme, "button", "tertiary", "color--active");
+      background-color: map-deep-get(
+        $theme,
+        "button",
+        "tertiary",
+        "bg--active"
+      );
+    }
+
+    &.disabled,
+    &:disabled {
+      opacity: map-deep-get($theme, "button", "tertiary", "opacity--disabled");
+      background-color: transparent;
+      color: map-deep-get($theme, "button", "tertiary", "color--disabled");
+    }
+  }
+
+  &.a-button--tertiary-alt {
+    color: map-get($theme, "button", "tertiary", "alt", "color");
+
+    &:hover {
+      color: map-deep-get($theme, "button", "tertiary", "color--hover");
+    }
+
+    &:focus {
+      box-shadow: map-deep-get($theme, "base", "box-shadow");
+    }
+
+    &:active {
+      background-color: map-get($theme, "button", "tertiary", "alt", "bg--active");
+      color: map-get($theme, "button", "tertiary", "alt", "color--active");
+    }
+
+    &.disabled,
+    &:disabled {
+      opacity: map-deep-get($theme, "button", "tertiary", "opacity--disabled");
+      background-color: transparent;
+      color: map-deep-get($theme, "base", "color");
+    }
+  }
+}
+
+.a-button {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  user-select: none;
+  border-width: $border-width;
+  border-style: solid;
+  border-radius: $border-radius--sm;
+  cursor: pointer;
+  @include text-truncate;
+  font-weight: $btn-font-weight;
+  line-height: 0;
+  padding: $btn-padding;
+  margin: $btn-margin;
+  font-size: $font-size--sm;
+  height: 28px;
+
+  .a-icon {
+    width: 16px;
+    vertical-align: text-bottom;
+  }
+
+  &:focus,
+  &:hover {
+    text-decoration: none !important;
+  }
+
+  &--tertiary,
+  &--tertiary-alt {
+    background-color: transparent;
+    appearance: none;
+    border-width: 0;
+  }
+
+  &--icon {
+    padding: 10px;
+    height: auto;
+  }
+}
+
+.a-app--animated .a-button {
+  @include transition($btn-transition);
+}

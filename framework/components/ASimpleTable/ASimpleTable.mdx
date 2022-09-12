@@ -1,0 +1,237 @@
+---
+name: Simple Tables
+route: /components/simple-table
+components: ASimpleTable
+---
+
+# Simple Tables
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {ASimpleTable} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`<ASimpleTable striped tight>
+  <thead>
+    <tr>
+      <th className="text-capitalize">alpha</th>
+      <th className="text-capitalize text-center">bravo</th>
+      <th className="text-capitalize text-center">charlie</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>11.1</td>
+      <td className="text-center">526</td>
+      <td className="text-right">
+        <a href="/" target="_blank">
+          Details
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td>8.9</td>
+      <td className="text-center">611</td>
+      <td className="text-right">
+        <a href="/" target="_blank">
+          Details
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td>10.5</td>
+      <td className="text-center">475</td>
+      <td className="text-right">
+        <a href="/" target="_blank">
+          Details
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</ASimpleTable>
+`}
+/>
+
+## Simple Table Props
+
+The `ASimpleTable` component inherits passed props.
+
+<Props of="ASimpleTable" />
+
+## Tight
+
+<Playground
+  code={`<>
+  <h3>Tight Off</h3>
+  <ASimpleTable className="mb-4">
+    <thead>
+      <tr>
+        <th className="text-capitalize">alpha</th>
+        <th className="text-capitalize text-center">bravo</th>
+        <th className="text-capitalize text-center">charlie</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>11.1</td>
+        <td className="text-center">526</td>
+        <td className="text-right">
+          <a href="/" target="_blank">
+            Details
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>8.9</td>
+        <td className="text-center">611</td>
+        <td className="text-right">
+          <a href="/" target="_blank">
+            Details
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>10.5</td>
+        <td className="text-center">475</td>
+        <td className="text-right">
+          <a href="/" target="_blank">
+            Details
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </ASimpleTable>
+  <h3>Tight On</h3>
+  <ASimpleTable tight>
+    <thead>
+      <tr>
+        <th className="text-capitalize">alpha</th>
+        <th className="text-capitalize text-center">bravo</th>
+        <th className="text-capitalize text-center">charlie</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>11.1</td>
+        <td className="text-center">526</td>
+        <td className="text-right">
+          <a href="/" target="_blank">
+            Details
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>8.9</td>
+        <td className="text-center">611</td>
+        <td className="text-right">
+          <a href="/" target="_blank">
+            Details
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>10.5</td>
+        <td className="text-center">475</td>
+        <td className="text-right">
+          <a href="/" target="_blank">
+            Details
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </ASimpleTable>
+</>
+`}
+/>
+
+## Alt Links
+
+<Playground
+  code={`<>
+  <h3>Regular Links</h3>
+  <ASimpleTable className="mb-4">
+    <thead>
+      <tr>
+        <th className="text-capitalize">alpha</th>
+        <th className="text-capitalize text-center">bravo</th>
+        <th className="text-capitalize text-center">charlie</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>11.1</td>
+        <td className="text-center">526</td>
+        <td className="text-right">
+          <a href="/" target="_blank">
+            Details
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>8.9</td>
+        <td className="text-center">611</td>
+        <td className="text-right">
+          <a href="/" target="_blank">
+            Details
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>10.5</td>
+        <td className="text-center">475</td>
+        <td className="text-right">
+          <a href="/" target="_blank">
+            Details
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </ASimpleTable>
+  <h3>Alt Links</h3>
+  <ASimpleTable altLinks>
+    <thead>
+      <tr>
+        <th className="text-capitalize">alpha</th>
+        <th className="text-capitalize text-center">bravo</th>
+        <th className="text-capitalize text-center">charlie</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>11.1</td>
+        <td className="text-center">526</td>
+        <td className="text-right">
+          <a href="/" target="_blank">
+            Details
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>8.9</td>
+        <td className="text-center">611</td>
+        <td className="text-right">
+          <a href="/" target="_blank">
+            Details
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>10.5</td>
+        <td className="text-center">475</td>
+        <td className="text-right">
+          <a href="/" target="_blank">
+            Details
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </ASimpleTable>
+</>
+`}
+/>

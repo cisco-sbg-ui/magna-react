@@ -1,0 +1,211 @@
+---
+name: Stepper
+route: /components/stepper
+components: AStepper
+---
+
+# Stepper
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {AStepper, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/magna-react";
+```
+
+## Horizontal Stepper
+
+<Playground
+  fullWidthPreview
+  code={`() => {
+  const [active, setActive] = useState(3);
+  const steps = 4;
+  return (
+    <div>
+      <div style={{border: "solid 2px #333"}} className="my-2 pa-2">
+        {active > steps ? "Completed" : "Step " + active}
+      </div>
+      <h3>Stepper</h3>
+      <AStepper>
+        <AStep stepNumber={1} active={active === 1} visited={active > 1}>
+          <AStepTitle>Title </AStepTitle>
+          <AStepDescription>
+            Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </AStepDescription>
+        </AStep>
+        <AStep
+          stepNumber={2}
+          active={active === 2}
+          visited={active > 2}
+          disabled={true}>
+          <AStepTitle>Title</AStepTitle>
+          <AStepDescription>
+            Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </AStepDescription>
+        </AStep>
+        <AStep stepNumber={3} active={active === 3} visited={active > 3}>
+          <AStepTitle>Title</AStepTitle>
+          <AStepDescription>
+              Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </AStepDescription>
+        </AStep>
+        <AStep
+          stepNumber={4}
+          active={active === 4}
+          visited={active > 4}>
+          <AStepTitle>Title</AStepTitle>
+          <AStepDescription>
+            Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </AStepDescription>
+        </AStep>
+      </AStepper>
+      <AButton onClick={() => active > 1 && setActive(active - 1)}>
+        Previous
+      </AButton>
+      <AButton onClick={() => active <= steps && setActive(active + 1)}>
+        Next
+      </AButton>
+    </div>
+  );
+}
+`}
+/>
+
+## Stepper used with json data
+
+<Playground
+  fullWidthPreview
+  code={`() => {
+  const [active, setActive] = useState(1);
+  const data = [
+    {
+      title: "Active. Long Title.",
+      description:
+        "Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    {
+      title: "Title",
+      description:
+        "Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+      title: "Default",
+      description:
+        "Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    }
+  ];
+  return (
+    <div>
+      <div style={{border: "solid 2px #333"}} className="my-2 pa-2">
+        {active > data.length ? "Completed" : "Step " + active}
+      </div>
+      <h3>Stepper with icon:</h3>
+      <AStepper className="AStepper">
+        {data.map((item, index) => {
+          const stepNumber = index + 1;
+          return (
+            <AStep
+              key={stepNumber}
+              stepNumber={stepNumber}
+              active={active === stepNumber}
+              visited={active > stepNumber}
+              disabled={stepNumber === 2}
+              className="AStep"
+              showIconOnVisited={true}>
+              <AStepTitle className="AStepTitle">
+                {item.title}
+              </AStepTitle>
+              <AStepDescription className="AStepDescription">{item.description}</AStepDescription>
+              </AStep>
+          );
+        })}
+      </AStepper>
+      <AButton onClick={() => active > 1 && setActive(active - 1)}>
+        Previous
+      </AButton>
+      <AButton onClick={() => active <= data.length && setActive(active + 1)}>
+        Next
+      </AButton>
+    </div>
+  );
+}
+`}
+/>
+
+## Vertical Stepper with icon
+
+<Playground
+  code={`() => {
+  const [active, setActive] = useState(2);
+  const data = [
+    {
+      title: "Active. Long Title.",
+      description:
+        "Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    {
+      title: "Title",
+      description:
+        "Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+      title: "Default",
+      description:
+        "Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    }
+  ];
+  return (
+    <div>
+      <div style={{border: "solid 2px #333"}} className="my-2 pa-2">
+        {active > data.length ? "Completed" : "Step " + active}
+      </div>
+      <h3>Vertical steps with icon:</h3>
+      <AStepper vertical={true}>
+        {data.map((item, index) => {
+          const stepNumber = index + 1;
+          return (
+            <AStep
+              key={stepNumber}
+              stepNumber={stepNumber}
+              active={active === stepNumber}
+              visited={active > stepNumber}
+              disabled={stepNumber === 3}
+              showIconOnVisited={true}>
+              <AStepTitle>
+                {item.title}
+              </AStepTitle>
+              <AStepDescription>{item.description}</AStepDescription>
+            </AStep>
+          );
+        })}
+      </AStepper>
+      <AButton onClick={() => active > 1 && setActive(active - 1)}>
+        Previous
+      </AButton>
+      <AButton onClick={() => active <= data.length && setActive(active + 1)}>
+        Next
+      </AButton>
+    </div>
+  );
+}
+`}
+/>
+
+## Stepper Props
+
+All AStepper components (AStepper, AStep, AStepTitle, AStepDescription) inherit passed props.
+
+<Props of="AStepper" />
+
+## Step Props
+
+<Props of="AStep" />
+
+## Step Title Props
+
+<Props of="AStepTitle" />
+
+## Step Description Props
+
+<Props of="AStepDescription" />

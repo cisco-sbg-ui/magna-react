@@ -1,0 +1,401 @@
+---
+name: Contextual Notification Menus
+route: /components/contextual-notification-menu
+components: AContextualNotificationMenu
+---
+
+# Contextual Notification Menus
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {AContextualNotificationMenu} from "@cisco-sbg-ui/magna-react";
+```
+
+It is necessary for `AContextualNotificationMenu` to be a descendant of `AApp` for mounting.
+
+## Usage
+
+<Playground
+  code={`() => {
+  const buttonRef = useRef(null);
+  const textInputRef = useRef(null);
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState("");
+  return (
+    <AContainer style={{maxWidth: 400}}>
+      <h3>Failing Form</h3>
+      <ARow>
+        <ACol>
+          <ATextInput
+            ref={textInputRef}
+            onChange={(e) => {
+              setOpen(Boolean(e.target.value));
+              setValue(e.target.value);
+            }}
+            value={value}
+            label="First Name"
+            validationState={open ? "danger" : "default"}
+            tabIndex={-1}
+            aria-haspopup="true"
+          />
+          <AContextualNotificationMenu
+            anchorRef={textInputRef}
+            open={open}
+            placement="top-right"
+            variant="danger"
+            onClose={(e) => {
+              if (!buttonRef.current.contains(e.target)) {
+                setOpen(false);
+              }
+            }}
+            style={{marginTop: 8}}>
+            Invalid value.
+          </AContextualNotificationMenu>
+        </ACol>
+      </ARow>
+      <ARow>
+        <ACol className="text-right">
+          <AButton ref={buttonRef} onClick={() => {}}>
+            Submit
+          </AButton>
+        </ACol>
+      </ARow>
+    </AContainer>
+  );
+}
+`}
+/>
+
+## Contextual Notification Menu Props
+
+The `AContextualNotificationMenu` component inherits passed props.
+
+<Props of="AContextualNotificationMenu" />
+
+## Variants
+
+<Playground
+  fullWidthPreview
+  code={`() => {
+  const button1Ref = useRef(null);
+  const button2Ref = useRef(null);
+  const button3Ref = useRef(null);
+  const button4Ref = useRef(null);
+  const textareaRef = useRef(null);
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState("");
+  const [validationState, setValidationState] = useState("info");
+  return (
+    <AContainer style={{maxWidth: 670}}>
+      <h3>Contextual Notification Form</h3>
+      <ARow>
+        <ACol>
+          <ATextarea
+            ref={textareaRef}
+            onChange={(e) => {
+              setOpen(false);
+              setValue(e.target.value);
+            }}
+            value={value}
+            label="Comments"
+            rows={11}
+            validationState={
+              open && ["danger", "warning"].includes(validationState)
+                ? validationState
+                : "default"
+            }
+            tabIndex={-1}
+            aria-haspopup="true"
+          />
+          <AContextualNotificationMenu
+            anchorRef={textareaRef}
+            open={open}
+            placement="top-right"
+            variant={validationState}
+            onClose={(e) => {
+              if (
+                !button1Ref.current.contains(e.target) &&
+                !button2Ref.current.contains(e.target) &&
+                !button3Ref.current.contains(e.target) &&
+                !button4Ref.current.contains(e.target)
+              ) {
+                setOpen(false);
+              }
+            }}
+            style={{marginTop: 8}}>
+            Contextual Notification.
+            <br />
+            Post line break text.
+          </AContextualNotificationMenu>
+          <AContextualNotificationMenu
+            anchorRef={textareaRef}
+            open={open}
+            placement="top"
+            variant={validationState}
+            onClose={(e) => {
+              if (
+                !button1Ref.current.contains(e.target) &&
+                !button2Ref.current.contains(e.target) &&
+                !button3Ref.current.contains(e.target) &&
+                !button4Ref.current.contains(e.target)
+              ) {
+                setOpen(false);
+              }
+            }}
+            style={{marginTop: 8}}>
+            Contextual Notification.
+            <br />
+            Post line break text.
+          </AContextualNotificationMenu>
+          <AContextualNotificationMenu
+            anchorRef={textareaRef}
+            open={open}
+            placement="top-left"
+            variant={validationState}
+            onClose={(e) => {
+              if (
+                !button1Ref.current.contains(e.target) &&
+                !button2Ref.current.contains(e.target) &&
+                !button3Ref.current.contains(e.target) &&
+                !button4Ref.current.contains(e.target)
+              ) {
+                setOpen(false);
+              }
+            }}
+            style={{marginTop: 8}}>
+            Contextual Notification.
+            <br />
+            Post line break text.
+          </AContextualNotificationMenu>
+          <AContextualNotificationMenu
+            anchorRef={textareaRef}
+            open={open}
+            placement="right-top"
+            variant={validationState}
+            onClose={(e) => {
+              if (
+                !button1Ref.current.contains(e.target) &&
+                !button2Ref.current.contains(e.target) &&
+                !button3Ref.current.contains(e.target) &&
+                !button4Ref.current.contains(e.target)
+              ) {
+                setOpen(false);
+              }
+            }}>
+            Contextual Notification.
+            <br />
+            Post line break text.
+          </AContextualNotificationMenu>
+          <AContextualNotificationMenu
+            anchorRef={textareaRef}
+            open={open}
+            placement="right"
+            variant={validationState}
+            onClose={(e) => {
+              if (
+                !button1Ref.current.contains(e.target) &&
+                !button2Ref.current.contains(e.target) &&
+                !button3Ref.current.contains(e.target) &&
+                !button4Ref.current.contains(e.target)
+              ) {
+                setOpen(false);
+              }
+            }}>
+            Contextual Notification.
+            <br />
+            Post line break text.
+          </AContextualNotificationMenu>
+          <AContextualNotificationMenu
+            anchorRef={textareaRef}
+            open={open}
+            placement="right-bottom"
+            variant={validationState}
+            onClose={(e) => {
+              if (
+                !button1Ref.current.contains(e.target) &&
+                !button2Ref.current.contains(e.target) &&
+                !button3Ref.current.contains(e.target) &&
+                !button4Ref.current.contains(e.target)
+              ) {
+                setOpen(false);
+              }
+            }}>
+            Contextual Notification.
+            <br />
+            Post line break text.
+          </AContextualNotificationMenu>
+          <AContextualNotificationMenu
+            anchorRef={textareaRef}
+            open={open}
+            placement="bottom-right"
+            variant={validationState}
+            onClose={(e) => {
+              if (
+                !button1Ref.current.contains(e.target) &&
+                !button2Ref.current.contains(e.target) &&
+                !button3Ref.current.contains(e.target) &&
+                !button4Ref.current.contains(e.target)
+              ) {
+                setOpen(false);
+              }
+            }}>
+            Contextual Notification.
+            <br />
+            Post line break text.
+          </AContextualNotificationMenu>
+          <AContextualNotificationMenu
+            anchorRef={textareaRef}
+            open={open}
+            placement="bottom"
+            variant={validationState}
+            onClose={(e) => {
+              if (
+                !button1Ref.current.contains(e.target) &&
+                !button2Ref.current.contains(e.target) &&
+                !button3Ref.current.contains(e.target) &&
+                !button4Ref.current.contains(e.target)
+              ) {
+                setOpen(false);
+              }
+            }}>
+            Contextual Notification.
+            <br />
+            Post line break text.
+          </AContextualNotificationMenu>
+          <AContextualNotificationMenu
+            anchorRef={textareaRef}
+            open={open}
+            placement="bottom-left"
+            variant={validationState}
+            onClose={(e) => {
+              if (
+                !button1Ref.current.contains(e.target) &&
+                !button2Ref.current.contains(e.target) &&
+                !button3Ref.current.contains(e.target) &&
+                !button4Ref.current.contains(e.target)
+              ) {
+                setOpen(false);
+              }
+            }}>
+            Contextual Notification.
+            <br />
+            Post line break text.
+          </AContextualNotificationMenu>
+          <AContextualNotificationMenu
+            anchorRef={textareaRef}
+            open={open}
+            placement="left-bottom"
+            variant={validationState}
+            onClose={(e) => {
+              if (
+                !button1Ref.current.contains(e.target) &&
+                !button2Ref.current.contains(e.target) &&
+                !button3Ref.current.contains(e.target) &&
+                !button4Ref.current.contains(e.target)
+              ) {
+                setOpen(false);
+              }
+            }}>
+            Contextual Notification.
+            <br />
+            Post line break text.
+          </AContextualNotificationMenu>
+          <AContextualNotificationMenu
+            anchorRef={textareaRef}
+            open={open}
+            placement="left"
+            variant={validationState}
+            onClose={(e) => {
+              if (
+                !button1Ref.current.contains(e.target) &&
+                !button2Ref.current.contains(e.target) &&
+                !button3Ref.current.contains(e.target) &&
+                !button4Ref.current.contains(e.target)
+              ) {
+                setOpen(false);
+              }
+            }}>
+            Contextual Notification.
+            <br />
+            Post line break text.
+          </AContextualNotificationMenu>
+          <AContextualNotificationMenu
+            anchorRef={textareaRef}
+            open={open}
+            placement="left-top"
+            variant={validationState}
+            onClose={(e) => {
+              if (
+                !button1Ref.current.contains(e.target) &&
+                !button2Ref.current.contains(e.target) &&
+                !button3Ref.current.contains(e.target) &&
+                !button4Ref.current.contains(e.target)
+              ) {
+                setOpen(false);
+              }
+            }}>
+            Contextual Notification.
+            <br />
+            Post line break text.
+          </AContextualNotificationMenu>
+        </ACol>
+      </ARow>
+      <ARow>
+        <ACol className="d-flex justify-space-between">
+          <AButton
+            ref={button1Ref}
+            onClick={() => {
+              setValidationState("info");
+              setOpen(true);
+            }}>
+            Info
+          </AButton>
+          <AButton
+            ref={button2Ref}
+            onClick={() => {
+              setValidationState("success");
+              setOpen(true);
+            }}>
+            Success
+          </AButton>
+          <AButton
+            ref={button3Ref}
+            onClick={() => {
+              setValidationState("warning");
+              setOpen(true);
+            }}>
+            Warning
+          </AButton>
+          <AButton
+            ref={button4Ref}
+            onClick={() => {
+              setValidationState("danger");
+              setOpen(true);
+            }}>
+            Danger
+          </AButton>
+        </ACol>
+      </ARow>
+    </AContainer>
+  );
+}
+`}
+/>
+
+## Accessibility Notes
+
+By default, `AContextualNotificationMenu` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [menu](https://www.w3.org/TR/wai-aria/#menu).
+
+`AContextualNotificationMenu` components are mounted outside of the application area to avoid issues with overflow and position.
+Accordingly, `AContextualNotificationMenu` attempts to manage the user's focus by defaulting to focus the menu on open.
+This behavior can be disabled by setting the `focusOnOpen` prop to false.
+On close, the menu will return focus to the anchor element.
+
+`keydown` events for the `esc` key calls the `onClose` handler. Additionally, for the `tab`
+key the menu will request to be closed and set focus to the opener, which allows native `tab`
+key functionality to focus the next tab-focusable item.
+
+Remember to indicate that your anchor element has a menu via the `aria-haspopup` attribute. In addition, your anchor element should have a `tabindex` if it does not already.

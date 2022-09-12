@@ -1,0 +1,157 @@
+// =============================================================================
+// Atomic UI Kit 2.0
+// Fonts - Cisco Sans True Type
+// -----------------------------------------------------------------------------
+@font-face {
+  font-family: "CiscoSans";
+  font-style: normal;
+  font-weight: 100;
+  src: url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTThin.woff2")
+      format("woff2"),
+    url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTThin.woff")
+      format("woff"),
+    url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTThin.ttf")
+      format("truetype");
+  unicode-range: U+0000-00ff, U+0131, U+0152-0153, U+02c6, U+02da, U+02dc,
+    U+2000-206f, U+2074, U+20ac, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+@font-face {
+  font-family: "CiscoSans";
+  font-style: normal;
+  font-weight: 200;
+  src: url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTExtraLight.woff2")
+      format("woff2"),
+    url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTExtraLight.woff")
+      format("woff"),
+    url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTExtraLight.ttf")
+      format("truetype");
+  unicode-range: U+0000-00ff, U+0131, U+0152-0153, U+02c6, U+02da, U+02dc,
+    U+2000-206f, U+2074, U+20ac, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+@font-face {
+  font-family: "CiscoSans";
+  font-style: oblique;
+  font-weight: 200;
+  src: url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTExtraLightOblique.woff2")
+      format("woff2"),
+    url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTExtraLightOblique.woff")
+      format("woff"),
+    url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTExtraLightOblique.ttf")
+      format("truetype");
+  unicode-range: U+0000-00ff, U+0131, U+0152-0153, U+02c6, U+02da, U+02dc,
+    U+2000-206f, U+2074, U+20ac, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+@font-face {
+  font-family: "CiscoSans";
+  font-style: italic;
+  font-weight: 200;
+  src: url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTExtraLightOblique.woff2")
+      format("woff2"),
+    url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTExtraLightOblique.woff")
+      format("woff"),
+    url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTExtraLightOblique.ttf")
+      format("truetype");
+  unicode-range: U+0000-00ff, U+0131, U+0152-0153, U+02c6, U+02da, U+02dc,
+    U+2000-206f, U+2074, U+20ac, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+@font-face {
+  font-family: "CiscoSans";
+  font-style: normal;
+  font-weight: 300;
+  src: url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTLight.woff2")
+      format("woff2"),
+    url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTLight.woff")
+      format("woff"),
+    url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTLight.ttf")
+      format("truetype");
+  unicode-range: U+0000-00ff, U+0131, U+0152-0153, U+02c6, U+02da, U+02dc,
+    U+2000-206f, U+2074, U+20ac, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+@font-face {
+  font-family: "CiscoSans";
+  font-style: oblique;
+  font-weight: 300;
+  src: url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTLightOblique.woff2")
+      format("woff2"),
+    url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTLightOblique.woff")
+      format("woff"),
+    url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTLightOblique.ttf")
+      format("truetype");
+  unicode-range: U+0000-00ff, U+0131, U+0152-0153, U+02c6, U+02da, U+02dc,
+    U+2000-206f, U+2074, U+20ac, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+@font-face {
+  font-family: "CiscoSans";
+  font-style: italic;
+  font-weight: 300;
+  src: url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTLightOblique.woff2")
+      format("woff2"),
+    url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTLightOblique.woff")
+      format("woff"),
+    url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTLightOblique.ttf")
+      format("truetype");
+  unicode-range: U+0000-00ff, U+0131, U+0152-0153, U+02c6, U+02da, U+02dc,
+    U+2000-206f, U+2074, U+20ac, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+@font-face {
+  font-family: "CiscoSans";
+  font-style: normal;
+  font-weight: 400; // equivalent to normal
+  src: url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTRegular.woff2")
+      format("woff2"),
+    url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTRegular.woff")
+      format("woff"),
+    url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTRegular.ttf")
+      format("truetype");
+  unicode-range: U+0000-00ff, U+0131, U+0152-0153, U+02c6, U+02da, U+02dc,
+    U+2000-206f, U+2074, U+20ac, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+@font-face {
+  font-family: "CiscoSans";
+  font-style: oblique;
+  font-weight: 400; // equivalent to normal
+  src: url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTRegularOblique.woff2")
+      format("woff2"),
+    url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTRegularOblique.woff")
+      format("woff"),
+    url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTRegularOblique.ttf")
+      format("truetype");
+  unicode-range: U+0000-00ff, U+0131, U+0152-0153, U+02c6, U+02da, U+02dc,
+    U+2000-206f, U+2074, U+20ac, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+@font-face {
+  font-family: "CiscoSans";
+  font-style: italic;
+  font-weight: 400; // equivalent to normal
+  src: url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTRegularOblique.woff2")
+      format("woff2"),
+    url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTRegularOblique.woff")
+      format("woff"),
+    url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTRegularOblique.ttf")
+      format("truetype");
+  unicode-range: U+0000-00ff, U+0131, U+0152-0153, U+02c6, U+02da, U+02dc,
+    U+2000-206f, U+2074, U+20ac, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+@font-face {
+  font-family: "CiscoSans";
+  font-style: normal;
+  font-weight: 700; // equivalent to bold
+  src: url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTBold.woff2")
+      format("woff2"),
+    url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTBold.woff")
+      format("woff"),
+    url("https://brand-assets.security.cisco.com/fonts/CiscoSansTTBold.ttf")
+      format("truetype");
+  unicode-range: U+0000-00ff, U+0131, U+0152-0153, U+02c6, U+02da, U+02dc,
+    U+2000-206f, U+2074, U+20ac, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}

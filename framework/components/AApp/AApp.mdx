@@ -1,0 +1,736 @@
+---
+name: Application
+route: /components/app
+components: AApp
+---
+
+# The Application Component
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {AApp} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+The `AApp` component provides theming, typography, scrollbar stylings as well as other helpers.
+
+<Playground
+  code={`
+  <div
+    className="mx-auto my-0 overflow-y-scroll"
+    style={{maxHeight: 300, maxWidth: 500}}>
+    <div className="dark-cool-grey--text pa-4">
+      <h1 className="display-1">Display 1</h1>
+      <a href="#">
+        <AIcon size="small" left>
+          link
+        </AIcon>
+        Link with icon
+      </a> | <a href="#" className="disabled">
+        Disabled link
+      </a>
+      <p>{LoremIpsum}</p>
+    </div>
+    <div className="brand-orange grey--darken-7--text pa-4">
+      <h2>Heading 2</h2>
+      <p>{LoremIpsum}</p>
+      <p>{LoremIpsum}</p>
+      <p>{LoremIpsum}</p>
+    </div>
+  </div>
+`}
+/>
+
+## Props
+
+<Props of="AApp" />
+
+## Typography
+
+<Playground
+  code={`
+  <div className="d-flex flex-wrap align-baseline">
+    <div className="text-right pr-2" style={{flexBasis: "25%"}}>
+      Display 1
+    </div>
+    <div className="mt-4" style={{flexBasis: "75%"}}>
+      <span className="display-1">Display 1</span>
+    </div>
+    <div className="text-right pr-2" style={{flexBasis: "25%"}}>
+      Display 2
+    </div>
+    <div className="mt-4" style={{flexBasis: "75%"}}>
+      <span className="display-2">Display 2</span>
+    </div>
+    <div className="text-right pr-2" style={{flexBasis: "25%"}}>
+      Heading 1
+    </div>
+    <div className="mt-4" style={{flexBasis: "75%"}}>
+      <h1>Heading 1</h1>
+    </div>
+    <div className="text-right pr-2" style={{flexBasis: "25%"}}>
+      Heading 2
+    </div>
+    <div className="mt-4" style={{flexBasis: "75%"}}>
+      <h2>Heading 2</h2>
+    </div>
+    <div className="text-right pr-2" style={{flexBasis: "25%"}}>
+      Heading 3
+    </div>
+    <div className="mt-4" style={{flexBasis: "75%"}}>
+      <h3>Heading 3</h3>
+    </div>
+    <div className="text-right pr-2" style={{flexBasis: "25%"}}>
+      Heading 4
+    </div>
+    <div className="mt-4" style={{flexBasis: "75%"}}>
+      <h4>Heading 4</h4>
+    </div>
+    <div className="text-right pr-2" style={{flexBasis: "25%"}}>
+      Heading 5
+    </div>
+    <div className="mt-4" style={{flexBasis: "75%"}}>
+      <h5>Heading 5</h5>
+    </div>
+    <div className="text-right pr-2" style={{flexBasis: "25%"}}>
+      Caption
+    </div>
+    <div className="mt-4" style={{flexBasis: "75%"}}>
+      <span className="caption">Caption</span>
+    </div>
+    <div className="text-right pr-2" style={{flexBasis: "25%"}}>
+      Small
+    </div>
+    <div className="mt-4" style={{flexBasis: "75%"}}>
+      <small>Small</small>
+    </div>
+    <div className="text-right pr-2" style={{flexBasis: "25%"}}>
+      Mark
+    </div>
+    <div className="mt-4" style={{flexBasis: "75%"}}>
+      Indicate <mark>marked</mark> information
+    </div>
+    <div className="text-right pr-2" style={{flexBasis: "25%"}}>
+      Abbreviation
+    </div>
+    <div className="mt-4" style={{flexBasis: "75%"}}>
+      Cisco <abbr title="Security Business Group">sbg</abbr>
+    </div>
+    <div className="text-right pr-2" style={{flexBasis: "25%"}}>
+      Blockquote
+    </div>
+    <div className="mt-4" style={{flexBasis: "75%"}}>
+      <blockquote>
+        Everybody has a plan until they get punched in the mouth.<cite>
+          Mike Tyson
+        </cite>
+      </blockquote>
+    </div>
+    <div className="text-right pr-2" style={{flexBasis: "25%"}}>
+      Monospaced
+    </div>
+    <div className="mt-4" style={{flexBasis: "75%"}}>
+      <p>
+        <code>var code = "code";</code>
+      </p>
+      <p>
+        <kbd>var kbd = "kbd";</kbd>
+      </p>
+      <pre>var pre = "pre";</pre>
+      <p>
+        <samp>var samp = "samp";</samp>
+      </p>
+    </div>
+  </div>
+`}
+/>
+
+## Lists
+
+<Playground
+  code={`
+  <div className="pr-3">
+    <h2>List Ordered</h2>
+    <ol>
+      <li>Lorem ipsum dolor sit amet</li>
+      <li>Consectetur adipiscing elit</li>
+      <li>Integer molestie lorem at massa</li>
+      <li>Facilisis in pretium nisl aliquet</li>
+      <li>
+        Nulla volutpat aliquam velit
+        <ol>
+          <li>Phasellus iaculis neque</li>
+          <li>Purus sodales ultricies</li>
+          <li>Vestibulum laoreet porttitor sem</li>
+          <li>Ac tristique libero volutpat at</li>
+        </ol>
+      </li>
+      <li>Faucibus porta lacus fringilla vel</li>
+      <li>Aenean sit amet erat nunc</li>
+      <li>Eget porttitor lorem</li>
+    </ol>
+  </div>
+`}
+/>
+<Playground
+  code={`
+  <div className="pr-3">
+    <h2>List Unordered</h2>
+    <ul>
+      <li>Lorem ipsum dolor sit amet</li>
+      <li>Consectetur adipiscing elit</li>
+      <li>Integer molestie lorem at massa</li>
+      <li>Facilisis in pretium nisl aliquet</li>
+      <li>
+        Nulla volutpat aliquam velit
+        <ul>
+          <li>Phasellus iaculis neque</li>
+          <li>Purus sodales ultricies</li>
+          <li>Vestibulum laoreet porttitor sem</li>
+          <li>Ac tristique libero volutpat at</li>
+        </ul>
+      </li>
+      <li>Faucibus porta lacus fringilla vel</li>
+      <li>Aenean sit amet erat nunc</li>
+      <li>Eget porttitor lorem</li>
+    </ul>
+  </div>
+`}
+/>
+<Playground
+  code={`
+  <div className="pr-3">
+    <h2>List Unstyled</h2>
+    <ul className="unstyled">
+      <li>Lorem ipsum dolor sit amet</li>
+      <li>Consectetur adipiscing elit</li>
+      <li>Integer molestie lorem at massa</li>
+      <li>Facilisis in pretium nisl aliquet</li>
+      <li>
+        Nulla volutpat aliquam velit
+        <ul>
+          <li>Phasellus iaculis neque</li>
+          <li>Purus sodales ultricies</li>
+          <li>Vestibulum laoreet porttitor sem</li>
+          <li>Ac tristique libero volutpat at</li>
+        </ul>
+      </li>
+      <li>Faucibus porta lacus fringilla vel</li>
+      <li>Aenean sit amet erat nunc</li>
+      <li>Eget porttitor lorem</li>
+    </ul>
+  </div>
+`}
+/>
+
+## Color Palette
+
+Apply color overrides using helper classes:
+
+- To override the background, add `className="[color_name]--[color_variant]"`, for example: `className="fern--wash-1"`.
+- To override the text color, add `className="[color_name]--[color_variant]--text"`, for example: `className="dark-blue--burnt-1--text"`
+- For either background or text color classes, there is no need to specify the base color variant. For example, `className="cisco-blue white--text"`
+
+<div className="d-flex flex-wrap mb-8">
+  <ColorSwatch
+    title="grey"
+    colors={{
+      "darken-7": "#18191d",
+      "darken-6": "#39393b",
+      "darken-5": "#58585b",
+      "darken-4": "#626469",
+      "darken-3": "#737373",
+      "darken-2": "#7f7f86",
+      "darken-1": "#828284",
+      base: "#9e9ea2",
+      "lighten-1": "#b6b9bb",
+      "lighten-2": "#c6c7ca",
+      "lighten-3": "#dfdfdf",
+      "lighten-4": "#e8ebf1",
+      "lighten-5": "#f2f2f2",
+      "lighten-6": "#fbfbfb"
+    }}
+  />
+  <ColorSwatch
+    title="dusk"
+    colors={{
+      "1": "#6a7890",
+      "2": "#34455c",
+      "3": "#29384b",
+      "4": "#253040",
+      "5": "#1b2638",
+      "6": "#17202b"
+    }}
+  />
+  <ColorSwatch
+    title="status-red"
+    colors={{
+      "burnt-4": "#3e0005",
+      "burnt-3": "#82000b",
+      "burnt-2": "#9c000d",
+      "burnt-1": "#b5000f",
+      base: "#cf2030",
+      "wash-1": "#e6505d",
+      "wash-2": "#ff8c96",
+      "wash-3": "#ffd9dc"
+    }}
+  />
+  <ColorSwatch
+    title="status-blue"
+    colors={{
+      "burnt-4": "#092d3d",
+      "burnt-3": "#105270",
+      "burnt-2": "#247296",
+      "burnt-1": "#4095bd",
+      base: "#64bbe3",
+      "wash-1": "#81cdf0",
+      "wash-2": "#a3e2ff",
+      "wash-3": "#d6f2ff"
+    }}
+  />
+  <ColorSwatch
+    title="status-green"
+    colors={{
+      "burnt-4": "#103408",
+      "burnt-3": "#1b4f0f",
+      "burnt-2": "#307316",
+      "burnt-1": "#4b992c",
+      base: "#6cc04a",
+      "wash-1": "#93e872",
+      "wash-2": "#b4ff96",
+      "wash-3": "#e2ffd6"
+    }}
+  />
+  <ColorSwatch
+    title="status-yellow"
+    colors={{
+      "burnt-4": "#463a00",
+      "burnt-3": "#8c7300",
+      "burnt-2": "#b39200",
+      "burnt-1": "#d9b100",
+      base: "#ffcc00",
+      "wash-1": "#ffde4c",
+      "wash-2": "#ffec99",
+      "wash-3": "#fff5cc"
+    }}
+  />
+  <ColorSwatch
+    title="status-orange"
+    colors={{
+      "burnt-4": "#4a2508",
+      "burnt-3": "#8c3f00",
+      "burnt-2": "#b35000",
+      "burnt-1": "#d96200",
+      base: "#ff7300",
+      "wash-1": "#ff9d4c",
+      "wash-2": "#ffc799",
+      "wash-3": "#ffead9"
+    }}
+  />
+  <ColorSwatch
+    title="cisco-blue"
+    colors={{
+      "burnt-3": "#004b66",
+      "burnt-2": "#00678c",
+      "burnt-1": "#0083b3",
+      base: "#049fd9",
+      "wash-1": "#3bcaff",
+      "wash-2": "#9ee5ff",
+      "wash-3": "#ebfaff"
+    }}
+  />
+  <ColorSwatch
+    title="sage-green"
+    colors={{
+      "burnt-3": "#424f00",
+      "burnt-2": "#637507",
+      "burnt-1": "#869c19",
+      base: "#abc233",
+      "wash-1": "#d1e85f",
+      "wash-2": "#eeff9c",
+      "wash-3": "#f9ffdb"
+    }}
+  />
+  <ColorSwatch
+    title="turquoise"
+    colors={{
+      "burnt-3": "#00332b",
+      "burnt-2": "#00594c",
+      "burnt-1": "#03806d",
+      base: "#14a792",
+      "wash-1": "#37ccb6",
+      "wash-2": "#72f2df",
+      "wash-3": "#d1fff8"
+    }}
+  />
+  <ColorSwatch
+    title="purple"
+    colors={{
+      "burnt-3": "#2a082b",
+      "burnt-2": "#501752",
+      "burnt-1": "#752e78",
+      base: "#9a4b9d",
+      "wash-1": "#c47dc7",
+      "wash-2": "#ecc5ed",
+      "wash-3": "#feebff"
+    }}
+  />
+  <ColorSwatch
+    title="indigo-blue"
+    colors={{
+      "burnt-1": "#00364d",
+      base: "#005073",
+      "wash-1": "#217ea6",
+      "wash-2": "#57b2d9",
+      "wash-3": "#99e0ff",
+      "wash-4": "#ccf0ff",
+      "wash-5": "#f2fbff"
+    }}
+  />
+  <ColorSwatch
+    title="brand-orange"
+    colors={{
+      "burnt-3": "#734b00",
+      "burnt-2": "#99690f",
+      "burnt-1": "#d48a00",
+      base: "#fbab18",
+      "wash-1": "#ffc966",
+      "wash-2": "#ffe4b2",
+      "wash-3": "#fff2d9"
+    }}
+  />
+  <ColorSwatch
+    title="coral"
+    colors={{
+      "burnt-3": "#8c160b",
+      "burnt-2": "#b32c20",
+      "burnt-1": "#d94a3d",
+      base: "#ff6f61",
+      "wash-1": "#ff9187",
+      "wash-2": "#ffc0ba",
+      "wash-3": "#ffe8e5"
+    }}
+  />
+  <ColorSwatch
+    title="grape"
+    colors={{
+      "burnt-3": "#0b1d47",
+      "burnt-2": "#1d356e",
+      "burnt-1": "#355294",
+      base: "#5674b9",
+      "wash-1": "#89a3e0",
+      "wash-2": "#cfddff",
+      "wash-3": "#e5eeff"
+    }}
+  />
+  <ColorSwatch
+    title="fern"
+    colors={{
+      "burnt-3": "#070d00",
+      "burnt-2": "#244200",
+      "burnt-1": "#3a6900",
+      base: "#4e8f00",
+      "wash-1": "#70b51b",
+      "wash-2": "#96db42",
+      "wash-3": "#c0ff73"
+    }}
+  />
+  <ColorSwatch
+    title="teal"
+    colors={{
+      "burnt-3": "#00464f",
+      "burnt-2": "#006875",
+      "burnt-1": "#00899c",
+      base: "#00acc1",
+      "wash-1": "#23d1e8",
+      "wash-2": "#8cf2ff",
+      "wash-3": "#d9fbff"
+    }}
+  />
+  <ColorSwatch
+    title="berry"
+    colors={{
+      "burnt-3": "#47082d",
+      "burnt-2": "#6e174a",
+      "burnt-1": "#942e69",
+      base: "#bb4c8d",
+      "wash-1": "#e07eb7",
+      "wash-2": "#ffc2e5",
+      "wash-3": "#ffedf8"
+    }}
+  />
+  <ColorSwatch
+    title="dark-blue"
+    colors={{
+      "burnt-2": "#061f45",
+      "burnt-1": "#14376b",
+      base: "#2b5592",
+      "wash-1": "#517ab8",
+      "wash-2": "#83a7de",
+      "wash-3": "#bdd7ff",
+      "wash-4": "#e5f0ff"
+    }}
+  />
+  <ColorSwatch
+    title="magenta"
+    colors={{
+      "burnt-3": "#7a0029",
+      "burnt-2": "#a10b3d",
+      "burnt-1": "#c72259",
+      base: "#ec407a",
+      "wash-1": "#ff6b9c",
+      "wash-2": "#ffb2cc",
+      "wash-3": "#feebff"
+    }}
+  />
+  <ColorSwatch
+    title="dark-cool-grey"
+    colors={{
+      "burnt-3": "#0f1521",
+      "burnt-2": "#273347",
+      "burnt-1": "#46556e",
+      base: "#6a7890",
+      "wash-1": "#8d97a8",
+      "wash-2": "#b6bac2",
+      "wash-3": "#d9dadb"
+    }}
+  />
+  <ColorSwatch
+    title="black"
+    colors={{
+      base: "#000000"
+    }}
+  />
+  <ColorSwatch
+    title="white"
+    colors={{
+      base: "#ffffff"
+    }}
+  />
+  <ColorSwatch
+    title="secure-blue"
+    colors={{
+      "1": "#06144d",
+      "2": "#0d274d",
+      "3": "#1e4471"
+    }}
+  />
+  <ColorSwatch
+    title="secure-green"
+    colors={{
+      "1": "#6abf4b"
+    }}
+  />
+</div>
+
+## Helper classes
+
+`AApp` includes a number of helper functions with breakpoint options.
+
+They generally take the form `.[property]-[breakpoint/print]-[value]`, where specifying the breakpoint is optional. Targeting print media is also an option.
+
+For example, `d-flex d-md-block d-print-none`:
+
+- Displays as a flexbox from a 0 to 991 pixel screen width.
+- Displays as a block from 992 pixels and higher.
+- Does not display when printed.
+
+### Media Queries and Breakpoints
+
+Media queries are set for the following breakpoints:
+
+- xs: 479px
+- sm: 767px
+- md: 992px
+- lg: 1200px
+- xl: 1440px
+- print (for print styles)
+
+### Reference
+
+- `overflow`
+  - not responsive
+  - values: `auto`, `hidden`, `scroll`, `visible`
+  - examples: `overflow-visible`
+- `overflow-x`
+  - not responsive
+  - values: `auto`, `hidden`, `scroll`, `visible`
+  - examples: `overflow-x-hidden`
+- `overflow-y`
+  - not responsive
+  - values: `auto`, `hidden`, `scroll`, `visible`
+  - examples: `overflow-y-scroll`
+- `display`
+  - prefix: `d`,
+  - is responsive
+  - values: `none`, `inline`, `inline-block`, `block`, `table`, `table-row`, `table-cell`, `flex`, `inline-flex`
+  - examples: `d-flex d-print-none`
+- `float`
+  - is responsive
+  - values: `none`, `left`, `right`
+  - examples: `float-left float-xl-none`
+- `flex`
+  - is responsive (not print)
+  - values: `fill`
+  - examples: `flex-fill, flex-sm-fill`
+  - notes: sets the styling to `flex: 1 1 auto`
+- `flex-direction`
+  - prefix: `flex`
+  - is responsive (not print)
+  - values: `row`, `column`, `row-reverse`, `column-reverse`
+  - examples: `flex-row-reverse flex-sm-row`
+- `flex-grow`
+  - prefix: `flex`
+  - is responsive (not print)
+  - values: `grow-0`, `grow-1`
+  - examples: `flex-grow-0 flex-lg-grow-1`
+- `flex-shrink`
+  - prefix: `flex`
+  - is responsive (not print)
+  - values: `shrink-0`, `shrink-1`
+  - examples: `flex-shrink-1 flex-xs-shrink-0`
+- `flex-wrap`
+  - prefix: `flex`
+  - is responsive (not print)
+  - values: `wrap`, `nowrap`, `wrap-reverse`
+  - examples: `flex-wrap flex-md-nowrap`
+- `justify-content`
+  - prefix: `justify`
+  - is responsive (not print)
+  - values: `start`, `end`, `center`, `space-between`, `space-around`
+  - examples: `justify-md-start justify-center`
+- `align-items`
+  - prefix: `align`
+  - is responsive (not print)
+  - values: `start`, `end`, `center`, `baseline`, `stretch`
+  - examples: `align-start align-md-center`
+- `align-content`
+  - is responsive (not print)
+  - values: `start`, `end`, `center`, `space-between`, `space-around`, `stretch`
+  - examples: `align-content-start align-content-lg-stretch`
+- `align-self`
+  - is responsive (not print)
+  - values: `auto`, `start`, `end`, `center`, `baseline`, `stretch`
+  - examples: `align-self-baseline align-self-xs-start`
+- `order`
+  - is responsive (not print)
+  - values: `first`, `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `last`
+  - examples: `order-0 order-sm-last`
+- `margin`
+  - prefix: `ma`
+  - is responsive (not print)
+  - values: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `auto`
+  - examples: `ma-0 ma-xl-4`
+  - note: applies margins in increments of 5 pixels, to all sides (`ma-4` => `margin: 20px`)
+- `margin` (left and right sides)
+  - prefix: `mx`
+  - is responsive (not print)
+  - values: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `auto`
+  - examples: `mx-4 mx-lg-auto`
+  - note: applies margins in increments of 5 pixels, to left and right sides (`mx-4` => `margin-left: 20px; margin-right: 20px`)
+- `margin` (top and bottom sides)
+  - prefix: `my`
+  - is responsive (not print)
+  - values: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `auto`
+  - examples: `my-3 my-xs-0`
+  - note: applies margins in increments of 5 pixels, to top and bottom sides (`my-4` => `margin-top: 20px; margin-bottom: 20px`)
+- `margin` (top side)
+  - prefix: `mt`
+  - is responsive (not print)
+  - values: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `auto`
+  - examples: `mt-3 mt-xs-0`
+  - note: applies margins in increments of 5 pixels, to top side (`mt-4` => `margin-top: 20px`)
+- `margin` (right side)
+  - prefix: `mr`
+  - is responsive (not print)
+  - values: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `auto`
+  - examples: `mr-3 mr-xs-0`
+  - note: applies margins in increments of 5 pixels, to right side (`mr-4` => `margin-right: 20px`)
+- `margin` (bottom side)
+  - prefix: `mb`
+  - is responsive (not print)
+  - values: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `auto`
+  - examples: `mb-3 mb-xs-0`
+  - note: applies margins in increments of 5 pixels, to bottom side (`mb-4` => `margin-bottom: 20px`)
+- `margin` (left side)
+  - prefix: `ml`
+  - is responsive (not print)
+  - values: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `auto`
+  - examples: `ml-3 ml-xs-0`
+  - note: applies margins in increments of 5 pixels, to left side (`ml-4` => `margin-left: 20px`)
+- `padding`
+  - prefix: `pa`
+  - is responsive (not print)
+  - values: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `auto`
+  - examples: `pa-0 pa-xl-4`
+  - note: applies padding in increments of 5 pixels, to all sides (`pa-4` => `padding: 20px`)
+- `padding` (left and right sides)
+  - prefix: `px`
+  - is responsive (not print)
+  - values: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `auto`
+  - examples: `px-4 px-lg-auto`
+  - note: applies padding in increments of 5 pixels, to left and right sides (`px-4` => `padding-left: 20px; padding-right: 20px`)
+- `padding` (top and bottom sides)
+  - prefix: `py`
+  - is responsive (not print)
+  - values: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `auto`
+  - examples: `py-3 py-xs-0`
+  - note: applies padding in increments of 5 pixels, to top and bottom sides (`py-4` => `padding-top: 20px; padding-bottom: 20px`)
+- `padding` (top side)
+  - prefix: `pt`
+  - is responsive (not print)
+  - values: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `auto`
+  - examples: `pt-3 pt-xs-0`
+  - note: applies padding in increments of 5 pixels, to top side (`pt-4` => `padding-top: 20px`)
+- `padding` (right side)
+  - prefix: `pr`
+  - is responsive (not print)
+  - values: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `auto`
+  - examples: `pr-3 pr-xs-0`
+  - note: applies padding in increments of 5 pixels, to right side (`pr-4` => `padding-right: 20px`)
+- `padding` (bottom side)
+  - prefix: `pb`
+  - is responsive (not print)
+  - values: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `auto`
+  - examples: `pb-3 pb-xs-0`
+  - note: applies padding in increments of 5 pixels, to bottom side (`pb-4` => `padding-bottom: 20px`)
+- `padding` (left side)
+  - prefix: `pl`
+  - is responsive (not print)
+  - values: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `auto`
+  - examples: `pl-3 pl-xs-0`
+  - note: applies padding in increments of 5 pixels, to left side (`pl-4` => `padding-left: 20px`)
+- `text-align`
+  - prefix: `text`
+  - is responsive (not print)
+  - values: `left`, `right`, `center`, `justify`, `start`, `end`
+  - examples: `text-center text-sm-left`
+- `vertical-align`
+  - not responsive
+  - values: `top`, `center`, `baseline`, `bottom`
+  - examples: `vertical-align-center`
+- `white-space`
+  - prefix: `text`
+  - is not responsive
+  - values: `wrap`, `no-wrap`
+  - examples: `text-no-wrap`
+- `overflow-wrap`
+  - prefix: `text`
+  - is not responsive
+  - values: `break`
+  - examples: `text-break`
+- `text-overflow`
+  - prefix: `text`
+  - is not responsive
+  - values: `truncate`
+  - examples: `text-truncate`
+  - notes: automatically adds styling for trailing ellipsis text.
+- `text-transform`
+  - prefix: `text`
+  - is not responsive
+  - values: `none`, `capitalize`, `lowercase`, `uppercase`
+  - examples: `text-capitalize`

@@ -1,0 +1,168 @@
+@use "sass:math";
+
+@import "../../styles";
+
+$radio-border--enabled: map-get($grey, "lighten-2");
+$radio-height: 15px;
+$radio-padding: 10px;
+$radio-width: 15px;
+$radio-transition: stroke $transition-duration--extra-fast
+    $transition-timing-function--standard,
+  fill $transition-duration--extra-fast $transition-timing-function--standard,
+  box-shadow $transition-duration--extra-fast
+    $transition-timing-function--standard;
+
+@include theme(a-radio) using ($theme) {
+  &__box {
+    &__outer {
+      fill: none;
+    }
+
+    &__inner {
+      stroke: $radio-border--enabled;
+      fill: none;
+    }
+
+    &__active {
+      stroke: none;
+      fill: none;
+    }
+  }
+
+  &__input {
+    & ~ .a-radio__box {
+      .a-radio__box__outer {
+        stroke: map-deep-get($theme, "radio", "border--disabled");
+      }
+
+      &:hover .a-radio__box__outer {
+        stroke: map-deep-get($theme, "radio", "border--disabled");
+      }
+    }
+
+    &:enabled ~ .a-radio__box {
+      .a-radio__box__outer {
+        stroke: map-deep-get($theme, "base", "stroke-color");
+      }
+
+      &:hover .a-radio__box__outer {
+        stroke: map-deep-get($theme, "radio", "box-border--enabled--hover");
+      }
+    }
+
+    &:focus ~ .a-radio__box {
+      > svg {
+        box-shadow: map-deep-get($theme, "base", "box-shadow");
+      }
+
+      .a-radio__box__outer {
+        stroke: map-deep-get($theme, "base", "brand-color");
+      }
+    }
+
+    &:enabled:checked ~ .a-radio__box {
+      .a-radio__box__inner {
+        fill: map-deep-get($theme, "radio", "border--checked");
+        stroke: map-deep-get($theme, "radio", "border--checked");
+      }
+
+      &:hover .a-radio__box__inner {
+        fill: map-deep-get($theme, "radio", "fill--checked--hover");
+        stroke: map-deep-get($theme, "radio", "fill--checked--hover");
+      }
+    }
+
+    &:enabled:active ~ .a-radio__box {
+      .a-radio__box__inner {
+        stroke: none;
+        fill: none;
+      }
+
+      &:hover .a-radio__box__inner {
+        stroke: none;
+        fill: none;
+      }
+    }
+
+    &:enabled:active ~ .a-radio__box {
+      .a-radio__box__active {
+        fill: map-deep-get($theme, "radio", "fill--enabled");
+      }
+
+      &:hover .a-radio__box__active {
+        fill: map-deep-get($theme, "radio", "fill--active--hover");
+      }
+    }
+
+    &:disabled ~ .a-radio__box .a-radio__box__outer {
+      fill: map-deep-get($theme, "radio", "box-bg--disabled");
+      opacity: map-deep-get($theme, "radio", "opacity--disabled");
+    }
+
+    &:disabled ~ .a-radio__box .a-radio__box__inner {
+      fill: map-deep-get($theme, "radio", "bg--disabled");
+      stroke: map-deep-get($theme, "radio", "border--disabled");
+    }
+
+    &:disabled:checked ~ .a-radio__box .a-radio__box__inner {
+      fill: map-deep-get($theme, "control", "fill-color--disabled");
+    }
+
+    &:disabled ~ .a-radio__label {
+      color: map-deep-get($theme, "radio", "label-color--disabled");
+    }
+  }
+}
+
+.a-radio {
+  display: flex;
+  padding: math.div($radio-padding, 2) $radio-padding;
+  position: relative;
+  cursor: pointer;
+
+  &__input {
+    @include hidden-input;
+  }
+
+  &__box {
+    width: $radio-width;
+    height: $radio-height;
+    position: relative;
+    display: inline-block;
+    margin: 2px 10px 0 0;
+
+    > svg {
+      overflow: visible;
+      border-radius: 50%;
+    }
+  }
+
+  &__label {
+    display: inline-block;
+    flex: 1 1 0%;
+    position: relative;
+    @include text-truncate;
+  }
+
+  &__label--wrap {
+    white-space: normal;
+    overflow: visible;
+  }
+
+  &--disabled {
+    cursor: default;
+
+    .a-radio__box:after {
+      pointer-events: none;
+    }
+  }
+}
+
+.a-app--animated .a-radio {
+  &__input {
+    & ~ .a-radio__box svg,
+    & ~ .a-radio__box circle {
+      @include transition($radio-transition);
+    }
+  }
+}

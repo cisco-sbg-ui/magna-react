@@ -1,0 +1,54 @@
+html {
+  overflow-x: hidden;
+}
+
+body {
+  min-width: $page-width--min;
+  margin: 0;
+}
+
+.a-app {
+  display: flex;
+
+  &,
+  & * {
+    box-sizing: inherit;
+    &:before,
+    &:after {
+      box-sizing: inherit;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &--wrap {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+  }
+
+  // -----------------------------------------------------------------------------
+  // Disabled
+  // To disable any element, add a "disabled" attribute or the ".disabled" class
+  // -----------------------------------------------------------------------------
+  &[disabled],
+  & *[disabled],
+  .disabled {
+    @include disabled;
+  }
+
+  // Images
+  .img,
+  .picture {
+    margin: 0;
+    border: 0;
+    max-width: 100%;
+    &--fluid {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+}

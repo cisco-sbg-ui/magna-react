@@ -1,0 +1,74 @@
+---
+name: Toasts
+route: /components/toast
+components: AToast
+---
+
+# Toasts
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {AToast} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`() => {
+  const [toastsCount, setToastsCount] = useState(3);
+  const [toasts, setToasts] = useState([
+    "info",
+    "success",
+    "warning",
+    "danger"
+  ]);
+  const closeHandler = (key) => {
+    var newToasts = toasts.slice();
+    newToasts.splice(key, 1);
+    setToasts(newToasts);
+  };
+  const addHandler = () => {
+    setToastsCount(toastsCount + 1);
+    setToasts([
+      ...toasts,
+      ["info", "success", "warning", "danger"][Math.floor(Math.random() * 4)]
+    ]);
+  };
+  return (
+    <div>
+      <h3>Examples</h3>
+      {toasts.map((toast, index) => (
+        <div className="my-2" key={index}>
+          <AToast
+            level={toast}
+            dismissable
+            onClose={() => closeHandler(index)}
+            title={<span className="text-capitalize">{toast}</span>}>
+            Message for toast level: {toast}
+          </AToast>
+        </div>
+      ))}
+      <ADivider />
+      <p>
+        <AButton onClick={() => addHandler()}>Add Toast</AButton>
+      </p>
+    </div>
+  );
+}
+`}
+/>
+
+## Toast Props
+
+The `AToast` component inherits passed props.
+
+<Props of="AToast" />
+
+## Accessibility Notes
+
+The `AToast` `close` event handler is triggered both by the `click` event and by the `keyDown` event for both the `Enter` and `Space` keys.
+
+The `AToast` close icon is tab-focusable with a visual overlay.

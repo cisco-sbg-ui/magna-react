@@ -1,0 +1,23 @@
+@import "../../styles";
+
+$footer-min-height: 35px;
+$footer-padding: 10px 20px;
+$footer-font-size: $font-size--xs;
+
+@include theme(a-footer) using ($theme) {
+  background-color: map-deep-get($theme, "base", "bg");
+  color: map-deep-get($theme, "footer", "color");
+  border-top-color: map-deep-get($theme, "footer", "border-color");
+}
+
+.a-footer {
+  display: block;
+  min-height: $footer-min-height;
+  padding: $footer-padding;
+  font-size: $footer-font-size;
+  border-top-width: $border-width;
+  border-top-style: solid;
+  &__legal {
+    text-align: center;
+  }
+}

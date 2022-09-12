@@ -1,0 +1,134 @@
+---
+name: Trees
+route: /components/tree
+components: ATree
+---
+
+# Trees
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {ATree} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`() => {
+  const [activatable, setActivatable] = useState(false);
+  const [dense, setDense] = useState(false);
+  const [expandOnClick, setExpandOnClick] = useState(false);
+  const [hoverable, setHoverable] = useState(false);
+  const [items, setItems] = useState([
+    {
+      content: "Live Dashboard",
+      contentProps: {
+        href: "https://www.google.com/",
+        target: "_blank"
+      },
+      // It isn't necessary to specify \`contentComponent\`
+      // as the use of "href" will be detected,
+      // but included for completeness. This would be useful
+      // in the case of a router integration.
+      contentComponent: "a"
+    },
+    {
+      content: "Predefined Reports Featuring Very Long Text",
+      items: [
+        {
+          content: "Configuration"
+        },
+        {
+          content: "Incident Summary"
+        },
+        {
+          content: "Services"
+        },
+        {
+          content: "Drill Down Reports",
+          items: [
+            {
+              content: "User Reports"
+            },
+            {
+              content: "Operation Reports"
+            }
+          ]
+        },
+        {
+          content: "Inventory"
+        }
+      ]
+    },
+    {
+      content: "User Research",
+      contentProps: {
+        href: "https://www.google.com/",
+        target: "_blank"
+      },
+      items: [
+        {
+          content: "Usage"
+        },
+        {
+          content: "Documentation"
+        }
+      ]
+    }
+  ]);
+  return (
+    <div style={{maxWidth: 250}}>
+      <ATree
+        activatable={activatable}
+        className="cisco-blue white--text"
+        dense={dense}
+        expandOnClick={expandOnClick}
+        hoverable={hoverable}
+        items={items}
+        onChange={(items) => setItems(items)}
+      />
+      <ADivider />
+      <div>
+        <ACheckbox
+          checked={activatable}
+          onClick={() => setActivatable(!activatable)}>
+          Activatable
+        </ACheckbox>
+      </div>
+      <div>
+        <ACheckbox checked={dense} onClick={() => setDense(!dense)}>
+          Dense
+        </ACheckbox>
+      </div>
+      <div>
+        <ACheckbox
+          checked={expandOnClick}
+          onClick={() => setExpandOnClick(!expandOnClick)}>
+          Expand On Click
+        </ACheckbox>
+      </div>
+      <div>
+        <ACheckbox
+          checked={hoverable}
+          onClick={() => setHoverable(!hoverable)}>
+          Hoverable
+        </ACheckbox>
+      </div>
+    </div>
+  );
+}
+`}
+/>
+
+## Tree Props
+
+The `ATree` component inherits passed props.
+
+<Props of="ATree" />
+
+## Accessibility Notes
+
+Nodes in the `ATree` component use the [aria-expanded](https://www.w3.org/TR/wai-aria/#aria-expanded) attribute to express the collapsed state.

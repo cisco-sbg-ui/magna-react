@@ -1,0 +1,167 @@
+---
+name: Menus
+route: /components/menu
+components: AMenu
+---
+
+# Menus
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {AMenu} from "@cisco-sbg-ui/magna-react";
+```
+
+It is necessary for `AMenu` to be a descendant of `AApp` for mounting.
+
+## Usage
+
+<Playground
+  fullWidthPreview
+  code={`() => {
+  const button1Ref = useRef(null);
+  const button2Ref = useRef(null);
+  const button3Ref = useRef(null);
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
+  const [open3, setOpen3] = useState(false);
+  return (
+    <div className="d-flex">
+      <div style={{flexBasis: "33%"}}>
+        <AButton
+          ref={button1Ref}
+          onClick={() => setOpen1(!open1)}
+          aria-haspopup="true">
+          Pivot Menu
+        </AButton>
+      </div>
+      <div style={{flexBasis: "33%"}}>
+        <AButton
+          ref={button2Ref}
+          onClick={() => setOpen2(!open2)}
+          aria-haspopup="true">
+          Alert Notification Menu
+        </AButton>
+      </div>
+      <div style={{flexBasis: "33%"}}>
+        <AButton
+          ref={button3Ref}
+          onClick={() => setOpen3(!open3)}
+          aria-haspopup="true">
+          Drop Down Menu
+        </AButton>
+      </div>
+      <AMenu
+        anchorRef={button1Ref}
+        open={open1}
+        placement="bottom"
+        onClose={() => setOpen1(false)}
+        pointer
+        className="py-3">
+        <AListItem twoLine className="px-3 h3 my-0 pb-1">
+          <AListItemTitle>Bottom</AListItemTitle>
+        </AListItem>
+        <AListItem onClick={() => alert("alert1")} className="pl-3 py-1">
+          Example
+        </AListItem>
+        <AListItem onClick={() => alert("alert2")} className="pl-3 py-1">
+          Example
+        </AListItem>
+        <ADivider className="mb-0 mt-3" />
+        <AListItem twoLine>
+          <AListItemContent className="pb-0">
+            <a onClick={() => alert("alert3")}>Connect</a>
+          </AListItemContent>
+        </AListItem>
+      </AMenu>
+      <AMenu
+        anchorRef={button2Ref}
+        open={open2}
+        placement="bottom"
+        onClose={() => setOpen2(false)}
+        pointer
+        style={{maxWidth: 450}}>
+        <AListItem twoLine>
+          <AListItemAvatar>
+            <AIcon size={16} className="status-red--text">
+              critical-stop
+            </AIcon>
+          </AListItemAvatar>
+          <AListItemContent>
+            <AListItemTitle>Source Application</AListItemTitle>
+            <AListItemSubtitle>
+              Danger. Text to describe the notification or an issue that needs
+              to be addressed. Very, very, very, very, very long text.
+            </AListItemSubtitle>
+          </AListItemContent>
+          <AListItemAction
+            className="pr-3 align-self-start"
+            style={{paddingTop: 12}}>
+            <a onClick={() => alert("alert warning")}>Action</a>
+          </AListItemAction>
+        </AListItem>
+        <ADivider className="ma-0" />
+        <AListItem twoLine>
+          <AListItemAvatar>
+            <AIcon size={16} className="status-orange--text">
+              warning
+            </AIcon>
+          </AListItemAvatar>
+          <AListItemContent>
+            <AListItemTitle>Source Application</AListItemTitle>
+            <AListItemSubtitle>
+              Warning. Text to describe the notification or an issue that
+              needs to be addressed. Very, very, very, very, very long text.
+            </AListItemSubtitle>
+          </AListItemContent>
+          <AListItemAction
+            className="pr-3 align-self-start"
+            style={{paddingTop: 12}}>
+            <a onClick={() => alert("alert warning")}>Action</a>
+          </AListItemAction>
+        </AListItem>
+      </AMenu>
+      <AMenu
+        anchorRef={button3Ref}
+        open={open3}
+        placement="bottom-left"
+        onClose={() => setOpen3(false)}
+        style={{borderRadius: 0}}>
+        <AListItem onClick={() => {}}>Selection 1</AListItem>
+        <AListItem onClick={() => {}}>Selection 2</AListItem>
+        <AListItem onClick={() => {}}>Selection 3</AListItem>
+      </AMenu>
+    </div>
+  );
+}
+`}
+/>
+
+## Menu Props
+
+The `AMenu` component inherits passed props.
+
+<Props of="AMenu" />
+
+## Accessibility Notes
+
+By default, `AMenu` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [menu](https://www.w3.org/TR/wai-aria/#menu).
+
+`AListItem` will automatically detect itself as a child of `.a-menu` and apply the `menuitem` role, unless the prop is specified otherwise.
+
+`AMenu` components are mounted outside of the application area to avoid issues with overflow and position.
+Accordingly, `AMenu` attempts to manage the user's focus by defaulting to focus the menu on open.
+This behavior can be disabled by setting the `focusOnOpen` prop to false.
+On close, the menu will return focus to the anchor element.
+
+`keydown` events for the `up` and `down` arrow keys will
+navigate menu items, the `esc` key calls the `onClose` handler. Additionally, for the `tab`
+key the menu will request to be closed and set focus to the opener, which allows native `tab`
+key functionality to focus the next tab-focusable item.
+
+By default, `AListItem` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [menuitem](https://www.w3.org/TR/wai-aria/#menuitem).
+The `AListItem` `click` event handler is triggered both by the `click` event and by the `keyDown` event for the `Enter` key. This is followed up by a request to the `onClose` handler.
+
+Remember to indicate that your anchor element has a menu via the `aria-haspopup` attribute. In addition, your anchor element should have a `tabindex` if it does not already.

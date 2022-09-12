@@ -1,0 +1,25 @@
+@import "../../styles";
+
+@include theme(a-hint) using ($theme) {
+  &--warning {
+    color: map-deep-get($theme, "control", "warning-color");
+  }
+
+  &--danger {
+    color: map-deep-get($theme, "control", "error-color");
+  }
+}
+
+.a-hint {
+  display: flex;
+  font-style: oblique;
+  line-height: 16px;
+  margin: 5px 0 0 0;
+  font-size: $font-size--xs;
+  color: map-get($grey, "darken-2");
+
+  &__icon.a-icon {
+    height: 14px;
+    width: 14px;
+  }
+}

@@ -1,0 +1,69 @@
+---
+name: Badges
+route: /components/badge
+components: ABadge
+---
+
+# Badges
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {ABadge} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`<>
+  <div>
+    <ABadge color="cisco-blue" content="3" large className="mr-4">
+      <AButton tertiaryAlt icon className="pa-1" onClick={() => {}}>
+        <AIcon size={48}>alert</AIcon>
+      </AButton>
+    </ABadge>
+    <ABadge color="status-red" content="99+" large>
+      <AButton tertiaryAlt icon className="pa-1" onClick={() => {}}>
+        <AIcon size={48}>alert</AIcon>
+      </AButton>
+    </ABadge>
+  </div>
+  <div className="mt-4">
+    <ABadge color="cisco-blue" content="3" className="mr-4">
+      <AButton secondary icon className="pa-1" onClick={() => {}}>
+        <AIcon size={24}>alert</AIcon>
+      </AButton>
+    </ABadge>
+    <ABadge color="status-red" content="99+">
+      <AButton secondary icon className="pa-1" onClick={() => {}}>
+        <AIcon size={24}>alert</AIcon>
+      </AButton>
+    </ABadge>
+  </div>
+  <div className="mt-4">
+    <ABadge color="cisco-blue" content="3" small className="mr-4">
+      <AButton primary icon className="pa-1" onClick={() => {}}>
+        <AIcon size={16}>alert</AIcon>
+      </AButton>
+    </ABadge>
+    <ABadge color="status-red" content="99+" small>
+      <AButton primary icon className="pa-1" onClick={() => {}}>
+        <AIcon size={16}>alert</AIcon>
+      </AButton>
+    </ABadge>
+  </div>
+</>
+`}
+/>
+
+## Badge Props
+
+The `ABadge` component inherits passed props.
+
+<Props of="ABadge" />
+
+## Accessibility Notes
+
+By default, `ABadge` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [alert](https://www.w3.org/TR/wai-aria/#alert) which denotes that the alert "is a live region with important and usually time-sensitive, information."

@@ -1,0 +1,308 @@
+@import "../../styles";
+
+$cisco-loader-height: 40px;
+$cisco-loader-width: 152px;
+$cisco-loader-min-width: 140px;
+$cisco-loader-bar-width: 6px;
+$cisco-loader-bar-margin: 20px;
+$cisco-loader-bar-bg: map-get($cisco-blue, "base");
+$cisco-loader-bar-border-radius: 64px;
+$cisco-loader-bar-animation-duration: 1s;
+$cisco-loader-bar-height--index1: 33%;
+$cisco-loader-bar-height--index2: 56%;
+$cisco-loader-bar-height--index3: 100%;
+$cisco-loader-bar-height--index4: 56%;
+$cisco-loader-bar-height--index5: 33%;
+$cisco-loader-bar-height--index6: 56%;
+$cisco-loader-bar-height--index7: 100%;
+$cisco-loader-bar-height--index8: 56%;
+$cisco-loader-bar-height--index9: 33%;
+$cisco-loader-bar-top--index1: 48%;
+$cisco-loader-bar-top--index2: 25%;
+$cisco-loader-bar-top--index3: -4%;
+$cisco-loader-bar-top--index4: 25%;
+$cisco-loader-bar-top--index5: 48%;
+$cisco-loader-bar-top--index6: 25%;
+$cisco-loader-bar-top--index7: -4%;
+$cisco-loader-bar-top--index8: 25%;
+$cisco-loader-bar-top--index9: 48%;
+
+.a-cisco-loader {
+  height: $cisco-loader-height;
+  width: $cisco-loader-width;
+  min-width: $cisco-loader-min-width;
+  margin: $cisco-loader-bar-margin;
+  &__bar {
+    width: $cisco-loader-bar-width;
+    float: left;
+    background-color: $cisco-loader-bar-bg;
+    opacity: 0.1;
+    border-radius: $cisco-loader-bar-border-radius;
+    margin-left: 12px;
+    position: relative;
+    animation-duration: $cisco-loader-bar-animation-duration;
+    animation-iteration-count: infinite;
+    &--index-1 {
+      height: $cisco-loader-bar-height--index1;
+      top: $cisco-loader-bar-top--index1;
+      margin-left: 0;
+      animation-name: animate1;
+    }
+    &--index-2 {
+      height: $cisco-loader-bar-height--index2;
+      top: $cisco-loader-bar-top--index2;
+      animation-name: animate2;
+    }
+    &--index-3 {
+      height: $cisco-loader-bar-height--index3;
+      top: $cisco-loader-bar-top--index3;
+      animation-name: animate3;
+    }
+    &--index-4 {
+      height: $cisco-loader-bar-height--index4;
+      top: $cisco-loader-bar-top--index4;
+      animation-name: animate4;
+    }
+    &--index-5 {
+      height: $cisco-loader-bar-height--index5;
+      top: $cisco-loader-bar-top--index5;
+      animation-name: animate5;
+    }
+    &--index-6 {
+      height: $cisco-loader-bar-height--index6;
+      top: $cisco-loader-bar-top--index6;
+      animation-name: animate6;
+    }
+    &--index-7 {
+      height: $cisco-loader-bar-height--index7;
+      top: $cisco-loader-bar-top--index7;
+      animation-name: animate7;
+    }
+    &--index-8 {
+      height: $cisco-loader-bar-height--index8;
+      top: $cisco-loader-bar-top--index8;
+      animation-name: animate8;
+    }
+    &--index-9 {
+      height: $cisco-loader-bar-height--index9;
+      top: $cisco-loader-bar-top--index9;
+      animation-name: animate9;
+    }
+  }
+}
+
+@keyframes animate1 {
+  0%,
+  5% {
+    height: 33%;
+    top: 48%;
+    background-color: $cisco-loader-bar-bg;
+    opacity: 0.1;
+  }
+  5%,
+  30% {
+    height: 50%;
+    top: 30%;
+    background-color: $cisco-loader-bar-bg;
+    opacity: 0.5;
+  }
+  30%,
+  35% {
+    height: 33%;
+    top: 48%;
+    background-color: $cisco-loader-bar-bg;
+    opacity: 0.1;
+  }
+}
+
+@keyframes animate2 {
+  3%,
+  8% {
+    height: 56%;
+    top: 25%;
+    background-color: $cisco-loader-bar-bg;
+    opacity: 0.1;
+  }
+  8%,
+  35% {
+    height: 70%;
+    top: 15%;
+    background-color: $cisco-loader-bar-bg;
+    opacity: 0.5;
+  }
+  35%,
+  40% {
+    height: 56%;
+    top: 25%;
+    background-color: $cisco-loader-bar-bg;
+    opacity: 0.1;
+  }
+}
+
+@keyframes animate3 {
+  6%,
+  11% {
+    height: 100%;
+    top: -4%;
+    background-color: $cisco-loader-bar-bg;
+    opacity: 0.1;
+  }
+  11%,
+  40% {
+    height: 120%;
+    top: -15%;
+    background-color: $cisco-loader-bar-bg;
+    opacity: 0.5;
+  }
+  40%,
+  45% {
+    height: 100%;
+    top: -4%;
+    background-color: $cisco-loader-bar-bg;
+    opacity: 0.1;
+  }
+}
+
+@keyframes animate4 {
+  9%,
+  14% {
+    height: 56%;
+    top: 25%;
+    background-color: $cisco-loader-bar-bg;
+    opacity: 0.1;
+  }
+  14%,
+  45% {
+    height: 70%;
+    top: 15%;
+    background-color: $cisco-loader-bar-bg;
+    opacity: 0.5;
+  }
+  45%,
+  50% {
+    height: 56%;
+    top: 25%;
+    background-color: $cisco-loader-bar-bg;
+    opacity: 0.1;
+  }
+}
+
+@keyframes animate5 {
+  12%,
+  17% {
+    height: 33%;
+    top: 48%;
+    background-color: $cisco-loader-bar-bg;
+    opacity: 0.1;
+  }
+  17%,
+  50% {
+    height: 50%;
+    top: 30%;
+    background-color: $cisco-loader-bar-bg;
+    opacity: 0.5;
+  }
+  50%,
+  55% {
+    height: 33%;
+    top: 48%;
+    background-color: $cisco-loader-bar-bg;
+    opacity: 0.1;
+  }
+}
+
+@keyframes animate6 {
+  15%,
+  20% {
+    height: 56%;
+    top: 25%;
+    background-color: $cisco-loader-bar-bg;
+    opacity: 0.1;
+  }
+  20%,
+  55% {
+    height: 70%;
+    top: 15%;
+    background-color: $cisco-loader-bar-bg;
+    opacity: 0.5;
+  }
+  55%,
+  60% {
+    height: 56%;
+    top: 25%;
+    background-color: $cisco-loader-bar-bg;
+    opacity: 0.1;
+  }
+}
+
+@keyframes animate7 {
+  18%,
+  23% {
+    height: 100%;
+    top: -4%;
+    background-color: $cisco-loader-bar-bg;
+    opacity: 0.1;
+  }
+  23%,
+  60% {
+    height: 120%;
+    top: -15%;
+    background-color: $cisco-loader-bar-bg;
+    opacity: 0.5;
+  }
+  60%,
+  65% {
+    height: 100%;
+    top: -4%;
+    background-color: $cisco-loader-bar-bg;
+    opacity: 0.1;
+  }
+}
+
+@keyframes animate8 {
+  21%,
+  26% {
+    height: 56%;
+    top: 25%;
+    background-color: $cisco-loader-bar-bg;
+    opacity: 0.1;
+  }
+  26%,
+  65% {
+    height: 70%;
+    top: 15%;
+    background-color: $cisco-loader-bar-bg;
+    opacity: 0.5;
+  }
+  65%,
+  70% {
+    height: 56%;
+    top: 25%;
+    background-color: $cisco-loader-bar-bg;
+    opacity: 0.1;
+  }
+}
+
+@keyframes animate9 {
+  24%,
+  29% {
+    height: 33%;
+    top: 48%;
+    background-color: $cisco-loader-bar-bg;
+    opacity: 0.1;
+  }
+  29%,
+  70% {
+    height: 50%;
+    top: 30%;
+    background-color: $cisco-loader-bar-bg;
+    opacity: 0.5;
+  }
+  70%,
+  85% {
+    height: 33%;
+    top: 48%;
+    background-color: $cisco-loader-bar-bg;
+    opacity: 0.1;
+  }
+}

@@ -1,0 +1,219 @@
+---
+name: Themes
+route: /components/theme
+components: ATheme, AAutoTheme
+---
+
+# Themes
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {ATheme} from "@cisco-sbg-ui/magna-react";
+```
+
+`ATheme` is bundled with `AApp`. If you use `AApp`, `ATheme` is unnecessary.
+
+`ATheme` also supports automatic theming detection with the `AAutoTheme` component. When enabled, it will match a user's theming preference as determined by their operation system appearance settings. For example, a MacOS user with Apple's darkmode enabled will see the `dusk` theme in an `magna-react` application.
+
+To enable automatic theming withing an magna-react application, you can use `AAutoTheme` as a desdendant  of `AApp` or `ATheme`.
+
+```
+import {AAutoTheme} from "@cisco-sbg-ui/magna-react";
+```
+
+Automatic theming will be disabled by default when rendering `AAutoTheme`, but can be enabled with the `useAAutoTheme` hook as documented below.
+
+### Hook
+
+To access and modify the current theme, use the react hook provided:
+
+```
+import {useATheme} from "@cisco-sbg-ui/magna-react";
+```
+
+To access and modify the automatic theming engine (if rendering `AAutoTheme`), use the react hook provided:
+
+```
+import {useAAutoTheme} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+### Basic
+
+<Playground
+  noInline
+  code={`const ThemeSwitcher = () => {
+  const {currentTheme, setCurrentTheme, isDark, isLight} = useATheme();
+  return (
+    <div
+      style={{
+        padding: 20,
+        backgroundColor: currentTheme === "default" ? "#eee" : "#000",
+        color: currentTheme === "default" ? "#000" : "#eee",
+      }}>
+      <AButtonGroup
+        selectedValues={[currentTheme]}
+        onChange={(_, selectedValues) => setCurrentTheme(selectedValues[0])}>
+        <AButton value="default">Default</AButton>
+        <AButton value="dusk">Dusk</AButton>
+      </AButtonGroup>
+      <ADivider />
+      <div><code>isDark</code>: {isDark.toString()}</div>
+      <div><code>isLight</code>: {isLight.toString()}</div>
+    </div>
+  );
+};
+render(
+  <ATheme>
+    <ThemeSwitcher />
+  </ATheme>
+);
+`}
+/>
+
+### Automatic System Theme Detection
+
+<Playground
+  noInline
+  code={`const ThemeSwitcher = () => {
+  const {currentTheme, setCurrentTheme, isDark, isLight} = useATheme();
+  const autoTheme = useAAutoTheme();
+  return (
+    <div
+      style={{
+        padding: 20,
+        backgroundColor: currentTheme === "default" ? "#eee" : "#000",
+        color: currentTheme === "default" ? "#000" : "#eee",
+      }}>
+      <AButtonGroup
+        selectedValues={[autoTheme.enabled ? 'automatic' : currentTheme]}
+        onChange={(value) => {
+          if (value === 'automatic') {
+            autoTheme.enable();
+            return;
+          }
+          if (autoTheme.enabled) {
+            autoTheme.disable();
+          }
+          setCurrentTheme(value);
+        }}>
+        <AButton value="default">Default</AButton>
+        <AButton value="dusk">Dusk</AButton>
+        <AButton value='automatic'>Automatic</AButton>
+      </AButtonGroup>
+      <ADivider />
+      <div><code>isDark</code>: {isDark.toString()}</div>
+      <div><code>isLight</code>: {isLight.toString()}</div>
+      <div><code>autoTheme.enabled</code>: {autoTheme.enabled.toString()}</div>
+    </div>
+  );
+};
+render(
+  <ATheme>
+    <AAutoTheme>
+      <ThemeSwitcher />
+    </AAutoTheme>
+  </ATheme>
+);
+`}
+/>
+
+<Playground
+  noInline
+  code={`const ThemeSwitcher = () => {
+  const {currentTheme} = useATheme();
+  const autoTheme = useAAutoTheme();
+  return (
+    <div
+      style={{
+        padding: 20,
+        backgroundColor: currentTheme === "default" ? "#eee" : "#000",
+        color: currentTheme === "default" ? "#000" : "#eee",
+      }}>
+      <ASwitch
+        checked={autoTheme.enabled}
+        onClick={autoTheme.toggle}>
+        Match System Theme
+      </ASwitch>
+      <ADivider />
+      <div><code>autoTheme.enabled</code>: {autoTheme.enabled.toString()}</div>
+    </div>
+  );
+};
+render(
+  <ATheme>
+    <AAutoTheme>
+      <ThemeSwitcher />
+    </AAutoTheme>
+  </ATheme>
+);
+`}
+/>
+
+## Props
+
+<Props of="ATheme" />
+
+<ASimpleTable className="mb-8">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td className="text-no-wrap">enabled</td>
+      <td>
+        <p className='mt-0'>
+          Specifies if automatic theming is enabled or disabled.
+        </p>
+      </td>
+      <td>
+        false
+      </td>
+    </tr>
+  </tbody>
+</ASimpleTable>
+
+##### Methods
+
+<ASimpleTable className="mb-8">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td className="text-no-wrap">enable</td>
+      <td>
+        <p className='mt-0'>
+          Enables automatic theming within an magna-react application.
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td className="text-no-wrap">enable</td>
+      <td>
+        <p className='mt-0'>
+          Disables automatic theming within an magna-react application.
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td className="text-no-wrap">toggle</td>
+      <td>
+        <p className='mt-0'>
+          Toggles automatic theming functionality within an magna-react application. Useful in the case of enabling/disabling automatic theming with an `ACheckbox` or `ASwitch`.
+        </p>
+      </td>
+    </tr>
+  </tbody>
+</ASimpleTable>

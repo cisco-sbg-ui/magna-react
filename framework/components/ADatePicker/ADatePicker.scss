@@ -1,0 +1,192 @@
+@use "sass:math";
+
+@import "../../styles";
+
+$date-picker-height: 100%;
+$date-picker-min-height: 260px;
+$date-picker-width: 275px;
+$date-picker-max-width: 275px;
+$date-picker-z-index: 1;
+$date-picker-header-padding: 4px 0;
+$date-picker-nav-top: 2px;
+$date-picker-nav-width: 28px;
+$date-picker-nav-height: 28px;
+$date-picker-nav-span-left: 50%;
+$date-picker-nav-span-top: 50%;
+$date-picker-nav-span-margin-left: -8px;
+$date-picker-nav-span-margin-top: -8px;
+$date-picker-prev-left: 13px;
+$date-picker-next-right: 13px;
+$date-picker-title-line-height: 28px;
+$date-picker-calendar-width: 245px;
+$date-picker-calendar-min-width: 245px;
+$date-picker-calendar-font-size: $font-size--sm;
+$date-picker-calendar-margin: 10px 15px;
+$date-picker-calendar-disabled-opacity: 0.35;
+$date-picker-day-width: 30px;
+$date-picker-day-padding-top: math.div($base-padding-small-top, 2);
+$date-picker-day-padding-bottom: math.div($base-padding-small-bottom, 2);
+$date-picker-day-border-radius: 2px;
+
+@include theme(a-date-picker) using ($theme) {
+  color: map-deep-get($theme, "base", "color");
+  background-color: map-deep-get($theme, "control", "fill-color");
+  border: $border-width solid map-deep-get($theme, "base", "stroke-color");
+  &__header {
+    padding: 4px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: $border-width solid
+      map-deep-get($theme, "date-picker", "header-border-color");
+  }
+
+  &__prev,
+  &__next {
+    & span {
+      font-size: $font-size--xxs;
+    }
+    &:hover {
+      & span {
+        color: map-deep-get($theme, "base", "color--hover");
+      }
+    }
+
+    &:focus {
+      & span {
+        box-shadow: map-deep-get($theme, "base", "box-shadow");
+      }
+    }
+  }
+
+  &__calendar {
+    background: transparent;
+  }
+
+  &__day {
+    &__label {
+      color: inherit;
+      background-color: transparent;
+      &:focus {
+        box-shadow: map-deep-get($theme, "base", "box-shadow");
+      }
+    }
+
+    &.selected {
+      .a-date-picker__day__label {
+        background-color: map-deep-get($theme, "base", "color--selected");
+        color: map-deep-get($theme, "base", "inverse-color");
+      }
+    }
+
+    &.between {
+      .a-date-picker__day__label {
+        background-color: map-deep-get($theme, "date-picker", "range-bg");
+      }
+    }
+
+    &:hover {
+      .a-date-picker__day__label {
+        background-color: map-deep-get($theme, "base", "color--hover");
+        color: map-deep-get($theme, "base", "inverse-color");
+      }
+    }
+
+    &:active {
+      .a-date-picker__day__label {
+        background-color: map-deep-get($theme, "base", "color--active");
+        color: map-deep-get($theme, "base", "inverse-color");
+      }
+    }
+  }
+}
+
+.a-date-picker {
+  display: block;
+  height: $date-picker-height;
+  min-height: $date-picker-min-height;
+  width: $date-picker-width;
+  max-width: $date-picker-max-width;
+  border-radius: $border-radius--sm;
+  z-index: $date-picker-z-index;
+  &__header {
+    position: relative;
+    padding: $date-picker-header-padding;
+  }
+
+  &__prev,
+  &__next {
+    padding: 6px;
+    & span {
+      display: block;
+      position: absolute;
+      left: $date-picker-nav-span-left;
+      margin-left: $date-picker-nav-span-margin-left;
+      top: $date-picker-nav-span-top;
+      margin-top: $date-picker-nav-span-margin-top;
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    &:focus {
+      & span {
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__prev {
+    left: $date-picker-prev-left;
+  }
+
+  &__next {
+    right: $date-picker-next-right;
+  }
+
+  &__title {
+    line-height: $date-picker-title-line-height;
+    text-align: center;
+  }
+
+  &__calendar {
+    width: $date-picker-calendar-width;
+    min-width: $date-picker-calendar-min-width;
+    font-size: $date-picker-calendar-font-size;
+    border-collapse: collapse;
+    margin: $date-picker-calendar-margin;
+    & .disabled {
+      opacity: $date-picker-calendar-disabled-opacity;
+      text-align: center;
+    }
+  }
+
+  &__week {
+    text-align: center;
+    font-weight: normal;
+    font-size: $font-size--xs;
+  }
+
+  &__day {
+    width: $date-picker-day-width;
+    min-width: $date-picker-day-width;
+    padding-top: $date-picker-day-padding-top;
+    padding-bottom: $date-picker-day-padding-bottom;
+    &__label {
+      border: 0;
+      margin: 0;
+      padding: 1.2px 0;
+      width: 100%;
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      border-radius: $date-picker-day-border-radius;
+      &:focus,
+      &:hover,
+      &:active {
+        text-decoration: none;
+      }
+    }
+  }
+}

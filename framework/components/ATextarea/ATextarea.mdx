@@ -1,0 +1,126 @@
+---
+name: Textareas
+route: /components/textarea
+components: ATextarea
+---
+
+# Textareas
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {ATextarea} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`() => {
+  const [autoGrow, setAutoGrow] = useState(true);
+  const [value, setValue] = useState(LoremIpsum);
+  return (
+    <div style={{maxWidth: 250}}>
+      <div className="mb-4">
+        <ACheckbox checked={autoGrow} onClick={() => setAutoGrow(!autoGrow)}>
+          Toggle autoGrow
+        </ACheckbox>
+        <ATextarea
+          label="Label"
+          placeholder="Normal with autoGrow"
+          autoGrow={autoGrow}
+          disableGrammarly
+          value={value}
+          onChange={(e) => {
+            setValue(e.target.value);
+          }}
+          hint="Hint: Normal"
+        />
+      </div>
+    </div>
+  );
+}
+`}
+/>
+
+## Textarea Props
+
+The `ATextarea` component inherits passed props.
+
+<Props of="ATextarea" />
+
+## Validation
+
+<Playground
+  code={`() => {
+  const [comments, setComments] = useState("");
+  return (
+    <div>
+      <h3>Required Field</h3>
+      <ATextarea
+        autoFocus
+        label="Comments"
+        onChange={(e) => {
+          setComments(e.target.value);
+        }}
+        value={comments}
+        required
+        rules={[
+          {
+            test: (v) =>
+              v.length < 10 || "Comments must be less than 10 characters",
+            level: "danger"
+          }
+        ]}
+        validateOnBlur
+        hint="Keep it short."
+      />
+    </div>
+  );
+}
+`}
+/>
+
+## States
+
+<Playground
+  code={`<div style={{maxWidth: 250}}>
+  <div className="mb-4">
+    <ATextarea label="Label" placeholder="Default" hint="Hint: Default" />
+  </div>
+  <div className="mb-4">
+    <ATextarea
+      label="Label"
+      placeholder="Disabled"
+      disabled
+      hint="Hint: Disabled"
+    />
+  </div>
+  <div className="mb-4">
+    <ATextarea
+      label="Label"
+      placeholder="Read-only State"
+      readOnly
+      hint="Hint: Read-only"
+    />
+  </div>
+  <div className="mb-4">
+    <ATextarea
+      label="Label"
+      validationState="warning"
+      placeholder="Warning State"
+      hint="Hint: Warning"
+    />
+  </div>
+  <div className="mb-4">
+    <ATextarea
+      label="Label"
+      validationState="danger"
+      placeholder="Danger State"
+      hint="Hint: Danger"
+    />
+  </div>
+</div>
+`}
+/>

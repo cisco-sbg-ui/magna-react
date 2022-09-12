@@ -1,0 +1,294 @@
+---
+name: Selects
+route: /components/select
+components: ASelect
+---
+
+# Selects
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {ASelect} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`() => {
+  const items = [
+    {id: 1, name: "Bread, Cereal, Rice, and Pasta"},
+    {id: 2, name: "Vegetables"},
+    {id: 3, name: "Fruit", selected: true},
+    {id: 4, name: "Milk, Yogurt, and Cheese"},
+    {id: 5, name: "Meat, Poultry, Fish", disabled: true},
+    {id: 6, name: "Fats, Oils, and Sweets"}
+  ];
+  const [selectedItem, setSelectedItem] = useState(items[2]);
+  return (
+    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+      <ASelect
+        label="Food Group"
+        items={items}
+        itemText="name"
+        itemValue="id"
+        placeholder="Pick a Food Group"
+        onSelected={(item) => setSelectedItem(item)}
+        hint={\`Selected Item: \${JSON.stringify(selectedItem)}\`}
+      />
+    </div>
+  );
+}
+`}
+/>
+
+## Select Props
+
+The `ASelect` component inherits passed props.
+
+<Props of="ASelect" />
+
+## Many Dropdown Options
+
+<Playground
+  code={`() => {
+    const items = useMemo(() => Array.from({length: 100}, (_, i) => (i + 1).toString()), []);
+    const [selectedItem, setSelectedItem] = useState();
+    // Add the maxHeight prop in order to prevent options from overflowing
+    return (
+      <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+        <ASelect
+          placeholder='Choose a Lucky Number'
+          maxHeight='300px'
+          label="Numbers"
+          items={items}
+          onSelected={(item) => setSelectedItem(item)}
+          hint={\`Your lucky number: \${JSON.stringify(selectedItem) || ''}\`}
+        />
+      </div>
+    )
+  }`}
+/>
+
+## Validation
+
+<Playground
+  code={`() => {
+  const [role, setRole] = useState(null);
+  return (
+    <ASelect
+      items={[
+        {value: 0, text: ""},
+        {value: 1, text: "Read"},
+        {value: 2, text: "Write"},
+        {value: 3, text: "Admin"}
+      ]}
+      label="Role"
+      required
+      rules={[
+        {
+          test: (v) => v.value !== 3 || "Role is set to Admin",
+          level: "warning"
+        }
+      ]}
+      onSelected={(item) => setRole(item)}
+    />
+  );
+}
+`}
+/>
+
+## Alternate Usage
+
+<Playground
+  code={`() => {
+  const items1 = [
+    {value: 1, text: "Aaa"},
+    {value: 2, text: "Bbb", selected: true},
+    {value: 3, text: "Ccc", disabled: true}
+  ];
+  const items2 = [
+    {value: 1, text: "111", disabled: true},
+    {value: 2, text: "222"},
+    {value: 3, text: "333", selected: true}
+  ];
+  const [itemSet, setItemSet] = useState("items1");
+  const [items, setItems] = useState(items1);
+  return (
+    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+      <h3>Dynamic Items</h3>
+      <ASelect items={items} />
+      <AButton
+        className="mt-2"
+        onClick={() => {
+          if (itemSet === "items1") {
+            setItemSet("items2");
+            setItems(items2);
+            return;
+          }
+          setItemSet("items1");
+          setItems(items1);
+        }}>
+        Swap Items
+      </AButton>
+    </div>
+  );
+}
+`}
+/>
+
+## States
+
+<Playground
+  code={`<>
+  <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+    <h3>Default Select</h3>
+    <ASelect
+      label="Food Group"
+      items={[
+        "Bread, Cereal, Rice, and Pasta",
+        "Vegetables",
+        "Fruit",
+        "Milk, Yogurt, and Cheese",
+        "Meat, Poultry, Fish",
+        "Fats, Oils, and Sweets"
+      ]}
+      placeholder="Pick a Food Group"
+      hint="Hint: Default"
+    />
+  </div>
+  <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+    <h3>Disabled Select</h3>
+    <ASelect
+      disabled
+      label="Food Group"
+      placeholder="Pick a Food Group"
+      hint="Hint: Disabled"
+    />
+  </div>
+  <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+    <h3>Read-only Select</h3>
+    <ASelect
+      readOnly
+      label="Food Group"
+      placeholder="Pick a Food Group"
+      hint="Hint: Read-only"
+      items={[
+        "Bread, Cereal, Rice, and Pasta",
+        "Vegetables",
+        "Fruit",
+        "Milk, Yogurt, and Cheese",
+        "Meat, Poultry, Fish",
+        "Fats, Oils, and Sweets"
+      ]}
+    />
+  </div>
+  <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+    <h3>Warning Select</h3>
+    <ASelect
+      validationState="warning"
+      label="Food Group"
+      placeholder="Pick a Food Group"
+      hint="Hint: Warning"
+      itemText="name"
+      itemValue="id"
+      items={[
+        {id: 1, name: "Bread, Cereal, Rice, and Pasta"},
+        {id: 2, name: "Vegetables"},
+        {id: 3, name: "Fruit"},
+        {id: 4, name: "Milk, Yogurt, and Cheese"},
+        {id: 5, name: "Meat, Poultry, Fish", disabled: true},
+        {id: 6, name: "Fats, Oils, and Sweets"}
+      ]}
+    />
+  </div>
+  <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+    <h3>Danger Select</h3>
+    <ASelect
+      validationState="danger"
+      label="Food Group"
+      placeholder="Pick a Food Group"
+      hint="Hint: Danger"
+      items={[
+        "Bread, Cereal, Rice, and Pasta",
+        "Vegetables",
+        "Fruit",
+        "Milk, Yogurt, and Cheese",
+        "Meat, Poultry, Fish",
+        "Fats, Oils, and Sweets"
+      ]}
+    />
+  </div>
+</>
+`}
+/>
+
+## Prepend/Append Content
+
+<Playground
+  code={`() => {
+  const [role, setRole] = useState(null);
+  return (
+    <ASelect
+      prependContent={<AListItem twoLine className="my-1 mx-2"><ATextInput prependIcon="search" /></AListItem>}
+      appendContent={<><ADivider className="ma-0" /><AListItem><AIcon size={12} left>add</AIcon>Add Role</AListItem></>}
+      items={[
+        {value: 1, text: "Read"},
+        {value: 2, text: "Write"},
+        {value: 3, text: "Admin"}
+      ]}
+      label="Role"
+      onSelected={(item) => setRole(item)}
+    />
+  );
+}
+`}
+/>
+
+## Menu Item Templates
+
+<Playground
+  code={`() => {
+  const [role, setRole] = useState(null);
+  const {isDark} = useATheme();
+  return (
+    <ASelect
+      dropdownClassName="custom-dropdown-class"
+      itemTemplate={({className, index, item, onClick, ...rest}) => (
+          <AListItem {...rest} twoLine className={className + (isDark ? " white--text" : " grey--darken-7--text")} style={{backgroundColor: "transparent"}}>
+            <AListItemContent onClick={onClick}>
+              <AListItemTitle>{item.text}</AListItemTitle>
+              <AListItemSubtitle>Created Date: {item.createdDate}</AListItemSubtitle>
+            </AListItemContent>
+            <AListItemAction>
+              <AButton icon tertiary><AIcon>edit</AIcon></AButton>
+            </AListItemAction>
+          </AListItem>
+        )
+      }
+      items={[
+        {value: 1, text: "Read", createdDate: "June 26, 2021"},
+        {value: 2, text: "Write", createdDate: "June 25, 2021"},
+        {value: 3, text: "Admin", createdDate: "June 24, 2021"}
+      ]}
+      label="Role"
+      onSelected={(item) => setRole(item)}
+    />
+  );
+}
+`}
+/>
+
+## Accessibility Notes
+
+In addition to inheriting all of the accessibility features of `AMenu`,
+the `ASelect` surface (the box with chevron) will select and focus previous/next items
+on `up` or `down` keys for the `keydown` event.
+
+Unlike the `AMenu` component, opening the menu will focus the selected item if one exists.
+
+Because the HTML `select` element is not used, the surface uses the
+[aria-labelledby](https://www.w3.org/TR/wai-aria/#aria-labelledby) attribute to refer to the
+label, if one is present.

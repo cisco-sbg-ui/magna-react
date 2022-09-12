@@ -1,0 +1,114 @@
+---
+name: Button Groups
+route: /components/button-group
+components: AButtonGroup
+---
+
+# Button Groups
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {AButtonGroup} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`() => {
+  const [selectedValues1, setSelectedValues1] = useState(["One", "Three"]);
+  const [selectedValues2, setSelectedValues2] = useState(["Two"]);
+  const [selectedValues3, setSelectedValues3] = useState(["bar"]);
+  return (
+    <>
+      <div>
+        <h3>Button Group - Multiple</h3>
+        <AButtonGroup
+          multiple
+          selectedValues={selectedValues1}
+          onChange={(_, selectedValues) =>
+            setSelectedValues1(selectedValues)
+          }>
+          <AButton value="One">One</AButton>
+          <AButton value="Two">Two</AButton>
+          <AButton value="Three">Three</AButton>
+        </AButtonGroup>
+        <p>Selected Values: {JSON.stringify(selectedValues1)}</p>
+      </div>
+      <ADivider />
+      <div>
+        <h3>Button Group - Single</h3>
+        <AButtonGroup
+          selectedValues={selectedValues2}
+          onChange={(_, selectedValues) =>
+            setSelectedValues2(selectedValues)
+          }>
+          <AButton value="One">One</AButton>
+          <AButton value="Two">Two</AButton>
+          <AButton value="Three">Three</AButton>
+        </AButtonGroup>
+        <p>Selected Values: {JSON.stringify(selectedValues2)}</p>
+      </div>
+      <ADivider />
+      <div>
+        <h3>Button Group - Icons</h3>
+        <AButtonGroup
+          selectedValues={selectedValues3}
+          onChange={(_, selectedValues) =>
+            setSelectedValues3(selectedValues)
+          }>
+          <AButton value="bar" icon>
+            <AIcon>chart-bar</AIcon>
+          </AButton>
+          <AButton value="line" icon>
+            <AIcon>chart-curve</AIcon>
+          </AButton>
+          <AButton value="pie" icon>
+            <AIcon>chart-pie</AIcon>
+          </AButton>
+        </AButtonGroup>
+        <p>Selected Values: {JSON.stringify(selectedValues3)}</p>
+      </div>
+    </>
+  );
+}
+`}
+/>
+
+## Button Group Props
+
+The `AButtonGroup` component inherits passed props.
+
+<Props of="AButtonGroup" />
+
+## Validation
+
+<Playground
+  code={`() => {
+  const [selectedValues, setSelectedValues] = useState(["Two"]);
+  return (
+    <>
+      <AButtonGroup
+        hint="Not One and Three!"
+        label="Validated Button Group"
+        multiple
+        required
+        rules={[{
+          test: (v) => !v.includes("One") || !v.includes("Three") || "Whatever you do, not One AND Three."
+        }]}
+        selectedValues={selectedValues}
+        onChange={(_, selectedValues) =>
+          setSelectedValues(selectedValues)
+        }>
+        <AButton value="One">One</AButton>
+        <AButton value="Two">Two</AButton>
+        <AButton value="Three">Three</AButton>
+      </AButtonGroup>
+      <p>Selected Values: {JSON.stringify(selectedValues)}</p>
+    </>
+  );
+}
+`}
+/>

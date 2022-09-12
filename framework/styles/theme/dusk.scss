@@ -1,0 +1,251 @@
+$atomic-dusk: (
+  "accordion": (
+    "header-bg-color": rgba(map-get($dusk, "1"), $alpha-3),
+    "header-collapsed-bg-color": map-get($dusk, "6"),
+    "body-bg": transparent
+  ),
+  "alert": (
+    "bg": map-get($status-blue, "burnt-4"),
+    "border-color": map-get($status-blue, "burnt-3"),
+    "success-bg": map-get($status-green, "burnt-4"),
+    "success-border-color": map-get($status-green, "burnt-3"),
+    "warning-bg": map-get($status-orange, "burnt-4"),
+    "warning-border-color": map-get($status-orange, "burnt-3"),
+    "danger-bg": map-get($status-red, "burnt-4"),
+    "danger-border-color": map-get($status-red, "burnt-3")
+  ),
+  "app": (
+    "scrollbar": (
+      "track-bg": rgba(map-get($grey, "lighten-6"), $alpha-1),
+      "track-border-color": rgba(map-get($grey, "lighten-5"), $alpha-1),
+      "thumb-bg": rgba(map-get($grey, "lighten-6"), $alpha-2)
+    ),
+    "code": (
+      "bg": map-get($dusk, "6"),
+      "color": map-get($status-green, "burnt-1")
+    )
+  ),
+  "badge": (
+    "border-color": transparent
+  ),
+  "base": (
+    "bg": map-get($grey, "darken-7"),
+    "brand-color": map-get($cisco-blue, "wash-1"),
+    "color": map-get($grey, "lighten-5"),
+    "color--active": map-get($cisco-blue, "base"),
+    "color--hover": map-get($cisco-blue, "burnt-1"),
+    "color--selected": map-get($cisco-blue, "base"),
+    "inverse-color": map-get($grey, "lighten-5"),
+    "pg-bg": map-get($grey, "darken-7"),
+    "stroke-color": rgba(map-get($grey, "base"), $alpha-7),
+    "box-shadow": 0 0 2px 2px rgba(map-get($cisco-blue, "wash-1"), 0.4),
+    "outline": 1px solid map-get($cisco-blue, "wash-1")
+  ),
+  "button": (
+    "primary": (
+      "bg": map-get($cisco-blue, "burnt-2"),
+      "bg--active": map-get($cisco-blue, "base"),
+      "bg--hover": map-get($indigo-blue, "base"),
+      "bg--focus": map-get($indigo-blue, "base"),
+      "bg--disabled": map-get($indigo-blue, "burnt-1"),
+      "border": map-get($cisco-blue, "burnt-2"),
+      "border--active": map-get($indigo-blue, "base"),
+      "border--hover": map-get($indigo-blue, "base"),
+      "border--focus": map-get($cisco-blue, "burnt-2"),
+      "border--disabled": map-get($indigo-blue, "burnt-1"),
+      "color": map-get($grey, "lighten-5"),
+      "color--disabled": map-get($grey, "lighten-5"),
+      "opacity--disabled": calc($alpha-6 + .06)
+    ),
+    "secondary": (
+      "bg--hover": map-get($status-blue, "burnt-4"),
+      "bg--active": map-get($status-blue, "burnt-4"),
+      "bg--focus": rgba(map-get($cisco-blue, "burnt-3"), $alpha-5),
+      "border": map-get($cisco-blue, "burnt-2"),
+      "border--hover": map-get($indigo-blue, "base"),
+      "border--active": map-get($indigo-blue, "base"),
+      "border--focus": map-get($cisco-blue, "burnt-2"),
+      "border--disabled": map-get($indigo-blue, "base"),
+      "color": map-get($cisco-blue, "wash-1"),
+      "color--hover": map-get($cisco-blue, "wash-1"),
+      "color--active": map-get($cisco-blue, "wash-1"),
+      "color--focus": map-get($cisco-blue, "wash-1"),
+      "color--disabled": map-get($cisco-blue, "wash-1")
+    ),
+    "tertiary": (
+      "bg--hover": map-get($status-blue, "burnt-4"),
+      "bg--active": map-get($status-blue, "burnt-4"),
+      "border--focus": map-get($cisco-blue, "wash-1"),
+      "color": map-get($cisco-blue, "wash-1"),
+      "color--hover": map-get($cisco-blue, "wash-1"),
+      "color--active": map-get($cisco-blue, "wash-1"),
+      "color--focus": map-get($cisco-blue, "wash-1"),
+      "color--disabled": map-get($cisco-blue, "wash-1"),
+      "opacity--disabled": $alpha-8,
+      "alt": (
+        "bg": transparent,
+        "bg--active": map-get($cisco-blue, "wash-4"),
+        "color": map-get($grey, "lighten-6"),
+        "color--active": map-get($cisco-blue, "wash-1"),
+        "opacity--disabled": $alpha-6
+      )
+    ),
+    "group": (
+      "color": map-get($grey, "lighten-5")
+    )
+  ),
+  "checkbox": (
+    "label-color--disabled": rgba(map-get($grey, "lighten-5"), $alpha-4)
+  ),
+  "color": (
+    "warning--state-hover": map-get($status-orange, "wash-1"),
+    "error--state-hover": map-get($status-red, "wash-1")
+  ),
+  "control": (
+    "fill-color": map-get($dusk, "6"),
+    "fill-color--disabled": rgba(map-get($grey, "lighten-3"), $alpha-3),
+    "stroke-color": rgba(map-get($grey, "lighten-3"), $alpha-2),
+    "stroke-color--hover": map-get($grey, "lighten-1"),
+    "stroke-color--disabled": rgba(map-get($grey, "lighten-2"), $alpha-3),
+    "warning-color": map-get($status-orange, "base"),
+    "error-color": map-get($status-red, "wash-1")
+  ),
+  "date-picker": (
+    "header-border-color": rgba(map-get($grey, "base"), $alpha-3),
+    "range-bg": rgba(map-get($grey, "lighten-5"), $alpha-2)
+  ),
+  "divider": (
+    "color-default": rgba(map-get($grey, "lighten-3"), $alpha-5),
+    "color-light": rgba(map-get($grey, "lighten-3"), $alpha-3),
+    "color-lighter": rgba(map-get($grey, "lighten-3"), $alpha-15)
+  ),
+  "footer": (
+    "border-color": rgba(map-get($grey, "lighten-5"), $alpha-2),
+    "color": map-get($grey, "lighten-3")
+  ),
+  "header": (
+    "bg-color": map-get($dusk, "4"),
+    "icon-color": map-get($grey, "lighten-3"),
+    "control-text-color": map-get($grey, "lighten-3")
+  ),
+  "label": (
+    "color": map-get($grey, "lighten-2")
+  ),
+  "link": (
+    "color": map-get($cisco-blue, "wash-1"),
+    "color--hover": map-get($cisco-blue, "wash-1"),
+    "color--active": map-get($cisco-blue, "base"),
+    "color--focus": map-get($cisco-blue, "wash-1"),
+    "color--visited": map-get($cisco-blue, "burnt-1"),
+    "color--disabled": map-get($grey, "lighten-5"),
+    "opacity--disabled": $alpha-4
+  ),
+  "loader": (
+    "background-color": map-get($dusk, "6")
+  ),
+  "panel": (
+    "bg":
+      linear-gradient(
+        125.59deg,
+        rgba(map-get($dusk, "2"), $alpha-6) 0%,
+        rgba(map-get($dusk, "5"), $alpha-6) 100%
+      ),
+    "bg-gray":
+      linear-gradient(
+        125.59deg,
+        rgba(map-get($dusk, "2"), $alpha-6) 0%,
+        rgba(map-get($dusk, "5"), $alpha-6) 100%
+      ),
+    "dialog-header-bg": map-get($dusk, "4"),
+    "dialog-footer-bg": map-get($dusk, "4")
+  ),
+  "progressbar": (
+    "disabled-bg-color": rgba(map-get($cisco-blue, "base"), $alpha-3)
+  ),
+  "radio": (
+    "bg--disabled": transparent,
+    "border--active--hover": map-get($cisco-blue, "base"),
+    "border--checked": map-get($cisco-blue, "base"),
+    "border--disabled": map-get($grey, "lighten-2"),
+    "border--enabled--active": map-get($cisco-blue, "burnt-1"),
+    "box-bg--disabled": map-get($dusk, "1"),
+    "box-border--enabled--hover": map-get($grey, "lighten-1"),
+    "fill--active--hover": map-get($cisco-blue, "base"),
+    "fill--checked--hover": map-get($cisco-blue, "base"),
+    "fill--enabled": map-get($cisco-blue, "burnt-1"),
+    "label-color--disabled": rgba(map-get($grey, "lighten-5"), $alpha-4),
+    "opacity-disabled": $alpha-6
+  ),
+  "select": (
+    "border-color--focus": map-get($cisco-blue, "burnt-1")
+  ),
+  "slider": (
+    "opacity-disabled": $alpha-3,
+    "selection-bg-disabled": map-get($cisco-blue, "base"),
+    "handle-border-disabled": map-get($cisco-blue, "base")
+  ),
+  "steps": (
+    "step-icon-border-color": rgba(map-get($grey, "lighten-2"), $alpha-3),
+    "step-line-color": rgba(map-get($grey, "lighten-2"), $alpha-3)
+  ),
+  "switch": (
+    "bg": rgba(map-get($grey, "darken-4"), $alpha-8),
+    "bg--checked": map-get($cisco-blue, "base"),
+    "bg--disabled": rgba(map-get($grey, "darken-4"), $alpha-8),
+    "bg--disabled--checked": map-get($cisco-blue, "base"),
+    "circle-border-color": rgba(map-get($grey, "darken-4"), $alpha-8),
+    "circle-border-color--checked": map-get($cisco-blue, "base"),
+    "circle-border-color--checked--hover": map-get($cisco-blue, "base"),
+    "circle-border-color--disabled": rgba(map-get($grey, "darken-4"), $alpha-8),
+    "circle-border-color--disabled--checked": map-get($cisco-blue, "base"),
+    "circle--inner-border-active": rgba(map-get($grey, "darken-4"), $alpha-8),
+    "circle--inner-border-active-hover": map-get($cisco-blue, "burnt-1"),
+    "circle--inner-border-checked-active": map-get($cisco-blue, "base"),
+    "circle--inner-border-checked-active-hover": map-get($cisco-blue, "base"),
+    "circle--inner-box-shadow-hover": map-get($cisco-blue, "burnt-1"),
+    "circle--inner-box-shadow-checked-hover": map-get($cisco-blue, "base"),
+    "circle--inner-box-shadow-checked-active": map-get($cisco-blue, "base"),
+    "circle--inner-box-shadow-checked-active-hover":
+      map-get($cisco-blue, "burnt-1"),
+    "label-color--disabled": rgba(map-get($grey, "lighten-5"), $alpha-4),
+    "opacity-disabled": $alpha-3
+  ),
+  "table": (
+    "bg":
+      linear-gradient(
+        125.59deg,
+        rgba(map-get($dusk, "2"), $alpha-6) 0%,
+        rgba(map-get($dusk, "5"), $alpha-6) 100%
+      ),
+    "header-color": map-get($grey, "lighten-1"),
+    "row-hover-color": map-get($dusk, "6"),
+    "row-stripe-color": transparent
+  ),
+  "tabs": (
+    "oversized-background-color": transparent,
+    "oversized--hover-background-color": transparent
+  ),
+  "tag": (
+    "bg-color": map-get($grey, "darken-5"),
+    "color": $white
+  ),
+  "text-input": (
+    "bg": transparent,
+    "color--disabled": rgba(map-get($grey, "lighten-5"), $alpha-4),
+    "bg--disabled": rgba(map-get($dusk, "1"), $alpha-3),
+    "border-color--disabled": transparent,
+    "border-color--readonly": rgba(map-get($grey, "lighten-2"), $alpha-3),
+    "bg--readonly": rgba(map-get($grey, "lighten-6"), $alpha-1)
+  ),
+  "timeline": (
+    "item-bg-hover-color": map-get($dusk, "6"),
+    "icon-border-color": map-get($grey, "darken-4"),
+    "icon-bg-color": map-get($grey, "lighten-3")
+  ),
+  "tree": (
+    "color": map-get($grey, "lighten-5"),
+    "background-color--focus": map-get($grey, "darken-5"),
+    "background-color--hover": map-get($grey, "darken-4"),
+    "box-shadow": 5px 0 0 map-get($cisco-blue, "burnt-1") inset
+  )
+);

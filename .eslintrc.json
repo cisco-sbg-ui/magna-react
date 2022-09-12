@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "plugin:cypress/recommended",
+    "plugin:import/recommended",
+    "plugin:jsx-a11y/recommended",
+    "next",
+    "prettier"
+  ],
+  "globals": {
+    "module": true,
+    "process": true,
+    "require": true,
+    "Buffer": true,
+    "__dirname": true
+  },
+  "plugins": ["anti-trojan-source"]
+}

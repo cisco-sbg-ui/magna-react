@@ -1,0 +1,8 @@
+.a-menu-base {
+  visibility: hidden;
+  position: absolute;
+  z-index: 8;
+  &--active {
+    visibility: visible;
+  }
+}

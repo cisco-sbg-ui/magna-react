@@ -1,0 +1,58 @@
+---
+name: Loaders
+route: /components/loader
+components: ACiscoLoader, ADotLoader, APageLoader
+---
+
+# Loaders
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {
+  ACiscoLoader,
+  ADotLoader,
+  APageLoader
+} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`<div>
+  <h3>Cisco Loader</h3>
+  <ACiscoLoader className="mx-auto" />
+  <ADivider />
+  <h3>Dot Loader</h3>
+  <ADotLoader className="mx-auto" />
+  <ADivider />
+  <h3>Page Loader</h3>
+  <APageLoader size="small" className="d-block mx-auto" />
+</div>
+`}
+/>
+
+## Cisco Loader Props
+
+The `ACiscoLoader` component inherits passed props.
+
+<Props of="ACiscoLoader" />
+
+## Dot Loader Props
+
+The `ADotLoader` component inherits passed props.
+
+<Props of="ADotLoader" />
+
+## Page Loader Props
+
+The `APageLoader` component inherits passed props.
+
+<Props of="APageLoader" />
+
+## Accessibility Notes
+
+By default, `ACiscoLoader`, `ADotLoader`, and `APageLoader` are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [progressbar](https://www.w3.org/TR/wai-aria/#progressbar).
+Additionally applied are the suggested `aria-valuemin` and `aria-valuemax` set at `0` and `100`, respectively, although all loaders are indeterminate.

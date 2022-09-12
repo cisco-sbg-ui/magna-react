@@ -1,0 +1,44 @@
+@import "../../styles";
+
+@include theme(a-combobox) using ($theme) {
+  &__menu-items.a-menu {
+    border-color: map-deep-get($theme, "select", "border-color--focus");
+  }
+}
+
+.a-combobox {
+  &__input {
+    background: transparent;
+    box-sizing: border-box;
+    color: currentColor;
+    width: 100%;
+    position: relative;
+    padding: 2px 0 0 6px;
+    border: none;
+    appearance: none;
+    text-indent: 1px;
+    align-self: stretch;
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__chevron {
+    cursor: pointer;
+    padding: 0 7px;
+    align-self: stretch;
+  }
+
+  &__menu-item.a-list-item {
+    min-height: 28px;
+    line-height: $line-height--lg;
+    padding: 2px 0 0 0;
+    text-indent: 6px;
+  }
+
+  &.a-input-base--clearable {
+    .a-combobox__menu-items {
+      right: -50px;
+    }
+  }
+}

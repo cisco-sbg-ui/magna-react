@@ -1,0 +1,48 @@
+@include themeElement(a) using ($theme) {
+  color: map-deep-get($theme, "link", "color");
+
+  &:hover {
+    color: map-deep-get($theme, "link", "color--hover");
+  }
+
+  &:focus {
+    color: map-deep-get($theme, "link", "color--focus");
+  }
+
+  &:active {
+    color: map-deep-get($theme, "link", "color--active");
+  }
+
+  &.disabled {
+    color: map-deep-get($theme, "link", "color--disabled");
+  }
+}
+
+.a-app a {
+  text-decoration: none;
+  &:hover,
+  &:focus,
+  &:active,
+  &:visited {
+    text-decoration: none;
+  }
+
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: underline;
+  }
+
+  .a-icon {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  &.disabled {
+    text-decoration: none;
+  }
+}

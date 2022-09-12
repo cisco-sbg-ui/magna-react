@@ -1,0 +1,290 @@
+---
+name: Text Inputs
+route: /components/text-input
+components: ATextInput
+---
+
+# Text Inputs
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {ATextInput} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`() => {
+  const [status, setStatus] = useState("default");
+  const [value, setValue] = useState("autoFocused clearable");
+  return (
+    <div style={{maxWidth: 250}}>
+      <ATextInput
+        autoFocus={true}
+        clearable
+        label="Location"
+        onChange={(e) => {
+          setValue(e.target.value);
+          setStatus(
+            e.target.value.length === 0
+              ? "danger"
+              : e.target.value.length < 3
+              ? "warning"
+              : "default"
+          );
+        }}
+        onClear={() => {
+          setStatus("default");
+        }}
+        placeholder="ZIP or City, State"
+        prependIcon="global-view"
+        validationState={status}
+        value={value}
+      />
+    </div>
+  );
+}
+`}
+/>
+
+## Text Input Props
+
+The `ATextInput` component inherits passed props.
+
+<Props of="ATextInput" />
+
+## Numeric Input
+
+<Playground
+  code={`() => {
+  const [value1, setValue1] = useState(1);
+  const [value2, setValue2] = useState("");
+  return (
+    <div style={{maxWidth: 250}}>
+      <div className="mb-4">
+        <ATextInput
+          type="number"
+          label="Number Type"
+          placeholder="Placeholder"
+          value={value1}
+          onChange={(e) => setValue1(e.target.value)}
+        />
+      </div>
+      <div className="mb-4">
+        <ATextInput
+          clearable
+          type="number"
+          label="Number Type with Appended Icon"
+          placeholder="Placeholder"
+          appendIcon="information"
+          value={value2}
+          onChange={(e) => setValue2(e.target.value)}
+        />
+      </div>
+      <div className="mb-4">
+        <ATextInput
+          clearable
+          disabled
+          type="number"
+          label="Disabled with Appended Icon"
+          placeholder="Disabled"
+          appendIcon="information"
+          value={value2}
+          onChange={(e) => setValue2(e.target.value)}
+        />
+      </div>
+      <div className="mb-4">
+        <ATextInput
+          clearable
+          readOnly
+          type="number"
+          label="Read-only with Appended Icon"
+          placeholder="Read-only"
+          appendIcon="information"
+          value={value2}
+          onChange={(e) => setValue2(e.target.value)}
+        />
+      </div>
+    </div>
+  );
+}
+`}
+/>
+
+## Validation
+
+<Playground
+  code={`() => {
+  const [email, setEmail] = useState("");
+  const [value, setValue] = useState("");
+  const [favoriteNumber1, setFavoriteNumber1] = useState("");
+  const [favoriteNumber2, setFavoriteNumber2] = useState("");
+  const [favoriteNumber3, setFavoriteNumber3] = useState("");
+  return (
+    <div>
+      <h3>Required Field</h3>
+      <ATextInput
+        label="Name"
+        onChange={(e) => {
+          setValue(e.target.value);
+        }}
+        placeholder="Firstname Lastname"
+        value={value}
+        required
+        maxLength={50}
+        hint="Your name"
+      />
+      <h3>Email Field</h3>
+      <ATextInput
+        label="Email Address"
+        onChange={(e) => {
+          setEmail(e.target.value);
+        }}
+        placeholder="email@example.com"
+        value={email}
+        validateOnBlur
+        required
+        rules={[
+          {
+            test: (value) =>
+              !["@gmail.com", "@hotmail.com"].some((v) =>
+                value.includes(v)
+              ) || "Please provide a business email address",
+            level: "warning"
+          },
+          {
+            test: (value) =>
+              /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value) ||
+              "Invalid Email",
+            level: "danger"
+          }
+        ]}
+        hint="Your email address"
+      />
+      <h3>Numeric Fields</h3>
+      <ATextInput
+        type="number"
+        label="Favorite Number 0-1000"
+        min={0}
+        max={1000}
+        step={100}
+        required
+        value={favoriteNumber1}
+        onChange={(e) => setFavoriteNumber1(e.target.value)}
+      />
+      <ATextInput
+        type="number"
+        label="A Positive Number"
+        min={0}
+        step={333}
+        required
+        value={favoriteNumber2}
+        onChange={(e) => setFavoriteNumber2(e.target.value)}
+      />
+      <ATextInput
+        type="number"
+        label="Less than 1000"
+        max={1000}
+        step={333}
+        required
+        value={favoriteNumber3}
+        onChange={(e) => setFavoriteNumber3(e.target.value)}
+      />
+    </div>
+  );
+}
+`}
+/>
+
+## States
+
+<Playground
+  code={`<div style={{maxWidth: 250}}>
+  <div className="mb-4">
+    <ATextInput label="Label" placeholder="Normal" />
+  </div>
+  <div className="mb-4">
+    <ATextInput
+      label="Label"
+      placeholder="Normal"
+      prependIcon="cisco"
+      appendIcon="information"
+      onClickAppend={() => alert("Information!")}
+      onClickPrepend={() => alert("Cisco Systems!")}
+      hint="Hint: Normal"
+    />
+  </div>
+  <div className="mb-4">
+    <ATextInput label="Label" placeholder="Disabled" disabled />
+  </div>
+  <div className="mb-4">
+    <ATextInput
+      label="Label"
+      placeholder="Disabled"
+      disabled
+      prependIcon="cisco"
+      appendIcon="information"
+      hint="Hint: Disabled"
+    />
+  </div>
+  <div className="mb-4">
+    <ATextInput label="Label" placeholder="Read-only State" readOnly />
+  </div>
+  <div className="mb-4">
+    <ATextInput
+      label="Label"
+      placeholder="Read-only State"
+      readOnly
+      prependIcon="cisco"
+      appendIcon="information"
+      onClickPrepend={() => alert("Cisco Systems!")}
+      hint="Hint: Read-only"
+    />
+  </div>
+  <div className="mb-4">
+    <ATextInput
+      label="Label"
+      validationState="warning"
+      placeholder="Warning State"
+    />
+  </div>
+  <div className="mb-4">
+    <ATextInput
+      label="Label"
+      validationState="warning"
+      placeholder="Warning"
+      prependIcon="cisco"
+      appendIcon="information"
+      hint="Hint: Warning"
+    />
+  </div>
+  <div className="mb-4">
+    <ATextInput
+      label="Label"
+      validationState="danger"
+      placeholder="Danger State"
+    />
+  </div>
+  <div className="mb-4">
+    <ATextInput
+      label="Label"
+      validationState="danger"
+      placeholder="Danger State"
+      prependIcon="cisco"
+      appendIcon="information"
+      onClickPrepend={() => alert("Cisco Systems!")}
+      hint="Hint: Danger"
+    />
+  </div>
+</div>
+`}
+/>
+
+## Accessibility Notes
+
+The `ATextInput` `click` event handlers for prepended and appended icons are triggered both by the `click` event and by the `keyDown` event for both the `Enter` and `Space` keys.
+
+Interactable prepended and appended icons are tab-focusable with a visual overlay, as well as assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [button](https://www.w3.org/TR/wai-aria/#button).

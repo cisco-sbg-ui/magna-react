@@ -1,0 +1,186 @@
+---
+name: Tabs
+route: /components/tab
+components: ATabGroup, ATab, ATabHeading
+---
+
+# Tabs
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {ATabGroup, ATab, ATabHeading} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+### Uncontrolled Mode
+
+<Playground
+  code={`<ATabGroup>
+  <ATab>One</ATab>
+  <ATab>Two</ATab>
+  <ATab selected>Three</ATab>
+</ATabGroup>
+`}
+/>
+
+### Controlled Mode
+
+<Playground
+  code={`() => {
+  const tabs = ["One", "Two", "Three"];
+  const [activeTab, setActiveTab] = useState(tabs[2]);
+  return (
+    <ATabGroup>
+      {tabs.map((x) => (
+        <ATab
+          key={x}
+          tabKey={x}
+          onClick={() => setActiveTab(x)}
+          selected={x === activeTab}>
+          {x}
+        </ATab>
+      ))}
+    </ATabGroup>
+  );
+}
+`}
+/>
+
+## Tab Group Props
+
+The `ATabGroup` component inherits passed props.
+
+<Props of="ATabGroup" />
+
+## Tab Props
+
+The `ATab` component inherits passed props.
+
+<Props of="ATab" />
+
+## Scrolling
+
+<Playground
+  code={`<>
+  <ATabGroup scrolling className="mb-6">
+    <ATab>One</ATab>
+    <ATab>Two</ATab>
+    <ATab>Three</ATab>
+    <ATab>Four</ATab>
+    <ATab>Five</ATab>
+    <ATab>Six</ATab>
+    <ATab selected>Seven</ATab>
+    <ATab>Eight</ATab>
+    <ATab>Nine</ATab>
+    <ATab>Ten</ATab>
+    <ATab>Eleven</ATab>
+    <ATab>Twelve</ATab>
+  </ATabGroup>
+  <p>If tabs do not exceed the container width, scrolling buttons will not show.</p>
+  <ATabGroup scrolling>
+    <ATab selected>One</ATab>
+    <ATab>Two</ATab>
+    <ATab>Three</ATab>
+  </ATabGroup>
+</>
+`}
+/>
+
+## Links
+
+Tabs will render in the DOM as anchor tags if the `href` property is defined.
+
+<Playground
+  code={`<ATabGroup tall>
+  <ATab selected>One</ATab>
+  <ATab href="https://www.github.com">GitHub</ATab>
+  <ATab href="https://www.cisco.com" target="_blank">
+    Cisco.com
+  </ATab>
+</ATabGroup>
+`}
+/>
+
+## Display Variants
+
+### Tall
+
+<Playground
+  code={`<ATabGroup tall>
+  <ATab>One</ATab>
+  <ATab selected>Two</ATab>
+  <ATab>Three</ATab>
+</ATabGroup>
+`}
+/>
+
+### Oversized
+
+<Playground
+  code={`<>
+  <ATabGroup oversized>
+    <ATab>
+      <ATabHeading>Heading One</ATabHeading>
+      Subtext One
+    </ATab>
+    <ATab>
+      <ATabHeading>Heading Two</ATabHeading>
+      Subtext Two
+    </ATab>
+    <ATab selected>
+      <ATabHeading>Heading Three</ATabHeading>
+      Subtext Three
+    </ATab>
+  </ATabGroup>
+  <ATabGroup oversized scrolling>
+    <ATab>
+      <ATabHeading>Heading One</ATabHeading>
+      Subtext One
+    </ATab>
+    <ATab>
+      <ATabHeading>Heading Two</ATabHeading>
+      Subtext Two
+    </ATab>
+    <ATab selected>
+      <ATabHeading>Heading Three</ATabHeading>
+      Subtext Three
+    </ATab>
+    <ATab>
+      <ATabHeading>Heading Four</ATabHeading>
+      Subtext Four
+    </ATab>
+    <ATab>
+      <ATabHeading>Heading Five</ATabHeading>
+      Subtext Five
+    </ATab>
+    <ATab>
+      <ATabHeading>Heading Six</ATabHeading>
+      Subtext Six
+    </ATab>
+  </ATabGroup>
+</>
+`}
+/>
+
+## Router Integrations
+
+On `ATab`, set the `component` property to your router's link type, for example:
+
+```
+// With react-router:
+<ATab component={RouterLink} to="/">Tab 1</ATab>
+```
+
+## Accessibility Notes
+
+By default, `ATabGroup` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [tablist](https://www.w3.org/TR/wai-aria/#tablist).
+
+By default, `ATab` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [tab](https://www.w3.org/TR/wai-aria/#tab).
+
+The `ATab` `click` event handler is triggered both by the `click` event and by the `keyDown` event for the `Enter` key.
+
+Each `ATab` component is tab-focusable with a visual overlay.

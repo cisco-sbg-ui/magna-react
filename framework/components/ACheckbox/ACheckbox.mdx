@@ -1,0 +1,179 @@
+---
+name: Checkboxes
+route: /components/checkbox
+components: ACheckbox
+---
+
+# Checkboxes
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {ACheckbox} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`() => {
+  const [checked, setChecked] = useState(false);
+  const [indeterminate, setIndeterminate] = useState(false);
+  const [disabled, setDisabled] = useState(false);
+  const [wrap, setWrap] = useState(false);
+  const [color, setColor] = useState();
+  return (
+    <div>
+      <h3>Example</h3>
+      <ACheckbox
+        checked={checked}
+        color={color}
+        disabled={disabled}
+        indeterminate={indeterminate}
+        wrap={wrap}>
+        {LoremIpsum}
+      </ACheckbox>
+      <ADivider />
+      <h3>Options</h3>
+      <div className="d-flex mt-4 flex-column">
+        <ACheckbox checked={checked} onClick={() => setChecked(!checked)}>
+          Checked State
+        </ACheckbox>
+        <ACheckbox
+          checked={indeterminate}
+          onClick={() => setIndeterminate(!indeterminate)}>
+          Indeterminate State
+        </ACheckbox>
+        <ACheckbox checked={disabled} onClick={() => setDisabled(!disabled)}>
+          Disabled State
+        </ACheckbox>
+        <ACheckbox checked={wrap} onClick={() => setWrap(!wrap)}>
+          Wrap Label
+        </ACheckbox>
+        <ASelect
+          label="Color"
+          items={[
+            "cisco-blue",
+            "grape",
+            "magenta--burnt-1",
+            "fern--wash-1",
+            "rgba(238, 85, 65, 0.8)"
+          ]}
+          onSelected={(value) => setColor(value)}
+        />
+      </div>
+    </div>
+  );
+}
+`}
+/>
+
+## Checkbox Props
+
+The `ACheckbox` component inherits passed props.
+
+<Props of="ACheckbox" />
+
+## Validation
+
+<Playground
+  code={`() => {
+  const [checked, setChecked] = useState(false);
+  return (
+    <div>
+      <h3>Checkbox with Validation</h3>
+      <ACheckbox
+        checked={checked}
+        onClick={() => setChecked(!checked)}
+        required
+        rules={[
+          {
+            test: (v) => !v || "Your information is sold to third parties",
+            level: "warning"
+          }
+        ]}>
+        I accept the terms.
+      </ACheckbox>
+    </div>
+  );
+}
+`}
+/>
+
+## States
+
+<Playground
+  fullWidthPreview
+  code={`<div className="d-flex">
+  <div className="d-flex flex-column">
+    <h3>Default Color</h3>
+    <ACheckbox>Default</ACheckbox>
+    <ACheckbox checked>Checked</ACheckbox>
+    <ACheckbox indeterminate>Indeterminate</ACheckbox>
+    <ACheckbox disabled>Disabled</ACheckbox>
+    <ACheckbox disabled checked>
+      Disabled and Checked
+    </ACheckbox>
+    <ACheckbox disabled indeterminate>
+      Disabled and Indeterminate
+    </ACheckbox>
+  </div>
+  <div className="d-flex flex-column ml-4">
+    <h3>Warning State</h3>
+    <ACheckbox validationState="warning">Default</ACheckbox>
+    <ACheckbox validationState="warning" checked>
+      Checked
+    </ACheckbox>
+    <ACheckbox validationState="warning" indeterminate>
+      Indeterminate
+    </ACheckbox>
+    <ACheckbox validationState="warning" disabled>
+      Disabled
+    </ACheckbox>
+    <ACheckbox validationState="warning" disabled checked>
+      Disabled and Checked
+    </ACheckbox>
+    <ACheckbox validationState="warning" disabled indeterminate>
+      Disabled and Indeterminate
+    </ACheckbox>
+  </div>
+  <div className="d-flex flex-column ml-4">
+    <h3>Danger State</h3>
+    <ACheckbox validationState="danger">Default</ACheckbox>
+    <ACheckbox validationState="danger" checked>
+      Checked
+    </ACheckbox>
+    <ACheckbox validationState="danger" indeterminate>
+      Indeterminate
+    </ACheckbox>
+    <ACheckbox validationState="danger" disabled>
+      Disabled
+    </ACheckbox>
+    <ACheckbox validationState="danger" disabled checked>
+      Disabled and Checked
+    </ACheckbox>
+    <ACheckbox validationState="danger" disabled indeterminate>
+      Disabled and Indeterminate
+    </ACheckbox>
+  </div>
+</div>
+`}
+/>
+
+## Label wrap
+
+<Playground
+  code={`<div className="d-flex flex-column">
+  <ACheckbox>Very long truncated text. {LoremIpsum}</ACheckbox>
+  <ACheckbox wrap>Very long wrapping text. {LoremIpsum}</ACheckbox>
+</div>
+`}
+/>
+
+## Accessibility Notes
+
+By default, `ACheckbox` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [checkbox](https://www.w3.org/TR/wai-aria/#checkbox).
+
+The `ACheckbox` component uses the [aria-checked](https://www.w3.org/TR/wai-aria/#aria-checked) attribute to express the input checked state.
+The `ACheckbox` component uses the [aria-disabled](https://www.w3.org/TR/wai-aria/#aria-disabled) attribute to express the input disabled state.

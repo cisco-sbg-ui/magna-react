@@ -1,0 +1,35 @@
+@import "../../styles";
+
+$icon-size-large: rem(3);
+$icon-size-medium: $font-size--xl;
+$icon-size-small: $font-size;
+
+svg.a-icon {
+  box-sizing: content-box;
+}
+
+.a-icon {
+  overflow: visible;
+  width: 24px;
+  fill: currentColor;
+
+  &--size-large {
+    width: $icon-size-large;
+  }
+
+  &--size-medium {
+    width: $icon-size-medium;
+  }
+
+  &--size-small {
+    width: $icon-size-small;
+  }
+
+  &--left {
+    margin-right: 5px;
+  }
+
+  &--right {
+    margin-left: 5px;
+  }
+}

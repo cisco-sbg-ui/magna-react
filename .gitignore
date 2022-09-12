@@ -1,0 +1,13 @@
+/.cache/
+/.next/
+/.vercel/
+/.nyc_output/
+/coverage/
+/cypress/snapshots/actual/
+/cypress/snapshots/diff/
+/lib/
+/node_modules/
+
+/babel-preset.js
+/babel-preset-local.js
+.idea/

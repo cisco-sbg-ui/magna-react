@@ -1,0 +1,90 @@
+{
+  "hits": [
+    {
+      "author": "Unknown",
+      "title": "The Epic Of Gilgamesh",
+      "year": -1700,
+      "objectID": "140886000",
+      "_highlightResult": {
+        "author": {
+          "value": "Unknown",
+          "matchLevel": "none",
+          "matchedWords": []
+        },
+        "title": {
+          "value": "The Epic Of <em>Gi</em>lgamesh",
+          "matchLevel": "full",
+          "fullyHighlighted": false,
+          "matchedWords": [
+            "gi"
+          ]
+        },
+        "year": {
+          "value": "-1700",
+          "matchLevel": "none",
+          "matchedWords": []
+        }
+      }
+    },
+    {
+      "author": "Giacomo Leopardi",
+      "title": "Poems",
+      "year": 1818,
+      "objectID": "140938000",
+      "_highlightResult": {
+        "author": {
+          "value": "<em>Gi</em>acomo Leopardi",
+          "matchLevel": "full",
+          "fullyHighlighted": false,
+          "matchedWords": [
+            "gi"
+          ]
+        },
+        "title": {
+          "value": "Poems",
+          "matchLevel": "none",
+          "matchedWords": []
+        },
+        "year": {
+          "value": "1818",
+          "matchLevel": "none",
+          "matchedWords": []
+        }
+      }
+    },
+    {
+      "author": "Giovanni Boccaccio",
+      "title": "The Decameron",
+      "year": 1351,
+      "objectID": "140893000",
+      "_highlightResult": {
+        "author": {
+          "value": "<em>Gi</em>ovanni Boccaccio",
+          "matchLevel": "full",
+          "fullyHighlighted": false,
+          "matchedWords": [
+            "gi"
+          ]
+        },
+        "title": {
+          "value": "The Decameron",
+          "matchLevel": "none",
+          "matchedWords": []
+        },
+        "year": {
+          "value": "1351",
+          "matchLevel": "none",
+          "matchedWords": []
+        }
+      }
+    }
+  ],
+  "nbHits": 3,
+  "page": 0,
+  "nbPages": 1,
+  "hitsPerPage": 5,
+  "exhaustiveNbHits": true,
+  "query": "gi",
+  "params": "query=gi&hitsPerPage=5",
+  "processingTimeMS": 1
+}

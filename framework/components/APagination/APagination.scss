@@ -1,0 +1,69 @@
+@import "../../styles";
+
+.a-pagination {
+  display: flex;
+  align-items: center;
+
+  &__previous.a-button--icon,
+  &__next.a-button--icon,
+  &__first.a-button--icon,
+  &__last.a-button--icon {
+    height: 28px;
+    padding: 0 1px;
+  }
+
+  &__previous {
+    margin-right: 10px;
+  }
+
+  &__next {
+    margin-left: 10px;
+  }
+
+  &__first {
+    margin-left: 10px;
+  }
+
+  .a-button-group {
+    margin: 0 5px;
+
+    .a-button {
+      padding: 0 7px;
+      height: 23px;
+    }
+  }
+
+  &__results-per-page {
+    display: flex;
+    align-items: center;
+
+    .a-text-input {
+      width: 35px;
+      margin-right: 5px;
+
+      &__input {
+        padding-left: 0;
+        text-align: center;
+      }
+    }
+  }
+
+  &__results {
+    margin-left: 20px;
+  }
+
+  &__page-selection {
+    display: flex;
+    align-items: center;
+
+    .a-text-input {
+      width: 35px;
+      margin-right: 5px;
+
+      &__input {
+        padding-left: 0;
+        text-align: center;
+      }
+    }
+  }
+}

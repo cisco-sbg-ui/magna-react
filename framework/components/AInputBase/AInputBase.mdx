@@ -1,0 +1,94 @@
+---
+name: Input Base
+route: /extend/input-base
+components: AInputBase
+---
+
+# Input Base Component
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {AInputBase} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`<div style={{maxWidth: 300}}>
+  <AInputBase
+    append="[Append]"
+    prepend="[Prepend]"
+    className="mb-3"
+    clearable
+    onClear={() => alert("cleared")}
+    label="Label - Normal"
+    hint="This is a sample of hint text below a form input">
+    [Children]
+  </AInputBase>
+  <AInputBase
+    append="[Append]"
+    prepend="[Prepend]"
+    className="mb-3"
+    clearable
+    onClear={() => alert("cleared")}
+    label="Label - Focused"
+    hint="This is a sample of hint text below a form input"
+    focused>
+    [Children]
+  </AInputBase>
+  <AInputBase
+    append="[Append]"
+    prepend="[Prepend]"
+    className="mb-3"
+    clearable
+    onClear={() => alert("cleared")}
+    label="Label - Read-only"
+    hint="This is a sample of hint text below a form input"
+    readOnly>
+    [Children]
+  </AInputBase>
+  <AInputBase
+    append="[Append]"
+    prepend="[Prepend]"
+    className="mb-3"
+    clearable
+    onClear={() => alert("cleared")}
+    label="Label - Disabled"
+    hint="This is a sample of hint text below a form input"
+    disabled>
+    [Children]
+  </AInputBase>
+  <AInputBase
+    append="[Append]"
+    prepend="[Prepend]"
+    className="mb-3"
+    clearable
+    onClear={() => alert("cleared")}
+    label="Label - Warning"
+    hint="This is a sample of hint text below a form input"
+    validationState="warning">
+    [Children]
+  </AInputBase>
+  <AInputBase
+    append="[Append]"
+    prepend="[Prepend]"
+    className="mb-3"
+    clearable
+    onClear={() => alert("cleared")}
+    label="Label - Danger"
+    hint="This is a sample of hint text below a form input"
+    validationState="danger">
+    [Children]
+  </AInputBase>
+</div>
+`}
+/>
+
+## Input Base Props
+
+The `AInputBase` component inherits passed props.
+
+<Props of="AInputBase" />

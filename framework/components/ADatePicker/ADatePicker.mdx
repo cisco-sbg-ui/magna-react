@@ -1,0 +1,103 @@
+---
+name: Date Pickers
+route: /components/date-picker
+components: ADatePicker, useDateRange
+---
+
+# Date Picker
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {ADatePicker} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`() => {
+  const [date, setDate] = useState(new Date(2021, 0, 14));
+  return (
+    <ADatePicker value={date} onChange={(date) => setDate(date)} />
+  );
+}
+`}
+/>
+
+### With Minimum and Maximum Dates
+
+<Playground
+  code={`() => {
+  const earliestDay = new Date(2022, 2, 13);
+  const latestDay = new Date(earliestDay);
+  latestDay.setDate(earliestDay.getDate() + 13);
+  const [date, setDate] = useState(earliestDay);
+  return (
+    <ADatePicker value={date} onChange={(date) => setDate(date)} minDate={earliestDay} maxDate={latestDay}/>
+  );
+}
+`}
+/>
+
+## Date Range
+
+<Playground
+  code={`() => {
+  const { value, onChange, } = useADateRange();
+  return (
+    <ADatePicker value={value} onChange={onChange} />
+  );
+}
+`}
+/>
+
+### Date Range with Initial Range
+
+<Playground
+  code={`() => {
+  const { value, onChange, } = useADateRange([new Date(2022, 2, 28), new Date(2022, 3, 5)]);
+  const [firstSelection, secondSelection] = value;
+  // You can destructure the values from useADateRange to use ...
+  // ... the date picker's range value in your component
+  return (
+    <>
+      <ADatePicker value={value} onChange={onChange} />
+        <p aria-live="polite">
+          Selected range: <i>{firstSelection && firstSelection.toLocaleDateString()} - {secondSelection && secondSelection.toLocaleDateString()}</i>
+        </p>
+    </>
+  );
+}
+`}
+/>
+
+### Date Range with Maximum Days
+<Playground
+  code={`() => {
+  const { value, ...datePickerProps } = useADateRange({
+    initialRange: [new Date(2022, 2, 14), new Date(2022, 2, 16)],
+    maxDays: 3
+  });
+  const [firstSelection, secondSelection] = value;
+  // Alternatively, you can spread out the remaining values ...
+  // ... to be passed to the date picker
+  return (
+    <>
+      <ADatePicker value={value} {...datePickerProps} />
+      <p aria-live="polite">
+        Selected range: <i>{firstSelection && firstSelection.toLocaleDateString()} - {secondSelection && secondSelection.toLocaleDateString()}</i>
+      </p>
+    </>
+  );
+}
+`}
+/>
+
+
+## Date Picker Props
+
+The `ADatePicker` component inherits passed props.
+
+<Props of="ADatePicker" />

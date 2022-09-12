@@ -1,0 +1,134 @@
+---
+name: Layouts
+route: /components/layout
+components: AContainer, ARow, ACol, ASpacer
+---
+
+# Layouts
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {
+  AContainer,
+  ARow,
+  ACol,
+  ASpacer
+} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  fullWidthPreview
+  code={`<AContainer>
+  <ARow className="mb-4">
+    <ACol className="dark-cool-grey white--text text-center">1 column</ACol>
+  </ARow>
+  <ARow className="mb-4">
+    <ACol className="dark-cool-grey white--text text-center">
+      First column
+    </ACol>
+    <ACol className="dark-cool-grey white--text text-center">
+      Second column
+    </ACol>
+    <ACol className="dark-cool-grey white--text text-center">
+      Third column
+    </ACol>
+  </ARow>
+  <ARow className="mb-4">
+    <ACol cols="6" className="dark-cool-grey white--text text-center">
+      First column - 6 cols wide
+    </ACol>
+    <ASpacer />
+    <ACol cols="3" className="dark-cool-grey white--text text-center">
+      Last column - 3 cols wide
+    </ACol>
+  </ARow>
+</AContainer>
+`}
+/>
+
+## Container Props
+
+The `AContainer` component inherits passed props.
+
+<Props of="AContainer" />
+
+## Row Props
+
+The `ARow` component inherits passed props.
+
+<Props of="ARow" />
+
+## Column Props
+
+The `ACol` component inherits passed props.
+
+<Props of="ACol" />
+
+## Spacer Props
+
+The `ASpacer` component inherits passed props.
+
+<Props of="ASpacer" />
+
+## Advanced Usage
+
+<Playground
+  fullWidthPreview
+  code={`<AContainer>
+  <ARow
+    noGutters
+    className="mb-3 cisco-blue white--text"
+    style={{boxShadow: "0 0 3px #000", borderRadius: 3}}>
+    <ACol className="d-flex align-center pl-3">
+      <AIcon size={64}>cisco</AIcon>
+      <div className="h2 mr-1 ml-4">Title</div>
+    </ACol>
+    <ASpacer />
+    <ACol className="d-flex align-center justify-end pr-3">
+      <AIcon>settings</AIcon>
+    </ACol>
+  </ARow>
+  <ARow>
+    <ASpacer />
+    <ACol cols="8">
+      <APanel className="px-2" type="grey">
+        <AContainer>
+          <ARow>
+            <ACol>
+              <h3>Form</h3>
+              <p>
+                Please submit the following form. Responsive trigger at 986px.
+              </p>
+            </ACol>
+          </ARow>
+          <ARow>
+            <ACol cols="12" sm="6">
+              <ATextInput label="Name" />
+            </ACol>
+            <ACol>
+              <ASelect items={["Read", "Write", "Admin"]} label="Role" />
+            </ACol>
+          </ARow>
+          <ARow>
+            <ACol>
+              <ATextarea label="Comments" style={{width: "100%"}} />
+            </ACol>
+          </ARow>
+          <ARow>
+            <ACol className="text-right">
+              <AButton>Submit</AButton>
+            </ACol>
+          </ARow>
+        </AContainer>
+      </APanel>
+    </ACol>
+    <ASpacer />
+  </ARow>
+</AContainer>
+`}
+/>

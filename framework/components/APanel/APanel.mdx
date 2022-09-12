@@ -1,0 +1,139 @@
+---
+name: Panels
+route: /components/panel
+components: APanel, APanelTitle, APanelHeader, APanelBody, APanelFooter
+---
+
+# Panels
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {
+  APanel,
+  APanelHeader,
+  APanelFooter,
+  APanelBody,
+  APanelTitle
+} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`<APanel>
+  <APanelHeader>
+    <APanelTitle>Feature: Panels</APanelTitle>
+    <AIcon>settings</AIcon>
+  </APanelHeader>
+  <APanelBody>
+    Panels create a sense of discreteness in the content.
+  </APanelBody>
+  <APanelFooter>Use panels today!</APanelFooter>
+</APanel>
+`}
+/>
+
+## Props
+
+All Panel components (`APanel`, `APanelHeader`, `APanelTitle`, `APanelBody`, `APanelFooter`) inherit passed props.
+
+### Panel Props
+
+<Props of="APanel" />
+
+### Panel Title Props
+
+<Props of="APanelTitle" />
+
+## Variants
+
+<Playground
+  fullWidthPreview
+  code={`<>
+  <div className="d-flex">
+    <APanel style={{flexBasis: "33%"}}>
+      <APanelHeader>
+        <APanelTitle>Feature: Panels</APanelTitle>
+        <AIcon>settings</AIcon>
+      </APanelHeader>
+      <APanelBody>
+        Panels create a sense of discreteness in the content.
+      </APanelBody>
+      <APanelFooter>Use panels today!</APanelFooter>
+    </APanel>
+    <APanel type="grey" style={{flexBasis: "33%"}}>
+      <APanelHeader>
+        <APanelTitle>Feature: Panels</APanelTitle>
+        <AIcon>settings</AIcon>
+      </APanelHeader>
+      <APanelBody>
+        Panels create a sense of discreteness in the content.
+      </APanelBody>
+      <APanelFooter>Use panels today!</APanelFooter>
+    </APanel>
+    <APanel type="white" style={{flexBasis: "33%"}}>
+      <APanelHeader>
+        <APanelTitle>Feature: Panels</APanelTitle>
+        <AIcon>settings</AIcon>
+      </APanelHeader>
+      <APanelBody>
+        Panels create a sense of discreteness in the content.
+      </APanelBody>
+      <APanelFooter>Use panels today!</APanelFooter>
+    </APanel>
+  </div>
+  <div style={{padding: 20, position: "relative", minWidth: 300}}>
+    <APanel type="dialog" style={{zIndex: 1}}>
+      <APanelHeader>
+        <APanelTitle>Feature: Panels</APanelTitle>
+        <AIcon>close</AIcon>
+      </APanelHeader>
+      <APanelBody>
+        Panels create a sense of discreteness in the content.
+      </APanelBody>
+      <APanelFooter>Use panels today!</APanelFooter>
+    </APanel>
+    <div
+      style={{
+        backgroundColor: "#000",
+        opacity: 0.5,
+        position: "absolute",
+        top: 0,
+        bottom: 0,
+        right: 0,
+        left: 0
+      }}></div>
+  </div>
+</>`}
+/>
+
+## Panel Title Sizes
+
+<Playground
+  code={`<>
+  <APanel>
+    <APanelHeader>
+      <APanelTitle>Feature: Panels</APanelTitle>
+      <AIcon>settings</AIcon>
+    </APanelHeader>
+    <APanelBody>
+      Panels create a sense of discreteness in the content.
+    </APanelBody>
+    <APanelFooter>Use panels today!</APanelFooter>
+  </APanel>
+  <APanel>
+    <APanelHeader>
+      <APanelTitle small>Feature: Panels</APanelTitle>
+      <AIcon>settings</AIcon>
+    </APanelHeader>
+    <APanelBody>
+      Panels create a sense of discreteness in the content.
+    </APanelBody>
+    <APanelFooter>Use panels today!</APanelFooter>
+  </APanel>
+</>
+`}
+/>

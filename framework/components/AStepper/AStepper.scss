@@ -1,0 +1,139 @@
+@import "../../styles/index.scss";
+
+@include theme(a-steps) using ($theme) {
+  .a-step {
+    &__icon {
+      border: $border-width solid
+        map-deep-get($theme, "steps", "step-icon-border-color");
+    }
+    &__active {
+      .a-step__icon {
+        background: map-get($theme, "base", "color--selected");
+        color: map-get($theme, "base", "inverse-color");
+        border: $border-width solid map-get($theme, "base", "color--selected");
+      }
+    }
+    &__divider {
+      background-color: map-deep-get($theme, "steps", "step-line-color");
+    }
+    &__visited {
+      .a-step__divider {
+        background-color: $color-good;
+      }
+    }
+  }
+  &--orientation-vertical {
+    .a-step {
+      &:after {
+        background-color: map-deep-get($theme, "steps", "step-line-color");
+      }
+    }
+  }
+}
+
+.a-steps {
+  display: flex;
+  flex: 1;
+  align-items: top;
+  justify-content: space-around;
+  margin: 0 auto 20px;
+  padding: 20px 0;
+  text-align: center;
+  .a-step {
+    position: relative;
+    display: inline-flex;
+    flex: 1;
+    &__icon {
+      width: 24px;
+      min-width: 24px;
+      max-width: 24px;
+      height: 24px;
+      line-height: $line-height--lg;
+      font-size: $font-size--xs;
+      margin: 10px;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      z-index: 1;
+      &__checkmark {
+        color: $color-good;
+      }
+    }
+    &__content {
+      width: 100%;
+      text-align: left;
+      margin: 12px 0 0 0;
+    }
+    &__label {
+      color: map-get($grey, "darken-4");
+      font-size: $font-size--sm;
+      display: flex;
+      align-items: center;
+    }
+    &__divider {
+      flex-grow: 1;
+      border: 0px;
+      height: 1px;
+    }
+    &__title {
+      padding: 0 10px 0 0;
+    }
+    &__hint {
+      color: map-get($grey, "darken-2");
+      font-size: 13px;
+      line-height: 20px;
+    }
+    &__disabled {
+      color: map-get($grey, "darken-4");
+    }
+
+    &__visited {
+      .a-step__icon {
+        border: $border-width solid $color-good;
+      }
+    }
+    &:last-child {
+      .a-step__divider {
+        display: none;
+      }
+    }
+  }
+  &--orientation-vertical {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    .a-step {
+      display: flex;
+      &__divider {
+        display: none;
+      }
+      .a-step__icon {
+        flex: 1;
+      }
+      &__content {
+        flex: 2;
+        align-self: center;
+      }
+      &__visited {
+        &.a-step:after {
+          background: $color-good;
+        }
+      }
+      &:last-child {
+        &:after {
+          display: none;
+        }
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        width: 1px;
+        height: calc(100% - 40px);
+        left: 22px;
+        top: 44px;
+      }
+    }
+  }
+}

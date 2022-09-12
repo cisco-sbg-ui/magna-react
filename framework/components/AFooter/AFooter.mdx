@@ -1,0 +1,45 @@
+---
+name: Footers
+route: /components/footer
+components: AFooter, AFooterLegal
+---
+
+# Footers
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {AFooter, AFooterLegal} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`<AFooter>
+  <AFooterLegal>
+    &copy; 2020 Cisco Systems, Inc. Cisco, Cisco Systems and{" "}
+    <a href="https://www.cisco.com">Cisco Systems</a> logo are registered
+    trademarks of Cisco Systems, Inc. and/or its affiliates in the U.S. and
+    certain other countries.
+  </AFooterLegal>
+</AFooter>
+`}
+/>
+
+## Props
+
+All Footer components (`AFooter`, `AFooterLegal`) inherit passed props.
+
+### Footer Props
+
+<Props of="AFooter" />
+
+### Footer Legal Props
+
+<Props of="AFooterLegal" />
+
+## Accessibility Notes
+
+By default, `AFooter` is assigned the [TR](https://www.w3.org/TR/html51/) tag of [footer](https://www.w3.org/TR/html51/sections.html#elementdef-footer) which denotes that it represents a footer for its nearest ancestor sectioning content or sectioning root element. A footer typically contains information about its section such as who wrote it, links to related documents, copyright data, and the like.

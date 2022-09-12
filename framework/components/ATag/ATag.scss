@@ -1,0 +1,49 @@
+@import "../../styles";
+
+$tag-height: 22px;
+$tag-font-size: $font-size--xs;
+$tag-padding: 0 12px;
+$tag-border-radius: $border-radius--sm;
+$tag-icon-font-size: $font-size--xxs;
+
+@include theme(a-tag) using ($theme) {
+  background-color: map-deep-get($theme, "tag", "bg-color");
+  color: map-deep-get($theme, "tag", "color");
+
+  &.interactable {
+    cursor: pointer;
+
+    &:focus {
+      box-shadow: map-deep-get($theme, "base", "box-shadow");
+    }
+
+    &:hover,
+    &:focus {
+      color: map-deep-get($theme, "tag", "color");
+    }
+  }
+}
+
+.a-tag {
+  display: inline-flex;
+  height: $tag-height;
+  font-size: $tag-font-size;
+  line-height: 22px;
+  align-items: center;
+  padding: $tag-padding;
+  border-radius: $tag-border-radius;
+  vertical-align: middle;
+
+  &.interactable {
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+
+  .a-icon {
+    width: $tag-icon-font-size;
+  }
+}

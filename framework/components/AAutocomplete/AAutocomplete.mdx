@@ -1,0 +1,331 @@
+---
+name: Autocompletes
+route: /components/autocomplete
+components: AAutocomplete
+---
+
+# Autocompletes
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {AAutocomplete} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`() => {
+/*
+  import algoliasearch from "algoliasearch";
+  import debounce from "lodash.debounce";
+*/
+  const client = algoliasearch(
+    "NUT7B5FGKT",
+    "6e8a1bb15c50d7e391219fa54b2bd109"
+  );
+  const index = client.initIndex("Books");
+  const searchCallback = async function (rawTerm) {
+    const term = (rawTerm || "").trim();
+    if (searchRunning || term.length === 0 || term === previousTerm) {
+      return;
+    }
+    setSearchRunning(true);
+    // Atomic behavior specifies 2 seconds before showing the loader.
+    let loadingTimeout = setTimeout(() => {
+      setLoading(true);
+    }, 2000);
+    const {hits} = await index.search(term, {
+      hitsPerPage: 5
+    });
+    clearTimeout(loadingTimeout);
+    setLoading(false);
+    setPreviousTerm(term);
+    // In a non-example implementation, you'd likely decode the HTML rather than use the following.
+    setItems(
+      hits.map((x) => ({
+        text: (
+          <>
+            <span
+              dangerouslySetInnerHTML={{
+                __html: x._highlightResult.title.value
+              }}
+            />
+            ,
+            <span
+              dangerouslySetInnerHTML={{
+                __html: x._highlightResult.author.value
+              }}
+            />
+            ,
+            <span
+              dangerouslySetInnerHTML={{
+                __html: x._highlightResult.year.value
+              }}
+            />
+          </>
+        ),
+        value: x.title,
+        title: x.title,
+        author: x.author,
+        year: x.year
+      }))
+    );
+    setSearchRunning(false);
+  };
+  const [searchRunning, setSearchRunning] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [previousTerm, setPreviousTerm] = useState();
+  const [value, setValue] = useState("");
+  const [items, setItems] = useState();
+  const onChange = useCallback(debounce(searchCallback, 350), []);
+  useEffect(() => {
+    onChange(value);
+  }, [value]);
+  return (
+    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+      <h3>
+        Autocomplete Book Search
+      </h3>
+      <AAutocomplete
+        clearable={value.length > 0}
+        label="Book Search"
+        loading={loading}
+        items={items}
+        placeholder="Title, Author or Year"
+        onSelected={(item) => {
+          setValue(item.title);
+        }}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        hint="Book search by Title, Author, and Year"
+        noDataContent="No results."
+      />
+    </div>
+  );
+}
+`}
+/>
+
+## Autocomplete Props
+
+The `AAutocomplete` component inherits passed props.
+
+<Props of="AAutocomplete" />
+
+## Validation
+
+<Playground
+  code={`() => {
+  const items = [
+    "Bread, Cereal, Rice, and Pasta",
+    "Vegetables",
+    "Fruit",
+    "Milk, Yogurt, and Cheese",
+    "Meat, Poultry, Fish",
+    "Fats, Oils, and Sweets"
+  ];
+  const [value, setValue] = useState("");
+  const [filteredItems, setFilteredItems] = useState(items);
+  const [validateOnBlur, setValidateOnBlur] = useState(true);
+  return (
+    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+      <AAutocomplete
+        clearable
+        label="Food Group"
+        items={filteredItems}
+        placeholder="Pick a Food Group"
+        onSelected={(item) => {
+          setValue(item);
+        }}
+        required
+        rules={[
+          {
+            test: (v) => /[A-Z]+/.test(v) || "Must have a capital letter",
+            level: "warning"
+          }
+        ]}
+        value={value}
+        onChange={(e) => {
+          setFilteredItems(
+            items.filter((x) =>
+              x.toLowerCase().includes(e.target.value.toLowerCase())
+            )
+          );
+          setValue(e.target.value);
+        }}
+        validateOnBlur={validateOnBlur}
+      />
+      <ADivider />
+      <ASwitch
+        checked={validateOnBlur}
+        onClick={() => setValidateOnBlur(!validateOnBlur)}>
+        Postpone validation until blur
+      </ASwitch>
+    </div>
+  );
+}
+`}
+/>
+
+## States
+
+<Playground
+  code={`<>
+  <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+    <h3>Default Autocomplete</h3>
+    <div>
+      <AAutocomplete
+        label="Food Group"
+        placeholder="Pick a Food Group"
+        hint="Hint: Default"
+        items={["Bread, Cereal, Rice, and Pasta", "Vegetables", "Fruit", "Milk, Yogurt, and Cheese", "Meat, Poultry, Fish", "Fats, Oils, and Sweets"]}
+      />
+    </div>
+  </div>
+  <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+    <h3 style={{minWidth: 250}}>Disabled Autocomplete</h3>
+    <AAutocomplete
+      disabled
+      label="Food Group"
+      placeholder="Pick a Food Group"
+      hint="Hint: Disabled"
+      items={["Bread, Cereal, Rice, and Pasta", "Vegetables", "Fruit", "Milk, Yogurt, and Cheese", "Meat, Poultry, Fish", "Fats, Oils, and Sweets"]}
+    />
+  </div>
+  <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+    <h3>Read-only Autocomplete</h3>
+    <AAutocomplete
+      readOnly
+      label="Food Group"
+      placeholder="Pick a Food Group"
+      hint="Hint: Read-only"
+      items={["Bread, Cereal, Rice, and Pasta", "Vegetables", "Fruit", "Milk, Yogurt, and Cheese", "Meat, Poultry, Fish", "Fats, Oils, and Sweets"]}
+    />
+  </div>
+  <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+    <h3>Warning Autocomplete</h3>
+    <AAutocomplete
+      label="Food Group"
+      placeholder="Pick a Food Group"
+      hint="Hint: Warning"
+      validationState="warning"
+      items={["Bread, Cereal, Rice, and Pasta", "Vegetables", "Fruit", "Milk, Yogurt, and Cheese", "Meat, Poultry, Fish", "Fats, Oils, and Sweets"]}
+    />
+  </div>
+  <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+    <h3>Danger Autocomplete</h3>
+    <AAutocomplete
+      label="Food Group"
+      placeholder="Pick a Food Group"
+      hint="Hint: Danger"
+      validationState="danger"
+      items={["Bread, Cereal, Rice, and Pasta", "Vegetables", "Fruit", "Milk, Yogurt, and Cheese", "Meat, Poultry, Fish", "Fats, Oils, and Sweets"]}
+    />
+  </div>
+</>`}
+/>
+
+## Prepend/Append Content
+
+<Playground
+  code={`() => {
+  const items = [
+    "Bread, Cereal, Rice, and Pasta",
+    "Vegetables",
+    "Fruit",
+    "Milk, Yogurt, and Cheese",
+    "Meat, Poultry, Fish",
+    "Fats, Oils, and Sweets"
+  ];
+  const [value, setValue] = useState("");
+  const [filteredItems, setFilteredItems] = useState(items);
+  return (
+    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+      <AAutocomplete
+        prependContent={<AListItem twoLine className="my-1 mx-2">Advertisement</AListItem>}
+        appendContent={<><ADivider className="ma-0" /><AListItem><AIcon size={12} left>add</AIcon>Add Role</AListItem></>}
+        clearable
+        label="Food Group"
+        items={filteredItems}
+        placeholder="Pick a Food Group"
+        onSelected={(item) => {
+          setValue(item);
+        }}
+        value={value}
+        onChange={(e) => {
+          setFilteredItems(
+            items.filter((x) =>
+              x.toLowerCase().includes(e.target.value.toLowerCase())
+            )
+          );
+          setValue(e.target.value);
+        }}
+      />
+    </div>
+  );
+}
+`}
+/>
+
+## Menu Item Templates
+
+<Playground
+  code={`() => {
+  const items = [
+    {id: 1, name: "Bread, Cereal, Rice, and Pasta", healthy: true},
+    {id: 2, name: "Vegetables", healthy: true},
+    {id: 3, name: "Fruit", selected: true, healthy: true},
+    {id: 4, name: "Milk, Yogurt, and Cheese", healthy: true},
+    {id: 5, name: "Meat, Poultry, Fish", disabled: true, healthy: true},
+    {id: 6, name: "Fats, Oils, and Sweets", healthy: false}
+  ];
+  const [value, setValue] = useState("");
+  const [filteredItems, setFilteredItems] = useState(items);
+  const {isDark} = useATheme();
+  return (
+    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+      <AAutocomplete
+        itemTemplate={({className, index, item, onClick, ...rest}) => (
+          <AListItem {...rest} twoLine className={className + (isDark ? " white--text" : " grey--darken-7--text")} style={{backgroundColor: "transparent"}}>
+            <AListItemContent onClick={onClick}>
+              <AListItemTitle>{item.name}</AListItemTitle>
+              <AListItemSubtitle>Healthy? {item.healthy ? "Yes" : "No"}</AListItemSubtitle>
+            </AListItemContent>
+            <AListItemAction>
+              <AButton icon tertiary><AIcon>edit</AIcon></AButton>
+            </AListItemAction>
+          </AListItem>
+        )}
+        clearable
+        label="Food Group"
+        itemText="name"
+        itemValue="id"
+        items={filteredItems}
+        placeholder="Pick a Food Group"
+        onSelected={(item) => {
+          setValue(item.name);
+        }}
+        value={value}
+        onChange={(e) => {
+          setFilteredItems(
+            items.filter((x) =>
+              x.name.toLowerCase().includes(e.target.value.toLowerCase())
+            )
+          );
+          setValue(e.target.value);
+        }}
+      />
+    </div>
+  );
+}
+`}
+/>
+
+## Accessibility Notes
+
+`AAutocomplete` inherits the accessibility features of `AMenu`.
+
+The `AAutocomplete` component will select and focus previous/next items on `up` or `down` keys for the `keydown` event.

@@ -1,0 +1,38 @@
+---
+name: Breakpoint
+route: /services/breakpoint
+components: useABreakpoint
+---
+
+# Breakpoint Service
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {useABreakpoint} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`() => {
+  const breakpointHelper = useABreakpoint();
+  return (
+    <p>
+      {breakpointHelper.xs && "Extra Small"}
+      {breakpointHelper.sm && "Small"}
+      {breakpointHelper.md && "Medium"}
+      {breakpointHelper.lg && "Large"}
+      {breakpointHelper.xl && "Extra Large"}
+      <br />
+      Full Object:
+      <pre><code>
+      {JSON.stringify(breakpointHelper, null, 2)}
+      </code></pre>
+    </p>
+  );
+}
+`}
+/>

@@ -1,0 +1,196 @@
+@import "../../styles";
+
+$tabs-padding: 0;
+$tabs-margin: 10px 0 0;
+$tab-font-size: $font-size--sm;
+$tab-bottom-bar-height: -6px;
+$tab-top-bar-height: 5px;
+$tab-min-width: 75px;
+$tab-padding-top: 0;
+$tab-padding-right: 15px;
+$tab-padding-bottom: 12px;
+$tab-padding-left: 15px;
+$tab-margin: 0 0 1px 0;
+$tab-heading-margin: 0;
+$tab-heading-font-size: $font-size--xl;
+$tab-tall-padding: 0 15px 19px 15px;
+$tab-tall-margin: 0;
+$tab-oversized-height: 110px;
+$tab-oversized--selected-background-color: transparent;
+$tab-oversized-padding: 11px 15px 50px 15px;
+$tab-oversized-margin: 0;
+
+@include theme(a-tab-group) using ($theme) {
+  &__tab {
+    color: map-deep-get($theme, "base", "color");
+    &--selected {
+      @include tab-bar(
+        $tab-bottom-bar-height,
+        map-deep-get($theme, "base", "color--selected")
+      );
+    }
+
+    &:active,
+    &:focus,
+    &:hover {
+      color: map-deep-get($theme, "base", "color");
+    }
+
+    &:hover {
+      @include tab-bar(
+        $tab-bottom-bar-height,
+        map-deep-get($theme, "base", "color--hover")
+      );
+    }
+
+    &:focus {
+      outline: map-deep-get($theme, "base", "outline");
+      @include tab-bar(
+        $tab-bottom-bar-height,
+        map-deep-get($theme, "base", "color--hover")
+      );
+    }
+  }
+
+  &--size-oversized {
+    .a-tab-group__tab {
+      border-top: $border-width solid
+        map-deep-get($theme, "control", "stroke-color");
+      border-bottom: $border-width solid
+        map-deep-get($theme, "control", "stroke-color");
+      border-left: $border-width solid
+        map-deep-get($theme, "control", "stroke-color");
+      background-color: map-deep-get(
+        $theme,
+        "tabs",
+        "oversized-background-color"
+      );
+
+      &:last-of-type {
+        border-right: $border-width solid
+          map-deep-get($theme, "control", "stroke-color");
+      }
+
+      &--selected {
+        background-color: $tab-oversized--selected-background-color;
+        border-top: $border-width solid transparent;
+        border-bottom: $border-width solid transparent;
+        @include tab-bar(
+          $tab-top-bar-height,
+          map-deep-get($theme, "base", "color--selected")
+        );
+      }
+
+      &:focus,
+      &:hover {
+        border-top: $border-width solid transparent;
+        @include tab-bar(
+          $tab-top-bar-height,
+          map-deep-get($theme, "base", "color--hover")
+        );
+        background-color: map-deep-get(
+          $theme,
+          "tabs",
+          "oversized--hover-background-color"
+        );
+      }
+    }
+  }
+}
+
+.a-tab-group {
+  margin: $tabs-margin;
+  padding: $tabs-padding;
+  list-style: none;
+  background-color: transparent;
+  display: flex;
+
+  &__tab-wrapper {
+    display: flex;
+  }
+
+  &--scrolling {
+    .a-tab-group__tab-wrapper {
+      white-space: nowrap;
+      overflow: hidden;
+      padding: 1px 1px;
+      display: flex;
+      flex-wrap: nowrap;
+    }
+
+    .a-tab-group__tab {
+      flex-shrink: 0;
+    }
+  }
+
+  &__tab-content {
+    display: flex;
+  }
+
+  &__scroll-left,
+  &__scroll-right {
+    margin-top: -10px;
+    flex-shrink: 0;
+  }
+
+  &__tab {
+    display: inline-block;
+    margin: $tab-margin;
+    padding-top: $tab-padding-top;
+    padding-right: $tab-padding-right;
+    padding-bottom: $tab-padding-bottom;
+    padding-left: $tab-padding-left;
+    min-width: $tab-min-width;
+    border: none;
+    text-align: center;
+    user-select: none;
+    font-size: $tab-font-size;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:active {
+      outline: none;
+    }
+  }
+
+  .a-tab-group__tab {
+    text-decoration: none;
+
+    &:active,
+    &:focus,
+    &:hover {
+      text-decoration: none;
+      outline-offset: 0;
+    }
+  }
+
+  &--size-tall {
+    .a-tab-group__tab {
+      padding: $tab-tall-padding;
+      margin: $tab-tall-margin;
+    }
+  }
+
+  &--size-oversized {
+    display: flex;
+
+    .a-tab-group__tab {
+      text-align: left;
+      height: $tab-oversized-height;
+      margin: $tab-oversized-margin;
+      padding: $tab-oversized-padding;
+    }
+  }
+
+  &__tab-heading {
+    margin: $tab-heading-margin;
+    font-size: $tab-heading-font-size;
+    display: block;
+  }
+}
+
+.a-app--animated .a-tab-group {
+  &__tab-content {
+    transition: transform $transition-duration--fast ease;
+  }
+}

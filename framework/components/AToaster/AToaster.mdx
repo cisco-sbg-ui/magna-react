@@ -1,0 +1,120 @@
+---
+name: Toaster
+route: /services/toaster
+components: useAToaster
+---
+
+# Toasts
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {useAToaster} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`() => {
+  const {addToast} = useAToaster();
+  return (
+    <div>
+      <h3>Toaster</h3>
+      <p>
+        <AButton
+          className="d-flex mb-2"
+          onClick={() => {
+            addToast({
+              level: "info",
+              title: "Info Toast",
+              children: "This is an info toast that will disappear in 5 seconds"
+            });
+          }}>
+          Add Info Toast
+        </AButton>
+        <AButton
+          className="d-flex mb-2"
+          onClick={() => {
+            addToast(
+              {
+                level: "success",
+                title: "Success Toast",
+                children: "This is a success toast that will disappear in 3 seconds"
+              },
+              3000
+            );
+          }}>
+          Add Success Toast w/Custom Timeout
+        </AButton>
+        <AButton
+          className="d-flex mb-2"
+          onClick={() => {
+            addToast({
+              level: "warning",
+              title: "Warning Toast",
+              children: "This is a warning toast that can be disappeared before the timeout elapses",
+              dismissable: true
+            });
+          }}>
+          Add Warning Toast w/Dismissable
+        </AButton>
+        <AButton
+          className="d-flex mb-2"
+          onClick={() => {
+            addToast(
+              {
+                level: "danger",
+                title: "Danger Toast",
+                children: "This is a danger toast that will never disappear unless the user dismisses it",
+                dismissable: true
+              },
+              -1
+            );
+          }}>
+          Add Danger Toast w/No Timeout
+        </AButton>
+        <AButton
+          className="d-flex mb-2"
+          onClick={() => {
+            addToast(
+              {
+                level: "warning",
+                title: "Warning Toast",
+                children: "This toast is presented in the top-center of the viewport",
+                dismissable: true,
+                placement: "top"
+              },
+            );
+          }}>
+          Add Top-Centered Warning Toast
+        </AButton>
+        <AButton
+          className="d-flex mb-2"
+          onClick={() => {
+            addToast(
+              {
+                level: "info",
+                title: "Incoming Maintenance",
+                children: "Server maintenance will begin in 10 minutes.",
+                dismissable: true,
+                placement: "top"
+              },
+              -1
+            );
+          }}>
+          Add Top-Centered Info Toast w/ No Timeout
+        </AButton>
+      </p>
+    </div>
+  );
+}
+`}
+/>
+
+## Accessibility Notes
+
+The toaster applies the [aria-live](https://www.w3.org/TR/wai-aria/#aria-live) attribute with a value of `polite` to alert the user of the new content.
+
+Also applied is the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [status](https://www.w3.org/TR/wai-aria/#status) to indice it is a `live region`.

@@ -1,0 +1,40 @@
+---
+name: Dividers
+route: /components/divider
+components: ADivider
+---
+
+# Dividers
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {ADivider} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`<>
+  {LoremIpsum}
+  <ADivider />
+  {LoremIpsum}
+  <ADivider light />
+  {LoremIpsum}
+  <ADivider lighter />
+  {LoremIpsum}
+</>
+`}
+/>
+
+## Divider Props
+
+The `ADivider` component inherits passed props.
+
+<Props of="ADivider" />
+
+## Accessibility Notes
+
+By default, `ADivider` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [separator](https://www.w3.org/TR/wai-aria/#separator) which denotes that the divider "separates and distinguishes sections of content or groups of menuitems." However, sometimes a divider is just a way to make an interface look nice. In those cases, the role of `presentation` should be used which denotes "an element whose implicit native role semantics will not be mapped to the accessibility API." To override the default separator role in an `ADivider`, simply add a `role="presentation"` prop to your component.

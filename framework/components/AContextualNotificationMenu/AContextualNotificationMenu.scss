@@ -1,0 +1,341 @@
+@import "../../styles";
+
+@include theme(a-contextual-notification-menu) using ($theme) {
+  &.a-context--state-warning {
+    &.a-menu-base--top,
+    &.a-menu-base--top-left,
+    &.a-menu-base--top-right {
+      .a-menu-base__pointer {
+        border-color: map-get($status-orange, "base") transparent transparent
+          transparent;
+
+        &:after {
+          border-color: map-deep-get($theme, "control", "fill-color")
+            transparent transparent transparent;
+        }
+      }
+    }
+
+    &.a-menu-base--bottom,
+    &.a-menu-base--bottom-left,
+    &.a-menu-base--bottom-right {
+      .a-menu-base__pointer {
+        border-color: transparent transparent map-get($status-orange, "base")
+          transparent;
+
+        &:after {
+          border-color: transparent transparent
+            map-deep-get($theme, "control", "fill-color") transparent;
+        }
+      }
+    }
+
+    &.a-menu-base--right-top .a-menu-base__pointer,
+    &.a-menu-base--right .a-menu-base__pointer,
+    &.a-menu-base--right-bottom .a-menu-base__pointer {
+      border-color: transparent map-get($status-orange, "base") transparent
+        transparent;
+
+      &:after {
+        border-color: transparent map-get($status-orange, "base") transparent
+          transparent;
+      }
+    }
+
+    &.a-menu-base--left-top .a-menu-base__pointer,
+    &.a-menu-base--left .a-menu-base__pointer,
+    &.a-menu-base--left-bottom .a-menu-base__pointer {
+      border-color: transparent transparent transparent
+        map-get($status-orange, "base");
+
+      &:after {
+        border-color: transparent transparent transparent
+          map-deep-get($theme, "control", "fill-color");
+      }
+    }
+  }
+  &.a-context--state-danger {
+    &.a-menu-base--top,
+    &.a-menu-base--top-left,
+    &.a-menu-base--top-right {
+      .a-menu-base__pointer {
+        border-color: map-get($status-red, "base") transparent transparent
+          transparent;
+
+        &:after {
+          border-color: map-deep-get($theme, "control", "fill-color")
+            transparent transparent transparent;
+        }
+      }
+    }
+
+    &.a-menu-base--bottom,
+    &.a-menu-base--bottom-left,
+    &.a-menu-base--bottom-right {
+      .a-menu-base__pointer {
+        border-color: transparent transparent map-get($status-red, "base")
+          transparent;
+
+        &:after {
+          border-color: transparent transparent
+            map-deep-get($theme, "control", "fill-color") transparent;
+        }
+      }
+    }
+
+    &.a-menu-base--right-top .a-menu-base__pointer,
+    &.a-menu-base--right .a-menu-base__pointer,
+    &.a-menu-base--right-bottom .a-menu-base__pointer {
+      border-color: transparent map-get($status-red, "base") transparent
+        transparent;
+
+      &:after {
+        border-color: transparent map-get($status-red, "base") transparent
+          transparent;
+      }
+    }
+
+    &.a-menu-base--left-top .a-menu-base__pointer,
+    &.a-menu-base--left .a-menu-base__pointer,
+    &.a-menu-base--left-bottom .a-menu-base__pointer {
+      border-color: transparent transparent transparent
+        map-get($status-red, "base");
+
+      &:after {
+        border-color: transparent transparent transparent
+          map-deep-get($theme, "control", "fill-color");
+      }
+    }
+  }
+  &.a-context--state-success {
+    &.a-menu-base--top,
+    &.a-menu-base--top-left,
+    &.a-menu-base--top-right {
+      .a-menu-base__pointer {
+        border-color: map-get($status-green, "base") transparent transparent
+          transparent;
+
+        &:after {
+          border-color: map-deep-get($theme, "control", "fill-color")
+            transparent transparent transparent;
+        }
+      }
+    }
+
+    &.a-menu-base--bottom,
+    &.a-menu-base--bottom-left,
+    &.a-menu-base--bottom-right {
+      .a-menu-base__pointer {
+        border-color: transparent transparent map-get($status-green, "base")
+          transparent;
+
+        &:after {
+          border-color: transparent transparent
+            map-deep-get($theme, "control", "fill-color") transparent;
+        }
+      }
+    }
+
+    &.a-menu-base--right-top .a-menu-base__pointer,
+    &.a-menu-base--right .a-menu-base__pointer,
+    &.a-menu-base--right-bottom .a-menu-base__pointer {
+      border-color: transparent map-get($status-green, "base") transparent
+        transparent;
+
+      &:after {
+        border-color: transparent map-get($status-green, "base") transparent
+          transparent;
+      }
+    }
+
+    &.a-menu-base--left-top .a-menu-base__pointer,
+    &.a-menu-base--left .a-menu-base__pointer,
+    &.a-menu-base--left-bottom .a-menu-base__pointer {
+      border-color: transparent transparent transparent
+        map-get($status-green, "base");
+
+      &:after {
+        border-color: transparent transparent transparent
+          map-deep-get($theme, "control", "fill-color");
+      }
+    }
+  }
+  &.a-context--state-info {
+    &.a-menu-base--top,
+    &.a-menu-base--top-left,
+    &.a-menu-base--top-right {
+      .a-menu-base__pointer {
+        border-color: map-get($cisco-blue, "base") transparent transparent
+          transparent;
+
+        &:after {
+          border-color: map-deep-get($theme, "control", "fill-color")
+            transparent transparent transparent;
+        }
+      }
+    }
+
+    &.a-menu-base--bottom,
+    &.a-menu-base--bottom-left,
+    &.a-menu-base--bottom-right {
+      .a-menu-base__pointer {
+        border-color: transparent transparent map-get($cisco-blue, "base")
+          transparent;
+
+        &:after {
+          border-color: transparent transparent
+            map-deep-get($theme, "control", "fill-color") transparent;
+        }
+      }
+    }
+
+    &.a-menu-base--right-top .a-menu-base__pointer,
+    &.a-menu-base--right .a-menu-base__pointer,
+    &.a-menu-base--right-bottom .a-menu-base__pointer {
+      border-color: transparent map-get($cisco-blue, "base") transparent
+        transparent;
+
+      &:after {
+        border-color: transparent map-get($cisco-blue, "base") transparent
+          transparent;
+      }
+    }
+
+    &.a-menu-base--left-top .a-menu-base__pointer,
+    &.a-menu-base--left .a-menu-base__pointer,
+    &.a-menu-base--left-bottom .a-menu-base__pointer {
+      border-color: transparent transparent transparent
+        map-get($cisco-blue, "base");
+
+      &:after {
+        border-color: transparent transparent transparent
+          map-deep-get($theme, "control", "fill-color");
+      }
+    }
+  }
+}
+
+.a-contextual-notification-menu {
+  margin: 0;
+  width: auto;
+  box-shadow: $default-box-shadow;
+  overflow: visible;
+  position: absolute;
+
+  .a-panel__header {
+    border-radius: 3px 3px 0 0;
+  }
+
+  .a-panel__footer {
+    border-radius: 0 0 3px 3px;
+  }
+
+  &.a-menu-base--top,
+  &.a-menu-base--top-left,
+  &.a-menu-base--top-right {
+    margin-top: -13px;
+    .a-menu-base__pointer {
+      margin-left: -4px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 14px 9.5px 0 9.5px;
+      position: absolute;
+      bottom: -14px;
+
+      &:after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 14px 9.5px 0 9.5px;
+        position: absolute;
+        right: -9.5px;
+        top: -16px;
+      }
+    }
+  }
+
+  &.a-menu-base--right,
+  &.a-menu-base--right-top,
+  &.a-menu-base--right-bottom {
+    margin-left: 13px;
+    .a-menu-base__pointer {
+      margin-top: -4px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 9.5px 14px 9.5px 0;
+      position: absolute;
+      left: -19px;
+
+      &:after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 9.5px 14px 9.5px 0;
+        position: absolute;
+        right: -16px;
+        top: -9.5px;
+      }
+    }
+  }
+
+  &.a-menu-base--bottom,
+  &.a-menu-base--bottom-left,
+  &.a-menu-base--bottom-right {
+    margin-top: 13px;
+    .a-menu-base__pointer {
+      margin-left: -4px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 9.5px 14px 9.5px;
+      position: absolute;
+      top: -14px;
+
+      &:after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 9.5px 14px 9.5px;
+        position: absolute;
+        right: -9.5px;
+        top: 2px;
+      }
+    }
+  }
+
+  &.a-menu-base--left,
+  &.a-menu-base--left-top,
+  &.a-menu-base--left-bottom {
+    margin-left: -13px;
+    .a-menu-base__pointer {
+      margin-top: -4px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 9.5px 0 9.5px 14px;
+      position: absolute;
+      right: -14px;
+
+      &:after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 9.5px 0 9.5px 14px;
+        position: absolute;
+        right: 2px;
+        top: -9.5px;
+      }
+    }
+  }
+}
+
+.a-app--animated .a-contextual-notification-menu {
+  animation-name: fade-in;
+  animation-duration: $transition-duration--fast;
+}

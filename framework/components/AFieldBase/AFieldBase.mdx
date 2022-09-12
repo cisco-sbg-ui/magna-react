@@ -1,0 +1,49 @@
+---
+name: Field Base
+route: /extend/field-base
+components: AFieldBase
+---
+
+# Field Base Component
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {AFieldBase} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`<div style={{maxWidth: 300}}>
+  <AFieldBase
+    className="mb-3"
+    label="Label - Normal"
+    hint="This is a sample of hint text below a form field">
+    [Children]
+  </AFieldBase>
+  <AFieldBase
+    className="mb-3"
+    label="Label - Warning"
+    hint="This is a sample of hint text below a form field"
+    validationState="warning">
+    [Children]
+  </AFieldBase>
+  <AFieldBase
+    className="mb-3"
+    label="Label - Danger"
+    hint="This is a sample of hint text below a form field"
+    validationState="danger">
+    [Children]
+  </AFieldBase>
+</div>
+`}
+/>
+
+## Field Base Props
+
+The `AFieldBase` component inherits passed props.
+
+<Props of="AFieldBase" />

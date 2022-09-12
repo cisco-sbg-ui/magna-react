@@ -1,0 +1,15 @@
+{
+  "presets": ["next/babel"],
+  "env": {
+    "development": {
+      "plugins": [
+        [
+          "istanbul",
+          {
+            "exclude": ["docs/*", "pages/*"]
+          }
+        ]
+      ]
+    }
+  }
+}

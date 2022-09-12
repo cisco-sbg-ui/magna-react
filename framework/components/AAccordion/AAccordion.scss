@@ -1,0 +1,163 @@
+@import "../../styles";
+
+$accordion-min-width: 0;
+$accordion-width: 100%;
+$accordion-margin: 20px 0;
+$accordion-header-font-size: $font-size--sm;
+$accordion-header-padding: 4px 10px;
+$accordion-body-padding: 15px 10px;
+$accordion-message-font-size: 13px;
+$accordion-toggle-font-size: $font-size--xxs;
+$accordion-toggle-margin: 0 8px 0 0;
+$accordion-transition: visibility 0s ease, max-height $transition-duration ease,
+  opacity $transition-duration--fast ease, margin $transition-duration ease;
+$accordion--state-collapsed-transition: visibility $transition-duration ease,
+  max-height $transition-duration--fast ease, opacity $transition-duration ease,
+  margin $transition-duration ease;
+
+@include theme(a-accordion) using ($theme) {
+  &__card {
+    background-color: transparent;
+
+    &--state-collapsed {
+      .a-accordion__header {
+        background-color: map-deep-get(
+          $theme,
+          "accordion",
+          "header-collapsed-bg-color"
+        );
+      }
+    }
+
+    &--is-focused .a-accordion__header {
+      border-color: map-deep-get($theme, "base", "brand-color");
+    }
+  }
+
+  &__header {
+    background-color: map-deep-get($theme, "accordion", "header-bg-color");
+    border-color: transparent;
+  }
+
+  &__link {
+    color: map-deep-get($theme, "base", "color");
+
+    &:visited,
+    &:hover,
+    &:focus,
+    &:active {
+      color: map-deep-get($theme, "base", "color");
+    }
+  }
+
+  &__body {
+    background-color: map-deep-get($theme, "accordion", "body-bg");
+  }
+
+  &--style-bordered {
+    border-color: map-deep-get($theme, "control", "stroke-color");
+  }
+}
+
+.a-accordion {
+  margin: $accordion-margin;
+
+  &__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: $accordion-min-width;
+    width: $accordion-width;
+    word-wrap: break-word;
+
+    &:not(:last-of-type) {
+      margin: 0 0 2px 0;
+    }
+
+    &--state-collapsed {
+      .a-accordion__body {
+        display: none;
+      }
+    }
+
+    &--is-focused .a-accordion__header {
+      border-width: $border-width;
+      border-style: solid;
+    }
+
+    &--has-body .a-accordion__link {
+      cursor: pointer;
+    }
+  }
+
+  &__header {
+    height: 30px;
+    display: inline-flex;
+    border-width: $border-width;
+    border-style: solid;
+    font-size: $accordion-header-font-size;
+    vertical-align: middle;
+
+    .a-button--icon {
+      padding: 6px;
+    }
+  }
+
+  &__link {
+    padding: $accordion-header-padding;
+    text-decoration: none;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    @include flex-fluid;
+    &:visited,
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: none;
+    }
+
+    .a-icon {
+      height: $accordion-toggle-font-size;
+      width: $accordion-toggle-font-size;
+      margin: $accordion-toggle-margin;
+      vertical-align: middle;
+    }
+  }
+
+  &__body {
+    padding: $accordion-body-padding;
+    font-size: $accordion-message-font-size;
+    flex: 1 1 auto;
+  }
+
+  &--style-bordered {
+    border-width: $border-width;
+    border-style: solid;
+  }
+}
+
+.a-app--animated .a-accordion {
+  .a-accordion__card {
+    .a-accordion__body {
+      display: block;
+      padding: 0 10px;
+      visibility: visible;
+      overflow: hidden;
+      opacity: 1;
+      @include transition($accordion-transition);
+      margin: 15px 0;
+    }
+
+    &--state-collapsed {
+      .a-accordion__body {
+        max-height: 0;
+        visibility: hidden;
+        opacity: 0;
+        margin: 0;
+        @include transition($accordion--state-collapsed-transition);
+      }
+    }
+  }
+}
