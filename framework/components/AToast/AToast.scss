@@ -5,7 +5,7 @@ $toast-min-width: 260px;
 $toast-max-width: 300px;
 $toast-padding: 10px 15px;
 $toast-margin: 0 10px;
-$toast-border-width: 5px;
+$toast-border-width: 1px;
 $toast-title-font-weight: $font-weight-bold;
 $toast-icon-font-size: $font-size;
 
@@ -14,20 +14,32 @@ $toast-icon-font-size: $font-size;
   background: map-deep-get($theme, "control", "fill-color");
   border-color: map-deep-get($theme, "control", "stroke-color");
 
-  &--success .a-toast__icon {
-    color: $color-good;
+  &--success {
+    border-left-color: $color-good;
+    .a-toast__icon {
+      color: $color-good;
+    }
   }
 
-  &--warning .a-toast__icon {
-    color: $color-warning;
+  &--warning {
+    border-left-color: $color-warning;
+    .a-toast__icon {
+      color: $color-warning;
+    }
   }
 
-  &--danger .a-toast__icon {
-    color: $color-error;
+  &--danger {
+    border-left-color: $color-error;
+    .a-toast__icon {
+      color: $color-error;
+    }
   }
 
-  &--information .a-toast__icon {
-    color: $color-information;
+  &--information {
+    border-left-color: $color-information;
+    .a-toast__icon {
+      color: $color-information;
+    }
   }
 }
 
@@ -36,12 +48,15 @@ $toast-icon-font-size: $font-size;
   position: relative;
   border-width: $toast-border-width;
   border-style: solid;
-  border-radius: $border-radius--sm;
+  border-color: rgba(0,0,0,0);
+  border-radius: $border-radius--lg;
+  border-left-width: 6px;
   min-height: $toast-min-height;
   min-width: $toast-min-width;
   max-width: $toast-max-width;
   padding: $toast-padding;
   align-items: flex-start;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.08);
 
   &__body {
     margin: $toast-margin;

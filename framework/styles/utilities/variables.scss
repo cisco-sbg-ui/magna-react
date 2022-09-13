@@ -38,9 +38,10 @@ $line-height--lg: rem(1.5) !default; // 24px
 // -----------------------------------------------------------------------------
 $border-radius: rem(0.25) !default; // 4px
 $border-radius--lg: rem(0.375) !default; // 6px
+$border-radius--md: rem(0.25) !default; // 4px
 $border-radius--sm: rem(0.1875) !default; // 3px
 $border-radius--xs: rem(0.125) !default; // 2px
-$border-width: thin !default; // ~1px
+$border-width: 2px !default;
 $spacer: 5px !default;
 $spacing: rem(1.25) !default; // 20px
 $spacers: () !default;
@@ -143,16 +144,16 @@ $display-breakpoints: (
 // -----------------------------------------------------------------------------
 // Alert colors
 // -----------------------------------------------------------------------------
-$color-information: map-get($status-blue, "base");
+$color-information: map-get($mds-blue, "blue-6");
 $color-information-alt: map-get($cisco-blue, "base");
-$color-good: map-get($status-green, "base");
-$color-warning: map-get($status-orange, "base");
-$color-warning-alt: map-get($status-yellow, "base");
-$color-error: map-get($status-red, "base");
+$color-good: map-get($mds-status, "positive");
+$color-warning: map-get($mds-status, "warning");
+$color-warning-alt: map-get($mds-status, "warning");
+$color-error: map-get($mds-status, "negative");;
 // -----------------------------------------------------------------------------
 // Alert box shadow
 // -----------------------------------------------------------------------------
-$default-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+$default-box-shadow: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.18));
 $info-box-shadow: 0 0 2px 2px rgba(100, 187, 227, 0.4);
 $success-box-shadow: 0 0 2px 2px rgba(108, 192, 74, 0.4);
 $warning-box-shadow: 0 0 2px 2px rgba(255, 115, 0, 0.4);

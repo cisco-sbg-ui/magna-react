@@ -7,8 +7,8 @@ $alert-margin: 0;
 $alert-padding: 15px 0;
 $alert-body-font-size: $font-size--sm;
 $alert-message-max-width: 700px;
-$alert-close-icon: map-get($status-blue, "wash-1");
-$alert-close-icon--hover: map-get($status-blue, "burnt-1");
+$alert-close-icon: map-get($mds-neutral, "neutral-7");
+$alert-close-icon--hover: map-get($mds-neutral, "neutral-7");
 $alert-success-close-icon: map-get($status-green, "wash-1");
 $alert-success-close-icon--hover: map-get($status-green, "burnt-1");
 $alert-warning-close-icon: map-get($status-orange, "wash-1");
@@ -74,13 +74,13 @@ $alert-danger-close-icon--hover: map-get($status-red, "burnt-1");
   min-height: $alert-min-height;
   border-width: $border-width;
   border-style: solid;
-  border-radius: $border-radius--sm;
+  border-radius: $border-radius--lg;
   margin: $alert-margin;
   padding: $alert-padding;
   &__icon {
     font-size: $alert-icon-font-size;
     margin: $alert-icon-margin;
-    color: map-get($status-blue, "base");
+    color: map-get($mds-blue, "blue-6");
     &--close {
       cursor: pointer;
       color: $alert-close-icon;
@@ -102,9 +102,9 @@ $alert-danger-close-icon--hover: map-get($status-red, "burnt-1");
       color: map-get($status-green, "base");
 
       &--close {
-        color: $alert-success-close-icon;
+        color: $alert-close-icon;
         &:hover {
-          color: $alert-success-close-icon--hover;
+          color: $alert-close-icon--hover;
         }
         &:focus {
           box-shadow: $success-box-shadow;
@@ -114,12 +114,12 @@ $alert-danger-close-icon--hover: map-get($status-red, "burnt-1");
   }
   &--state-warning {
     .a-alert__icon {
-      color: map-get($status-orange, "base");
+      color: map-get($mds-yellow, "yellow-5");
 
       &--close {
-        color: $alert-warning-close-icon;
+        color: $alert-close-icon;
         &:hover {
-          color: $alert-warning-close-icon--hover;
+          color: $alert-close-icon--hover;
         }
         &:focus {
           box-shadow: $warning-box-shadow;
@@ -132,9 +132,9 @@ $alert-danger-close-icon--hover: map-get($status-red, "burnt-1");
       color: map-get($status-red, "base");
 
       &--close {
-        color: $alert-danger-close-icon;
+        color: $alert-close-icon;
         &:hover {
-          color: $alert-danger-close-icon--hover;
+          color: $alert-close-icon--hover;
         }
         &:focus {
           box-shadow: $danger-box-shadow;

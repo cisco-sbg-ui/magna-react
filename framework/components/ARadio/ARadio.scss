@@ -2,7 +2,7 @@
 
 @import "../../styles";
 
-$radio-border--enabled: map-get($grey, "lighten-2");
+$radio-border--enabled: map-get($mds-neutral, "neutral-5");
 $radio-height: 15px;
 $radio-padding: 10px;
 $radio-width: 15px;
@@ -16,16 +16,21 @@ $radio-transition: stroke $transition-duration--extra-fast
   &__box {
     &__outer {
       fill: none;
+      stroke-width: 2px;
     }
 
     &__inner {
-      stroke: $radio-border--enabled;
+      stroke: none;
       fill: none;
     }
 
     &__active {
       stroke: none;
       fill: none;
+    }
+
+    > svg {
+      background-color: map-deep-get($theme, "radio", "bg");
     }
   }
 
@@ -42,7 +47,7 @@ $radio-transition: stroke $transition-duration--extra-fast
 
     &:enabled ~ .a-radio__box {
       .a-radio__box__outer {
-        stroke: map-deep-get($theme, "base", "stroke-color");
+        stroke: map-deep-get($theme, "radio", "border-enabled");
       }
 
       &:hover .a-radio__box__outer {
@@ -63,6 +68,10 @@ $radio-transition: stroke $transition-duration--extra-fast
     &:enabled:checked ~ .a-radio__box {
       .a-radio__box__inner {
         fill: map-deep-get($theme, "radio", "border--checked");
+        stroke: map-deep-get($theme, "radio", "border--checked");
+      }
+
+      .a-radio__box__outer {
         stroke: map-deep-get($theme, "radio", "border--checked");
       }
 
@@ -101,7 +110,7 @@ $radio-transition: stroke $transition-duration--extra-fast
 
     &:disabled ~ .a-radio__box .a-radio__box__inner {
       fill: map-deep-get($theme, "radio", "bg--disabled");
-      stroke: map-deep-get($theme, "radio", "border--disabled");
+      stroke: none;
     }
 
     &:disabled:checked ~ .a-radio__box .a-radio__box__inner {

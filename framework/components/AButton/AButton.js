@@ -10,6 +10,7 @@ const AButton = forwardRef(
       children,
       className: propsClassName,
       component,
+      destructive = false,
       disabled,
       href,
       icon,
@@ -30,15 +31,15 @@ const AButton = forwardRef(
     let className = "a-button focus-box-shadow a-button--";
 
     if (primary) {
-      className += "primary";
+      className += destructive ? "primary-destructive" : "primary";
     } else if (secondary) {
-      className += "secondary";
+      className += destructive ? "secondary-destructive" : "secondary";
     } else if (tertiary) {
       className += "tertiary";
     } else if (tertiaryAlt) {
       className += "tertiary-alt";
     } else {
-      className += "primary";
+      className += destructive ? "primary-destructive" : "primary";
     }
 
     if (disabled) {
@@ -136,7 +137,11 @@ AButton.propTypes = {
   /**
    * The button type.
    */
-  type: PropTypes.oneOf(["button", "submit", "reset"])
+  type: PropTypes.oneOf(["button", "submit", "reset"]),
+  /**
+   * Destructive - button for destructive action, should be used with confirm dialog/modal when clicked
+   */
+  destructive: PropTypes.bool
 };
 
 AButton.displayName = "AButton";

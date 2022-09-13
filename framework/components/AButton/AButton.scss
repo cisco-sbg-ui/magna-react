@@ -60,6 +60,52 @@ $btn-transition: color $transition-duration--extra-fast
     }
   }
 
+  &--primary-destructive {
+    color: map-deep-get($theme, "button", "primary", "destructive", "color");
+    background-color: map-deep-get($theme, "button", "primary", "destructive", "bg");
+    border-color: map-deep-get($theme, "button", "primary", "destructive", "border");
+    border-width: map-deep-get($theme, "button", "primary", "destructive", "border-width");
+
+    &:hover {
+      color: map-deep-get($theme, "button", "primary", "destructive", "color");
+      background-color: map-deep-get($theme, "button", "primary", "destructive", "bg--hover");
+      border-color: map-deep-get($theme, "button", "primary", "destructive", "border--hover");
+    }
+
+    &:focus {
+      color: map-deep-get($theme, "button", "primary", "destructive", "color");
+      background-color: map-deep-get($theme, "button", "primary", "destructive", "bg--focus");
+      border-color: map-deep-get($theme, "button", "primary", "destructive", "border--focus");
+      box-shadow: map-deep-get($theme, "base", "box-shadow");
+    }
+
+    &:active {
+      color: map-deep-get($theme, "button", "primary", "destructive", "color");
+      background-color: map-deep-get($theme, "button", "primary", "destructive", "bg--active");
+      border-color: map-deep-get($theme, "button", "primary", "destructive", "border--active");
+    }
+
+    &.disabled,
+    &:disabled {
+      box-shadow: none;
+      color: map-deep-get($theme, "button", "primary", "destructive", "color--disabled");
+      background-color: map-deep-get(
+          $theme,
+          "button",
+          "primary",
+          "destructive",
+          "bg--disabled"
+      );
+      border-color: map-deep-get(
+          $theme,
+          "button",
+          "primary",
+          "destructive",
+          "border--disabled"
+      );
+    }
+  }
+
   &--secondary {
     color: map-deep-get($theme, "button", "secondary", "color");
     background-color: transparent;
@@ -129,6 +175,83 @@ $btn-transition: color $transition-duration--extra-fast
     }
   }
 
+  &--secondary-destructive {
+    color: map-deep-get($theme, "button", "secondary", "destructive", "color");
+    background-color: transparent;
+    border-color: map-deep-get($theme, "button", "secondary", "destructive", "border");
+    border-width: map-deep-get($theme, "button", "secondary", "destructive", "border-width");
+
+    &:hover {
+      color: map-deep-get($theme, "button", "secondary", "destructive", "color--hover");
+      background-color: map-deep-get(
+          $theme,
+          "button",
+          "secondary",
+          "destructive",
+          "bg--hover"
+      );
+      border-color: map-deep-get(
+          $theme,
+          "button",
+          "secondary",
+          "destructive",
+          "border--hover"
+      );
+    }
+
+    &:focus {
+      color: map-deep-get($theme, "button", "secondary", "destructive", "color--focus");
+      background-color: map-deep-get(
+          $theme,
+          "button",
+          "secondary",
+          "destructive",
+          "bg--focus"
+      );
+      border-color: map-deep-get(
+          $theme,
+          "button",
+          "secondary",
+          "destructive",
+          "border--focus"
+      );
+      box-shadow: map-deep-get($theme, "base", "box-shadow");
+    }
+
+    &:active {
+      color: map-deep-get($theme, "button", "secondary", "destructive", "color--active");
+      background-color: map-deep-get(
+          $theme,
+          "button",
+          "secondary",
+          "destructive",
+          "bg--active"
+      );
+      border-color: map-deep-get(
+          $theme,
+          "button",
+          "secondary",
+          "destructive",
+          "border--active"
+      );
+    }
+
+    &.disabled,
+    &:disabled {
+      box-shadow: none;
+      color: map-deep-get($theme, "button", "secondary", "destructive", "color--disabled");
+      background-color: transparent;
+      border-color: map-deep-get(
+          $theme,
+          "button",
+          "secondary",
+          "destructive",
+          "border--disabled"
+      );
+
+    }
+  }
+
   &--tertiary {
     color: map-deep-get($theme, "button", "tertiary", "color");
 
@@ -193,7 +316,7 @@ $btn-transition: color $transition-duration--extra-fast
   user-select: none;
   border-width: $border-width;
   border-style: solid;
-  border-radius: $border-radius--sm;
+  border-radius: $border-radius--lg;
   cursor: pointer;
   @include text-truncate;
   font-weight: $btn-font-weight;

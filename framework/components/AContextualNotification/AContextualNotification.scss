@@ -32,31 +32,31 @@ $context-arrow-left: 10%;
   }
 
   &--state-warning {
-    border-color: map-get($status-orange, "base");
+    border-color: $color-warning;
 
     .a-context__icon {
-      color: map-get($status-orange, "base");
+      color: $color-warning;
     }
   }
   &--state-danger {
-    border-color: map-get($status-red, "base");
+    border-color: $color-error;
 
     .a-context__icon {
-      color: map-get($status-red, "base");
+      color: $color-error;
     }
   }
   &--state-success {
-    border-color: map-get($status-green, "base");
+    border-color: $color-good;
 
     .a-context__icon {
-      color: map-get($status-green, "base");
+      color: $color-good;
     }
   }
   &--state-info {
-    border-color: map-get($cisco-blue, "base");
+    border-color: $color-information;
 
     .a-context__icon {
-      color: map-get($status-blue, "base");
+      color: $color-information;
     }
   }
 }

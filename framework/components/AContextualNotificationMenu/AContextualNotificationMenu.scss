@@ -6,7 +6,7 @@
     &.a-menu-base--top-left,
     &.a-menu-base--top-right {
       .a-menu-base__pointer {
-        border-color: map-get($status-orange, "base") transparent transparent
+        border-color: $color-warning transparent transparent
           transparent;
 
         &:after {
@@ -20,7 +20,7 @@
     &.a-menu-base--bottom-left,
     &.a-menu-base--bottom-right {
       .a-menu-base__pointer {
-        border-color: transparent transparent map-get($status-orange, "base")
+        border-color: transparent transparent $color-warning
           transparent;
 
         &:after {
@@ -33,11 +33,11 @@
     &.a-menu-base--right-top .a-menu-base__pointer,
     &.a-menu-base--right .a-menu-base__pointer,
     &.a-menu-base--right-bottom .a-menu-base__pointer {
-      border-color: transparent map-get($status-orange, "base") transparent
+      border-color: transparent $color-warning transparent
         transparent;
 
       &:after {
-        border-color: transparent map-get($status-orange, "base") transparent
+        border-color: transparent $color-warning transparent
           transparent;
       }
     }
@@ -46,7 +46,7 @@
     &.a-menu-base--left .a-menu-base__pointer,
     &.a-menu-base--left-bottom .a-menu-base__pointer {
       border-color: transparent transparent transparent
-        map-get($status-orange, "base");
+        $color-warning;
 
       &:after {
         border-color: transparent transparent transparent
@@ -59,7 +59,7 @@
     &.a-menu-base--top-left,
     &.a-menu-base--top-right {
       .a-menu-base__pointer {
-        border-color: map-get($status-red, "base") transparent transparent
+        border-color: $color-error transparent transparent
           transparent;
 
         &:after {
@@ -73,7 +73,7 @@
     &.a-menu-base--bottom-left,
     &.a-menu-base--bottom-right {
       .a-menu-base__pointer {
-        border-color: transparent transparent map-get($status-red, "base")
+        border-color: transparent transparent $color-error
           transparent;
 
         &:after {
@@ -86,11 +86,11 @@
     &.a-menu-base--right-top .a-menu-base__pointer,
     &.a-menu-base--right .a-menu-base__pointer,
     &.a-menu-base--right-bottom .a-menu-base__pointer {
-      border-color: transparent map-get($status-red, "base") transparent
+      border-color: transparent $color-error transparent
         transparent;
 
       &:after {
-        border-color: transparent map-get($status-red, "base") transparent
+        border-color: transparent $color-error transparent
           transparent;
       }
     }
@@ -99,7 +99,7 @@
     &.a-menu-base--left .a-menu-base__pointer,
     &.a-menu-base--left-bottom .a-menu-base__pointer {
       border-color: transparent transparent transparent
-        map-get($status-red, "base");
+        $color-error;
 
       &:after {
         border-color: transparent transparent transparent
@@ -112,7 +112,7 @@
     &.a-menu-base--top-left,
     &.a-menu-base--top-right {
       .a-menu-base__pointer {
-        border-color: map-get($status-green, "base") transparent transparent
+        border-color: $color-good transparent transparent
           transparent;
 
         &:after {
@@ -126,7 +126,7 @@
     &.a-menu-base--bottom-left,
     &.a-menu-base--bottom-right {
       .a-menu-base__pointer {
-        border-color: transparent transparent map-get($status-green, "base")
+        border-color: transparent transparent $color-good
           transparent;
 
         &:after {
@@ -139,11 +139,11 @@
     &.a-menu-base--right-top .a-menu-base__pointer,
     &.a-menu-base--right .a-menu-base__pointer,
     &.a-menu-base--right-bottom .a-menu-base__pointer {
-      border-color: transparent map-get($status-green, "base") transparent
+      border-color: transparent $color-good transparent
         transparent;
 
       &:after {
-        border-color: transparent map-get($status-green, "base") transparent
+        border-color: transparent $color-good transparent
           transparent;
       }
     }
@@ -152,7 +152,7 @@
     &.a-menu-base--left .a-menu-base__pointer,
     &.a-menu-base--left-bottom .a-menu-base__pointer {
       border-color: transparent transparent transparent
-        map-get($status-green, "base");
+        $color-good;
 
       &:after {
         border-color: transparent transparent transparent
@@ -165,7 +165,7 @@
     &.a-menu-base--top-left,
     &.a-menu-base--top-right {
       .a-menu-base__pointer {
-        border-color: map-get($cisco-blue, "base") transparent transparent
+        border-color: $color-information transparent transparent
           transparent;
 
         &:after {
@@ -179,7 +179,7 @@
     &.a-menu-base--bottom-left,
     &.a-menu-base--bottom-right {
       .a-menu-base__pointer {
-        border-color: transparent transparent map-get($cisco-blue, "base")
+        border-color: transparent transparent $color-information
           transparent;
 
         &:after {
@@ -192,11 +192,11 @@
     &.a-menu-base--right-top .a-menu-base__pointer,
     &.a-menu-base--right .a-menu-base__pointer,
     &.a-menu-base--right-bottom .a-menu-base__pointer {
-      border-color: transparent map-get($cisco-blue, "base") transparent
+      border-color: transparent $color-information transparent
         transparent;
 
       &:after {
-        border-color: transparent map-get($cisco-blue, "base") transparent
+        border-color: transparent $color-information transparent
           transparent;
       }
     }
@@ -205,7 +205,7 @@
     &.a-menu-base--left .a-menu-base__pointer,
     &.a-menu-base--left-bottom .a-menu-base__pointer {
       border-color: transparent transparent transparent
-        map-get($cisco-blue, "base");
+        $color-information;
 
       &:after {
         border-color: transparent transparent transparent

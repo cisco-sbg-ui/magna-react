@@ -8,11 +8,11 @@ $input-transition: border-color $transition-duration--extra-fast
 @include theme(a-input-base) using ($theme) {
   &__surface {
     background: map-deep-get($theme, "text-input", "bg");
-    border-color: map-deep-get($theme, "base", "stroke-color");
+    border-color: map-deep-get($theme, "text-input", "border-color");
     color: map-deep-get($theme, "base", "color");
 
     &:hover {
-      border-color: map-deep-get($theme, "control", "stroke-color--hover");
+      border-color: map-deep-get($theme, "text-input", "border-color--hover");
     }
 
     &:active {
@@ -111,7 +111,7 @@ $input-transition: border-color $transition-duration--extra-fast
     padding: 0 0 0 0;
     border-style: solid;
     border-width: $border-width;
-    border-radius: $border-radius--sm;
+    border-radius: $border-radius--lg;
   }
 
   &__prepend {

@@ -222,6 +222,80 @@ $dark-cool-grey: (
   "wash-3": #d9dadb
 );
 
+$mds-neutral : (
+  "neutral-1": #FFFFFF,
+  "neutral-2": #F7F7F7,
+  "neutral-3": #E0E0E0,
+  "neutral-4": #CCCCCC,
+  "neutral-5": #B8B8B8,
+  "neutral-6": #8F8F8F,
+  "neutral-7": #707070,
+  "neutral-8": #5C5C5C,
+  "neutral-9": #494A4A,
+  "neutral-10": #373838,
+  "neutral-11": #222423,
+  "neutral-12": #161716,
+  "neutral-13": #000000
+);
+
+$mds-blue : (
+  "blue-1": #EDF4FF,
+  "blue-2": #D9E7FF,
+  "blue-3": #CCDEFC,
+  "blue-4": #A6C4F5,
+  "blue-5": #7AA7F5,
+  "blue-6": #5B92F0,
+  "blue-7": #4580E5,
+  "blue-8": #326CD1,
+  "blue-9": #235EC4,
+  "blue-10": #1650B5
+);
+
+$mds-red : (
+  "red-1": #FCF2F0,
+  "red-2": #FCE2DE,
+  "red-3": #F7D7D2,
+  "red-4": #F0B3AA,
+  "red-5": #F08878,
+  "red-6": #EB6B57,
+  "red-7": #E05843,
+  "red-8": #C24632,
+  "red-9": #B03927,
+  "red-10": #9E2C1B
+);
+
+$mds-green : (
+  "green-1": #EAF7E4,
+  "green-2": #D1F5BF,
+  "green-3": #C7EDB4,
+  "green-4": #A1DB84,
+  "green-5": #6DC242,
+  "green-6": #53A828,
+  "green-7": #45991F,
+  "green-8": #378716,
+  "green-9": #2B7A0C,
+  "green-10": #266B0B
+);
+
+$mds-yellow : (
+  "yellow-1": #FCF5D4,
+  "yellow-2": #F7ECB2,
+  "yellow-3": #F2E49B,
+  "yellow-4": #E5D067,
+  "yellow-5": #D9B216,
+  "yellow-6": #CC9C00,
+  "yellow-7": #BF8600,
+  "yellow-8": #AD7A03,
+  "yellow-9": #A16C03,
+  "yellow-10": #945F03
+);
+
+$mds-status: (
+  "positive": map-get($mds-green, "green-7"),
+  "warning": map-get($mds-yellow, "yellow-5"),
+  "negative": map-get($mds-red, "red-7")
+);
+
 $secure-blue: (
   "1": #06144d,
   "2": #0d274d,

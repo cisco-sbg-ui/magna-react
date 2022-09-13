@@ -27,7 +27,7 @@
     & + .a-breadcrumb__item::before {
       display: inline-block;
       padding: 0 5px;
-      content: "/";
+      content: url("data:image/svg+xml,<svg width='8' height='8' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'><path d='M4.738.213a.723.723 0 00-1.025 0 .728.728 0 000 1.029L10.45 8l-6.737 6.76A.728.728 0 004.225 16a.722.722 0 00.513-.213L12.5 8z'/></svg>");
     }
 
     .a-icon {
