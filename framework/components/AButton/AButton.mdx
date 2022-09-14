@@ -21,8 +21,8 @@ import {AButton} from "@cisco-sbg-ui/magna-react";
   const [count, setCount] = useState(0);
   return (
     <div>
-      <AButton onClick={() => setCount(count + 1)}>Click Me</AButton>
-      <p>Button has been clicked {count} times.</p>
+      <AButton data-testid="click-test-button" onClick={() => setCount(count + 1)}>Click Me</AButton>
+      <p data-testid="click-test-text">Button has been clicked {count} times.</p>
     </div>
   );
 }
@@ -39,7 +39,7 @@ The `AButton` component inherits passed props.
 
 <Playground
   fullWidthPreview
-  code={`<div className="d-flex">
+  code={`<div className="container"><div className="d-flex">
   <div>
     <p>
       <AButton>Primary</AButton>
@@ -121,6 +121,50 @@ The `AButton` component inherits passed props.
         Tertiary Alt Disabled
       </AButton>
     </p>
+  </div>
+</div>
+<div className="d-flex"><h3>Destructive</h3></div>
+  <div className="d-flex">
+    <div>
+      <p>
+        <AButton data-testid="destructive-test-btn" destructive>Ask Google</AButton>
+      </p>
+      <p>
+        <AButton destructive>
+          <AIcon left>edit</AIcon>
+          Primary with Icon
+        </AButton>
+      </p>
+      <p>
+        <AButton icon destructive>
+          <AIcon>sync</AIcon>
+        </AButton>
+      </p>
+      <p>
+        <AButton primary disabled destructive >Primary  Disabled</AButton>
+      </p>
+    </div>
+    <div className="ml-4">
+      <p>
+        <AButton secondary destructive>Secondary</AButton>
+      </p>
+      <p>
+        <AButton secondary destructive>
+          <AIcon left>edit</AIcon>
+          Secondary with Icon
+        </AButton>
+      </p>
+      <p>
+        <AButton secondary icon destructive>
+          <AIcon>sync</AIcon>
+        </AButton>
+      </p>
+      <p>
+        <AButton secondary disabled destructive>
+          Secondary Disabled
+        </AButton>
+      </p>
+    </div>
   </div>
 </div>
 `}

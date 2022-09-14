@@ -4,6 +4,14 @@ context("AButton", () => {
   });
 
   // TODO: Test interactability
+  it("Test button click", () => {
+    cy.get('[data-testid="click-test-text"]').contains("0 times")
+    cy.get('[data-testid="click-test-button"]').click()
+    cy.get('[data-testid="click-test-text"]').contains("1 times")
+    cy.get('[data-testid="click-test-button"]').click()
+    cy.get('[data-testid="click-test-button"]').click()
+    cy.get('[data-testid="click-test-text"]').contains("3 times")
+  })
 
   // TODO: Test accessibility
 

@@ -26,7 +26,6 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
   &__box {
 
     &:hover:after {
-      //box-shadow: 0 0 2px 2px map-deep-get($theme, "radio", "border--checked");
       box-shadow: none;
       opacity: 0.6;
     }

@@ -120,6 +120,10 @@ $radio-transition: stroke $transition-duration--extra-fast
     &:disabled ~ .a-radio__label {
       color: map-deep-get($theme, "radio", "label-color--disabled");
     }
+
+    &:disabled ~ .a-radio__box .a-radio__box__outer {
+      fill: map-deep-get($theme, "radio", "box-bg--disabled");
+    }
   }
 }
 
