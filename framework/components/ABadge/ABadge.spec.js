@@ -1,6 +1,6 @@
 context("ABadge", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:3000/components/badge");
+    cy.visitInLightTheme("/components/badge");
   });
 
   it("supports themes", () => {

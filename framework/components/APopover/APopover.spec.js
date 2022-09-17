@@ -1,6 +1,6 @@
 context("APopover", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:3000/components/popover");
+    cy.visitInLightTheme("/components/popover");
   });
 
   it("handles onClose", () => {

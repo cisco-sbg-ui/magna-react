@@ -2,7 +2,7 @@ import LoremIpsum from "../../utils/lorem-ipsum";
 
 context("ATextarea", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:3000/components/textarea");
+    cy.visitInLightTheme("/components/textarea");
   });
 
   it("supports themes", () => {

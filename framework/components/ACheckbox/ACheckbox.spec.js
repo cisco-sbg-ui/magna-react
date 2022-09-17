@@ -1,6 +1,6 @@
 context("ACheckbox", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:3000/components/checkbox");
+    cy.visitInLightTheme("/components/checkbox");
   });
 
   // TODO: Test interactability

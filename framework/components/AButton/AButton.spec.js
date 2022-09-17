@@ -1,6 +1,6 @@
 context("AButton", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:3000/components/button");
+    cy.visitInLightTheme("/components/button");
   });
 
   // TODO: Test interactability

@@ -1,6 +1,6 @@
 context("ABreakpoint", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:3000/services/breakpoint");
+    cy.visitInLightTheme("/services/breakpoint");
   });
 
   it("works", () => {

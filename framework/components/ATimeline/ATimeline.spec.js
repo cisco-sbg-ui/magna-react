@@ -1,6 +1,6 @@
 context("ATimeline", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:3000/components/timeline");
+    cy.visitInLightTheme("/components/timeline");
   });
 
   it("supports themes", () => {

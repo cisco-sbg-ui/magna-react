@@ -1,6 +1,6 @@
 context("AButtonGroup", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:3000/components/button-group");
+    cy.visitInLightTheme("/components/button-group");
   });
 
   it("validates", () => {

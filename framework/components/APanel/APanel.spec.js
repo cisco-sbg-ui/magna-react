@@ -1,6 +1,6 @@
 context("APanel", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:3000/components/panel");
+    cy.visitInLightTheme("/components/panel");
   });
 
   // TODO: Test accessibility

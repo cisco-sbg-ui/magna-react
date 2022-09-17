@@ -1,6 +1,6 @@
 context("ASelect", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:3000/components/select");
+    cy.visitInLightTheme("/components/select");
   });
 
   it("has a label that works", () => {

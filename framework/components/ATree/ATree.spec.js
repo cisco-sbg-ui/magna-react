@@ -1,6 +1,6 @@
 context("ATree", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:3000/components/tree");
+    cy.visitInLightTheme("/components/tree");
   });
 
   // TODO: Test interactability

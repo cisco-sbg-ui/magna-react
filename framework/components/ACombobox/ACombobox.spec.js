@@ -1,6 +1,6 @@
 context("ACombobox", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:3000/components/combobox");
+    cy.visitInLightTheme("/components/combobox");
   });
 
   it("has a label that works", () => {

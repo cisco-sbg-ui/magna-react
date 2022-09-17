@@ -1,6 +1,6 @@
 context("APagination", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:3000/components/pagination");
+    cy.visitInLightTheme("/components/pagination");
   });
 
   it("has working basic pagination", () => {

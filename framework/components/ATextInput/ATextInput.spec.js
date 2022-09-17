@@ -1,6 +1,6 @@
 context("ATextInput", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:3000/components/text-input");
+    cy.visitInLightTheme("/components/text-input");
   });
 
   it("has a working auto-focus", () => {

@@ -1,6 +1,6 @@
 context("AIcon", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:3000/components/icon");
+    cy.visitInLightTheme("/components/icon");
   });
 
   // TODO: Test accessibility

@@ -1,6 +1,6 @@
 context("AHeader", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:3000/components/header");
+    cy.visitInLightTheme("/components/header");
   });
 
   // TODO: Test interactability

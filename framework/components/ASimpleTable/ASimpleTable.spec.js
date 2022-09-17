@@ -1,6 +1,6 @@
 context("ASimpleTable", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:3000/components/simple-table");
+    cy.visitInLightTheme("/components/simple-table");
   });
 
   // TODO: Test interactability

@@ -1,6 +1,6 @@
 context("AFieldBase", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:3000/extend/field-base");
+    cy.visitInLightTheme("/extend/field-base");
   });
 
   it("supports themes", () => {

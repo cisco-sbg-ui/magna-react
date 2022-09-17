@@ -1,6 +1,6 @@
 context("ADialog", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:3000/components/dialog");
+    cy.visitInLightTheme("/components/dialog");
   });
 
   it("opens/closes appropriately", () => {

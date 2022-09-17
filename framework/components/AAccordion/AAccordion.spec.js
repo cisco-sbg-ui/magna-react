@@ -1,6 +1,6 @@
 context("AAccordion", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:3000/components/accordion");
+    cy.visitInLightTheme("/components/accordion");
   });
 
   it("has appropriate default state", () => {

@@ -1,6 +1,6 @@
 context("AForm", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:3000/components/form");
+    cy.visitInLightTheme("/components/form");
   });
 
   it("validates", () => {

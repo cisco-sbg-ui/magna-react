@@ -131,7 +131,7 @@ The `AAutocomplete` component inherits passed props.
   const [filteredItems, setFilteredItems] = useState(items);
   const [validateOnBlur, setValidateOnBlur] = useState(true);
   return (
-    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}} data-testid="validation-testid">
       <AAutocomplete
         clearable
         label="Food Group"

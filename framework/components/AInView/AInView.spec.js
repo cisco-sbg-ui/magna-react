@@ -1,11 +1,11 @@
 context("AInView", () => {
     before(() => {
-        cy.visitInLightTheme("http://localhost:3000/components/inview");
+        cy.visitInLightTheme("/components/inview");
     });
 
     const basicUsageSelector = "#basic + .playground";
     const asyncUsageSelector = "#asynchronous-actions + .playground";
-    
+
     it("should alert when an observed element toggles from being in and out of the view", () => {
         cy.get(`${basicUsageSelector}`).get(`${basicUsageSelector} *[aria-live]`).contains("On Screen");
         cy.get(`${basicUsageSelector} *[data-testid="scroll-container"]`).scrollTo("bottom");

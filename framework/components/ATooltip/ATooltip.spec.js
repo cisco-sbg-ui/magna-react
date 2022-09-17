@@ -1,6 +1,6 @@
 context("ATooltip", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:3000/components/tooltip");
+    cy.visitInLightTheme("/components/tooltip");
   });
 
   it("handles onClose", () => {

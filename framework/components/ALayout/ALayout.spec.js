@@ -1,6 +1,6 @@
 context("ALayout", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:3000/components/layout");
+    cy.visitInLightTheme("/components/layout");
   });
 
   // TODO: Test accessibility

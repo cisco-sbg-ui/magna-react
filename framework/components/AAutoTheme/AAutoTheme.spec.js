@@ -2,13 +2,13 @@ context("AAutoTheme", () => {
   it("persists automatic themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 
-    cy.visitInLightTheme("http://localhost:3000");
+    cy.visitInLightTheme("/");
 
     cy.get("body").compareSnapshot("AutoTheme 1");
 
     cy.get(".root-sidebar .a-switch__box").eq(0).click();
 
-    cy.visitInDarkTheme("http://localhost:3000");
+    cy.visitInDarkTheme("/");
 
     cy.get("body").compareSnapshot("AutoTheme 2");
 

@@ -1,6 +1,6 @@
 context("AFooter", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:3000/components/footer");
+    cy.visitInLightTheme("/components/footer");
   });
 
   // TODO: Test accessibility

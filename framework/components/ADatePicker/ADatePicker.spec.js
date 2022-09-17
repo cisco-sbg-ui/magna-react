@@ -1,6 +1,6 @@
 context("ADatePicker", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:3000/components/date-picker");
+    cy.visitInLightTheme("/components/date-picker");
   });
 
   it("navigates properly", () => {
@@ -62,7 +62,7 @@ context("ADatePicker", () => {
 
   it("displays the upper range bound when an initial range is supplied", () => {
     // Revisit to reset state of calendar
-    cy.visitInLightTheme("http://localhost:3000/components/date-picker");
+    cy.visitInLightTheme("/components/date-picker");
     cy.get(rangeSelector).contains("April");
     cy.get(`${rangeSelector} .a-date-picker__day.selected`).contains("5");
   });
@@ -90,7 +90,7 @@ context("ADatePicker", () => {
     // All days in March should go back to being selectable
     cy.get(`${maxDaysSelector} .a-date-picker__day:not(.disabled)`).should("have.length", 31);
   });
-  
+
   it("allows a maximum number of days to be selected in previous subsequent months", () => {
     // Select January 14, 2022
     cy.get(`${maxDaysSelector} .a-date-picker__prev`).click();
@@ -98,7 +98,7 @@ context("ADatePicker", () => {
     cy.get(`${maxDaysSelector} .a-date-picker__day`).eq(20).click();
 
     // Two days before and after January 14 should be enabled
-    cy.get(`${maxDaysSelector} .a-date-picker__day:not(.disabled)`).should("have.length", 5);    
+    cy.get(`${maxDaysSelector} .a-date-picker__day:not(.disabled)`).should("have.length", 5);
   });
 
 });

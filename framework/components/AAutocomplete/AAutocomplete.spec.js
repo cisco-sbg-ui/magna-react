@@ -2,7 +2,7 @@ import giResponse from "./algolia.gi.fixture.json";
 
 context("AAutocomplete", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:3000/components/autocomplete");
+    cy.visitInLightTheme("/components/autocomplete");
   });
 
   it("has a label that works", () => {
@@ -188,7 +188,7 @@ context("AAutocomplete", () => {
 
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
-
+    cy.get('[data-testid="validation-testid"]').scrollIntoView();
     cy.get("#usage + .playground .a-autocomplete__input")
       .first()
       .type("{downArrow}")

@@ -1,6 +1,6 @@
 context("AMenuBase", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:3000/extend/menu-base");
+    cy.visitInLightTheme("/extend/menu-base");
   });
 
   it("handles onClose", () => {

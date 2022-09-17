@@ -1,6 +1,6 @@
 context("ASwitch", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:3000/components/switch");
+    cy.visitInLightTheme("/components/switch");
   });
 
   // TODO: Test interactability

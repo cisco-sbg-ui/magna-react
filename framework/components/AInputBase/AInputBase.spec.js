@@ -1,6 +1,6 @@
 context("AInputBase", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:3000/extend/input-base");
+    cy.visitInLightTheme("/extend/input-base");
   });
 
   it("supports clearable", () => {
