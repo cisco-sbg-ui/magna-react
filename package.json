@@ -15,7 +15,7 @@
     "cover:integration": "nyc --silent --no-clean npm run test:components",
     "cover:merge": "npm run cover:unit && npm run cover:integration && nyc merge .nyc_output coverage.json",
     "coverage-report": "npx nyc report --reporter=text-summary",
-    "cy:AthruC": "cypress run --spec \"framework/components/**/A[D]*\"",
+    "cy:AthruC": "cypress run --spec \"framework/components/**/A[ABC]*\"",
     "cy:DthruL": "cypress run --spec \"framework/components/**/A[DEFGHIJKL]*\"",
     "cy:MthruS": "cypress run --spec \"framework/components/**/A[MNOPQRS]*\"",
     "cy:TthruZ": "cypress run --spec \"framework/components/**/A[TUVWXYZ]*\"",
