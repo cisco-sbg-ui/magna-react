@@ -30,7 +30,7 @@ const ACheckbox = forwardRef(
       checked = false,
       children,
       className: propsClassName,
-      color = "#049fd9",
+      color,
       disabled = false,
       hint,
       indeterminate = false,
@@ -121,6 +121,14 @@ const ACheckbox = forwardRef(
       className += " a-checkbox--disabled";
     }
 
+    if (!disabled) {
+      className += " a-checkbox--enabled";
+    }
+
+    if (checked || indeterminate) {
+      className += " a-checkbox--selected";
+    }
+
     if (propsClassName) {
       className += ` ${propsClassName}`;
     }
@@ -135,6 +143,7 @@ const ACheckbox = forwardRef(
         boxProps.className += ` ${color}--text`;
       } else {
         boxProps.style = {
+          fill: color,
           color
         };
       }

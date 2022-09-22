@@ -27,6 +27,7 @@ import {ACheckbox} from "@cisco-sbg-ui/magna-react";
     <div>
       <h3>Example</h3>
       <ACheckbox
+        data-testid="example-checkbox-test"
         checked={checked}
         color={color}
         disabled={disabled}
@@ -37,7 +38,7 @@ import {ACheckbox} from "@cisco-sbg-ui/magna-react";
       <ADivider />
       <h3>Options</h3>
       <div className="d-flex mt-4 flex-column">
-        <ACheckbox checked={checked} onClick={() => setChecked(!checked)}>
+        <ACheckbox data-testid="example-checkbox-test-check-it" checked={checked} onClick={() => setChecked(!checked)}>
           Checked State
         </ACheckbox>
         <ACheckbox
@@ -157,6 +158,25 @@ The `ACheckbox` component inherits passed props.
       Disabled and Indeterminate
     </ACheckbox>
   </div>
+  <div className="d-flex flex-column ml-4">
+      <h3>Pink Color State</h3>
+      <ACheckbox color="#ffcce0" data-testid="example-checkbox-test-pink">Default</ACheckbox>
+      <ACheckbox color="#ffcce0" checked data-testid="example-checkbox-test-pink-checked">
+        Checked
+      </ACheckbox>
+      <ACheckbox color="#ffcce0" indeterminate>
+        Indeterminate
+      </ACheckbox>
+      <ACheckbox color="#ffcce0" disabled>
+        Disabled
+      </ACheckbox>
+      <ACheckbox color="#ffcce0" disabled checked>
+        Disabled and Checked
+      </ACheckbox>
+      <ACheckbox color="#ffcce0" disabled indeterminate>
+        Disabled and Indeterminate
+      </ACheckbox>
+    </div>
 </div>
 `}
 />

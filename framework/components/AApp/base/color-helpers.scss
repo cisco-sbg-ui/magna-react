@@ -4,6 +4,7 @@
 
 @mixin text-color($color_value) {
   color: $color_value !important;
+  fill: $color_value !important;
   caret-color: $color_value !important;
 }
 

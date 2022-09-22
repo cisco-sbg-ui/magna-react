@@ -12,15 +12,9 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
 @include theme(a-checkbox) using ($theme) {
   .a-checkbox {
     &__box {
-      fill: map-deep-get($theme, "checkbox", "border--enabled");;
       background-color: map-deep-get($theme, "radio", "bg");
     }
 
-    &__input:checked {
-      & ~ .a-checkbox__box {
-        fill: map-deep-get($theme, "checkbox", "border--checked");
-      }
-    }
   }
 
   &__box {
@@ -32,18 +26,35 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
 
     &:hover {
       svg {
-        fill: map-deep-get($theme, "radio", "border--checked");
+        fill: currentColor !important;
       }
     }
   }
+
+  &--enabled {
+    .a-checkbox__box {
+      fill: map-deep-get($theme, "checkbox", "border--enabled");
+      color: map-deep-get($theme, "checkbox", "border--checked");
+    }
+  }
+
+  &--selected {
+    .a-checkbox__box {
+      fill: map-deep-get($theme, "checkbox", "border--checked");
+      color: map-deep-get($theme, "checkbox", "border--checked");
+    }
+  }
+
   &--warning {
     .a-checkbox__box {
+      fill: map-deep-get($theme, "control", "warning-color");
       color: map-deep-get($theme, "control", "warning-color");
     }
   }
 
   &--danger {
     .a-checkbox__box {
+      fill: map-deep-get($theme, "control", "error-color");
       color: map-deep-get($theme, "control", "error-color");
     }
   }
@@ -53,13 +64,9 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
       .a-checkbox {
         &__box {
           fill: map-deep-get($theme, "checkbox", "border--disabled");
+          color: map-deep-get($theme, "checkbox", "border--disabled");
           background-color: map-deep-get($theme, "checkbox", "fill--disabled");
-
-          &:hover {
-            svg {
-              fill: map-deep-get($theme, "checkbox", "border--disabled");
-            }
-          }
+          cursor: not-allowed;
         }
 
         &__input:checked {
@@ -96,6 +103,7 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
   }
 
   &__box {
+    color: currentColor;
     position: relative;
     flex: 0 0 auto;
     height: $checkbox-box-side-length;
