@@ -24,10 +24,11 @@ context("ACheckbox", () => {
 
     cy.get('[data-testid="example-checkbox-test"] > .a-checkbox__wrap > .a-checkbox__box')
       .then($el => {
-        const win = cy.state('window')
-        const styles = win.getComputedStyle($el[0])
-        const transform = styles.getPropertyValue('color')
-        expect(transform).to.eq(checkedColor)
+        cy.window().then((win) => {
+          const styles = win.getComputedStyle($el[0])
+          const transform = styles.getPropertyValue('color')
+          expect(transform).to.eq(checkedColor)
+        })
       })
   })
 
@@ -56,10 +57,11 @@ context("ACheckbox", () => {
 
     cy.get('[data-testid="example-checkbox-test-pink-checked"] > .a-checkbox__wrap > .a-checkbox__box')
       .then($el => {
-        const win = cy.state('window')
-        const styles = win.getComputedStyle($el[0])
-        const transform = styles.getPropertyValue('color')
-        expect(transform).to.eq(pinkColor)
+        cy.window().then((win) => {
+          const styles = win.getComputedStyle($el[0])
+          const transform = styles.getPropertyValue('color')
+          expect(transform).to.eq(pinkColor)
+        })
       })
   })
 
