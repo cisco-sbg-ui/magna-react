@@ -1,7 +1,7 @@
 # Magna-React
 
 ## Resources
-
+- [magna-react - LIVE canary branch](https://magna-react.vercel.app/)
 - [Meraki Zeroheight](https://zeroheight.com/0a43ab5cd)
 - [Magnetic Design Figma](https://www.figma.com/file/oVZWatImEIbl1c8sjdGxi0/%F0%9F%A7%B2--Magnetic-Design-Library)
 - [Secure Endpoint redesign Figma](https://www.figma.com/file/lTNjbXom8zSLJljSVQ3083/Secure-Endpoint---Design-System-Audit-(EH)?node-id=0%3A1)
