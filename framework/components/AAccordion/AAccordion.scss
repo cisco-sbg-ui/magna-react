@@ -4,8 +4,11 @@ $accordion-min-width: 0;
 $accordion-width: 100%;
 $accordion-margin: 20px 0;
 $accordion-header-font-size: $font-size--sm;
-$accordion-header-padding: 4px 10px;
+$accordion-header-font-weight: 600;
+//$accordion-header-padding: 16px 12px 16px 24px; magnetic spacing, ignoring for now
+$accordion-header-padding: 8px 12px;
 $accordion-body-padding: 15px 10px;
+$accordion-border-radius: 8px;
 $accordion-message-font-size: 13px;
 $accordion-toggle-font-size: $font-size--xxs;
 $accordion-toggle-margin: 0 8px 0 0;
@@ -18,28 +21,16 @@ $accordion--state-collapsed-transition: visibility $transition-duration ease,
 @include theme(a-accordion) using ($theme) {
   &__card {
     background-color: transparent;
-
-    &--state-collapsed {
-      .a-accordion__header {
-        background-color: map-deep-get(
-          $theme,
-          "accordion",
-          "header-collapsed-bg-color"
-        );
-      }
-    }
+    border-bottom: $border-width solid;
+    border-color: map-deep-get($theme, "control", "stroke-color");
 
     &--is-focused .a-accordion__header {
       border-color: map-deep-get($theme, "base", "brand-color");
     }
   }
 
-  &__header {
-    background-color: map-deep-get($theme, "accordion", "header-bg-color");
-    border-color: transparent;
-  }
-
-  &__link {
+  :last-of-type &__link {
+    display: flex;
     color: map-deep-get($theme, "base", "color");
 
     &:visited,
@@ -50,8 +41,16 @@ $accordion--state-collapsed-transition: visibility $transition-duration ease,
     }
   }
 
+  &__chevron {
+    display: flex;
+    flex: 1 0 auto;
+    align-self: center;
+    justify-content: flex-end;
+  }
+
   &__body {
     background-color: map-deep-get($theme, "accordion", "body-bg");
+    color: map-deep-get($theme, "accordion", "color");
   }
 
   &--style-bordered {
@@ -61,6 +60,7 @@ $accordion--state-collapsed-transition: visibility $transition-duration ease,
 
 .a-accordion {
   margin: $accordion-margin;
+  border-radius: $accordion-border-radius;
 
   &__card {
     position: relative;
@@ -69,10 +69,6 @@ $accordion--state-collapsed-transition: visibility $transition-duration ease,
     min-width: $accordion-min-width;
     width: $accordion-width;
     word-wrap: break-word;
-
-    &:not(:last-of-type) {
-      margin: 0 0 2px 0;
-    }
 
     &--state-collapsed {
       .a-accordion__body {
@@ -83,6 +79,7 @@ $accordion--state-collapsed-transition: visibility $transition-duration ease,
     &--is-focused .a-accordion__header {
       border-width: $border-width;
       border-style: solid;
+      padding: 0px;
     }
 
     &--has-body .a-accordion__link {
@@ -90,13 +87,16 @@ $accordion--state-collapsed-transition: visibility $transition-duration ease,
     }
   }
 
+  &__card:last-of-type {
+    border-bottom: 0;
+  }
+
   &__header {
-    height: 30px;
     display: inline-flex;
-    border-width: $border-width;
-    border-style: solid;
     font-size: $accordion-header-font-size;
+    font-weight: $accordion-header-font-weight;
     vertical-align: middle;
+    padding: $border-width;
 
     .a-button--icon {
       padding: 6px;
@@ -147,7 +147,7 @@ $accordion--state-collapsed-transition: visibility $transition-duration ease,
       overflow: hidden;
       opacity: 1;
       @include transition($accordion-transition);
-      margin: 15px 0;
+      margin: 0 0 15px 0;
     }
 
     &--state-collapsed {

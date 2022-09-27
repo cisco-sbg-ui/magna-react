@@ -17,7 +17,7 @@ Status options:
 
 |     Status     | Name                          | Developer | UXer |
 |:--------------:|:------------------------------|:---------:|:----:|
-|      :x:       | AAccordion                    |           |      |
+| :construction: | AAccordion                    | RWH       |      |
 |      :x:       | AAlert                        |           |      |
 |      :x:       | AApp                          |           |      |
 |      :x:       | AAutocomplete                 |           |      |
