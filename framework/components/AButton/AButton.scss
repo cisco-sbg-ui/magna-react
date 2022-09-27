@@ -31,7 +31,7 @@ $btn-transition: color $transition-duration--extra-fast
       color: map-deep-get($theme, "button", "primary", "color");
       background-color: map-deep-get($theme, "button", "primary", "bg--focus");
       border-color: map-deep-get($theme, "button", "primary", "border--focus");
-      box-shadow: map-deep-get($theme, "base", "box-shadow");
+      //box-shadow: map-deep-get($theme, "base", "box-shadow");
     }
 
     &:active {
@@ -76,7 +76,7 @@ $btn-transition: color $transition-duration--extra-fast
       color: map-deep-get($theme, "button", "primary", "destructive", "color");
       background-color: map-deep-get($theme, "button", "primary", "destructive", "bg--focus");
       border-color: map-deep-get($theme, "button", "primary", "destructive", "border--focus");
-      box-shadow: map-deep-get($theme, "base", "box-shadow");
+      //box-shadow: map-deep-get($theme, "base", "box-shadow");
     }
 
     &:active {
@@ -141,7 +141,7 @@ $btn-transition: color $transition-duration--extra-fast
         "secondary",
         "border--focus"
       );
-      box-shadow: map-deep-get($theme, "base", "box-shadow");
+      //box-shadow: map-deep-get($theme, "base", "box-shadow");
     }
 
     &:active {
@@ -215,7 +215,7 @@ $btn-transition: color $transition-duration--extra-fast
           "destructive",
           "border--focus"
       );
-      box-shadow: map-deep-get($theme, "base", "box-shadow");
+      //box-shadow: map-deep-get($theme, "base", "box-shadow");
     }
 
     &:active {
@@ -262,8 +262,14 @@ $btn-transition: color $transition-duration--extra-fast
 
     &:focus {
       color: map-deep-get($theme, "button", "tertiary", "color--focus");
-      box-shadow: map-deep-get($theme, "base", "box-shadow");
+      //box-shadow: map-deep-get($theme, "base", "box-shadow");
       border-color: map-deep-get($theme, "button", "tertiary", "border--focus");
+      background-color: map-deep-get(
+          $theme,
+          "button",
+          "tertiary",
+          "bg--active"
+      );
     }
 
     &:active {
@@ -292,7 +298,7 @@ $btn-transition: color $transition-duration--extra-fast
     }
 
     &:focus {
-      box-shadow: map-deep-get($theme, "base", "box-shadow");
+      //box-shadow: map-deep-get($theme, "base", "box-shadow");
     }
 
     &:active {
@@ -346,6 +352,28 @@ $btn-transition: color $transition-duration--extra-fast
   &--icon {
     padding: 10px;
     height: auto;
+  }
+
+  &.disabled,
+  &:disabled {
+    pointer-events: auto;
+    cursor: not-allowed;
+  }
+
+  &.magnetic {
+    height: 34px;
+    padding: 7px 12px;
+  }
+
+  &.magnetic {
+    &.a-button--icon {
+      padding: 8.25px;
+      svg.a-icon {
+        width: 14px;
+        height: 14px;
+      }
+    }
+
   }
 }
 

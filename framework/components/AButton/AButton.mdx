@@ -170,6 +170,53 @@ The `AButton` component inherits passed props.
 `}
 />
 
+## Magnetized (left) / Re-skin only (right)
+<Playground
+  fullWidthPreview
+  code={`<div className="container"><div className="d-flex">
+  <div>
+    <p>
+      <AButton magnetic>Primary</AButton>
+    </p>
+    <p>
+      <AButton  magnetic>
+        <AIcon left>edit</AIcon>
+        Primary with Icon
+      </AButton>
+    </p>
+    <p>
+      <AButton  magnetic icon>
+        <AIcon>sync</AIcon>
+      </AButton>
+    </p>
+    <p>
+      <AButton disabled  magnetic>Primary Disabled</AButton>
+    </p>
+  </div>
+    <div style={{marginLeft: 10}}>
+      <p>
+        <AButton>Primary</AButton>
+      </p>
+      <p>
+        <AButton>
+          <AIcon left>edit</AIcon>
+          Primary with Icon
+        </AButton>
+      </p>
+      <p>
+        <AButton icon>
+          <AIcon>sync</AIcon>
+        </AButton>
+      </p>
+      <p>
+        <AButton disabled>Primary Disabled</AButton>
+      </p>
+    </div>
+    </div>
+</div>
+`}
+/>
+
 ## Link Buttons
 
 If the `href` property is used, the component will render as an HTML anchor.

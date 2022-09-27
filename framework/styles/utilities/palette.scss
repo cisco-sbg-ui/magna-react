@@ -290,10 +290,86 @@ $mds-yellow : (
   "yellow-10": #945F03
 );
 
+$mds-purple : (
+  "purple-1": #F6F5FF,
+  "purple-2": #E0DCFA,
+  "purple-3": #C8C1F5,
+  "purple-4": #B1A8F0,
+  "purple-5": #9C90E8,
+  "purple-6": #887BE3,
+  "purple-7": #7565DB,
+  "purple-8": #6250D4,
+  "purple-9": #4E3BCC,
+  "purple-10": #3A26BD
+);
+
+$mds-accent-colors : (
+  "accent-a-a3-default": #049FD9,
+  "accent-a-a2-medium": #81CFEC,
+  "accent-a-a1-light": #CDECF7,
+  "accent-b-b3-default": #0D56E2,
+  "accent-b-b2-medium": #86AAF0,
+  "accent-b-b1-light": #CFDDF9,
+  "accent-c-c3-default": #B180D6,
+  "accent-c-c2-medium": #D8BFEA,
+  "accent-c-c1-light": #EFE6F7,
+  "accent-d-d3-default": #C0006F,
+  "accent-d-d2-medium": #DF80B7,
+  "accent-d-d1-light": #F2CCE2,
+  "accent-e-e3-default": #F4647A,
+  "accent-e-e2-medium": #F9B1BC,
+  "accent-e-e1-light": #FDE0E4,
+  "accent-f-f3-default": #B73000,
+  "accent-f-f2-medium": #DB9780,
+  "accent-f-f1-light": #F1D6CC,
+  "accent-g-g3-default": #9C9711,
+  "accent-g-g2-medium": #CDCB88,
+  "accent-g-g1-light": #EBEACF,
+  "accent-h-h3-default": #316E27,
+  "accent-h-h2-medium": #98B693,
+  "accent-h-h1-light": #D6E2D4,
+  "accent-i-i3-default": #00A889,
+  "accent-i-i2-medium": #80D3C4,
+  "accent-i-i1-light": #CCEEE7,
+  "accent-j-j3-default": #006C7D,
+  "accent-j-j2-medium": #80B5BE,
+  "accent-j-j1-light": #CCE2E5
+);
+
 $mds-status: (
   "positive": map-get($mds-green, "green-7"),
   "warning": map-get($mds-yellow, "yellow-5"),
   "negative": map-get($mds-red, "red-7")
+);
+
+$mds-primary: (
+  "primary-blue": map-get($mds-blue, "blue-7"),
+  "primary-blue-dark": map-get($mds-blue, "blue-8"),
+  "secondary-gray": map-get($mds-neutral, "neutral-11"),
+  "primary-gray": map-get($mds-neutral, "neutral-14")
+);
+
+$mds-light-theme: (
+  "background-page": map-get($mds-neutral, "neutral-1"),
+  "background": map-get($mds-neutral, "neutral-2"),
+  "dividers": map-get($mds-neutral, "neutral-3"),
+  "disabled-state": map-get($mds-neutral, "neutral-4"),
+  "icon-default": map-get($mds-neutral, "neutral-6"),
+  "supplemental-text": map-get($mds-neutral, "neutral-7"),
+  "default-text": map-get($mds-neutral, "neutral-9"),
+  "secondary-heading": map-get($mds-neutral, "neutral-9"),
+  "primary-heading": map-get($mds-neutral, "neutral-10")
+);
+$mds-dark-theme: (
+  "background-page": map-get($mds-neutral, "neutral-12"),
+  "background": map-get($mds-neutral, "neutral-11"),
+  "dividers": map-get($mds-neutral, "neutral-10"),
+  "disabled-state": map-get($mds-neutral, "neutral-9"),
+  "icon-default": map-get($mds-neutral, "neutral-7"),
+  "supplemental-text": map-get($mds-neutral, "neutral-6"),
+  "default-text": map-get($mds-neutral, "neutral-4"),
+  "secondary-heading": map-get($mds-neutral, "neutral-4"),
+  "primary-heading": map-get($mds-neutral, "neutral-3")
 );
 
 $secure-blue: (

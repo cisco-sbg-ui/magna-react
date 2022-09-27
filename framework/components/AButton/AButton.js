@@ -14,6 +14,7 @@ const AButton = forwardRef(
       disabled,
       href,
       icon,
+      magnetic = false,
       onClick,
       primary,
       secondary,
@@ -44,6 +45,10 @@ const AButton = forwardRef(
 
     if (disabled) {
       className += " disabled";
+    }
+
+    if (magnetic) {
+      className += " magnetic";
     }
 
     if (selectedValues && selectedValues.includes(value)) {
@@ -141,7 +146,11 @@ AButton.propTypes = {
   /**
    * Destructive - button for destructive action, should be used with confirm dialog/modal when clicked
    */
-  destructive: PropTypes.bool
+  destructive: PropTypes.bool,
+  /**
+   * Apply Magnetic styles vs only re-skin styles, defaults to false
+   */
+  magnetic: PropTypes.bool
 };
 
 AButton.displayName = "AButton";

@@ -29,15 +29,15 @@ $atomic-default: (
     "border-color": $white
   ),
   "base": (
-    "bg": map-get($mds-neutral, "neutral-2"),
+    "bg": map-get($mds-light-theme, "background"),
     "brand-color": map-get($cisco-blue, "base"),
-    "color": map-get($mds-neutral, "neutral-9"),
+    "color": map-get($mds-light-theme, "default-text"),
     "color--active": map-get($cisco-blue, "burnt-2"),
     "color--hover": map-get($cisco-blue, "base"),
     "color--selected": map-get($cisco-blue, "burnt-1"),
-    "inverse-color": $white,
-    "pg-bg": map-get($mds-neutral, "neutral-1"),
-    "stroke-color": map-get($grey, "base"),
+    "inverse-color": map-get($mds-dark-theme, "default-text"),
+    "pg-bg": map-get($mds-light-theme, "background-page"),
+    "stroke-color": map-get($mds-light-theme, "icon-default"),
     "box-shadow": 0 0 2px 2px rgba(map-get($cisco-blue, "base"), 0.4),
     "outline": 1px solid map-get($cisco-blue, "base")
   ),
@@ -229,8 +229,8 @@ $atomic-default: (
     "step-line-color": map-get($grey, "lighten-2")
   ),
   "switch": (
-    "bg": map-get($grey, "darken-4"),
-    "bg--checked": map-get($cisco-blue, "burnt-1"),
+    "bg": map-get($mds-neutral, "neutral-11"),
+    "bg--checked": map-get($mds-blue, "blue-7"),
     "bg--disabled": map-get($grey, "lighten-2"),
     "bg--disabled--checked": rgba(map-get($cisco-blue, "burnt-1"), $alpha-5),
     "circle-border-color": map-get($grey, "darken-4"),

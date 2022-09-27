@@ -29,15 +29,15 @@ $atomic-dusk: (
     "border-color": transparent
   ),
   "base": (
-    "bg": map-get($grey, "darken-7"),
+    "bg": map-get($mds-dark-theme, "background"),
     "brand-color": map-get($cisco-blue, "wash-1"),
-    "color": map-get($grey, "lighten-5"),
+    "color":  map-get($mds-dark-theme, "default-text"),
     "color--active": map-get($cisco-blue, "base"),
     "color--hover": map-get($cisco-blue, "burnt-1"),
     "color--selected": map-get($cisco-blue, "base"),
-    "inverse-color": map-get($grey, "lighten-5"),
-    "pg-bg": map-get($grey, "darken-7"),
-    "stroke-color": rgba(map-get($grey, "base"), $alpha-7),
+    "inverse-color": map-get($mds-light-theme, "default-text"),
+    "pg-bg": map-get($mds-dark-theme, "background-page"),
+    "stroke-color": map-get($mds-dark-theme, "icon-default"),
     "box-shadow": 0 0 2px 2px rgba(map-get($cisco-blue, "wash-1"), 0.4),
     "outline": 1px solid map-get($cisco-blue, "wash-1")
   ),
