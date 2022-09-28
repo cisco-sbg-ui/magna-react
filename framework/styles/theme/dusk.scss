@@ -127,9 +127,11 @@ $atomic-dusk: (
     )
   ),
   "checkbox": (
-    "border--disabled": map-get($mds-neutral, "neutral-4"),
+    "border--disabled": map-get($mds-dark-theme, "disabled-state"),
     "label-color--disabled": map-get($mds-neutral, "neutral-6"),
-    "fill--disabled": map-get($mds-neutral, "neutral-2")
+    "fill--disabled": map-get($mds-neutral, "neutral-2"),
+    "border--checked": map-get($mds-blue, "blue-7"),
+    "border--enabled": map-get($mds-neutral, "neutral-5")
   ),
   "color": (
     "warning--state-hover": map-get($status-orange, "wash-1"),
