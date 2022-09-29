@@ -3,7 +3,8 @@ $atomic-default: (
     "header-bg-color": map-get($grey, "lighten-3"),
     "header-collapsed-bg-color": map-get($grey, "lighten-5"),
     "body-bg": $white,
-    "color": map-get($mds-neutral, "neutral-11")
+    "body-color": map-get($mds-neutral, "neutral-11"),
+    "color": map-get($mds-neutral, "neutral-14")
   ),
   "alert": (
     "bg": map-get($status-blue, "wash-3"),
@@ -153,7 +154,7 @@ $atomic-default: (
   "control": (
     "fill-color": $white,
     "fill-color--disabled": map-get($mds-neutral, "neutral-5"),
-    "stroke-color": map-get($grey, "lighten-3"),
+    "stroke-color": map-get($mds-neutral, "neutral-4"),
     "stroke-color--hover": map-get($grey, "darken-4"),
     "stroke-color--disabled": map-get($grey, "lighten-2"),
     "warning-color": map-get($status-orange, "burnt-1"),
