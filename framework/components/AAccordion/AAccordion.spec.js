@@ -40,7 +40,9 @@ context("AAccordion", () => {
   });
 
   it("supports alternative icons", () => {
-    cy.get("#alternative-icons + .playground .a-accordion__link .a-icon")
+    cy.get(
+      "#alternative-icons + .playground .a-accordion__link .a-accordion__chevron .a-icon"
+    )
       .eq(1)
       .should("have.attr", "aria-label", "subtract icon")
       .click()

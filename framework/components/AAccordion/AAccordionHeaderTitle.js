@@ -14,8 +14,8 @@ const AAccordionHeaderTitle = forwardRef(
       chevron = true,
       children,
       className: propsClassName,
-      collapseIcon = "chevron-down",
-      expandIcon = "chevron-right",
+      collapseIcon = "chevron-up",
+      expandIcon = "chevron-down",
       onBlur,
       onClick,
       onFocus,
@@ -82,19 +82,26 @@ const AAccordionHeaderTitle = forwardRef(
     }
 
     return (
-      // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-      <div
-        {...rest}
-        {...props}
-        onBlur={handleBlur}
-        onClick={handleClick}
-        onFocus={handleFocus}
-        onKeyDown={handleKeyDown}
-        ref={ref}
-        className={className}>
-        {chevron && <AIcon>{chevronIcon}</AIcon>}
-        {children}
-      </div>
+      /* eslint-disable jsx-a11y/no-static-element-interactions */
+      <>
+        <div
+          {...rest}
+          {...props}
+          onBlur={handleBlur}
+          onClick={handleClick}
+          onFocus={handleFocus}
+          onKeyDown={handleKeyDown}
+          ref={ref}
+          className={className}>
+          <div>{children}</div>
+          {chevron && (
+            <div className="a-accordion__chevron">
+              <AIcon>{chevronIcon}</AIcon>
+            </div>
+          )}
+        </div>
+      </>
+      /* eslint-enable jsx-a11y/no-static-element-interactions */
     );
   }
 );

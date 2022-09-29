@@ -2,7 +2,9 @@ $atomic-dusk: (
   "accordion": (
     "header-bg-color": rgba(map-get($dusk, "1"), $alpha-3),
     "header-collapsed-bg-color": map-get($dusk, "6"),
-    "body-bg": transparent
+    "body-bg": transparent,
+    "body-color": map-get($mds-neutral, "neutral-8"),
+    "color": map-get($mds-neutral, "neutral-5")
   ),
   "alert": (
     "bg": map-get($status-blue, "burnt-4"),
@@ -31,7 +33,7 @@ $atomic-dusk: (
   "base": (
     "bg": map-get($mds-dark-theme, "background"),
     "brand-color": map-get($cisco-blue, "wash-1"),
-    "color":  map-get($mds-dark-theme, "default-text"),
+    "color": map-get($mds-dark-theme, "default-text"),
     "color--active": map-get($cisco-blue, "base"),
     "color--hover": map-get($cisco-blue, "burnt-1"),
     "color--selected": map-get($cisco-blue, "base"),
@@ -55,18 +57,18 @@ $atomic-dusk: (
       "border--disabled": map-get($indigo-blue, "burnt-1"),
       "color": map-get($grey, "lighten-5"),
       "color--disabled": map-get($grey, "lighten-5"),
-      "opacity--disabled": calc(#{$alpha-6} + .06),
+      "opacity--disabled": calc(#{$alpha-6} + 0.06),
       "destructive": (
         "bg": map-get($mds-red, "red-8"),
         "bg--active": map-get($mds-red, "red-9"),
         "bg--hover": map-get($mds-red, "red-9"),
         "bg--focus": map-get($mds-red, "red-9"),
         "bg--disabled": map-get($mds-red, "red-4"),
-        "border": rgba(0,0,0,0),
-        "border--active": rgba(0,0,0,0),
-        "border--hover": rgba(0,0,0,0),
-        "border--focus": rgba(0,0,0,0),
-        "border--disabled": rgba(0,0,0,0),
+        "border": rgba(0, 0, 0, 0),
+        "border--active": rgba(0, 0, 0, 0),
+        "border--hover": rgba(0, 0, 0, 0),
+        "border--focus": rgba(0, 0, 0, 0),
+        "border--disabled": rgba(0, 0, 0, 0),
         "color": $white,
         "color--disabled": $white,
         "opacity--disabled": 1
@@ -140,7 +142,7 @@ $atomic-dusk: (
   "control": (
     "fill-color": map-get($dusk, "6"),
     "fill-color--disabled": rgba(map-get($grey, "lighten-3"), $alpha-3),
-    "stroke-color": rgba(map-get($grey, "lighten-3"), $alpha-2),
+    "stroke-color": map-get($mds-neutral, "neutral-15"),
     "stroke-color--hover": map-get($grey, "lighten-1"),
     "stroke-color--disabled": rgba(map-get($grey, "lighten-2"), $alpha-3),
     "warning-color": map-get($status-orange, "base"),
