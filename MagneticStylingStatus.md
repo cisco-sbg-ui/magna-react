@@ -20,7 +20,7 @@ Status options:
 | :construction: | AAccordion                    | RWH       |      |
 |      :x:       | AAlert                        |           |      |
 |      :x:       | AApp                          |           |      |
-|      :x:       | AAutocomplete                 |           |      |
+| :construction: | AAutocomplete                 | AJL       |      |
 |      :x:       | ABadge                        |           |      |
 | :construction: | ABreadcrumb                   | AJL       |      |
 |      :x:       | ABreakpoint                   |           |      |
