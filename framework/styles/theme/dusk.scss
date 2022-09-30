@@ -7,14 +7,12 @@ $atomic-dusk: (
     "color": map-get($mds-neutral, "neutral-5")
   ),
   "alert": (
-    "bg": map-get($status-blue, "burnt-4"),
-    "border-color": map-get($status-blue, "burnt-3"),
-    "success-bg": map-get($status-green, "burnt-4"),
-    "success-border-color": map-get($status-green, "burnt-3"),
-    "warning-bg": map-get($status-orange, "burnt-4"),
-    "warning-border-color": map-get($status-orange, "burnt-3"),
-    "danger-bg": map-get($status-red, "burnt-4"),
-    "danger-border-color": map-get($status-red, "burnt-3")
+    "bg": map-get($mds-blue, "blue-9"),
+    "success-bg": map-get($mds-green, "green-10"),
+    "warning-bg": map-get($mds-yellow, "yellow-10"),
+    "danger-bg": map-get($mds-red, "red-9"),
+    "close": map-get($mds-neutral, "neutral-7"),
+    "close-hover": map-get($mds-neutral, "neutral-9")
   ),
   "app": (
     "scrollbar": (

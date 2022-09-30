@@ -7,14 +7,12 @@ $atomic-default: (
     "color": map-get($mds-neutral, "neutral-14")
   ),
   "alert": (
-    "bg": map-get($status-blue, "wash-3"),
-    "border-color": map-get($status-blue, "wash-2"),
-    "success-bg": map-get($status-green, "wash-3"),
-    "success-border-color": map-get($status-green, "wash-1"),
-    "warning-bg": map-get($status-orange, "wash-3"),
-    "warning-border-color": map-get($status-orange, "wash-2"),
-    "danger-bg": map-get($status-red, "wash-3"),
-    "danger-border-color": map-get($status-red, "wash-2")
+    "bg": map-get($mds-blue, "blue-2"),
+    "success-bg": map-get($mds-green, "green-1"),
+    "warning-bg": map-get($mds-yellow, "yellow-1"),
+    "danger-bg": map-get($mds-red, "red-2"),
+    "close": map-get($mds-neutral, "neutral-11"),
+    "close-hover": map-get($mds-neutral, "neutral-13")
   ),
   "app": (
     "scrollbar": (

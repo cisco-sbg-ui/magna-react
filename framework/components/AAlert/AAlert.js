@@ -51,7 +51,7 @@ const AAlert = forwardRef(
 
     return (
       <div {...rest} role="alert" ref={ref} className={className}>
-        <AIcon className="a-alert__icon" size={16}>
+        <AIcon className="a-alert__icon a-alert__icon--level" size={16}>
           {icon}
         </AIcon>
         <div className="a-alert__message">{children}</div>
