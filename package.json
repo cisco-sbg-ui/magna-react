@@ -26,6 +26,8 @@
     "cypress:runUpdateSnapshots": "cypress run --env type=base --browser chrome",
     "dev": "next",
     "esbuild:install": "node ./node_modules/esbuild/install.js",
+    "husky:pre-commit": "lint-staged",
+    "prepare": "husky install",
     "publish-package": "rimraf lib && npm ci && npm run build && npm publish",
     "start": "next start",
     "start-ci": "next -p $npm_config_port || 3232",
@@ -81,6 +83,8 @@
     "glob": "8.0.3",
     "gray-matter": "4.0.3",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "8.0.1",
+    "lint-staged": "13.0.3",
     "lodash.debounce": "4.0.8",
     "next": "12.3.0",
     "next-mdx-remote": "3.0.8",
@@ -97,6 +101,16 @@
     "start-server-and-test": "1.14.0",
     "webpack": "^5.72.1",
     "webpack-dev-server": "^3.11.3"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --max-warnings=0 --fix",
+      "prettier --write"
+    ],
+    "*.json": "prettier --write",
+    "*.html": "prettier --write",
+    "*.scss": "prettier --write",
+    "*.css": "prettier --write"
   },
   "repository": {
     "type": "git",
