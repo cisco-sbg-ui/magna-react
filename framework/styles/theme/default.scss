@@ -248,9 +248,9 @@ $atomic-default: (
   "tabs": (
     "oversized-background-color": map-get($grey, "lighten-6"),
     "oversized--hover-background-color": $white,
-    "text-color": map-get($mds-light-theme, "supplemental-text"),
-    "text-color--selected": map-get($mds-light-theme, "primary-heading"),
-    "bar-color--hover": map-get($mds-neutral, "neutral-3")
+    "text-color": map-get($mds-neutral, "neutral-11"),
+    "text-color--selected": map-get($mds-neutral, "neutral-15"),
+    "bar-color--hover": map-get($mds-neutral, "neutral-4")
   ),
   "tag": (
     "bg-color": map-get($grey, "lighten-3"),
