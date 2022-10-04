@@ -21,7 +21,7 @@ Status options:
 | :construction: | AAlert                        |    RWH    |      |
 |      :x:       | AApp                          |           |      |
 | :construction: | AAutocomplete                 |    AJL    |      |
-|      :x:       | ABadge                        |           |      |
+| :construction: | ABadge                        |    RWH    |      |
 | :construction: | ABreadcrumb                   |    AJL    |      |
 |      :x:       | ABreakpoint                   |           |      |
 | :construction: | AButton                       |    AJL    |      |
