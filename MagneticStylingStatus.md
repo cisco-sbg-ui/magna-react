@@ -17,19 +17,19 @@ Status options:
 
 |     Status     | Name                          | Developer | UXer |
 |:--------------:|:------------------------------|:---------:|:----:|
-| :construction: | AAccordion                    | RWH       |      |
-| :construction: | AAlert                        | RWH       |      |
+| :construction: | AAccordion                    |    RWH    |      |
+| :construction: | AAlert                        |    RWH    |      |
 |      :x:       | AApp                          |           |      |
-| :construction: | AAutocomplete                 | AJL       |      |
+| :construction: | AAutocomplete                 |    AJL    |      |
 |      :x:       | ABadge                        |           |      |
-| :construction: | ABreadcrumb                   | AJL       |      |
+| :construction: | ABreadcrumb                   |    AJL    |      |
 |      :x:       | ABreakpoint                   |           |      |
-| :construction: | AButton                       | AJL       |      |
+| :construction: | AButton                       |    AJL    |      |
 |      :x:       | AButtonGroup                  |           |      |
-| :construction: | ACheckbox                     | AJL       |      |
+| :construction: | ACheckbox                     |    AJL    |      |
 |      :x:       | ACombobox                     |           |      |
-| :construction: | AContextualNotification       | AJL       |      |
-| :construction: | AContextualNotificationMenu   | AJL       |      |
+| :construction: | AContextualNotification       |    AJL    |      |
+| :construction: | AContextualNotificationMenu   |    AJL    |      |
 |      :x:       | ADataTable                    |           |      |
 |      :x:       | ADatePicker                   |           |      |
 |      :x:       | ADialog                       |           |      |
@@ -40,7 +40,7 @@ Status options:
 |      :x:       | AHeader                       |           |      |
 |      :x:       | AHint                         |           |      |
 |      :x:       | AIcon                         |           |      |
-| :construction: | AInputBase                    | AJL       |      |
+| :construction: | AInputBase                    |    AJL    |      |
 |      :x:       | AInView                       |           |      |
 |      :x:       | ALayout                       |           |      |
 |      :x:       | AList                         |           |      |
@@ -52,19 +52,19 @@ Status options:
 |      :x:       | APanel                        |           |      |
 |      :x:       | APopover                      |           |      |
 |      :x:       | AProgressbar                  |           |      |
-| :construction: | ARadio                        | AJL       |      |
+| :construction: | ARadio                        |    AJL    |      |
 |      :x:       | ASelect                       |           |      |
 |      :x:       | ASimpleTable                  |           |      |
 |      :x:       | ASlider                       |           |      |
 |      :x:       | AStepper                      |           |      |
-|      :x:       | ASwitch                       |           |      |
-| :construction: | ATabs                         | AJL       |      |
+| :construction: | ASwitch                       |    AJL    |      |
+| :construction: | ATabs                         |    AJL    |      |
 |      :x:       | ATag                          |           |      |
 |      :x:       | ATextarea                     |           |      |
 |      :x:       | ATextInput                    |           |      |
 |      :x:       | ATheme                        |           |      |
 |      :x:       | ATimeline                     |           |      |
-| :construction: | AToast                        | AJL       |      |
+| :construction: | AToast                        |    AJL    |      |
 |      :x:       | AToaster                      |           |      |
 |      :x:       | ATooltip                      |           |      |
 |      :x:       | ATree                         |           |      |

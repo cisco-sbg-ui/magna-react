@@ -227,26 +227,15 @@ $atomic-dusk: (
     "step-line-color": rgba(map-get($grey, "lighten-2"), $alpha-3)
   ),
   "switch": (
-    "bg": rgba(map-get($grey, "darken-4"), $alpha-8),
-    "bg--checked": map-get($cisco-blue, "base"),
-    "bg--disabled": rgba(map-get($grey, "darken-4"), $alpha-8),
-    "bg--disabled--checked": map-get($cisco-blue, "base"),
-    "circle-border-color": rgba(map-get($grey, "darken-4"), $alpha-8),
-    "circle-border-color--checked": map-get($cisco-blue, "base"),
-    "circle-border-color--checked--hover": map-get($cisco-blue, "base"),
-    "circle-border-color--disabled": rgba(map-get($grey, "darken-4"), $alpha-8),
-    "circle-border-color--disabled--checked": map-get($cisco-blue, "base"),
-    "circle--inner-border-active": rgba(map-get($grey, "darken-4"), $alpha-8),
-    "circle--inner-border-active-hover": map-get($cisco-blue, "burnt-1"),
-    "circle--inner-border-checked-active": map-get($cisco-blue, "base"),
-    "circle--inner-border-checked-active-hover": map-get($cisco-blue, "base"),
-    "circle--inner-box-shadow-hover": map-get($cisco-blue, "burnt-1"),
-    "circle--inner-box-shadow-checked-hover": map-get($cisco-blue, "base"),
-    "circle--inner-box-shadow-checked-active": map-get($cisco-blue, "base"),
-    "circle--inner-box-shadow-checked-active-hover":
-      map-get($cisco-blue, "burnt-1"),
-    "label-color--disabled": rgba(map-get($grey, "lighten-5"), $alpha-4),
-    "opacity-disabled": $alpha-3
+    "bg": map-get($mds-neutral, "neutral-11"),
+    "bg--hover": map-get($mds-neutral, "neutral-14"),
+    "bg--checked": map-get($mds-blue, "blue-7"),
+    "bg--checked--hover": map-get($mds-blue, "blue-9"),
+    "bg--disabled": map-get($mds-neutral, "neutral-4"),
+    "bg--disabled--checked": map-get($mds-blue, "blue-3"),
+    "circle-color": map-get($mds-neutral, "neutral-1"),
+    "label-color--disabled": map-get($mds-dark-theme, "disabled-state"),
+    "opacity-disabled": 1
   ),
   "table": (
     "bg":

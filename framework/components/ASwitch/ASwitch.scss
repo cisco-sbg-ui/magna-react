@@ -1,8 +1,8 @@
 @import "../../styles";
 
 $switch-width: 38px;
-$switch-height: 15px;
-$switch-border-radius: 11px;
+$switch-height: 21px;
+$switch-border-radius: 14px;
 $switch__label-margin: 0 0 0 10px;
 $switch__circle-width: 21px;
 $switch__circle-height: 21px;
@@ -15,59 +15,18 @@ $switch-after-transition: transform $transition-duration--fast
   &__box {
     background-color: map-deep-get($theme, "switch", "bg");
   }
+  &__box:hover {
+    background-color: map-deep-get($theme, "switch", "bg--hover");
+  }
 
   &__input {
     ~ .a-switch__box {
       &:after {
-        background-color: map-deep-get($theme, "base", "inverse-color");
-        border: $border-width solid
-          map-deep-get($theme, "switch", "circle-border-color");
+        background-color: map-deep-get($theme, "switch", "circle-color");
+        border: $border-width solid map-deep-get($theme, "switch", "bg");
       }
-    }
-
-    &:enabled {
-      ~ .a-switch__box {
-        &:hover {
-          &:after {
-            border: $border-width solid map-get($cisco-blue, "burnt-1");
-            box-shadow: inset 0 0 0 5px
-                map-deep-get($theme, "base", "inverse-color"),
-              inset 0 0 0 6px
-                map-deep-get($theme, "switch", "circle--inner-box-shadow-hover");
-          }
-        }
-
-        &:active {
-          &:after {
-            border: $border-width solid
-              map-deep-get($theme, "switch", "circle--inner-border-active");
-            box-shadow: inset 0 0 0 5px
-                map-deep-get($theme, "base", "inverse-color"),
-              inset 0 0 0 10px map-get($grey, "lighten-2");
-          }
-
-          &:hover:after {
-            border: $border-width solid
-              map-deep-get(
-                $theme,
-                "switch",
-                "circle--inner-border-active-hover"
-              );
-            box-shadow: inset 0 0 0 5px
-                map-deep-get($theme, "base", "inverse-color"),
-              inset 0 0 0 10px map-deep-get($theme, "base", "color--selected");
-          }
-        }
-      }
-    }
-
-    &:focus {
-      ~ .a-switch__box {
-        box-shadow: map-deep-get($theme, "base", "box-shadow");
-
-        &:after {
-          box-shadow: map-deep-get($theme, "base", "box-shadow");
-        }
+      &:hover:after {
+        border: $border-width solid map-deep-get($theme, "switch", "bg--hover");
       }
     }
 
@@ -77,65 +36,30 @@ $switch-after-transition: transform $transition-duration--fast
 
         &:after {
           border: $border-width solid
-            map-deep-get($theme, "switch", "circle-border-color--checked");
+            map-deep-get($theme, "switch", "bg--checked");
         }
       }
     }
 
     &:enabled:checked {
       ~ .a-switch__box {
+        background-color: map-deep-get($theme, "switch", "bg--checked");
         &:hover {
+          background-color: map-deep-get(
+            $theme,
+            "switch",
+            "bg--checked--hover"
+          );
           &:after {
             border: $border-width solid
-              map-deep-get(
-                $theme,
-                "switch",
-                "circle-border-color--checked--hover"
-              );
-            box-shadow: inset 0 0 0 5px
-                map-deep-get($theme, "base", "inverse-color"),
-              inset 0 0 0 6px
-                map-deep-get(
-                  $theme,
-                  "switch",
-                  "circle--inner-box-shadow-checked-hover"
-                );
+              map-deep-get($theme, "switch", "bg--checked--hover");
           }
         }
 
         &:active {
           &:after {
             border: $border-width solid
-              map-deep-get(
-                $theme,
-                "switch",
-                "circle--inner-border-checked-active"
-              );
-            box-shadow: inset 0 0 0 5px
-                map-deep-get($theme, "base", "inverse-color"),
-              inset 0 0 0 10px
-                map-deep-get(
-                  $theme,
-                  "switch",
-                  "circle--inner-box-shadow-checked-active"
-                );
-          }
-
-          &:hover:after {
-            border: $border-width solid
-              map-deep-get(
-                $theme,
-                "switch",
-                "circle--inner-border-checked-active-hover"
-              );
-            box-shadow: inset 0 0 0 5px
-                map-deep-get($theme, "base", "inverse-color"),
-              inset 0 0 0 10px
-                map-deep-get(
-                  $theme,
-                  "switch",
-                  "circle--inner-box-shadow-checked-active-hover"
-                );
+              map-deep-get($theme, "switch", "bg--checked");
           }
         }
       }
@@ -148,7 +72,7 @@ $switch-after-transition: transform $transition-duration--fast
 
         &:after {
           border: $border-width solid
-            map-deep-get($theme, "switch", "circle-border-color--disabled");
+            map-deep-get($theme, "switch", "bg--disabled");
         }
       }
 
@@ -167,11 +91,7 @@ $switch-after-transition: transform $transition-duration--fast
 
         &:after {
           border: $border-width solid
-            map-deep-get(
-              $theme,
-              "switch",
-              "circle-border-color--disabled--checked"
-            );
+            map-deep-get($theme, "switch", "bg--disabled--checked");
         }
       }
     }
