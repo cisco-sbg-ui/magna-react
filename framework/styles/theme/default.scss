@@ -241,9 +241,10 @@ $atomic-default: (
   ),
   "table": (
     "bg": transparent,
-    "header-color": map-get($grey, "darken-4"),
-    "row-hover-color": map-get($grey, "lighten-3"),
-    "row-stripe-color": map-get($grey, "lighten-6")
+    "header-color": map-get($mds-neutral, "neutral-14"),
+    "header-border": map-get($mds-neutral, "neutral-11"),
+    "row-hover-color": map-get($mds-blue, "blue-1"),
+    "row-stripe-color": map-get($mds-neutral, "neutral-3")
   ),
   "tabs": (
     "oversized-background-color": map-get($grey, "lighten-6"),

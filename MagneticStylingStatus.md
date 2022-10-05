@@ -30,7 +30,7 @@ Status options:
 |      :x:       | ACombobox                     |           |      |
 | :construction: | AContextualNotification       |    AJL    |      |
 | :construction: | AContextualNotificationMenu   |    AJL    |      |
-|      :x:       | ADataTable                    |           |      |
+| :construction: | ADataTable                    |    RWH    |      |
 |      :x:       | ADatePicker                   |           |      |
 |      :x:       | ADialog                       |           |      |
 |      :x:       | ADivider                      |           |      |
@@ -54,7 +54,7 @@ Status options:
 |      :x:       | AProgressbar                  |           |      |
 | :construction: | ARadio                        |    AJL    |      |
 |      :x:       | ASelect                       |           |      |
-|      :x:       | ASimpleTable                  |           |      |
+| :construction: | ASimpleTable                  |    RWH    |      |
 |      :x:       | ASlider                       |           |      |
 |      :x:       | AStepper                      |           |      |
 | :construction: | ASwitch                       |    AJL    |      |
