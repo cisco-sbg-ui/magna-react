@@ -27,7 +27,7 @@ Status options:
 | :construction: | AButton                       |    AJL    |      |
 |      :x:       | AButtonGroup                  |           |      |
 | :construction: | ACheckbox                     |    AJL    |      |
-|      :x:       | ACombobox                     |           |      |
+| :construction: | ACombobox                     |    RWH    |      |
 | :construction: | AContextualNotification       |    AJL    |      |
 | :construction: | AContextualNotificationMenu   |    AJL    |      |
 |      :x:       | ADataTable                    |           |      |
