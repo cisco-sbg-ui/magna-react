@@ -99,6 +99,12 @@ $input-transition: border-color $transition-duration--extra-fast
       background: map-deep-get($theme, "text-input", "bg--readonly");
     }
   }
+
+  &__append {
+    .a-icon {
+      fill: map-deep-get($theme, "text-input", "icon-fill");
+    }
+  }
 }
 
 .a-input-base {

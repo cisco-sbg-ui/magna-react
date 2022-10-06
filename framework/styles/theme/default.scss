@@ -242,16 +242,17 @@ $atomic-default: (
   ),
   "table": (
     "bg": transparent,
-    "header-color": map-get($grey, "darken-4"),
-    "row-hover-color": map-get($grey, "lighten-3"),
-    "row-stripe-color": map-get($grey, "lighten-6")
+    "header-color": map-get($mds-neutral, "neutral-14"),
+    "header-border": map-get($mds-neutral, "neutral-11"),
+    "row-hover-color": map-get($mds-blue, "blue-1"),
+    "row-stripe-color": map-get($mds-neutral, "neutral-3")
   ),
   "tabs": (
     "oversized-background-color": map-get($grey, "lighten-6"),
     "oversized--hover-background-color": $white,
-    "text-color": map-get($mds-light-theme, "supplemental-text"),
-    "text-color--selected": map-get($mds-light-theme, "primary-heading"),
-    "bar-color--hover": map-get($mds-neutral, "neutral-3")
+    "text-color": map-get($mds-neutral, "neutral-11"),
+    "text-color--selected": map-get($mds-neutral, "neutral-15"),
+    "bar-color--hover": map-get($mds-neutral, "neutral-4")
   ),
   "tag": (
     "bg-color": map-get($grey, "lighten-3"),
@@ -263,11 +264,12 @@ $atomic-default: (
     "bg--disabled": map-get($mds-neutral, "neutral-2"),
     "border-color--disabled": map-get($mds-neutral, "neutral-3"),
     "border-color--readonly": map-get($grey, "lighten-2"),
-    "border-color": map-get($mds-neutral, "neutral-3"),
+    "border-color": map-get($mds-neutral, "neutral-4"),
     "border-color--hover": map-get($mds-blue, "blue-5"),
     "border-color--focus": map-get($mds-blue, "blue-7"),
     "border-color--active": map-get($mds-blue, "blue-7"),
-    "bg--readonly": map-get($grey, "lighten-6")
+    "bg--readonly": map-get($grey, "lighten-6"),
+    "icon-fill": map-get($mds-neutral, "neutral-9")
   ),
   "timeline": (
     "item-bg-hover-color": map-get($grey, "lighten-5"),

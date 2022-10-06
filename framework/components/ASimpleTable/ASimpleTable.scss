@@ -45,10 +45,10 @@ $table-cell-tight-padding-top-bottom: math.div(
 
   th {
     color: map-deep-get($theme, "table", "header-color");
-    border-color: map-deep-get($theme, "control", "stroke-color");
+    border-color: map-deep-get($theme, "table", "header-border");
   }
 
-  td {
+  tr {
     border-color: map-deep-get($theme, "control", "stroke-color");
   }
 
@@ -86,6 +86,7 @@ $table-cell-tight-padding-top-bottom: math.div(
   tr {
     height: $table-row-height;
     vertical-align: inherit;
+    border-bottom: thin solid;
   }
 
   th,
@@ -102,24 +103,15 @@ $table-cell-tight-padding-top-bottom: math.div(
     font-size: $table-header-font-size;
     font-weight: bold;
     line-height: $table-header-line-height;
-    border-width: $border-width;
-    border-style: solid;
+    border-bottom: $border-width solid;
   }
 
   td {
     font-size: $table-body-font-size;
     line-height: $table-body-line-height;
-    border-width: $border-width;
-    border-style: solid;
     padding-top: $table-cell-padding-top-bottom;
     padding-bottom: $table-cell-padding-top-bottom;
     word-break: break-word;
-    &:not(:first-child) {
-      border-left: none;
-    }
-    &:not(:last-child) {
-      border-right: none;
-    }
   }
 
   &--tight {
