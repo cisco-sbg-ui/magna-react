@@ -33,7 +33,7 @@ $atomic-default: (
     "brand-color": map-get($cisco-blue, "base"),
     "color": map-get($mds-light-theme, "default-text"),
     "color--active": map-get($cisco-blue, "burnt-2"),
-    "color--hover": map-get($mds-blue, "blue-5"),
+    "color--hover": map-get($mds-blue, "blue-2"),
     "color--selected": map-get($mds-blue, "blue-7"),
     "color--disabled": map-get($mds-neutral, "neutral-6"),
     "inverse-color": map-get($mds-dark-theme, "default-text"),
@@ -161,7 +161,7 @@ $atomic-default: (
   ),
   "date-picker": (
     "header-border-color": map-get($grey, "lighten-3"),
-    "range-bg": map-get($grey, "lighten-5")
+    "range-bg": map-get($mds-blue, "blue-1")
   ),
   "divider": (
     "color-default": map-get($grey, "lighten-1"),

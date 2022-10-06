@@ -66,15 +66,15 @@ $date-picker-day-border-radius: 4px;
     &__label {
       color: inherit;
       background-color: transparent;
-      &:focus {
-        box-shadow: map-deep-get($theme, "base", "box-shadow");
-      }
+      font-weight: 400;
     }
 
     &.selected {
       .a-date-picker__day__label {
         border: $border-width solid;
         border-color: map-deep-get($theme, "base", "color--selected");
+        color: map-deep-get($theme, "base", "color--selected");
+        font-weight: 600;
       }
     }
 
@@ -87,7 +87,8 @@ $date-picker-day-border-radius: 4px;
     &:hover {
       .a-date-picker__day__label {
         background-color: map-deep-get($theme, "base", "color--hover");
-        color: map-deep-get($theme, "base", "inverse-color");
+        color: map-deep-get($theme, "link", "color--hover");
+        font-weight: 600;
       }
     }
 
