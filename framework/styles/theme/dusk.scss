@@ -244,7 +244,8 @@ $atomic-dusk: (
         rgba(map-get($dusk, "2"), $alpha-6) 0%,
         rgba(map-get($dusk, "5"), $alpha-6) 100%
       ),
-    "header-color": map-get($grey, "lighten-1"),
+    "header-color": map-get($mds-neutral, "neutral-6"),
+    "header-border": map-get($mds-neutral, "neutral-9"),
     "row-hover-color": map-get($dusk, "6"),
     "row-stripe-color": transparent
   ),
