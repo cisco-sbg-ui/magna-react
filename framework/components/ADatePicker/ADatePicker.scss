@@ -24,25 +24,24 @@ $date-picker-calendar-font-size: $font-size--sm;
 $date-picker-calendar-margin: 10px 15px;
 $date-picker-calendar-disabled-opacity: 0.35;
 $date-picker-day-width: 30px;
-$date-picker-day-padding-top: math.div($base-padding-small-top, 2);
-$date-picker-day-padding-bottom: math.div($base-padding-small-bottom, 2);
-$date-picker-day-border-radius: 2px;
+$date-picker-day-padding-top: 4px;
+$date-picker-day-padding-bottom: 4px;
+$date-picker-day-border-radius: 4px;
 
 @include theme(a-date-picker) using ($theme) {
   color: map-deep-get($theme, "base", "color");
   background-color: map-deep-get($theme, "control", "fill-color");
-  border: $border-width solid map-deep-get($theme, "base", "stroke-color");
+  border: $border-width solid map-deep-get($theme, "control", "stroke-color");
   &__header {
     padding: 4px 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: $border-width solid
-      map-deep-get($theme, "date-picker", "header-border-color");
   }
 
   &__prev,
   &__next {
+    color: map-deep-get($theme, "base", "color");
     & span {
       font-size: $font-size--xxs;
     }
@@ -67,15 +66,15 @@ $date-picker-day-border-radius: 2px;
     &__label {
       color: inherit;
       background-color: transparent;
-      &:focus {
-        box-shadow: map-deep-get($theme, "base", "box-shadow");
-      }
+      font-weight: 400;
     }
 
     &.selected {
       .a-date-picker__day__label {
-        background-color: map-deep-get($theme, "base", "color--selected");
-        color: map-deep-get($theme, "base", "inverse-color");
+        border: $border-width solid;
+        border-color: map-deep-get($theme, "base", "color--selected");
+        color: map-deep-get($theme, "base", "color--selected");
+        font-weight: 600;
       }
     }
 
@@ -88,7 +87,8 @@ $date-picker-day-border-radius: 2px;
     &:hover {
       .a-date-picker__day__label {
         background-color: map-deep-get($theme, "base", "color--hover");
-        color: map-deep-get($theme, "base", "inverse-color");
+        color: map-deep-get($theme, "link", "color--hover");
+        font-weight: 600;
       }
     }
 
@@ -99,6 +99,10 @@ $date-picker-day-border-radius: 2px;
       }
     }
   }
+
+  & .disabled {
+    color: map-deep-get($theme, "base", "color--disabled");
+  }
 }
 
 .a-date-picker {
@@ -107,7 +111,7 @@ $date-picker-day-border-radius: 2px;
   min-height: $date-picker-min-height;
   width: $date-picker-width;
   max-width: $date-picker-max-width;
-  border-radius: $border-radius--sm;
+  border-radius: $border-radius--lg;
   z-index: $date-picker-z-index;
   &__header {
     position: relative;
@@ -157,7 +161,6 @@ $date-picker-day-border-radius: 2px;
     border-collapse: collapse;
     margin: $date-picker-calendar-margin;
     & .disabled {
-      opacity: $date-picker-calendar-disabled-opacity;
       text-align: center;
     }
   }
@@ -174,10 +177,10 @@ $date-picker-day-border-radius: 2px;
     padding-top: $date-picker-day-padding-top;
     padding-bottom: $date-picker-day-padding-bottom;
     &__label {
-      border: 0;
+      border-color: transparent;
       margin: 0;
-      padding: 1.2px 0;
-      width: 100%;
+      padding: 0px 0 0 0;
+      width: 28px;
       display: block;
       text-align: center;
       text-decoration: none;
