@@ -262,11 +262,12 @@ $atomic-default: (
     "bg--disabled": map-get($mds-neutral, "neutral-2"),
     "border-color--disabled": map-get($mds-neutral, "neutral-3"),
     "border-color--readonly": map-get($grey, "lighten-2"),
-    "border-color": map-get($mds-neutral, "neutral-3"),
+    "border-color": map-get($mds-neutral, "neutral-4"),
     "border-color--hover": map-get($mds-blue, "blue-5"),
     "border-color--focus": map-get($mds-blue, "blue-7"),
     "border-color--active": map-get($mds-blue, "blue-7"),
-    "bg--readonly": map-get($grey, "lighten-6")
+    "bg--readonly": map-get($grey, "lighten-6"),
+    "icon-fill": map-get($mds-neutral, "neutral-9")
   ),
   "timeline": (
     "item-bg-hover-color": map-get($grey, "lighten-5"),
