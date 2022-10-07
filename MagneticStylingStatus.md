@@ -33,7 +33,7 @@ Status options:
 | :construction: | ADataTable                    |    RWH    |      |
 | :construction: | ADatePicker                   |    RWH    |      |
 | :construction: | ADialog                       |    RWH    |      |
-|      :x:       | ADivider                      |           |      |
+| :construction: | ADivider                      |    RWH    |      |
 |      :x:       | AFieldBase                    |           |      |
 |      :x:       | AFooter                       |           |      |
 |      :x:       | AForm                         |           |      |
