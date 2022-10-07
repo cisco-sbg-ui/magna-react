@@ -27,9 +27,15 @@
   overflow-x: hidden;
   overflow-y: auto;
   z-index: 8;
+  border-radius: $border-radius--lg;
 
   &--active {
     display: block;
+  }
+
+  .a-panel {
+    border-radius: $border-radius--lg;
+    border: 0;
   }
 }
 

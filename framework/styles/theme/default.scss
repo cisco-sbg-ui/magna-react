@@ -196,7 +196,8 @@ $atomic-default: (
     "bg": $white,
     "bg-gray": map-get($grey, "lighten-5"),
     "dialog-header-bg": $white,
-    "dialog-footer-bg": map-get($grey, "lighten-5")
+    "dialog-footer-bg": map-get($grey, "lighten-5"),
+    "header-color": map-get($mds-neutral, "neutral-15")
   ),
   "progressbar": (
     "disabled-bg-color": map-get($status-blue, "wash-1")
