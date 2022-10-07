@@ -40,7 +40,8 @@ $atomic-default: (
     "pg-bg": map-get($mds-light-theme, "background-page"),
     "stroke-color": map-get($mds-light-theme, "icon-default"),
     "box-shadow": 0 0 2px 2px rgba(map-get($cisco-blue, "base"), 0.4),
-    "outline": 1px solid map-get($cisco-blue, "base")
+    "outline": 1px solid map-get($cisco-blue, "base"),
+    "color-blue-primary": map-get($mds-primary, "primary-blue")
   ),
   "button": (
     "primary": (
@@ -191,6 +192,12 @@ $atomic-default: (
   ),
   "loader": (
     "background-color": map-get($grey, "lighten-3")
+  ),
+  "menu": (
+    "border-color": map-get($mds-neutral, "neutral-5"),
+    "color--hover": map-get($mds-blue, "blue-2"),
+    "color--selected": map-get($mds-blue, "blue-1"),
+    "color--focused": map-get($mds-blue, "blue-1")
   ),
   "panel": (
     "bg": $white,

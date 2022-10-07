@@ -7,8 +7,8 @@
 
   &--hoverable .a-list-item:not(.a-list-item--two-line) {
     &:hover {
-      color: map-deep-get($theme, "base", "inverse-color");
-      background-color: map-deep-get($theme, "base", "color--hover");
+      color: map-deep-get($theme, "base", "color");
+      background-color: map-deep-get($theme, "menu", "color--hover");
     }
   }
 
@@ -16,14 +16,14 @@
     color: currentColor;
 
     &:focus {
-      color: map-deep-get($theme, "base", "inverse-color");
-      background-color: map-deep-get($theme, "base", "color--active");
+      color: map-deep-get($theme, "base", "color");
+      background-color: map-deep-get($theme, "menu", "color--focused");
     }
   }
 
   &-item--selected:not(.a-list-item--two-line) {
-    color: map-deep-get($theme, "base", "inverse-color");
-    background-color: map-deep-get($theme, "base", "color--selected");
+    color: map-deep-get($theme, "base", "color");
+    background-color: map-deep-get($theme, "menu", "color--selected");
   }
 
   a.a-list-item--two-line {

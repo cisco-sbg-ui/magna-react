@@ -2,7 +2,7 @@
 
 @include theme(a-autocomplete) using ($theme) {
   &__menu-items.a-menu {
-    border-color: map-deep-get($theme, "select", "border-color--focus");
+    border-color: map-deep-get($theme, "menu", "border-color");
   }
 }
 

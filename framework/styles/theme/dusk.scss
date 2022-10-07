@@ -179,6 +179,12 @@ $atomic-dusk: (
   "loader": (
     "background-color": map-get($dusk, "6")
   ),
+  "menu": (
+    "border-color": map-get($mds-neutral, "neutral-5"),
+    "color--hover": map-get($mds-blue, "blue-2"),
+    "color--selected": map-get($mds-blue, "blue-1"),
+    "color--focused": map-get($mds-blue, "blue-1")
+  ),
   "panel": (
     "bg":
       linear-gradient(

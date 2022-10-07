@@ -1,8 +1,10 @@
 @import "../../styles";
 
 @include theme(a-menu) using ($theme) {
-  border-color: map-deep-get($theme, "base", "stroke-color");
-
+  border-color: map-deep-get($theme, "menu", "border-color");
+  border-radius: $border-radius--lg;
+  border-width: $border-width;
+  background-color: map-deep-get($theme, "base", "pg-bg");
   &--pointer.a-menu-base--top,
   &--pointer.a-menu-base--top-left,
   &--pointer.a-menu-base--top-right {
@@ -22,7 +24,7 @@
   &--pointer.a-menu-base--bottom-right {
     .a-menu-base__pointer {
       border-color: transparent transparent
-        map-deep-get($theme, "base", "stroke-color") transparent;
+        map-deep-get($theme, "menu", "border-color") transparent;
 
       &:after {
         border-color: transparent transparent
@@ -32,7 +34,7 @@
   }
 
   &--pointer.a-menu-base--right .a-menu-base__pointer {
-    border-color: transparent map-deep-get($theme, "base", "stroke-color")
+    border-color: transparent map-deep-get($theme, "menu", "border-color")
       transparent transparent;
 
     &:after {
@@ -43,7 +45,7 @@
 
   &--pointer.a-menu-base--left .a-menu-base__pointer {
     border-color: transparent transparent transparent
-      map-deep-get($theme, "base", "stroke-color");
+      map-deep-get($theme, "menu", "border-color");
 
     &:after {
       border-color: transparent transparent transparent
@@ -52,7 +54,7 @@
   }
 
   &--pointer.a-menu-base--right-top .a-menu-base__pointer {
-    border-color: transparent map-deep-get($theme, "base", "stroke-color")
+    border-color: transparent map-deep-get($theme, "menu", "border-color")
       transparent transparent;
 
     &:after {
@@ -63,7 +65,7 @@
 
   &--pointer.a-menu-base--left-top .a-menu-base__pointer {
     border-color: transparent transparent transparent
-      map-deep-get($theme, "base", "stroke-color");
+      map-deep-get($theme, "menu", "border-color");
 
     &:after {
       border-color: transparent transparent transparent
@@ -72,7 +74,7 @@
   }
 
   &--pointer.a-menu-base--right-bottom .a-menu-base__pointer {
-    border-color: transparent map-deep-get($theme, "base", "stroke-color")
+    border-color: transparent map-deep-get($theme, "menu", "border-color")
       transparent transparent;
 
     &:after {
@@ -83,7 +85,7 @@
 
   &--pointer.a-menu-base--left-bottom .a-menu-base__pointer {
     border-color: transparent transparent transparent
-      map-deep-get($theme, "base", "stroke-color");
+      map-deep-get($theme, "menu", "border-color");
 
     &:after {
       border-color: transparent transparent transparent
@@ -93,7 +95,6 @@
 }
 
 .a-menu {
-  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.2);
   overflow: visible;
 
   &--pointer.a-menu-base--top,

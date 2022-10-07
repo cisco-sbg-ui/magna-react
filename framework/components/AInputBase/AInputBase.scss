@@ -1,9 +1,7 @@
 @import "../../styles";
 
 $input-transition: border-color $transition-duration--extra-fast
-    $transition-timing-function--standard,
-  box-shadow $transition-duration--extra-fast
-    $transition-timing-function--standard;
+  $transition-timing-function--standard;
 
 @include theme(a-input-base) using ($theme) {
   &__surface {
@@ -16,21 +14,16 @@ $input-transition: border-color $transition-duration--extra-fast
     }
 
     &:active {
-      border-color: map-get($cisco-blue, "burnt-1");
+      border-color: map-deep-get($theme, "text-input", "border-color");
     }
-  }
-
-  &__clear:focus {
-    box-shadow: map-deep-get($theme, "base", "box-shadow");
   }
 
   &--focused {
     .a-input-base__surface {
-      border-color: map-deep-get($theme, "base", "color--hover");
-      box-shadow: map-deep-get($theme, "base", "box-shadow");
+      border-color: map-deep-get($theme, "text-input", "color--hover");
 
       &:active {
-        border-color: map-get($cisco-blue, "burnt-1");
+        border-color: map-deep-get($theme, "text-input", "color--active");
       }
     }
   }
@@ -38,7 +31,6 @@ $input-transition: border-color $transition-duration--extra-fast
   &--warning {
     &.a-input-base--focused .a-input-base__surface {
       border: $border-width solid $color-warning;
-      box-shadow: $warning-box-shadow;
     }
 
     .a-input-base__surface {
@@ -51,7 +43,6 @@ $input-transition: border-color $transition-duration--extra-fast
 
       &:active {
         border: $border-width solid $color-warning;
-        box-shadow: $warning-box-shadow;
       }
     }
   }
@@ -59,7 +50,6 @@ $input-transition: border-color $transition-duration--extra-fast
   &--danger {
     &.a-input-base--focused .a-input-base__surface {
       border: $border-width solid $color-error;
-      box-shadow: $danger-box-shadow;
     }
 
     .a-input-base__surface {
@@ -72,7 +62,6 @@ $input-transition: border-color $transition-duration--extra-fast
 
       &:active {
         border: $border-width solid $color-error;
-        box-shadow: $danger-box-shadow;
       }
     }
   }
