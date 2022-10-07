@@ -5,7 +5,6 @@ $footer-padding: 10px 20px;
 $footer-font-size: $font-size--xs;
 
 @include theme(a-footer) using ($theme) {
-  background-color: map-deep-get($theme, "base", "bg");
   color: map-deep-get($theme, "footer", "color");
   border-top-color: map-deep-get($theme, "footer", "border-color");
 }
