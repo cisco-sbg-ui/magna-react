@@ -193,7 +193,8 @@ $atomic-dusk: (
         rgba(map-get($dusk, "5"), $alpha-6) 100%
       ),
     "dialog-header-bg": map-get($dusk, "4"),
-    "dialog-footer-bg": map-get($dusk, "4")
+    "dialog-footer-bg": map-get($dusk, "4"),
+    "header-color": map-get($mds-neutral, "neutral-3")
   ),
   "progressbar": (
     "disabled-bg-color": rgba(map-get($cisco-blue, "base"), $alpha-3)

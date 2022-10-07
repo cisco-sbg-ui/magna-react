@@ -5,6 +5,10 @@
   border-color: map-deep-get($theme, "base", "stroke-color");
   color: map-deep-get($theme, "base", "color");
 
+  &__header {
+    color: map-deep-get($theme, "panel", "header-color");
+  }
+
   &--color-gray {
     background: map-deep-get($theme, "panel", "bg-gray");
   }
@@ -16,14 +20,6 @@
 
   &--type-dialog {
     background: map-deep-get($theme, "control", "fill-color");
-
-    .a-panel__header {
-      background-color: map-deep-get($theme, "panel", "dialog-header-bg");
-    }
-
-    .a-panel__footer {
-      background-color: map-deep-get($theme, "panel", "dialog-footer-bg");
-    }
   }
 }
 
@@ -68,6 +64,7 @@
 
   &__title {
     font-size: rem(1.125);
+    font-weight: 700;
     text-align: left;
     @include flex-fluid;
     &--size-small {

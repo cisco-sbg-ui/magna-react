@@ -31,8 +31,8 @@ Status options:
 | :construction: | AContextualNotification       |    AJL    |      |
 | :construction: | AContextualNotificationMenu   |    AJL    |      |
 | :construction: | ADataTable                    |    RWH    |      |
-| :construction: | ADatePicker                   |    RWH     |      |
-|      :x:       | ADialog                       |           |      |
+| :construction: | ADatePicker                   |    RWH    |      |
+| :construction: | ADialog                       |    RWH    |      |
 |      :x:       | ADivider                      |           |      |
 |      :x:       | AFieldBase                    |           |      |
 |      :x:       | AFooter                       |           |      |
