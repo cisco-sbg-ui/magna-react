@@ -30,7 +30,6 @@ $accordion--state-collapsed-transition: visibility $transition-duration ease,
   }
 
   :last-of-type &__link {
-    display: flex;
     color: map-deep-get($theme, "accordion", "color");
 
     &:visited,
@@ -117,6 +116,14 @@ $accordion--state-collapsed-transition: visibility $transition-duration ease,
     &:active {
       text-decoration: none;
     }
+  }
+
+  &__chevron {
+    display: flex;
+    flex: 0 1 auto;
+    justify-content: flex-end;
+    cursor: pointer;
+    padding: 13px 0;
 
     .a-icon {
       height: $accordion-toggle-font-size;
