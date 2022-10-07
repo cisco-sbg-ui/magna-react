@@ -62,7 +62,8 @@ const AAccordionHeaderTitle = forwardRef(
       onFocus && onFocus(e);
     };
 
-    let className = "a-accordion__link";
+    let className = "a-accordion__link",
+      chevronClassName = "a-accordion__chevron";
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
@@ -92,14 +93,21 @@ const AAccordionHeaderTitle = forwardRef(
           onFocus={handleFocus}
           onKeyDown={handleKeyDown}
           ref={ref}
-          className={className}>
-          <div>{children}</div>
-          {chevron && (
-            <div className="a-accordion__chevron">
-              <AIcon>{chevronIcon}</AIcon>
-            </div>
-          )}
+          className={className}
+        >
+          {children}
         </div>
+        {chevron && (
+          <div
+            onBlur={handleBlur}
+            onClick={handleClick}
+            onFocus={handleFocus}
+            onKeyDown={handleKeyDown}
+            className={chevronClassName}
+          >
+            <AIcon>{chevronIcon}</AIcon>
+          </div>
+        )}
       </>
       /* eslint-enable jsx-a11y/no-static-element-interactions */
     );
