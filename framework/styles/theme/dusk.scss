@@ -151,9 +151,9 @@ $atomic-dusk: (
     "range-bg": rgba(map-get($grey, "lighten-5"), $alpha-2)
   ),
   "divider": (
-    "color-default": rgba(map-get($grey, "lighten-3"), $alpha-5),
-    "color-light": rgba(map-get($grey, "lighten-3"), $alpha-3),
-    "color-lighter": rgba(map-get($grey, "lighten-3"), $alpha-15)
+    "color-default": map-get($mds-neutral, "neutral-14"),
+    "color-light": map-get($mds-neutral, "neutral-13"),
+    "color-lighter": map-get($mds-neutral, "neutral-12")
   ),
   "footer": (
     "border-color": rgba(map-get($grey, "lighten-5"), $alpha-2),

@@ -165,9 +165,9 @@ $atomic-default: (
     "range-bg": map-get($mds-blue, "blue-1")
   ),
   "divider": (
-    "color-default": map-get($grey, "lighten-1"),
-    "color-light": map-get($grey, "lighten-3"),
-    "color-lighter": map-get($grey, "lighten-5")
+    "color-default": map-get($mds-neutral, "neutral-4"),
+    "color-light": map-get($mds-neutral, "neutral-3"),
+    "color-lighter": map-get($mds-neutral, "neutral-2")
   ),
   "footer": (
     "border-color": map-get($grey, "lighten-5"),
