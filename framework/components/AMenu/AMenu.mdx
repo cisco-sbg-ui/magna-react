@@ -11,7 +11,7 @@ components: AMenu
 Integrate with your build to [auto-import](/#integrating), or add an import in your component:
 
 ```
-import {AMenu} from "@cisco-sbg-ui/magna-react";
+import {AMenu, ADivider} from "@cisco-sbg-ui/magna-react";
 ```
 
 It is necessary for `AMenu` to be a descendant of `AApp` for mounting.
@@ -24,12 +24,15 @@ It is necessary for `AMenu` to be a descendant of `AApp` for mounting.
   const button1Ref = useRef(null);
   const button2Ref = useRef(null);
   const button3Ref = useRef(null);
+  const button4Ref = useRef(null);
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [open3, setOpen3] = useState(false);
+  const [open4, setOpen4] = useState(false);
+  const [menu4Selected, setMenu4Selected] = useState(2);
   return (
     <div className="d-flex">
-      <div style={{flexBasis: "33%"}}>
+      <div style={{flexBasis: "20%"}}>
         <AButton
           ref={button1Ref}
           onClick={() => setOpen1(!open1)}
@@ -37,7 +40,7 @@ It is necessary for `AMenu` to be a descendant of `AApp` for mounting.
           Pivot Menu
         </AButton>
       </div>
-      <div style={{flexBasis: "33%"}}>
+      <div style={{flexBasis: "20%"}}>
         <AButton
           ref={button2Ref}
           onClick={() => setOpen2(!open2)}
@@ -45,7 +48,7 @@ It is necessary for `AMenu` to be a descendant of `AApp` for mounting.
           Alert Notification Menu
         </AButton>
       </div>
-      <div style={{flexBasis: "33%"}}>
+      <div style={{flexBasis: "20%", marginRight: "20px"}}>
         <AButton
           ref={button3Ref}
           onClick={() => setOpen3(!open3)}
@@ -53,6 +56,14 @@ It is necessary for `AMenu` to be a descendant of `AApp` for mounting.
           Drop Down Menu
         </AButton>
       </div>
+      <div style={{flexBasis: "20%", marginRight: "20px"}}>
+              <AButton
+                ref={button4Ref}
+                onClick={() => setOpen4(!open4)}
+                aria-haspopup="true">
+                More Menu
+              </AButton>
+            </div>
       <AMenu
         anchorRef={button1Ref}
         open={open1}
@@ -132,6 +143,18 @@ It is necessary for `AMenu` to be a descendant of `AApp` for mounting.
         <AListItem onClick={() => {}}>Selection 1</AListItem>
         <AListItem onClick={() => {}}>Selection 2</AListItem>
         <AListItem onClick={() => {}}>Selection 3</AListItem>
+      </AMenu>
+      <AMenu
+        anchorRef={button4Ref}
+        open={open4}
+        placement="bottom-right"
+        onClose={() => setOpen4(false)}
+        >
+        <AListItem onClick={() => {setMenu4Selected(0)}} selected={0 === menu4Selected}>Selection Uno</AListItem>
+        <AListItem onClick={() => {setMenu4Selected(1)}} selected={1 === menu4Selected}>Selection Dos <AIcon size={12} className="ml-2">judgement</AIcon></AListItem>
+        <AListItem onClick={() => {setMenu4Selected(2)}} selected={2 === menu4Selected}>Selection Tres</AListItem>
+        <ADivider style={{margin: 0}}/>
+        <AListItem onClick={() => {setMenu4Selected(3)}} selected={3 === menu4Selected}>Status</AListItem>
       </AMenu>
     </div>
   );

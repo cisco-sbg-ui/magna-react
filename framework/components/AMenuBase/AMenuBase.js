@@ -29,6 +29,7 @@ const calculateMenuPosition = (
   const wrapCoords = getRoundedBoundedClientRect(wrapRef.current);
   const anchorCoords = getRoundedBoundedClientRect(anchorRef.current);
   const menuCoords = getRoundedBoundedClientRect(combinedRef.current);
+  const magneticSpacer = 4;
 
   let baseLeft = 0,
     baseTop = 0;
@@ -66,7 +67,7 @@ const calculateMenuPosition = (
     }
     case "bottom-right": {
       baseLeft = anchorCoords.right - menuCoords.width - wrapCoords.left;
-      baseTop = anchorCoords.bottom - wrapCoords.top;
+      baseTop = anchorCoords.bottom - wrapCoords.top + magneticSpacer;
       break;
     }
     case "bottom": {
@@ -74,12 +75,12 @@ const calculateMenuPosition = (
         (anchorCoords.left + anchorCoords.right) / 2 -
         menuCoords.width / 2 -
         wrapCoords.left;
-      baseTop = anchorCoords.bottom - wrapCoords.top;
+      baseTop = anchorCoords.bottom - wrapCoords.top + magneticSpacer;
       break;
     }
     case "bottom-left": {
       baseLeft = anchorCoords.left - wrapCoords.left;
-      baseTop = anchorCoords.bottom - wrapCoords.top;
+      baseTop = anchorCoords.bottom - wrapCoords.top + magneticSpacer;
       break;
     }
     case "left-bottom": {
