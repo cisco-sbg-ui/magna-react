@@ -16,7 +16,7 @@ $select-padding: 6px;
     }
 
     &[aria-disabled] {
-      color: map-deep-get($theme, "control", "stroke-color--disabled");
+      color: map-deep-get($theme, "base", "color--disabled");
       background-color: transparent;
     }
 
@@ -86,6 +86,6 @@ $select-padding: 6px;
   }
 
   &[aria-disabled] {
-    cursor: default;
+    cursor: not-allowed;
   }
 }

@@ -148,8 +148,8 @@ $atomic-default: (
     "border--enabled": map-get($mds-neutral, "neutral-5")
   ),
   "color": (
-    "warning--state-hover": map-get($status-orange, "burnt-2"),
-    "error--state-hover": map-get($status-red, "burnt-2")
+    "warning--state-hover": map-get($mds-status, "warning"),
+    "error--state-hover": map-get($mds-status, "negative")
   ),
   "control": (
     "fill-color": $white,
@@ -157,8 +157,8 @@ $atomic-default: (
     "stroke-color": map-get($mds-neutral, "neutral-4"),
     "stroke-color--hover": map-get($grey, "darken-4"),
     "stroke-color--disabled": map-get($grey, "lighten-2"),
-    "warning-color": map-get($status-orange, "burnt-1"),
-    "error-color": map-get($status-red, "base")
+    "warning-color": map-get($mds-status, "warning"),
+    "error-color": map-get($mds-status, "negative")
   ),
   "date-picker": (
     "header-border-color": map-get($grey, "lighten-3"),
@@ -268,9 +268,9 @@ $atomic-default: (
   ),
   "text-input": (
     "bg": map-get($mds-light-theme, "background-page"),
-    "color--disabled": map-get($mds-neutral, "neutral-5"),
+    "color--disabled": map-get($mds-neutral, "neutral-6"),
     "bg--disabled": map-get($mds-neutral, "neutral-2"),
-    "border-color--disabled": map-get($mds-neutral, "neutral-3"),
+    "border-color--disabled": map-get($mds-neutral, "neutral-4"),
     "border-color--readonly": map-get($grey, "lighten-2"),
     "border-color": map-get($mds-neutral, "neutral-4"),
     "border-color--hover": map-get($mds-blue, "blue-5"),

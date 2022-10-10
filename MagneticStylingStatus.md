@@ -43,7 +43,7 @@ Status options:
 | :construction: | AInputBase                    |    AJL    |      |
 |      :x:       | AInView                       |           |      |
 |      :x:       | ALayout                       |           |      |
-|      :x:       | AList                         |           |      |
+| :construction: | AList                         |    AJL    |      |
 |      :x:       | ALoader                       |           |      |
 | :construction: | AMenu                         |    AJL    |      |
 | :construction: | AMenuBase                     |    AJL    |      |
@@ -53,7 +53,7 @@ Status options:
 |      :x:       | APopover                      |           |      |
 |      :x:       | AProgressbar                  |           |      |
 | :construction: | ARadio                        |    AJL    |      |
-|      :x:       | ASelect                       |           |      |
+| :construction: | ASelect                       |    AJL    |      |
 | :construction: | ASimpleTable                  |    RWH    |      |
 |      :x:       | ASlider                       |           |      |
 |      :x:       | AStepper                      |           |      |

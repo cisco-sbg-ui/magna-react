@@ -275,7 +275,7 @@ const ASelect = forwardRef(
       onSelected && onSelected(item);
     };
 
-    let menuClassName = 'a-select__menu-items';
+    let menuClassName = "a-select__menu-items";
     if (dropdownClassName) {
       menuClassName += ` ${dropdownClassName}`;
     }
@@ -299,9 +299,11 @@ const ASelect = forwardRef(
         width: inputBaseSurfaceRef?.current?.clientWidth
           ? inputBaseSurfaceRef.current.clientWidth + 2
           : "auto",
-          ...dropdownStyle,
+        ...dropdownStyle
       }
     };
+
+    const selectIcon = isOpen ? "chevron-up" : "chevron-down";
 
     return (
       <AInputBase
@@ -315,13 +317,14 @@ const ASelect = forwardRef(
         disabled={disabled}
         append={
           <AIcon {...chevronProps} size={10}>
-            chevron-down
+            {selectIcon}
           </AIcon>
         }
         focused={isFocused || isOpen}
         readOnly={readOnly}
         validationState={workingValidationState}
-        hint={error || hint}>
+        hint={error || hint}
+      >
         <div className="a-select__selection-wrapper">
           <div {...selectionProps}>
             {typeof selectedItem === "string"
@@ -333,8 +336,11 @@ const ASelect = forwardRef(
           <AMenu ref={menuRef} {...menuComponentProps}>
             {prependContent}
             <div
-              className={`a-select__menu-items__wrapper${maxHeight ? " overflow-y-scroll" : ""}`}
-              style={{maxHeight}}>
+              className={`a-select__menu-items__wrapper${
+                maxHeight ? " overflow-y-scroll" : ""
+              }`}
+              style={{maxHeight}}
+            >
               {items.map((item, index) => {
                 const itemProps = {
                   value: null,

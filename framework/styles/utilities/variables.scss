@@ -149,7 +149,7 @@ $color-information-alt: map-get($cisco-blue, "base");
 $color-good: map-get($mds-status, "positive");
 $color-warning: map-get($mds-status, "warning");
 $color-warning-alt: map-get($mds-status, "warning");
-$color-error: map-get($mds-status, "negative");;
+$color-error: map-get($mds-status, "negative");
 // -----------------------------------------------------------------------------
 // Alert box shadow
 // -----------------------------------------------------------------------------
