@@ -22,7 +22,7 @@ $select-padding: 6px;
 
     &.a-list-item[aria-disabled]:hover,
     &.a-list-item[aria-disabled]:focus {
-      color: map-deep-get($theme, "control", "stroke-color--disabled");
+      color: map-deep-get($theme, "base", "color--disabled");
       background-color: transparent;
     }
   }

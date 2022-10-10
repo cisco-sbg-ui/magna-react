@@ -1,17 +1,15 @@
 $atomic-dusk: (
   "accordion": (
-    "header-bg-color": rgba(map-get($dusk, "1"), $alpha-3),
-    "header-collapsed-bg-color": map-get($dusk, "6"),
-    "body-bg": transparent,
-    "body-color": map-get($mds-neutral, "neutral-8"),
-    "color": map-get($mds-neutral, "neutral-5")
+    "body-bg": map-get($mds-dark-theme, "background-page"),
+    "body-color": map-get($mds-dark-theme, "secondary-gray"),
+    "color": map-get($mds-dark-theme, "default-text")
   ),
   "alert": (
     "bg": map-get($mds-blue, "blue-9"),
     "success-bg": map-get($mds-green, "green-10"),
     "warning-bg": map-get($mds-yellow, "yellow-10"),
     "danger-bg": map-get($mds-red, "red-9"),
-    "close": map-get($mds-neutral, "neutral-7"),
+    "close": map-get($mds-dark-theme, "secondary-gray"),
     "close-hover": map-get($mds-neutral, "neutral-9")
   ),
   "app": (
@@ -33,11 +31,12 @@ $atomic-dusk: (
     "brand-color": map-get($cisco-blue, "wash-1"),
     "color": map-get($mds-dark-theme, "default-text"),
     "color--active": map-get($cisco-blue, "base"),
+    "color--disabled": map-get($mds-dark-theme, "icon-text-gray"),
     "color--hover": map-get($cisco-blue, "burnt-1"),
     "color--selected": map-get($cisco-blue, "base"),
     "inverse-color": map-get($mds-light-theme, "default-text"),
     "pg-bg": map-get($mds-dark-theme, "background-page"),
-    "stroke-color": map-get($mds-dark-theme, "icon-default"),
+    "stroke-color": map-get($mds-dark-theme, "icon-text-gray"),
     "box-shadow": 0 0 2px 2px rgba(map-get($cisco-blue, "wash-1"), 0.4),
     "outline": 1px solid map-get($cisco-blue, "wash-1")
   ),
@@ -128,23 +127,21 @@ $atomic-dusk: (
   ),
   "checkbox": (
     "border--disabled": map-get($mds-dark-theme, "disabled-state"),
-    "label-color--disabled": map-get($mds-neutral, "neutral-6"),
-    "fill--disabled": map-get($mds-neutral, "neutral-2"),
+    "label-color--disabled": map-get($mds-dark-theme, "icon-text-gray"),
+    "fill--disabled": map-get($mds-dark-theme, "background"),
     "border--checked": map-get($mds-blue, "blue-7"),
-    "border--enabled": map-get($mds-neutral, "neutral-5")
+    "border--enabled": map-get($mds-dark-theme, "multipurpose-gray")
   ),
   "color": (
-    "warning--state-hover": map-get($status-orange, "wash-1"),
-    "error--state-hover": map-get($status-red, "wash-1")
+    "warning--state-hover": map-get($mds-status, "warning"),
+    "error--state-hover": map-get($mds-status, "negative")
   ),
   "control": (
     "fill-color": map-get($dusk, "6"),
-    "fill-color--disabled": rgba(map-get($grey, "lighten-3"), $alpha-3),
+    "fill-color--disabled": map-get($mds-dark-theme, "multipurpose-gray"),
     "stroke-color": map-get($mds-neutral, "neutral-15"),
-    "stroke-color--hover": map-get($grey, "lighten-1"),
-    "stroke-color--disabled": rgba(map-get($grey, "lighten-2"), $alpha-3),
-    "warning-color": map-get($status-orange, "base"),
-    "error-color": map-get($status-red, "wash-1")
+    "warning-color": map-get($mds-status, "warning"),
+    "error-color": map-get($mds-status, "negative")
   ),
   "date-picker": (
     "header-border-color": rgba(map-get($grey, "base"), $alpha-3),
@@ -173,14 +170,14 @@ $atomic-dusk: (
     "color--active": map-get($cisco-blue, "base"),
     "color--focus": map-get($cisco-blue, "wash-1"),
     "color--visited": map-get($cisco-blue, "burnt-1"),
-    "color--disabled": map-get($grey, "lighten-5"),
+    "color--disabled": map-get($mds-dark-theme, "supplemental-text"),
     "opacity--disabled": $alpha-4
   ),
   "loader": (
     "background-color": map-get($dusk, "6")
   ),
   "menu": (
-    "border-color": map-get($mds-neutral, "neutral-5"),
+    "border-color": map-get($mds-dark-theme, "multipurpose-gray"),
     "color--hover": map-get($mds-blue, "blue-2"),
     "color--selected": map-get($mds-blue, "blue-1"),
     "color--focused": map-get($mds-blue, "blue-1")
@@ -200,25 +197,25 @@ $atomic-dusk: (
       ),
     "dialog-header-bg": map-get($dusk, "4"),
     "dialog-footer-bg": map-get($dusk, "4"),
-    "header-color": map-get($mds-neutral, "neutral-3")
+    "header-color": map-get($mds-dark-theme, "heading-gray")
   ),
   "progressbar": (
     "disabled-bg-color": rgba(map-get($cisco-blue, "base"), $alpha-3)
   ),
   "radio": (
     "bg": map-get($mds-neutral, "neutral-1"),
-    "bg--disabled": transparent,
+    "bg--disabled": map-get($mds-dark-theme, "background"),
     "border--active--hover": map-get($cisco-blue, "base"),
     "border--checked": map-get($cisco-blue, "base"),
     "border--disabled": map-get($grey, "lighten-2"),
-    "border--enabled": map-get($mds-neutral, "neutral-5"),
+    "border--enabled": map-get($mds-dark-theme, "multipurpose-gray"),
     "border--enabled--active": map-get($cisco-blue, "burnt-1"),
-    "box-bg--disabled": map-get($dusk, "1"),
+    "box-bg--disabled": map-get($mds-dark-theme, "background"),
     "box-border--enabled--hover": map-get($grey, "lighten-1"),
     "fill--active--hover": map-get($cisco-blue, "base"),
     "fill--checked--hover": map-get($cisco-blue, "base"),
     "fill--enabled": map-get($cisco-blue, "burnt-1"),
-    "label-color--disabled": rgba(map-get($grey, "lighten-5"), $alpha-4),
+    "label-color--disabled": map-get($mds-dark-theme, "icon-text-gray"),
     "opacity-disabled": $alpha-6
   ),
   "select": (
@@ -234,13 +231,13 @@ $atomic-dusk: (
     "step-line-color": rgba(map-get($grey, "lighten-2"), $alpha-3)
   ),
   "switch": (
-    "bg": map-get($mds-neutral, "neutral-11"),
-    "bg--hover": map-get($mds-neutral, "neutral-14"),
+    "bg": map-get($mds-dark-theme, "secondary-gray"),
+    "bg--hover": map-get($mds-dark-theme, "default-text"),
     "bg--checked": map-get($mds-blue, "blue-7"),
     "bg--checked--hover": map-get($mds-blue, "blue-9"),
-    "bg--disabled": map-get($mds-neutral, "neutral-4"),
+    "bg--disabled": map-get($mds-dark-theme, "disabled-state"),
     "bg--disabled--checked": map-get($mds-blue, "blue-3"),
-    "circle-color": map-get($mds-neutral, "neutral-1"),
+    "circle-color": map-get($mds-dark-theme, "background-page"),
     "label-color--disabled": map-get($mds-dark-theme, "disabled-state"),
     "opacity-disabled": 1
   ),
@@ -251,14 +248,17 @@ $atomic-dusk: (
         rgba(map-get($dusk, "2"), $alpha-6) 0%,
         rgba(map-get($dusk, "5"), $alpha-6) 100%
       ),
-    "header-color": map-get($mds-neutral, "neutral-6"),
-    "header-border": map-get($mds-neutral, "neutral-9"),
+    "header-color": map-get($mds-dark-theme, "default-text"),
+    "header-border": map-get($mds-dark-theme, "secondary-gray"),
     "row-hover-color": map-get($dusk, "6"),
     "row-stripe-color": transparent
   ),
   "tabs": (
     "oversized-background-color": transparent,
-    "oversized--hover-background-color": transparent
+    "oversized--hover-background-color": transparent,
+    "text-color": map-get($mds-dark-theme, "secondary-gray"),
+    "text-color--selected": map-get($mds-dark-theme, "heading-gray"),
+    "bar-color--hover": map-get($mds-dark-theme, "disabled-state")
   ),
   "tag": (
     "bg-color": map-get($grey, "darken-5"),
@@ -266,12 +266,16 @@ $atomic-dusk: (
   ),
   "text-input": (
     "bg": transparent,
-    "color--disabled": rgba(map-get($grey, "lighten-5"), $alpha-4),
-    "bg--disabled": rgba(map-get($dusk, "1"), $alpha-3),
-    "border-color--disabled": transparent,
+    "color--disabled": map-get($mds-light-theme, "icon-text-gray"),
+    "bg--disabled": map-get($mds-dark-theme, "background"),
+    "border-color--disabled": map-get($mds-dark-theme, "disabled-state"),
     "border-color--readonly": rgba(map-get($grey, "lighten-2"), $alpha-3),
     "bg--readonly": rgba(map-get($grey, "lighten-6"), $alpha-1),
-    "icon-fill": map-get($mds-neutral, "neutral-9")
+    "icon-fill": map-get($mds-neutral, "neutral-9"),
+    "border-color": map-get($mds-dark-theme, "disabled-state"),
+    "border-color--hover": map-get($mds-blue, "blue-5"),
+    "border-color--focus": map-get($mds-blue, "blue-7"),
+    "border-color--active": map-get($mds-blue, "blue-7")
   ),
   "timeline": (
     "item-bg-hover-color": map-get($dusk, "6"),

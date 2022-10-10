@@ -49,7 +49,7 @@ $accordion--state-collapsed-transition: visibility $transition-duration ease,
 
   &__body {
     background-color: map-deep-get($theme, "accordion", "body-bg");
-    color: map-deep-get($theme, "accordion", "color");
+    color: map-deep-get($theme, "accordion", "body-color");
   }
 
   &--style-bordered {
