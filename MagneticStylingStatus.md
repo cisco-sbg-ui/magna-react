@@ -19,7 +19,7 @@ Status options:
 |:--------------:|:------------------------------|:---------:|:----:|
 | :construction: | AAccordion                    |    RWH    |      |
 | :construction: | AAlert                        |    RWH    |      |
-|      :x:       | AApp                          |           |      |
+|   :wavy_dash:  | AApp                          |           |      |
 | :construction: | AAutocomplete                 |    AJL    |      |
 | :construction: | ABadge                        |    RWH    |      |
 | :construction: | ABreadcrumb                   |    AJL    |      |
@@ -36,19 +36,19 @@ Status options:
 | :construction: | ADivider                      |    RWH    |      |
 |      :x:       | AFieldBase                    |           |      |
 |      :x:       | AFooter                       |           |      |
-|      :x:       | AForm                         |           |      |
+|   :wavy_dash:  | AForm                         |           |      |
 |      :x:       | AHeader                       |           |      |
 |      :x:       | AHint                         |           |      |
 |      :x:       | AIcon                         |           |      |
 | :construction: | AInputBase                    |    AJL    |      |
-|      :x:       | AInView                       |           |      |
-|      :x:       | ALayout                       |           |      |
+|   :wavy_dash:  | AInView                       |           |      |
+|   :wavy_dash:  | ALayout                       |           |      |
 | :construction: | AList                         |    AJL    |      |
 |      :x:       | ALoader                       |           |      |
 | :construction: | AMenu                         |    AJL    |      |
 | :construction: | AMenuBase                     |    AJL    |      |
-|      :x:       | AMount                        |           |      |
-|      :x:       | APagination                   |           |      |
+|   :wavy_dash:  | AMount                        |           |      |
+| :construction: | APagination                   |    RWH    |      |
 |      :x:       | APanel                        |           |      |
 |      :x:       | APopover                      |           |      |
 |      :x:       | AProgressbar                  |           |      |
@@ -62,7 +62,7 @@ Status options:
 |      :x:       | ATag                          |           |      |
 |      :x:       | ATextarea                     |           |      |
 |      :x:       | ATextInput                    |           |      |
-|      :x:       | ATheme                        |           |      |
+|   :wavy_dash:  | ATheme                        |           |      |
 |      :x:       | ATimeline                     |           |      |
 | :construction: | AToast                        |    AJL    |      |
 |      :x:       | AToaster                      |           |      |

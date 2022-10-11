@@ -1,5 +1,19 @@
 @import "../../styles";
 
+@include theme(a-pagination) using ($theme) {
+  .a-button-group {
+    .a-button {
+      color: map-deep-get($theme, "base", "color");
+
+      &--selected,
+      &:hover {
+        border: 2px solid map-deep-get($theme, "base", "color--selected") !important;
+        color: map-deep-get($theme, "base", "color");
+      }
+    }
+  }
+}
+
 .a-pagination {
   display: flex;
   align-items: center;
@@ -30,6 +44,12 @@
     .a-button {
       padding: 0 7px;
       height: 23px;
+      border-radius: $border-radius--lg;
+      border: 2px solid transparent !important;
+
+      &--selected {
+        background-color: transparent !important;
+      }
     }
   }
 
