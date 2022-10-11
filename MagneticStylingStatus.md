@@ -78,3 +78,21 @@ Status options:
 |      :x:       | ALoadNotification  |           |      |
 |      :x:       | ASidebar           |           |      |
 |      :x:       | AThemeSwitcher     |           |      |
+
+## Phase completion updates -
+ * Note a new library won't be published until phase 1 and phase 2 are complete
+
+#### Phase 1 - reskin light theme
+ * Current projected dev phase completion - November 8th
+ - As of Oct 11th  - 24/56 = 42%
+ - As of Sept 4th  - 13/56 = 23%
+ - As of Sept 27th - 9/56  = 16%
+
+#### Phase 2 - reskin dark theme (dark theme has not been defined for components)
+ - Not started
+
+#### Phase 3 - Add new components
+ - Not started
+
+#### Phase 4 - Add Magnetic components option as needed - (this means not just skin layer, size/padding/margin dimensions change; You can see a sample of this at the bottom of the Button component)
+ - Not started
