@@ -161,7 +161,8 @@ const ATree = forwardRef(
             className={rootClassName}
             onMouseEnter={hoverHandler(true, path)}
             onMouseLeave={hoverHandler(false, path)}
-            onClick={rootInteractionHandler(path)}>
+            onClick={rootInteractionHandler(path)}
+          >
             {/* eslint-enable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
             {path.slice(1).map((x, index) => (
               <div key={`a-tree__level_${index}`} className="a-tree__level" />
@@ -172,9 +173,10 @@ const ATree = forwardRef(
                 icon
                 className="a-tree__chevron"
                 onClick={expandHandler(path)}
-                style={{color: "currentColor"}}>
+                style={{color: "currentColor"}}
+              >
                 <AIcon size={10}>
-                  {item.expanded ? "chevron-down" : "chevron-right"}
+                  {item.expanded ? "chevron-up" : "chevron-right"}
                 </AIcon>
               </AButton>
             )}

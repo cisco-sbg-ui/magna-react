@@ -69,7 +69,7 @@ Status options:
 | :construction: | AToast                        |    AJL    |      |
 |      :x:       | AToaster                      |           |      |
 |      :x:       | ATooltip                      |           |      |
-|      :x:       | ATree                         |           |      |
+| :construction: | ATree                         |    AJL    |      |
 
 ### Internal Facing Components:
 
@@ -87,7 +87,7 @@ Status options:
 #### Phase 1 - reskin light theme
  * Current projected dev phase completion - November 8th
  - As of Oct 11th  - 24/56 = 42%
- - As of Sept 4th  - 13/56 = 23%
+ - As of Oct 4th   - 13/56 = 23%
  - As of Sept 27th - 9/56  = 16%
 
 #### Phase 2 - reskin dark theme (dark theme has not been defined for components)

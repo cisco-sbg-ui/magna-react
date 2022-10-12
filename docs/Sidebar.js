@@ -14,24 +14,28 @@ const CustomLink = ({children, href, ...rest}) => {
   );
 };
 
-const GitHubIcon = (props) => (
-  <AButton
-    className="white--text"
-    icon
-    tertiaryAlt
-    href="https://www.github.com/cisco-sbg-ui/magna-react"
-    target="_blank"
-    rel="noopener noreferrer"
-    {...props}
-  >
-    <AIcon>github</AIcon>
-  </AButton>
-);
+const GitHubIcon = (props) => {
+  let {styleColor} = props;
+  return (
+    <AButton
+      className={`${styleColor}`}
+      icon
+      tertiaryAlt
+      href="https://www.github.com/cisco-sbg-ui/magna-react"
+      target="_blank"
+      rel="noopener noreferrer"
+      {...props}
+    >
+      <AIcon>github</AIcon>
+    </AButton>
+  );
+};
 
 const Sidebar = ({menus, currentDoc}) => {
   const [items, setItems] = useState([]);
   const currentDocRef = useRef();
   const {currentTheme} = useATheme();
+  const styleColor = currentTheme === "dusk" ? "white--text" : "black--text";
   useEffect(() => {
     if (currentDocRef.current) {
       window.scrollTo(0, Math.max(0, currentDocRef.current.offsetTop - 65));
@@ -107,7 +111,9 @@ const Sidebar = ({menus, currentDoc}) => {
   return (
     <div
       className={`root-sidebar overflow-y-scroll py-3${
-        currentTheme === "dusk" ? " grey--darken-6" : " cisco-blue"
+        currentTheme === "dusk"
+          ? " mds-dark-theme--background"
+          : " mds-light-theme--background"
       }`}
       style={{
         position: "fixed",
@@ -115,7 +121,10 @@ const Sidebar = ({menus, currentDoc}) => {
         width: 330
       }}
     >
-      <div className="white--text" style={{display: "flex", padding: "0 15px"}}>
+      <div
+        className={`${currentTheme === "dusk" ? "white--text" : "black--text"}`}
+        style={{display: "flex", padding: "0 15px"}}
+      >
         <h1 style={{flex: "1"}}>
           <AIcon size={60} className="pr-3 vertical-align-center">
             cisco
@@ -124,14 +133,14 @@ const Sidebar = ({menus, currentDoc}) => {
         </h1>
         <GitHubIcon />
       </div>
-      <div className="white--text d-flex align-center px-3 py-2">
+      <div className={`${styleColor} d-flex align-center px-3 py-2}`}>
         <ThemeSwitcher />
       </div>
       <div className="px-3 pb-3">
         <Search />
       </div>
       <ATree
-        className="white--text"
+        className={`${styleColor}`}
         hoverable
         activatable
         expandOnClick

@@ -2,8 +2,7 @@ import algoliasearch from "algoliasearch";
 import Link from "next/link";
 import debounce from "lodash.debounce";
 import React, {useCallback, useEffect, useRef, useState} from "react";
-
-import {AListItem, AMenu, ATextInput} from "../framework";
+import {AListItem, AMenu, ATextInput, useATheme} from "../framework";
 
 const Search = () => {
   const client = algoliasearch(
@@ -11,6 +10,7 @@ const Search = () => {
     "6e8a1bb15c50d7e391219fa54b2bd109"
   );
   const index = client.initIndex("Docs");
+  const {currentTheme} = useATheme();
 
   const searchCallback = async function (rawTerm) {
     const term = (rawTerm || "").trim();
@@ -26,7 +26,7 @@ const Search = () => {
     setOpen(true);
     setSearchRunning(false);
   };
-
+  const styleColor = currentTheme === "dusk" ? "white--text" : "black--text";
   const inputRef = useRef(null);
   const [searchRunning, setSearchRunning] = useState(false);
   const [previousTerm, setPreviousTerm] = useState();
@@ -45,7 +45,7 @@ const Search = () => {
         clearable={value.length > 0}
         prependIcon="search"
         value={value}
-        label={<span className='white--text'>Search</span>}
+        label={<span className={`${styleColor}`}>Search</span>}
         onChange={(e) => {
           setValue(e.target.value);
         }}
@@ -56,7 +56,8 @@ const Search = () => {
         focusOnOpen={false}
         placement="bottom-left"
         onClose={() => setOpen(false)}
-        style={{width: 285}}>
+        style={{width: 285}}
+      >
         {items.map((x, index) => (
           <Link key={index} href={x.route} passHref>
             <AListItem>{x.name}</AListItem>

@@ -281,9 +281,8 @@ $atomic-default: (
     "icon-bg-color": map-get($grey, "darken-5")
   ),
   "tree": (
-    "color": $white,
-    "background-color--focus": map-get($cisco-blue, "burnt-2"),
-    "background-color--hover": map-get($cisco-blue, "burnt-1"),
-    "box-shadow": 5px 0 0 $white inset
+    "color": map-get($mds-light-theme, "default-text"),
+    "background-color--focus": map-get($mds-blue, "blue-1"),
+    "background-color--hover": map-get($mds-blue, "blue-2")
   )
 );

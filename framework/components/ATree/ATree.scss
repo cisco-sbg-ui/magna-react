@@ -3,8 +3,7 @@
 @include theme(a-tree) using ($theme) {
   &__root {
     &--active {
-      background-color: map-deep-get($theme, "tree", "background-color--hover");
-      box-shadow: map-deep-get($theme, "tree", "box-shadow");
+      background-color: map-deep-get($theme, "tree", "background-color--focus");
       color: map-deep-get($theme, "tree", "color");
     }
 
@@ -18,7 +17,6 @@
 
       &:after {
         content: "";
-        box-shadow: 0 0 2px 2px currentColor;
         opacity: 0.4;
         position: absolute;
         width: 22px;
@@ -47,7 +45,6 @@
           "tree",
           "background-color--hover"
         );
-        box-shadow: map-deep-get($theme, "tree", "box-shadow");
         color: map-deep-get($theme, "tree", "color");
 
         .a-tree__content {

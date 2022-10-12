@@ -215,7 +215,8 @@ export const isStockColor = (color) => {
     "secure-blue--1",
     "secure-blue--2",
     "secure-blue--3",
-    "secure-green--1"
+    "secure-green--1",
+    "mds-neutral--neutral-1"
   ].includes(color);
 };
 

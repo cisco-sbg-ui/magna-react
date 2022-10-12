@@ -283,9 +283,9 @@ $atomic-dusk: (
     "icon-bg-color": map-get($grey, "lighten-3")
   ),
   "tree": (
-    "color": map-get($grey, "lighten-5"),
-    "background-color--focus": map-get($grey, "darken-5"),
-    "background-color--hover": map-get($grey, "darken-4"),
-    "box-shadow": 5px 0 0 map-get($cisco-blue, "burnt-1") inset
+    "color": map-get($mds-dark-theme, "default-text"),
+    // no examples for dark mode focus/hover so I just picked something, needs UX review
+    "background-color--focus": map-get($mds-blue, "blue-6"),
+    "background-color--hover": map-get($mds-blue, "blue-7")
   )
 );
