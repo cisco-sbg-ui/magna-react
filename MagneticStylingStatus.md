@@ -35,7 +35,7 @@ Status options:
 | :construction: | ADialog                       |    RWH    |      |
 | :construction: | ADivider                      |    RWH    |      |
 |      :x:       | AFieldBase                    |           |      |
-|      :x:       | AFooter                       |           |      |
+| :construction: | AFooter                       |    RWH    |      |
 |      :x:       | AForm                         |           |      |
 |      :x:       | AHeader                       |           |      |
 |      :x:       | AHint                         |           |      |
