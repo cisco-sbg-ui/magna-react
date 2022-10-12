@@ -30,7 +30,7 @@ $atomic-default: (
     "bg": map-get($mds-light-theme, "background"),
     "brand-color": map-get($cisco-blue, "base"),
     "color": map-get($mds-light-theme, "default-text"),
-    "color--active": map-get($cisco-blue, "burnt-2"),
+    "color--active": map-get($mds-blue, "blue-6"),
     "color--hover": map-get($mds-blue, "blue-2"),
     "color--selected": map-get($mds-blue, "blue-7"),
     "color--disabled": map-get($mds-light-theme, "icon-text-gray"),
