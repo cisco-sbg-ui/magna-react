@@ -10,6 +10,15 @@
         border: 2px solid map-deep-get($theme, "base", "color--selected") !important;
         color: map-deep-get($theme, "base", "color");
       }
+
+      &:focus {
+        box-shadow: none;
+        background-color: map-deep-get($theme, "base", "color--active");
+      }
+
+      &:focus:not(&--selected) {
+        color: map-deep-get($theme, "base", "inverse-color");
+      }
     }
   }
 }
