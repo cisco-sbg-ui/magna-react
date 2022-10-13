@@ -38,7 +38,6 @@ Status options:
 | :construction: | AFooter                       |    RWH    |      |
 |   :wavy_dash:  | AForm                         |           |      |
 | :construction: | AFooter                       |    RWH    |      |
-|      :x:       | AForm                         |           |      |
 |      :x:       | AHeader                       |           |      |
 |      :x:       | AHint                         |           |      |
 |      :x:       | AIcon                         |           |      |
@@ -51,7 +50,7 @@ Status options:
 | :construction: | AMenuBase                     |    AJL    |      |
 |   :wavy_dash:  | AMount                        |           |      |
 | :construction: | APagination                   |    RWH    |      |
-|      :x:       | APanel                        |           |      |
+| :construction: | APanel                        |    RWH    |      |
 |      :x:       | APopover                      |           |      |
 |      :x:       | AProgressbar                  |           |      |
 | :construction: | ARadio                        |    AJL    |      |
