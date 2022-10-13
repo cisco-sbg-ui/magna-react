@@ -1,9 +1,10 @@
 @import "../../styles";
 
-$tooltip-bg: map-get($grey, "darken-4");
+$tooltip-bg: map-get($mds-neutral, "neutral-15");
+$tooltip-color: map-get($mds-neutral, "neutral-1");
 
 @include theme(a-tooltip) using ($theme) {
-  color: map-deep-get($theme, "base", "inverse-color");
+  color: $tooltip-color;
 }
 
 .a-tooltip {
@@ -13,68 +14,67 @@ $tooltip-bg: map-get($grey, "darken-4");
   min-width: 75px;
   max-width: 200px;
   background-color: $tooltip-bg;
-  padding: rem(0.3125);
-  border-radius: $border-radius--sm;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+  padding: 8px 12px;
+  border-radius: $border-radius--lg;
   z-index: 8;
 
   &--arrow.a-menu-base--top,
   &--arrow.a-menu-base--top-left,
   &--arrow.a-menu-base--top-right {
-    margin-top: -11px;
+    margin-top: -7px;
     .a-menu-base__pointer {
       width: 0;
       height: 0;
       border-style: solid;
-      border-width: 12px 6px 0 6px;
+      border-width: 8px 6px 0 6px;
       border-color: $tooltip-bg transparent transparent transparent;
       position: absolute;
-      bottom: -11px;
+      bottom: -7px;
     }
   }
 
   &--arrow.a-menu-base--right,
   &--arrow.a-menu-base--right-top,
   &--arrow.a-menu-base--right-bottom {
-    margin-left: 11px;
+    margin-left: 7px;
     .a-menu-base__pointer {
       width: 0;
       height: 0;
       border-style: solid;
-      border-width: 6px 12px 6px 0;
+      border-width: 6px 8px 6px 0;
       border-color: transparent $tooltip-bg transparent transparent;
       position: absolute;
-      left: -11px;
+      left: -7px;
     }
   }
 
   &--arrow.a-menu-base--bottom,
   &--arrow.a-menu-base--bottom-left,
   &--arrow.a-menu-base--bottom-right {
-    margin-top: 11px;
+    margin-top: 7px;
     .a-menu-base__pointer {
       width: 0;
       height: 0;
       border-style: solid;
-      border-width: 0 6px 12px 6px;
+      border-width: 0 6px 8px 6px;
       border-color: transparent transparent $tooltip-bg transparent;
       position: absolute;
-      top: -11px;
+      top: -7px;
     }
   }
 
   &--arrow.a-menu-base--left,
   &--arrow.a-menu-base--left-top,
   &--arrow.a-menu-base--left-bottom {
-    margin-left: -11px;
+    margin-left: -7px;
     .a-menu-base__pointer {
       width: 0;
       height: 0;
       border-style: solid;
-      border-width: 6px 0 6px 12px;
+      border-width: 6px 0 6px 8px;
       border-color: transparent transparent transparent $tooltip-bg;
       position: absolute;
-      right: -11px;
+      right: -7px;
     }
   }
 }

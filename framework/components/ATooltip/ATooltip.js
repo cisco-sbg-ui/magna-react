@@ -41,8 +41,10 @@ const ATooltip = forwardRef(
         onClose={onClose}
         open={open}
         placement={placement}
+        removeSpacer={true}
         anchorRef={anchorRef}
-        pointer={pointer}>
+        pointer={pointer}
+      >
         {children}
       </AMenuBase>
     );

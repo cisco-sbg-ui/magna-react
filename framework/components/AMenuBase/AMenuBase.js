@@ -21,7 +21,8 @@ const calculateMenuPosition = (
   placement,
   setMenuLeft,
   setMenuTop,
-  setInvisible
+  setInvisible,
+  removeSpacer = false
 ) => {
   if (!combinedRef.current) return;
 
@@ -29,7 +30,7 @@ const calculateMenuPosition = (
   const wrapCoords = getRoundedBoundedClientRect(wrapRef.current);
   const anchorCoords = getRoundedBoundedClientRect(anchorRef.current);
   const menuCoords = getRoundedBoundedClientRect(combinedRef.current);
-  const magneticSpacer = 4;
+  const magneticSpacer = removeSpacer ? 0 : 4;
 
   let baseLeft = 0,
     baseTop = 0;
@@ -213,6 +214,7 @@ const AMenuBase = forwardRef(
       placement = "bottom-left",
       pointer,
       style: propsStyle,
+      removeSpacer = false,
       ...rest
     },
     ref
@@ -235,9 +237,18 @@ const AMenuBase = forwardRef(
         placement,
         setMenuLeft,
         setMenuTop,
-        setInvisible
+        setInvisible,
+        removeSpacer
       );
-    }, [open, anchorRef, combinedRef, placement, appRef, wrapRef]);
+    }, [
+      open,
+      anchorRef,
+      combinedRef,
+      placement,
+      appRef,
+      wrapRef,
+      removeSpacer
+    ]);
 
     useEffect(() => {
       calculatePointerPosition(
@@ -260,7 +271,8 @@ const AMenuBase = forwardRef(
           placement,
           setMenuLeft,
           setMenuTop,
-          setInvisible
+          setInvisible,
+          removeSpacer
         );
       };
 
@@ -271,7 +283,7 @@ const AMenuBase = forwardRef(
         window.removeEventListener("resize", screenChangeHandler);
         window.removeEventListener("fullscreenchange", screenChangeHandler);
       };
-    }, [anchorRef, combinedRef, placement, appRef, wrapRef]);
+    }, [anchorRef, combinedRef, placement, appRef, wrapRef, removeSpacer]);
 
     useEffect(() => {
       const screenChangeHandler = () => {
@@ -283,7 +295,8 @@ const AMenuBase = forwardRef(
           placement,
           setMenuLeft,
           setMenuTop,
-          setInvisible
+          setInvisible,
+          removeSpacer
         );
       };
 
@@ -292,7 +305,7 @@ const AMenuBase = forwardRef(
       return () => {
         window.removeEventListener("resize", screenChangeHandler);
       };
-    }, [anchorRef, combinedRef, placement, appRef, wrapRef]);
+    }, [anchorRef, combinedRef, placement, appRef, wrapRef, removeSpacer]);
 
     useEffect(() => {
       const clickOutsideHandler = (e) => {
@@ -396,7 +409,11 @@ AMenuBase.propTypes = {
   /**
    * Toggles the menu pointer.
    */
-  pointer: PropTypes.bool
+  pointer: PropTypes.bool,
+  /**
+   * Option to remove the space between the anchor and the menu for bottom placement
+   */
+  removeSpacer: PropTypes.bool
 };
 
 AMenuBase.displayName = "AMenuBase";

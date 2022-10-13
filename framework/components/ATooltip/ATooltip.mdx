@@ -1,5 +1,5 @@
 ---
-name: Tooltips
+name: Tooltips*
 route: /components/tooltip
 components: ATooltip
 ---
@@ -306,6 +306,21 @@ The `ATooltip` component inherits passed props.
         placement="right-top"
         pointer>
         Tooltip Shorter Than Anchor
+      </ATooltip>
+      <ATooltip
+        anchorRef={buttonRef2}
+        open={open2}
+        placement="left"
+        pointer>
+        Tooltip On the leftside
+      </ATooltip>
+      <ATooltip
+        anchorRef={buttonRef2}
+        open={open2}
+        placement="top"
+        title="Really???"
+        pointer>
+        <h2 style={{color: "red"}}>Optionally...</h2>Can override styles
       </ATooltip>
     </>
   );
