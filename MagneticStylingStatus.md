@@ -65,7 +65,7 @@ Status options:
 |      :x:       | ATextarea                     |           |      |
 |      :x:       | ATextInput                    |           |      |
 |  :wavy_dash:   | ATheme                        |     -     |  -   |
-|      :x:       | ATimeline                     |           |      |
+| :construction: | ATimeline                     |    AJL    |      |
 | :construction: | AToast                        |    AJL    |      |
 |  :wavy_dash:   | AToaster                      |     -     |  -   |
 | :construction: | ATooltip                      |    AJL    |      |

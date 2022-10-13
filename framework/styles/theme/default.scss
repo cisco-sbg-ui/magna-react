@@ -175,7 +175,7 @@ $atomic-default: (
     "control-text-color": map-get($grey, "darken-5")
   ),
   "label": (
-    "color": map-get($grey, "darken-4")
+    "color": map-get($mds-light-theme, "default-text")
   ),
   "link": (
     "color": map-get($mds-blue, "blue-8"),
@@ -277,9 +277,9 @@ $atomic-default: (
     "icon-fill": map-get($mds-neutral, "neutral-9")
   ),
   "timeline": (
-    "item-bg-hover-color": map-get($grey, "lighten-5"),
-    "icon-border-color": map-get($grey, "lighten-5"),
-    "icon-bg-color": map-get($grey, "darken-5")
+    "item-bg-hover-color": map-get($mds-light-theme, "disabled-state"),
+    "icon-border-color": map-get($mds-light-theme, "disabled-state"),
+    "icon-bg-color": map-get($mds-neutral, "neutral-13")
   ),
   "tree": (
     "color": map-get($mds-light-theme, "default-text"),

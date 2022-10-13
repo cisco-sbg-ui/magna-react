@@ -162,7 +162,7 @@ $atomic-dusk: (
     "control-text-color": map-get($grey, "lighten-3")
   ),
   "label": (
-    "color": map-get($grey, "lighten-2")
+    "color": map-get($mds-dark-theme, "default-text")
   ),
   "link": (
     "color": map-get($cisco-blue, "wash-1"),
@@ -279,9 +279,9 @@ $atomic-dusk: (
     "border-color--active": map-get($mds-blue, "blue-7")
   ),
   "timeline": (
-    "item-bg-hover-color": map-get($dusk, "6"),
-    "icon-border-color": map-get($grey, "darken-4"),
-    "icon-bg-color": map-get($grey, "lighten-3")
+    "item-bg-hover-color": map-get($mds-dark-theme, "disabled-state"),
+    "icon-border-color": map-get($mds-dark-theme, "disabled-state"),
+    "icon-bg-color": map-get($mds-neutral, "neutral-13")
   ),
   "tree": (
     "color": map-get($mds-dark-theme, "default-text"),
