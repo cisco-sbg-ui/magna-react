@@ -266,8 +266,8 @@ $atomic-dusk: (
     "bar-color--hover": map-get($mds-dark-theme, "disabled-state")
   ),
   "tag": (
-    "bg-color": map-get($grey, "darken-5"),
-    "color": $white
+    "bg-color": map-get($mds-dark-theme, "disabled-state"),
+    "color": map-get($mds-dark-theme, "default-text")
   ),
   "text-input": (
     "bg": transparent,

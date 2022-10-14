@@ -61,7 +61,7 @@ Status options:
 |      :x:       | AStepper                      |           |      |
 | :construction: | ASwitch                       |    AJL    |      |
 | :construction: | ATabs                         |    AJL    |      |
-|      :x:       | ATag                          |           |      |
+| :construction: | ATag                          |    AJL    |      |
 | :construction: | ATextarea                     |    AJL    |      |
 | :construction: | ATextInput                    |    AJL    |      |
 |  :wavy_dash:   | ATheme                        |     -     |  -   |
