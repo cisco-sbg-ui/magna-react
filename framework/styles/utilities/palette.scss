@@ -351,31 +351,27 @@ $mds-light-theme: (
   "background-page": map-get($mds-neutral, "neutral-1"),
   "background": map-get($mds-neutral, "neutral-2"),
   "dividers": map-get($mds-neutral, "neutral-3"),
-  //dividers, separators
   "disabled-state": map-get($mds-neutral, "neutral-4"),
   "multipurpose-gray": map-get($mds-neutral, "neutral-5"),
   "icon-text-gray": map-get($mds-neutral, "neutral-6"),
-  // icon default, disabled text
   "supplemental-text": map-get($mds-neutral, "neutral-7"),
   "secondary-gray": map-get($mds-neutral, "neutral-11"),
   "default-text": map-get($mds-neutral, "neutral-14"),
-  //primary gray - default body text, secondary heading
   "heading-gray": map-get($mds-neutral, "neutral-15"),
-  // page and section headings
   "primary-blue": map-get($mds-blue, "blue-7"),
   "primary-blue-dark": map-get($mds-blue, "blue-8")
 );
 $mds-dark-theme: (
-  "background-page": map-get($mds-neutral, "neutral-12"),
-  "background": map-get($mds-neutral, "neutral-11"),
-  "dividers": map-get($mds-neutral, "neutral-10"),
-  "disabled-state": map-get($mds-neutral, "neutral-9"),
-  "multipurpose-gray": map-get($mds-neutral, "neutral-10"),
-  "icon-text-gray": map-get($mds-neutral, "neutral-7"),
-  "supplemental-text": map-get($mds-neutral, "neutral-6"),
-  "secondary-gray": map-get($mds-neutral, "neutral-9"),
-  "default-text": map-get($mds-neutral, "neutral-4"),
-  "heading-gray": map-get($mds-neutral, "neutral-3"),
+  "background-page": map-get($mds-neutral, "neutral-18"),
+  "background": map-get($mds-neutral, "neutral-17"),
+  "dividers": map-get($mds-neutral, "neutral-16"),
+  "disabled-state": map-get($mds-neutral, "neutral-15"),
+  "multipurpose-gray": map-get($mds-neutral, "neutral-14"),
+  "icon-text-gray": map-get($mds-neutral, "neutral-13"),
+  "supplemental-text": map-get($mds-neutral, "neutral-12"),
+  "secondary-gray": map-get($mds-neutral, "neutral-14"),
+  "default-text": map-get($mds-neutral, "neutral-5"),
+  "heading-gray": map-get($mds-neutral, "neutral-4"),
   "primary-blue": map-get($mds-blue, "blue-7"),
   "primary-blue-dark": map-get($mds-blue, "blue-8")
 );

@@ -76,6 +76,10 @@ $input-transition: border-color $transition-duration--extra-fast
       );
       background: map-deep-get($theme, "text-input", "bg--disabled");
       cursor: not-allowed;
+
+      .a-icon {
+        fill: map-deep-get($theme, "text-input", "color--disabled");
+      }
     }
   }
 
@@ -132,6 +136,7 @@ $input-transition: border-color $transition-duration--extra-fast
     .a-input-base__surface {
       @include disabled;
     }
+    cursor: not-allowed;
   }
 
   &--readonly {

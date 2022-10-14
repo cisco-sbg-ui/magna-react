@@ -2,7 +2,7 @@
 
 @include theme(a-list) using ($theme) {
   color: map-deep-get($theme, "base", "color");
-  background: map-deep-get($theme, "control", "fill-color");
+  background: map-deep-get($theme, "base", "bg");
   border-color: map-deep-get($theme, "control", "stroke-color");
 
   &--hoverable .a-list-item:not(.a-list-item--two-line) {

@@ -63,7 +63,7 @@ Status options:
 | :construction: | ATabs                         |    AJL    |      |
 |      :x:       | ATag                          |           |      |
 |      :x:       | ATextarea                     |           |      |
-|      :x:       | ATextInput                    |           |      |
+| :construction: | ATextInput                    |    AJL    |      |
 |  :wavy_dash:   | ATheme                        |     -     |  -   |
 | :construction: | ATimeline                     |    AJL    |      |
 | :construction: | AToast                        |    AJL    |      |
