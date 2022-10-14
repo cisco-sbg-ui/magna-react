@@ -1,5 +1,5 @@
 ---
-name: Tags
+name: Tags*
 route: /components/tag
 components: ATag
 ---
@@ -52,7 +52,7 @@ import {ATag} from "@cisco-sbg-ui/magna-react";
         anchorRef={tagRef}
         open={active}
         onClose={() => setActive(false)}
-        style={{right: 5}}>
+        style={{right: 5, maxWidth: 200}}>
         <AListItem
           onClick={() => {
             setSelectedOption("Option 1");

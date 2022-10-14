@@ -3,7 +3,7 @@
 $tag-height: 22px;
 $tag-font-size: $font-size--xs;
 $tag-padding: 0 12px;
-$tag-border-radius: $border-radius--sm;
+$tag-border-radius: 17px;
 $tag-icon-font-size: $font-size--xxs;
 
 @include theme(a-tag) using ($theme) {
@@ -12,10 +12,6 @@ $tag-icon-font-size: $font-size--xxs;
 
   &.interactable {
     cursor: pointer;
-
-    &:focus {
-      box-shadow: map-deep-get($theme, "base", "box-shadow");
-    }
 
     &:hover,
     &:focus {
