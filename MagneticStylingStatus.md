@@ -53,7 +53,7 @@ Status options:
 | :construction: | APagination                   |    RWH    |      |
 | :construction: | APanel                        |    RWH    |      |
 | :construction: | APopover                      |    RWH    |      |
-|      :x:       | AProgressbar                  |           |      |
+| :construction: | AProgressbar                  |    RWH    |      |
 | :construction: | ARadio                        |    AJL    |      |
 | :construction: | ASelect                       |    AJL    |      |
 | :construction: | ASimpleTable                  |    RWH    |      |
