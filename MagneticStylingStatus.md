@@ -52,7 +52,7 @@ Status options:
 |  :wavy_dash:   | AMount                        |     -     |  -   |
 | :construction: | APagination                   |    RWH    |      |
 | :construction: | APanel                        |    RWH    |      |
-|      :x:       | APopover                      |           |      |
+| :construction: | APopover                      |    RWH    |      |
 |      :x:       | AProgressbar                  |           |      |
 | :construction: | ARadio                        |    AJL    |      |
 | :construction: | ASelect                       |    AJL    |      |

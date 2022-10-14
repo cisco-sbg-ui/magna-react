@@ -203,6 +203,9 @@ $atomic-default: (
     "header-color": map-get($mds-light-theme, "heading-gray"),
     "box-shadow": 0px 2px 5px rgba(0, 0, 0, 0.05)
   ),
+  "popover": (
+    "filter": drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.18))
+  ),
   "progressbar": (
     "disabled-bg-color": map-get($status-blue, "wash-1")
   ),
