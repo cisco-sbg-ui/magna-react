@@ -24,7 +24,7 @@ Status options:
 | :construction: | AAutocomplete                 |    AJL    |      |
 | :construction: | ABadge                        |    RWH    |      |
 | :construction: | ABreadcrumb                   |    AJL    |      |
-|      :x:       | ABreakpoint                   |           |      |
+|  :wavy_dash:   | ABreakpoint                   |     -     |  -   |
 | :construction: | AButton                       |    AJL    |      |
 |      :x:       | AButtonGroup                  |           |      |
 | :construction: | ACheckbox                     |    AJL    |      |
@@ -62,7 +62,7 @@ Status options:
 | :construction: | ASwitch                       |    AJL    |      |
 | :construction: | ATabs                         |    AJL    |      |
 |      :x:       | ATag                          |           |      |
-|      :x:       | ATextarea                     |           |      |
+| :construction: | ATextarea                     |    AJL    |      |
 | :construction: | ATextInput                    |    AJL    |      |
 |  :wavy_dash:   | ATheme                        |     -     |  -   |
 | :construction: | ATimeline                     |    AJL    |      |
@@ -82,7 +82,7 @@ Status options:
 |      :x:       | AThemeSwitcher     |           |      |
 
 ## Phase completion updates -
- * Note a new library won't be published until phase 1 and phase 2 are complete
+**NOTE: a new library won't be published until phase 1 and phase 2 are complete**
 
 #### Phase 1 - reskin light theme
  * Current projected dev phase completion - November 8th
