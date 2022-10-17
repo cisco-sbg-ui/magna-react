@@ -9,23 +9,24 @@
   }
 
   &__handle {
-    background-color: map-deep-get($theme, "base", "inverse-color");
-    border-color: map-get($cisco-blue, "base");
+    background-color: map-deep-get($theme, "slider", "handle-bg");
+    border-color: map-deep-get($theme, "slider", "handle-border");
     &:hover {
-      border-color: map-get($grey, "darken-4");
-      box-shadow: inset 0 0 0 4px map-deep-get($theme, "base", "inverse-color"),
-        inset 0 0 0 5px map-get($grey, "darken-4");
+      border-color: map-deep-get($theme, "slider", "handle-border");
+      box-shadow: map-deep-get($theme, "slider", "box-shadow");
     }
 
     &:focus {
-      box-shadow: map-deep-get($theme, "base", "box-shadow");
+      box-shadow: map-deep-get($theme, "slider", "box-shadow");
     }
 
     &:active {
       border-color: map-get($grey, "darken-4");
-      box-shadow: inset 0 0 0 4px map-deep-get($theme, "base", "inverse-color"),
-        inset 0 0 0 8px map-get($grey, "darken-4");
     }
+  }
+
+  &__selection {
+    background: map-deep-get($theme, "slider", "bg");
   }
 
   &--warning {
@@ -34,23 +35,18 @@
     }
 
     & .a-slider__handle {
-      border-color: $color-warning;
       &:hover {
         border-color: map-get($grey, "darken-4");
-        box-shadow: inset 0 0 0 2px
-            map-deep-get($theme, "base", "inverse-color"),
-          inset 0 0 0 2.5px map-get($grey, "darken-4");
+        box-shadow: map-deep-get($theme, "slider", "box-shadow--warning");
       }
 
       &:focus {
-        box-shadow: $warning-box-shadow;
+        box-shadow: map-deep-get($theme, "slider", "box-shadow--warning");
       }
 
       &:active {
         border-color: map-get($grey, "darken-4");
-        box-shadow: inset 0 0 0 4px
-            map-deep-get($theme, "base", "inverse-color"),
-          inset 0 0 0 8px map-get($grey, "darken-4");
+        box-shadow: map-deep-get($theme, "slider", "box-shadow--warning");
       }
     }
   }
@@ -61,23 +57,18 @@
     }
 
     & .a-slider__handle {
-      border-color: $color-error;
       &:hover {
         border-color: map-get($grey, "darken-4");
-        box-shadow: inset 0 0 0 2px
-            map-deep-get($theme, "base", "inverse-color"),
-          inset 0 0 0 2.5px map-get($grey, "darken-4");
+        box-shadow: map-deep-get($theme, "slider", "box-shadow--danger");
       }
 
       &:focus {
-        box-shadow: $danger-box-shadow;
+        box-shadow: map-deep-get($theme, "slider", "box-shadow--danger");
       }
 
       &:active {
         border-color: map-get($grey, "darken-4");
-        box-shadow: inset 0 0 0 4px
-            map-deep-get($theme, "base", "inverse-color"),
-          inset 0 0 0 8px map-get($grey, "darken-4");
+        box-shadow: map-deep-get($theme, "slider", "box-shadow--danger");
       }
     }
   }
@@ -125,7 +116,6 @@
   }
 
   &__selection {
-    background: map-get($cisco-blue, "base");
     height: 100%;
     top: 0;
     bottom: 0;
