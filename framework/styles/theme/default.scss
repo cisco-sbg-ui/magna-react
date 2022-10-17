@@ -234,8 +234,8 @@ $atomic-default: (
     "handle-border-disabled": map-get($grey, "lighten-2")
   ),
   "steps": (
-    "step-icon-border-color": map-get($grey, "lighten-2"),
-    "step-line-color": map-get($grey, "lighten-2")
+    "step-icon-border-color": map-get($mds-blue, "blue-8"),
+    "step-line-color": map-get($mds-blue, "blue-8")
   ),
   "switch": (
     "bg": map-get($mds-light-theme, "secondary-gray"),

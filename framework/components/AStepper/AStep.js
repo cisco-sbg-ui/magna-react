@@ -35,7 +35,7 @@ const AStep = forwardRef(
       <div {...rest} ref={ref} className={className}>
         <div className="a-step__icon">
           {!disabled && visited && showIconOnVisited ? (
-            <AIcon size={15} className="a-step__icon__checkmark">
+            <AIcon size={12} className="a-step__icon__checkmark">
               checkmark
             </AIcon>
           ) : (
