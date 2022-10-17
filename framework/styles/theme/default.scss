@@ -231,7 +231,10 @@ $atomic-default: (
   "slider": (
     "opacity-disabled": 1,
     "selection-bg-disabled": map-get($grey, "lighten-2"),
-    "handle-border-disabled": map-get($grey, "lighten-2")
+    "handle-border-disabled": map-get($grey, "lighten-2"),
+    "handle-border": map-get($mds-neutral, "neutral-11"),
+    "bg": map-get($mds-blue, "blue-7"),
+    "handle-bg": white
   ),
   "steps": (
     "step-icon-border-color": map-get($grey, "lighten-2"),

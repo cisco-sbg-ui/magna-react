@@ -229,7 +229,10 @@ $atomic-dusk: (
   "slider": (
     "opacity-disabled": $alpha-3,
     "selection-bg-disabled": map-get($cisco-blue, "base"),
-    "handle-border-disabled": map-get($cisco-blue, "base")
+    "handle-border-disabled": map-get($cisco-blue, "base"),
+    "handle-border": map-get($mds-neutral, "neutral-9"),
+    "bg": map-get($mds-blue, "blue-7"),
+    "handle-bg": map-get($mds-neutral, "neutral-17")
   ),
   "steps": (
     "step-icon-border-color": rgba(map-get($grey, "lighten-2"), $alpha-3),

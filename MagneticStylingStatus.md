@@ -57,7 +57,7 @@ Status options:
 | :construction: | ARadio                        |    AJL    |      |
 | :construction: | ASelect                       |    AJL    |      |
 | :construction: | ASimpleTable                  |    RWH    |      |
-|      :x:       | ASlider                       |           |      |
+| :construction: | ASlider                       |    RWH    |      |
 |      :x:       | AStepper                      |           |      |
 | :construction: | ASwitch                       |    AJL    |      |
 | :construction: | ATabs                         |    AJL    |      |

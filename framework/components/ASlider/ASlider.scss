@@ -9,8 +9,8 @@
   }
 
   &__handle {
-    background-color: map-deep-get($theme, "base", "inverse-color");
-    border-color: map-get($cisco-blue, "base");
+    background-color: map-deep-get($theme, "slider", "handle-bg");
+    border-color: map-deep-get($theme, "slider", "handle-border");
     &:hover {
       border-color: map-get($grey, "darken-4");
       box-shadow: inset 0 0 0 4px map-deep-get($theme, "base", "inverse-color"),
@@ -26,6 +26,10 @@
       box-shadow: inset 0 0 0 4px map-deep-get($theme, "base", "inverse-color"),
         inset 0 0 0 8px map-get($grey, "darken-4");
     }
+  }
+
+  &__selection {
+    background: map-deep-get($theme, "slider", "bg");
   }
 
   &--warning {
@@ -125,7 +129,6 @@
   }
 
   &__selection {
-    background: map-get($cisco-blue, "base");
     height: 100%;
     top: 0;
     bottom: 0;
