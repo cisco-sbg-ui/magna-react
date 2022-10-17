@@ -1,6 +1,6 @@
 $atomic-dusk: (
   "accordion": (
-    "body-bg": map-get($mds-dark-theme, "background-page"),
+    "body-bg": map-get($mds-dark-theme, "background-section"),
     "body-color": map-get($mds-dark-theme, "secondary-gray"),
     "color": map-get($mds-dark-theme, "default-text")
   ),
@@ -35,7 +35,7 @@ $atomic-dusk: (
     "color--selected": map-get($mds-blue, "blue-7"),
     "color--disabled": map-get($mds-dark-theme, "icon-text-gray"),
     "inverse-color": map-get($mds-light-theme, "default-text"),
-    "pg-bg": map-get($mds-dark-theme, "background-page"),
+    "pg-bg": map-get($mds-dark-theme, "background-section"),
     "stroke-color": map-get($mds-dark-theme, "icon-text-gray"),
     "box-shadow": 0 0 2px 2px rgba(map-get($cisco-blue, "base"), 0.4),
     "outline": 1px solid map-get($cisco-blue, "base"),
@@ -248,7 +248,7 @@ $atomic-dusk: (
     "bg--checked--hover": map-get($mds-blue, "blue-9"),
     "bg--disabled": map-get($mds-dark-theme, "disabled-state"),
     "bg--disabled--checked": map-get($mds-blue, "blue-3"),
-    "circle-color": map-get($mds-dark-theme, "background-page"),
+    "circle-color": map-get($mds-dark-theme, "background-section"),
     "label-color--disabled": map-get($mds-dark-theme, "disabled-state"),
     "opacity-disabled": 1
   ),

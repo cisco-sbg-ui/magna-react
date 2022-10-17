@@ -348,7 +348,7 @@ $mds-status: (
 );
 
 $mds-light-theme: (
-  "background-page": map-get($mds-neutral, "neutral-1"),
+  "background-section": map-get($mds-neutral, "neutral-1"),
   "background": map-get($mds-neutral, "neutral-2"),
   "dividers": map-get($mds-neutral, "neutral-3"),
   "disabled-state": map-get($mds-neutral, "neutral-4"),
@@ -362,7 +362,7 @@ $mds-light-theme: (
   "primary-blue-dark": map-get($mds-blue, "blue-8")
 );
 $mds-dark-theme: (
-  "background-page": map-get($mds-neutral, "neutral-18"),
+  "background-section": map-get($mds-neutral, "neutral-18"),
   "background": map-get($mds-neutral, "neutral-17"),
   "dividers": map-get($mds-neutral, "neutral-16"),
   "disabled-state": map-get($mds-neutral, "neutral-15"),
