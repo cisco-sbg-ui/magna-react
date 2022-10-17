@@ -16,7 +16,7 @@
   line-height: 16px;
   margin: 5px 0 0 0;
   font-size: $font-size--xs;
-  color: map-get($grey, "darken-2");
+  color: map-get($mds-neutral, "neutral-10");
 
   &__icon.a-icon {
     height: 14px;

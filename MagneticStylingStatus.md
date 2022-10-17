@@ -35,12 +35,12 @@ Status options:
 | :construction: | ADatePicker                   |    RWH    |      |
 | :construction: | ADialog                       |    RWH    |      |
 | :construction: | ADivider                      |    RWH    |      |
-|      :x:       | AFieldBase                    |           |      |
+| :construction: | AFieldBase                    |    AJL    |      |
 | :construction: | AFooter                       |    RWH    |      |
 |  :wavy_dash:   | AForm                         |     -     |  -   |
 | :construction: | AFooter                       |    RWH    |      |
 |      :x:       | AHeader                       |           |      |
-|      :x:       | AHint                         |           |      |
+| :construction: | AHint                         |    AJL    |      |
 |      :x:       | AIcon                         |           |      |
 | :construction: | AInputBase                    |    AJL    |      |
 |  :wavy_dash:   | AInView                       |     -     |  -   |
@@ -85,7 +85,8 @@ Status options:
 **NOTE: a new library won't be published until phase 1 and phase 2 are complete**
 
 #### Phase 1 - reskin light theme
- * Current projected dev phase completion - November 8th
+ * Current projected dev phase completion - ~~November 8th~~ October 25th
+ - As of Oct 17th  - 47/56 = 83%
  - As of Oct 11th  - 24/56 = 42%
  - As of Oct 4th   - 13/56 = 23%
  - As of Sept 27th - 9/56  = 16%
