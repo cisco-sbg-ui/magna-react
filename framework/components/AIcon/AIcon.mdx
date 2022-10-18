@@ -1,5 +1,5 @@
 ---
-name: Icons
+name: Icons*
 route: /components/icon
 components: AIcon
 ---
@@ -16,6 +16,8 @@ import {AIcon} from "@cisco-sbg-ui/magna-react";
 
 ## Usage
 
+### Atomic
+
 <Playground
   code={`<>
   <AIcon className="status-yellow--text">warning</AIcon>
@@ -23,6 +25,19 @@ import {AIcon} from "@cisco-sbg-ui/magna-react";
     block
   </AIcon>
   <AIcon size="large">add</AIcon>
+</>
+`}
+/>
+
+### Magnetic
+
+<Playground
+  code={`<>
+  <AIcon iconSet="magna">warning</AIcon>
+  <AIcon iconSet="magna" size={32}>
+    bell
+  </AIcon>
+  <AIcon iconSet="magna" size="large">plus</AIcon>
 </>
 `}
 />
@@ -36,6 +51,10 @@ The `AIcon` component inherits passed props.
 ## Gallery
 
 <IconGallery />
+
+## Magna Icon Gallery
+
+<MagnaIconGallery />
 
 ## Accessibility Notes
 

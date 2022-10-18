@@ -22,23 +22,25 @@ const AContextualNotification = forwardRef(
 
     if (variant === "success") {
       className += ` ${baseClass}--state-success`;
-      icon = "good";
+      icon = "positive";
     } else if (variant === "warning") {
       className += ` ${baseClass}--state-warning`;
       icon = "warning";
     } else if (variant === "danger") {
       className += ` ${baseClass}--state-danger`;
-      icon = "critical-stop";
+      icon = "negative";
     } else {
       className += ` ${baseClass}--state-info`;
-      icon = "information";
+      icon = "info";
     }
 
     const TagName = component || "div";
 
     return (
       <TagName {...rest} ref={ref} className={className}>
-        <AIcon className={iconClass}>{icon}</AIcon>
+        <AIcon iconSet="magna" className={iconClass}>
+          {icon}
+        </AIcon>
         <div className={messageClass}>{children}</div>
       </TagName>
     );
