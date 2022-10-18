@@ -14,8 +14,8 @@ const AAccordionHeaderTitle = forwardRef(
       chevron = true,
       children,
       className: propsClassName,
-      collapseIcon = "chevron-up",
-      expandIcon = "chevron-down",
+      collapseIcon = "caretUp",
+      expandIcon = "caretDown",
       onBlur,
       onClick,
       onFocus,
@@ -105,7 +105,9 @@ const AAccordionHeaderTitle = forwardRef(
             onKeyDown={handleKeyDown}
             className={chevronClassName}
           >
-            <AIcon>{chevronIcon}</AIcon>
+            <AIcon iconSet="magna" size={12}>
+              {chevronIcon}
+            </AIcon>
           </div>
         )}
       </>
