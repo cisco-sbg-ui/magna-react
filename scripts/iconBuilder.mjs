@@ -14,7 +14,9 @@ const builder = new XMLBuilder(xmlOptions);
 const sprites = ({prependPrefix = "", svgDir, outputPath}) => {
   const processedSprites = process(prependPrefix, svgDir);
 
-  const outputContent = `const MagnaIcons = {
+  const outputContent = `import React from "react";
+
+  const MagnaIcons = {
     ${processedSprites}
   };
 
