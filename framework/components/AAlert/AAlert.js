@@ -30,7 +30,7 @@ const AAlert = forwardRef(
     switch (level) {
       case "success":
         className += "success";
-        icon = "good";
+        icon = "positive";
         break;
       case "warning":
         className += "warning";
@@ -38,11 +38,11 @@ const AAlert = forwardRef(
         break;
       case "danger":
         className += "danger";
-        icon = "critical-stop";
+        icon = "negative";
         break;
       default:
         className += "information";
-        icon = "information";
+        icon = "info";
     }
 
     if (propsClassName) {
@@ -51,18 +51,24 @@ const AAlert = forwardRef(
 
     return (
       <div {...rest} role="alert" ref={ref} className={className}>
-        <AIcon className="a-alert__icon a-alert__icon--level" size={16}>
+        <AIcon
+          iconSet="magna"
+          className="a-alert__icon a-alert__icon--level"
+          size={19.5}
+        >
           {icon}
         </AIcon>
         <div className="a-alert__message">{children}</div>
         {dismissable && (
           <AIcon
+            iconSet="magna"
             className="a-alert__icon focus-box-shadow a-alert__icon--close"
             onClick={(e) => onClose && onClose(e)}
             onKeyDown={dismissableKeyDownHandler}
-            size={16}
-            tabIndex={0}>
-            close
+            size={19.5}
+            tabIndex={0}
+          >
+            x
           </AIcon>
         )}
       </div>

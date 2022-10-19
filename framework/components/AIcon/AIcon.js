@@ -2,11 +2,26 @@ import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
 import Icons from "./icons.json";
+import MagnaIcons from "./magnaIcons.js";
 import "./AIcon.scss";
+
+export const ICON_SETS = {
+  ATOMIC: "atomic",
+  MAGNA: "magna"
+};
 
 const AIcon = forwardRef(
   (
-    {children, className: propsClassName, label, left, right, size, ...rest},
+    {
+      children,
+      className: propsClassName,
+      label,
+      left,
+      right,
+      size,
+      iconSet = ICON_SETS.ATOMIC,
+      ...rest
+    },
     ref
   ) => {
     let className = `a-icon`;
@@ -27,17 +42,36 @@ const AIcon = forwardRef(
       className += ` ${propsClassName}`;
     }
 
-    const ariaLabel = label || `${children} icon`;
+    const ariaLabel = label || `${children} icon`,
+      componentProps = {
+        ...rest,
+        ref,
+        className,
+        "aria-label": ariaLabel
+      };
+
+    if (size && !isNaN(size)) {
+      componentProps.style = {width: size, height: size};
+    }
+
+    if (iconSet === ICON_SETS.MAGNA) {
+      const iconDef = MagnaIcons[children];
+
+      if (!iconDef) {
+        return null;
+      }
+
+      const {props: iconProps, xml} = iconDef;
+
+      return (
+        <svg {...iconProps} {...componentProps}>
+          {xml}
+        </svg>
+      );
+    }
 
     return (
-      <svg
-        {...rest}
-        ref={ref}
-        {...(size && !isNaN(size) && {style: {width: size}})}
-        className={className}
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 16 16"
-        aria-label={ariaLabel}>
+      <svg {...componentProps} viewBox="0 0 16 16">
         <path d={Icons[children]} />
       </svg>
     );

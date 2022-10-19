@@ -43,7 +43,8 @@
     "test:setAll": "npm run test:setOne & npm run test:setTwo & npm run test:setThree & npm run test:setFour",
     "test:setAdhoc": "CYPRESS_baseUrl=http://localhost:3237 start-server-and-test start-ci :3237 cy:adhoc",
     "updateSnapshots": "start-server-and-test dev http://localhost:3000 cypress:runUpdateSnapshots",
-    "upload-coverage": "codecov"
+    "upload-coverage": "codecov",
+    "buildIcons": "node scripts/iconBuilder.mjs"
   },
   "peerDependencies": {
     "prop-types": "^15.0.0",
@@ -80,6 +81,7 @@
     "eslint-plugin-jsx-a11y": "6.6.1",
     "eslint-plugin-react": "7.31.8",
     "eslint-plugin-react-hooks": "4.6.0",
+    "fast-xml-parser": "^4.0.11",
     "glob": "8.0.3",
     "gray-matter": "4.0.3",
     "html-webpack-plugin": "^5.5.0",

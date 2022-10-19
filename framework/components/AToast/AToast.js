@@ -32,7 +32,7 @@ const AToast = forwardRef(
     switch (level) {
       case "success":
         className += " a-toast--success";
-        icon = "good";
+        icon = "positive";
         break;
       case "warning":
         className += " a-toast--warning";
@@ -40,11 +40,11 @@ const AToast = forwardRef(
         break;
       case "danger":
         className += " a-toast--danger";
-        icon = "critical-stop";
+        icon = "negative";
         break;
       default:
         className += " a-toast--information";
-        icon = "information";
+        icon = "info";
     }
 
     if (propsClassName) {
@@ -53,7 +53,7 @@ const AToast = forwardRef(
 
     return (
       <div {...rest} ref={ref} className={className}>
-        <AIcon className="a-toast__icon" size={16}>
+        <AIcon iconSet="magna" className="a-toast__icon" size={16}>
           {icon}
         </AIcon>
         <div className="a-toast__body">
@@ -62,12 +62,14 @@ const AToast = forwardRef(
         </div>
         {dismissable && (
           <AIcon
+            iconSet="magna"
             className="a-toast__close focus-box-shadow"
             onClick={(e) => onClose && onClose(e)}
             onKeyDown={dismissableKeyDownHandler}
-            size={10}
-            tabIndex={0}>
-            close
+            size={12}
+            tabIndex={0}
+          >
+            x
           </AIcon>
         )}
       </div>
