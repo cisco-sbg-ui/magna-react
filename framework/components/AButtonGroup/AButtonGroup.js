@@ -52,18 +52,6 @@ const AButtonGroup = forwardRef(
       }
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-    const normalizeButtons = (children) => {
-      return React.Children.map(children, (child) => {
-        return React.cloneElement(child, {
-          secondary: true,
-          primary: false,
-          tertiary: false,
-          tertiaryAlt: false
-        });
-      });
-    };
-    const normalizedChildren = normalizeButtons(children);
-
     const validate = (testValue = selectedValues) => {
       if (rules || required) {
         let workingRules = [];
@@ -133,7 +121,7 @@ const AButtonGroup = forwardRef(
       >
         <div className="a-button-group__wrapper">
           <AButtonGroupContext.Provider value={buttonGroupContext}>
-            {normalizedChildren}
+            {children}
           </AButtonGroupContext.Provider>
         </div>
       </AFieldBase>

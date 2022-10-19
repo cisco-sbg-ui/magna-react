@@ -8,7 +8,7 @@ $btn-group-icon-font-size: rem(1);
 @include theme(a-button-group) using($theme) {
   &[disabled],
   &:disabled {
-    .a-button-group__wrapper > .a-button--secondary.a-button {
+    .a-button-group__wrapper > .a-button {
       background-color: map-deep-get(
         $theme,
         "button-group",
@@ -26,7 +26,7 @@ $btn-group-icon-font-size: rem(1);
     }
   }
 
-  &__wrapper > .a-button--secondary.a-button {
+  &__wrapper > .a-button {
     color: map-deep-get($theme, "button-group", "color");
     background-color: map-deep-get($theme, "button-group", "background-color");
     border-color: map-deep-get($theme, "button-group", "border-color");
