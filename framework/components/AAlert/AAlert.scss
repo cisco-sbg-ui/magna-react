@@ -74,10 +74,9 @@ $alert-close-icon-size: 10.5px;
   &__icon {
     font-size: $alert-icon-font-size;
     margin: $alert-icon-margin;
-    align-self: center;
+    //align-self: center;
     color: map-get($mds-blue, "blue-6");
     &--close {
-      //height: $alert-close-icon-size;
       width: $alert-close-icon-size;
       cursor: pointer;
     }
