@@ -5,39 +5,77 @@ $btn-group-type-iconic-width: rem(1.75);
 $btn-group-type-iconic-padding: 0;
 $btn-group-icon-font-size: rem(1);
 
-@include theme(a-button-group) using ($theme) {
-  .a-button + .a-button--primary.a-button {
-    border-left: $border-width solid transparent;
+@include theme(a-button-group) using($theme) {
+  &[disabled],
+  &:disabled {
+    .a-button-group__wrapper > .a-button--secondary.a-button {
+      background-color: map-deep-get(
+        $theme,
+        "button-group",
+        "background-color"
+      );
+      color: map-deep-get($theme, "button-group", "color--disabled");
+      &--selected {
+        background-color: map-deep-get(
+          $theme,
+          "button-group",
+          "background-color--disabled"
+        );
+        border-color: transparent;
+      }
+    }
   }
 
-  &__wrapper > .a-button--primary.a-button {
-    background-color: transparent;
-    color: map-deep-get($theme, "button", "group", "color");
-    box-shadow: none;
-    border: $border-width solid map-deep-get($theme, "base", "stroke-color");
+  &__wrapper > .a-button--secondary.a-button {
+    color: map-deep-get($theme, "button-group", "color");
+    background-color: map-deep-get($theme, "button-group", "background-color");
+    border-color: map-deep-get($theme, "button-group", "border-color");
 
     &--selected {
-      border: $border-width solid
-        map-deep-get($theme, "base", "color--selected");
-      background-color: map-deep-get($theme, "base", "color--selected");
-      color: map-deep-get($theme, "base", "inverse-color");
+      color: map-deep-get($theme, "button-group", "color--selected");
+      background-color: map-deep-get(
+        $theme,
+        "button-group",
+        "background-color--selected"
+      );
+      border-color: map-deep-get(
+        $theme,
+        "button-group",
+        "border-color--selected"
+      );
     }
 
-    &:hover {
-      color: map-deep-get($theme, "base", "inverse-color");
-      background-color: map-deep-get($theme, "base", "color--hover");
-      border-color: map-deep-get($theme, "base", "color--hover");
-    }
-
-    &:focus {
-      border-color: map-deep-get($theme, "base", "brand-color");
-      box-shadow: map-deep-get($theme, "base", "box-shadow");
+    &:hover:not(&--selected) {
+      color: map-deep-get($theme, "button-group", "color--hover");
+      background-color: map-deep-get(
+        $theme,
+        "button-group",
+        "background-color--hover"
+      );
+      border-color: map-deep-get($theme, "button-group", "border-color--hover");
     }
 
     &:active {
-      color: map-deep-get($theme, "base", "inverse-color");
-      background-color: map-deep-get($theme, "base", "color--active");
-      border-color: map-deep-get($theme, "base", "color--active");
+      color: map-deep-get($theme, "button-group", "color--selected");
+      background-color: map-deep-get(
+        $theme,
+        "button-group",
+        "background-color--selected"
+      );
+      border-color: map-deep-get(
+        $theme,
+        "button-group",
+        "border-color--selected"
+      );
+    }
+
+    &.a-button--option + .a-button--selected {
+      margin-left: -2px;
+    }
+    &.a-button--selected + .a-button--option,
+    &.a-button--selected + .a-button--selected,
+    &.a-button--option + .a-button--option {
+      border-left-width: 0;
     }
   }
 }
@@ -73,6 +111,7 @@ $btn-group-icon-font-size: rem(1);
   .a-button + .a-button-group,
   .a-button-group + .a-button,
   .a-button-group + .a-button-group {
-    margin-left: -1px;
+    margin-left: 0px;
+    margin-right: 0px;
   }
 }

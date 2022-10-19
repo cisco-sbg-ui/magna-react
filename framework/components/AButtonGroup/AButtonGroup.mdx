@@ -1,5 +1,5 @@
 ---
-name: Button Groups
+name: Button Groups*
 route: /components/button-group
 components: AButtonGroup
 ---
@@ -41,6 +41,21 @@ import {AButtonGroup} from "@cisco-sbg-ui/magna-react";
       <div>
         <h3>Button Group - Single</h3>
         <AButtonGroup
+          selectedValues={selectedValues2}
+          onChange={(_, selectedValues) =>
+            setSelectedValues2(selectedValues)
+          }>
+          <AButton value="One">One</AButton>
+          <AButton value="Two">Two</AButton>
+          <AButton value="Three">Three</AButton>
+        </AButtonGroup>
+        <p>Selected Values: {JSON.stringify(selectedValues2)}</p>
+      </div>
+      <ADivider />
+      <div>
+        <h3>Button Group - Disabled</h3>
+        <AButtonGroup
+          disabled
           selectedValues={selectedValues2}
           onChange={(_, selectedValues) =>
             setSelectedValues2(selectedValues)

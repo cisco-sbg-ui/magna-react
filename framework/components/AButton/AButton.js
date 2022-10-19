@@ -55,6 +55,10 @@ const AButton = forwardRef(
       className += " a-button--selected";
     }
 
+    if (selectedValues && !selectedValues.includes(value)) {
+      className += " a-button--option";
+    }
+
     if (icon) {
       className += " a-button--icon";
     }

@@ -138,6 +138,19 @@ $atomic-default: (
       "color": map-get($grey, "darken-7")
     )
   ),
+  "button-group": (
+    "color": map-get($mds-light-theme, "secondary-gray"),
+    "color--disabled": map-get($mds-light-theme, "icon-text-gray"),
+    "color--hover": map-get($mds-light-theme, "default-text"),
+    "color--selected": map-get($mds-blue, "blue-8"),
+    "background-color": map-get($mds-light-theme, "background-section"),
+    "background-color--disabled": map-get($mds-light-theme, "disabled-state"),
+    "background-color--hover": map-get($mds-light-theme, "background"),
+    "background-color--selected": map-get($mds-blue, "blue-1"),
+    "border-color": map-get($mds-light-theme, "disabled-state"),
+    "border-color--hover": map-get($mds-light-theme, "disabled-state"),
+    "border-color--selected": map-get($mds-blue, "blue-7")
+  ),
   "checkbox": (
     "border--disabled": map-get($mds-light-theme, "disabled-state"),
     "label-color--disabled": map-get($mds-light-theme, "icon-text-gray"),

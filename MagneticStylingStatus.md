@@ -26,7 +26,7 @@ Status options:
 | :construction: | ABreadcrumb                   |    AJL    |      |
 |  :wavy_dash:   | ABreakpoint                   |     -     |  -   |
 | :construction: | AButton                       |    AJL    |      |
-|      :x:       | AButtonGroup                  |           |      |
+| :construction: | AButtonGroup                  |    AJL    |      |
 | :construction: | ACheckbox                     |    AJL    |      |
 | :construction: | ACombobox                     |    RWH    |      |
 | :construction: | AContextualNotification       |    AJL    |      |
