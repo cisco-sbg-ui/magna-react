@@ -25,7 +25,7 @@ $accordion--state-collapsed-transition: visibility $transition-duration ease,
     border-color: map-deep-get($theme, "control", "stroke-color");
 
     &--is-focused .a-accordion__header {
-      border-color: map-deep-get($theme, "base", "brand-color");
+      border-color: map-deep-get($theme, "accordion", "header-focus");
     }
   }
 
@@ -38,13 +38,6 @@ $accordion--state-collapsed-transition: visibility $transition-duration ease,
     &:active {
       color: map-deep-get($theme, "accordion", "color");
     }
-  }
-
-  &__chevron {
-    display: flex;
-    flex: 1 0 auto;
-    align-self: center;
-    justify-content: flex-end;
   }
 
   &__body {
@@ -75,9 +68,7 @@ $accordion--state-collapsed-transition: visibility $transition-duration ease,
     }
 
     &--is-focused .a-accordion__header {
-      border-width: $border-width;
-      border-style: solid;
-      padding: 0px;
+      border: $border-width solid;
     }
 
     &--has-body .a-accordion__link {
@@ -94,7 +85,7 @@ $accordion--state-collapsed-transition: visibility $transition-duration ease,
     font-size: $accordion-header-font-size;
     font-weight: $accordion-header-font-weight;
     vertical-align: middle;
-    padding: $border-width;
+    border: $border-width solid transparent;
 
     .a-button--icon {
       padding: 6px;
@@ -121,6 +112,7 @@ $accordion--state-collapsed-transition: visibility $transition-duration ease,
     display: flex;
     flex: 0 1 auto;
     justify-content: flex-end;
+    align-self: center;
     cursor: pointer;
     padding: 13px 0;
 
