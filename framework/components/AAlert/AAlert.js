@@ -65,7 +65,7 @@ const AAlert = forwardRef(
             className="a-alert__icon focus-box-shadow a-alert__icon--close"
             onClick={(e) => onClose && onClose(e)}
             onKeyDown={dismissableKeyDownHandler}
-            size={19.5}
+            size={16}
             tabIndex={0}
           >
             x

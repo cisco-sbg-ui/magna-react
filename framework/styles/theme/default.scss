@@ -2,7 +2,8 @@ $atomic-default: (
   "accordion": (
     "body-bg": map-get($mds-light-theme, "background-section"),
     "body-color": map-get($mds-light-theme, "secondary-gray"),
-    "color": map-get($mds-light-theme, "default-text")
+    "color": map-get($mds-light-theme, "default-text"),
+    "header-focus": map-get($mds-blue, "blue-8")
   ),
   "alert": (
     "bg": map-get($mds-blue, "blue-2"),

@@ -51,7 +51,7 @@ const AIcon = forwardRef(
       };
 
     if (size && !isNaN(size)) {
-      componentProps.style = {width: size, height: size};
+      componentProps.style = {width: size};
     }
 
     if (iconSet === ICON_SETS.MAGNA) {

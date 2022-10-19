@@ -2,7 +2,8 @@ $atomic-dusk: (
   "accordion": (
     "body-bg": map-get($mds-dark-theme, "background-section"),
     "body-color": map-get($mds-dark-theme, "secondary-gray"),
-    "color": map-get($mds-dark-theme, "default-text")
+    "color": map-get($mds-dark-theme, "default-text"),
+    "header-focus": map-get($mds-blue, "blue-1")
   ),
   "alert": (
     "bg": map-get($mds-blue, "blue-9"),
