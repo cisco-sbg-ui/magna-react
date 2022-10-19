@@ -55,7 +55,10 @@ const AButtonGroup = forwardRef(
     const normalizeButtons = (children) => {
       return React.Children.map(children, (child) => {
         return React.cloneElement(child, {
-          secondary: true
+          secondary: true,
+          primary: false,
+          tertiary: false,
+          tertiaryAlt: false
         });
       });
     };
