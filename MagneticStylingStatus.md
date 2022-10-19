@@ -41,7 +41,7 @@ Status options:
 | :construction: | AFooter                       |    RWH    |      |
 |      :x:       | AHeader                       |           |      |
 | :construction: | AHint                         |    AJL    |      |
-|      :x:       | AIcon                         |           |      |
+| :construction: | AIcon                         |    RWH    |      |
 | :construction: | AInputBase                    |    AJL    |      |
 |  :wavy_dash:   | AInView                       |     -     |  -   |
 |  :wavy_dash:   | ALayout                       |     -     |  -   |
