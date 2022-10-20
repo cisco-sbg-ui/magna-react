@@ -71,27 +71,18 @@ Status options:
 | :construction: | ATooltip                      |    AJL    |      |
 | :construction: | ATree                         |    AJL    |      |
 
-### Internal Facing Components:
-
-|     Status     | Name               | Developer | UXer |
-|:--------------:|:-------------------|:---------:|:----:|
-|      :x:       | AButtonCard        |           |      |
-|      :x:       | ACarousel          |           |      |
-|      :x:       | ALoadNotification  |           |      |
-|      :x:       | ASidebar           |           |      |
-|      :x:       | AThemeSwitcher     |           |      |
 
 ## Phase completion updates -
 **NOTE: a new library won't be published until phase 1 and phase 2 are complete**
 
 #### Phase 1 - reskin light theme
  * Current projected dev phase completion - ~~November 8th~~ October 25th
- - As of Oct 17th  - 47/56 = 83%
- - As of Oct 11th  - 24/56 = 42%
- - As of Oct 4th   - 13/56 = 23%
- - As of Sept 27th - 9/56  = 16%
+ - As of Oct 17th  - 47/51 = 92%
+ - As of Oct 11th  - 24/51 = 47%
+ - As of Oct 4th   - 13/51 = 25%
+ - As of Sept 27th - 9/51  = 17%
 
-#### Phase 2 - reskin dark theme (dark theme has not been defined for components)
+#### Phase 2 - reskin dark theme (dark theme has not been completed for components, [UX has a WIP version here](https://www.figma.com/file/oVZWatImEIbl1c8sjdGxi0/branch/yU3qYkj6T2kfN4XYtUkEeD/%F0%9F%A7%B2--Magnetic-Design-Library))
  - Not started
 
 #### Phase 3 - Add new components
