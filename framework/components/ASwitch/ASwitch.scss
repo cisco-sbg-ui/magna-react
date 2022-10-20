@@ -117,6 +117,7 @@ $switch-after-transition: transform $transition-duration--fast
 
     &:after {
       display: block;
+      box-sizing: border-box;
       position: absolute;
       width: $switch__circle-width;
       height: $switch__circle-height;
