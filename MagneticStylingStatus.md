@@ -39,7 +39,7 @@ Status options:
 | :construction: | AFooter                       |    RWH    |      |
 |  :wavy_dash:   | AForm                         |     -     |  -   |
 | :construction: | AFooter                       |    RWH    |      |
-|      :x:       | AHeader                       |           |      |
+|  :wavy_dash:   | AHeader                       |     -     |  -   |
 | :construction: | AHint                         |    AJL    |      |
 | :construction: | AIcon                         |    RWH    |      |
 | :construction: | AInputBase                    |    AJL    |      |
@@ -77,13 +77,14 @@ Status options:
 
 #### Phase 1 - reskin light theme
  * Current projected dev phase completion - ~~November 8th~~ October 25th
+ - As of Oct 24th  - 51/51 = 100%  (Ready for UX Review of light theme)
  - As of Oct 17th  - 47/51 = 92%
  - As of Oct 11th  - 24/51 = 47%
  - As of Oct 4th   - 13/51 = 25%
  - As of Sept 27th - 9/51  = 17%
 
 #### Phase 2 - reskin dark theme (dark theme has not been completed for components, [UX has a WIP version here](https://www.figma.com/file/oVZWatImEIbl1c8sjdGxi0/branch/yU3qYkj6T2kfN4XYtUkEeD/%F0%9F%A7%B2--Magnetic-Design-Library))
- - Not started
+ - Not started - waiting on CDS to complete theming - their current projected completion is FY23-Q2
 
 #### Phase 3 - Add new components
  - Not started
