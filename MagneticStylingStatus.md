@@ -46,7 +46,7 @@ Status options:
 |  :wavy_dash:   | AInView                       |     -     |  -   |
 |  :wavy_dash:   | ALayout                       |     -     |  -   |
 | :construction: | AList                         |    AJL    |      |
-|      :x:       | ALoader                       |           |      |
+| :construction: | ALoader                       |    RWH    |      |
 | :construction: | AMenu                         |    AJL    |      |
 | :construction: | AMenuBase                     |    AJL    |      |
 |  :wavy_dash:   | AMount                        |     -     |  -   |
