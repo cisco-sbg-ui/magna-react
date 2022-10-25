@@ -29,16 +29,16 @@ $tab-oversized-margin: 0;
       color: map-deep-get($theme, "tabs", "text-color--selected");
       //font-weight: 600; this causes a shift, using color change only so don't need to re-write this
       @include tab-bar(
-          $tab-bottom-bar-height,
-          map-deep-get($theme, "tabs", "bar-color--hover")
+        $tab-bottom-bar-height,
+        map-deep-get($theme, "tabs", "bar-color--hover")
       );
     }
     &--selected {
       color: map-deep-get($theme, "tabs", "text-color--selected");
       font-weight: 700;
       @include tab-bar(
-          $tab-bottom-bar-height,
-          map-deep-get($theme, "base", "brand-color")
+        $tab-bottom-bar-height,
+        map-deep-get($theme, "base", "brand-color")
       );
 
       &:active,
@@ -47,17 +47,14 @@ $tab-oversized-margin: 0;
         color: map-deep-get($theme, "tabs", "text-color--selected");
         font-weight: 700;
         @include tab-bar(
-            $tab-bottom-bar-height,
-            map-deep-get($theme, "base", "brand-color")
+          $tab-bottom-bar-height,
+          map-deep-get($theme, "base", "brand-color")
         );
       }
     }
 
     &:focus {
-      @include tab-bar(
-        $tab-bottom-bar-height,
-        map-deep-get($theme, "base", "color--hover")
-      );
+      @include tab-bar($tab-bottom-bar-height, inherit);
     }
   }
 
