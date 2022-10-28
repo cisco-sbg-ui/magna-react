@@ -1,4 +1,3 @@
-import algoliasearch from "algoliasearch";
 import debounce from "lodash.debounce";
 import React, {useCallback, useEffect, useMemo, useRef, useState} from "react";
 import {LiveProvider, LiveEditor, LiveError, LivePreview} from "react-live";
@@ -16,7 +15,6 @@ const scope = {
   useMemo,
   useRef,
   useState,
-  algoliasearch,
   debounce,
   mockImport
 };
@@ -31,17 +29,20 @@ const Playground = ({code, fullWidthPreview, noInline}) => {
         style={{
           minHeight: 300,
           position: "relative"
-        }}>
+        }}
+      >
         {!fullWidthPreview && (
           <>
             <div
               className="overflow-y-scroll black"
-              style={{position: "absolute", width: "50%", top: 0, bottom: 0}}>
+              style={{position: "absolute", width: "50%", top: 0, bottom: 0}}
+            >
               <LiveEditor />
             </div>
             <div
               className="pa-4 playground__preview"
-              style={{flexBasis: "50%", marginLeft: "50%", maxWidth: "50%"}}>
+              style={{flexBasis: "50%", marginLeft: "50%", maxWidth: "50%"}}
+            >
               <LiveError />
               <LivePreview />
             </div>

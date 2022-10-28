@@ -63,7 +63,6 @@
     "@cypress/code-coverage": "3.9.12",
     "@cypress/react": "^5.12.5",
     "@cypress/webpack-dev-server": "^1.8.4",
-    "algoliasearch": "4.14.2",
     "babel-plugin-istanbul": "6.1.1",
     "codecov": "3.8.3",
     "cross-env": "7.0.3",

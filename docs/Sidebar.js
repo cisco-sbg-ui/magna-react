@@ -1,9 +1,8 @@
 import React, {useEffect, useRef, useState} from "react";
 import Link from "next/link";
 
-import {AButton, AIcon, ATree, useATheme} from "../framework";
+import {AButton, ADivider, AIcon, ATree, useATheme} from "../framework";
 
-import Search from "./Search";
 import ThemeSwitcher from "./ThemeSwitcher";
 
 const CustomLink = ({children, href, ...rest}) => {
@@ -136,9 +135,7 @@ const Sidebar = ({menus, currentDoc}) => {
       <div className={`${styleColor} d-flex align-center px-3 py-2}`}>
         <ThemeSwitcher />
       </div>
-      <div className="px-3 pb-3">
-        <Search />
-      </div>
+      <ADivider />
       <ATree
         className={`${styleColor}`}
         hoverable

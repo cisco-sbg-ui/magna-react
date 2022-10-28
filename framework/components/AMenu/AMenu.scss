@@ -96,6 +96,16 @@
 
 .a-menu {
   overflow: visible;
+  > .a-list-item {
+    > label {
+      padding-left: 0px;
+    }
+  }
+  &.compact {
+    > .a-list-item {
+      padding: 1.5px 15px;
+    }
+  }
 
   &--pointer.a-menu-base--top,
   &--pointer.a-menu-base--top-left,
