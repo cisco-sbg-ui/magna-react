@@ -14,6 +14,7 @@ const AMenu = forwardRef(
       children,
       className: propsClassName,
       closeOnClick = true,
+      compact = false,
       focusOnOpen = true,
       hoverable,
       onClick,
@@ -88,6 +89,9 @@ const AMenu = forwardRef(
     if (pointer) {
       className += " a-menu--pointer";
     }
+    if (compact) {
+      className += ` compact`;
+    }
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
@@ -114,7 +118,8 @@ const AMenu = forwardRef(
         placement={placement}
         anchorRef={anchorRef}
         pointer={pointer}
-        tabIndex={-1}>
+        tabIndex={-1}
+      >
         {children}
       </AList>
     );
@@ -166,6 +171,10 @@ AMenu.propTypes = {
     "left-top",
     "top-left"
   ]),
+  /**
+   * Reduces line-height for menu items
+   */
+  compact: PropTypes.bool,
   /**
    * Toggles the menu pointer.
    */

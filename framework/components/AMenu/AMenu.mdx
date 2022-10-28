@@ -25,10 +25,12 @@ It is necessary for `AMenu` to be a descendant of `AApp` for mounting.
   const button2Ref = useRef(null);
   const button3Ref = useRef(null);
   const button4Ref = useRef(null);
+  const button5Ref = useRef(null);
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [open3, setOpen3] = useState(false);
   const [open4, setOpen4] = useState(false);
+  const [open5, setOpen5] = useState(false);
   const [menu4Selected, setMenu4Selected] = useState(2);
   return (
     <div className="d-flex">
@@ -57,13 +59,21 @@ It is necessary for `AMenu` to be a descendant of `AApp` for mounting.
         </AButton>
       </div>
       <div style={{flexBasis: "20%", marginRight: "20px"}}>
-              <AButton
-                ref={button4Ref}
-                onClick={() => setOpen4(!open4)}
-                aria-haspopup="true">
-                More Menu
-              </AButton>
-            </div>
+        <AButton
+          ref={button4Ref}
+          onClick={() => setOpen4(!open4)}
+          aria-haspopup="true">
+          More Menu
+        </AButton>
+      </div>
+      <div style={{flexBasis: "20%", marginRight: "20px"}}>
+        <AButton
+          ref={button5Ref}
+          onClick={() => setOpen5(!open5)}
+          aria-haspopup="true">
+          Compact Menu
+        </AButton>
+      </div>
       <AMenu
         anchorRef={button1Ref}
         open={open1}
@@ -155,6 +165,19 @@ It is necessary for `AMenu` to be a descendant of `AApp` for mounting.
         <AListItem onClick={() => {setMenu4Selected(2)}} selected={2 === menu4Selected}>Selection Tres</AListItem>
         <ADivider style={{margin: 0}}/>
         <AListItem onClick={() => {setMenu4Selected(3)}} selected={3 === menu4Selected}>Status</AListItem>
+      </AMenu>
+      <AMenu
+        anchorRef={button5Ref}
+        open={open5}
+        compact
+        placement="bottom-left"
+        onClose={() => setOpen5(false)}
+        style={{borderRadius: 0}}>
+        <AListItem onClick={() => {}}><ARadio checked={true}>Selected</ARadio></AListItem>
+        <AListItem onClick={() => {}}><ARadio checked={false}>UnSelected</ARadio></AListItem>
+         <ADivider style={{margin: 0}}/>
+        <AListItem onClick={() => {}}><ACheckbox checked={true}>Checked</ACheckbox></AListItem>
+        <AListItem onClick={() => {}}><ACheckbox checked={false}>UnChecked</ACheckbox></AListItem>
       </AMenu>
     </div>
   );

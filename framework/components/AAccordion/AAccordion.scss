@@ -83,12 +83,15 @@ $accordion--state-collapsed-transition: visibility $transition-duration ease,
   &__header {
     display: inline-flex;
     font-size: $accordion-header-font-size;
-    font-weight: $accordion-header-font-weight;
+    //font-weight: $accordion-header-font-weight;
     vertical-align: middle;
     border: $border-width solid transparent;
 
     .a-button--icon {
       padding: 6px;
+    }
+    .a-button--icon:last-child {
+      padding-right: 12px;
     }
   }
 
@@ -140,7 +143,7 @@ $accordion--state-collapsed-transition: visibility $transition-duration ease,
   .a-accordion__card {
     .a-accordion__body {
       display: block;
-      padding: 0 10px;
+      padding: 0 13px;
       visibility: visible;
       overflow: hidden;
       opacity: 1;

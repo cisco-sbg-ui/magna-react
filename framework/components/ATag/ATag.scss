@@ -42,4 +42,9 @@ $tag-icon-font-size: $font-size--xxs;
   .a-icon {
     width: $tag-icon-font-size;
   }
+
+  &.count {
+    border-radius: 10px;
+    padding: 1px 8px;
+  }
 }

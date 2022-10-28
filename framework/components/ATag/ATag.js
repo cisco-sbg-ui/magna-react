@@ -10,6 +10,7 @@ const ATag = forwardRef(
       children,
       className: propsClassName,
       component,
+      count = false,
       href,
       onClick,
       onKeyDown,
@@ -26,6 +27,10 @@ const ATag = forwardRef(
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
+    }
+
+    if (count) {
+      className += ` count`;
     }
 
     let TagName = "div";
@@ -71,6 +76,10 @@ ATag.propTypes = {
    * Sets the base component. Useful for integrating with routers.
    */
   component: PropTypes.elementType,
+  /**
+   * Indicates if the data should represent a count - more rounded
+   */
+  count: PropTypes.bool,
   /**
    * If specified, the component will render as an HTML link.
    */
