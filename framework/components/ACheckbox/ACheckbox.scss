@@ -14,11 +14,9 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
     &__box {
       background-color: map-deep-get($theme, "radio", "bg");
     }
-
   }
 
   &__box {
-
     &:hover:after {
       box-shadow: none;
       opacity: 0.6;
@@ -27,6 +25,7 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
     &:hover {
       svg {
         fill: currentColor !important;
+        fill-opacity: 0.7;
       }
     }
   }
