@@ -1,6 +1,6 @@
 @import "../../styles";
 
-$btn-font-weight: 700;
+$btn-font-weight: $font-weight-bold;
 $btn-line-height: $line-height;
 $btn-padding: 0 $base-padding;
 $btn-margin: 0;
@@ -394,9 +394,15 @@ $btn-transition: color $transition-duration--extra-fast
 
     &.disabled,
     &:disabled {
-      opacity: map-deep-get($theme, "button", "tertiary", "opacity--disabled");
+      opacity: map-deep-get(
+        $theme,
+        "button",
+        "tertiary",
+        "alt",
+        "opacity--disabled"
+      );
       background-color: transparent;
-      color: map-deep-get($theme, "base", "color");
+      color: map-get($theme, "button", "tertiary", "alt", "color--disabled");
     }
   }
 }

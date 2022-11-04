@@ -5,7 +5,17 @@ import "./ASimpleTable.scss";
 
 const ASimpleTable = forwardRef(
   (
-    {altLinks, children, className: propsClassName, striped, tight, ...rest},
+    {
+      altLinks,
+      children,
+      className: propsClassName,
+      striped,
+      tight,
+      spacious,
+      comfy,
+      compact,
+      ...rest
+    },
     ref
   ) => {
     let className = "a-simple-table";
@@ -20,6 +30,18 @@ const ASimpleTable = forwardRef(
 
     if (tight) {
       className += ` a-simple-table--tight`;
+    }
+
+    if (compact) {
+      className += ` a-simple-table--compact`;
+    }
+
+    if (comfy) {
+      className += ` a-simple-table--comfy`;
+    }
+
+    if (spacious) {
+      className += ` a-simple-table--spacious`;
     }
 
     if (propsClassName) {
@@ -46,7 +68,19 @@ ASimpleTable.propTypes = {
   /**
    * Toggles the `tight` display variant. Smaller row heights.
    */
-  tight: PropTypes.bool
+  tight: PropTypes.bool,
+  /**
+   * Toggles the `compact` display variant. Medium row heights.
+   */
+  compact: PropTypes.bool,
+  /**
+   * Toggles the `comfy` display variant. Large row heights.
+   */
+  comfy: PropTypes.bool,
+  /**
+   * Toggles the `spacious` display variant. Largest row heights.
+   */
+  spacious: PropTypes.bool
 };
 
 ASimpleTable.displayName = "ASimpleTable";

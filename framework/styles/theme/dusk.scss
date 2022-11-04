@@ -283,7 +283,8 @@ $atomic-dusk: (
     "oversized--hover-background-color": transparent,
     "text-color": map-get($mds-dark-theme, "secondary-gray"),
     "text-color--selected": map-get($mds-dark-theme, "heading-gray"),
-    "bar-color--hover": map-get($mds-dark-theme, "disabled-state")
+    "bar-color--hover": map-get($mds-dark-theme, "icon-text-gray"),
+    "bar-color--selected": map-get($mds-dark-theme, "heading-gray")
   ),
   "tag": (
     "bg-color": map-get($mds-dark-theme, "disabled-state"),

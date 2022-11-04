@@ -280,7 +280,8 @@ $atomic-default: (
     "oversized--hover-background-color": $white,
     "text-color": map-get($mds-light-theme, "secondary-gray"),
     "text-color--selected": map-get($mds-light-theme, "heading-gray"),
-    "bar-color--hover": map-get($mds-light-theme, "disabled-state")
+    "bar-color--hover": map-get($mds-light-theme, "icon-text-gray"),
+    "bar-color--selected": map-get($mds-light-theme, "heading-gray")
   ),
   "tag": (
     "bg-color": map-get($mds-light-theme, "disabled-state"),

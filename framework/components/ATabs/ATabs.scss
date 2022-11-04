@@ -38,7 +38,7 @@ $tab-oversized-margin: 0;
       font-weight: 700;
       @include tab-bar(
         $tab-bottom-bar-height,
-        map-deep-get($theme, "base", "brand-color")
+        map-deep-get($theme, "tabs", "bar-color--selected")
       );
 
       &:active,
@@ -48,7 +48,7 @@ $tab-oversized-margin: 0;
         font-weight: 700;
         @include tab-bar(
           $tab-bottom-bar-height,
-          map-deep-get($theme, "base", "brand-color")
+          map-deep-get($theme, "tabs", "bar-color--selected")
         );
       }
     }
