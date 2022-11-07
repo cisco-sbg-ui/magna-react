@@ -37,8 +37,9 @@ const ColorSwatch = ({title, colors}) => {
             className={
               colorIsLight(rgb.r, rgb.g, rgb.b) ? "black--text" : "white--text"
             }
-            style={{backgroundColor: colors[x]}}>
-            {x}
+            style={{backgroundColor: colors[x]}}
+          >
+            {`${x} - ${colors[x]}`}
           </AListItem>
         );
       })}
