@@ -133,30 +133,33 @@ $atomic-dusk: (
     "color--hover": map-get($mds-dark-theme, "default-text"),
     "color--selected": map-get($mds-blue, "blue-8"),
     "background-color": map-get($mds-dark-theme, "background-section"),
-    "background-color--disabled": map-get($mds-dark-theme, "disabled-state"),
+    "background-color--disabled":
+      map-get($mds-dark-theme, "non-essential-lines"),
     "background-color--hover": map-get($mds-dark-theme, "background"),
     "background-color--selected": map-get($mds-blue, "blue-1"),
-    "border-color": map-get($mds-dark-theme, "disabled-state"),
-    "border-color--hover": map-get($mds-dark-theme, "disabled-state"),
+    "border-color": map-get($mds-dark-theme, "non-essential-lines"),
+    "border-color--hover": map-get($mds-dark-theme, "non-essential-lines"),
     "border-color--selected": map-get($mds-blue, "blue-7")
   ),
   "checkbox": (
-    "border--disabled": map-get($mds-dark-theme, "disabled-state"),
+    "border--disabled": map-get($mds-dark-theme, "non-essential-lines"),
     "label-color--disabled": map-get($mds-dark-theme, "icon-text-gray"),
     "fill--disabled": map-get($mds-dark-theme, "background"),
     "border--checked": map-get($mds-blue, "blue-7"),
     "border--enabled": map-get($mds-dark-theme, "multipurpose-gray")
   ),
   "color": (
-    "warning--state-hover": map-get($mds-status, "warning"),
-    "error--state-hover": map-get($mds-status, "negative")
+    "warning--state-hover": map-get($mds-dark-theme, "status-warning"),
+    "error--state-hover": map-get($mds-dark-theme, "status-negative")
   ),
   "control": (
     "fill-color": map-get($dusk, "6"),
     "fill-color--disabled": map-get($mds-dark-theme, "multipurpose-gray"),
     "stroke-color": map-get($mds-neutral, "neutral-15"),
-    "warning-color": map-get($mds-status, "warning"),
-    "error-color": map-get($mds-status, "negative")
+    "warning-color": map-get($mds-dark-theme, "status-warning"),
+    "error-color": map-get($mds-dark-theme, "status-negative"),
+    "info-color": map-get($mds-light-theme, "status-info"),
+    "success-color": map-get($mds-light-theme, "status-positive")
   ),
   "date-picker": (
     "header-border-color": rgba(map-get($grey, "base"), $alpha-3),
@@ -260,22 +263,23 @@ $atomic-dusk: (
     "bg--hover": map-get($mds-dark-theme, "default-text"),
     "bg--checked": map-get($mds-blue, "blue-7"),
     "bg--checked--hover": map-get($mds-blue, "blue-9"),
-    "bg--disabled": map-get($mds-dark-theme, "disabled-state"),
+    "bg--disabled": map-get($mds-dark-theme, "non-essential-lines"),
     "bg--disabled--checked": map-get($mds-blue, "blue-3"),
     "circle-color": map-get($mds-dark-theme, "background-section"),
-    "label-color--disabled": map-get($mds-dark-theme, "disabled-state"),
+    "label-color--disabled": map-get($mds-dark-theme, "non-essential-lines"),
     "opacity-disabled": 1
   ),
   "table": (
-    "bg":
-      linear-gradient(
-        125.59deg,
-        rgba(map-get($dusk, "2"), $alpha-6) 0%,
-        rgba(map-get($dusk, "5"), $alpha-6) 100%
-      ),
+    "bg": map-get($mds-dark-theme, "secondary-background"),
     "header-color": map-get($mds-dark-theme, "default-text"),
     "header-border": map-get($mds-dark-theme, "secondary-gray"),
-    "row-hover-color": map-get($dusk, "6"),
+    "row-hover-color": map-get($mds-neutral, "neutral-17"),
+    "row-hover-image":
+      linear-gradient(
+        0deg,
+        rgba(108, 158, 245, 0.25),
+        rgba(108, 158, 245, 0.25)
+      ),
     "row-stripe-color": transparent
   ),
   "tabs": (
@@ -287,16 +291,16 @@ $atomic-dusk: (
     "bar-color--selected": map-get($mds-dark-theme, "heading-gray")
   ),
   "tag": (
-    "bg-color": map-get($mds-dark-theme, "disabled-state"),
+    "bg-color": map-get($mds-dark-theme, "non-essential-lines"),
     "color": map-get($mds-dark-theme, "default-text")
   ),
   "text-input": (
     "bg": transparent,
     "color--disabled": map-get($mds-dark-theme, "icon-text-gray"),
-    "bg--disabled": map-get($mds-dark-theme, "disabled-state"),
-    "border-color--disabled": map-get($mds-dark-theme, "disabled-state"),
-    "border-color--readonly": map-get($mds-dark-theme, "disabled-state"),
-    "border-color": map-get($mds-dark-theme, "disabled-state"),
+    "bg--disabled": map-get($mds-dark-theme, "non-essential-lines"),
+    "border-color--disabled": map-get($mds-dark-theme, "non-essential-lines"),
+    "border-color--readonly": map-get($mds-dark-theme, "non-essential-lines"),
+    "border-color": map-get($mds-dark-theme, "non-essential-lines"),
     "border-color--hover": map-get($mds-blue, "blue-5"),
     "border-color--focus": map-get($mds-blue, "blue-7"),
     "border-color--active": map-get($mds-blue, "blue-7"),
@@ -304,8 +308,8 @@ $atomic-dusk: (
     "icon-fill": map-get($mds-neutral, "neutral-4")
   ),
   "timeline": (
-    "item-bg-hover-color": map-get($mds-dark-theme, "disabled-state"),
-    "icon-border-color": map-get($mds-dark-theme, "disabled-state"),
+    "item-bg-hover-color": map-get($mds-dark-theme, "non-essential-lines"),
+    "icon-border-color": map-get($mds-dark-theme, "non-essential-lines"),
     "icon-bg-color": map-get($mds-neutral, "neutral-13")
   ),
   "tree": (
