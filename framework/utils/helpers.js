@@ -35,6 +35,21 @@ export const handleMultipleRefs = (...refs) => {
   return callbackRef;
 };
 
+export const preventBodyScroll = () => {
+  // Atomic React adds an overflow-x hidden to the HTML root
+  // so we have to also add a property for the overflow-y
+  // @see https://stackoverflow.com/questions/29786345/overflow-x-hidden-causes-vertical-scrollbar
+  document.documentElement.style.overflowY = "hidden";
+  document.body.style.overflow = "hidden";
+  document.body.style.height = "100%";
+};
+
+export const allowBodyScroll = () => {
+  document.documentElement.style.removeProperty("overflow-y");
+  document.body.style.overflow = "auto";
+  document.body.style.height = "auto";
+};
+
 // KeyboardEvent.keyCode aliases
 export const keyCodes = Object.freeze({
   enter: 13,

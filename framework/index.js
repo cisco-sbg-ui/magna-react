@@ -47,6 +47,7 @@ import {
 import {ACiscoLoader, ADotLoader, APageLoader} from "./components/ALoader";
 import AMenuBase from "./components/AMenuBase";
 import AMenu from "./components/AMenu";
+import AModal from "./components/AModal";
 import AMount from "./components/AMount";
 import APageOverlay from "./components/APageOverlay";
 import APagination from "./components/APagination";
@@ -136,6 +137,7 @@ export {
   AListItemTitle,
   AMenuBase,
   AMenu,
+  AModal,
   AMount,
   APageLoader,
   APageOverlay,

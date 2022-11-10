@@ -1,0 +1,272 @@
+---
+name: Modals
+route: /components/modal
+components: AModal
+---
+
+# Menus
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {AModal} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  fullWidthPreview
+  code={`() => {
+    const [open, setOpen] = useState(false);
+    return (
+      <div>
+        <AButton onClick={() => setOpen(true)}>Open Dialog 1</AButton>
+        <AModal isOpen={open}>
+          <APanel type="dialog">
+            <APanelHeader>
+              <APanelTitle>Feature: Panels</APanelTitle>
+              <AButton onClick={() => setOpen(false)} tertiaryAlt icon>
+                <AIcon>close</AIcon>
+              </AButton>
+            </APanelHeader>
+            <APanelBody>
+              Panels create a sense of discreteness in the content.
+            </APanelBody>
+            <APanelFooter>Use panels today!</APanelFooter>
+          </APanel>
+        </AModal>
+      </div>
+    )
+  }
+`}
+/>
+
+### Without Overlay
+
+<Playground
+  fullWidthPreview
+  code={`() => {
+    const [open, setOpen] = useState(false);
+    return (
+      <div>
+        <AButton onClick={() => setOpen(true)}>Open Dialog 1</AButton>
+        <AModal isOpen={open} withOverlay={false}>
+          <APanel type="dialog">
+            <APanelHeader>
+              <APanelTitle>Feature: Panels</APanelTitle>
+              <AButton onClick={() => setOpen(false)} tertiaryAlt icon>
+                <AIcon>close</AIcon>
+              </AButton>
+            </APanelHeader>
+            <APanelBody>
+              Panels create a sense of discreteness in the content.
+            </APanelBody>
+            <APanelFooter>Use panels today!</APanelFooter>
+          </APanel>
+        </AModal>
+      </div>
+    )
+  }
+`}
+/>
+
+### Without Scroll Locking
+
+<Playground
+  fullWidthPreview
+  code={`() => {
+    const [open, setOpen] = useState(false);
+    return (
+      <div>
+        <AButton onClick={() => setOpen(true)}>Open Dialog 1</AButton>
+        <AModal lockScroll={false} isOpen={open} withOverlay={false}>
+          <APanel type="dialog">
+            <APanelHeader>
+              <APanelTitle>Feature: Panels</APanelTitle>
+              <AButton onClick={() => setOpen(false)} tertiaryAlt icon>
+                <AIcon>close</AIcon>
+              </AButton>
+            </APanelHeader>
+            <APanelBody>
+              Panels create a sense of discreteness in the content.
+            </APanelBody>
+            <APanelFooter>Use panels today!</APanelFooter>
+          </APanel>
+        </AModal>
+      </div>
+    )
+  }
+`}
+/>
+
+### Centering the Modal content
+
+<Playground
+  fullWidthPreview
+  code={`() => {
+    const [open, setOpen] = useState(false);
+    return (
+      <div>
+        <AButton onClick={() => setOpen(true)}>Open Dialog 1</AButton>
+        <AModal isOpen={open}>
+          <div style={{height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+            <APanel type="dialog">
+              <APanelHeader>
+                <APanelTitle>Feature: Panels</APanelTitle>
+                <AButton onClick={() => setOpen(false)} tertiaryAlt icon>
+                  <AIcon>close</AIcon>
+                </AButton>
+              </APanelHeader>
+              <APanelBody>
+                Panels create a sense of discreteness in the content.
+              </APanelBody>
+              <APanelFooter>Use panels today!</APanelFooter>
+            </APanel>
+          </div>
+        </AModal>
+      </div>
+    )
+  }
+`}
+/>
+
+### Embedded from
+
+<Playground
+  code={`() => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  const [favNum, setFavNum] = useState("");
+  const [errors, setErrors] = useState([]);
+  const [comments, setComments] = useState("");
+  const [role, setRole] = useState(null);
+  const form = useRef(null);
+  return (
+    <>
+      <AButton onClick={() => setModalOpen(true)}>Start</AButton>
+      <AModal isOpen={modalOpen}>
+        <div style={{height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <APanel style={{width: '700px'}}>
+            <APanelHeader>
+              <APanelTitle>Embedded Form</APanelTitle>
+              <AButton onClick={() => setModalOpen(false)} tertiaryAlt icon>
+                <AIcon>close</AIcon>
+              </AButton>
+            </APanelHeader>
+            <APanelBody>
+              <AForm ref={form}>
+                <AContainer className="pa-0">
+                  <ARow>
+                    <ACol>
+                      {errors.length > 0 && (
+                        <AAlert className="my-2" level="danger" dismissable={false}>
+                          There are {errors.length} validation errors on the form.
+                        </AAlert>
+                      )}
+                    </ACol>
+                  </ARow>
+                  <ARow>
+                    <ACol cols="12" sm="6">
+                      <ATextInput
+                        label="Email"
+                        required
+                        maxLength={50}
+                        value={email}
+                        onChange={(e) => {
+                          setEmail(e.target.value);
+                        }}
+                        validateOnBlur
+                        rules={[
+                          {
+                            test: (value) =>
+                              !["@gmail.com", "@hotmail.com"].some((v) =>
+                                value.includes(v)
+                              ) || "Please provide a business email address",
+                            level: "warning"
+                          },
+                          {
+                            test: (value) =>
+                              /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value) ||
+                              "Invalid Email",
+                            level: "danger"
+                          }
+                        ]}
+                        hint="Please use a business email address"
+                      />
+                    </ACol>
+                    <ACol>
+                      <ASelect
+                        items={[
+                          {value: 1, text: "Read"},
+                          {value: 2, text: "Write"},
+                          {value: 3, text: "Admin"}
+                        ]}
+                        label="Role"
+                        required
+                        rules={[
+                          {
+                            test: (v) => v.value !== 3 || "Role is set to Admin",
+                            level: "warning"
+                          }
+                        ]}
+                        onSelected={(item) => setRole(item)}
+                      />
+                    </ACol>
+                  </ARow>
+                  <ARow>
+                    <ACol>
+                      <ATextarea
+                        label="Comments"
+                        onChange={(e) => {
+                          setComments(e.target.value);
+                        }}
+                        value={comments}
+                        required
+                        rules={[
+                          {
+                            test: (v) =>
+                              v.length < 10 ||
+                              "Comments must be less than 10 characters",
+                            level: "danger"
+                          }
+                        ]}
+                        validateOnBlur
+                        hint="Keep it short"
+                      />
+                    </ACol>
+                  </ARow>
+                  <ARow>
+                    <ACol className="text-right">
+                      <AButton
+                        secondary
+                        className="mr-2"
+                        onClick={() => {
+                          setErrors([]);
+                          form.current.reset();
+                        }}>
+                        Reset
+                      </AButton>
+                      <AButton onClick={() => setErrors(form.current.validate())}>
+                        Validate
+                      </AButton>
+                    </ACol>
+                  </ARow>
+                </AContainer>
+              </AForm>
+            </APanelBody>
+          </APanel>
+        </div>
+      </AModal>
+    </>
+  );
+}
+`}
+/>
+
+## Menu Props
+
+The `AModal` component inherits passed props.
+
+<Props of="AModal" />
