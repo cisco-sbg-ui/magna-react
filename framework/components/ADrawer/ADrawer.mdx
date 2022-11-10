@@ -1,0 +1,48 @@
+---
+name: Drawers*
+route: /components/drawer
+components: ADrawer
+---
+
+# Drawers
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {ADrawer} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`() => {
+    const [isLeftOpen, setIsLeftOpen] = useState(false);
+    const [isRightOpen, setIsRightOpen] = useState(false);
+    const [isBottomOpen, setIsBottomOpen] = useState(false);
+    return (
+      <>
+        <p>Left slide-in</p>
+        <button onClick={() => setIsLeftOpen(p => !p)}>Toggle Left</button>
+        <ADrawer isOpen={isLeftOpen}>Left Drawer</ADrawer>
+        
+        <p>Right slide-in</p>
+        <button onClick={() => setIsRightOpen(p => !p)}>Toggle Right</button>
+        <ADrawer slideIn='right' isOpen={isRightOpen}>Right Drawer</ADrawer>
+        
+        <p>Bottom slide-in</p>
+        <button onClick={() => setIsBottomOpen(p => !p)}>Toggle Bottom</button>
+        <ADrawer slideIn='bottom' isOpen={isBottomOpen}>Bottom Drawer</ADrawer>
+      </>
+    )
+  }`}
+/>
+
+## Props
+
+All Footer components (`ADrawer`) inherit passed props.
+
+### Footer Props
+
+<Props of="ADrawer" />
