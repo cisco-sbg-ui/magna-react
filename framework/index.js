@@ -20,7 +20,7 @@ import ADataTable from "./components/ADataTable";
 import {ADatePicker, useADateRange} from "./components/ADatePicker";
 import ADialog from "./components/ADialog";
 import ADivider from "./components/ADivider";
-import ADrawer from "./components/ADrawer/ADrawer";
+import {ADrawer, ADrawerContent} from "./components/ADrawer";
 import AFieldBase from "./components/AFieldBase";
 import {AFooter, AFooterLegal} from "./components/AFooter";
 import {AForm, AFormContext} from "./components/AForm";
@@ -116,6 +116,7 @@ export {
   ADivider,
   ADotLoader,
   ADrawer,
+  ADrawerContent,
   AFieldBase,
   AFooter,
   AFooterLegal,
