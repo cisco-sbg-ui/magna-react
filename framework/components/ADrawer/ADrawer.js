@@ -13,7 +13,7 @@ import "./ADrawer.scss";
 function Drawer(props, ref) {
   const {
     as,
-    asModal,
+    asModal = true,
     isFixed = true,
     className: propsClassName,
     children,
@@ -56,18 +56,16 @@ function Drawer(props, ref) {
   }
 
   return (
-    <AModal isOpen={isOpen}>
-      <APageOverlay>
-        <DrawerPanelComponent
-          {...rest}
-          style={props.style}
-          isOpen={isOpen}
-          ref={ref}
-          className={className}
-        >
-          {children}
-        </DrawerPanelComponent>
-      </APageOverlay>
+    <AModal isOpen={isOpen} {...rest}>
+      <DrawerPanelComponent
+        {...rest}
+        style={props.style}
+        isOpen={isOpen}
+        ref={ref}
+        className={className}
+      >
+        {children}
+      </DrawerPanelComponent>
     </AModal>
   );
 }

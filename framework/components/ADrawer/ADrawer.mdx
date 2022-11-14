@@ -25,7 +25,7 @@ import {ADrawer} from "@cisco-sbg-ui/magna-react";
     return (
       <>
         <p>Left slide-in</p>
-        <AButton onClick={() => setIsLeftOpen(p => !p)}>Toggle Left</AButton>
+        <AButton onClick={() => setIsLeftOpen(true)}>Open Left</AButton>
         <ADrawer isOpen={isLeftOpen}>
           <ADrawerContent>
             Left Drawer <button onClick={() => setIsLeftOpen(false)}>x</button>
@@ -33,7 +33,7 @@ import {ADrawer} from "@cisco-sbg-ui/magna-react";
         </ADrawer>
         
         <p>Right slide-in</p>
-        <AButton onClick={() => setIsRightOpen(p => !p)}>Toggle Right</AButton>
+        <AButton onClick={() => setIsRightOpen(true)}>Open Right</AButton>
         <ADrawer slideIn='right' isOpen={isRightOpen}>
           <ADrawerContent>
             Right Drawer <button onClick={() => setIsRightOpen(false)}>x</button>
@@ -41,7 +41,7 @@ import {ADrawer} from "@cisco-sbg-ui/magna-react";
         </ADrawer>
         
         <p>Bottom slide-in</p>
-        <AButton onClick={() => setIsBottomOpen(p => !p)}>Toggle Bottom</AButton>
+        <AButton onClick={() => setIsBottomOpen(true)}>Open Bottom</AButton>
         <ADrawer slideIn='bottom' isOpen={isBottomOpen}>
           <ADrawerContent>
             Bottom Drawer <button onClick={() => setIsBottomOpen(false)}>x</button>
@@ -76,8 +76,8 @@ import {ADrawer} from "@cisco-sbg-ui/magna-react";
         <p>Non-Modal Drawer</p>
         <AButton
             aria-label='Open non-modal drawer'
-            onClick={() => setNonModalOpen(true)}>
-            Open
+            onClick={() => setNonModalOpen(prevState => !prevState)}>
+            Toggle
         </AButton>
         <ADrawer
             asModal={false}
