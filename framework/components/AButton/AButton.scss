@@ -161,6 +161,13 @@ $btn-transition: color $transition-duration--extra-fast
         "destructive",
         "border--disabled"
       );
+      opacity: map-deep-get(
+        $theme,
+        "button",
+        "primary",
+        "destructive",
+        "opacity--disabled"
+      );
     }
   }
 
@@ -228,7 +235,7 @@ $btn-transition: color $transition-duration--extra-fast
         "secondary",
         "border--disabled"
       );
-      opacity: map-deep-get($theme, "button", "primary", "opacity--disabled");
+      opacity: map-deep-get($theme, "button", "secondary", "opacity--disabled");
     }
   }
 
@@ -340,6 +347,13 @@ $btn-transition: color $transition-duration--extra-fast
         "destructive",
         "border--disabled"
       );
+      opacity: map-deep-get(
+        $theme,
+        "button",
+        "secondary",
+        "destructive",
+        "opacity--disabled"
+      );
     }
   }
 
@@ -384,7 +398,7 @@ $btn-transition: color $transition-duration--extra-fast
     color: map-get($theme, "button", "tertiary", "alt", "color");
 
     &:hover {
-      color: map-deep-get($theme, "button", "tertiary", "color--hover");
+      color: map-deep-get($theme, "button", "tertiary", "alt", "color--hover");
     }
 
     &:active {
@@ -452,12 +466,12 @@ $btn-transition: color $transition-duration--extra-fast
     cursor: not-allowed;
   }
 
-  &.magnetic {
+  &.medium {
     height: 34px;
     padding: 7px 12px;
   }
 
-  &.magnetic {
+  &.medium {
     &.a-button--icon {
       padding: 8.25px;
       svg.a-icon {

@@ -14,7 +14,7 @@ const AButton = forwardRef(
       disabled,
       href,
       icon,
-      magnetic = false,
+      medium = false,
       onClick,
       primary,
       secondary,
@@ -47,8 +47,8 @@ const AButton = forwardRef(
       className += " disabled";
     }
 
-    if (magnetic) {
-      className += " magnetic";
+    if (medium) {
+      className += " medium";
     }
 
     if (selectedValues && selectedValues.includes(value)) {
@@ -152,9 +152,9 @@ AButton.propTypes = {
    */
   destructive: PropTypes.bool,
   /**
-   * Apply Magnetic styles vs only re-skin styles, defaults to false
+   * Apply Magnetic medium size styles vs only re-skin styles, defaults to false
    */
-  magnetic: PropTypes.bool
+  medium: PropTypes.bool
 };
 
 AButton.displayName = "AButton";
