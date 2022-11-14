@@ -44,7 +44,7 @@ const useFocusTrap = ({rootRef, isMounted = false}) => {
     const firstFocusableNode = treeWalker.nextNode();
     if (firstFocusableNode) {
       const animationPromises = rootRef.current
-        .getAnimations()
+        .getAnimations({subtree: true})
         .map((animation) => animation.finished);
       Promise.allSettled(animationPromises).then(() =>
         firstFocusableNode.focus()
