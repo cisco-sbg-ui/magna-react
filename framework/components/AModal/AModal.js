@@ -12,7 +12,7 @@ const AModal = forwardRef(
   (
     {
       appendTo,
-      as = "div",
+      as,
       className: propsClassName,
       children,
       lockScroll = true,
@@ -23,7 +23,7 @@ const AModal = forwardRef(
     ref
   ) => {
     const {appRef} = useContext(AAppContext);
-    const Component = as;
+    const Component = as || "div";
     const modalRef = useRef();
     useFocusTrap({
       rootRef: modalRef,
@@ -32,28 +32,31 @@ const AModal = forwardRef(
     isOpen && lockScroll
       ? preventBodyScroll(appRef.current)
       : allowBodyScroll(appRef.current);
-    const containerClass = "modal-container";
     let visibilityClass = "";
-
     if (!isOpen) {
       visibilityClass = "modal--hidden";
     }
 
+    let contentClassName = `modal-container${
+      visibilityClass ? visibilityClass : ""
+    }`;
+    if (propsClassName) {
+      contentClassName += ` ${propsClassName}`;
+    }
+
     if (withOverlay) {
       return ReactDOM.createPortal(
-        <APageOverlay ref={modalRef} className={`${visibilityClass}`} {...rest}>
-          {children}
+        <APageOverlay className={visibilityClass}>
+          <Component ref={modalRef} className={contentClassName} {...rest}>
+            {children}
+          </Component>
         </APageOverlay>,
         appendTo || appRef.current
       );
     }
 
     return ReactDOM.createPortal(
-      <Component
-        className={`${visibilityClass} ${containerClass}`}
-        ref={modalRef}
-        {...rest}
-      >
+      <Component className={contentClassName} ref={modalRef} {...rest}>
         {children}
       </Component>,
       appendTo || appRef.current
