@@ -1,4 +1,6 @@
 import {forwardRef} from "react";
+import AModal from "../AModal/AModal";
+import APageOverlay from "../APageOverlay";
 
 import "./ADrawer.scss";
 
@@ -11,6 +13,7 @@ import "./ADrawer.scss";
 function Drawer(props, ref) {
   const {
     as,
+    asModal,
     isFixed = true,
     className: propsClassName,
     children,
@@ -19,7 +22,7 @@ function Drawer(props, ref) {
     slideIn = "left",
     ...rest
   } = props;
-  const Component = as || "div";
+  const DrawerPanelComponent = as || "div";
   let className = `drawer fixed--${slideIn}`;
 
   if (!isOpen) {
@@ -38,15 +41,34 @@ function Drawer(props, ref) {
     className += ` ${propsClassName}`;
   }
 
+  if (!asModal) {
+    return (
+      <DrawerPanelComponent
+        {...rest}
+        style={props.style}
+        isOpen={isOpen}
+        ref={ref}
+        className={className}
+      >
+        {children}
+      </DrawerPanelComponent>
+    );
+  }
+
   return (
-    <Component
-      style={props.style}
-      isOpen={isOpen}
-      ref={ref}
-      className={className}
-    >
-      {children}
-    </Component>
+    <AModal isOpen={isOpen}>
+      <APageOverlay>
+        <DrawerPanelComponent
+          {...rest}
+          style={props.style}
+          isOpen={isOpen}
+          ref={ref}
+          className={className}
+        >
+          {children}
+        </DrawerPanelComponent>
+      </APageOverlay>
+    </AModal>
   );
 }
 

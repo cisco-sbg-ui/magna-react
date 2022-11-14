@@ -21,21 +21,129 @@ import {ADrawer} from "@cisco-sbg-ui/magna-react";
     const [isLeftOpen, setIsLeftOpen] = useState(false);
     const [isRightOpen, setIsRightOpen] = useState(false);
     const [isBottomOpen, setIsBottomOpen] = useState(false);
+    
     return (
       <>
         <p>Left slide-in</p>
-        <button onClick={() => setIsLeftOpen(p => !p)}>Toggle Left</button>
-        <ADrawer isOpen={isLeftOpen}>Left Drawer</ADrawer>
+        <AButton onClick={() => setIsLeftOpen(p => !p)}>Toggle Left</AButton>
+        <ADrawer isOpen={isLeftOpen}>
+          <ADrawerContent>
+            Left Drawer <button onClick={() => setIsLeftOpen(false)}>x</button>
+          </ADrawerContent>
+        </ADrawer>
         
         <p>Right slide-in</p>
-        <button onClick={() => setIsRightOpen(p => !p)}>Toggle Right</button>
-        <ADrawer slideIn='right' isOpen={isRightOpen}>Right Drawer</ADrawer>
+        <AButton onClick={() => setIsRightOpen(p => !p)}>Toggle Right</AButton>
+        <ADrawer slideIn='right' isOpen={isRightOpen}>
+          <ADrawerContent>
+            Right Drawer <button onClick={() => setIsRightOpen(false)}>x</button>
+          </ADrawerContent>
+        </ADrawer>
         
         <p>Bottom slide-in</p>
-        <button onClick={() => setIsBottomOpen(p => !p)}>Toggle Bottom</button>
-        <ADrawer slideIn='bottom' isOpen={isBottomOpen}>Bottom Drawer</ADrawer>
+        <AButton onClick={() => setIsBottomOpen(p => !p)}>Toggle Bottom</AButton>
+        <ADrawer slideIn='bottom' isOpen={isBottomOpen}>
+          <ADrawerContent>
+            Bottom Drawer <button onClick={() => setIsBottomOpen(false)}>x</button>
+          </ADrawerContent>    
+        </ADrawer>
       </>
     )
+  }`}
+/>
+
+### Modal Options
+
+<Playground
+  code={`() => {
+    const [modalOpen, setModalOpen] = useState(false);
+    const [nonModalOpen, setNonModalOpen] = useState(false);
+    return (
+      <>
+        <p>Modal Drawer</p>
+        <AButton
+            aria-label='Open modal drawer'
+            onClick={() => setModalOpen(true)}>
+          Open
+        </AButton>
+        <ADrawer
+            asModal={true}
+            isOpen={modalOpen}
+            slideIn='right'>
+          <MockDrawerContent onClose={() => setModalOpen(false)} />
+        </ADrawer>
+        
+        <p>Non-Modal Drawer</p>
+        <AButton
+            aria-label='Open non-modal drawer'
+            onClick={() => setNonModalOpen(true)}>
+            Open
+        </AButton>
+        <ADrawer
+            asModal={false}
+            isOpen={nonModalOpen}
+            slideIn='right'>
+          <MockDrawerContent onClose={() => setNonModalOpen(false)} />
+        </ADrawer>
+      </>
+    )
+    function MockDrawerContent({ onClose }) {
+      return (
+        <>
+          <AListItem twoLine>
+            <AListItemContent>
+              <AListItemTitle><h4><b>Event Details</b></h4></AListItem>
+            </AListItemContent>
+            <AListItemAction>
+              <AButton onClick={onClose} tertiaryAlt icon>
+                <AIcon>close</AIcon>
+              </AButton>
+            </AListItemAction>
+          </AListItem>
+          <AListItem twoLine>
+            <AListItemContent style={{paddingTop: '0'}}>
+              <div>
+                <span style={{display: 'flex', alignItems: 'center'}}>Risk Score <ATag className="status-red white--text ma-1">750</ATag></span>
+                <p style={{marginTop: '5px', fontWeight: 'bold', fontSize: '24px'}}>A malicious SHA-256 targeted an endpoint</p>
+              </div>
+              <div>
+                <p style={{margin: '0'}}>Created 2022-08-12 12:23:01.0019 UTC</p>
+                <div><a href="#">AMP Unity</a></div>
+              </div>
+            </AListItemContent>
+          </AListItem>
+          <ADivider />
+          <AListItem twoLine>
+            <AListItemContent>
+              <AListItemTitle><h4><b>Recommended Actions</b></h4></AListItem>
+            </AListItemContent>
+            <AListItemAction>
+              <AButton tertiaryAlt>
+                <AIcon>chevron-up</AIcon>
+              </AButton>
+            </AListItemAction>
+          </AListItem>
+          <AListItem twoLine>
+            <AListItemContent style={{paddingTop: '0'}}>
+              <APanel style={{margin: '0', padding: '5px', width: '100%'}}>
+                <a href="#">Quarantine Device</a>
+              </APanel>
+              <APanel style={{margin: '5px 0 0 0', padding: '5px', width: '100%'}}>
+                Workflow
+                <br />
+                <a href="#">Move to Triage Group</a>
+              </APanel>
+            </AListItemContent>
+          </AListItem>
+          <div style={{width: '100%', position: 'absolute', bottom: '0', height: '50px'}}>
+            <ADivider style={{margin: 0}} />
+            <AListItem twoLine>
+              <AListItemContent><AButton>Add note</AButton></AListItemContent>
+            </AListItem>
+          </div>
+        </>
+      )
+    }
   }`}
 />
 
