@@ -4,8 +4,10 @@
 - [magna-react - LIVE canary branch](https://magna-react.vercel.app/)
 - [Meraki Zeroheight](https://zeroheight.com/0a43ab5cd)
 - [Magnetic Design Figma](https://www.figma.com/file/oVZWatImEIbl1c8sjdGxi0/%F0%9F%A7%B2--Magnetic-Design-Library)
+- [Magnetic with Dark Mode](https://www.figma.com/file/6ILKQfiWVH6yNzPFk9pkz4/%F0%9F%A7%B2--Magnetic-Design-Library%3A-Dark-Mode-%5BWiP%5D-(Copy)?node-id=33305%3A351330&t=50Z46vCCUI2GL5Wf-0)
 - [Secure Endpoint redesign Figma](https://www.figma.com/file/lTNjbXom8zSLJljSVQ3083/Secure-Endpoint---Design-System-Audit-(EH)?node-id=0%3A1)
 - [Harbor - must be on Cisco VPN](http://harbor.cisco.com/)
+- [UX Audit for light theme work](https://www.figma.com/file/X0VO25Cldfla3alNh5nSU5/Magna---React-Audit?t=AU30g7XLW6QTFk5S-0)
 
 ## Magnetic Styling component status info
 Status options:
@@ -15,79 +17,74 @@ Status options:
  - :wavy_dash: ==> Reviewed, no styling changes needed
 
 ### External Facing Components:
+Developer updates to include, Alana's audit review (link above), light theme and dark theme updates.
+Removed components that did not need updating from light theme round (51 -> 42)
 
-|     Status     | Name                          | Developer | UXer |
-|:--------------:|:------------------------------|:---------:|:----:|
-| :construction: | AAccordion                    |    RWH    |      |
-| :construction: | AAlert                        |    RWH    |      |
-|  :wavy_dash:   | AApp                          |     -     |  -   |
-| :construction: | AAutocomplete                 |    AJL    |      |
-| :construction: | ABadge                        |    RWH    |      |
-| :construction: | ABreadcrumb                   |    AJL    |      |
-|  :wavy_dash:   | ABreakpoint                   |     -     |  -   |
-| :construction: | AButton                       |    AJL    |      |
-| :construction: | AButtonGroup                  |    AJL    |      |
-| :construction: | ACheckbox                     |    AJL    |      |
-| :construction: | ACombobox                     |    RWH    |      |
-| :construction: | AContextualNotification       |    AJL    |      |
-| :construction: | AContextualNotificationMenu   |    AJL    |      |
-| :construction: | ADataTable                    |    RWH    |      |
-| :construction: | ADatePicker                   |    RWH    |      |
-| :construction: | ADialog                       |    RWH    |      |
-| :construction: | ADivider                      |    RWH    |      |
-| :construction: | AFieldBase                    |    AJL    |      |
-| :construction: | AFooter                       |    RWH    |      |
-|  :wavy_dash:   | AForm                         |     -     |  -   |
-| :construction: | AFooter                       |    RWH    |      |
-|  :wavy_dash:   | AHeader                       |     -     |  -   |
-| :construction: | AHint                         |    AJL    |      |
-| :construction: | AIcon                         |    RWH    |      |
-| :construction: | AInputBase                    |    AJL    |      |
-|  :wavy_dash:   | AInView                       |     -     |  -   |
-|  :wavy_dash:   | ALayout                       |     -     |  -   |
-| :construction: | AList                         |    AJL    |      |
-| :construction: | ALoader                       |    RWH    |      |
-| :construction: | AMenu                         |    AJL    |      |
-| :construction: | AMenuBase                     |    AJL    |      |
-|  :wavy_dash:   | AMount                        |     -     |  -   |
-| :construction: | APagination                   |    RWH    |      |
-| :construction: | APanel                        |    RWH    |      |
-| :construction: | APopover                      |    RWH    |      |
-| :construction: | AProgressbar                  |    RWH    |      |
-| :construction: | ARadio                        |    AJL    |      |
-| :construction: | ASelect                       |    AJL    |      |
-| :construction: | ASimpleTable                  |    RWH    |      |
-| :construction: | AStepper                      |    RWH    |      |
-| :construction: | ASlider                       |    RWH    |      |
-| :construction: | ASwitch                       |    AJL    |      |
-| :construction: | ATabs                         |    AJL    |      |
-| :construction: | ATag                          |    AJL    |      |
-| :construction: | ATextarea                     |    AJL    |      |
-| :construction: | ATextInput                    |    AJL    |      |
-|  :wavy_dash:   | ATheme                        |     -     |  -   |
-| :construction: | ATimeline                     |    AJL    |      |
-| :construction: | AToast                        |    AJL    |      |
-|  :wavy_dash:   | AToaster                      |     -     |  -   |
-| :construction: | ATooltip                      |    AJL    |      |
-| :construction: | ATree                         |    AJL    |      |
+|     Status     | Name                          | Developer |
+|:--------------:|:------------------------------|:---------:|
+| :x: | AAccordion                    |           |
+| :x: | AAlert                        |           |
+| :x: | AAutocomplete                 |           |
+| :x: | ABadge                        |           |
+| :x: | ABreadcrumb                   |           |
+| :x: | AButton                       |           |
+| :x: | AButtonGroup                  |           |
+| :x: | ACheckbox                     |           |
+| :x: | ACombobox                     |           |
+| :x: | AContextualNotification       |           |
+| :x: | AContextualNotificationMenu   |           |
+| :x: | ADataTable                    |           |
+| :x: | ADatePicker                   |           |
+| :x: | ADialog                       |           |
+| :x: | ADivider                      |           |
+| :x: | AFieldBase                    |           |
+| :x: | AFooter                       |           |
+| :x: | AHint                         |           |
+| :x: | AIcon                         |           |
+| :x: | AInputBase                    |           |
+| :x: | AList                         |           |
+| :x: | ALoader                       |           |
+| :x: | AMenu                         |           |
+| :x: | AMenuBase                     |           |
+| :x: | APagination                   |           |
+| :x: | APanel                        |           |
+| :x: | APopover                      |           |
+| :x: | AProgressbar                  |           |
+| :x: | ARadio                        |           |
+| :x: | ASelect                       |           |
+| :x: | ASimpleTable                  |           |
+| :x: | AStepper                      |           |
+| :x: | ASlider                       |           |
+| :x: | ASwitch                       |           |
+| :x: | ATabs                         |           |
+| :x: | ATag                          |           |
+| :x: | ATextarea                     |           |
+| :x: | ATextInput                    |           |
+| :x: | ATimeline                     |           |
+| :x: | AToast                        |           |
+| :x: | ATooltip                      |           |
+| :x: | ATree                         |    AJL    |
 
 
 ## Phase completion updates -
 **NOTE: a new library won't be published until phase 1 and phase 2 are complete**
 
 #### Phase 1 - reskin light theme
- * Current projected dev phase completion - ~~November 8th~~ October 25th
- - As of Oct 24th  - 51/51 = 100%  (Ready for UX Review of light theme)
- - As of Oct 17th  - 47/51 = 92%
- - As of Oct 11th  - 24/51 = 47%
- - As of Oct 4th   - 13/51 = 25%
- - As of Sept 27th - 9/51  = 17%
+- As of Nov 7th - Received light theme feedback from UX, will make requested updates soon
+- As of Nov 4th - UX reviewed, agreed on go forward steps for dark theme re-skin, setup priority list for Phase 4 items
+- As of Oct 24th  - 51/51 = 100%
+- As of Oct 17th  - 47/51 = 92%
+- As of Oct 11th  - 24/51 = 47%
+- As of Oct 4th   - 13/51 = 25%
+- As of Sept 27th - 9/51  = 17%
 
-#### Phase 2 - reskin dark theme (dark theme has not been completed for components, [UX has a WIP version here](https://www.figma.com/file/oVZWatImEIbl1c8sjdGxi0/branch/yU3qYkj6T2kfN4XYtUkEeD/%F0%9F%A7%B2--Magnetic-Design-Library))
- - Not started - waiting on CDS to complete theming - their current projected completion is FY23-Q2
+#### Phase 2 - reskin dark theme [UX has a WIP figma version here](https://www.figma.com/file/oVZWatImEIbl1c8sjdGxi0/branch/yU3qYkj6T2kfN4XYtUkEeD/%F0%9F%A7%B2--Magnetic-Design-Library?node-id=33305%3A351330)
+- As of Nov 15th 0/42 - 0% (We will make a projection on time to complete next week)
+- As of Nov 9th updated color palette for light and dark theme to dark mode figma, will start incorporating changes next week
+- As of Nov 4th - 0/42 = 0% starting dark theme for re-skinned components
 
 #### Phase 3 - Add new components
- - Not started
+- Not started
 
 #### Phase 4 - Add Magnetic components option as needed - (this means not just skin layer, size/padding/margin dimensions change; You can see a sample of this at the bottom of the Button component)
- - Not started
+- As of Nov 7th - 2/42 = 4%
