@@ -1,6 +1,5 @@
 import {forwardRef} from "react";
 import AModal from "../AModal/AModal";
-import APageOverlay from "../APageOverlay";
 
 import "./ADrawer.scss";
 
@@ -13,33 +12,41 @@ import "./ADrawer.scss";
 function Drawer(props, ref) {
   const {
     as,
+    /** Determines if the drawer should render as a Modal (and trap focus) */
     asModal = true,
-    isFixed = true,
-    isInline = false,
+
+    /* Determines if the Drawer has a self-contained element to render in */
+    contained = false,
+
+    /** Determines if the Drawer renders alongside siblings */
+    inline = false,
+
+    /** Determines if the drawer should render as a smaller size */
+    slim = false,
+
+    /** Toggles the visibility of the Drawer */
+    isOpen,
     className: propsClassName,
     children,
-    isSlim,
-    isOpen,
     slideIn = "left",
     ...rest
   } = props;
   const DrawerPanelComponent = as || "div";
-  let className = `drawer fixed--${slideIn}`;
+  const orientation =
+    slideIn === "bottom" || slideIn === "top" ? "horizontal" : "vertical";
+  let className = `drawer drawer--${orientation} drawer--${slideIn}`;
 
+  if (inline) {
+    className += ` drawer--inline`;
+  }
+  if (contained) {
+    className += ` drawer--contained`;
+  }
+  if (slim) {
+    className += ` drawer--slim`;
+  }
   if (!isOpen) {
-    className += " hidden";
-  }
-  if (isSlim) {
-    className += " slim";
-  }
-  if (!isSlim) {
-    className += " full";
-  }
-  if (isFixed) {
-    className += " fixed";
-  }
-  if (isInline) {
-    className += " inline";
+    className += ` drawer--hidden`;
   }
   if (propsClassName) {
     className += ` ${propsClassName}`;
