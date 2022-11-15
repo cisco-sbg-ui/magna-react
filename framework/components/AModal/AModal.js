@@ -37,9 +37,7 @@ const AModal = forwardRef(
       visibilityClass = "modal--hidden";
     }
 
-    let contentClassName = `modal-container${
-      visibilityClass ? visibilityClass : ""
-    }`;
+    let contentClassName = `modal-container ${visibilityClass}`;
     if (propsClassName) {
       contentClassName += ` ${propsClassName}`;
     }
