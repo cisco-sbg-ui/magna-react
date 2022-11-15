@@ -15,6 +15,7 @@ function Drawer(props, ref) {
     as,
     asModal = true,
     isFixed = true,
+    isInline = false,
     className: propsClassName,
     children,
     isSlim,
@@ -36,6 +37,9 @@ function Drawer(props, ref) {
   }
   if (isFixed) {
     className += " fixed";
+  }
+  if (isInline) {
+    className += " inline";
   }
   if (propsClassName) {
     className += ` ${propsClassName}`;

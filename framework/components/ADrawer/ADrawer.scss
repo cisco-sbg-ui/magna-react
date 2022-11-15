@@ -53,6 +53,15 @@
   bottom: 0;
 }
 
+.inline {
+  position: relative;
+  height: 100%;
+  top: unset;
+  left: unset;
+  bottom: unset;
+  z-index: unset;
+}
+
 @media (prefers-reduced-motion) {
   .drawer {
     transition: none;

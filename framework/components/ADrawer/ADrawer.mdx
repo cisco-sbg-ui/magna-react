@@ -147,6 +147,55 @@ import {ADrawer} from "@cisco-sbg-ui/magna-react";
   }`}
 />
 
+### Slim Drawer
+
+<Playground
+  code={`() => {
+    const [open, setOpen] = useState(false);
+    const [isSlim, setIsSlim] = useState(true);
+    return (
+      <AContainer>
+        <ARow className="mb-0 grey--darken-7 white--text">
+          <ACol>
+            <AIcon onClick={() => setIsSlim(prevState => !prevState)} style={{cursor: 'pointer'}} size='small'>{isSlim ? 'chevron-right' : 'chevron-left'}</AIcon>
+          </ACol>
+          <ASpacer />
+          <ACol className="d-flex align-center justify-end">
+            App
+          </ACol>
+        </ARow>
+        <ARow>
+          <ACol cols='auto' className='pa-0'>
+            <ADrawer className='grey--lighten-6' style={{maxWidth: '150px'}} asModal={false} isFixed={false} isInline isOpen isSlim={isSlim}>
+              <AList className='grey--lighten-6' style={{border: 'none'}}>
+                <AListItem twoLine href="#" target="_blank">
+                  <AListItemAvatar className='mr-4 flex-shrink-0'><AIcon size={18}>chart-pie</AIcon></AListItemAvatar>
+                  <AListItemContent>Foo</AListItemContent>
+                </AListItem>
+                <AListItem twoLine href="#" target="_blank">
+                  <AListItemAvatar className='mr-4 flex-shrink-0'><AIcon size={18}>chart-curve</AIcon></AListItemAvatar>
+                  <AListItemContent>Bar</AListItemContent>
+                </AListItem>
+                <AListItem twoLine href="#" target="_blank">
+                  <AListItemAvatar className='mr-4 flex-shrink-0'><AIcon size={18}>chart-bar</AIcon></AListItemAvatar>
+                  <AListItemContent>Baz</AListItemContent>
+                </AListItem>
+                <AListItem twoLine href="#" target="_blank">
+                  <AListItemAvatar className='mr-4 flex-shrink-0'><AIcon size={18}>calendar</AIcon></AListItemAvatar>
+                  <AListItemContent>Qaz</AListItemContent>
+                </AListItem>
+              </AList>
+            </ADrawer>
+          </ACol>
+          <ACol className="dark-cool-grey white--text" style={{height: '300px'}}>
+            <main>Main Content</main>
+          </ACol>
+        </ARow>
+      </AContainer>
+    )
+  }`}
+/>
+
 ## Props
 
 All Footer components (`ADrawer`) inherit passed props.
