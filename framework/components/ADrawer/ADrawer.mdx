@@ -317,31 +317,41 @@ You can change this behavior to have `ADrawer` render inside your own specified 
                 slideIn='right'
                 isOpen={incidentDetailsOpen}
                 style={{maxWidth: '150px'}}>
-              <p>I am testing a relatively long sentence to see if it does indeed collapse.</p>
-              <AList className='grey--lighten-6' style={{border: 'none'}}>
-                <AListItem twoLine href="#" target="_blank">
-                  <AListItemAvatar className='mr-4 flex-shrink-0'><AIcon size={18}>chart-pie</AIcon></AListItemAvatar>
-                  <AListItemContent>Foo something else long</AListItemContent>
-                </AListItem>
-                <AListItem twoLine href="#" target="_blank">
-                  <AListItemAvatar className='mr-4 flex-shrink-0'><AIcon size={18}>chart-curve</AIcon></AListItemAvatar>
-                  <AListItemContent>Bar</AListItemContent>
-                </AListItem>
-                <AListItem twoLine href="#" target="_blank">
-                  <AListItemAvatar className='mr-4 flex-shrink-0'><AIcon size={18}>chart-bar</AIcon></AListItemAvatar>
-                  <AListItemContent>Baz</AListItemContent>
-                </AListItem>
-                <AListItem twoLine href="#" target="_blank">
-                  <AListItemAvatar className='mr-4 flex-shrink-0'><AIcon size={18}>calendar</AIcon></AListItemAvatar>
-                  <AListItemContent>Qaz</AListItemContent>
-                </AListItem>
-              </AList>
-            </ADrawer>
+                  <MockDrawerContent onClose={() => setIncidentDetailsOpen(false)} />
+                </ADrawer>
           </ACol>
         </ARow>
       </AContainer>
       </AApp>
     )
+    function MockDrawerContent({ onClose }) {
+      return (
+        <div>
+          <AListItem twoLine>
+            <AListItemContent>
+              <AListItemTitle><small><b>Event Details</b></small></AListItem>
+            </AListItemContent>
+            <AListItemAction>
+              <AButton onClick={onClose} tertiaryAlt icon>
+                <AIcon>close</AIcon>
+              </AButton>
+            </AListItemAction>
+          </AListItem>
+          <AListItem twoLine>
+            <AListItemContent style={{paddingTop: '0'}}>
+              <div>
+                <span style={{display: 'flex', alignItems: 'center'}}><small>Risk Score</small> <ATag className="status-red white--text ma-1">750</ATag></span>
+                <p style={{marginTop: '5px', fontWeight: 'bold', fontSize: '10px'}}>A malicious SHA-256 targeted an endpoint</p>
+              </div>
+              <div>
+                <small style={{margin: '0'}}>Created 2022-08-12 12:23:01.0019 UTC</small>
+                <div><a href="#"><small>AMP Unity</small></a></div>
+              </div>
+            </AListItemContent>
+          </AListItem>
+        </div>
+      )
+    }
   }`}
 />
 
