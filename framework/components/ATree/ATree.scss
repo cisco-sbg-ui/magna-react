@@ -3,12 +3,14 @@
 @include theme(a-tree) using ($theme) {
   &__root {
     &--active {
-      background-color: map-deep-get($theme, "tree", "background-color--focus");
+      background: map-deep-get($theme, "control", "row-effect-image"),
+        map-deep-get($theme, "control", "row-effect-color");
       color: map-deep-get($theme, "tree", "color");
     }
 
     &--focus {
-      background-color: map-deep-get($theme, "tree", "background-color--focus");
+      background: map-deep-get($theme, "control", "row-effect-image"),
+        map-deep-get($theme, "control", "row-effect-color");
     }
 
     > .a-tree__chevron.a-button:focus {
@@ -53,11 +55,8 @@
       }
 
       &--focus {
-        background-color: map-deep-get(
-          $theme,
-          "tree",
-          "background-color--focus"
-        );
+        background: map-deep-get($theme, "control", "row-effect-image"),
+          map-deep-get($theme, "control", "row-effect-color");
       }
     }
   }

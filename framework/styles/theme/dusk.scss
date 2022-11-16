@@ -171,7 +171,14 @@ $atomic-dusk: (
     "warning-color": map-get($mds-dark-theme, "status-warning"),
     "error-color": map-get($mds-dark-theme, "status-negative"),
     "info-color": map-get($mds-light-theme, "status-info"),
-    "success-color": map-get($mds-light-theme, "status-positive")
+    "success-color": map-get($mds-light-theme, "status-positive"),
+    "row-effect-color": map-get($mds-neutral, "neutral-17"),
+    "row-effect-image":
+      linear-gradient(
+        0deg,
+        rgba(108, 158, 245, 0.25),
+        rgba(108, 158, 245, 0.25)
+      )
   ),
   "date-picker": (
     "header-border-color": rgba(map-get($grey, "base"), $alpha-3),
@@ -326,8 +333,6 @@ $atomic-dusk: (
   ),
   "tree": (
     "color": map-get($mds-dark-theme, "default-text"),
-    // no examples for dark mode focus/hover so I just picked something, needs UX review
-    "background-color--focus": map-get($mds-blue, "blue-6"),
-    "background-color--hover": map-get($mds-blue, "blue-7")
+    "background-color--hover": map-get($mds-neutral, "neutral-15")
   )
 );
