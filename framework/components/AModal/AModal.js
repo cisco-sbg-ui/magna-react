@@ -27,7 +27,7 @@ const AModal = forwardRef(
     const modalRef = useRef();
     useFocusTrap({
       rootRef: modalRef,
-      isMounted: isOpen
+      isEnabled: isOpen
     });
     isOpen && lockScroll
       ? preventBodyScroll(appRef.current)

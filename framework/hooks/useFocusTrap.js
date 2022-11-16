@@ -31,9 +31,9 @@ function acceptNode(node) {
   return node.tabIndex < 0 ? NodeFilter.FILTER_SKIP : NodeFilter.FILTER_ACCEPT;
 }
 
-const useFocusTrap = ({rootRef, isMounted = false}) => {
+const useFocusTrap = ({rootRef, isEnabled = true}) => {
   useEffect(() => {
-    if (!isMounted) {
+    if (!isEnabled) {
       return;
     }
     const treeWalker = document.createTreeWalker(
@@ -53,7 +53,7 @@ const useFocusTrap = ({rootRef, isMounted = false}) => {
     const trap = createTrap(treeWalker);
     document.addEventListener("keydown", trap);
     return () => document.removeEventListener("keydown", trap);
-  }, [rootRef, isMounted]);
+  }, [rootRef, isEnabled]);
 };
 
 export default useFocusTrap;
