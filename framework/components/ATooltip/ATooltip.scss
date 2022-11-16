@@ -1,10 +1,43 @@
 @import "../../styles";
 
-$tooltip-bg: map-get($mds-neutral, "neutral-15");
 $tooltip-color: map-get($mds-neutral, "neutral-1");
 
 @include theme(a-tooltip) using ($theme) {
   color: $tooltip-color;
+  background-color: map-get($theme, "tooltip", "background-color");
+  &--arrow.a-menu-base--top,
+  &--arrow.a-menu-base--top-left,
+  &--arrow.a-menu-base--top-right {
+    .a-menu-base__pointer {
+      border-color: map-get($theme, "tooltip", "background-color") transparent
+        transparent transparent;
+    }
+  }
+  &--arrow.a-menu-base--right,
+  &--arrow.a-menu-base--right-top,
+  &--arrow.a-menu-base--right-bottom {
+    .a-menu-base__pointer {
+      border-color: transparent map-get($theme, "tooltip", "background-color")
+        transparent transparent;
+    }
+  }
+
+  &--arrow.a-menu-base--bottom,
+  &--arrow.a-menu-base--bottom-left,
+  &--arrow.a-menu-base--bottom-right {
+    .a-menu-base__pointer {
+      border-color: transparent transparent
+        map-get($theme, "tooltip", "background-color") transparent;
+    }
+  }
+  &--arrow.a-menu-base--left,
+  &--arrow.a-menu-base--left-top,
+  &--arrow.a-menu-base--left-bottom {
+    .a-menu-base__pointer {
+      border-color: transparent transparent transparent
+        map-get($theme, "tooltip", "background-color");
+    }
+  }
 }
 
 .a-tooltip {
@@ -13,7 +46,6 @@ $tooltip-color: map-get($mds-neutral, "neutral-1");
   line-height: $line-height;
   min-width: 75px;
   max-width: 200px;
-  background-color: $tooltip-bg;
   padding: 8px 12px;
   border-radius: $border-radius--lg;
   z-index: 8;
@@ -27,7 +59,6 @@ $tooltip-color: map-get($mds-neutral, "neutral-1");
       height: 0;
       border-style: solid;
       border-width: 8px 6px 0 6px;
-      border-color: $tooltip-bg transparent transparent transparent;
       position: absolute;
       bottom: -7px;
     }
@@ -42,7 +73,6 @@ $tooltip-color: map-get($mds-neutral, "neutral-1");
       height: 0;
       border-style: solid;
       border-width: 6px 8px 6px 0;
-      border-color: transparent $tooltip-bg transparent transparent;
       position: absolute;
       left: -7px;
     }
@@ -57,7 +87,6 @@ $tooltip-color: map-get($mds-neutral, "neutral-1");
       height: 0;
       border-style: solid;
       border-width: 0 6px 8px 6px;
-      border-color: transparent transparent $tooltip-bg transparent;
       position: absolute;
       top: -7px;
     }
@@ -72,7 +101,6 @@ $tooltip-color: map-get($mds-neutral, "neutral-1");
       height: 0;
       border-style: solid;
       border-width: 6px 0 6px 8px;
-      border-color: transparent transparent transparent $tooltip-bg;
       position: absolute;
       right: -7px;
     }

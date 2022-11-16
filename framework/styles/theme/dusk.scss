@@ -331,6 +331,9 @@ $atomic-dusk: (
     "icon-border-color": map-get($mds-dark-theme, "non-essential-lines"),
     "icon-bg-color": map-get($mds-neutral, "neutral-13")
   ),
+  "tooltip": (
+    "background-color": map-get($mds-neutral, "neutral-14")
+  ),
   "tree": (
     "color": map-get($mds-dark-theme, "default-text"),
     "background-color--hover": map-get($mds-neutral, "neutral-15")

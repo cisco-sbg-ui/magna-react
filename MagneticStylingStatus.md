@@ -61,8 +61,8 @@ Removed components that did not need updating from light theme round (51 -> 42)
 |      :x:       | ATextarea                     |           |
 |      :x:       | ATextInput                    |           |
 |      :x:       | ATimeline                     |           |
-|      :x:       | AToast                        |           |
-|      :x:       | ATooltip                      |    AJL    |
+|      :x:       | AToast                        |    AJL    |
+| :construction: | ATooltip                      |    AJL    |
 | :construction: | ATree                         |    AJL    |
 
 
