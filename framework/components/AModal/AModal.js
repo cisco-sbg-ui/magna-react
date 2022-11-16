@@ -1,18 +1,23 @@
 import {forwardRef, useContext, useRef} from "react";
 import ReactDOM from "react-dom";
+import PropTypes from "prop-types";
 
 import AAppContext from "../AApp/AAppContext";
 import APageOverlay from "../APageOverlay";
 import useFocusTrap from "../../hooks/useFocusTrap";
-import {allowBodyScroll, preventBodyScroll} from "../../utils/helpers";
+import {
+  allowBodyScroll,
+  handleMultipleRefs,
+  preventBodyScroll
+} from "../../utils/helpers";
 
 import "./AModal.scss";
 
 const AModal = forwardRef(
   (
     {
-      appendTo,
-      as,
+      appendTo = null,
+      as = "div",
       className: propsClassName,
       children,
       lockScroll = true,
@@ -23,10 +28,10 @@ const AModal = forwardRef(
     ref
   ) => {
     const {appRef} = useContext(AAppContext);
-    const Component = as || "div";
-    const modalRef = useRef();
+    const Component = as;
+    const _ref = useRef();
     useFocusTrap({
-      rootRef: modalRef,
+      rootRef: _ref,
       isEnabled: isOpen
     });
     isOpen && lockScroll
@@ -45,7 +50,11 @@ const AModal = forwardRef(
     if (withOverlay) {
       return ReactDOM.createPortal(
         <APageOverlay className={visibilityClass}>
-          <Component ref={modalRef} className={contentClassName} {...rest}>
+          <Component
+            ref={handleMultipleRefs(_ref, ref)}
+            className={contentClassName}
+            {...rest}
+          >
             {children}
           </Component>
         </APageOverlay>,
@@ -54,13 +63,52 @@ const AModal = forwardRef(
     }
 
     return ReactDOM.createPortal(
-      <Component className={contentClassName} ref={modalRef} {...rest}>
+      <Component
+        className={contentClassName}
+        ref={handleMultipleRefs(_ref, ref)}
+        {...rest}
+      >
         {children}
       </Component>,
       appendTo || appRef.current
     );
   }
 );
+
+AModal.propTypes = {
+  /**
+   * Where the modal node should be appended to in the DOM.
+   */
+  appendTo: PropTypes.elementType,
+
+  /**
+   * Sets the base component.
+   */
+  as: PropTypes.elementType,
+
+  /**
+   * String representing class names to be passed to modal content container,
+   * i.e., _not_ on the page overlay element.
+   */
+  className: PropTypes.string,
+
+  /**
+   * Prevents the user from scrolling when the modal is open.
+   */
+  lockScroll: PropTypes.bool,
+
+  /**
+   * Renders the modal with a backdrop over the content behind the modal.
+   * To render your own custom backdrop, specify `withOverlay` as false,
+   * and render your own overlay as a child to the Modal content.
+   */
+  withOverlay: PropTypes.bool,
+
+  /**
+   * Determines if the modal is opened or closed.
+   */
+  isOpen: PropTypes.bool
+};
 
 AModal.displayName = "AModal";
 
