@@ -1,18 +1,18 @@
 import {useCallback, useEffect} from "react";
 
 const useEscapeKeydown = (options) => {
-  const {isEnabled, onClick} = options;
+  const {isEnabled, onKeydown} = options;
 
   const detectEscKeydown = useCallback(
     (e) => {
       const key = e.key;
       if (key === "Escape") {
-        if (typeof onClick === "function") {
-          onClick(e);
+        if (typeof onKeydown === "function") {
+          onKeydown(e);
         }
       }
     },
-    [onClick]
+    [onKeydown]
   );
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const useEscapeKeydown = (options) => {
     return () => {
       window.removeEventListener("keydown", detectEscKeydown);
     };
-  }, [isEnabled, onClick, detectEscKeydown]);
+  }, [isEnabled, onKeydown, detectEscKeydown]);
 };
 
 export default useEscapeKeydown;

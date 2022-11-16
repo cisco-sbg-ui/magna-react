@@ -26,7 +26,7 @@ You can change this behavior to have `ADrawer` render inside your own specified 
     const [isLeftOpen, setIsLeftOpen] = useState(false);
     useEscapeKeydown({
       isEnabled: isLeftOpen,
-      onClick: () => setIsLeftOpen(false)
+      onKeydown: () => setIsLeftOpen(false)
     });
     useOutsideClick({
       rootRef: leftDrawerContentRef,
@@ -38,7 +38,7 @@ You can change this behavior to have `ADrawer` render inside your own specified 
     const [isRightOpen, setIsRightOpen] = useState(false);
     useEscapeKeydown({
       isEnabled: isRightOpen,
-      onClick: () => setIsRightOpen(false)
+      onKeydown: () => setIsRightOpen(false)
     });
     useOutsideClick({
       rootRef: rightDrawerContentRef,
@@ -50,7 +50,7 @@ You can change this behavior to have `ADrawer` render inside your own specified 
     const [isBottomOpen, setIsBottomOpen] = useState(false);
     useEscapeKeydown({
       isEnabled: isBottomOpen,
-      onClick: () => setIsBottomOpen(false)
+      onKeydown: () => setIsBottomOpen(false)
     })
     useOutsideClick({
       rootRef: bottomDrawerContentRef,
@@ -96,7 +96,7 @@ You can change this behavior to have `ADrawer` render inside your own specified 
     const [modalOpen, setModalOpen] = useState(false);
     useEscapeKeydown({
       isEnabled: modalOpen,
-      onClick: () => setModalOpen(false)
+      onKeydown: () => setModalOpen(false)
     });
     useOutsideClick({
       rootRef: modalContentRef,
@@ -108,7 +108,7 @@ You can change this behavior to have `ADrawer` render inside your own specified 
     const [nonModalOpen, setNonModalOpen] = useState(false);
     useEscapeKeydown({
       isEnabled: nonModalOpen,
-      onClick: () => setNonModalOpen(false)
+      onKeydown: () => setNonModalOpen(false)
     });
     useOutsideClick({
       rootRef: nonModalContentRef,
