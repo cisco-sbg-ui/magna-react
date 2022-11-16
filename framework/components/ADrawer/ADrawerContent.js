@@ -6,4 +6,6 @@ const ADrawerContent = ({children}) => {
   return <div className="drawer__content">{children}</div>;
 };
 
+ADrawerContent.displayName = "ADrawerContent";
+
 export default ADrawerContent;
