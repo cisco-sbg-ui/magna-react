@@ -13,10 +13,13 @@ const ADrawer = forwardRef(
       className: propsClassName,
       children,
       contained = false,
+      openWidth,
       inline = false,
       isOpen,
       slideIn = "left",
       slim = false,
+      slimWidth,
+      style: propsStyle,
       ...rest
     },
     ref
@@ -25,6 +28,7 @@ const ADrawer = forwardRef(
     const orientation =
       slideIn === "bottom" || slideIn === "top" ? "horizontal" : "vertical";
     let className = `drawer drawer--${orientation} drawer--${slideIn}`;
+    const style = {...propsStyle};
 
     if (inline) {
       className += ` drawer--inline`;
@@ -34,9 +38,15 @@ const ADrawer = forwardRef(
     }
     if (slim) {
       className += ` drawer--slim`;
+
+      if (slimWidth) {
+        style.width = slimWidth;
+      }
     }
     if (!isOpen) {
       className += ` drawer--hidden`;
+    } else if (!slim && openWidth) {
+      style.width = openWidth;
     }
     if (propsClassName) {
       className += ` ${propsClassName}`;
@@ -49,6 +59,7 @@ const ADrawer = forwardRef(
           isOpen={isOpen}
           ref={ref}
           className={className}
+          style={style}
         >
           {children}
         </DrawerPanelComponent>
@@ -62,6 +73,7 @@ const ADrawer = forwardRef(
           isOpen={isOpen}
           ref={ref}
           className={className}
+          style={style}
         >
           {children}
         </DrawerPanelComponent>
@@ -89,25 +101,25 @@ ADrawer.propTypes = {
   className: PropTypes.string,
 
   /**
-   * TLDR; Positions the drawer as absolute instead of fixed.
+   * [Short version] Positions the drawer as `absolute` instead of `fixed` [/End short version]
    *
    * Determines if the Drawer should be contained within a parent.
    * This can be useful in situations where the drawer should _not_
    * take up the entire screen, but rather, only fly-open within a subset
    * of the page.
    *
-   * An example is a drawer that should render underneath a fixed navigation bar.
+   * An example is a drawer that should render underneath a `fixed` navigation bar.
    */
   contained: PropTypes.bool,
 
   /**
-   * TLDR; Positions the drawer as 'relative' instead of absolute or fixed.
+   * [Short version] Positions the drawer as `relative` instead of `absolute` or `fixed` [/End short version]
    *
    * Determines if the Drawer should render as an inline element with
    * its siblings. The implications are that content surrounding the drawer
-   * will move relative to the drawer's opened/close states.
+   * will move in respect to the drawer's opened/close states.
    *
-   * An example is a drawer that should render underneath a fixed navigation bar
+   * An example is a drawer that should render underneath a `fixed` navigation bar
    * _and_ should push content to the side as it opens.
    */
   inline: PropTypes.bool,
@@ -121,6 +133,13 @@ ADrawer.propTypes = {
   isOpen: PropTypes.bool,
 
   /**
+   * The width of the drawer when it is opened (assuming is is not
+   * being rendered with the slim variant). If not specified, defaults
+   * to 400px.
+   */
+  openWidth: PropTypes.string,
+
+  /**
    * The direction in which the drawer should slide-in from.
    */
   slideIn: PropTypes.oneOf(["left", "right", "bottom"]),
@@ -130,7 +149,13 @@ ADrawer.propTypes = {
    * is 50px, but you can update this using a maxWidth CSS property on the drawer
    * (either via. style prop or a custom class).
    */
-  slim: PropTypes.bool
+  slim: PropTypes.bool,
+
+  /**
+   * The width of the drawer when it is rendered as slim. If not specified,
+   * it defaults to 50px.
+   */
+  slimWidth: PropTypes.string
 };
 
 ADrawer.displayName = "ADrawer";

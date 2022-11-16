@@ -207,6 +207,23 @@ You can change this behavior to have `ADrawer` render inside your own specified 
   }`}
 />
 
+### Slim Drawer
+
+<Playground
+  code={`() => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [showSlim, setShowSlim] = useState(false);
+    return (
+      <>
+        <AButton onClick={() => setIsOpen(prevState => !prevState)}>Toggle</AButton>
+        <ADrawer slimWidth='150px' openWidth='700px' asModal={false} isOpen={isOpen} slim={showSlim}>
+          <AButton onClick={() => setShowSlim(prevState => !prevState)}>Toggle Slim</AButton>
+        </ADrawer>
+      </>
+    )
+  }`}
+/>
+
 ### Self Contained Drawer
 
 <Playground
@@ -281,10 +298,10 @@ You can change this behavior to have `ADrawer` render inside your own specified 
           <ACol cols='auto' className='pa-0'>
             <ADrawer
                 className='grey--lighten-6'
-                style={{maxWidth: '150px'}}
                 asModal={false}
                 inline
                 isOpen
+                openWidth='150px'
                 slim={isSlim}>
               <AList className='grey--lighten-6' style={{border: 'none'}}>
                 <AListItem twoLine href="#" target="_blank">
