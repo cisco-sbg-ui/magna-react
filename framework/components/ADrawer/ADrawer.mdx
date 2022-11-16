@@ -24,38 +24,26 @@ You can change this behavior to have `ADrawer` render inside your own specified 
   code={`() => {
     const leftDrawerContentRef = useRef();
     const [isLeftOpen, setIsLeftOpen] = useState(false);
-    useEscapeKeydown({
+    usePopupQuickExit({
+      popupRef: leftDrawerContentRef,
       isEnabled: isLeftOpen,
-      onKeydown: () => setIsLeftOpen(false)
-    });
-    useOutsideClick({
-      rootRef: leftDrawerContentRef,
-      isEnabled: isLeftOpen,
-      onClick: () => setIsLeftOpen(false)
+      onExit: () => setIsLeftOpen(false)
     });
     
     const rightDrawerContentRef = useRef();
     const [isRightOpen, setIsRightOpen] = useState(false);
-    useEscapeKeydown({
+    usePopupQuickExit({
+      popupRef: rightDrawerContentRef,
       isEnabled: isRightOpen,
-      onKeydown: () => setIsRightOpen(false)
-    });
-    useOutsideClick({
-      rootRef: rightDrawerContentRef,
-      isEnabled: isRightOpen,
-      onClick: () => setIsRightOpen(false)
+      onExit: () => setIsRightOpen(false)
     });
     
     const bottomDrawerContentRef = useRef();
     const [isBottomOpen, setIsBottomOpen] = useState(false);
-    useEscapeKeydown({
+    usePopupQuickExit({
+      popupRef: bottomDrawerContentRef,
       isEnabled: isBottomOpen,
-      onKeydown: () => setIsBottomOpen(false)
-    })
-    useOutsideClick({
-      rootRef: bottomDrawerContentRef,
-      isEnabled: isBottomOpen,
-      onClick: () => setIsBottomOpen(false)
+      onExit: () => setIsBottomOpen(false)
     });
     
     return (
@@ -94,26 +82,18 @@ You can change this behavior to have `ADrawer` render inside your own specified 
   code={`() => {
     const modalContentRef = useRef();
     const [modalOpen, setModalOpen] = useState(false);
-    useEscapeKeydown({
+    usePopupQuickExit({
+      popupRef: modalContentRef,
       isEnabled: modalOpen,
-      onKeydown: () => setModalOpen(false)
-    });
-    useOutsideClick({
-      rootRef: modalContentRef,
-      isEnabled: modalOpen,
-      onClick: () => setModalOpen(false)
+      onExit: () => setModalOpen(false)
     });
     
     const nonModalContentRef = useRef();
     const [nonModalOpen, setNonModalOpen] = useState(false);
-    useEscapeKeydown({
+    usePopupQuickExit({
+      popupRef: nonModalContentRef,
       isEnabled: nonModalOpen,
-      onKeydown: () => setNonModalOpen(false)
-    });
-    useOutsideClick({
-      rootRef: nonModalContentRef,
-      isEnabled: nonModalOpen,
-      onClick: () => setNonModalOpen(false)
+      onExit: () => setNonModalOpen(false)
     });
     
     return (
@@ -214,10 +194,10 @@ You can change this behavior to have `ADrawer` render inside your own specified 
     const toolbarRef = useRef();
     const [isOpen, setIsOpen] = useState(false);
     const [isSlim, setIsSlim] = useState(true);
-    useOutsideClick({
-      rootRef: toolbarRef,
+    usePopupQuickExit({
+      popupRef: toolbarRef,
       isEnabled: isOpen,
-      onClick: () => setIsOpen(false)
+      onExit: () => setIsOpen(false)
     });
     return (
       <>
@@ -254,11 +234,17 @@ You can change this behavior to have `ADrawer` render inside your own specified 
   }`}
 />
 
-### Self Contained Drawer
+### Toggled Sidebar
 
 <Playground
   code={`() => {
+    const drawerRef = useRef();
     const [isOpen, setIsOpen] = useState(false);
+    usePopupQuickExit({
+      popupRef: drawerRef,
+      isEnabled: isOpen,
+      onExit: () => setIsOpen(false)
+    })
     return (
       <AContainer>
         <ARow className="mb-0 grey--darken-7 white--text">
@@ -273,6 +259,7 @@ You can change this behavior to have `ADrawer` render inside your own specified 
         <ARow style={{position: 'relative', overflow: 'hidden'}}>
           <ACol cols='auto' className='pa-0'>
             <ADrawer
+                ref={drawerRef}
                 className='grey--lighten-6'
                 style={{maxWidth: '150px'}}
                 asModal={false}
@@ -307,12 +294,18 @@ You can change this behavior to have `ADrawer` render inside your own specified 
   }`}
 />
 
-### Inline Drawer
+### Persistent, Slim Sidebar
 
 <Playground
   code={`() => {
-    const [open, setOpen] = useState(false);
+    const sidebarRef = useRef();
+    const [isOpen, setIsOpen] = useState(false);
     const [isSlim, setIsSlim] = useState(true);
+    usePopupQuickExit({
+      popupRef: sidebarRef,
+      isEnabled: isOpen,
+      onExit: () => setIsOpen(false)
+    })
     return (
       <AContainer>
         <ARow className="mb-0 grey--darken-7 white--text">
@@ -327,6 +320,7 @@ You can change this behavior to have `ADrawer` render inside your own specified 
         <ARow>
           <ACol cols='auto' className='pa-0'>
             <ADrawer
+                ref={sidebarRef}
                 className='grey--lighten-6'
                 asModal={false}
                 inline
@@ -367,8 +361,14 @@ You can change this behavior to have `ADrawer` render inside your own specified 
 
 <Playground
   code={`() => {
+    const moreDetailsRef = useRef();
     const [incidentDetailsOpen, setIncidentDetailsOpen] = useState(false);
     const [isSlim, setIsSlim] = useState(true);
+    usePopupQuickExit({
+      popupRef: moreDetailsRef,
+      isEnabled: incidentDetailsOpen,
+      onExit: () => setIncidentDetailsOpen(false)
+    })
     return (
       <AApp>
       <AContainer>

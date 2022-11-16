@@ -21,15 +21,11 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
   code={`() => {
     const [open, setOpen] = useState(false);
     const ref = useRef();
-    useEscapeKeydown({
+    usePopupQuickExit({
+      popupRef: ref,
       isEnabled: open,
-      onKeydown: () => setOpen(false)
-    })
-    useOutsideClick({
-      rootRef: ref,
-      isEnabled: open,
-      onClick: () => setOpen(false)
-    })
+      onExit: () => setOpen(false)
+    });
     return (
       <div>
         <AButton
@@ -38,13 +34,13 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
         </AButton>
         <AModal
             isOpen={open}>
-          <DemoModalContent rootRef={ref} onClose={() => setOpen(false)} />
+          <DemoModalContent modalContentRef={ref} onClose={() => setOpen(false)} />
         </AModal>
       </div>
     )
-  function DemoModalContent({ rootRef, onClose }) {
+  function DemoModalContent({ modalContentRef, onClose }) {
     return (
-      <APanel ref={rootRef} style={{ minWidth: '400px' }} type="dialog">
+      <APanel ref={modalContentRef} style={{ minWidth: '400px' }} type="dialog">
         <APanelHeader>
           <APanelTitle>Modal</APanelTitle>
           <AButton onClick={onClose} tertiaryAlt icon>
@@ -70,6 +66,12 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
   fullWidthPreview
   code={`() => {
     const [open, setOpen] = useState(false);
+    const ref = useRef();
+    usePopupQuickExit({
+      popupRef: ref,
+      isEnabled: open,
+      onExit: () => setOpen(false)
+    });
     return (
       <div>
         <AButton
@@ -79,13 +81,13 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
         <AModal
             withOverlay={false}
             isOpen={open}>
-          <DemoModalContent onClose={() => setOpen(false)} />
+          <DemoModalContent modalContentRef={ref} onClose={() => setOpen(false)} />
         </AModal>
       </div>
     )
-  function DemoModalContent({ onClose }) {
+  function DemoModalContent({ modalContentRef, onClose }) {
     return (
-      <APanel style={{ minWidth: '400px' }} type="dialog">
+      <APanel ref={modalContentRef} style={{ minWidth: '400px' }} type="dialog">
         <APanelHeader>
           <APanelTitle>Modal</APanelTitle>
           <AButton onClick={onClose} tertiaryAlt icon>
@@ -111,6 +113,12 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
   fullWidthPreview
   code={`() => {
     const [open, setOpen] = useState(false);
+    const ref = useRef();
+    usePopupQuickExit({
+      popupRef: ref,
+      isEnabled: open,
+      onExit: () => setOpen(false)
+    });
     return (
       <div>
         <AButton onClick={() => setOpen(true)}>Open Dialog 1</AButton>
@@ -118,7 +126,7 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
             lockScroll={false}
             withOverlay={false}
             isOpen={open}>
-          <APanel type="dialog">
+          <APanel ref={ref} type="dialog">
             <APanelHeader>
               <APanelTitle>Feature: Panels</APanelTitle>
               <AButton onClick={() => setOpen(false)} tertiaryAlt icon>
@@ -141,28 +149,28 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
 
 <Playground
   code={`() => {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const ref = useRef();
+  usePopupQuickExit({
+    popupRef: ref,
+    isEnabled: open,
+    onExit: () => setOpen(false)
+  });
   return (
     <>
-      <AButton onClick={() => setModalOpen(true)}>Start</AButton>
-      <AModal isOpen={modalOpen}>
-        <APageOverlay
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'}}>
-          <APanel style={{width: '700px'}}>
-            <APanelHeader>
-              <APanelTitle>Embedded Form</APanelTitle>
-              <AButton onClick={() => setModalOpen(false)} tertiaryAlt icon>
-                <AIcon>close</AIcon>
-              </AButton>
-            </APanelHeader>
-            <APanelBody>
-              <FormContent />
-            </APanelBody>
-          </APanel>
-        </APageOverlay>
+      <AButton onClick={() => setOpen(true)}>Start</AButton>
+      <AModal isOpen={open}>
+        <APanel ref={ref} style={{width: '700px'}}>
+          <APanelHeader>
+            <APanelTitle>Embedded Form</APanelTitle>
+            <AButton onClick={() => setOpen(false)} tertiaryAlt icon>
+              <AIcon>close</AIcon>
+            </AButton>
+          </APanelHeader>
+          <APanelBody>
+            <FormContent />
+          </APanelBody>
+        </APanel>
       </AModal>
     </>
   );

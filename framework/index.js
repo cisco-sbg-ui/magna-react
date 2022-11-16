@@ -92,6 +92,7 @@ import {useAToaster, AToastPlate} from "./components/AToaster";
 import useEscapeKeydown from "./hooks/useEscapeKeydown";
 import useFocusTrap from "./hooks/useFocusTrap";
 import useOutsideClick from "./hooks/useOutsideClick";
+import usePopupQuickExit from "./hooks/usePopupQuickExit";
 
 export {
   AAccordion,
@@ -189,5 +190,6 @@ export {
   useAToaster,
   useEscapeKeydown,
   useFocusTrap,
-  useOutsideClick
+  useOutsideClick,
+  usePopupQuickExit
 };
