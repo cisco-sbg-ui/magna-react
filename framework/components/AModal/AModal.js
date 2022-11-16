@@ -1,4 +1,4 @@
-import {forwardRef, useContext, useRef} from "react";
+import {forwardRef, useContext, useEffect, useRef} from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 
@@ -34,9 +34,9 @@ const AModal = forwardRef(
       rootRef: _ref,
       isEnabled: isOpen
     });
-    isOpen && lockScroll
-      ? preventBodyScroll(appRef.current)
-      : allowBodyScroll(appRef.current);
+    useEffect(() => {
+      isOpen && lockScroll ? preventBodyScroll() : allowBodyScroll();
+    }, [lockScroll, isOpen]);
     let visibilityClass = "";
     if (!isOpen) {
       visibilityClass = "modal--hidden";
