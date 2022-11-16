@@ -64,7 +64,7 @@ You can change this behavior to have `ADrawer` render inside your own specified 
         <AButton onClick={() => setIsLeftOpen(true)}>Open Left</AButton>
         <ADrawer ref={leftDrawerContentRef} isOpen={isLeftOpen}>
           <ADrawerContent>
-            Left Drawer <AButton onClick={() => setIsLeftOpen(false)}>Close</AButton>
+            <h3>Left Drawer</h3> <ADivider /> <AButton onClick={() => setIsLeftOpen(false)}>Close</AButton>
           </ADrawerContent>
         </ADrawer>
         
@@ -72,7 +72,7 @@ You can change this behavior to have `ADrawer` render inside your own specified 
         <AButton onClick={() => setIsRightOpen(true)}>Open Right</AButton>
         <ADrawer ref={rightDrawerContentRef} slideIn='right' isOpen={isRightOpen}>
           <ADrawerContent>
-            Right Drawer <AButton onClick={() => setIsRightOpen(false)}>Close</AButton>
+            <h3>Right Drawer</h3> <ADivider /> <AButton onClick={() => setIsRightOpen(false)}>Close</AButton>
           </ADrawerContent>
         </ADrawer>
         
@@ -80,7 +80,7 @@ You can change this behavior to have `ADrawer` render inside your own specified 
         <AButton onClick={() => setIsBottomOpen(true)}>Open Bottom</AButton>
         <ADrawer ref={bottomDrawerContentRef} slideIn='bottom' isOpen={isBottomOpen}>
           <ADrawerContent>
-            Bottom Drawer <AButton onClick={() => setIsBottomOpen(false)}>Close</AButton>
+            <h3>Bottom Drawer</h3> <ADivider /> <AButton onClick={() => setIsBottomOpen(false)}>Close</AButton>
           </ADrawerContent>    
         </ADrawer>
       </>
@@ -211,13 +211,43 @@ You can change this behavior to have `ADrawer` render inside your own specified 
 
 <Playground
   code={`() => {
+    const toolbarRef = useRef();
     const [isOpen, setIsOpen] = useState(false);
-    const [showSlim, setShowSlim] = useState(false);
+    const [isSlim, setIsSlim] = useState(true);
+    useOutsideClick({
+      rootRef: toolbarRef,
+      isEnabled: isOpen,
+      onClick: () => setIsOpen(false)
+    });
     return (
       <>
-        <AButton onClick={() => setIsOpen(prevState => !prevState)}>Toggle</AButton>
-        <ADrawer slimWidth='150px' openWidth='700px' asModal={false} isOpen={isOpen} slim={showSlim}>
-          <AButton onClick={() => setShowSlim(prevState => !prevState)}>Toggle Slim</AButton>
+        <AButton onClick={() => setIsOpen(prevState => !prevState)}>{isOpen ? 'Close' : 'Open'} Toolbar</AButton>
+        <ADrawer ref={toolbarRef} openWidth='250px' asModal={false} isOpen={isOpen} slim={isSlim}>
+          <AList style={{background: 'transparent', border: 'none'}}>
+            <AListItem twoLine>
+              <AListItemAvatar>
+                <AIcon onClick={() => setIsSlim(prevState => !prevState)} iconSet="magna">{isSlim ? 'caretRight' : 'caretLeft'}</AIcon>
+              </AListItemAvatar>
+            </AListItem>
+            <AListItem twoLine>
+              <AListItemAvatar>
+                <AIcon iconSet='magna'>envelopeSimple</AIcon>
+                <div className='ml-4'>Inbox</div>
+              </AListItemAvatar>
+            </AListItem>
+            <AListItem twoLine>
+              <AListItemAvatar>
+                <AIcon iconSet='magna'>uploadSimple</AIcon>
+                <div className='ml-4'>Sent</div>
+              </AListItemAvatar>
+            </AListItem>
+            <AListItem twoLine>
+              <AListItemAvatar>
+                <AIcon iconSet='magna'>trash</AIcon>
+                <div className='ml-4'>Trash</div>
+              </AListItemAvatar>
+            </AListItem>
+          </AList>
         </ADrawer>
       </>
     )
@@ -233,7 +263,7 @@ You can change this behavior to have `ADrawer` render inside your own specified 
       <AContainer>
         <ARow className="mb-0 grey--darken-7 white--text">
           <ACol>
-            <AIcon onClick={() => setIsOpen(prevState => !prevState)} style={{cursor: 'pointer'}} size='small'>{isOpen ? 'chevron-right' : 'chevron-left'}</AIcon>
+            <AIcon iconSet="magna" onClick={() => setIsOpen(prevState => !prevState)} style={{cursor: 'pointer'}} size='small'>{isOpen ? 'caretLeft' : 'caretRight'}</AIcon>
           </ACol>
           <ASpacer />
           <ACol className="d-flex align-center justify-end">
@@ -287,7 +317,7 @@ You can change this behavior to have `ADrawer` render inside your own specified 
       <AContainer>
         <ARow className="mb-0 grey--darken-7 white--text">
           <ACol>
-            <AIcon onClick={() => setIsSlim(prevState => !prevState)} style={{cursor: 'pointer'}} size='small'>{isSlim ? 'chevron-right' : 'chevron-left'}</AIcon>
+            <AIcon iconSet="magna" onClick={() => setIsSlim(prevState => !prevState)} style={{cursor: 'pointer'}} size='small'>{isSlim ? 'caretRight' : 'caretLeft'}</AIcon>
           </ACol>
           <ASpacer />
           <ACol className="d-flex align-center justify-end">
@@ -301,6 +331,7 @@ You can change this behavior to have `ADrawer` render inside your own specified 
                 asModal={false}
                 inline
                 isOpen
+                slimWidth='50px'
                 openWidth='150px'
                 slim={isSlim}>
               <AList className='grey--lighten-6' style={{border: 'none'}}>
@@ -332,7 +363,7 @@ You can change this behavior to have `ADrawer` render inside your own specified 
   }`}
 />
 
-### Actionable Drawer
+### More Details Drawer
 
 <Playground
   code={`() => {
@@ -354,10 +385,11 @@ You can change this behavior to have `ADrawer` render inside your own specified 
           <ACol cols='auto' className='pa-0'>
             <ADrawer
                 className='grey--lighten-6'
-                style={{maxWidth: '150px'}}
                 asModal={false}
                 inline
                 isOpen
+                slimWidth='50px'
+                openWidth='150px'
                 slim={isSlim}>
               <AList className='grey--lighten-6' style={{border: 'none'}}>
                 <AListItem twoLine href="#" target="_blank">
