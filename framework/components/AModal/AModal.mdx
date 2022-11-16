@@ -20,6 +20,16 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
   fullWidthPreview
   code={`() => {
     const [open, setOpen] = useState(false);
+    const ref = useRef();
+    useEscapeKeydown({
+      isEnabled: open,
+      onClick: () => setOpen(false)
+    })
+    useOutsideClick({
+      rootRef: ref,
+      isEnabled: open,
+      onClick: () => setOpen(false)
+    })
     return (
       <div>
         <AButton
@@ -28,13 +38,13 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
         </AButton>
         <AModal
             isOpen={open}>
-          <DemoModalContent onClose={() => setOpen(false)} />
+          <DemoModalContent rootRef={ref} onClose={() => setOpen(false)} />
         </AModal>
       </div>
     )
-  function DemoModalContent({ onClose }) {
+  function DemoModalContent({ rootRef, onClose }) {
     return (
-      <APanel style={{ minWidth: '400px' }} type="dialog">
+      <APanel ref={rootRef} style={{ minWidth: '400px' }} type="dialog">
         <APanelHeader>
           <APanelTitle>Modal</APanelTitle>
           <AButton onClick={onClose} tertiaryAlt icon>

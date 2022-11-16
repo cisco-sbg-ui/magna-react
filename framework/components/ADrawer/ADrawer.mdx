@@ -22,33 +22,65 @@ You can change this behavior to have `ADrawer` render inside your own specified 
 
 <Playground
   code={`() => {
+    const leftDrawerContentRef = useRef();
     const [isLeftOpen, setIsLeftOpen] = useState(false);
+    useEscapeKeydown({
+      isEnabled: isLeftOpen,
+      onClick: () => setIsLeftOpen(false)
+    });
+    useOutsideClick({
+      rootRef: leftDrawerContentRef,
+      isEnabled: isLeftOpen,
+      onClick: () => setIsLeftOpen(false)
+    });
+    
+    const rightDrawerContentRef = useRef();
     const [isRightOpen, setIsRightOpen] = useState(false);
+    useEscapeKeydown({
+      isEnabled: isRightOpen,
+      onClick: () => setIsRightOpen(false)
+    });
+    useOutsideClick({
+      rootRef: rightDrawerContentRef,
+      isEnabled: isRightOpen,
+      onClick: () => setIsRightOpen(false)
+    });
+    
+    const bottomDrawerContentRef = useRef();
     const [isBottomOpen, setIsBottomOpen] = useState(false);
+    useEscapeKeydown({
+      isEnabled: isBottomOpen,
+      onClick: () => setIsBottomOpen(false)
+    })
+    useOutsideClick({
+      rootRef: bottomDrawerContentRef,
+      isEnabled: isBottomOpen,
+      onClick: () => setIsBottomOpen(false)
+    });
     
     return (
       <>
         <p>Left slide-in</p>
         <AButton onClick={() => setIsLeftOpen(true)}>Open Left</AButton>
-        <ADrawer isOpen={isLeftOpen}>
+        <ADrawer ref={leftDrawerContentRef} isOpen={isLeftOpen}>
           <ADrawerContent>
-            Left Drawer <button onClick={() => setIsLeftOpen(false)}>x</button>
+            Left Drawer <AButton onClick={() => setIsLeftOpen(false)}>Close</AButton>
           </ADrawerContent>
         </ADrawer>
         
         <p>Right slide-in</p>
         <AButton onClick={() => setIsRightOpen(true)}>Open Right</AButton>
-        <ADrawer slideIn='right' isOpen={isRightOpen}>
+        <ADrawer ref={rightDrawerContentRef} slideIn='right' isOpen={isRightOpen}>
           <ADrawerContent>
-            Right Drawer <button onClick={() => setIsRightOpen(false)}>x</button>
+            Right Drawer <AButton onClick={() => setIsRightOpen(false)}>Close</AButton>
           </ADrawerContent>
         </ADrawer>
         
         <p>Bottom slide-in</p>
         <AButton onClick={() => setIsBottomOpen(true)}>Open Bottom</AButton>
-        <ADrawer slideIn='bottom' isOpen={isBottomOpen}>
+        <ADrawer ref={bottomDrawerContentRef} slideIn='bottom' isOpen={isBottomOpen}>
           <ADrawerContent>
-            Bottom Drawer <button onClick={() => setIsBottomOpen(false)}>x</button>
+            Bottom Drawer <AButton onClick={() => setIsBottomOpen(false)}>Close</AButton>
           </ADrawerContent>    
         </ADrawer>
       </>
@@ -60,8 +92,30 @@ You can change this behavior to have `ADrawer` render inside your own specified 
 
 <Playground
   code={`() => {
+    const modalContentRef = useRef();
     const [modalOpen, setModalOpen] = useState(false);
+    useEscapeKeydown({
+      isEnabled: modalOpen,
+      onClick: () => setModalOpen(false)
+    });
+    useOutsideClick({
+      rootRef: modalContentRef,
+      isEnabled: modalOpen,
+      onClick: () => setModalOpen(false)
+    });
+    
+    const nonModalContentRef = useRef();
     const [nonModalOpen, setNonModalOpen] = useState(false);
+    useEscapeKeydown({
+      isEnabled: nonModalOpen,
+      onClick: () => setNonModalOpen(false)
+    });
+    useOutsideClick({
+      rootRef: nonModalContentRef,
+      isEnabled: nonModalOpen,
+      onClick: () => setNonModalOpen(false)
+    });
+    
     return (
       <>
         <p>Modal Drawer</p>
@@ -71,10 +125,11 @@ You can change this behavior to have `ADrawer` render inside your own specified 
           Open
         </AButton>
         <ADrawer
+            ref={modalContentRef}
             asModal={true}
             isOpen={modalOpen}
             slideIn='right'>
-          <MockDrawerContent onClose={() => setModalOpen(false)} />
+            <MockDrawerContent onClose={() => setModalOpen(false)} />
         </ADrawer>
         
         <p>Non-Modal Drawer</p>
@@ -84,6 +139,7 @@ You can change this behavior to have `ADrawer` render inside your own specified 
             Toggle
         </AButton>
         <ADrawer
+            ref={nonModalContentRef}
             asModal={false}
             isOpen={nonModalOpen}
             slideIn='right'>
