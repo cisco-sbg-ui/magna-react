@@ -89,6 +89,9 @@ import ATooltip from "./components/ATooltip";
 import ATree from "./components/ATree";
 import {useABreakpoint} from "./components/ABreakpoint";
 import {useAToaster, AToastPlate} from "./components/AToaster";
+import useEscapeKeydown from "./hooks/useEscapeKeydown";
+import useFocusTrap from "./hooks/useFocusTrap";
+import useOutsideClick from "./hooks/useOutsideClick";
 
 export {
   AAccordion,
@@ -183,5 +186,8 @@ export {
   useADateRange,
   useAAutoTheme,
   useATheme,
-  useAToaster
+  useAToaster,
+  useEscapeKeydown,
+  useFocusTrap,
+  useOutsideClick
 };
