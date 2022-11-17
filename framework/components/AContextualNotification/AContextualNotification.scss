@@ -12,6 +12,50 @@ $context-arrow-left: 10%;
 @include theme(a-context) using ($theme) {
   color: map-deep-get($theme, "label", "color");
   background-color: map-deep-get($theme, "control", "fill-color");
+  .icon-text {
+    fill: map-deep-get($theme, "control", "fill-color");
+  }
+  &--state-success {
+    border-color: map-deep-get($theme, "control", "success-color");
+
+    .a-context__icon {
+      color: $color-good;
+    }
+    .icon-bg {
+      fill: map-deep-get($theme, "control", "success-color");
+    }
+  }
+  &--state-info {
+    border-color: map-deep-get($theme, "control", "info-color");
+
+    .a-context__icon {
+      color: $color-information;
+    }
+
+    .icon-bg {
+      fill: map-deep-get($theme, "control", "info-color");
+    }
+  }
+  &--state-warning {
+    border-color: map-deep-get($theme, "control", "warning-color");
+
+    .a-context__icon {
+      color: $color-warning;
+    }
+    .icon-bg {
+      fill: map-deep-get($theme, "control", "warning-color");
+    }
+  }
+  &--state-danger {
+    border-color: map-deep-get($theme, "control", "error-color");
+
+    .a-context__icon {
+      color: $color-error;
+    }
+    .icon-bg {
+      fill: map-deep-get($theme, "control", "error-color");
+    }
+  }
 }
 
 .a-context {
@@ -29,34 +73,5 @@ $context-arrow-left: 10%;
     margin: $context-icon-margin;
     height: 14px;
     width: 14px;
-  }
-
-  &--state-warning {
-    border-color: $color-warning;
-
-    .a-context__icon {
-      color: $color-warning;
-    }
-  }
-  &--state-danger {
-    border-color: $color-error;
-
-    .a-context__icon {
-      color: $color-error;
-    }
-  }
-  &--state-success {
-    border-color: $color-good;
-
-    .a-context__icon {
-      color: $color-good;
-    }
-  }
-  &--state-info {
-    border-color: $color-information;
-
-    .a-context__icon {
-      color: $color-information;
-    }
   }
 }

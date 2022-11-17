@@ -170,7 +170,7 @@ $atomic-default: (
     "error--state-hover": map-get($mds-light-theme, "status-negative")
   ),
   "control": (
-    "fill-color": $white,
+    "fill-color": map-get($mds-neutral, "neutral-1"),
     "fill-color--disabled": map-get($mds-light-theme, "multipurpose-gray"),
     "stroke-color": map-get($mds-neutral, "neutral-4"),
     "warning-color": map-get($mds-light-theme, "status-warning"),

@@ -14,31 +14,35 @@ $toast-icon-font-size: $font-size;
   background: map-deep-get($theme, "control", "fill-color");
   border-color: map-deep-get($theme, "control", "stroke-color");
 
+  .icon-text {
+    fill: map-deep-get($theme, "control", "fill-color");
+  }
+
   &--success {
-    border-left-color: $color-good;
-    .a-toast__icon {
-      color: $color-good;
+    border-left-color: map-deep-get($theme, "control", "success-color");
+    .icon-bg {
+      fill: map-deep-get($theme, "control", "success-color");
     }
   }
 
   &--warning {
-    border-left-color: $color-warning;
-    .a-toast__icon {
-      color: $color-warning;
+    border-left-color: map-deep-get($theme, "control", "warning-color");
+    .icon-bg {
+      fill: map-deep-get($theme, "control", "warning-color");
     }
   }
 
   &--danger {
-    border-left-color: $color-error;
-    .a-toast__icon {
-      color: $color-error;
+    border-left-color: map-deep-get($theme, "control", "error-color");
+    .icon-bg {
+      fill: map-deep-get($theme, "control", "error-color");
     }
   }
 
   &--information {
-    border-left-color: $color-information;
-    .a-toast__icon {
-      color: $color-information;
+    border-left-color: map-deep-get($theme, "control", "info-color");
+    .icon-bg {
+      fill: map-deep-get($theme, "control", "info-color");
     }
   }
 }
@@ -48,7 +52,7 @@ $toast-icon-font-size: $font-size;
   position: relative;
   border-width: $toast-border-width;
   border-style: solid;
-  border-color: rgba(0,0,0,0);
+  border-color: rgba(0, 0, 0, 0);
   border-radius: $border-radius--lg;
   border-left-width: 6px;
   min-height: $toast-min-height;

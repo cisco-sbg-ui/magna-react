@@ -31,8 +31,8 @@ Removed components that did not need updating from light theme round (51 -> 42)
 |      :x:       | AButtonGroup                  |           |
 |      :x:       | ACheckbox                     |           |
 |      :x:       | ACombobox                     |           |
-|      :x:       | AContextualNotification       |           |
-|      :x:       | AContextualNotificationMenu   |           |
+| :construction: | AContextualNotification       |    AJL    |
+| :construction: | AContextualNotificationMenu   |    AJL    |
 |      :x:       | ADataTable                    |           |
 |      :x:       | ADatePicker                   |           |
 |      :x:       | ADialog                       |           |
@@ -60,8 +60,8 @@ Removed components that did not need updating from light theme round (51 -> 42)
 |      :x:       | ATag                          |           |
 |      :x:       | ATextarea                     |           |
 |      :x:       | ATextInput                    |           |
-|      :x:       | ATimeline                     |           |
-|      :x:       | AToast                        |    AJL    |
+|      :x:       | ATimeline                     |    AJL    |
+| :construction: | AToast                        |    AJL    |
 | :construction: | ATooltip                      |    AJL    |
 | :construction: | ATree                         |    AJL    |
 

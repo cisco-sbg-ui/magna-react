@@ -1,13 +1,17 @@
 @import "../../styles";
 
 @include theme(a-contextual-notification-menu) using ($theme) {
+  .icon-text {
+    fill: map-deep-get($theme, "control", "fill-color");
+  }
+
   &.a-context--state-warning {
     &.a-menu-base--top,
     &.a-menu-base--top-left,
     &.a-menu-base--top-right {
       .a-menu-base__pointer {
-        border-color: $color-warning transparent transparent
-          transparent;
+        border-color: map-deep-get($theme, "control", "warning-color")
+          transparent transparent transparent;
 
         &:after {
           border-color: map-deep-get($theme, "control", "fill-color")
@@ -20,8 +24,8 @@
     &.a-menu-base--bottom-left,
     &.a-menu-base--bottom-right {
       .a-menu-base__pointer {
-        border-color: transparent transparent $color-warning
-          transparent;
+        border-color: transparent transparent
+          map-deep-get($theme, "control", "warning-color") transparent;
 
         &:after {
           border-color: transparent transparent
@@ -33,11 +37,12 @@
     &.a-menu-base--right-top .a-menu-base__pointer,
     &.a-menu-base--right .a-menu-base__pointer,
     &.a-menu-base--right-bottom .a-menu-base__pointer {
-      border-color: transparent $color-warning transparent
-        transparent;
+      border-color: transparent map-deep-get($theme, "control", "warning-color")
+        transparent transparent;
 
       &:after {
-        border-color: transparent $color-warning transparent
+        border-color: transparent
+          map-deep-get($theme, "control", "warning-color") transparent
           transparent;
       }
     }
@@ -46,7 +51,7 @@
     &.a-menu-base--left .a-menu-base__pointer,
     &.a-menu-base--left-bottom .a-menu-base__pointer {
       border-color: transparent transparent transparent
-        $color-warning;
+        map-deep-get($theme, "control", "warning-color");
 
       &:after {
         border-color: transparent transparent transparent
@@ -59,8 +64,8 @@
     &.a-menu-base--top-left,
     &.a-menu-base--top-right {
       .a-menu-base__pointer {
-        border-color: $color-error transparent transparent
-          transparent;
+        border-color: map-deep-get($theme, "control", "error-color") transparent
+          transparent transparent;
 
         &:after {
           border-color: map-deep-get($theme, "control", "fill-color")
@@ -73,8 +78,8 @@
     &.a-menu-base--bottom-left,
     &.a-menu-base--bottom-right {
       .a-menu-base__pointer {
-        border-color: transparent transparent $color-error
-          transparent;
+        border-color: transparent transparent
+          map-deep-get($theme, "control", "error-color") transparent;
 
         &:after {
           border-color: transparent transparent
@@ -86,12 +91,12 @@
     &.a-menu-base--right-top .a-menu-base__pointer,
     &.a-menu-base--right .a-menu-base__pointer,
     &.a-menu-base--right-bottom .a-menu-base__pointer {
-      border-color: transparent $color-error transparent
-        transparent;
+      border-color: transparent map-deep-get($theme, "control", "error-color")
+        transparent transparent;
 
       &:after {
-        border-color: transparent $color-error transparent
-          transparent;
+        border-color: transparent map-deep-get($theme, "control", "error-color")
+          transparent transparent;
       }
     }
 
@@ -99,7 +104,7 @@
     &.a-menu-base--left .a-menu-base__pointer,
     &.a-menu-base--left-bottom .a-menu-base__pointer {
       border-color: transparent transparent transparent
-        $color-error;
+        map-deep-get($theme, "control", "error-color");
 
       &:after {
         border-color: transparent transparent transparent
@@ -112,8 +117,8 @@
     &.a-menu-base--top-left,
     &.a-menu-base--top-right {
       .a-menu-base__pointer {
-        border-color: $color-good transparent transparent
-          transparent;
+        border-color: map-deep-get($theme, "control", "success-color")
+          transparent transparent transparent;
 
         &:after {
           border-color: map-deep-get($theme, "control", "fill-color")
@@ -126,8 +131,8 @@
     &.a-menu-base--bottom-left,
     &.a-menu-base--bottom-right {
       .a-menu-base__pointer {
-        border-color: transparent transparent $color-good
-          transparent;
+        border-color: transparent transparent
+          map-deep-get($theme, "control", "success-color") transparent;
 
         &:after {
           border-color: transparent transparent
@@ -139,11 +144,12 @@
     &.a-menu-base--right-top .a-menu-base__pointer,
     &.a-menu-base--right .a-menu-base__pointer,
     &.a-menu-base--right-bottom .a-menu-base__pointer {
-      border-color: transparent $color-good transparent
-        transparent;
+      border-color: transparent map-deep-get($theme, "control", "success-color")
+        transparent transparent;
 
       &:after {
-        border-color: transparent $color-good transparent
+        border-color: transparent
+          map-deep-get($theme, "control", "success-color") transparent
           transparent;
       }
     }
@@ -152,7 +158,7 @@
     &.a-menu-base--left .a-menu-base__pointer,
     &.a-menu-base--left-bottom .a-menu-base__pointer {
       border-color: transparent transparent transparent
-        $color-good;
+        map-deep-get($theme, "control", "success-color");
 
       &:after {
         border-color: transparent transparent transparent
@@ -165,8 +171,8 @@
     &.a-menu-base--top-left,
     &.a-menu-base--top-right {
       .a-menu-base__pointer {
-        border-color: $color-information transparent transparent
-          transparent;
+        border-color: map-deep-get($theme, "control", "info-color") transparent
+          transparent transparent;
 
         &:after {
           border-color: map-deep-get($theme, "control", "fill-color")
@@ -179,8 +185,8 @@
     &.a-menu-base--bottom-left,
     &.a-menu-base--bottom-right {
       .a-menu-base__pointer {
-        border-color: transparent transparent $color-information
-          transparent;
+        border-color: transparent transparent
+          map-deep-get($theme, "control", "info-color") transparent;
 
         &:after {
           border-color: transparent transparent
@@ -192,12 +198,12 @@
     &.a-menu-base--right-top .a-menu-base__pointer,
     &.a-menu-base--right .a-menu-base__pointer,
     &.a-menu-base--right-bottom .a-menu-base__pointer {
-      border-color: transparent $color-information transparent
-        transparent;
+      border-color: transparent map-deep-get($theme, "control", "info-color")
+        transparent transparent;
 
       &:after {
-        border-color: transparent $color-information transparent
-          transparent;
+        border-color: transparent map-deep-get($theme, "control", "info-color")
+          transparent transparent;
       }
     }
 
@@ -205,7 +211,7 @@
     &.a-menu-base--left .a-menu-base__pointer,
     &.a-menu-base--left-bottom .a-menu-base__pointer {
       border-color: transparent transparent transparent
-        $color-information;
+        map-deep-get($theme, "control", "info-color");
 
       &:after {
         border-color: transparent transparent transparent

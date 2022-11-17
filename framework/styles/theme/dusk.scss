@@ -165,7 +165,7 @@ $atomic-dusk: (
     "error--state-hover": map-get($mds-dark-theme, "status-negative")
   ),
   "control": (
-    "fill-color": map-get($dusk, "6"),
+    "fill-color": map-get($mds-neutral, "neutral-16"),
     "fill-color--disabled": map-get($mds-dark-theme, "multipurpose-gray"),
     "stroke-color": map-get($mds-neutral, "neutral-15"),
     "warning-color": map-get($mds-dark-theme, "status-warning"),
