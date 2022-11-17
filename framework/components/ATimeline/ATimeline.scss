@@ -25,6 +25,46 @@ $timeline-transition: background-color $timeline-item-transition;
     &:hover {
       background-color: map-deep-get($theme, "timeline", "item-bg-hover-color");
     }
+
+    &--state-success {
+      .a-timeline__icon {
+        background-color: map-deep-get($theme, "control", "success-color");
+      }
+
+      .a-timeline__title {
+        color: map-deep-get($theme, "control", "success-color");
+      }
+    }
+
+    &--state-info {
+      .a-timeline__icon {
+        background-color: map-deep-get($theme, "control", "info-color");
+      }
+
+      .a-timeline__title {
+        color: map-deep-get($theme, "control", "info-color");
+      }
+    }
+
+    &--state-warning {
+      .a-timeline__icon {
+        background-color: map-deep-get($theme, "control", "warning-color");
+      }
+
+      .a-timeline__title {
+        color: map-deep-get($theme, "control", "warning-color");
+      }
+    }
+
+    &--state-danger {
+      .a-timeline__icon {
+        background-color: map-deep-get($theme, "control", "error-color");
+      }
+
+      .a-timeline__title {
+        color: map-deep-get($theme, "control", "error-color");
+      }
+    }
   }
 
   &__icon {
@@ -58,46 +98,6 @@ $timeline-transition: background-color $timeline-item-transition;
     &--state-default {
       .a-timeline__icon {
         background-color: $black;
-      }
-    }
-
-    &--state-success {
-      .a-timeline__icon {
-        background-color: $color-good;
-      }
-
-      .a-timeline__title {
-        color: $color-good;
-      }
-    }
-
-    &--state-info {
-      .a-timeline__icon {
-        background-color: $color-information;
-      }
-
-      .a-timeline__title {
-        color: $color-information;
-      }
-    }
-
-    &--state-warning {
-      .a-timeline__icon {
-        background-color: $color-warning;
-      }
-
-      .a-timeline__title {
-        color: $color-warning;
-      }
-    }
-
-    &--state-danger {
-      .a-timeline__icon {
-        background-color: $color-error;
-      }
-
-      .a-timeline__title {
-        color: $color-error;
       }
     }
   }
