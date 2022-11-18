@@ -1,8 +1,9 @@
 $atomic-dusk: (
   "accordion": (
-    "body-bg": map-get($mds-dark-theme, "background-section"),
     "body-color": map-get($mds-dark-theme, "secondary-gray"),
+    "chevron-color": map-get($mds-neutral, "neutral-6"),
     "color": map-get($mds-dark-theme, "default-text"),
+    "header-color": map-get($mds-dark-theme, "heading-gray"),
     "header-focus": map-get($mds-blue, "blue-1")
   ),
   "alert": (
@@ -167,7 +168,7 @@ $atomic-dusk: (
   "control": (
     "fill-color": map-get($mds-neutral, "neutral-16"),
     "fill-color--disabled": map-get($mds-dark-theme, "multipurpose-gray"),
-    "stroke-color": map-get($mds-neutral, "neutral-15"),
+    "stroke-color": map-get($mds-neutral, "neutral-11"),
     "warning-color": map-get($mds-dark-theme, "status-warning"),
     "error-color": map-get($mds-dark-theme, "status-negative"),
     "info-color": map-get($mds-light-theme, "status-info"),

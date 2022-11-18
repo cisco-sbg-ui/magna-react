@@ -1,8 +1,9 @@
 $atomic-default: (
   "accordion": (
-    "body-bg": map-get($mds-light-theme, "background-section"),
     "body-color": map-get($mds-light-theme, "secondary-gray"),
+    "chevron-color": map-get($mds-neutral, "neutral-9"),
     "color": map-get($mds-light-theme, "default-text"),
+    "header-color": map-get($mds-light-theme, "heading-gray"),
     "header-focus": map-get($mds-blue, "blue-8")
   ),
   "alert": (
@@ -172,7 +173,7 @@ $atomic-default: (
   "control": (
     "fill-color": map-get($mds-neutral, "neutral-1"),
     "fill-color--disabled": map-get($mds-light-theme, "multipurpose-gray"),
-    "stroke-color": map-get($mds-neutral, "neutral-4"),
+    "stroke-color": map-get($mds-neutral, "neutral-9"),
     "warning-color": map-get($mds-light-theme, "status-warning"),
     "error-color": map-get($mds-light-theme, "status-negative"),
     "info-color": map-get($mds-light-theme, "status-info"),

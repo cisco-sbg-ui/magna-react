@@ -17,6 +17,7 @@ $accordion-transition: visibility 0s ease, max-height $transition-duration ease,
 $accordion--state-collapsed-transition: visibility $transition-duration ease,
   max-height $transition-duration--fast ease, opacity $transition-duration ease,
   margin $transition-duration ease;
+$accordion-divider-border-width: thin;
 
 @include theme(a-accordion) using ($theme) {
   &__card {
@@ -27,6 +28,17 @@ $accordion--state-collapsed-transition: visibility $transition-duration ease,
     &--is-focused .a-accordion__header {
       border-color: map-deep-get($theme, "accordion", "header-focus");
     }
+  }
+
+  /* for future thin dividers, if needed
+  &--style-bordered .a-accordion__card {
+    border-bottom: $accordion-divider-border-width solid
+      map-deep-get($theme, "control", "stroke-color");
+  }
+  */
+
+  &--style-bordered .a-accordion__card:last-of-type {
+    border-bottom: 0;
   }
 
   :last-of-type &__link {
@@ -46,6 +58,12 @@ $accordion--state-collapsed-transition: visibility $transition-duration ease,
 
   &--style-bordered {
     border-color: map-deep-get($theme, "control", "stroke-color");
+  }
+
+  &__chevron {
+    .a-icon {
+      fill: map-deep-get($theme, "accordion", "chevron-color");
+    }
   }
 }
 
@@ -74,10 +92,6 @@ $accordion--state-collapsed-transition: visibility $transition-duration ease,
     &--has-body .a-accordion__link {
       cursor: pointer;
     }
-  }
-
-  &__card:last-of-type {
-    border-bottom: 0;
   }
 
   &__header {
