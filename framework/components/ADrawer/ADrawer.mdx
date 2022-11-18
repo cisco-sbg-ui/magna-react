@@ -234,6 +234,143 @@ You can change this behavior to have `ADrawer` render inside your own specified 
   }`}
 />
 
+### Positioning Strategies
+
+<Playground
+  code={`() => {
+    // position='fixed' drawer
+    const fixedDrawerRef = useRef();
+    const [isFixedOpen, setIsFixedOpen] = useState(false);
+    usePopupQuickExit({
+      popupRef: fixedDrawerRef,
+      isEnabled: isFixedOpen,
+      onExit: () => setIsFixedOpen(false)
+    });
+    
+    // position='absolute' drawer
+    const absoluteDrawerRef = useRef();
+    const [isAbsoluteOpen, setIsAbsoluteOpen] = useState(false);
+    
+    // position='relative' drawer
+    const relativeDrawerRef = useRef();
+    const [isRelativeSlim, setIsRelativeSlim] = useState(true);
+    
+    // demo styles
+    const headerClass = 'grey--darken-7 white--text pa-2 d-flex align-center justify-space-between';
+    // Becuase we have a drawer that is absolutely positioned, we also need its parent to be
+    // positioned so that it can be contained within it
+    const contentContainerStyle = {overflow: 'hidden', position: 'relative', height: '300px', display: 'flex'};
+    
+    return (
+      <>
+        <div className={headerClass} style={{overflow: 'hidden', width: '100%'}}>
+            <div>
+              {/* toggles position='relative' drawer, i.e., the sidebar) */}
+              <AButton
+                  onClick={() => setIsRelativeSlim(prevState => !prevState)}
+                  className='pa-0 white--text' tertiaryAlt>
+                <AIcon
+                    left
+                    iconSet="magna"
+                    style={{cursor: 'pointer'}}
+                    size='small'>
+                  {isRelativeSlim ? 'caretRight' : 'caretLeft'}</AIcon>
+                Toggle Relative
+              </AButton>
+            </div>
+            <div className="d-flex align-center justify-end">
+              App
+            </div>
+        </div>
+        
+        <div style={contentContainerStyle}>
+            <ADrawer
+                asModal={false}
+                position='relative'
+                slim={isRelativeSlim}
+                isOpen={true}
+                ref={relativeDrawerRef}
+                className='grey--lighten-6'
+                slimWidth='50px'
+                openWidth='175px'
+            >
+              <AList className='grey--lighten-6' style={{border: 'none'}}>
+                <AListItem twoLine href="#" target="_blank">
+                  <AListItemAvatar className='mr-4 flex-shrink-0'><AIcon size={18}>chart-pie</AIcon></AListItemAvatar>
+                  <AListItemContent className='text-no-wrap'>Sidebar Item</AListItemContent>
+                </AListItem>
+              </AList>
+            </ADrawer>
+            
+            <main className="pa-2 dusk--2 white--text" style={{flexGrow: 1}}>
+              {/* toggles position='absolute' drawer, i.e., the more details drawer */}
+              <AButton
+                  onClick={() => setIsAbsoluteOpen(prevState => !prevState)}
+                  className='white--text' tertiaryAlt>
+                  Toggle Absolute
+              </AButton>
+              <ADrawer
+                  asModal={false}
+                  slideIn='right'
+                  position='absolute'
+                  isOpen={isAbsoluteOpen}
+                  ref={absoluteDrawerRef}
+                  openWidth='150px'
+              >
+                <MockDrawerContent onClose={() => setIsAbsoluteOpen(false)} />
+              </ADrawer>
+              
+              {/* toggles position='fixed' drawer, i.e., the one that overlays entire page */}
+              <AButton
+                  onClick={() => setIsFixedOpen(true)}
+                  className='white--text'
+                  tertiaryAlt>
+                  Open Fixed
+              </AButton>
+              <ADrawer
+                  position='fixed'
+                  ref={fixedDrawerRef}
+                  isOpen={isFixedOpen}>
+                  <div>
+                    Fixed drawer
+                    <AButton onClick={() => setIsFixedOpen(false)}>Close</AButton>
+                  </div>
+              </ADrawer>
+            </main>
+        </div>
+      </>
+    )
+    function MockDrawerContent({ onClose }) {
+      return (
+        <div className='black--text'>
+          <AListItem twoLine>
+            <AListItemContent>
+              <AListItemTitle><small><b>Event Details</b></small></AListItem>
+            </AListItemContent>
+            <AListItemAction>
+              <AButton onClick={onClose} tertiaryAlt icon>
+                <AIcon>close</AIcon>
+              </AButton>
+            </AListItemAction>
+          </AListItem>
+          <AListItem twoLine>
+            <AListItemContent style={{paddingTop: '0'}}>
+              <div>
+                <span style={{display: 'flex', alignItems: 'center'}}><small>Risk Score</small> <ATag className="status-red white--text ma-1">750</ATag></span>
+                <p style={{marginTop: '5px', fontWeight: 'bold', fontSize: '10px'}}>A malicious SHA-256 targeted an endpoint</p>
+              </div>
+              <div>
+                <small style={{margin: '0'}}>Created 2022-08-12 12:23:01.0019 UTC</small>
+                <div><a href="#"><small>AMP Unity</small></a></div>
+              </div>
+            </AListItemContent>
+          </AListItem>
+        </div>
+      )
+    }
+}`}
+/>
+
 ### Toggled Sidebar
 
 <Playground
@@ -244,7 +381,7 @@ You can change this behavior to have `ADrawer` render inside your own specified 
       popupRef: drawerRef,
       isEnabled: isOpen,
       onExit: () => setIsOpen(false)
-    })
+    });
     return (
       <AContainer>
         <ARow className="mb-0 grey--darken-7 white--text">
@@ -263,7 +400,7 @@ You can change this behavior to have `ADrawer` render inside your own specified 
                 className='grey--lighten-6'
                 style={{maxWidth: '150px'}}
                 asModal={false}
-                contained
+                position='absolute'
                 isOpen={isOpen}>
               <AList className='grey--lighten-6' style={{border: 'none'}}>
                 <AListItem twoLine href="#" target="_blank">
@@ -285,7 +422,7 @@ You can change this behavior to have `ADrawer` render inside your own specified 
               </AList>
             </ADrawer>
           </ACol>
-          <ACol className="dark-cool-grey white--text" style={{height: '300px'}}>
+          <ACol className="dusk--2 white--text" style={{height: '300px'}}>
             <main>Main Content</main>
           </ACol>
         </ARow>
@@ -323,7 +460,7 @@ You can change this behavior to have `ADrawer` render inside your own specified 
                 ref={sidebarRef}
                 className='grey--lighten-6'
                 asModal={false}
-                inline
+                position='relative'
                 isOpen
                 slimWidth='50px'
                 openWidth='150px'
@@ -348,7 +485,7 @@ You can change this behavior to have `ADrawer` render inside your own specified 
               </AList>
             </ADrawer>
           </ACol>
-          <ACol className="dark-cool-grey white--text" style={{height: '300px'}}>
+          <ACol className="dusk--2 white--text" style={{height: '300px'}}>
             <main>Main Content</main>
           </ACol>
         </ARow>
@@ -386,7 +523,7 @@ You can change this behavior to have `ADrawer` render inside your own specified 
             <ADrawer
                 className='grey--lighten-6'
                 asModal={false}
-                inline
+                position='relative'
                 isOpen
                 slimWidth='50px'
                 openWidth='150px'
@@ -411,14 +548,14 @@ You can change this behavior to have `ADrawer` render inside your own specified 
               </AList>
             </ADrawer>
           </ACol>
-          <ACol className="dark-cool-grey white--text" style={{height: '300px'}}>
+          <ACol className="dusk--2 white--text" style={{height: '300px'}}>
              Main Content <AButton onClick={() => setIncidentDetailsOpen(prevState => !prevState)}>More Incident Details</AButton>
           </ACol>
           <ACol cols='auto' className='pa-0' style={{position: 'relative'}}>
             <ADrawer
                 className='grey--lighten-6'
                 asModal={false}
-                contained
+                position='absolute'
                 slideIn='right'
                 isOpen={incidentDetailsOpen}
                 style={{maxWidth: '150px'}}>

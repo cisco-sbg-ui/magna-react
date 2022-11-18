@@ -12,10 +12,9 @@ const ADrawer = forwardRef(
       asModal = true,
       className: propsClassName,
       children,
-      contained = false,
       openWidth,
-      inline = false,
       isOpen,
+      position = "fixed",
       slideIn = "left",
       slim = false,
       slimWidth,
@@ -27,20 +26,15 @@ const ADrawer = forwardRef(
     const DrawerPanelComponent = as || "div";
     const orientation =
       slideIn === "bottom" || slideIn === "top" ? "horizontal" : "vertical";
-    let className = `drawer drawer--${orientation} drawer--${slideIn}`;
+    let className = `drawer drawer--${orientation} drawer--${position} drawer--${slideIn}`;
     const style = {...propsStyle};
 
-    if (inline) {
-      className += ` drawer--inline`;
-    }
-    if (contained) {
-      className += ` drawer--contained`;
-    }
     if (slim) {
       className += ` drawer--slim`;
 
       if (slimWidth) {
         style.width = slimWidth;
+        style.maxWidth = slimWidth;
       }
     }
     if (!isOpen) {
@@ -50,6 +44,16 @@ const ADrawer = forwardRef(
     }
     if (propsClassName) {
       className += ` ${propsClassName}`;
+    }
+
+    // Our CSS is defaulted to 400px. If a
+    // width prop is passed in, that should
+    // always take precedence.
+    if (openWidth) {
+      style.maxWidth = openWidth;
+    }
+    if (slimWidth && slim) {
+      style.maxWidth = slimWidth;
     }
 
     if (!asModal) {
@@ -101,30 +105,6 @@ ADrawer.propTypes = {
   className: PropTypes.string,
 
   /**
-   * [Short version] Positions the drawer as `absolute` instead of `fixed` [/End short version]
-   *
-   * Determines if the Drawer should be contained within a parent.
-   * This can be useful in situations where the drawer should _not_
-   * take up the entire screen, but rather, only fly-open within a subset
-   * of the page.
-   *
-   * An example is a drawer that should render underneath a `fixed` navigation bar.
-   */
-  contained: PropTypes.bool,
-
-  /**
-   * [Short version] Positions the drawer as `relative` instead of `absolute` or `fixed` [/End short version]
-   *
-   * Determines if the Drawer should render as an inline element with
-   * its siblings. The implications are that content surrounding the drawer
-   * will move in respect to the drawer's opened/close states.
-   *
-   * An example is a drawer that should render underneath a `fixed` navigation bar
-   * _and_ should push content to the side as it opens.
-   */
-  inline: PropTypes.bool,
-
-  /**
    * Determines if the drawer is opened or closed. For a permanent
    * drawer, pass a constant value of `true`. An example of when this
    * might be useful is for a sidebar that toggles between its slim and
@@ -138,6 +118,17 @@ ADrawer.propTypes = {
    * to 400px.
    */
   openWidth: PropTypes.string,
+
+  /**
+   * Specifies the positioning strategy of the drawer. A drawer specified with
+   * "fixed" is useful when the drawer should take up the entire page and cover
+   * adjacent content. A drawer specified with absolute is useful when the drawer
+   * should be contained within a parent container (so not the entire viewport), but
+   * still cover adjacent content as it opens. A drawer specified as relative is
+   * useful when the drawer should be contained within a parent, but _not_ cover
+   * its adjacent content, i.e., push its adjacent content aside dynamically.
+   */
+  position: PropTypes.oneOf(["absolute", "fixed", "relative"]),
 
   /**
    * The direction in which the drawer should slide-in from.

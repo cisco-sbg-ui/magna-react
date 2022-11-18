@@ -1,13 +1,11 @@
 .drawer {
-  position: fixed;
   overflow: hidden;
-  z-index: 1;
 
   background: white;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
 
-  transition: all 0.3s ease-in-out;
   transform: translateX(0);
+  transition: all 0.3s ease-in-out;
 
   &--vertical {
     height: 100vh;
@@ -30,13 +28,23 @@
   }
 
   /**
+    * When the drawer should render over the entire
+    * page
+    */
+  &--fixed {
+    position: fixed;
+    z-index: 1;
+  }
+
+  /**
     * In situations where the Drawer should _not_ fill
     * up the entire viewport
     * 
     * e.g., underneath a nav bar
     */
-  &--contained {
+  &--absolute {
     position: absolute;
+    z-index: 1;
 
     &.drawer--horizontal {
       width: 100%;
@@ -55,9 +63,8 @@
     * e.g., a permanent sidebar where we don't
     * want the sidebar covering the main content
     */
-  &--inline {
+  &--relative {
     position: relative;
-    z-index: unset;
 
     &.drawer--horizontal {
       width: 100%;
@@ -68,17 +75,17 @@
     }
   }
 
-  &--left:not(.drawer--inline) {
+  &--left:not(.drawer--relative) {
     top: 0;
     left: 0;
   }
 
-  &--right:not(.drawer--inline) {
+  &--right:not(.drawer--relative) {
     top: 0;
     right: 0;
   }
 
-  &--bottom:not(.drawer--inline) {
+  &--bottom:not(.drawer--relative) {
     bottom: 0;
   }
 
