@@ -80,6 +80,10 @@ You can change this behavior to have `ADrawer` render inside your own specified 
 
 ### Modal Options
 
+When `ADrawer` is rendered as a modal, focus will be trapped and scrolling will be locked. To override these defaults when rendering a modal, you can pass `lockScroll={false}` and `trapFocus={false}` to `ADrawer`.
+
+For more information about modals, reference the [`AModal` documentation](/components/modal).
+
 <Playground
   code={`() => {
     const modalContentRef = useRef();
@@ -167,6 +171,10 @@ You can change this behavior to have `ADrawer` render inside your own specified 
 
 ### Drawer Positioning Strategies
 
+By default, `ADrawer` is rendered as a fixed element. This means that the drawer will cover the entire page, and also cover any content that it pans over.
+
+To contain the drawer within your own element, you should leverage either the `absolute` or `relative` positioning strategy when rendering `ADrawer`. Please note that just like any other absolutely positioned HTML element, the absolutely positioned `ADrawer` will need a <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#identifying_the_containing_block">non-statically positioned parent</a> to position itself correctly.
+
 <Playground
   code={`() => {
     // position='fixed' drawer
@@ -248,10 +256,20 @@ You can change this behavior to have `ADrawer` render inside your own specified 
                   ref={absoluteDrawerRef}
                   openWidth='150px'
               >
-                <MockDrawerContent onClose={() => setIsAbsoluteOpen(false)} />
+                <div className='black--text'>
+                  <AListItem twoLine>
+                    <AListItemContent>
+                      <AListItemTitle><small><b>More Details</b></small></AListItem>
+                    </AListItemContent>
+                  </AListItem>
+                  <AListItem twoLine>
+                    <AListItemContent style={{paddingTop: '0'}}>
+                      <small>Additional details</small>
+                    </AListItemContent>
+                  </AListItem>
+                </div>
               </ADrawer>
               
-              {/* toggles position='fixed' drawer, i.e., the one that overlays entire page */}
               <AButton
                   onClick={() => setIsFixedOpen(true)}
                   className='white--text'
@@ -271,34 +289,6 @@ You can change this behavior to have `ADrawer` render inside your own specified 
         </div>
       </>
     )
-    function MockDrawerContent({ onClose }) {
-      return (
-        <div className='black--text'>
-          <AListItem twoLine>
-            <AListItemContent>
-              <AListItemTitle><small><b>Event Details</b></small></AListItem>
-            </AListItemContent>
-            <AListItemAction>
-              <AButton onClick={onClose} tertiaryAlt icon>
-                <AIcon>close</AIcon>
-              </AButton>
-            </AListItemAction>
-          </AListItem>
-          <AListItem twoLine>
-            <AListItemContent style={{paddingTop: '0'}}>
-              <div>
-                <span style={{display: 'flex', alignItems: 'center'}}><small>Risk Score</small> <ATag className="status-red white--text ma-1">750</ATag></span>
-                <p style={{marginTop: '5px', fontWeight: 'bold', fontSize: '10px'}}>A malicious SHA-256 targeted an endpoint</p>
-              </div>
-              <div>
-                <small style={{margin: '0'}}>Created 2022-08-12 12:23:01.0019 UTC</small>
-                <div><a href="#"><small>AMP Unity</small></a></div>
-              </div>
-            </AListItemContent>
-          </AListItem>
-        </div>
-      )
-    }
 }`}
 />
 
@@ -366,7 +356,7 @@ You can change this behavior to have `ADrawer` render inside your own specified 
             </AListItem>
             <AListItem title='Close toolbar' twoLine>
               <AListItemAvatar className='flex-shrink-0 mr-4'>
-                <AButton onClick={() => setIsOpen(false)} icon>
+                <AButton className='coral--burnt-1' onClick={() => setIsOpen(false)} icon>
                   <AIcon iconSet="magna">x</AIcon>
                 </AButton>
               </AListItemAvatar>
@@ -496,109 +486,6 @@ You can change this behavior to have `ADrawer` render inside your own specified 
         </ARow>
       </AContainer>
     )
-  }`}
-/>
-
-### More Details Drawer
-
-<Playground
-  code={`() => {
-    const moreDetailsRef = useRef();
-    const [incidentDetailsOpen, setIncidentDetailsOpen] = useState(false);
-    const [isSlim, setIsSlim] = useState(true);
-    usePopupQuickExit({
-      popupRef: moreDetailsRef,
-      isEnabled: incidentDetailsOpen,
-      onExit: () => setIncidentDetailsOpen(false)
-    })
-    return (
-      <AApp>
-      <AContainer>
-        <ARow className="mb-0 grey--darken-7 white--text">
-          <ACol>
-            <AIcon onClick={() => setIsSlim(prevState => !prevState)} style={{cursor: 'pointer'}} size='small'>{isSlim ? 'chevron-right' : 'chevron-left'}</AIcon>
-          </ACol>
-          <ASpacer />
-          <ACol className="d-flex align-center justify-end">
-            App
-          </ACol>
-        </ARow>
-        <ARow style={{overflow: 'hidden'}}>
-          <ACol cols='auto' className='pa-0'>
-            <ADrawer
-                className='grey--lighten-6'
-                asModal={false}
-                position='relative'
-                isOpen
-                slimWidth='50px'
-                openWidth='150px'
-                slim={isSlim}>
-              <AList className='grey--lighten-6' style={{border: 'none'}}>
-                <AListItem twoLine href="#" target="_blank">
-                  <AListItemAvatar className='mr-4 flex-shrink-0'><AIcon size={18}>chart-pie</AIcon></AListItemAvatar>
-                  <AListItemContent>Foo</AListItemContent>
-                </AListItem>
-                <AListItem twoLine href="#" target="_blank">
-                  <AListItemAvatar className='mr-4 flex-shrink-0'><AIcon size={18}>chart-curve</AIcon></AListItemAvatar>
-                  <AListItemContent>Bar</AListItemContent>
-                </AListItem>
-                <AListItem twoLine href="#" target="_blank">
-                  <AListItemAvatar className='mr-4 flex-shrink-0'><AIcon size={18}>chart-bar</AIcon></AListItemAvatar>
-                  <AListItemContent>Baz</AListItemContent>
-                </AListItem>
-                <AListItem twoLine href="#" target="_blank">
-                  <AListItemAvatar className='mr-4 flex-shrink-0'><AIcon size={18}>calendar</AIcon></AListItemAvatar>
-                  <AListItemContent>Qaz</AListItemContent>
-                </AListItem>
-              </AList>
-            </ADrawer>
-          </ACol>
-          <ACol className="dusk--2 white--text" style={{height: '300px'}}>
-             Main Content <AButton onClick={() => setIncidentDetailsOpen(prevState => !prevState)}>More Incident Details</AButton>
-          </ACol>
-          <ACol cols='auto' className='pa-0' style={{position: 'relative'}}>
-            <ADrawer
-                className='grey--lighten-6'
-                asModal={false}
-                position='absolute'
-                slideIn='right'
-                isOpen={incidentDetailsOpen}
-                style={{maxWidth: '150px'}}>
-                  <MockDrawerContent onClose={() => setIncidentDetailsOpen(false)} />
-                </ADrawer>
-          </ACol>
-        </ARow>
-      </AContainer>
-      </AApp>
-    )
-    function MockDrawerContent({ onClose }) {
-      return (
-        <div>
-          <AListItem twoLine>
-            <AListItemContent>
-              <AListItemTitle><small><b>Event Details</b></small></AListItem>
-            </AListItemContent>
-            <AListItemAction>
-              <AButton onClick={onClose} tertiaryAlt icon>
-                <AIcon>close</AIcon>
-              </AButton>
-            </AListItemAction>
-          </AListItem>
-          <AListItem twoLine>
-            <AListItemContent style={{paddingTop: '0'}}>
-              <div>
-                <span style={{display: 'flex', alignItems: 'center'}}><small>Risk Score</small> <ATag className="status-red white--text ma-1">750</ATag></span>
-                <p style={{marginTop: '5px', fontWeight: 'bold', fontSize: '10px'}}>A malicious SHA-256 targeted an endpoint</p>
-              </div>
-              <div>
-                <small style={{margin: '0'}}>Created 2022-08-12 12:23:01.0019 UTC</small>
-                <div><a href="#"><small>AMP Unity</small></a></div>
-              </div>
-            </AListItemContent>
-          </AListItem>
-        </div>
-      )
-    }
   }`}
 />
 
