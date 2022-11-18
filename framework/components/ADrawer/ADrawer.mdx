@@ -20,6 +20,8 @@ You can change this behavior to have `ADrawer` render inside your own specified 
 
 ## Usage
 
+### Slide-in Directions
+
 <Playground
   code={`() => {
     const leftDrawerContentRef = useRef();
@@ -109,7 +111,10 @@ You can change this behavior to have `ADrawer` render inside your own specified 
             asModal={true}
             isOpen={modalOpen}
             slideIn='right'>
-            <MockDrawerContent onClose={() => setModalOpen(false)} />
+            <MockDrawerContent
+                title='Modal Drawer'
+                content='A Drawer that behaves as a modal.'
+                onClose={() => setModalOpen(false)} />
         </ADrawer>
         
         <p>Non-Modal Drawer</p>
@@ -123,16 +128,19 @@ You can change this behavior to have `ADrawer` render inside your own specified 
             asModal={false}
             isOpen={nonModalOpen}
             slideIn='right'>
-          <MockDrawerContent onClose={() => setNonModalOpen(false)} />
+          <MockDrawerContent
+              title='Non-Modal Drawer'
+              content='Focus is not trapped and scrolling is not locked.'
+              onClose={() => setNonModalOpen(false)} />
         </ADrawer>
       </>
     )
-    function MockDrawerContent({ onClose }) {
+    function MockDrawerContent({ content, onClose, title }) {
       return (
         <>
           <AListItem twoLine>
             <AListItemContent>
-              <AListItemTitle><h4><b>Event Details</b></h4></AListItem>
+              <AListItemTitle><h4><b>{title}</b></h4></AListItem>
             </AListItemContent>
             <AListItemAction>
               <AButton onClick={onClose} tertiaryAlt icon>
@@ -142,43 +150,13 @@ You can change this behavior to have `ADrawer` render inside your own specified 
           </AListItem>
           <AListItem twoLine>
             <AListItemContent style={{paddingTop: '0'}}>
-              <div>
-                <span style={{display: 'flex', alignItems: 'center'}}>Risk Score <ATag className="status-red white--text ma-1">750</ATag></span>
-                <p style={{marginTop: '5px', fontWeight: 'bold', fontSize: '24px'}}>A malicious SHA-256 targeted an endpoint</p>
-              </div>
-              <div>
-                <p style={{margin: '0'}}>Created 2022-08-12 12:23:01.0019 UTC</p>
-                <div><a href="#">AMP Unity</a></div>
-              </div>
-            </AListItemContent>
-          </AListItem>
-          <ADivider />
-          <AListItem twoLine>
-            <AListItemContent>
-              <AListItemTitle><h4><b>Recommended Actions</b></h4></AListItem>
-            </AListItemContent>
-            <AListItemAction>
-              <AButton tertiaryAlt>
-                <AIcon>chevron-up</AIcon>
-              </AButton>
-            </AListItemAction>
-          </AListItem>
-          <AListItem twoLine>
-            <AListItemContent style={{paddingTop: '0'}}>
-              <APanel style={{margin: '0', padding: '5px', width: '100%'}}>
-                <a href="#">Quarantine Device</a>
-              </APanel>
-              <APanel style={{margin: '5px 0 0 0', padding: '5px', width: '100%'}}>
-                Workflow
-                <br />
-                <a href="#">Move to Triage Group</a>
-              </APanel>
+              {content}
             </AListItemContent>
           </AListItem>
           <div style={{width: '100%', position: 'absolute', bottom: '0', height: '50px'}}>
             <ADivider style={{margin: 0}} />
             <AListItem twoLine>
-              <AListItemContent><AButton>Add note</AButton></AListItemContent>
+              <AListItemContent><AButton>Footer Content</AButton></AListItemContent>
             </AListItem>
           </div>
         </>
@@ -187,54 +165,7 @@ You can change this behavior to have `ADrawer` render inside your own specified 
   }`}
 />
 
-### Slim Drawer
-
-<Playground
-  code={`() => {
-    const toolbarRef = useRef();
-    const [isOpen, setIsOpen] = useState(false);
-    const [isSlim, setIsSlim] = useState(true);
-    usePopupQuickExit({
-      popupRef: toolbarRef,
-      isEnabled: isOpen,
-      onExit: () => setIsOpen(false)
-    });
-    return (
-      <>
-        <AButton onClick={() => setIsOpen(prevState => !prevState)}>{isOpen ? 'Close' : 'Open'} Toolbar</AButton>
-        <ADrawer ref={toolbarRef} openWidth='250px' asModal={false} isOpen={isOpen} slim={isSlim}>
-          <AList style={{background: 'transparent', border: 'none'}}>
-            <AListItem twoLine>
-              <AListItemAvatar>
-                <AIcon onClick={() => setIsSlim(prevState => !prevState)} iconSet="magna">{isSlim ? 'caretRight' : 'caretLeft'}</AIcon>
-              </AListItemAvatar>
-            </AListItem>
-            <AListItem twoLine>
-              <AListItemAvatar>
-                <AIcon iconSet='magna'>envelopeSimple</AIcon>
-                <div className='ml-4'>Inbox</div>
-              </AListItemAvatar>
-            </AListItem>
-            <AListItem twoLine>
-              <AListItemAvatar>
-                <AIcon iconSet='magna'>uploadSimple</AIcon>
-                <div className='ml-4'>Sent</div>
-              </AListItemAvatar>
-            </AListItem>
-            <AListItem twoLine>
-              <AListItemAvatar>
-                <AIcon iconSet='magna'>trash</AIcon>
-                <div className='ml-4'>Trash</div>
-              </AListItemAvatar>
-            </AListItem>
-          </AList>
-        </ADrawer>
-      </>
-    )
-  }`}
-/>
-
-### Positioning Strategies
+### Drawer Positioning Strategies
 
 <Playground
   code={`() => {
@@ -371,23 +302,95 @@ You can change this behavior to have `ADrawer` render inside your own specified 
 }`}
 />
 
-### Toggled Sidebar
+### Common Use Cases
+
+#### Application Toolbar
+
+<Playground
+  code={`() => {
+    const toolbarRef = useRef();
+    const [isOpen, setIsOpen] = useState(false);
+    const [isSlim, setIsSlim] = useState(true);
+    usePopupQuickExit({
+      popupRef: toolbarRef,
+      isEnabled: isOpen,
+      onExit: () => setIsOpen(false)
+    });
+    return (
+      <>
+        <AButton onClick={() => setIsOpen(prevState => !prevState)}>{isOpen ? 'Close' : 'Open'} Toolbar</AButton>
+        <ADrawer
+            className='black'
+            ref={toolbarRef}
+            slimWidth='75px'
+            openWidth='250px'
+            isOpen={isOpen}
+            slim={isSlim}>
+          <AList className='white--text' style={{background: 'transparent', border: 'none'}}>
+            <AListItem title={isSlim ? 'Expand toolbar' : 'Shrink toolbar'} twoLine>
+              <AListItemAvatar>
+                <AButton className='white--text' onClick={() => setIsSlim(prevState => !prevState)} icon>
+                  <AIcon iconSet="magna">{isSlim ? 'caretRight' : 'caretLeft'}</AIcon>
+                </AButton>
+              </AListItemAvatar>
+            </AListItem>
+            <AListItem twoLine>
+              <AListItemAvatar className='flex-shrink-0 mr-4'>
+                <AButton icon>
+                  <AIcon iconSet="magna">envelopeSimple</AIcon>
+                </AButton>
+              </AListItemAvatar>
+              <AListItemContent>
+                Inbox
+              </AListItemContent>
+            </AListItem>
+            <AListItem twoLine>
+              <AListItemAvatar className='flex-shrink-0 mr-4'>
+                <AButton icon>
+                  <AIcon iconSet="magna">uploadSimple</AIcon>
+                </AButton>
+              </AListItemAvatar>
+              <AListItemContent>
+                Sent
+              </AListItemContent>
+            </AListItem>
+            <AListItem twoLine>
+              <AListItemAvatar className='flex-shrink-0 mr-4'>
+                <AButton icon>
+                  <AIcon iconSet="magna">trash</AIcon>
+                </AButton>
+              </AListItemAvatar>
+              <AListItemContent>
+                Trash
+              </AListItemContent>
+            </AListItem>
+            <AListItem title='Close toolbar' twoLine>
+              <AListItemAvatar className='flex-shrink-0 mr-4'>
+                <AButton onClick={() => setIsOpen(false)} icon>
+                  <AIcon iconSet="magna">x</AIcon>
+                </AButton>
+              </AListItemAvatar>
+              <AListItemContent>
+                Close
+              </AListItemContent>
+            </AListItem>
+          </AList>
+        </ADrawer>
+      </>
+    )
+  }`}
+/>
+
+#### Additional Details Fly-out
 
 <Playground
   code={`() => {
     const drawerRef = useRef();
     const [isOpen, setIsOpen] = useState(false);
-    usePopupQuickExit({
-      popupRef: drawerRef,
-      isEnabled: isOpen,
-      onExit: () => setIsOpen(false)
-    });
     return (
       <AContainer>
         <ARow className="mb-0 grey--darken-7 white--text">
-          <ACol>
-            <AIcon iconSet="magna" onClick={() => setIsOpen(prevState => !prevState)} style={{cursor: 'pointer'}} size='small'>{isOpen ? 'caretLeft' : 'caretRight'}</AIcon>
-          </ACol>
+          <ACol />
           <ASpacer />
           <ACol className="d-flex align-center justify-end">
             App
@@ -397,33 +400,35 @@ You can change this behavior to have `ADrawer` render inside your own specified 
           <ACol cols='auto' className='pa-0'>
             <ADrawer
                 ref={drawerRef}
+                slideIn='right'
                 className='grey--lighten-6'
                 style={{maxWidth: '150px'}}
                 asModal={false}
                 position='absolute'
                 isOpen={isOpen}>
-              <AList className='grey--lighten-6' style={{border: 'none'}}>
-                <AListItem twoLine href="#" target="_blank">
-                  <AListItemAvatar className='mr-4 flex-shrink-0'><AIcon size={18}>chart-pie</AIcon></AListItemAvatar>
-                  <AListItemContent>Foo</AListItemContent>
-                </AListItem>
-                <AListItem twoLine href="#" target="_blank">
-                  <AListItemAvatar className='mr-4 flex-shrink-0'><AIcon size={18}>chart-curve</AIcon></AListItemAvatar>
-                  <AListItemContent>Bar</AListItemContent>
-                </AListItem>
-                <AListItem twoLine href="#" target="_blank">
-                  <AListItemAvatar className='mr-4 flex-shrink-0'><AIcon size={18}>chart-bar</AIcon></AListItemAvatar>
-                  <AListItemContent>Baz</AListItemContent>
-                </AListItem>
-                <AListItem twoLine href="#" target="_blank">
-                  <AListItemAvatar className='mr-4 flex-shrink-0'><AIcon size={18}>calendar</AIcon></AListItemAvatar>
-                  <AListItemContent>Qaz</AListItemContent>
-                </AListItem>
-              </AList>
+                <div>
+                  <AListItem twoLine>
+                    <AListItemContent>
+                      <AListItemTitle><small><b>More Details</b></small></AListItem>
+                    </AListItemContent>
+                  </AListItem>
+                  <AListItem twoLine>
+                    <AListItemContent style={{paddingTop: '0'}}>
+                      <small>Additional details</small>
+                    </AListItemContent>
+                  </AListItem>
+                </div>
             </ADrawer>
           </ACol>
           <ACol className="dusk--2 white--text" style={{height: '300px'}}>
-            <main>Main Content</main>
+            <main>
+              <AButton
+                  onMouseEnter={() => setIsOpen(true)}
+                  onMouseLeave={() => setIsOpen(false)}
+                  style={{cursor: 'default'}}>
+                Hover For Additional Details
+              </AButton>
+            </main>
           </ACol>
         </ARow>
       </AContainer>
@@ -431,7 +436,7 @@ You can change this behavior to have `ADrawer` render inside your own specified 
   }`}
 />
 
-### Persistent, Slim Sidebar
+### Persistent Sidebar
 
 <Playground
   code={`() => {
