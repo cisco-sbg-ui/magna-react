@@ -23,7 +23,7 @@ Removed components that did not need updating from light theme round (51 -> 42)
 |     Status     | Name                          | Developer |
 |:--------------:|:------------------------------|:---------:|
 |      :x:       | AAccordion                    |           |
-|      :x:       | AAlert                        |           |
+| :construction: | AAlert                        |    AJL    |
 |      :x:       | AAutocomplete                 |           |
 |      :x:       | ABadge                        |           |
 |      :x:       | ABreadcrumb                   |           |
