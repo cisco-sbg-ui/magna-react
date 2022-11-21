@@ -7,12 +7,12 @@ $atomic-default: (
     "header-focus": map-get($mds-blue, "blue-8")
   ),
   "alert": (
-    "bg": map-get($mds-blue, "blue-2"),
-    "success-bg": map-get($mds-green, "green-1"),
+    "bg": map-get($mds-purple, "purple-1"),
+    "success-bg": map-get($mds-blue, "blue-1"),
     "warning-bg": map-get($mds-yellow, "yellow-1"),
-    "danger-bg": map-get($mds-red, "red-2"),
-    "close": map-get($mds-light-theme, "secondary-gray"),
-    "close-hover": map-get($mds-neutral, "neutral-13")
+    "danger-bg": map-get($mds-red, "red-1"),
+    "close": map-get($mds-neutral, "neutral-9"),
+    "close-hover": map-get($mds-neutral, "neutral-9")
   ),
   "app": (
     "scrollbar": (

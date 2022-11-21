@@ -7,12 +7,12 @@ $atomic-dusk: (
     "header-focus": map-get($mds-blue, "blue-1")
   ),
   "alert": (
-    "bg": map-get($mds-blue, "blue-9"),
-    "success-bg": map-get($mds-green, "green-10"),
-    "warning-bg": map-get($mds-yellow, "yellow-10"),
-    "danger-bg": map-get($mds-red, "red-9"),
-    "close": map-get($mds-dark-theme, "secondary-gray"),
-    "close-hover": map-get($mds-neutral, "neutral-9")
+    "bg": #b587fa4d,
+    "success-bg": #49b5f54d,
+    "warning-bg": #e0a4194d,
+    "danger-bg": #d9384366,
+    "close": map-get($mds-neutral, "neutral-6"),
+    "close-hover": map-get($mds-neutral, "neutral-6")
   ),
   "app": (
     "scrollbar": (
@@ -171,8 +171,8 @@ $atomic-dusk: (
     "stroke-color": map-get($mds-neutral, "neutral-11"),
     "warning-color": map-get($mds-dark-theme, "status-warning"),
     "error-color": map-get($mds-dark-theme, "status-negative"),
-    "info-color": map-get($mds-light-theme, "status-info"),
-    "success-color": map-get($mds-light-theme, "status-positive"),
+    "info-color": map-get($mds-dark-theme, "status-info"),
+    "success-color": map-get($mds-dark-theme, "status-positive"),
     "row-effect-color": map-get($mds-neutral, "neutral-17"),
     "row-effect-image":
       linear-gradient(
