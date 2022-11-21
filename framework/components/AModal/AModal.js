@@ -22,6 +22,7 @@ const AModal = forwardRef(
       children,
       lockScroll = true,
       withOverlay = true,
+      trapFocus = true,
       isOpen,
       ...rest
     },
@@ -32,7 +33,7 @@ const AModal = forwardRef(
     const _ref = useRef();
     useFocusTrap({
       rootRef: _ref,
-      isEnabled: isOpen
+      isEnabled: trapFocus && isOpen
     });
     useEffect(() => {
       isOpen && lockScroll ? preventBodyScroll() : allowBodyScroll();
@@ -123,6 +124,11 @@ You should provide either an \`aria-label\` or \`aria-labelledby\` prop to \`${c
    * Prevents the user from scrolling when the modal is open.
    */
   lockScroll: PropTypes.bool,
+
+  /**
+   * Determines if focus should be trapped when the modal is opened.
+   */
+  trapFocus: PropTypes.bool,
 
   /**
    * Renders the modal with a backdrop over the content behind the modal.
