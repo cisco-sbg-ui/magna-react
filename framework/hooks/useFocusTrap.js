@@ -20,14 +20,16 @@ function createTrap(walker) {
     } else if (key === TABBABLE_KEYS.Tab) {
       nextFocusableNode = walker.nextNode();
     }
+
+    // todo - add roving behavior
+    // @see https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/#keyboard-interaction-7
     if (nextFocusableNode) {
-      nextFocusableNode.focus();
+      nextFocusableNode.focus({focusVisible: true});
     }
   };
 }
 
 function acceptNode(node) {
-  // todo - enhance filter
   return node.tabIndex < 0 ? NodeFilter.FILTER_SKIP : NodeFilter.FILTER_ACCEPT;
 }
 
@@ -47,7 +49,7 @@ const useFocusTrap = ({rootRef, isEnabled = true}) => {
         .getAnimations({subtree: true})
         .map((animation) => animation.finished);
       Promise.allSettled(animationPromises).then(() =>
-        firstFocusableNode.focus()
+        firstFocusableNode.focus({focusVisible: true})
       );
     }
     const trap = createTrap(treeWalker);
