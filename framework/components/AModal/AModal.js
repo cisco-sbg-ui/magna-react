@@ -51,6 +51,8 @@ const AModal = forwardRef(
       return ReactDOM.createPortal(
         <APageOverlay className={visibilityClass}>
           <Component
+            role="dialog"
+            aria-modal="true"
             ref={handleMultipleRefs(_ref, ref)}
             className={contentClassName}
             {...rest}
@@ -64,6 +66,8 @@ const AModal = forwardRef(
 
     return ReactDOM.createPortal(
       <Component
+        role="dialog"
+        aria-modal="true"
         className={contentClassName}
         ref={handleMultipleRefs(_ref, ref)}
         {...rest}
@@ -76,6 +80,29 @@ const AModal = forwardRef(
 );
 
 AModal.propTypes = {
+  "aria-label": function (props, propName, componentName) {
+    // No a11y prop supplied at all
+    if (!props["aria-labelledby"] && !props[propName]) {
+      const msg = `You did not provide an accessible title to \`${componentName}\`.
+      
+You should provide either an \`aria-label\` or \`aria-labelledby\` prop to \`${componentName}\`. In the case of \`aria-label\`, pass a string describing your modal's content. In the case of \`aria-labelledby\`, pass an ID of a child element that should serve as the title for your modal's content.
+      
+  - For examples, reference the Magna-React documentation (https://magna-react.vercel.app/components/modal#usage).
+      
+  - For more information about aria labelling, reference WAI-ARIA (https://w3c.github.io/aria/#aria-label).
+`;
+      return new Error(msg);
+    }
+
+    const currentPropName = props[propName] ? propName : "aria-labelledby";
+    const propValue = props[currentPropName];
+
+    if (typeof propValue !== "string") {
+      const msg = `Invalid prop \`${currentPropName}\` of type \`${typeof propValue}\` supplied to \`${componentName}\`, expected \`string\`.`;
+      return new Error(msg);
+    }
+  },
+
   /**
    * Where the modal node should be appended to in the DOM.
    */

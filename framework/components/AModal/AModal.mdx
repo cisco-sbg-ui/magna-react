@@ -30,32 +30,28 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
       <div>
         <AButton
             onClick={() => setOpen(true)}>
-            Open Dialog 1
+            Open Modal
         </AButton>
         <AModal
+            aria-labelledby='modal-title'
             isOpen={open}>
-          <DemoModalContent modalContentRef={ref} onClose={() => setOpen(false)} />
+            <APanel ref={ref} style={{ minWidth: '400px' }} type="dialog">
+              <APanelHeader>
+                <APanelTitle id='modal-title'>Modal Demo</APanelTitle>
+                <AButton onClick={() => setOpen(false)} tertiaryAlt icon>
+                  <AIcon>close</AIcon>
+                </AButton>
+              </APanelHeader>
+              <APanelBody>
+                Modal content goes here.
+              </APanelBody>
+              <APanelFooter>
+                <AButton>Action</AButton>
+              </APanelFooter>
+            </APanel>
         </AModal>
       </div>
     )
-  function DemoModalContent({ modalContentRef, onClose }) {
-    return (
-      <APanel ref={modalContentRef} style={{ minWidth: '400px' }} type="dialog">
-        <APanelHeader>
-          <APanelTitle>Modal</APanelTitle>
-          <AButton onClick={onClose} tertiaryAlt icon>
-            <AIcon>close</AIcon>
-          </AButton>
-        </APanelHeader>
-        <APanelBody>
-          Modal content goes here.
-        </APanelBody>
-        <APanelFooter>
-          <AButton>Action</AButton>
-        </APanelFooter>
-      </APanel>
-    )
-  }
   }
 `}
 />
@@ -76,33 +72,29 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
       <div>
         <AButton
             onClick={() => setOpen(true)}>
-            Open Dialog 1
+            Open Modal
         </AButton>
         <AModal
+            aria-labelledby='modal-title'
             withOverlay={false}
             isOpen={open}>
-          <DemoModalContent modalContentRef={ref} onClose={() => setOpen(false)} />
+            <APanel ref={ref} style={{ minWidth: '400px' }} type="dialog">
+              <APanelHeader>
+                <APanelTitle id='modal-title'>Modal Demo</APanelTitle>
+                <AButton onClick={() => setOpen(false)} tertiaryAlt icon>
+                  <AIcon>close</AIcon>
+                </AButton>
+              </APanelHeader>
+              <APanelBody>
+                Modal content goes here.
+              </APanelBody>
+              <APanelFooter>
+                <AButton>Action</AButton>
+              </APanelFooter>
+            </APanel>
         </AModal>
       </div>
     )
-  function DemoModalContent({ modalContentRef, onClose }) {
-    return (
-      <APanel ref={modalContentRef} style={{ minWidth: '400px' }} type="dialog">
-        <APanelHeader>
-          <APanelTitle>Modal</APanelTitle>
-          <AButton onClick={onClose} tertiaryAlt icon>
-            <AIcon>close</AIcon>
-          </AButton>
-        </APanelHeader>
-        <APanelBody>
-          Modal content goes here.
-        </APanelBody>
-        <APanelFooter>
-          <AButton>Action</AButton>
-        </APanelFooter>
-      </APanel>
-    )
-  }
   }
 `}
 />
@@ -121,22 +113,25 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
     });
     return (
       <div>
-        <AButton onClick={() => setOpen(true)}>Open Dialog 1</AButton>
+        <AButton onClick={() => setOpen(true)}>Open Modal</AButton>
         <AModal
+            aria-labelledby='modal-title'
             lockScroll={false}
             withOverlay={false}
             isOpen={open}>
-          <APanel ref={ref} type="dialog">
+          <APanel ref={ref} style={{ minWidth: '400px' }} type="dialog">
             <APanelHeader>
-              <APanelTitle>Feature: Panels</APanelTitle>
+              <APanelTitle id='modal-title'>Modal Demo</APanelTitle>
               <AButton onClick={() => setOpen(false)} tertiaryAlt icon>
                 <AIcon>close</AIcon>
               </AButton>
             </APanelHeader>
             <APanelBody>
-              Panels create a sense of discreteness in the content.
+              Modal content goes here.
             </APanelBody>
-            <APanelFooter>Use panels today!</APanelFooter>
+            <APanelFooter>
+              <AButton>Action</AButton>
+            </APanelFooter>
           </APanel>
         </AModal>
       </div>
@@ -159,10 +154,12 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
   return (
     <>
       <AButton onClick={() => setOpen(true)}>Start</AButton>
-      <AModal isOpen={open}>
+      <AModal
+          aria-labelledby='modal-title'
+          isOpen={open}>
         <APanel ref={ref} style={{width: '700px'}}>
           <APanelHeader>
-            <APanelTitle>Embedded Form</APanelTitle>
+            <APanelTitle id='modal-content'>Embedded Form</APanelTitle>
             <AButton onClick={() => setOpen(false)} tertiaryAlt icon>
               <AIcon>close</AIcon>
             </AButton>
