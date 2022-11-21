@@ -1,5 +1,5 @@
 ---
-name: Badges*
+name: Badges**
 route: /components/badge
 components: ABadge
 ---
@@ -67,17 +67,36 @@ import {ABadge} from "@cisco-sbg-ui/magna-react";
       </ABadge>
     </div>
     <div className="mt-4">
-          <ABadge color="cisco-blue" content="3" small className="mr-4">
-            <AButton tertiaryAlt icon className="pa-1" onClick={() => {}}>
-              <AIcon iconSet="magna" size={16}>bell</AIcon>
-            </AButton>
-          </ABadge>
-          <ABadge color="status-red" content="99+" small>
-            <AButton tertiaryAlt icon className="pa-1" onClick={() => {}}>
-              <AIcon iconSet="magna" size={16}>bell</AIcon>
-            </AButton>
-          </ABadge>
-        </div>
+      <ABadge color="cisco-blue" content="3" small className="mr-4">
+        <AButton tertiaryAlt icon className="pa-1" onClick={() => {}}>
+          <AIcon iconSet="magna" size={16}>bell</AIcon>
+        </AButton>
+      </ABadge>
+      <ABadge color="status-red" content="99+" small>
+        <AButton tertiaryAlt icon className="pa-1" onClick={() => {}}>
+          <AIcon iconSet="magna" size={16}>bell</AIcon>
+        </AButton>
+      </ABadge>
+    </div>
+    <div>Using "level" prop for themed colors</div>
+    <div className="mt-4">
+      <ABadge level="error" content="99+" large className="mr-4">
+        <AButton tertiaryAlt icon className="pa-1" onClick={() => {}}>
+          <AIcon iconSet="magna" size={16}>bell</AIcon>
+        </AButton>
+      </ABadge>
+      <ABadge level="info" content="99+" large className="mr-4">
+        <AButton tertiaryAlt icon className="pa-1" onClick={() => {}}>
+          <AIcon iconSet="magna" size={16}>bell</AIcon>
+        </AButton>
+      </ABadge>
+      <ABadge level="success" content="99+" large className="mr-4">
+        <AButton tertiaryAlt icon className="pa-1" onClick={() => {}}>
+          <AIcon iconSet="magna" size={16}>bell</AIcon>
+        </AButton>
+      </ABadge>
+    </div>
+
 </>
 `}
 />
