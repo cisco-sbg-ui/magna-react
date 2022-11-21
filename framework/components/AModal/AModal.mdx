@@ -287,3 +287,43 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
 ## Modal Props
 
 <Props of="AModal" />
+
+## Accessibility Notes
+
+By default, `AModal` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [dialog](https://w3c.github.io/aria/#dialog).
+
+`AModal` should have either an `aria-label` or `aria-labelledby` prop to serve as the title of the modal's content when opened. Examples:
+
+```
+<AModal aria-label='Sign up sheet'>
+  <h3>Sign-up Sheet</h3>
+
+  <form>
+    <label htmlFor='name'>Name:</label>
+    <input id='name' type='text' />
+
+    <button type='submit'>Submit</button>
+  </form>
+</AModal>
+```
+
+or
+
+```
+<AModal aria-labelledby='modal-title'>
+  <h3 id='modal-title'>Sign-up Sheet</h3>
+
+  <form>
+    <label htmlFor='name'>Name:</label>
+    <input id='name' type='text' />
+
+    <button type='submit'>Submit</button>
+  </form>
+</AModal>
+```
+
+Additinoally, `AModal` components are assigned the `aria-modal` attribute to indicate that content behind the modal should be hidden to screen readers.
+
+### Focus Management
+
+When `AModal` is open, only its child elements are focusable, meaning content outside the modal is not keyboard accessible. More often than not, this is all you will need when rendering an accessible modal. However, if you need more refined focus management, you can disable this default implementation by passing `AModal` a `lockFocus` prop value of `false` in order to implement your own solution.
