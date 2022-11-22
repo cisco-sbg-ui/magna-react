@@ -15,11 +15,12 @@ const ABadge = forwardRef(
       label = "badge",
       small,
       large,
+      level = "error",
       ...rest
     },
     ref
   ) => {
-    let className = `a-badge`;
+    let className = "a-badge";
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
@@ -33,12 +34,16 @@ const ABadge = forwardRef(
       className: "a-badge__badge"
     };
 
-    if (isStockColor(color)) {
-      badgeProps.className += ` ${color}`;
-    } else {
-      badgeProps.style = {
-        color
-      };
+    if (level) {
+      badgeProps.className += ` a-badge__badge--${level}`;
+    } else if (color) {
+      if (isStockColor(color)) {
+        badgeProps.className += ` ${color}`;
+      } else {
+        badgeProps.style = {
+          color
+        };
+      }
     }
 
     if (!content) {
@@ -80,7 +85,11 @@ ABadge.propTypes = {
   /**
    * Use to override the default `aria-label`.
    */
-  label: PropTypes.string
+  label: PropTypes.string,
+  /**
+   * Set the severity level, ignores the color prop
+   */
+  level: PropTypes.oneOf(["error, info, success"])
 };
 
 ABadge.displayName = "ABadge";
