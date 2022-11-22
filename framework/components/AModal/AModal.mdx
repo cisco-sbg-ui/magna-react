@@ -38,7 +38,7 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
             <APanel ref={ref} style={{ minWidth: '400px' }} type="dialog">
               <APanelHeader>
                 <APanelTitle id='modal-title'>Modal Demo</APanelTitle>
-                <AButton onClick={() => setOpen(false)} tertiaryAlt icon>
+                <AButton aria-label="Close modal 1" onClick={() => setOpen(false)} tertiaryAlt icon>
                   <AIcon>close</AIcon>
                 </AButton>
               </APanelHeader>
@@ -160,7 +160,7 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
         <APanel ref={ref} style={{width: '700px'}}>
           <APanelHeader>
             <APanelTitle id='modal-content'>Embedded Form</APanelTitle>
-            <AButton onClick={() => setOpen(false)} tertiaryAlt icon>
+            <AButton aria-label="Close form" onClick={() => setOpen(false)} tertiaryAlt icon>
               <AIcon>close</AIcon>
             </AButton>
           </APanelHeader>
