@@ -14,13 +14,15 @@ $input-transition: border-color $transition-duration--extra-fast
     }
 
     &:active {
-      border-color: map-deep-get($theme, "text-input", "border-color");
+      border-color: map-deep-get($theme, "text-input", "border-color--active");
     }
   }
 
   &--focused {
     .a-input-base__surface {
       border-color: map-deep-get($theme, "text-input", "border-color--focus");
+      box-shadow: 0px 0px 0px 2px
+        map-deep-get($theme, "text-input", "box-shadow-color--active");
 
       &:active {
         border-color: map-deep-get($theme, "text-input", "color--active");
