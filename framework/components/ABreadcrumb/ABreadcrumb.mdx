@@ -37,6 +37,30 @@ import {ABreadcrumb} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
+## Usage (magnetic modifier)
+
+<Playground
+  code={`<ABreadcrumb
+  magnetic
+  items={[{
+    content: "Root",
+    contentProps: {
+      href: "/"
+    }
+  }, {
+    content: "components",
+    contentProps: {
+      className: "disabled"
+    }
+  }, {
+    content: "breadcrumb",
+    contentProps: {
+      href: "/components/breadcrumb"
+    }
+  }]} />
+`}
+/>
+
 ## Breadcrumb Props
 
 The `ABreadcrumb` component inherits passed props.
