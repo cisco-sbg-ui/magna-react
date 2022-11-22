@@ -25,7 +25,7 @@ Removed components that did not need updating from light theme round (51 -> 42)
 | :construction: | AAccordion                    |    RWH    |
 | :construction: | AAlert                        |    AJL    |
 |      :x:       | AAutocomplete                 |           |
-|      :x:       | ABadge                        |           |
+| :construction: | ABadge                        |    RWH    |
 | :construction: | ABreadcrumb                   |    RWH    |
 |      :x:       | AButton                       |           |
 |      :x:       | AButtonGroup                  |           |
