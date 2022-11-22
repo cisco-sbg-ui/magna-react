@@ -1,5 +1,5 @@
 ---
-name: Breadcrumb*
+name: Breadcrumb**
 route: /components/breadcrumb
 components: ABreadcrumb
 ---
@@ -18,6 +18,30 @@ import {ABreadcrumb} from "@cisco-sbg-ui/magna-react";
 
 <Playground
   code={`<ABreadcrumb
+  items={[{
+    content: "Root",
+    contentProps: {
+      href: "/"
+    }
+  }, {
+    content: "components",
+    contentProps: {
+      className: "disabled"
+    }
+  }, {
+    content: "breadcrumb",
+    contentProps: {
+      href: "/components/breadcrumb"
+    }
+  }]} />
+`}
+/>
+
+## Usage (magnetic modifier)
+
+<Playground
+  code={`<ABreadcrumb
+  magnetic
   items={[{
     content: "Root",
     contentProps: {

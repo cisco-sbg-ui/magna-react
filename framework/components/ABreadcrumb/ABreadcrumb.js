@@ -1,11 +1,21 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
+import AIcon from "../AIcon";
 
 import "./ABreadcrumb.scss";
 
 const ABreadcrumb = forwardRef(
-  ({className: propsClassName, item, items = [], ...rest}, ref) => {
-    let className = `a-breadcrumb`;
+  (
+    {className: propsClassName, item, items = [], magnetic = false, ...rest},
+    ref
+  ) => {
+    let className = `a-breadcrumb`,
+      itemClassname = `${className}__item`,
+      chevronClassname = `${itemClassname}__chevron`;
+
+    if (magnetic) {
+      className += ` ${className}--magnetic`;
+    }
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
@@ -23,7 +33,10 @@ const ABreadcrumb = forwardRef(
       <ul {...rest} ref={ref} className={className}>
         {items.map((x, index) => {
           return (
-            <li key={index} className="a-breadcrumb__item">
+            <li key={index} className={itemClassname}>
+              {index > 0 && (
+                <AIcon className={chevronClassname}>chevron-right</AIcon>
+              )}
               {template(x)}
             </li>
           );
@@ -47,7 +60,11 @@ ABreadcrumb.propTypes = {
       content: PropTypes.node,
       contentProps: PropTypes.object
     })
-  )
+  ),
+  /**
+   * Adjust for magnetic sizing
+   */
+  magnetic: PropTypes.bool
 };
 
 ABreadcrumb.displayName = "ABreadcrumb";

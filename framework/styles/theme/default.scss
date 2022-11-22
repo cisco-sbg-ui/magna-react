@@ -44,7 +44,7 @@ $atomic-default: (
     "color-blue-primary": map-get($mds-light-theme, "primary-blue")
   ),
   "breadcrumb": (
-    "divider-color": "%23889099",
+    "divider-color": map-get($mds-neutral, "neutral-9"),
     "default-color": map-get($mds-light-theme, "secondary-gray"),
     "hover-color": map-get($mds-interactive, "interactive-10")
   ),
