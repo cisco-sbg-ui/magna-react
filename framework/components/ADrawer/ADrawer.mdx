@@ -51,26 +51,41 @@ You can change this behavior to have `ADrawer` render inside your own specified 
     return (
       <>
         <p>Left slide-in</p>
-        <AButton onClick={() => setIsLeftOpen(true)}>Open Left</AButton>
-        <ADrawer ref={leftDrawerContentRef} isOpen={isLeftOpen}>
+        <AButton onClick={() => setIsLeftOpen(true)} data-test-drawer-trigger-left>Open Left</AButton>
+        <ADrawer
+            aria-labelledby='left-drawer-title'
+            slideIn='left'
+            ref={leftDrawerContentRef}
+            isOpen={isLeftOpen}
+            data-test-drawer-left>
           <ADrawerContent>
-            <h3>Left Drawer</h3> <ADivider /> <AButton onClick={() => setIsLeftOpen(false)}>Close</AButton>
+            <h3 id='left-drawer-title'>Left Drawer</h3> <ADivider /> <AButton onClick={() => setIsLeftOpen(false)} data-test-drawer-close-left>Close</AButton>
           </ADrawerContent>
         </ADrawer>
         
         <p>Right slide-in</p>
-        <AButton onClick={() => setIsRightOpen(true)}>Open Right</AButton>
-        <ADrawer ref={rightDrawerContentRef} slideIn='right' isOpen={isRightOpen}>
+        <AButton onClick={() => setIsRightOpen(true)} data-test-drawer-trigger-right>Open Right</AButton>
+        <ADrawer
+            aria-labelledby='right-drawer-title'
+            slideIn='right'
+            ref={rightDrawerContentRef}
+            isOpen={isRightOpen}
+            data-test-drawer-right>
           <ADrawerContent>
-            <h3>Right Drawer</h3> <ADivider /> <AButton onClick={() => setIsRightOpen(false)}>Close</AButton>
+            <h3 id='right-drawer-title' >Right Drawer</h3> <ADivider /> <AButton onClick={() => setIsRightOpen(false)} data-test-drawer-close-right>Close</AButton>
           </ADrawerContent>
         </ADrawer>
         
         <p>Bottom slide-in</p>
-        <AButton onClick={() => setIsBottomOpen(true)}>Open Bottom</AButton>
-        <ADrawer ref={bottomDrawerContentRef} slideIn='bottom' isOpen={isBottomOpen}>
+        <AButton onClick={() => setIsBottomOpen(true)} data-test-drawer-trigger-bottom>Open Bottom</AButton>
+        <ADrawer
+            aria-labelledby='bottom-drawer-title'
+            slideIn='bottom'
+            ref={bottomDrawerContentRef}
+            isOpen={isBottomOpen}
+            data-test-drawer-bottom>
           <ADrawerContent>
-            <h3>Bottom Drawer</h3> <ADivider /> <AButton onClick={() => setIsBottomOpen(false)}>Close</AButton>
+            <h3 id='bottom-drawer-title' >Bottom Drawer</h3> <ADivider /> <AButton onClick={() => setIsBottomOpen(false)} data-test-drawer-close-bottom>Close</AButton>
           </ADrawerContent>    
         </ADrawer>
       </>
@@ -111,6 +126,7 @@ For more information about modals, reference the [`AModal` documentation](/compo
           Open
         </AButton>
         <ADrawer
+            aria-label='Drawer that behaves like a modal.'
             ref={modalContentRef}
             asModal={true}
             isOpen={modalOpen}
@@ -202,12 +218,13 @@ To contain the drawer within your own element, you should leverage either the `a
     
     return (
       <>
-        <div className={headerClass} style={{overflow: 'hidden', width: '100%'}}>
+        <div data-test-positioning-strategies-nav-bar className={headerClass} style={{overflow: 'hidden', width: '100%'}}>
             <div>
               {/* toggles position='relative' drawer, i.e., the sidebar) */}
               <AButton
                   onClick={() => setIsRelativeSlim(prevState => !prevState)}
-                  className='pa-0 white--text' tertiaryAlt>
+                  className='pa-0 white--text' tertiaryAlt
+                  data-test-drawer-trigger-relative>
                 <AIcon
                     left
                     iconSet="magna"
@@ -232,6 +249,7 @@ To contain the drawer within your own element, you should leverage either the `a
                 className='grey--lighten-6'
                 slimWidth='50px'
                 openWidth='175px'
+                data-test-drawer-relative
             >
               <AList className='grey--lighten-6' style={{border: 'none'}}>
                 <AListItem twoLine href="#" target="_blank">
@@ -245,7 +263,8 @@ To contain the drawer within your own element, you should leverage either the `a
               {/* toggles position='absolute' drawer, i.e., the more details drawer */}
               <AButton
                   onClick={() => setIsAbsoluteOpen(prevState => !prevState)}
-                  className='white--text' tertiaryAlt>
+                  className='white--text' tertiaryAlt
+                  data-test-drawer-trigger-absolute>
                   Toggle Absolute
               </AButton>
               <ADrawer
@@ -255,6 +274,7 @@ To contain the drawer within your own element, you should leverage either the `a
                   isOpen={isAbsoluteOpen}
                   ref={absoluteDrawerRef}
                   openWidth='150px'
+                  data-test-drawer-absolute
               >
                 <div className='black--text'>
                   <AListItem twoLine>
@@ -277,6 +297,7 @@ To contain the drawer within your own element, you should leverage either the `a
                   Open Fixed
               </AButton>
               <ADrawer
+                  aria-label='Fixed drawer'
                   position='fixed'
                   ref={fixedDrawerRef}
                   isOpen={isFixedOpen}>
@@ -310,6 +331,7 @@ To contain the drawer within your own element, you should leverage either the `a
       <>
         <AButton onClick={() => setIsOpen(prevState => !prevState)}>{isOpen ? 'Close' : 'Open'} Toolbar</AButton>
         <ADrawer
+            aria-label='Application toolbar.'
             className='black'
             ref={toolbarRef}
             slimWidth='75px'
