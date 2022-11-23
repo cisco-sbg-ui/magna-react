@@ -69,7 +69,7 @@ $switch-after-transition: transform $transition-duration--fast
       ~ .a-switch__box {
         opacity: map-deep-get($theme, "switch", "opacity-disabled");
         background-color: map-deep-get($theme, "switch", "bg--disabled");
-
+        cursor: not-allowed;
         &:after {
           border: $border-width solid
             map-deep-get($theme, "switch", "bg--disabled");

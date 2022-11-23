@@ -279,14 +279,14 @@ $atomic-dusk: (
     "step-line-color": rgba(map-get($grey, "lighten-2"), $alpha-3)
   ),
   "switch": (
-    "bg": map-get($mds-dark-theme, "secondary-gray"),
-    "bg--hover": map-get($mds-dark-theme, "default-text"),
-    "bg--checked": map-get($mds-blue, "blue-7"),
-    "bg--checked--hover": map-get($mds-blue, "blue-9"),
-    "bg--disabled": map-get($mds-dark-theme, "non-essential-lines"),
-    "bg--disabled--checked": map-get($mds-blue, "blue-3"),
-    "circle-color": map-get($mds-dark-theme, "background-section"),
-    "label-color--disabled": map-get($mds-dark-theme, "non-essential-lines"),
+    "bg": map-get($mds-neutral, "neutral-6"),
+    "bg--hover": map-get($mds-neutral, "neutral-7"),
+    "bg--checked": map-get($mds-interactive, "interactive-6"),
+    "bg--checked--hover": map-get($mds-interactive, "interactive-7"),
+    "bg--disabled": map-get($mds-neutral, "neutral-13"),
+    "bg--disabled--checked": #405d8e,
+    "circle-color": map-get($mds-neutral, "neutral-16"),
+    "label-color--disabled": map-get($mds-neutral, "neutral-12"),
     "opacity-disabled": 1
   ),
   "table": (

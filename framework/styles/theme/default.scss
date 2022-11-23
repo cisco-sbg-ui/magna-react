@@ -269,14 +269,14 @@ $atomic-default: (
     "step-line-color": map-get($mds-blue, "blue-8")
   ),
   "switch": (
-    "bg": map-get($mds-light-theme, "secondary-gray"),
-    "bg--hover": map-get($mds-light-theme, "default-text"),
-    "bg--checked": map-get($mds-blue, "blue-7"),
-    "bg--checked--hover": map-get($mds-blue, "blue-9"),
-    "bg--disabled": map-get($mds-light-theme, "non-essential-lines"),
-    "bg--disabled--checked": map-get($mds-blue, "blue-3"),
-    "circle-color": map-get($mds-light-theme, "background-section"),
-    "label-color--disabled": map-get($mds-light-theme, "non-essential-lines"),
+    "bg": map-get($mds-neutral, "neutral-12"),
+    "bg--hover": map-get($mds-neutral, "neutral-15"),
+    "bg--checked": map-get($mds-interactive, "interactive-10"),
+    "bg--checked--hover": map-get($mds-interactive, "interactive-11"),
+    "bg--disabled": map-get($mds-neutral, "neutral-4"),
+    "bg--disabled--checked": map-get($mds-interactive, "interactive-4"),
+    "circle-color": map-get($mds-neutral, "neutral-1"),
+    "label-color--disabled": map-get($mds-neutral, "neutral-7"),
     "opacity-disabled": 1
   ),
   "table": (
