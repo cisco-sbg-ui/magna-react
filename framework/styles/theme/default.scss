@@ -297,7 +297,7 @@ $atomic-default: (
   ),
   "tag": (
     "bg-color": map-get($mds-light-theme, "non-essential-lines"),
-    "color": map-get($mds-light-theme, "default-text")
+    "color": map-get($mds-neutral, "neutral-15")
   ),
   "text-input": (
     "bg": map-get($mds-light-theme, "background-section"),

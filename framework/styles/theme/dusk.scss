@@ -312,7 +312,7 @@ $atomic-dusk: (
   ),
   "tag": (
     "bg-color": map-get($mds-dark-theme, "non-essential-lines"),
-    "color": map-get($mds-dark-theme, "default-text")
+    "color": map-get($mds-neutral, "neutral-4")
   ),
   "text-input": (
     "bg": transparent,

@@ -29,6 +29,7 @@ $tag-icon-font-size: $font-size--xxs;
   padding: $tag-padding;
   border-radius: $tag-border-radius;
   vertical-align: middle;
+  cursor: default;
 
   &.interactable {
     cursor: pointer;

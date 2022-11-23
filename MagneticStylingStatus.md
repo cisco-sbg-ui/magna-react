@@ -56,8 +56,8 @@ Removed components that did not need updating from light theme round (51 -> 42)
 |      :x:       | AStepper                      |           |
 |      :x:       | ASlider                       |           |
 |      :x:       | ASwitch                       |           |
-|      :x:       | ATabs                         |           |
-|      :x:       | ATag                          |    AJL    |
+|      :x:       | ATabs                         |    AJL    |
+| :construction: | ATag                          |    AJL    |
 | :construction: | ATextarea                     |    AJL    |
 | :construction: | ATextInput                    |    AJL    |
 | :construction: | ATimeline                     |    AJL    |

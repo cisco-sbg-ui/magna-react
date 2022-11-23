@@ -1,5 +1,5 @@
 ---
-name: Tags*
+name: Tags**
 route: /components/tag
 components: ATag
 ---
@@ -29,6 +29,12 @@ import {ATag} from "@cisco-sbg-ui/magna-react";
       <ATag count className="ma-1">987</ATag>
       <ATag className="status-red white--text ma-1">
         <AIcon left>critical-stop</AIcon>Status Tag
+      </ATag>
+      <ATag className="mds-light-theme--status-negative white--text ma-1">
+        <AIcon left>critical-stop</AIcon>Negative Light
+      </ATag>
+      <ATag className="mds-dark-theme--status-negative white--text ma-1">
+        <AIcon left>critical-stop</AIcon>Negative Dark
       </ATag>
       <ATag href="/" target="_blank" className="ma-1">
         Linked Tag
