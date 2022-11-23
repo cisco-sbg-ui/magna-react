@@ -79,13 +79,14 @@ Removed components that did not need updating from light theme round (51 -> 42)
 - As of Sept 27th - 9/51  = 17%
 
 #### Phase 2 - reskin dark theme [UX has a WIP figma version here](https://www.figma.com/file/oVZWatImEIbl1c8sjdGxi0/branch/yU3qYkj6T2kfN4XYtUkEeD/%F0%9F%A7%B2--Magnetic-Design-Library?node-id=33305%3A351330)
+- As of Nov 23 14/42 = 33%
 - As of Nov 18th 7/42 = 16% (Projected dark theme reskin completion 12/16/22)
 - As of Nov 15th 0/42 - 0% (We will make a projection on time to complete next week)
 - As of Nov 9th updated color palette for light and dark theme to dark mode figma, will start incorporating changes next week
 - As of Nov 4th - 0/42 = 0% starting dark theme for re-skinned components
 
 #### Phase 3 - Add new components
-- Not started
+- Drawer started
 
 #### Phase 4 - Add Magnetic components option as needed - (this means not just skin layer, size/padding/margin dimensions change; You can see a sample of this at the bottom of the Button component)
 - As of Nov 7th - 2/42 = 4%
