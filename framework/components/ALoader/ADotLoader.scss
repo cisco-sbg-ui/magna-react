@@ -10,7 +10,7 @@ $loader-dot-bounce2-delay: -0.16s;
 
 @include theme(a-loader) using ($theme) {
   &__dot {
-    background-color: map-deep-get($theme, "base", "brand-color");
+    background-color: map-deep-get($theme, "loader", "main-color");
   }
 }
 

@@ -43,7 +43,7 @@ Removed components that did not need updating from light theme round (51 -> 42)
 |      :x:       | AIcon                         |           |
 |      :x:       | AInputBase                    |           |
 |      :x:       | AList                         |           |
-|      :x:       | ALoader                       |           |
+| :construction: | ALoader                       |    RWH    |
 |      :x:       | AMenu                         |           |
 |      :x:       | AMenuBase                     |           |
 |      :x:       | APagination                   |           |
