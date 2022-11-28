@@ -40,10 +40,10 @@ const AModal = forwardRef(
     }, [lockScroll, isOpen]);
     let visibilityClass = "";
     if (!isOpen) {
-      visibilityClass = "modal--hidden";
+      visibilityClass = "a-modal--hidden";
     }
 
-    let contentClassName = `modal-container ${visibilityClass}`;
+    let contentClassName = `a-modal-container ${visibilityClass}`;
     if (propsClassName) {
       contentClassName += ` ${propsClassName}`;
     }

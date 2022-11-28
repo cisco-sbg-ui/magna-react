@@ -1,4 +1,4 @@
-.drawer {
+.a-drawer {
   overflow: hidden;
 
   background: white;
@@ -18,11 +18,11 @@
   }
 
   &--slim {
-    &.drawer--horizontal {
+    &.a-drawer--horizontal {
       height: 50px;
     }
 
-    &.drawer--vertical {
+    &.a-drawer--vertical {
       width: 65px;
     }
   }
@@ -46,11 +46,11 @@
     position: absolute;
     z-index: 1;
 
-    &.drawer--horizontal {
+    &.a-drawer--horizontal {
       width: 100%;
     }
 
-    &.drawer--vertical {
+    &.a-drawer--vertical {
       height: 100%;
     }
   }
@@ -66,26 +66,26 @@
   &--relative {
     position: relative;
 
-    &.drawer--horizontal {
+    &.a-drawer--horizontal {
       width: 100%;
     }
 
-    &.drawer--vertical {
+    &.a-drawer--vertical {
       height: 100%;
     }
   }
 
-  &--left:not(.drawer--relative) {
+  &--left:not(.a-drawer--relative) {
     top: 0;
     left: 0;
   }
 
-  &--right:not(.drawer--relative) {
+  &--right:not(.a-drawer--relative) {
     top: 0;
     right: 0;
   }
 
-  &--bottom:not(.drawer--relative) {
+  &--bottom:not(.a-drawer--relative) {
     bottom: 0;
   }
 
@@ -93,22 +93,22 @@
     overflow: hidden;
     visibility: hidden;
 
-    &.drawer--left {
+    &.a-drawer--left {
       transform: translateX(-100%);
     }
 
-    &.drawer--right {
+    &.a-drawer--right {
       transform: translateX(100%);
     }
 
-    &.drawer--bottom {
+    &.a-drawer--bottom {
       transform: translateY(100%);
     }
   }
 }
 
 @media (prefers-reduced-motion) {
-  .drawer {
+  .a-drawer {
     transition: none;
   }
 }

@@ -26,11 +26,11 @@ const ADrawer = forwardRef(
     const DrawerPanelComponent = as || "div";
     const orientation =
       slideIn === "bottom" || slideIn === "top" ? "horizontal" : "vertical";
-    let className = `drawer drawer--${orientation} drawer--${position} drawer--${slideIn}`;
+    let className = `a-drawer a-drawer--${orientation} a-drawer--${position} a-drawer--${slideIn}`;
     const style = {...propsStyle};
 
     if (slim) {
-      className += ` drawer--slim`;
+      className += ` a-drawer--slim`;
 
       if (slimWidth) {
         style.width = slimWidth;
@@ -38,7 +38,7 @@ const ADrawer = forwardRef(
       }
     }
     if (!isOpen) {
-      className += ` drawer--hidden`;
+      className += ` a-drawer--hidden`;
     } else if (!slim && openWidth) {
       style.width = openWidth;
     }
