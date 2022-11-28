@@ -87,8 +87,7 @@ $date-picker-day-border-radius: 4px;
     &:hover {
       .a-date-picker__day__label {
         background-color: map-deep-get($theme, "base", "color--hover");
-        color: map-deep-get($theme, "link", "color--hover");
-        font-weight: 600;
+        color: map-deep-get($theme, "base", "inverse-color");
       }
     }
 

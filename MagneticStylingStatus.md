@@ -34,7 +34,7 @@ Removed components that did not need updating from light theme round (51 -> 42)
 | :construction: | AContextualNotification       |    AJL    |
 | :construction: | AContextualNotificationMenu   |    AJL    |
 |      :x:       | ADataTable                    |           |
-|      :x:       | ADatePicker                   |           |
+| :construction: | ADatePicker                   |    RWH    |
 |      :x:       | ADialog                       |           |
 |      :x:       | ADivider                      |           |
 |      :x:       | AFieldBase                    |           |
