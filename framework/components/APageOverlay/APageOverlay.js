@@ -5,7 +5,7 @@ import "./APageOverlay.scss";
 const APageOverlay = forwardRef(
   ({children, className: propsClassName, as, ...rest}, ref) => {
     const Component = as || "div";
-    let className = "page-overlay";
+    let className = "a-page-overlay";
     if (propsClassName) {
       className += ` ${propsClassName}`;
     }
