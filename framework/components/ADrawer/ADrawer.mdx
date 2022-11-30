@@ -246,12 +246,11 @@ To contain the drawer within your own element, you should leverage either the `a
                 slim={isRelativeSlim}
                 isOpen={true}
                 ref={relativeDrawerRef}
-                className='grey--lighten-6'
                 slimWidth='50px'
                 openWidth='175px'
                 data-test-drawer-relative
             >
-              <AList className='grey--lighten-6' style={{border: 'none'}}>
+              <AList style={{border: 'none'}}>
                 <AListItem twoLine href="#" target="_blank">
                   <AListItemAvatar className='mr-4 flex-shrink-0'><AIcon size={18}>chart-pie</AIcon></AListItemAvatar>
                   <AListItemContent className='text-no-wrap'>Sidebar Item</AListItemContent>
@@ -301,10 +300,15 @@ To contain the drawer within your own element, you should leverage either the `a
                   position='fixed'
                   ref={fixedDrawerRef}
                   isOpen={isFixedOpen}>
-                  <div>
-                    Fixed drawer
-                    <AButton onClick={() => setIsFixedOpen(false)}>Close</AButton>
-                  </div>
+                <ADrawerContent>
+                  <h3 id='left-drawer-title'>
+                    Fixed Drawer
+                  </h3>
+                  <ADivider />
+                  <AButton onClick={() => setIsFixedOpen(false)}>
+                    Close
+                  </AButton>
+                </ADrawerContent>
               </ADrawer>
             </main>
         </div>
@@ -348,7 +352,7 @@ To contain the drawer within your own element, you should leverage either the `a
             </AListItem>
             <AListItem twoLine>
               <AListItemAvatar className='flex-shrink-0 mr-4'>
-                <AButton icon>
+                <AButton className='white--text' icon>
                   <AIcon iconSet="magna">envelopeSimple</AIcon>
                 </AButton>
               </AListItemAvatar>
@@ -358,7 +362,7 @@ To contain the drawer within your own element, you should leverage either the `a
             </AListItem>
             <AListItem twoLine>
               <AListItemAvatar className='flex-shrink-0 mr-4'>
-                <AButton icon>
+                <AButton className='white--text' icon>
                   <AIcon iconSet="magna">uploadSimple</AIcon>
                 </AButton>
               </AListItemAvatar>
@@ -368,7 +372,7 @@ To contain the drawer within your own element, you should leverage either the `a
             </AListItem>
             <AListItem twoLine>
               <AListItemAvatar className='flex-shrink-0 mr-4'>
-                <AButton icon>
+                <AButton className='white--text' icon>
                   <AIcon iconSet="magna">trash</AIcon>
                 </AButton>
               </AListItemAvatar>
@@ -413,7 +417,6 @@ To contain the drawer within your own element, you should leverage either the `a
             <ADrawer
                 ref={drawerRef}
                 slideIn='right'
-                className='grey--lighten-6'
                 style={{maxWidth: '150px'}}
                 asModal={false}
                 position='absolute'
@@ -475,14 +478,13 @@ To contain the drawer within your own element, you should leverage either the `a
           <ACol cols='auto' className='pa-0'>
             <ADrawer
                 ref={sidebarRef}
-                className='grey--lighten-6'
                 asModal={false}
                 position='relative'
                 isOpen
                 slimWidth='50px'
                 openWidth='150px'
                 slim={isSlim}>
-              <AList className='grey--lighten-6' style={{border: 'none'}}>
+              <AList style={{border: 'none'}}>
                 <AListItem twoLine href="#" target="_blank">
                   <AListItemAvatar className='mr-4 flex-shrink-0'><AIcon size={18}>chart-pie</AIcon></AListItemAvatar>
                   <AListItemContent>Foo</AListItemContent>
