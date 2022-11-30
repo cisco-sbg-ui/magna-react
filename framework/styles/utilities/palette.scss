@@ -415,7 +415,8 @@ $mds-light-theme: (
   "status-info": map-get($mds-purple, "purple-10"),
   "status-positive": map-get($mds-blue, "blue-7"),
   "status-warning": map-get($mds-yellow, "yellow-7"),
-  "status-negative": map-get($mds-red, "red-10")
+  "status-negative": map-get($mds-red, "red-10"),
+  "table-border": map-get($mds-neutral, "neutral-11")
 );
 $mds-dark-theme: (
   "background": map-get($mds-neutral, "neutral-17"),
@@ -441,7 +442,8 @@ $mds-dark-theme: (
   "status-info": map-get($mds-purple, "purple-6"),
   "status-positive": map-get($mds-blue, "blue-5"),
   "status-warning": map-get($mds-yellow, "yellow-4"),
-  "status-negative": map-get($mds-red, "red-7")
+  "status-negative": map-get($mds-red, "red-7"),
+  "table-border": map-get($mds-neutral, "neutral-7")
 );
 
 $secure-blue: (
