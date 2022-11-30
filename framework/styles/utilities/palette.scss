@@ -387,6 +387,11 @@ $mds-accent-colors: (
   "accent-j-j1-light": #cce2e5
 );
 
+$mds-border: (
+  "light": map-get($mds-interactive, "interactive-8"),
+  "dark": #4a84e8
+);
+
 $mds-status: (
   "positive": map-get($mds-blue, "blue-7"),
   "warning": map-get($mds-yellow, "yellow-7"),

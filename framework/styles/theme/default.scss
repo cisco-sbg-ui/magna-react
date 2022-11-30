@@ -183,7 +183,9 @@ $atomic-default: (
   ),
   "date-picker": (
     "header-border-color": map-get($grey, "lighten-3"),
-    "range-bg": map-get($mds-blue, "blue-1")
+    "range-bg": map-get($mds-blue, "blue-1"),
+    "background-color--hover": map-get($mds-interactive, "interactive-2"),
+    "label-border-color": map-get($mds-border, "light")
   ),
   "divider": (
     "color-default": map-get($mds-neutral, "neutral-4"),

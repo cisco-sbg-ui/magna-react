@@ -72,8 +72,8 @@ $date-picker-day-border-radius: 4px;
     &.selected {
       .a-date-picker__day__label {
         border: $border-width solid;
-        border-color: map-deep-get($theme, "base", "color--selected");
-        color: map-deep-get($theme, "base", "color--selected");
+        border-color: map-deep-get($theme, "date-picker", "label-border-color");
+        color: map-deep-get($theme, "base", "color");
         font-weight: 600;
       }
     }
@@ -81,13 +81,19 @@ $date-picker-day-border-radius: 4px;
     &.between {
       .a-date-picker__day__label {
         background-color: map-deep-get($theme, "date-picker", "range-bg");
+        font-weight: 600;
       }
     }
 
     &:hover {
       .a-date-picker__day__label {
-        background-color: map-deep-get($theme, "base", "color--hover");
-        color: map-deep-get($theme, "base", "inverse-color");
+        background-color: map-deep-get(
+          $theme,
+          "date-picker",
+          "background-color--hover"
+        );
+        color: map-deep-get($theme, "date-picker", "label-border-color");
+        font-weight: 600;
       }
     }
 
@@ -95,6 +101,18 @@ $date-picker-day-border-radius: 4px;
       .a-date-picker__day__label {
         background-color: map-deep-get($theme, "base", "color--active");
         color: map-deep-get($theme, "base", "inverse-color");
+      }
+    }
+
+    &.selected:hover {
+      .a-date-picker__day__label {
+        background-color: map-deep-get(
+          $theme,
+          "date-picker",
+          "background-color--hover"
+        );
+        color: map-deep-get($theme, "date-picker", "label-border-color");
+        font-weight: 600;
       }
     }
   }
