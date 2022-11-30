@@ -212,7 +212,8 @@ $atomic-dusk: (
     "opacity--disabled": $alpha-4
   ),
   "loader": (
-    "background-color": map-get($dusk, "6")
+    "background-color": map-get($dusk, "6"),
+    "main-color": map-get($mds-blue, "blue-5")
   ),
   "menu": (
     "border-color": map-get($mds-dark-theme, "multipurpose-gray"),
