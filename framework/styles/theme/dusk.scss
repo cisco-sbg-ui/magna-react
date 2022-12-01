@@ -32,8 +32,8 @@ $atomic-dusk: (
     "bg": map-get($mds-dark-theme, "background"),
     "brand-color": map-get($cisco-blue, "base"),
     "color": map-get($mds-dark-theme, "default-text"),
-    "color--active": map-get($mds-blue, "blue-6"),
-    "color--hover": map-get($mds-blue, "blue-2"),
+    "color--active": map-get($mds-interactive, "interactive-6"),
+    "color--hover": map-get($mds-interactive, "interactive-6"),
     "color--selected": map-get($mds-blue, "blue-7"),
     "color--disabled": map-get($mds-dark-theme, "icon-text-gray"),
     "inverse-color": map-get($mds-light-theme, "default-text"),
@@ -183,7 +183,10 @@ $atomic-dusk: (
   ),
   "date-picker": (
     "header-border-color": rgba(map-get($grey, "base"), $alpha-3),
-    "range-bg": rgba(map-get($grey, "lighten-5"), $alpha-2)
+    "range-bg": rgba(map-get($grey, "lighten-5"), $alpha-2),
+    "background-color--hover": map-get($mds-neutral, "neutral-15"),
+    "label-border-color": map-get($mds-border, "dark"),
+    "label-selected-hover": rgba(108, 158, 245, 0.25)
   ),
   "divider": (
     "color-default": map-get($mds-neutral, "neutral-14"),
