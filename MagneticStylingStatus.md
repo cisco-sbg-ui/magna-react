@@ -33,7 +33,7 @@ Removed components that did not need updating from light theme round (51 -> 42)
 |      :x:       | ACombobox                     |           |
 | :construction: | AContextualNotification       |    AJL    |
 | :construction: | AContextualNotificationMenu   |    AJL    |
-|      :x:       | ADataTable                    |           |
+| :construction: | ADataTable                    |    RWH    |
 | :construction: | ADatePicker                   |    RWH    |
 |      :x:       | ADialog                       |           |
 |      :x:       | ADivider                      |           |
@@ -56,7 +56,7 @@ Removed components that did not need updating from light theme round (51 -> 42)
 |      :x:       | AStepper                      |           |
 |      :x:       | ASlider                       |           |
 | :construction: | ASwitch                       |    AJL    |
-|      :x:       | ATabs                         |    AJL    |
+| :construction: | ATabs                         |    AJL    |
 | :construction: | ATag                          |    AJL    |
 | :construction: | ATextarea                     |    AJL    |
 | :construction: | ATextInput                    |    AJL    |

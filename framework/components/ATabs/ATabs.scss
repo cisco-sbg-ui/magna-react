@@ -23,19 +23,20 @@ $tab-oversized-margin: 0;
 @include theme(a-tab-group) using ($theme) {
   &__tab {
     color: map-deep-get($theme, "tabs", "text-color");
+    font-weight: 600;
     &:active,
     &:focus,
     &:hover {
       color: map-deep-get($theme, "tabs", "text-color--selected");
-      //font-weight: 600; this causes a shift, using color change only so don't need to re-write this
+
       @include tab-bar(
         $tab-bottom-bar-height,
         map-deep-get($theme, "tabs", "bar-color--hover")
       );
     }
     &--selected {
-      color: map-deep-get($theme, "tabs", "text-color--selected");
       font-weight: 700;
+      color: map-deep-get($theme, "tabs", "text-color--selected");
       @include tab-bar(
         $tab-bottom-bar-height,
         map-deep-get($theme, "tabs", "bar-color--selected")
@@ -45,7 +46,6 @@ $tab-oversized-margin: 0;
       &:focus,
       &:hover {
         color: map-deep-get($theme, "tabs", "text-color--selected");
-        font-weight: 700;
         @include tab-bar(
           $tab-bottom-bar-height,
           map-deep-get($theme, "tabs", "bar-color--selected")
@@ -83,7 +83,7 @@ $tab-oversized-margin: 0;
         border-bottom: $border-width solid transparent;
         @include tab-bar(
           $tab-top-bar-height,
-          map-deep-get($theme, "base", "color--selected")
+          map-deep-get($theme, "tabs", "bar-color--selected")
         );
       }
 
@@ -92,7 +92,7 @@ $tab-oversized-margin: 0;
         border-top: $border-width solid transparent;
         @include tab-bar(
           $tab-top-bar-height,
-          map-deep-get($theme, "base", "color--hover")
+          map-deep-get($theme, "tabs", "bar-color--hover")
         );
         background-color: map-deep-get(
           $theme,

@@ -293,10 +293,10 @@ $atomic-default: (
   "tabs": (
     "oversized-background-color": map-get($grey, "lighten-6"),
     "oversized--hover-background-color": $white,
-    "text-color": map-get($mds-light-theme, "secondary-gray"),
-    "text-color--selected": map-get($mds-light-theme, "heading-gray"),
-    "bar-color--hover": map-get($mds-light-theme, "icon-text-gray"),
-    "bar-color--selected": map-get($mds-light-theme, "heading-gray")
+    "text-color": map-get($mds-neutral, "neutral-12"),
+    "text-color--selected": map-get($mds-neutral, "neutral-15"),
+    "bar-color--hover": map-get($mds-neutral, "neutral-6"),
+    "bar-color--selected": map-get($mds-interactive, "interactive-10")
   ),
   "tag": (
     "bg-color": map-get($mds-light-theme, "non-essential-lines"),
