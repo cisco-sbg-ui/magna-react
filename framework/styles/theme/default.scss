@@ -268,8 +268,10 @@ $atomic-default: (
     "box-shadow--danger": 0 0 4px 4px rgba($color-error, 0.3)
   ),
   "steps": (
-    "step-icon-border-color": map-get($mds-blue, "blue-8"),
-    "step-line-color": map-get($mds-blue, "blue-8")
+    "step-main-color": map-get($mds-interactive, "interactive-8"),
+    "step-active-color": map-get($mds-neutral, "neutral-1"),
+    "step-icon-border-color": map-get($mds-interactive, "interactive-8"),
+    "step-line-color": map-get($mds-interactive, "interactive-8")
   ),
   "switch": (
     "bg": map-get($mds-neutral, "neutral-12"),

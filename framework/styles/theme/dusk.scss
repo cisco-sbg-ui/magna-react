@@ -279,8 +279,10 @@ $atomic-dusk: (
     "box-shadow--danger": 0 0 4px 4px rgba($color-error, 0.3)
   ),
   "steps": (
-    "step-icon-border-color": rgba(map-get($grey, "lighten-2"), $alpha-3),
-    "step-line-color": rgba(map-get($grey, "lighten-2"), $alpha-3)
+    "step-main-color": map-get($mds-interactive, "interactive-6"),
+    "step-active-color": map-get($mds-neutral, "neutral-16"),
+    "step-icon-border-color": map-get($mds-interactive, "interactive-6"),
+    "step-line-color": map-get($mds-interactive, "interactive-6")
   ),
   "switch": (
     "bg": map-get($mds-neutral, "neutral-6"),

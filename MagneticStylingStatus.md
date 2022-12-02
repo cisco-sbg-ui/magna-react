@@ -53,7 +53,7 @@ Removed components that did not need updating from light theme round (51 -> 42)
 |      :x:       | ARadio                        |           |
 |      :x:       | ASelect                       |           |
 |      :x:       | ASimpleTable                  |           |
-|      :x:       | AStepper                      |           |
+| :construction: | AStepper                      |    RWH    |
 |      :x:       | ASlider                       |           |
 | :construction: | ASwitch                       |    AJL    |
 | :construction: | ATabs                         |    AJL    |
