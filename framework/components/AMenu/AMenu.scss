@@ -4,7 +4,7 @@
   border-color: map-deep-get($theme, "menu", "border-color");
   border-radius: $border-radius--lg;
   border-width: $border-width;
-  background-color: map-deep-get($theme, "base", "pg-bg");
+  background-color: map-deep-get($theme, "control", "fill-color");
   &--pointer.a-menu-base--top,
   &--pointer.a-menu-base--top-left,
   &--pointer.a-menu-base--top-right {
