@@ -4,7 +4,7 @@
   &__track {
     &--low,
     &--high {
-      background-color: map-deep-get($theme, "control", "stroke-color");
+      background-color: map-deep-get($theme, "slider", "track-color");
     }
   }
 
