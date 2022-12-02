@@ -266,7 +266,8 @@ $atomic-default: (
     "box-shadow": 0 0 4px 4px
       rgba(map-get($mds-interactive, "interactive-8"), 0.5),
     "box-shadow--warning": 0 0 4px 4px rgba($color-warning, 0.3),
-    "box-shadow--danger": 0 0 4px 4px rgba($color-error, 0.3)
+    "box-shadow--danger": 0 0 4px 4px rgba($color-error, 0.3),
+    "track-color": map-get($mds-neutral, "neutral-7")
   ),
   "steps": (
     "step-icon-border-color": map-get($mds-blue, "blue-8"),
