@@ -14,7 +14,7 @@
         ) !important;
         border: 2px solid
           map-deep-get($theme, "pagination", "label-border-color") !important;
-        color: map-deep-get($theme, "base", "color");
+        color: map-deep-get($theme, "base", "color--active");
       }
 
       &:focus {
@@ -61,10 +61,7 @@
       height: 23px;
       border-radius: $border-radius--lg;
       border: 2px solid transparent !important;
-
-      &--selected {
-        background-color: transparent !important;
-      }
+      background-color: transparent !important;
     }
   }
 
