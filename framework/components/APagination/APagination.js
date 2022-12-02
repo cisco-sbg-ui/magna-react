@@ -27,9 +27,8 @@ const APagination = forwardRef(
     },
     ref
   ) => {
-    const [workingResultsPerPage, setWorkingResultsPerPage] = useState(
-      resultsPerPage
-    );
+    const [workingResultsPerPage, setWorkingResultsPerPage] =
+      useState(resultsPerPage);
 
     const [workingPage, setWorkingPage] = useState(page);
 
@@ -119,7 +118,8 @@ const APagination = forwardRef(
               tertiaryAlt
               icon
               onClick={() => onPageChange(1)}
-              aria-label="First">
+              aria-label="First"
+            >
               <AIcon size={ICON_SIZE}>first-page</AIcon>
             </AButton>
             <AButton
@@ -128,8 +128,11 @@ const APagination = forwardRef(
               tertiaryAlt
               icon
               onClick={() => onPageChange(page - 1)}
-              aria-label="Previous">
-              <AIcon left={showText} size={ICON_SIZE}>chevron-left</AIcon>
+              aria-label="Previous"
+            >
+              <AIcon left={showText} size={ICON_SIZE}>
+                chevron-left
+              </AIcon>
             </AButton>
             <div className="a-pagination__page-selection">
               <ATextInput
@@ -171,8 +174,11 @@ const APagination = forwardRef(
               tertiaryAlt
               icon
               onClick={() => onPageChange(page + 1)}
-              aria-label="Next">
-              <AIcon right={showText} size={ICON_SIZE}>chevron-right</AIcon>
+              aria-label="Next"
+            >
+              <AIcon right={showText} size={ICON_SIZE}>
+                chevron-right
+              </AIcon>
             </AButton>
             <AButton
               className="a-pagination__last"
@@ -180,8 +186,11 @@ const APagination = forwardRef(
               tertiaryAlt
               icon
               onClick={() => onPageChange(pages)}
-              aria-label="Last">
-              <AIcon right={showText} size={ICON_SIZE}>last-page</AIcon>
+              aria-label="Last"
+            >
+              <AIcon right={showText} size={ICON_SIZE}>
+                last-page
+              </AIcon>
             </AButton>
           </>
         );
@@ -232,15 +241,19 @@ const APagination = forwardRef(
               tertiaryAlt={!showText}
               icon={!showText}
               onClick={() => onPageChange(page - 1)}
-              aria-label="Previous">
-              <AIcon left={showText} size={ICON_SIZE}>chevron-left</AIcon>
+              aria-label="Previous"
+            >
+              <AIcon left={showText} size={ICON_SIZE}>
+                chevron-left
+              </AIcon>
               {showText && "Previous"}
             </AButton>
             {!!startPages.length && (
               <>
                 <AButtonGroup
                   selectedValues={[page]}
-                  onChange={(selectedValue) => onPageChange(selectedValue)}>
+                  onChange={(selectedValue) => onPageChange(selectedValue)}
+                >
                   {startPages.map((x) => (
                     <AButton value={x} key={x}>
                       {localeFormatting ? x.toLocaleString() : x}
@@ -253,7 +266,8 @@ const APagination = forwardRef(
             {midPages.length && (
               <AButtonGroup
                 selectedValues={[page]}
-                onChange={(selectedValue) => onPageChange(selectedValue)}>
+                onChange={(selectedValue) => onPageChange(selectedValue)}
+              >
                 {midPages.map((x) => (
                   <AButton value={x} key={x}>
                     {localeFormatting ? x.toLocaleString() : x}
@@ -266,7 +280,8 @@ const APagination = forwardRef(
                 &hellip;
                 <AButtonGroup
                   selectedValues={[page]}
-                  onChange={(selectedValue) => onPageChange(selectedValue)}>
+                  onChange={(selectedValue) => onPageChange(selectedValue)}
+                >
                   {endPages.map((x) => (
                     <AButton value={x} key={x}>
                       {localeFormatting ? x.toLocaleString() : x}
@@ -282,9 +297,12 @@ const APagination = forwardRef(
               tertiaryAlt={!showText}
               icon={!showText}
               onClick={() => onPageChange(page + 1)}
-              aria-label="Next">
+              aria-label="Next"
+            >
               {showText && "Next"}
-              <AIcon right={showText} size={ICON_SIZE}>chevron-right</AIcon>
+              <AIcon right={showText} size={ICON_SIZE}>
+                chevron-right
+              </AIcon>
             </AButton>
           </>
         );
@@ -296,15 +314,23 @@ const APagination = forwardRef(
             className="a-pagination__previous"
             disabled={!onPrevious}
             onClick={(e) => onPrevious(e)}
-            aria-label="Previous">
-            <AIcon left size={ICON_SIZE}>chevron-left</AIcon>Previous
+            aria-label="Previous"
+          >
+            <AIcon left size={ICON_SIZE}>
+              chevron-left
+            </AIcon>
+            Previous
           </AButton>
           <AButton
             className="a-pagination__next"
             disabled={!onNext}
             onClick={(e) => onNext(e)}
-            aria-label="Next">
-            Next<AIcon right size={ICON_SIZE}>chevron-right</AIcon>
+            aria-label="Next"
+          >
+            Next
+            <AIcon right size={ICON_SIZE}>
+              chevron-right
+            </AIcon>
           </AButton>
         </>
       );

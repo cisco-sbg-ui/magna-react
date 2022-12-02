@@ -11,8 +11,8 @@
         transparent transparent;
 
       &:after {
-        border-color: map-deep-get($theme, "panel", "dialog-header-bg")
-          transparent transparent transparent;
+        border-color: map-deep-get($theme, "control", "fill-color") transparent
+          transparent transparent;
       }
     }
   }
@@ -26,7 +26,7 @@
 
       &:after {
         border-color: transparent transparent
-          map-deep-get($theme, "panel", "dialog-header-bg") transparent;
+          map-deep-get($theme, "control", "fill-color") transparent;
       }
     }
   }
@@ -56,9 +56,8 @@
       transparent transparent;
 
     &:after {
-      border-color: transparent
-        map-deep-get($theme, "panel", "dialog-header-bg") transparent
-        transparent;
+      border-color: transparent map-deep-get($theme, "control", "fill-color")
+        transparent transparent;
     }
   }
 
@@ -68,7 +67,7 @@
 
     &:after {
       border-color: transparent transparent transparent
-        map-deep-get($theme, "panel", "dialog-header-bg");
+        map-deep-get($theme, "control", "fill-color");
     }
   }
 
@@ -77,9 +76,8 @@
       transparent transparent;
 
     &:after {
-      border-color: transparent
-        map-deep-get($theme, "panel", "dialog-footer-bg") transparent
-        transparent;
+      border-color: transparent map-deep-get($theme, "control", "fill-color")
+        transparent transparent;
     }
   }
 
@@ -89,7 +87,7 @@
 
     &:after {
       border-color: transparent transparent transparent
-        map-deep-get($theme, "panel", "dialog-footer-bg");
+        map-deep-get($theme, "control", "fill-color");
     }
   }
 }
