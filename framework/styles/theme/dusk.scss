@@ -227,6 +227,7 @@ $atomic-dusk: (
   "pagination": (
     "background-color": map-get($mds-neutral, "neutral-15"),
     "label-border-color": map-get($mds-border, "dark"),
+    "label-color": map-get($mds-interactive, "interactive-6"),
     "label-selected-hover": rgba(108, 158, 245, 0.25)
   ),
   "panel": (

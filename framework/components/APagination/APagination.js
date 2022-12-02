@@ -8,7 +8,7 @@ import ATextInput from "../ATextInput";
 import AIcon from "../AIcon";
 import "./APagination.scss";
 
-const ICON_SIZE = 16;
+const ICON_SIZE = 10;
 
 const APagination = forwardRef(
   (

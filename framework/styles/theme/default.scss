@@ -226,6 +226,7 @@ $atomic-default: (
   "pagination": (
     "background-color": map-get($mds-interactive, "interactive-2"),
     "label-border-color": map-get($mds-border, "light"),
+    "label-color": map-get($mds-interactive, "interactive-11"),
     "label-selected-hover": rgba(108, 158, 245, 0.25)
   ),
   "panel": (

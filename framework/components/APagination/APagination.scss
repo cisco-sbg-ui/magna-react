@@ -14,17 +14,24 @@
         ) !important;
         border: 2px solid
           map-deep-get($theme, "pagination", "label-border-color") !important;
-        color: map-deep-get($theme, "base", "color--active");
+        color: map-deep-get($theme, "pagination", "label-color");
+        font-weight: 600;
       }
 
       &:focus {
         box-shadow: none;
-        //background-color: map-deep-get($theme, "base", "color--active");
       }
 
       &:focus:not(&--selected) {
         color: map-deep-get($theme, "base", "inverse-color");
       }
+    }
+  }
+
+  &__previous,
+  &__next {
+    .a-icon {
+      fill: map-deep-get($theme, "control", "stroke-color");
     }
   }
 }
@@ -62,6 +69,7 @@
       border-radius: $border-radius--lg;
       border: 2px solid transparent !important;
       background-color: transparent !important;
+      font-weight: 400;
     }
   }
 
