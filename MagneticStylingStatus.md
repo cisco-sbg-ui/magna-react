@@ -29,7 +29,7 @@ Removed components that did not need updating from light theme round (51 -> 42)
 | :construction: | ABreadcrumb                   |    RWH    |
 |      :x:       | AButton                       |           |
 |      :x:       | AButtonGroup                  |           |
-|      :x:       | ACheckbox                     |           |
+| :construction: | ACheckbox                     |    AJL    |
 |      :x:       | ACombobox                     |           |
 | :construction: | AContextualNotification       |    AJL    |
 | :construction: | AContextualNotificationMenu   |    AJL    |
@@ -50,7 +50,7 @@ Removed components that did not need updating from light theme round (51 -> 42)
 |      :x:       | APanel                        |           |
 | :construction: | APopover                      |    RWH    |
 |      :x:       | AProgressbar                  |           |
-|      :x:       | ARadio                        |           |
+| :construction: | ARadio                        |    AJL    |
 |      :x:       | ASelect                       |           |
 |      :x:       | ASimpleTable                  |           |
 |      :x:       | AStepper                      |           |
@@ -79,6 +79,7 @@ Removed components that did not need updating from light theme round (51 -> 42)
 - As of Sept 27th - 9/51  = 17%
 
 #### Phase 2 - reskin dark theme [UX has a WIP figma version here](https://www.figma.com/file/oVZWatImEIbl1c8sjdGxi0/branch/yU3qYkj6T2kfN4XYtUkEeD/%F0%9F%A7%B2--Magnetic-Design-Library?node-id=33305%3A351330)
+- As of Dec 2 24/42 = 57%
 - As of Nov 23 14/42 = 33%
 - As of Nov 18th 7/42 = 16% (Projected dark theme reskin completion 12/16/22)
 - As of Nov 15th 0/42 - 0% (We will make a projection on time to complete next week)

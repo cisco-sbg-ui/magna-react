@@ -133,10 +133,10 @@ $atomic-default: (
       "alt": (
         "bg": rgba(0, 0, 0, 0),
         "bg--active": map-get($mds-interactive, "interactive-2"),
-        "color": map-get($mds-interactive, "interactive-10"),
-        "color--hover": map-get($mds-interactive, "interactive-11"),
-        "color--active": map-get($mds-interactive, "interactive-11"),
-        "color--focus": map-get($mds-interactive, "interactive-11"),
+        "color": map-get($mds-neutral, "neutral-9"),
+        "color--hover": map-get($mds-neutral, "neutral-9"),
+        "color--active": map-get($mds-interactive, "neutral-9"),
+        "color--focus": map-get($mds-interactive, "neutral-9"),
         "color--disabled": map-get($mds-interactive, "interactive-4"),
         "opacity--disabled": 0.5
       )
@@ -160,11 +160,12 @@ $atomic-default: (
     "border-color--selected": map-get($mds-blue, "blue-7")
   ),
   "checkbox": (
-    "border--disabled": map-get($mds-light-theme, "non-essential-lines"),
-    "label-color--disabled": map-get($mds-light-theme, "icon-text-gray"),
-    "fill--disabled": map-get($mds-light-theme, "background"),
-    "border--checked": map-get($mds-blue, "blue-7"),
-    "border--enabled": map-get($mds-light-theme, "multipurpose-gray")
+    "border--disabled": map-get($mds-neutral, "neutral-5"),
+    "label-color--disabled": map-get($mds-neutral, "neutral-7"),
+    "icon--disabled": map-get($mds-neutral, "neutral-7"),
+    "fill--disabled": map-get($mds-neutral, "neutral-3"),
+    "border--checked": map-get($mds-interactive, "interactive-10"),
+    "border--enabled": map-get($mds-neutral, "neutral-9")
   ),
   "color": (
     "warning--state-hover": map-get($mds-light-theme, "status-warning"),
@@ -244,19 +245,20 @@ $atomic-default: (
     "disabled-bg-color": map-get($status-blue, "wash-1")
   ),
   "radio": (
-    "bg": map-get($mds-light-theme, "background-section"),
-    "bg--disabled": map-get($mds-light-theme, "background"),
-    "border--active--hover": map-get($mds-blue, "blue-5"),
-    "border--checked": map-get($mds-blue, "blue-7"),
-    "border--disabled": map-get($grey, "lighten-3"),
-    "border--enabled": map-get($mds-light-theme, "multipurpose-gray"),
-    "border--enabled--active": map-get($cisco-blue, "burnt-1"),
-    "box-bg--disabled": map-get($mds-light-theme, "background"),
-    "box-border--enabled--hover": map-get($mds-blue, "blue-5"),
-    "fill--active--hover": map-get($mds-blue, "blue-7"),
-    "fill--checked--hover": map-get($cisco-blue, "base"),
-    "fill--enabled": map-get($mds-blue, "blue-7"),
-    "label-color--disabled": map-get($mds-light-theme, "icon-text-gray"),
+    "bg": map-get($mds-neutral, "neutral-1"),
+    "bg--disabled": map-get($mds-neutral, "neutral-3"),
+    "border--active--hover": #82aefa,
+    "border--checked": map-get($mds-interactive, "interactive-10"),
+    "border--disabled": map-get($mds-neutral, "neutral-5"),
+    "border--enabled": map-get($mds-neutral, "neutral-9"),
+    "border--enabled--active": map-get($mds-neutral, "neutral-9"),
+    "box-bg--disabled": map-get($mds-neutral, "neutral-3"),
+    "box-border--enabled--hover": #82aefa,
+    "fill--active--hover": map-get($mds-interactive, "interactive-10"),
+    "fill--checked--hover": map-get($mds-interactive, "interactive-10"),
+    "fill--enabled": map-get($mds-interactive, "interactive-10"),
+    "fill-color--disabled": map-get($mds-neutral, "neutral-7"),
+    "label-color--disabled": map-get($mds-neutral, "neutral-7"),
     "opacity-disabled": 1
   ),
   "select": (

@@ -79,8 +79,26 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
         }
       }
     }
+
     .a-checkbox__label {
       color: map-deep-get($theme, "checkbox", "label-color--disabled");
+    }
+  }
+  &--disabled.a-checkbox--selected {
+    .a-checkbox__wrap {
+      .a-checkbox {
+        &__input {
+          ~ .a-checkbox {
+            &__box {
+              background-color: map-deep-get(
+                $theme,
+                "checkbox",
+                "icon--disabled"
+              );
+            }
+          }
+        }
+      }
     }
   }
 }
