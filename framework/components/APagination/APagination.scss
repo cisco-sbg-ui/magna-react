@@ -7,13 +7,19 @@
 
       &--selected,
       &:hover {
-        border: 2px solid map-deep-get($theme, "base", "color--selected") !important;
+        background-color: map-deep-get(
+          $theme,
+          "pagination",
+          "background-color"
+        ) !important;
+        border: 2px solid
+          map-deep-get($theme, "pagination", "label-border-color") !important;
         color: map-deep-get($theme, "base", "color");
       }
 
       &:focus {
         box-shadow: none;
-        background-color: map-deep-get($theme, "base", "color--active");
+        //background-color: map-deep-get($theme, "base", "color--active");
       }
 
       &:focus:not(&--selected) {

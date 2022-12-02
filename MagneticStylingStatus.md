@@ -46,7 +46,7 @@ Removed components that did not need updating from light theme round (51 -> 42)
 | :construction: | ALoader                       |    RWH    |
 |      :x:       | AMenu                         |           |
 |      :x:       | AMenuBase                     |           |
-|      :x:       | APagination                   |           |
+| :construction: | APagination                   |    RWH    |
 |      :x:       | APanel                        |           |
 |      :x:       | APopover                      |           |
 |      :x:       | AProgressbar                  |           |
