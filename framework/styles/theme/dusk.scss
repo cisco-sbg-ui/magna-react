@@ -219,10 +219,10 @@ $atomic-dusk: (
     "main-color": map-get($mds-blue, "blue-5")
   ),
   "menu": (
-    "border-color": map-get($mds-dark-theme, "multipurpose-gray"),
-    "color--hover": map-get($mds-blue, "blue-7"),
-    "color--selected": map-get($mds-blue, "blue-6"),
-    "color--focused": map-get($mds-blue, "blue-6")
+    "border-color": map-get($mds-neutral, "neutral-11"),
+    "color--hover": map-get($mds-neutral, "neutral-15"),
+    "color--selected": map-get($mds-neutral, "neutral-17"),
+    "color--focused": map-get($mds-neutral, "neutral-17")
   ),
   "panel": (
     "bg":

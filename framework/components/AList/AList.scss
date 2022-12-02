@@ -17,13 +17,15 @@
 
     &:focus {
       color: map-deep-get($theme, "base", "color");
-      background-color: map-deep-get($theme, "menu", "color--focused");
+      background: map-deep-get($theme, "control", "row-effect-image"),
+        map-deep-get($theme, "menu", "color--focused");
     }
   }
 
   &-item--selected:not(.a-list-item--two-line) {
     color: map-deep-get($theme, "base", "color");
-    background-color: map-deep-get($theme, "menu", "color--selected");
+    background: map-deep-get($theme, "control", "row-effect-image"),
+      map-deep-get($theme, "menu", "color--selected");
   }
 
   a.a-list-item--two-line {

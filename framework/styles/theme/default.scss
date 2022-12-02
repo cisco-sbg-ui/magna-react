@@ -218,10 +218,10 @@ $atomic-default: (
     "main-color": map-get($mds-blue, "blue-7")
   ),
   "menu": (
-    "border-color": map-get($mds-light-theme, "multipurpose-gray"),
-    "color--hover": map-get($mds-blue, "blue-2"),
-    "color--selected": map-get($mds-blue, "blue-1"),
-    "color--focused": map-get($mds-blue, "blue-1")
+    "border-color": map-get($mds-neutral, "neutral-9"),
+    "color--hover": map-get($mds-interactive, "interactive-2"),
+    "color--selected": map-get($mds-interactive, "interactive-1"),
+    "color--focused": map-get($mds-interactive, "interactive-1")
   ),
   "panel": (
     "bg": $white,
