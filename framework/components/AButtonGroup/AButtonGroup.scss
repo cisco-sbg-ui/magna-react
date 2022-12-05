@@ -21,7 +21,11 @@ $btn-group-icon-font-size: rem(1);
           "button-group",
           "background-color--disabled"
         );
-        border-color: transparent;
+        border-color: map-deep-get(
+          $theme,
+          "button-group",
+          "border-color--disabled"
+        );
       }
     }
   }

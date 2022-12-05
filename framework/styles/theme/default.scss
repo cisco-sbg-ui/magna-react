@@ -133,11 +133,11 @@ $atomic-default: (
       "alt": (
         "bg": rgba(0, 0, 0, 0),
         "bg--active": map-get($mds-interactive, "interactive-2"),
-        "color": map-get($mds-neutral, "neutral-9"),
-        "color--hover": map-get($mds-neutral, "neutral-9"),
-        "color--active": map-get($mds-interactive, "neutral-9"),
-        "color--focus": map-get($mds-interactive, "neutral-9"),
-        "color--disabled": map-get($mds-interactive, "interactive-4"),
+        "color": map-get($mds-neutral, "neutral-12"),
+        "color--hover": map-get($mds-interactive, "interactive-11"),
+        "color--active": map-get($mds-interactive, "interactive-11"),
+        "color--focus": map-get($mds-interactive, "interactive-11"),
+        "color--disabled": map-get($mds-neutral, "neutral-12"),
         "opacity--disabled": 0.5
       )
     ),
@@ -146,18 +146,19 @@ $atomic-default: (
     )
   ),
   "button-group": (
-    "color": map-get($mds-light-theme, "secondary-gray"),
-    "color--disabled": map-get($mds-light-theme, "icon-text-gray"),
-    "color--hover": map-get($mds-light-theme, "default-text"),
-    "color--selected": map-get($mds-blue, "blue-8"),
-    "background-color": map-get($mds-light-theme, "background-section"),
-    "background-color--disabled":
-      map-get($mds-light-theme, "non-essential-lines"),
-    "background-color--hover": map-get($mds-light-theme, "background"),
-    "background-color--selected": map-get($mds-blue, "blue-1"),
-    "border-color": map-get($mds-light-theme, "non-essential-lines"),
-    "border-color--hover": map-get($mds-light-theme, "non-essential-lines"),
-    "border-color--selected": map-get($mds-blue, "blue-7")
+    "color": map-get($mds-neutral, "neutral-11"),
+    "color--disabled": map-get($mds-neutral, "neutral-7"),
+    "color--hover": map-get($mds-neutral, "neutral-15"),
+    "color--selected": map-get($mds-interactive, "interactive-11"),
+    "background-color": map-get($mds-neutral, "neutral-1"),
+    "background-color--disabled": map-get($mds-neutral, "neutral-4"),
+    "background-color--hover": map-get($mds-neutral, "neutral-3"),
+    "background-color--selected": map-get($mds-interactive, "interactive-1"),
+    "border-color": map-get($mds-neutral, "neutral-7"),
+    "border-color--hover": none,
+    //map-get($mds-neutral, "neutral-7"),
+    "border-color--selected": #82aefa,
+    "border-color--disabled": map-get($mds-neutral, "neutral-7")
   ),
   "checkbox": (
     "border--disabled": map-get($mds-neutral, "neutral-5"),

@@ -91,9 +91,9 @@ $atomic-dusk: (
       "border--focus": map-get($mds-interactive, "interactive-7"),
       "border--disabled": map-get($mds-interactive, "interactive-6"),
       "color": map-get($mds-interactive, "interactive-6"),
-      "color--hover": map-get($mds-interactive, "interactive-7"),
-      "color--active": map-get($mds-interactive, "interactive-7"),
-      "color--focus": map-get($mds-interactive, "interactive-7"),
+      "color--hover": map-get($mds-interactive, "interactive-6"),
+      "color--active": map-get($mds-interactive, "interactive-6"),
+      "color--focus": map-get($mds-interactive, "interactive-6"),
       "color--disabled": map-get($mds-interactive, "interactive-6"),
       "opacity--disabled": 0.5,
       "destructive": (
@@ -128,11 +128,11 @@ $atomic-dusk: (
       "alt": (
         "bg": transparent,
         "bg--active": transparent,
-        "color": map-get($mds-interactive, "interactive-6"),
+        "color": map-get($mds-neutral, "neutral-6"),
         "color--hover": map-get($mds-interactive, "interactive-6"),
         "color--active": map-get($mds-interactive, "interactive-6"),
         "color--focus": map-get($mds-interactive, "interactive-6"),
-        "color--disabled": map-get($mds-interactive, "interactive-6"),
+        "color--disabled": map-get($mds-neutral, "neutral-6"),
         "opacity--disabled": 0.5
       )
     ),
@@ -141,18 +141,18 @@ $atomic-dusk: (
     )
   ),
   "button-group": (
-    "color": map-get($mds-dark-theme, "secondary-gray"),
-    "color--disabled": map-get($mds-dark-theme, "icon-text-gray"),
-    "color--hover": map-get($mds-dark-theme, "default-text"),
-    "color--selected": map-get($mds-blue, "blue-8"),
-    "background-color": map-get($mds-dark-theme, "background-section"),
-    "background-color--disabled":
-      map-get($mds-dark-theme, "non-essential-lines"),
-    "background-color--hover": map-get($mds-dark-theme, "background"),
-    "background-color--selected": map-get($mds-blue, "blue-1"),
-    "border-color": map-get($mds-dark-theme, "non-essential-lines"),
-    "border-color--hover": map-get($mds-dark-theme, "non-essential-lines"),
-    "border-color--selected": map-get($mds-blue, "blue-7")
+    "color": map-get($mds-neutral, "neutral-7"),
+    "color--disabled": map-get($mds-neutral, "neutral-12"),
+    "color--hover": map-get($mds-neutral, "neutral-4"),
+    "color--selected": map-get($mds-interactive, "interactive-6"),
+    "background-color": map-get($mds-neutral, "neutral-16"),
+    "background-color--disabled": map-get($mds-neutral, "neutral-14"),
+    "background-color--hover": map-get($mds-neutral, "neutral-15"),
+    "background-color--selected": #26354c,
+    "border-color": map-get($mds-neutral, "neutral-11"),
+    "border-color--hover": none,
+    "border-color--selected": map-get($mds-interactive, "interactive-6"),
+    "border-color--disabled": map-get($mds-neutral, "neutral-12")
   ),
   "checkbox": (
     "border--disabled": map-get($mds-neutral, "neutral-13"),
