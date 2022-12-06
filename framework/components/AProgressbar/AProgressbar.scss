@@ -16,7 +16,7 @@ $progressbar-transition: width 0.6s ease !default;
   }
 
   &__fill {
-    background-color: map-deep-get($theme, "base", "brand-color");
+    background-color: map-deep-get($theme, "progressbar", "fill-bg-color");
   }
 
   &--disabled {
