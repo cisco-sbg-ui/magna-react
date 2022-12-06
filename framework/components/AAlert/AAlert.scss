@@ -13,12 +13,12 @@ $alert-close-icon-size: 10.5px;
 @include theme(a-alert) using ($theme) {
   background-color: map-deep-get($theme, "alert", "bg");
   color: map-deep-get($theme, "base", "color");
-  .icon-text {
+  .a-icon-text {
     fill: map-deep-get($theme, "control", "fill-color");
   }
 
   &__icon {
-    .icon-bg {
+    .a-icon-bg {
       fill: map-deep-get($theme, "control", "info-color");
     }
 
@@ -41,7 +41,7 @@ $alert-close-icon-size: 10.5px;
     background-color: map-deep-get($theme, "alert", "success-bg");
     color: map-deep-get($theme, "base", "color");
     .a-alert__icon {
-      .icon-bg {
+      .a-icon-bg {
         fill: map-deep-get($theme, "control", "success-color");
       }
     }
@@ -56,7 +56,7 @@ $alert-close-icon-size: 10.5px;
     background-color: map-deep-get($theme, "alert", "warning-bg");
     color: map-deep-get($theme, "base", "color");
     .a-alert__icon {
-      .icon-bg {
+      .a-icon-bg {
         fill: map-deep-get($theme, "control", "warning-color");
       }
     }
@@ -71,7 +71,7 @@ $alert-close-icon-size: 10.5px;
     background-color: map-deep-get($theme, "alert", "danger-bg");
     color: map-deep-get($theme, "base", "color");
     .a-alert__icon {
-      .icon-bg {
+      .a-icon-bg {
         fill: map-deep-get($theme, "control", "error-color");
       }
     }

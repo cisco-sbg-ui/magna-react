@@ -1,7 +1,7 @@
 @import "../../styles";
 
 @include theme(a-contextual-notification-menu) using ($theme) {
-  .icon-text {
+  .a-icon-text {
     fill: map-deep-get($theme, "control", "fill-color");
   }
 

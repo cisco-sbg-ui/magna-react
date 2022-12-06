@@ -36,6 +36,7 @@ const mapSprites = () => {
       .filter((k) => k.startsWith("@_"))
       .forEach((k) => {
         attrMap[k.replace("@_", "")] = v.svg[k];
+        console.log(k);
       });
 
     iconVariables += `"${key}": {
@@ -43,13 +44,17 @@ const mapSprites = () => {
       props: ${JSON.stringify(attrMap)}},`;
   }
 
+  // console.log(iconVariables);
+
   iconVariables = iconVariables
     .replaceAll("fill-rule=", "fillRule=")
     .replaceAll("clip-rule=", "clipRule=")
     .replaceAll("clip-path=", "clipPath=")
     .replace("stroke-width=", "strokeWidth=")
-    .replaceAll('fill="#889099"', "");
+    .replaceAll('fill="#889099"', "")
+    .replaceAll("class=", "className=");
 
+  // console.log(iconVariables);
   return iconVariables;
 };
 
