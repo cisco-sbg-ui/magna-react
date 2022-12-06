@@ -232,22 +232,12 @@ $atomic-dusk: (
     "label-selected-hover": rgba(108, 158, 245, 0.25)
   ),
   "panel": (
-    "bg":
-      linear-gradient(
-        125.59deg,
-        rgba(map-get($dusk, "2"), $alpha-6) 0%,
-        rgba(map-get($dusk, "5"), $alpha-6) 100%
-      ),
-    "bg-gray":
-      linear-gradient(
-        125.59deg,
-        rgba(map-get($dusk, "2"), $alpha-6) 0%,
-        rgba(map-get($dusk, "5"), $alpha-6) 100%
-      ),
-    "dialog-header-bg": map-get($dusk, "4"),
-    "dialog-footer-bg": map-get($dusk, "4"),
-    "header-color": map-get($mds-dark-theme, "heading-gray"),
-    "box-shadow": 0px 2px 5px rgba(0, 0, 0, 0.05)
+    "bg": map-get($mds-neutral, "neutral-16"),
+    "bg-gray": map-get($mds-neutral, "neutral-15"),
+    "dialog-header-bg": map-get($mds-neutral, "neutral-16"),
+    "header-color": map-get($mds-neutral, "neutral-4"),
+    "box-shadow": 0px 2px 5px rgba(0, 0, 0, 0.05),
+    "border-color": map-get($mds-neutral, "neutral-14")
   ),
   "popover": (
     "filter": drop-shadow(0px 4px 12px rgba(255, 255, 255, 0.05))

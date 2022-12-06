@@ -134,9 +134,9 @@ $atomic-default: (
         "bg": rgba(0, 0, 0, 0),
         "bg--active": map-get($mds-interactive, "interactive-2"),
         "color": map-get($mds-neutral, "neutral-12"),
-        "color--hover": map-get($mds-interactive, "interactive-11"),
-        "color--active": map-get($mds-interactive, "interactive-11"),
-        "color--focus": map-get($mds-interactive, "interactive-11"),
+        "color--hover": map-get($mds-interactive, "interactive-7"),
+        "color--active": map-get($mds-interactive, "interactive-7"),
+        "color--focus": map-get($mds-interactive, "interactive-7"),
         "color--disabled": map-get($mds-neutral, "neutral-12"),
         "opacity--disabled": 0.5
       )
@@ -232,12 +232,12 @@ $atomic-default: (
     "label-selected-hover": rgba(108, 158, 245, 0.25)
   ),
   "panel": (
-    "bg": $white,
-    "bg-gray": map-get($grey, "lighten-5"),
-    "dialog-header-bg": $white,
-    "dialog-footer-bg": map-get($grey, "lighten-5"),
-    "header-color": map-get($mds-light-theme, "heading-gray"),
-    "box-shadow": 0px 2px 5px rgba(0, 0, 0, 0.05)
+    "bg": map-get($mds-neutral, "neutral-1"),
+    "bg-gray": map-get($mds-neutral, "neutral-2"),
+    "dialog-header-bg": map-get($mds-neutral, "neutral-1"),
+    "header-color": map-get($mds-neutral, "neutral-15"),
+    "box-shadow": 0px 2px 5px rgba(0, 0, 0, 0.05),
+    "border-color": map-get($mds-neutral, "neutral-4")
   ),
   "popover": (
     "filter": drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.18))
