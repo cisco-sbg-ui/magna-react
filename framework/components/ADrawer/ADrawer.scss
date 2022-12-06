@@ -1,0 +1,119 @@
+@import "../../styles";
+
+@include theme(a-drawer) using ($theme) {
+  background: map-deep-get($theme, "drawer", "bg");
+}
+
+.a-drawer {
+  overflow: hidden;
+
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
+
+  transform: translateX(0);
+  transition: all 0.3s ease-in-out;
+
+  &--vertical {
+    height: 100vh;
+    width: 400px;
+  }
+
+  &--horizontal {
+    height: 400px;
+    width: 100vw;
+  }
+
+  &--slim {
+    &.a-drawer--horizontal {
+      height: 50px;
+    }
+
+    &.a-drawer--vertical {
+      width: 65px;
+    }
+  }
+
+  /**
+    * When the drawer should render over the entire
+    * page
+    */
+  &--fixed {
+    position: fixed;
+    z-index: 1;
+  }
+
+  /**
+    * In situations where the Drawer should _not_ fill
+    * up the entire viewport
+    * 
+    * e.g., underneath a nav bar
+    */
+  &--absolute {
+    position: absolute;
+    z-index: 1;
+
+    &.a-drawer--horizontal {
+      width: 100%;
+    }
+
+    &.a-drawer--vertical {
+      height: 100%;
+    }
+  }
+
+  /**
+    * In situations where the Drawer should not fill
+    * up the entire viewport _and_ it should reposition
+    * its surrounding content
+    
+    * e.g., a permanent sidebar where we don't
+    * want the sidebar covering the main content
+    */
+  &--relative {
+    position: relative;
+
+    &.a-drawer--horizontal {
+      width: 100%;
+    }
+
+    &.a-drawer--vertical {
+      height: 100%;
+    }
+  }
+
+  &--left:not(.a-drawer--relative) {
+    top: 0;
+    left: 0;
+  }
+
+  &--right:not(.a-drawer--relative) {
+    top: 0;
+    right: 0;
+  }
+
+  &--bottom:not(.a-drawer--relative) {
+    bottom: 0;
+  }
+
+  &--hidden {
+    overflow: hidden;
+    visibility: hidden;
+
+    &.a-drawer--left {
+      transform: translateX(-100%);
+    }
+
+    &.a-drawer--right {
+      transform: translateX(100%);
+    }
+
+    &.a-drawer--bottom {
+      transform: translateY(100%);
+    }
+  }
+}
+
+@media (prefers-reduced-motion) {
+  .a-drawer {
+    transition: none;
+  }
+}

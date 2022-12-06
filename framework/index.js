@@ -20,6 +20,7 @@ import ADataTable from "./components/ADataTable";
 import {ADatePicker, useADateRange} from "./components/ADatePicker";
 import ADialog from "./components/ADialog";
 import ADivider from "./components/ADivider";
+import {ADrawer, ADrawerContent} from "./components/ADrawer";
 import AFieldBase from "./components/AFieldBase";
 import {AFooter, AFooterLegal} from "./components/AFooter";
 import {AForm, AFormContext} from "./components/AForm";
@@ -47,7 +48,9 @@ import {
 import {ACiscoLoader, ADotLoader, APageLoader} from "./components/ALoader";
 import AMenuBase from "./components/AMenuBase";
 import AMenu from "./components/AMenu";
+import AModal from "./components/AModal";
 import AMount from "./components/AMount";
+import APageOverlay from "./components/APageOverlay";
 import APagination from "./components/APagination";
 import {
   APanel,
@@ -86,6 +89,10 @@ import ATooltip from "./components/ATooltip";
 import ATree from "./components/ATree";
 import {useABreakpoint} from "./components/ABreakpoint";
 import {useAToaster, AToastPlate} from "./components/AToaster";
+import useEscapeKeydown from "./hooks/useEscapeKeydown";
+import useFocusTrap from "./hooks/useFocusTrap";
+import useOutsideClick from "./hooks/useOutsideClick";
+import usePopupQuickExit from "./hooks/usePopupQuickExit";
 
 export {
   AAccordion,
@@ -112,6 +119,8 @@ export {
   ADialog,
   ADivider,
   ADotLoader,
+  ADrawer,
+  ADrawerContent,
   AFieldBase,
   AFooter,
   AFooterLegal,
@@ -135,8 +144,10 @@ export {
   AListItemTitle,
   AMenuBase,
   AMenu,
+  AModal,
   AMount,
   APageLoader,
+  APageOverlay,
   APagination,
   APanel,
   APanelHeader,
@@ -176,5 +187,9 @@ export {
   useADateRange,
   useAAutoTheme,
   useATheme,
-  useAToaster
+  useAToaster,
+  useEscapeKeydown,
+  useFocusTrap,
+  useOutsideClick,
+  usePopupQuickExit
 };
