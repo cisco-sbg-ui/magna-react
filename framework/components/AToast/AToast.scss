@@ -14,34 +14,34 @@ $toast-icon-font-size: $font-size;
   background: map-deep-get($theme, "control", "fill-color");
   border-color: map-deep-get($theme, "control", "stroke-color");
 
-  .icon-text {
+  .a-icon-text {
     fill: map-deep-get($theme, "control", "fill-color");
   }
 
   &--success {
     border-left-color: map-deep-get($theme, "control", "success-color");
-    .icon-bg {
+    .a-icon-bg {
       fill: map-deep-get($theme, "control", "success-color");
     }
   }
 
   &--warning {
     border-left-color: map-deep-get($theme, "control", "warning-color");
-    .icon-bg {
+    .a-icon-bg {
       fill: map-deep-get($theme, "control", "warning-color");
     }
   }
 
   &--danger {
     border-left-color: map-deep-get($theme, "control", "error-color");
-    .icon-bg {
+    .a-icon-bg {
       fill: map-deep-get($theme, "control", "error-color");
     }
   }
 
   &--information {
     border-left-color: map-deep-get($theme, "control", "info-color");
-    .icon-bg {
+    .a-icon-bg {
       fill: map-deep-get($theme, "control", "info-color");
     }
   }

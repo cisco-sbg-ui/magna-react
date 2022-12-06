@@ -12,7 +12,7 @@ $context-arrow-left: 10%;
 @include theme(a-context) using ($theme) {
   color: map-deep-get($theme, "label", "color");
   background-color: map-deep-get($theme, "control", "fill-color");
-  .icon-text {
+  .a-icon-text {
     fill: map-deep-get($theme, "control", "fill-color");
   }
   &--state-success {
@@ -21,7 +21,7 @@ $context-arrow-left: 10%;
     .a-context__icon {
       color: $color-good;
     }
-    .icon-bg {
+    .a-icon-bg {
       fill: map-deep-get($theme, "control", "success-color");
     }
   }
@@ -32,7 +32,7 @@ $context-arrow-left: 10%;
       color: $color-information;
     }
 
-    .icon-bg {
+    .a-icon-bg {
       fill: map-deep-get($theme, "control", "info-color");
     }
   }
@@ -42,7 +42,7 @@ $context-arrow-left: 10%;
     .a-context__icon {
       color: $color-warning;
     }
-    .icon-bg {
+    .a-icon-bg {
       fill: map-deep-get($theme, "control", "warning-color");
     }
   }
@@ -52,7 +52,7 @@ $context-arrow-left: 10%;
     .a-context__icon {
       color: $color-error;
     }
-    .icon-bg {
+    .a-icon-bg {
       fill: map-deep-get($theme, "control", "error-color");
     }
   }
