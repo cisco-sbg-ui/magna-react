@@ -209,13 +209,13 @@ $atomic-dusk: (
     "color": map-get($mds-dark-theme, "default-text")
   ),
   "link": (
-    "color": map-get($cisco-blue, "wash-1"),
-    "color--hover": map-get($cisco-blue, "wash-1"),
-    "color--active": map-get($cisco-blue, "base"),
-    "color--focus": map-get($cisco-blue, "wash-1"),
-    "color--visited": map-get($cisco-blue, "burnt-1"),
+    "color": map-get($mds-interactive, "interactive-10"),
+    "color--hover": map-get($mds-interactive, "interactive-11"),
+    "color--active": map-get($mds-interactive, "interactive-11"),
+    "color--focus": map-get($mds-interactive, "interactive-11"),
+    "color--visited": map-get($mds-interactive, "interactive-10"),
     "color--disabled": map-get($mds-dark-theme, "supplemental-text"),
-    "opacity--disabled": $alpha-4
+    "opacity--disabled": 1
   ),
   "loader": (
     "background-color": map-get($dusk, "6"),
