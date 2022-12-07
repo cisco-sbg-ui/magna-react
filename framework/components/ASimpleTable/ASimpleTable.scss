@@ -46,7 +46,7 @@ $table-cell-spacious-padding-top-bottom: math.div(
 // Dusk: $table-grouped-rows-header-bg: $color-blue7;
 
 @include theme(a-simple-table) using ($theme) {
-  background: map-deep-get($theme, "table", "bg");
+  // background: map-deep-get($theme, "table", "bg");
 
   &--striped {
     tbody tr:nth-child(even):not(:hover) {
@@ -60,11 +60,14 @@ $table-cell-spacious-padding-top-bottom: math.div(
   }
 
   th {
-    color: map-deep-get($theme, "table", "header-color");
+    color: map-deep-get($theme, "table", "color");
     border-color: map-deep-get($theme, "table", "header-border");
   }
 
   tr {
+    td {
+      color: map-deep-get($theme, "table", "color");
+    }
     border-color: map-deep-get($theme, "control", "stroke-color");
   }
 
