@@ -38,7 +38,7 @@ Removed components that did not need updating from light theme round (51 -> 42)
 | :construction: | ADialog                       |    AJL    |
 |      :x:       | ADivider                      |           |
 |      :x:       | AFieldBase                    |           |
-|      :x:       | AFooter                       |           |
+| :construction: | AFooter                       |    RWH    |
 |      :x:       | AHint                         |           |
 | :construction: | AIcon                         |           |
 |      :x:       | AInputBase                    |           |

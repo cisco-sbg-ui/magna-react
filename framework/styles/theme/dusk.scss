@@ -198,8 +198,7 @@ $atomic-dusk: (
     "bg": map-get($mds-dark-theme, "background")
   ),
   "footer": (
-    "border-color": rgba(map-get($grey, "lighten-5"), $alpha-2),
-    "color": map-get($grey, "lighten-3")
+    "color": map-get($mds-neutral, "neutral-2")
   ),
   "header": (
     "bg-color": map-get($dusk, "4"),
