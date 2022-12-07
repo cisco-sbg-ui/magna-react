@@ -4,8 +4,8 @@
   .a-step {
     &__icon {
       border: $border-width solid
-        map-deep-get($theme, "steps", "steps-main-color");
-      color: map-deep-get($theme, "steps", "step-active-color");
+        map-deep-get($theme, "steps", "step-main-color");
+      color: map-deep-get($theme, "steps", "step-main-color");
     }
     &__label {
       color: map-deep-get($theme, "base", "color--disabled");
@@ -13,7 +13,7 @@
     &__active {
       .a-step__icon {
         background: map-get($theme, "steps", "step-icon-border-color");
-        color: map-get($theme, "steps", "steps-main-color");
+        color: map-get($theme, "steps", "step-active-color");
         border: $border-width solid
           map-get($theme, "steps", "step-icon-border-color");
       }
@@ -22,7 +22,7 @@
       }
     }
     &__divider {
-      background-color: map-deep-get($theme, "steps", "steps-main-color");
+      background-color: map-deep-get($theme, "steps", "step-main-color");
     }
     &__visited {
       .a-step__divider {

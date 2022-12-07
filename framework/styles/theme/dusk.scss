@@ -35,7 +35,7 @@ $atomic-dusk: (
     "color--active": map-get($mds-interactive, "interactive-6"),
     "color--hover": map-get($mds-interactive, "interactive-6"),
     "color--selected": map-get($mds-blue, "blue-7"),
-    "color--disabled": map-get($mds-dark-theme, "icon-text-gray"),
+    "color--disabled": map-get($mds-dark-theme, "disabled-text"),
     "inverse-color": map-get($mds-light-theme, "default-text"),
     "pg-bg": map-get($mds-dark-theme, "background-section"),
     "stroke-color": map-get($mds-dark-theme, "icon-text-gray"),
@@ -222,6 +222,7 @@ $atomic-dusk: (
     "main-color": map-get($mds-blue, "blue-5")
   ),
   "menu": (
+    "bg-color": map-get($mds-neutral, "neutral-16"),
     "border-color": map-get($mds-neutral, "neutral-11"),
     "color--hover": map-get($mds-neutral, "neutral-15"),
     "color--selected": map-get($mds-neutral, "neutral-17"),
@@ -337,7 +338,7 @@ $atomic-dusk: (
     "border-color--active": map-get($mds-interactive, "interactive-4"),
     "box-shadow-color--active": map-get($mds-interactive, "interactive-8"),
     "bg--readonly": map-get($mds-dark-theme, "background"),
-    "icon-fill": map-get($mds-neutral, "neutral-4")
+    "icon-fill": map-get($mds-neutral, "neutral-6")
   ),
   "timeline": (
     "item-bg-hover-color": map-get($mds-dark-theme, "non-essential-lines"),
