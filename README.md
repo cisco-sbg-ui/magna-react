@@ -36,9 +36,6 @@ Magna-React is provided as an npm package from GitHub packages. To configure for
 
 5) Click `Generate`
 6) Copy the token
-7) Enable SSO (similar to SSH Key) for the token (if required by your organization and login security)
-
-![enable sso on token](./docs/images/github/enable_sso.png)
 
 8) Add the repository to your `~/.npmrc` file:
 
@@ -68,7 +65,7 @@ npm install @cisco-sbg-ui/magna-react@beta
 
 ## Component Development
 
-Feel free to reach out to Robert Harris (roberha2), Brennan Arvo via Webex Teams to discuss contributions.
+Feel free to reach out to Robert Harris (roberha2) or Brennan Arvo via Webex Teams to discuss contributions.
 ## DEV ===============
 ### Run Locally
 ```
