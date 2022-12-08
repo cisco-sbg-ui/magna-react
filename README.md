@@ -1,4 +1,6 @@
-# Magna-React
+# Magna-React (BETA)
+
+## *THIS REPOSITORY AND PACKAGE IS CURRENTLY IN BETA. DO _NOT_ USE THIS IN PRODUCTION. ANY PRODUCTION USAGE AT THIS TIME WILL RESULT IN SEVERE CONSEQUENCES.*
 
 ## Introduction
 
@@ -12,10 +14,61 @@ Magna-React is a React library that implements UI components according to the [A
 - Form validation
 - Extensibility
 
+-------------
 
-### Component Development
+## Usage
 
-Feel free to reach out to Robert Harris, Brennan Arvo, Angela Lucignani via Webex Teams to discuss contributions.
+## *THIS REPOSITORY AND PACKAGE IS CURRENTLY IN BETA. DO _NOT_ USE THIS IN PRODUCTION. ANY PRODUCTION USAGE AT THIS TIME WILL RESULT IN SEVERE CONSEQUENCES.*
+
+Magna-React is provided as an npm package from GitHub packages. To configure for use:
+
+### Generate an access token
+
+1) Go to https://github.com/settings/tokens
+2) Click `Generate new token`
+
+![generate token](./docs/images/github/generate_token.png)
+
+3) Enter a note to identify the token
+4) Select the `read:packages` scope
+
+![package scope](./docs/images/github/package_scope.png)
+
+5) Click `Generate`
+6) Copy the token
+7) Enable SSO (similar to SSH Key) for the token (if required by your organization and login security)
+
+![enable sso on token](./docs/images/github/enable_sso.png)
+
+8) Add the repository to your `~/.npmrc` file:
+
+```
+@advthreat:registry=https://npm.pkg.github.com
+```
+
+9) Paste the following in to your `~/.npmrc` file, replacing TOKEN with your new token:
+
+```
+//npm.pkg.github.com/:_authToken=TOKEN
+```
+
+### Installation 
+
+1) Run
+
+```
+npm install @cisco-sbg-ui/magna-react@beta
+```
+
+2) Remove `@cisco-sbg-ui/atomic-react` from package.json
+
+3) Swap imports/babel config from atomic-react to magna-react
+
+-------------
+
+## Component Development
+
+Feel free to reach out to Robert Harris (roberha2), Brennan Arvo via Webex Teams to discuss contributions.
 ## DEV ===============
 ### Run Locally
 ```
@@ -25,7 +78,7 @@ npm run dev
 
 [Status page for known component migration](./MagneticStylingStatus.md)
 
-### Testing locally with another local project
+## Testing locally with another local project
 
 ```
 In magna-react:
@@ -42,3 +95,6 @@ Then restart the app...
 Note: For GLaDOS I have to get it to drop the cache to see the change
 ```
 
+-------------
+
+## *THIS REPOSITORY AND PACKAGE IS CURRENTLY IN BETA. DO _NOT_ USE THIS IN PRODUCTION. ANY PRODUCTION USAGE AT THIS TIME WILL RESULT IN SEVERE CONSEQUENCES.*
