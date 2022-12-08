@@ -66,6 +66,15 @@ $select-padding: 6px;
   text-indent: $select-padding;
   vertical-align: top;
 
+  &:first-of-type {
+    border-top-left-radius: $border-radius--md;
+    border-top-right-radius: $border-radius--md;
+  }
+  &:last-of-type {
+    border-bottom-right-radius: $border-radius--md;
+    border-bottom-left-radius: $border-radius--md;
+  }
+
   &::after {
     content: "";
     border-style: solid;

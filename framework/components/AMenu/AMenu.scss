@@ -100,8 +100,16 @@
     > label {
       padding-left: 0px;
     }
+    &:first-of-type {
+      border-top-left-radius: inherit;
+      border-top-right-radius: inherit;
+    }
+    &:last-of-type {
+      border-bottom-right-radius: inherit;
+      border-bottom-left-radius: inherit;
+    }
   }
-  &.compact {
+  q &.compact {
     > .a-list-item {
       padding: 1.5px 15px;
     }

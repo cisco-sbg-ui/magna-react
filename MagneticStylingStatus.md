@@ -24,34 +24,34 @@ Removed components that did not need updating from light theme round (51 -> 42)
 |:--------------:|:------------------------------|:---------:|
 | :construction: | AAccordion                    |    RWH    |
 | :construction: | AAlert                        |    AJL    |
-|      :x:       | AAutocomplete                 |           |
+| :construction: | AAutocomplete                 |    AJL    |
 | :construction: | ABadge                        |    RWH    |
 | :construction: | ABreadcrumb                   |    RWH    |
 | :construction: | AButton                       |    AJL    |
 | :construction: | AButtonGroup                  |    AJL    |
 | :construction: | ACheckbox                     |    AJL    |
-|      :x:       | ACombobox                     |           |
+| :construction: | ACombobox                     |    AJL    |
 | :construction: | AContextualNotification       |    AJL    |
 | :construction: | AContextualNotificationMenu   |    AJL    |
 | :construction: | ADataTable                    |    RWH    |
 | :construction: | ADatePicker                   |    RWH    |
 | :construction: | ADialog                       |    AJL    |
-|      :x:       | ADivider                      |           |
-|      :x:       | AFieldBase                    |           |
+|  :wavy_dash:   | ADivider                      |     -     |
+|  :wavy_dash:   | AFieldBase                    |     -     |
 | :construction: | AFooter                       |    RWH    |
-|      :x:       | AHint                         |           |
-| :construction: | AIcon                         |           |
-|      :x:       | AInputBase                    |           |
-|      :x:       | AList                         |           |
+|  :wavy_dash:   | AHint                         |     -     |
+| :construction: | AIcon                         |    RWH    |
+| :construction: | AInputBase                    |    AJL    |
+| :construction: | AList                         |           |
 | :construction: | ALoader                       |    RWH    |
 | :construction: | AMenu                         |    RWH    |
-|      :x:       | AMenuBase                     |           |
+|  :wavy_dash:   | AMenuBase                     |     -     |
 | :construction: | APagination                   |    RWH    |
 | :construction: | APanel                        |    AJL    |
 | :construction: | APopover                      |    RWH    |
 | :construction: | AProgressbar                  |    RWH    |
 | :construction: | ARadio                        |    AJL    |
-|      :x:       | ASelect                       |           |
+| :construction: | ASelect                       |    AJL    |
 | :construction: | ASimpleTable                  |    RWH    |
 | :construction: | AStepper                      |    RWH    |
 | :construction: | ASlider                       |    RWH    |

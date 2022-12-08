@@ -218,7 +218,7 @@ $atomic-default: (
     "opacity--disabled": 1
   ),
   "loader": (
-    "background-color": map-get($grey, "lighten-3"),
+    "background-color": map-get($mds-neutral, "neutral-4"),
     "main-color": map-get($mds-blue, "blue-7")
   ),
   "menu": (
