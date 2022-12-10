@@ -354,37 +354,79 @@ $mds-purple: (
   "purple-12": #6732b8
 );
 
-$mds-accent-colors: (
-  "accent-a-a3-default": #049fd9,
-  "accent-a-a2-medium": #81cfec,
-  "accent-a-a1-light": #cdecf7,
-  "accent-b-b3-default": #0d56e2,
-  "accent-b-b2-medium": #86aaf0,
-  "accent-b-b1-light": #cfddf9,
-  "accent-c-c3-default": #b180d6,
-  "accent-c-c2-medium": #d8bfea,
-  "accent-c-c1-light": #efe6f7,
-  "accent-d-d3-default": #c0006f,
-  "accent-d-d2-medium": #df80b7,
-  "accent-d-d1-light": #f2cce2,
-  "accent-e-e3-default": #f4647a,
-  "accent-e-e2-medium": #f9b1bc,
-  "accent-e-e1-light": #fde0e4,
-  "accent-f-f3-default": #b73000,
-  "accent-f-f2-medium": #db9780,
-  "accent-f-f1-light": #f1d6cc,
-  "accent-g-g3-default": #9c9711,
-  "accent-g-g2-medium": #cdcb88,
-  "accent-g-g1-light": #ebeacf,
-  "accent-h-h3-default": #316e27,
-  "accent-h-h2-medium": #98b693,
-  "accent-h-h1-light": #d6e2d4,
-  "accent-i-i3-default": #00a889,
-  "accent-i-i2-medium": #80d3c4,
-  "accent-i-i1-light": #cceee7,
-  "accent-j-j3-default": #006c7d,
-  "accent-j-j2-medium": #80b5be,
-  "accent-j-j1-light": #cce2e5
+$mds-violetblue: (
+  "violetblue-1": #ebedff,
+  "violetblue-2": #d9ddff,
+  "violetblue-3": #ccd1ff,
+  "violetblue-4": #bac1ff,
+  "violetblue-5": #9ca6ff,
+  "violetblue-6": #8a95ff,
+  "violetblue-7": #7d8aff,
+  "violetblue-8": #6977f0,
+  "violetblue-9": #5a68e5,
+  "violetblue-10": #505ed9,
+  "violetblue-11": #4653c7,
+  "violetblue-12": #3b47b2
+);
+
+$mds-magenta: (
+  "magenta-1": #ffe8ef,
+  "magenta-2": #ffd4e0,
+  "magenta-3": #ffc4d5,
+  "magenta-4": #fcb3c8,
+  "magenta-5": #ff87a9,
+  "magenta-6": #f57398,
+  "magenta-7": #f2638c,
+  "magenta-8": #e3447c,
+  "magenta-9": #cf3a7a,
+  "magenta-10": #c2306f,
+  "magenta-11": #b02863,
+  "magenta-12": #991d53
+);
+
+$mds-teal: (
+  "teal-1": #d5f5f5,
+  "teal-2": #a9ebeb,
+  "teal-3": #84e3e3,
+  "teal-4": #4ad9d9,
+  "teal-5": #17c2c2,
+  "teal-6": #0bb2b8,
+  "teal-7": #04a4b0,
+  "teal-8": #028e99,
+  "teal-9": #01818c,
+  "teal-10": #017580,
+  "teal-11": #006773,
+  "teal-12": #005c66
+);
+
+$mds-fuchsia: (
+  "fuchsia-1": #ffe8f9,
+  "fuchsia-2": #ffd1f3,
+  "fuchsia-3": #fac5ed,
+  "fuchsia-4": #f7b0e5,
+  "fuchsia-5": #f582d8,
+  "fuchsia-6": #f26dd1,
+  "fuchsia-7": #e85fc6,
+  "fuchsia-8": #d64bb3,
+  "fuchsia-9": #c23ea1,
+  "fuchsia-10": #b53394,
+  "fuchsia-11": #a62686,
+  "fuchsia-12": #941b76
+);
+
+$mds-bluegrey: (
+  "bluegrey-1": #ebedff,
+  "bluegrey-2": #d9defa,
+  "bluegrey-3": #ced3f2,
+  "bluegrey-4": #c1c6e8,
+  "bluegrey-5": #a3aad6,
+  "bluegrey-6": #959ccc,
+  "bluegrey-7": #868ec2,
+  "bluegrey-8": #868ec2,
+  "bluegrey-9": #6871a3,
+  "bluegrey-10": #5d6596,
+  "bluegrey-11": #545c8a,
+  "bluegrey-12": #484f7a
 );
 
 $mds-border: (
@@ -500,5 +542,10 @@ $colors: (
   "mds-yellow": $mds-yellow,
   "mds-purple": $mds-purple,
   "mds-red": $mds-red,
-  "mds-green": $mds-green
+  "mds-green": $mds-green,
+  "mds-violetblue": $mds-violetblue,
+  "mds-magenta": $mds-magenta,
+  "mds-teal": $mds-teal,
+  "mds-fuchsia": $mds-fuchsia,
+  "mds-bluegrey": $mds-bluegrey
 );
