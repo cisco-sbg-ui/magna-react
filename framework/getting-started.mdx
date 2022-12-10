@@ -2,21 +2,25 @@
 name: Getting Started
 route: /
 ---
-# **Components with Magnetic changes are marked with an * for light only, \*\* for light and dark**
+
+# **Components with Magnetic changes are marked with an \* for light only, \*\* for light and dark**
+
 #### All changes should be considered work in progress
+
 <br />
-<hr/>
+<hr />
 
 ## Phase completion updates -
 
 #### Phase 1 - re-skin light theme
+
 - As of Nov 7th - Received light theme feedback from UX, will make requested updates soon
 - As of Nov 4th - UX reviewed, agreed on go forward steps for dark theme re-skin, setup priority list for Phase 4 items
-- As of Oct 24th  - 51/51 = 100%
-- As of Oct 17th  - 47/51 = 92%
-- As of Oct 11th  - 24/51 = 47%
-- As of Oct 4th   - 13/51 = 25%
-- As of Sept 27th - 9/51  = 17%
+- As of Oct 24th - 51/51 = 100%
+- As of Oct 17th - 47/51 = 92%
+- As of Oct 11th - 24/51 = 47%
+- As of Oct 4th - 13/51 = 25%
+- As of Sept 27th - 9/51 = 17%
 
 #### Phase 2 - re-skin dark theme [UX has a figma version here](https://www.figma.com/file/6ILKQfiWVH6yNzPFk9pkz4/%F0%9F%A7%B2--Magnetic-Design-Library%3A-Dark-Mode-%5BWiP%5D-(Copy)?node-id=33305%3A351330&t=rP6kUD4YtZv5ZUcf-0)
 - As of Dec 7 42/42 = 100% (beta 0 release cut on Dec 8th and made available to devs - NOT FOR USE IN PRODUCTION)
@@ -32,8 +36,8 @@ route: /
 - Modal delivered
 
 #### Phase 4 - Add Magnetic components option as needed - (this means not just skin layer, size/padding/margin dimensions change; You can see a sample of this at the bottom of the Button component)
-- As of Nov 7th - 2/42 = 4%
 
+- As of Nov 7th - 2/42 = 4%
 
 <hr />
 <br />
@@ -84,7 +88,7 @@ The Babel preset **automatically imports** components. Add the following to your
 
 Without import statements, ESLint will complain about your source code. The magna-react ESLint plugin will take care of that. First install the ESLint plugin:
 
-`npm i -D @cisco-sbg-ui/eslint-config-atomic-react`
+`npm i -D @cisco-sbg-ui/eslint-config-magna-react`
 
 Then add the following to your ESLint configuration:
 
@@ -93,7 +97,7 @@ Then add the following to your ESLint configuration:
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-+    "@cisco-sbg-ui/eslint-config-atomic-react"
++    "@cisco-sbg-ui/eslint-config-magna-react"
   ],
   ...
 }
