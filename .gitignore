@@ -11,5 +11,6 @@
 /babel-preset.js
 /babel-preset-local.js
 .idea/
+.turbo/
 
 .DS_Store
