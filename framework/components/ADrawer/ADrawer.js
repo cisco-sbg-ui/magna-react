@@ -9,20 +9,25 @@ const ADrawer = forwardRef(
   (
     {
       as,
-      asModal = true,
+      asModal: propsAsModal,
       className: propsClassName,
       children,
+      openHeight,
       openWidth,
       isOpen,
       position = "fixed",
       slideIn = "left",
       slim = false,
+      slimHeight,
       slimWidth,
       style: propsStyle,
       ...rest
     },
     ref
   ) => {
+    // A fixed drawer should automatically render as a modal unless specified
+    const shouldRenderModal =
+      propsAsModal || (position === "fixed" && propsAsModal == undefined);
     const DrawerPanelComponent = as || "div";
     const orientation =
       slideIn === "bottom" || slideIn === "top" ? "horizontal" : "vertical";
@@ -36,11 +41,18 @@ const ADrawer = forwardRef(
         style.width = slimWidth;
         style.maxWidth = slimWidth;
       }
+
+      if (slimHeight) {
+        style.height = slimHeight;
+        style.maxHeight = slimHeight;
+      }
     }
     if (!isOpen) {
       className += ` a-drawer--hidden`;
     } else if (!slim && openWidth) {
       style.width = openWidth;
+    } else if (!slim && openHeight) {
+      style.height = openHeight;
     }
     if (propsClassName) {
       className += ` ${propsClassName}`;
@@ -55,12 +67,17 @@ const ADrawer = forwardRef(
     if (slimWidth && slim) {
       style.maxWidth = slimWidth;
     }
+    if (openHeight) {
+      style.maxHeight = openHeight;
+    }
+    if (slimHeight && slim) {
+      style.slimHeight = slimHeight;
+    }
 
-    if (!asModal) {
+    if (!shouldRenderModal) {
       return (
         <DrawerPanelComponent
           {...rest}
-          isOpen={isOpen}
           ref={ref}
           className={className}
           style={style}
@@ -74,7 +91,6 @@ const ADrawer = forwardRef(
       <AModal isOpen={isOpen} {...rest}>
         <DrawerPanelComponent
           {...rest}
-          isOpen={isOpen}
           ref={ref}
           className={className}
           style={style}
@@ -111,6 +127,12 @@ ADrawer.propTypes = {
    * full version.
    */
   isOpen: PropTypes.bool,
+
+  /**
+   * The height of the drawer when it is opened. Most commonly used
+   * when the drawer slides up from the bottom of the page.
+   */
+  openHeight: PropTypes.string,
 
   /**
    * The width of the drawer when it is opened (assuming is is not
