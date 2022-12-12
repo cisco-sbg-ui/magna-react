@@ -331,7 +331,7 @@ ADataTable.propTypes = {
   headers: PropTypes.arrayOf(
     PropTypes.shape({
       /** The text to be displayed in the header column */
-      name: PropTypes.string,
+      name: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
       /** The unique identifier to associate a column with subsequent row data */
       key: PropTypes.string,
       /** CSS class used to style the header column */

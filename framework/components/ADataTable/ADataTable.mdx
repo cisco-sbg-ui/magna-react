@@ -92,6 +92,138 @@ import {ADataTable} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
+### Enriched Headers
+
+You can also pass a React element to a header's `name` key in order to handle more advanced use-cases.
+
+<Playground
+  code={`() => {
+  const [sort, setSort] = useState();
+  const [allChecked, setAllChecked] = useState(false);
+  const [checked, setChecked] = useState({
+    'aardvark': false,
+    'Argentina': false,
+    'Zanzibar': false
+  });
+  const headers = [
+    {
+      name: (
+        <ACheckbox
+          checked={allChecked}
+          className='ma-0'
+          onChange={(e) => {
+            const isAllChecked = e.target.checked;
+            const toggledState = {};
+            for (const key in checked) {
+              toggledState[key] = isAllChecked;
+            }
+            setChecked(toggledState);
+            setAllChecked(isAllChecked);
+          }}
+        />
+      ),
+      key: "checkbox",
+      align: "start",
+      className: "text-capitalize",
+      sortable: false
+    },
+    {
+      name: "alpha",
+      key: "a",
+      align: "start",
+      className: "text-capitalize",
+      sortable: true
+    },
+    {
+      name: "Bravo",
+      key: "b",
+      align: "start",
+      sortable: true,
+      sort: false
+    },
+    {
+      name: "Charlie",
+      key: "c",
+      sortable: true,
+      sort: (a, b) =>
+        a.toUpperCase() === b.toUpperCase()
+          ? 0
+          : a.toUpperCase() > b.toUpperCase()
+          ? 1
+          : -1
+    },
+    {
+      name: "Delta",
+      align: "start",
+      cell: {
+        component: (item) => (
+          <a href="/" target="_blank">
+            Details
+          </a>
+        )
+      }
+    }
+  ];
+  const items = [
+    {
+      checkbox: (
+        <ACheckbox
+          checked={checked['aardvark']}
+          onChange={() => setChecked(checkedState => ({
+            ...checkedState,
+            'aardvark': !checkedState['aardvark']
+          }))}
+        />
+      ),
+      a: 11.1,
+      b: 526,
+      c: "aardvark"
+    },
+    {
+      checkbox: (
+        <ACheckbox
+          checked={checked['Argentina']}
+          onChange={() => setChecked(checkedState => ({
+            ...checkedState,
+            'Argentina': !checkedState['Argentina']
+          }))}
+        />
+      ),
+      a: 8.9,
+      b: 611,
+      c: "Argentina"
+    },
+    {
+      checkbox: (
+        <ACheckbox
+          checked={checked['Zanzibar']}
+          onChange={() => setChecked(checkedState => ({
+            ...checkedState,
+            'Zanzibar': !checkedState['Zanzibar']
+          }))}
+        />
+      ),
+      a: 10.5,
+      b: 475,
+      c: "Zanzibar"
+    }
+  ];
+  return (
+    <ADataTable
+      striped
+      tight
+      headers={headers}
+      items={items}
+      className="mx-auto"
+      style={{maxWidth: 500}}
+      sort={sort}
+      onSort={(s) => setSort(s)}
+    />
+  );
+}
+`}
+/>
+
 ## Expandable Rows
 
 <Playground

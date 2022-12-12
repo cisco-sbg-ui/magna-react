@@ -4,7 +4,7 @@ context("ADataTable", () => {
   });
 
   const basicUsageSelector = `#basic + .playground`;
-  const infiniteScrollSelector = '#infinite-scrolling + .playground';
+  const infiniteScrollSelector = "#infinite-scrolling + .playground";
 
   it("sorts normally", () => {
     cy.get(`${basicUsageSelector} td`).eq(0).contains(11.1);
@@ -14,7 +14,7 @@ context("ADataTable", () => {
     cy.get(`${basicUsageSelector} td`).eq(0).contains(11.1);
     cy.get(`${basicUsageSelector} th .a-icon`)
       .eq(0)
-      .should("have.attr", "aria-label", "chevron-down icon");
+      .should("have.attr", "aria-label", "sortDown icon");
     cy.get(`${basicUsageSelector} th`).eq(0).click();
     cy.get(`${basicUsageSelector} td`).eq(0).contains(11.1);
   });
@@ -27,7 +27,7 @@ context("ADataTable", () => {
     cy.get(`${basicUsageSelector} td`).eq(1).contains(526);
     cy.get(`${basicUsageSelector} th .a-icon`)
       .eq(1)
-      .should("have.attr", "aria-label", "chevron-down icon");
+      .should("have.attr", "aria-label", "sortDown icon");
     cy.get(`${basicUsageSelector} th`).eq(1).click();
     cy.get(`${basicUsageSelector} td`).eq(1).contains(526);
   });
@@ -40,7 +40,7 @@ context("ADataTable", () => {
     cy.get(`${basicUsageSelector} td`).eq(2).contains("Zanzibar");
     cy.get(`${basicUsageSelector} th .a-icon`)
       .eq(2)
-      .should("have.attr", "aria-label", "chevron-down icon");
+      .should("have.attr", "aria-label", "sortDown icon");
     cy.get(`${basicUsageSelector} th`).eq(2).click();
     cy.get(`${basicUsageSelector} td`).eq(2).contains("aardvark");
   });
@@ -48,7 +48,9 @@ context("ADataTable", () => {
   // When I ported the code from atomic-react some how I broke the mdx on this need to fix that
   it.skip("allows events to be fired when the last row is on the screen", () => {
     cy.get(`${infiniteScrollSelector} tr`).should("have.length", 26);
-    cy.get(`${infiniteScrollSelector} div[data-testid="table-wrapper"]`).scrollTo('bottom');
+    cy.get(
+      `${infiniteScrollSelector} div[data-testid="table-wrapper"]`
+    ).scrollTo("bottom");
     // Disable this eslint rule since the demo uses an arbitrary delay
     // to mimic a delay from an HTTP request
     cy.wait(1000); // eslint-disable-line cypress/no-unnecessary-waiting
@@ -64,10 +66,16 @@ context("ADataTable", () => {
   });
 
   it("toggles expandable table cells", () => {
-    cy.get("#expandable-rows + .playground td button").eq(0).should("have.attr", "aria-expanded", "false");
+    cy.get("#expandable-rows + .playground td button")
+      .eq(0)
+      .should("have.attr", "aria-expanded", "false");
     cy.get("#expandable-rows + .playground td button").eq(0).click();
-    cy.get("#expandable-rows + .playground td button").eq(0).should("have.attr", "aria-expanded", "true");
+    cy.get("#expandable-rows + .playground td button")
+      .eq(0)
+      .should("have.attr", "aria-expanded", "true");
     cy.get("#expandable-rows + .playground td button").eq(0).click();
-    cy.get("#expandable-rows + .playground td button").eq(0).should("have.attr", "aria-expanded", "false");
+    cy.get("#expandable-rows + .playground td button")
+      .eq(0)
+      .should("have.attr", "aria-expanded", "false");
   });
 });
