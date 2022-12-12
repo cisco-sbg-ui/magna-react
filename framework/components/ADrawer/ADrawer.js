@@ -78,7 +78,6 @@ const ADrawer = forwardRef(
       return (
         <DrawerPanelComponent
           {...rest}
-          isOpen={isOpen}
           ref={ref}
           className={className}
           style={style}
@@ -92,7 +91,6 @@ const ADrawer = forwardRef(
       <AModal isOpen={isOpen} {...rest}>
         <DrawerPanelComponent
           {...rest}
-          isOpen={isOpen}
           ref={ref}
           className={className}
           style={style}
