@@ -44,8 +44,6 @@ const TableHeader = React.forwardRef(({className, ...rest}, ref) => (
 ));
 TableHeader.displayName = "TableHeader";
 
-export const ADataTableRowProps = Symbol("a-data-table-row-props");
-
 const TableRow = React.forwardRef(
   ({className: propsClassName, isSelected, ...rest}, ref) => {
     let className = "a-data-table__row";
@@ -375,6 +373,11 @@ ADataTable.propTypes = {
       })
     })
   ).isRequired,
+  /**
+   * A function called when rendering each row to determine if
+   * the row is selected. It is passed the associated row item.
+   */
+  isRowSelected: PropTypes.func,
   /**
    * Sets the table data.
    */
