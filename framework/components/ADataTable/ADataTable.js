@@ -76,12 +76,15 @@ const ADataTable = forwardRef(
     {
       className: propsClassName,
       expandable,
+      isRowSelected: propsIsRowSelected,
+      onRowClick: propsOnRowClick,
       headers,
       maxHeight,
       items,
       onSort,
       onScrollToEnd,
       sort,
+      selectedItems,
       ...rest
     },
     ref
@@ -139,7 +142,12 @@ const ADataTable = forwardRef(
           <ASimpleTable {...rest} ref={ref} className={className}>
             {headers && (
               <thead>
-                <TableRow>
+                <TableRow
+                  onClick={(e) =>
+                    typeof propsOnRowClick === "function" &&
+                    propsOnRowClick(headers, e)
+                  }
+                >
                   {ExpandableComponent && (
                     <TableHeader className="a-data-table__header a-data-table__header--hidden">
                       <span className="a-data-table__header--hidden__text">
@@ -230,24 +238,29 @@ const ADataTable = forwardRef(
               </thead>
             )}
             <tbody>
-              {sortedItems.map((x, i) => {
+              {sortedItems.map((rowItem, i) => {
                 const key = `a-data-table_row_${i}`;
                 const id = `a-data-table_row_${i}`;
                 const isLastRow = i == items.length - 1;
-                const rowProps = x[ADataTableRowProps];
-                const isRowSelected = rowProps?.selected;
                 const isInfiniteScrollTarget =
                   isLastRow && typeof onScrollToEnd === "function";
                 const hasExpandedRowContent =
                   ExpandableComponent &&
                   (typeof expandable.isRowExpandable === "function"
-                    ? expandable.isRowExpandable(x)
+                    ? expandable.isRowExpandable(rowItem)
                     : true);
+                const isRowSelected =
+                  typeof propsIsRowSelected === "function" &&
+                  propsIsRowSelected(rowItem);
                 const rowContent = (
                   <TableRow
                     data-expandable-row={hasExpandedRowContent}
                     isSelected={isRowSelected}
                     key={key}
+                    onClick={(e) =>
+                      typeof propsOnRowClick === "function" &&
+                      propsOnRowClick(rowItem, e)
+                    }
                   >
                     {ExpandableComponent && (
                       <TableCell>
@@ -276,8 +289,8 @@ const ADataTable = forwardRef(
                           }`.trim()}
                         >
                           {y.cell && y.cell.component
-                            ? y.cell.component(x)
-                            : x[y.key]}
+                            ? y.cell.component(rowItem)
+                            : rowItem[y.key]}
                         </TableCell>
                       );
                     })}
@@ -288,7 +301,7 @@ const ADataTable = forwardRef(
                         hidden={!expandedRows[id]}
                         role="cell"
                       >
-                        <ExpandableComponent {...x} />
+                        <ExpandableComponent {...rowItem} />
                       </TableCell>
                     )}
                   </TableRow>
