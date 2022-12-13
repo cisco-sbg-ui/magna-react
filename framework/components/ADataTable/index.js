@@ -1,1 +1,2 @@
-export {default} from "./ADataTable";
+import ADataTable, {ADataTableRowProps} from "./ADataTable";
+export {ADataTable, ADataTableRowProps};

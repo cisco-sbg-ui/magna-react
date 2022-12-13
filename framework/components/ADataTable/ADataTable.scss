@@ -17,6 +17,12 @@ $hidden-table-col-width: 45px;
       }
     }
   }
+
+  &__row {
+    &--selected {
+      background: map-deep-get($theme, "table", "row-selected");
+    }
+  }
 }
 
 .a-data-table {

@@ -32,7 +32,6 @@ const ADataTableWrapper = React.forwardRef(
     );
   }
 );
-
 ADataTableWrapper.displayName = "ADataTableWrapper";
 
 const TableHeader = React.forwardRef(({className, ...rest}, ref) => (
@@ -44,15 +43,24 @@ const TableHeader = React.forwardRef(({className, ...rest}, ref) => (
   />
 ));
 TableHeader.displayName = "TableHeader";
-const TableRow = React.forwardRef(({className, ...rest}, ref) => (
-  <tr
-    ref={ref}
-    role="row"
-    className={`a-data-table__row${className ? ` ${className}` : ""}`}
-    {...rest}
-  />
-));
+
+export const ADataTableRowProps = Symbol("a-data-table-row-props");
+
+const TableRow = React.forwardRef(
+  ({className: propsClassName, isSelected, ...rest}, ref) => {
+    let className = "a-data-table__row";
+    if (isSelected) {
+      className += " a-data-table__row--selected";
+    }
+    if (propsClassName) {
+      className += ` ${propsClassName}`;
+    }
+
+    return <tr ref={ref} role="row" className={className} {...rest} />;
+  }
+);
 TableRow.displayName = "TableRow";
+
 const TableCell = React.forwardRef(({className, ...rest}, ref) => (
   <td
     ref={ref}
@@ -226,6 +234,8 @@ const ADataTable = forwardRef(
                 const key = `a-data-table_row_${i}`;
                 const id = `a-data-table_row_${i}`;
                 const isLastRow = i == items.length - 1;
+                const rowProps = x[ADataTableRowProps];
+                const isRowSelected = rowProps?.selected;
                 const isInfiniteScrollTarget =
                   isLastRow && typeof onScrollToEnd === "function";
                 const hasExpandedRowContent =
@@ -236,6 +246,7 @@ const ADataTable = forwardRef(
                 const rowContent = (
                   <TableRow
                     data-expandable-row={hasExpandedRowContent}
+                    isSelected={isRowSelected}
                     key={key}
                   >
                     {ExpandableComponent && (
