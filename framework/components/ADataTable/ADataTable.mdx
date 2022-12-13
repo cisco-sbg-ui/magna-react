@@ -92,7 +92,7 @@ import {ADataTable} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-### Enriched Headers
+### Selected Rows
 
 You can also pass a React element to a header's `name` key in order to handle more advanced use-cases.
 
@@ -105,6 +105,14 @@ You can also pass a React element to a header's `name` key in order to handle mo
     'Argentina': false,
     'Zanzibar': false
   });
+  const drawerRef = useRef();
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [drawerContent, setDrawerContent] = useState({});
+  usePopupQuickExit({
+    popupRef: drawerRef,
+    isEnabled: isDrawerOpen,
+    onExit: () => setIsDrawerOpen(false),
+  })
   const headers = [
     {
       name: (
@@ -120,9 +128,11 @@ You can also pass a React element to a header's `name` key in order to handle mo
             setChecked(toggledState);
             setAllChecked(isAllChecked);
           }}
-        />
+        >
+          {allChecked ? 'Unselect' : 'Select'} all
+        </ACheckbox>
       ),
-      key: "checkbox",
+      key: "itemSelectionCol",
       align: "start",
       className: "text-capitalize",
       sortable: false
@@ -157,7 +167,11 @@ You can also pass a React element to a header's `name` key in order to handle mo
       align: "start",
       cell: {
         component: (item) => (
-          <a href="/" target="_blank">
+          <a onClick={(e) => {
+            e.preventDefault();
+            setIsDrawerOpen(true);
+            setDrawerContent(item); 
+          }} href="/" target="_blank">
             Details
           </a>
         )
@@ -166,7 +180,7 @@ You can also pass a React element to a header's `name` key in order to handle mo
   ];
   const items = [
     {
-      checkbox: (
+      itemSelectionCol: (
         <ACheckbox
           checked={checked['aardvark']}
           onChange={() => setChecked(checkedState => ({
@@ -177,10 +191,13 @@ You can also pass a React element to a header's `name` key in order to handle mo
       ),
       a: 11.1,
       b: 526,
-      c: "aardvark"
+      c: "aardvark",
+      [ADataTableRowProps]: {
+        selected: checked['aardvark']
+      }
     },
     {
-      checkbox: (
+      itemSelectionCol: (
         <ACheckbox
           checked={checked['Argentina']}
           onChange={() => setChecked(checkedState => ({
@@ -191,10 +208,13 @@ You can also pass a React element to a header's `name` key in order to handle mo
       ),
       a: 8.9,
       b: 611,
-      c: "Argentina"
+      c: "Argentina",
+      [ADataTableRowProps]: {
+        selected: checked["Argentina"]
+      }
     },
     {
-      checkbox: (
+      itemSelectionCol: (
         <ACheckbox
           checked={checked['Zanzibar']}
           onChange={() => setChecked(checkedState => ({
@@ -205,20 +225,41 @@ You can also pass a React element to a header's `name` key in order to handle mo
       ),
       a: 10.5,
       b: 475,
-      c: "Zanzibar"
+      c: "Zanzibar",
+      [ADataTableRowProps]: {
+        selected: checked["Zanzibar"]
+      }
     }
   ];
   return (
-    <ADataTable
-      striped
-      tight
-      headers={headers}
-      items={items}
-      className="mx-auto"
-      style={{maxWidth: 500}}
-      sort={sort}
-      onSort={(s) => setSort(s)}
-    />
+    <div
+        style={{
+          position: 'relative',
+          height: '400px',
+          overflow: 'hidden'}}>
+      <ADataTable
+        striped
+        tight
+        headers={headers}
+        items={items}
+        className="mx-auto"
+        style={{maxWidth: 500}}
+        sort={sort}
+        onSort={(s) => setSort(s)}
+      />
+      <ADrawer
+          position='absolute'
+          slideIn='right'
+          isOpen={isDrawerOpen}
+          openWidth='200px'
+      >
+        <ADrawerContent ref={drawerRef}>
+          <h3 className='mt-0'>More Details</h3>
+          <p>More information about {drawerContent?.c}.</p>
+          <AButton onClick={() => setIsDrawerOpen(false)}>Close</AButton>
+        </ADrawerContent>
+      </ADrawer>
+    </div>
   );
 }
 `}
