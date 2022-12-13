@@ -94,7 +94,7 @@ import {ADataTable} from "@cisco-sbg-ui/magna-react";
 
 ### Selectable Rows
 
-Rows can be selected by passing the `isRowSelected` prop to `ADataTable`, which is a function called for every row with the associated data in order to determine if the row is selected.
+Rows can be selected by passing the `isRowSelected` prop to `ADataTable`, which is a function called for every row with the associated data in order to determine if the row should be highlighted in the selected state.
 
 <Playground
   code={`() => {
@@ -104,25 +104,25 @@ Rows can be selected by passing the `isRowSelected` prop to `ADataTable`, which 
     "Second row": false,
     "Third row": false
   });
-  const isRowSelected = (rowItem) => selected[rowItem.foo];
+  const isRowSelected = (rowItem) => selected[rowItem['firstCol']];
   const headers = [
     {
-      name: "Foo",
-      key: "foo",
+      name: "First Col",
+      key: "firstCol",
       align: "start",
       className: "text-capitalize",
       sortable: false
     },
     {
-      name: "Bar",
-      key: "bar",
+      name: "Second Col",
+      key: "secondCol",
       align: "start",
       className: "text-capitalize",
       sortable: false
     },
     {
-      name: "Baz",
-      key: "baz",
+      name: "Third Col",
+      key: "thirdCol",
       align: "start",
       className: "text-capitalize",
       sortable: false
@@ -130,26 +130,26 @@ Rows can be selected by passing the `isRowSelected` prop to `ADataTable`, which 
   ];
   const items = [
     {
-      foo: "First row",
-      bar: "First row",
-      baz: "First row"
+      firstCol: "First row",
+      secondCol: "First row",
+      thirdCol: "First row"
     },
     {
-      foo: "Second row",
-      bar: "Second row",
-      baz: "Second row"
+      firstCol: "Second row",
+      secondCol: "Second row",
+      thirdCol: "Second row"
     },
     {
-      foo: "Third row",
-      bar: "Third row",
-      baz: "Third row"
+      firstCol: "Third row",
+      secondCol: "Third row",
+      thirdCol: "Third row"
     },
   ];
   return (
     <ADataTable
       isRowSelected={isRowSelected}
       onRowClick={(rowItem) => setSelected(selectedState => {
-        const key = rowItem['foo'];
+        const key = rowItem['firstCol'];
         return { ...selectedState, [key]: !selectedState[key] };
       })}
       tight
@@ -165,7 +165,7 @@ Rows can be selected by passing the `isRowSelected` prop to `ADataTable`, which 
 
 #### With a Checkbox
 
-You can also pass a React element to a header's `name` key in order to handle more advanced use-cases, like when selecting table rows.
+You can also pass a React element to a header's `name` key in order to handle more advanced use-cases, like when selecting all items in the table.
 
 <Playground
   code={`() => {
@@ -274,6 +274,8 @@ You can also pass a React element to a header's `name` key in order to handle mo
 />
 
 #### With a Drawer
+
+In this example, the associated more details drawer that is opened is used to determine which item should be styled as selected.
 
 <Playground
   code={`() => {
