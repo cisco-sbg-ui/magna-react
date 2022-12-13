@@ -313,7 +313,12 @@ $atomic-dusk: (
         rgba(108, 158, 245, 0.25)
       ),
     "row-stripe-color": transparent,
-    "row-selected": map-get($mds-interactive, "interactive-1")
+    "row-selected":
+      linear-gradient(
+        0deg,
+        rgba(108, 158, 245, 0.25),
+        rgba(108, 158, 245, 0.25)
+      )
   ),
   "tabs": (
     "oversized-background-color": transparent,
