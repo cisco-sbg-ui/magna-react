@@ -50,7 +50,7 @@ const mapSprites = () => {
     .replaceAll("fill-rule=", "fillRule=")
     .replaceAll("clip-rule=", "clipRule=")
     .replaceAll("clip-path=", "clipPath=")
-    .replace("stroke-width=", "strokeWidth=")
+    .replaceAll("stroke-width=", "strokeWidth=")
     .replaceAll('fill="#889099"', "")
     .replaceAll("class=", "className=");
 
