@@ -9,7 +9,6 @@
     "build:lib": "babel --no-babelrc --config-file ./babel-lib.config.js framework --out-dir lib --copy-files",
     "build:docs": "next build",
     "build": "npm run build:lib && npm run build:babel-preset",
-    "build:package": "npm run build:lib && npm run build:babel-preset",
     "vercel-build": "npm run build:docs",
     "cover": "npm run cover:unit && npm run cover:integration && npm run coverage-report",
     "cover:unit": "nyc --silent npx cypress run-ct",
