@@ -180,6 +180,7 @@ const ADataTable = forwardRef(
                       "aria-label": x.name
                     };
 
+                    const sortableBtnProps = {};
                     if (x.sortable) {
                       if (!sort || x.key !== sort.key) {
                         headerProps["aria-label"] +=
@@ -195,7 +196,7 @@ const ADataTable = forwardRef(
                         headerProps["aria-sort"] = "descending";
                       }
 
-                      headerProps.onClick = () => {
+                      sortableBtnProps.onClick = () => {
                         setExpandedRows({});
                         onSort &&
                           onSort(
@@ -216,27 +217,43 @@ const ADataTable = forwardRef(
                       };
                     }
 
+                    if (!x.sortable) {
+                      return (
+                        <TableHeader
+                          {...headerProps}
+                          key={`a-data-table_header_${i}`}
+                        >
+                          {x.name}
+                        </TableHeader>
+                      );
+                    }
+
                     return (
                       <TableHeader
                         {...headerProps}
                         key={`a-data-table_header_${i}`}
                       >
-                        {x.align !== "end" ? x.name : ""}
-                        {x.sortable && (
-                          <AIcon
-                            iconSet="magna"
-                            left={x.align === "end"}
-                            right={x.align !== "end"}
-                            className={`a-data-table__header__sort ${
-                              sort && x.key === sort.key
-                                ? "a-data-table__header__sort--active"
-                                : ""
-                            }`}
-                          >
-                            {getSortIconName(x, sort)}
-                          </AIcon>
-                        )}
-                        {x.align === "end" ? x.name : ""}
+                        <button
+                          {...sortableBtnProps}
+                          className="a-data-table__header__sort__button"
+                        >
+                          {x.align !== "end" ? x.name : ""}
+                          {x.sortable && (
+                            <AIcon
+                              iconSet="magna"
+                              left={x.align === "end"}
+                              right={x.align !== "end"}
+                              className={`a-data-table__header__sort ${
+                                sort && x.key === sort.key
+                                  ? "a-data-table__header__sort--active"
+                                  : ""
+                              }`}
+                            >
+                              {getSortIconName(x, sort)}
+                            </AIcon>
+                          )}
+                          {x.align === "end" ? x.name : ""}
+                        </button>
                       </TableHeader>
                     );
                   })}
