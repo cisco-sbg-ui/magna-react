@@ -69,6 +69,21 @@ const TableCell = React.forwardRef(({className, ...rest}, ref) => (
 ));
 TableCell.displayName = "TableCell";
 
+export const getSortIconName = (column, sort) => {
+  if (!sort || column.key !== sort.key) {
+    return null;
+  }
+
+  switch (sort.direction) {
+    case "asc":
+      return "sortUp";
+    case "desc":
+      return "sortDown";
+    default:
+      return null;
+  }
+};
+
 const ADataTable = forwardRef(
   (
     {
@@ -218,11 +233,7 @@ const ADataTable = forwardRef(
                                 : ""
                             }`}
                           >
-                            {sort &&
-                            x.key === sort.key &&
-                            sort.direction === "desc"
-                              ? "sortDown"
-                              : "sortUp"}
+                            {getSortIconName(x, sort)}
                           </AIcon>
                         )}
                         {x.align === "end" ? x.name : ""}
