@@ -17,7 +17,6 @@ styles/
 .prettierignore
 .prettierrc.js
 .vercelignore
-babel-lib.config.js
 babel-preset-local.js
 codecov.yml
 cypress.json
