@@ -43,12 +43,6 @@ $hidden-table-col-width: 45px;
     &--sortable {
       cursor: pointer;
     }
-
-    &:hover {
-      .a-icon.a-data-table__header__sort:not(.a-icon.a-data-table__header__sort--active) {
-        opacity: 0.5;
-      }
-    }
   }
 
   .text-start {
