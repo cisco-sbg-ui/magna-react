@@ -5,6 +5,7 @@ context("ADataTable", () => {
 
   const basicUsageSelector = `#basic + .playground`;
   const infiniteScrollSelector = "#infinite-scrolling + .playground";
+  const selectableSelector = "[data-testid='selectable-rows']";
 
   it("sorts normally", () => {
     cy.get(`${basicUsageSelector} td`).eq(0).contains(11.1);
@@ -77,5 +78,19 @@ context("ADataTable", () => {
     cy.get("#expandable-rows + .playground td button")
       .eq(0)
       .should("have.attr", "aria-expanded", "false");
+  });
+
+  it("selects rows", () => {
+    // Click the first table body row
+    cy.get(`${selectableSelector} tbody tr`).eq(0).click();
+    cy.get(`${selectableSelector} .a-data-table__row--selected`).should(
+      "exist"
+    );
+
+    // Toggle selected state
+    cy.get(`${selectableSelector} tbody tr`).eq(0).click();
+    cy.get(`${selectableSelector} tr.a-data-table__row--selected`).should(
+      "not.exist"
+    );
   });
 });

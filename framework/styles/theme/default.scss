@@ -307,7 +307,8 @@ $atomic-default: (
     "header-border": map-get($mds-light-theme, "table-border"),
     "row-hover-color": map-get($mds-neutral, "blue-1"),
     "row-hover-image": none,
-    "row-stripe-color": map-get($mds-neutral, "neutral-3")
+    "row-stripe-color": map-get($mds-neutral, "neutral-3"),
+    "row-selected": map-get($mds-interactive, "interactive-1")
   ),
   "tabs": (
     "oversized-background-color": map-get($grey, "lighten-6"),

@@ -312,7 +312,13 @@ $atomic-dusk: (
         rgba(108, 158, 245, 0.25),
         rgba(108, 158, 245, 0.25)
       ),
-    "row-stripe-color": transparent
+    "row-stripe-color": transparent,
+    "row-selected":
+      linear-gradient(
+        0deg,
+        rgba(108, 158, 245, 0.25),
+        rgba(108, 158, 245, 0.25)
+      )
   ),
   "tabs": (
     "oversized-background-color": transparent,

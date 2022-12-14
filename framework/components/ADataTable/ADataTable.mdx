@@ -92,133 +92,290 @@ import {ADataTable} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-### Enriched Headers
+### Selectable Rows
 
-You can also pass a React element to a header's `name` key in order to handle more advanced use-cases.
+Rows can be selected by passing the `isRowSelected` prop to `ADataTable`, which is a function called for every row with the associated data in order to determine if the row should be highlighted in the selected state.
+
+Often times, you'll need to select the row when the row itself is clicked, in which you can leverage the `onRowClick` prop of `ADataTable`, which is a callback function invoked with the associated row item data and the native event object.
 
 <Playground
   code={`() => {
-  const [sort, setSort] = useState();
-  const [allChecked, setAllChecked] = useState(false);
-  const [checked, setChecked] = useState({
-    'aardvark': false,
-    'Argentina': false,
-    'Zanzibar': false
+  const [allSelected, setAllSelected] = useState(false);
+  const [selected, setSelected] = useState({
+    "First row": false,
+    "Second row": false,
+    "Third row": false
   });
+  const isRowSelected = (rowItem) => selected[rowItem['firstCol']];
+  const onRowClick = (rowItem) => {
+    setSelected(selectedState => {
+        const key = rowItem['firstCol'];
+        return { ...selectedState, [key]: !selectedState[key] };
+    })
+  };
   const headers = [
     {
-      name: (
-        <ACheckbox
-          checked={allChecked}
-          className='ma-0'
-          onChange={(e) => {
-            const isAllChecked = e.target.checked;
-            const toggledState = {};
-            for (const key in checked) {
-              toggledState[key] = isAllChecked;
-            }
-            setChecked(toggledState);
-            setAllChecked(isAllChecked);
-          }}
-        />
-      ),
-      key: "checkbox",
+      name: "First Col",
+      key: "firstCol",
       align: "start",
       className: "text-capitalize",
       sortable: false
     },
     {
-      name: "alpha",
-      key: "a",
+      name: "Second Col",
+      key: "secondCol",
       align: "start",
       className: "text-capitalize",
-      sortable: true
+      sortable: false
     },
     {
-      name: "Bravo",
-      key: "b",
+      name: "Third Col",
+      key: "thirdCol",
       align: "start",
-      sortable: true,
-      sort: false
+      className: "text-capitalize",
+      sortable: false
+    }
+  ];
+  const items = [
+    {
+      firstCol: "First row",
+      secondCol: "First row",
+      thirdCol: "First row"
     },
     {
-      name: "Charlie",
-      key: "c",
-      sortable: true,
-      sort: (a, b) =>
-        a.toUpperCase() === b.toUpperCase()
-          ? 0
-          : a.toUpperCase() > b.toUpperCase()
-          ? 1
-          : -1
+      firstCol: "Second row",
+      secondCol: "Second row",
+      thirdCol: "Second row"
     },
     {
-      name: "Delta",
+      firstCol: "Third row",
+      secondCol: "Third row",
+      thirdCol: "Third row"
+    },
+  ];
+  return (
+    <ADataTable
+      isRowSelected={isRowSelected}
+      onRowClick={onRowClick}
+      tight
+      headers={headers}
+      items={items}
+      className="mx-auto"
+      style={{maxWidth: 500}}
+      data-testid='selectable-rows'
+    />
+  );
+}
+`}
+/>
+
+#### With a Checkbox
+
+You can also pass a React element to a header's `name` key in order to handle more advanced use-cases, like when selecting all items in the table.
+
+<Playground
+  code={`() => {
+  const [allSelected, setAllSelected] = useState(false);
+  const [selected, setSelected] = useState({
+    "First row": false,
+    "Second row": false,
+    "Third row": false
+  });
+  const isRowSelected = (rowItem) => selected[rowItem['firstCol']];
+  const headers = [
+    {
+      name: (
+        <ACheckbox
+            checked={allSelected}
+            className='ma-0 pa-0'
+            onChange={(e) => {
+              const isAllSelected = e.target.checked;
+              const toggledState = {};
+              for (const key in selected) {
+                toggledState[key] = isAllSelected;
+              }
+              setSelected(toggledState);
+              setAllSelected(isAllSelected);
+            }}
+        >
+          {allSelected ? 'Unselect' : 'Select'} all
+        </ACheckbox>
+      ),
+      cell: {
+        component: (rowItem) => {
+          const rowId = rowItem['firstCol'];
+          return (
+            <ACheckbox
+              checked={selected[rowId]}
+              onChange={() => {
+                setSelected(selectedState => ({
+                  ...selectedState,
+                  [rowId]: !selectedState[rowId]
+                }));
+              }}
+            />
+          )
+        },
+      },
+      key: "itemSelectionCol",
       align: "start",
+      className: "text-capitalize",
+      sortable: false
+    },
+    {
+      name: "First Col",
+      key: "firstCol",
+      align: "start",
+      className: "text-capitalize",
+      sortable: false
+    },
+    {
+      name: "Second Col",
+      key: "secondCol",
+      align: "start",
+      className: "text-capitalize",
+      sortable: false
+    },
+    {
+      name: "Third Col",
+      key: "thirdCol",
+      align: "start",
+      className: "text-capitalize",
+      sortable: false
+    }
+  ];
+  const items = [
+    {
+      firstCol: "First row",
+      secondCol: "First row",
+      thirdCol: "First row"
+    },
+    {
+      firstCol: "Second row",
+      secondCol: "Second row",
+      thirdCol: "Second row"
+    },
+    {
+      firstCol: "Third row",
+      secondCol: "Third row",
+      thirdCol: "Third row"
+    }
+  ];
+  return (
+    <ADataTable
+      isRowSelected={isRowSelected}
+      onRowClick={(rowItem) => setSelected(selectedState => {
+        const key = rowItem['firstCol'];
+        return { ...selectedState, [key]: !selectedState[key] };
+      })}
+      tight
+      headers={headers}
+      items={items}
+      className="mx-auto"
+      style={{maxWidth: 500}}
+    />
+  );
+}
+`}
+/>
+
+#### With a Drawer
+
+In this example, the associated more details drawer that is opened is used to determine which item should be styled as selected.
+
+<Playground
+  code={`() => {
+  const drawerRef = useRef();
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [drawerContent, setDrawerContent] = useState({});
+  // Allows us to close the drawer with escape key/outside clicks
+  usePopupQuickExit({
+    popupRef: drawerRef,
+    isEnabled: isDrawerOpen,
+    onExit: () => setIsDrawerOpen(false)
+  });
+  const isRowSelected = rowItem => isDrawerOpen && drawerContent['firstCol'] === rowItem['firstCol'];
+  const headers = [
+    {
+      name: "First Col",
+      key: "firstCol",
+      align: "start",
+      className: "text-capitalize",
+      sortable: false
+    },
+    {
+      name: "Second Col",
+      key: "secondCol",
+      align: "start",
+      className: "text-capitalize",
+      sortable: false
+    },
+    {
+      name: "Third Col",
+      key: "thirdCol",
+      align: "start",
+      className: "text-capitalize",
+      sortable: false
+    },
+    {
+      name: "Details",
+      align: "center",
       cell: {
         component: (item) => (
-          <a href="/" target="_blank">
-            Details
-          </a>
+          <AButton className='ma-0 pa-0' tertiaryAlt icon onClick={() => {
+            setIsDrawerOpen(true);
+            setDrawerContent(item);  
+          }}>
+            <AIcon iconSet="magna">dotsThreeVertical</AIcon>
+          </AButton>
         )
       }
     }
   ];
   const items = [
     {
-      checkbox: (
-        <ACheckbox
-          checked={checked['aardvark']}
-          onChange={() => setChecked(checkedState => ({
-            ...checkedState,
-            'aardvark': !checkedState['aardvark']
-          }))}
-        />
-      ),
-      a: 11.1,
-      b: 526,
-      c: "aardvark"
+      firstCol: "First row",
+      secondCol: "First row",
+      thirdCol: "First row"
     },
     {
-      checkbox: (
-        <ACheckbox
-          checked={checked['Argentina']}
-          onChange={() => setChecked(checkedState => ({
-            ...checkedState,
-            'Argentina': !checkedState['Argentina']
-          }))}
-        />
-      ),
-      a: 8.9,
-      b: 611,
-      c: "Argentina"
+      firstCol: "Second row",
+      secondCol: "Second row",
+      thirdCol: "Second row"
     },
     {
-      checkbox: (
-        <ACheckbox
-          checked={checked['Zanzibar']}
-          onChange={() => setChecked(checkedState => ({
-            ...checkedState,
-            'Zanzibar': !checkedState['Zanzibar']
-          }))}
-        />
-      ),
-      a: 10.5,
-      b: 475,
-      c: "Zanzibar"
+      firstCol: "Third row",
+      secondCol: "Third row",
+      thirdCol: "Third row"
     }
   ];
   return (
-    <ADataTable
-      striped
-      tight
-      headers={headers}
-      items={items}
-      className="mx-auto"
-      style={{maxWidth: 500}}
-      sort={sort}
-      onSort={(s) => setSort(s)}
-    />
+    <div
+        style={{
+          position: 'relative',
+          height: '300px',
+          overflow: 'hidden'
+        }}>
+        <ADataTable
+          tight
+          headers={headers}
+          items={items}
+          isRowSelected={isRowSelected}
+          className="mx-auto"
+          style={{maxWidth: 500}}
+        />
+        <ADrawer
+            ref={drawerRef}
+            position='absolute'
+            slideIn='right'
+            openWidth='200px'
+            isOpen={isDrawerOpen}>
+          <ADrawerContent>
+            <p className='mt-0'>More details about the {drawerContent['firstCol']?.toLowerCase()}.</p>
+            <AButton onClick={() => setIsDrawerOpen(false)}>Close</AButton>
+          </ADrawerContent>
+        </ADrawer>
+    </div>
   );
 }
 `}
@@ -293,8 +450,6 @@ You can also pass a React element to a header's `name` key in order to handle mo
   };
   return (
     <ADataTable
-      striped
-      tight
       headers={headers}
       items={items}
       expandable={expandableConfig}

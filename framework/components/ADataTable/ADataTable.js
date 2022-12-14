@@ -32,7 +32,6 @@ const ADataTableWrapper = React.forwardRef(
     );
   }
 );
-
 ADataTableWrapper.displayName = "ADataTableWrapper";
 
 const TableHeader = React.forwardRef(({className, ...rest}, ref) => (
@@ -44,15 +43,22 @@ const TableHeader = React.forwardRef(({className, ...rest}, ref) => (
   />
 ));
 TableHeader.displayName = "TableHeader";
-const TableRow = React.forwardRef(({className, ...rest}, ref) => (
-  <tr
-    ref={ref}
-    role="row"
-    className={`a-data-table__row${className ? ` ${className}` : ""}`}
-    {...rest}
-  />
-));
+
+const TableRow = React.forwardRef(
+  ({className: propsClassName, isSelected, ...rest}, ref) => {
+    let className = "a-data-table__row";
+    if (isSelected) {
+      className += " a-data-table__row--selected";
+    }
+    if (propsClassName) {
+      className += ` ${propsClassName}`;
+    }
+
+    return <tr ref={ref} role="row" className={className} {...rest} />;
+  }
+);
 TableRow.displayName = "TableRow";
+
 const TableCell = React.forwardRef(({className, ...rest}, ref) => (
   <td
     ref={ref}
@@ -68,12 +74,15 @@ const ADataTable = forwardRef(
     {
       className: propsClassName,
       expandable,
+      isRowSelected: propsIsRowSelected,
+      onRowClick: propsOnRowClick,
       headers,
       maxHeight,
       items,
       onSort,
       onScrollToEnd,
       sort,
+      selectedItems,
       ...rest
     },
     ref
@@ -131,7 +140,12 @@ const ADataTable = forwardRef(
           <ASimpleTable {...rest} ref={ref} className={className}>
             {headers && (
               <thead>
-                <TableRow>
+                <TableRow
+                  onClick={(e) =>
+                    typeof propsOnRowClick === "function" &&
+                    propsOnRowClick(headers, e)
+                  }
+                >
                   {ExpandableComponent && (
                     <TableHeader className="a-data-table__header a-data-table__header--hidden">
                       <span className="a-data-table__header--hidden__text">
@@ -222,7 +236,7 @@ const ADataTable = forwardRef(
               </thead>
             )}
             <tbody>
-              {sortedItems.map((x, i) => {
+              {sortedItems.map((rowItem, i) => {
                 const key = `a-data-table_row_${i}`;
                 const id = `a-data-table_row_${i}`;
                 const isLastRow = i == items.length - 1;
@@ -231,12 +245,20 @@ const ADataTable = forwardRef(
                 const hasExpandedRowContent =
                   ExpandableComponent &&
                   (typeof expandable.isRowExpandable === "function"
-                    ? expandable.isRowExpandable(x)
+                    ? expandable.isRowExpandable(rowItem)
                     : true);
+                const isRowSelected =
+                  typeof propsIsRowSelected === "function" &&
+                  propsIsRowSelected(rowItem);
                 const rowContent = (
                   <TableRow
                     data-expandable-row={hasExpandedRowContent}
+                    isSelected={isRowSelected}
                     key={key}
+                    onClick={(e) =>
+                      typeof propsOnRowClick === "function" &&
+                      propsOnRowClick(rowItem, e)
+                    }
                   >
                     {ExpandableComponent && (
                       <TableCell>
@@ -265,8 +287,8 @@ const ADataTable = forwardRef(
                           }`.trim()}
                         >
                           {y.cell && y.cell.component
-                            ? y.cell.component(x)
-                            : x[y.key]}
+                            ? y.cell.component(rowItem)
+                            : rowItem[y.key]}
                         </TableCell>
                       );
                     })}
@@ -277,7 +299,7 @@ const ADataTable = forwardRef(
                         hidden={!expandedRows[id]}
                         role="cell"
                       >
-                        <ExpandableComponent {...x} />
+                        <ExpandableComponent {...rowItem} />
                       </TableCell>
                     )}
                   </TableRow>
@@ -352,9 +374,20 @@ ADataTable.propTypes = {
     })
   ).isRequired,
   /**
+   * A function called when rendering each row to determine if
+   * the row is selected. It is passed the associated row item.
+   */
+  isRowSelected: PropTypes.func,
+  /**
    * Sets the table data.
    */
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
+  /**
+   * A function called when the table row (<tr>) is clicked. It is passed
+   * the associated row item as the first argument, and the native event
+   * object as the second.
+   */
+  onRowClick: PropTypes.func,
   /**
    * Called when the user reaches the bottom of the data table for the first time.
    */

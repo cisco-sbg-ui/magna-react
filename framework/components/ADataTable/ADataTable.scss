@@ -17,6 +17,18 @@ $hidden-table-col-width: 45px;
       }
     }
   }
+
+  &__row {
+    &--selected {
+      background: map-deep-get($theme, "table", "row-selected");
+
+      &:hover {
+        // todo - update ASimpleTable scss declarations to use BEM so that
+        // its specificity isn't overpowering styles in here
+        background: map-deep-get($theme, "table", "row-selected") !important;
+      }
+    }
+  }
 }
 
 .a-data-table {
