@@ -5,7 +5,7 @@ context("ADataTable", () => {
 
   const basicUsageSelector = `#basic + .playground`;
   const infiniteScrollSelector = "#infinite-scrolling + .playground";
-  const selectableSelector = "#selectable-rows + p + .playground";
+  const selectableSelector = "[data-testid='selectable-rows']";
 
   it("sorts normally", () => {
     cy.get(`${basicUsageSelector} td`).eq(0).contains(11.1);

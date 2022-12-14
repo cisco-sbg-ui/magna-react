@@ -96,6 +96,8 @@ import {ADataTable} from "@cisco-sbg-ui/magna-react";
 
 Rows can be selected by passing the `isRowSelected` prop to `ADataTable`, which is a function called for every row with the associated data in order to determine if the row should be highlighted in the selected state.
 
+Often times, you'll need to select the row when the row itself is clicked, in which you can leverage the `onRowClick` prop of `ADataTable`, which is a callback function invoked with the associated row item data and the native event object.
+
 <Playground
   code={`() => {
   const [allSelected, setAllSelected] = useState(false);
@@ -105,6 +107,12 @@ Rows can be selected by passing the `isRowSelected` prop to `ADataTable`, which 
     "Third row": false
   });
   const isRowSelected = (rowItem) => selected[rowItem['firstCol']];
+  const onRowClick = (rowItem) => {
+    setSelected(selectedState => {
+        const key = rowItem['firstCol'];
+        return { ...selectedState, [key]: !selectedState[key] };
+    })
+  };
   const headers = [
     {
       name: "First Col",
@@ -148,15 +156,13 @@ Rows can be selected by passing the `isRowSelected` prop to `ADataTable`, which 
   return (
     <ADataTable
       isRowSelected={isRowSelected}
-      onRowClick={(rowItem) => setSelected(selectedState => {
-        const key = rowItem['firstCol'];
-        return { ...selectedState, [key]: !selectedState[key] };
-      })}
+      onRowClick={onRowClick}
       tight
       headers={headers}
       items={items}
       className="mx-auto"
       style={{maxWidth: 500}}
+      data-testid='selectable-rows'
     />
   );
 }

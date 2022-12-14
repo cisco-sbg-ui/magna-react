@@ -383,6 +383,12 @@ ADataTable.propTypes = {
    */
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
   /**
+   * A function called when the table row (<tr>) is clicked. It is passed
+   * the associated row item as the first argument, and the native event
+   * object as the second.
+   */
+  onRowClick: PropTypes.func,
+  /**
    * Called when the user reaches the bottom of the data table for the first time.
    */
   onScrollToEnd: PropTypes.func,
