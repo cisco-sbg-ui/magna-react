@@ -11,7 +11,8 @@ const ABreadcrumb = forwardRef(
   ) => {
     let className = `a-breadcrumb`,
       itemClassname = `${className}__item`,
-      chevronClassname = `${itemClassname}__chevron`;
+      chevronClassname = `${itemClassname}__chevron`,
+      arrowClassname = `${itemClassname}__arrow`;
 
     if (magnetic) {
       className += ` ${className}--magnetic`;
@@ -34,6 +35,11 @@ const ABreadcrumb = forwardRef(
         {items.map((x, index) => {
           return (
             <li key={index} className={itemClassname}>
+              {index === 0 && items.length === 1 && (
+                <AIcon iconSet="magna" className={arrowClassname}>
+                  arrowLeft
+                </AIcon>
+              )}
               {index > 0 && (
                 <AIcon className={chevronClassname}>chevron-right</AIcon>
               )}
