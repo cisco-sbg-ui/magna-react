@@ -1,0 +1,37 @@
+---
+name: EmptyStates*
+route: /components/emptyState
+components: AEmptyState
+---
+
+# EmptyStates
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {AEmptyState} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`<AEmptyState variant="positive" label="Create a Thing" message="Message about what this page is for and what the user can do here."/>`}
+/>
+
+<Playground
+  code={`
+<>
+<AEmptyState variant="success" />
+<AEmptyState variant="positive" />
+<AEmptyState variant="warning" />
+<AEmptyState variant="danger" />
+</>`}
+/>
+
+## Divider Props
+
+The `AEmptyState` component inherits passed props.
+
+<Props of="AEmptyState" />
