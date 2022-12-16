@@ -44,7 +44,8 @@
     "test:setAdhoc": "CYPRESS_baseUrl=http://localhost:3237 start-server-and-test start-ci :3237 cy:adhoc",
     "updateSnapshots": "start-server-and-test dev http://localhost:3000 cypress:runUpdateSnapshots",
     "upload-coverage": "codecov",
-    "buildIcons": "node scripts/iconBuilder.mjs"
+    "formatIconFile": "prettier --config ./.prettierrc.js --write ./framework/components/AIcon/magnaIcons.js",
+    "buildIcons": "node scripts/iconBuilder.mjs && npm run formatIconFile"
   },
   "peerDependencies": {
     "prop-types": "^15.0.0",

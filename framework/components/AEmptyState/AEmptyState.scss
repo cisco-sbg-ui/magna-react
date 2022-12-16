@@ -1,0 +1,91 @@
+@use "sass:math";
+
+@import "../../styles";
+
+$iconSize: 165px;
+$backgroundSize: 305px;
+
+@include theme(a-empty-state) using ($theme) {
+  &--state-success {
+    .a-empty-state__icon {
+      color: $color-good;
+    }
+    .a-icon-bg {
+      fill: map-deep-get($theme, "control", "success-color");
+    }
+  }
+  &--state-info {
+    border-color: map-deep-get($theme, "control", "info-color");
+
+    .a-empty-state__icon {
+      color: $color-information;
+    }
+
+    .a-icon-bg {
+      fill: map-deep-get($theme, "control", "info-color");
+    }
+  }
+  &--state-warning {
+    border-color: map-deep-get($theme, "control", "warning-color");
+
+    .a-empty-state__icon {
+      color: $color-warning;
+    }
+    .a-icon-bg {
+      fill: map-deep-get($theme, "control", "warning-color");
+    }
+  }
+  &--state-danger {
+    border-color: map-deep-get($theme, "control", "error-color");
+
+    .a-empty-state__icon {
+      color: $color-error;
+    }
+    .a-icon-bg {
+      fill: map-deep-get($theme, "control", "error-color");
+    }
+  }
+
+  &__label {
+    border-color: map-deep-get($theme, "base", "color");
+  }
+
+  &__message {
+    color: map-deep-get($theme, "switch", "label-color--disabled");
+  }
+}
+
+.a-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin: 20px 0;
+
+  &__container {
+    position: relative;
+  }
+
+  &__background {
+    height: $backgroundSize;
+    width: $backgroundSize;
+  }
+
+  &__icon {
+    position: absolute;
+    top: calc(50% - math.div($iconSize, 2));
+    left: calc(50% - math.div($iconSize, 2));
+    height: $iconSize;
+    width: $iconSize;
+  }
+
+  &__label {
+    font-weight: 700;
+    font-size: 24px;
+  }
+
+  &__message {
+    font-weight: 400;
+    font-size: 18px;
+  }
+}
