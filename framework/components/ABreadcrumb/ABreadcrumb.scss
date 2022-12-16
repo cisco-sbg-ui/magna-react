@@ -10,7 +10,8 @@
       }
     }
 
-    &__chevron {
+    &__chevron,
+    &__arrow {
       fill: map-deep-get($theme, "breadcrumb", "divider-color");
     }
   }
@@ -37,6 +38,11 @@
   }
 
   &__item {
+    &__arrow {
+      vertical-align: middle;
+      width: 14px;
+      margin: 0 6px 0 0;
+    }
     &__chevron {
       width: 9px;
       margin: 0 6px;
