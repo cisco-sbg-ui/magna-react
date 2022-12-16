@@ -69,6 +69,21 @@ const TableCell = React.forwardRef(({className, ...rest}, ref) => (
 ));
 TableCell.displayName = "TableCell";
 
+export const getSortIconName = (column, sort) => {
+  if (!sort || column.key !== sort.key) {
+    return "sortEmpty";
+  }
+
+  switch (sort.direction) {
+    case "asc":
+      return "sortUp";
+    case "desc":
+      return "sortDown";
+    default:
+      return "sortEmpty";
+  }
+};
+
 const ADataTable = forwardRef(
   (
     {
@@ -110,7 +125,7 @@ const ADataTable = forwardRef(
       [setExpandedRows]
     );
 
-    const sortedItems = useMemo(() => [...items], [items]);
+    const sortedItems = useMemo(() => [...items], [items], sort);
     if (sort) {
       const sortDir = sort.direction === "desc" ? -1 : 1;
       const targetHeader = Object.values(headers).find(
@@ -165,6 +180,7 @@ const ADataTable = forwardRef(
                       "aria-label": x.name
                     };
 
+                    const sortableBtnProps = {};
                     if (x.sortable) {
                       if (!sort || x.key !== sort.key) {
                         headerProps["aria-label"] +=
@@ -180,7 +196,7 @@ const ADataTable = forwardRef(
                         headerProps["aria-sort"] = "descending";
                       }
 
-                      headerProps.onClick = () => {
+                      sortableBtnProps.onClick = () => {
                         setExpandedRows({});
                         onSort &&
                           onSort(
@@ -201,31 +217,43 @@ const ADataTable = forwardRef(
                       };
                     }
 
+                    if (!x.sortable) {
+                      return (
+                        <TableHeader
+                          {...headerProps}
+                          key={`a-data-table_header_${i}`}
+                        >
+                          {x.name}
+                        </TableHeader>
+                      );
+                    }
+
                     return (
                       <TableHeader
                         {...headerProps}
                         key={`a-data-table_header_${i}`}
                       >
-                        {x.align !== "end" ? x.name : ""}
-                        {x.sortable && (
-                          <AIcon
-                            iconSet="magna"
-                            left={x.align === "end"}
-                            right={x.align !== "end"}
-                            className={`a-data-table__header__sort ${
-                              sort && x.key === sort.key
-                                ? "a-data-table__header__sort--active"
-                                : ""
-                            }`}
-                          >
-                            {sort &&
-                            x.key === sort.key &&
-                            sort.direction === "desc"
-                              ? "sortDown"
-                              : "sortUp"}
-                          </AIcon>
-                        )}
-                        {x.align === "end" ? x.name : ""}
+                        <button
+                          {...sortableBtnProps}
+                          className="a-data-table__header__sort__button"
+                        >
+                          {x.align !== "end" ? x.name : ""}
+                          {x.sortable && (
+                            <AIcon
+                              iconSet="magna"
+                              left={x.align === "end"}
+                              right={x.align !== "end"}
+                              className={`a-data-table__header__sort ${
+                                sort && x.key === sort.key
+                                  ? "a-data-table__header__sort--active"
+                                  : ""
+                              }`}
+                            >
+                              {getSortIconName(x, sort)}
+                            </AIcon>
+                          )}
+                          {x.align === "end" ? x.name : ""}
+                        </button>
                       </TableHeader>
                     );
                   })}

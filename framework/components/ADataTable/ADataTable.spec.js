@@ -27,8 +27,8 @@ context("ADataTable", () => {
     cy.get(`${basicUsageSelector} th`).eq(1).click();
     cy.get(`${basicUsageSelector} td`).eq(1).contains(526);
     cy.get(`${basicUsageSelector} th .a-icon`)
-      .eq(1)
-      .should("have.attr", "aria-label", "sortDown icon");
+      .eq(0)
+      .should("have.attr", "aria-label", "sortEmpty icon");
     cy.get(`${basicUsageSelector} th`).eq(1).click();
     cy.get(`${basicUsageSelector} td`).eq(1).contains(526);
   });
@@ -40,8 +40,8 @@ context("ADataTable", () => {
     cy.get(`${basicUsageSelector} th`).eq(2).click();
     cy.get(`${basicUsageSelector} td`).eq(2).contains("Zanzibar");
     cy.get(`${basicUsageSelector} th .a-icon`)
-      .eq(2)
-      .should("have.attr", "aria-label", "sortDown icon");
+      .eq(0)
+      .should("have.attr", "aria-label", "sortEmpty icon");
     cy.get(`${basicUsageSelector} th`).eq(2).click();
     cy.get(`${basicUsageSelector} td`).eq(2).contains("aardvark");
   });

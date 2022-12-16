@@ -3,6 +3,14 @@
 $hidden-table-col-width: 45px;
 
 @include theme(a-data-table) using ($theme) {
+  &__header {
+    &__sort {
+      &__button {
+        color: map-deep-get($theme, "base", "color");
+      }
+    }
+  }
+
   &--expandable {
     .a-data-table__row {
       &[data-expandable-row="true"] {
@@ -34,24 +42,21 @@ $hidden-table-col-width: 45px;
 .a-data-table {
   &__header {
     &__sort {
+      &__button {
+        outline: none;
+        font-family: inherit !important;
+        font-weight: inherit !important;
+        font-style: inherit !important;
+        font-size: inherit !important;
+        border: none;
+        padding: 0;
+        margin: 0;
+        background: transparent;
+        cursor: pointer;
+      }
       &.a-icon {
         vertical-align: middle;
         width: 18px;
-        opacity: 0;
-      }
-
-      &--active.a-icon {
-        opacity: 1;
-      }
-    }
-
-    &--sortable {
-      cursor: pointer;
-    }
-
-    &:hover {
-      .a-icon.a-data-table__header__sort:not(.a-icon.a-data-table__header__sort--active) {
-        opacity: 0.5;
       }
     }
   }
