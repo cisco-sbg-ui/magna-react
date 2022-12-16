@@ -125,7 +125,7 @@ const ADataTable = forwardRef(
       [setExpandedRows]
     );
 
-    const sortedItems = useMemo(() => [...items], [items]);
+    const sortedItems = useMemo(() => [...items], [items], sort);
     if (sort) {
       const sortDir = sort.direction === "desc" ? -1 : 1;
       const targetHeader = Object.values(headers).find(

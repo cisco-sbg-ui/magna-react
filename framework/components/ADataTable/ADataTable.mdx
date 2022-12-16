@@ -23,7 +23,7 @@ import {ADataTable} from "@cisco-sbg-ui/magna-react";
   const [sort, setSort] = useState();
   const headers = [
     {
-      name: "alpha",
+      name: "Alpha",
       key: "a",
       align: "end",
       className: "text-capitalize",
@@ -324,7 +324,7 @@ In this example, the associated more details drawer that is opened is used to de
         component: (item) => (
           <AButton className='ma-0 pa-0' tertiaryAlt icon onClick={() => {
             setIsDrawerOpen(true);
-            setDrawerContent(item);  
+            setDrawerContent(item);
           }}>
             <AIcon iconSet="magna">dotsThreeVertical</AIcon>
           </AButton>

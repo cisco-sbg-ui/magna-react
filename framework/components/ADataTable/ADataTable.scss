@@ -3,6 +3,14 @@
 $hidden-table-col-width: 45px;
 
 @include theme(a-data-table) using ($theme) {
+  &__header {
+    &__sort {
+      &__button {
+        color: map-deep-get($theme, "base", "color");
+      }
+    }
+  }
+
   &--expandable {
     .a-data-table__row {
       &[data-expandable-row="true"] {
