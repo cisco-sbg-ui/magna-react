@@ -2,6 +2,8 @@
 
 $checkbox-box-border-radius: $border-radius--md;
 $checkbox-box-side-length: rem(0.9375);
+$checkbox-box-side-length-magna-medium: rem(1.25);
+$checkbox-box-side-length-magna-small: rem(1);
 $checkbox-icon-size: $font-size--xxs;
 $checkbox-icon-padding-left: $base-padding-xsmall;
 $checkbox-label-padding-left: $base-padding-small;
@@ -145,6 +147,24 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
 
     &:hover:after {
       opacity: 0.6;
+    }
+  }
+
+  &__box.a-medium-box {
+    height: $checkbox-box-side-length-magna-medium;
+    width: $checkbox-box-side-length-magna-medium;
+    &:after {
+      height: $checkbox-box-side-length-magna-medium;
+      width: $checkbox-box-side-length-magna-medium;
+    }
+  }
+
+  &__box.a-small-box {
+    height: $checkbox-box-side-length-magna-small;
+    width: $checkbox-box-side-length-magna-small;
+    &:after {
+      height: $checkbox-box-side-length-magna-small;
+      width: $checkbox-box-side-length-magna-small;
     }
   }
 

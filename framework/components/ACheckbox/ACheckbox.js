@@ -34,6 +34,7 @@ const ACheckbox = forwardRef(
       disabled = false,
       hint,
       indeterminate = false,
+      size = "default",
       onClick,
       required,
       rules,
@@ -135,7 +136,9 @@ const ACheckbox = forwardRef(
 
     const boxProps = {
       "aria-hidden": "true",
-      className: "a-checkbox__box"
+      className: `a-checkbox__box${
+        size && (size === "medium" || size === "small") ? ` a-${size}-box` : ""
+      }`
     };
 
     if (!disabled && !["danger", "warning"].includes(workingValidationState)) {
@@ -178,7 +181,7 @@ const ACheckbox = forwardRef(
             }
           />
           <span {...boxProps}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15">
               <path d={currentPath} />
             </svg>
           </span>
@@ -249,7 +252,12 @@ ACheckbox.propTypes = {
   /**
    * Toggles wrapping of long text in the label.
    */
-  wrap: PropTypes.bool
+  wrap: PropTypes.bool,
+  /**
+   * Size options ["default","medium","small"]
+   * Default size is 15px, Magnetic Medium = 20px, Magnetic Small = 16px
+   */
+  size: PropTypes.oneOf(["default", "small", "medium"])
 };
 
 ACheckbox.displayName = "ACheckbox";
