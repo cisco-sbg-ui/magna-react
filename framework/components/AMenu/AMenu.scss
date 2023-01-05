@@ -1,5 +1,15 @@
 @import "../../styles";
 
+/*
+When using AMenu that passes AMenuBase to AList, force override the specificity
+since the css may be imported in different orders depending on product build
+configuration environments.
+*/
+@include theme("a-menu.a-list") using ($theme) {
+  border-color: map-deep-get($theme, "menu", "border-color") !important;
+  background-color: map-deep-get($theme, "menu", "bg-color") !important;
+}
+
 @include theme(a-menu) using ($theme) {
   border-color: map-deep-get($theme, "menu", "border-color");
   border-radius: $border-radius--lg;

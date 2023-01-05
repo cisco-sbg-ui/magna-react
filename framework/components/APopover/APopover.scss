@@ -95,7 +95,7 @@
 .a-popover {
   width: 600px;
   box-shadow: $default-box-shadow;
-  position: absolute;
+  position: absolute !important;
 
   &.a-panel {
     margin: 0;
