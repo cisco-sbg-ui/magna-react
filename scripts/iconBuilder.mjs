@@ -52,7 +52,9 @@ const mapSprites = () => {
     .replaceAll("clip-path=", "clipPath=")
     .replaceAll("stroke-width=", "strokeWidth=")
     .replaceAll('fill="#889099"', "")
-    .replaceAll("class=", "className=");
+    .replaceAll("class=", "className=")
+    .replaceAll("stroke-linejoin=", "strokeLinejoin=")
+    .replaceAll("stroke-linecap=", "strokeLinecap=");
 
   // console.log(iconVariables);
   return iconVariables;
