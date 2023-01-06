@@ -4,7 +4,8 @@
 - [ ] The ESLint plugin has been updated if a new component is added
 - [ ] Test have been added or modified, if appropriate
 - [ ] Has been verified locally
-
+- [ ] The component should accept a class name as a prop, if appropriate
+- [ ] The component should accept a forward ref, if appropriate
 
 **What kind of change does this PR introduce?** <!--(Bug fix, feature, docs update, ...)-->
 <!--
