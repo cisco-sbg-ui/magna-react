@@ -53,12 +53,22 @@ $hidden-table-col-width: 45px;
         margin: 0;
         background: transparent;
         cursor: pointer;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: inherit;
       }
       &.a-icon {
         vertical-align: middle;
         width: 18px;
       }
     }
+  }
+
+  &__headerWrap {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .text-start {
