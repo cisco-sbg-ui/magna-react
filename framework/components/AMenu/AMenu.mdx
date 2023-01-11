@@ -90,6 +90,9 @@ It is necessary for `AMenu` to be a descendant of `AApp` for mounting.
         <AListItem onClick={() => alert("alert2")} className="pl-3 py-1">
           Example
         </AListItem>
+         <AListItem onClick={() => alert("should not fire")} className="pl-3 py-1" disabled>
+          Disabled Item
+        </AListItem>
         <ADivider className="mb-0 mt-3" />
         <AListItem twoLine>
           <AListItemContent className="pb-0">
@@ -153,6 +156,9 @@ It is necessary for `AMenu` to be a descendant of `AApp` for mounting.
         <AListItem onClick={() => {}}>Selection 1</AListItem>
         <AListItem onClick={() => {}}>Selection 2</AListItem>
         <AListItem onClick={() => {}}>Selection 3</AListItem>
+        <AListItem onClick={() => alert("should not fire")} disabled>
+          Disabled Item
+        </AListItem>
       </AMenu>
       <AMenu
         anchorRef={button4Ref}
@@ -163,8 +169,12 @@ It is necessary for `AMenu` to be a descendant of `AApp` for mounting.
         <AListItem onClick={() => {setMenu4Selected(0)}} selected={0 === menu4Selected}>Selection Uno</AListItem>
         <AListItem onClick={() => {setMenu4Selected(1)}} selected={1 === menu4Selected}>Selection Dos <AIcon size={12} className="ml-2">judgement</AIcon></AListItem>
         <AListItem onClick={() => {setMenu4Selected(2)}} selected={2 === menu4Selected}>Selection Tres</AListItem>
+        <AListItem onClick={() => alert("should not fire")} disabled>
+          Disabled Item
+        </AListItem>
         <ADivider style={{margin: 0}}/>
         <AListItem onClick={() => {setMenu4Selected(3)}} selected={3 === menu4Selected}>Status</AListItem>
+
       </AMenu>
       <AMenu
         anchorRef={button5Ref}
@@ -180,7 +190,8 @@ It is necessary for `AMenu` to be a descendant of `AApp` for mounting.
         <AListItem onClick={() => {}}><ACheckbox checked={false}>UnChecked</ACheckbox></AListItem>
       </AMenu>
     </div>
-  );
+
+);
 }
 `}
 />

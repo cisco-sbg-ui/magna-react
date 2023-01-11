@@ -12,10 +12,11 @@ const AListItem = forwardRef(
       className: propsClassName,
       component,
       href,
-      onClick,
+      onClick: propsOnClick,
       onKeyDown,
       role,
       selected,
+      disabled,
       target,
       twoLine,
       ...rest
@@ -25,6 +26,13 @@ const AListItem = forwardRef(
     const [roleValue, setRoleValue] = useState(role);
     const listItemRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, listItemRef);
+    const onClick = (e) => {
+      if (disabled) {
+        return;
+      }
+
+      propsOnClick(e);
+    };
 
     useEffect(() => {
       if (
@@ -46,6 +54,10 @@ const AListItem = forwardRef(
       className += " a-list-item--selected";
     }
 
+    if (disabled) {
+      className += " a-list-item--disabled";
+    }
+
     if (propsClassName) {
       className += ` ${propsClassName}`;
     }
@@ -55,6 +67,7 @@ const AListItem = forwardRef(
       ...rest,
       ref: combinedRef,
       className,
+      disabled,
       onClick,
       onKeyDown: (e) => {
         if (onClick && e.keyCode === keyCodes.enter) {
