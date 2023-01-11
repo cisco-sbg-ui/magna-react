@@ -71,7 +71,7 @@ TableCell.displayName = "TableCell";
 
 export const getSortIconName = (column, sort) => {
   if (!sort || column.key !== sort.key) {
-    return "sortEmpty";
+    return "sort";
   }
 
   switch (sort.direction) {
@@ -80,7 +80,7 @@ export const getSortIconName = (column, sort) => {
     case "desc":
       return "sortDown";
     default:
-      return "sortEmpty";
+      return "sort";
   }
 };
 
