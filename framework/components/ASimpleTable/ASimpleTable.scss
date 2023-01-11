@@ -12,11 +12,10 @@ $table-row-height-comfy: 45px;
 $table-row-height-spacious: 53px;
 $table-cell-padding-left-right: 15px;
 $table-cell-min-width: 90px;
-$table-header-font-size: 12px;
+$table-header-font-size: 14px;
 $table-header-line-height: 15px;
-$table-body-font-size: 13px;
+$table-body-font-size: 14px;
 $table-body-line-height: 16.5px;
-$table-link-font-size: rem(0.8125);
 $table-cell-padding-top-bottom: math.div(
   $table-row-height - $table-body-font-size,
   2
@@ -99,7 +98,7 @@ $table-cell-spacious-padding-top-bottom: math.div(
   }
 
   tbody {
-    vertical-align: top;
+    vertical-align: middle;
   }
 
   tr {
@@ -190,6 +189,6 @@ $table-cell-spacious-padding-top-bottom: math.div(
   }
 */
   a {
-    font-size: $table-link-font-size;
+    font-size: inherit;
   }
 }
