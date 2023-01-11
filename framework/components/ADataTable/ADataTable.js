@@ -4,6 +4,7 @@ import React, {forwardRef, useMemo, useRef, useCallback, useState} from "react";
 import AInView from "../AInView";
 import AIcon from "../AIcon";
 import ASimpleTable from "../ASimpleTable";
+import ATooltip from "../ATooltip";
 import "./ADataTable.scss";
 
 /**
@@ -34,14 +35,33 @@ const ADataTableWrapper = React.forwardRef(
 );
 ADataTableWrapper.displayName = "ADataTableWrapper";
 
-const TableHeader = React.forwardRef(({className, ...rest}, ref) => (
-  <th
-    ref={ref}
-    role="columnheader"
-    className={`a-data-table__header${className ? ` ${className}` : ""}`}
-    {...rest}
-  />
-));
+const TableHeader = React.forwardRef(({className, wrap, ...rest}, ref) => {
+  if (wrap) {
+    const {style, children} = rest;
+
+    return (
+      <th
+        ref={ref}
+        role="columnheader"
+        className={`a-data-table__header${className ? ` ${className}` : ""}`}
+        {...rest}
+      >
+        <div className="a-data-table__headerWrap" style={style}>
+          {children}
+        </div>
+      </th>
+    );
+  }
+
+  return (
+    <th
+      ref={ref}
+      role="columnheader"
+      className={`a-data-table__header${className ? ` ${className}` : ""}`}
+      {...rest}
+    />
+  );
+});
 TableHeader.displayName = "TableHeader";
 
 const TableRow = React.forwardRef(
@@ -177,7 +197,9 @@ const ADataTable = forwardRef(
                         .trim(),
                       role: "columnheader",
                       scope: "col",
-                      "aria-label": x.name
+                      "aria-label": x.name,
+                      style: x.style,
+                      wrap: x.wrap
                     };
 
                     const sortableBtnProps = {};
