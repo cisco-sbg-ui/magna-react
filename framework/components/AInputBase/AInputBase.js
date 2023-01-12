@@ -175,7 +175,19 @@ AInputBase.propTypes = {
   /**
    * Applies a validation state.
    */
-  validationState: PropTypes.oneOf(["default", "warning", "danger"])
+  validationState: PropTypes.oneOf(["default", "warning", "danger"]),
+  /**
+   * Sets widget size to magnetic large
+   */
+  large: PropTypes.bool,
+  /**
+   * Sets widget size to magnetic medium
+   */
+  medium: PropTypes.bool,
+  /**
+   * Sets widget size to magnetic small (default)
+   */
+  small: PropTypes.bool
 };
 
 AInputBase.displayName = "AInputBase";
