@@ -28,6 +28,11 @@
       map-deep-get($theme, "menu", "color--selected");
   }
 
+  &-item--disabled:not(.a-list-item--two-line) {
+    color: map-deep-get($theme, "base", "color--disabled");
+    background: none;
+  }
+
   a.a-list-item--two-line {
     color: currentColor;
   }
