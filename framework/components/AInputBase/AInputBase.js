@@ -25,6 +25,9 @@ const AInputBase = forwardRef(
       prepend,
       readOnly,
       validationState = "default",
+      large,
+      medium,
+      small,
       ...rest
     },
     ref
@@ -54,6 +57,14 @@ const AInputBase = forwardRef(
       className += " a-input-base--readonly";
     }
 
+    if (large) {
+      className += " a-input-base--large";
+    } else if (medium) {
+      className += " a-input-base--medium";
+    } else if (small) {
+      className += " a-input-base--small";
+    }
+
     if (validationState !== "default") {
       className += ` a-input-base--${validationState}`;
     }
@@ -72,7 +83,8 @@ const AInputBase = forwardRef(
         labelFor={labelFor}
         onClickLabel={onClickLabel}
         hint={hint}
-        validationState={validationState}>
+        validationState={validationState}
+      >
         <div ref={surfaceRef} className="a-input-base__surface">
           {prepend && <div className="a-input-base__prepend">{prepend}</div>}
           <div className="a-input-base__control">{children}</div>
@@ -90,7 +102,8 @@ const AInputBase = forwardRef(
                       e.preventDefault();
                       onClear(e);
                     }
-                  }}>
+                  }}
+                >
                   close
                 </AIcon>
               )}
@@ -162,7 +175,19 @@ AInputBase.propTypes = {
   /**
    * Applies a validation state.
    */
-  validationState: PropTypes.oneOf(["default", "warning", "danger"])
+  validationState: PropTypes.oneOf(["default", "warning", "danger"]),
+  /**
+   * Sets widget size to magnetic large
+   */
+  large: PropTypes.bool,
+  /**
+   * Sets widget size to magnetic medium
+   */
+  medium: PropTypes.bool,
+  /**
+   * Sets widget size to magnetic small (default)
+   */
+  small: PropTypes.bool
 };
 
 AInputBase.displayName = "AInputBase";

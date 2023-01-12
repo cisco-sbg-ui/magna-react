@@ -147,6 +147,47 @@ $input-transition: border-color $transition-duration--extra-fast
     }
   }
 
+  &--large {
+    .a-input-base__surface {
+      min-height: 40px;
+
+      .a-input-base__prepend,
+      &__prepend {
+        svg {
+          width: 17.5px;
+          align-self: center;
+        }
+      }
+    }
+  }
+
+  &--medium {
+    .a-input-base__surface {
+      min-height: 34px;
+
+      &__append,
+      &__prepend {
+        svg {
+          width: 14px;
+          align-self: center;
+        }
+      }
+    }
+  }
+
+  &--small {
+    .a-input-base__surface {
+      min-height: 28px;
+
+      &__append,
+      &__prepend {
+        svg {
+          width: 10px;
+        }
+      }
+    }
+  }
+
   &__clear {
     padding: 0 7px;
     cursor: pointer;
