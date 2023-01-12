@@ -117,6 +117,10 @@ AListItem.propTypes = {
    */
   selected: PropTypes.bool,
   /**
+   * Toggles the `disabled` state.
+   */
+  disabled: PropTypes.bool,
+  /**
    * If the `href` property is defined, the target can be set (ex: `_blank`, `_self`, `_parent`, `_top`)
    */
   target: PropTypes.string,
