@@ -31,7 +31,7 @@ const AListItem = forwardRef(
         return;
       }
 
-      propsOnClick(e);
+      propsOnClick && propsOnClick(e);
     };
 
     useEffect(() => {
