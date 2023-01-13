@@ -110,6 +110,8 @@ To contain the drawer within something other than the viewport, you can render t
 
 <Playground
   code={`() => {
+    const {currentTheme} = useATheme();
+    const bgColor = currentTheme === 'default' ? 'white' : '';
     // position='fixed' drawer
     const fixedDrawerRef = useRef();
     const [isFixedOpen, setIsFixedOpen] = useState(false);
@@ -166,7 +168,7 @@ To contain the drawer within something other than the viewport, you can render t
                 openWidth='175px'
                 data-test-drawer-relative
             >
-              <AList style={{border: 'none'}}>
+              <AList className={bgColor} style={{border: 'none'}}>
                 <AListItem twoLine href="#" target="_blank">
                   <AListItemAvatar className='mr-4 flex-shrink-0'><AIcon size={18}>chart-pie</AIcon></AListItemAvatar>
                   <AListItemContent className='text-no-wrap'>Sidebar Item</AListItemContent>
@@ -174,7 +176,7 @@ To contain the drawer within something other than the viewport, you can render t
               </AList>
             </ADrawer>
             
-            <main className="pa-2 dusk--2 white--text" style={{flexGrow: 1}}>
+            <main className="pa-2 dusk--2" style={{flexGrow: 1}}>
               {/* toggles position='absolute' drawer, i.e., the more details drawer */}
               <AButton
                   onClick={() => setIsAbsoluteOpen(prevState => !prevState)}
@@ -190,7 +192,7 @@ To contain the drawer within something other than the viewport, you can render t
                   openWidth='150px'
                   data-test-drawer-absolute
               >
-                <div className='black--text'>
+                <div>
                   <AListItem twoLine>
                     <AListItemContent>
                       <AListItemTitle><small><b>More Details</b></small></AListItemTitle>
@@ -330,6 +332,8 @@ Please note that when `ADrawer` is rendered as a modal, focus will be trapped in
 
 <Playground
   code={`() => {
+    const {currentTheme} = useATheme();
+    const bgColor = currentTheme === 'default' ? 'white' : '';
     const toolbarRef = useRef();
     const [isOpen, setIsOpen] = useState(false);
     const [isSlim, setIsSlim] = useState(true);
@@ -348,7 +352,7 @@ Please note that when `ADrawer` is rendered as a modal, focus will be trapped in
             openWidth='250px'
             isOpen={isOpen}
             slim={isSlim}>
-          <AList style={{border: 'none'}}>
+          <AList className={bgColor} style={{border: 'none'}}>
             <AListItem title={isSlim ? 'Expand toolbar' : 'Shrink toolbar'} twoLine>
               <AListItemAvatar>
                 <AButton className='white--text' onClick={() => setIsSlim(prevState => !prevState)} icon>
@@ -460,6 +464,8 @@ Please note that when `ADrawer` is rendered as a modal, focus will be trapped in
 
 <Playground
   code={`() => {
+    const {currentTheme} = useATheme();
+    const bgColor = currentTheme === 'default' ? 'white' : '';
     const sidebarRef = useRef();
     const [isOpen, setIsOpen] = useState(false);
     const [isSlim, setIsSlim] = useState(true);
@@ -488,7 +494,7 @@ Please note that when `ADrawer` is rendered as a modal, focus will be trapped in
                 slimWidth='50px'
                 openWidth='150px'
                 slim={isSlim}>
-              <AList style={{border: 'none'}}>
+              <AList className={bgColor} style={{border: 'none'}}>
                 <AListItem twoLine href="#" target="_blank">
                   <AListItemAvatar className='mr-4 flex-shrink-0'><AIcon size={18}>chart-pie</AIcon></AListItemAvatar>
                   <AListItemContent>Foo</AListItemContent>
