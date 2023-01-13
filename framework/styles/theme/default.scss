@@ -195,7 +195,7 @@ $atomic-default: (
     "color-lighter": map-get($mds-neutral, "neutral-2")
   ),
   "drawer": (
-    "bg": map-get($mds-light-theme, "background")
+    "bg": map-get($mds-neutral, "neutral-1")
   ),
   "footer": (
     "color": map-get($mds-neutral, "neutral-16")
