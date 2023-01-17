@@ -456,7 +456,11 @@ ADataTable.propTypes = {
   /**
    * Toggles the `tight` display variant. Smaller row heights.
    */
-  tight: PropTypes.bool
+  tight: PropTypes.bool,
+  /**
+   * Automatically truncate header text with ellipses when applicable
+   */
+  truncateHeaders: PropTypes.bool
 };
 
 ADataTable.displayName = "ADataTable";

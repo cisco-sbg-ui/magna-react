@@ -179,9 +179,6 @@ $hidden-table-col-width: 45px;
   &--truncate-headers {
     .a-data-table__header {
       max-width: 1px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
 
       &__sort {
         &__button {
