@@ -1,0 +1,63 @@
+---
+name: Skeleton
+route: /components/skeleton
+components: ASkeleton, ASkeletonText, ASkeletonBlock
+---
+
+# Skeleton
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {ASkeleton, ASkeletonText, ASkeletonBlock} from "@cisco-sbg-ui/magna-react";
+```
+
+## Simple
+
+<Playground
+  code={`<ASkeleton header animated>
+      <ASkeletonText />
+      <ASkeletonBlock />
+      <ASkeletonBlock />
+      <ASkeletonBlock />
+    </ASkeleton>`}
+/>
+
+## Nested
+
+<Playground
+  code={`<ASkeleton header>
+      <ASkeleton header nested>
+        <ASkeletonBlock />
+        <ASkeletonText />
+      </ASkeleton>
+      <ASkeleton header nested>
+        <ASkeletonBlock />
+        <ASkeletonText />
+      </ASkeleton>
+    </ASkeleton>`}
+/>
+
+## Horizontal Layout
+
+<Playground
+  fullWidthPreview
+  code={`<ASkeleton header horizontal>
+      <ASkeleton header nested>
+        <ASkeletonBlock />
+        <ASkeletonText />
+      </ASkeleton>
+      <ASkeleton header nested style={{flex: "2 0 auto"}}>
+        <ASkeletonBlock />
+        <ASkeletonText />
+      </ASkeleton>
+    </ASkeleton>`}
+/>
+
+## Skeleton Props
+
+The `ASkeleton` component inherits passed props.
+
+<Props of="ASkeleton" />

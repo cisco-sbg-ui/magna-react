@@ -270,6 +270,17 @@ $atomic-default: (
   "select": (
     "border-color--focus": map-get($cisco-blue, "base")
   ),
+  "skeleton": (
+    "header-bg": map-get($mds-neutral, "neutral-6"),
+    "content-bg": map-get($mds-neutral, "neutral-2"),
+    "animation-bg":
+      linear-gradient(
+        110deg,
+        map-get($mds-neutral, "neutral-2") 1%,
+        #ddd 18%,
+        map-get($mds-neutral, "neutral-2") 40%
+      )
+  ),
   "slider": (
     "opacity-disabled": 1,
     "selection-bg-disabled": map-get($grey, "lighten-2"),

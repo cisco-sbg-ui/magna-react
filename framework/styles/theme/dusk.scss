@@ -270,6 +270,17 @@ $atomic-dusk: (
   "select": (
     "border-color--focus": map-get($cisco-blue, "burnt-1")
   ),
+  "skeleton": (
+    "header-bg": map-get($mds-neutral, "neutral-14"),
+    "content-bg": map-get($mds-neutral, "neutral-12"),
+    "animation-bg":
+      linear-gradient(
+        110deg,
+        map-get($mds-neutral, "neutral-12") 0%,
+        map-get($mds-neutral, "neutral-14") 18%,
+        map-get($mds-neutral, "neutral-12") 100%
+      )
+  ),
   "slider": (
     "opacity-disabled": $alpha-3,
     "selection-bg-disabled": map-get($cisco-blue, "base"),
