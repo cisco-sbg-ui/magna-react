@@ -86,6 +86,7 @@ import {ADataTable} from "@cisco-sbg-ui/magna-react";
       style={{maxWidth: 500}}
       sort={sort}
       onSort={(s) => setSort(s)}
+      truncateHeaders
     />
   );
 }
@@ -380,57 +381,6 @@ In this example, the associated more details drawer that is opened is used to de
 }
 `}
 />
-
-### Truncated Header Text
-
-_This requires setting a width on the header cell, and does not account for responsive layouts_
-
-<Playground
-  code={`() => {
-  const [sort, setSort] = useState();
-  const headers = [
-     {
-      name: "Sortable Truncated header text",
-      key: "a",
-      align: "start",
-      className: "text-capitalize",
-      sortable: true,
-      style: {
-        width: "60px"
-      }
-    },
-    {
-      name: "Truncated header text",
-      key: "b",
-      align: "end",
-      className: "text-capitalize",
-      wrap: true,
-      style: {
-        width: "60px"
-      }
-    }
-  ];
-  const items = [
-
-    {
-      a: 10.5,
-      b: 100
-    }
-
-];
-return (
-
-<ADataTable
-  striped
-  tight
-  headers={headers}
-  items={items}
-  className="mx-auto"
-  style={{maxWidth: 500}}
-  sort={sort}
-  onSort={(s) => setSort(s)}
-/>
-); } `} />
 
 ## Expandable Rows
 

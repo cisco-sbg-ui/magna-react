@@ -35,24 +35,7 @@ const ADataTableWrapper = React.forwardRef(
 );
 ADataTableWrapper.displayName = "ADataTableWrapper";
 
-const TableHeader = React.forwardRef(({className, wrap, ...rest}, ref) => {
-  if (wrap) {
-    const {style, children} = rest;
-
-    return (
-      <th
-        ref={ref}
-        role="columnheader"
-        className={`a-data-table__header${className ? ` ${className}` : ""}`}
-        {...rest}
-      >
-        <div className="a-data-table__headerWrap" style={style}>
-          {children}
-        </div>
-      </th>
-    );
-  }
-
+const TableHeader = React.forwardRef(({className, ...rest}, ref) => {
   return (
     <th
       ref={ref}
@@ -118,6 +101,7 @@ const ADataTable = forwardRef(
       onScrollToEnd,
       sort,
       selectedItems,
+      truncateHeaders,
       ...rest
     },
     ref
@@ -131,6 +115,9 @@ const ADataTable = forwardRef(
     let className = "a-data-table";
     if (ExpandableComponent) {
       className += " a-data-table--expandable";
+    }
+    if (truncateHeaders) {
+      className += " a-data-table--truncate-headers";
     }
     if (propsClassName) {
       className += ` ${propsClassName}`;
@@ -245,37 +232,46 @@ const ADataTable = forwardRef(
                           {...headerProps}
                           key={`a-data-table_header_${i}`}
                         >
-                          {x.name}
+                          <span className="a-data-table__header__label">
+                            {x.name}
+                          </span>
                         </TableHeader>
                       );
                     }
+
+                    let sortIcon = x.sortable && (
+                      <AIcon
+                        iconSet="magna"
+                        left={x.align === "end"}
+                        right={x.align !== "end"}
+                        className={`a-data-table__header__sort ${
+                          sort && x.key === sort.key
+                            ? "a-data-table__header__sort--active"
+                            : ""
+                        }`}
+                        onClick={sortableBtnProps.onClick}
+                      >
+                        {getSortIconName(x, sort)}
+                      </AIcon>
+                    );
 
                     return (
                       <TableHeader
                         {...headerProps}
                         key={`a-data-table_header_${i}`}
                       >
-                        <button
-                          {...sortableBtnProps}
-                          className="a-data-table__header__sort__button"
-                        >
-                          {x.align !== "end" ? x.name : ""}
-                          {x.sortable && (
-                            <AIcon
-                              iconSet="magna"
-                              left={x.align === "end"}
-                              right={x.align !== "end"}
-                              className={`a-data-table__header__sort ${
-                                sort && x.key === sort.key
-                                  ? "a-data-table__header__sort--active"
-                                  : ""
-                              }`}
-                            >
-                              {getSortIconName(x, sort)}
-                            </AIcon>
-                          )}
-                          {x.align === "end" ? x.name : ""}
-                        </button>
+                        <div className="a-data-table__header__sort-wrap">
+                          {x.align == "end" && sortIcon}
+                          <button
+                            {...sortableBtnProps}
+                            className="a-data-table__header__sort__button"
+                          >
+                            <span className="a-data-table__header__label">
+                              {x.name}
+                            </span>
+                          </button>
+                          {x.align !== "end" && sortIcon}
+                        </div>
                       </TableHeader>
                     );
                   })}
