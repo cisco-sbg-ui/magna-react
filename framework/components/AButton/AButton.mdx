@@ -171,6 +171,7 @@ The `AButton` component inherits passed props.
 />
 
 ## Magnetized (left) / Re-skin only (right)
+
 <Playground
   fullWidthPreview
   code={`<div className="container"><div className="d-flex">
@@ -258,9 +259,14 @@ The `AButton` component inherits passed props.
 If the `href` property is used, the component will render as an HTML anchor.
 
 <Playground
-  code={`<AButton secondary href="https://www.cisco.com">
+  code={`<>
+  <AButton secondary href="https://www.cisco.com">
   Launch Cisco.com
-</AButton>`}
+</AButton>
+<AButton tertiary href="https://www.cisco.com">
+  Launch Cisco.com (tertiary)
+</AButton>
+</>`}
 />
 
 ## Router Integrations
