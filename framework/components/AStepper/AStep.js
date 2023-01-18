@@ -25,10 +25,16 @@ const AStep = forwardRef(
     } else {
       if (visited) {
         className += ` a-step__visited`;
-      }
-      if (active) {
+      } else if (active) {
         className += ` a-step__active`;
+      } else {
+        className += ` a-step__default`;
       }
+    }
+
+    let style;
+    if (children.length === 1 || (children[1] && !children[1].props.children)) {
+      style = {margin: "0"};
     }
 
     return (
@@ -42,7 +48,9 @@ const AStep = forwardRef(
             stepNumber
           )}
         </div>
-        <div className="a-step__content">{children}</div>
+        <div className="a-step__content" style={style}>
+          {children}
+        </div>
       </div>
     );
   }

@@ -286,8 +286,12 @@ $atomic-default: (
   "steps": (
     "step-main-color": map-get($mds-interactive, "interactive-8"),
     "step-active-color": map-get($mds-neutral, "neutral-1"),
+    "step-visited-title-color": map-get($mds-misc, "visited-blue"),
     "step-icon-border-color": map-get($mds-interactive, "interactive-8"),
-    "step-line-color": map-get($mds-interactive, "interactive-8")
+    "step-line-color": map-get($mds-interactive, "interactive-8"),
+    "step-default-color": map-get($mds-neutral, "neutral-7"),
+    "step-icon-default-color": map-get($mds-neutral, "neutral-7"),
+    "step-icon-default-border-color": map-get($mds-neutral, "neutral-6")
   ),
   "switch": (
     "bg": map-get($mds-neutral, "neutral-12"),
