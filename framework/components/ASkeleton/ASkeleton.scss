@@ -14,7 +14,7 @@
     .a-skeleton__block,
     .a-skeleton__text {
       background: map-deep-get($theme, "skeleton", "animation-bg");
-      background-size: 200% 100%;
+      background-size: 400% 100%;
     }
   }
 }
@@ -76,12 +76,15 @@
   &--animated {
     .a-skeleton__block,
     .a-skeleton__text {
-      animation: 1.5s shine linear infinite;
+      animation: 6s shine linear infinite;
     }
   }
 }
 
 @keyframes shine {
+  from {
+    background-position-x: 200%;
+  }
   to {
     background-position-x: -200%;
   }

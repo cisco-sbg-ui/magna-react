@@ -276,9 +276,9 @@ $atomic-default: (
     "animation-bg":
       linear-gradient(
         110deg,
-        map-get($mds-neutral, "neutral-2") 1%,
-        #ddd 18%,
-        map-get($mds-neutral, "neutral-2") 40%
+        map-get($mds-neutral, "neutral-2") 0%,
+        #ddd 50%,
+        map-get($mds-neutral, "neutral-2") 100%
       )
   ),
   "slider": (

@@ -4,18 +4,28 @@ import React, {forwardRef} from "react";
 import "./ASkeleton.scss";
 
 const ASkeletonBlock = forwardRef(
-  ({className: propsClassName, ...rest}, ref) => {
-    let className = `a-skeleton__block`;
+  ({className: propsClassName, height, style: propsStyle, ...rest}, ref) => {
+    let className = `a-skeleton__block`,
+      style = {...propsStyle};
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
     }
 
-    return <div ref={ref} className={className} {...rest} />;
+    if (height) {
+      style.height = `${height}px`;
+    }
+
+    return <div ref={ref} className={className} style={style} {...rest} />;
   }
 );
 
-ASkeletonBlock.propTypes = {};
+ASkeletonBlock.propTypes = {
+  /**
+   * Set a custom height in px
+   */
+  height: PropTypes.number
+};
 
 ASkeletonBlock.displayName = "ASkeletonBlock";
 
