@@ -271,7 +271,7 @@ $atomic-default: (
     "border-color--focus": map-get($cisco-blue, "base")
   ),
   "skeleton": (
-    "header-bg": map-get($mds-neutral, "neutral-6"),
+    "header-bg": map-get($mds-neutral, "neutral-4"),
     "content-bg": map-get($mds-neutral, "neutral-2"),
     "animation-bg":
       linear-gradient(
