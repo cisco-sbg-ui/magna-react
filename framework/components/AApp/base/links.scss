@@ -1,20 +1,27 @@
 @include themeElement(a) using ($theme) {
-  color: map-deep-get($theme, "link", "color");
+  color: map-deep-get($theme, "button", "tertiary", "color");
 
   &:hover {
-    color: map-deep-get($theme, "link", "color--hover");
+    color: map-deep-get($theme, "button", "tertiary", "color--hover");
+    background-color: map-deep-get($theme, "button", "tertiary", "bg--hover");
   }
 
   &:focus {
-    color: map-deep-get($theme, "link", "color--focus");
+    color: map-deep-get($theme, "button", "tertiary", "color--focus");
+    border-color: map-deep-get($theme, "button", "tertiary", "border--focus");
+    background-color: map-deep-get($theme, "button", "tertiary", "bg--active");
   }
 
   &:active {
-    color: map-deep-get($theme, "link", "color--active");
+    color: map-deep-get($theme, "button", "tertiary", "color--active");
+    background-color: map-deep-get($theme, "button", "tertiary", "bg--active");
   }
 
-  &.disabled {
-    color: map-deep-get($theme, "link", "color--disabled");
+  &.disabled,
+  &:disabled {
+    opacity: map-deep-get($theme, "button", "tertiary", "opacity--disabled");
+    background-color: transparent;
+    color: map-deep-get($theme, "button", "tertiary", "color--disabled");
   }
 }
 
@@ -34,7 +41,7 @@
   &:hover,
   &:focus,
   &:active {
-    text-decoration: underline;
+    border-radius: 4px;
   }
 
   .a-icon {
