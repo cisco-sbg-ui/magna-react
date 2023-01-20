@@ -1,7 +1,7 @@
 ---
 name: Skeleton
 route: /components/skeleton
-components: ASkeleton, ASkeletonText, ASkeletonBlock
+components: ASkeleton, ASkeletonHeader, ASkeletonText, ASkeletonBlock
 ---
 
 # Skeleton
@@ -11,7 +11,7 @@ components: ASkeleton, ASkeletonText, ASkeletonBlock
 Integrate with your build to [auto-import](/#integrating), or add an import in your component:
 
 ```
-import {ASkeleton, ASkeletonText, ASkeletonBlock} from "@cisco-sbg-ui/magna-react";
+import {ASkeleton, ASkeletonHeader, ASkeletonText, ASkeletonBlock} from "@cisco-sbg-ui/magna-react";
 ```
 
 ## Simple
@@ -62,8 +62,22 @@ The `ASkeleton` component inherits passed props.
 
 <Props of="ASkeleton" />
 
+## SkeletonHeader Props
+
+The `ASkeletonBlock` component inherits passed props.
+
+Use the `header` prop on `ASkeleton` for automatic header addition to the parent container.
+
+<Props of="ASkeletonHeader" />
+
 ## SkeletonBlock Props
 
 The `ASkeletonBlock` component inherits passed props.
 
 <Props of="ASkeletonBlock" />
+
+## ASkeletonText Props
+
+The `ASkeletonText` component inherits passed props.
+
+<Props of="ASkeletonText" />
