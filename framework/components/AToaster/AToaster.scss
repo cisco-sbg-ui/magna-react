@@ -3,6 +3,8 @@
 }
 
 .a-toast-plate {
+  display: flex;
+  flex-flow: column-reverse;
   position: fixed;
   z-index: 8;
 
