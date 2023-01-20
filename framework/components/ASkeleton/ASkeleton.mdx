@@ -44,7 +44,7 @@ import {ASkeleton, ASkeletonHeader, ASkeletonText, ASkeletonBlock} from "@cisco-
 
 <Playground
   fullWidthPreview
-  code={`<ASkeleton header horizontal>
+  code={`<ASkeleton header horizontal style={{margin: 0}}>
       <ASkeleton header nested>
         <ASkeletonBlock />
         <ASkeletonText />
@@ -56,6 +56,25 @@ import {ASkeleton, ASkeletonHeader, ASkeletonText, ASkeletonBlock} from "@cisco-
     </ASkeleton>`}
 />
 
+<Playground
+  fullWidthPreview
+  code={`() => {
+    const textStyle = {flex: "1 1 100px"};
+
+    return (<ASkeleton header horizontal style={{margin: 0}}>
+        <ASkeletonText style={textStyle} />
+        <ASkeletonText style={textStyle} />
+        <ASkeletonText style={{width: "300px", flex: "0 0 auto"}} />
+        <ASkeletonText style={textStyle}/>
+        <ASkeletonText style={textStyle}/>
+        <ASkeletonText style={textStyle}/>
+    </ASkeleton>);
+    }`
+
+}
+
+/>
+
 ## Skeleton Props
 
 The `ASkeleton` component inherits passed props.
@@ -64,7 +83,7 @@ The `ASkeleton` component inherits passed props.
 
 ## SkeletonHeader Props
 
-The `ASkeletonBlock` component inherits passed props.
+The `ASkeletonHeader` component inherits passed props.
 
 Use the `header` prop on `ASkeleton` for automatic header addition to the parent container.
 
