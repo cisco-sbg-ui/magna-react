@@ -77,16 +77,7 @@
   &--animated {
     .a-skeleton__block,
     .a-skeleton__text {
-      animation: 6s shine linear infinite;
+      animation: 6s a-skeleton-shine linear infinite;
     }
-  }
-}
-
-@keyframes shine {
-  from {
-    background-position-x: 200%;
-  }
-  to {
-    background-position-x: -200%;
   }
 }
