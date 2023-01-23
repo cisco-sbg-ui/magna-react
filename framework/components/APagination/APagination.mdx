@@ -96,6 +96,42 @@ import {APagination} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
+## Usage 4 (customization, useful for GraphQL backed results)
+
+<Playground
+  code={`() => {
+  const [currentPage3, setCurrentPage3] = useState(1);
+  const [resultsPerPage3, setResultsPerPage3] = useState(10);
+  return (
+    <div>
+      <h3 className="mt-4">Data without page jump </h3>
+      <div style={{border: "solid 2px #333"}} className="my-2 pa-2">
+        <ul>
+          {Array.from(
+            Array(resultsPerPage3),
+            (_, x) => (currentPage3 - 1) * resultsPerPage3 + x + 1
+          )
+            .map((x) => <li key={x}>Result #{x}</li>)
+            .slice(0, 145)}
+        </ul>
+      </div>
+      <APagination
+        onPageChange={(value) => {
+          setCurrentPage3(value);
+        }}
+        onResultsPerPageChange={(value) => setResultsPerPage3(value)}
+        page={currentPage3}
+        resultsPerPage={resultsPerPage3}
+        total={345}
+        showFirstLastButtons={false}
+        showSetPageInput={false}
+      />
+    </div>
+  );
+}
+`}
+/>
+
 ## Pagination Props
 
 The `APagination` component inherits passed props.
