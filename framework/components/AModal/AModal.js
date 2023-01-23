@@ -24,6 +24,10 @@ const AModal = forwardRef(
       withOverlay = true,
       trapFocus = true,
       isOpen,
+      small,
+      medium,
+      large,
+      xlarge,
       ...rest
     },
     ref
@@ -46,6 +50,16 @@ const AModal = forwardRef(
     let contentClassName = `a-modal-container ${visibilityClass}`;
     if (propsClassName) {
       contentClassName += ` ${propsClassName}`;
+    }
+
+    if (small) {
+      contentClassName += " a-modal-container--small";
+    } else if (medium) {
+      contentClassName += " a-modal-container--medium";
+    } else if (large) {
+      contentClassName += " a-modal-container--large";
+    } else if (xlarge) {
+      contentClassName += " a-modal-container--xlarge";
     }
 
     if (withOverlay) {
@@ -85,11 +99,11 @@ AModal.propTypes = {
     // No a11y prop supplied at all
     if (!props["aria-labelledby"] && !props[propName]) {
       const msg = `You did not provide an accessible title to \`${componentName}\`.
-      
+
 You should provide either an \`aria-label\` or \`aria-labelledby\` prop to \`${componentName}\`. In the case of \`aria-label\`, pass a string describing your modal's content. In the case of \`aria-labelledby\`, pass an ID of a child element that should serve as the title for your modal's content.
-      
+
   - For examples, reference the Magna-React documentation (https://magna-react.vercel.app/components/modal#usage).
-      
+
   - For more information about aria labelling, reference WAI-ARIA (https://w3c.github.io/aria/#aria-label).
 `;
       return new Error(msg);
@@ -140,7 +154,27 @@ You should provide either an \`aria-label\` or \`aria-labelledby\` prop to \`${c
   /**
    * Determines if the modal is opened or closed.
    */
-  isOpen: PropTypes.bool
+  isOpen: PropTypes.bool,
+
+  /**
+   * Sets the modal width to small.
+   */
+  small: PropTypes.bool,
+
+  /**
+   * Sets the modal width to medium.
+   */
+  medium: PropTypes.bool,
+
+  /**
+   * Sets the modal width to large.
+   */
+  large: PropTypes.bool,
+
+  /**
+   * Sets the modal width to extra large.
+   */
+  xlarge: PropTypes.bool
 };
 
 AModal.displayName = "AModal";
