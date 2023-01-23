@@ -28,6 +28,7 @@ const AModal = forwardRef(
       medium,
       large,
       xlarge,
+      onClickOutside,
       ...rest
     },
     ref
@@ -64,7 +65,7 @@ const AModal = forwardRef(
 
     if (withOverlay) {
       return ReactDOM.createPortal(
-        <APageOverlay className={visibilityClass}>
+        <APageOverlay className={visibilityClass} onClick={onClickOutside}>
           <Component
             role="dialog"
             aria-modal="true"
@@ -174,7 +175,12 @@ You should provide either an \`aria-label\` or \`aria-labelledby\` prop to \`${c
   /**
    * Sets the modal width to extra large.
    */
-  xlarge: PropTypes.bool
+  xlarge: PropTypes.bool,
+
+  /**
+   * If not using the `usePopupQuickExit` hook, pass in a function to handle clicking outside of the modal event. `withOverlay` prop must be set to true.
+   */
+  onClickOutside: PropTypes.func
 };
 
 AModal.displayName = "AModal";
