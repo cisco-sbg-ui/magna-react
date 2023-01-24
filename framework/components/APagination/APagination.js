@@ -22,6 +22,8 @@ const APagination = forwardRef(
       page = 1,
       resultsPerPage,
       showText,
+      showFirstLastButtons = true,
+      showSetPageInput = true,
       total,
       ...rest
     },
@@ -112,16 +114,18 @@ const APagination = forwardRef(
                 : lastResultIndex}{" "}
               of {localeFormatting ? total.toLocaleString() : total}
             </div>
-            <AButton
-              className="a-pagination__first"
-              disabled={page === 1}
-              tertiaryAlt
-              icon
-              onClick={() => onPageChange(1)}
-              aria-label="First"
-            >
-              <AIcon size={ICON_SIZE}>first-page</AIcon>
-            </AButton>
+            {showFirstLastButtons && (
+              <AButton
+                className="a-pagination__first"
+                disabled={page === 1}
+                tertiaryAlt
+                icon
+                onClick={() => onPageChange(1)}
+                aria-label="First"
+              >
+                <AIcon size={ICON_SIZE}>first-page</AIcon>
+              </AButton>
+            )}
             <AButton
               className="a-pagination__previous"
               disabled={page === 1}
@@ -135,25 +139,10 @@ const APagination = forwardRef(
               </AIcon>
             </AButton>
             <div className="a-pagination__page-selection">
-              <ATextInput
-                spinner={false}
-                onBlur={() => {
-                  if (!workingPage) {
-                    setWorkingPage(1);
-                    onPageChange && onPageChange(1);
-                    return;
-                  }
-
-                  onPageChange && onPageChange(workingPage);
-                }}
-                onChange={(e) =>
-                  setWorkingPage(
-                    Math.min(Math.max(parseInt(e.target.value), 1), pages)
-                  )
-                }
-                onKeyDown={(e) => {
-                  if (onPageChange && e.keyCode === keyCodes.enter) {
-                    e.preventDefault();
+              {showSetPageInput ? (
+                <ATextInput
+                  spinner={false}
+                  onBlur={() => {
                     if (!workingPage) {
                       setWorkingPage(1);
                       onPageChange && onPageChange(1);
@@ -161,12 +150,32 @@ const APagination = forwardRef(
                     }
 
                     onPageChange && onPageChange(workingPage);
+                  }}
+                  onChange={(e) =>
+                    setWorkingPage(
+                      Math.min(Math.max(parseInt(e.target.value), 1), pages)
+                    )
                   }
-                }}
-                value={workingPage || ""}
-                type="number"
-              />
-              /{localeFormatting ? pages.toLocaleString() : pages}
+                  onKeyDown={(e) => {
+                    if (onPageChange && e.keyCode === keyCodes.enter) {
+                      e.preventDefault();
+                      if (!workingPage) {
+                        setWorkingPage(1);
+                        onPageChange && onPageChange(1);
+                        return;
+                      }
+
+                      onPageChange && onPageChange(workingPage);
+                    }
+                  }}
+                  value={workingPage || ""}
+                  type="number"
+                />
+              ) : (
+                workingPage
+              )}
+              {" / "}
+              {localeFormatting ? pages.toLocaleString() : pages}
             </div>
             <AButton
               className="a-pagination__next"
@@ -180,18 +189,20 @@ const APagination = forwardRef(
                 chevron-right
               </AIcon>
             </AButton>
-            <AButton
-              className="a-pagination__last"
-              disabled={page === pages}
-              tertiaryAlt
-              icon
-              onClick={() => onPageChange(pages)}
-              aria-label="Last"
-            >
-              <AIcon right={showText} size={ICON_SIZE}>
-                last-page
-              </AIcon>
-            </AButton>
+            {showFirstLastButtons && (
+              <AButton
+                className="a-pagination__last"
+                disabled={page === pages}
+                tertiaryAlt
+                icon
+                onClick={() => onPageChange(pages)}
+                aria-label="Last"
+              >
+                <AIcon right={showText} size={ICON_SIZE}>
+                  last-page
+                </AIcon>
+              </AButton>
+            )}
           </>
         );
       }
@@ -380,7 +391,15 @@ APagination.propTypes = {
   /**
    * Sets the total number or results if `resultsPerPage` is defined, otherwise sets the total number of pages.
    */
-  total: PropTypes.number
+  total: PropTypes.number,
+  /**
+   * Show the jump to first and jump to last buttons.
+   */
+  showFirstLastButtons: PropTypes.bool,
+  /**
+   * Show the set page text input. If false, shows the current page number as text.
+   */
+  showSetPageInput: PropTypes.bool
 };
 
 APagination.displayName = "APagination";
