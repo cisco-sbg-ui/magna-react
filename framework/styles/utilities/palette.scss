@@ -440,6 +440,10 @@ $mds-status: (
   "negative": map-get($mds-red, "red-10")
 );
 
+$mds-misc: (
+  "visited-blue": #82aefa
+);
+
 $mds-light-theme: (
   "background": map-get($mds-neutral, "neutral-2"),
   "background-section": map-get($mds-neutral, "neutral-1"),

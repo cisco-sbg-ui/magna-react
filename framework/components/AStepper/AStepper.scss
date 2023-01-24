@@ -38,11 +38,12 @@
         }
       }
 
-      &.a-step:after {
-        background: map-get($theme, "steps", "step-icon-border-color");
-      }
       .a-step__label {
         color: map-deep-get($theme, "base", "color");
+      }
+
+      .a-step__title {
+        color: map-deep-get($theme, "steps", "step-visited-title-color");
       }
     }
     &__disabled {
@@ -52,12 +53,31 @@
         color: map-deep-get($theme, "base", "color--disabled");
       }
     }
+    &__default {
+      .a-step__icon {
+        border: $border-width solid
+          map-deep-get($theme, "steps", "step-icon-default-border-color");
+        color: map-deep-get($theme, "steps", "step-icon-default-color");
+      }
+      .a-step__title,
+      .a-step__hint {
+        color: map-deep-get($theme, "base", "step-default-color");
+      }
+    }
+
+    &--cursor {
+      cursor: pointer;
+    }
   }
   &--orientation-vertical {
-    .a-step {
-      &:after {
-        background-color: map-deep-get($theme, "steps", "step-line-color");
-      }
+    .a-step__active {
+      border-right: 2px solid;
+      border-color: map-deep-get($theme, "steps", "step-icon-border-color");
+    }
+
+    .a-step__visited {
+      border-right: 2px solid;
+      border-color: map-deep-get($theme, "steps", "step-visited-title-color");
     }
   }
 }
@@ -80,7 +100,7 @@
       max-width: 24px;
       height: 24px;
       line-height: $line-height--lg;
-      font-size: $font-size--xs;
+      font-size: $font-size--sm;
       font-weight: 600;
       margin: 10px;
       position: relative;
@@ -96,10 +116,10 @@
       margin: 12px 0 0 0;
     }
     &__label {
-      font-size: $font-size--xs;
+      font-size: $font-size--sm;
       display: flex;
       align-items: center;
-      font-weight: 700;
+      font-weight: 600;
     }
     &__divider {
       flex-grow: 1;
@@ -111,8 +131,9 @@
     }
     &__hint {
       color: map-get($grey, "darken-2");
-      font-size: 13px;
+      font-size: 12px;
       line-height: 20px;
+      font-weight: 400;
     }
     &__disabled {
       color: map-get($grey, "darken-4");
@@ -154,6 +175,10 @@
         left: 22px;
         top: 44px;
       }
+    }
+
+    .a-step + .a-step {
+      margin: 5px 0;
     }
   }
 }

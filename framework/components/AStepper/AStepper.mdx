@@ -59,6 +59,12 @@ import {AStepper, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/magna
             Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </AStepDescription>
         </AStep>
+         <AStep
+          stepNumber={5}
+          active={active === 5}
+          visited={active > 5}>
+          <AStepTitle>Step with No Description</AStepTitle>
+        </AStep>
       </AStepper>
       <AButton onClick={() => active > 1 && setActive(active - 1)}>
         Previous
@@ -153,6 +159,9 @@ import {AStepper, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/magna
       title: "Default",
       description:
         "Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+      {
+      title: "No Description"
     }
   ];
   return (
@@ -170,6 +179,7 @@ import {AStepper, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/magna
               stepNumber={stepNumber}
               active={active === stepNumber}
               visited={active > stepNumber}
+              setActiveStep={setActive}
               disabled={stepNumber === 3}
               showIconOnVisited={true}>
               <AStepTitle>
