@@ -1,0 +1,83 @@
+@import "../../styles";
+
+@include theme("a-skeleton") using ($theme) {
+  &__header {
+    background-color: map-deep-get($theme, "skeleton", "header-bg");
+  }
+
+  &__block,
+  &__text {
+    background-color: map-deep-get($theme, "skeleton", "content-bg");
+  }
+
+  &--animated {
+    .a-skeleton__block,
+    .a-skeleton__text {
+      background: map-deep-get($theme, "skeleton", "animation-bg");
+      background-size: 400% 100%;
+    }
+  }
+}
+
+.a-skeleton {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+
+  &__header,
+  &__block,
+  &__text {
+    margin: 3px;
+    border-radius: 8px;
+  }
+
+  &__header {
+    height: 18px;
+    width: 40%;
+    margin: 3px 3px 10px 3px;
+  }
+
+  &__block {
+    flex: 1 1 auto;
+    min-height: 60px;
+  }
+
+  &__text {
+    height: 16px;
+  }
+
+  &--nested {
+    border: 0;
+    box-shadow: none !important;
+    margin: 0 20px;
+
+    .a-skeleton__header {
+      height: 16px;
+    }
+  }
+
+  &__wrap {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &--horizontal {
+    width: 100%;
+
+    .a-skeleton--nested {
+      flex: 1 0 auto;
+      margin: 0;
+
+      .a-skeleton__header {
+        width: 50%;
+      }
+    }
+  }
+
+  &--animated {
+    .a-skeleton__block,
+    .a-skeleton__text {
+      animation: 6s a-skeleton-shine linear infinite;
+    }
+  }
+}

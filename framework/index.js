@@ -65,6 +65,12 @@ import AProgressbar from "./components/AProgressbar";
 import ARadio from "./components/ARadio";
 import ASelect from "./components/ASelect";
 import ASimpleTable from "./components/ASimpleTable";
+import {
+  ASkeleton,
+  ASkeletonHeader,
+  ASkeletonBlock,
+  ASkeletonText
+} from "./components/ASkeleton";
 import ASlider from "./components/ASlider";
 import {
   AStepper,
@@ -162,6 +168,10 @@ export {
   ARow,
   ASelect,
   ASimpleTable,
+  ASkeleton,
+  ASkeletonHeader,
+  ASkeletonBlock,
+  ASkeletonText,
   ASlider,
   ASpacer,
   AStepper,

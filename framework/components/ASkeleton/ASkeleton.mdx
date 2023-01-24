@@ -1,0 +1,104 @@
+---
+name: Skeleton
+route: /components/skeleton
+components: ASkeleton, ASkeletonHeader, ASkeletonText, ASkeletonBlock
+---
+
+# Skeleton
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {ASkeleton, ASkeletonHeader, ASkeletonText, ASkeletonBlock} from "@cisco-sbg-ui/magna-react";
+```
+
+## Simple
+
+<Playground
+  code={`<ASkeleton header animated>
+      <ASkeletonText />
+      <ASkeletonBlock />
+      <ASkeletonBlock />
+      <ASkeletonBlock height={200} />
+    </ASkeleton>`}
+/>
+
+## Nested
+
+<Playground
+  code={`<ASkeleton header>
+      <ASkeleton header nested>
+        <ASkeletonBlock />
+        <ASkeletonText />
+      </ASkeleton>
+      <ASkeleton header nested>
+        <ASkeletonBlock />
+        <ASkeletonText />
+      </ASkeleton>
+    </ASkeleton>`}
+/>
+
+## Horizontal Layout
+
+<Playground
+  fullWidthPreview
+  code={`<ASkeleton header horizontal style={{margin: 0}}>
+      <ASkeleton header nested>
+        <ASkeletonBlock />
+        <ASkeletonText />
+      </ASkeleton>
+      <ASkeleton header nested style={{flex: "2 0 auto"}}>
+        <ASkeletonBlock />
+        <ASkeletonText />
+      </ASkeleton>
+    </ASkeleton>`}
+/>
+
+## Horizontal Chunks
+
+<Playground
+  fullWidthPreview
+  code={`() => {
+    const textStyle = {flex: "1 1 100px"};
+
+    return (<ASkeleton header horizontal style={{margin: 0}}>
+        <ASkeletonText style={textStyle} />
+        <ASkeletonText style={textStyle} />
+        <ASkeletonText style={{width: "300px", flex: "0 0 auto"}} />
+        <ASkeletonText style={textStyle}/>
+        <ASkeletonText style={textStyle}/>
+        <ASkeletonText style={textStyle}/>
+    </ASkeleton>);
+    }`
+
+}
+
+/>
+
+## Skeleton Props
+
+The `ASkeleton` component inherits passed props and applies them to the `APanel` root element of the component.
+
+<Props of="ASkeleton" />
+
+## SkeletonHeader Props
+
+The `ASkeletonHeader` component inherits passed props.
+
+Use the `header` prop on `ASkeleton` for automatic header addition to the parent container.
+
+<Props of="ASkeletonHeader" />
+
+## SkeletonBlock Props
+
+The `ASkeletonBlock` component inherits passed props.
+
+<Props of="ASkeletonBlock" />
+
+## ASkeletonText Props
+
+The `ASkeletonText` component inherits passed props.
+
+<Props of="ASkeletonText" />
