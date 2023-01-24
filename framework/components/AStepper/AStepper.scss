@@ -64,6 +64,10 @@
         color: map-deep-get($theme, "base", "step-default-color");
       }
     }
+
+    &--cursor {
+      cursor: pointer;
+    }
   }
   &--orientation-vertical {
     .a-step__active {

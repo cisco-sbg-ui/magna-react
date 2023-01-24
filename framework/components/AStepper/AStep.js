@@ -15,6 +15,7 @@ const AStep = forwardRef(
       showIconOnVisited,
       stepNumber,
       children,
+      setActiveStep,
       ...rest
     },
     ref
@@ -32,6 +33,10 @@ const AStep = forwardRef(
       }
     }
 
+    if (!disabled && setActiveStep) {
+      className += ` a-step--cursor`;
+    }
+
     let style;
     if (
       React.Children.count(children) === 1 ||
@@ -40,8 +45,31 @@ const AStep = forwardRef(
       style = {margin: "0"};
     }
 
+    const onClick = (e) => {
+        e.stopPropagation();
+
+        if (disabled) {
+          return;
+        }
+
+        setActiveStep && setActiveStep(stepNumber);
+      },
+      keyDownHandler = (e) => {
+        if (onClose && [keyCodes.enter, keyCodes.space].includes(e.keyCode)) {
+          onClick && onClick(e);
+        }
+      };
+
     return (
-      <div {...rest} ref={ref} className={className}>
+      <div
+        {...rest}
+        ref={ref}
+        className={className}
+        onClick={onClick}
+        onKeyDown={keyDownHandler}
+        tabIndex={0}
+        role="menuitem"
+      >
         <div className="a-step__icon">
           {!disabled && visited && showIconOnVisited ? (
             <AIcon size={12} className="a-step__icon__checkmark">
@@ -83,7 +111,11 @@ AStep.propTypes = {
   /**
    * Step number.
    */
-  stepNumber: PropTypes.number
+  stepNumber: PropTypes.number,
+  /**
+   * Callback to set step as active
+   * */
+  setActiveStep: PropTypes.func
 };
 
 AStep.displayName = "AStep";
