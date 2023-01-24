@@ -45,7 +45,7 @@ const ASkeleton = forwardRef(
     );
 
     return (
-      <APanel className={className} {...rest}>
+      <APanel ref={ref} className={className} {...rest}>
         {header && <ASkeletonHeader />}
         {content}
       </APanel>
@@ -54,6 +54,10 @@ const ASkeleton = forwardRef(
 );
 
 ASkeleton.propTypes = {
+  /**
+   * String representing class names to be passed to component container
+   */
+  className: PropTypes.string,
   /**
    * Automatically add a header component
    */
