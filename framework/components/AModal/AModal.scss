@@ -5,6 +5,23 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
+
+  &--small > :first-child {
+    width: 384px;
+    min-width: unset;
+  }
+
+  &--medium > :first-child {
+    width: 576px;
+  }
+
+  &--large > :first-child {
+    width: 768px;
+  }
+
+  &--xlarge > :first-child {
+    width: 912px;
+  }
 }
 
 .a-modal--hidden {
