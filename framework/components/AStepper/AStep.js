@@ -55,8 +55,11 @@ const AStep = forwardRef(
         setActiveStep && setActiveStep(stepNumber);
       },
       keyDownHandler = (e) => {
-        if (onClose && [keyCodes.enter, keyCodes.space].includes(e.keyCode)) {
-          onClick && onClick(e);
+        if (
+          setActiveStep &&
+          [keyCodes.enter, keyCodes.space].includes(e.keyCode)
+        ) {
+          onClick(e);
         }
       };
 
