@@ -33,7 +33,10 @@ const AStep = forwardRef(
     }
 
     let style;
-    if (children.length === 1 || (children[1] && !children[1].props.children)) {
+    if (
+      React.Children.count(children) === 1 ||
+      (children[1] && !children[1].props.children)
+    ) {
       style = {margin: "0"};
     }
 

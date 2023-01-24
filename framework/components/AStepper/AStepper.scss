@@ -38,9 +38,6 @@
         }
       }
 
-      &.a-step:after {
-        //  background: map-get($theme, "steps", "step-icon-border-color");
-      }
       .a-step__label {
         color: map-deep-get($theme, "base", "color");
       }
@@ -69,12 +66,6 @@
     }
   }
   &--orientation-vertical {
-    .a-step {
-      &:after {
-        // background-color: map-deep-get($theme, "steps", "step-line-color");
-      }
-    }
-
     .a-step__active {
       border-right: 2px solid;
       border-color: map-deep-get($theme, "steps", "step-icon-border-color");
