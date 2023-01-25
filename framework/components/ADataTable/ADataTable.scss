@@ -15,12 +15,12 @@ $hidden-table-col-width: 45px;
     .a-data-table__row {
       &[data-expandable-row="true"] {
         .a-data-table__cell:nth-last-child(2) {
-          border-right-color: map-deep-get($theme, "control", "stroke-color");
+          border-color: map-deep-get($theme, "table", "cell-border-color");
         }
       }
 
       .a-data-table__cell[data-expandable-content] {
-        border-color: map-deep-get($theme, "control", "stroke-color");
+        border-color: map-deep-get($theme, "table", "cell-border-color");
         background: map-deep-get($theme, "table", "row-hover-color");
       }
     }

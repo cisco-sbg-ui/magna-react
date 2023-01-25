@@ -67,7 +67,7 @@ $table-cell-spacious-padding-top-bottom: math.div(
     td {
       color: map-deep-get($theme, "table", "color");
     }
-    border-color: map-deep-get($theme, "control", "stroke-color");
+    border-color: map-deep-get($theme, "table", "cell-border-color");
   }
 
   &--alt-links {
