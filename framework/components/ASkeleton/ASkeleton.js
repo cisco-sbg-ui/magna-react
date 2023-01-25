@@ -16,10 +16,13 @@ const ASkeleton = forwardRef(
       header,
       horizontal,
       animated,
+      noPanel = false,
       ...rest
     },
     ref
   ) => {
+    const ContainerComponent = noPanel ? "span" : APanel;
+
     let className = baseClass;
 
     if (propsClassName) {
@@ -45,10 +48,10 @@ const ASkeleton = forwardRef(
     );
 
     return (
-      <APanel ref={ref} className={className} {...rest}>
+      <ContainerComponent ref={ref} className={className} {...rest}>
         {header && <ASkeletonHeader />}
         {content}
-      </APanel>
+      </ContainerComponent>
     );
   }
 );
@@ -73,7 +76,11 @@ ASkeleton.propTypes = {
   /**
    * Show a shine keyframe animation to indicate loading
    */
-  animated: PropTypes.bool
+  animated: PropTypes.bool,
+  /**
+   * Use a <span> wrapper instead of `APanel`
+   */
+  noPanel: PropTypes.bool
 };
 
 ASkeleton.displayName = "ASkeleton";

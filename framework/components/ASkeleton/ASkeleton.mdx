@@ -77,6 +77,58 @@ import {ASkeleton, ASkeletonHeader, ASkeletonText, ASkeletonBlock} from "@cisco-
 
 />
 
+## Data Table Loading
+
+<Playground
+  code={`() => {
+const headers = [
+    {
+      name: "Alpha",
+      key: "a",
+      align: "end"
+    },
+    {
+      name: "Bravo",
+      key: "b",
+      align: "center"
+    },
+    {
+      name: "Charlie",
+      key: "c"
+    }
+  ];
+  const items = [
+    {
+      a: 11.1,
+      b: 526,
+      c: "aardvark"
+    },
+    {
+      a: 8.9,
+      b: 611,
+      c: "Argentina"
+    },
+    {
+      cellLoading: true
+    }, {
+      cellLoading: true
+    }, {
+      cellLoading: true
+    }
+  ];
+  return (
+    <ADataTable
+      tight
+      headers={headers}
+      items={items}
+      className="mx-auto"
+    />
+  );
+}`
+}
+
+/>
+
 ## Skeleton Props
 
 The `ASkeleton` component inherits passed props and applies them to the `APanel` root element of the component.
