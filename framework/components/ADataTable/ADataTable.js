@@ -325,11 +325,14 @@ const ADataTable = forwardRef(
                       </TableCell>
                     )}
                     {headers.map((y, j) => {
-                      console.log(y.cell, rowItem[y.key]);
                       const {cellLoading} = rowItem;
 
                       const content = cellLoading ? (
-                        <ASkeleton noPanel animated style={{padding: 0}}>
+                        <ASkeleton
+                          hidePanelBackdrop
+                          animated
+                          style={{padding: 0}}
+                        >
                           <ASkeletonText />
                         </ASkeleton>
                       ) : y.cell && y.cell.component ? (

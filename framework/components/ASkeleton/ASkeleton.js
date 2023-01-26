@@ -16,12 +16,12 @@ const ASkeleton = forwardRef(
       header,
       horizontal,
       animated,
-      noPanel = false,
+      hidePanelBackdrop = false,
       ...rest
     },
     ref
   ) => {
-    const ContainerComponent = noPanel ? "span" : APanel;
+    const ContainerComponent = hidePanelBackdrop ? "span" : APanel;
 
     let className = baseClass;
 
@@ -80,7 +80,7 @@ ASkeleton.propTypes = {
   /**
    * Use a <span> wrapper instead of `APanel`
    */
-  noPanel: PropTypes.bool
+  hidePanelBackdrop: PropTypes.bool
 };
 
 ASkeleton.displayName = "ASkeleton";

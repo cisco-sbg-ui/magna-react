@@ -40,6 +40,21 @@ import {ASkeleton, ASkeletonHeader, ASkeletonText, ASkeletonBlock} from "@cisco-
     </ASkeleton>`}
 />
 
+## Without Panel backdrop
+
+<Playground
+  code={`<ASkeleton header hidePanelBackdrop>
+      <ASkeleton header nested>
+        <ASkeletonBlock />
+        <ASkeletonText />
+      </ASkeleton>
+      <ASkeleton header nested>
+        <ASkeletonBlock />
+        <ASkeletonText />
+      </ASkeleton>
+    </ASkeleton>`}
+/>
+
 ## Horizontal Layout
 
 <Playground
