@@ -324,7 +324,7 @@ $atomic-default: (
     "row-hover-image": none,
     "row-stripe-color": map-get($mds-neutral, "neutral-3"),
     "row-selected": map-get($mds-interactive, "interactive-1"),
-    "cell-border-color": map-get($mds-neutral, "neutral-7")
+    "cell-border-color": map-get($mds-neutral, "neutral-5")
   ),
   "tabs": (
     "oversized-background-color": map-get($grey, "lighten-6"),
