@@ -101,6 +101,11 @@ $input-transition: border-color $transition-duration--extra-fast
       fill: map-deep-get($theme, "text-input", "icon-fill");
     }
   }
+
+  &__clear:focus,
+  &__clear:hover {
+    fill: map-deep-get($theme, "base", "color--selected") !important;
+  }
 }
 
 .a-input-base {
