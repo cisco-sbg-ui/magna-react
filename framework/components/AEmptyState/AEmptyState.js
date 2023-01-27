@@ -15,17 +15,21 @@ const AEmptyState = forwardRef(
       label,
       message,
       children,
+      small,
+      medium,
+      large,
+      xlarge,
       ...rest
     },
     ref
   ) => {
     const baseClass = "a-empty-state",
-      containerClass = `${baseClass}__container`,
       backgroundClass = `${baseClass}__background`,
       labelClass = `${baseClass}__label`,
       messageClass = `${baseClass}__message`;
     let className = baseClass,
       iconClass = `${baseClass}__icon`,
+      containerClass = `${baseClass}__container`,
       icon = propsIcon;
 
     if (propsClassName) {
@@ -44,6 +48,18 @@ const AEmptyState = forwardRef(
     } else if (!propsIcon) {
       className += ` ${baseClass}--state-info`;
       icon = "info";
+    }
+
+    if (small) {
+      className += ` ${baseClass}--small`;
+    } else if (medium) {
+      className += ` ${baseClass}--medium`;
+    } else if (large) {
+      className += ` ${baseClass}--large`;
+    } else if (xlarge) {
+      className += ` ${baseClass}--xlarge`;
+    } else {
+      className += ` ${baseClass}--medium`;
     }
 
     return (
@@ -93,6 +109,23 @@ AEmptyState.propTypes = {
    * Message describing the empty state
    */
   message: PropTypes.string,
+  /**
+   * Sets the container size to small.
+   */
+  small: PropTypes.bool,
+  /**
+   * Sets the container size to medium.
+   */
+  medium: PropTypes.bool,
+  /**
+   * Sets the container size to large.
+   */
+  large: PropTypes.bool,
+  /**
+   * Sets the container size to extra large.
+   */
+  xlarge: PropTypes.bool,
+
   /** Node children */
   children: PropTypes.node
 };

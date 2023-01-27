@@ -2,8 +2,14 @@
 
 @import "../../styles";
 
-$iconSize: 165px;
-$backgroundSize: 305px;
+$icon-sm: 50px;
+$icon-md: 100px;
+$icon-lg: 150px;
+$icon-xl: 200px;
+$container-sm: 100px;
+$container-md: 200px;
+$container-lg: 300px;
+$container-xl: 400px;
 
 @include theme(a-empty-state) using ($theme) {
   &--state-success {
@@ -46,11 +52,11 @@ $backgroundSize: 305px;
     }
   }
 
-  &__label {
+  .a-empty-state__label {
     border-color: map-deep-get($theme, "base", "color");
   }
 
-  &__message {
+  .a-empty-state__message {
     color: map-deep-get($theme, "switch", "label-color--disabled");
   }
 }
@@ -67,25 +73,115 @@ $backgroundSize: 305px;
   }
 
   &__background {
-    height: $backgroundSize;
-    width: $backgroundSize;
+    height: 100%;
+    width: 100%;
   }
 
   &__icon {
     position: absolute;
-    top: calc(50% - math.div($iconSize, 2));
-    left: calc(50% - math.div($iconSize, 2));
-    height: $iconSize;
-    width: $iconSize;
-  }
-
-  &__label {
-    font-weight: 700;
-    font-size: 24px;
   }
 
   &__message {
-    font-weight: 400;
-    font-size: 18px;
+    text-align: center;
+  }
+
+  &--small {
+    .a-empty-state__container {
+      height: $container-sm;
+      width: $container-sm;
+    }
+
+    .a-empty-state__icon {
+      height: $icon-sm;
+      width: $icon-sm;
+
+      top: calc(50% - math.div($icon-sm, 2));
+      left: calc(50% - math.div($icon-sm, 2));
+    }
+
+    .a-empty-state__label {
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .a-empty-state__message {
+      font-weight: 400;
+      font-size: 12px;
+    }
+  }
+
+  &--medium {
+    .a-empty-state__container {
+      height: $container-md;
+      width: $container-md;
+    }
+
+    .a-empty-state__icon {
+      height: $icon-md;
+      width: $icon-md;
+
+      top: calc(50% - math.div($icon-md, 2));
+      left: calc(50% - math.div($icon-md, 2));
+    }
+
+    .a-empty-state__label {
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .a-empty-state__message {
+      font-weight: 400;
+      font-size: 14px;
+    }
+  }
+
+  &--large {
+    .a-empty-state__container {
+      height: $container-lg;
+      width: $container-lg;
+    }
+
+    .a-empty-state__icon {
+      height: $icon-lg;
+      width: $icon-lg;
+
+      top: calc(50% - math.div($icon-lg, 2));
+      left: calc(50% - math.div($icon-lg, 2));
+    }
+
+    .a-empty-state__label {
+      font-weight: 700;
+      font-size: 24px;
+    }
+
+    .a-empty-state__message {
+      font-weight: 400;
+      font-size: 18px;
+    }
+  }
+
+  &--xlarge {
+    .a-empty-state__container {
+      height: $container-xl;
+      width: $container-xl;
+    }
+
+    .a-empty-state__icon {
+      height: $icon-xl;
+      width: $icon-xl;
+
+      top: calc(50% - math.div($icon-xl, 2));
+      left: calc(50% - math.div($icon-xl, 2));
+    }
+
+    .a-empty-state__label {
+      font-weight: 700;
+      font-size: 30px;
+    }
+
+    .a-empty-state__message {
+      font-weight: 400;
+      font-size: 24px;
+    }
   }
 }
