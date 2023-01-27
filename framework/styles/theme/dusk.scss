@@ -332,7 +332,8 @@ $atomic-dusk: (
         0deg,
         rgba(108, 158, 245, 0.25),
         rgba(108, 158, 245, 0.25)
-      )
+      ),
+    "cell-border-color": map-get($mds-neutral, "neutral-7")
   ),
   "tabs": (
     "oversized-background-color": transparent,
