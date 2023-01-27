@@ -549,6 +549,58 @@ In this example, the associated more details drawer that is opened is used to de
 `}
 />
 
+## Data Table Loading
+
+<Playground
+  code={`() => {
+const headers = [
+    {
+      name: "Alpha",
+      key: "a",
+      align: "end"
+    },
+    {
+      name: "Bravo",
+      key: "b",
+      align: "center"
+    },
+    {
+      name: "Charlie",
+      key: "c"
+    }
+  ];
+  const items = [
+    {
+      a: 11.1,
+      b: 526,
+      c: "aardvark"
+    },
+    {
+      a: 8.9,
+      b: 611,
+      c: "Argentina"
+    },
+    {
+      cellLoading: true
+    }, {
+      cellLoading: true
+    }, {
+      cellLoading: true
+    }
+  ];
+  return (
+    <ADataTable
+      tight
+      headers={headers}
+      items={items}
+      className="mx-auto"
+    />
+  );
+}`
+}
+
+/>
+
 ## Data Table Props
 
 The `ADataTable` component inherits passed props.

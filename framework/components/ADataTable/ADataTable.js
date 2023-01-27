@@ -4,7 +4,7 @@ import React, {forwardRef, useMemo, useRef, useCallback, useState} from "react";
 import AInView from "../AInView";
 import AIcon from "../AIcon";
 import ASimpleTable from "../ASimpleTable";
-import ATooltip from "../ATooltip";
+import {ASkeleton, ASkeletonText} from "../ASkeleton";
 import "./ADataTable.scss";
 
 /**
@@ -325,6 +325,22 @@ const ADataTable = forwardRef(
                       </TableCell>
                     )}
                     {headers.map((y, j) => {
+                      const {cellLoading} = rowItem;
+
+                      const content = cellLoading ? (
+                        <ASkeleton
+                          hidePanelBackdrop
+                          animated
+                          style={{padding: 0}}
+                        >
+                          <ASkeletonText />
+                        </ASkeleton>
+                      ) : y.cell && y.cell.component ? (
+                        y.cell.component(rowItem)
+                      ) : (
+                        rowItem[y.key]
+                      );
+
                       return (
                         <TableCell
                           key={`a-data-table_cell_${j}`}
@@ -332,9 +348,7 @@ const ADataTable = forwardRef(
                             y.cell?.className || ""
                           }`.trim()}
                         >
-                          {y.cell && y.cell.component
-                            ? y.cell.component(rowItem)
-                            : rowItem[y.key]}
+                          {content}
                         </TableCell>
                       );
                     })}
