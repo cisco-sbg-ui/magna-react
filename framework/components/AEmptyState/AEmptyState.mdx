@@ -30,7 +30,28 @@ import {AEmptyState} from "@cisco-sbg-ui/magna-react";
 </>`}
 />
 
-## Divider Props
+## Size Variants
+
+<Playground
+  code={`() => {
+    const props = {
+      label:"Some Label",
+      message:"Message about what this page is for and what the user can do here."
+    }
+
+    return (<>
+        <AEmptyState variant="success" small {...props} />
+        <AEmptyState variant="positive" medium {...props} />
+        <AEmptyState variant="warning" large {...props} />
+        <AEmptyState variant="danger" xlarge {...props} />
+        </>
+      )
+    }`
+
+}
+/>
+
+## AEmptyState Props
 
 The `AEmptyState` component inherits passed props.
 
