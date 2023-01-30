@@ -51,7 +51,8 @@ const mapSprites = () => {
     .replaceAll('fill="#889099"', "")
     .replaceAll("class=", "className=")
     .replaceAll("stroke-linejoin=", "strokeLinejoin=")
-    .replaceAll("stroke-linecap=", "strokeLinecap=");
+    .replaceAll("stroke-linecap=", "strokeLinecap=")
+    .replaceAll("stroke-miterlimit=", "strokeMiterlimit=");
 
   return iconVariables;
 };

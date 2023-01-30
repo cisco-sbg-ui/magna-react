@@ -3,12 +3,8 @@ import React, {forwardRef} from "react";
 
 import Icons from "./icons.json";
 import MagnaIcons from "./magnaIcons.js";
+import {iconNameMap} from "./atomicMap";
 import "./AIcon.scss";
-
-export const ICON_SETS = {
-  ATOMIC: "atomic",
-  MAGNA: "magna"
-};
 
 const AIcon = forwardRef(
   (
@@ -19,7 +15,7 @@ const AIcon = forwardRef(
       left,
       right,
       size,
-      iconSet = ICON_SETS.ATOMIC,
+      iconSet,
       ...rest
     },
     ref
@@ -54,13 +50,18 @@ const AIcon = forwardRef(
       componentProps.style = {width: size};
     }
 
-    if (iconSet === ICON_SETS.MAGNA) {
-      const iconDef = MagnaIcons[children];
+    let iconDef;
 
-      if (!iconDef) {
-        return null;
-      }
+    if (MagnaIcons[children]) {
+      // Check if it's in magna icons
 
+      iconDef = MagnaIcons[children];
+    } else if (iconNameMap[children]) {
+      // check if we can map an atomic icon name to a magna icon
+      iconDef = MagnaIcons[iconNameMap[children]];
+    }
+
+    if (iconDef) {
       const {props: iconProps, xml} = iconDef;
 
       return (
@@ -70,6 +71,7 @@ const AIcon = forwardRef(
       );
     }
 
+    // Fallback to atomic icon for safety
     return (
       <svg {...componentProps} viewBox="0 0 16 16">
         <path d={Icons[children]} />

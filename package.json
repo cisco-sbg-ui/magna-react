@@ -45,7 +45,8 @@
     "updateSnapshots": "start-server-and-test dev http://localhost:3000 cypress:runUpdateSnapshots",
     "upload-coverage": "codecov",
     "formatIconFile": "prettier --config ./.prettierrc.js --write ./framework/components/AIcon/magnaIcons.js",
-    "buildIcons": "node scripts/iconBuilder.mjs && npm run formatIconFile"
+    "buildIcons": "node scripts/iconBuilder.mjs && npm run formatIconFile",
+    "copyPhosphorIcons": "node scripts/copyPhosphorIcons.mjs"
   },
   "peerDependencies": {
     "prop-types": "^15.0.0",
