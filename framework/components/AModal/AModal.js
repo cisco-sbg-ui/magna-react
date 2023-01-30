@@ -23,7 +23,7 @@ const AModal = forwardRef(
       lockScroll = true,
       withOverlay = true,
       trapFocus = true,
-      isOpen,
+      isOpen: propsIsOpen,
       small,
       medium,
       large,
@@ -35,7 +35,10 @@ const AModal = forwardRef(
   ) => {
     const {appRef} = useContext(AAppContext);
     const Component = as;
+    const hasPortalNode = appendTo || appRef.current;
+    const isOpen = !!hasPortalNode && propsIsOpen;
     const _ref = useRef();
+
     useFocusTrap({
       rootRef: _ref,
       isEnabled: trapFocus && isOpen
@@ -61,6 +64,10 @@ const AModal = forwardRef(
       contentClassName += " a-modal-container--large";
     } else if (xlarge) {
       contentClassName += " a-modal-container--xlarge";
+    }
+
+    if (!appendTo && !appRef.current) {
+      return null;
     }
 
     if (withOverlay) {
