@@ -36,7 +36,6 @@ const AModal = forwardRef(
     const {appRef} = useContext(AAppContext);
     const Component = as;
     const _ref = useRef();
-    const _overlayRef = useRef();
     useFocusTrap({
       rootRef: _ref,
       isEnabled: trapFocus && isOpen
@@ -67,7 +66,6 @@ const AModal = forwardRef(
     if (withOverlay) {
       return ReactDOM.createPortal(
         <APageOverlay
-          ref={_overlayRef}
           className={visibilityClass}
           onClick={(e) => {
             const {target} = e;
