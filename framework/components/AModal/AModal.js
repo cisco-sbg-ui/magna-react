@@ -72,7 +72,17 @@ const AModal = forwardRef(
 
     if (withOverlay) {
       return ReactDOM.createPortal(
-        <APageOverlay className={visibilityClass} onClick={onClickOutside}>
+        <APageOverlay
+          className={visibilityClass}
+          onClick={(e) => {
+            const {target} = e;
+            if (target !== _ref.current) {
+              return;
+            }
+
+            onClickOutside && onClickOutside();
+          }}
+        >
           <Component
             role="dialog"
             aria-modal="true"
