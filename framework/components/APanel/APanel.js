@@ -4,7 +4,10 @@ import React, {forwardRef} from "react";
 import "./APanel.scss";
 
 const APanel = forwardRef(
-  ({children, className: propsClassName, component, type, ...rest}, ref) => {
+  (
+    {children, className: propsClassName, component, type, borderless, ...rest},
+    ref
+  ) => {
     let className = "a-panel";
 
     if (propsClassName) {
@@ -17,6 +20,10 @@ const APanel = forwardRef(
       className += " a-panel--color-white";
     } else if (type === "dialog") {
       className += " a-panel--type-dialog";
+    }
+
+    if (borderless) {
+      className += " a-panel--borderless";
     }
 
     const TagName = component || "div";
@@ -37,7 +44,11 @@ APanel.propTypes = {
   /**
    * Display a style variant.
    */
-  type: PropTypes.oneOf(["default", "grey", "white", "dialog"])
+  type: PropTypes.oneOf(["default", "grey", "white", "dialog"]),
+  /**
+   * Hide the panel border
+   */
+  borderless: PropTypes.bool
 };
 
 APanel.displayName = "APanel";
