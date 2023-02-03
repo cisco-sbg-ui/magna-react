@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import React, {forwardRef, useMemo, useRef, useCallback, useState} from "react";
 
+import {keyCodes} from "../../utils/helpers";
+
 import AInView from "../AInView";
 import AIcon from "../AIcon";
 import ASimpleTable from "../ASimpleTable";
@@ -190,6 +192,7 @@ const ADataTable = forwardRef(
                     };
 
                     const sortableBtnProps = {};
+                    let onClick;
                     if (x.sortable) {
                       if (!sort || x.key !== sort.key) {
                         headerProps["aria-label"] +=
@@ -205,7 +208,7 @@ const ADataTable = forwardRef(
                         headerProps["aria-sort"] = "descending";
                       }
 
-                      sortableBtnProps.onClick = () => {
+                      onClick = () => {
                         setExpandedRows({});
                         onSort &&
                           onSort(
@@ -249,7 +252,6 @@ const ADataTable = forwardRef(
                             ? "a-data-table__header__sort--active"
                             : ""
                         }`}
-                        onClick={sortableBtnProps.onClick}
                       >
                         {getSortIconName(x, sort)}
                       </AIcon>
@@ -259,11 +261,22 @@ const ADataTable = forwardRef(
                       <TableHeader
                         {...headerProps}
                         key={`a-data-table_header_${i}`}
+                        tabIndex={0}
+                        onClick={onClick}
+                        onKeyDown={(e) => {
+                          if (
+                            [keyCodes.enter, keyCodes.space].includes(e.keyCode)
+                          ) {
+                            e.preventDefault();
+                            onClick && onClick(e);
+                          }
+                        }}
                       >
                         <div className="a-data-table__header__sort-wrap">
                           {x.align == "end" && sortIcon}
                           <button
                             {...sortableBtnProps}
+                            tabIndex={-1}
                             className="a-data-table__header__sort__button"
                           >
                             <span className="a-data-table__header__label">
