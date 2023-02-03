@@ -350,7 +350,7 @@ $atomic-default: (
     "border-color--active": #4a84e8,
     "box-shadow-color--active": #d1e2ff,
     "bg--readonly": map-get($mds-light-theme, "background"),
-    "icon-fill": map-get($mds-neutral, "neutral-6")
+    "icon-fill": map-get($mds-neutral, "neutral-9")
   ),
   "timeline": (
     "item-bg-hover-color": map-get($mds-light-theme, "non-essential-lines"),
