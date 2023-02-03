@@ -22,6 +22,10 @@
     }
   }
 
+  &--borderless {
+    border: none !important;
+  }
+
   &--type-dialog {
     background: map-deep-get($theme, "control", "fill-color");
   }
