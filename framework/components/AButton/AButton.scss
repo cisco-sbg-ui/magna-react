@@ -466,12 +466,12 @@ $btn-transition: color $transition-duration--extra-fast
     cursor: not-allowed;
   }
 
-  &.medium {
+  &--medium {
     height: 34px;
     padding: 7px 12px;
   }
 
-  &.medium {
+  &--medium {
     &.a-button--icon {
       padding: 8.25px;
       svg.a-icon {

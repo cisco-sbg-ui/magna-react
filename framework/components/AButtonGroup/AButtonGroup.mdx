@@ -92,6 +92,49 @@ import {AButtonGroup} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
+## Size Variant
+
+<Playground
+  code={`() => {
+  const [selectedValues1, setSelectedValues1] = useState(["One", "Three"]);
+  const [selectedValues2, setSelectedValues2] = useState(["Two"]);
+  const [selectedValues3, setSelectedValues3] = useState(["bar"]);
+  return (
+    <>
+     <div>
+        <h3>Button Group - Medium variant</h3>
+       <AButtonGroup
+          medium
+          selectedValues={selectedValues2}
+          onChange={(_, selectedValues) =>
+            setSelectedValues2(selectedValues)
+          }>
+          <AButton value="One">One</AButton>
+          <AButton value="Two">Two</AButton>
+          <AButton value="Three">Three</AButton>
+        </AButtonGroup>
+        <p>Selected Values: {JSON.stringify(selectedValues2)}</p>
+      </div>
+      <ADivider />
+      <div>
+        <h3>Button Group - Medium button size (verbose)</h3>
+       <AButtonGroup
+          selectedValues={selectedValues2}
+          onChange={(_, selectedValues) =>
+            setSelectedValues2(selectedValues)
+          }>
+          <AButton value="One" medium>One</AButton>
+          <AButton value="Two" medium>Two</AButton>
+          <AButton value="Three" medium>Three</AButton>
+        </AButtonGroup>
+        <p>Selected Values: {JSON.stringify(selectedValues2)}</p>
+      </div>
+    </>
+  );
+}
+`}
+/>
+
 ## Button Group Props
 
 The `AButtonGroup` component inherits passed props.

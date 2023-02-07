@@ -118,4 +118,19 @@ $btn-group-icon-font-size: rem(1);
     margin-left: 0px;
     margin-right: 0px;
   }
+
+  &--medium {
+    .a-button {
+      height: 34px;
+      padding: 7px 12px;
+
+      &.a-button--icon {
+        padding: 8.25px;
+        svg.a-icon {
+          width: 14px;
+          height: 14px;
+        }
+      }
+    }
+  }
 }
