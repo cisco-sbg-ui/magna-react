@@ -197,6 +197,9 @@ $atomic-dusk: (
   "drawer": (
     "bg": map-get($mds-dark-theme, "background")
   ),
+  "emptyState": (
+    "color": map-get($mds-neutral, "neutral-6")
+  ),
   "footer": (
     "color": map-get($mds-neutral, "neutral-2")
   ),
