@@ -21,6 +21,7 @@ const AButtonGroup = forwardRef(
       rules,
       selectedValues,
       validationState = "default",
+      medium = false,
       ...rest
     },
     ref
@@ -97,6 +98,10 @@ const AButtonGroup = forwardRef(
       className += ` ${propsClassName}`;
     }
 
+    if (medium) {
+      className += " a-button-group--medium";
+    }
+
     const buttonGroupContext = {
       selectedValues,
       toggleValue: (toggledValue) => {
@@ -158,7 +163,9 @@ AButtonGroup.propTypes = {
   /**
    * Applies a validation state.
    */
-  validationState: PropTypes.oneOf(["default", "warning", "danger"])
+  validationState: PropTypes.oneOf(["default", "warning", "danger"]),
+  /** Magnetic medium sizing */
+  medium: PropTypes.bool
 };
 
 AButtonGroup.displayName = "AButtonGroup";

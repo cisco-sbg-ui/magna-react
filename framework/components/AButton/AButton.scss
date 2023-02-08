@@ -466,19 +466,8 @@ $btn-transition: color $transition-duration--extra-fast
     cursor: not-allowed;
   }
 
-  &.medium {
-    height: 34px;
-    padding: 7px 12px;
-  }
-
-  &.medium {
-    &.a-button--icon {
-      padding: 8.25px;
-      svg.a-icon {
-        width: 14px;
-        height: 14px;
-      }
-    }
+  &--medium {
+    @include medium-button;
   }
 }
 

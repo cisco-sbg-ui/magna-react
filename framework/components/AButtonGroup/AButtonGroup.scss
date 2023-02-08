@@ -118,4 +118,8 @@ $btn-group-icon-font-size: rem(1);
     margin-left: 0px;
     margin-right: 0px;
   }
+
+  &--medium {
+    @include medium-button;
+  }
 }

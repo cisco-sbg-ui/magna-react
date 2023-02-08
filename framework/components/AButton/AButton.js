@@ -48,7 +48,7 @@ const AButton = forwardRef(
     }
 
     if (medium) {
-      className += " medium";
+      className += " a-button--medium";
     }
 
     if (selectedValues && selectedValues.includes(value)) {
