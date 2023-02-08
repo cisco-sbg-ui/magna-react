@@ -3,8 +3,10 @@
 $alert-min-height: 50px;
 $alert-icon-font-size: $font-size;
 $alert-icon-margin: 0 16px;
+$alert-close-icon-margin: 0 16px 0 0;
 $alert-margin: 0;
 $alert-padding: 15px 0;
+$alert-message-padding: 0 15px 0 0;
 $alert-border-radius: 6px;
 $alert-body-font-size: $font-size--sm;
 $alert-message-max-width: 700px;
@@ -95,17 +97,24 @@ $alert-close-icon-size: 10.5px;
   padding: $alert-padding;
   &__icon {
     font-size: $alert-icon-font-size;
-    margin: $alert-icon-margin;
+
     //align-self: center;
     &--close {
       width: $alert-close-icon-size;
       cursor: pointer;
     }
   }
+  &__icon--level {
+    margin: $alert-icon-margin;
+  }
+  &__icon--close {
+    margin: $alert-close-icon-margin;
+  }
   &__message {
     font-size: $alert-body-font-size;
     max-width: $alert-message-max-width;
     margin-right: auto;
+    padding: $alert-message-padding;
     align-self: center;
     @include flex-fluid;
     @include text-break-word;
