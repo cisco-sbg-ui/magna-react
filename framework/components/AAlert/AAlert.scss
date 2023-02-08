@@ -2,11 +2,13 @@
 
 $alert-min-height: 50px;
 $alert-icon-font-size: $font-size;
-$alert-icon-margin: 0 16px;
-$alert-close-icon-margin: 0 16px 0 0;
+$alert-icon-margin-size: 16px;
+$alert-icon-margin: 0 $alert-icon-margin-size;
+$alert-close-icon-margin: 0 $alert-icon-margin-size 0 0;
 $alert-margin: 0;
-$alert-padding: 15px 0;
-$alert-message-padding: 0 15px 0 0;
+$alert-padding-size: 15px;
+$alert-padding: $alert-padding-size 0;
+$alert-message-padding: 0 $alert-padding-size 0 0;
 $alert-border-radius: 6px;
 $alert-body-font-size: $font-size--sm;
 $alert-message-max-width: 700px;
