@@ -25,13 +25,6 @@ import AEmptyState from "./components/AEmptyState";
 import AFieldBase from "./components/AFieldBase";
 import {AFooter, AFooterLegal} from "./components/AFooter";
 import {AForm, AFormContext} from "./components/AForm";
-import {
-  AHeader,
-  AHeaderLogo,
-  AHeaderTitle,
-  AHeaderNavigation,
-  AHeaderSubtitle
-} from "./components/AHeader";
 import AHint from "./components/AHint";
 import AIcon from "./components/AIcon";
 import AInView from "./components/AInView";
@@ -134,11 +127,6 @@ export {
   AFooterLegal,
   AForm,
   AFormContext,
-  AHeader,
-  AHeaderLogo,
-  AHeaderTitle,
-  AHeaderSubtitle,
-  AHeaderNavigation,
   AHint,
   AIcon,
   AInView,
