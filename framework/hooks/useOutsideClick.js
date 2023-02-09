@@ -18,10 +18,10 @@ const useOutsideClick = (options) => {
     if (!isEnabled) {
       return;
     }
-    window.addEventListener("click", detectOutside);
+    window.addEventListener("mousedown", detectOutside);
 
     return () => {
-      window.removeEventListener("click", detectOutside);
+      window.removeEventListener("mousedown", detectOutside);
     };
   }, [isEnabled, onClick, detectOutside]);
 };
