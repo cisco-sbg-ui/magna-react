@@ -197,6 +197,9 @@ $atomic-default: (
   "drawer": (
     "bg": map-get($mds-neutral, "neutral-1")
   ),
+  "emptyState": (
+    "color": map-get($mds-neutral, "neutral-12")
+  ),
   "footer": (
     "color": map-get($mds-neutral, "neutral-16")
   ),

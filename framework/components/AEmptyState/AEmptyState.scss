@@ -57,7 +57,7 @@ $container-xl: 400px;
   }
 
   .a-empty-state__message {
-    color: map-deep-get($theme, "switch", "label-color--disabled");
+    color: map-deep-get($theme, "emptyState", "color");
   }
 }
 
