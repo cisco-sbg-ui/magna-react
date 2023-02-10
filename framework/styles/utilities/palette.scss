@@ -507,7 +507,7 @@ $secure-green: (
   "1": #6abf4b
 );
 
-$colors: (
+$colors-atomic: (
   "black": (
     "base": $black
   ),
@@ -553,3 +553,21 @@ $colors: (
   "mds-fuchsia": $mds-fuchsia,
   "mds-bluegrey": $mds-bluegrey
 );
+
+$colors-magnetic: (
+  "mds-neutral": $mds-neutral,
+  "mds-interactive": $mds-interactive,
+  "mds-blue": $mds-blue,
+  "mds-red": $mds-red,
+  "mds-green": $mds-green,
+  "mds-yellow": $mds-yellow,
+  "mds-orange": $mds-orange,
+  "mds-purple": $mds-purple,
+  "mds-violetblue": $mds-violetblue,
+  "mds-magenta": $mds-magenta,
+  "mds-teal": $mds-teal,
+  "mds-fuchsia": $mds-fuchsia,
+  "mds-bluegrey": $mds-bluegrey
+);
+
+$colors: $colors-atomic, $colors-magnetic;
