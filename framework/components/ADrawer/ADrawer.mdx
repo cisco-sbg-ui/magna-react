@@ -111,7 +111,7 @@ To contain the drawer within something other than the viewport, you can render t
 <Playground
   code={`() => {
     const {currentTheme} = useATheme();
-    const bgColor = currentTheme === 'default' ? 'white' : '';
+    const bgColor = currentTheme === 'default' ? 'white' : 'mds-neutral--neutral-16';
     // position='fixed' drawer
     const fixedDrawerRef = useRef();
     const [isFixedOpen, setIsFixedOpen] = useState(false);
@@ -333,7 +333,7 @@ Please note that when `ADrawer` is rendered as a modal, focus will be trapped in
 <Playground
   code={`() => {
     const {currentTheme} = useATheme();
-    const bgColor = currentTheme === 'default' ? 'white' : '';
+    const bgColor = currentTheme === 'default' ? 'white' : 'mds-neutral--neutral-16';
     const toolbarRef = useRef();
     const [isOpen, setIsOpen] = useState(false);
     const [isSlim, setIsSlim] = useState(true);
@@ -465,7 +465,7 @@ Please note that when `ADrawer` is rendered as a modal, focus will be trapped in
 <Playground
   code={`() => {
     const {currentTheme} = useATheme();
-    const bgColor = currentTheme === 'default' ? 'white' : '';
+    const bgColor = currentTheme === 'default' ? 'white' : 'mds-neutral--neutral-16';
     const sidebarRef = useRef();
     const [isOpen, setIsOpen] = useState(false);
     const [isSlim, setIsSlim] = useState(true);
