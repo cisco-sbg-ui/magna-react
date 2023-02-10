@@ -195,7 +195,7 @@ $atomic-dusk: (
     "color-lighter": map-get($mds-neutral, "neutral-12")
   ),
   "drawer": (
-    "bg": map-get($mds-dark-theme, "background")
+    "bg": map-get($mds-neutral, "neutral-16")
   ),
   "emptyState": (
     "color": map-get($mds-neutral, "neutral-6")
