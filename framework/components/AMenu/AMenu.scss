@@ -1,5 +1,7 @@
 @import "../../styles";
 
+$menu-item-first-last-border-radius: 4px;
+
 /*
 When using AMenu that passes AMenuBase to AList, force override the specificity
 since the css may be imported in different orders depending on product build
@@ -111,12 +113,12 @@ configuration environments.
       padding-left: 0px;
     }
     &:first-of-type {
-      border-top-left-radius: inherit;
-      border-top-right-radius: inherit;
+      border-top-left-radius: $menu-item-first-last-border-radius;
+      border-top-right-radius: $menu-item-first-last-border-radius;
     }
     &:last-of-type {
-      border-bottom-right-radius: inherit;
-      border-bottom-left-radius: inherit;
+      border-bottom-right-radius: $menu-item-first-last-border-radius;
+      border-bottom-left-radius: $menu-item-first-last-border-radius;
     }
   }
   q &.compact {
