@@ -6,14 +6,7 @@ import "./ABreadcrumb.scss";
 
 const ABreadcrumb = forwardRef(
   (
-    {
-      className: propsClassName,
-      item,
-      items = [],
-      magnetic = false,
-      onClick,
-      ...rest
-    },
+    {className: propsClassName, item, items = [], magnetic = false, ...rest},
     ref
   ) => {
     let className = `a-breadcrumb`,
