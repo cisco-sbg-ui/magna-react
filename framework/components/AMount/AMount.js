@@ -41,13 +41,16 @@ const AMount = forwardRef(
       setToasts: setToasts || setToasts2
     };
 
+    const hasToastPlate =
+      combinedRef.current && combinedRef.current.classList.contains("a-app");
+
     return (
       <TagName {...rest} ref={combinedRef} className={className}>
         <AAppContext.Provider value={appContext}>
           <div ref={newWrapRef} className={wrapClassName}>
             {children}
           </div>
-          <AToastPlate />
+          {hasToastPlate && <AToastPlate />}
         </AAppContext.Provider>
       </TagName>
     );
