@@ -320,7 +320,7 @@ const AMenuBase = forwardRef(
         }
       };
 
-      document.addEventListener("click", clickOutsideHandler);
+      window.addEventListener("click", clickOutsideHandler);
 
       return () => {
         window.removeEventListener("click", clickOutsideHandler);
