@@ -45,7 +45,10 @@ import {ABreadcrumb} from "@cisco-sbg-ui/magna-react";
   items={[{
     content: "Single level",
     contentProps: {
-      href: "/"
+      href: "/",
+      onClick: () => {
+        window.alert('Single level breadcrumb click')
+      }
     }
   }]} />
 `}
