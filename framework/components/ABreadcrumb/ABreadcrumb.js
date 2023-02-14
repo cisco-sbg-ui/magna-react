@@ -30,16 +30,35 @@ const ABreadcrumb = forwardRef(
         return <TagName {...contentProps}>{content}</TagName>;
       });
 
+    let singleLevelContent;
+
+    if (items.length === 1) {
+      const {href, onClick} = items[0].contentProps || {};
+      const onArrowClick = () => {
+        if (href) {
+          window.location = href;
+        }
+
+        onClick && onClick();
+      };
+      singleLevelContent = (
+        <AIcon
+          iconSet="magna"
+          className={arrowClassname}
+          style={{cursor: "pointer"}}
+          onClick={onArrowClick}
+        >
+          arrowLeft
+        </AIcon>
+      );
+    }
+
     return (
       <ul {...rest} ref={ref} className={className}>
         {items.map((x, index) => {
           return (
             <li key={index} className={itemClassname}>
-              {index === 0 && items.length === 1 && (
-                <AIcon iconSet="magna" className={arrowClassname}>
-                  arrowLeft
-                </AIcon>
-              )}
+              {singleLevelContent}
               {index > 0 && (
                 <AIcon className={chevronClassname}>chevron-right</AIcon>
               )}
@@ -71,6 +90,9 @@ ABreadcrumb.propTypes = {
    * Adjust for magnetic sizing
    */
   magnetic: PropTypes.bool
+  /**
+   *
+   */
 };
 
 ABreadcrumb.displayName = "ABreadcrumb";
