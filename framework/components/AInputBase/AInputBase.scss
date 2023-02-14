@@ -30,6 +30,17 @@ $input-transition: border-color $transition-duration--extra-fast
     }
   }
 
+  &--readonly {
+    .a-input-base__surface {
+      border-color: map-deep-get(
+        $theme,
+        "text-input",
+        "border-color--readonly"
+      );
+      background: map-deep-get($theme, "text-input", "bg--readonly");
+    }
+  }
+
   &--warning {
     &.a-input-base--focused .a-input-base__surface {
       border: $border-width solid $color-warning;
@@ -82,17 +93,6 @@ $input-transition: border-color $transition-duration--extra-fast
       .a-icon {
         fill: map-deep-get($theme, "text-input", "color--disabled");
       }
-    }
-  }
-
-  &--readonly {
-    .a-input-base__surface {
-      border-color: map-deep-get(
-        $theme,
-        "text-input",
-        "border-color--readonly"
-      );
-      background: map-deep-get($theme, "text-input", "bg--readonly");
     }
   }
 
