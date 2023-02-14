@@ -322,6 +322,7 @@ $atomic-dusk: (
     "color": map-get($mds-neutral, "neutral-2"),
     "header-color": map-get($mds-dark-theme, "default-text"),
     "header-border": map-get($mds-dark-theme, "table-border"),
+    "header-focus": map-get($mds-interactive, "interactive-8"),
     "row-hover-color": map-get($mds-neutral, "neutral-17"),
     "row-hover-image":
       linear-gradient(

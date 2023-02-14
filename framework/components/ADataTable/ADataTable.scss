@@ -9,6 +9,16 @@ $hidden-table-col-width: 45px;
         color: map-deep-get($theme, "base", "color");
       }
     }
+
+    border-top: 2px solid transparent;
+    border-top-color: transparent;
+    &--sortable {
+      cursor: pointer;
+      &:focus,
+      &:hover {
+        border-top: 2px solid map-deep-get($theme, "table", "header-focus") !important;
+      }
+    }
   }
 
   &--expandable {
