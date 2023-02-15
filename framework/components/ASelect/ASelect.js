@@ -42,6 +42,7 @@ const ASelect = forwardRef(
       rules,
       validateOnBlur,
       validationState,
+      medium,
       ...rest
     },
     ref
@@ -120,6 +121,10 @@ const ASelect = forwardRef(
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
+    }
+
+    if (medium) {
+      className += ` a-select--medium`;
     }
 
     const getSelectedIndex = () => {
@@ -300,7 +305,8 @@ const ASelect = forwardRef(
           ? inputBaseSurfaceRef.current.clientWidth + 2
           : "auto",
         ...dropdownStyle
-      }
+      },
+      medium
     };
 
     const selectIcon = isOpen ? "chevron-up" : "chevron-down";
@@ -311,6 +317,7 @@ const ASelect = forwardRef(
         ref={ref}
         surfaceRef={inputBaseSurfaceRef}
         className={className}
+        medium={medium}
         label={label}
         labelId={`a-select__label_${selectId}`}
         onClickLabel={() => !disabled && surfaceRef.current.focus()}
@@ -509,7 +516,11 @@ ASelect.propTypes = {
   /**
    * Applies a validation state.
    */
-  validationState: PropTypes.oneOf(["default", "warning", "danger"])
+  validationState: PropTypes.oneOf(["default", "warning", "danger"]),
+  /**
+   * Magnetic medium size variant
+   */
+  medium: PropTypes.bool
 };
 
 ASelect.displayName = "ASelect";

@@ -5,7 +5,14 @@ import "./AList.scss";
 
 const AList = forwardRef(
   (
-    {children, className: propsClassName, component, hoverable = true, ...rest},
+    {
+      children,
+      className: propsClassName,
+      component,
+      hoverable = true,
+      medium,
+      ...rest
+    },
     ref
   ) => {
     let className = "a-list";
@@ -16,6 +23,10 @@ const AList = forwardRef(
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
+    }
+
+    if (medium) {
+      className += ` a-list--medium`;
     }
 
     const TagName = component || "div";
@@ -36,7 +47,10 @@ AList.propTypes = {
   /**
    * Toggles the hover visualization on list items.
    */
-  hoverable: PropTypes.bool
+  hoverable: PropTypes.bool,
+  /**
+   * Magnetic medium size variant
+   */ medium: PropTypes.bool
 };
 
 AList.displayName = "AList";

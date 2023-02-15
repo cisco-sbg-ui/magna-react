@@ -124,4 +124,10 @@
   a.a-list-item--two-line {
     text-decoration: none;
   }
+
+  &--medium {
+    .a-list-item {
+      height: 36px;
+    }
+  }
 }
