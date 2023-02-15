@@ -127,7 +127,11 @@
 
   &--medium {
     .a-list-item {
-      height: 36px;
+      height: $input-height-medium;
+
+      &::after {
+        top: 9px !important;
+      }
     }
   }
 }
