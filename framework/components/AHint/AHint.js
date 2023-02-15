@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
-import AIcon from "../AIcon";
+import AAlert from "../AAlert";
 import "./AHint.scss";
 
 const AHint = forwardRef(
@@ -9,23 +9,26 @@ const AHint = forwardRef(
     {children, className: propsClassName, validationState = "default", ...rest},
     ref
   ) => {
+    const hasValidationState =
+      validationState !== "default" && !!validationState;
     let className = "a-hint";
-    if (validationState !== "default") {
-      className += ` a-hint--${validationState}`;
-    }
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
     }
 
+    let content = <span>{children}</span>;
+    if (hasValidationState) {
+      content = (
+        <AAlert level={validationState} dismissable={false}>
+          {children}
+        </AAlert>
+      );
+    }
+
     return (
       <div {...rest} ref={ref} className={className}>
-        {["warning", "danger"].includes(validationState) && (
-          <AIcon left className="a-hint__icon">
-            {validationState === "danger" ? "critical-stop" : "warning"}
-          </AIcon>
-        )}
-        <span>{children}</span>
+        {content}
       </div>
     );
   }

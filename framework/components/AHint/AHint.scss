@@ -1,15 +1,5 @@
 @import "../../styles";
 
-@include theme(a-hint) using ($theme) {
-  &--warning {
-    color: map-deep-get($theme, "control", "warning-color");
-  }
-
-  &--danger {
-    color: map-deep-get($theme, "control", "error-color");
-  }
-}
-
 .a-hint {
   display: flex;
   font-style: oblique;
