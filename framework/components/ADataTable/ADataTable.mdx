@@ -93,6 +93,86 @@ import {ADataTable} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
+### Two Stage Sort
+
+By default a table column can be unsorted. Use `toggleSort` to change sorting to flip between "asc" and "desc" on click without the unsorted state.
+
+<Playground
+  code={`() => {
+  const [sort, setSort] = useState();
+  const headers = [
+    {
+      name: "Alpha",
+      key: "a",
+      align: "end",
+      className: "text-capitalize",
+      sortable: true
+    },
+    {
+      name: "Bravo",
+      key: "b",
+      align: "center",
+      sortable: true,
+      sort: false
+    },
+    {
+      name: "Charlie",
+      key: "c",
+      sortable: true,
+      sort: (a, b) =>
+        a.toUpperCase() === b.toUpperCase()
+          ? 0
+          : a.toUpperCase() > b.toUpperCase()
+          ? 1
+          : -1
+    },
+    {
+      name: "Delta",
+      align: "center",
+      cell: {
+        component: (item) => (
+          <a href="/" target="_blank">
+            Details
+          </a>
+        )
+      }
+    }
+  ];
+  const items = [
+    {
+      a: 11.1,
+      b: 526,
+      c: "aardvark"
+    },
+    {
+      a: 8.9,
+      b: 611,
+      c: "Argentina"
+    },
+    {
+      a: 10.5,
+      b: 475,
+      c: "Zanzibar"
+    }
+  ];
+  return (
+    <ADataTable
+      toggleSort
+      striped
+      tight
+      headers={headers}
+      items={items}
+      className="mx-auto"
+      style={{maxWidth: 500}}
+      sort={sort}
+      onSort={(s) => setSort(s)}
+      truncateHeaders
+    />
+  );
+}
+`}
+/>
+
 ### Selectable Rows
 
 Rows can be selected by passing the `isRowSelected` prop to `ADataTable`, which is a function called for every row with the associated data in order to determine if the row should be highlighted in the selected state.

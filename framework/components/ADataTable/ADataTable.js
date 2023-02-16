@@ -99,6 +99,7 @@ const ADataTable = forwardRef(
       headers,
       maxHeight,
       items,
+      toggleSort = false,
       onSort,
       onScrollToEnd,
       sort,
@@ -210,7 +211,11 @@ const ADataTable = forwardRef(
 
                       onClick = () => {
                         setExpandedRows({});
-                        onSort &&
+                        if (!onSort) {
+                          return;
+                        }
+
+                        if (!toggleSort) {
                           onSort(
                             sort &&
                               sort.key === x.key &&
@@ -226,6 +231,17 @@ const ADataTable = forwardRef(
                                       : "asc"
                                 }
                           );
+                        } else {
+                          onSort({
+                            key: x.key,
+                            direction:
+                              sort &&
+                              x.key === sort.key &&
+                              sort.direction === "asc"
+                                ? "desc"
+                                : "asc"
+                          });
+                        }
                       };
                     }
 
@@ -476,6 +492,10 @@ ADataTable.propTypes = {
     key: PropTypes.string,
     direction: PropTypes.oneOf(["asc", "desc"])
   }),
+  /**
+   * Allows third click of header sort icon to unset sorting.
+   */
+  toggleSort: PropTypes.bool,
   /**
    * Toggles the `striped` display variant. Darkened backgrounds for alternate rows.
    */
