@@ -30,18 +30,14 @@ const ASimpleTable = forwardRef(
 
     if (tight) {
       className += ` a-simple-table--tight`;
-    }
-
-    if (compact) {
+    } else if (compact) {
       className += ` a-simple-table--compact`;
-    }
-
-    if (comfy) {
+    } else if (comfy) {
       className += ` a-simple-table--comfy`;
-    }
-
-    if (spacious) {
+    } else if (spacious) {
       className += ` a-simple-table--spacious`;
+    } else {
+      className += ` a-simple-table--compact`;
     }
 
     if (propsClassName) {
