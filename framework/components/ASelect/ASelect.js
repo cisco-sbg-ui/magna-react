@@ -43,6 +43,9 @@ const ASelect = forwardRef(
       validateOnBlur,
       validationState,
       medium,
+      useTemplateForSelectedItem = false,
+      selectdDisplayTemplate,
+      selectedDisplayItem,
       ...rest
     },
     ref
@@ -313,6 +316,39 @@ const ASelect = forwardRef(
 
     const selectIcon = isOpen ? "chevron-up" : "chevron-down";
 
+    let selectionContent;
+
+    if (selectdDisplayTemplate) {
+      const itemContent = selectedDisplayItem || selectedItem;
+      if (itemContent) {
+        const MenuItemComponent = selectdDisplayTemplate;
+
+        selectionContent = (
+          <MenuItemComponent
+            key={`a-select__menu-item_selectedIndex`}
+            item={selectedDisplayItem || selectedItem}
+          />
+        );
+      } else {
+        selectionContent = placeholder;
+      }
+    } else if (!selectedItem) {
+      selectionContent = placeholder;
+    } else if (useTemplateForSelectedItem && itemTemplate) {
+      const MenuItemComponent = itemTemplate;
+
+      selectionContent = (
+        <MenuItemComponent
+          key={`a-select__menu-item_selectedIndex`}
+          item={selectedItem}
+        />
+      );
+    } else if (typeof selectedItem === "object") {
+      selectionContent = selectedItem[itemText];
+    } else if (typeof selectedItem === "string") {
+      selectionContent = selectedItem;
+    }
+
     return (
       <AInputBase
         {...rest}
@@ -332,24 +368,16 @@ const ASelect = forwardRef(
         focused={isFocused || isOpen}
         readOnly={readOnly}
         validationState={workingValidationState}
-        hint={error || hint}
-      >
+        hint={error || hint}>
         <div className="a-select__selection-wrapper">
-          <div {...selectionProps}>
-            {typeof selectedItem === "string"
-              ? selectedItem
-              : typeof selectedItem === "object"
-              ? selectedItem[itemText]
-              : placeholder}
-          </div>
+          <div {...selectionProps}>{selectionContent}</div>
           <AMenu ref={menuRef} {...menuComponentProps}>
             {prependContent}
             <div
               className={`a-select__menu-items__wrapper${
                 maxHeight ? " overflow-y-scroll" : ""
               }`}
-              style={{maxHeight}}
-            >
+              style={{maxHeight}}>
               {items.map((item, index) => {
                 const itemProps = {
                   value: null,
@@ -522,7 +550,17 @@ ASelect.propTypes = {
   /**
    * Magnetic medium size variant
    */
-  medium: PropTypes.bool
+  medium: PropTypes.bool,
+  /**
+   * Use the `itemTemplate` with the selectedItem in the ASelect input.
+   */
+  useTemplateForSelectedItem: PropTypes.bool,
+  /**
+   * Sets a React component to use when rendering the selected menu item. The component will be sent the following props: `item`. This overrides `useTemplateForSelectedItem`.
+   */
+  selectdDisplayTemplate: PropTypes.elementType,
+  /** If set, uses a custom item rather than the selectedItem when using `selectdDisplayTemplate` */
+  selectedDisplayItem: PropTypes.object
 };
 
 ASelect.displayName = "ASelect";
