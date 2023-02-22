@@ -44,7 +44,7 @@ const ASelect = forwardRef(
       validationState,
       medium,
       useTemplateForSelectedItem = false,
-      selectdDisplayTemplate,
+      selectedDisplayTemplate,
       selectedDisplayItem,
       ...rest
     },
@@ -318,10 +318,10 @@ const ASelect = forwardRef(
 
     let selectionContent;
 
-    if (selectdDisplayTemplate) {
+    if (selectedDisplayTemplate) {
       const itemContent = selectedDisplayItem || selectedItem;
       if (itemContent) {
-        const MenuItemComponent = selectdDisplayTemplate;
+        const MenuItemComponent = selectedDisplayTemplate;
 
         selectionContent = (
           <MenuItemComponent
@@ -558,8 +558,8 @@ ASelect.propTypes = {
   /**
    * Sets a React component to use when rendering the selected menu item. The component will be sent the following props: `item`. This overrides `useTemplateForSelectedItem`.
    */
-  selectdDisplayTemplate: PropTypes.elementType,
-  /** If set, uses a custom item rather than the selectedItem when using `selectdDisplayTemplate` */
+  selectedDisplayTemplate: PropTypes.elementType,
+  /** If set, uses a custom item rather than the selectedItem when using `selectedDisplayTemplate` */
   selectedDisplayItem: PropTypes.object
 };
 

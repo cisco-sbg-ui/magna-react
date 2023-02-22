@@ -356,7 +356,7 @@ The `ASelect` component inherits passed props.
   return (
     <ASelect
       dropdownClassName="custom-dropdown-class"
-      selectdDisplayTemplate={({className, item, ...rest}) => (
+      selectedDisplayTemplate={({className, item, ...rest}) => (
           <AListItem {...rest} twoLine className={className + (isDark ? " white--text" : " grey--darken-7--text")} style={{backgroundColor: "transparent"}}>
             <AListItemContent>
               <AListItemTitle>{item.text}</AListItemTitle>
