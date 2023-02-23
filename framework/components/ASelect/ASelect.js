@@ -265,7 +265,6 @@ const ASelect = forwardRef(
           } else if (e.keyCode === keyCodes.down) {
             e.preventDefault();
             const newItem = getNextItem(getSelectedIndex());
-            console.log(newItem);
             newItem && selectItem(newItem);
           }
         };
