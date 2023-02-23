@@ -70,10 +70,12 @@ const ASelect = forwardRef(
     }, [validationState]);
 
     useEffect(() => {
-      if (isOpen && selectedItemRef.current) {
-        selectedItemRef.current.focus();
+      if (isOpen && menuRef.current) {
+        setTimeout(() => {
+          menuRef.current.focus();
+        }, 0);
       }
-    }, [isOpen]);
+    }, [isOpen, menuRef]);
 
     useEffect(() => {
       const newSelectedItem = items.find((x) => x[itemSelected]);
