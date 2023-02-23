@@ -312,6 +312,86 @@ The `ASelect` component inherits passed props.
 `}
 />
 
+## Menu Item Templates, use as display
+
+<Playground
+  code={`() => {
+  const [role, setRole] = useState(null);
+  const {isDark} = useATheme();
+  return (
+    <ASelect
+      dropdownClassName="custom-dropdown-class"
+      useTemplateForSelectedItem
+      itemTemplate={({className, index, item, onClick, ...rest}) => (
+          <AListItem {...rest} twoLine className={className + (isDark ? " white--text" : " grey--darken-7--text")} style={{backgroundColor: "transparent"}}>
+            <AListItemContent onClick={onClick}>
+              <AListItemTitle>{item.text}</AListItemTitle>
+              <AListItemSubtitle>Created Date: {item.createdDate}</AListItemSubtitle>
+            </AListItemContent>
+            <AListItemAction>
+              <AButton icon tertiary><AIcon>edit</AIcon></AButton>
+            </AListItemAction>
+          </AListItem>
+        )
+      }
+      items={[
+        {value: 1, text: "Read", createdDate: "June 26, 2021"},
+        {value: 2, text: "Write", createdDate: "June 25, 2021"},
+        {value: 3, text: "Admin", createdDate: "June 24, 2021"}
+      ]}
+      label="Role"
+      onSelected={(item) => setRole(item)}
+    />
+  );
+}
+`}
+/>
+
+## Custom Display Template
+
+<Playground
+  code={`() => {
+  const [role, setRole] = useState(null);
+  const {isDark} = useATheme();
+  return (
+    <ASelect
+      dropdownClassName="custom-dropdown-class"
+      selectedDisplayTemplate={({className, item, ...rest}) => (
+          <AListItem {...rest} twoLine className={className + (isDark ? " white--text" : " grey--darken-7--text")} style={{backgroundColor: "transparent"}}>
+            <AListItemContent>
+              <AListItemTitle>{item.text}</AListItemTitle>
+              <AListItemSubtitle>CUSTOM DISPLAY</AListItemSubtitle>
+            </AListItemContent>
+
+          </AListItem>
+        )
+      }
+      itemTemplate={({className, index, item, onClick, ...rest}) => (
+          <AListItem {...rest} twoLine className={className + (isDark ? " white--text" : " grey--darken-7--text")} style={{backgroundColor: "transparent"}}>
+            <AListItemContent onClick={onClick}>
+              <AListItemTitle>{item.text}</AListItemTitle>
+              <AListItemSubtitle>Created Date: {item.createdDate}</AListItemSubtitle>
+            </AListItemContent>
+            <AListItemAction>
+              <AButton icon tertiary><AIcon>edit</AIcon></AButton>
+            </AListItemAction>
+          </AListItem>
+        )
+      }
+      items={[
+        {value: 1, text: "Read", createdDate: "June 26, 2021"},
+        {value: 2, text: "Write", createdDate: "June 25, 2021"},
+        {value: 3, text: "Admin", createdDate: "June 24, 2021"}
+      ]}
+      label="Role"
+      onSelected={(item) => setRole(item)}
+    />
+
+);
+}
+`}
+/>
+
 ## Accessibility Notes
 
 In addition to inheriting all of the accessibility features of `AMenu`,
