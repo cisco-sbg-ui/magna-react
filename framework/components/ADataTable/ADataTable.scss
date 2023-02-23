@@ -10,13 +10,13 @@ $hidden-table-col-width: 45px;
       }
     }
 
-    border-top: 2px solid transparent;
-    border-top-color: transparent;
+    //border-top: 2px solid transparent;
+    //border-top-color: transparent;
     &--sortable {
       cursor: pointer;
       &:focus,
       &:hover {
-        border-top: 2px solid map-deep-get($theme, "table", "header-focus") !important;
+        background-color: map-deep-get($theme, "table", "header-focus");
       }
     }
   }
