@@ -99,7 +99,7 @@ const ADataTable = forwardRef(
       headers,
       maxHeight,
       items,
-      toggleSort = false,
+      disableSortReset = false,
       onSort,
       onScrollToEnd,
       sort,
@@ -215,7 +215,7 @@ const ADataTable = forwardRef(
                           return;
                         }
 
-                        if (!toggleSort) {
+                        if (!disableSortReset) {
                           onSort(
                             sort &&
                               sort.key === x.key &&
@@ -495,7 +495,7 @@ ADataTable.propTypes = {
   /**
    * Allows third click of header sort icon to unset sorting.
    */
-  toggleSort: PropTypes.bool,
+  disableSortReset: PropTypes.bool,
   /**
    * Toggles the `striped` display variant. Darkened backgrounds for alternate rows.
    */

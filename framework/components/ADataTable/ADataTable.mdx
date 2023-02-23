@@ -95,7 +95,7 @@ import {ADataTable} from "@cisco-sbg-ui/magna-react";
 
 ### Two Stage Sort
 
-By default a table column can be unsorted. Use `toggleSort` to change sorting to flip between "asc" and "desc" on click without the unsorted state.
+By default a table column can be unsorted. Use `disableSortReset` to change sorting to flip between "asc" and "desc" on click without the unsorted state.
 
 <Playground
   code={`() => {
@@ -157,7 +157,7 @@ By default a table column can be unsorted. Use `toggleSort` to change sorting to
   ];
   return (
     <ADataTable
-      toggleSort
+      disableSortReset
       striped
       tight
       headers={headers}
