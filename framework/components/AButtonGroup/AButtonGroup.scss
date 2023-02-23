@@ -119,6 +119,10 @@ $btn-group-icon-font-size: rem(1);
     margin-right: 0px;
   }
 
+  &--small {
+    @include small-button;
+  }
+
   &--medium {
     @include medium-button;
   }
