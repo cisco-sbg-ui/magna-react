@@ -51,17 +51,12 @@ const AAlert = forwardRef(
 
     return (
       <div {...rest} role="alert" ref={ref} className={className}>
-        <AIcon
-          iconSet="magna"
-          className="a-alert__icon a-alert__icon--level"
-          size={19.5}
-        >
+        <AIcon className="a-alert__icon a-alert__icon--level" size={19.5}>
           {icon}
         </AIcon>
         <div className="a-alert__message">{children}</div>
         {dismissable && (
           <AIcon
-            iconSet="magna"
             className="a-alert__icon focus-box-shadow a-alert__icon--close"
             onClick={(e) => onClose && onClose(e)}
             onKeyDown={dismissableKeyDownHandler}

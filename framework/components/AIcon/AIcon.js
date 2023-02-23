@@ -8,16 +8,7 @@ import "./AIcon.scss";
 
 const AIcon = forwardRef(
   (
-    {
-      children,
-      className: propsClassName,
-      label,
-      left,
-      right,
-      size,
-      iconSet,
-      ...rest
-    },
+    {children, className: propsClassName, label, left, right, size, ...rest},
     ref
   ) => {
     let className = `a-icon`;
