@@ -124,4 +124,14 @@
   a.a-list-item--two-line {
     text-decoration: none;
   }
+
+  &--medium {
+    .a-list-item {
+      height: $input-height-medium;
+
+      &::after {
+        top: 9px !important;
+      }
+    }
+  }
 }

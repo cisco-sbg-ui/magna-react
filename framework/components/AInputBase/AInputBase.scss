@@ -170,7 +170,7 @@ $input-transition: border-color $transition-duration--extra-fast
 
   &--medium {
     .a-input-base__surface {
-      min-height: 34px;
+      min-height: $input-height-medium;
 
       &__append,
       &__prepend {
