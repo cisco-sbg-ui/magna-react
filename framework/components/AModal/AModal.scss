@@ -6,6 +6,12 @@
   width: 100vw;
   height: 100vh;
 
+  .a-panel {
+    &__title {
+      align-self: center;
+    }
+  }
+
   &--small > :first-child {
     width: 384px;
     min-width: unset;
