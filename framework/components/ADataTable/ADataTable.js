@@ -493,7 +493,7 @@ ADataTable.propTypes = {
     direction: PropTypes.oneOf(["asc", "desc"])
   }),
   /**
-   * Allows third click of header sort icon to unset sorting.
+   * Disables third click of header sort icon to unset sorting.
    */
   disableSortReset: PropTypes.bool,
   /**
