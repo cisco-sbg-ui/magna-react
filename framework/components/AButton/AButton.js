@@ -14,6 +14,7 @@ const AButton = forwardRef(
       disabled,
       href,
       icon,
+      small = false,
       medium = false,
       onClick,
       primary,
@@ -47,7 +48,9 @@ const AButton = forwardRef(
       className += " disabled";
     }
 
-    if (medium) {
+    if (small) {
+      className += " a-button--small";
+    } else if (medium) {
       className += " a-button--medium";
     }
 
@@ -151,6 +154,10 @@ AButton.propTypes = {
    * Destructive - button for destructive action, should be used with confirm dialog/modal when clicked
    */
   destructive: PropTypes.bool,
+  /**
+   * Apply Magnetic small size styles vs only re-skin styles, defaults to false
+   */
+  small: PropTypes.bool,
   /**
    * Apply Magnetic medium size styles vs only re-skin styles, defaults to false
    */

@@ -469,6 +469,10 @@ $btn-transition: color $transition-duration--extra-fast
   &--medium {
     @include medium-button;
   }
+
+  &--small {
+    @include small-button;
+  }
 }
 
 .a-app--animated .a-button {

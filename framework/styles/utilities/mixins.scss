@@ -121,3 +121,17 @@
     }
   }
 }
+
+@mixin small-button {
+  height: 28px;
+  padding: 5px 8px;
+  font-size: $font-size--xs;
+
+  &.a-button--icon {
+    padding: 8.25px;
+    svg.a-icon {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}

@@ -21,6 +21,7 @@ const AButtonGroup = forwardRef(
       rules,
       selectedValues,
       validationState = "default",
+      small = false,
       medium = false,
       ...rest
     },
@@ -98,7 +99,9 @@ const AButtonGroup = forwardRef(
       className += ` ${propsClassName}`;
     }
 
-    if (medium) {
+    if (small) {
+      className += " a-button-group--small";
+    } else if (medium) {
       className += " a-button-group--medium";
     }
 
@@ -164,6 +167,8 @@ AButtonGroup.propTypes = {
    * Applies a validation state.
    */
   validationState: PropTypes.oneOf(["default", "warning", "danger"]),
+  /** Magnetic small sizing */
+  small: PropTypes.bool,
   /** Magnetic medium sizing */
   medium: PropTypes.bool
 };
