@@ -326,7 +326,7 @@ const ASelect = forwardRef(
         selectionContent = (
           <MenuItemComponent
             key={`a-select__menu-item_selectedIndex`}
-            item={selectedDisplayItem || selectedItem}
+            item={itemContent}
           />
         );
       } else {
