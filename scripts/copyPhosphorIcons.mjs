@@ -20,15 +20,9 @@ const outputBase = "./svg";
 
 const {iconNameMap} = icons;
 
-const generatedListForPhosphor = Object.keys(iconNameMap).map((key) => {
-  const mappedValue = iconNameMap[key];
-
-  if (mappedValue) {
-    return mappedValue;
-  }
-
-  return key;
-});
+const generatedListForPhosphor = Object.entries(iconNameMap).map(
+  ([atomicKey, phosphorKey]) => phosphorKey || atomicKey
+);
 
 const copyIconFiles = () => {
   generatedListForPhosphor.forEach((key) => {
