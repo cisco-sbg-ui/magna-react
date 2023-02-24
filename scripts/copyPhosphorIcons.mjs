@@ -15,7 +15,7 @@ import icons from "../framework/components/AIcon/atomicMap.js";
  * Run `npm run copyPhosphorIcons`
  */
 
-const phosphorPath = `${os.homedir()}/Downloads/phosphor-icons/SVGs/Fill`;
+const phosphorPath = `${os.homedir()}/Downloads/phosphor-icons/SVGs/Regular`;
 const outputBase = "./svg";
 
 const {iconNameMap} = icons;
@@ -26,8 +26,12 @@ const generatedListForPhosphor = Object.entries(iconNameMap).map(
 
 const copyIconFiles = () => {
   generatedListForPhosphor.forEach((key) => {
+    if (key === "info") {
+      return;
+    }
+
     try {
-      const iconPath = path.resolve(`${phosphorPath}/${key}-fill.svg`);
+      const iconPath = path.resolve(`${phosphorPath}/${key}.svg`);
 
       const iconData = fs.readFileSync(iconPath, {encoding: "utf-8"}),
         outputPath = path.resolve(`${outputBase}/${key}.svg`);

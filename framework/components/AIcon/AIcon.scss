@@ -11,7 +11,7 @@ svg.a-icon {
 .a-icon {
   overflow: visible;
   width: 24px;
-  fill: currentColor;
+  stroke: currentColor;
 
   &--size-large {
     width: $icon-size-large;

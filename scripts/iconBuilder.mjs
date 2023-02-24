@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import {XMLParser, XMLBuilder} from "fast-xml-parser";
+import isEqual from "lodash-es/isEqual.js";
 
 const xmlOptions = {
   ignoreAttributes: false,
@@ -38,21 +39,24 @@ const mapSprites = () => {
         attrMap[k.replace("@_", "")] = v.svg[k];
       });
 
-    iconVariables += `"${key}": {
+    let outputData = `"${key}": {
       xml: <>${xmlContent}</>,
       props: ${JSON.stringify(attrMap)}},`;
-  }
 
-  iconVariables = iconVariables
-    .replaceAll("fill-rule=", "fillRule=")
-    .replaceAll("clip-rule=", "clipRule=")
-    .replaceAll("clip-path=", "clipPath=")
-    .replaceAll("stroke-width=", "strokeWidth=")
-    .replaceAll('fill="#889099"', "")
-    .replaceAll("class=", "className=")
-    .replaceAll("stroke-linejoin=", "strokeLinejoin=")
-    .replaceAll("stroke-linecap=", "strokeLinecap=")
-    .replaceAll("stroke-miterlimit=", "strokeMiterlimit=");
+    outputData = outputData
+      .replaceAll("fill-rule=", "fillRule=")
+      .replaceAll("clip-rule=", "clipRule=")
+      .replaceAll("clip-path=", "clipPath=")
+      .replaceAll("stroke-width=", "strokeWidth=")
+      .replaceAll('fill="#889099"', "")
+      .replaceAll(`stroke="#000"`, "")
+      .replaceAll("class=", "className=")
+      .replaceAll("stroke-linejoin=", "strokeLinejoin=")
+      .replaceAll("stroke-linecap=", "strokeLinecap=")
+      .replaceAll("stroke-miterlimit=", "strokeMiterlimit=");
+
+    iconVariables += outputData;
+  }
 
   return iconVariables;
 };
@@ -152,7 +156,17 @@ const sanitizeSvg = (element, options = {}, trackedIds = {}) => {
         }
       });
     } else if (typeof child === "object") {
-      toCheck.push(child);
+      if (
+        isEqual(child, {
+          "@_width": "256",
+          "@_height": "256",
+          "@_fill": "none"
+        })
+      ) {
+        delete element[key];
+      } else {
+        toCheck.push(child);
+      }
     }
 
     toCheck.forEach((check) => {
