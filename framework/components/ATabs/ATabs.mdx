@@ -178,6 +178,28 @@ Tabs will render in the DOM as anchor tags if the `href` property is defined.
 `}
 />
 
+### Oversized Vertical
+
+<Playground
+  code={`<>
+  <ATabGroup oversized vertical>
+    <ATab>
+      <ATabHeading>Heading One</ATabHeading>
+      Subtext One
+    </ATab>
+    <ATab>
+      <ATabHeading>Heading Two</ATabHeading>
+      Subtext Two
+    </ATab>
+    <ATab selected>
+      <ATabHeading>Heading Three</ATabHeading>
+      Subtext Three
+    </ATab>
+  </ATabGroup>
+</>
+`}
+/>
+
 ## Router Integrations
 
 On `ATab`, set the `component` property to your router's link type, for example:

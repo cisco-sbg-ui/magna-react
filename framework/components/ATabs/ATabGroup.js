@@ -50,6 +50,9 @@ const ATabGroup = forwardRef(
 
     if (oversized) {
       className += " a-tab-group--size-oversized";
+      if (vertical) {
+        className += " a-tab-group--size-oversized--vertical";
+      }
     } else if (tall) {
       className += " a-tab-group--size-tall";
     }

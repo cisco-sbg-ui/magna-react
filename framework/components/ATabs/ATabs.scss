@@ -38,8 +38,6 @@ $tab-oversized-margin: 0;
     &--vertical:active,
     &--vertical:focus,
     &--vertical:hover {
-      color: map-deep-get($theme, "tabs", "text-color--selected");
-
       @include vertical-tab-bar(
         $tab-bottom-bar-height,
         map-deep-get($theme, "tabs", "bar-color--hover")
@@ -105,12 +103,16 @@ $tab-oversized-margin: 0;
         "oversized-background-color"
       );
 
-      &:last-of-type {
+      &--vertical:not(:last-of-type) {
+        border-bottom: unset;
+      }
+
+      &:not(&--vertical):last-of-type {
         border-right: $border-width solid
           map-deep-get($theme, "control", "stroke-color");
       }
 
-      &--selected {
+      &--selected:not(&--vertical) {
         background-color: $tab-oversized--selected-background-color;
         border-top: $border-width solid transparent;
         border-bottom: $border-width solid transparent;
@@ -120,10 +122,31 @@ $tab-oversized-margin: 0;
         );
       }
 
-      &:focus,
-      &:hover {
+      &--selected--vertical {
+        background-color: $tab-oversized--selected-background-color;
+        @include vertical-tab-bar(
+          $tab-top-bar-height,
+          map-deep-get($theme, "tabs", "bar-color--selected")
+        );
+      }
+
+      &:not(&--vertical):focus,
+      &:not(&--vertical):hover {
         border-top: $border-width solid transparent;
         @include tab-bar(
+          $tab-top-bar-height,
+          map-deep-get($theme, "tabs", "bar-color--hover")
+        );
+        background-color: map-deep-get(
+          $theme,
+          "tabs",
+          "oversized--hover-background-color"
+        );
+      }
+
+      &--vertical:focus,
+      &--vertical:hover {
+        @include vertical-tab-bar(
           $tab-top-bar-height,
           map-deep-get($theme, "tabs", "bar-color--hover")
         );
