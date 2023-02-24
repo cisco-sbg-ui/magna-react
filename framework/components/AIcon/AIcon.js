@@ -16,19 +16,9 @@ const ignoreStrokeReplace = [
 
 const AIcon = forwardRef(
   (
-    {
-      children,
-      className: propsClassName,
-      label,
-      left,
-      right,
-      size,
-      style: propsStyle,
-      ...rest
-    },
+    {children, className: propsClassName, label, left, right, size, ...rest},
     ref
   ) => {
-    const style = {...propsStyle};
     let className = `a-icon`;
 
     if (size && isNaN(size)) {
@@ -52,11 +42,12 @@ const AIcon = forwardRef(
         ...rest,
         ref,
         className,
+        style: {},
         "aria-label": ariaLabel
       };
 
     if (size && !isNaN(size)) {
-      componentProps.style = {width: size};
+      componentProps.style.width = size;
     }
 
     let iconDef;
@@ -74,12 +65,11 @@ const AIcon = forwardRef(
       const {props: iconProps, xml} = iconDef;
 
       if (ignoreStrokeReplace.includes(children)) {
-        console.log(children);
-        style.stroke = "none";
+        componentProps.style.stroke = "none";
       }
 
       return (
-        <svg {...iconProps} {...componentProps} style={style}>
+        <svg {...iconProps} {...componentProps}>
           {xml}
         </svg>
       );
@@ -87,7 +77,7 @@ const AIcon = forwardRef(
 
     // Fallback to atomic icon for safety
     return (
-      <svg {...componentProps} style={style} viewBox="0 0 16 16">
+      <svg {...componentProps} viewBox="0 0 16 16">
         <path d={Icons[children]} />
       </svg>
     );
