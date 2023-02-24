@@ -260,7 +260,6 @@ const ADataTable = forwardRef(
 
                     let sortIcon = x.sortable && (
                       <AIcon
-                        iconSet="magna"
                         left={x.align === "end"}
                         right={x.align !== "end"}
                         className={`a-data-table__header__sort ${

@@ -1,19 +1,44 @@
 import React from "react";
 
 const MagnaIcons = {
-  at: {
+  alarm: {
     xml: (
       <>
-        <path d="M128,24A104.1,104.1,0,0,0,24.1,132.1c2.1,54.7,47,98.8,101.8,99.9a104,104,0,0,0,91.4-50.8,4,4,0,0,0-4.1-6,52.5,52.5,0,0,1-9.2.8c-18.3,0-28.5-8-33.9-14.7a43.9,43.9,0,0,1-3.4-5A48,48,0,1,1,128,80a47.4,47.4,0,0,1,32,12.3v-4a8.2,8.2,0,0,1,7.5-8.3,8,8,0,0,1,8.5,8v40c0,14.6,4.9,32,28,32s27.6-16.2,28-30.5V128A104.1,104.1,0,0,0,128,24Z"></path>
-        <circle cx="128" cy="128" r="32"></circle>
-      </>
-    ),
-    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
-  },
-  bell: {
-    xml: (
-      <>
-        <path d="M220.8,175.9c-5.9-10.2-13-29.6-13-63.9v-7.1c0-44.3-35.5-80.6-79.2-80.9H128a79.9,79.9,0,0,0-79.8,80v8c0,34.3-7.1,53.7-13,63.9A16,16,0,0,0,49,200H88a40,40,0,0,0,80,0h39a15.9,15.9,0,0,0,13.9-8A16.2,16.2,0,0,0,220.8,175.9ZM128,224a24.1,24.1,0,0,1-24-24h48A24.1,24.1,0,0,1,128,224Z"></path>
+        <polyline
+          points="128 72 128 128 184 128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <circle
+          cx="128"
+          cy="128"
+          r="88"
+          fill="none"
+          strokeMiterlimit="10"
+          strokeWidth="16"
+        ></circle>
+        <line
+          x1="195.9"
+          y1="26.2"
+          x2="229.8"
+          y2="60.1"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="26.2"
+          y1="60.1"
+          x2="60.1"
+          y2="26.2"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -21,55 +46,15 @@ const MagnaIcons = {
   circle: {
     xml: (
       <>
-        <circle cx="128" cy="128" r="104"></circle>
-      </>
-    ),
-    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
-  },
-  clock: {
-    xml: (
-      <>
-        <path d="M128,24A104,104,0,1,0,232,128,104.2,104.2,0,0,0,128,24Zm56,112H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48a8,8,0,0,1,0,16Z"></path>
-      </>
-    ),
-    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
-  },
-  copy: {
-    xml: (
-      <>
-        <path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32Zm-8,128H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
-      </>
-    ),
-    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
-  },
-  database: {
-    xml: (
-      <>
-        <path d="M128,24C74.2,24,32,48.6,32,80v96c0,31.4,42.2,56,96,56s96-24.6,96-56V80C224,48.6,181.8,24,128,24Zm80,104c0,9.6-7.9,19.4-21.6,26.9C170.9,163.4,150.2,168,128,168s-42.9-4.6-58.4-13.1C55.9,147.4,48,137.6,48,128V111.4C65.1,126.3,94.2,136,128,136s62.9-9.7,80-24.6Zm-21.6,74.9C170.9,211.4,150.2,216,128,216s-42.9-4.6-58.4-13.1C55.9,195.4,48,185.6,48,176V159.4C65.1,174.3,94.2,184,128,184s62.9-9.7,80-24.6V176C208,185.6,200.1,195.4,186.4,202.9Z"></path>
-      </>
-    ),
-    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
-  },
-  desktop: {
-    xml: (
-      <>
-        <path d="M208,40H48A24.1,24.1,0,0,0,24,64V176a24.1,24.1,0,0,0,24,24h72v16H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V200h72a24.1,24.1,0,0,0,24-24V64A24.1,24.1,0,0,0,208,40Zm0,144H48a8,8,0,0,1-8-8V160H216v16A8,8,0,0,1,208,184Z"></path>
-      </>
-    ),
-    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
-  },
-  envelope: {
-    xml: (
-      <>
-        <path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM98.7,128,40,181.8V74.2Zm11.8,10.9,12.1,11a8,8,0,0,0,10.8,0l12.1-11L203.4,192H52.6ZM157.3,128,216,74.2V181.8Z"></path>
-      </>
-    ),
-    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
-  },
-  file: {
-    xml: (
-      <>
-        <path d="M213.7,82.3l-56-56A8.1,8.1,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8.1,8.1,0,0,0,213.7,82.3ZM152,88V44l44,44Z"></path>
+        <circle
+          cx="128"
+          cy="128"
+          r="96"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -77,55 +62,43 @@ const MagnaIcons = {
   globe: {
     xml: (
       <>
-        <path d="M225.9,163.2l.3-1a103.7,103.7,0,0,0,0-68.4l-.3-1A104.2,104.2,0,0,0,128,24h0A104.2,104.2,0,0,0,30.1,92.8l-.3,1a103.7,103.7,0,0,0,0,68.4l.3,1A104.4,104.4,0,0,0,128,232h0A104.2,104.2,0,0,0,225.9,163.2ZM128,45.6A108.6,108.6,0,0,1,153.5,88h-51A108.6,108.6,0,0,1,128,45.6ZM102.5,168h51A108.6,108.6,0,0,1,128,210.4,108.6,108.6,0,0,1,102.5,168Zm-4.2-16a126.4,126.4,0,0,1,0-48h59.4a126.4,126.4,0,0,1,0,48ZM174,104h38.7a88.9,88.9,0,0,1,0,48H174a145,145,0,0,0,0-48Zm32.4-16h-36a128.7,128.7,0,0,0-24.1-46.1A88.6,88.6,0,0,1,206.4,88ZM146.3,214.1A128.7,128.7,0,0,0,170.4,168h36A88.6,88.6,0,0,1,146.3,214.1Z"></path>
-      </>
-    ),
-    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
-  },
-  plugs: {
-    xml: (
-      <>
-        <path d="M237.7,29.7,211.3,56l5.4,5.4a31.9,31.9,0,0,1,0,45.2L191.3,132l2.4,2.3a8.1,8.1,0,0,1,0,11.4,8.2,8.2,0,0,1-11.4,0l-8-8h0l-56-56h0l-8-8a8.1,8.1,0,0,1,11.4-11.4l2.3,2.4,25.4-25.4a31.9,31.9,0,0,1,45.2,0l5.4,5.4,26.3-26.4a8.1,8.1,0,0,1,11.4,11.4ZM138.3,138.3,120,156.7,99.3,136l18.4-18.3a8.1,8.1,0,0,0-11.4-11.4L88,124.7l-6.3-6.4h0l-8-8a8.1,8.1,0,0,0-11.4,11.4l2.4,2.3L39.3,149.4a31.9,31.9,0,0,0,0,45.2l5.4,5.4L18.3,226.3a8.1,8.1,0,0,0,0,11.4,8.2,8.2,0,0,0,11.4,0L56,211.3l5.4,5.4a31.9,31.9,0,0,0,45.2,0L132,191.3l2.3,2.4a8.2,8.2,0,0,0,11.4,0,8.1,8.1,0,0,0,0-11.4l-8-8h0l-6.4-6.3,18.4-18.3a8.1,8.1,0,0,0-11.4-11.4Z"></path>
-      </>
-    ),
-    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
-  },
-  prohibit: {
-    xml: (
-      <>
-        <path d="M200,128a71.3,71.3,0,0,1-15.8,44.9L83.1,71.8A71.3,71.3,0,0,1,128,56,72.1,72.1,0,0,1,200,128ZM56,128a72.1,72.1,0,0,0,72,72,71.3,71.3,0,0,0,44.9-15.8L71.8,83.1A71.3,71.3,0,0,0,56,128Zm180,0A108,108,0,1,1,128,20,108.1,108.1,0,0,1,236,128Zm-20,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path>
-      </>
-    ),
-    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
-  },
-  question: {
-    xml: (
-      <>
-        <path d="M128,24A104,104,0,1,0,232,128,104.2,104.2,0,0,0,128,24Zm0,168a12,12,0,1,1,12-12A12,12,0,0,1,128,192Zm8-48.9v.9a8,8,0,0,1-16,0v-8a8,8,0,0,1,8-8,20,20,0,1,0-20-20,8,8,0,0,1-16,0,36,36,0,1,1,44,35.1Z"></path>
-      </>
-    ),
-    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
-  },
-  sparkle: {
-    xml: (
-      <>
-        <path d="M208.9,144a15.8,15.8,0,0,1-10.5,15l-52.2,19.2L127,230.4a16,16,0,0,1-30,0L77.8,178.2,25.6,159a16,16,0,0,1,0-30l52.2-19.2L97,57.6a16,16,0,0,1,30,0l19.2,52.2L198.4,129A15.8,15.8,0,0,1,208.9,144ZM152,48h16V64a8,8,0,0,0,16,0V48h16a8,8,0,0,0,0-16H184V16a8,8,0,0,0-16,0V32H152a8,8,0,0,0,0,16Zm88,32h-8V72a8,8,0,0,0-16,0v8h-8a8,8,0,0,0,0,16h8v8a8,8,0,0,0,16,0V96h8a8,8,0,0,0,0-16Z"></path>
-      </>
-    ),
-    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
-  },
-  star: {
-    xml: (
-      <>
-        <path d="M239.2,97.4A16.4,16.4,0,0,0,224.6,86l-59.4-4.1-22-55.5A16.4,16.4,0,0,0,128,16h0a16.4,16.4,0,0,0-15.2,10.4L90.4,82.2,31.4,86A16.5,16.5,0,0,0,16.8,97.4,16.8,16.8,0,0,0,22,115.5l45.4,38.4L53.9,207a18.5,18.5,0,0,0,7,19.6,18,18,0,0,0,20.1.6l46.9-29.7h.2l50.5,31.9a16.1,16.1,0,0,0,8.7,2.6,16.5,16.5,0,0,0,15.8-20.8l-14.3-58.1L234,115.5A16.8,16.8,0,0,0,239.2,97.4Z"></path>
-      </>
-    ),
-    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
-  },
-  tag: {
-    xml: (
-      <>
-        <path d="M240,126.9,135.5,22.4A15.9,15.9,0,0,0,121.1,18L40.4,34.2a7.9,7.9,0,0,0-6.2,6.2L18,121.1a15.9,15.9,0,0,0,4.4,14.4L126.9,240a15.9,15.9,0,0,0,22.6,0L240,149.5a15.9,15.9,0,0,0,0-22.6ZM84,96A12,12,0,1,1,96,84,12,12,0,0,1,84,96Z"></path>
+        <circle
+          cx="128"
+          cy="128"
+          r="96"
+          fill="none"
+          strokeMiterlimit="10"
+          strokeWidth="16"
+        ></circle>
+        <line
+          x1="37.5"
+          y1="96"
+          x2="218.5"
+          y2="96"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="37.5"
+          y1="160"
+          x2="218.5"
+          y2="160"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <ellipse
+          cx="128"
+          cy="128"
+          rx="40"
+          ry="93.4"
+          fill="none"
+          strokeMiterlimit="10"
+          strokeWidth="16"
+        ></ellipse>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -133,24 +106,23 @@ const MagnaIcons = {
   terminal: {
     xml: (
       <>
-        <path d="M120,128a8,8,0,0,0-2.7-6l-72-64A8,8,0,1,0,34.7,70L100,128,34.7,186A8,8,0,0,0,40,200a8.1,8.1,0,0,0,5.3-2l72-64A8,8,0,0,0,120,128Z"></path>
-        <path d="M216,184H120a8,8,0,0,0,0,16h96a8,8,0,0,0,0-16Z"></path>
-      </>
-    ),
-    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
-  },
-  tray: {
-    xml: (
-      <>
-        <path d="M208,32H48A16,16,0,0,0,32,48V159.9h0V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32Zm0,176H48V168H76.7L96,187.3a15.9,15.9,0,0,0,11.3,4.7h41.4a15.9,15.9,0,0,0,11.3-4.7L179.3,168H208v40Z"></path>
-      </>
-    ),
-    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
-  },
-  user: {
-    xml: (
-      <>
-        <path d="M231.9,212a120.7,120.7,0,0,0-67.1-54.2,72,72,0,1,0-73.6,0A120.7,120.7,0,0,0,24.1,212a7.7,7.7,0,0,0,0,8,7.8,7.8,0,0,0,6.9,4H225a7.8,7.8,0,0,0,6.9-4A7.7,7.7,0,0,0,231.9,212Z"></path>
+        <polyline
+          points="40 64 112 128 40 192"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <line
+          x1="120"
+          y1="192"
+          x2="216"
+          y2="192"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -158,17 +130,13 @@ const MagnaIcons = {
   activity: {
     xml: (
       <>
-        <path d="M160,216h-.4a8.1,8.1,0,0,1-7.1-5.2L95.4,60.8,63.3,131.3A8,8,0,0,1,56,136H24a8,8,0,0,1,0-16H50.9L88.7,36.7A8.2,8.2,0,0,1,96.3,32a8,8,0,0,1,7.2,5.2L161,188.1l31.8-63.7A8.2,8.2,0,0,1,200,120h32a8,8,0,0,1,0,16H204.9l-37.7,75.6A8.2,8.2,0,0,1,160,216Z"></path>
-      </>
-    ),
-    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
-  },
-  alarm: {
-    xml: (
-      <>
-        <path d="M235.5,54.5l-34-34a8,8,0,1,0-11.3,11.3l34,34a8,8,0,0,0,5.6,2.3,8.3,8.3,0,0,0,5.7-2.3A8,8,0,0,0,235.5,54.5Z"></path>
-        <path d="M65.8,20.5a8,8,0,0,0-11.3,0l-34,34a8,8,0,0,0,0,11.3,8.3,8.3,0,0,0,5.7,2.3,8,8,0,0,0,5.6-2.3l34-34A8,8,0,0,0,65.8,20.5Z"></path>
-        <path d="M224,125.2a14.8,14.8,0,0,1-.1-2.1h0A96,96,0,0,0,133,32.1H123A96,96,0,0,0,32.1,123h0a14.8,14.8,0,0,1-.1,2.1v5.6a14.8,14.8,0,0,1,.1,2.1h0A96,96,0,0,0,123,223.9h10A96,96,0,0,0,223.9,133h0a14.8,14.8,0,0,1,.1-2.1v-5.6ZM184,136H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48a8,8,0,0,1,0,16Z"></path>
+        <polyline
+          points="24 128 56 128 96 40 160 208 200 128 232 128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -283,7 +251,75 @@ const MagnaIcons = {
   aperture: {
     xml: (
       <>
-        <path d="M232,128A104.1,104.1,0,0,0,128,24,104.1,104.1,0,0,0,24,128,104.1,104.1,0,0,0,128,232h.1A104.1,104.1,0,0,0,232,128ZM49.2,88.9l51.2,9.4L46.7,161.5A88,88,0,0,1,49.2,88.9Zm160.1,5.6a88,88,0,0,1-2.5,72.6l-51.2-9.4Zm-8-15.2L167.6,119l-28-78.2a86.8,86.8,0,0,1,50.6,25A88.5,88.5,0,0,1,201.3,79.3ZM122.4,40.2l17.5,49L58.3,74.3a99.2,99.2,0,0,1,7.5-8.5A87.1,87.1,0,0,1,122.4,40.2ZM54.7,176.7,88.4,137l28,78.2a86.8,86.8,0,0,1-50.6-25A88.5,88.5,0,0,1,54.7,176.7Zm78.9,39.1-17.5-49,23,4.2h.1l58.5,10.7a99.2,99.2,0,0,1-7.5,8.5A87.1,87.1,0,0,1,133.6,215.8Z"></path>
+        <circle
+          cx="128"
+          cy="128"
+          r="96"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></circle>
+        <line
+          x1="128"
+          y1="32"
+          x2="164.7"
+          y2="134.7"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="44.9"
+          y1="80"
+          x2="152.1"
+          y2="99.6"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="44.9"
+          y1="176"
+          x2="115.5"
+          y2="92.9"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="128"
+          y1="224"
+          x2="91.3"
+          y2="121.3"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="211.1"
+          y1="176"
+          x2="103.9"
+          y2="156.4"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="211.1"
+          y1="80"
+          x2="140.5"
+          y2="163.1"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -291,7 +327,41 @@ const MagnaIcons = {
   "archive-tray": {
     xml: (
       <>
-        <path d="M208,32H48A16,16,0,0,0,32,48V159.9h0V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM88.4,112.4a8,8,0,0,1,11.3,0L120,132.7V72a8,8,0,0,1,16,0v60.7l20.3-20.3a8,8,0,0,1,11.3,11.3l-33.9,34h-.2l-.4.4h-.2l-.5.3c0,.1-.1.1-.1.2l-.5.3h-.2l-.5.3H131l-.7.3h-4.6l-.7-.3h-.1l-.5-.3h-.2l-.5-.3c0-.1-.1-.1-.1-.2l-.5-.3h-.2l-.4-.4h-.2l-33.9-34A8,8,0,0,1,88.4,112.4ZM208,208H48V168H76.7L96,187.3a15.9,15.9,0,0,0,11.3,4.7h41.4a15.9,15.9,0,0,0,11.3-4.7L179.3,168H208v40Z"></path>
+        <rect
+          x="40"
+          y="40"
+          width="176"
+          height="176"
+          rx="8"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></rect>
+        <polyline
+          points="94.1 118.1 128 152 161.9 118.1"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <line
+          x1="128"
+          y1="72"
+          x2="128"
+          y2="152"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <path
+          d="M40,160H76.7a7.9,7.9,0,0,1,5.6,2.3l19.4,19.4a7.9,7.9,0,0,0,5.6,2.3h41.4a7.9,7.9,0,0,0,5.6-2.3l19.4-19.4a7.9,7.9,0,0,1,5.6-2.3H216"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -299,7 +369,20 @@ const MagnaIcons = {
   "arrow-bend-up-left": {
     xml: (
       <>
-        <path d="M232,200a8,8,0,0,1-16,0,88.1,88.1,0,0,0-88-88H88v40a8,8,0,0,1-4.9,7.4,8.5,8.5,0,0,1-3.1.6,8.3,8.3,0,0,1-5.7-2.3l-48-48a8.1,8.1,0,0,1,0-11.4l48-48a8.4,8.4,0,0,1,8.8-1.7A8,8,0,0,1,88,56V96h40A104.2,104.2,0,0,1,232,200Z"></path>
+        <polyline
+          points="80 152 32 104 80 56"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <path
+          d="M224,200a96,96,0,0,0-96-96H32"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -307,7 +390,31 @@ const MagnaIcons = {
   "arrow-circle-down-right": {
     xml: (
       <>
-        <path d="M128,24A104,104,0,1,0,232,128,104.2,104.2,0,0,0,128,24Zm36,132a8.5,8.5,0,0,1-.6,3.1,8.2,8.2,0,0,1-4.3,4.3,8.5,8.5,0,0,1-3.1.6H108a8,8,0,0,1,0-16h28.7L94.3,105.7a8.1,8.1,0,0,1,11.4-11.4L148,136.7V108a8,8,0,0,1,16,0Z"></path>
+        <circle
+          cx="128"
+          cy="128"
+          r="96"
+          fill="none"
+          strokeMiterlimit="10"
+          strokeWidth="16"
+        ></circle>
+        <polyline
+          points="108 156 156 156 156 108"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <line
+          x1="100"
+          y1="100"
+          x2="156"
+          y2="156"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -315,7 +422,31 @@ const MagnaIcons = {
   "arrow-circle-right": {
     xml: (
       <>
-        <path d="M128,24A104,104,0,1,0,232,128,104.2,104.2,0,0,0,128,24Zm47.4,107.1a8.7,8.7,0,0,1-1.8,2.6l-33.9,33.9a7.6,7.6,0,0,1-5.6,2.3,7.8,7.8,0,0,1-5.7-2.3,8,8,0,0,1,0-11.3L148.7,136H88a8,8,0,0,1,0-16h60.7L128.4,99.7a8,8,0,0,1,11.3-11.3l33.9,33.9a8.7,8.7,0,0,1,1.8,2.6A8.3,8.3,0,0,1,175.4,131.1Z"></path>
+        <circle
+          cx="128"
+          cy="128"
+          r="96"
+          fill="none"
+          strokeMiterlimit="10"
+          strokeWidth="16"
+        ></circle>
+        <polyline
+          points="134.1 161.9 168 128 134.1 94.1"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <line
+          x1="88"
+          y1="128"
+          x2="168"
+          y2="128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -323,7 +454,31 @@ const MagnaIcons = {
   "arrow-circle-up": {
     xml: (
       <>
-        <path d="M128,24A104,104,0,1,0,232,128,104.2,104.2,0,0,0,128,24Zm39.6,103.6a7.8,7.8,0,0,1-5.7,2.3,7.6,7.6,0,0,1-5.6-2.3L136,107.3V168a8,8,0,0,1-16,0V107.3L99.7,127.6a8,8,0,0,1-11.3-11.3l33.9-33.9a8.7,8.7,0,0,1,2.6-1.8,8.3,8.3,0,0,1,6.2,0,8.7,8.7,0,0,1,2.6,1.8l33.9,33.9A8,8,0,0,1,167.6,127.6Z"></path>
+        <circle
+          cx="128"
+          cy="128"
+          r="96"
+          fill="none"
+          strokeMiterlimit="10"
+          strokeWidth="16"
+        ></circle>
+        <polyline
+          points="94.1 121.9 128 88 161.9 121.9"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <line
+          x1="128"
+          y1="168"
+          x2="128"
+          y2="88"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -331,7 +486,92 @@ const MagnaIcons = {
   "arrow-clockwise": {
     xml: (
       <>
-        <path d="M232.2,51.7v48a8,8,0,0,1-8,8h-48a8,8,0,0,1-5.7-13.6l18.4-18.4-4.3-4.3a80,80,0,1,0,0,113.2,7.9,7.9,0,0,1,11.3,0,8,8,0,0,1,0,11.3,96,96,0,1,1,0-135.8l4.3,4.3,18.3-18.3a8,8,0,0,1,8.7-1.8A8.2,8.2,0,0,1,232.2,51.7Z"></path>
+        <polyline
+          points="176.2 99.7 224.2 99.7 224.2 51.7"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <path
+          d="M190.2,190.2a88,88,0,1,1,0-124.4l34,33.9"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  "arrow-down-left": {
+    xml: (
+      <>
+        <line
+          x1="192"
+          y1="64"
+          x2="64"
+          y2="192"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <polyline
+          points="168 192 64 192 64 88"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  "arrow-down-right": {
+    xml: (
+      <>
+        <line
+          x1="64"
+          y1="64"
+          x2="192"
+          y2="192"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <polyline
+          points="88 192 192 192 192 88"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  "arrow-down": {
+    xml: (
+      <>
+        <line
+          x1="128"
+          y1="40"
+          x2="128"
+          y2="216"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <polyline
+          points="56 144 128 216 200 144"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -339,7 +579,44 @@ const MagnaIcons = {
   "arrow-elbow-right-up": {
     xml: (
       <>
-        <path d="M231.4,99.1A8,8,0,0,1,224,104H184v88a8,8,0,0,1-8,8H32a8,8,0,0,1,0-16H168V104H128a8,8,0,0,1-7.4-4.9,8.4,8.4,0,0,1,1.7-8.8l48-48a8.1,8.1,0,0,1,11.4,0l48,48A8.4,8.4,0,0,1,231.4,99.1Z"></path>
+        <polyline
+          points="128 96 176 48 224 96"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <polyline
+          points="32 192 176 192 176 48"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  "arrow-left": {
+    xml: (
+      <>
+        <line
+          x1="216"
+          y1="128"
+          x2="40"
+          y2="128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <polyline
+          points="112 56 40 128 112 200"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -347,7 +624,33 @@ const MagnaIcons = {
   "arrow-line-left": {
     xml: (
       <>
-        <path d="M232,128a8,8,0,0,1-8,8H152v64a8,8,0,0,1-4.9,7.4,8.5,8.5,0,0,1-3.1.6,8.3,8.3,0,0,1-5.7-2.3l-72-72a8.1,8.1,0,0,1,0-11.4l72-72a8.4,8.4,0,0,1,8.8-1.7A8,8,0,0,1,152,56v64h72A8,8,0,0,1,232,128ZM40,32a8,8,0,0,0-8,8V216a8,8,0,0,0,16,0V40A8,8,0,0,0,40,32Z"></path>
+        <line
+          x1="224"
+          y1="128"
+          x2="72"
+          y2="128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="40"
+          y1="40"
+          x2="40"
+          y2="216"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <polyline
+          points="144 56 72 128 144 200"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -355,7 +658,57 @@ const MagnaIcons = {
   "arrow-line-right": {
     xml: (
       <>
-        <path d="M189.7,122.3a8.1,8.1,0,0,1,0,11.4l-72,72A8.3,8.3,0,0,1,112,208a8.5,8.5,0,0,1-3.1-.6A8,8,0,0,1,104,200V136H32a8,8,0,0,1,0-16h72V56a8,8,0,0,1,4.9-7.4,8.4,8.4,0,0,1,8.8,1.7ZM216,32a8,8,0,0,0-8,8V216a8,8,0,0,0,16,0V40A8,8,0,0,0,216,32Z"></path>
+        <line
+          x1="32"
+          y1="128"
+          x2="184"
+          y2="128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="216"
+          y1="40"
+          x2="216"
+          y2="216"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <polyline
+          points="112 56 184 128 112 200"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  "arrow-right": {
+    xml: (
+      <>
+        <line
+          x1="40"
+          y1="128"
+          x2="216"
+          y2="128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <polyline
+          points="144 56 216 128 144 200"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -363,7 +716,30 @@ const MagnaIcons = {
   "arrow-square-in": {
     xml: (
       <>
-        <path d="M120,144v60a8,8,0,0,1-4.9,7.4,8.5,8.5,0,0,1-3.1.6,8.3,8.3,0,0,1-5.7-2.3L82,185.3,45.6,221.7A8,8,0,0,1,40,224a8.3,8.3,0,0,1-5.7-2.3,8,8,0,0,1,0-11.3L70.7,174,46.3,149.7a8.4,8.4,0,0,1-1.7-8.8A8,8,0,0,1,52,136h60A8,8,0,0,1,120,144ZM208,32H72A16,16,0,0,0,56,48V96a8,8,0,0,0,16,0V48H208V184H160a8,8,0,0,0,0,16h48a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32Z"></path>
+        <polyline
+          points="112 204 112 144 52 144"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <line
+          x1="40"
+          y1="216"
+          x2="112"
+          y2="144"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <path
+          d="M160,192h48a8,8,0,0,0,8-8V48a8,8,0,0,0-8-8H72a8,8,0,0,0-8,8V96"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -371,7 +747,78 @@ const MagnaIcons = {
   "arrow-square-out": {
     xml: (
       <>
-        <path d="M224,100a8,8,0,0,1-4.9,7.4,8.5,8.5,0,0,1-3.1.6,8.3,8.3,0,0,1-5.7-2.3L186,81.3l-36.4,36.4A8,8,0,0,1,144,120a8.3,8.3,0,0,1-5.7-2.3,8,8,0,0,1,0-11.3L174.7,70,150.3,45.7a8.4,8.4,0,0,1-1.7-8.8A8,8,0,0,1,156,32h60a8,8,0,0,1,8,8Zm-40,36a8,8,0,0,0-8,8v64H48V80h64a8,8,0,0,0,0-16H48A16,16,0,0,0,32,80V208a16,16,0,0,0,16,16H176a16,16,0,0,0,16-16V144A8,8,0,0,0,184,136Z"></path>
+        <polyline
+          points="216 100 216 40 156 40"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <line
+          x1="144"
+          y1="112"
+          x2="216"
+          y2="40"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <path
+          d="M184,144v64a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V80a8,8,0,0,1,8-8h64"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  "arrow-up-left": {
+    xml: (
+      <>
+        <line
+          x1="192"
+          y1="192"
+          x2="64"
+          y2="64"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <polyline
+          points="168 64 64 64 64 168"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  "arrow-up-right": {
+    xml: (
+      <>
+        <line
+          x1="64"
+          y1="192"
+          x2="192"
+          y2="64"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <polyline
+          points="88 64 192 64 192 168"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -379,7 +826,23 @@ const MagnaIcons = {
   "arrow-up": {
     xml: (
       <>
-        <path d="M207.4,115.1A8,8,0,0,1,200,120H136v96a8,8,0,0,1-16,0V120H56a8,8,0,0,1-7.4-4.9,8.4,8.4,0,0,1,1.7-8.8l72-72a8.1,8.1,0,0,1,11.4,0l72,72A8.4,8.4,0,0,1,207.4,115.1Z"></path>
+        <line
+          x1="128"
+          y1="216"
+          x2="128"
+          y2="40"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <polyline
+          points="56 112 128 40 200 112"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -387,7 +850,34 @@ const MagnaIcons = {
   "arrows-clockwise": {
     xml: (
       <>
-        <path d="M232.2,51.7v48a8,8,0,0,1-8,8h-48a8,8,0,0,1-5.7-13.6l18.4-18.4-4.3-4.3a80.2,80.2,0,0,0-113.2,0,7.9,7.9,0,0,1-11.3,0,8,8,0,0,1,0-11.3,96.2,96.2,0,0,1,135.8,0l4.3,4.3,18.3-18.3a8,8,0,0,1,8.7-1.8A8.2,8.2,0,0,1,232.2,51.7ZM184.6,184.6a80.2,80.2,0,0,1-113.2,0l-4.3-4.3,18.4-18.4a8,8,0,0,0-5.7-13.6h-48a8,8,0,0,0-8,8v48a8.2,8.2,0,0,0,5,7.4,8,8,0,0,0,3,.6,7.8,7.8,0,0,0,5.7-2.4l18.3-18.3,4.3,4.3a96.1,96.1,0,0,0,135.8,0,8,8,0,0,0,0-11.3A7.9,7.9,0,0,0,184.6,184.6Z"></path>
+        <polyline
+          points="176.2 99.7 224.2 99.7 224.2 51.7"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <polyline
+          points="79.8 156.3 31.8 156.3 31.8 204.3"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <path
+          d="M65.8,65.8a87.9,87.9,0,0,1,124.4,0l34,33.9"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M190.2,190.2a87.9,87.9,0,0,1-124.4,0l-34-33.9"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -395,7 +885,40 @@ const MagnaIcons = {
   "arrows-down-up": {
     xml: (
       <>
-        <path d="M119.4,172.9a8.4,8.4,0,0,1-1.7,8.8l-32,32a8.2,8.2,0,0,1-11.4,0l-32-32a8.4,8.4,0,0,1-1.7-8.8A8,8,0,0,1,48,168H72V48a8,8,0,0,1,16,0V168h24A8,8,0,0,1,119.4,172.9Zm94.3-98.6-32-32a8.1,8.1,0,0,0-11.4,0l-32,32a8.4,8.4,0,0,0-1.7,8.8A8,8,0,0,0,144,88h24V208a8,8,0,0,0,16,0V88h24a8,8,0,0,0,7.4-4.9A8.4,8.4,0,0,0,213.7,74.3Z"></path>
+        <polyline
+          points="112 176 80 208 48 176"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <polyline
+          points="144 80 176 48 208 80"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <line
+          x1="80"
+          y1="48"
+          x2="80"
+          y2="208"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="176"
+          y1="208"
+          x2="176"
+          y2="48"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -403,7 +926,74 @@ const MagnaIcons = {
   "arrows-in": {
     xml: (
       <>
-        <path d="M144,104V64a8,8,0,0,1,4.9-7.4,8.4,8.4,0,0,1,8.8,1.7L172,72.7l30.3-30.4a8.1,8.1,0,0,1,11.4,11.4L183.3,84l14.4,14.3a8.4,8.4,0,0,1,1.7,8.8A8,8,0,0,1,192,112H152A8,8,0,0,1,144,104Zm-40,40H64a8,8,0,0,0-7.4,4.9,8.4,8.4,0,0,0,1.7,8.8L72.7,172,42.3,202.3a8.1,8.1,0,0,0,0,11.4,8.2,8.2,0,0,0,11.4,0L84,183.3l14.3,14.4A8.3,8.3,0,0,0,104,200a8.5,8.5,0,0,0,3.1-.6A8,8,0,0,0,112,192V152A8,8,0,0,0,104,144Zm79.3,28,14.4-14.3a8.4,8.4,0,0,0,1.7-8.8A8,8,0,0,0,192,144H152a8,8,0,0,0-8,8v40a8,8,0,0,0,4.9,7.4,8.5,8.5,0,0,0,3.1.6,8.3,8.3,0,0,0,5.7-2.3L172,183.3l30.3,30.4a8.2,8.2,0,0,0,11.4,0,8.1,8.1,0,0,0,0-11.4ZM107.1,56.6a8.4,8.4,0,0,0-8.8,1.7L84,72.7,53.7,42.3A8.1,8.1,0,0,0,42.3,53.7L72.7,84,58.3,98.3a8.4,8.4,0,0,0-1.7,8.8A8,8,0,0,0,64,112h40a8,8,0,0,0,8-8V64A8,8,0,0,0,107.1,56.6Z"></path>
+        <polyline
+          points="192 104 152 104 152 64"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <polyline
+          points="64 152 104 152 104 192"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <polyline
+          points="152 192 152 152 192 152"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <polyline
+          points="104 64 104 104 64 104"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <line
+          x1="208"
+          y1="48"
+          x2="152"
+          y2="104"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="48"
+          y1="208"
+          x2="104"
+          y2="152"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="208"
+          y1="208"
+          x2="152"
+          y2="152"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="48"
+          y1="48"
+          x2="104"
+          y2="104"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -411,7 +1001,40 @@ const MagnaIcons = {
   "arrows-left-right": {
     xml: (
       <>
-        <path d="M213.7,181.7l-32,32A8.3,8.3,0,0,1,176,216a8.5,8.5,0,0,1-3.1-.6A8,8,0,0,1,168,208V184H48a8,8,0,0,1,0-16H168V144a8,8,0,0,1,4.9-7.4,8.4,8.4,0,0,1,8.8,1.7l32,32A8.1,8.1,0,0,1,213.7,181.7Zm-139.4-64A8.3,8.3,0,0,0,80,120a8.5,8.5,0,0,0,3.1-.6A8,8,0,0,0,88,112V88H208a8,8,0,0,0,0-16H88V48a8,8,0,0,0-4.9-7.4,8.4,8.4,0,0,0-8.8,1.7l-32,32a8.1,8.1,0,0,0,0,11.4Z"></path>
+        <polyline
+          points="176 144 208 176 176 208"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <polyline
+          points="80 112 48 80 80 48"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <line
+          x1="48"
+          y1="176"
+          x2="208"
+          y2="176"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="208"
+          y1="80"
+          x2="48"
+          y2="80"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -419,7 +1042,74 @@ const MagnaIcons = {
   "arrows-out": {
     xml: (
       <>
-        <path d="M216,48V88a8,8,0,0,1-4.9,7.4,8.5,8.5,0,0,1-3.1.6,8.3,8.3,0,0,1-5.7-2.3L188,79.3l-30.3,30.4a8.2,8.2,0,0,1-11.4,0,8.1,8.1,0,0,1,0-11.4L176.7,68,162.3,53.7a8.4,8.4,0,0,1-1.7-8.8A8,8,0,0,1,168,40h40A8,8,0,0,1,216,48ZM98.3,146.3,68,176.7,53.7,162.3a8.4,8.4,0,0,0-8.8-1.7A8,8,0,0,0,40,168v40a8,8,0,0,0,8,8H88a8,8,0,0,0,7.4-4.9,8.4,8.4,0,0,0-1.7-8.8L79.3,188l30.4-30.3a8.1,8.1,0,0,0-11.4-11.4Zm112.8,14.3a8.4,8.4,0,0,0-8.8,1.7L188,176.7l-30.3-30.4a8.1,8.1,0,0,0-11.4,11.4L176.7,188l-14.4,14.3a8.4,8.4,0,0,0-1.7,8.8A8,8,0,0,0,168,216h40a8,8,0,0,0,8-8V168A8,8,0,0,0,211.1,160.6ZM79.3,68,93.7,53.7a8.4,8.4,0,0,0,1.7-8.8A8,8,0,0,0,88,40H48a8,8,0,0,0-8,8V88a8,8,0,0,0,4.9,7.4A8.5,8.5,0,0,0,48,96a8.3,8.3,0,0,0,5.7-2.3L68,79.3l30.3,30.4a8.2,8.2,0,0,0,11.4,0,8.1,8.1,0,0,0,0-11.4Z"></path>
+        <polyline
+          points="168 48 208 48 208 88"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <polyline
+          points="88 208 48 208 48 168"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <polyline
+          points="208 168 208 208 168 208"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <polyline
+          points="48 88 48 48 88 48"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <line
+          x1="152"
+          y1="104"
+          x2="208"
+          y2="48"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="104"
+          y1="152"
+          x2="48"
+          y2="208"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="152"
+          y1="152"
+          x2="208"
+          y2="208"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="104"
+          y1="104"
+          x2="48"
+          y2="48"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -427,7 +1117,80 @@ const MagnaIcons = {
   asterisk: {
     xml: (
       <>
-        <path d="M208.2,165.1,144,128l64.2-37.1a8,8,0,1,0-8-13.8l-64.2,37V40a8,8,0,0,0-16,0v74.1l-64.2-37a8,8,0,0,0-8,13.8L112,128,47.8,165.1A8,8,0,0,0,44.9,176a7.7,7.7,0,0,0,6.9,4,7.3,7.3,0,0,0,4-1.1l64.2-37V216a8,8,0,0,0,16,0V141.9l64.2,37a7.3,7.3,0,0,0,4,1.1,7.7,7.7,0,0,0,6.9-4A8,8,0,0,0,208.2,165.1Z"></path>
+        <line
+          x1="128"
+          y1="40"
+          x2="128"
+          y2="216"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="51.8"
+          y1="84"
+          x2="204.2"
+          y2="172"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="51.8"
+          y1="172"
+          x2="204.2"
+          y2="84"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  at: {
+    xml: (
+      <>
+        <circle
+          cx="128"
+          cy="128"
+          r="40"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></circle>
+        <path
+          d="M181.1,208A96,96,0,1,1,224,128c0,22.1-8,40-28,40s-28-17.9-28-40V88"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  bell: {
+    xml: (
+      <>
+        <path
+          d="M56.2,104a71.9,71.9,0,0,1,72.3-72c39.6.3,71.3,33.2,71.3,72.9V112c0,35.8,7.5,56.6,14.1,68a8,8,0,0,1-6.9,12H49a8,8,0,0,1-6.9-12c6.6-11.4,14.1-32.2,14.1-68Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M96,192v8a32,32,0,0,0,64,0v-8"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -435,7 +1198,48 @@ const MagnaIcons = {
   binoculars: {
     xml: (
       <>
-        <path d="M237.2,151.9h0c0-.1-.1-.1-.1-.2a42.3,42.3,0,0,0-2.3-5.3L193.3,51.8a8.1,8.1,0,0,0-1.7-2.4,32,32,0,0,0-45.3,0A7.9,7.9,0,0,0,144,55V84H112V55a7.9,7.9,0,0,0-2.3-5.6,32,32,0,0,0-45.3,0,8.1,8.1,0,0,0-1.7,2.4L21.2,146.3a42.3,42.3,0,0,0-2.3,5.3c0,.1-.1.1-.1.2h0A48,48,0,1,0,112,167.8V100h32v67.8a48,48,0,1,0,93.2-15.9Zm-143.1,27a32,32,0,0,1-60.2-21.7l1.8-4.1A32,32,0,0,1,96,167.9h0A32.1,32.1,0,0,1,94.1,178.9Zm108.8,19.2A32,32,0,0,1,160,168h0a32,32,0,0,1,60.3-14.8l1.8,4.1A32,32,0,0,1,202.9,198.1Z"></path>
+        <line
+          x1="104"
+          y1="92"
+          x2="152"
+          y2="92"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <path
+          d="M229.6,154.3,185.9,55A24.1,24.1,0,0,0,152,55V168"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M104,168V55a24.1,24.1,0,0,0-33.9,0L26.4,154.3"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <circle
+          cx="64"
+          cy="168"
+          r="40"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></circle>
+        <circle
+          cx="192"
+          cy="168"
+          r="40"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -443,7 +1247,20 @@ const MagnaIcons = {
   "book-open": {
     xml: (
       <>
-        <path d="M96,208a24.1,24.1,0,0,1,24,24,8,8,0,0,0,16,0,24.1,24.1,0,0,1,24-24h64a16,16,0,0,0,16-16V64a16,16,0,0,0-16-16H176a40,40,0,0,0-40,40v80a8,8,0,0,1-16,0V88A40,40,0,0,0,80,48H32A16,16,0,0,0,16,64V192a16,16,0,0,0,16,16Z"></path>
+        <path
+          d="M128,88a32,32,0,0,1,32-32h64a8,8,0,0,1,8,8V192a8,8,0,0,1-8,8H160a32,32,0,0,0-32,32"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M24,192a8,8,0,0,0,8,8H96a32,32,0,0,1,32,32V88A32,32,0,0,0,96,56H32a8,8,0,0,0-8,8Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -451,7 +1268,27 @@ const MagnaIcons = {
   browser: {
     xml: (
       <>
-        <path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V88H40V56Z"></path>
+        <rect
+          x="32"
+          y="48"
+          width="192"
+          height="160"
+          rx="8"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></rect>
+        <line
+          x1="32"
+          y1="96"
+          x2="224"
+          y2="96"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -459,7 +1296,34 @@ const MagnaIcons = {
   browsers: {
     xml: (
       <>
-        <path d="M216,40H72A16,16,0,0,0,56,56V72H40A16,16,0,0,0,24,88V200a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V184h16a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM184,88v16H40V88Zm32,80H200V88a16,16,0,0,0-16-16H72V56H216Z"></path>
+        <rect
+          x="32"
+          y="80"
+          width="160"
+          height="128"
+          rx="8"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></rect>
+        <path
+          d="M64,80V56a8,8,0,0,1,8-8H216a8,8,0,0,1,8,8V168a8,8,0,0,1-8,8H192"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <line
+          x1="32"
+          y1="112"
+          x2="192"
+          y2="112"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -467,7 +1331,47 @@ const MagnaIcons = {
   "calendar-blank": {
     xml: (
       <>
-        <path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32Zm0,48H48V48H72v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24Z"></path>
+        <rect
+          x="40"
+          y="40"
+          width="176"
+          height="176"
+          rx="8"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></rect>
+        <line
+          x1="176"
+          y1="24"
+          x2="176"
+          y2="56"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="80"
+          y1="24"
+          x2="80"
+          y2="56"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="40"
+          y1="88"
+          x2="216"
+          y2="88"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -475,7 +1379,13 @@ const MagnaIcons = {
   "caret-down": {
     xml: (
       <>
-        <path d="M215.4,92.9A8,8,0,0,0,208,88H48a8,8,0,0,0-7.4,4.9,8.4,8.4,0,0,0,1.7,8.8l80,80a8.2,8.2,0,0,0,11.4,0l80-80A8.4,8.4,0,0,0,215.4,92.9Z"></path>
+        <polyline
+          points="208 96 128 176 48 96"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -483,7 +1393,13 @@ const MagnaIcons = {
   "caret-left": {
     xml: (
       <>
-        <path d="M163.1,40.6a8.4,8.4,0,0,0-8.8,1.7l-80,80a8.1,8.1,0,0,0,0,11.4l80,80A8.3,8.3,0,0,0,160,216a8.5,8.5,0,0,0,3.1-.6A8,8,0,0,0,168,208V48A8,8,0,0,0,163.1,40.6Z"></path>
+        <polyline
+          points="160 208 80 128 160 48"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -491,7 +1407,13 @@ const MagnaIcons = {
   "caret-right": {
     xml: (
       <>
-        <path d="M181.7,122.3l-80-80a8.4,8.4,0,0,0-8.8-1.7A8,8,0,0,0,88,48V208a8,8,0,0,0,4.9,7.4,8.5,8.5,0,0,0,3.1.6,8.3,8.3,0,0,0,5.7-2.3l80-80A8.1,8.1,0,0,0,181.7,122.3Z"></path>
+        <polyline
+          points="96 48 176 128 96 208"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -499,7 +1421,13 @@ const MagnaIcons = {
   "caret-up": {
     xml: (
       <>
-        <path d="M213.7,154.3l-80-80a8.1,8.1,0,0,0-11.4,0l-80,80a8.4,8.4,0,0,0-1.7,8.8A8,8,0,0,0,48,168H208a8,8,0,0,0,7.4-4.9A8.4,8.4,0,0,0,213.7,154.3Z"></path>
+        <polyline
+          points="48 160 128 80 208 160"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -507,7 +1435,40 @@ const MagnaIcons = {
   "chart-bar": {
     xml: (
       <>
-        <path d="M228,200h-8V40a8,8,0,0,0-8-8H156a8,8,0,0,0-8,8V80H100a8,8,0,0,0-8,8v40H44a8,8,0,0,0-8,8v64H28a8,8,0,0,0,0,16H228a8,8,0,0,0,0-16ZM108,96h40V200H108ZM52,144H92v56H52Z"></path>
+        <rect
+          x="156"
+          y="40"
+          width="56"
+          height="168"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></rect>
+        <polyline
+          points="44 208 44 136 100 136"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <polyline
+          points="100 208 100 88 156 88"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <line
+          x1="228"
+          y1="208"
+          x2="28"
+          y2="208"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -515,7 +1476,20 @@ const MagnaIcons = {
   "chart-line": {
     xml: (
       <>
-        <path d="M224,200H40V163.6l56.4-49.3,58.8,44.1a8,8,0,0,0,10.1-.4l64-56a8,8,0,1,0-10.6-12l-59.1,51.7L100.8,97.6a8,8,0,0,0-10.1.4L40,142.4V48a8,8,0,0,0-16,0V208a8,8,0,0,0,8,8H224a8,8,0,0,0,0-16Z"></path>
+        <polyline
+          points="224 208 32 208 32 48"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <polyline
+          points="224 96 160 152 96 104 32 160"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -523,8 +1497,40 @@ const MagnaIcons = {
   "chart-pie-slice": {
     xml: (
       <>
-        <path d="M100,116.5a8.1,8.1,0,0,0,4-7v-72a8,8,0,0,0-10.7-7.6A104.3,104.3,0,0,0,24,128a109.1,109.1,0,0,0,1.7,19,8.1,8.1,0,0,0,4.5,5.8,8.4,8.4,0,0,0,3.4.8,8,8,0,0,0,4-1.1ZM88,49.6v55.3L40.1,132.6c-.1-1.6-.1-3.1-.1-4.6A88.3,88.3,0,0,1,88,49.6Z"></path>
-        <path d="M218.3,76.4a.8.8,0,0,1-.2-.4l-.4-.5A103.9,103.9,0,0,0,128,24a8,8,0,0,0-8,8v91.4L40.9,169.1a7.9,7.9,0,0,0-3,10.9v.2l.3.5A104,104,0,0,0,232,128,103.5,103.5,0,0,0,218.3,76.4Z"></path>
+        <line
+          x1="128"
+          y1="128"
+          x2="128"
+          y2="32"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="211.1"
+          y1="80"
+          x2="44.9"
+          y2="176"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <path
+          d="M33.6,145.6A92.9,92.9,0,0,1,32,128,95.9,95.9,0,0,1,96,37.5v72Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M128,32A96,96,0,1,1,45.2,176.6"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -532,7 +1538,33 @@ const MagnaIcons = {
   "chat-centered-text": {
     xml: (
       <>
-        <path d="M216,40H40A16,16,0,0,0,24,56V184a16,16,0,0,0,16,16H99.5l14.8,24.7a16,16,0,0,0,27.4,0L156.5,200H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM160,144H96a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Zm0-32H96a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Z"></path>
+        <line
+          x1="96"
+          y1="104"
+          x2="160"
+          y2="104"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="96"
+          y1="136"
+          x2="160"
+          y2="136"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <path
+          d="M149.7,195.9l-14.8,24.7a8.1,8.1,0,0,1-13.8,0l-14.8-24.7a7.9,7.9,0,0,0-6.8-3.9H40a8,8,0,0,1-8-8V56a8,8,0,0,1,8-8H216a8,8,0,0,1,8,8V184a8,8,0,0,1-8,8H156.5A7.9,7.9,0,0,0,149.7,195.9Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -540,7 +1572,16 @@ const MagnaIcons = {
   "chat-dots": {
     xml: (
       <>
-        <path d="M216,48H40A16,16,0,0,0,24,64V222.8a15.7,15.7,0,0,0,9.3,14.5,14.7,14.7,0,0,0,6.7,1.6,16,16,0,0,0,10.3-3.8l31.8-26.7L216,208a16,16,0,0,0,16-16V64A16,16,0,0,0,216,48ZM80,140a12,12,0,1,1,12-12A12,12,0,0,1,80,140Zm48,0a12,12,0,1,1,12-12A12,12,0,0,1,128,140Zm48,0a12,12,0,1,1,12-12A12,12,0,0,1,176,140Z"></path>
+        <path
+          d="M77.4,201.9l-32.3,27A8,8,0,0,1,32,222.8V64a8,8,0,0,1,8-8H216a8,8,0,0,1,8,8V192a8,8,0,0,1-8,8H82.5A7.8,7.8,0,0,0,77.4,201.9Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <circle cx="128" cy="128" r="12"></circle>
+        <circle cx="80" cy="128" r="12"></circle>
+        <circle cx="176" cy="128" r="12"></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -548,7 +1589,33 @@ const MagnaIcons = {
   "chat-text": {
     xml: (
       <>
-        <path d="M216,48H40A16,16,0,0,0,24,64V222.8a15.7,15.7,0,0,0,9.3,14.5,16,16,0,0,0,17-2.2L82,208.4l134-.4a16,16,0,0,0,16-16V64A16,16,0,0,0,216,48ZM160,152H96a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Zm0-32H96a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Z"></path>
+        <path
+          d="M78,201.3,45.1,228.9A8,8,0,0,1,32,222.8V64a8,8,0,0,1,8-8H216a8,8,0,0,1,8,8V192a8,8,0,0,1-8,8H81.7Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <line
+          x1="96"
+          y1="112"
+          x2="160"
+          y2="112"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="96"
+          y1="144"
+          x2="160"
+          y2="144"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -556,7 +1623,22 @@ const MagnaIcons = {
   "check-circle": {
     xml: (
       <>
-        <path d="M128,24A104,104,0,1,0,232,128,104.2,104.2,0,0,0,128,24Zm49.5,85.8-58.6,56a8.1,8.1,0,0,1-5.6,2.2,7.7,7.7,0,0,1-5.5-2.2l-29.3-28a8,8,0,1,1,11-11.6l23.8,22.7,53.2-50.7a8,8,0,0,1,11,11.6Z"></path>
+        <polyline
+          points="172 104 113.3 160 84 132"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <circle
+          cx="128"
+          cy="128"
+          r="96"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -564,7 +1646,45 @@ const MagnaIcons = {
   "circle-half": {
     xml: (
       <>
-        <path d="M128,24A104,104,0,1,0,232,128,104.2,104.2,0,0,0,128,24ZM40,128a88.1,88.1,0,0,1,88-88V216A88.1,88.1,0,0,1,40,128Z"></path>
+        <circle
+          cx="128"
+          cy="128"
+          r="96"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></circle>
+        <line
+          x1="128"
+          y1="32"
+          x2="128"
+          y2="224"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="192"
+          y1="56.5"
+          x2="192"
+          y2="199.5"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="160"
+          y1="37.5"
+          x2="160"
+          y2="218.5"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -572,7 +1692,20 @@ const MagnaIcons = {
   "circle-wavy-check": {
     xml: (
       <>
-        <path d="M225.9,102.8c-3.8-3.9-7.7-8-9.2-11.5s-1.4-8.7-1.5-14c-.1-9.7-.3-20.8-8-28.5s-18.8-7.9-28.5-8c-5.3-.1-10.7-.2-14-1.5s-7.6-5.4-11.5-9.2C146.3,23.5,138.4,16,128,16s-18.3,7.5-25.2,14.1c-3.9,3.8-8,7.7-11.5,9.2s-8.7,1.4-14,1.5c-9.7.1-20.8.3-28.5,8s-7.9,18.8-8,28.5c-.1,5.3-.2,10.7-1.5,14s-5.4,7.6-9.2,11.5C23.5,109.7,16,117.6,16,128s7.5,18.3,14.1,25.2c3.8,3.9,7.7,8,9.2,11.5s1.4,8.7,1.5,14c.1,9.7.3,20.8,8,28.5s18.8,7.9,28.5,8c5.3.1,10.7.2,14,1.5s7.6,5.4,11.5,9.2c6.9,6.6,14.8,14.1,25.2,14.1s18.3-7.5,25.2-14.1c3.9-3.8,8-7.7,11.5-9.2s8.7-1.4,14-1.5c9.7-.1,20.8-.3,28.5-8s7.9-18.8,8-28.5c.1-5.3.2-10.7,1.5-14s5.4-7.6,9.2-11.5c6.6-6.9,14.1-14.8,14.1-25.2S232.5,109.7,225.9,102.8Zm-48.4,7-58.6,56a8.1,8.1,0,0,1-5.6,2.2,7.9,7.9,0,0,1-5.5-2.2l-29.3-28a8,8,0,1,1,11-11.6l23.8,22.7,53.2-50.7a8,8,0,0,1,11,11.6Z"></path>
+        <path
+          d="M54.5,201.5c-9.2-9.2-3.1-28.5-7.8-39.8S24,140.5,24,128s17.8-22,22.7-33.7-1.4-30.6,7.8-39.8S83,51.4,94.3,46.7,115.5,24,128,24s22,17.8,33.7,22.7,30.6-1.4,39.8,7.8,3.1,28.5,7.8,39.8S232,115.5,232,128s-17.8,22-22.7,33.7,1.4,30.6-7.8,39.8-28.5,3.1-39.8,7.8S140.5,232,128,232s-22-17.8-33.7-22.7S63.7,210.7,54.5,201.5Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <polyline
+          points="172 104 113.3 160 84 132"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -580,7 +1713,13 @@ const MagnaIcons = {
   "circle-wavy": {
     xml: (
       <>
-        <path d="M240,128c0,10.4-7.5,18.3-14.1,25.2-3.8,3.9-7.7,8-9.2,11.5s-1.4,8.7-1.5,14c-.1,9.7-.3,20.8-8,28.5s-18.8,7.9-28.5,8c-5.3.1-10.7.2-14,1.5s-7.6,5.4-11.5,9.2c-6.9,6.6-14.8,14.1-25.2,14.1s-18.3-7.5-25.2-14.1c-3.9-3.8-8-7.7-11.5-9.2s-8.7-1.4-14-1.5c-9.7-.1-20.8-.3-28.5-8s-7.9-18.8-8-28.5c-.1-5.3-.2-10.7-1.5-14s-5.4-7.6-9.2-11.5C23.5,146.3,16,138.4,16,128s7.5-18.3,14.1-25.2c3.8-3.9,7.7-8,9.2-11.5s1.4-8.7,1.5-14c.1-9.7.3-20.8,8-28.5s18.8-7.9,28.5-8c5.3-.1,10.7-.2,14-1.5s7.6-5.4,11.5-9.2C109.7,23.5,117.6,16,128,16s18.3,7.5,25.2,14.1c3.9,3.8,8,7.7,11.5,9.2s8.7,1.4,14,1.5c9.7.1,20.8.3,28.5,8s7.9,18.8,8,28.5c.1,5.3.2,10.7,1.5,14s5.4,7.6,9.2,11.5C232.5,109.7,240,117.6,240,128Z"></path>
+        <path
+          d="M54.5,201.5c-9.2-9.2-3.1-28.5-7.8-39.8S24,140.5,24,128s17.8-22,22.7-33.7-1.4-30.6,7.8-39.8S83,51.4,94.3,46.7,115.5,24,128,24s22,17.8,33.7,22.7,30.6-1.4,39.8,7.8,3.1,28.5,7.8,39.8S232,115.5,232,128s-17.8,22-22.7,33.7,1.4,30.6-7.8,39.8-28.5,3.1-39.8,7.8S140.5,232,128,232s-22-17.8-33.7-22.7S63.7,210.7,54.5,201.5Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -588,7 +1727,40 @@ const MagnaIcons = {
   "clipboard-text": {
     xml: (
       <>
-        <path d="M200,32H163.7a47.8,47.8,0,0,0-71.4,0H56A16,16,0,0,0,40,48V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V48A16,16,0,0,0,200,32Zm-72,0a32.1,32.1,0,0,1,32,32H96A32.1,32.1,0,0,1,128,32Zm32,128H96a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Zm0-32H96a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Z"></path>
+        <line
+          x1="96"
+          y1="152"
+          x2="160"
+          y2="152"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="96"
+          y1="120"
+          x2="160"
+          y2="120"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <path
+          d="M160,40h40a8,8,0,0,1,8,8V216a8,8,0,0,1-8,8H56a8,8,0,0,1-8-8V48a8,8,0,0,1,8-8H96"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M88,72V64a40,40,0,0,1,80,0v8Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -596,7 +1768,40 @@ const MagnaIcons = {
   "clock-clockwise": {
     xml: (
       <>
-        <path d="M136,80v43.4l37.6,21.7a8,8,0,0,1-4,14.9,7.1,7.1,0,0,1-4-1.1l-41.6-24h-.2l-.4-.2-.3-.3-.3-.2-.3-.3-.2-.2c-.2-.1-.3-.3-.4-.4l-.2-.2-.2-.4-.2-.3-.2-.3a.5.5,0,0,1-.2-.4l-.2-.3c0-.1-.1-.2-.1-.4a.4.4,0,0,1-.1-.3l-.2-.4a.4.4,0,0,0-.1-.3c0-.2,0-.3-.1-.4v-.4c0-.2-.1-.3-.1-.4V80a8,8,0,0,1,16,0Zm91.2-27.7a8,8,0,0,0-8.7,1.8L204.2,68.4l-8.3-8.3a96,96,0,1,0,0,135.8,8,8,0,0,0,0-11.3,7.9,7.9,0,0,0-11.3,0,80,80,0,1,1,0-113.2l8.3,8.3L178.5,94.1a8,8,0,0,0,5.7,13.6h40a8,8,0,0,0,8-8v-40A8.2,8.2,0,0,0,227.2,52.3Z"></path>
+        <line
+          x1="128"
+          y1="80"
+          x2="128"
+          y2="128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="169.6"
+          y1="152"
+          x2="128"
+          y2="128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <polyline
+          points="184.2 99.7 224.2 99.7 224.2 59.7"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <path
+          d="M190.2,190.2a88,88,0,1,1,0-124.4l34,33.9"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -604,7 +1809,62 @@ const MagnaIcons = {
   "clock-counter-clockwise": {
     xml: (
       <>
-        <path d="M136,80v43.4l37.6,21.7a8,8,0,0,1-4,14.9,7.1,7.1,0,0,1-4-1.1l-41.6-24h-.2l-.4-.2-.3-.3-.3-.2-.3-.3-.2-.2c-.2-.1-.3-.3-.4-.4l-.2-.2-.2-.4-.2-.3-.2-.3a.5.5,0,0,1-.2-.4l-.2-.3c0-.1-.1-.2-.1-.4a.4.4,0,0,1-.1-.3l-.2-.4a.4.4,0,0,0-.1-.3c0-.2,0-.3-.1-.4v-.4c0-.2-.1-.3-.1-.4V80a8,8,0,0,1,16,0Zm59.9-19.9a96.2,96.2,0,0,0-135.8,0l-8.3,8.3L37.5,54.1a8,8,0,0,0-8.7-1.8,8.2,8.2,0,0,0-5,7.4v40a8,8,0,0,0,8,8h40a8,8,0,0,0,5.7-13.6L63.1,79.7l8.3-8.3a80,80,0,1,1,0,113.2,7.9,7.9,0,0,0-11.3,0,8,8,0,0,0,0,11.3A96,96,0,0,0,195.9,60.1Z"></path>
+        <line
+          x1="128"
+          y1="80"
+          x2="128"
+          y2="128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="169.6"
+          y1="152"
+          x2="128"
+          y2="128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <polyline
+          points="71.8 99.7 31.8 99.7 31.8 59.7"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <path
+          d="M65.8,190.2a88,88,0,1,0,0-124.4l-34,33.9"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  clock: {
+    xml: (
+      <>
+        <circle
+          cx="128"
+          cy="128"
+          r="96"
+          fill="none"
+          strokeMiterlimit="10"
+          strokeWidth="16"
+        ></circle>
+        <polyline
+          points="128 72 128 128 184 128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -612,7 +1872,68 @@ const MagnaIcons = {
   cloud: {
     xml: (
       <>
-        <path d="M160.1,40A88.1,88.1,0,0,0,81.3,88.7h0a86.6,86.6,0,0,0-9.3,39,8.2,8.2,0,0,1-7.4,8.3,8,8,0,0,1-8.6-8,105,105,0,0,1,5.3-32.9,4,4,0,0,0-4.7-5.2A64,64,0,0,0,8,152c0,35.2,29.8,64,64.9,64H160a88,88,0,0,0,.1-176Z"></path>
+        <path
+          d="M80,128a80,80,0,1,1,80,80H72A56,56,0,0,1,72,96a57.5,57.5,0,0,1,13.9,1.7"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  code: {
+    xml: (
+      <>
+        <polyline
+          points="64 88 16 128 64 168"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <polyline
+          points="192 88 240 128 192 168"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <line
+          x1="160"
+          y1="40"
+          x2="96"
+          y2="216"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  copy: {
+    xml: (
+      <>
+        <rect
+          x="40"
+          y="88"
+          width="128"
+          height="128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></rect>
+        <polyline
+          points="168 168 216 168 216 40 88 40 88 88"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -620,7 +1941,107 @@ const MagnaIcons = {
   cpu: {
     xml: (
       <>
-        <path d="M232,144H216V112h16a8,8,0,0,0,0-16H216V56a16,16,0,0,0-16-16H160V24a8,8,0,0,0-16,0V40H112V24a8,8,0,0,0-16,0V40H56A16,16,0,0,0,40,56V96H24a8,8,0,0,0,0,16H40v32H24a8,8,0,0,0,0,16H40v40a16,16,0,0,0,16,16H96v16a8,8,0,0,0,16,0V216h32v16a8,8,0,0,0,16,0V216h40a16,16,0,0,0,16-16V160h16a8,8,0,0,0,0-16Zm-68,12a8,8,0,0,1-8,8H100a8,8,0,0,1-8-8V100a8,8,0,0,1,8-8h56a8,8,0,0,1,8,8Zm-56-48h40v40H108Z"></path>
+        <rect
+          x="100"
+          y="100"
+          width="56"
+          height="56"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></rect>
+        <rect
+          x="48"
+          y="48"
+          width="160"
+          height="160"
+          rx="8"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></rect>
+        <line
+          x1="208"
+          y1="104"
+          x2="232"
+          y2="104"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="208"
+          y1="152"
+          x2="232"
+          y2="152"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="24"
+          y1="104"
+          x2="48"
+          y2="104"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="24"
+          y1="152"
+          x2="48"
+          y2="152"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="152"
+          y1="208"
+          x2="152"
+          y2="232"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="104"
+          y1="208"
+          x2="104"
+          y2="232"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="152"
+          y1="24"
+          x2="152"
+          y2="48"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="104"
+          y1="24"
+          x2="104"
+          y2="48"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -628,7 +2049,55 @@ const MagnaIcons = {
   "crosshair-simple": {
     xml: (
       <>
-        <path d="M128,28A100,100,0,1,0,228,128,100.2,100.2,0,0,0,128,28Zm8,183.6V180a8,8,0,0,0-16,0v31.6A84.2,84.2,0,0,1,44.4,136H76a8,8,0,0,0,0-16H44.4A84.2,84.2,0,0,1,120,44.4V76a8,8,0,0,0,16,0V44.4A84.2,84.2,0,0,1,211.6,120H180a8,8,0,0,0,0,16h31.6A84.2,84.2,0,0,1,136,211.6Z"></path>
+        <circle
+          cx="128"
+          cy="128"
+          r="92"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></circle>
+        <line
+          x1="128"
+          y1="36"
+          x2="128"
+          y2="76"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="36"
+          y1="128"
+          x2="76"
+          y2="128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="128"
+          y1="220"
+          x2="128"
+          y2="180"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="220"
+          y1="128"
+          x2="180"
+          y2="128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -636,7 +2105,123 @@ const MagnaIcons = {
   cube: {
     xml: (
       <>
-        <path d="M229.9,70.8h0a.1.1,0,0,1-.1-.1,16.2,16.2,0,0,0-6-5.9l-88-49.5a16,16,0,0,0-15.6,0l-88,49.5a16.2,16.2,0,0,0-6,5.9.1.1,0,0,1-.1.1v.2A15,15,0,0,0,24,78.7v98.6a16.1,16.1,0,0,0,8.2,14l88,49.5a16.5,16.5,0,0,0,7.2,2h1.4a16.1,16.1,0,0,0,7-2l88-49.5a16.1,16.1,0,0,0,8.2-14V78.7A15.6,15.6,0,0,0,229.9,70.8Zm-101,48L48.4,74,128,29.2,207.7,74ZM216,177.3l-79.9,45,.8-89.6,79.1-45Z"></path>
+        <path
+          d="M224,177.3V78.7a8.1,8.1,0,0,0-4.1-7l-88-49.5a7.8,7.8,0,0,0-7.8,0l-88,49.5a8.1,8.1,0,0,0-4.1,7v98.6a8.1,8.1,0,0,0,4.1,7l88,49.5a7.8,7.8,0,0,0,7.8,0l88-49.5A8.1,8.1,0,0,0,224,177.3Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <polyline
+          points="222.9 74.6 128.9 128 33.1 74.6"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <line
+          x1="128.9"
+          y1="128"
+          x2="128"
+          y2="234.8"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  database: {
+    xml: (
+      <>
+        <ellipse
+          cx="128"
+          cy="80"
+          rx="88"
+          ry="48"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></ellipse>
+        <path
+          d="M40,80v48c0,26.5,39.4,48,88,48s88-21.5,88-48V80"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M40,128v48c0,26.5,39.4,48,88,48s88-21.5,88-48V128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  desktop: {
+    xml: (
+      <>
+        <rect
+          x="32"
+          y="48"
+          width="192"
+          height="144"
+          rx="16"
+          transform="translate(256 240) rotate(180)"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></rect>
+        <line
+          x1="160"
+          y1="224"
+          x2="96"
+          y2="224"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="32"
+          y1="152"
+          x2="224"
+          y2="152"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="128"
+          y1="192"
+          x2="128"
+          y2="224"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  "dots-six": {
+    xml: (
+      <>
+        <circle cx="60" cy="92" r="12"></circle>
+        <circle cx="128" cy="92" r="12"></circle>
+        <circle cx="196" cy="92" r="12"></circle>
+        <circle cx="60" cy="164" r="12"></circle>
+        <circle cx="128" cy="164" r="12"></circle>
+        <circle cx="196" cy="164" r="12"></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -644,7 +2229,30 @@ const MagnaIcons = {
   "dots-three-outline-vertical": {
     xml: (
       <>
-        <path d="M156,128a28,28,0,1,1-28-28A28.1,28.1,0,0,1,156,128ZM128,76a28,28,0,1,0-28-28A28.1,28.1,0,0,0,128,76Zm0,104a28,28,0,1,0,28,28A28.1,28.1,0,0,0,128,180Z"></path>
+        <circle
+          cx="128"
+          cy="128"
+          r="24"
+          fill="none"
+          strokeMiterlimit="10"
+          strokeWidth="16"
+        ></circle>
+        <circle
+          cx="128"
+          cy="48"
+          r="24"
+          fill="none"
+          strokeMiterlimit="10"
+          strokeWidth="16"
+        ></circle>
+        <circle
+          cx="128"
+          cy="208"
+          r="24"
+          fill="none"
+          strokeMiterlimit="10"
+          strokeWidth="16"
+        ></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -652,7 +2260,40 @@ const MagnaIcons = {
   "dots-three-outline": {
     xml: (
       <>
-        <path d="M156,128a28,28,0,1,1-28-28A28.1,28.1,0,0,1,156,128ZM48,100a28,28,0,1,0,28,28A28.1,28.1,0,0,0,48,100Zm160,0a28,28,0,1,0,28,28A28.1,28.1,0,0,0,208,100Z"></path>
+        <circle
+          cx="128"
+          cy="128"
+          r="24"
+          fill="none"
+          strokeMiterlimit="10"
+          strokeWidth="16"
+        ></circle>
+        <circle
+          cx="48"
+          cy="128"
+          r="24"
+          fill="none"
+          strokeMiterlimit="10"
+          strokeWidth="16"
+        ></circle>
+        <circle
+          cx="208"
+          cy="128"
+          r="24"
+          fill="none"
+          strokeMiterlimit="10"
+          strokeWidth="16"
+        ></circle>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  "dots-three": {
+    xml: (
+      <>
+        <circle cx="128" cy="128" r="12"></circle>
+        <circle cx="192" cy="128" r="12"></circle>
+        <circle cx="64" cy="128" r="12"></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -660,7 +2301,30 @@ const MagnaIcons = {
   "download-simple": {
     xml: (
       <>
-        <path d="M80.3,115.7a8.2,8.2,0,0,1-1.7-8.7,8,8,0,0,1,7.4-5h34V40a8,8,0,0,1,16,0v62h34a8,8,0,0,1,7.4,5,8.2,8.2,0,0,1-1.7,8.7l-42,42a8.2,8.2,0,0,1-11.4,0ZM216,144a8,8,0,0,0-8,8v56H48V152a8,8,0,0,0-16,0v56a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V152A8,8,0,0,0,216,144Z"></path>
+        <polyline
+          points="86 110 128 152 170 110"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <line
+          x1="128"
+          y1="40"
+          x2="128"
+          y2="152"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <path
+          d="M216,152v56a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V152"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -668,7 +2332,81 @@ const MagnaIcons = {
   "envelope-open": {
     xml: (
       <>
-        <path d="M228.4,89.3l-96-64a8.2,8.2,0,0,0-8.8,0l-96,64A7.9,7.9,0,0,0,24,96V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V96A7.9,7.9,0,0,0,228.4,89.3ZM96.7,152,40,192V111.5Zm16.4,8h29.8l56.6,40H56.5Zm46.2-8L216,111.5V192Z"></path>
+        <path
+          d="M32,96V200a8,8,0,0,0,8,8H216a8,8,0,0,0,8-8V96L128,32Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <line
+          x1="110.5"
+          y1="152"
+          x2="34.5"
+          y2="205.7"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="221.5"
+          y1="205.7"
+          x2="145.5"
+          y2="152"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <polyline
+          points="224 96 145.5 152 110.5 152 32 96"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  envelope: {
+    xml: (
+      <>
+        <polyline
+          points="224 56 128 144 32 56"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <path
+          d="M32,56H224a0,0,0,0,1,0,0V192a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V56A0,0,0,0,1,32,56Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <line
+          x1="110.5"
+          y1="128"
+          x2="34.5"
+          y2="197.7"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="221.5"
+          y1="197.7"
+          x2="145.5"
+          y2="128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -676,8 +2414,44 @@ const MagnaIcons = {
   "eye-slash": {
     xml: (
       <>
-        <path d="M247.3,124.8c-.3-.8-8.8-19.6-27.6-38.5C194.6,61.3,162.9,48,128,48a132.4,132.4,0,0,0-22,1.8,8.1,8.1,0,0,0-4.6,13.3L202.7,174.5a8,8,0,0,0,5.9,2.6,8.6,8.6,0,0,0,5.4-2c22.8-20.5,32.9-42.9,33.3-43.8A8.2,8.2,0,0,0,247.3,124.8Z"></path>
-        <path d="M53.9,34.6A8,8,0,0,0,42.1,45.4L61.3,66.5C25,88.8,9.4,123.2,8.7,124.8a8.2,8.2,0,0,0,0,6.5c.3.7,8.8,19.5,27.6,38.4C61.4,194.7,93.1,208,128,208a126.9,126.9,0,0,0,52.1-10.8l22,24.2A8,8,0,0,0,208,224a8.2,8.2,0,0,0,5.4-2.1,7.9,7.9,0,0,0,.5-11.3ZM128,164a36,36,0,0,1-29.5-56.6l47.2,51.9A35.4,35.4,0,0,1,128,164Z"></path>
+        <line
+          x1="48"
+          y1="40"
+          x2="208"
+          y2="216"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <path
+          d="M154.9,157.6A39.6,39.6,0,0,1,128,168a40,40,0,0,1-26.9-69.6"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M74,68.6C33.2,89.2,16,128,16,128s32,72,112,72a117.9,117.9,0,0,0,54-12.6"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M208.6,169.1C230.4,149.6,240,128,240,128S208,56,128,56a123.9,123.9,0,0,0-20.7,1.7"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M135.5,88.7a39.9,39.9,0,0,1,32.3,35.5"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -685,7 +2459,22 @@ const MagnaIcons = {
   eye: {
     xml: (
       <>
-        <path d="M247.3,124.8c-.3-.8-8.8-19.6-27.6-38.5C194.6,61.3,162.9,48,128,48S61.4,61.3,36.3,86.3C17.5,105.2,9,124,8.7,124.8a7.9,7.9,0,0,0,0,6.4c.3.8,8.8,19.6,27.6,38.5C61.4,194.7,93.1,208,128,208s66.6-13.3,91.7-38.3c18.8-18.9,27.3-37.7,27.6-38.5A7.9,7.9,0,0,0,247.3,124.8ZM128,92a36,36,0,1,1-36,36A36,36,0,0,1,128,92Z"></path>
+        <path
+          d="M128,56C48,56,16,128,16,128s32,72,112,72,112-72,112-72S208,56,128,56Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <circle
+          cx="128"
+          cy="128"
+          r="40"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -693,7 +2482,34 @@ const MagnaIcons = {
   "file-code": {
     xml: (
       <>
-        <path d="M213.7,82.3l-56-56A8.1,8.1,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8.1,8.1,0,0,0,213.7,82.3Zm-104,88a8.1,8.1,0,0,1,0,11.4,8.2,8.2,0,0,1-11.4,0l-24-24a8.1,8.1,0,0,1,0-11.4l24-24a8.1,8.1,0,0,1,11.4,11.4L91.3,152Zm72-12.6-24,24a8.2,8.2,0,0,1-11.4,0,8.1,8.1,0,0,1,0-11.4L164.7,152l-18.4-18.3a8.1,8.1,0,0,1,11.4-11.4l24,24A8.1,8.1,0,0,1,181.7,157.7ZM152,88V44l44,44Z"></path>
+        <polyline
+          points="152 32 152 88 208 88"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <polyline
+          points="148 128 172 152 148 176"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <polyline
+          points="108 128 84 152 108 176"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <path
+          d="M200,224a8,8,0,0,0,8-8V88L152,32H56a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -701,11 +2517,84 @@ const MagnaIcons = {
   "file-html": {
     xml: (
       <>
-        <path d="M120,168H88a8,8,0,0,0,0,16h8v32a8,8,0,0,0,16,0V184h8a8,8,0,0,0,0-16Z"></path>
-        <path d="M64,168a8,8,0,0,0-8,8v12H44V176a8,8,0,0,0-16,0v40a8,8,0,0,0,16,0V204H56v12a8,8,0,0,0,16,0V176A8,8,0,0,0,64,168Z"></path>
-        <path d="M236,208H220V176a8,8,0,0,0-16,0v40a8,8,0,0,0,8,8h24a8,8,0,0,0,0-16Z"></path>
-        <path d="M186.4,168.4a7.8,7.8,0,0,0-8.9,3L164,190.2l-13.5-18.8A8,8,0,0,0,136,176v40a8,8,0,0,0,16,0V201l5.5,7.6a7.9,7.9,0,0,0,13,0L176,201v15a8,8,0,0,0,16,0V176A7.8,7.8,0,0,0,186.4,168.4Z"></path>
-        <path d="M48,136H208a8,8,0,0,0,8-8V88a8.1,8.1,0,0,0-2.3-5.7l-56-56A8.1,8.1,0,0,0,152,24H56A16,16,0,0,0,40,40v88A8,8,0,0,0,48,136ZM152,44l44,44H152Z"></path>
+        <line
+          x1="120"
+          y1="176"
+          x2="88"
+          y2="176"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="104"
+          y1="216"
+          x2="104"
+          y2="176"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="36"
+          y1="176"
+          x2="36"
+          y2="216"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="64"
+          y1="176"
+          x2="64"
+          y2="216"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="36"
+          y1="196"
+          x2="64"
+          y2="196"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <polyline
+          points="212 176 212 216 236 216"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <polyline
+          points="144 216 144 176 164 204 184 176 184 216"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <polyline
+          points="152 32 152 88 208 88"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <path
+          d="M48,136V40a8,8,0,0,1,8-8h96l56,56v48"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -713,7 +2602,27 @@ const MagnaIcons = {
   "file-image": {
     xml: (
       <>
-        <path d="M213.7,82.3l-56-56A8.1,8.1,0,0,0,152,24H56A16,16,0,0,0,40,40v96a8,8,0,0,0,16,0V40h88V88a8,8,0,0,0,8,8h48V216h-8a8,8,0,0,0,0,16h8a16,16,0,0,0,16-16V88A8.1,8.1,0,0,0,213.7,82.3ZM160,80V51.3L188.7,80Zm-1.3,139.6a8.3,8.3,0,0,1,.4,8.2A8,8,0,0,1,152,232H24a8,8,0,0,1-7-4.2,7.9,7.9,0,0,1,.3-8.1l32.6-50.8a12,12,0,0,1,20.2,0l6.4,10L94,152.6a12,12,0,0,1,20,0Z"></path>
+        <path
+          d="M152,224l-44.7-67a3.9,3.9,0,0,0-6.6,0L79.8,188.4a4,4,0,0,1-6.7-.1l-9.7-15.1a4.1,4.1,0,0,0-6.8,0L24,224Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M192,224h8a8,8,0,0,0,8-8V88L152,32H56a8,8,0,0,0-8,8v96"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <polyline
+          points="152 32 152 88 208 88"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -721,7 +2630,51 @@ const MagnaIcons = {
   "file-pdf": {
     xml: (
       <>
-        <path d="M64,160H48a8,8,0,0,0-8,8v48a8,8,0,0,0,16,0v-8h8a24,24,0,0,0,0-48Zm0,32H56V176h8a8,8,0,0,1,0,16Zm132-16v12h16a8,8,0,0,1,0,16H196v12a8,8,0,0,1-16,0V168a8,8,0,0,1,8-8h28a8,8,0,0,1,0,16Zm-68-16H114a8,8,0,0,0-8,8v48a8,8,0,0,0,8,8h14a32,32,0,0,0,0-64Zm0,48h-6V176h6a16,16,0,0,1,0,32ZM48,136H208a8,8,0,0,0,8-8V88a8.1,8.1,0,0,0-2.3-5.7l-56-56A8.1,8.1,0,0,0,152,24H56A16,16,0,0,0,40,40v88A8,8,0,0,0,48,136ZM152,44l44,44H152Z"></path>
+        <path
+          d="M48,128V40a8,8,0,0,1,8-8h96l56,56v40"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M48,200H64a16,16,0,0,0,0-32H48v48"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M128,216a24,24,0,0,0,0-48H114v48Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <polyline
+          points="152 32 152 88 208 88"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <polyline
+          points="216 168 188 168 188 216"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <line
+          x1="212"
+          y1="196"
+          x2="188"
+          y2="196"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -729,7 +2682,40 @@ const MagnaIcons = {
   "file-plus": {
     xml: (
       <>
-        <path d="M213.7,82.3l-56-56A8.1,8.1,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8.1,8.1,0,0,0,213.7,82.3ZM152,160H136v16a8,8,0,0,1-16,0V160H104a8,8,0,0,1,0-16h16V128a8,8,0,0,1,16,0v16h16a8,8,0,0,1,0,16Zm0-72V43.3L196.7,88Z"></path>
+        <path
+          d="M200,224H56a8,8,0,0,1-8-8V40a8,8,0,0,1,8-8h96l56,56V216A8,8,0,0,1,200,224Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <polyline
+          points="152 32 152 88 208 88"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <line
+          x1="104"
+          y1="152"
+          x2="152"
+          y2="152"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="128"
+          y1="128"
+          x2="128"
+          y2="176"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -737,8 +2723,39 @@ const MagnaIcons = {
   "file-search": {
     xml: (
       <>
-        <path d="M213.6,82.3l-55.9-56-.3-.2-.3-.3-.3-.2-.3-.2c-.1-.1-.2-.1-.2-.2l-.5-.3h-.2l-.5-.3H155l-.7-.3H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A7.8,7.8,0,0,0,213.6,82.3ZM165.4,189.5a8,8,0,0,1-5.6,2.3,8.3,8.3,0,0,1-5.7-2.3l-10.9-11A36.8,36.8,0,0,1,124,184a36,36,0,1,1,36-36,35.8,35.8,0,0,1-5.5,19.2l10.9,10.9A8,8,0,0,1,165.4,189.5ZM152,88V43.3L196.7,88Z"></path>
-        <path d="M124,128a19.9,19.9,0,0,0-14.1,5.9,19.8,19.8,0,0,0,0,28.2,19.9,19.9,0,0,0,28.2,0,19.8,19.8,0,0,0,0-28.2A19.9,19.9,0,0,0,124,128Z"></path>
+        <path
+          d="M200,224H56a8,8,0,0,1-8-8V40a8,8,0,0,1,8-8h96l56,56V216A8,8,0,0,1,200,224Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <polyline
+          points="152 32 152 88 208 88"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <line
+          x1="143.8"
+          y1="167.8"
+          x2="159.8"
+          y2="183.8"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <circle
+          cx="124"
+          cy="148"
+          r="28"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -746,7 +2763,61 @@ const MagnaIcons = {
   "file-text": {
     xml: (
       <>
-        <path d="M213.7,82.3l-56-56A8.1,8.1,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8.1,8.1,0,0,0,213.7,82.3ZM160,176H96a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Zm0-32H96a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Zm-8-56V44l44,44Z"></path>
+        <path
+          d="M200,224H56a8,8,0,0,1-8-8V40a8,8,0,0,1,8-8h96l56,56V216A8,8,0,0,1,200,224Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <polyline
+          points="152 32 152 88 208 88"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <line
+          x1="96"
+          y1="136"
+          x2="160"
+          y2="136"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="96"
+          y1="168"
+          x2="160"
+          y2="168"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  file: {
+    xml: (
+      <>
+        <path
+          d="M200,224H56a8,8,0,0,1-8-8V40a8,8,0,0,1,8-8h96l56,56V216A8,8,0,0,1,200,224Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <polyline
+          points="152 32 152 88 208 88"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -754,13 +2825,55 @@ const MagnaIcons = {
   fingerprint: {
     xml: (
       <>
-        <path d="M128,24A104.2,104.2,0,0,0,24,128a88,88,0,0,1-5,29.3,8.1,8.1,0,0,0,4.9,10.3,8.2,8.2,0,0,0,2.6.4,8.1,8.1,0,0,0,7.6-5.3A104.5,104.5,0,0,0,40,128a88,88,0,0,1,176,0,283.6,283.6,0,0,1-5.3,54.5,8.1,8.1,0,0,0,6.3,9.4h1.6a7.9,7.9,0,0,0,7.8-6.4A299.9,299.9,0,0,0,232,128,104.1,104.1,0,0,0,128,24Z"></path>
-        <path d="M93,84.3A8,8,0,0,0,83,71.8,71.6,71.6,0,0,0,56,128a118.7,118.7,0,0,1-12.5,53.4,8.1,8.1,0,0,0,3.6,10.7,7.8,7.8,0,0,0,3.6.8,8.1,8.1,0,0,0,7.2-4.4A136.1,136.1,0,0,0,72,128,55.9,55.9,0,0,1,93,84.3Z"></path>
-        <path d="M128,120a8,8,0,0,0-8,8,183.3,183.3,0,0,1-23,89.1,8.1,8.1,0,0,0,3.2,10.9,7.5,7.5,0,0,0,3.8,1,8,8,0,0,0,7-4.1A199.8,199.8,0,0,0,136,128,8,8,0,0,0,128,120Z"></path>
-        <path d="M128,88a40.1,40.1,0,0,0-40,40,8,8,0,0,0,16,0,24,24,0,0,1,48,0,214.3,214.3,0,0,1-20.5,92,8,8,0,0,0,3.8,10.7,8.3,8.3,0,0,0,3.4.7,8.1,8.1,0,0,0,7.3-4.6A230,230,0,0,0,168,128,40.1,40.1,0,0,0,128,88Z"></path>
-        <path d="M94.4,152.2a7.9,7.9,0,0,0-9.4,6.2,154.8,154.8,0,0,1-17.2,45.5,8,8,0,0,0,2.9,10.9,8.3,8.3,0,0,0,4,1.1,8.2,8.2,0,0,0,6.9-4,163.2,163.2,0,0,0,19-50.3A7.9,7.9,0,0,0,94.4,152.2Z"></path>
-        <path d="M128,56a68,68,0,0,0-9,.6,8,8,0,1,0,2,15.8c2.3-.2,4.7-.4,7-.4a56,56,0,0,1,56,56,245.7,245.7,0,0,1-1.9,31,7.9,7.9,0,0,0,6.9,8.9h1a8.1,8.1,0,0,0,8-7,279.7,279.7,0,0,0,2-33A72.1,72.1,0,0,0,128,56Z"></path>
-        <path d="M185.9,184.3a7.9,7.9,0,0,0-9.7,5.7c-1.5,5.7-3.2,11.4-5,17a7.9,7.9,0,0,0,5,10.1,7.8,7.8,0,0,0,2.6.4,7.9,7.9,0,0,0,7.5-5.4c2-6,3.8-12,5.4-18.1A8,8,0,0,0,185.9,184.3Z"></path>
+        <path
+          d="M50.7,184.9A127.4,127.4,0,0,0,64,128,64.2,64.2,0,0,1,88,78"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M128,128a191.2,191.2,0,0,1-24,93"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M96,128a32,32,0,0,1,64,0,222.3,222.3,0,0,1-21.3,95.4"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M218.6,184a294.6,294.6,0,0,0,5.4-56,96,96,0,0,0-192,0,94.4,94.4,0,0,1-5.5,32"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M92.8,160a161.9,161.9,0,0,1-18.1,47.9"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M120,64.5a70.1,70.1,0,0,1,8-.5,64,64,0,0,1,64,64,260.6,260.6,0,0,1-2,32"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M183.9,192c-1.5,5.9-3.2,11.8-5.1,17.5"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -768,7 +2881,30 @@ const MagnaIcons = {
   "floppy-disk": {
     xml: (
       <>
-        <path d="M219.3,80,176,36.7A15.9,15.9,0,0,0,164.7,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V91.3A15.9,15.9,0,0,0,219.3,80ZM208,91.3V208H184V152a16,16,0,0,0-16-16H88a16,16,0,0,0-16,16v56H48V48H164.7L208,91.3ZM160,72a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h56A8,8,0,0,1,160,72Z"></path>
+        <path
+          d="M216,91.3V208a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V48a8,8,0,0,1,8-8H164.7a7.9,7.9,0,0,1,5.6,2.3l43.4,43.4A7.9,7.9,0,0,1,216,91.3Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M80,216V152a8,8,0,0,1,8-8h80a8,8,0,0,1,8,8v64"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <line
+          x1="152"
+          y1="72"
+          x2="96"
+          y2="72"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -776,7 +2912,20 @@ const MagnaIcons = {
   "folder-open": {
     xml: (
       <>
-        <path d="M241.9,110.6a16.2,16.2,0,0,0-13-6.6H216V88a16,16,0,0,0-16-16H130.7L102.9,51.2A15.6,15.6,0,0,0,93.3,48H40A16,16,0,0,0,24,64V208h0a7.9,7.9,0,0,0,8,8H208a8,8,0,0,0,7.6-5.5l28.5-85.4A16.3,16.3,0,0,0,241.9,110.6ZM93.3,64l27.8,20.8a15.6,15.6,0,0,0,9.6,3.2H200v16H69.8a16,16,0,0,0-15.2,10.9L40,158.7V64Z"></path>
+        <path
+          d="M32,208V64a8,8,0,0,1,8-8H93.3a8.1,8.1,0,0,1,4.8,1.6l27.8,20.8a8.1,8.1,0,0,0,4.8,1.6H200a8,8,0,0,1,8,8v24"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M32,208l30.2-90.5a8,8,0,0,1,7.6-5.5H228.9a8,8,0,0,1,7.6,10.5L208,208Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -784,7 +2933,20 @@ const MagnaIcons = {
   folder: {
     xml: (
       <>
-        <path d="M216,72H131.3L104,44.7A16.1,16.1,0,0,0,92.7,40H40A16,16,0,0,0,24,56V200.6A15.4,15.4,0,0,0,39.4,216H216.9A15.2,15.2,0,0,0,232,200.9V88A16,16,0,0,0,216,72ZM40,56H92.7l16,16H40Z"></path>
+        <path
+          d="M216.9,208H39.4a7.4,7.4,0,0,1-7.4-7.4V80H216a8,8,0,0,1,8,8V200.9A7.1,7.1,0,0,1,216.9,208Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M32,80V56a8,8,0,0,1,8-8H92.7a7.9,7.9,0,0,1,5.6,2.3L128,80"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -792,9 +2954,33 @@ const MagnaIcons = {
   "funnel-simple": {
     xml: (
       <>
-        <path d="M192,120H64a8,8,0,0,0,0,16H192a8,8,0,0,0,0-16Z"></path>
-        <path d="M232,72H24a8,8,0,0,0,0,16H232a8,8,0,0,0,0-16Z"></path>
-        <path d="M152,168H104a8,8,0,0,0,0,16h48a8,8,0,0,0,0-16Z"></path>
+        <line
+          x1="64"
+          y1="128"
+          x2="192"
+          y2="128"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="24"
+          y1="80"
+          x2="232"
+          y2="80"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="104"
+          y1="176"
+          x2="152"
+          y2="176"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -802,7 +2988,22 @@ const MagnaIcons = {
   gear: {
     xml: (
       <>
-        <path d="M234.8,150.4l-14.9-19.8c.1-1.8,0-3.7,0-5.1l14.9-19.9a7.8,7.8,0,0,0,1.3-6.9,114.8,114.8,0,0,0-10.9-26.4,8.2,8.2,0,0,0-5.8-4l-24.5-3.5-3.7-3.7-3.5-24.5a8.4,8.4,0,0,0-3.9-5.8,117.5,117.5,0,0,0-26.5-10.9,7.8,7.8,0,0,0-6.9,1.3L130.6,36h-5.2L105.6,21.2a7.8,7.8,0,0,0-6.9-1.3A114.8,114.8,0,0,0,72.3,30.8a8.2,8.2,0,0,0-4,5.8L64.8,61.1l-3.7,3.7L36.6,68.3a8.2,8.2,0,0,0-5.8,4A114.8,114.8,0,0,0,19.9,98.7a7.8,7.8,0,0,0,1.3,6.9l14.9,19.8v5.1L21.2,150.4a7.8,7.8,0,0,0-1.3,6.9,114.8,114.8,0,0,0,10.9,26.4,8.2,8.2,0,0,0,5.8,4l24.5,3.5,3.7,3.7,3.5,24.5a8.2,8.2,0,0,0,4,5.8,114.8,114.8,0,0,0,26.4,10.9,7.6,7.6,0,0,0,2.1.3,7.7,7.7,0,0,0,4.8-1.6L125.4,220h5.2l19.8,14.8a7.8,7.8,0,0,0,6.9,1.3,113,113,0,0,0,26.4-10.9,8.2,8.2,0,0,0,4-5.8l3.5-24.6c1.2-1.2,2.6-2.5,3.6-3.6l24.6-3.5a8.2,8.2,0,0,0,5.8-4,114.8,114.8,0,0,0,10.9-26.4A7.8,7.8,0,0,0,234.8,150.4ZM128,172a44,44,0,1,1,44-44A44,44,0,0,1,128,172Z"></path>
+        <circle
+          cx="128"
+          cy="128"
+          r="48"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></circle>
+        <path
+          d="M183.7,65.1q3.8,3.5,7.2,7.2l27.3,3.9a103.2,103.2,0,0,1,10.2,24.6l-16.6,22.1s.3,6.8,0,10.2l16.6,22.1a102.2,102.2,0,0,1-10.2,24.6l-27.3,3.9s-4.7,4.9-7.2,7.2l-3.9,27.3a103.2,103.2,0,0,1-24.6,10.2l-22.1-16.6a57.9,57.9,0,0,1-10.2,0l-22.1,16.6a102.2,102.2,0,0,1-24.6-10.2l-3.9-27.3q-3.7-3.5-7.2-7.2l-27.3-3.9a103.2,103.2,0,0,1-10.2-24.6l16.6-22.1s-.3-6.8,0-10.2L27.6,100.8A102.2,102.2,0,0,1,37.8,76.2l27.3-3.9q3.5-3.7,7.2-7.2l3.9-27.3a103.2,103.2,0,0,1,24.6-10.2l22.1,16.6a57.9,57.9,0,0,1,10.2,0l22.1-16.6a102.2,102.2,0,0,1,24.6,10.2Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -810,7 +3011,50 @@ const MagnaIcons = {
   "git-branch": {
     xml: (
       <>
-        <path d="M224,68a36,36,0,1,0-44,35.1v.9a16,16,0,0,1-16,16H92a32.2,32.2,0,0,0-16,4.3V103.1a36,36,0,1,0-16,0v49.8a36,36,0,1,0,16,0V152a16,16,0,0,1,16-16h72a32.1,32.1,0,0,0,32-32v-.9A36.1,36.1,0,0,0,224,68ZM48,68A20,20,0,1,1,68,88,20.1,20.1,0,0,1,48,68ZM88,188a20,20,0,1,1-20-20A20.1,20.1,0,0,1,88,188Z"></path>
+        <circle
+          cx="68"
+          cy="188"
+          r="28"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></circle>
+        <circle
+          cx="188"
+          cy="68"
+          r="28"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></circle>
+        <circle
+          cx="68"
+          cy="68"
+          r="28"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></circle>
+        <path
+          d="M68,160v-8a23.9,23.9,0,0,1,24-24h72a23.9,23.9,0,0,0,24-24V96"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <line
+          x1="68"
+          y1="96"
+          x2="68"
+          y2="160"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -818,7 +3062,41 @@ const MagnaIcons = {
   "github-logo": {
     xml: (
       <>
-        <path d="M224,224a8,8,0,0,1-8,8,32.1,32.1,0,0,1-32-32v-8a16,16,0,0,0-16-16H156v40a16,16,0,0,0,16,16,8,8,0,0,1,0,16,32.1,32.1,0,0,1-32-32V176H116v40a32.1,32.1,0,0,1-32,32,8,8,0,0,1,0-16,16,16,0,0,0,16-16V176H88a16,16,0,0,0-16,16v8a32.1,32.1,0,0,1-32,32,8,8,0,0,1,0-16,16,16,0,0,0,16-16v-8a32.1,32.1,0,0,1,14.8-27A55.8,55.8,0,0,1,48,120v-8a58,58,0,0,1,7.7-28.3A59.9,59.9,0,0,1,61.1,36,7.8,7.8,0,0,1,68,32a59.7,59.7,0,0,1,48,24h24a59.7,59.7,0,0,1,48-24,7.8,7.8,0,0,1,6.9,4,59.9,59.9,0,0,1,5.4,47.7A58,58,0,0,1,208,112v8a55.8,55.8,0,0,1-22.8,45A32.1,32.1,0,0,1,200,192v8a16,16,0,0,0,16,16A8,8,0,0,1,224,224Z"></path>
+        <path
+          d="M84,240a23.9,23.9,0,0,0,24-24V168"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M172,240a23.9,23.9,0,0,1-24-24V168"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M152,168h16a23.9,23.9,0,0,1,24,24v8a23.9,23.9,0,0,0,24,24"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M104,168H88a23.9,23.9,0,0,0-24,24v8a23.9,23.9,0,0,1-24,24"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M111.8,64A52,52,0,0,0,68,40a52,52,0,0,0-3.5,44.7A49.3,49.3,0,0,0,56,112v8a48,48,0,0,0,48,48h48a48,48,0,0,0,48-48v-8a49.3,49.3,0,0,0-8.5-27.3A52,52,0,0,0,188,40a52,52,0,0,0-43.8,24Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -826,8 +3104,42 @@ const MagnaIcons = {
   "globe-stand": {
     xml: (
       <>
-        <circle cx="128" cy="96" r="80"></circle>
-        <path d="M207.2,175.2a8,8,0,0,0-11.3-11.3A96,96,0,0,1,60.1,28.1,8,8,0,1,0,48.8,16.8,112,112,0,0,0,120,207.7V224H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V207.7A111.6,111.6,0,0,0,207.2,175.2Z"></path>
+        <circle
+          cx="128"
+          cy="96"
+          r="72"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></circle>
+        <path
+          d="M201.5,169.5a103.9,103.9,0,0,1-147-147"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <line
+          x1="96"
+          y1="232"
+          x2="160"
+          y2="232"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="128"
+          y1="200"
+          x2="128"
+          y2="232"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -835,7 +3147,18 @@ const MagnaIcons = {
   "hard-drive": {
     xml: (
       <>
-        <path d="M224,64H32A16,16,0,0,0,16,80v96a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V80A16,16,0,0,0,224,64Zm-36,76a12,12,0,1,1,12-12A12,12,0,0,1,188,140Z"></path>
+        <rect
+          x="24"
+          y="72"
+          width="208"
+          height="112"
+          rx="8"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></rect>
+        <circle cx="188" cy="128" r="12"></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -843,8 +3166,30 @@ const MagnaIcons = {
   "hard-drives": {
     xml: (
       <>
-        <path d="M208,40H48A16,16,0,0,0,32,56v48a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V56A16,16,0,0,0,208,40ZM180,92a12,12,0,1,1,12-12A12,12,0,0,1,180,92Z"></path>
-        <path d="M208,136H48a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V152A16,16,0,0,0,208,136Zm-28,52a12,12,0,1,1,12-12A12,12,0,0,1,180,188Z"></path>
+        <rect
+          x="40"
+          y="144"
+          width="176"
+          height="64"
+          rx="8"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></rect>
+        <rect
+          x="40"
+          y="48"
+          width="176"
+          height="64"
+          rx="8"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></rect>
+        <circle cx="180" cy="80" r="12"></circle>
+        <circle cx="180" cy="176" r="12"></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -852,7 +3197,30 @@ const MagnaIcons = {
   "hourglass-high": {
     xml: (
       <>
-        <path d="M200,75.6V40a16,16,0,0,0-16-16H72A16,16,0,0,0,56,40V76a16.1,16.1,0,0,0,6.4,12.8L114.7,128,62.4,167.2A16.1,16.1,0,0,0,56,180v36a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V180.4a16.1,16.1,0,0,0-6.4-12.8L141.3,128l52.3-39.6A16.1,16.1,0,0,0,200,75.6ZM184,40V64H72V40Zm0,176H72V180l56-42,56,42.4Z"></path>
+        <path
+          d="M128,128,67.2,82.4A8.1,8.1,0,0,1,64,76V40a8,8,0,0,1,8-8H184a8,8,0,0,1,8,8V75.6a8.1,8.1,0,0,1-3.2,6.4L128,128h0"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M128,128,67.2,173.6A8.1,8.1,0,0,0,64,180v36a8,8,0,0,0,8,8H184a8,8,0,0,0,8-8V180.4a8.1,8.1,0,0,0-3.2-6.4L128,128h0"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <line
+          x1="64"
+          y1="64"
+          x2="192"
+          y2="64"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -860,7 +3228,13 @@ const MagnaIcons = {
   house: {
     xml: (
       <>
-        <path d="M218.8,103.7,138.8,31a16,16,0,0,0-21.6,0l-80,72.7A16,16,0,0,0,32,115.5v92.1a16.4,16.4,0,0,0,4,11A15.9,15.9,0,0,0,48,224H96a8,8,0,0,0,8-8V168a8,8,0,0,1,8-8h32a8,8,0,0,1,8,8v48a8,8,0,0,0,8,8h48a15.6,15.6,0,0,0,7.6-1.9A16.1,16.1,0,0,0,224,208V115.5A16,16,0,0,0,218.8,103.7Z"></path>
+        <path
+          d="M152,208V160a8,8,0,0,0-8-8H112a8,8,0,0,0-8,8v48a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V115.5a8.3,8.3,0,0,1,2.6-5.9l80-72.7a8,8,0,0,1,10.8,0l80,72.7a8.3,8.3,0,0,1,2.6,5.9V208a8,8,0,0,1-8,8H160A8,8,0,0,1,152,208Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -868,7 +3242,39 @@ const MagnaIcons = {
   image: {
     xml: (
       <>
-        <path d="M168,100h0a12,12,0,0,1-12,12,12,12,0,0,1-12-12,12,12,0,0,1,24,0Zm64-44V184h0v16a16,16,0,0,1-16,16H40a16,16,0,0,1-16-16V168h0V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56ZM216,164.7V56H40v92.7L76.7,112a16.1,16.1,0,0,1,22.6,0L144,156.7,164.7,136a16.1,16.1,0,0,1,22.6,0Z"></path>
+        <rect
+          x="32"
+          y="48"
+          width="192"
+          height="160"
+          rx="8"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></rect>
+        <path
+          d="M32,168l50.3-50.3a8,8,0,0,1,11.4,0l44.6,44.6a8,8,0,0,0,11.4,0l20.6-20.6a8,8,0,0,1,11.4,0L224,184"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <circle cx="156" cy="100" r="12"></circle>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  lightning: {
+    xml: (
+      <>
+        <polygon
+          points="96 240 112 160 48 136 160 16 144 96 208 120 96 240"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polygon>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -876,8 +3282,20 @@ const MagnaIcons = {
   link: {
     xml: (
       <>
-        <path d="M210,46a51.8,51.8,0,0,0-73.5,0L116.7,65.8A8,8,0,0,0,128,77.1l19.8-19.8a36.1,36.1,0,0,1,50.9,0,35.9,35.9,0,0,1,0,50.9l-28.3,28.3a36.1,36.1,0,0,1-50.9,0,8,8,0,1,0-11.3,11.3,52,52,0,0,0,73.5,0L210,119.5A51.8,51.8,0,0,0,210,46Z"></path>
-        <path d="M128,178.9l-19.8,19.8a36,36,0,0,1-50.9-50.9l28.3-28.3a36.1,36.1,0,0,1,50.9,0,8,8,0,0,0,11.3-11.3,52,52,0,0,0-73.5,0L46,136.5A52,52,0,1,0,119.5,210l19.8-19.8A8,8,0,0,0,128,178.9Z"></path>
+        <path
+          d="M122.3,71.4l19.8-19.8a44.1,44.1,0,0,1,62.3,62.3l-28.3,28.2a43.9,43.9,0,0,1-62.2,0"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M133.7,184.6l-19.8,19.8a44.1,44.1,0,0,1-62.3-62.3l28.3-28.2a43.9,43.9,0,0,1,62.2,0"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -885,7 +3303,39 @@ const MagnaIcons = {
   "list-bullets": {
     xml: (
       <>
-        <path d="M80,64a8,8,0,0,1,8-8H216a8,8,0,0,1,0,16H88A8,8,0,0,1,80,64Zm136,56H88a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Zm0,64H88a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16ZM44,116a12,12,0,1,0,12,12A12,12,0,0,0,44,116Zm0-64A12,12,0,1,0,56,64,12,12,0,0,0,44,52Zm0,128a12,12,0,1,0,12,12A12,12,0,0,0,44,180Z"></path>
+        <line
+          x1="88"
+          y1="64"
+          x2="216"
+          y2="64"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="88"
+          y1="128"
+          x2="216"
+          y2="128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="88"
+          y1="192"
+          x2="216"
+          y2="192"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <circle cx="44" cy="64" r="12"></circle>
+        <circle cx="44" cy="128" r="12"></circle>
+        <circle cx="44" cy="192" r="12"></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -893,7 +3343,57 @@ const MagnaIcons = {
   "list-checks": {
     xml: (
       <>
-        <path d="M224,128a8,8,0,0,1-8,8H128a8,8,0,0,1,0-16h88A8,8,0,0,1,224,128ZM128,72h88a8,8,0,0,0,0-16H128a8,8,0,0,0,0,16Zm88,112H128a8,8,0,0,0,0,16h88a8,8,0,0,0,0-16ZM86.6,42.1l-29.3,27-11.9-11A8,8,0,0,0,34.6,69.9l17.3,16A8,8,0,0,0,57.3,88a8.2,8.2,0,0,0,5.5-2.1l34.6-32A8,8,0,1,0,86.6,42.1Zm0,64-29.3,27-11.9-11a8,8,0,1,0-10.8,11.8l17.3,16a8,8,0,0,0,5.4,2.1,8.2,8.2,0,0,0,5.5-2.1l34.6-32a8,8,0,1,0-10.8-11.8Zm0,64-29.3,27-11.9-11a8,8,0,1,0-10.8,11.8l17.3,16a8,8,0,0,0,5.4,2.1,8.2,8.2,0,0,0,5.5-2.1l34.6-32a8,8,0,0,0-10.8-11.8Z"></path>
+        <line
+          x1="128"
+          y1="128"
+          x2="216"
+          y2="128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="128"
+          y1="64"
+          x2="216"
+          y2="64"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="128"
+          y1="192"
+          x2="216"
+          y2="192"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <polyline
+          points="92 48 57.3 80 40 64"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <polyline
+          points="92 112 57.3 144 40 128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <polyline
+          points="92 176 57.3 208 40 192"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -901,7 +3401,66 @@ const MagnaIcons = {
   "list-dashes": {
     xml: (
       <>
-        <path d="M88,64a8,8,0,0,1,8-8H216a8,8,0,0,1,0,16H96A8,8,0,0,1,88,64Zm128,56H96a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Zm0,64H96a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16ZM56,56H40a8,8,0,0,0,0,16H56a8,8,0,0,0,0-16Zm0,64H40a8,8,0,0,0,0,16H56a8,8,0,0,0,0-16Zm0,64H40a8,8,0,0,0,0,16H56a8,8,0,0,0,0-16Z"></path>
+        <line
+          x1="96"
+          y1="64"
+          x2="216"
+          y2="64"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="96"
+          y1="128"
+          x2="216"
+          y2="128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="96"
+          y1="192"
+          x2="216"
+          y2="192"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="40"
+          y1="64"
+          x2="56"
+          y2="64"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="40"
+          y1="128"
+          x2="56"
+          y2="128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="40"
+          y1="192"
+          x2="56"
+          y2="192"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -909,7 +3468,47 @@ const MagnaIcons = {
   "list-numbers": {
     xml: (
       <>
-        <path d="M224,128a8,8,0,0,1-8,8H104a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM104,72H216a8,8,0,0,0,0-16H104a8,8,0,0,0,0,16ZM216,184H104a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16ZM43.6,67.2,48,64.9V108a8,8,0,0,0,16,0V52a7.9,7.9,0,0,0-3.8-6.8,8,8,0,0,0-7.8-.4l-16,8a8,8,0,1,0,7.2,14.4ZM72.2,170.3A21.5,21.5,0,0,0,76,158a22,22,0,0,0-42.3-8.6,8,8,0,0,0,14.8,6.3A5.8,5.8,0,0,1,54,152a6,6,0,0,1,6,6,5.7,5.7,0,0,1-.9,3.2l-25.5,34A8,8,0,0,0,40,208H68a8,8,0,0,0,0-16H56l16-21.4Z"></path>
+        <line
+          x1="104"
+          y1="128"
+          x2="216"
+          y2="128"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="104"
+          y1="64"
+          x2="216"
+          y2="64"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="104"
+          y1="192"
+          x2="216"
+          y2="192"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <polyline
+          points="40 60 56 52 56 108"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <path
+          d="M41.1,152.6a14,14,0,1,1,24.5,13.2L40,200H68"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -917,9 +3516,33 @@ const MagnaIcons = {
   list: {
     xml: (
       <>
-        <path d="M216,120H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
-        <path d="M40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16Z"></path>
-        <path d="M216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
+        <line
+          x1="40"
+          y1="128"
+          x2="216"
+          y2="128"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="40"
+          y1="64"
+          x2="216"
+          y2="64"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="40"
+          y1="192"
+          x2="216"
+          y2="192"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -927,7 +3550,24 @@ const MagnaIcons = {
   "lock-simple-open": {
     xml: (
       <>
-        <path d="M208,80H100V52a28,28,0,0,1,56,0,8,8,0,0,0,16,0,44,44,0,0,0-88,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80Z"></path>
+        <rect
+          x="40"
+          y="88"
+          width="176"
+          height="128"
+          rx="8"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></rect>
+        <path
+          d="M92,88V52a36,36,0,0,1,72,0"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -935,7 +3575,25 @@ const MagnaIcons = {
   lock: {
     xml: (
       <>
-        <path d="M208,80H172V52a44,44,0,0,0-88,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80Zm-80,84a12,12,0,1,1,12-12A12,12,0,0,1,128,164Zm28-84H100V52a28,28,0,0,1,56,0Z"></path>
+        <rect
+          x="40"
+          y="88"
+          width="176"
+          height="128"
+          rx="8"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></rect>
+        <path
+          d="M92,88V52a36,36,0,0,1,72,0V88"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <circle cx="128" cy="152" r="12"></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -943,7 +3601,45 @@ const MagnaIcons = {
   "magnifying-glass-plus": {
     xml: (
       <>
-        <path d="M229.6,218.3l-43.2-43.2a92.2,92.2,0,1,0-11.3,11.3l43.2,43.3A8.3,8.3,0,0,0,224,232a8,8,0,0,0,5.6-13.7ZM148,124H124v24a8,8,0,0,1-16,0V124H84a8,8,0,0,1,0-16h24V84a8,8,0,0,1,16,0v24h24a8,8,0,0,1,0,16Z"></path>
+        <line
+          x1="84"
+          y1="116"
+          x2="148"
+          y2="116"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="116"
+          y1="84"
+          x2="116"
+          y2="148"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="175.4"
+          y1="175.4"
+          x2="224"
+          y2="224"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <circle
+          cx="116"
+          cy="116"
+          r="84"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -951,7 +3647,25 @@ const MagnaIcons = {
   "magnifying-glass": {
     xml: (
       <>
-        <path d="M176,116a60,60,0,1,1-60-60A60,60,0,0,1,176,116Zm53.6,113.7A8,8,0,0,1,224,232a8.3,8.3,0,0,1-5.7-2.3l-43.2-43.3a92.2,92.2,0,1,1,11.3-11.3l43.2,43.2A8,8,0,0,1,229.6,229.7ZM116,192a76,76,0,1,0-76-76A76.1,76.1,0,0,0,116,192Z"></path>
+        <circle
+          cx="116"
+          cy="116"
+          r="84"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></circle>
+        <line
+          x1="175.4"
+          y1="175.4"
+          x2="224"
+          y2="224"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -959,7 +3673,13 @@ const MagnaIcons = {
   "navigation-arrow": {
     xml: (
       <>
-        <path d="M219.5,88.4,50.2,29.8A16,16,0,0,0,29.8,50.2L88.4,219.5a15.8,15.8,0,0,0,15.1,10.8h.3a15.6,15.6,0,0,0,15-11.2l23.6-76.6L219,118.8a15.8,15.8,0,0,0,11.3-15A15.9,15.9,0,0,0,219.5,88.4Z"></path>
+        <path
+          d="M37.4,47.6,96,216.9c2.5,7.3,12.9,7.1,15.2-.3L134.8,140a7.5,7.5,0,0,1,5.3-5.2l76.5-23.6c7.4-2.3,7.6-12.7.3-15.2L47.6,37.4A8,8,0,0,0,37.4,47.6Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -967,7 +3687,30 @@ const MagnaIcons = {
   "note-pencil": {
     xml: (
       <>
-        <path d="M224,120v88a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V48A16,16,0,0,1,48,32h88a8,8,0,0,1,0,16H48V208H208V120a8,8,0,0,1,16,0Zm5.7-50.3-96,96A8.1,8.1,0,0,1,128,168H96a8,8,0,0,1-8-8V128a8.1,8.1,0,0,1,2.3-5.7l96-96a8.1,8.1,0,0,1,11.4,0l32,32A8.1,8.1,0,0,1,229.7,69.7Zm-17-5.7L192,43.3,179.3,56,200,76.7Z"></path>
+        <polygon
+          points="128 160 96 160 96 128 192 32 224 64 128 160"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polygon>
+        <line
+          x1="168"
+          y1="56"
+          x2="200"
+          y2="88"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <path
+          d="M216,120v88a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V48a8,8,0,0,1,8-8h88"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -975,7 +3718,47 @@ const MagnaIcons = {
   notebook: {
     xml: (
       <>
-        <path d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM80,208H48V48H80Zm96-56H112a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Zm0-32H112a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Z"></path>
+        <rect
+          x="40"
+          y="40"
+          width="176"
+          height="176"
+          rx="8"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></rect>
+        <line
+          x1="112"
+          y1="112"
+          x2="176"
+          y2="112"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="112"
+          y1="144"
+          x2="176"
+          y2="144"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="80"
+          y1="40"
+          x2="80"
+          y2="216"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -983,7 +3766,63 @@ const MagnaIcons = {
   notepad: {
     xml: (
       <>
-        <path d="M200,32H184V24a8,8,0,0,0-16,0v8H136V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H56A16,16,0,0,0,40,48V200a32,32,0,0,0,32,32H184a32,32,0,0,0,32-32V48A16,16,0,0,0,200,32ZM160,168H96a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Zm0-32H96a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Z"></path>
+        <line
+          x1="96"
+          y1="128"
+          x2="160"
+          y2="128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="96"
+          y1="160"
+          x2="160"
+          y2="160"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="80"
+          y1="24"
+          x2="80"
+          y2="56"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="128"
+          y1="24"
+          x2="128"
+          y2="56"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="176"
+          y1="24"
+          x2="176"
+          y2="56"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <path
+          d="M56,40H200a8,8,0,0,1,8,8V200a24,24,0,0,1-24,24H72a24,24,0,0,1-24-24V48A8,8,0,0,1,56,40Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -991,7 +3830,23 @@ const MagnaIcons = {
   "paper-plane-tilt": {
     xml: (
       <>
-        <path d="M227.7,48.3,175.3,234.2a15.9,15.9,0,0,1-14.1,11.6h-1.4a16,16,0,0,1-14.4-9.1l-35.7-75.4a4.1,4.1,0,0,1,.8-4.6l51.3-51.3a8,8,0,1,0-11.3-11.3L99.2,145.5a4.1,4.1,0,0,1-4.6.8l-75-35.5a16.6,16.6,0,0,1-9.5-15.6A15.9,15.9,0,0,1,21.8,80.7L208.1,28.2a16,16,0,0,1,17.7,6.5A16.7,16.7,0,0,1,227.7,48.3Z"></path>
+        <path
+          d="M210.3,35.9,23.9,88.4a8,8,0,0,0-1.2,15l85.6,40.5a7.8,7.8,0,0,1,3.8,3.8l40.5,85.6a8,8,0,0,0,15-1.2L220.1,45.7A7.9,7.9,0,0,0,210.3,35.9Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <line
+          x1="110.9"
+          y1="145.1"
+          x2="156.1"
+          y2="99.9"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -999,7 +3854,28 @@ const MagnaIcons = {
   pause: {
     xml: (
       <>
-        <path d="M216,48V208a16,16,0,0,1-16,16H164a16,16,0,0,1-16-16V48a16,16,0,0,1,16-16h36A16,16,0,0,1,216,48ZM92,32H56A16,16,0,0,0,40,48V208a16,16,0,0,0,16,16H92a16,16,0,0,0,16-16V48A16,16,0,0,0,92,32Z"></path>
+        <rect
+          x="156"
+          y="40"
+          width="52"
+          height="176"
+          rx="8"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></rect>
+        <rect
+          x="48"
+          y="40"
+          width="52"
+          height="176"
+          rx="8"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></rect>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1007,7 +3883,23 @@ const MagnaIcons = {
   "pencil-simple": {
     xml: (
       <>
-        <path d="M224,76.7,179.7,32.3a16.6,16.6,0,0,0-11.3-5A16,16,0,0,0,156.7,32L130.3,58.3h0L36.7,152A15.9,15.9,0,0,0,32,163.3V208a16,16,0,0,0,16,16H92.7a16.1,16.1,0,0,0,11.3-4.7l120-120A16.1,16.1,0,0,0,224,76.7Zm-32,32L147.3,64,168,43.3,212.7,88Z"></path>
+        <path
+          d="M92.7,216H48a8,8,0,0,1-8-8V163.3a7.9,7.9,0,0,1,2.3-5.6l120-120a8,8,0,0,1,11.4,0l44.6,44.6a8,8,0,0,1,0,11.4l-120,120A7.9,7.9,0,0,1,92.7,216Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <line
+          x1="136"
+          y1="64"
+          x2="192"
+          y2="120"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1015,7 +3907,13 @@ const MagnaIcons = {
   play: {
     xml: (
       <>
-        <path d="M232.3,114.3,88.3,26.4a15.5,15.5,0,0,0-16.1-.3A15.8,15.8,0,0,0,64,40V216a15.8,15.8,0,0,0,8.2,13.9,15.5,15.5,0,0,0,16.1-.3l144-87.9a16,16,0,0,0,0-27.4Z"></path>
+        <path
+          d="M228.1,121.2,84.2,33.2A8,8,0,0,0,72,40V216a8,8,0,0,0,12.2,6.8l143.9-88A7.9,7.9,0,0,0,228.1,121.2Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1023,7 +3921,53 @@ const MagnaIcons = {
   plug: {
     xml: (
       <>
-        <path d="M237.7,77.7,203.3,112l26.4,26.3a8.1,8.1,0,0,1,0,11.4,8.2,8.2,0,0,1-11.4,0l-6.3-6.4L160.3,195a40.1,40.1,0,0,1-56.6,0L88,179.3,37.7,229.7a8.2,8.2,0,0,1-11.4,0,8.1,8.1,0,0,1,0-11.4L76.7,168,61,152.3a40.1,40.1,0,0,1,0-56.6L112.7,44l-6.4-6.3a8.1,8.1,0,0,1,11.4-11.4L144,52.7l34.3-34.4a8.1,8.1,0,0,1,11.4,11.4L155.3,64,192,100.7l34.3-34.4a8.1,8.1,0,0,1,11.4,11.4Z"></path>
+        <path
+          d="M212,132l-57.4,57.4a31.9,31.9,0,0,1-45.2,0L66.6,146.6a31.9,31.9,0,0,1,0-45.2L124,44"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <line
+          x1="88"
+          y1="168"
+          x2="32"
+          y2="224"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="144"
+          y1="64"
+          x2="184"
+          y2="24"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="232"
+          y1="72"
+          x2="192"
+          y2="112"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="224"
+          y1="144"
+          x2="112"
+          y2="32"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1031,7 +3975,171 @@ const MagnaIcons = {
   "plugs-connected": {
     xml: (
       <>
-        <path d="M237.7,18.3a8.1,8.1,0,0,0-11.4,0L176,68.7l-5.4-5.4a31.9,31.9,0,0,0-45.2,0L100,88.7l-2.3-2.4A8.1,8.1,0,0,0,86.3,97.7l2.4,2.3L63.3,125.4a31.9,31.9,0,0,0,0,45.2l5.4,5.4L18.3,226.3a8.1,8.1,0,0,0,0,11.4,8.2,8.2,0,0,0,11.4,0L80,187.3l5.4,5.4a32.1,32.1,0,0,0,45.2,0L156,167.3l2.3,2.4a8.2,8.2,0,0,0,11.4,0,8.1,8.1,0,0,0,0-11.4l-2.4-2.3,25.4-25.4a31.9,31.9,0,0,0,0-45.2L187.3,80l50.4-50.3A8.1,8.1,0,0,0,237.7,18.3Zm-56.3,101L156,144.7,111.3,100l25.4-25.4a15.9,15.9,0,0,1,22.6,0l22.1,22.1a15.9,15.9,0,0,1,0,22.6Zm50.2,43.2A7.9,7.9,0,0,1,224,168a7.3,7.3,0,0,1-2.5-.4l-24-8a8,8,0,1,1,5-15.2l24,8A8,8,0,0,1,231.6,162.5ZM24.4,93.5a8,8,0,0,1,10.1-5.1l24,8A8,8,0,0,1,56,112a7.3,7.3,0,0,1-2.5-.4l-24-8A8,8,0,0,1,24.4,93.5Zm64-59a8,8,0,0,1,15.2-5l8,24a8,8,0,0,1-5.1,10.1,7.3,7.3,0,0,1-2.5.4,7.9,7.9,0,0,1-7.6-5.5Zm79.2,187a8,8,0,0,1-5.1,10.1,7.3,7.3,0,0,1-2.5.4,7.9,7.9,0,0,1-7.6-5.5l-8-24a8,8,0,1,1,15.2-5Z"></path>
+        <rect
+          x="60.1"
+          y="88.4"
+          width="135.8"
+          height="79.2"
+          rx="24"
+          transform="translate(-53 128) rotate(-45)"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></rect>
+        <line
+          x1="80"
+          y1="176"
+          x2="24"
+          y2="232"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="232"
+          y1="24"
+          x2="176"
+          y2="80"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="92"
+          y1="92"
+          x2="164"
+          y2="164"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="224"
+          y1="160"
+          x2="200"
+          y2="152"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="56"
+          y1="104"
+          x2="32"
+          y2="96"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="96"
+          y1="32"
+          x2="104"
+          y2="56"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="152"
+          y1="200"
+          x2="160"
+          y2="224"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  plugs: {
+    xml: (
+      <>
+        <path
+          d="M132,180l-31,31a24,24,0,0,1-34,0L45,189a24,24,0,0,1,0-34l31-31"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M180,132l31-31a24,24,0,0,0,0-34L189,45a24,24,0,0,0-34,0L124,76"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <line
+          x1="56"
+          y1="200"
+          x2="24"
+          y2="232"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="232"
+          y1="24"
+          x2="200"
+          y2="56"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="144"
+          y1="144"
+          x2="120"
+          y2="168"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line x1="144" y1="144" x2="120" y2="168" fill="#231f20"></line>
+        <line
+          x1="112"
+          y1="112"
+          x2="88"
+          y2="136"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line x1="112" y1="112" x2="88" y2="136" fill="#231f20"></line>
+        <line
+          x1="116"
+          y1="68"
+          x2="188"
+          y2="140"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="68"
+          y1="116"
+          x2="140"
+          y2="188"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1039,7 +4147,26 @@ const MagnaIcons = {
   plus: {
     xml: (
       <>
-        <path d="M216,120H136V40a8,8,0,0,0-16,0v80H40a8,8,0,0,0,0,16h80v80a8,8,0,0,0,16,0V136h80a8,8,0,0,0,0-16Z"></path>
+        <line
+          x1="40"
+          y1="128"
+          x2="216"
+          y2="128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="128"
+          y1="40"
+          x2="128"
+          y2="216"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1047,7 +4174,23 @@ const MagnaIcons = {
   power: {
     xml: (
       <>
-        <path d="M128,24A104,104,0,1,0,232,128,104.2,104.2,0,0,0,128,24Zm-8,32a8,8,0,0,1,16,0v60a8,8,0,0,1-16,0Zm8,152A80,80,0,0,1,83.5,61.5a8,8,0,0,1,8.9,13.3,64.1,64.1,0,1,0,71.1,0,8.1,8.1,0,0,1-2.2-11.1,8,8,0,0,1,11.1-2.2A80,80,0,0,1,128,208Z"></path>
+        <line
+          x1="128"
+          y1="48"
+          x2="128"
+          y2="124"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <path
+          d="M176,54.2a88,88,0,1,1-96,0"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1055,7 +4198,49 @@ const MagnaIcons = {
   "prohibit-inset": {
     xml: (
       <>
-        <path d="M128,24A104,104,0,1,0,232,128,104.2,104.2,0,0,0,128,24Zm22.6,137.9L94.1,105.4a8,8,0,0,1,11.3-11.3l56.5,56.5a8,8,0,0,1-11.3,11.3Z"></path>
+        <circle
+          cx="128"
+          cy="128"
+          r="96"
+          fill="none"
+          strokeMiterlimit="10"
+          strokeWidth="16"
+        ></circle>
+        <line
+          x1="99.7"
+          y1="99.7"
+          x2="156.3"
+          y2="156.3"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  prohibit: {
+    xml: (
+      <>
+        <circle
+          cx="128"
+          cy="128"
+          r="96"
+          fill="none"
+          strokeMiterlimit="10"
+          strokeWidth="16"
+        ></circle>
+        <line
+          x1="60.1"
+          y1="60.1"
+          x2="195.9"
+          y2="195.9"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1063,7 +4248,37 @@ const MagnaIcons = {
   "puzzle-piece": {
     xml: (
       <>
-        <path d="M165.8,224H208a16,16,0,0,0,16-16V170.3a7.9,7.9,0,0,0-3.6-6.6,7.7,7.7,0,0,0-7.5-.7,24.3,24.3,0,0,1-8.9,1.7c-13.2,0-24-11.1-24-24.7s10.8-24.7,24-24.7a24.3,24.3,0,0,1,8.9,1.7,7.7,7.7,0,0,0,7.5-.7,7.9,7.9,0,0,0,3.6-6.6V72a16,16,0,0,0-16-16H171.8c.1-1.3.2-2.7.2-4a36,36,0,0,0-72,0c0,1.3.1,2.7.2,4H64A16,16,0,0,0,48,72v32.2l-4-.2a36,36,0,0,0,0,72l4-.2V208a16,16,0,0,0,16,16h42.2"></path>
+        <path
+          d="M64,216a8,8,0,0,1-8-8V165.3a27.6,27.6,0,0,1-14.1,2.6A28,28,0,1,1,56,114.7V72a8,8,0,0,1,8-8h46.7a27.6,27.6,0,0,1-2.6-14.1A28,28,0,1,1,161.3,64H208a8,8,0,0,1,8,8v42.7a27.6,27.6,0,0,0-14.1-2.6A28,28,0,1,0,216,165.3V208a8,8,0,0,1-8,8Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  question: {
+    xml: (
+      <>
+        <circle
+          cx="128"
+          cy="128"
+          r="96"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></circle>
+        <circle cx="128" cy="180" r="12"></circle>
+        <path
+          d="M128,144v-8a28,28,0,1,0-28-28"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1071,7 +4286,28 @@ const MagnaIcons = {
   rss: {
     xml: (
       <>
-        <path d="M98.9,157.1A71.6,71.6,0,0,1,120,208a8,8,0,0,1-16,0,56,56,0,0,0-56-56,8,8,0,0,1,0-16A71.6,71.6,0,0,1,98.9,157.1ZM48,88a8,8,0,0,0,0,16,102.9,102.9,0,0,1,73.5,30.5A102.9,102.9,0,0,1,152,208a8,8,0,0,0,16,0,119.2,119.2,0,0,0-35.2-84.9A119.3,119.3,0,0,0,48,88Zm118.8,1.2A166.9,166.9,0,0,0,48,40a8,8,0,0,0,0,16,151.1,151.1,0,0,1,107.5,44.5A151.1,151.1,0,0,1,200,208a8,8,0,0,0,16,0A166.9,166.9,0,0,0,166.8,89.2ZM52,192a12,12,0,1,0,12,12A12,12,0,0,0,52,192Z"></path>
+        <path
+          d="M48,144a63.8,63.8,0,0,1,64,64"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M48,96A112,112,0,0,1,160,208"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M48,48A159.1,159.1,0,0,1,161.1,94.9,159.1,159.1,0,0,1,208,208"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <circle cx="52" cy="204" r="12"></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1079,7 +4315,50 @@ const MagnaIcons = {
   scales: {
     xml: (
       <>
-        <path d="M239.4,133l-32-80h0l-.5-.9h0l-.6-.8c-.1-.1-.1-.1-.1-.2l-.8-.8a.1.1,0,0,1-.1-.1l-.7-.5-.2-.2-.9-.5h-.2l-.8-.3h-.2l-1-.2h-3L136,62V40a8,8,0,0,0-16,0V65.6L54.3,80.2h-.7l-1,.4h-.2l-.8.4a.1.1,0,0,1-.1.1l-.9.7a.1.1,0,0,1-.1.1l-.6.7h-.1a2.4,2.4,0,0,0-.6.9l-.2.2-.4.9h-.1L16.6,165a8,8,0,0,0-.6,3c0,23.3,24.5,32,40,32s40-8.7,40-32a8,8,0,0,0-.6-3L66.9,93.8,120,82V208H104a8,8,0,0,0,0,16h48a8,8,0,0,0,0-16H136V78.4l50.9-11.3L160.6,133a8,8,0,0,0-.6,3c0,23.3,24.5,32,40,32s40-8.7,40-32A8,8,0,0,0,239.4,133ZM32.6,168,56,109.5,79.4,168Zm144-32L200,77.5,223.4,136Z"></path>
+        <line
+          x1="128"
+          y1="40"
+          x2="128"
+          y2="216"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="104"
+          y1="216"
+          x2="152"
+          y2="216"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="56"
+          y1="88"
+          x2="200"
+          y2="56"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <path
+          d="M24,168c0,17.7,20,24,32,24s32-6.3,32-24L56,88Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M168,136c0,17.7,20,24,32,24s32-6.3,32-24L200,56Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1087,7 +4366,58 @@ const MagnaIcons = {
   "selection-background": {
     xml: (
       <>
-        <path d="M80,56V48A16,16,0,0,1,96,32h8a8,8,0,0,1,0,16H96v8a8,8,0,0,1-16,0Zm64-8h16a8,8,0,0,0,0-16H144a8,8,0,0,0,0,16Zm64-16h-8a8,8,0,0,0,0,16h8v8a8,8,0,0,0,16,0V48A16,16,0,0,0,208,32Zm8,56a8,8,0,0,0-8,8v16a8,8,0,0,0,16,0V96A8,8,0,0,0,216,88Zm-40,8V208a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V96A16,16,0,0,1,48,80H160A16,16,0,0,1,176,96Zm-16,0H48V208H160Zm56,48a8,8,0,0,0-8,8v8h-8a8,8,0,0,0,0,16h8a16,16,0,0,0,16-16v-8A8,8,0,0,0,216,144Z"></path>
+        <rect
+          x="40"
+          y="88"
+          width="128"
+          height="128"
+          rx="8"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></rect>
+        <line
+          x1="160"
+          y1="40"
+          x2="144"
+          y2="40"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="216"
+          y1="112"
+          x2="216"
+          y2="96"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <path
+          d="M200,40h8a8,8,0,0,1,8,8v8"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M200,168h8a8,8,0,0,0,8-8v-8"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M104,40H96a8,8,0,0,0-8,8v8"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1095,7 +4425,74 @@ const MagnaIcons = {
   selection: {
     xml: (
       <>
-        <path d="M152,40a8,8,0,0,1-8,8H112a8,8,0,0,1,0-16h32A8,8,0,0,1,152,40Zm-8,168H112a8,8,0,0,0,0,16h32a8,8,0,0,0,0-16ZM208,32H184a8,8,0,0,0,0,16h24V72a8,8,0,0,0,16,0V48A16,16,0,0,0,208,32Zm8,72a8,8,0,0,0-8,8v32a8,8,0,0,0,16,0V112A8,8,0,0,0,216,104Zm0,72a8,8,0,0,0-8,8v24H184a8,8,0,0,0,0,16h24a16,16,0,0,0,16-16V184A8,8,0,0,0,216,176ZM40,152a8,8,0,0,0,8-8V112a8,8,0,0,0-16,0v32A8,8,0,0,0,40,152Zm32,56H48V184a8,8,0,0,0-16,0v24a16,16,0,0,0,16,16H72a8,8,0,0,0,0-16ZM72,32H48A16,16,0,0,0,32,48V72a8,8,0,0,0,16,0V48H72a8,8,0,0,0,0-16Z"></path>
+        <line
+          x1="144"
+          y1="40"
+          x2="112"
+          y2="40"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="112"
+          y1="216"
+          x2="144"
+          y2="216"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="216"
+          y1="144"
+          x2="216"
+          y2="112"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="40"
+          y1="112"
+          x2="40"
+          y2="144"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <path
+          d="M184,40h24a8,8,0,0,1,8,8V72"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M184,216h24a8,8,0,0,0,8-8V184"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M72,216H48a8,8,0,0,1-8-8V184"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M72,40H48a8,8,0,0,0-8,8V72"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1103,7 +4500,20 @@ const MagnaIcons = {
   "shield-check": {
     xml: (
       <>
-        <path d="M208,40H48A16,16,0,0,0,32,56v58.7c0,89.4,75.8,119.1,91,124.1a16,16,0,0,0,10,0c15.2-5,91-34.7,91-124.1V56A16,16,0,0,0,208,40Zm-30.5,69.8-58.6,56a8.1,8.1,0,0,1-5.6,2.2,7.9,7.9,0,0,1-5.5-2.2l-29.3-28a8,8,0,1,1,11-11.6l23.8,22.7,53.2-50.7a8,8,0,0,1,11,11.6Z"></path>
+        <path
+          d="M40,114.7V56a8,8,0,0,1,8-8H208a8,8,0,0,1,8,8v58.7c0,84-71.3,111.8-85.5,116.5a7.2,7.2,0,0,1-5,0C111.3,226.5,40,198.7,40,114.7Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <polyline
+          points="172 104 113.3 160 84 132"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1111,7 +4521,13 @@ const MagnaIcons = {
   shield: {
     xml: (
       <>
-        <path d="M208,40H48A16,16,0,0,0,32,56v58.7c0,89.4,75.8,119.1,91,124.1a16,16,0,0,0,10,0c15.2-5,91-34.7,91-124.1V56A16,16,0,0,0,208,40Z"></path>
+        <path
+          d="M40,114.7V56a8,8,0,0,1,8-8H208a8,8,0,0,1,8,8v58.7c0,84-71.3,111.8-85.5,116.5a7.2,7.2,0,0,1-5,0C111.3,226.5,40,198.7,40,114.7Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1119,7 +4535,30 @@ const MagnaIcons = {
   "sign-out": {
     xml: (
       <>
-        <path d="M221.7,133.7l-42,42A8.3,8.3,0,0,1,174,178a7.7,7.7,0,0,1-3-.6,8,8,0,0,1-5-7.4V136H104a8,8,0,0,1,0-16h62V86a8,8,0,0,1,5-7.4,8.2,8.2,0,0,1,8.7,1.7l42,42A8.1,8.1,0,0,1,221.7,133.7ZM104,208H48V48h56a8,8,0,0,0,0-16H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16h56a8,8,0,0,0,0-16Z"></path>
+        <polyline
+          points="174 86 216 128 174 170"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <line
+          x1="104"
+          y1="128"
+          x2="216"
+          y2="128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <path
+          d="M104,216H48a8,8,0,0,1-8-8V48a8,8,0,0,1,8-8h56"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1127,7 +4566,51 @@ const MagnaIcons = {
   skull: {
     xml: (
       <>
-        <path d="M124.1,16.1c-51.6,1.9-93.7,43.6-96,95.3A99.4,99.4,0,0,0,72,198.9V216a16,16,0,0,0,16,16h8a4,4,0,0,0,4-4V204.3a8.2,8.2,0,0,1,7.5-8.3,8,8,0,0,1,8.5,8v24a4,4,0,0,0,4,4h16a4,4,0,0,0,4-4V204.3a8.2,8.2,0,0,1,7.5-8.3,8,8,0,0,1,8.5,8v24a4,4,0,0,0,4,4h8a16,16,0,0,0,16-16V198.9A100,100,0,0,0,124.1,16.1ZM92,152a20,20,0,1,1,20-20A20.1,20.1,0,0,1,92,152Zm72,0a20,20,0,1,1,20-20A20.1,20.1,0,0,1,164,152Z"></path>
+        <circle
+          cx="92"
+          cy="132"
+          r="20"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></circle>
+        <circle
+          cx="164"
+          cy="132"
+          r="20"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></circle>
+        <path
+          d="M80,194.5a92,92,0,1,1,96,0V216a8,8,0,0,1-8,8H88a8,8,0,0,1-8-8Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <line
+          x1="112"
+          y1="224"
+          x2="112"
+          y2="192"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="144"
+          y1="224"
+          x2="144"
+          y2="192"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1135,7 +4618,55 @@ const MagnaIcons = {
   "smiley-x-eyes": {
     xml: (
       <>
-        <path d="M128,24A104,104,0,1,0,232,128,104.2,104.2,0,0,0,128,24Zm-18.3,98.3a8.1,8.1,0,0,1,0,11.4,8.2,8.2,0,0,1-11.4,0L88,123.3,77.7,133.7a8.2,8.2,0,0,1-11.4,0,8.1,8.1,0,0,1,0-11.4L76.7,112,66.3,101.7A8.1,8.1,0,0,1,77.7,90.3L88,100.7,98.3,90.3a8.1,8.1,0,0,1,11.4,11.4L99.3,112ZM128,192a12,12,0,1,1,12-12A12,12,0,0,1,128,192Zm61.7-69.7a8.1,8.1,0,0,1,0,11.4,8.2,8.2,0,0,1-11.4,0L168,123.3l-10.3,10.4a8.2,8.2,0,0,1-11.4,0,8.1,8.1,0,0,1,0-11.4L156.7,112l-10.4-10.3a8.1,8.1,0,0,1,11.4-11.4L168,100.7l10.3-10.4a8.1,8.1,0,0,1,11.4,11.4L179.3,112Z"></path>
+        <circle
+          cx="128"
+          cy="128"
+          r="96"
+          fill="none"
+          strokeMiterlimit="10"
+          strokeWidth="16"
+        ></circle>
+        <circle cx="128" cy="180" r="12"></circle>
+        <line
+          x1="184"
+          y1="96"
+          x2="152"
+          y2="128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="184"
+          y1="128"
+          x2="152"
+          y2="96"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="104"
+          y1="96"
+          x2="72"
+          y2="128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="104"
+          y1="128"
+          x2="72"
+          y2="96"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1143,7 +4674,50 @@ const MagnaIcons = {
   "sort-ascending": {
     xml: (
       <>
-        <path d="M229.7,173.7l-40,40a8.2,8.2,0,0,1-11.4,0l-40-40a8.4,8.4,0,0,1-1.7-8.8A8,8,0,0,1,144,160h32V112a8,8,0,0,1,16,0v48h32a8,8,0,0,1,7.4,4.9A8.4,8.4,0,0,1,229.7,173.7ZM120,120H48a8,8,0,0,0,0,16h72a8,8,0,0,0,0-16ZM48,72H184a8,8,0,0,0,0-16H48a8,8,0,0,0,0,16Zm56,112H48a8,8,0,0,0,0,16h56a8,8,0,0,0,0-16Z"></path>
+        <polyline
+          points="144 168 184 208 224 168"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <line
+          x1="184"
+          y1="112"
+          x2="184"
+          y2="208"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="48"
+          y1="128"
+          x2="120"
+          y2="128"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="48"
+          y1="64"
+          x2="184"
+          y2="64"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="48"
+          y1="192"
+          x2="104"
+          y2="192"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1151,7 +4725,104 @@ const MagnaIcons = {
   "sort-descending": {
     xml: (
       <>
-        <path d="M231.4,91a8,8,0,0,1-7.4,5H192v48a8,8,0,0,1-16,0V96H144a8.1,8.1,0,0,1-7.4-4.9,8.4,8.4,0,0,1,1.7-8.8l40-40a8.1,8.1,0,0,1,11.4,0l40,40A8.2,8.2,0,0,1,231.4,91ZM48,136h72a8,8,0,0,0,0-16H48a8,8,0,0,0,0,16Zm0-64h56a8,8,0,0,0,0-16H48a8,8,0,0,0,0,16ZM184,184H48a8,8,0,0,0,0,16H184a8,8,0,0,0,0-16Z"></path>
+        <polyline
+          points="144 88 184 48 224 88"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <line
+          x1="184"
+          y1="144"
+          x2="184"
+          y2="48"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="48"
+          y1="128"
+          x2="120"
+          y2="128"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="48"
+          y1="64"
+          x2="104"
+          y2="64"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="48"
+          y1="192"
+          x2="184"
+          y2="192"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  sparkle: {
+    xml: (
+      <>
+        <path
+          d="M138.7,175.5l-19.2,52.1a8,8,0,0,1-15,0L85.3,175.5a8.1,8.1,0,0,0-4.8-4.8L28.4,151.5a8,8,0,0,1,0-15l52.1-19.2a8.1,8.1,0,0,0,4.8-4.8l19.2-52.1a8,8,0,0,1,15,0l19.2,52.1a8.1,8.1,0,0,0,4.8,4.8l52.1,19.2a8,8,0,0,1,0,15l-52.1,19.2A8.1,8.1,0,0,0,138.7,175.5Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <line
+          x1="176"
+          y1="16"
+          x2="176"
+          y2="64"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="200"
+          y1="40"
+          x2="152"
+          y2="40"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="224"
+          y1="72"
+          x2="224"
+          y2="104"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="240"
+          y1="88"
+          x2="208"
+          y2="88"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1159,7 +4830,86 @@ const MagnaIcons = {
   spinner: {
     xml: (
       <>
-        <path d="M136,32V64a8,8,0,0,1-16,0V32a8,8,0,0,1,16,0Zm37.3,58.7a7.8,7.8,0,0,0,5.6-2.3l22.6-22.6a8,8,0,1,0-11.3-11.3L167.6,77.1a8,8,0,0,0,0,11.3A7.8,7.8,0,0,0,173.3,90.7ZM224,120H192a8,8,0,0,0,0,16h32a8,8,0,0,0,0-16Zm-45.1,47.6a8,8,0,0,0-11.3,11.3l22.6,22.6a8,8,0,0,0,5.7,2.4,7.7,7.7,0,0,0,5.6-2.4,7.9,7.9,0,0,0,0-11.3ZM128,184a8,8,0,0,0-8,8v32a8,8,0,0,0,16,0V192A8,8,0,0,0,128,184ZM77.1,167.6,54.5,190.2a7.9,7.9,0,0,0,0,11.3,7.7,7.7,0,0,0,5.6,2.4,8,8,0,0,0,5.7-2.4l22.6-22.6a8,8,0,0,0-11.3-11.3ZM72,128a8,8,0,0,0-8-8H32a8,8,0,0,0,0,16H64A8,8,0,0,0,72,128ZM65.8,54.5A8,8,0,0,0,54.5,65.8L77.1,88.4a8.1,8.1,0,0,0,11.3,0,8,8,0,0,0,0-11.3Z"></path>
+        <line
+          x1="128"
+          y1="32"
+          x2="128"
+          y2="64"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="195.9"
+          y1="60.1"
+          x2="173.3"
+          y2="82.7"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="224"
+          y1="128"
+          x2="192"
+          y2="128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="195.9"
+          y1="195.9"
+          x2="173.3"
+          y2="173.3"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="128"
+          y1="224"
+          x2="128"
+          y2="192"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="60.1"
+          y1="195.9"
+          x2="82.7"
+          y2="173.3"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="32"
+          y1="128"
+          x2="64"
+          y2="128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="60.1"
+          y1="60.1"
+          x2="82.7"
+          y2="82.7"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1167,7 +4917,67 @@ const MagnaIcons = {
   "square-half": {
     xml: (
       <>
-        <path d="M204,36H52A16,16,0,0,0,36,52V204a16,16,0,0,0,16,16H204a16,16,0,0,0,16-16V52A16,16,0,0,0,204,36ZM52,52h76V204H52Z"></path>
+        <rect
+          x="44"
+          y="44"
+          width="168"
+          height="168"
+          rx="8"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></rect>
+        <line
+          x1="128"
+          y1="44"
+          x2="128"
+          y2="212"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="128"
+          y1="80"
+          x2="212"
+          y2="80"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="128"
+          y1="112"
+          x2="212"
+          y2="112"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="128"
+          y1="144"
+          x2="212"
+          y2="144"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="128"
+          y1="176"
+          x2="212"
+          y2="176"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1175,8 +4985,34 @@ const MagnaIcons = {
   "stack-simple": {
     xml: (
       <>
-        <path d="M12,110.9l112,64a7.8,7.8,0,0,0,8,0l112-64a8,8,0,0,0,0-13.8l-112-64a7.7,7.7,0,0,0-8,0L12,97.1a8,8,0,0,0,0,13.8Z"></path>
-        <path d="M236,137.1,128,198.8,20,137.1a8,8,0,0,0-8,13.8l112,64a7.8,7.8,0,0,0,8,0l112-64a8,8,0,1,0-8-13.8Z"></path>
+        <polygon
+          points="16 104 128 168 240 104 128 40 16 104"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polygon>
+        <polyline
+          points="16 144 128 208 240 144"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  star: {
+    xml: (
+      <>
+        <path
+          d="M132.4,190.7l50.4,32c6.5,4.1,14.5-2,12.6-9.5l-14.6-57.4a8.7,8.7,0,0,1,2.9-8.8l45.2-37.7c5.9-4.9,2.9-14.8-4.8-15.3l-59-3.8a8.3,8.3,0,0,1-7.3-5.4l-22-55.4a8.3,8.3,0,0,0-15.6,0l-22,55.4a8.3,8.3,0,0,1-7.3,5.4L31.9,94c-7.7.5-10.7,10.4-4.8,15.3L72.3,147a8.7,8.7,0,0,1,2.9,8.8L61.7,209c-2.3,9,7.3,16.3,15,11.4l46.9-29.7A8.2,8.2,0,0,1,132.4,190.7Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1184,7 +5020,17 @@ const MagnaIcons = {
   stop: {
     xml: (
       <>
-        <rect x="44" y="44" width="168" height="168" rx="14.9"></rect>
+        <rect
+          x="52"
+          y="52"
+          width="152"
+          height="152"
+          rx="6.9"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></rect>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1192,7 +5038,43 @@ const MagnaIcons = {
   table: {
     xml: (
       <>
-        <path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM40,112H80v32H40Zm56,0H216v32H96ZM40,160H80v32H40Zm176,32H96V160H216v32Z"></path>
+        <path
+          d="M32,56H224a0,0,0,0,1,0,0V192a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V56A0,0,0,0,1,32,56Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <line
+          x1="32"
+          y1="104"
+          x2="224"
+          y2="104"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="32"
+          y1="152"
+          x2="224"
+          y2="152"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="88"
+          y1="104"
+          x2="88"
+          y2="200"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1200,7 +5082,28 @@ const MagnaIcons = {
   "tag-simple": {
     xml: (
       <>
-        <path d="M246.7,123.6,201,55.1A15.9,15.9,0,0,0,187.7,48H40A16,16,0,0,0,24,64V192a16,16,0,0,0,16,16H187.7a15.9,15.9,0,0,0,13.3-7.1h0l45.7-68.5A8.2,8.2,0,0,0,246.7,123.6Z"></path>
+        <path
+          d="M194.4,196.4,240,128,194.4,59.6a7.9,7.9,0,0,0-6.7-3.6H40a8,8,0,0,0-8,8V192a8,8,0,0,0,8,8H187.7A7.9,7.9,0,0,0,194.4,196.4Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  tag: {
+    xml: (
+      <>
+        <path
+          d="M122.7,25.9,42,42,25.9,122.7a8,8,0,0,0,2.2,7.2L132.5,234.3a7.9,7.9,0,0,0,11.3,0l90.5-90.5a7.9,7.9,0,0,0,0-11.3L129.9,28.1A8,8,0,0,0,122.7,25.9Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <circle cx="84" cy="84" r="12"></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1208,7 +5111,40 @@ const MagnaIcons = {
   "text-aa": {
     xml: (
       <>
-        <path d="M137.9,148.2h0L87.1,52.3a8,8,0,0,0-14.2,0L22.1,148.2h0L.9,188.3a8.1,8.1,0,0,0,3.4,10.8,8.1,8.1,0,0,0,10.8-3.4L34,160h92l18.9,35.7A7.9,7.9,0,0,0,152,200a8,8,0,0,0,7.1-11.7ZM42.5,144,80,73.1,117.5,144ZM208,94.9a42,42,0,0,0-29.6,11.8,8,8,0,1,0,11.2,11.4,26,26,0,0,1,18.4-7.2c13.2,0,24,9,24,20v7.2a43,43,0,0,0-24-7.2c-22.1,0-40,16.1-40,36s17.9,36,40,36a42.9,42.9,0,0,0,24.7-7.7A7.9,7.9,0,0,0,240,200a8,8,0,0,0,8-8V130.9C248,111,230.1,94.9,208,94.9Zm0,92c-13.2,0-24-9-24-20s10.8-20,24-20,24,9,24,20S221.2,186.9,208,186.9Z"></path>
+        <polyline
+          points="152 192 80 56 8 192"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <ellipse
+          cx="208"
+          cy="166.9"
+          rx="32"
+          ry="28"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></ellipse>
+        <path
+          d="M184,112.4a34.1,34.1,0,0,1,24-9.5c17.7,0,32,12.5,32,28V192"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <line
+          x1="130.8"
+          y1="152"
+          x2="29.2"
+          y2="152"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1216,10 +5152,46 @@ const MagnaIcons = {
   "text-align-center": {
     xml: (
       <>
-        <path d="M40,76H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16Z"></path>
-        <path d="M64,100a8,8,0,0,0,0,16H192a8,8,0,0,0,0-16Z"></path>
-        <path d="M216,140H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
-        <path d="M192,180H64a8,8,0,0,0,0,16H192a8,8,0,0,0,0-16Z"></path>
+        <line
+          x1="40"
+          y1="68"
+          x2="216"
+          y2="68"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="64"
+          y1="108"
+          x2="192"
+          y2="108"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="40"
+          y1="148"
+          x2="216"
+          y2="148"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="64"
+          y1="188"
+          x2="192"
+          y2="188"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1227,10 +5199,46 @@ const MagnaIcons = {
   "text-align-left": {
     xml: (
       <>
-        <path d="M40,76H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16Z"></path>
-        <path d="M40,116H168a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16Z"></path>
-        <path d="M216,140H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
-        <path d="M168,180H40a8,8,0,0,0,0,16H168a8,8,0,0,0,0-16Z"></path>
+        <line
+          x1="40"
+          y1="68"
+          x2="216"
+          y2="68"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="40"
+          y1="108"
+          x2="168"
+          y2="108"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="40"
+          y1="148"
+          x2="216"
+          y2="148"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="40"
+          y1="188"
+          x2="168"
+          y2="188"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1238,10 +5246,46 @@ const MagnaIcons = {
   "text-align-right": {
     xml: (
       <>
-        <path d="M40,76H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16Z"></path>
-        <path d="M216,100H88a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
-        <path d="M216,140H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
-        <path d="M216,180H88a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
+        <line
+          x1="40"
+          y1="68"
+          x2="216"
+          y2="68"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="88"
+          y1="108"
+          x2="216"
+          y2="108"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="40"
+          y1="148"
+          x2="216"
+          y2="148"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="88"
+          y1="188"
+          x2="216"
+          y2="188"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1249,7 +5293,13 @@ const MagnaIcons = {
   "text-bolder": {
     xml: (
       <>
-        <path d="M170.5,115.7A44,44,0,0,0,140,40H64a7.9,7.9,0,0,0-8,8V200a8,8,0,0,0,8,8h88a48,48,0,0,0,18.5-92.3ZM72,56h68a28,28,0,0,1,0,56H72Zm80,136H72V128h80a32,32,0,0,1,0,64Z"></path>
+        <path
+          d="M64,120h88a40,40,0,0,1,0,80H64V48h76a36,36,0,0,1,0,72"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1257,7 +5307,36 @@ const MagnaIcons = {
   "text-italic": {
     xml: (
       <>
-        <path d="M200,56a8,8,0,0,1-8,8H157.8L115.1,192H144a8,8,0,0,1,0,16H64a8,8,0,0,1,0-16H98.2L140.9,64H112a8,8,0,0,1,0-16h80A8,8,0,0,1,200,56Z"></path>
+        <line
+          x1="152"
+          y1="56"
+          x2="104"
+          y2="200"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="64"
+          y1="200"
+          x2="144"
+          y2="200"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="112"
+          y1="56"
+          x2="192"
+          y2="56"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1265,7 +5344,30 @@ const MagnaIcons = {
   "text-strikethrough": {
     xml: (
       <>
-        <path d="M224,128a8,8,0,0,1-8,8H175.9c9.2,7.1,16.1,17.2,16.1,32s-7,25.7-19.8,34.8S144.6,216,128,216s-32.3-4.7-44.2-13.2S64,181.3,64,168a8,8,0,0,1,16,0c0,17.3,22,32,48,32s48-14.7,48-32c0-14.9-10.5-23.6-38.8-32H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM76.3,104a6.9,6.9,0,0,0,2.5-.4,8,8,0,0,0,5.1-10.1,19.2,19.2,0,0,1-.8-5.5c0-18.2,19.3-32,44.9-32,19.5,0,36.1,8.3,42.3,21A8.1,8.1,0,0,0,181,80.7,7.9,7.9,0,0,0,184.7,70c-9-18.5-30.7-30-56.7-30C93.3,40,67.1,60.6,67.1,88a36,36,0,0,0,1.6,10.5A8,8,0,0,0,76.3,104Z"></path>
+        <line
+          x1="40"
+          y1="128"
+          x2="216"
+          y2="128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <path
+          d="M76.3,96a25.3,25.3,0,0,1-1.2-8c0-22.1,22-40,52.9-40,23.8,0,42.3,10.6,49.5,25.5"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M72,168c0,22.1,25.1,40,56,40s56-17.9,56-40c0-23.8-21.6-33-45.6-40"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1273,7 +5375,23 @@ const MagnaIcons = {
   "text-underline": {
     xml: (
       <>
-        <path d="M224,216a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,216Zm-96-24a72.1,72.1,0,0,0,72-72V56a8,8,0,0,0-16,0v64a56,56,0,0,1-112,0V56a8,8,0,0,0-16,0v64A72.1,72.1,0,0,0,128,192Z"></path>
+        <line
+          x1="40"
+          y1="216"
+          x2="216"
+          y2="216"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <path
+          d="M64,56v64a64,64,0,0,0,128,0V56"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1281,7 +5399,23 @@ const MagnaIcons = {
   ticket: {
     xml: (
       <>
-        <path d="M227.2,104.5A16.1,16.1,0,0,0,240,88.8V64a16,16,0,0,0-16-16H32A16,16,0,0,0,16,64V88.8a16.1,16.1,0,0,0,12.8,15.7,24,24,0,0,1,0,47A16.1,16.1,0,0,0,16,167.2V192a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V167.2a16.1,16.1,0,0,0-12.8-15.7,24,24,0,0,1,0-47ZM32,167.2a40,40,0,0,0,0-78.4V64H88V192H32Z"></path>
+        <line
+          x1="96"
+          y1="56"
+          x2="96"
+          y2="200"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <path
+          d="M24,167.2a7.9,7.9,0,0,1,6.4-7.8,32.1,32.1,0,0,0,0-62.8A7.9,7.9,0,0,1,24,88.8V64a8,8,0,0,1,8-8H224a8,8,0,0,1,8,8V88.8a7.9,7.9,0,0,1-6.4,7.8,32.1,32.1,0,0,0,0,62.8,7.9,7.9,0,0,1,6.4,7.8V192a8,8,0,0,1-8,8H32a8,8,0,0,1-8-8Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1289,7 +5423,75 @@ const MagnaIcons = {
   trash: {
     xml: (
       <>
-        <path d="M216,48H176V40a24.1,24.1,0,0,0-24-24H104A24.1,24.1,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM112,168a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm0-120H96V40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z"></path>
+        <line
+          x1="216"
+          y1="56"
+          x2="40"
+          y2="56"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="104"
+          y1="104"
+          x2="104"
+          y2="168"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="152"
+          y1="104"
+          x2="152"
+          y2="168"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <path
+          d="M200,56V208a8,8,0,0,1-8,8H64a8,8,0,0,1-8-8V56"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M168,56V40a16,16,0,0,0-16-16H104A16,16,0,0,0,88,40V56"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  tray: {
+    xml: (
+      <>
+        <rect
+          x="40"
+          y="40"
+          width="176"
+          height="176"
+          rx="8"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></rect>
+        <path
+          d="M40,160H76.7a7.9,7.9,0,0,1,5.6,2.3l19.4,19.4a7.9,7.9,0,0,0,5.6,2.3h41.4a7.9,7.9,0,0,0,5.6-2.3l19.4-19.4a7.9,7.9,0,0,1,5.6-2.3H216"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1573,10 +5775,225 @@ const MagnaIcons = {
       xmlns: "http://www.w3.org/2000/svg"
     }
   },
+  caretDoubleLeft: {
+    xml: (
+      <>
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M26.0607 4.93934C26.6464 5.52513 26.6464 6.47487 26.0607 7.06066L17.1213 16L26.0607 24.9393C26.6464 25.5251 26.6464 26.4749 26.0607 27.0607C25.4749 27.6464 24.5251 27.6464 23.9393 27.0607L13.9393 17.0607C13.3536 16.4749 13.3536 15.5251 13.9393 14.9393L23.9393 4.93934C24.5251 4.35355 25.4749 4.35355 26.0607 4.93934Z"
+        ></path>
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M16.0607 4.93934C16.6464 5.52513 16.6464 6.47487 16.0607 7.06066L7.12132 16L16.0607 24.9393C16.6464 25.5251 16.6464 26.4749 16.0607 27.0607C15.4749 27.6464 14.5251 27.6464 13.9393 27.0607L3.93934 17.0607C3.35355 16.4749 3.35355 15.5251 3.93934 14.9393L13.9393 4.93934C14.5251 4.35355 15.4749 4.35355 16.0607 4.93934Z"
+        ></path>
+      </>
+    ),
+    props: {
+      viewBox: "0 0 32 32",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg"
+    }
+  },
+  caretDoubleRight: {
+    xml: (
+      <>
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M5.93934 4.93934C6.52513 4.35355 7.47487 4.35355 8.06066 4.93934L18.0607 14.9393C18.6464 15.5251 18.6464 16.4749 18.0607 17.0607L8.06066 27.0607C7.47487 27.6464 6.52513 27.6464 5.93934 27.0607C5.35355 26.4749 5.35355 25.5251 5.93934 24.9393L14.8787 16L5.93934 7.06066C5.35355 6.47487 5.35355 5.52513 5.93934 4.93934Z"
+        ></path>
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M15.9393 4.93934C16.5251 4.35355 17.4749 4.35355 18.0607 4.93934L28.0607 14.9393C28.6464 15.5251 28.6464 16.4749 28.0607 17.0607L18.0607 27.0607C17.4749 27.6464 16.5251 27.6464 15.9393 27.0607C15.3536 26.4749 15.3536 25.5251 15.9393 24.9393L24.8787 16L15.9393 7.06066C15.3536 6.47487 15.3536 5.52513 15.9393 4.93934Z"
+        ></path>
+      </>
+    ),
+    props: {
+      viewBox: "0 0 32 32",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg"
+    }
+  },
+  caretDown: {
+    xml: (
+      <>
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M4.93934 10.9393C5.52513 10.3536 6.47487 10.3536 7.06066 10.9393L16 19.8787L24.9393 10.9393C25.5251 10.3536 26.4749 10.3536 27.0607 10.9393C27.6464 11.5251 27.6464 12.4749 27.0607 13.0607L17.0607 23.0607C16.4749 23.6464 15.5251 23.6464 14.9393 23.0607L4.93934 13.0607C4.35355 12.4749 4.35355 11.5251 4.93934 10.9393Z"
+        ></path>
+      </>
+    ),
+    props: {
+      viewBox: "0 0 32 32",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg"
+    }
+  },
+  emptyBackground: {
+    xml: (
+      <>
+        <rect
+          opacity="0.4"
+          x="270.409"
+          y="42"
+          width="36"
+          height="160"
+          rx="18"
+          transform="rotate(25 270.409 42)"
+          className="a-icon-bg"
+        ></rect>
+        <rect
+          opacity="0.2"
+          x="45.5044"
+          y="119"
+          width="36"
+          height="120"
+          rx="18"
+          transform="rotate(25 45.5044 119)"
+          className="a-icon-bg"
+        ></rect>
+        <rect
+          opacity="0.3"
+          x="86.9438"
+          y="-5"
+          width="36"
+          height="64.2542"
+          rx="18"
+          transform="rotate(25 86.9438 -5)"
+          className="a-icon-bg"
+        ></rect>
+      </>
+    ),
+    props: {
+      viewBox: "0 0 298 238",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg"
+    }
+  },
+  loader: {
+    xml: (
+      <>
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M17.1741 3.89131C17.46 2.82437 18.5567 2.19121 19.6236 2.47709C27.0921 4.47828 31.5243 12.155 29.5231 19.6235C29.2372 20.6905 28.1405 21.3236 27.0736 21.0377C26.0067 20.7519 25.3735 19.6552 25.6594 18.5882C27.0888 13.2536 23.923 7.77021 18.5883 6.3408C17.5214 6.05491 16.8882 4.95824 17.1741 3.89131Z"
+          fill="#C1C6CC"
+        ></path>
+      </>
+    ),
+    props: {
+      viewBox: "0 0 32 32",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg"
+    }
+  },
+  sort: {
+    xml: (
+      <>
+        <path
+          d="M12.0002 19.4329C11.7305 19.4329 11.4875 19.5953 11.3843 19.8444C11.2811 20.0935 11.3381 20.3803 11.5288 20.5709L15.5287 24.571C15.6538 24.696 15.8233 24.7663 16.0002 24.7663C16.177 24.7663 16.3465 24.696 16.4716 24.571L20.4716 20.571C20.6623 20.3803 20.7193 20.0936 20.6161 19.8445C20.5129 19.5953 20.2698 19.4329 20.0002 19.4329L12.0002 19.4329Z"
+          fill="#6F7680"
+        ></path>
+        <path
+          d="M16.4716 7.62861C16.3465 7.50359 16.177 7.43335 16.0002 7.43335C15.8233 7.43335 15.6538 7.50359 15.5287 7.62862L11.5288 11.6287C11.3381 11.8193 11.2811 12.1061 11.3843 12.3552C11.4875 12.6043 11.7305 12.7667 12.0002 12.7667L20.0002 12.7667C20.2698 12.7667 20.5129 12.6043 20.6161 12.3551C20.7193 12.106 20.6623 11.8193 20.4716 11.6286L16.4716 7.62861Z"
+          fill="#6F7680"
+        ></path>
+      </>
+    ),
+    props: {
+      viewBox: "0 0 32 32",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg"
+    }
+  },
+  sortDown: {
+    xml: (
+      <>
+        <path
+          d="M12.0002 19.4329C11.7305 19.4329 11.4875 19.5953 11.3843 19.8444C11.2811 20.0935 11.3381 20.3803 11.5288 20.5709L15.5287 24.571C15.6538 24.696 15.8233 24.7663 16.0002 24.7663C16.177 24.7663 16.3465 24.696 16.4716 24.571L20.4716 20.571C20.6623 20.3803 20.7193 20.0936 20.6161 19.8445C20.5129 19.5953 20.2698 19.4329 20.0002 19.4329L12.0002 19.4329Z"
+          fill="#6F7680"
+        ></path>
+        <path
+          d="M16.4716 7.62861C16.3465 7.50359 16.177 7.43335 16.0002 7.43335C15.8233 7.43335 15.6538 7.50359 15.5287 7.62862L11.5288 11.6287C11.3381 11.8193 11.2811 12.1061 11.3843 12.3552C11.4875 12.6043 11.7305 12.7667 12.0002 12.7667L20.0002 12.7667C20.2698 12.7667 20.5129 12.6043 20.6161 12.3551C20.7193 12.106 20.6623 11.8193 20.4716 11.6286L16.4716 7.62861Z"
+          fill="#C1C6CC"
+        ></path>
+      </>
+    ),
+    props: {
+      viewBox: "0 0 32 32",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg"
+    }
+  },
+  sortEmpty: {
+    xml: (
+      <>
+        <path
+          d="M12.0002 19.4329C11.7305 19.4329 11.4875 19.5953 11.3843 19.8444C11.2811 20.0935 11.3381 20.3803 11.5288 20.5709L15.5287 24.571C15.6538 24.696 15.8233 24.7663 16.0002 24.7663C16.177 24.7663 16.3465 24.696 16.4716 24.571L20.4716 20.571C20.6623 20.3803 20.7193 20.0936 20.6161 19.8445C20.5129 19.5953 20.2698 19.4329 20.0002 19.4329L12.0002 19.4329Z"
+          fill="#C1C6CC"
+        ></path>
+        <path
+          d="M16.4716 7.62861C16.3465 7.50359 16.177 7.43335 16.0002 7.43335C15.8233 7.43335 15.6538 7.50359 15.5287 7.62862L11.5288 11.6287C11.3381 11.8193 11.2811 12.1061 11.3843 12.3552C11.4875 12.6043 11.7305 12.7667 12.0002 12.7667L20.0002 12.7667C20.2698 12.7667 20.5129 12.6043 20.6161 12.3551C20.7193 12.106 20.6623 11.8193 20.4716 11.6286L16.4716 7.62861Z"
+          fill="#C1C6CC"
+        ></path>
+      </>
+    ),
+    props: {
+      viewBox: "0 0 32 32",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg"
+    }
+  },
+  sortUp: {
+    xml: (
+      <>
+        <path
+          d="M12.0002 19.4329C11.7305 19.4329 11.4875 19.5953 11.3843 19.8444C11.2811 20.0935 11.3381 20.3803 11.5288 20.5709L15.5287 24.571C15.6538 24.696 15.8233 24.7663 16.0002 24.7663C16.177 24.7663 16.3465 24.696 16.4716 24.571L20.4716 20.571C20.6623 20.3803 20.7193 20.0936 20.6161 19.8445C20.5129 19.5953 20.2698 19.4329 20.0002 19.4329L12.0002 19.4329Z"
+          fill="#C1C6CC"
+        ></path>
+        <path
+          d="M16.4716 7.62861C16.3465 7.50359 16.177 7.43335 16.0002 7.43335C15.8233 7.43335 15.6538 7.50359 15.5287 7.62862L11.5288 11.6287C11.3381 11.8193 11.2811 12.1061 11.3843 12.3552C11.4875 12.6043 11.7305 12.7667 12.0002 12.7667L20.0002 12.7667C20.2698 12.7667 20.5129 12.6043 20.6161 12.3551C20.7193 12.106 20.6623 11.8193 20.4716 11.6286L16.4716 7.62861Z"
+          fill="#6F7680"
+        ></path>
+      </>
+    ),
+    props: {
+      viewBox: "0 0 32 32",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg"
+    }
+  },
   "upload-simple": {
     xml: (
       <>
-        <path d="M78.6,85a8.2,8.2,0,0,1,1.7-8.7l42-42a8.1,8.1,0,0,1,11.4,0l42,42a8.2,8.2,0,0,1,1.7,8.7,8,8,0,0,1-7.4,5H136v62a8,8,0,0,1-16,0V90H86A8,8,0,0,1,78.6,85ZM216,144a8,8,0,0,0-8,8v56H48V152a8,8,0,0,0-16,0v56a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V152A8,8,0,0,0,216,144Z"></path>
+        <polyline
+          points="86 82 128 40 170 82"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <line
+          x1="128"
+          y1="152"
+          x2="128"
+          y2="40"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <path
+          d="M216,152v56a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V152"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1584,7 +6001,72 @@ const MagnaIcons = {
   "user-switch": {
     xml: (
       <>
-        <path d="M253.7,133.7l-24,24a8.2,8.2,0,0,1-11.4,0l-24-24a8.4,8.4,0,0,1-1.7-8.8A8,8,0,0,1,200,120h15.6A87.9,87.9,0,0,0,54.1,80.3,8,8,0,0,1,43,82.6a7.9,7.9,0,0,1-2.4-11A104,104,0,0,1,231.7,120H248a8,8,0,0,1,7.4,4.9A8.4,8.4,0,0,1,253.7,133.7ZM213,173.4a8,8,0,0,0-11.1,2.3,86.9,86.9,0,0,1-8.1,10.8h0a81.3,81.3,0,0,0-24.5-23,59.7,59.7,0,0,1-82.6,0,81.3,81.3,0,0,0-24.5,23h0A87.6,87.6,0,0,1,40.4,136H56a8,8,0,0,0,7.4-4.9,8.4,8.4,0,0,0-1.7-8.8l-24-24a8.1,8.1,0,0,0-11.4,0l-24,24a8.4,8.4,0,0,0-1.7,8.8A8,8,0,0,0,8,136H24.3a103.7,103.7,0,0,0,34.5,69.6h0l.4.3a103.9,103.9,0,0,0,156.2-21.5A7.9,7.9,0,0,0,213,173.4ZM128,164a44,44,0,1,0-44-44A44,44,0,0,0,128,164Z"></path>
+        <circle
+          cx="128"
+          cy="120"
+          r="40"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></circle>
+        <path
+          d="M63.8,199.4a72,72,0,0,1,128.4,0"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M224,152V128A96,96,0,0,0,47.3,75.9"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M32,104v24a96,96,0,0,0,176.7,52.1"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <polyline
+          points="200 128 224 152 248 128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <polyline
+          points="8 128 32 104 56 128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  user: {
+    xml: (
+      <>
+        <circle
+          cx="128"
+          cy="96"
+          r="64"
+          fill="none"
+          strokeMiterlimit="10"
+          strokeWidth="16"
+        ></circle>
+        <path
+          d="M31,216a112,112,0,0,1,194,0"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1592,7 +6074,50 @@ const MagnaIcons = {
   "users-three": {
     xml: (
       <>
-        <path d="M64,140a7.9,7.9,0,0,1-8,8H12a8.2,8.2,0,0,1-7.2-4.4,8.2,8.2,0,0,1,.8-8.4A67.8,67.8,0,0,1,33,113.5a40,40,0,1,1,66.3-37,8.1,8.1,0,0,1-3.8,8.4,64.3,64.3,0,0,0-27.8,33.8A61.6,61.6,0,0,0,64,140Zm186.4-4.8A67.8,67.8,0,0,0,223,113.5a40,40,0,1,0-66.3-37,8.1,8.1,0,0,0,3.8,8.4,64,64,0,0,1,27.8,33.8A61.6,61.6,0,0,1,192,140a7.9,7.9,0,0,0,8,8h44a8,8,0,0,0,6.4-12.8Zm-93.2,42.9a48,48,0,1,0-58.4,0,72.1,72.1,0,0,0-35.6,34.4,7.8,7.8,0,0,0,.5,7.7,7.8,7.8,0,0,0,6.7,3.8H185.6a7.8,7.8,0,0,0,6.7-3.8,7.8,7.8,0,0,0,.5-7.7A72.1,72.1,0,0,0,157.2,178.1Z"></path>
+        <circle
+          cx="128"
+          cy="140"
+          r="40"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></circle>
+        <path
+          d="M196,116a59.8,59.8,0,0,1,48,24"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M12,140a59.8,59.8,0,0,1,48-24"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M70.4,216a64.1,64.1,0,0,1,115.2,0"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M60,116A32,32,0,1,1,91.4,78"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M164.6,78A32,32,0,1,1,196,116"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1600,7 +6125,25 @@ const MagnaIcons = {
   "warning-circle": {
     xml: (
       <>
-        <path d="M128,24A104,104,0,1,0,232,128,104.2,104.2,0,0,0,128,24Zm-8,56a8,8,0,0,1,16,0v56a8,8,0,0,1-16,0Zm8,104a12,12,0,1,1,12-12A12,12,0,0,1,128,184Z"></path>
+        <circle
+          cx="128"
+          cy="128"
+          r="96"
+          fill="none"
+          strokeMiterlimit="10"
+          strokeWidth="16"
+        ></circle>
+        <circle cx="128" cy="172" r="12"></circle>
+        <line
+          x1="128"
+          y1="80"
+          x2="128"
+          y2="136"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1608,7 +6151,28 @@ const MagnaIcons = {
   "wifi-high": {
     xml: (
       <>
-        <path d="M246.9,80.5a15.6,15.6,0,0,0-6.2-10.9c-66.4-50.1-159-50.1-225.3-.1a16.1,16.1,0,0,0-6.2,11,16.6,16.6,0,0,0,3.7,12.3l103,121.3a15.9,15.9,0,0,0,24.2,0l103-121.4A16.4,16.4,0,0,0,246.9,80.5Z"></path>
+        <path
+          d="M92.9,166.1a50.7,50.7,0,0,1,70.2,0"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M59,132.1a98.8,98.8,0,0,1,138,0"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M25.1,98.2a146.6,146.6,0,0,1,205.8,0"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <circle cx="128" cy="200" r="12"></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1616,7 +6180,24 @@ const MagnaIcons = {
   x: {
     xml: (
       <>
-        <path d="M139.3,128l66.4-66.3a8.1,8.1,0,0,0-11.4-11.4L128,116.7,61.7,50.3A8.1,8.1,0,0,0,50.3,61.7L116.7,128,50.3,194.3a8.1,8.1,0,0,0,0,11.4,8.2,8.2,0,0,0,11.4,0L128,139.3l66.3,66.4a8.2,8.2,0,0,0,11.4,0,8.1,8.1,0,0,0,0-11.4Z"></path>
+        <line
+          x1="200"
+          y1="56"
+          x2="56"
+          y2="200"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="200"
+          y1="200"
+          x2="56"
+          y2="56"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}

@@ -36,7 +36,7 @@ The drawer can slide-in from the left, right, or bottom of the page.
       isEnabled: isLeftOpen,
       onExit: () => setIsLeftOpen(false)
     });
-    
+
     const rightDrawerContentRef = useRef();
     const [isRightOpen, setIsRightOpen] = useState(false);
     usePopupQuickExit({
@@ -44,7 +44,7 @@ The drawer can slide-in from the left, right, or bottom of the page.
       isEnabled: isRightOpen,
       onExit: () => setIsRightOpen(false)
     });
-    
+
     const bottomDrawerContentRef = useRef();
     const [isBottomOpen, setIsBottomOpen] = useState(false);
     usePopupQuickExit({
@@ -52,7 +52,7 @@ The drawer can slide-in from the left, right, or bottom of the page.
       isEnabled: isBottomOpen,
       onExit: () => setIsBottomOpen(false)
     });
-    
+
     return (
       <>
         <p>Left slide-in</p>
@@ -67,7 +67,7 @@ The drawer can slide-in from the left, right, or bottom of the page.
             <h3 id='left-drawer-title'>Left Drawer</h3> <ADivider /> <AButton onClick={() => setIsLeftOpen(false)} data-test-drawer-close-left>Close</AButton>
           </ADrawerContent>
         </ADrawer>
-        
+
         <p>Right slide-in</p>
         <AButton onClick={() => setIsRightOpen(true)} data-test-drawer-trigger-right>Open Right</AButton>
         <ADrawer
@@ -80,7 +80,7 @@ The drawer can slide-in from the left, right, or bottom of the page.
             <h3 id='right-drawer-title' >Right Drawer</h3> <ADivider /> <AButton onClick={() => setIsRightOpen(false)} data-test-drawer-close-right>Close</AButton>
           </ADrawerContent>
         </ADrawer>
-        
+
         <p>Bottom slide-in</p>
         <AButton onClick={() => setIsBottomOpen(true)} data-test-drawer-trigger-bottom>Open Bottom</AButton>
         <ADrawer
@@ -91,11 +91,12 @@ The drawer can slide-in from the left, right, or bottom of the page.
             data-test-drawer-bottom>
           <ADrawerContent>
             <h3 id='bottom-drawer-title' >Bottom Drawer</h3> <ADivider /> <AButton onClick={() => setIsBottomOpen(false)} data-test-drawer-close-bottom>Close</AButton>
-          </ADrawerContent>    
+          </ADrawerContent>
         </ADrawer>
       </>
     )
-  }`}
+
+}`}
 />
 
 ### Drawer Positioning Strategies
@@ -120,21 +121,21 @@ To contain the drawer within something other than the viewport, you can render t
       isEnabled: isFixedOpen,
       onExit: () => setIsFixedOpen(false)
     });
-    
+
     // position='absolute' drawer
     const absoluteDrawerRef = useRef();
     const [isAbsoluteOpen, setIsAbsoluteOpen] = useState(false);
-    
+
     // position='relative' drawer
     const relativeDrawerRef = useRef();
     const [isRelativeSlim, setIsRelativeSlim] = useState(true);
-    
+
     // demo styles
     const headerClass = 'grey--darken-7 white--text pa-2 d-flex align-center justify-space-between';
     // Becuase we have a drawer that is absolutely positioned, we also need its parent to be
     // positioned so that it can be contained within it
     const contentContainerStyle = {overflow: 'hidden', position: 'relative', height: '300px', display: 'flex'};
-    
+
     return (
       <>
         <div data-test-positioning-strategies-nav-bar className={headerClass} style={{overflow: 'hidden', width: '100%'}}>
@@ -146,7 +147,6 @@ To contain the drawer within something other than the viewport, you can render t
                   data-test-drawer-trigger-relative>
                 <AIcon
                     left
-                    iconSet="magna"
                     style={{cursor: 'pointer'}}
                     size='small'>
                   {isRelativeSlim ? 'caretRight' : 'caretLeft'}</AIcon>
@@ -157,7 +157,7 @@ To contain the drawer within something other than the viewport, you can render t
               App
             </div>
         </div>
-        
+
         <div style={contentContainerStyle}>
             <ADrawer
                 position='relative'
@@ -175,7 +175,7 @@ To contain the drawer within something other than the viewport, you can render t
                 </AListItem>
               </AList>
             </ADrawer>
-            
+
             <main className="pa-2 dusk--2" style={{flexGrow: 1}}>
               {/* toggles position='absolute' drawer, i.e., the more details drawer */}
               <AButton
@@ -205,7 +205,7 @@ To contain the drawer within something other than the viewport, you can render t
                   </AListItem>
                 </div>
               </ADrawer>
-              
+
               <AButton
                   onClick={() => setIsFixedOpen(true)}
                   className='white--text'
@@ -231,6 +231,7 @@ To contain the drawer within something other than the viewport, you can render t
         </div>
       </>
     )
+
 }`}
 />
 
@@ -249,7 +250,7 @@ Please note that when `ADrawer` is rendered as a modal, focus will be trapped in
       isEnabled: modalOpen,
       onExit: () => setModalOpen(false)
     });
-    
+
     const nonModalContentRef = useRef();
     const [nonModalOpen, setNonModalOpen] = useState(false);
     usePopupQuickExit({
@@ -257,7 +258,7 @@ Please note that when `ADrawer` is rendered as a modal, focus will be trapped in
       isEnabled: nonModalOpen,
       onExit: () => setNonModalOpen(false)
     });
-    
+
     return (
       <>
         <p>Modal Drawer</p>
@@ -277,7 +278,7 @@ Please note that when `ADrawer` is rendered as a modal, focus will be trapped in
                 content='A Drawer that behaves as a modal.'
                 onClose={() => setModalOpen(false)} />
         </ADrawer>
-        
+
         <p>Non-Modal Drawer</p>
         <AButton
             aria-label='Open non-modal drawer'
@@ -323,7 +324,8 @@ Please note that when `ADrawer` is rendered as a modal, focus will be trapped in
         </>
       )
     }
-  }`}
+
+}`}
 />
 
 ### Common Use Cases
@@ -356,14 +358,14 @@ Please note that when `ADrawer` is rendered as a modal, focus will be trapped in
             <AListItem title={isSlim ? 'Expand toolbar' : 'Shrink toolbar'} twoLine>
               <AListItemAvatar>
                 <AButton className='white--text' onClick={() => setIsSlim(prevState => !prevState)} icon>
-                  <AIcon iconSet="magna">{isSlim ? 'caretRight' : 'caretLeft'}</AIcon>
+                  <AIcon>{isSlim ? 'caretRight' : 'caretLeft'}</AIcon>
                 </AButton>
               </AListItemAvatar>
             </AListItem>
             <AListItem twoLine>
               <AListItemAvatar className='flex-shrink-0 mr-4'>
                 <AButton className='white--text' icon>
-                  <AIcon iconSet="magna">envelopeSimple</AIcon>
+                  <AIcon>envelopeSimple</AIcon>
                 </AButton>
               </AListItemAvatar>
               <AListItemContent>
@@ -373,7 +375,7 @@ Please note that when `ADrawer` is rendered as a modal, focus will be trapped in
             <AListItem twoLine>
               <AListItemAvatar className='flex-shrink-0 mr-4'>
                 <AButton className='white--text' icon>
-                  <AIcon iconSet="magna">uploadSimple</AIcon>
+                  <AIcon>uploadSimple</AIcon>
                 </AButton>
               </AListItemAvatar>
               <AListItemContent>
@@ -383,7 +385,7 @@ Please note that when `ADrawer` is rendered as a modal, focus will be trapped in
             <AListItem twoLine>
               <AListItemAvatar className='flex-shrink-0 mr-4'>
                 <AButton className='white--text' icon>
-                  <AIcon iconSet="magna">trash</AIcon>
+                  <AIcon>trash</AIcon>
                 </AButton>
               </AListItemAvatar>
               <AListItemContent>
@@ -393,7 +395,7 @@ Please note that when `ADrawer` is rendered as a modal, focus will be trapped in
             <AListItem title='Close toolbar' twoLine>
               <AListItemAvatar className='flex-shrink-0 mr-4'>
                 <AButton className='coral--burnt-1 white--text' onClick={() => setIsOpen(false)} icon>
-                  <AIcon iconSet="magna">x</AIcon>
+                  <AIcon>x</AIcon>
                 </AButton>
               </AListItemAvatar>
               <AListItemContent>
@@ -478,7 +480,7 @@ Please note that when `ADrawer` is rendered as a modal, focus will be trapped in
       <AContainer>
         <ARow className="mb-0 grey--darken-7 white--text">
           <ACol>
-            <AIcon iconSet="magna" onClick={() => setIsSlim(prevState => !prevState)} style={{cursor: 'pointer'}} size='small'>{isSlim ? 'caretRight' : 'caretLeft'}</AIcon>
+            <AIcon onClick={() => setIsSlim(prevState => !prevState)} style={{cursor: 'pointer'}} size='small'>{isSlim ? 'caretRight' : 'caretLeft'}</AIcon>
           </ACol>
           <ASpacer />
           <ACol className="d-flex align-center justify-end">
