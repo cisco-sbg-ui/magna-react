@@ -35,7 +35,8 @@ const ATab = forwardRef(
     const combinedRef = useCombinedRefs(ref, tabRef);
     const [tabId, setTabId] = useState(null);
     const [isSelected, setIsSelected] = useState(null);
-    const {tabChanged, setTabChanged, scrollToMe} = useContext(ATabContext);
+    const {tabChanged, setTabChanged, scrollToMe, vertical} =
+      useContext(ATabContext);
     useEffect(() => {
       if (tabKey) return;
       if (!tabId) {
@@ -68,6 +69,14 @@ const ATab = forwardRef(
     let className = "a-tab-group__tab";
     if ((tabKey && selected) || isSelected) {
       className += " a-tab-group__tab--selected";
+
+      if (vertical) {
+        className += " a-tab-group__tab--selected--vertical";
+      }
+    }
+
+    if (vertical) {
+      className += " a-tab-group__tab--vertical";
     }
 
     if (propsClassName) {

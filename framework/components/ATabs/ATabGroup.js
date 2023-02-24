@@ -16,6 +16,7 @@ const ATabGroup = forwardRef(
       oversized,
       scrolling,
       tall,
+      vertical = false,
       ...rest
     },
     ref
@@ -55,6 +56,11 @@ const ATabGroup = forwardRef(
 
     if (scrolling) {
       className += " a-tab-group--scrolling";
+    }
+
+    let tabContentClassName = "a-tab-group__tab-content";
+    if (vertical) {
+      tabContentClassName += " a-tab-group__tab-content--vertical";
     }
 
     if (propsClassName) {
@@ -108,7 +114,8 @@ const ATabGroup = forwardRef(
               0
             )
         );
-      }
+      },
+      vertical
     };
 
     return (
@@ -142,14 +149,16 @@ const ATabGroup = forwardRef(
 
               const finalTranslateValue = Math.max(translateValue, 0);
               setTranslateX(-finalTranslateValue);
-            }}>
+            }}
+          >
             <AIcon>chevron-left</AIcon>
           </AButton>
         )}
         <div className="a-tab-group__tab-wrapper">
           <div
-            className="a-tab-group__tab-content"
-            style={{transform: `translateX(${translateX}px)`}}>
+            className={tabContentClassName}
+            style={{transform: `translateX(${translateX}px)`}}
+          >
             <ATabContext.Provider value={tabContext}>
               {children}
             </ATabContext.Provider>
@@ -185,7 +194,8 @@ const ATabGroup = forwardRef(
               );
 
               setTranslateX(-finalTranslateValue);
-            }}>
+            }}
+          >
             <AIcon>chevron-right</AIcon>
           </AButton>
         )}
