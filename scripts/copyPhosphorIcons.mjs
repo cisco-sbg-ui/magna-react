@@ -13,9 +13,14 @@ import icons from "../framework/components/AIcon/atomicMap.js";
  * `~/Downloads`
  *
  * Run `npm run copyPhosphorIcons`
+ *
+ *
+ * This uses the Fill icon set from Phosphor. If changing to regular,
+ * change Fill -> Regular in `phosphorPath`, and remove `-fill` from
+ * `iconPath`.
  */
 
-const phosphorPath = `${os.homedir()}/Downloads/phosphor-icons/SVGs/Regular`;
+const phosphorPath = `${os.homedir()}/Downloads/phosphor-icons/SVGs/Fill`;
 const outputBase = "./svg";
 
 const {iconNameMap} = icons;
@@ -31,7 +36,7 @@ const copyIconFiles = () => {
     }
 
     try {
-      const iconPath = path.resolve(`${phosphorPath}/${key}.svg`);
+      const iconPath = path.resolve(`${phosphorPath}/${key}-fill.svg`);
 
       const iconData = fs.readFileSync(iconPath, {encoding: "utf-8"}),
         outputPath = path.resolve(`${outputBase}/${key}.svg`);
