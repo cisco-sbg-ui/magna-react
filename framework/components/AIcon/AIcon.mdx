@@ -16,28 +16,13 @@ import {AIcon} from "@cisco-sbg-ui/magna-react";
 
 ## Usage
 
-### Atomic
-
 <Playground
   code={`<>
-  <AIcon className="status-yellow--text">warning</AIcon>
-  <AIcon size={32} className="status-red--text">
-    block
-  </AIcon>
-  <AIcon size="large">add</AIcon>
-</>
-`}
-/>
-
-### Magnetic
-
-<Playground
-  code={`<>
-  <AIcon iconSet="magna">warning</AIcon>
-  <AIcon iconSet="magna" size={32}>
+  <AIcon>warning</AIcon>
+  <AIcon size={32}>
     bell
   </AIcon>
-  <AIcon iconSet="magna" size="large">plus</AIcon>
+  <AIcon size="large">plus</AIcon>
 </>
 `}
 />
@@ -50,11 +35,11 @@ The `AIcon` component inherits passed props.
 
 ## Gallery
 
-<IconGallery />
-
-## Magna Icon Gallery
-
 <MagnaIconGallery />
+
+## General Notes
+
+Any icons not in the Gallery that were previously available in Atomic will still be used if references. They have been removed from the Gallery since there is no direct replacement with the Phosphor icon set.
 
 ## Accessibility Notes
 

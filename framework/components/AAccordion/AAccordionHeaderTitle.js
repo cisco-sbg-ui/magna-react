@@ -105,9 +105,7 @@ const AAccordionHeaderTitle = forwardRef(
             onKeyDown={handleKeyDown}
             className={chevronClassName}
           >
-            <AIcon iconSet="magna" size={12}>
-              {chevronIcon}
-            </AIcon>
+            <AIcon size={12}>{chevronIcon}</AIcon>
           </div>
         )}
       </>

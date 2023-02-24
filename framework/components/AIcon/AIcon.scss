@@ -11,6 +11,7 @@ svg.a-icon {
 .a-icon {
   overflow: visible;
   width: 24px;
+  //stroke: currentColor; // if using Regular phosphor icons, uncomment
   fill: currentColor;
 
   &--size-large {
