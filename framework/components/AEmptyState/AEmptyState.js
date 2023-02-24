@@ -64,7 +64,7 @@ const AEmptyState = forwardRef(
     return (
       <div {...rest} ref={ref} className={className}>
         <div className={containerClass}>
-          <AIcon className={backgroundClass}>emptyBackground</AIcon>
+          <AIcon className={backgroundClass}>empty-background</AIcon>
           <AIcon className={iconClass}>{propsIcon || icon}</AIcon>
         </div>
         {label && <div className={labelClass}>{label}</div>}
