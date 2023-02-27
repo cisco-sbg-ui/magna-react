@@ -11,7 +11,8 @@ const ignoreStrokeReplace = [
   "information",
   "negative",
   "positive",
-  "warning"
+  "warning",
+  "cisco"
 ];
 
 const AIcon = forwardRef(
