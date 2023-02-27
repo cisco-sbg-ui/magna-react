@@ -51,6 +51,17 @@ import {ATabGroup, ATab, ATabHeading} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
+## Vertical Tabs
+
+<Playground
+  code={`<ATabGroup vertical>
+  <ATab>One</ATab>
+  <ATab>Two</ATab>
+  <ATab selected>Three</ATab>
+</ATabGroup>
+`}
+/>
+
 ## Tab Group Props
 
 The `ATabGroup` component inherits passed props.
@@ -161,6 +172,28 @@ Tabs will render in the DOM as anchor tags if the `href` property is defined.
     <ATab>
       <ATabHeading>Heading Six</ATabHeading>
       Subtext Six
+    </ATab>
+  </ATabGroup>
+</>
+`}
+/>
+
+### Oversized Vertical
+
+<Playground
+  code={`<>
+  <ATabGroup oversized vertical>
+    <ATab>
+      <ATabHeading>Heading One</ATabHeading>
+      Subtext One
+    </ATab>
+    <ATab>
+      <ATabHeading>Heading Two</ATabHeading>
+      Subtext Two
+    </ATab>
+    <ATab selected>
+      <ATabHeading>Heading Three</ATabHeading>
+      Subtext Three
     </ATab>
   </ATabGroup>
 </>
