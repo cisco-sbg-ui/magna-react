@@ -38,9 +38,7 @@ const AContextualNotification = forwardRef(
 
     return (
       <TagName {...rest} ref={ref} className={className}>
-        <AIcon iconSet="magna" className={iconClass}>
-          {icon}
-        </AIcon>
+        <AIcon className={iconClass}>{icon}</AIcon>
         <div className={messageClass}>{children}</div>
       </TagName>
     );

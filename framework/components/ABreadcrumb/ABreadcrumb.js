@@ -43,12 +43,11 @@ const ABreadcrumb = forwardRef(
       };
       singleLevelContent = (
         <AIcon
-          iconSet="magna"
           className={arrowClassname}
           style={{cursor: "pointer"}}
           onClick={onArrowClick}
         >
-          arrowLeft
+          arrow-left
         </AIcon>
       );
     }

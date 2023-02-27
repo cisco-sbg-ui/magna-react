@@ -76,16 +76,16 @@ TableCell.displayName = "TableCell";
 
 export const getSortIconName = (column, sort) => {
   if (!sort || column.key !== sort.key) {
-    return "sortEmpty";
+    return "sort-empty";
   }
 
   switch (sort.direction) {
     case "asc":
-      return "sortUp";
+      return "sort-up";
     case "desc":
-      return "sortDown";
+      return "sort-down";
     default:
-      return "sortEmpty";
+      return "sort-empty";
   }
 };
 
@@ -260,7 +260,6 @@ const ADataTable = forwardRef(
 
                     let sortIcon = x.sortable && (
                       <AIcon
-                        iconSet="magna"
                         left={x.align === "end"}
                         right={x.align !== "end"}
                         className={`a-data-table__header__sort ${

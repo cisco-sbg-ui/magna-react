@@ -21,7 +21,7 @@ const MagnaIconGallery = () => {
           style={{flexBasis: "33.33%"}}
         >
           <AListItemAvatar style={{minWidth: 24}}>
-            <AIcon iconSet="magna">{x}</AIcon>
+            <AIcon>{x}</AIcon>
           </AListItemAvatar>
           <AListItemTitle>{x}</AListItemTitle>
         </AListItem>

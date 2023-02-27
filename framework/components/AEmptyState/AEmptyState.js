@@ -10,7 +10,6 @@ const AEmptyState = forwardRef(
       className: propsClassName,
       variant,
       icon: propsIcon,
-      iconSet = "magna",
       iconClass: propsIconClass,
       label,
       message,
@@ -65,12 +64,8 @@ const AEmptyState = forwardRef(
     return (
       <div {...rest} ref={ref} className={className}>
         <div className={containerClass}>
-          <AIcon iconSet="magna" className={backgroundClass}>
-            emptyBackground
-          </AIcon>
-          <AIcon iconSet={iconSet} className={iconClass}>
-            {propsIcon || icon}
-          </AIcon>
+          <AIcon className={backgroundClass}>empty-background</AIcon>
+          <AIcon className={iconClass}>{propsIcon || icon}</AIcon>
         </div>
         {label && <div className={labelClass}>{label}</div>}
         {message && <div className={messageClass}>{message}</div>}
@@ -93,10 +88,6 @@ AEmptyState.propTypes = {
    * Custom icn name
    */
   icon: PropTypes.string,
-  /**
-   * Icon set for custom icon
-   */
-  iconSet: PropTypes.oneOf(["atomic", "magna"]),
   /**
    * Class name for the icon
    */
