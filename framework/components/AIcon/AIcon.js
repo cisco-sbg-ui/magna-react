@@ -12,7 +12,9 @@ const ignoreStrokeReplace = [
   "negative",
   "positive",
   "warning",
-  "cisco"
+  "cisco",
+  "dots-three",
+  "dots-six"
 ];
 
 const AIcon = forwardRef(
@@ -37,6 +39,8 @@ const AIcon = forwardRef(
     if (propsClassName) {
       className += ` ${propsClassName}`;
     }
+
+    className += ` a-icon--${children}`;
 
     const ariaLabel = label || `${children} icon`,
       componentProps = {
