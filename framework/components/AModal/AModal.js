@@ -75,6 +75,7 @@ const AModal = forwardRef(
         <APageOverlay
           className={visibilityClass}
           onClick={(e) => {
+            e.stopPropagation();
             const {target} = e;
             if (target !== _ref.current) {
               return;
@@ -103,6 +104,13 @@ const AModal = forwardRef(
         aria-modal="true"
         className={contentClassName}
         ref={handleMultipleRefs(_ref, ref)}
+        onClick={(e) => {
+          e.stopPropagation();
+          const {onClick: propsOnClick} = rest;
+          if (typeof propsOnClick === "function") {
+            propsOnClick(e);
+          }
+        }}
         {...rest}
       >
         {children}

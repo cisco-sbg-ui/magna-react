@@ -110,6 +110,46 @@ import {
 `}
 />
 
+## Event Propagation
+
+If you have a component inside an `AAccordionHeader` component with an `onClick` handler, the event will also bubble up to the `AAccordionHeader`, thus toggling the opened/closed state.
+
+To prevent this, you should invoke the `stopPropagation()` method on the inner component's event handler.
+
+<Playground
+  code={`() => {
+    const [countA, setCountA] = useState(0);
+    const [countB, setCountB] = useState(0);
+    return (
+      <>
+        <p>Count A: {countA}</p>
+        <p>Count B: {countB}</p>
+        <AAccordion>
+          <AAccordionPanel>
+            <AAccordionHeader>
+              <AAccordionHeaderTitle>
+                An accordion with an <AButton onClick={() => setCountA(state => state + 1)}>Increment A</AButton> button
+              </AAccordionHeaderTitle>
+            </AAccordionHeader>
+            <AAccordionBody>This accordion opens even when clicking the increment button.</AAccordionBody>
+          </AAccordionPanel>
+          <AAccordionPanel>
+            <AAccordionHeader>
+              <AAccordionHeaderTitle>
+                An accordion with an <AButton onClick={(e) => {
+                  e.stopPropagation();
+                  setCountB(state => state + 1);  
+                }}>Increment B</AButton> button
+              </AAccordionHeaderTitle>
+            </AAccordionHeader>
+            <AAccordionBody>This accordion only opens on a click of the accordion panel.</AAccordionBody>
+          </AAccordionPanel>
+        </AAccordion>
+      </>
+    )
+  }`}
+/>
+
 ## Props
 
 All Accordion components (`AAccordion`, `AAccordionPanel`, `AAccordionHeader`, `AAccordionHeaderTitle`, `AAccordionBody`) inherit passed props.
