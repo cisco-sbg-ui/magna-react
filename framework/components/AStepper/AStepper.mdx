@@ -202,6 +202,101 @@ import {AStepper, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/magna
 `}
 />
 
+### (Test Case) Stepper under modal
+
+<Playground
+  fullWidthPreview
+  code={`() => {
+    const [open, setOpen] = useState(false);
+      const [active, setActive] = useState(3);
+  const steps = 4;
+    const ref = useRef();
+    usePopupQuickExit({
+      popupRef: ref,
+      isEnabled: open,
+      onExit: () => setOpen(false)
+    });
+    return (
+      <div>
+      <div>
+      <div style={{border: "solid 2px #333"}} className="my-2 pa-2">
+        {active > steps ? "Completed" : "Step " + active}
+      </div>
+      <h3>Stepper</h3>
+      <AStepper>
+        <AStep stepNumber={1} active={active === 1} visited={active > 1}>
+          <AStepTitle>Title </AStepTitle>
+          <AStepDescription>
+            Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </AStepDescription>
+        </AStep>
+        <AStep
+          stepNumber={2}
+          active={active === 2}
+          visited={active > 2}
+          disabled={true}>
+          <AStepTitle>Title</AStepTitle>
+          <AStepDescription>
+            Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </AStepDescription>
+        </AStep>
+        <AStep stepNumber={3} active={active === 3} visited={active > 3}>
+          <AStepTitle>Title</AStepTitle>
+          <AStepDescription>
+              Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </AStepDescription>
+        </AStep>
+        <AStep
+          stepNumber={4}
+          active={active === 4}
+          visited={active > 4}>
+          <AStepTitle>Title</AStepTitle>
+          <AStepDescription>
+            Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </AStepDescription>
+        </AStep>
+         <AStep
+          stepNumber={5}
+          active={active === 5}
+          visited={active > 5}>
+          <AStepTitle>Step with No Description</AStepTitle>
+        </AStep>
+      </AStepper>
+      <AButton onClick={() => active > 1 && setActive(active - 1)}>
+        Previous
+      </AButton>
+      <AButton onClick={() => active <= steps && setActive(active + 1)}>
+        Next
+      </AButton>
+    </div>
+        <AButton
+            onClick={() => setOpen(true)}>
+            Open Modal
+        </AButton>
+        <AModal
+            aria-labelledby='modal-title'
+            isOpen={open}>
+            <APanel ref={ref} style={{ minWidth: '400px' }} type="dialog">
+              <APanelHeader>
+                <APanelTitle id='modal-title'>Modal Demo</APanelTitle>
+                <AButton aria-label="Close modal 1" onClick={() => setOpen(false)} tertiaryAlt icon>
+                  <AIcon>close</AIcon>
+                </AButton>
+              </APanelHeader>
+              <APanelBody>
+                Modal content goes here.
+              </APanelBody>
+              <APanelFooter>
+                <AButton>Action</AButton>
+              </APanelFooter>
+            </APanel>
+        </AModal>
+      </div>
+    )
+  }
+`}
+/>
+
 ## Stepper Props
 
 All AStepper components (AStepper, AStep, AStepTitle, AStepDescription) inherit passed props.
