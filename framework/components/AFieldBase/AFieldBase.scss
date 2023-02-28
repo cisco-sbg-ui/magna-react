@@ -17,5 +17,16 @@
     margin: 0;
     font-size: $font-size--sm;
     font-weight: 600;
+
+    &--required {
+      color: $color-error;
+    }
+
+    .a-icon--information {
+      height: 16px;
+      width: 16px;
+      vertical-align: text-bottom;
+      margin: 0 5px;
+    }
   }
 }

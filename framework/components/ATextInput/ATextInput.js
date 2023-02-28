@@ -222,7 +222,8 @@ const ATextInput = forwardRef(
               );
 
               incrementInput();
-            }}>
+            }}
+          >
             <path d={chevronUp} />
           </svg>
           <svg
@@ -249,7 +250,8 @@ const ATextInput = forwardRef(
               );
 
               incrementInput(-1 * (step || 1));
-            }}>
+            }}
+          >
             <path d={chevronDown} />
           </svg>
         </div>
@@ -334,6 +336,7 @@ const ATextInput = forwardRef(
       clearable,
       hint: error || hint,
       label,
+      required,
       labelFor: `a-text-input_${textInputId}`,
       disabled,
       focused: isFocused,

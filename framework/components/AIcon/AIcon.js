@@ -8,7 +8,6 @@ import "./AIcon.scss";
 
 const ignoreStrokeReplace = [
   "info",
-  "information",
   "negative",
   "positive",
   "warning",

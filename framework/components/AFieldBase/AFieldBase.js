@@ -1,7 +1,9 @@
 import PropTypes from "prop-types";
-import React, {forwardRef} from "react";
+import React, {forwardRef, useRef, useState} from "react";
 
 import AHint from "../AHint";
+import AIcon from "../AIcon";
+import ATooltip from "../ATooltip";
 import "./AFieldBase.scss";
 
 const AFieldBase = forwardRef(
@@ -14,11 +16,16 @@ const AFieldBase = forwardRef(
       labelFor,
       labelId,
       onClickLabel,
+      required,
+      infoTooltip,
       validationState = "default",
       ...rest
     },
     ref
   ) => {
+    const infoIconRef = useRef(),
+      [infoTooltipOpen, setInfoTooltipOpen] = useState(false);
+
     let className = "a-field-base";
 
     if (validationState !== "default") {
@@ -37,15 +44,39 @@ const AFieldBase = forwardRef(
             id={labelId}
             htmlFor={labelFor}
             onClick={onClickLabel}
-            className="a-field-base__label">
+            className="a-field-base__label"
+          >
             {label}
+            {required && (
+              <span className="a-field-base__label--required">*</span>
+            )}
+            {infoTooltip && (
+              <>
+                <AIcon
+                  ref={infoIconRef}
+                  onMouseEnter={() => setInfoTooltipOpen(true)}
+                  onMouseLeave={() => setInfoTooltipOpen(false)}
+                >
+                  information
+                </AIcon>
+                <ATooltip
+                  anchorRef={infoIconRef}
+                  id={`${labelId}-tooltip`}
+                  open={infoTooltipOpen}
+                  placement="top"
+                >
+                  {infoTooltip}
+                </ATooltip>
+              </>
+            )}
           </label>
         )}
         {children}
         {hint && (
           <AHint
             className="a-field-base__hint"
-            validationState={validationState}>
+            validationState={validationState}
+          >
             {hint}
           </AHint>
         )}
@@ -71,6 +102,14 @@ AFieldBase.propTypes = {
    * The label's `id` attribute.
    */
   labelId: PropTypes.string,
+  /**
+   * Adds required asterisk next to label
+   */
+  required: PropTypes.bool,
+  /**
+   * Adds an information tooltip next to the label
+   */
+  infoTooltip: PropTypes.string,
   /**
    * Handles the label's `click` event.
    */

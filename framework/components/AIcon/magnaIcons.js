@@ -2526,6 +2526,22 @@ const MagnaIcons = {
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
   },
+  "dots-nine": {
+    xml: (
+      <>
+        <circle cx="60" cy="60" r="12"></circle>
+        <circle cx="128" cy="60" r="12"></circle>
+        <circle cx="196" cy="60" r="12"></circle>
+        <circle cx="60" cy="128" r="12"></circle>
+        <circle cx="128" cy="128" r="12"></circle>
+        <circle cx="196" cy="128" r="12"></circle>
+        <circle cx="60" cy="196" r="12"></circle>
+        <circle cx="128" cy="196" r="12"></circle>
+        <circle cx="196" cy="196" r="12"></circle>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
   "dots-six": {
     xml: (
       <>
@@ -3512,6 +3528,30 @@ const MagnaIcons = {
           strokeWidth="16"
         ></path>
         <circle cx="156" cy="100" r="12"></circle>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  information: {
+    xml: (
+      <>
+        <circle
+          cx="128"
+          cy="128"
+          r="96"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></circle>
+        <circle cx="126" cy="84" r="12"></circle>
+        <polyline
+          points="120 120 128 120 128 176 136 176"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}

@@ -121,7 +121,7 @@ const iconNameMap = {
   "html-format": "file-html",
   indicator: "fingerprint",
   info: "info",
-  information: "info",
+  //information: "info",
   image: "image",
   import: "arrow-square-in",
   "incoming-mail": "archive-tray",

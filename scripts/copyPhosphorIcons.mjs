@@ -31,15 +31,16 @@ const generatedListForPhosphor = Object.entries(iconNameMap).map(
 
 const copyIconFiles = () => {
   generatedListForPhosphor.forEach((key) => {
+    let outputName = key;
     if (key === "info") {
-      return;
+      outputName = "information";
     }
 
     try {
       const iconPath = path.resolve(`${phosphorPath}/${key}.svg`);
 
       const iconData = fs.readFileSync(iconPath, {encoding: "utf-8"}),
-        outputPath = path.resolve(`${outputBase}/${key}.svg`);
+        outputPath = path.resolve(`${outputBase}/${outputName}.svg`);
 
       fs.writeFileSync(outputPath, iconData);
     } catch {
