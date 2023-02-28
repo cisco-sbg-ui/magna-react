@@ -43,7 +43,7 @@ const iconNameMap = {
   "chart-bar": "chart-bar",
   "chart-curve": "chart-line",
   "chart-pie": "chart-pie-slice",
-  checkmark: "",
+  checkmark: "check",
   "chevron-down": "caret-down",
   "chevron-left": "caret-left",
   "chevron-right": "caret-right",
@@ -77,6 +77,7 @@ const iconNameMap = {
   domain: "globe", // TODO  (needs to be regular outline not fill)
   "dots-three": "",
   "dots-six": "",
+  "dots-nine": "",
   download: "download-simple",
   dropped: "",
   "dynamic-nat": "",

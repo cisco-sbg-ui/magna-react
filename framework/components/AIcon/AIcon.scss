@@ -34,3 +34,16 @@ svg.a-icon {
     margin-left: 5px;
   }
 }
+
+/*
+Some of the phosphor icons don't adhere to the same pattern
+as the other "stroke" styled icons, so override.
+*/
+.a-icon {
+  &--dots-three,
+  &--dots-six,
+  &--dots-nine,
+  &--question {
+    fill: currentColor;
+  }
+}
