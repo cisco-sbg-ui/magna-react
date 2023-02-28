@@ -73,6 +73,10 @@
       border: 2px solid transparent !important;
       background-color: transparent !important;
       font-weight: 400;
+      margin-right: 4px;
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
 
