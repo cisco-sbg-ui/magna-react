@@ -123,7 +123,7 @@ const APagination = forwardRef(
                 onClick={() => onPageChange(1)}
                 aria-label="First"
               >
-                <AIcon size={ICON_SIZE}>first-page</AIcon>
+                <AIcon size={ICON_SIZE}>caret-double-left</AIcon>
               </AButton>
             )}
             <AButton
@@ -135,7 +135,7 @@ const APagination = forwardRef(
               aria-label="Previous"
             >
               <AIcon left={showText} size={ICON_SIZE}>
-                chevron-left
+                caret-left
               </AIcon>
             </AButton>
             <div className="a-pagination__page-selection">
@@ -186,7 +186,7 @@ const APagination = forwardRef(
               aria-label="Next"
             >
               <AIcon right={showText} size={ICON_SIZE}>
-                chevron-right
+                caret-right
               </AIcon>
             </AButton>
             {showFirstLastButtons && (
@@ -199,7 +199,7 @@ const APagination = forwardRef(
                 aria-label="Last"
               >
                 <AIcon right={showText} size={ICON_SIZE}>
-                  last-page
+                  caret-double-right
                 </AIcon>
               </AButton>
             )}
@@ -254,7 +254,7 @@ const APagination = forwardRef(
               aria-label="Previous"
             >
               <AIcon left={showText} size={ICON_SIZE}>
-                chevron-left
+                caret-left
               </AIcon>
               {showText && "Previous"}
             </AButton>
@@ -310,7 +310,7 @@ const APagination = forwardRef(
             >
               {showText && "Next"}
               <AIcon right={showText} size={ICON_SIZE}>
-                chevron-right
+                caret-right
               </AIcon>
             </AButton>
           </>
@@ -326,7 +326,7 @@ const APagination = forwardRef(
             aria-label="Previous"
           >
             <AIcon left size={ICON_SIZE}>
-              chevron-left
+              caret-left
             </AIcon>
             Previous
           </AButton>
@@ -338,7 +338,7 @@ const APagination = forwardRef(
           >
             Next
             <AIcon right size={ICON_SIZE}>
-              chevron-right
+              caret-right
             </AIcon>
           </AButton>
         </>

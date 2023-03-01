@@ -13,7 +13,13 @@ const ignoreStrokeReplace = [
   "warning",
   "cisco",
   "dots-three",
-  "dots-six"
+  "dots-six",
+  "sort-up",
+  "sort-down",
+  "sort",
+  "sort-empty",
+  "last-page",
+  "first-page"
 ];
 
 const AIcon = forwardRef(
