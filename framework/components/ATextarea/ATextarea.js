@@ -159,7 +159,8 @@ const ATextarea = forwardRef(
       labelFor: `a-textarea__field_${textareaId}`,
       disabled,
       readOnly,
-      validationState: workingValidationState
+      validationState: workingValidationState,
+      required
     };
 
     if (autoGrow) {

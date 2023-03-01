@@ -368,7 +368,9 @@ const ASelect = forwardRef(
         focused={isFocused || isOpen}
         readOnly={readOnly}
         validationState={workingValidationState}
-        hint={error || hint}>
+        hint={error || hint}
+        required={required}
+      >
         <div className="a-select__selection-wrapper">
           <div {...selectionProps}>{selectionContent}</div>
           <AMenu ref={menuRef} {...menuComponentProps}>
@@ -377,7 +379,8 @@ const ASelect = forwardRef(
               className={`a-select__menu-items__wrapper${
                 maxHeight ? " overflow-y-scroll" : ""
               }`}
-              style={{maxHeight}}>
+              style={{maxHeight}}
+            >
               {items.map((item, index) => {
                 const itemProps = {
                   value: null,

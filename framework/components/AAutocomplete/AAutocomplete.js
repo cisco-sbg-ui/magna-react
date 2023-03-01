@@ -153,7 +153,8 @@ const AAutocomplete = forwardRef(
         onClear && onClear(e);
       },
       readOnly,
-      validationState: workingValidationState
+      validationState: workingValidationState,
+      required
     };
 
     if (loading) {
