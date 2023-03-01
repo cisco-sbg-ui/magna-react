@@ -123,7 +123,7 @@ const APagination = forwardRef(
                 onClick={() => onPageChange(1)}
                 aria-label="First"
               >
-                <AIcon size={ICON_SIZE}>first-page</AIcon>
+                <AIcon size={ICON_SIZE}>caret-double-left</AIcon>
               </AButton>
             )}
             <AButton
@@ -199,7 +199,7 @@ const APagination = forwardRef(
                 aria-label="Last"
               >
                 <AIcon right={showText} size={ICON_SIZE}>
-                  last-page
+                  caret-double-right
                 </AIcon>
               </AButton>
             )}
