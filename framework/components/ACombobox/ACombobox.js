@@ -161,7 +161,8 @@ const ACombobox = forwardRef(
         onClear && onClear(e);
       },
       readOnly,
-      validationState: workingValidationState
+      validationState: workingValidationState,
+      required
     };
 
     if (propsClassName) {

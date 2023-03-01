@@ -2580,6 +2580,22 @@ const MagnaIcons = {
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
   },
+  "dots-nine": {
+    xml: (
+      <>
+        <circle cx="60" cy="60" r="12"></circle>
+        <circle cx="128" cy="60" r="12"></circle>
+        <circle cx="196" cy="60" r="12"></circle>
+        <circle cx="60" cy="128" r="12"></circle>
+        <circle cx="128" cy="128" r="12"></circle>
+        <circle cx="196" cy="128" r="12"></circle>
+        <circle cx="60" cy="196" r="12"></circle>
+        <circle cx="128" cy="196" r="12"></circle>
+        <circle cx="196" cy="196" r="12"></circle>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
   "dots-six": {
     xml: (
       <>
