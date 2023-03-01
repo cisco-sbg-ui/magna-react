@@ -68,19 +68,19 @@ const AIcon = forwardRef(
       componentProps.style.width = size;
     }
 
-    let iconDef;
+    let magneticIconDef;
 
     if (MagnaIcons[children]) {
       // Check if it's in magna icons
 
-      iconDef = MagnaIcons[children];
+      magneticIconDef = MagnaIcons[children];
     } else if (iconNameMap[children]) {
       // check if we can map an atomic icon name to a magna icon
-      iconDef = MagnaIcons[iconNameMap[children]];
+      magneticIconDef = MagnaIcons[iconNameMap[children]];
     }
 
-    if (iconDef) {
-      const {props: iconProps, xml} = iconDef;
+    if (magneticIconDef) {
+      const {props: iconProps, xml} = magneticIconDef;
 
       if (ignoreStrokeReplace.includes(children)) {
         componentProps.style.stroke = "none";
@@ -93,9 +93,8 @@ const AIcon = forwardRef(
       );
     }
 
-    componentProps.className += " a-icon--atomic";
-
     // Fallback to atomic icon for safety
+    componentProps.className += " a-icon--atomic";
     return (
       <svg {...componentProps} viewBox="0 0 16 16">
         <path d={Icons[children]} />
