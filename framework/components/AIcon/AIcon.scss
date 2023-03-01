@@ -40,11 +40,19 @@ Some of the phosphor icons don't adhere to the same pattern
 as the other "stroke" styled icons, so override.
 */
 .a-icon {
+  &--circle,
   &--dots-three,
   &--dots-six,
   &--dots-nine,
+  &--gitMerge,
   &--information,
-  &--question {
+  &--question,
+  &--textAlignCenter,
+  &--textAlignRight,
+  &--textBolder,
+  &--textH,
+  &--textItalic,
+  &--textStrikethrough {
     fill: currentColor;
   }
 }
