@@ -90,6 +90,27 @@ import {ATag} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
+## Display Variants
+
+Basic variants for the standard states
+
+<Playground
+  code={`() => {
+  const [selectedOption, setSelectedOption] = useState("Option 1");
+  const [active, setActive] = useState(false);
+  const tagRef = useRef(null);
+  return (
+    <div style={{minHeight: 120}}>
+      <ATag level="information">info</ATag>
+      <ATag level="positive">positive</ATag>
+      <ATag level="warning">warning</ATag>
+      <ATag level="negative">negative</ATag>
+    </div>
+  );
+}
+`}
+/>
+
 ## Tag Props
 
 The `ATag` component inherits passed props.

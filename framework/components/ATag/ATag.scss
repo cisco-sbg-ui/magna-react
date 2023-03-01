@@ -18,6 +18,25 @@ $tag-icon-font-size: $font-size--xxs;
       color: map-deep-get($theme, "tag", "color");
     }
   }
+
+  &--state-information,
+  &--state-info {
+    background-color: map-deep-get($theme, "alert", "bg");
+    color: map-deep-get($theme, "base", "color");
+  }
+
+  &--state-positive {
+    background-color: map-deep-get($theme, "alert", "success-bg");
+    color: map-deep-get($theme, "base", "color");
+  }
+  &--state-warning {
+    background-color: map-deep-get($theme, "alert", "warning-bg");
+    color: map-deep-get($theme, "base", "color");
+  }
+  &--state-negative {
+    background-color: map-deep-get($theme, "alert", "danger-bg");
+    color: map-deep-get($theme, "base", "color");
+  }
 }
 
 .a-tag {
@@ -44,7 +63,7 @@ $tag-icon-font-size: $font-size--xxs;
     width: $tag-icon-font-size;
   }
 
-  &.count {
+  &--count {
     border-radius: 10px;
     padding: 1px 8px;
   }
