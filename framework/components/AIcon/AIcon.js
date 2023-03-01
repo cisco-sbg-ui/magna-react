@@ -6,6 +6,12 @@ import MagnaIcons from "./magnaIcons.js";
 import {iconNameMap} from "./atomicMap";
 import "./AIcon.scss";
 
+/**
+ * For icons that should not be styled as "regular",
+ * this will add a class that unsets the `stroke` css value.
+ * Some of the Phosphor icons need fill rather than stroke,
+ * this allows those to be styled appropriately.
+ */
 const ignoreStrokeReplace = [
   "info",
   "negative",
