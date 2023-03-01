@@ -11,7 +11,7 @@ import {
 import MagnaIcons from "../framework/components/AIcon/magnaIcons";
 import Icons from "../framework/components/AIcon/icons.json";
 
-const IconGallery = () => {
+const AtomicIconGallery = () => {
   return (
     <AList className="flex-row flex-wrap mb-8">
       {Object.keys(Icons)
@@ -35,6 +35,6 @@ const IconGallery = () => {
   );
 };
 
-IconGallery.displayName = "IconGallery";
+AtomicIconGallery.displayName = "AtomicIconGallery";
 
-export default IconGallery;
+export default AtomicIconGallery;
