@@ -15,6 +15,7 @@ const ATag = forwardRef(
       onClick,
       onKeyDown,
       target,
+      level,
       ...rest
     },
     ref
@@ -30,7 +31,11 @@ const ATag = forwardRef(
     }
 
     if (count) {
-      className += ` count`;
+      className += ` a-tag--count`;
+    }
+
+    if (level) {
+      className += ` a-tag--state-${level}`;
     }
 
     let TagName = "div";
@@ -87,7 +92,17 @@ ATag.propTypes = {
   /**
    * If the `href` property is defined, the target can be set (ex: `_blank`, `_self`, `_parent`, `_top`)
    */
-  target: PropTypes.string
+  target: PropTypes.string,
+  /**
+   * Specifies the display variant.
+   */
+  level: PropTypes.oneOf([
+    "info",
+    "information",
+    "positive",
+    "warning",
+    "negative"
+  ])
 };
 
 ATag.displayName = "ATag";
