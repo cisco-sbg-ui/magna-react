@@ -8,6 +8,16 @@ svg.a-icon {
   box-sizing: content-box;
 }
 
+@include theme(a-icon) using ($theme) {
+  &--malicious,
+  &--suspicious,
+  &--unknown,
+  &--clean,
+  &--common {
+    fill: map-deep-get($theme, "control", "fill-color");
+  }
+}
+
 .a-icon {
   overflow: visible;
   width: 24px;
