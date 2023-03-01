@@ -19,7 +19,9 @@ const ignoreStrokeReplace = [
   "sort",
   "sort-empty",
   "last-page",
-  "first-page"
+  "first-page",
+  "malicious",
+  "suspicious"
 ];
 
 const AIcon = forwardRef(
@@ -71,12 +73,12 @@ const AIcon = forwardRef(
       iconDef = MagnaIcons[iconNameMap[children]];
     }
 
-    if (ignoreStrokeReplace.includes(children)) {
-      componentProps.style.stroke = "none";
-    }
-
     if (iconDef) {
       const {props: iconProps, xml} = iconDef;
+
+      if (ignoreStrokeReplace.includes(children)) {
+        componentProps.style.stroke = "none";
+      }
 
       return (
         <svg {...iconProps} {...componentProps}>
@@ -84,6 +86,8 @@ const AIcon = forwardRef(
         </svg>
       );
     }
+
+    componentProps.className += " a-icon--atomic";
 
     // Fallback to atomic icon for safety
     return (
