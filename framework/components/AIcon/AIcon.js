@@ -8,13 +8,18 @@ import "./AIcon.scss";
 
 const ignoreStrokeReplace = [
   "info",
-  "information",
   "negative",
   "positive",
   "warning",
   "cisco",
   "dots-three",
-  "dots-six"
+  "dots-six",
+  "sort-up",
+  "sort-down",
+  "sort",
+  "sort-empty",
+  "last-page",
+  "first-page"
 ];
 
 const AIcon = forwardRef(

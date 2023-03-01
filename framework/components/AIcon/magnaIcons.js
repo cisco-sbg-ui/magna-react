@@ -48,15 +48,137 @@ const MagnaIcons = {
   circle: {
     xml: (
       <>
+        <circle cx="128" cy="128" r="104"></circle>
+      </>
+    ),
+    props: {
+      xmlns: "http://www.w3.org/2000/svg",
+      fill: "none",
+      viewBox: "0 0 256 256"
+    }
+  },
+  clock: {
+    xml: (
+      <>
         <circle
           cx="128"
           cy="128"
           r="96"
           fill="none"
+          strokeMiterlimit="10"
+          strokeWidth="16"
+        ></circle>
+        <polyline
+          points="128 72 128 128 184 128"
+          fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth="16"
-        ></circle>
+        ></polyline>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  copy: {
+    xml: (
+      <>
+        <rect
+          x="40"
+          y="88"
+          width="128"
+          height="128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></rect>
+        <polyline
+          points="168 168 216 168 216 40 88 40 88 88"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  database: {
+    xml: (
+      <>
+        <ellipse
+          cx="128"
+          cy="80"
+          rx="88"
+          ry="48"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></ellipse>
+        <path
+          d="M40,80v48c0,26.5,39.4,48,88,48s88-21.5,88-48V80"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M40,128v48c0,26.5,39.4,48,88,48s88-21.5,88-48V128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  desktop: {
+    xml: (
+      <>
+        <rect
+          x="32"
+          y="48"
+          width="192"
+          height="144"
+          rx="16"
+          transform="translate(256 240) rotate(180)"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></rect>
+        <line
+          x1="160"
+          y1="224"
+          x2="96"
+          y2="224"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="32"
+          y1="152"
+          x2="224"
+          y2="152"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="128"
+          y1="192"
+          x2="128"
+          y2="224"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1675,6 +1797,48 @@ const MagnaIcons = {
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
   },
+  "caret-double-left": {
+    xml: (
+      <>
+        <polyline
+          points="200 208 120 128 200 48"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <polyline
+          points="120 208 40 128 120 48"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  "caret-double-right": {
+    xml: (
+      <>
+        <polyline
+          points="56 48 136 128 56 208"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <polyline
+          points="136 48 216 128 136 208"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
   "caret-down": {
     xml: (
       <>
@@ -2160,28 +2324,6 @@ const MagnaIcons = {
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
   },
-  clock: {
-    xml: (
-      <>
-        <circle
-          cx="128"
-          cy="128"
-          r="96"
-          fill="none"
-          strokeMiterlimit="10"
-          strokeWidth="16"
-        ></circle>
-        <polyline
-          points="128 72 128 128 184 128"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
-        ></polyline>
-      </>
-    ),
-    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
-  },
   cloud: {
     xml: (
       <>
@@ -2223,30 +2365,6 @@ const MagnaIcons = {
           strokeLinejoin="round"
           strokeWidth="16"
         ></line>
-      </>
-    ),
-    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
-  },
-  copy: {
-    xml: (
-      <>
-        <rect
-          x="40"
-          y="88"
-          width="128"
-          height="128"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
-        ></rect>
-        <polyline
-          points="168 168 216 168 216 40 88 40 88 88"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
-        ></polyline>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -2446,82 +2564,18 @@ const MagnaIcons = {
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
   },
-  database: {
+  "dots-nine": {
     xml: (
       <>
-        <ellipse
-          cx="128"
-          cy="80"
-          rx="88"
-          ry="48"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
-        ></ellipse>
-        <path
-          d="M40,80v48c0,26.5,39.4,48,88,48s88-21.5,88-48V80"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
-        ></path>
-        <path
-          d="M40,128v48c0,26.5,39.4,48,88,48s88-21.5,88-48V128"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
-        ></path>
-      </>
-    ),
-    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
-  },
-  desktop: {
-    xml: (
-      <>
-        <rect
-          x="32"
-          y="48"
-          width="192"
-          height="144"
-          rx="16"
-          transform="translate(256 240) rotate(180)"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
-        ></rect>
-        <line
-          x1="160"
-          y1="224"
-          x2="96"
-          y2="224"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
-        ></line>
-        <line
-          x1="32"
-          y1="152"
-          x2="224"
-          y2="152"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
-        ></line>
-        <line
-          x1="128"
-          y1="192"
-          x2="128"
-          y2="224"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
-        ></line>
+        <circle cx="60" cy="60" r="12"></circle>
+        <circle cx="128" cy="60" r="12"></circle>
+        <circle cx="196" cy="60" r="12"></circle>
+        <circle cx="60" cy="128" r="12"></circle>
+        <circle cx="128" cy="128" r="12"></circle>
+        <circle cx="196" cy="128" r="12"></circle>
+        <circle cx="60" cy="196" r="12"></circle>
+        <circle cx="128" cy="196" r="12"></circle>
+        <circle cx="196" cy="196" r="12"></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -3516,6 +3570,30 @@ const MagnaIcons = {
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
   },
+  information: {
+    xml: (
+      <>
+        <circle
+          cx="128"
+          cy="128"
+          r="96"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></circle>
+        <circle cx="126" cy="84" r="12"></circle>
+        <polyline
+          points="120 120 128 120 128 176 136 176"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
   lightning: {
     xml: (
       <>
@@ -4418,6 +4496,27 @@ const MagnaIcons = {
       <>
         <path
           d="M64,216a8,8,0,0,1-8-8V165.3a27.6,27.6,0,0,1-14.1,2.6A28,28,0,1,1,56,114.7V72a8,8,0,0,1,8-8h46.7a27.6,27.6,0,0,1-2.6-14.1A28,28,0,1,1,161.3,64H208a8,8,0,0,1,8,8v42.7a27.6,27.6,0,0,0-14.1-2.6A28,28,0,1,0,216,165.3V208a8,8,0,0,1-8,8Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  quotes: {
+    xml: (
+      <>
+        <path
+          d="M108,144H40a8,8,0,0,1-8-8V72a8,8,0,0,1,8-8h60a8,8,0,0,1,8,8v88a40,40,0,0,1-40,40"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></path>
+        <path
+          d="M224,144H156a8,8,0,0,1-8-8V72a8,8,0,0,1,8-8h60a8,8,0,0,1,8,8v88a40,40,0,0,1-40,40"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -5811,6 +5910,18 @@ const MagnaIcons = {
       xmlns: "http://www.w3.org/2000/svg"
     }
   },
+  gitMerge: {
+    xml: (
+      <>
+        <path d="M188,104a36.1,36.1,0,0,0-35.8,32H130.5a40,40,0,0,1-30.8-14.4L82.5,100.9A35.9,35.9,0,1,0,60,103.1v49.8a36,36,0,1,0,16,0V118.1l11.5,13.7a55.4,55.4,0,0,0,43,20.2h23.6A36,36,0,1,0,188,104ZM88,188a20,20,0,1,1-20-20A20.1,20.1,0,0,1,88,188Zm100-28a20,20,0,1,1,20-20A20.1,20.1,0,0,1,188,160Z"></path>
+      </>
+    ),
+    props: {
+      xmlns: "http://www.w3.org/2000/svg",
+      fill: "none",
+      viewBox: "0 0 256 256"
+    }
+  },
   loader: {
     xml: (
       <>
@@ -5847,46 +5958,82 @@ const MagnaIcons = {
       xmlns: "http://www.w3.org/2000/svg"
     }
   },
-  "caret-double-left": {
+  textAlignCenter: {
     xml: (
       <>
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M26.0607 4.93934C26.6464 5.52513 26.6464 6.47487 26.0607 7.06066L17.1213 16L26.0607 24.9393C26.6464 25.5251 26.6464 26.4749 26.0607 27.0607C25.4749 27.6464 24.5251 27.6464 23.9393 27.0607L13.9393 17.0607C13.3536 16.4749 13.3536 15.5251 13.9393 14.9393L23.9393 4.93934C24.5251 4.35355 25.4749 4.35355 26.0607 4.93934Z"
-        ></path>
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M16.0607 4.93934C16.6464 5.52513 16.6464 6.47487 16.0607 7.06066L7.12132 16L16.0607 24.9393C16.6464 25.5251 16.6464 26.4749 16.0607 27.0607C15.4749 27.6464 14.5251 27.6464 13.9393 27.0607L3.93934 17.0607C3.35355 16.4749 3.35355 15.5251 3.93934 14.9393L13.9393 4.93934C14.5251 4.35355 15.4749 4.35355 16.0607 4.93934Z"
-        ></path>
+        <path d="M40,76H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16Z"></path>
+        <path d="M64,100a8,8,0,0,0,0,16H192a8,8,0,0,0,0-16Z"></path>
+        <path d="M216,140H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
+        <path d="M192,180H64a8,8,0,0,0,0,16H192a8,8,0,0,0,0-16Z"></path>
       </>
     ),
     props: {
-      viewBox: "0 0 32 32",
+      xmlns: "http://www.w3.org/2000/svg",
       fill: "none",
-      xmlns: "http://www.w3.org/2000/svg"
+      viewBox: "0 0 256 256"
     }
   },
-  "caret-double-right": {
+  textAlignRight: {
     xml: (
       <>
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M5.93934 4.93934C6.52513 4.35355 7.47487 4.35355 8.06066 4.93934L18.0607 14.9393C18.6464 15.5251 18.6464 16.4749 18.0607 17.0607L8.06066 27.0607C7.47487 27.6464 6.52513 27.6464 5.93934 27.0607C5.35355 26.4749 5.35355 25.5251 5.93934 24.9393L14.8787 16L5.93934 7.06066C5.35355 6.47487 5.35355 5.52513 5.93934 4.93934Z"
-        ></path>
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M15.9393 4.93934C16.5251 4.35355 17.4749 4.35355 18.0607 4.93934L28.0607 14.9393C28.6464 15.5251 28.6464 16.4749 28.0607 17.0607L18.0607 27.0607C17.4749 27.6464 16.5251 27.6464 15.9393 27.0607C15.3536 26.4749 15.3536 25.5251 15.9393 24.9393L24.8787 16L15.9393 7.06066C15.3536 6.47487 15.3536 5.52513 15.9393 4.93934Z"
-        ></path>
+        <path d="M40,76H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16Z"></path>
+        <path d="M216,100H88a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
+        <path d="M216,140H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
+        <path d="M216,180H88a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
       </>
     ),
     props: {
-      viewBox: "0 0 32 32",
+      xmlns: "http://www.w3.org/2000/svg",
       fill: "none",
-      xmlns: "http://www.w3.org/2000/svg"
+      viewBox: "0 0 256 256"
+    }
+  },
+  textBolder: {
+    xml: (
+      <>
+        <path d="M170.5,115.7A44,44,0,0,0,140,40H64a7.9,7.9,0,0,0-8,8V200a8,8,0,0,0,8,8h88a48,48,0,0,0,18.5-92.3ZM72,56h68a28,28,0,0,1,0,56H72Zm80,136H72V128h80a32,32,0,0,1,0,64Z"></path>
+      </>
+    ),
+    props: {
+      xmlns: "http://www.w3.org/2000/svg",
+      fill: "#0f141a",
+      viewBox: "0 0 256 256"
+    }
+  },
+  textH: {
+    xml: (
+      <>
+        <path d="M208,56V200a8,8,0,0,1-16,0V136H64v64a8,8,0,0,1-16,0V56a8,8,0,0,1,16,0v64H192V56a8,8,0,0,1,16,0Z"></path>
+      </>
+    ),
+    props: {
+      xmlns: "http://www.w3.org/2000/svg",
+      fill: "#0f141a",
+      viewBox: "0 0 256 256"
+    }
+  },
+  textItalic: {
+    xml: (
+      <>
+        <path d="M200,56a8,8,0,0,1-8,8H157.8L115.1,192H144a8,8,0,0,1,0,16H64a8,8,0,0,1,0-16H98.2L140.9,64H112a8,8,0,0,1,0-16h80A8,8,0,0,1,200,56Z"></path>
+      </>
+    ),
+    props: {
+      xmlns: "http://www.w3.org/2000/svg",
+      fill: "#0f141a",
+      viewBox: "0 0 256 256"
+    }
+  },
+  textStrikethrough: {
+    xml: (
+      <>
+        <path d="M224,128a8,8,0,0,1-8,8H175.9c9.2,7.1,16.1,17.2,16.1,32s-7,25.7-19.8,34.8S144.6,216,128,216s-32.3-4.7-44.2-13.2S64,181.3,64,168a8,8,0,0,1,16,0c0,17.3,22,32,48,32s48-14.7,48-32c0-14.9-10.5-23.6-38.8-32H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM76.3,104a6.9,6.9,0,0,0,2.5-.4,8,8,0,0,0,5.1-10.1,19.2,19.2,0,0,1-.8-5.5c0-18.2,19.3-32,44.9-32,19.5,0,36.1,8.3,42.3,21A8.1,8.1,0,0,0,181,80.7,7.9,7.9,0,0,0,184.7,70c-9-18.5-30.7-30-56.7-30C93.3,40,67.1,60.6,67.1,88a36,36,0,0,0,1.6,10.5A8,8,0,0,0,76.3,104Z"></path>
+      </>
+    ),
+    props: {
+      xmlns: "http://www.w3.org/2000/svg",
+      fill: "#0f141a",
+      viewBox: "0 0 256 256"
     }
   },
   "empty-background": {
