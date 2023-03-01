@@ -55,6 +55,13 @@
     }
   }
 
+  &__previous.a-button--icon,
+  &__next.a-button--icon {
+    svg {
+      width: 20px !important;
+    }
+  }
+
   &__previous {
     margin-right: 10px;
   }

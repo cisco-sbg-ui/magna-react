@@ -17,7 +17,9 @@ const ignoreStrokeReplace = [
   "sort-up",
   "sort-down",
   "sort",
-  "sort-empty"
+  "sort-empty",
+  "last-page",
+  "first-page"
 ];
 
 const AIcon = forwardRef(
