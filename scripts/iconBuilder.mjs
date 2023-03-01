@@ -53,7 +53,8 @@ const mapSprites = () => {
       .replaceAll("class=", "className=")
       .replaceAll("stroke-linejoin=", "strokeLinejoin=")
       .replaceAll("stroke-linecap=", "strokeLinecap=")
-      .replaceAll("stroke-miterlimit=", "strokeMiterlimit=");
+      .replaceAll("stroke-miterlimit=", "strokeMiterlimit=")
+      .replaceAll("xmlns:xlink=", "xmlnsXlink=");
 
     iconVariables += outputData;
   }

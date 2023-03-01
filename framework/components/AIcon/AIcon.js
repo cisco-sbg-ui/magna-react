@@ -6,6 +6,12 @@ import MagnaIcons from "./magnaIcons.js";
 import {iconNameMap} from "./atomicMap";
 import "./AIcon.scss";
 
+/**
+ * For icons that should not be styled as "regular",
+ * this will add a class that unsets the `stroke` css value.
+ * Some of the Phosphor icons need fill rather than stroke,
+ * this allows those to be styled appropriately.
+ */
 const ignoreStrokeReplace = [
   "info",
   "negative",
@@ -19,7 +25,9 @@ const ignoreStrokeReplace = [
   "sort",
   "sort-empty",
   "last-page",
-  "first-page"
+  "first-page",
+  "malicious",
+  "suspicious"
 ];
 
 const AIcon = forwardRef(
@@ -60,23 +68,23 @@ const AIcon = forwardRef(
       componentProps.style.width = size;
     }
 
-    let iconDef;
+    let magneticIconDef;
 
     if (MagnaIcons[children]) {
       // Check if it's in magna icons
 
-      iconDef = MagnaIcons[children];
+      magneticIconDef = MagnaIcons[children];
     } else if (iconNameMap[children]) {
       // check if we can map an atomic icon name to a magna icon
-      iconDef = MagnaIcons[iconNameMap[children]];
+      magneticIconDef = MagnaIcons[iconNameMap[children]];
     }
 
-    if (ignoreStrokeReplace.includes(children)) {
-      componentProps.style.stroke = "none";
-    }
+    if (magneticIconDef) {
+      const {props: iconProps, xml} = magneticIconDef;
 
-    if (iconDef) {
-      const {props: iconProps, xml} = iconDef;
+      if (ignoreStrokeReplace.includes(children)) {
+        componentProps.style.stroke = "none";
+      }
 
       return (
         <svg {...iconProps} {...componentProps}>
@@ -86,6 +94,7 @@ const AIcon = forwardRef(
     }
 
     // Fallback to atomic icon for safety
+    componentProps.className += " a-icon--atomic";
     return (
       <svg {...componentProps} viewBox="0 0 16 16">
         <path d={Icons[children]} />

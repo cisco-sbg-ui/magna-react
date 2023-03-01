@@ -33,6 +33,11 @@ svg.a-icon {
   &--right {
     margin-left: 5px;
   }
+
+  &--atomic {
+    stroke: unset;
+    fill: currentColor;
+  }
 }
 
 /*
