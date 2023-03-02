@@ -1,7 +1,7 @@
-import fs from "fs";
-import path from "path";
-import {XMLParser, XMLBuilder} from "fast-xml-parser";
-import isEqual from "lodash-es/isEqual.js";
+const fs = require("fs");
+const {XMLParser, XMLBuilder} = require("fast-xml-parser");
+const path = require("path");
+const isEqual = require("lodash.isequal");
 
 const xmlOptions = {
   ignoreAttributes: false,
