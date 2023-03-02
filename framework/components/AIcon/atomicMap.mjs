@@ -1,4 +1,4 @@
-const iconNameMap = {
+export const iconNameMap = {
   add: "plus",
   "add-to-list": "file-plus",
   alarm: "",
@@ -268,5 +268,3 @@ const iconNameMap = {
   "web-tracking": "user-switch",
   "would-have-dropped": ""
 };
-
-module.exports.iconNameMap = iconNameMap;
