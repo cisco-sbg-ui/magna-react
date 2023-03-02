@@ -4,9 +4,13 @@
   &__item {
     > a {
       color: map-deep-get($theme, "breadcrumb", "default-color");
+      font-size: $font-size--sm;
+      font-weight: 600;
 
       &:hover {
         color: map-deep-get($theme, "breadcrumb", "hover-color");
+        background: none;
+        text-decoration: underline;
       }
     }
 
@@ -31,9 +35,8 @@
 
   li.a-breadcrumb__item {
     padding: 0;
-    padding: 0;
     float: left;
-    font-size: $font-size--xs;
+    font-size: $font-size--sm;
     font-weight: 600;
   }
 
@@ -47,11 +50,5 @@
       width: 9px;
       margin: 0 6px;
     }
-  }
-}
-
-.a-breadcrumb--magnetic {
-  li.a-breadcrumb__item {
-    font-size: $font-size--sm;
   }
 }
