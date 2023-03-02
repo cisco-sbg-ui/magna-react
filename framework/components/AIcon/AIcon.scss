@@ -26,10 +26,9 @@ svg.a-icon {
   }
 
   /*
-Some of the phosphor icons don't adhere to the same pattern
-as the other "stroke" styled icons, so override.
-*/
-  //.a-icon {
+  * Some of the phosphor icons don't adhere to the same pattern
+  * as the other "stroke" styled icons, so override.
+  */
   &--circle,
   &--dots-three,
   &--dots-six,
@@ -46,7 +45,10 @@ as the other "stroke" styled icons, so override.
   &--textStrikethrough {
     fill: map-deep-get($theme, "icon", "icon-color");
   }
-  // }
+
+  &--critical-stop {
+    fill: map-get($mds-status, "negative") !important;
+  }
 }
 
 .a-icon {
