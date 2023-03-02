@@ -21,7 +21,7 @@ svg.a-icon {
   &--unknown,
   &--clean,
   &--common {
-    fill: currentColor;
+    fill: map-deep-get($theme, "icon", "disposition-fill");
   }
 
   /*

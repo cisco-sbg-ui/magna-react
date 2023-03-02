@@ -209,7 +209,8 @@ $atomic-dusk: (
     "control-text-color": map-get($grey, "lighten-3")
   ),
   "icon": (
-    "icon-color": map-get($mds-dark-theme, "icons")
+    "icon-color": map-get($mds-dark-theme, "icons"),
+    "disposition-fill": map-get($mds-neutral, "neutral-17")
   ),
   "label": (
     "color": map-get($mds-dark-theme, "default-text")
