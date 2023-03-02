@@ -208,6 +208,9 @@ $atomic-default: (
     "icon-color": map-get($grey, "darken-5"),
     "control-text-color": map-get($grey, "darken-5")
   ),
+  "icon": (
+    "icon-color": map-get($mds-light-theme, "icons")
+  ),
   "label": (
     "color": map-get($mds-light-theme, "default-text")
   ),

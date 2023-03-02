@@ -95,7 +95,7 @@ const AInputBase = forwardRef(
                   tabIndex={0}
                   role="button"
                   className="a-input-base__clear"
-                  size={10}
+                  size={16}
                   onClick={onClear}
                   onKeyDown={(e) => {
                     if ([keyCodes.enter, keyCodes.space].includes(e.keyCode)) {

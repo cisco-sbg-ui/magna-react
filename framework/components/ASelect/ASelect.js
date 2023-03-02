@@ -361,7 +361,7 @@ const ASelect = forwardRef(
         onClickLabel={() => !disabled && surfaceRef.current.focus()}
         disabled={disabled}
         append={
-          <AIcon {...chevronProps} size={10}>
+          <AIcon {...chevronProps} size={16}>
             {selectIcon}
           </AIcon>
         }

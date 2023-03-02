@@ -9,20 +9,49 @@ svg.a-icon {
 }
 
 @include theme(a-icon) using ($theme) {
+  stroke: map-deep-get($theme, "icon", "icon-color");
+  //fill:  map-deep-get($theme, "icon", "icon-color"); // if using Fill phosphor icons, uncomment
+
+  &--atomic {
+    stroke: unset;
+    fill: map-deep-get($theme, "icon", "icon-color");
+  }
+
   &--malicious,
   &--suspicious,
   &--unknown,
   &--clean,
   &--common {
-    fill: map-deep-get($theme, "control", "fill-color");
+    fill: currentColor;
   }
+
+  /*
+Some of the phosphor icons don't adhere to the same pattern
+as the other "stroke" styled icons, so override.
+*/
+  //.a-icon {
+  &--circle,
+  &--dots-three,
+  &--dots-six,
+  &--dots-nine,
+  &--information,
+  &--list-bullets,
+  &--gitMerge,
+  &--question,
+  &--textAlignCenter,
+  &--textAlignRight,
+  &--textBolder,
+  &--textH,
+  &--textItalic,
+  &--textStrikethrough {
+    fill: map-deep-get($theme, "icon", "icon-color");
+  }
+  // }
 }
 
 .a-icon {
   overflow: visible;
   width: 24px;
-  stroke: currentColor;
-  //fill: currentColor; // if using Fill phosphor icons, uncomment
 
   &--size-large {
     width: $icon-size-large;
@@ -42,33 +71,5 @@ svg.a-icon {
 
   &--right {
     margin-left: 5px;
-  }
-
-  &--atomic {
-    stroke: unset;
-    fill: currentColor;
-  }
-}
-
-/*
-Some of the phosphor icons don't adhere to the same pattern
-as the other "stroke" styled icons, so override.
-*/
-.a-icon {
-  &--circle,
-  &--dots-three,
-  &--dots-six,
-  &--dots-nine,
-  &--information,
-  &--list-bullets,
-  &--gitMerge,
-  &--question,
-  &--textAlignCenter,
-  &--textAlignRight,
-  &--textBolder,
-  &--textH,
-  &--textItalic,
-  &--textStrikethrough {
-    fill: currentColor;
   }
 }
