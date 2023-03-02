@@ -36,12 +36,12 @@ svg.a-icon {
   &--list-bullets,
   &--gitMerge,
   &--question,
-  &--textAlignCenter,
-  &--textAlignRight,
-  &--textBolder,
-  &--textH,
-  &--textItalic,
-  &--textStrikethrough {
+  &--text-align-center,
+  &--text-align-right,
+  &--text-bolder,
+  &--text-h,
+  &--text-italic,
+  &--text-strikethrough {
     fill: map-deep-get($theme, "icon", "icon-color");
   }
 
