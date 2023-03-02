@@ -13,7 +13,6 @@ svg.a-icon {
   //fill:  map-deep-get($theme, "icon", "icon-color"); // if using Fill phosphor icons, uncomment
 
   &--atomic {
-    stroke: unset;
     fill: map-deep-get($theme, "icon", "icon-color");
   }
 
@@ -73,5 +72,9 @@ svg.a-icon {
 
   &--right {
     margin-left: 5px;
+  }
+
+  &--atomic {
+    stroke: unset !important;
   }
 }
