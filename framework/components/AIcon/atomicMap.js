@@ -1,9 +1,3 @@
-/**
- * This file is explicitly saved as an ECMAScript Module
- * (.mjs) so that other .mjs scripts in this repo can
- * import it properly.
- */
-
 export const iconNameMap = {
   add: "plus",
   "add-to-list": "file-plus",
