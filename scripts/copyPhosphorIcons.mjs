@@ -1,7 +1,7 @@
 import fs from "fs";
 import os from "os";
 import path from "path";
-import icons from "../framework/components/AIcon/atomicMap.js";
+import {iconNameMap} from "../framework/components/AIcon/atomicMap.mjs";
 
 /**
  * This script will copy phospohor icons from downloads into the svg dir.
@@ -22,8 +22,6 @@ import icons from "../framework/components/AIcon/atomicMap.js";
 
 const phosphorPath = `${os.homedir()}/Downloads/phosphor-icons/SVGs/Regular`;
 const outputBase = "./svg";
-
-const {iconNameMap} = icons;
 
 const generatedListForPhosphor = Object.entries(iconNameMap).map(
   ([atomicKey, phosphorKey]) => phosphorKey || atomicKey
