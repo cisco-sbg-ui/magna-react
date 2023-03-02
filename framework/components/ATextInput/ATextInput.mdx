@@ -22,45 +22,59 @@ import {ATextInput} from "@cisco-sbg-ui/magna-react";
   const [value, setValue] = useState("autoFocused clearable");
   return (
     <div style={{maxWidth: 250}}>
-      <ATextInput
-        autoFocus={true}
-        clearable
-        label="Location"
-        infoTooltip="Tooltip for Location input"
-        onChange={(e) => {
-          setValue(e.target.value);
-          setStatus(
-            e.target.value.length === 0
-              ? "danger"
-              : e.target.value.length < 3
-              ? "warning"
-              : "default"
-          );
-        }}
-        onClear={() => {
-          setStatus("default");
-        }}
-        placeholder="ZIP or City, State"
-        prependIcon="global-view"
-        validationState={status}
-        value={value}
-      />
-      <ATextInput
-        autoFocus={true}
-        clearable
-        label="Medium"
-        placeholder="A medium input"
-        prependIcon="global-view"
-        medium
-      />
-        <ATextInput
-        autoFocus={true}
-        clearable
-        label="Large"
-        placeholder="A large input"
-        prependIcon="global-view"
-        large
-      />
+      <AContainer>
+          <ARow>
+            <ACol>
+              <ATextInput
+                autoFocus={true}
+                clearable
+                label="Location"
+                infoTooltip="Tooltip for Location input"
+                onChange={(e) => {
+                  setValue(e.target.value);
+                  setStatus(
+                    e.target.value.length === 0
+                      ? "danger"
+                      : e.target.value.length < 3
+                      ? "warning"
+                      : "default"
+                  );
+                }}
+                onClear={() => {
+                  setStatus("default");
+                }}
+                placeholder="ZIP or City, State"
+                prependIcon="global-view"
+                validationState={status}
+                value={value}
+              />
+            </ACol>
+          </ARow>
+          <ARow>
+            <ACol>
+              <ATextInput
+                autoFocus={true}
+                clearable
+                label="Medium"
+                placeholder="A medium input"
+                prependIcon="global-view"
+                medium
+              />
+            </ACol>
+          </ARow>
+          <ARow>
+            <ACol>
+              <ATextInput
+                autoFocus={true}
+                clearable
+                label="Large"
+                placeholder="A large input"
+                prependIcon="global-view"
+                large
+              />
+            </ACol>
+          </ARow>
+      </AContainer>
     </div>
   );
 }
@@ -141,76 +155,96 @@ The `ATextInput` component inherits passed props.
   const [favoriteNumber2, setFavoriteNumber2] = useState("");
   const [favoriteNumber3, setFavoriteNumber3] = useState("");
   return (
-    <div>
-      <h3>Required Field</h3>
-      <ATextInput
-        label="Name"
-        onChange={(e) => {
-          setValue(e.target.value);
-        }}
-        placeholder="Firstname Lastname"
-        value={value}
-        required
-        maxLength={50}
-        hint="Your name"
-      />
-      <h3>Email Field</h3>
-      <ATextInput
-        label="Email Address"
-        onChange={(e) => {
-          setEmail(e.target.value);
-        }}
-        placeholder="email@example.com"
-        value={email}
-        validateOnBlur
-        required
-        rules={[
-          {
-            test: (value) =>
-              !["@gmail.com", "@hotmail.com"].some((v) =>
-                value.includes(v)
-              ) || "Please provide a business email address",
-            level: "warning"
-          },
-          {
-            test: (value) =>
-              /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value) ||
-              "Invalid Email",
-            level: "danger"
-          }
-        ]}
-        hint="Your email address"
-      />
-      <h3>Numeric Fields</h3>
-      <ATextInput
-        type="number"
-        label="Favorite Number 0-1000"
-        min={0}
-        max={1000}
-        step={100}
-        required
-        value={favoriteNumber1}
-        onChange={(e) => setFavoriteNumber1(e.target.value)}
-      />
-      <ATextInput
-        type="number"
-        label="A Positive Number"
-        min={0}
-        step={333}
-        required
-        value={favoriteNumber2}
-        onChange={(e) => setFavoriteNumber2(e.target.value)}
-      />
-      <ATextInput
-        type="number"
-        label="Less than 1000"
-        max={1000}
-        step={333}
-        required
-        value={favoriteNumber3}
-        onChange={(e) => setFavoriteNumber3(e.target.value)}
-      />
-    </div>
+    <AContainer>
+      <ARow>
+        <ACol>
+          <h3>Required Field</h3>
+          <ATextInput
+            label="Name"
+            onChange={(e) => {
+              setValue(e.target.value);
+            }}
+            placeholder="Firstname Lastname"
+            value={value}
+            required
+            maxLength={50}
+            hint="Your name"
+          />
+        </ACol>
+      </ARow>
+      <ARow>
+        <ACol>
+          <h3>Email Field</h3>
+          <ATextInput
+            label="Email Address"
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+            placeholder="email@example.com"
+            value={email}
+            validateOnBlur
+            required
+            rules={[
+              {
+                test: (value) =>
+                  !["@gmail.com", "@hotmail.com"].some((v) =>
+                    value.includes(v)
+                  ) || "Please provide a business email address",
+                level: "warning"
+              },
+              {
+                test: (value) =>
+                  /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value) ||
+                  "Invalid Email",
+                level: "danger"
+              }
+            ]}
+            hint="Your email address"
+          />
+        </ACol>
+      </ARow>
+      <ARow>
+        <ACol>
+          <h3>Numeric Fields</h3>
+          <ATextInput
+            type="number"
+            label="Favorite Number 0-1000"
+            min={0}
+            max={1000}
+            step={100}
+            required
+            value={favoriteNumber1}
+            onChange={(e) => setFavoriteNumber1(e.target.value)}
+          />
+        </ACol>
+      </ARow>
+      <ARow>
+        <ACol>
+          <ATextInput
+            type="number"
+            label="A Positive Number"
+            min={0}
+            step={333}
+            required
+            value={favoriteNumber2}
+            onChange={(e) => setFavoriteNumber2(e.target.value)}
+          />
+        </ACol>
+      </ARow>
+      <ARow>
+        <ACol>
+          <ATextInput
+            type="number"
+            label="Less than 1000"
+            max={1000}
+            step={333}
+            required
+            value={favoriteNumber3}
+            onChange={(e) => setFavoriteNumber3(e.target.value)}
+          />
+        </ACol>
+      </ARow>
+    </AContainer>
   );
 }
 `}
