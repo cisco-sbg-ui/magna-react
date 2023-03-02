@@ -3,7 +3,7 @@ import React, {forwardRef} from "react";
 
 import Icons from "./icons.json";
 import MagnaIcons from "./magnaIcons.js";
-import {iconNameMap} from "./atomicMap.mjs";
+import {iconNameMap} from "./atomicMap.js";
 import "./AIcon.scss";
 
 /**

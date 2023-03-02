@@ -1,7 +1,7 @@
-import fs from "fs";
-import os from "os";
-import path from "path";
-import {iconNameMap} from "../framework/components/AIcon/atomicMap.mjs";
+const fs = require("fs");
+const os = require("os");
+const path = require("path");
+const {iconNameMap} = require("./iconMap");
 
 /**
  * This script will copy phospohor icons from downloads into the svg dir.
