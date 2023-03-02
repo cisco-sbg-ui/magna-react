@@ -153,6 +153,7 @@ const iconNameMap = {
   malicious: "skull", // TODO disposition icon
   "malicious-alt": "",
   "merge-down": "stack-simple", // fill
+  minus: "",
   module: "puzzle-piece",
   monitor: "arrow-circle-down-right",
   "move-document": "",
