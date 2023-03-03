@@ -118,7 +118,7 @@ const APagination = forwardRef(
               <AButton
                 className="a-pagination__first"
                 disabled={page === 1}
-                tertiary
+                tertiaryAlt
                 icon
                 onClick={() => onPageChange(1)}
                 aria-label="First"
@@ -129,7 +129,7 @@ const APagination = forwardRef(
             <AButton
               className="a-pagination__previous"
               disabled={page === 1}
-              tertiary
+              tertiaryAlt
               icon
               onClick={() => onPageChange(page - 1)}
               aria-label="Previous"
@@ -180,7 +180,7 @@ const APagination = forwardRef(
             <AButton
               className="a-pagination__next"
               disabled={page === pages}
-              tertiary
+              tertiaryAlt
               icon
               onClick={() => onPageChange(page + 1)}
               aria-label="Next"
@@ -193,7 +193,7 @@ const APagination = forwardRef(
               <AButton
                 className="a-pagination__last"
                 disabled={page === pages}
-                tertiary
+                tertiaryAlt
                 icon
                 onClick={() => onPageChange(pages)}
                 aria-label="Last"
@@ -248,7 +248,7 @@ const APagination = forwardRef(
             <AButton
               className="a-pagination__previous"
               disabled={page === 1}
-              tertiary
+              tertiaryAlt
               icon={!showText}
               onClick={() => onPageChange(page - 1)}
               aria-label="Previous"
@@ -303,7 +303,7 @@ const APagination = forwardRef(
             <AButton
               className="a-pagination__next"
               disabled={page === total}
-              tertiary
+              tertiaryAlt
               icon={!showText}
               onClick={() => onPageChange(page + 1)}
               aria-label="Next"
