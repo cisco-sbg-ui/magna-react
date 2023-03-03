@@ -78,6 +78,9 @@
         margin-right: 0;
       }
     }
+    > .a-button-group__wrapper > .a-button.a-button--selected {
+      margin-left: 0;
+    }
   }
 
   &__results-per-page {
