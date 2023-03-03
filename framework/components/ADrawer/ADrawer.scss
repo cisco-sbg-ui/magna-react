@@ -10,7 +10,15 @@
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
 
   transform: translateX(0);
-  transition: all 0.3s ease-in-out;
+
+  $animation-duration: 0.3s;
+  // limit transition to transform to avoid animating other properties
+  $transform-transition: transform $animation-duration ease-in-out;
+
+  @include transition(
+    $transform-transition,
+    visibility 0s // immediate visibility change
+  );
 
   &--vertical {
     height: 100vh;
@@ -96,6 +104,13 @@
   }
 
   &--hidden {
+    @include transition(
+      $transform-transition,
+      // same transform transition when hiding
+      visibility 0s linear $animation-duration
+        // delay visibility change after the transform transition
+    );
+
     overflow: hidden;
     visibility: hidden;
 
