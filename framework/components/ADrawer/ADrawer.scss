@@ -105,10 +105,10 @@
 
   &--hidden {
     @include transition(
-      $transform-transition,
       // same transform transition when hiding
+      $transform-transition,
+      // delay visibility change after the transform transition
       visibility 0s linear $animation-duration
-        // delay visibility change after the transform transition
     );
 
     overflow: hidden;
