@@ -12,11 +12,16 @@
   transform: translateX(0);
 
   $animation-duration: 0.3s;
-  // limit transition to transform to avoid animating other properties
-  $transform-transition: transform $animation-duration ease-in-out;
+  $animation-timing: ease-in-out;
+  $transition-props: $animation-duration $animation-timing;
+
+  // limit transition properties to avoid animating other properties coming form outside
+  $common-transitions: transform $transition-props, width $transition-props,
+    height $transition-props, max-width $transition-props,
+    max-height $transition-props;
 
   @include transition(
-    $transform-transition,
+    $common-transitions,
     visibility 0s // immediate visibility change
   );
 
@@ -105,9 +110,8 @@
 
   &--hidden {
     @include transition(
-      // same transform transition when hiding
-      $transform-transition,
-      // delay visibility change after the transform transition
+      $common-transitions,
+      // delay visibility change after other transitions
       visibility 0s linear $animation-duration
     );
 
