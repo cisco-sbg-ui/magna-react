@@ -10,7 +10,20 @@
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
 
   transform: translateX(0);
-  transition: all 0.3s ease-in-out;
+
+  $animation-duration: 0.3s;
+  $animation-timing: ease-in-out;
+  $transition-props: $animation-duration $animation-timing;
+
+  // limit transition properties to avoid animating other properties coming form outside
+  $common-transitions: transform $transition-props, width $transition-props,
+    height $transition-props, max-width $transition-props,
+    max-height $transition-props;
+
+  @include transition(
+    $common-transitions,
+    visibility 0s // immediate visibility change
+  );
 
   &--vertical {
     height: 100vh;
@@ -96,6 +109,12 @@
   }
 
   &--hidden {
+    @include transition(
+      $common-transitions,
+      // delay visibility change after other transitions
+      visibility 0s linear $animation-duration
+    );
+
     overflow: hidden;
     visibility: hidden;
 
