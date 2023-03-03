@@ -32,7 +32,7 @@
   &__next,
   &__first,
   &__last {
-    margin: 0 1px;
+    margin: 0;
     .a-icon {
       fill: map-deep-get($theme, "control", "stroke-color");
     }
@@ -64,7 +64,7 @@
   }
 
   .a-button-group {
-    margin: 0 5px;
+    margin: 0 4px;
 
     .a-button {
       padding: 0 7px;
@@ -112,5 +112,29 @@
         text-align: center;
       }
     }
+  }
+
+  > .a-button,
+  > .a-pagination__results-per-page,
+  > .a-pagination__page-selection {
+    margin-left: 8px;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+  > .a-pagination__results {
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  > .a-button + .a-button-group,
+  > .a-pagination__results-per-page + .a-button-group,
+  > .a-pagination__page-selection + .a-button-group,
+  > .a-button-group + .a-button {
+    margin-left: 4px;
   }
 }
