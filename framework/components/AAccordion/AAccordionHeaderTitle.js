@@ -14,7 +14,7 @@ const AAccordionHeaderTitle = forwardRef(
       chevron = true,
       children,
       className: propsClassName,
-      collapseIcon = "caretUp",
+      collapseIcon = "caret-up",
       expandIcon = "caret-down",
       onBlur,
       onClick,
