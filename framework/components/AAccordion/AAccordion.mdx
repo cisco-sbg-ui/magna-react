@@ -112,9 +112,9 @@ import {
 
 ## Event Propagation
 
-If you have a component inside an `AAccordionHeader` component with an `onClick` handler, the event will also bubble up to the `AAccordionHeader`, thus toggling the opened/closed state.
+It's important to note that if you render a component inside `AAccordionHeader` that registers `onClick` or `onKeyDown` handlers (such as another button), those events will also bubble up to the `AAccordionHeader`, thus toggling the opened/closed stateof the accordion.
 
-To prevent this, you should invoke the `stopPropagation()` method on the inner component's event handler.
+To prevent this behavior, you should invoke the `stopPropagation()` method on the inner component's event handlers causing such side effects.
 
 <Playground
   code={`() => {
@@ -128,21 +128,38 @@ To prevent this, you should invoke the `stopPropagation()` method on the inner c
           <AAccordionPanel>
             <AAccordionHeader>
               <AAccordionHeaderTitle>
-                An accordion with an <AButton onClick={() => setCountA(state => state + 1)}>Increment A</AButton> button
+                An accordion with an{" "}
+                <AButton onClick={() => setCountA((state) => state + 1)}>
+                  Increment A
+                </AButton>{" "}
+                button
               </AAccordionHeaderTitle>
             </AAccordionHeader>
-            <AAccordionBody>This accordion opens even when clicking the increment button.</AAccordionBody>
+            <AAccordionBody>
+              This accordion opens even when clicking the increment button.
+            </AAccordionBody>
           </AAccordionPanel>
           <AAccordionPanel>
             <AAccordionHeader>
               <AAccordionHeaderTitle>
-                An accordion with an <AButton onClick={(e) => {
-                  e.stopPropagation();
-                  setCountB(state => state + 1);  
-                }}>Increment B</AButton> button
+                An accordion with an{" "}
+                <AButton
+                  onKeyDown={(e) => {
+                    e.stopPropagation()
+                  }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setCountB((state) => state + 1);
+                  }}
+                >
+                  Increment B
+                </AButton>{" "}
+                button
               </AAccordionHeaderTitle>
             </AAccordionHeader>
-            <AAccordionBody>This accordion only opens on a click of the accordion panel.</AAccordionBody>
+            <AAccordionBody>
+              This accordion only opens on a click of the accordion panel.
+            </AAccordionBody>
           </AAccordionPanel>
         </AAccordion>
       </>
