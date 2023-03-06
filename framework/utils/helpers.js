@@ -252,3 +252,19 @@ export const isValidColor = (props, propName, componentName) => {
     );
   }
 };
+
+/*
+ * At some points through the icon migrations names were camelCase
+ * rather than kebab-case. This helper will allow checking and
+ * reduce developer work to keep things consistent.
+ */
+export const kebabify = (str) => {
+  return str
+    .split("")
+    .map((letter, idx) => {
+      return letter.toUpperCase() === letter
+        ? `${idx !== 0 ? "-" : ""}${letter.toLowerCase()}`
+        : letter;
+    })
+    .join("");
+};

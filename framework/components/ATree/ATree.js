@@ -175,7 +175,7 @@ const ATree = forwardRef(
                 onClick={expandHandler(path)}
                 style={{color: "currentColor"}}
               >
-                <AIcon size={10}>
+                <AIcon size={16}>
                   {item.expanded ? "chevron-up" : "chevron-right"}
                 </AIcon>
               </AButton>

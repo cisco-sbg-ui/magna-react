@@ -5597,6 +5597,43 @@ const MagnaIcons = {
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
   },
+  "text-h": {
+    xml: (
+      <>
+        <line
+          x1="56"
+          y1="56"
+          x2="56"
+          y2="200"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="200"
+          y1="128"
+          x2="56"
+          y2="128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+        <line
+          x1="200"
+          y1="56"
+          x2="200"
+          y2="200"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></line>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
   "text-italic": {
     xml: (
       <>
@@ -6089,84 +6126,6 @@ const MagnaIcons = {
       viewBox: "0 0 32 32",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg"
-    }
-  },
-  textAlignCenter: {
-    xml: (
-      <>
-        <path d="M40,76H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16Z"></path>
-        <path d="M64,100a8,8,0,0,0,0,16H192a8,8,0,0,0,0-16Z"></path>
-        <path d="M216,140H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
-        <path d="M192,180H64a8,8,0,0,0,0,16H192a8,8,0,0,0,0-16Z"></path>
-      </>
-    ),
-    props: {
-      xmlns: "http://www.w3.org/2000/svg",
-      fill: "none",
-      viewBox: "0 0 256 256"
-    }
-  },
-  textAlignRight: {
-    xml: (
-      <>
-        <path d="M40,76H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16Z"></path>
-        <path d="M216,100H88a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
-        <path d="M216,140H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
-        <path d="M216,180H88a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
-      </>
-    ),
-    props: {
-      xmlns: "http://www.w3.org/2000/svg",
-      fill: "none",
-      viewBox: "0 0 256 256"
-    }
-  },
-  textBolder: {
-    xml: (
-      <>
-        <path d="M170.5,115.7A44,44,0,0,0,140,40H64a7.9,7.9,0,0,0-8,8V200a8,8,0,0,0,8,8h88a48,48,0,0,0,18.5-92.3ZM72,56h68a28,28,0,0,1,0,56H72Zm80,136H72V128h80a32,32,0,0,1,0,64Z"></path>
-      </>
-    ),
-    props: {
-      xmlns: "http://www.w3.org/2000/svg",
-      fill: "#0f141a",
-      viewBox: "0 0 256 256"
-    }
-  },
-  textH: {
-    xml: (
-      <>
-        <path d="M208,56V200a8,8,0,0,1-16,0V136H64v64a8,8,0,0,1-16,0V56a8,8,0,0,1,16,0v64H192V56a8,8,0,0,1,16,0Z"></path>
-      </>
-    ),
-    props: {
-      xmlns: "http://www.w3.org/2000/svg",
-      fill: "#0f141a",
-      viewBox: "0 0 256 256"
-    }
-  },
-  textItalic: {
-    xml: (
-      <>
-        <path d="M200,56a8,8,0,0,1-8,8H157.8L115.1,192H144a8,8,0,0,1,0,16H64a8,8,0,0,1,0-16H98.2L140.9,64H112a8,8,0,0,1,0-16h80A8,8,0,0,1,200,56Z"></path>
-      </>
-    ),
-    props: {
-      xmlns: "http://www.w3.org/2000/svg",
-      fill: "#0f141a",
-      viewBox: "0 0 256 256"
-    }
-  },
-  textStrikethrough: {
-    xml: (
-      <>
-        <path d="M224,128a8,8,0,0,1-8,8H175.9c9.2,7.1,16.1,17.2,16.1,32s-7,25.7-19.8,34.8S144.6,216,128,216s-32.3-4.7-44.2-13.2S64,181.3,64,168a8,8,0,0,1,16,0c0,17.3,22,32,48,32s48-14.7,48-32c0-14.9-10.5-23.6-38.8-32H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM76.3,104a6.9,6.9,0,0,0,2.5-.4,8,8,0,0,0,5.1-10.1,19.2,19.2,0,0,1-.8-5.5c0-18.2,19.3-32,44.9-32,19.5,0,36.1,8.3,42.3,21A8.1,8.1,0,0,0,181,80.7,7.9,7.9,0,0,0,184.7,70c-9-18.5-30.7-30-56.7-30C93.3,40,67.1,60.6,67.1,88a36,36,0,0,0,1.6,10.5A8,8,0,0,0,76.3,104Z"></path>
-      </>
-    ),
-    props: {
-      xmlns: "http://www.w3.org/2000/svg",
-      fill: "#0f141a",
-      viewBox: "0 0 256 256"
     }
   },
   "empty-background": {

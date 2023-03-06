@@ -441,6 +441,7 @@ $btn-transition: color $transition-duration--extra-fast
   .a-icon {
     width: 16px;
     vertical-align: text-bottom;
+    stroke: currentColor;
   }
 
   &:focus,

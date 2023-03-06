@@ -61,6 +61,8 @@ $tag-icon-font-size: $font-size--xxs;
 
   .a-icon {
     width: $tag-icon-font-size;
+    stroke: currentColor;
+    fill: currentColor;
   }
 
   &--count {

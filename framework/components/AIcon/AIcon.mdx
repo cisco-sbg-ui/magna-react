@@ -41,6 +41,22 @@ The `AIcon` component inherits passed props.
 
 <AtomicIconGallery />
 
+## Kebab Helper
+
+`AIcon` will check for a kebab-case name of a camelCase icon specified for convenience
+
+<Playground
+  code={`<>
+  <div>Both icons render the "text-h" svg definition:</div> <br /> <br />
+  camelCase
+  <AIcon>textH</AIcon>
+  <br /><br />
+  kebab-case
+  <AIcon>text-h</AIcon>
+</>
+`}
+/>
+
 ## General Notes
 
 Any icons not in the Gallery that were previously available in Atomic will still be used if references. They have been removed from the Gallery since there is no direct replacement with the Phosphor icon set.

@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
+import {kebabify} from "../../utils/helpers";
 import Icons from "./icons.json";
 import MagnaIcons from "./magnaIcons.js";
 import {iconNameMap} from "./atomicMap.js";
@@ -77,6 +78,15 @@ const AIcon = forwardRef(
     } else if (iconNameMap[children]) {
       // check if we can map an atomic icon name to a magna icon
       magneticIconDef = MagnaIcons[iconNameMap[children]];
+    } else {
+      const kebabed = kebabify(children);
+
+      magneticIconDef = MagnaIcons[kebabed];
+
+      if (magneticIconDef) {
+        componentProps.className += ` a-icon--${kebabed}`;
+        componentProps["aria-label"] += ` ${kebabed}`;
+      }
     }
 
     if (magneticIconDef) {
