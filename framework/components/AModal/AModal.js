@@ -70,10 +70,37 @@ const AModal = forwardRef(
       return null;
     }
 
+    /**
+     * In the case where `AModal` is rendered inside
+     * a clickable element, like a button component,
+     * we want to prevent user clicks and keydown
+     * presses from bubbling outside the modal, which
+     * could cause unintended side effects. This is
+     * why we call `stopPropagation` on those events.
+     *
+     * @example
+     * <AButton>
+     *   Open Modal
+     *   <AModal isOpen={open}>
+     *      // Don't want clicks here to get to `AButton`
+     *   </AModal>
+     * </AButton>
+     */
     if (withOverlay) {
       return ReactDOM.createPortal(
         <APageOverlay
           className={visibilityClass}
+          onKeyDown={(e) => {
+            const key = e.key;
+            // Still allow the modal to be closed with escape key shortcut
+            if (key !== "Escape") {
+              e.stopPropagation();
+            }
+            const {onKeyDown: propsOnKeyDown} = rest;
+            if (typeof propsOnKeyDown === "function") {
+              propsOnKeyDown(e);
+            }
+          }}
           onClick={(e) => {
             e.stopPropagation();
             const {target} = e;
@@ -104,6 +131,17 @@ const AModal = forwardRef(
         aria-modal="true"
         className={contentClassName}
         ref={handleMultipleRefs(_ref, ref)}
+        onKeyDown={(e) => {
+          const key = e.key;
+          // Still allow the modal to be closed with escape key shortcut
+          if (key !== "Escape") {
+            e.stopPropagation();
+          }
+          const {onKeyDown: propsOnKeyDown} = rest;
+          if (typeof propsOnKeyDown === "function") {
+            propsOnKeyDown(e);
+          }
+        }}
         onClick={(e) => {
           e.stopPropagation();
           const {onClick: propsOnClick} = rest;
