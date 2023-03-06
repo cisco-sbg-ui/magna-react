@@ -13,6 +13,7 @@ configuration environments.
 }
 
 @include theme(a-menu) using ($theme) {
+  box-shadow: map-deep-get($theme, "menu", "box-shadow");
   border-color: map-deep-get($theme, "menu", "border-color");
   border-radius: $border-radius--lg;
   border-width: $border-width;
