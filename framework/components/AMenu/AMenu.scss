@@ -109,8 +109,13 @@ configuration environments.
 .a-menu {
   overflow: visible;
   > .a-list-item {
+    padding: 8px 10px;
+    > .a-radio,
+    > .a-checkbox .a-checkbox__wrap {
+      padding: 0;
+    }
     > label {
-      padding-left: 0px;
+      padding-left: 0;
     }
     &:first-of-type {
       border-top-left-radius: $menu-item-first-last-border-radius;
@@ -121,6 +126,12 @@ configuration environments.
       border-bottom-left-radius: $menu-item-first-last-border-radius;
     }
   }
+  &.compact {
+    > .a-list-item {
+      padding: 4px 6px;
+    }
+  }
+
   q &.compact {
     > .a-list-item {
       padding: 1.5px 15px;
