@@ -109,7 +109,7 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
     display: flex;
     position: relative;
     padding: $checkbox-padding;
-    align-items: center;
+    align-items: flex-start;
     cursor: pointer;
   }
 
@@ -151,6 +151,7 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
   }
 
   &__box.a-medium-box {
+    margin-top: 0;
     height: $checkbox-box-side-length-magna-medium;
     width: $checkbox-box-side-length-magna-medium;
     &:after {
@@ -171,6 +172,7 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
   &__label {
     display: inline-block;
     position: relative;
+    top: -1px;
     padding-left: 8px;
     flex: 1 1 0%;
     @include text-truncate;
