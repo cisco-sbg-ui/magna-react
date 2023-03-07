@@ -379,6 +379,10 @@ $atomic-dusk: (
     "icon-border-color": map-get($mds-dark-theme, "non-essential-lines"),
     "icon-bg-color": map-get($mds-neutral, "neutral-13")
   ),
+  "toast": (
+    "color": map-get($mds-dark-theme, "default-text"),
+    "color-message": map-get($mds-dark-theme, "default-text")
+  ),
   "tooltip": (
     "background-color": map-get($mds-neutral, "neutral-14")
   ),
