@@ -172,6 +172,10 @@ $atomic-default: (
     "warning--state-hover": map-get($mds-light-theme, "status-warning"),
     "error--state-hover": map-get($mds-light-theme, "status-negative")
   ),
+  "combobox": (
+    "border-color": map-get($mds-neutral, "neutral-9"),
+    "box-shadow": 0px 2px 5px rgba(0, 0, 0, 0.05)
+  ),
   "control": (
     "fill-color": map-get($mds-neutral, "neutral-1"),
     "fill-color--disabled": map-get($mds-light-theme, "multipurpose-gray"),
