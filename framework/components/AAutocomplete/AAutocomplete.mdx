@@ -83,6 +83,7 @@ The `AAutocomplete` component inherits passed props.
     <h3>Default Autocomplete</h3>
     <div>
       <AAutocomplete
+        medium
         label="Food Group"
         placeholder="Pick a Food Group"
         hint="Hint: Default"
@@ -93,6 +94,7 @@ The `AAutocomplete` component inherits passed props.
   <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
     <h3 style={{minWidth: 250}}>Disabled Autocomplete</h3>
     <AAutocomplete
+      medium
       disabled
       label="Food Group"
       placeholder="Pick a Food Group"
@@ -103,6 +105,7 @@ The `AAutocomplete` component inherits passed props.
   <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
     <h3>Read-only Autocomplete</h3>
     <AAutocomplete
+      medium
       readOnly
       label="Food Group"
       placeholder="Pick a Food Group"
@@ -113,6 +116,7 @@ The `AAutocomplete` component inherits passed props.
   <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
     <h3>Warning Autocomplete</h3>
     <AAutocomplete
+      medium
       label="Food Group"
       placeholder="Pick a Food Group"
       hint="Hint: Warning"
@@ -123,6 +127,7 @@ The `AAutocomplete` component inherits passed props.
   <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
     <h3>Danger Autocomplete</h3>
     <AAutocomplete
+      medium
       label="Food Group"
       placeholder="Pick a Food Group"
       hint="Hint: Danger"
@@ -150,6 +155,7 @@ The `AAutocomplete` component inherits passed props.
   return (
     <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
       <AAutocomplete
+        medium
         prependContent={<AListItem twoLine className="my-1 mx-2">Advertisement</AListItem>}
         appendContent={<><ADivider className="ma-0" /><AListItem><AIcon size={12} left>add</AIcon>Add Role</AListItem></>}
         clearable
@@ -193,6 +199,7 @@ The `AAutocomplete` component inherits passed props.
   return (
     <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
       <AAutocomplete
+        medium
         itemTemplate={({className, index, item, onClick, ...rest}) => (
           <AListItem {...rest} twoLine className={className + (isDark ? " white--text" : " grey--darken-7--text")} style={{backgroundColor: "transparent"}}>
             <AListItemContent onClick={onClick}>
