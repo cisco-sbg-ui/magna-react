@@ -113,7 +113,7 @@ The `ATooltip` component inherits passed props.
       <ARow>
         <ACol cols="2" />
         <ACol className="text-right">
-          <AButton ref={buttonRef12} onClick={() => setOpen12(!open12)}>
+          <AButton ref={buttonRef12} onMouseEnter={() => setOpen12(true)} onMouseLeave={() => setOpen12(false)}>
             Top-Left
           </AButton>
           <ATooltip
@@ -124,7 +124,7 @@ The `ATooltip` component inherits passed props.
           </ATooltip>
         </ACol>
         <ACol className="text-center">
-          <AButton ref={buttonRef1} onClick={() => setOpen1(!open1)}>
+          <AButton ref={buttonRef1}  onMouseEnter={() => setOpen1(true)} onMouseLeave={() => setOpen1(false)}>
             Top
           </AButton>
           <ATooltip anchorRef={buttonRef1} open={open1} placement="top">
@@ -132,7 +132,7 @@ The `ATooltip` component inherits passed props.
           </ATooltip>
         </ACol>
         <ACol>
-          <AButton ref={buttonRef2} onClick={() => setOpen2(!open2)}>
+          <AButton ref={buttonRef2}  onMouseEnter={() => setOpen2(true)} onMouseLeave={() => setOpen2(false)}>
             Top-Right
           </AButton>
           <ATooltip anchorRef={buttonRef2} open={open2} placement="top-right">
@@ -143,7 +143,7 @@ The `ATooltip` component inherits passed props.
       </ARow>
       <ARow>
         <ACol className="text-right">
-          <AButton ref={buttonRef11} onClick={() => setOpen11(!open11)}>
+          <AButton ref={buttonRef11}  onMouseEnter={() => setOpen11(true)} onMouseLeave={() => setOpen11(false)}>
             Left-Top
           </AButton>
           <ATooltip
@@ -155,7 +155,7 @@ The `ATooltip` component inherits passed props.
         </ACol>
         <ACol cols="6" />
         <ACol>
-          <AButton ref={buttonRef3} onClick={() => setOpen3(!open3)}>
+          <AButton ref={buttonRef3} onMouseEnter={() => setOpen3(true)} onMouseLeave={() => setOpen3(false)}>
             Right-Top
           </AButton>
           <ATooltip anchorRef={buttonRef3} open={open3} placement="right-top">
@@ -165,7 +165,7 @@ The `ATooltip` component inherits passed props.
       </ARow>
       <ARow>
         <ACol className="text-right">
-          <AButton ref={buttonRef10} onClick={() => setOpen10(!open10)}>
+          <AButton ref={buttonRef10} onMouseEnter={() => setOpen10(true)} onMouseLeave={() => setOpen10(false)}>
             Left
           </AButton>
           <ATooltip anchorRef={buttonRef10} open={open10} placement="left">
@@ -174,7 +174,7 @@ The `ATooltip` component inherits passed props.
         </ACol>
         <ACol cols="6" />
         <ACol>
-          <AButton ref={buttonRef4} onClick={() => setOpen4(!open4)}>
+          <AButton ref={buttonRef4} onMouseEnter={() => setOpen4(true)} onMouseLeave={() => setOpen4(false)}>
             Right
           </AButton>
           <ATooltip anchorRef={buttonRef4} open={open4} placement="right">
@@ -184,7 +184,7 @@ The `ATooltip` component inherits passed props.
       </ARow>
       <ARow>
         <ACol className="text-right">
-          <AButton ref={buttonRef9} onClick={() => setOpen9(!open9)}>
+          <AButton ref={buttonRef9} onMouseEnter={() => setOpen9(true)} onMouseLeave={() => setOpen9(false)}>
             Left-Bottom
           </AButton>
           <ATooltip
@@ -196,7 +196,7 @@ The `ATooltip` component inherits passed props.
         </ACol>
         <ACol cols="6" />
         <ACol>
-          <AButton ref={buttonRef5} onClick={() => setOpen5(!open5)}>
+          <AButton ref={buttonRef5} onMouseEnter={() => setOpen5(true)} onMouseLeave={() => setOpen5(false)}>
             Right-Bottom
           </AButton>
           <ATooltip
@@ -210,7 +210,7 @@ The `ATooltip` component inherits passed props.
       <ARow>
         <ACol cols="2" />
         <ACol className="text-right">
-          <AButton ref={buttonRef8} onClick={() => setOpen8(!open8)}>
+          <AButton ref={buttonRef8} onMouseEnter={() => setOpen8(true)} onMouseLeave={() => setOpen8(false)}>
             Bottom-Left
           </AButton>
           <ATooltip
@@ -221,7 +221,7 @@ The `ATooltip` component inherits passed props.
           </ATooltip>
         </ACol>
         <ACol className="text-center">
-          <AButton ref={buttonRef7} onClick={() => setOpen7(!open7)}>
+          <AButton ref={buttonRef7} onMouseEnter={() => setOpen7(true)} onMouseLeave={() => setOpen7(false)}>
             Bottom
           </AButton>
           <ATooltip anchorRef={buttonRef7} open={open7} placement="bottom">
@@ -229,7 +229,7 @@ The `ATooltip` component inherits passed props.
           </ATooltip>
         </ACol>
         <ACol>
-          <AButton ref={buttonRef6} onClick={() => setOpen6(!open6)}>
+          <AButton ref={buttonRef6} onMouseEnter={() => setOpen6(true)} onMouseLeave={() => setOpen6(false)}>
             Bottom-Right
           </AButton>
           <ATooltip
@@ -265,7 +265,12 @@ The `ATooltip` component inherits passed props.
         If the tooltip is larger than the anchor, the pointer is placed in the
         center of the anchor.
       </p>
-      <AButton secondary ref={buttonRef1} onClick={() => setOpen1(!open1)}>
+      <AButton 
+        secondary
+        ref={buttonRef1}
+        onMouseEnter={() => setOpen1(true)}
+        onMouseLeave={() => setOpen1(false)}
+      >
         Large, Short Anchor Has Less Wide, Taller Tooltips
       </AButton>
       <ATooltip
@@ -290,7 +295,9 @@ The `ATooltip` component inherits passed props.
         secondary
         ref={buttonRef2}
         className="mt-10 mb-6"
-        onClick={() => setOpen2(!open2)}>
+        onMouseEnter={() => setOpen2(true)} 
+        onMouseLeave={() => setOpen2(false)}
+      >
         <AIcon>information</AIcon>
       </AButton>
       <ATooltip
@@ -349,6 +356,7 @@ The `ATooltip` component inherits passed props.
             anchorRef={buttonRef}
             open={open}
             placement="bottom"
+            openDelay={0}
             onClose={() => setOpen(false)}>
             Tooltip
           </ATooltip>

@@ -30,6 +30,9 @@ import {ATextInput} from "@cisco-sbg-ui/magna-react";
                 clearable
                 label="Location"
                 infoTooltip="Tooltip for Location input"
+                infoTooltipProps={{ 
+                  closeDelay: 3000 // just to demonstrate passing props, can be omitted
+                }}
                 onChange={(e) => {
                   setValue(e.target.value);
                   setStatus(

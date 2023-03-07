@@ -1,5 +1,11 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useRef} from "react";
+import React, {
+  forwardRef,
+  useRef,
+  useState,
+  useCallback,
+  useEffect
+} from "react";
 
 import AMenuBase from "../AMenuBase";
 import {useCombinedRefs} from "../../utils/hooks";
@@ -14,14 +20,51 @@ const ATooltip = forwardRef(
       onClose,
       open,
       placement,
-      pointer,
+      pointer = true,
       role = "tooltip",
+      openDelay = 400,
+      closeDelay = undefined,
       ...rest
     },
     ref
   ) => {
     const tooltipRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, tooltipRef);
+
+    const [isOpen, setIsOpen] = useState(open);
+
+    const timeout = useRef();
+
+    const openWithDelay = useCallback(() => {
+      if (timeout.current) {
+        clearTimeout(timeout.current);
+      }
+      timeout.current = setTimeout(() => {
+        setIsOpen(true);
+      }, openDelay);
+    }, [openDelay]);
+
+    const closeWithDelay = useCallback(() => {
+      if (timeout.current) {
+        clearTimeout(timeout.current);
+      }
+      timeout.current = setTimeout(
+        () => {
+          setIsOpen(false);
+        },
+        // when closeDelay is not provided, calculated to be shorter to avoid multiple tooltips on screen
+        closeDelay ?? openDelay / 2
+      );
+    }, [closeDelay, openDelay]);
+
+    // sync open prop change to internal state with delay
+    useEffect(() => {
+      if (open) {
+        openWithDelay();
+      } else {
+        closeWithDelay();
+      }
+    }, [open, openWithDelay, closeWithDelay]);
 
     let className = `a-tooltip`;
     if (pointer) {
@@ -39,7 +82,7 @@ const ATooltip = forwardRef(
         role={role}
         className={className}
         onClose={onClose}
-        open={open}
+        open={isOpen}
         placement={placement}
         removeSpacer={true}
         anchorRef={anchorRef}
@@ -68,7 +111,18 @@ ATooltip.propTypes = {
    */
   open: PropTypes.bool,
   /**
-   * The placement of the menu.
+   * Delay for showing the tooltip after changing `open` prop to `true`.
+   * Set to 0 for no delay.
+   */
+  openDelay: PropTypes.number,
+  /**
+   * Delay for hiding the tooltip after changing `open` prop to `false`.
+   * When not provided calculated as `openDelay / 2`. Use values smaller than
+   * `openDelay` to avoid multiple tooltips on screen.
+   */
+  closeDelay: PropTypes.number,
+  /**
+   * The placement of the tooltip.
    */
   placement: PropTypes.oneOf([
     "top",
