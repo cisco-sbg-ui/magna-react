@@ -471,7 +471,7 @@ $btn-transition: color $transition-duration--extra-fast
     @include medium-button;
   }
 
-  &--small {
+  &.a-button--small {
     @include small-button;
   }
 }
