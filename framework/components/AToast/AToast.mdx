@@ -61,6 +61,23 @@ import {AToast} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
+
+<Playground
+  code={`() => {
+  return (
+    <div>
+      <AToast title={<span>This is a title for the Toast.</span>}>
+        This node has overriding custom configuration settings applied
+        by a Cisco Meraki support or systems engineer, most likely as
+        part of a previous support case.
+        To upgrade your network please <a href="javascript:void(0)">contact support</a>.
+      </AToast>
+    </div>
+  );
+}
+`}
+/>
+
 ## Toast Props
 
 The `AToast` component inherits passed props.

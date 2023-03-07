@@ -370,6 +370,10 @@ $atomic-default: (
     "icon-border-color": map-get($mds-light-theme, "non-essential-lines"),
     "icon-bg-color": map-get($mds-neutral, "neutral-13")
   ),
+  "toast": (
+    "color": map-get($mds-light-theme, "default-text"),
+    "color-message": map-get($mds-neutral, "neutral-12")
+  ),
   "tooltip": (
     "background-color": map-get($mds-neutral, "neutral-15")
   ),
