@@ -51,6 +51,50 @@ import {ACombobox} from "@cisco-sbg-ui/magna-react";
           setValue(e.target.value);
         }}
       />
+      <ADivider />
+      <ACombobox
+        medium
+        clearable
+        label="Medium"
+        items={filteredItems}
+        itemValue="id"
+        itemText="name"
+        placeholder="Pick a Food Group"
+        onSelected={(item) => {
+          setValue(item.name);
+        }}
+        value={value}
+        onChange={(e) => {
+          setFilteredItems(
+            items.filter((x) =>
+              x.name.toLowerCase().includes(e.target.value.toLowerCase())
+            )
+          );
+          setValue(e.target.value);
+        }}
+      />
+      <ADivider />
+      <ACombobox
+        large
+        clearable
+        label="Large"
+        items={filteredItems}
+        itemValue="id"
+        itemText="name"
+        placeholder="Pick a Food Group"
+        onSelected={(item) => {
+          setValue(item.name);
+        }}
+        value={value}
+        onChange={(e) => {
+          setFilteredItems(
+            items.filter((x) =>
+              x.name.toLowerCase().includes(e.target.value.toLowerCase())
+            )
+          );
+          setValue(e.target.value);
+        }}
+      />
     </div>
   );
 }
@@ -81,6 +125,7 @@ The `ACombobox` component inherits passed props.
   return (
     <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
       <ACombobox
+        medium
         clearable
         label="Food Group"
         items={filteredItems}
@@ -125,6 +170,7 @@ The `ACombobox` component inherits passed props.
   <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
     <h3>Default</h3>
     <ACombobox
+      medium
       clearable
       label="Food Group"
       items={[
@@ -142,6 +188,7 @@ The `ACombobox` component inherits passed props.
   <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
     <h3>Disabled Combobox</h3>
     <ACombobox
+      medium
       disabled
       label="Food Group"
       placeholder="Pick a Food Group"
@@ -151,6 +198,7 @@ The `ACombobox` component inherits passed props.
   <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
     <h3>Read-only Combobox</h3>
     <ACombobox
+      medium
       readOnly
       label="Food Group"
       placeholder="Pick a Food Group"
@@ -160,6 +208,7 @@ The `ACombobox` component inherits passed props.
   <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
     <h3>Warning Combobox</h3>
     <ACombobox
+      medium
       label="Food Group"
       placeholder="Pick a Food Group"
       hint="Hint: Warning"
@@ -169,6 +218,7 @@ The `ACombobox` component inherits passed props.
   <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
     <h3>Danger Combobox</h3>
     <ACombobox
+      medium
       label="Food Group"
       placeholder="Pick a Food Group"
       hint="Hint: Danger"
@@ -178,6 +228,7 @@ The `ACombobox` component inherits passed props.
   <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
     <h3>No Data Combobox</h3>
     <ACombobox
+      medium
       label="Food Group"
       placeholder="Pick a Food Group"
       noDataContent="Check again when we restock!"
@@ -205,6 +256,7 @@ The `ACombobox` component inherits passed props.
   return (
     <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
       <ACombobox
+        medium
         prependContent={<AListItem twoLine className="my-1 mx-2">Advertisement</AListItem>}
         appendContent={<><ADivider className="ma-0" /><AListItem><AIcon size={12} left>add</AIcon>Add Role</AListItem></>}
         clearable
@@ -248,6 +300,7 @@ The `ACombobox` component inherits passed props.
   return (
     <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
       <ACombobox
+        medium
         itemTemplate={({className, index, item, onClick, ...rest}) => (
           <AListItem {...rest} twoLine className={className + (isDark ? " white--text" : " grey--darken-7--text")} style={{backgroundColor: "transparent"}}>
             <AListItemContent onClick={onClick}>

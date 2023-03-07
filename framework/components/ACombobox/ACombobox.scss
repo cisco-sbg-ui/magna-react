@@ -2,7 +2,8 @@
 
 @include theme(a-combobox) using ($theme) {
   &__menu-items.a-menu {
-    border-color: map-deep-get($theme, "menu", "border-color");
+    border-color: map-deep-get($theme, "combobox", "border-color");
+    box-shadow: map-deep-get($theme, "combobox", "box-shadow");
   }
 }
 
@@ -13,7 +14,7 @@
     color: currentColor;
     width: 100%;
     position: relative;
-    padding: 0 0 0 6px;
+    padding: 0 8px;
     border: none;
     appearance: none;
     text-indent: 1px;
@@ -25,20 +26,28 @@
 
   &__chevron {
     cursor: pointer;
-    padding: 0 7px;
     align-self: stretch;
   }
 
   &__menu-item.a-list-item {
     min-height: 28px;
     line-height: $line-height--lg;
-    padding: 2px 0 0 0;
+    padding: 4px 6px;
     text-indent: 6px;
   }
 
   &.a-input-base--clearable {
     .a-combobox__menu-items {
       right: -50px;
+    }
+  }
+  .a-input-base__surface {
+    padding: 0 4px;
+  }
+  .a-input-base__append {
+    > .a-icon {
+      padding: 0;
+      margin-right: 8px;
     }
   }
 }

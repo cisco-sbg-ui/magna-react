@@ -125,7 +125,7 @@ const ACombobox = forwardRef(
 
     const chevronProps = {
       className: "a-combobox__chevron",
-      size: 10
+      size: 16
     };
 
     if (!disabled && !readOnly) {
