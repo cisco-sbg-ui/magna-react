@@ -21,6 +21,7 @@ context("ASelect", () => {
   it("allows overflow styling on the dropdown menu", () => {
     const playground = "#many-dropdown-options + .playground";
     cy.get(`${playground} .a-select__selection`).eq(0).click();
+    cy.get(".a-menu").should("have.class", "a-menu-base--bottom");
     cy.get(".a-select__menu-items__wrapper").should(
       "have.class",
       "overflow-y-scroll"
@@ -38,13 +39,18 @@ context("ASelect", () => {
       .click();
   });
 
+  it("places menu above input surface when needed", () => {
+    const playground = "#many-dropdown-options + .playground";
+    cy.get(`${playground} .a-select__selection`)
+      .eq(0)
+      .click({scrollBehavior: "bottom"});
+    cy.get(".a-menu").should("have.class", "a-menu-base--top");
+  });
+
   it("allows a style to be passed to the dropdown user interface", () => {
     const playground = "#menu-item-templates + .playground";
     cy.get(`${playground} .a-select__selection`).eq(0).click();
-    cy.get("div[role='listbox']").should(
-      "have.class",
-      "custom-dropdown-class"
-    );
+    cy.get("div[role='listbox']").should("have.class", "custom-dropdown-class");
     cy.get(`${playground} .a-select__selection`).eq(0).click();
   });
 
@@ -89,7 +95,7 @@ context("ASelect", () => {
       .contains("Milk")
       .parent()
       .type("{downArrow}{downArrow}")
-      .contains("Bread")
+      .contains("Bread");
   });
 
   it("has working selected prop", () => {
