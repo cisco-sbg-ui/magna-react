@@ -6,7 +6,6 @@ $checkbox-box-side-length-magna-medium: rem(1.25);
 $checkbox-box-side-length-magna-small: rem(1);
 $checkbox-icon-size: $font-size--xxs;
 $checkbox-icon-padding-left: $base-padding-xsmall;
-$checkbox-label-padding-left: $base-padding-small;
 $checkbox-padding: $base-padding-xsmall 0;
 $checkbox-transition: box-shadow $transition-duration--extra-fast
   $transition-timing-function--standard;
@@ -110,7 +109,7 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
     display: flex;
     position: relative;
     padding: $checkbox-padding;
-    align-items: center;
+    align-items: flex-start;
     cursor: pointer;
   }
 
@@ -124,6 +123,7 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
   &__box {
     color: currentColor;
     position: relative;
+    margin-top: 2px;
     flex: 0 0 auto;
     height: $checkbox-box-side-length;
     width: $checkbox-box-side-length;
@@ -151,6 +151,7 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
   }
 
   &__box.a-medium-box {
+    margin-top: 0;
     height: $checkbox-box-side-length-magna-medium;
     width: $checkbox-box-side-length-magna-medium;
     &:after {
@@ -171,7 +172,8 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
   &__label {
     display: inline-block;
     position: relative;
-    padding-left: $checkbox-label-padding-left;
+    top: -1px;
+    padding-left: 8px;
     flex: 1 1 0%;
     @include text-truncate;
   }
