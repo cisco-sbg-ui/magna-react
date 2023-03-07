@@ -7,6 +7,7 @@ import React, {
   useState
 } from "react";
 
+import ATooltip from "../ATooltip";
 import AInputBase from "../AInputBase";
 import {AFormContext} from "../AForm";
 import AIcon from "../AIcon";
@@ -435,6 +436,14 @@ ATextInput.propTypes = {
    * Sets the label content.
    */
   label: PropTypes.node,
+  /**
+   * Adds an information tooltip next to the label
+   */
+  infoTooltip: PropTypes.string,
+  /**
+   * Overrides props of `ATooltip` used to display `infoTooltip`
+   */
+  infoTooltipProps: PropTypes.instanceOf(ATooltip.propTypes),
   /**
    * Sets the maximum value of a number type text input.
    */
