@@ -463,10 +463,14 @@ $mds-light-theme: (
   "secondary-background": map-get($mds-neutral, "neutral-2"),
   "secondary-gray": map-get($mds-neutral, "neutral-12"),
   "supplemental-text": map-get($mds-neutral, "neutral-7"),
-  "status-info": map-get($mds-purple, "purple-10"),
-  "status-positive": map-get($mds-blue, "blue-7"),
-  "status-warning": map-get($mds-yellow, "yellow-7"),
-  "status-negative": map-get($mds-red, "red-10"),
+  "status-info": #2774d9,
+  "status-positive": #45991f,
+  "status-warning": #d9b216,
+  "status-negative": #c24632,
+  "status-info-bg": #d9f1ff,
+  "status-positive-bg": #eaf7e4,
+  "status-warning-bg": #fcf5d4,
+  "status-negative-bg": #fce2de,
   "table-border": map-get($mds-neutral, "neutral-11")
 );
 $mds-dark-theme: (
@@ -490,10 +494,14 @@ $mds-dark-theme: (
   "secondary-background": map-get($mds-neutral, "neutral-15"),
   "secondary-gray": map-get($mds-neutral, "neutral-6"),
   "supplemental-text": map-get($mds-neutral, "neutral-12"),
-  "status-info": map-get($mds-purple, "purple-6"),
-  "status-positive": map-get($mds-blue, "blue-5"),
-  "status-warning": map-get($mds-yellow, "yellow-4"),
-  "status-negative": map-get($mds-red, "red-7"),
+  "status-info": #2774d9,
+  "status-positive": #1f9933,
+  "status-warning": #d9b216,
+  "status-negative": #c24632,
+  "status-info-bg": rgba(73, 181, 245, 0.302),
+  "status-positive-bg": darken(#4cbf7f, 35%),
+  "status-warning-bg": rgba(224, 164, 25, 0.302),
+  "status-negative-bg": rgba(217, 56, 67, 0.4),
   "table-border": map-get($mds-neutral, "neutral-7")
 );
 
