@@ -3,7 +3,7 @@ import React, {forwardRef, useRef, useState} from "react";
 
 import AHint from "../AHint";
 import AIcon from "../AIcon";
-import ATooltip from "../ATooltip";
+import ATooltip, {ATooltipPropTypes} from "../ATooltip";
 import "./AFieldBase.scss";
 
 const AFieldBase = forwardRef(
@@ -88,7 +88,7 @@ const AFieldBase = forwardRef(
   }
 );
 
-const {anchorRef, ...infoTooltipProps} = ATooltip.propTypes;
+const {anchorRef, ...infoTooltipProps} = ATooltipPropTypes;
 
 AFieldBase.propTypes = {
   /**

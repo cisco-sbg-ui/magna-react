@@ -7,7 +7,7 @@ import React, {
   useState
 } from "react";
 
-import ATooltip from "../ATooltip";
+import {ATooltipPropTypes} from "../ATooltip";
 import AInputBase from "../AInputBase";
 import {AFormContext} from "../AForm";
 import AIcon from "../AIcon";
@@ -407,7 +407,7 @@ const ATextInput = forwardRef(
   }
 );
 
-const {anchorRef, ...infoTooltipProps} = ATooltip.propTypes;
+const {anchorRef, ...infoTooltipProps} = ATooltipPropTypes;
 
 ATextInput.propTypes = {
   /**

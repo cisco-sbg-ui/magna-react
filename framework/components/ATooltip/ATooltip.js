@@ -100,7 +100,7 @@ const ATooltip = forwardRef(
   }
 );
 
-ATooltip.propTypes = {
+export const ATooltipPropTypes = {
   /**
    * The reference to the menu anchor.
    */
@@ -153,6 +153,8 @@ ATooltip.propTypes = {
    */
   role: PropTypes.string
 };
+
+ATooltip.propTypes = ATooltipPropTypes;
 
 ATooltip.displayName = "ATooltip";
 
