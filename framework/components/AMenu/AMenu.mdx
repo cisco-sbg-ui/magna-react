@@ -173,8 +173,13 @@ It is necessary for `AMenu` to be a descendant of `AApp` for mounting.
           Disabled Item
         </AListItem>
         <ADivider style={{margin: 0}}/>
+        <AListItem onClick={() => {}}><ARadio checked={true}>Selected</ARadio></AListItem>
+        <AListItem onClick={() => {}}><ARadio checked={false}>UnSelected</ARadio></AListItem>
+         <ADivider style={{margin: 0}}/>
+        <AListItem onClick={() => {}}><ACheckbox checked={true}>Checked</ACheckbox></AListItem>
+        <AListItem onClick={() => {}}><ACheckbox checked={false}>UnChecked</ACheckbox></AListItem>
+         <ADivider style={{margin: 0}}/>
         <AListItem onClick={() => {setMenu4Selected(3)}} selected={3 === menu4Selected}>Status</AListItem>
-
       </AMenu>
       <AMenu
         anchorRef={button5Ref}

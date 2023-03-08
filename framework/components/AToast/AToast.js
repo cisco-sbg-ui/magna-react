@@ -53,7 +53,7 @@ const AToast = forwardRef(
 
     return (
       <div {...rest} ref={ref} className={className}>
-        <AIcon className="a-toast__icon" size={16}>
+        <AIcon className="a-toast__icon" size={20}>
           {icon}
         </AIcon>
         <div className="a-toast__body">
@@ -65,7 +65,7 @@ const AToast = forwardRef(
             className="a-toast__close focus-box-shadow"
             onClick={(e) => onClose && onClose(e)}
             onKeyDown={dismissableKeyDownHandler}
-            size={12}
+            size={16}
             tabIndex={0}
           >
             x

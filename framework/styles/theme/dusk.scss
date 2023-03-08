@@ -166,6 +166,10 @@ $atomic-dusk: (
     "warning--state-hover": map-get($mds-dark-theme, "status-warning"),
     "error--state-hover": map-get($mds-dark-theme, "status-negative")
   ),
+  "combobox": (
+    "border-color": map-get($mds-neutral, "neutral-9"),
+    "box-shadow": 0px 2px 5px rgba(0, 0, 0, 0.05)
+  ),
   "control": (
     "fill-color": map-get($mds-neutral, "neutral-16"),
     "fill-color--disabled": map-get($mds-dark-theme, "multipurpose-gray"),
@@ -229,6 +233,7 @@ $atomic-dusk: (
     "main-color": map-get($mds-blue, "blue-5")
   ),
   "menu": (
+    "box-shadow": 0px 2px 5px rgba(0, 0, 0, 0.05),
     "bg-color": map-get($mds-neutral, "neutral-16"),
     "border-color": map-get($mds-neutral, "neutral-11"),
     "color--hover": map-get($mds-neutral, "neutral-15"),
@@ -373,6 +378,10 @@ $atomic-dusk: (
     "item-bg-hover-color": map-get($mds-dark-theme, "non-essential-lines"),
     "icon-border-color": map-get($mds-dark-theme, "non-essential-lines"),
     "icon-bg-color": map-get($mds-neutral, "neutral-13")
+  ),
+  "toast": (
+    "color": map-get($mds-dark-theme, "default-text"),
+    "color-message": map-get($mds-dark-theme, "default-text")
   ),
   "tooltip": (
     "background-color": map-get($mds-neutral, "neutral-14")

@@ -467,11 +467,11 @@ $btn-transition: color $transition-duration--extra-fast
     cursor: not-allowed;
   }
 
-  &--medium {
+  &.a-button--medium {
     @include medium-button;
   }
 
-  &--small {
+  &.a-button--small {
     @include small-button;
   }
 }

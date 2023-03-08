@@ -18,6 +18,7 @@ const AFieldBase = forwardRef(
       onClickLabel,
       required,
       infoTooltip,
+      infoTooltipProps = {},
       validationState = "default",
       ...rest
     },
@@ -64,6 +65,8 @@ const AFieldBase = forwardRef(
                   id={`${labelId}-tooltip`}
                   open={infoTooltipOpen}
                   placement="top"
+                  pointer
+                  {...infoTooltipProps}
                 >
                   {infoTooltip}
                 </ATooltip>
@@ -110,6 +113,10 @@ AFieldBase.propTypes = {
    * Adds an information tooltip next to the label
    */
   infoTooltip: PropTypes.string,
+  /**
+   * Overrides props of `ATooltip` used to display `infoTooltip`
+   */
+  infoTooltipProps: PropTypes.instanceOf(ATooltip.propTypes),
   /**
    * Handles the label's `click` event.
    */

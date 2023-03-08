@@ -2,17 +2,19 @@
 
 $toast-min-height: 80px;
 $toast-min-width: 260px;
-$toast-max-width: 300px;
-$toast-padding: 10px 15px;
-$toast-margin: 0 10px;
-$toast-border-width: 1px;
-$toast-title-font-weight: $font-weight-bold;
-$toast-icon-font-size: $font-size;
+$toast-max-width: 465px;
 
 @include theme(a-toast) using ($theme) {
-  color: map-deep-get($theme, "base", "color");
+  color: map-deep-get($theme, "toast", "color");
   background: map-deep-get($theme, "control", "fill-color");
   border-color: map-deep-get($theme, "control", "stroke-color");
+
+  &__body {
+    color: map-deep-get($theme, "toast", "color-message");
+  }
+  &__title {
+    color: map-deep-get($theme, "toast", "color");
+  }
 
   .a-icon-text {
     fill: map-deep-get($theme, "control", "fill-color");
@@ -50,27 +52,26 @@ $toast-icon-font-size: $font-size;
 .a-toast {
   display: flex;
   position: relative;
-  border-width: $toast-border-width;
-  border-style: solid;
-  border-color: rgba(0, 0, 0, 0);
-  border-radius: $border-radius--lg;
-  border-left-width: 6px;
+  border: none;
+  border-radius: 6px;
+  border-left: 6px solid;
+
   min-height: $toast-min-height;
   min-width: $toast-min-width;
   max-width: $toast-max-width;
-  padding: $toast-padding;
+  padding: 16px 22px;
   align-items: flex-start;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.08);
 
   &__body {
-    margin: $toast-margin;
-    font-size: $font-size--sm;
+    margin: 0 24px;
+    font-size: 14px;
+    font-weight: 400;
     flex-grow: 1;
   }
 
   &__title {
-    font-weight: $toast-title-font-weight;
-    font-size: $font-size--sm;
+    font-weight: 700;
   }
 
   &__icon {

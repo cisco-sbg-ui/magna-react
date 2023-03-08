@@ -31,7 +31,6 @@
   }
 
   &__prepend-icon {
-    padding: 4px;
     align-self: stretch;
   }
 
@@ -49,6 +48,30 @@
   &.a-input-base--clearable {
     .a-autocomplete__menu-items {
       right: -25px;
+    }
+  }
+
+  .a-input-base__prepend {
+    margin: 0 8px 0 12px;
+  }
+  .a-input-base__control {
+    margin: 0 8px 0 0;
+    &:first-child {
+      margin-left: 12px;
+    }
+    &:last-child {
+      margin-right: 12px;
+    }
+  }
+  .a-input-base__append {
+    margin: 0 12px 0 0;
+  }
+  .a-input-base__prepend > .a-icon,
+  .a-input-base__append > .a-icon {
+    padding: 0;
+    margin-right: 8px;
+    &:last-child {
+      margin-right: 0;
     }
   }
 }
