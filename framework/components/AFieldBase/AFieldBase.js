@@ -116,7 +116,7 @@ AFieldBase.propTypes = {
    */
   infoTooltip: PropTypes.string,
   /**
-   * Overrides props of `ATooltip` used to display `infoTooltip`
+   * Overrides props of `ATooltip` used to display `infoTooltip`. See `ATooltip.propTypes`.
    */
   infoTooltipProps: PropTypes.shape(infoTooltipProps),
   /**
