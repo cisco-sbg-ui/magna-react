@@ -44,7 +44,9 @@ const ATooltip = forwardRef(
       }, openDelay);
 
       return () => {
-        clearTimeout(timeout.current);
+        if (timeout.current) {
+          clearTimeout(timeout.current);
+        }
       };
     }, [openDelay]);
 
@@ -61,7 +63,9 @@ const ATooltip = forwardRef(
       );
 
       return () => {
-        clearTimeout(timeout.current);
+        if (timeout.current) {
+          clearTimeout(timeout.current);
+        }
       };
     }, [closeDelay, openDelay]);
 
