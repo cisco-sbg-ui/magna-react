@@ -24,6 +24,29 @@ svg.a-icon {
     fill: map-deep-get($theme, "icon", "disposition-fill");
   }
 
+  &--disposition-main-malicious {
+    fill: map-deep-get($theme, "disposition", "malicious");
+  }
+  &--disposition-main-suspicious {
+    fill: map-deep-get($theme, "disposition", "suspicious");
+  }
+
+  &--disposition-main-unknown {
+    fill: map-deep-get($theme, "disposition", "unknown");
+  }
+
+  &--disposition-main-clean {
+    fill: map-deep-get($theme, "disposition", "clean");
+  }
+
+  &--disposition-main-common {
+    fill: map-deep-get($theme, "disposition", "common");
+  }
+
+  &--disposition-main-stroke-common {
+    stroke: map-deep-get($theme, "disposition", "common");
+  }
+
   /*
   * Some of the phosphor icons don't adhere to the same pattern
   * as the other "stroke" styled icons, so override.
