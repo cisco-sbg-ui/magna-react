@@ -320,10 +320,10 @@ const AMenuBase = forwardRef(
         }
       };
 
-      window.addEventListener("click", clickOutsideHandler);
+      window.addEventListener("mousedown", clickOutsideHandler);
 
       return () => {
-        window.removeEventListener("click", clickOutsideHandler);
+        window.removeEventListener("mousedown", clickOutsideHandler);
       };
     }, [anchorRef, combinedRef, onClose, open]);
 
@@ -360,7 +360,13 @@ const AMenuBase = forwardRef(
       (open &&
         appRef.current &&
         ReactDOM.createPortal(
-          <div {...rest} ref={combinedRef} className={className} style={style}>
+          <div
+            data-ignore-outside-click
+            {...rest}
+            ref={combinedRef}
+            className={className}
+            style={style}
+          >
             {pointer && (
               <div className="a-menu-base__pointer" style={pointerStyle} />
             )}
