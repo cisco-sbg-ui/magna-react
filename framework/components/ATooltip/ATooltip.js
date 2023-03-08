@@ -42,12 +42,6 @@ const ATooltip = forwardRef(
       timeout.current = setTimeout(() => {
         setIsOpen(true);
       }, openDelay);
-
-      return () => {
-        if (timeout.current) {
-          clearTimeout(timeout.current);
-        }
-      };
     }, [openDelay]);
 
     const closeWithDelay = useCallback(() => {
@@ -61,12 +55,6 @@ const ATooltip = forwardRef(
         // when closeDelay is not provided, calculated to be shorter to avoid multiple tooltips on screen
         closeDelay ?? openDelay / 2
       );
-
-      return () => {
-        if (timeout.current) {
-          clearTimeout(timeout.current);
-        }
-      };
     }, [closeDelay, openDelay]);
 
     // sync open prop change to internal state with delay
@@ -76,6 +64,12 @@ const ATooltip = forwardRef(
       } else {
         closeWithDelay();
       }
+
+      return () => {
+        if (timeout.current) {
+          clearTimeout(timeout.current);
+        }
+      };
     }, [open, openWithDelay, closeWithDelay]);
 
     let className = `a-tooltip`;
