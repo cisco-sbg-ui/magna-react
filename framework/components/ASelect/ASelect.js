@@ -75,12 +75,10 @@ const ASelect = forwardRef(
 
       verticalSpace && setMenuSpace(verticalSpace);
     };
-    const itemHeight = menuRef?.current?.querySelector(
-      ".a-select__menu-item"
-    ).clientHeight;
+
+    const menuHeight = menuRef?.current?.clientHeight;
     const menuPlacement =
-      items.length * itemHeight < menuSpace ||
-      (maxHeight && menuSpace > parseInt(maxHeight))
+      menuHeight < menuSpace || (maxHeight && menuSpace > parseInt(maxHeight))
         ? "bottom"
         : "top";
 
