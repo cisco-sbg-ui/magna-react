@@ -16,7 +16,33 @@ import {ATooltip} from "@cisco-sbg-ui/magna-react";
 
 It is necessary for `ATooltip` to be a descendant of `AApp` for mounting.
 
-## Usage
+## Usage (hook with delay options)
+
+<Playground
+  code={`() => {
+  const iconRef = useRef(null);
+  const {isOpen, open, close} = useToggle(400, 0);
+return (
+
+<>
+  By default the openDelay is 400ms
+  <br />
+  <br />
+  <AIcon ref={iconRef} onMouseEnter={open} onMouseLeave={close}>
+    information
+  </AIcon>
+  <ATooltip
+    anchorRef={iconRef}
+    id="tooltip_usage_1"
+    open={isOpen}
+    placement="bottom-right"
+    pointer>
+    Tooltip
+  </ATooltip>
+</>
+); } `} />
+
+## Manual Usage
 
 <Playground
   code={`() => {
@@ -96,156 +122,137 @@ The `ATooltip` component inherits passed props.
   const buttonRef10 = useRef(null);
   const buttonRef11 = useRef(null);
   const buttonRef12 = useRef(null);
-  const [open1, setOpen1] = useState(false);
-  const [open2, setOpen2] = useState(false);
-  const [open3, setOpen3] = useState(false);
-  const [open4, setOpen4] = useState(false);
-  const [open5, setOpen5] = useState(false);
-  const [open6, setOpen6] = useState(false);
-  const [open7, setOpen7] = useState(false);
-  const [open8, setOpen8] = useState(false);
-  const [open9, setOpen9] = useState(false);
-  const [open10, setOpen10] = useState(false);
-  const [open11, setOpen11] = useState(false);
-  const [open12, setOpen12] = useState(false);
-  return (
-    <AContainer className="pa-6">
-      <ARow>
-        <ACol cols="2" />
-        <ACol className="text-right">
-          <AButton ref={buttonRef12} onClick={() => setOpen12(!open12)}>
-            Top-Left
-          </AButton>
-          <ATooltip
-            anchorRef={buttonRef12}
-            open={open12}
-            placement="top-left">
-            Tooltip
-          </ATooltip>
-        </ACol>
-        <ACol className="text-center">
-          <AButton ref={buttonRef1} onClick={() => setOpen1(!open1)}>
-            Top
-          </AButton>
-          <ATooltip anchorRef={buttonRef1} open={open1} placement="top">
-            Tooltip
-          </ATooltip>
-        </ACol>
-        <ACol>
-          <AButton ref={buttonRef2} onClick={() => setOpen2(!open2)}>
-            Top-Right
-          </AButton>
-          <ATooltip anchorRef={buttonRef2} open={open2} placement="top-right">
-            Tooltip
-          </ATooltip>
-        </ACol>
-        <ACol cols="2" />
-      </ARow>
-      <ARow>
-        <ACol className="text-right">
-          <AButton ref={buttonRef11} onClick={() => setOpen11(!open11)}>
-            Left-Top
-          </AButton>
-          <ATooltip
-            anchorRef={buttonRef11}
-            open={open11}
-            placement="left-top">
-            Tooltip
-          </ATooltip>
-        </ACol>
-        <ACol cols="6" />
-        <ACol>
-          <AButton ref={buttonRef3} onClick={() => setOpen3(!open3)}>
-            Right-Top
-          </AButton>
-          <ATooltip anchorRef={buttonRef3} open={open3} placement="right-top">
-            Tooltip
-          </ATooltip>
-        </ACol>
-      </ARow>
-      <ARow>
-        <ACol className="text-right">
-          <AButton ref={buttonRef10} onClick={() => setOpen10(!open10)}>
-            Left
-          </AButton>
-          <ATooltip anchorRef={buttonRef10} open={open10} placement="left">
-            Tooltip
-          </ATooltip>
-        </ACol>
-        <ACol cols="6" />
-        <ACol>
-          <AButton ref={buttonRef4} onClick={() => setOpen4(!open4)}>
-            Right
-          </AButton>
-          <ATooltip anchorRef={buttonRef4} open={open4} placement="right">
-            Tooltip
-          </ATooltip>
-        </ACol>
-      </ARow>
-      <ARow>
-        <ACol className="text-right">
-          <AButton ref={buttonRef9} onClick={() => setOpen9(!open9)}>
-            Left-Bottom
-          </AButton>
-          <ATooltip
-            anchorRef={buttonRef9}
-            open={open9}
-            placement="left-bottom">
-            Tooltip
-          </ATooltip>
-        </ACol>
-        <ACol cols="6" />
-        <ACol>
-          <AButton ref={buttonRef5} onClick={() => setOpen5(!open5)}>
-            Right-Bottom
-          </AButton>
-          <ATooltip
-            anchorRef={buttonRef5}
-            open={open5}
-            placement="right-bottom">
-            Tooltip
-          </ATooltip>
-        </ACol>
-      </ARow>
-      <ARow>
-        <ACol cols="2" />
-        <ACol className="text-right">
-          <AButton ref={buttonRef8} onClick={() => setOpen8(!open8)}>
-            Bottom-Left
-          </AButton>
-          <ATooltip
-            anchorRef={buttonRef8}
-            open={open8}
-            placement="bottom-left">
-            Tooltip
-          </ATooltip>
-        </ACol>
-        <ACol className="text-center">
-          <AButton ref={buttonRef7} onClick={() => setOpen7(!open7)}>
-            Bottom
-          </AButton>
-          <ATooltip anchorRef={buttonRef7} open={open7} placement="bottom">
-            Tooltip
-          </ATooltip>
-        </ACol>
-        <ACol>
-          <AButton ref={buttonRef6} onClick={() => setOpen6(!open6)}>
-            Bottom-Right
-          </AButton>
-          <ATooltip
-            anchorRef={buttonRef6}
-            open={open6}
-            placement="bottom-right">
-            Tooltip
-          </ATooltip>
-        </ACol>
-        <ACol cols="2" />
-      </ARow>
-    </AContainer>
-  );
-}
-`}
-/>
+  const {isOpen: isOpen1, open: open1, close: close1} = useToggle(0);
+  const {isOpen: isOpen2, open: open2, close: close2} = useToggle(0);
+  const {isOpen: isOpen3, open: open3, close: close3} = useToggle(0);
+  const {isOpen: isOpen4, open: open4, close: close4} = useToggle(0);
+  const {isOpen: isOpen5, open: open5, close: close5} = useToggle(0);
+  const {isOpen: isOpen6, open: open6, close: close6} = useToggle(0);
+  const {isOpen: isOpen7, open: open7, close: close7} = useToggle(0);
+  const {isOpen: isOpen8, open: open8, close: close8} = useToggle(0);
+  const {isOpen: isOpen9, open: open9, close: close9} = useToggle(0);
+  const {isOpen: isOpen10, open: open10, close: close10} = useToggle(0);
+  const {isOpen: isOpen11, open: open11, close: close11} = useToggle(0);
+  const {isOpen: isOpen12, open: open12, close: close12} = useToggle(0);
+
+return (
+
+<AContainer className="pa-6">
+  <ARow>
+    <ACol cols="2" />
+    <ACol className="text-right">
+      <AButton ref={buttonRef12} onMouseEnter={open12} onMouseLeave={close12}>
+        Top-Left
+      </AButton>
+      <ATooltip anchorRef={buttonRef12} open={isOpen12} placement="top-left">
+        Tooltip
+      </ATooltip>
+    </ACol>
+    <ACol className="text-center">
+      <AButton ref={buttonRef1} onMouseEnter={open1} onMouseLeave={close1}>
+        Top
+      </AButton>
+      <ATooltip anchorRef={buttonRef1} open={isOpen1} placement="top">
+        Tooltip
+      </ATooltip>
+    </ACol>
+    <ACol>
+      <AButton ref={buttonRef2} onMouseEnter={open2} onMouseLeave={close2}>
+        Top-Right
+      </AButton>
+      <ATooltip anchorRef={buttonRef2} open={isOpen2} placement="top-right">
+        Tooltip
+      </ATooltip>
+    </ACol>
+    <ACol cols="2" />
+  </ARow>
+  <ARow>
+    <ACol className="text-right">
+      <AButton ref={buttonRef11} onMouseEnter={open11} onMouseLeave={close11}>
+        Left-Top
+      </AButton>
+      <ATooltip anchorRef={buttonRef11} open={isOpen11} placement="left-top">
+        Tooltip
+      </ATooltip>
+    </ACol>
+    <ACol cols="6" />
+    <ACol>
+      <AButton ref={buttonRef3} onMouseEnter={open3} onMouseLeave={close3}>
+        Right-Top
+      </AButton>
+      <ATooltip anchorRef={buttonRef3} open={isOpen3} placement="right-top">
+        Tooltip
+      </ATooltip>
+    </ACol>
+  </ARow>
+  <ARow>
+    <ACol className="text-right">
+      <AButton ref={buttonRef10} onMouseEnter={open10} onMouseLeave={close10}>
+        Left
+      </AButton>
+      <ATooltip anchorRef={buttonRef10} open={isOpen10} placement="left">
+        Tooltip
+      </ATooltip>
+    </ACol>
+    <ACol cols="6" />
+    <ACol>
+      <AButton ref={buttonRef4} onMouseEnter={open4} onMouseLeave={close4}>
+        Right
+      </AButton>
+      <ATooltip anchorRef={buttonRef4} open={isOpen4} placement="right">
+        Tooltip
+      </ATooltip>
+    </ACol>
+  </ARow>
+  <ARow>
+    <ACol className="text-right">
+      <AButton ref={buttonRef9} onMouseEnter={open9} onMouseLeave={close9}>
+        Left-Bottom
+      </AButton>
+      <ATooltip anchorRef={buttonRef9} open={isOpen9} placement="left-bottom">
+        Tooltip
+      </ATooltip>
+    </ACol>
+    <ACol cols="6" />
+    <ACol>
+      <AButton ref={buttonRef5} onMouseEnter={open5} onMouseLeave={close5}>
+        Right-Bottom
+      </AButton>
+      <ATooltip anchorRef={buttonRef5} open={isOpen5} placement="right-bottom">
+        Tooltip
+      </ATooltip>
+    </ACol>
+  </ARow>
+  <ARow>
+    <ACol cols="2" />
+    <ACol className="text-right">
+      <AButton ref={buttonRef8} onMouseEnter={open8} onMouseLeave={close8}>
+        Bottom-Left
+      </AButton>
+      <ATooltip anchorRef={buttonRef8} open={isOpen8} placement="bottom-left">
+        Tooltip
+      </ATooltip>
+    </ACol>
+    <ACol className="text-center">
+      <AButton ref={buttonRef7} onMouseEnter={open7} onMouseLeave={close7}>
+        Bottom
+      </AButton>
+      <ATooltip anchorRef={buttonRef7} open={isOpen7} placement="bottom">
+        Tooltip
+      </ATooltip>
+    </ACol>
+    <ACol>
+      <AButton ref={buttonRef6} onMouseEnter={open6} onMouseLeave={close6}>
+        Bottom-Right
+      </AButton>
+      <ATooltip anchorRef={buttonRef6} open={isOpen6} placement="bottom-right">
+        Tooltip
+      </ATooltip>
+    </ACol>
+    <ACol cols="2" />
+  </ARow>
+</AContainer>
+); } `} />
 
 ## Pointer
 

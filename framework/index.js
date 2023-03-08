@@ -95,6 +95,7 @@ import useInView from "./hooks/useInView/useInView";
 import useMediaQuery from "./hooks/useMediaQuery/useMediaQuery";
 import useOutsideClick from "./hooks/useOutsideClick/useOutsideClick";
 import usePopupQuickExit from "./hooks/usePopupQuickExit/usePopupQuickExit";
+import useToggle from "./hooks/useToggle";
 
 export {
   AAccordion,
@@ -195,5 +196,6 @@ export {
   useInView,
   useMediaQuery,
   useOutsideClick,
-  usePopupQuickExit
+  usePopupQuickExit,
+  useToggle
 };
