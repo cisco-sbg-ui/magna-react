@@ -407,6 +407,8 @@ const ATextInput = forwardRef(
   }
 );
 
+const {anchorRef, ...infoTooltipProps} = ATooltip.propTypes;
+
 ATextInput.propTypes = {
   /**
    * Appends an icon inside the text input. The value should be an [icon name](/components/icon).
@@ -443,7 +445,7 @@ ATextInput.propTypes = {
   /**
    * Overrides props of `ATooltip` used to display `infoTooltip`
    */
-  infoTooltipProps: PropTypes.instanceOf(ATooltip.propTypes),
+  infoTooltipProps: PropTypes.shape(infoTooltipProps),
   /**
    * Sets the maximum value of a number type text input.
    */

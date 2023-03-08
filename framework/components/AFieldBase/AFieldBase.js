@@ -88,6 +88,8 @@ const AFieldBase = forwardRef(
   }
 );
 
+const {anchorRef, ...infoTooltipProps} = ATooltip.propTypes;
+
 AFieldBase.propTypes = {
   /**
    * Sets the hint content.
@@ -116,7 +118,7 @@ AFieldBase.propTypes = {
   /**
    * Overrides props of `ATooltip` used to display `infoTooltip`
    */
-  infoTooltipProps: PropTypes.instanceOf(ATooltip.propTypes),
+  infoTooltipProps: PropTypes.shape(infoTooltipProps),
   /**
    * Handles the label's `click` event.
    */
