@@ -193,6 +193,14 @@ $atomic-dusk: (
     "label-border-color": map-get($mds-border, "dark"),
     "label-selected-hover": rgba(108, 158, 245, 0.25)
   ),
+  "disposition": (
+    "malicious": #fa5762,
+    "suspicious": #f7782f,
+    "common": #f0c243,
+    "unknown": #889099,
+    "clean": #3fb6f2,
+    "targets": #b587fa
+  ),
   "divider": (
     "color-default": map-get($mds-neutral, "neutral-14"),
     "color-light": map-get($mds-neutral, "neutral-13"),

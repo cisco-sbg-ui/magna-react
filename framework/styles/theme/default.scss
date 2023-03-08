@@ -193,6 +193,14 @@ $atomic-default: (
     "background-color--hover": map-get($mds-interactive, "interactive-2"),
     "label-border-color": map-get($mds-border, "light")
   ),
+  "disposition": (
+    "malicious": #cc2d37,
+    "suspicious": #f7782f,
+    "common": #cc8604,
+    "unknown": #889099,
+    "clean": #139beb,
+    "targets": #864ae0
+  ),
   "divider": (
     "color-default": map-get($mds-neutral, "neutral-4"),
     "color-light": map-get($mds-neutral, "neutral-3"),
