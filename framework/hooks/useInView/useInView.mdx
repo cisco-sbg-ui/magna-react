@@ -1,0 +1,176 @@
+---
+name: useInView
+route: /hooks/use-in-view
+components: useInView
+---
+
+# useInView
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import { useInView } from "@cisco-sbg-ui/magna-react";
+```
+
+## Description
+
+`useInView` detects when an element in the DOM comes into view. This can be helpful for lazily performing expensive or asynchronous operations until your target element is visible to the user.
+
+### Parameters
+
+The first argument is a function that will be called when the element you are observing is in the view. The second argument is a configuration object with the following keys:
+
+- `triggerOnce`: If you would only like the function you pass as a first argument to run _only_ on the first appearance of your element
+- `threshold`: A number between `0` and `1` (inclusive) to indicate a percentage of how much of your element should be in view before the function passed as a first argument is called
+  - Example: A threshold of `0` means as soon as even one pixel is visible, your function is called, whereas a threshold of `1` means that 100% of your element must be visible
+
+### Return Value
+
+`useInView` returns a [callback ref](https://reactjs.org/docs/refs-and-the-dom.html#callback-refs) to be applied to the element you are interested in observing in the view.
+
+## Usage
+
+<Playground
+  fullWidthPreview
+  code={`() => {
+    const [luckyNum, setLuckyNum] = useState();
+
+    // A function to be called when the element
+    // we are curious about comes into view
+    const handleInView = ({ inView }) => {
+      if (inView) {
+        alert("You've found your lucky number!");
+      }
+    };
+
+    // This should be passed to the element you
+    // are curious about being "in view". A
+    // threshold value of 1 indicates that we
+    // want the entire element in view before
+    // being notified
+    const inViewRef = useInView(handleInView, {
+      threshold: 1,
+    });
+
+    // This represents the item we want to be
+    // notified about when it is in the view
+    const inViewElement = (
+      <li
+        ref={inViewRef}
+        key="target-item"
+        className="mds-magenta--magenta-8--text"
+        style={{ fontWeight: "bold" }}
+      >
+        <span style={{ fontSize: "30px" }}>{luckyNum}</span>
+      </li>
+    );
+
+    return (
+      <div style={{ maxHeight: "300px", overflowY: "hidden" }}>
+        <div
+          className='mb-2'
+        >
+          <ATextInput
+            autoFocus={true}
+            clearable
+            label="Enter a Lucky Number 0-249"
+            placeholder="7"
+            prependIcon="star"
+            medium
+            type="number"
+            value={luckyNum || ""}
+            onChange={(e) => setLuckyNum(e.target.value)}
+          />
+          <div>
+            Now Scroll down to find your number...
+          </div>
+        </div>
+        <ul style={{maxHeight: '200px', overflowY: 'scroll'}}>
+          {[...new Array(10).keys()].map((idx) =>
+            <li key={idx}>Keep scrolling ... </li>
+          )}
+          {[...new Array(250).keys()].map((idx) =>
+            idx == luckyNum ? inViewElement : <li key={idx}>{idx}</li>
+          )}
+        </ul>
+      </div>
+    )
+
+}`}
+/>
+
+Sometimes, you might only want the notification once. In that case, pass `triggerOnce` to the options to `useInView`.
+
+### Triggering Once
+
+<Playground
+  fullWidthPreview
+  code={`() => {
+    const [luckyNum, setLuckyNum] = useState();
+
+    // A function to be called when the element
+    // we are curious about comes into view
+    const handleInView = ({ inView }) => {
+      if (inView) {
+        alert("You've found your lucky number!");
+      }
+    };
+
+    // This should be passed to the element you
+    // are curious about being "in view". A
+    // threshold value of 1 indicates that we
+    // want the entire element in view before
+    // being notified
+    const inViewRef = useInView(handleInView, {
+      threshold: 1,
+      triggerOnce: true
+    });
+
+    // This represents the item we want to be
+    // notified about when it is in the view
+    const inViewElement = (
+      <li
+        ref={inViewRef}
+        key="target-item"
+        className="mds-magenta--magenta-8--text"
+        style={{ fontWeight: "bold" }}
+      >
+        <span style={{ fontSize: "30px" }}>{luckyNum}</span>
+      </li>
+    );
+
+    return (
+      <div style={{ maxHeight: "300px", overflowY: "hidden" }}>
+        <div
+          className='mb-2'
+        >
+          <ATextInput
+            autoFocus={true}
+            clearable
+            label="Enter a Lucky Number 0-249"
+            placeholder="7"
+            prependIcon="star"
+            medium
+            type="number"
+            value={luckyNum || ""}
+            onChange={(e) => setLuckyNum(e.target.value)}
+          />
+          <div>
+            Now Scroll down to find your number...
+          </div>
+        </div>
+        <ul style={{maxHeight: '200px', overflowY: 'scroll'}}>
+          {[...new Array(10).keys()].map((idx) =>
+            <li key={idx}>Keep scrolling ... </li>
+          )}
+          {[...new Array(250).keys()].map((idx) =>
+            idx == luckyNum ? inViewElement : <li key={idx}>{idx}</li>
+          )}
+        </ul>
+      </div>
+    )
+
+}`}
+/>

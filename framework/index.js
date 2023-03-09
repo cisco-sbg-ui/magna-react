@@ -89,10 +89,12 @@ import ATooltip from "./components/ATooltip";
 import ATree from "./components/ATree";
 import {useABreakpoint} from "./components/ABreakpoint";
 import {useAToaster, AToastPlate} from "./components/AToaster";
-import useEscapeKeydown from "./hooks/useEscapeKeydown";
-import useFocusTrap from "./hooks/useFocusTrap";
-import useOutsideClick from "./hooks/useOutsideClick";
-import usePopupQuickExit from "./hooks/usePopupQuickExit";
+import useEscapeKeydown from "./hooks/useEscapeKeydown/useEscapeKeydown";
+import useFocusTrap from "./hooks/useFocusTrap/useFocusTrap";
+import useInView from "./hooks/useInView/useInView";
+import useMediaQuery from "./hooks/useMediaQuery/useMediaQuery";
+import useOutsideClick from "./hooks/useOutsideClick/useOutsideClick";
+import usePopupQuickExit from "./hooks/usePopupQuickExit/usePopupQuickExit";
 
 export {
   AAccordion,
@@ -190,6 +192,8 @@ export {
   useAToaster,
   useEscapeKeydown,
   useFocusTrap,
+  useInView,
+  useMediaQuery,
   useOutsideClick,
   usePopupQuickExit
 };

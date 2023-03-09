@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import React from "react";
-import { handleMultipleRefs } from '../../utils/helpers';
-import { useIntersectionObserver } from '../../utils/hooks';
+import {handleMultipleRefs} from "../../utils/helpers";
+import useInView from "../../hooks/useInView/useInView";
 
 /**
  * Keeps track of a child component's visibility
@@ -9,21 +9,21 @@ import { useIntersectionObserver } from '../../utils/hooks';
  * a forward ref.
  */
 const AInView = (props) => {
-    const {onChange,triggerOnce,children, ...observerConfig} = props;
-    const ref = useIntersectionObserver(onChange, {
-      triggerOnce,
-      ...observerConfig,
-    });
-    return React.cloneElement(children, {
-      ref: handleMultipleRefs(ref, children.ref),
-    });
+  const {onChange, triggerOnce, children, ...observerConfig} = props;
+  const ref = useInView(onChange, {
+    triggerOnce,
+    ...observerConfig
+  });
+  return React.cloneElement(children, {
+    ref: handleMultipleRefs(ref, children.ref)
+  });
 };
 
 function withinValidThreshold(props, propName) {
-    const propValue = props[propName];
-    if (propValue < 0 || propValue > 1) {
-        throw new Error('Invalid prop threshold.')
-    }
+  const propValue = props[propName];
+  if (propValue < 0 || propValue > 1) {
+    throw new Error("Invalid prop threshold.");
+  }
 }
 
 AInView.defaultProps = {

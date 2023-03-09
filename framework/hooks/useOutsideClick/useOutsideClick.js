@@ -1,7 +1,7 @@
 import {useCallback, useEffect} from "react";
 
 const useOutsideClick = (options) => {
-  const {isEnabled, rootRef, onClick} = options;
+  const {isEnabled, rootRef, onClick, containerRef} = options;
 
   const detectOutside = useCallback(
     (e) => {
@@ -22,12 +22,13 @@ const useOutsideClick = (options) => {
     if (!isEnabled) {
       return;
     }
-    window.addEventListener("mousedown", detectOutside);
+    const domNode = containerRef?.current ?? window;
+    domNode.addEventListener("mousedown", detectOutside);
 
     return () => {
-      window.removeEventListener("mousedown", detectOutside);
+      domNode.removeEventListener("mousedown", detectOutside);
     };
-  }, [isEnabled, onClick, detectOutside]);
+  }, [isEnabled, onClick, detectOutside, containerRef]);
 };
 
 export default useOutsideClick;

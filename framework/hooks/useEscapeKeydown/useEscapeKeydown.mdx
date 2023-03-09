@@ -1,0 +1,53 @@
+---
+name: useEscapeKeydown
+route: /hooks/use-escape-keydown
+components: useEscapeKeydown
+---
+
+# useEscapeKeydown
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import { useEscapeKeydown } from "@cisco-sbg-ui/magna-react";
+```
+
+## Description
+
+`useEscapeKeydown` notifies you when a user presses their escape key.
+
+### Parameters
+
+A configuration object with the following keys:
+
+- `isEnabled`: If the hook should listen for escape keypresses
+- `onKeydown`: Function to be called when the user presses their escape key
+
+## Usage
+
+<Playground
+  code={`() => {
+    const [collapsed, setCollapsed] = useState(false);
+    useEscapeKeydown({
+      isEnabled: !collapsed,
+      onKeydown: () => setCollapsed(true)
+    })
+    return (
+      <AAccordion>
+        <AAccordionPanel
+            collapsed={collapsed}
+            onToggle={() => setCollapsed(p => !p)}
+            panelKey='demo'>
+          <AAccordionHeader>
+            <AAccordionHeaderTitle>Escape Keydown Accordion</AAccordionHeaderTitle>
+          </AAccordionHeader>
+          <AAccordionBody>
+            I collapse with an escape key press.
+          </AAccordionBody>
+        </AAccordionPanel>
+      </AAccordion>
+    )
+  }`}
+/>

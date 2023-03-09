@@ -1,0 +1,55 @@
+---
+name: useMediaQuery
+route: /hooks/use-media-query
+components: useMediaQuery
+---
+
+# uesOutsideClick
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import { useMediaQuery } from "@cisco-sbg-ui/magna-react";
+```
+
+## Description
+
+`useMediaQuery` notifies you of a matching media query in the DOM. Internally, it uses the [Window's matchMedia API](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia).
+
+### Parameters
+
+The first argument is a string representing the media query to be tested for matches, e.g., for dark mode, `"(prefers-color-scheme: dark)"`
+
+The second argument is a configuration object with the following keys:
+
+- `onChange`: a function that is called whenever the media query updates (not just for a match)
+
+### Return Value
+
+`useMediaQuery` returns an object with the folowing keys:
+
+- `matches`: boolean to determine if media query matches
+- `mediaQueryList`: A [`MediaQueryList` object](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList) used internally to determine if the media query matched or not
+
+## Usage
+
+<Playground
+  code={`() => {
+    const { matches: isDark } = useMediaQuery("(prefers-color-scheme: dark)");
+    const { matches: isLargeScreen } = useMediaQuery("(min-width: 1200px)");
+
+    return (
+      <div>
+        <p>Your computer is set to {isDark ? "dark" : "light"} mode.</p>
+        <p>
+          Your browser vieport {isLargeScreen ? "is" : "is not"} at least 1300px
+          wide.
+        </p>
+      </div>
+    );
+
+}`}
+/>
+;˜
