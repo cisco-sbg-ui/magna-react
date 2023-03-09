@@ -4,14 +4,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.iconNameMap = void 0;
-function cov_1otdotajm0() {
+function cov_f48blbjub() {
   var path =
-    "/Users/barvo/projects/cisco-sbg-ui/magna-react/framework/components/AIcon/atomicMap.js";
-  var hash = "68dbafb3c99a0a1acae327aa3fdbe446aefe0609";
+    "/Users/roberha2/workspaces/cisco-sbg-ui/magna-react/framework/components/AIcon/atomicMap.js";
+  var hash = "3f247454ff163d9219e621c22842390e481a2afd";
   var global = new Function("return this")();
   var gcv = "__coverage__";
   var coverageData = {
-    path: "/Users/barvo/projects/cisco-sbg-ui/magna-react/framework/components/AIcon/atomicMap.js",
+    path: "/Users/roberha2/workspaces/cisco-sbg-ui/magna-react/framework/components/AIcon/atomicMap.js",
     statementMap: {
       0: {
         start: {
@@ -19,7 +19,7 @@ function cov_1otdotajm0() {
           column: 27
         },
         end: {
-          line: 270,
+          line: 278,
           column: 1
         }
       }
@@ -32,7 +32,7 @@ function cov_1otdotajm0() {
     f: {},
     b: {},
     _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    hash: "68dbafb3c99a0a1acae327aa3fdbe446aefe0609"
+    hash: "3f247454ff163d9219e621c22842390e481a2afd"
   };
   var coverage = global[gcv] || (global[gcv] = {});
   if (!coverage[path] || coverage[path].hash !== hash) {
@@ -41,15 +41,15 @@ function cov_1otdotajm0() {
   var actualCoverage = coverage[path];
   {
     // @ts-ignore
-    cov_1otdotajm0 = function () {
+    cov_f48blbjub = function () {
       return actualCoverage;
     };
   }
   return actualCoverage;
 }
-cov_1otdotajm0();
+cov_f48blbjub();
 var iconNameMap =
-  (cov_1otdotajm0().s[0]++,
+  (cov_f48blbjub().s[0]++,
   {
     add: "plus",
     "add-to-list": "file-plus",
@@ -131,6 +131,8 @@ var iconNameMap =
     "dots-three": "",
     "dots-six": "",
     "dots-nine": "",
+    "dots-three-vertical": "",
+    "dots-six-vertical": "",
     download: "download-simple",
     dropped: "",
     "dynamic-nat": "",
@@ -297,6 +299,12 @@ var iconNameMap =
     table: "table",
     target: "crosshair-simple",
     "text-format": "text",
+    "text-align-center": "",
+    "text-align-right": "",
+    "text-bolder": "",
+    "text-h": "",
+    "text-italic": "",
+    "text-strikethrough": "",
     theme: "",
     ticket: "ticket",
     "time-quota": "",

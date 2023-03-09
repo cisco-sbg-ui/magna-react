@@ -78,6 +78,8 @@ export const iconNameMap = {
   "dots-three": "",
   "dots-six": "",
   "dots-nine": "",
+  "dots-three-vertical": "",
+  "dots-six-vertical": "",
   download: "download-simple",
   dropped: "",
   "dynamic-nat": "",
