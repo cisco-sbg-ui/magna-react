@@ -2702,6 +2702,19 @@ const MagnaIcons = {
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
   },
+  "dots-six-vertical": {
+    xml: (
+      <>
+        <circle cx="92" cy="60" r="12"></circle>
+        <circle cx="164" cy="60" r="12"></circle>
+        <circle cx="92" cy="128" r="12"></circle>
+        <circle cx="164" cy="128" r="12"></circle>
+        <circle cx="92" cy="196" r="12"></circle>
+        <circle cx="164" cy="196" r="12"></circle>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
   "dots-six": {
     xml: (
       <>
@@ -2773,6 +2786,16 @@ const MagnaIcons = {
           strokeMiterlimit="10"
           strokeWidth="16"
         ></circle>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  "dots-three-vertical": {
+    xml: (
+      <>
+        <circle cx="128" cy="128" r="12"></circle>
+        <circle cx="128" cy="64" r="12"></circle>
+        <circle cx="128" cy="192" r="12"></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
