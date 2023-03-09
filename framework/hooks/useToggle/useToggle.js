@@ -31,7 +31,9 @@ const useToggle = (openDelay = 400, closeDelay) => {
   }, [isOpen, open, close]);
 
   useEffect(() => {
-    timeout.current && clearTimeout(timeout.current);
+    return () => {
+      timeout.current && clearTimeout(timeout.current);
+    };
   }, [timeout]);
 
   return {isOpen, open, close, toggle};
