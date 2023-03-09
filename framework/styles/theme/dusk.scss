@@ -360,7 +360,7 @@ $atomic-dusk: (
     "oversized-background-color": transparent,
     "oversized--hover-background-color": transparent,
     "text-color": map-get($mds-neutral, "neutral-6"),
-    "text-color--selected": map-get($mds-neutral, "neutral-4"),
+    "text-color--selected": map-get($mds-interactive, "interactive-6"),
     "bar-color--hover": map-get($mds-neutral, "neutral-9"),
     "bar-color--selected": map-get($mds-interactive, "interactive-6")
   ),
