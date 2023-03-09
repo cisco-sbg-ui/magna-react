@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, {useEffect, useRef} from "react";
 
 import ATooltip from "../ATooltip";
-import useToggle from "../../hooks/useToggle";
+import useToggle from "../../hooks/useToggle/useToggle";
 
 const ATriggerTooltip = ({
   children,
