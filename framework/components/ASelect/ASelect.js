@@ -13,6 +13,7 @@ import AIcon from "../AIcon";
 import AMenu from "../AMenu";
 import {AListItem} from "../AList";
 import {keyCodes} from "../../utils/helpers";
+import useMenuSpacing from "../AMenuBase/hooks";
 import "./ASelect.scss";
 
 let selectCounter = 0;
@@ -66,21 +67,11 @@ const ASelect = forwardRef(
     const [error, setError] = useState("");
     const [workingValidationState, setWorkingValidationState] =
       useState(validationState);
-    const [menuSpace, setMenuSpace] = useState(0);
-    const checkMenuSpacing = () => {
-      const inputBottom = surfaceRef?.current?.getBoundingClientRect().bottom,
-        verticalSpace = inputBottom
-          ? window.innerHeight - inputBottom - 10
-          : null;
-
-      verticalSpace && setMenuSpace(verticalSpace);
-    };
-
-    const menuHeight = menuRef?.current?.clientHeight;
-    const menuPlacement =
-      menuHeight < menuSpace || (maxHeight && menuSpace > parseInt(maxHeight))
-        ? "bottom"
-        : "top";
+    const {checkMenuSpacing, menuPlacement} = useMenuSpacing(
+      surfaceRef,
+      menuRef,
+      maxHeight
+    );
 
     const {register, unregister} = useContext(AFormContext);
     useEffect(() => {
@@ -94,7 +85,7 @@ const ASelect = forwardRef(
           menuRef.current.focus();
         }, 0);
       }
-    }, [isOpen, menuRef]);
+    }, [isOpen, checkMenuSpacing, menuRef]);
 
     useEffect(() => {
       const newSelectedItem = items.find((x) => x[itemSelected]);
