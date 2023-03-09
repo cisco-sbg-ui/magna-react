@@ -1,0 +1,74 @@
+---
+name: TriggerTooltips**
+route: /components/triggertooltip
+components: ATriggerTooltip
+---
+
+# Trigger Tooltips
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {ATriggerTooltip} from "@cisco-sbg-ui/magna-react";
+```
+
+It is necessary for `ATriggerTooltip` to be a descendant of `AApp` for mounting.
+
+Children of `ATriggerTooltip` must be able to accept a ref.
+
+## Usage
+
+<Playground
+  code={`() => {
+return (
+
+<>
+  By default the openDelay is 400ms
+  <br />
+  <br />
+
+<span style={{verticalAlign: "super", margin: "0 5px 0 0"}}>
+  Trigger by hover
+</span>
+
+  <ATriggerTooltip
+    id="tooltip_usage_1"
+    placement="bottom-left"
+    content="Tooltip text"
+    pointer>
+     <AIcon>
+    information</AIcon>
+  </ATooltip>
+
+<br />
+<br />
+
+<span style={{verticalAlign: "super", margin: "0 5px 0 0"}}>
+  Trigger by click
+</span>
+
+  <ATriggerTooltip
+    id="tooltip_usage_1"
+    placement="bottom-left"
+    content="Tooltip text"
+    trigger="click"
+    pointer>
+     <AIcon>
+    information</AIcon>
+  </ATooltip>
+</>
+); } `} />
+
+## Tooltip Props
+
+The `ATriggerTooltip` component inherits passed props.
+
+<Props of="ATriggerTooltip" />
+
+## Accessibility Notes
+
+By default, `ATooltip` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [tooltip](https://www.w3.org/TR/wai-aria/#tooltip).
+
+For better accessibility: add an `id` to the tooltip and set the `aria-describedby` attribute on the anchor to the new `id`.

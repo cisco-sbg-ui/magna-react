@@ -86,6 +86,7 @@ import {
 import {ATheme, useATheme} from "./components/ATheme";
 import AToast from "./components/AToast";
 import ATooltip from "./components/ATooltip";
+import ATriggerTooltip from "./components/ATriggerTooltip";
 import ATree from "./components/ATree";
 import {useABreakpoint} from "./components/ABreakpoint";
 import {useAToaster, AToastPlate} from "./components/AToaster";
@@ -185,6 +186,7 @@ export {
   AToast,
   AToastPlate,
   ATooltip,
+  ATriggerTooltip,
   ATree,
   useABreakpoint,
   useADateRange,

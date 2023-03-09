@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useRef, useState} from "react";
+import React, {forwardRef} from "react";
 
-import useToggle from "../../hooks/useToggle";
 import AHint from "../AHint";
 import AIcon from "../AIcon";
 import ATooltip from "../ATooltip";
+import ATriggerTooltip from "../ATriggerTooltip";
 import "./AFieldBase.scss";
 
 const AFieldBase = forwardRef(
@@ -25,13 +25,6 @@ const AFieldBase = forwardRef(
     },
     ref
   ) => {
-    const infoIconRef = useRef(),
-      {
-        isOpen: isInfoTooltipOpen,
-        open: openInfoTooltip,
-        close: closeInfoTooltip
-      } = useToggle();
-
     let className = "a-field-base";
 
     if (validationState !== "default") {
@@ -57,25 +50,15 @@ const AFieldBase = forwardRef(
               <span className="a-field-base__label--required">*</span>
             )}
             {infoTooltip && (
-              <>
-                <AIcon
-                  ref={infoIconRef}
-                  onMouseEnter={openInfoTooltip}
-                  onMouseLeave={closeInfoTooltip}
-                >
-                  information
-                </AIcon>
-                <ATooltip
-                  anchorRef={infoIconRef}
-                  id={`${labelId}-tooltip`}
-                  open={isInfoTooltipOpen}
-                  placement="top"
-                  pointer
-                  {...infoTooltipProps}
-                >
-                  {infoTooltip}
-                </ATooltip>
-              </>
+              <ATriggerTooltip
+                id={`${labelId}-tooltip`}
+                placement="top"
+                content={infoTooltip}
+                pointer
+                {...infoTooltipProps}
+              >
+                <AIcon>information</AIcon>
+              </ATriggerTooltip>
             )}
           </label>
         )}
