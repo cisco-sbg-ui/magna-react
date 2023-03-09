@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React, {forwardRef, useRef, useState} from "react";
 
+import useToggle from "../../hooks/useToggle";
 import AHint from "../AHint";
 import AIcon from "../AIcon";
 import ATooltip from "../ATooltip";
@@ -25,7 +26,11 @@ const AFieldBase = forwardRef(
     ref
   ) => {
     const infoIconRef = useRef(),
-      [infoTooltipOpen, setInfoTooltipOpen] = useState(false);
+      {
+        isOpen: isInfoTooltipOpen,
+        open: openInfoTooltip,
+        close: closeInfoTooltip
+      } = useToggle();
 
     let className = "a-field-base";
 
@@ -55,15 +60,15 @@ const AFieldBase = forwardRef(
               <>
                 <AIcon
                   ref={infoIconRef}
-                  onMouseEnter={() => setInfoTooltipOpen(true)}
-                  onMouseLeave={() => setInfoTooltipOpen(false)}
+                  onMouseEnter={openInfoTooltip}
+                  onMouseLeave={closeInfoTooltip}
                 >
                   information
                 </AIcon>
                 <ATooltip
                   anchorRef={infoIconRef}
                   id={`${labelId}-tooltip`}
-                  open={infoTooltipOpen}
+                  open={isInfoTooltipOpen}
                   placement="top"
                   pointer
                   {...infoTooltipProps}

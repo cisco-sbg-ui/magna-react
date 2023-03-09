@@ -1,4 +1,4 @@
-import {useCallback, useRef, useState} from "react";
+import {useCallback, useEffect, useRef, useState} from "react";
 
 const useToggle = (openDelay = 400, closeDelay = 0) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,6 +29,10 @@ const useToggle = (openDelay = 400, closeDelay = 0) => {
   const toggle = useCallback(() => {
     isOpen ? close : open;
   }, [isOpen, open, close]);
+
+  useEffect(() => {
+    timeout.current && clearTimeout(timeout.current);
+  }, [timeout]);
 
   return {isOpen, open, close, toggle};
 };
