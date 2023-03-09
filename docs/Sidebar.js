@@ -65,6 +65,11 @@ const Sidebar = ({menus, currentDoc}) => {
         expanded: currentDoc.route.startsWith("/components/")
       },
       {
+        content: "Hooks",
+        items: [],
+        expanded: currentDoc.route.startsWith("/hooks/")
+      },
+      {
         content: "Extend",
         items: [],
         expanded: currentDoc.route?.startsWith("/extend/")
@@ -79,10 +84,12 @@ const Sidebar = ({menus, currentDoc}) => {
     menus?.forEach((item) => {
       const bucketIndex = item.route.startsWith("/components/")
         ? 2
-        : item.route.startsWith("/extend/")
+        : item.route.startsWith("/hooks/")
         ? 3
-        : item.route.startsWith("/services/")
+        : item.route.startsWith("/extend/")
         ? 4
+        : item.route.startsWith("/services/")
+        ? 5
         : null;
       if (!bucketIndex) return;
 
