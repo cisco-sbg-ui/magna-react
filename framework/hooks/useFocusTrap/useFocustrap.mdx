@@ -1,0 +1,65 @@
+---
+name: useFocusTrap
+route: /hooks/use-focus-trap
+components: useFocusTrap
+---
+
+# useFocusTrap
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import { useFocusTrap } from "@cisco-sbg-ui/magna-react";
+```
+
+## Description
+
+`useFocusTrap` traps focus within a DOM node. This is particularly useful in overlay components (such as modals, drawers, etc.) so that when a user presses <kbd>Tab</kbd> or <kbd>Shift+Tab</kbd>, they cannot accidentally navigate outside of the overlay content.
+
+`useFocusTrap` is automatically implemented in components such as [`AModal`](/components/modal) and [`ADrawer`](/components/drawer).
+
+### Parameters
+
+A configuration object with the following properites:
+
+- `isEnabled`: If the hook should trap focus within your element
+- `rootRef`: A React ref indicating which element focus should be trapped inside of
+
+## Usage
+
+<Playground
+  code={`() => {
+    const domains = [
+      "oldschool.runescape.com",
+      "developer.mozilla.org",
+      "weather.com",
+      "news.ycombinator.com",
+    ];
+    const rootRef = useRef();
+    useFocusTrap({
+      rootRef,
+      isEnabled: true,
+    });
+    return (
+      <APanel ref={rootRef}>
+        <APanelHeader>
+          <APanelTitle>Focus Trap Demo</APanelTitle>
+        </APanelHeader>
+        <APanelBody>
+          Click into this panel, then press your <kbd>Shift</kbd> and <kbd>Shift+Tab</kbd> keys.
+          <ul>
+            {domains.map((domain) => (
+              <li key={domain}>
+                <a href={"https://" + domain} target="_blank" key={domain}>
+                  {domain}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </APanelBody>
+      </APanel>
+    );
+}`}
+/>

@@ -1,0 +1,74 @@
+---
+name: useOutsideClick
+route: /hooks/use-outside-click
+components: useOutsideClick
+---
+
+# uesOutsideClick
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import { useOutsideClick } from "@cisco-sbg-ui/magna-react";
+```
+
+## Description
+
+`useOutsideClick` detects when the user is clicking outside of a specified element in the DOM.
+
+### Parameters
+
+A configuration object with the following keys:
+
+- `isEnabled`: If the hook should listen for outside clicks of your element
+- `rootRef`: The React Ref in which clicks outside of this element will register as an outside click
+- `containerRef`: An optional React Ref to serve as an upper boundary to limit "how far" out the outside clicks should be detecetd from you `rootRef`
+- `onClick`: A function to be called when the user clicks outside of `rootRef`, and if `containerRef` is passed, within it, too
+
+## Usage
+
+<Playground
+  code={`() => {
+    const domains = [
+      "oldschool.runescape.com",
+      "developer.mozilla.org",
+      "weather.com",
+      "news.ycombinator.com",
+    ];
+    const containerRef = useRef();
+    const rootRef = useRef();
+    useOutsideClick({
+      rootRef,
+      containerRef,
+      isEnabled: true,
+      onClick: () => alert("You clicked outside the Inner Panel")
+    });
+    return (
+      <APanel
+        ref={containerRef}
+        style={{ height: "400px" }}
+        className="mds-interactive--interactive-2"
+      >
+        <APanelHeader>
+          <APanelTitle className="mds-neutral--neutral-15--text">
+            Outer Pannel
+          </APanelTitle>
+        </APanelHeader>
+        <APanelBody>
+          <APanel ref={rootRef}>
+            <APanelHeader>
+              <APanelTitle>Inner Panel</APanelTitle>
+            </APanelHeader>
+            <APanelBody>
+              Clicking outside this inner content, i.e., the blue panel, will alert
+              you in the browser.
+            </APanelBody>
+          </APanel>
+        </APanelBody>
+      </APanel>
+    )
+}`}
+/>
+;

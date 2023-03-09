@@ -1,5 +1,5 @@
-import useEscapeKeydown from "./useEscapeKeydown";
-import useOutsideClick from "./useOutsideClick";
+import useEscapeKeydown from "../useEscapeKeydown/useEscapeKeydown";
+import useOutsideClick from "../useOutsideClick/useOutsideClick";
 
 const usePopupQuickExit = (options) => {
   const {popupRef, isEnabled, onExit} = options;

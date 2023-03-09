@@ -2,13 +2,13 @@ import debounce from "lodash.debounce";
 import React, {useCallback, useEffect, useMemo, useRef, useState} from "react";
 import {LiveProvider, LiveEditor, LiveError, LivePreview} from "react-live";
 
-import * as AtomicReactComponents from "../framework";
+import * as AtomicReactComponentsAndHooks from "../framework";
 import {AList} from "../framework";
 import LoremIpsum from "../framework/utils/lorem-ipsum";
 import mockImport from "./mock_modules";
 
 const scope = {
-  ...AtomicReactComponents,
+  ...AtomicReactComponentsAndHooks,
   LoremIpsum,
   useCallback,
   useEffect,

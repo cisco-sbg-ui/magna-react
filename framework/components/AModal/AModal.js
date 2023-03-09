@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import AAppContext from "../AApp/AAppContext";
 import APageOverlay from "../APageOverlay";
-import useFocusTrap from "../../hooks/useFocusTrap";
+import useFocusTrap from "../../hooks/useFocusTrap/useFocusTrap";
 import {
   allowBodyScroll,
   handleMultipleRefs,
