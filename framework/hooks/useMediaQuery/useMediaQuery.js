@@ -20,7 +20,6 @@ const useMediaQuery = (mediaQuery, config = {}) => {
       if (typeof onChange === "function") {
         onChange(e);
       }
-      console.log("do we match? ", e?.target?.matches);
       setMatches(e?.target?.matches);
     },
     [onChange, setMatches]
