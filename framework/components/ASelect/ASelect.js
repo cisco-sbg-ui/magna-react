@@ -66,6 +66,21 @@ const ASelect = forwardRef(
     const [error, setError] = useState("");
     const [workingValidationState, setWorkingValidationState] =
       useState(validationState);
+    const [menuSpace, setMenuSpace] = useState(0);
+    const checkMenuSpacing = () => {
+      const inputBottom = surfaceRef?.current?.getBoundingClientRect().bottom,
+        verticalSpace = inputBottom
+          ? window.innerHeight - inputBottom - 10
+          : null;
+
+      verticalSpace && setMenuSpace(verticalSpace);
+    };
+
+    const menuHeight = menuRef?.current?.clientHeight;
+    const menuPlacement =
+      menuHeight < menuSpace || (maxHeight && menuSpace > parseInt(maxHeight))
+        ? "bottom"
+        : "top";
 
     const {register, unregister} = useContext(AFormContext);
     useEffect(() => {
@@ -74,6 +89,7 @@ const ASelect = forwardRef(
 
     useEffect(() => {
       if (isOpen && menuRef.current) {
+        checkMenuSpacing();
         setTimeout(() => {
           menuRef.current.focus();
         }, 0);
@@ -311,7 +327,8 @@ const ASelect = forwardRef(
           : "auto",
         ...dropdownStyle
       },
-      medium
+      medium,
+      placement: menuPlacement
     };
 
     const selectIcon = isOpen ? "chevron-up" : "chevron-down";
