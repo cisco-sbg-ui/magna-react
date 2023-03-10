@@ -14,6 +14,7 @@ import AMenu from "../AMenu";
 import {AListItem} from "../AList";
 import {useCombinedRefs} from "../../utils/hooks";
 import {keyCodes} from "../../utils/helpers";
+import useMenuSpacing from "../AMenuBase/hooks";
 import "./ACombobox.scss";
 
 let comboboxCounter = 0;
@@ -58,6 +59,10 @@ const ACombobox = forwardRef(
     const [error, setError] = useState("");
     const [workingValidationState, setWorkingValidationState] =
       useState(validationState);
+    const {checkMenuSpacing, menuPlacement} = useMenuSpacing(
+      inputBaseSurfaceRef,
+      menuRef
+    );
 
     const {register, unregister} = useContext(AFormContext);
     useEffect(() => {
@@ -84,6 +89,12 @@ const ACombobox = forwardRef(
         };
       }
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+    useEffect(() => {
+      if (isOpen && menuRef.current) {
+        checkMenuSpacing();
+      }
+    }, [isOpen, checkMenuSpacing, menuRef]);
 
     const validate = (testValue = value) => {
       if (rules || required) {
@@ -222,7 +233,8 @@ const ACombobox = forwardRef(
       style: {
         minWidth: "max-content",
         width: inputBaseSurfaceRef?.current?.clientWidth + 2 || "auto"
-      }
+      },
+      placement: menuPlacement
     };
 
     return (
