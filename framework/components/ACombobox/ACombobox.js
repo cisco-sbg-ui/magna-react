@@ -144,7 +144,8 @@ const ACombobox = forwardRef(
       disabled,
       focused: Boolean(isFocused || isOpen),
       append: <AIcon {...chevronProps}>chevron-down</AIcon>,
-      hint: error || hint,
+      error,
+      hint,
       label,
       labelFor: `a-combobox_${comboboxId}`,
       onClear: () => {

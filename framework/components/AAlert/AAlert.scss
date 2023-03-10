@@ -121,6 +121,9 @@ $alert-close-icon-size: 10.5px;
     @include flex-fluid;
     @include text-break-word;
   }
+  &--fit-content-width {
+    width: unset;
+  }
   &--state-success {
     .a-alert__icon {
       &--close {
