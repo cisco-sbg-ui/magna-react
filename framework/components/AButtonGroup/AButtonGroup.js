@@ -124,7 +124,8 @@ const AButtonGroup = forwardRef(
         ref={ref}
         className={className}
         label={label}
-        hint={error || hint}
+        error={error}
+        hint={hint}
         validationState={workingValidationState}
       >
         <div className="a-button-group__wrapper">

@@ -385,7 +385,8 @@ const ASelect = forwardRef(
         focused={isFocused || isOpen}
         readOnly={readOnly}
         validationState={workingValidationState}
-        hint={error || hint}
+        error={error}
+        hint={hint}
         required={required}
       >
         <div className="a-select__selection-wrapper">

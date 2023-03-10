@@ -11,6 +11,7 @@ const AFieldBase = forwardRef(
     {
       children,
       className: propsClassName,
+      error,
       hint,
       hintUsesValidationState = true,
       label,
@@ -21,6 +22,7 @@ const AFieldBase = forwardRef(
       infoTooltip,
       infoTooltipProps = {},
       validationState = "default",
+      hideHintOnError = true,
       ...rest
     },
     ref
@@ -36,6 +38,27 @@ const AFieldBase = forwardRef(
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
+    }
+
+    let hintElement;
+    if (hint && error && !hideHintOnError) {
+      hintElement = (
+        <>
+          <AHint className="a-field-base__hint">{hint}</AHint>
+          <AHint
+            className="a-field-base__hint"
+            validationState={validationState}
+          >
+            {error}
+          </AHint>
+        </>
+      );
+    } else {
+      hintElement = (
+        <AHint className="a-field-base__hint" validationState={validationState}>
+          {error || hint}
+        </AHint>
+      );
     }
 
     return (
@@ -76,14 +99,7 @@ const AFieldBase = forwardRef(
           </label>
         )}
         {children}
-        {hint && (
-          <AHint
-            className="a-field-base__hint"
-            validationState={hintUsesValidationState && validationState}
-          >
-            {hint}
-          </AHint>
-        )}
+        {hintElement}
       </div>
     );
   }

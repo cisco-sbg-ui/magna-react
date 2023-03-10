@@ -136,7 +136,8 @@ const AAutocomplete = forwardRef(
           search
         </AIcon>
       ),
-      hint: error || hint,
+      error,
+      hint,
       label,
       labelFor: `a-autocomplete_${autocompleteId}`,
       onClear: () => {
