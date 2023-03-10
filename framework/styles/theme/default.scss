@@ -352,7 +352,7 @@ $atomic-default: (
     "oversized--hover-background-color": $white,
     "text-color": map-get($mds-neutral, "neutral-12"),
     "text-color--selected": map-get($mds-interactive, "interactive-10"),
-    "bar-color--hover": map-get($mds-neutral, "neutral-6"),
+    "bar-color--hover": map-get($mds-misc, "visited-blue"),
     "bar-color--selected": map-get($mds-interactive, "interactive-10")
   ),
   "tag": (

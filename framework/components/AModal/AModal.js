@@ -45,6 +45,7 @@ const AModal = forwardRef(
     });
     useEffect(() => {
       isOpen && lockScroll ? preventBodyScroll() : allowBodyScroll();
+      return allowBodyScroll;
     }, [lockScroll, isOpen]);
     let visibilityClass = "";
     if (!isOpen) {
