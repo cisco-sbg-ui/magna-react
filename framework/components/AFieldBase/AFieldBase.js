@@ -53,10 +53,19 @@ const AFieldBase = forwardRef(
           </AHint>
         </>
       );
-    } else {
+    } else if (error) {
       hintElement = (
         <AHint className="a-field-base__hint" validationState={validationState}>
-          {error || hint}
+          {error}
+        </AHint>
+      );
+    } else if (hint) {
+      hintElement = (
+        <AHint
+          className="a-field-base__hint"
+          validationState={hintUsesValidationState && validationState}
+        >
+          {hint}
         </AHint>
       );
     }
