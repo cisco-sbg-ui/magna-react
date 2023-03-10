@@ -12,14 +12,15 @@ const ATheme = forwardRef(
     ref
   ) => {
     const [currentTheme, setCurrentTheme] = useState("dusk");
-    const isDark = currentTheme === "dusk"
-    const isLight = currentTheme !== "dusk"
+    const isDark = currentTheme === "dusk";
+    const isLight = currentTheme !== "dusk";
 
     useIsomorphicLayoutEffect(() => {
       let initialTheme = "default";
       if (persist) {
         if (Object.prototype.hasOwnProperty.call(localStorage, LS_KEY)) {
-          initialTheme = localStorage.getItem(LS_KEY) === "dusk" ? "dusk" : "default";
+          initialTheme =
+            localStorage.getItem(LS_KEY) === "dusk" ? "dusk" : "default";
         } else if (["default", "dusk"].includes(defaultTheme)) {
           initialTheme = defaultTheme;
         } else if (
@@ -33,7 +34,8 @@ const ATheme = forwardRef(
       }
 
       setCurrentTheme(initialTheme);
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+      // listen for defaultTheme prop change
+    }, [defaultTheme]);
 
     const themeContext = {
       persist,
