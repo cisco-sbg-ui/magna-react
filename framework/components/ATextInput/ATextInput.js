@@ -7,7 +7,7 @@ import React, {
   useState
 } from "react";
 
-import ATooltip from "../ATooltip";
+import {ATooltipPropTypes} from "../ATooltip";
 import AInputBase from "../AInputBase";
 import {AFormContext} from "../AForm";
 import AIcon from "../AIcon";
@@ -407,6 +407,8 @@ const ATextInput = forwardRef(
   }
 );
 
+const {anchorRef, ...infoTooltipProps} = ATooltipPropTypes;
+
 ATextInput.propTypes = {
   /**
    * Appends an icon inside the text input. The value should be an [icon name](/components/icon).
@@ -441,9 +443,9 @@ ATextInput.propTypes = {
    */
   infoTooltip: PropTypes.string,
   /**
-   * Overrides props of `ATooltip` used to display `infoTooltip`
+   * Overrides props of `ATooltip` used to display `infoTooltip`. See `ATooltip.propTypes`.
    */
-  infoTooltipProps: PropTypes.instanceOf(ATooltip.propTypes),
+  infoTooltipProps: PropTypes.shape(infoTooltipProps),
   /**
    * Sets the maximum value of a number type text input.
    */

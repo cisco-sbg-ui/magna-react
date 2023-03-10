@@ -3,7 +3,7 @@ import React, {forwardRef, useRef, useState} from "react";
 
 import AHint from "../AHint";
 import AIcon from "../AIcon";
-import ATooltip from "../ATooltip";
+import ATooltip, {ATooltipPropTypes} from "../ATooltip";
 import "./AFieldBase.scss";
 
 const AFieldBase = forwardRef(
@@ -88,6 +88,8 @@ const AFieldBase = forwardRef(
   }
 );
 
+const {anchorRef, ...infoTooltipProps} = ATooltipPropTypes;
+
 AFieldBase.propTypes = {
   /**
    * Sets the hint content.
@@ -114,9 +116,9 @@ AFieldBase.propTypes = {
    */
   infoTooltip: PropTypes.string,
   /**
-   * Overrides props of `ATooltip` used to display `infoTooltip`
+   * Overrides props of `ATooltip` used to display `infoTooltip`. See `ATooltip.propTypes`.
    */
-  infoTooltipProps: PropTypes.instanceOf(ATooltip.propTypes),
+  infoTooltipProps: PropTypes.shape(infoTooltipProps),
   /**
    * Handles the label's `click` event.
    */

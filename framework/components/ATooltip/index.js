@@ -1,1 +1,1 @@
-export {default} from "./ATooltip";
+export {default, ATooltipPropTypes} from "./ATooltip";
