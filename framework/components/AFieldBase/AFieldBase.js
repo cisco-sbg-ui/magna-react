@@ -12,6 +12,7 @@ const AFieldBase = forwardRef(
       children,
       className: propsClassName,
       hint,
+      hintUsesValidationState = true,
       label,
       labelFor,
       labelId,
@@ -78,7 +79,7 @@ const AFieldBase = forwardRef(
         {hint && (
           <AHint
             className="a-field-base__hint"
-            validationState={validationState}
+            validationState={hintUsesValidationState && validationState}
           >
             {hint}
           </AHint>
@@ -93,6 +94,10 @@ AFieldBase.propTypes = {
    * Sets the hint content.
    */
   hint: PropTypes.node,
+  /**
+   * Style the hint with the validation state. Default: true.
+   */
+  hintUsesValidationState: PropTypes.bool,
   /**
    * Sets the label content.
    */
