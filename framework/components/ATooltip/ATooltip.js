@@ -14,7 +14,7 @@ const ATooltip = forwardRef(
       onClose,
       open,
       placement,
-      pointer,
+      pointer = true,
       role = "tooltip",
       ...rest
     },
