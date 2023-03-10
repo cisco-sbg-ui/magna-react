@@ -13,6 +13,7 @@ const ATriggerTooltip = ({
   openDelay = 400,
   closeDelay,
   content,
+  disabled = false,
   ...rest
 }) => {
   const childrenRef = useRef([]);
@@ -22,12 +23,18 @@ const ATriggerTooltip = ({
     rootRef: triggerRef,
     onClick: close
   });
+  const childrenRefCurrent = childrenRef.current;
 
   useEffect(() => {
+    if (!content || disabled) {
+      return;
+    }
+
     const childRefs =
       triggerRef && triggerRef.current
         ? [triggerRef.current]
-        : childrenRef.current;
+        : childrenRefCurrent;
+
     switch (trigger) {
       case "hover":
         childRefs.forEach((childRef) => {
@@ -41,7 +48,27 @@ const ATriggerTooltip = ({
         });
         break;
     }
-  }, [trigger, childrenRef, triggerRef, close, open, toggle]);
+
+    return () => {
+      childRefs.forEach((childRef) => {
+        if (!childRef) {
+          return;
+        }
+        childRef.removeEventListener("mouseenter", open);
+        childRef.removeEventListener("mouseleave", close);
+        childRef.removeEventListener("click", toggle);
+      });
+    };
+  }, [
+    trigger,
+    childrenRefCurrent,
+    triggerRef,
+    close,
+    open,
+    toggle,
+    disabled,
+    content
+  ]);
 
   // If an anchorRef is provided, use it. Otherwise, attach to first child.
   const tooltipAnchorRef = anchorRef || {current: childrenRef.current[0]};
@@ -68,7 +95,7 @@ const ATriggerTooltip = ({
 
 ATriggerTooltip.propTypes = {
   /** DOM event to trigger the tooltip */
-  trigger: PropTypes.string,
+  trigger: PropTypes.oneOf(["hover", "click"]),
   /**
    * Anchors the tooltip to the specified ref, leaving
    * trigger event on the child(ren).
@@ -82,7 +109,9 @@ ATriggerTooltip.propTypes = {
   /** Delay in milliseconds before tooltip will close */
   closeDelay: PropTypes.number,
   /** Tooltip content */
-  content: PropTypes.string.isRequired
+  content: PropTypes.string,
+  /** Disable the tooltip */
+  disabled: PropTypes.bool
 };
 
 ATriggerTooltip.displayName = "ATriggerTooltip";
