@@ -4,6 +4,7 @@ import React, {useEffect, useRef} from "react";
 import ATooltip from "../ATooltip";
 import useToggle from "../../hooks/useToggle/useToggle";
 import useOutsideClick from "../../hooks/useOutsideClick/useOutsideClick";
+import {handleMultipleRefs} from "../../utils/helpers";
 
 const ATriggerTooltip = ({
   children,
@@ -83,9 +84,9 @@ const ATriggerTooltip = ({
       {React.Children.map(children, (child, index) =>
         React.cloneElement(child, {
           ...child.props,
-          ref: (ref) => {
-            childrenRef.current[index] = ref;
-          }
+          ref: handleMultipleRefs(child.props.ref, (node) => {
+            childrenRef.current[index] = node;
+          })
         })
       )}
       {tooltipElement}
