@@ -35,9 +35,8 @@ return (
 
   <ATriggerTooltip
     id="tooltip_usage_1"
-    placement="bottom-left"
-    content="Tooltip text"
-    pointer>
+    placement="right"
+    content="Tooltip text">
      <AIcon>
     information</AIcon>
   </ATooltip>
@@ -50,18 +49,72 @@ return (
 </span>
 
   <ATriggerTooltip
-    id="tooltip_usage_1"
-    placement="bottom-left"
+    id="tooltip_usage_2"
+    placement="right"
     content="Tooltip text"
-    trigger="click"
-    pointer>
+    trigger="click">
      <AIcon>
     information</AIcon>
   </ATooltip>
 </>
 ); } `} />
 
-## Tooltip Props
+## Anchor to element other than child
+
+<Playground
+  code={`() => {
+    const iconRef = useRef()
+return (
+
+<>
+<AIcon ref={iconRef}>information</AIcon>
+
+<br />
+<br />
+<br />
+<ATriggerTooltip placement="top" anchorRef={iconRef} content="Tooltip text">
+  <div>I will open the tooltip on the info icon!</div>
+</ATriggerTooltip>
+
+</>
+); } `} />
+
+## Anchor and Trigger, multiple tooltips
+
+To avoid nested wrapping of tooltips, combining `triggerRef` and `anchorRef` allows for multiple tooltips with different triggers.
+
+<Playground
+  code={`() => {
+    const iconRef = useRef();
+    const buttonRef = useRef();
+return (
+
+<>
+<AIcon ref={iconRef}>information</AIcon>
+
+<br />
+<br />
+<br />
+<AButton ref={buttonRef}>I am the trigger</AButton>
+<ATriggerTooltip
+  placement="top"
+  anchorRef={iconRef}
+  triggerRef={buttonRef}
+  content="I appear on HOVER"
+/>
+<ATriggerTooltip
+  placement="right"
+  trigger="click"
+  anchorRef={iconRef}
+  triggerRef={buttonRef}
+  openDelay={0}
+  content="I appear on CLICK"
+/>
+
+</>
+); } `} />
+
+## TriggerTooltip Props
 
 The `ATriggerTooltip` component inherits passed props.
 
