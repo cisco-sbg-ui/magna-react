@@ -8,10 +8,26 @@ import useFocusTrap from "../../hooks/useFocusTrap/useFocusTrap";
 import {
   allowBodyScroll,
   handleMultipleRefs,
+  isBackwardTab,
+  isForwardTab,
   preventBodyScroll
 } from "../../utils/helpers";
 
 import "./AModal.scss";
+
+/**
+ * Reasons for not stopping propagation for the following keys:
+ *  - Escape Key: allows user to close the modal
+ *  - Forward and Backward Tab: allows the event
+ *    to bubble to the document, which is needed
+ *    since the modal's focus trap is registered
+ *    on the window document.
+ *    @see hooks/useFocusTrap
+ */
+const shouldStopPropagation = (e) => {
+  const key = e.key;
+  key !== "Escape" && !isForwardTab(e) && isBackwardTab(e);
+};
 
 const AModal = forwardRef(
   (
@@ -38,7 +54,6 @@ const AModal = forwardRef(
     const hasPortalNode = appendTo || appRef.current;
     const isOpen = !!hasPortalNode && propsIsOpen;
     const _ref = useRef();
-
     useFocusTrap({
       rootRef: _ref,
       isEnabled: trapFocus && isOpen
@@ -74,16 +89,18 @@ const AModal = forwardRef(
     /**
      * In the case where `AModal` is rendered inside
      * a clickable element, like a button component,
-     * we want to prevent user clicks and keydown
+     * we want to prevent clicks and certain keydown
      * presses from bubbling outside the modal, which
-     * could cause unintended side effects. This is
-     * why we call `stopPropagation` on those events.
+     * could cause unintended side effects (like closing
+     * an accordion). This is why we call `stopPropagation`
+     * below.
      *
      * @example
      * <AButton>
      *   Open Modal
      *   <AModal isOpen={open}>
-     *      // Don't want clicks here to get to `AButton`
+     *      // Don't want clicks, Enter key presses, or Space key
+     *      // presses in here here to get to `AButton`
      *   </AModal>
      * </AButton>
      */
@@ -92,9 +109,7 @@ const AModal = forwardRef(
         <APageOverlay
           className={visibilityClass}
           onKeyDown={(e) => {
-            const key = e.key;
-            // Still allow the modal to be closed with escape key shortcut
-            if (key !== "Escape") {
+            if (shouldStopPropagation(e)) {
               e.stopPropagation();
             }
             const {onKeyDown: propsOnKeyDown} = rest;
@@ -133,9 +148,7 @@ const AModal = forwardRef(
         className={contentClassName}
         ref={handleMultipleRefs(_ref, ref)}
         onKeyDown={(e) => {
-          const key = e.key;
-          // Still allow the modal to be closed with escape key shortcut
-          if (key !== "Escape") {
+          if (shouldStopPropagation(e)) {
             e.stopPropagation();
           }
           const {onKeyDown: propsOnKeyDown} = rest;
