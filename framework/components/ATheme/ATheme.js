@@ -10,6 +10,8 @@ const DEFAULT_THEME = "default";
 const DUSK_THEME = "dusk";
 const SUPPORTED_THEMES = [DEFAULT_THEME, DUSK_THEME];
 
+const DEFAULT_INITIAL_THEME = DEFAULT_THEME;
+
 function isSupportedTheme(theme) {
   return SUPPORTED_THEMES.includes(theme);
 }
@@ -26,13 +28,13 @@ const ATheme = forwardRef(
     },
     ref
   ) => {
-    const [currentTheme, setCurrentTheme] = useState(DEFAULT_THEME);
+    const [currentTheme, setCurrentTheme] = useState(DEFAULT_INITIAL_THEME);
 
     const getInitialClientTheme = useCallback(() => {
       // take initial theme from 'defaultTheme' prop or fallback to DEFAULT_THEME
       let initialTheme = isSupportedTheme(defaultTheme)
         ? defaultTheme
-        : DEFAULT_THEME;
+        : DEFAULT_INITIAL_THEME;
       // supported theme in 'theme' prop overrides 'defaultTheme'
       if (isSupportedTheme(theme)) {
         initialTheme = theme;
