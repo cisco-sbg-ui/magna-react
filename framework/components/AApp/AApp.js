@@ -68,7 +68,7 @@ AApp.propTypes = {
    */
   defaultTheme: PropTypes.oneOf(["default", "dusk"]),
   /**
-   * Sets the current theme. Changes to this prop are reflected as a current theme. Takes precedence over defaultTheme. Do not use "theme" and "persist" props at the same time. Providing a "theme" prop indicates that the theme is managed from outside.
+   * Sets the current theme. Changes to this prop are reflected as a current theme. Takes precedence over defaultTheme. Do not use "theme" and "persist" props at the same time. Providing a "theme" prop indicates that the theme is managed from outside and it will not be persisted.
    */
   theme: PropTypes.oneOf(["default", "dusk"])
 };

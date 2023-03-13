@@ -30,7 +30,7 @@ const ATheme = forwardRef(
   ) => {
     if (persist && theme) {
       console.warn(
-        `Do not use "theme" and "persist" props at the same time in "ATheme". Providing a "theme" prop indicates that the theme is managed from outside.`
+        'Do not use "theme" and "persist" props at the same time in "ATheme". Providing a "theme" prop indicates that the theme is managed from outside and it will not be persisted.'
       );
     }
 
@@ -38,17 +38,17 @@ const ATheme = forwardRef(
 
     // eagerly returns the highest priority setting
     const getInitialClientTheme = useCallback(() => {
-      // persist is enabled and localStorage available
+      // supported theme in 'theme' prop overrides 'defaultTheme' and ignores 'persist' flag
+      if (isSupportedTheme(theme)) {
+        return theme;
+      }
+      // when persist is enabled and localStorage available
       if (persist && typeof localStorage !== "undefined") {
-        // supported persisted theme overrides both 'defaultTheme' and 'theme' props
+        // supported persisted theme overrides 'defaultTheme' prop
         const persistedTheme = localStorage.getItem(LS_KEY);
         if (isSupportedTheme(persistedTheme)) {
           return persistedTheme;
         }
-      }
-      // supported theme in 'theme' prop overrides 'defaultTheme'
-      if (isSupportedTheme(theme)) {
-        return theme;
       }
       // supported theme in 'defaultTheme'
       if (isSupportedTheme(defaultTheme)) {
@@ -71,12 +71,13 @@ const ATheme = forwardRef(
       }
     }, [theme]);
 
-    // persist currentTheme on change when persist is enabled
+    // persist currentTheme on change
     useIsomorphicLayoutEffect(() => {
-      if (persist) {
+      // when "persist" is enabled, localStorage is supported, and "theme" is not managed from outside
+      if (persist && typeof localStorage !== "undefined" && !theme) {
         localStorage?.setItem(LS_KEY, currentTheme);
       }
-    }, [currentTheme, persist]);
+    }, [currentTheme, persist, theme]);
 
     const isDark = currentTheme === DUSK_THEME;
     const isLight = currentTheme !== DUSK_THEME;
@@ -120,7 +121,7 @@ ATheme.propTypes = {
    */
   defaultTheme: PropTypes.oneOf(SUPPORTED_THEMES),
   /**
-   * Sets the current theme. Changes to this prop are reflected as a current theme. Takes precedence over defaultTheme. Do not use "theme" and "persist" props at the same time. Providing a "theme" prop indicates that the theme is managed from outside.
+   * Sets the current theme. Changes to this prop are reflected as a current theme. Takes precedence over defaultTheme. Do not use "theme" and "persist" props at the same time. Providing a "theme" prop indicates that the theme is managed from outside and it will not be persisted.
    */
   theme: PropTypes.oneOf(SUPPORTED_THEMES)
 };
