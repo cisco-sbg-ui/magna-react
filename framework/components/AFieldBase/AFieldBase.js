@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useRef, useState} from "react";
+import React, {forwardRef} from "react";
 
 import AHint from "../AHint";
 import AIcon from "../AIcon";
-import ATooltip from "../ATooltip";
+import ATriggerTooltip from "../ATriggerTooltip";
+import {ATooltipPropTypes} from "../ATooltip";
 import "./AFieldBase.scss";
 
 const AFieldBase = forwardRef(
@@ -11,7 +12,9 @@ const AFieldBase = forwardRef(
     {
       children,
       className: propsClassName,
+      error,
       hint,
+      hintUsesValidationState = true,
       label,
       labelFor,
       labelId,
@@ -20,13 +23,11 @@ const AFieldBase = forwardRef(
       infoTooltip,
       infoTooltipProps = {},
       validationState = "default",
+      hideHintOnError = true,
       ...rest
     },
     ref
   ) => {
-    const infoIconRef = useRef(),
-      [infoTooltipOpen, setInfoTooltipOpen] = useState(false);
-
     let className = "a-field-base";
 
     if (validationState !== "default") {
@@ -35,6 +36,36 @@ const AFieldBase = forwardRef(
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
+    }
+
+    let hintElement;
+    if (hint && error && !hideHintOnError) {
+      hintElement = (
+        <>
+          <AHint className="a-field-base__hint">{hint}</AHint>
+          <AHint
+            className="a-field-base__hint"
+            validationState={validationState}
+          >
+            {error}
+          </AHint>
+        </>
+      );
+    } else if (error) {
+      hintElement = (
+        <AHint className="a-field-base__hint" validationState={validationState}>
+          {error}
+        </AHint>
+      );
+    } else if (hint) {
+      hintElement = (
+        <AHint
+          className="a-field-base__hint"
+          validationState={hintUsesValidationState && validationState}
+        >
+          {hint}
+        </AHint>
+      );
     }
 
     return (
@@ -52,47 +83,36 @@ const AFieldBase = forwardRef(
               <span className="a-field-base__label--required">*</span>
             )}
             {infoTooltip && (
-              <>
-                <AIcon
-                  ref={infoIconRef}
-                  onMouseEnter={() => setInfoTooltipOpen(true)}
-                  onMouseLeave={() => setInfoTooltipOpen(false)}
-                >
-                  information
-                </AIcon>
-                <ATooltip
-                  anchorRef={infoIconRef}
-                  id={`${labelId}-tooltip`}
-                  open={infoTooltipOpen}
-                  placement="top"
-                  pointer
-                  {...infoTooltipProps}
-                >
-                  {infoTooltip}
-                </ATooltip>
-              </>
+              <ATriggerTooltip
+                id={`${labelId}-tooltip`}
+                placement="top"
+                content={infoTooltip}
+                pointer
+                {...infoTooltipProps}
+              >
+                <AIcon>information</AIcon>
+              </ATriggerTooltip>
             )}
           </label>
         )}
         {children}
-        {hint && (
-          <AHint
-            className="a-field-base__hint"
-            validationState={validationState}
-          >
-            {hint}
-          </AHint>
-        )}
+        {hintElement}
       </div>
     );
   }
 );
+
+const {anchorRef, ...infoTooltipProps} = ATooltipPropTypes;
 
 AFieldBase.propTypes = {
   /**
    * Sets the hint content.
    */
   hint: PropTypes.node,
+  /**
+   * Style the hint with the validation state. Default: true.
+   */
+  hintUsesValidationState: PropTypes.bool,
   /**
    * Sets the label content.
    */
@@ -114,9 +134,9 @@ AFieldBase.propTypes = {
    */
   infoTooltip: PropTypes.string,
   /**
-   * Overrides props of `ATooltip` used to display `infoTooltip`
+   * Overrides props of `ATooltip` used to display `infoTooltip`. See `ATooltip.propTypes`.
    */
-  infoTooltipProps: PropTypes.instanceOf(ATooltip.propTypes),
+  infoTooltipProps: PropTypes.shape(infoTooltipProps),
   /**
    * Handles the label's `click` event.
    */

@@ -1,47 +1,55 @@
 import {useEffect} from "react";
-
-const TABBABLE_KEYS = {
-  Tab: "Tab",
-  Shift: "Shift"
-};
+import {isBackwardTab, isForwardTab} from "../../utils/helpers";
 
 function createTrap(walker) {
   return function trap(e) {
-    const key = e.key;
-    if (!TABBABLE_KEYS[key]) {
+    const isTabbingBack = isBackwardTab(e);
+    const isTabbingForward = isForwardTab(e);
+
+    if (!isTabbingBack && !isTabbingForward) {
       return;
     }
+
     e.preventDefault();
-    let nextFocusableNode;
 
-    // Focus should go to the previous element
-    if (e.shiftKey && key === TABBABLE_KEYS.Tab) {
-      nextFocusableNode = walker.previousNode();
-    } else if (key === TABBABLE_KEYS.Tab) {
-      nextFocusableNode = walker.nextNode();
-    }
+    let nextNode = isTabbingForward ? walker.nextNode() : walker.previousNode();
 
-    // todo - add roving behavior
-    // @see https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/#keyboard-interaction-7
-    if (nextFocusableNode) {
-      nextFocusableNode.focus({focusVisible: true});
+    if (!nextNode) {
+      // The user is at the end of the tree, so send focus
+      // to the first child of parent node.
+      walker.parentNode();
+      walker.firstChild();
+      walker.currentNode.focus({focusVisible: true});
+    } else if (nextNode === walker.root) {
+      // The user is at the top of the tree, so send focus
+      // to the last child of parent node.
+      walker.lastChild();
+      walker.currentNode.focus({focusVisible: true});
+    } else {
+      // The user is tabbing within the parent node.
+      nextNode.focus({focusVisible: true});
     }
   };
 }
 
-function acceptNode(node) {
-  return node.tabIndex < 0 ? NodeFilter.FILTER_SKIP : NodeFilter.FILTER_ACCEPT;
-}
-
 const useFocusTrap = ({rootRef, isEnabled = true}) => {
   useEffect(() => {
-    if (!isEnabled) {
+    if (!isEnabled || !rootRef.current) {
       return;
     }
     const treeWalker = document.createTreeWalker(
       rootRef.current,
       NodeFilter.SHOW_ELEMENT,
-      {acceptNode}
+      {
+        acceptNode: (node) => {
+          if (node === rootRef.current) {
+            return NodeFilter.FILTER_ACCEPT;
+          }
+          return node.tabIndex < 0
+            ? NodeFilter.FILTER_SKIP
+            : NodeFilter.FILTER_ACCEPT;
+        }
+      }
     );
     const firstFocusableNode = treeWalker.nextNode();
     if (firstFocusableNode) {

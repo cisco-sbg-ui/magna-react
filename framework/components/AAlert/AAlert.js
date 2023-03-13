@@ -13,6 +13,7 @@ const AAlert = forwardRef(
       dismissable = true,
       level = "info",
       onClose,
+      fitContentWidth = false,
       ...rest
     },
     ref
@@ -49,6 +50,10 @@ const AAlert = forwardRef(
       className += ` ${propsClassName}`;
     }
 
+    if (fitContentWidth) {
+      className += ` a-alert--fit-content-width`;
+    }
+
     return (
       <div {...rest} role="alert" ref={ref} className={className}>
         <AIcon className="a-alert__icon a-alert__icon--level" size={19.5}>
@@ -83,7 +88,11 @@ AAlert.propTypes = {
   /**
    * A callback for handling the close event.
    */
-  onClose: PropTypes.func
+  onClose: PropTypes.func,
+  /**
+   * Unset default width: 100% on the alert.
+   */
+  fitContentWidth: PropTypes.bool
 };
 
 AAlert.displayName = "AAlert";

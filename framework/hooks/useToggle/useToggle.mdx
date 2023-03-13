@@ -1,0 +1,46 @@
+---
+name: useToggle
+route: /hooks/use-toggle
+components: useToggle
+---
+
+# useToggle
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import { useToggle } from "@cisco-sbg-ui/magna-react";
+```
+
+## Description
+
+`useToggle` handles state for `isOpen` and provides `open`, `close`, and `toggle` convenience functions
+
+### Parameters
+
+- `openDelay`: Delay before `isOpen` gets set to true
+- `closeDelay`: Delay before `isOpen` gets set to false
+
+## Usage
+
+<Playground
+  code={`() => {
+  const iconRef = useRef(null);
+  const {isOpen, open, close} = useToggle();
+
+return (
+
+<>
+  By default the openDelay is 400ms
+  <br />
+  <br />
+  <AIcon ref={iconRef} onMouseEnter={open} onMouseLeave={close}>
+    information
+  </AIcon>
+  <ATooltip anchorRef={iconRef} open={isOpen} pointer>
+    Tooltip
+  </ATooltip>
+</>
+); } `} />

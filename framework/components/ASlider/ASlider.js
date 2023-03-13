@@ -284,8 +284,10 @@ const ASlider = forwardRef(
         ref={combinedRef}
         className={className}
         label={label}
-        hint={error || hint}
-        validationState={workingValidationState}>
+        error={error}
+        hint={hint}
+        validationState={workingValidationState}
+      >
         <div className="a-slider__control">
           <div className="a-slider__track">
             {thumb1Position !== null && (
@@ -294,20 +296,23 @@ const ASlider = forwardRef(
                 style={{
                   left: 0,
                   width: Math.min(thumb1Position, thumb2Position) + "%"
-                }}></div>
+                }}
+              ></div>
             )}
             <div
               className="a-slider__selection"
               style={{
                 left: Math.min(thumb1Position || 0, thumb2Position) + "%",
                 width: Math.abs((thumb1Position || 0) - thumb2Position) + "%"
-              }}></div>
+              }}
+            ></div>
             <div
               className="a-slider__track--high"
               style={{
                 left: Math.max(thumb1Position || 0, thumb2Position) + "%",
                 right: 0
-              }}></div>
+              }}
+            ></div>
           </div>
           <div className="a-slider__tick">
             {ticks &&
@@ -393,7 +398,8 @@ const ASlider = forwardRef(
                     handleChange(100, thumb2Position);
                     return;
                   }
-                }}></div>
+                }}
+              ></div>
             )}
             <div
               className="a-slider__handle a-slider__handle--max"
@@ -469,7 +475,8 @@ const ASlider = forwardRef(
                   handleChange(thumb1Position, 100);
                   return;
                 }
-              }}></div>
+              }}
+            ></div>
           </div>
         </div>
       </AFieldBase>

@@ -154,7 +154,8 @@ const ATextarea = forwardRef(
       ref: combinedRef,
       className: "a-textarea",
       focused: isFocused,
-      hint: error || hint,
+      error,
+      hint,
       label,
       labelFor: `a-textarea__field_${textareaId}`,
       disabled,
@@ -298,7 +299,13 @@ ATextarea.propTypes = {
   /**
    * Sets the textarea value.
    */
-  value: PropTypes.string
+  value: PropTypes.string,
+  /**
+   * By default the hint hides on error and becomes an AAlert if no
+   * error message is specified. Disable to show both hint and error.
+   * Default: false
+   */
+  hideHintOnError: PropTypes.bool
 };
 
 ATextarea.displayName = "ATextarea";

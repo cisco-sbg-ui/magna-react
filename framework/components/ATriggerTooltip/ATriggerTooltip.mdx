@@ -1,0 +1,148 @@
+---
+name: TriggerTooltips**
+route: /components/triggertooltip
+components: ATriggerTooltip
+---
+
+# Trigger Tooltips
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {ATriggerTooltip} from "@cisco-sbg-ui/magna-react";
+```
+
+It is necessary for `ATriggerTooltip` to be a descendant of `AApp` for mounting.
+
+Children of `ATriggerTooltip` must be able to accept a ref.
+
+## Usage
+
+By default the openDelay is 400ms
+
+<Playground
+  code={`() => {
+return (
+
+<>
+<span style={{verticalAlign: "super", margin: "0 5px 0 0"}}>
+  Trigger by hover
+</span>
+
+  <ATriggerTooltip
+    id="tooltip_usage_1"
+    placement="right"
+    content="Tooltip text">
+     <AIcon>
+    information</AIcon>
+  </ATooltip>
+
+<br />
+<br />
+
+<span style={{verticalAlign: "super", margin: "0 5px 0 0"}}>
+  Trigger by click
+</span>
+
+  <ATriggerTooltip
+    id="tooltip_usage_2"
+    placement="right"
+    content="Tooltip text"
+    openDelay={0}
+    trigger="click">
+     <AIcon>
+    information</AIcon>
+  </ATooltip>
+</>
+); } `} />
+
+## Anchor to element other than child
+
+<Playground
+  code={`() => {
+    const iconRef = useRef()
+return (
+
+<>
+<AIcon ref={iconRef}>information</AIcon>
+
+<br />
+<br />
+<br />
+<ATriggerTooltip placement="top" anchorRef={iconRef} content="Tooltip text">
+  <AButton>I will open the tooltip on the info icon!</AButton>
+</ATriggerTooltip>
+
+</>
+); } `} />
+
+## Anchor and Trigger, multiple tooltips
+
+To avoid nested wrapping of tooltips, combining `triggerRef` and `anchorRef` allows for multiple tooltips with different triggers.
+
+<Playground
+  code={`() => {
+    const iconRef = useRef();
+    const buttonRef = useRef();
+return (
+
+<>
+<AIcon ref={iconRef}>information</AIcon>
+
+<br />
+<br />
+<br />
+<AButton ref={buttonRef}>I am the trigger</AButton>
+<ATriggerTooltip
+  placement="top"
+  anchorRef={iconRef}
+  triggerRef={buttonRef}
+  content="I appear on HOVER"
+/>
+<ATriggerTooltip
+  placement="right"
+  trigger="click"
+  anchorRef={iconRef}
+  triggerRef={buttonRef}
+  openDelay={0}
+  content="I appear on CLICK"
+/>
+
+</>
+); } `} />
+
+## Disable Tooltip
+
+<Playground
+  code={`() => {
+    const [disabled, setDisabled] = useState(false)
+return (
+
+<>
+<AButton onClick={() => {
+  setDisabled(!disabled)
+}}>{disabled ? "Enable tooltip" : "Disable tooltip"}</AButton>
+<br />
+<br />
+<br />
+<span style={{verticalAlign: "super", margin: "0 5px 0 0"}}>{"Tooltip is "}{disabled?"disabled":"enabled"}</span>
+<ATriggerTooltip disabled={disabled} placement="top" content="Contionally enabled tooltip">
+  <AIcon>information</AIcon>
+</ATriggerTooltip>
+
+</>
+); } `} />
+
+## TriggerTooltip Props
+
+The `ATriggerTooltip` component inherits passed props.
+
+<Props of="ATriggerTooltip" />
+
+## Accessibility Notes
+
+By default, `ATooltip` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [tooltip](https://www.w3.org/TR/wai-aria/#tooltip).
+
+For better accessibility: add an `id` to the tooltip and set the `aria-describedby` attribute on the anchor to the new `id`.

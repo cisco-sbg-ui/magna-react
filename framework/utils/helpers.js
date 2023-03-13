@@ -268,3 +268,15 @@ export const kebabify = (str) => {
     })
     .join("");
 };
+
+export const isBackwardTab = (e) => {
+  const key = e.key;
+  const isTabbingBack = e.shiftKey && key === "Tab";
+  return isTabbingBack;
+};
+
+export const isForwardTab = (e) => {
+  const key = e.key;
+  const isTabbingForward = !isBackwardTab(e) && key === "Tab";
+  return isTabbingForward;
+};
