@@ -39,6 +39,8 @@ const ATheme = forwardRef(
     // eagerly returns the highest priority setting
     const getInitialClientTheme = useCallback(() => {
       // supported theme in 'theme' prop overrides 'defaultTheme' and ignores 'persist' flag
+      // (this being the first case also works around a race condition between the useEffect initializing the currentTheme
+      // and the useEffect syncing the currentTheme with theme prop by both having the same outcome)
       if (isSupportedTheme(theme)) {
         return theme;
       }
