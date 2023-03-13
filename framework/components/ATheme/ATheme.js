@@ -1,41 +1,57 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useState} from "react";
+import React, {forwardRef, useState, useCallback} from "react";
 
 import {useIsomorphicLayoutEffect} from "../../utils/hooks";
 import AThemeContext from "./AThemeContext";
 
 const LS_KEY = "persist-magna-react-theme";
 
+const DEFAULT_THEME = "default";
+const DUSK_THEME = "dusk";
+const SUPPORTED_THEMES = [DEFAULT_THEME, DUSK_THEME];
+
+function isSupportedTheme(theme) {
+  return SUPPORTED_THEMES.includes(theme);
+}
+
 const ATheme = forwardRef(
   (
     {children, className: propsClassName, defaultTheme, persist, ...rest},
     ref
   ) => {
-    const [currentTheme, setCurrentTheme] = useState("dusk");
-    const isDark = currentTheme === "dusk";
-    const isLight = currentTheme !== "dusk";
+    const [currentTheme, setCurrentTheme] = useState(DEFAULT_THEME);
 
-    useIsomorphicLayoutEffect(() => {
-      let initialTheme = "default";
-      if (persist) {
-        if (Object.prototype.hasOwnProperty.call(localStorage, LS_KEY)) {
-          initialTheme =
-            localStorage.getItem(LS_KEY) === "dusk" ? "dusk" : "default";
-        } else if (["default", "dusk"].includes(defaultTheme)) {
-          initialTheme = defaultTheme;
-        } else if (
-          window.matchMedia &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches
-        ) {
-          initialTheme = "dusk";
+    const getInitialClientTheme = useCallback(() => {
+      // take initial theme from defaultTheme prop or fallback to DEFAULT_THEME
+      let initialTheme = isSupportedTheme(defaultTheme)
+        ? defaultTheme
+        : DEFAULT_THEME;
+      // when persist is enabled and available
+      if (persist && typeof localStorage !== "undefined") {
+        const persistedTheme = localStorage.getItem(LS_KEY);
+        // supported persisted theme overrides initialTheme
+        if (isSupportedTheme(persistedTheme)) {
+          initialTheme = persistedTheme;
         }
-      } else if (defaultTheme === "dusk") {
-        initialTheme = "dusk";
       }
+      return initialTheme;
+    }, [persist, defaultTheme]);
 
-      setCurrentTheme(initialTheme);
-      // listen for defaultTheme prop change
-    }, [defaultTheme]);
+    // set initial theme based on client settings (AAutoTheme can override this further)
+    useIsomorphicLayoutEffect(() => {
+      setCurrentTheme(getInitialClientTheme());
+      // run just once
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+    // persist currentTheme on change when persist is enabled
+    useIsomorphicLayoutEffect(() => {
+      if (persist) {
+        localStorage?.setItem(LS_KEY, currentTheme);
+      }
+    }, [currentTheme, persist]);
+
+    const isDark = currentTheme === DUSK_THEME;
+    const isLight = currentTheme !== DUSK_THEME;
 
     const themeContext = {
       persist,
@@ -43,15 +59,14 @@ const ATheme = forwardRef(
       isDark,
       isLight,
       setCurrentTheme: (theme) => {
-        const newTheme = theme === "dusk" ? theme : "default";
-        if (persist) {
-          localStorage?.setItem(LS_KEY, newTheme);
+        if (isSupportedTheme(theme)) {
+          setCurrentTheme(theme);
         }
-        setCurrentTheme(newTheme);
       }
     };
 
-    let className = currentTheme === "dusk" ? "theme--dusk" : "theme--default";
+    let className =
+      currentTheme === DUSK_THEME ? "theme--dusk" : "theme--default";
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
@@ -69,13 +84,13 @@ const ATheme = forwardRef(
 
 ATheme.propTypes = {
   /**
-   * Sets the default theme.
+   * Toggles whether the theme is loaded from local storage on mount, and persisted to local storage on theme change.
    */
-  defaultTheme: PropTypes.oneOf(["default", "dusk"]),
+  persist: PropTypes.bool,
   /**
-   * Toggles whether the theme is persisted in local storage.
+   * Sets the default theme on mount. Changes to this prop are not reflected as a current theme.
    */
-  persist: PropTypes.bool
+  defaultTheme: PropTypes.oneOf(["default", "dusk"])
 };
 
 ATheme.displayName = "ATheme";
