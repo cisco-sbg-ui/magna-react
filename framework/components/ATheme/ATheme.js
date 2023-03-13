@@ -28,6 +28,12 @@ const ATheme = forwardRef(
     },
     ref
   ) => {
+    if (persist && theme) {
+      console.warn(
+        `Do not use "theme" and "persist" props at the same time in "ATheme". Providing a "theme" prop indicates that the theme is managed from outside.`
+      );
+    }
+
     const [currentTheme, setCurrentTheme] = useState(DEFAULT_INITIAL_THEME);
 
     // eagerly returns the highest priority setting
@@ -114,7 +120,7 @@ ATheme.propTypes = {
    */
   defaultTheme: PropTypes.oneOf(SUPPORTED_THEMES),
   /**
-   * Sets the current theme. Changes to this prop are reflected as a current theme. Takes precedence over defaultTheme.
+   * Sets the current theme. Changes to this prop are reflected as a current theme. Takes precedence over defaultTheme. Do not use "theme" and "persist" props at the same time. Providing a "theme" prop indicates that the theme is managed from outside.
    */
   theme: PropTypes.oneOf(SUPPORTED_THEMES)
 };
