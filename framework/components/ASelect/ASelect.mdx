@@ -73,7 +73,6 @@ The `ASelect` component inherits passed props.
         placeholder="Pick a Food Group"
         onSelected={(item) => setSelectedItem(item)}
         hint={\`Selected Item: \${JSON.stringify(selectedItem)}\`}
-        medium
       />
     </div>
   );
@@ -94,6 +93,26 @@ The `ASelect` component inherits passed props.
           placeholder='Choose a Lucky Number'
           maxHeight='300px'
           label="Numbers"
+          items={items}
+          onSelected={(item) => setSelectedItem(item)}
+          hint={\`Your lucky number: \${JSON.stringify(selectedItem) || ''}\`}
+        />
+        <ADivider/>
+        <ASelect
+          medium
+          placeholder='Choose a Lucky Number'
+          maxHeight='300px'
+          label="Medium"
+          items={items}
+          onSelected={(item) => setSelectedItem(item)}
+          hint={\`Your lucky number: \${JSON.stringify(selectedItem) || ''}\`}
+        />
+        <ADivider/>
+        <ASelect
+          large
+          placeholder='Choose a Lucky Number'
+          maxHeight='300px'
+          label="Large"
           items={items}
           onSelected={(item) => setSelectedItem(item)}
           hint={\`Your lucky number: \${JSON.stringify(selectedItem) || ''}\`}

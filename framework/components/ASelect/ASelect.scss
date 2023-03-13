@@ -42,13 +42,26 @@ $select-padding: 6px;
     align-self: stretch;
     display: flex;
     align-items: center;
-    padding-left: 6px;
   }
 
   &__chevron {
     cursor: pointer;
-    padding: 0 7px;
-    align-self: stretch;
+    padding: 0;
+    align-self: center;
+  }
+
+  > .a-input-base__surface {
+    > .a-input-base__prepend,
+    > .a-input-base__control,
+    > .a-input-base__append {
+      margin: 0 8px;
+      &:first-child {
+        margin-left: 12px;
+      }
+      &:last-child {
+        margin-right: 12px;
+      }
+    }
   }
 
   &.a-input-base--readonly {
@@ -62,7 +75,7 @@ $select-padding: 6px;
 .a-list-item.a-select__menu-item {
   min-height: $select-height;
   line-height: $line-height--lg;
-  padding: 2px 22px 0 0;
+  padding: 4px 30px 4px 6px;
   text-indent: $select-padding;
   vertical-align: top;
 
@@ -85,7 +98,7 @@ $select-padding: 6px;
     border-width: 0 rem(0.125) rem(0.125) 0;
     transform: rotate(45deg);
     top: $select-padding;
-    right: 8px;
+    right: 16px;
   }
 
   &--selected {
