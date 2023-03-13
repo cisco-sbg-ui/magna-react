@@ -30,24 +30,26 @@ const ATheme = forwardRef(
   ) => {
     const [currentTheme, setCurrentTheme] = useState(DEFAULT_INITIAL_THEME);
 
+    // eagerly returns the highest priority setting
     const getInitialClientTheme = useCallback(() => {
-      // take initial theme from 'defaultTheme' prop or fallback to DEFAULT_THEME
-      let initialTheme = isSupportedTheme(defaultTheme)
-        ? defaultTheme
-        : DEFAULT_INITIAL_THEME;
-      // supported theme in 'theme' prop overrides 'defaultTheme'
-      if (isSupportedTheme(theme)) {
-        initialTheme = theme;
-      }
-      // when persist is enabled and available
+      // persist is enabled and localStorage available
       if (persist && typeof localStorage !== "undefined") {
-        const persistedTheme = localStorage.getItem(LS_KEY);
         // supported persisted theme overrides both 'defaultTheme' and 'theme' props
+        const persistedTheme = localStorage.getItem(LS_KEY);
         if (isSupportedTheme(persistedTheme)) {
-          initialTheme = persistedTheme;
+          return persistedTheme;
         }
       }
-      return initialTheme;
+      // supported theme in 'theme' prop overrides 'defaultTheme'
+      if (isSupportedTheme(theme)) {
+        return theme;
+      }
+      // supported theme in 'defaultTheme'
+      if (isSupportedTheme(defaultTheme)) {
+        return defaultTheme;
+      }
+      // fallback
+      return DEFAULT_INITIAL_THEME;
     }, [persist, theme, defaultTheme]);
 
     // set initial theme based on client settings (AAutoTheme can override this further)
