@@ -16,32 +16,50 @@ function isSupportedTheme(theme) {
 
 const ATheme = forwardRef(
   (
-    {children, className: propsClassName, defaultTheme, persist, ...rest},
+    {
+      children,
+      className: propsClassName,
+      persist,
+      theme,
+      defaultTheme,
+      ...rest
+    },
     ref
   ) => {
     const [currentTheme, setCurrentTheme] = useState(DEFAULT_THEME);
 
     const getInitialClientTheme = useCallback(() => {
-      // take initial theme from defaultTheme prop or fallback to DEFAULT_THEME
+      // take initial theme from 'defaultTheme' prop or fallback to DEFAULT_THEME
       let initialTheme = isSupportedTheme(defaultTheme)
         ? defaultTheme
         : DEFAULT_THEME;
+      // supported theme in 'theme' prop overrides 'defaultTheme'
+      if (isSupportedTheme(theme)) {
+        initialTheme = theme;
+      }
       // when persist is enabled and available
       if (persist && typeof localStorage !== "undefined") {
         const persistedTheme = localStorage.getItem(LS_KEY);
-        // supported persisted theme overrides initialTheme
+        // supported persisted theme overrides both 'defaultTheme' and 'theme' props
         if (isSupportedTheme(persistedTheme)) {
           initialTheme = persistedTheme;
         }
       }
       return initialTheme;
-    }, [persist, defaultTheme]);
+    }, [persist, theme, defaultTheme]);
 
     // set initial theme based on client settings (AAutoTheme can override this further)
     useIsomorphicLayoutEffect(() => {
       setCurrentTheme(getInitialClientTheme());
       // run just once
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+    // reflect theme prop changes to currentTheme
+    useIsomorphicLayoutEffect(() => {
+      if (isSupportedTheme(theme)) {
+        setCurrentTheme(theme);
+      }
+    }, [theme]);
 
     // persist currentTheme on change when persist is enabled
     useIsomorphicLayoutEffect(() => {
@@ -90,7 +108,11 @@ ATheme.propTypes = {
   /**
    * Sets the default theme on mount. Changes to this prop are not reflected as a current theme.
    */
-  defaultTheme: PropTypes.oneOf(["default", "dusk"])
+  defaultTheme: PropTypes.oneOf(SUPPORTED_THEMES),
+  /**
+   * Sets the current theme. Changes to this prop are reflected as a current theme. Takes precedence over defaultTheme.
+   */
+  theme: PropTypes.oneOf(SUPPORTED_THEMES)
 };
 
 ATheme.displayName = "ATheme";

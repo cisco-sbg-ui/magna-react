@@ -11,6 +11,7 @@ const AApp = forwardRef(
       animations = true,
       children,
       className: propsClassName,
+      theme,
       defaultTheme,
       persistTheme = false,
       scrollbars = true,
@@ -40,7 +41,9 @@ const AApp = forwardRef(
         component={ATheme}
         wrapClassName="a-app--wrap"
         persist={persistTheme}
-        defaultTheme={defaultTheme}>
+        theme={theme}
+        defaultTheme={defaultTheme}
+      >
         {children}
       </AMount>
     );
@@ -53,17 +56,21 @@ AApp.propTypes = {
    */
   animations: PropTypes.bool,
   /**
-   * Sets the default theme.
+   * Toggles styled scrollbars.
    */
-  defaultTheme: PropTypes.oneOf(["default", "dusk"]),
+  scrollbars: PropTypes.bool,
   /**
-   * Toggles whether the theme is persisted in local storage.
+   * Toggles whether the theme is loaded from local storage on mount, and persisted to local storage on theme change.
    */
   persistTheme: PropTypes.bool,
   /**
-   * Toggles styled scrollbars.
+   * Sets the default theme on mount. Changes to this prop are not reflected as a current theme.
    */
-  scrollbars: PropTypes.bool
+  defaultTheme: PropTypes.oneOf(["default", "dusk"]),
+  /**
+   * Sets the current theme. Changes to this prop are reflected as a current theme. Takes precedence over defaultTheme.
+   */
+  theme: PropTypes.oneOf(["default", "dusk"])
 };
 
 AApp.displayName = "AApp";
