@@ -10,7 +10,6 @@ pages/
 public/
 scripts/
 styles/
-svg/
 
 .editorconfig
 .eslintrc.json
