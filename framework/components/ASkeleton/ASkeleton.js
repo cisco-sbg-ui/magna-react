@@ -15,7 +15,7 @@ const ASkeleton = forwardRef(
       nested,
       header,
       horizontal,
-      animated,
+      animated = true,
       hidePanelBackdrop = false,
       ...rest
     },
