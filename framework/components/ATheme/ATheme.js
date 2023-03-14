@@ -4,8 +4,6 @@ import React, {forwardRef, useState, useCallback} from "react";
 import {useIsomorphicLayoutEffect} from "../../utils/hooks";
 import AThemeContext from "./AThemeContext";
 
-const LS_KEY = "persist-magna-react-theme";
-
 const DEFAULT_THEME = "default";
 const DUSK_THEME = "dusk";
 const SUPPORTED_THEMES = [DEFAULT_THEME, DUSK_THEME];
@@ -14,6 +12,22 @@ const DEFAULT_INITIAL_THEME = DEFAULT_THEME;
 
 function isSupportedTheme(theme) {
   return SUPPORTED_THEMES.includes(theme);
+}
+
+class ThemeStorage {
+  LS_KEY = "persist-magna-react-theme";
+
+  static isSupported() {
+    return typeof localStorage !== "undefined";
+  }
+
+  static loadTheme() {
+    return localStorage.getItem(this.LS_KEY);
+  }
+
+  static saveTheme(theme) {
+    localStorage.setItem(this.LS_KEY, theme);
+  }
 }
 
 const ATheme = forwardRef(
@@ -36,21 +50,23 @@ const ATheme = forwardRef(
 
     const [currentTheme, setCurrentTheme] = useState(DEFAULT_INITIAL_THEME);
 
+    const shouldUseThemeStorage =
+      ThemeStorage.isSupported() &&
+      persist && // persist is enabled
+      !theme; // theme not managed from outside via theme prop
+
     // eagerly returns the highest priority setting
     const getInitialClientTheme = useCallback(() => {
-      // supported theme in 'theme' prop overrides 'defaultTheme' and ignores 'persist' flag
-      // (this being the first case also works around a race condition between the useEffect initializing the currentTheme
-      // and the useEffect syncing the currentTheme with theme prop by both having the same outcome)
-      if (isSupportedTheme(theme)) {
-        return theme;
-      }
-      // when persist is enabled and localStorage available
-      if (persist && typeof localStorage !== "undefined") {
-        // supported persisted theme overrides 'defaultTheme' prop
-        const persistedTheme = localStorage.getItem(LS_KEY);
+      // when persistence should be used
+      if (shouldUseThemeStorage) {
+        const persistedTheme = ThemeStorage.loadTheme();
         if (isSupportedTheme(persistedTheme)) {
           return persistedTheme;
         }
+      }
+      // supported theme in 'theme'
+      if (isSupportedTheme(theme)) {
+        return theme;
       }
       // supported theme in 'defaultTheme'
       if (isSupportedTheme(defaultTheme)) {
@@ -58,9 +74,9 @@ const ATheme = forwardRef(
       }
       // fallback
       return DEFAULT_INITIAL_THEME;
-    }, [persist, theme, defaultTheme]);
+    }, [shouldUseThemeStorage, theme, defaultTheme]);
 
-    // set initial theme based on client settings (AAutoTheme can override this further)
+    // set initial theme based on client settings
     useIsomorphicLayoutEffect(() => {
       setCurrentTheme(getInitialClientTheme());
       // run just once
@@ -75,11 +91,10 @@ const ATheme = forwardRef(
 
     // persist currentTheme on change
     useIsomorphicLayoutEffect(() => {
-      // when "persist" is enabled, localStorage is supported, and "theme" is not managed from outside
-      if (persist && typeof localStorage !== "undefined" && !theme) {
-        localStorage?.setItem(LS_KEY, currentTheme);
+      if (shouldUseThemeStorage) {
+        ThemeStorage.saveTheme(currentTheme);
       }
-    }, [currentTheme, persist, theme]);
+    }, [currentTheme]);
 
     const isDark = currentTheme === DUSK_THEME;
     const isLight = currentTheme !== DUSK_THEME;
