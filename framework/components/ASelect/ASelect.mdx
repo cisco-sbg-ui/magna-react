@@ -50,36 +50,7 @@ The `ASelect` component inherits passed props.
 
 <Props of="ASelect" />
 
-## Medium Variant
 
-<Playground
-  code={`() => {
-  const items = [
-    {id: 1, name: "Bread, Cereal, Rice, and Pasta"},
-    {id: 2, name: "Vegetables"},
-    {id: 3, name: "Fruit", selected: true},
-    {id: 4, name: "Milk, Yogurt, and Cheese"},
-    {id: 5, name: "Meat, Poultry, Fish", disabled: true},
-    {id: 6, name: "Fats, Oils, and Sweets"}
-  ];
-  const [selectedItem, setSelectedItem] = useState(items[2]);
-  return (
-    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
-      <ASelect
-        label="Food Group"
-        items={items}
-        itemText="name"
-        itemValue="id"
-        placeholder="Pick a Food Group"
-        onSelected={(item) => setSelectedItem(item)}
-        hint={\`Selected Item: \${JSON.stringify(selectedItem)}\`}
-        medium
-      />
-    </div>
-  );
-}
-`}
-/>
 
 ## Many Dropdown Options
 
@@ -102,6 +73,59 @@ The `ASelect` component inherits passed props.
     )
   }`}
 />
+
+## Size Variants
+
+<Playground
+  code={`() => {
+  const items = [
+    {id: 1, name: "Bread, Cereal, Rice, and Pasta"},
+    {id: 2, name: "Vegetables"},
+    {id: 3, name: "Fruit", selected: true},
+    {id: 4, name: "Milk, Yogurt, and Cheese"},
+    {id: 5, name: "Meat, Poultry, Fish", disabled: true},
+    {id: 6, name: "Fats, Oils, and Sweets"}
+  ];
+  const [selectedItem, setSelectedItem] = useState(items[2]);
+  return (
+    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+      <ASelect
+        label="Food Group"
+        items={items}
+        itemText="name"
+        itemValue="id"
+        placeholder="Pick a Food Group"
+        onSelected={(item) => setSelectedItem(item)}
+        hint={\`Default component size\`}
+      />
+      <ADivider/>
+      <ASelect
+        medium
+        label="Food Group"
+        items={items}
+        itemText="name"
+        itemValue="id"
+        placeholder="Pick a Food Group"
+        onSelected={(item) => setSelectedItem(item)}
+        hint={\`Medium component size\`}
+      />
+      <ADivider/>
+      <ASelect
+        large
+        label="Food Group"
+        items={items}
+        itemText="name"
+        itemValue="id"
+        placeholder="Pick a Food Group"
+        onSelected={(item) => setSelectedItem(item)}
+        hint={\`Large component size\`}
+      />
+    </div>
+  );
+}
+`}
+/>
+
 
 ## Validation
 
