@@ -26,7 +26,7 @@ import "./AModal.scss";
  */
 const shouldStopPropagation = (e) => {
   const key = e.key;
-  key !== "Escape" && !isForwardTab(e) && isBackwardTab(e);
+  return key !== "Escape" && !isForwardTab(e) && !isBackwardTab(e);
 };
 
 const AModal = forwardRef(
