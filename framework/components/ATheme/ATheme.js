@@ -48,7 +48,7 @@ const ATheme = forwardRef(
       );
     }
 
-    const [currentTheme, setCurrentTheme] = useState(DEFAULT_INITIAL_THEME);
+    const [currentTheme, setCurrentTheme] = useState(); // undefined indicates not initialized
 
     const shouldUseThemeStorage =
       ThemeStorage.isSupported() &&
@@ -84,9 +84,14 @@ const ATheme = forwardRef(
 
     // reflect theme prop changes to currentTheme
     useIsomorphicLayoutEffect(() => {
-      if (isSupportedTheme(theme)) {
-        setCurrentTheme(theme);
-      }
+      setCurrentTheme((previousTheme) => {
+        // change the current theme only if it has been initialized already
+        // to avoid a race condition with the theme initialization effect
+        const themeInitialized = typeof previousTheme !== "undefined";
+        return themeInitialized && isSupportedTheme(theme)
+          ? theme
+          : previousTheme;
+      });
     }, [theme]);
 
     // persist currentTheme on change
