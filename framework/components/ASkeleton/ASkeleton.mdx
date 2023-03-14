@@ -17,7 +17,18 @@ import {ASkeleton, ASkeletonHeader, ASkeletonText, ASkeletonBlock} from "@cisco-
 ## Simple
 
 <Playground
-  code={`<ASkeleton header animated>
+  code={`<ASkeleton header>
+      <ASkeletonText />
+      <ASkeletonBlock />
+      <ASkeletonBlock />
+      <ASkeletonBlock height={200} />
+    </ASkeleton>`}
+/>
+
+## Not animated
+
+<Playground
+  code={`<ASkeleton header animated={false}>
       <ASkeletonText />
       <ASkeletonBlock />
       <ASkeletonBlock />
