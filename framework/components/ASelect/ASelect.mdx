@@ -50,7 +50,31 @@ The `ASelect` component inherits passed props.
 
 <Props of="ASelect" />
 
-## Medium Variant
+
+
+## Many Dropdown Options
+
+<Playground
+  code={`() => {
+    const items = useMemo(() => Array.from({length: 100}, (_, i) => (i + 1).toString()), []);
+    const [selectedItem, setSelectedItem] = useState();
+    // Add the maxHeight prop in order to prevent options from overflowing
+    return (
+      <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+        <ASelect
+          placeholder='Choose a Lucky Number'
+          maxHeight='300px'
+          label="Numbers"
+          items={items}
+          onSelected={(item) => setSelectedItem(item)}
+          hint={\`Your lucky number: \${JSON.stringify(selectedItem) || ''}\`}
+        />
+      </div>
+    )
+  }`}
+/>
+
+## Size Variants
 
 <Playground
   code={`() => {
@@ -72,7 +96,29 @@ The `ASelect` component inherits passed props.
         itemValue="id"
         placeholder="Pick a Food Group"
         onSelected={(item) => setSelectedItem(item)}
-        hint={\`Selected Item: \${JSON.stringify(selectedItem)}\`}
+        hint={\`Default component size\`}
+      />
+      <ADivider/>
+      <ASelect
+        medium
+        label="Food Group"
+        items={items}
+        itemText="name"
+        itemValue="id"
+        placeholder="Pick a Food Group"
+        onSelected={(item) => setSelectedItem(item)}
+        hint={\`Medium component size\`}
+      />
+      <ADivider/>
+      <ASelect
+        large
+        label="Food Group"
+        items={items}
+        itemText="name"
+        itemValue="id"
+        placeholder="Pick a Food Group"
+        onSelected={(item) => setSelectedItem(item)}
+        hint={\`Large component size\`}
       />
     </div>
   );
@@ -80,47 +126,6 @@ The `ASelect` component inherits passed props.
 `}
 />
 
-## Many Dropdown Options
-
-<Playground
-  code={`() => {
-    const items = useMemo(() => Array.from({length: 100}, (_, i) => (i + 1).toString()), []);
-    const [selectedItem, setSelectedItem] = useState();
-    // Add the maxHeight prop in order to prevent options from overflowing
-    return (
-      <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
-        <ASelect
-          placeholder='Choose a Lucky Number'
-          maxHeight='300px'
-          label="Numbers"
-          items={items}
-          onSelected={(item) => setSelectedItem(item)}
-          hint={\`Your lucky number: \${JSON.stringify(selectedItem) || ''}\`}
-        />
-        <ADivider/>
-        <ASelect
-          medium
-          placeholder='Choose a Lucky Number'
-          maxHeight='300px'
-          label="Medium"
-          items={items}
-          onSelected={(item) => setSelectedItem(item)}
-          hint={\`Your lucky number: \${JSON.stringify(selectedItem) || ''}\`}
-        />
-        <ADivider/>
-        <ASelect
-          large
-          placeholder='Choose a Lucky Number'
-          maxHeight='300px'
-          label="Large"
-          items={items}
-          onSelected={(item) => setSelectedItem(item)}
-          hint={\`Your lucky number: \${JSON.stringify(selectedItem) || ''}\`}
-        />
-      </div>
-    )
-  }`}
-/>
 
 ## Validation
 
