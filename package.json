@@ -106,7 +106,7 @@
     "rimraf": "3.0.2",
     "sass": "1.54.9",
     "start-server-and-test": "1.14.0",
-    "webpack": "^5.72.1",
+    "webpack": "^5.76.0",
     "webpack-dev-server": "^4.11.1"
   },
   "lint-staged": {
