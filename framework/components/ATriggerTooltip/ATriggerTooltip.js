@@ -110,7 +110,7 @@ ATriggerTooltip.propTypes = {
   /** Delay in milliseconds before tooltip will close */
   closeDelay: PropTypes.number,
   /** Tooltip content */
-  content: PropTypes.string,
+  content: PropTypes.node,
   /** Disable the tooltip */
   disabled: PropTypes.bool
 };
