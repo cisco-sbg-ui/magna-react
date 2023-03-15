@@ -62,9 +62,10 @@ The drawer can slide-in from the left, right, or bottom of the page.
             slideIn='left'
             ref={leftDrawerContentRef}
             isOpen={isLeftOpen}
+            onClose={() => setIsLeftOpen(false)}
             data-test-drawer-left>
           <ADrawerContent>
-            <h3 id='left-drawer-title'>Left Drawer</h3> <ADivider /> <AButton onClick={() => setIsLeftOpen(false)} data-test-drawer-close-left>Close</AButton>
+            <h3 id='left-drawer-title' className="mt-1">Left Drawer</h3> <ADivider /> <AButton onClick={() => setIsLeftOpen(false)} data-test-drawer-close-left>Close</AButton>
           </ADrawerContent>
         </ADrawer>
 
@@ -75,9 +76,10 @@ The drawer can slide-in from the left, right, or bottom of the page.
             slideIn='right'
             ref={rightDrawerContentRef}
             isOpen={isRightOpen}
+            onClose={() => setIsRightOpen(false)}
             data-test-drawer-right>
           <ADrawerContent>
-            <h3 id='right-drawer-title' >Right Drawer</h3> <ADivider /> <AButton onClick={() => setIsRightOpen(false)} data-test-drawer-close-right>Close</AButton>
+            <h3 id='right-drawer-title' className="mt-1">Right Drawer </h3> <ADivider /> <AButton onClick={() => setIsRightOpen(false)} data-test-drawer-close-right>Close</AButton>
           </ADrawerContent>
         </ADrawer>
 
@@ -88,9 +90,10 @@ The drawer can slide-in from the left, right, or bottom of the page.
             slideIn='bottom'
             ref={bottomDrawerContentRef}
             isOpen={isBottomOpen}
+            onClose={() => setIsBottomOpen(false)}
             data-test-drawer-bottom>
           <ADrawerContent>
-            <h3 id='bottom-drawer-title' >Bottom Drawer</h3> <ADivider /> <AButton onClick={() => setIsBottomOpen(false)} data-test-drawer-close-bottom>Close</AButton>
+            <h3 id='bottom-drawer-title' className="mt-1">Bottom Drawer</h3> <ADivider /> <AButton onClick={() => setIsBottomOpen(false)} data-test-drawer-close-bottom>Close</AButton>
           </ADrawerContent>
         </ADrawer>
       </>

@@ -45,6 +45,13 @@
     }
   }
 
+  &--close-button {
+    float: right;
+    position: relative;
+    top: 14px;
+    right: 10px;
+  }
+
   /**
     * When the drawer should render over the entire
     * page
