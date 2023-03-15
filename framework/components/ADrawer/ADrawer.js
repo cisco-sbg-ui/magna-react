@@ -81,59 +81,44 @@ const ADrawer = forwardRef(
       style.slimHeight = slimHeight;
     }
 
-    if (!shouldRenderModal) {
-      return (
-        <DrawerPanelComponent
-          {...rest}
-          ref={ref}
-          className={className}
-          style={style}
+    let closeButton;
+    if (onClose) {
+      closeButton = (
+        <AButton
+          className={closeButtonClassName}
+          onClick={onClose}
+          icon
+          tertiaryAlt
+          {...closeBtnProps}
         >
-          {onClose && (
-            <AButton
-              className={closeButtonClassName}
-              onClick={onClose}
-              icon
-              tertiaryAlt
-              {...closeBtnProps}
-            >
-              {closeTitle ? (
-                <div className="pa-2">{closeTitle}</div>
-              ) : (
-                <AIcon>close</AIcon>
-              )}
-            </AButton>
+          {closeTitle ? (
+            <div className="pa-2">{closeTitle}</div>
+          ) : (
+            <AIcon>close</AIcon>
           )}
-          {children}
-        </DrawerPanelComponent>
+        </AButton>
       );
+    }
+
+    const drawerPanelComponent = (
+      <DrawerPanelComponent
+        {...rest}
+        ref={ref}
+        className={className}
+        style={style}
+      >
+        {closeButton}
+        {children}
+      </DrawerPanelComponent>
+    );
+
+    if (!shouldRenderModal) {
+      return drawerPanelComponent;
     }
 
     return (
       <AModal isOpen={isOpen} {...rest}>
-        <DrawerPanelComponent
-          {...rest}
-          ref={ref}
-          className={className}
-          style={style}
-        >
-          {onClose && (
-            <AButton
-              className={closeButtonClassName}
-              onClick={onClose}
-              icon
-              tertiaryAlt
-              {...closeBtnProps}
-            >
-              {closeTitle ? (
-                <div className="pa-2">{closeTitle}</div>
-              ) : (
-                <AIcon>close</AIcon>
-              )}
-            </AButton>
-          )}
-          {children}
-        </DrawerPanelComponent>
+        {drawerPanelComponent}
       </AModal>
     );
   }
