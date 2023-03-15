@@ -24,6 +24,7 @@ const ADrawer = forwardRef(
       slimWidth,
       onClose,
       closeTitle,
+      closeBtnProps,
       style: propsStyle,
       ...rest
     },
@@ -94,8 +95,13 @@ const ADrawer = forwardRef(
               onClick={onClose}
               icon
               tertiaryAlt
+              {...closeBtnProps}
             >
-              {closeTitle ? closeTitle : <AIcon>x</AIcon>}
+              {closeTitle ? (
+                <div className="pa-2">{closeTitle}</div>
+              ) : (
+                <AIcon>close</AIcon>
+              )}
             </AButton>
           )}
           {children}
@@ -117,8 +123,13 @@ const ADrawer = forwardRef(
               onClick={onClose}
               icon
               tertiaryAlt
+              {...closeBtnProps}
             >
-              {closeTitle ? closeTitle : <AIcon>x</AIcon>}
+              {closeTitle ? (
+                <div className="pa-2">{closeTitle}</div>
+              ) : (
+                <AIcon>close</AIcon>
+              )}
             </AButton>
           )}
           {children}
@@ -203,7 +214,14 @@ ADrawer.propTypes = {
   /**
    * Option for close button title instead of default icon
    */
-  closeTitle: PropTypes.string
+  closeTitle: PropTypes.string,
+  /**
+   * Any additional props for close button
+   */
+  closeBtnProps: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.arrayOf(PropTypes.object)
+  ])
 };
 
 ADrawer.displayName = "ADrawer";
