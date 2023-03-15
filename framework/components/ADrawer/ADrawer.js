@@ -2,6 +2,8 @@ import React, {forwardRef} from "react";
 import PropTypes from "prop-types";
 
 import AModal from "../AModal/AModal";
+import AButton from "../AButton/AButton";
+import AIcon from "../AIcon/AIcon";
 
 import "./ADrawer.scss";
 
@@ -20,6 +22,8 @@ const ADrawer = forwardRef(
       slim = false,
       slimHeight,
       slimWidth,
+      onClose,
+      closeTitle,
       style: propsStyle,
       ...rest
     },
@@ -32,6 +36,8 @@ const ADrawer = forwardRef(
     const orientation =
       slideIn === "bottom" || slideIn === "top" ? "horizontal" : "vertical";
     let className = `a-drawer a-drawer--${orientation} a-drawer--${position} a-drawer--${slideIn}`;
+    const closeButtonClassName = "a-drawer--close-button";
+
     const style = {...propsStyle};
 
     if (slim) {
@@ -82,6 +88,16 @@ const ADrawer = forwardRef(
           className={className}
           style={style}
         >
+          {onClose && (
+            <AButton
+              className={closeButtonClassName}
+              onClick={onClose}
+              icon
+              tertiaryAlt
+            >
+              {closeTitle ? closeTitle : <AIcon>x</AIcon>}
+            </AButton>
+          )}
           {children}
         </DrawerPanelComponent>
       );
@@ -95,6 +111,16 @@ const ADrawer = forwardRef(
           className={className}
           style={style}
         >
+          {onClose && (
+            <AButton
+              className={closeButtonClassName}
+              onClick={onClose}
+              icon
+              tertiaryAlt
+            >
+              {closeTitle ? closeTitle : <AIcon>x</AIcon>}
+            </AButton>
+          )}
           {children}
         </DrawerPanelComponent>
       </AModal>
@@ -168,7 +194,16 @@ ADrawer.propTypes = {
    * The width of the drawer when it is rendered as slim. If not specified,
    * it defaults to 50px.
    */
-  slimWidth: PropTypes.string
+  slimWidth: PropTypes.string,
+  /**
+   * Pass onClose handler for Drawer to handle onClose icon and action.
+   * Default: x Icon
+   */
+  onClose: PropTypes.func,
+  /**
+   * Option for close button title instead of default icon
+   */
+  closeTitle: PropTypes.string
 };
 
 ADrawer.displayName = "ADrawer";
