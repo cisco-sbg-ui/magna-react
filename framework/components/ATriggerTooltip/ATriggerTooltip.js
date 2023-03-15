@@ -74,7 +74,13 @@ const ATriggerTooltip = ({
   // If an anchorRef is provided, use it. Otherwise, attach to first child.
   const tooltipAnchorRef = anchorRef || {current: childrenRef.current[0]};
   const tooltipElement = (
-    <ATooltip anchorRef={tooltipAnchorRef} open={isOpen} pointer {...rest}>
+    <ATooltip
+      anchorRef={tooltipAnchorRef}
+      open={isOpen}
+      onClose={close}
+      pointer
+      {...rest}
+    >
       {content}
     </ATooltip>
   );
