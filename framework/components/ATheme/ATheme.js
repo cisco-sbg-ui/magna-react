@@ -1,39 +1,108 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useState} from "react";
+import React, {forwardRef, useState, useCallback} from "react";
 
 import {useIsomorphicLayoutEffect} from "../../utils/hooks";
 import AThemeContext from "./AThemeContext";
 
-const LS_KEY = "persist-magna-react-theme";
+const DEFAULT_THEME = "default";
+const DUSK_THEME = "dusk";
+const SUPPORTED_THEMES = [DEFAULT_THEME, DUSK_THEME];
+
+const DEFAULT_INITIAL_THEME = DEFAULT_THEME;
+
+function isSupportedTheme(theme) {
+  return SUPPORTED_THEMES.includes(theme);
+}
+
+class ThemeStorage {
+  static LS_KEY = "persist-magna-react-theme";
+
+  static isSupported() {
+    return typeof localStorage !== "undefined";
+  }
+
+  static loadTheme() {
+    return localStorage.getItem(ThemeStorage.LS_KEY);
+  }
+
+  static saveTheme(theme) {
+    localStorage.setItem(ThemeStorage.LS_KEY, theme);
+  }
+}
 
 const ATheme = forwardRef(
   (
-    {children, className: propsClassName, defaultTheme, persist, ...rest},
+    {
+      children,
+      className: propsClassName,
+      persist,
+      theme,
+      defaultTheme,
+      ...rest
+    },
     ref
   ) => {
-    const [currentTheme, setCurrentTheme] = useState("dusk");
-    const isDark = currentTheme === "dusk"
-    const isLight = currentTheme !== "dusk"
+    if (persist && theme) {
+      console.warn(
+        'Do not use "theme" and "persist" props at the same time in "ATheme". Providing a "theme" prop indicates that the theme is managed from outside and it will not be persisted.'
+      );
+    }
 
-    useIsomorphicLayoutEffect(() => {
-      let initialTheme = "default";
-      if (persist) {
-        if (Object.prototype.hasOwnProperty.call(localStorage, LS_KEY)) {
-          initialTheme = localStorage.getItem(LS_KEY) === "dusk" ? "dusk" : "default";
-        } else if (["default", "dusk"].includes(defaultTheme)) {
-          initialTheme = defaultTheme;
-        } else if (
-          window.matchMedia &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches
-        ) {
-          initialTheme = "dusk";
+    const [currentTheme, setCurrentTheme] = useState(); // undefined indicates not initialized
+
+    const shouldUseThemeStorage =
+      ThemeStorage.isSupported() &&
+      persist && // persist is enabled
+      !theme; // theme not managed from outside via theme prop
+
+    // eagerly returns the highest priority setting
+    const getInitialClientTheme = useCallback(() => {
+      // when persistence should be used
+      if (shouldUseThemeStorage) {
+        const persistedTheme = ThemeStorage.loadTheme();
+        if (isSupportedTheme(persistedTheme)) {
+          return persistedTheme;
         }
-      } else if (defaultTheme === "dusk") {
-        initialTheme = "dusk";
       }
+      // supported theme in 'theme'
+      if (isSupportedTheme(theme)) {
+        return theme;
+      }
+      // supported theme in 'defaultTheme'
+      if (isSupportedTheme(defaultTheme)) {
+        return defaultTheme;
+      }
+      // fallback
+      return DEFAULT_INITIAL_THEME;
+    }, [shouldUseThemeStorage, theme, defaultTheme]);
 
-      setCurrentTheme(initialTheme);
+    // set initial theme based on client settings
+    useIsomorphicLayoutEffect(() => {
+      setCurrentTheme(getInitialClientTheme());
+      // run just once
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+    // reflect theme prop changes to currentTheme
+    useIsomorphicLayoutEffect(() => {
+      setCurrentTheme((previousTheme) => {
+        // change the current theme only if it has been initialized already
+        // to avoid a race condition with the theme initialization effect
+        const themeInitialized = typeof previousTheme !== "undefined";
+        return themeInitialized && isSupportedTheme(theme)
+          ? theme
+          : previousTheme;
+      });
+    }, [theme]);
+
+    // persist currentTheme on change
+    useIsomorphicLayoutEffect(() => {
+      if (shouldUseThemeStorage) {
+        ThemeStorage.saveTheme(currentTheme);
+      }
+    }, [currentTheme]);
+
+    const isDark = currentTheme === DUSK_THEME;
+    const isLight = currentTheme !== DUSK_THEME;
 
     const themeContext = {
       persist,
@@ -41,15 +110,14 @@ const ATheme = forwardRef(
       isDark,
       isLight,
       setCurrentTheme: (theme) => {
-        const newTheme = theme === "dusk" ? theme : "default";
-        if (persist) {
-          localStorage?.setItem(LS_KEY, newTheme);
+        if (isSupportedTheme(theme)) {
+          setCurrentTheme(theme);
         }
-        setCurrentTheme(newTheme);
       }
     };
 
-    let className = currentTheme === "dusk" ? "theme--dusk" : "theme--default";
+    let className =
+      currentTheme === DUSK_THEME ? "theme--dusk" : "theme--default";
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
@@ -67,13 +135,17 @@ const ATheme = forwardRef(
 
 ATheme.propTypes = {
   /**
-   * Sets the default theme.
+   * Toggles whether the theme is loaded from local storage on mount, and persisted to local storage on theme change.
    */
-  defaultTheme: PropTypes.oneOf(["default", "dusk"]),
+  persist: PropTypes.bool,
   /**
-   * Toggles whether the theme is persisted in local storage.
+   * Sets the default theme on mount. Changes to this prop are not reflected as a current theme.
    */
-  persist: PropTypes.bool
+  defaultTheme: PropTypes.oneOf(SUPPORTED_THEMES),
+  /**
+   * Sets the current theme. Changes to this prop are reflected as a current theme. Takes precedence over defaultTheme. Do not use "theme" and "persist" props at the same time. Providing a "theme" prop indicates that the theme is managed from outside and it will not be persisted.
+   */
+  theme: PropTypes.oneOf(SUPPORTED_THEMES)
 };
 
 ATheme.displayName = "ATheme";
