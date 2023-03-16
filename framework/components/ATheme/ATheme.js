@@ -15,18 +15,18 @@ function isSupportedTheme(theme) {
 }
 
 class ThemeStorage {
-  LS_KEY = "persist-magna-react-theme";
+  static LS_KEY = "persist-magna-react-theme";
 
   static isSupported() {
     return typeof localStorage !== "undefined";
   }
 
   static loadTheme() {
-    return localStorage.getItem(this.LS_KEY);
+    return localStorage.getItem(ThemeStorage.LS_KEY);
   }
 
   static saveTheme(theme) {
-    localStorage.setItem(this.LS_KEY, theme);
+    localStorage.setItem(ThemeStorage.LS_KEY, theme);
   }
 }
 
