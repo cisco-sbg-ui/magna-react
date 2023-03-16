@@ -89,6 +89,10 @@ $cisco-loader-bar-top--index9: 48%;
       animation-name: animate9;
     }
   }
+  &--center {
+    display: block;
+    margin: 10px auto;
+  }
 }
 
 @keyframes animate1 {

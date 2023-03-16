@@ -29,9 +29,30 @@ import {
   <ADotLoader className="mx-auto" />
   <ADivider />
   <h3>Page Loader</h3>
-  <APageLoader size="small" className="d-block mx-auto" />
+  <APageLoader size="small" center />
 </div>
 `}
+/>
+
+## As a Wrapper
+
+<Playground
+  code={`()=> {
+      const [loading, setLoading] = useState(true)
+
+return (<div>
+
+<AButton onClick={() => {
+  setLoading(!loading)
+}}>{loading ? "Loading" : "Not loading"}</AButton>
+<br />
+<br />
+<br />
+  <APageLoader size="small" loading={loading} center>
+  <div>Render me after load</div>
+  </APageLoader>
+</div>)
+  }`}
 />
 
 ## Cisco Loader Props
