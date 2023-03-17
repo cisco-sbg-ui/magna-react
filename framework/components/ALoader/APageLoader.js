@@ -2,29 +2,41 @@ import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
 import "./APageLoader.scss";
+const baseClass = "a-page-loader";
 
 const APageLoader = forwardRef(
-  ({className: propsClassName, size, ...rest}, ref) => {
-    let className = "a-page-loader";
+  (
+    {className: propsClassName, size, center, children, loading, ...rest},
+    ref
+  ) => {
+    let className = baseClass;
 
     switch (size) {
       case "small": {
-        className += " a-page-loader--size-small";
+        className += ` ${baseClass}--size-small`;
         break;
       }
 
       case "large": {
-        className += " a-page-loader--size-large";
+        className += ` ${baseClass}--size-large`;
         break;
       }
 
       default: {
-        className += " a-page-loader--size-medium";
+        className += ` ${baseClass}--size-medium`;
       }
     }
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
+    }
+
+    if (center) {
+      className += ` ${baseClass}--center`;
+    }
+
+    if (children && !loading) {
+      return children;
     }
 
     return (
@@ -44,7 +56,16 @@ APageLoader.propTypes = {
   /**
    * Sets the size of the indicator.
    */
-  size: PropTypes.oneOf(["small", "medium", "large"])
+  size: PropTypes.oneOf(["small", "medium", "large"]),
+  /**
+   * When used with `children`, renders the loader when true, `children`
+   * when false.
+   */
+  loading: PropTypes.bool,
+  /**
+   * Center the loader with margin auto
+   */
+  center: PropTypes.bool
 };
 
 APageLoader.displayName = "APageLoader";
