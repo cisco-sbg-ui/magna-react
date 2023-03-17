@@ -450,7 +450,7 @@ In this example, the associated more details drawer that is opened is used to de
             position='absolute'
             slideIn='right'
             openWidth='200px'
-            onClose={() => setIsDrawerOpen(false)}
+            closeBtnOnClick={() => setIsDrawerOpen(false)}
             isOpen={isDrawerOpen}>
           <ADrawerContent>
             <p className='mt-0'>More details about the {drawerContent['firstCol']?.toLowerCase()}.</p>

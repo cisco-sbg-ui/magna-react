@@ -22,7 +22,7 @@ const ADrawer = forwardRef(
       slim = false,
       slimHeight,
       slimWidth,
-      onClose,
+      closeBtnOnClick,
       closeTitle,
       closeBtnProps,
       style: propsStyle,
@@ -82,11 +82,11 @@ const ADrawer = forwardRef(
     }
 
     let closeButton;
-    if (onClose) {
+    if (closeBtnOnClick) {
       closeButton = (
         <AButton
           className={closeButtonClassName}
-          onClick={onClose}
+          onClick={closeBtnOnClick}
           icon
           tertiaryAlt
           {...closeBtnProps}
@@ -195,7 +195,7 @@ ADrawer.propTypes = {
    * Pass onClose handler for Drawer to handle onClose icon and action.
    * Default: x Icon
    */
-  onClose: PropTypes.func,
+  closeBtnOnClick: PropTypes.func,
   /**
    * Option for close button title instead of default icon
    */
