@@ -367,6 +367,26 @@ return (
 `}
 />
 
+## `disabled` Button
+
+<Playground
+  code={`() => {
+  const buttonRef = useRef(null);
+  const [open, setOpen] = useState(false);
+  return (
+    <ATriggerTooltip content="foobar">
+     <AButton
+          secondary
+          small
+          >
+          Disabled Button
+        </AButton>
+        </ATriggerTooltip>
+  );
+}
+`}
+/>
+
 ## Accessibility Notes
 
 By default, `ATooltip` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [tooltip](https://www.w3.org/TR/wai-aria/#tooltip).

@@ -96,13 +96,13 @@ const AButton = forwardRef(
       }
     } else if (component) {
       TagName = component;
-      props.disabled = disabled;
       props.value = value;
       props.target = target;
+      props["aria-disable"] = disabled;
     } else {
-      props.disabled = disabled;
       props.type = type;
       props.value = value;
+      props["aria-disabled"] = disabled;
     }
 
     return <TagName {...props}>{children}</TagName>;
