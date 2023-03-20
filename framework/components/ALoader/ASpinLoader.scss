@@ -1,0 +1,220 @@
+@use "sass:math";
+
+@import "../../styles";
+
+$spin-loader-padding: 0;
+$spin-loader-margin: 10px 0;
+$spin-loader-small-diameter: 16px;
+$spin-loader-medium-diameter: 20px;
+$spin-loader-large-diameter: 24px;
+$spin-loader-small-thickness: 2px;
+$spin-loader-medium-thickness: 2px;
+$spin-loader-large-thickness: 3px;
+$spin-loader-small-font-size: 12px;
+$spin-loader-medium-font-size: 14px;
+$spin-loader-large-font-size: 16px;
+$spin-loader-animation-delay: 1.1s;
+
+$spinner: ".a-spin-loader__spinner";
+
+@include theme(a-spin-loader) using ($theme) {
+  color: map-deep-get($theme, "loader", "font-color");
+  &__spinner {
+    &:after {
+      @include loader-border(
+        $spin-loader-medium-thickness,
+        map-deep-get($theme, "loader", "main-color"),
+        transparent,
+        transparent,
+        transparent
+      );
+    }
+    &:before {
+      @include loader-border(
+        $spin-loader-medium-thickness,
+        map-deep-get($theme, "loader", "background-color"),
+        map-deep-get($theme, "loader", "background-color"),
+        map-deep-get($theme, "loader", "background-color"),
+        map-deep-get($theme, "loader", "background-color")
+      );
+    }
+  }
+  &--size-small #{$spinner} {
+    &:before {
+      @include loader-border(
+        $spin-loader-small-thickness,
+        map-deep-get($theme, "loader", "background-color"),
+        map-deep-get($theme, "loader", "background-color"),
+        map-deep-get($theme, "loader", "background-color"),
+        map-deep-get($theme, "loader", "background-color")
+      );
+    }
+    &:after {
+      @include loader-border(
+        $spin-loader-small-thickness,
+        map-deep-get($theme, "loader", "main-color"),
+        transparent,
+        transparent,
+        transparent
+      );
+    }
+  }
+  &--size-medium #{$spinner} {
+    &:before {
+      @include loader-border(
+        $spin-loader-medium-thickness,
+        map-deep-get($theme, "loader", "background-color"),
+        map-deep-get($theme, "loader", "background-color"),
+        map-deep-get($theme, "loader", "background-color"),
+        map-deep-get($theme, "loader", "background-color")
+      );
+    }
+    &:after {
+      @include loader-border(
+        $spin-loader-medium-thickness,
+        map-deep-get($theme, "loader", "main-color"),
+        transparent,
+        transparent,
+        transparent
+      );
+    }
+  }
+  &--size-large #{$spinner} {
+    &:before {
+      @include loader-border(
+        $spin-loader-large-thickness,
+        map-deep-get($theme, "loader", "background-color"),
+        map-deep-get($theme, "loader", "background-color"),
+        map-deep-get($theme, "loader", "background-color"),
+        map-deep-get($theme, "loader", "background-color")
+      );
+    }
+    &:after {
+      @include loader-border(
+        $spin-loader-large-thickness,
+        map-deep-get($theme, "loader", "main-color"),
+        transparent,
+        transparent,
+        transparent
+      );
+    }
+  }
+}
+
+.a-spin-loader {
+  display: inline-flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin: $spin-loader-margin;
+  padding: $spin-loader-padding;
+  font-size: $spin-loader-medium-font-size;
+  text-align: center;
+  overflow: hidden;
+  font-weight: 600;
+
+  &__container {
+    position: relative;
+  }
+
+  &__spinner {
+    &:after,
+    &:before {
+      position: absolute;
+      top: 0;
+      left: calc(50% - math.div($spin-loader-medium-diameter, 2));
+      border-radius: 50%;
+      content: " ";
+      @include loader-bounding-box(
+        $spin-loader-medium-diameter,
+        $spin-loader-medium-diameter
+      );
+    }
+    &:after {
+      animation: spin-loader-animation $spin-loader-animation-delay linear
+        infinite;
+    }
+  }
+
+  &--placement-right {
+    flex-direction: row;
+    #{$spinner} {
+      margin: 0 0 0 15px;
+    }
+  }
+
+  &--placement-left {
+    flex-direction: row;
+    #{$spinner} {
+      margin: 0 15px 0 0;
+    }
+  }
+
+  &--size-small {
+    font-size: $spin-loader-small-font-size;
+    #{$spinner} {
+      width: $spin-loader-small-diameter;
+      height: $spin-loader-small-diameter;
+      &:after,
+      &:before {
+        left: calc(50% - math.div($spin-loader-small-diameter, 2));
+        @include loader-bounding-box(
+          $spin-loader-small-diameter,
+          $spin-loader-small-diameter
+        );
+      }
+    }
+  }
+  &--size-medium {
+    font-size: $spin-loader-medium-font-size;
+    #{$spinner} {
+      width: $spin-loader-medium-diameter;
+      height: $spin-loader-medium-diameter;
+      &:after,
+      &:before {
+        left: calc(50% - math.div($spin-loader-medium-diameter, 2));
+        @include loader-bounding-box(
+          $spin-loader-medium-diameter,
+          $spin-loader-medium-diameter
+        );
+      }
+    }
+  }
+  &--size-large {
+    font-size: $spin-loader-large-font-size;
+    #{$spinner} {
+      width: $spin-loader-large-diameter;
+      height: $spin-loader-large-diameter;
+      &:after,
+      &:before {
+        left: calc(50% - math.div($spin-loader-large-diameter, 2));
+        @include loader-bounding-box(
+          $spin-loader-large-diameter,
+          $spin-loader-large-diameter
+        );
+      }
+    }
+  }
+
+  &--center {
+    display: block;
+    margin: 10px auto;
+  }
+}
+
+@-webkit-keyframes spin-loader-animation {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-loader-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
