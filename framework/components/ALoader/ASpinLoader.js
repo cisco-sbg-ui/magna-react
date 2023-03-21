@@ -73,11 +73,6 @@ ASpinLoader.propTypes = {
    */
   size: PropTypes.oneOf(["small", "medium", "large"]),
   /**
-   * When used with `children`, renders the loader when true, `children`
-   * when false.
-   */
-  loading: PropTypes.bool,
-  /**
    * Place children above or below spinner
    */
   childPlacement: PropTypes.oneOf(["top", "bottom", "left", "right"])
