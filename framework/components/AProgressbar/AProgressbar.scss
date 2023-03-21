@@ -104,7 +104,6 @@ $progressbar-transition: width 0.6s ease !default;
     }
     .a-progressbar__fill {
       position: absolute;
-      animation: 1s a-progress-bar-indeterminate linear infinite !important;
     }
   }
 
@@ -176,6 +175,11 @@ $progressbar-transition: width 0.6s ease !default;
   &--size-large {
     .a-progressbar__fill {
       animation: progressbar-stripes-large $progressbar-animation-timing;
+    }
+  }
+  &--indeterminate {
+    .a-progressbar__fill {
+      animation: 1s a-progress-bar-indeterminate linear infinite;
     }
   }
 }
