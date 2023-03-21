@@ -1,7 +1,11 @@
 @import "../../styles";
 
-$progressbar-height: 8px;
-$progressbar-bg-height: 16px;
+$progressbar-height-small: 4px;
+$progressbar-height-medium: 8px;
+$progressbar-height-large: 12px;
+$progressbar-bg-height-small: 10px;
+$progressbar-bg-height-medium: 16px;
+$progressbar-bg-height-large: 22px;
 $progressbar-margin: 20px 0;
 $progressbar-border-radius: 6px;
 $progressbar-fill-height: 100%;
@@ -37,8 +41,36 @@ $progressbar-transition: width 0.6s ease !default;
 
   &__bar {
     border-radius: $progressbar-border-radius;
-    height: $progressbar-height;
+    height: $progressbar-height-medium;
     width: 100%;
+  }
+
+  &--size-small {
+    .a-progressbar__bar {
+      height: $progressbar-height-small;
+    }
+    .a-progressbar__fill {
+      background-size: $progressbar-bg-height-small $progressbar-bg-height-small;
+    }
+  }
+
+  &--size-medium {
+    .a-progressbar__bar {
+      height: $progressbar-height-medium;
+    }
+    .a-progressbar__fill {
+      background-size: $progressbar-bg-height-medium
+        $progressbar-bg-height-medium;
+    }
+  }
+
+  &--size-large {
+    .a-progressbar__bar {
+      height: $progressbar-height-large;
+    }
+    .a-progressbar__fill {
+      background-size: $progressbar-bg-height-large $progressbar-bg-height-large;
+    }
   }
 
   &__fill {
@@ -59,7 +91,19 @@ $progressbar-transition: width 0.6s ease !default;
         transparent 75%,
         transparent
       );
-      background-size: $progressbar-bg-height $progressbar-bg-height;
+      // background-size: $progressbar-bg-height-medium
+      //   $progressbar-bg-height-medium;
+    }
+  }
+
+  &--indeterminate {
+    overflow: hidden;
+    .a-progressbar__bar {
+      position: relative;
+      overflow-x: clip;
+    }
+    .a-progressbar__fill {
+      position: absolute;
     }
   }
 
@@ -73,19 +117,69 @@ $progressbar-transition: width 0.6s ease !default;
     display: inline-block;
     margin-right: 5px;
   }
+
+  @keyframes a-progress-bar-indeterminate {
+    0% {
+      left: -100%;
+    }
+    25% {
+      left: -30%;
+    }
+    75% {
+      left: 80%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+
+  @keyframes progressbar-stripes-small {
+    from {
+      background-position: $progressbar-bg-height-small 0;
+    }
+    to {
+      background-position: 0 0;
+    }
+  }
+
+  @keyframes progressbar-stripes-medium {
+    from {
+      background-position: $progressbar-bg-height-medium 0;
+    }
+    to {
+      background-position: 0 0;
+    }
+  }
+
+  @keyframes progressbar-stripes-large {
+    from {
+      background-position: $progressbar-bg-height-large 0;
+    }
+    to {
+      background-position: 0 0;
+    }
+  }
 }
 
 .a-app--animated .a-progressbar {
-  &__fill {
-    animation: progressbar-stripes $progressbar-animation-timing;
+  &--size-small {
+    .a-progressbar__fill {
+      animation: progressbar-stripes-small $progressbar-animation-timing;
+    }
   }
-}
-
-@keyframes progressbar-stripes {
-  from {
-    background-position: $progressbar-bg-height 0;
+  &--size-medium {
+    .a-progressbar__fill {
+      animation: progressbar-stripes-medium $progressbar-animation-timing;
+    }
   }
-  to {
-    background-position: 0 0;
+  &--size-large {
+    .a-progressbar__fill {
+      animation: progressbar-stripes-large $progressbar-animation-timing;
+    }
+  }
+  &--indeterminate {
+    .a-progressbar__fill {
+      animation: 1s a-progress-bar-indeterminate linear infinite;
+    }
   }
 }
