@@ -38,35 +38,41 @@ import {
 `}
 />
 
-## Spin Variants
+## Generic Variants
 
 <Playground
   code={`<div>
    <h3>Small</h3>
-  <ASpinLoader size="small">Small loader</ASpinLoader>
+    <AGenericLoader component="spinner" size="small">Small loader</AGenericLoader><br />
+    <AGenericLoader component="progressbar" size="small" indicatorProps={{indeterminate: true}}>Small progress bar</AGenericLoader><br />
+    <AGenericLoader component="dot" size="small">Small dot</AGenericLoader>
   <ADivider />
      <h3>Medium</h3>
-  <ASpinLoader size="medium">Medium loader</ASpinLoader>
+    <AGenericLoader component="spinner" size="medium">Medium loader</AGenericLoader><br />
+    <AGenericLoader component="progressbar" size="medium" indicatorProps={{indeterminate: true}}>Medium progress bar</AGenericLoader><br />
+    <AGenericLoader component="dot" size="medium">Medium dot</AGenericLoader>
   <ADivider />
    <h3>Large</h3>
-  <ASpinLoader size="large">Large loader</ASpinLoader>
+  <AGenericLoader component="spinner" size="large">Large loader</AGenericLoader><br />
+    <AGenericLoader component="progressbar" size="large" indicatorProps={{indeterminate: true}}>Large progress bar</AGenericLoader><br />
+    <AGenericLoader component="dot" size="large">Large dot</AGenericLoader>
   <ADivider />
   <h3>Children top</h3>
-  <ASpinLoader childPlacement="top">Top of spinner</ASpinLoader>
+  <AGenericLoader childPlacement="top">Top of spinner</AGenericLoader>
   <ADivider />
   <h3>Children right</h3>
-  <ASpinLoader childPlacement="right">Right of spinner</ASpinLoader>
+  <AGenericLoader childPlacement="right">Right of spinner</AGenericLoader>
   <ADivider />
     <h3>Children bottom</h3>
-  <ASpinLoader childPlacement="bottom">Bottom of spinner</ASpinLoader>
+  <AGenericLoader childPlacement="bottom">Bottom of spinner</AGenericLoader>
   <ADivider />
     <h3>Children left</h3>
-  <ASpinLoader childPlacement="left">Left of spinner</ASpinLoader>
+  <AGenericLoader childPlacement="left">Left of spinner</AGenericLoader>
 </div>
 `}
 />
 
-## As a Wrapper
+## APageLoader as a Wrapper
 
 <Playground
   code={`()=> {
@@ -110,6 +116,12 @@ The `APageLoader` component inherits passed props.
 The `ASpinLoader` component inherits passed props.
 
 <Props of="ASpinLoader" />
+
+## Generic Loader Props
+
+The `AGenericLoader` component inherits passed props.
+
+<Props of="AGenericLoader" />
 
 ## Accessibility Notes
 

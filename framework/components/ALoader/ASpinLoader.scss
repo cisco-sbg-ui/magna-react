@@ -3,16 +3,12 @@
 @import "../../styles";
 
 $spin-loader-padding: 0;
-$spin-loader-margin: 10px 0;
 $spin-loader-small-diameter: 16px;
 $spin-loader-medium-diameter: 20px;
 $spin-loader-large-diameter: 24px;
 $spin-loader-small-thickness: 2px;
 $spin-loader-medium-thickness: 2px;
 $spin-loader-large-thickness: 3px;
-$spin-loader-small-font-size: 12px;
-$spin-loader-medium-font-size: 14px;
-$spin-loader-large-font-size: 16px;
 $spin-loader-animation-delay: 1.1s;
 
 $spinner: ".a-spin-loader__spinner";
@@ -39,7 +35,7 @@ $spinner: ".a-spin-loader__spinner";
       );
     }
   }
-  &--size-small #{$spinner} {
+  &--size-small .a-spin-loader__spinner {
     &:before {
       @include loader-border(
         $spin-loader-small-thickness,
@@ -59,7 +55,7 @@ $spinner: ".a-spin-loader__spinner";
       );
     }
   }
-  &--size-medium #{$spinner} {
+  &--size-medium .a-spin-loader__spinner {
     &:before {
       @include loader-border(
         $spin-loader-medium-thickness,
@@ -79,7 +75,7 @@ $spinner: ".a-spin-loader__spinner";
       );
     }
   }
-  &--size-large #{$spinner} {
+  &--size-large .a-spin-loader__spinner {
     &:before {
       @include loader-border(
         $spin-loader-large-thickness,
@@ -105,23 +101,17 @@ $spinner: ".a-spin-loader__spinner";
   display: inline-flex;
   flex-direction: column;
   box-sizing: border-box;
-  margin: $spin-loader-margin;
+  position: relative;
   padding: $spin-loader-padding;
-  font-size: $spin-loader-medium-font-size;
   text-align: center;
   overflow: hidden;
   font-weight: 600;
-
-  &__container {
-    position: relative;
-  }
 
   &__spinner {
     &:after,
     &:before {
       position: absolute;
       top: 0;
-      left: calc(50% - math.div($spin-loader-medium-diameter, 2));
       border-radius: 50%;
       content: " ";
       @include loader-bounding-box(
@@ -137,21 +127,20 @@ $spinner: ".a-spin-loader__spinner";
 
   &--placement-right {
     flex-direction: row;
-    #{$spinner} {
+    .a-spin-loader__spinner {
       margin: 0 0 0 15px;
     }
   }
 
   &--placement-left {
     flex-direction: row;
-    #{$spinner} {
+    .a-spin-loader__spinner {
       margin: 0 15px 0 0;
     }
   }
 
   &--size-small {
-    font-size: $spin-loader-small-font-size;
-    #{$spinner} {
+    .a-spin-loader__spinner {
       width: $spin-loader-small-diameter;
       height: $spin-loader-small-diameter;
       &:after,
@@ -165,8 +154,7 @@ $spinner: ".a-spin-loader__spinner";
     }
   }
   &--size-medium {
-    font-size: $spin-loader-medium-font-size;
-    #{$spinner} {
+    .a-spin-loader__spinner {
       width: $spin-loader-medium-diameter;
       height: $spin-loader-medium-diameter;
       &:after,
@@ -180,8 +168,7 @@ $spinner: ".a-spin-loader__spinner";
     }
   }
   &--size-large {
-    font-size: $spin-loader-large-font-size;
-    #{$spinner} {
+    .a-spin-loader__spinner {
       width: $spin-loader-large-diameter;
       height: $spin-loader-large-diameter;
       &:after,
