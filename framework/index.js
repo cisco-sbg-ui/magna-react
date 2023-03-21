@@ -39,7 +39,12 @@ import {
   AListItemContent,
   AListItemAction
 } from "./components/AList";
-import {ACiscoLoader, ADotLoader, APageLoader} from "./components/ALoader";
+import {
+  ACiscoLoader,
+  ADotLoader,
+  APageLoader,
+  ASpinLoader
+} from "./components/ALoader";
 import AMenuBase from "./components/AMenuBase";
 import AMenu from "./components/AMenu";
 import AModal from "./components/AModal";
@@ -166,6 +171,7 @@ export {
   ASkeletonText,
   ASlider,
   ASpacer,
+  ASpinLoader,
   AStepper,
   AStep,
   AStepTitle,

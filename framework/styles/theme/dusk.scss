@@ -237,8 +237,9 @@ $atomic-dusk: (
     "opacity--disabled": 1
   ),
   "loader": (
-    "background-color": map-get($mds-neutral, "neutral-14"),
-    "main-color": map-get($mds-blue, "blue-5")
+    "background-color": map-get($mds-neutral, "neutral-12"),
+    "main-color": map-get($mds-blue, "blue-5"),
+    "font-color": map-get($mds-neutral, "neutral-12")
   ),
   "menu": (
     "box-shadow": 0px 2px 5px rgba(0, 0, 0, 0.05),

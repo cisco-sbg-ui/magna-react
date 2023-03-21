@@ -238,7 +238,8 @@ $atomic-default: (
   ),
   "loader": (
     "background-color": map-get($mds-neutral, "neutral-4"),
-    "main-color": map-get($mds-blue, "blue-7")
+    "main-color": map-get($mds-blue, "blue-7"),
+    "font-color": map-get($mds-light-theme, "default-text")
   ),
   "menu": (
     "box-shadow": 0px 2px 5px rgba(0, 0, 0, 0.05),
