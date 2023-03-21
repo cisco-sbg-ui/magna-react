@@ -3,26 +3,51 @@ import React, {forwardRef} from "react";
 
 import "./AProgressbar.scss";
 
+const baseClass = "a-progressbar";
+
 const AProgressbar = forwardRef(
   (
     {
       className: propsClassName,
+      size,
       disabled,
       displayText,
       percentage = 0,
       striped,
+      indeterminate,
       ...rest
     },
     ref
   ) => {
-    let className = "a-progressbar";
+    let className = baseClass;
+
+    switch (size) {
+      case "small": {
+        className += ` ${baseClass}--size-small`;
+        break;
+      }
+
+      case "large": {
+        className += ` ${baseClass}--size-large`;
+        break;
+      }
+
+      default: {
+        className += ` ${baseClass}--size-medium`;
+      }
+    }
 
     if (disabled) {
-      className += " a-progressbar--disabled";
+      className += ` ${baseClass}--disabled`;
     }
 
     if (striped) {
-      className += " a-progressbar--striped";
+      className += ` ${baseClass}--striped`;
+    }
+
+    if (indeterminate) {
+      percentage = 40;
+      className += ` ${baseClass}--indeterminate`;
     }
 
     if (propsClassName) {
@@ -39,14 +64,16 @@ const AProgressbar = forwardRef(
         aria-valuemin="0"
         aria-valuemax="100"
         aria-valuenow={fixedPercentage}
-        role="progressbar">
+        role="progressbar"
+      >
         {displayText && (
-          <span className="a-progressbar__label">{fixedPercentage}%</span>
+          <span className={`${baseClass}__label`}>{fixedPercentage}%</span>
         )}
-        <div className="a-progressbar__bar">
+        <div className={`${baseClass}__bar`}>
           <div
-            className="a-progressbar__fill"
-            style={{width: `${fixedPercentage}%`}}></div>
+            className={`${baseClass}__fill`}
+            style={{width: `${fixedPercentage}%`}}
+          ></div>
         </div>
       </div>
     );
@@ -54,6 +81,10 @@ const AProgressbar = forwardRef(
 );
 
 AProgressbar.propTypes = {
+  /**
+   * Sets the size of the indicator.
+   */
+  size: PropTypes.oneOf(["small", "medium", "large"]),
   /**
    * Toggles the `disabled` state.
    */
@@ -69,7 +100,11 @@ AProgressbar.propTypes = {
   /**
    * Toggles the striped display variant.
    */
-  striped: PropTypes.bool
+  striped: PropTypes.bool,
+  /**
+   * Adds animation for an indeterminate progress
+   */
+  indeterminate: PropTypes.bool
 };
 
 AProgressbar.displayName = "AProgressbar";
