@@ -9,6 +9,7 @@ const AProgressbar = forwardRef(
   (
     {
       className: propsClassName,
+      animationDuration,
       size,
       disabled,
       displayText,
@@ -72,7 +73,10 @@ const AProgressbar = forwardRef(
         <div className={`${baseClass}__bar`}>
           <div
             className={`${baseClass}__fill`}
-            style={{width: `${fixedPercentage}%`}}
+            style={{
+              width: `${fixedPercentage}%`,
+              animationDuration
+            }}
           ></div>
         </div>
       </div>
@@ -81,6 +85,11 @@ const AProgressbar = forwardRef(
 );
 
 AProgressbar.propTypes = {
+  /**
+   * Determines the duration of the progress bar (if animated).
+   * @example 0.3s
+   */
+  animationDuration: PropTypes.string,
   /**
    * Sets the size of the indicator.
    */

@@ -97,6 +97,16 @@ The `AProgressbar` component inherits passed props.
 `}
 />
 
+## Custom Animation Duration
+
+<Playground
+  code={`<div>
+  <AProgressbar animationDuration="2s" indeterminate />
+  <AProgressbar animationDuration="2s" striped percentage={40} />
+</div>
+`}
+/>
+
 ## Accessibility Notes
 
 By default, `AProgressbar` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [progressbar](https://www.w3.org/TR/wai-aria/#progressbar).
