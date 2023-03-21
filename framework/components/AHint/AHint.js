@@ -20,7 +20,7 @@ const AHint = forwardRef(
     let content = <span>{children}</span>;
     if (hasValidationState) {
       content = (
-        <AAlert level={validationState} dismissable={false} fitContentWidth>
+        <AAlert level={validationState} dismissable={false}>
           {children}
         </AAlert>
       );
