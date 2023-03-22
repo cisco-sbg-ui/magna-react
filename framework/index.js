@@ -90,7 +90,7 @@ import {
 } from "./components/ATimeline";
 import {ATheme, useATheme} from "./components/ATheme";
 import AToast from "./components/AToast";
-import ATooltip from "./components/ATooltip";
+import {ATooltip} from "./components/ATooltip";
 import ATree from "./components/ATree";
 import ATriggerTooltip from "./components/ATriggerTooltip";
 import {useABreakpoint} from "./components/ABreakpoint";
