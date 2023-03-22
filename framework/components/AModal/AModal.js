@@ -14,6 +14,7 @@ import {
 } from "../../utils/helpers";
 
 import "./AModal.scss";
+import {useDelayUnmount} from "../../utils/hooks";
 
 /**
  * Reasons for not stopping propagation for the following keys:
@@ -54,23 +55,30 @@ const AModal = forwardRef(
     const hasPortalNode = appendTo || appRef.current;
     const isOpen = !!hasPortalNode && propsIsOpen;
     const _ref = useRef();
+
+    const shouldRender = useDelayUnmount(isOpen, 300);
+
     useFocusTrap({
       rootRef: _ref,
-      isEnabled: trapFocus && isOpen
+      isEnabled: trapFocus && shouldRender
     });
+
     useEffect(() => {
-      isOpen && lockScroll ? preventBodyScroll() : allowBodyScroll();
+      shouldRender && lockScroll ? preventBodyScroll() : allowBodyScroll();
       return allowBodyScroll;
-    }, [lockScroll, isOpen]);
+    }, [lockScroll, shouldRender]);
+
+    const animationClassName = isOpen
+      ? "animation-fade-in"
+      : "animation-fade-out";
+
     let visibilityClass = "";
-    if (!isOpen) {
-      visibilityClass = "a-modal--hidden";
+
+    if (!shouldRender) {
+      visibilityClass += "a-modal--hidden";
     }
 
     let contentClassName = `a-modal-container ${visibilityClass}`;
-    if (propsClassName) {
-      contentClassName += ` ${propsClassName}`;
-    }
 
     if (small) {
       contentClassName += " a-modal-container--small";
@@ -80,6 +88,10 @@ const AModal = forwardRef(
       contentClassName += " a-modal-container--large";
     } else if (xlarge) {
       contentClassName += " a-modal-container--xlarge";
+    }
+
+    if (propsClassName) {
+      contentClassName += ` ${propsClassName}`;
     }
 
     if (!appendTo && !appRef.current) {
@@ -107,7 +119,8 @@ const AModal = forwardRef(
     if (withOverlay) {
       return ReactDOM.createPortal(
         <APageOverlay
-          className={visibilityClass}
+          //style={isOpen ? mountedStyle : unmountedStyle}
+          className={`${visibilityClass} ${animationClassName}`}
           onKeyDown={(e) => {
             if (shouldStopPropagation(e)) {
               e.stopPropagation();
@@ -134,40 +147,43 @@ const AModal = forwardRef(
             className={contentClassName}
             {...rest}
           >
-            {children}
+            {shouldRender && children}
           </Component>
         </APageOverlay>,
         appendTo || appRef.current
       );
     }
 
-    return ReactDOM.createPortal(
-      <Component
-        role="dialog"
-        aria-modal="true"
-        className={contentClassName}
-        ref={handleMultipleRefs(_ref, ref)}
-        onKeyDown={(e) => {
-          if (shouldStopPropagation(e)) {
+    return (
+      shouldRender &&
+      ReactDOM.createPortal(
+        <Component
+          role="dialog"
+          aria-modal="true"
+          className={`${contentClassName} ${animationClassName}`}
+          ref={handleMultipleRefs(_ref, ref)}
+          onKeyDown={(e) => {
+            if (shouldStopPropagation(e)) {
+              e.stopPropagation();
+            }
+            const {onKeyDown: propsOnKeyDown} = rest;
+            if (typeof propsOnKeyDown === "function") {
+              propsOnKeyDown(e);
+            }
+          }}
+          onClick={(e) => {
             e.stopPropagation();
-          }
-          const {onKeyDown: propsOnKeyDown} = rest;
-          if (typeof propsOnKeyDown === "function") {
-            propsOnKeyDown(e);
-          }
-        }}
-        onClick={(e) => {
-          e.stopPropagation();
-          const {onClick: propsOnClick} = rest;
-          if (typeof propsOnClick === "function") {
-            propsOnClick(e);
-          }
-        }}
-        {...rest}
-      >
-        {children}
-      </Component>,
-      appendTo || appRef.current
+            const {onClick: propsOnClick} = rest;
+            if (typeof propsOnClick === "function") {
+              propsOnClick(e);
+            }
+          }}
+          {...rest}
+        >
+          {children}
+        </Component>,
+        appendTo || appRef.current
+      )
     );
   }
 );
