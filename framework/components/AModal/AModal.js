@@ -39,6 +39,7 @@ const AModal = forwardRef(
       children,
       lockScroll = true,
       withOverlay = true,
+      withAnimations = true,
       trapFocus = true,
       isOpen: propsIsOpen,
       small,
@@ -56,7 +57,7 @@ const AModal = forwardRef(
     const isOpen = !!hasPortalNode && propsIsOpen;
     const _ref = useRef();
 
-    const shouldRender = useDelayUnmount(isOpen, 300);
+    const shouldRender = useDelayUnmount(isOpen, 100);
 
     useFocusTrap({
       rootRef: _ref,
@@ -68,17 +69,19 @@ const AModal = forwardRef(
       return allowBodyScroll;
     }, [lockScroll, shouldRender]);
 
-    const animationClassName = isOpen
-      ? "animation-fade-in"
-      : "animation-fade-out";
-
     let visibilityClass = "";
 
     if (!shouldRender) {
       visibilityClass += "a-modal--hidden";
     }
 
+    let overlayClassName = "";
     let contentClassName = `a-modal-container ${visibilityClass}`;
+
+    if (withAnimations) {
+      overlayClassName = isOpen ? "animation-fade-in" : "animation-fade-out";
+      contentClassName += isOpen ? " animation-grow" : " animation-shrink";
+    }
 
     if (small) {
       contentClassName += " a-modal-container--small";
@@ -119,8 +122,7 @@ const AModal = forwardRef(
     if (withOverlay) {
       return ReactDOM.createPortal(
         <APageOverlay
-          //style={isOpen ? mountedStyle : unmountedStyle}
-          className={`${visibilityClass} ${animationClassName}`}
+          className={`${visibilityClass} ${overlayClassName}`}
           onKeyDown={(e) => {
             if (shouldStopPropagation(e)) {
               e.stopPropagation();
@@ -160,7 +162,7 @@ const AModal = forwardRef(
         <Component
           role="dialog"
           aria-modal="true"
-          className={`${contentClassName} ${animationClassName}`}
+          className={`${contentClassName}`}
           ref={handleMultipleRefs(_ref, ref)}
           onKeyDown={(e) => {
             if (shouldStopPropagation(e)) {
@@ -273,7 +275,12 @@ You should provide either an \`aria-label\` or \`aria-labelledby\` prop to \`${c
   /**
    * If not using the `usePopupQuickExit` hook, pass in a function to handle clicking outside of the modal event. `withOverlay` prop must be set to true.
    */
-  onClickOutside: PropTypes.func
+  onClickOutside: PropTypes.func,
+
+  /**
+   * Determines if the modal should open and close with CSS animations.
+   */
+  withAnimations: PropTypes.bool
 };
 
 AModal.displayName = "AModal";
