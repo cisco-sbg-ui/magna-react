@@ -36,7 +36,7 @@ const AModal = forwardRef(
       appendTo = null,
       as = "div",
       className: propsClassName,
-      delayMount = 200,
+      delayUnmount = 200,
       children,
       lockScroll = true,
       withOverlay = true,
@@ -61,8 +61,8 @@ const AModal = forwardRef(
 
     const shouldRenderChildren = useDelayUnmount({
       isOpen,
-      delayTime: delayMount,
-      isEnabled: withAnimations || delayMount
+      delayTime: delayUnmount,
+      isEnabled: withAnimations || delayUnmount
     });
 
     useFocusTrap({

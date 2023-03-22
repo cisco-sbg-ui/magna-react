@@ -137,7 +137,7 @@ const ADrawer = forwardRef(
     return (
       <AModal
         alwaysRenderChildren={true}
-        delayMount={300}
+        delayUnmount={300}
         withAnimations={false}
         isOpen={shouldRenderChildren}
         {...rest}
