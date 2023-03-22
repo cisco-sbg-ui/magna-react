@@ -140,6 +140,49 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
+### Without Animations
+
+<Playground
+  fullWidthPreview
+  code={`() => {
+    const [open, setOpen] = useState(false);
+    const ref = useRef();
+    usePopupQuickExit({
+      popupRef: ref,
+      isEnabled: open,
+      onExit: () => setOpen(false)
+    });
+    return (
+      <div>
+        <AButton
+            onClick={() => setOpen(true)}>
+            Open Modal
+        </AButton>
+        <AModal
+            withAnimations={false}
+            aria-labelledby='modal-title'
+            isOpen={open}>
+            <APanel ref={ref} style={{ minWidth: '400px' }} type="dialog">
+              <APanelHeader>
+                <APanelTitle id='modal-title'>No Animations</APanelTitle>
+                <AButton aria-label="Close modal 1" onClick={() => setOpen(false)} tertiaryAlt icon>
+                  <AIcon>close</AIcon>
+                </AButton>
+              </APanelHeader>
+              <APanelBody>
+                Modal content goes here.
+              </APanelBody>
+              <APanelFooter>
+                <AButton>Action</AButton>
+              </APanelFooter>
+            </APanel>
+        </AModal>
+      </div>
+    )
+  }
+`}
+/>
+
 ### Form Example
 
 <Playground
