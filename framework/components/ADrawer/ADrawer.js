@@ -27,11 +27,16 @@ const ADrawer = forwardRef(
       closeTitle,
       closeBtnProps,
       style: propsStyle,
+      withAnimations = true,
       ...rest
     },
     ref
   ) => {
-    const shouldRenderChildren = useDelayUnmount({isOpen, delayTime: 300});
+    const shouldRenderChildren = useDelayUnmount({
+      isOpen,
+      delayTime: 300,
+      isEnabled: withAnimations
+    });
     // A fixed drawer should automatically render as a modal unless specified
     const shouldRenderModal =
       propsAsModal || (position === "fixed" && propsAsModal == undefined);
@@ -43,11 +48,13 @@ const ADrawer = forwardRef(
 
     const style = {...propsStyle};
 
-    if (isOpen) {
-      className += ` slide-in-from-${slideIn}`;
-    } else {
-      className += ` slide-out-to-${slideIn}`;
+    if (withAnimations && shouldRenderChildren) {
+      className += isOpen
+        ? ` slide-in-from-${slideIn}`
+        : ` slide-out-to-${slideIn}`;
     }
+
+    className += shouldRenderChildren ? " a-drawer--show" : " a-drawer--hidden";
 
     if (slim) {
       className += ` a-drawer--slim`;
@@ -116,17 +123,21 @@ const ADrawer = forwardRef(
         style={style}
       >
         {closeButton}
-        {children}
+        {shouldRenderChildren && children}
       </DrawerPanelComponent>
     );
 
     if (!shouldRenderModal) {
-      return shouldRenderChildren && drawerPanelComponent;
+      return drawerPanelComponent;
     }
 
     return (
-      <AModal delayMount={300} isOpen={isOpen} withAnimations={false} {...rest}>
-        {/* `AModal` already handles children mounting conditional */}
+      <AModal
+        delayMount={withAnimations ? 300 : 0}
+        isOpen={isOpen}
+        withAnimations={false}
+        {...rest}
+      >
         {drawerPanelComponent}
       </AModal>
     );
