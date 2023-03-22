@@ -58,21 +58,27 @@ const AModal = forwardRef(
     const isOpen = !!hasPortalNode && propsIsOpen;
     const _ref = useRef();
 
-    const shouldRender = useDelayUnmount(isOpen, delayMount);
+    const shouldRenderChildren = useDelayUnmount({
+      isOpen,
+      delayTime: delayMount,
+      isEnabled: withAnimations || delayMount
+    });
 
     useFocusTrap({
       rootRef: _ref,
-      isEnabled: trapFocus && shouldRender
+      isEnabled: trapFocus && shouldRenderChildren
     });
 
     useEffect(() => {
-      shouldRender && lockScroll ? preventBodyScroll() : allowBodyScroll();
+      shouldRenderChildren && lockScroll
+        ? preventBodyScroll()
+        : allowBodyScroll();
       return allowBodyScroll;
-    }, [lockScroll, shouldRender]);
+    }, [lockScroll, shouldRenderChildren]);
 
     let visibilityClass = "";
 
-    if (!shouldRender) {
+    if (!shouldRenderChildren) {
       visibilityClass += "a-modal--hidden";
     }
 
@@ -103,13 +109,11 @@ const AModal = forwardRef(
     }
 
     /**
-     * In the case where `AModal` is rendered inside
-     * a clickable element, like a button component,
-     * we want to prevent clicks and certain keydown
-     * presses from bubbling outside the modal, which
-     * could cause unintended side effects (like closing
-     * an accordion). This is why we call `stopPropagation`
-     * below.
+     * In the case where `AModal` is rendered inside a clickable element
+     * like a button component, we want to prevent clicks and certain
+     * keydown presses from bubbling outside the modal, which could cause
+     * unintended side effects (like closing an accordion). This is why we
+     * call `stopPropagation` below.
      *
      * @example
      * <AButton>
@@ -150,43 +154,40 @@ const AModal = forwardRef(
             className={contentClassName}
             {...rest}
           >
-            {shouldRender && children}
+            {shouldRenderChildren && children}
           </Component>
         </APageOverlay>,
         appendTo || appRef.current
       );
     }
 
-    return (
-      shouldRender &&
-      ReactDOM.createPortal(
-        <Component
-          role="dialog"
-          aria-modal="true"
-          className={`${contentClassName}`}
-          ref={handleMultipleRefs(_ref, ref)}
-          onKeyDown={(e) => {
-            if (shouldStopPropagation(e)) {
-              e.stopPropagation();
-            }
-            const {onKeyDown: propsOnKeyDown} = rest;
-            if (typeof propsOnKeyDown === "function") {
-              propsOnKeyDown(e);
-            }
-          }}
-          onClick={(e) => {
+    return ReactDOM.createPortal(
+      <Component
+        role="dialog"
+        aria-modal="true"
+        className={`${contentClassName}`}
+        ref={handleMultipleRefs(_ref, ref)}
+        onKeyDown={(e) => {
+          if (shouldStopPropagation(e)) {
             e.stopPropagation();
-            const {onClick: propsOnClick} = rest;
-            if (typeof propsOnClick === "function") {
-              propsOnClick(e);
-            }
-          }}
-          {...rest}
-        >
-          {children}
-        </Component>,
-        appendTo || appRef.current
-      )
+          }
+          const {onKeyDown: propsOnKeyDown} = rest;
+          if (typeof propsOnKeyDown === "function") {
+            propsOnKeyDown(e);
+          }
+        }}
+        onClick={(e) => {
+          e.stopPropagation();
+          const {onClick: propsOnClick} = rest;
+          if (typeof propsOnClick === "function") {
+            propsOnClick(e);
+          }
+        }}
+        {...rest}
+      >
+        {shouldRenderChildren && children}
+      </Component>,
+      appendTo || appRef.current
     );
   }
 );

@@ -31,7 +31,7 @@ const ADrawer = forwardRef(
     },
     ref
   ) => {
-    const shouldRender = useDelayUnmount(isOpen, 300);
+    const shouldRenderChildren = useDelayUnmount({isOpen, delayTime: 300});
     // A fixed drawer should automatically render as a modal unless specified
     const shouldRenderModal =
       propsAsModal || (position === "fixed" && propsAsModal == undefined);
@@ -121,11 +121,12 @@ const ADrawer = forwardRef(
     );
 
     if (!shouldRenderModal) {
-      return shouldRender && drawerPanelComponent;
+      return shouldRenderChildren && drawerPanelComponent;
     }
 
     return (
       <AModal delayMount={300} isOpen={isOpen} withAnimations={false} {...rest}>
+        {/* `AModal` already handles children mounting conditional */}
         {drawerPanelComponent}
       </AModal>
     );

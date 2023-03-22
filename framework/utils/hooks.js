@@ -21,11 +21,14 @@ export const useCombinedRefs = (...refs) => {
 export const useIsomorphicLayoutEffect =
   typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
-export const useDelayUnmount = (isOpen, delayTime) => {
+export const useDelayUnmount = ({isEnabled = true, isOpen, delayTime}) => {
   const timeout = useRef();
   const [shouldRender, setShouldRender] = useState(false);
 
   useLayoutEffect(() => {
+    if (!isEnabled) {
+      return;
+    }
     if (isOpen && !shouldRender) {
       setShouldRender(true);
     } else if (!isOpen && shouldRender) {
@@ -35,6 +38,7 @@ export const useDelayUnmount = (isOpen, delayTime) => {
       }, delayTime);
     }
     return () => clearTimeout(timeout.current);
-  }, [isOpen, delayTime, shouldRender]);
-  return shouldRender;
+  }, [isOpen, delayTime, shouldRender, isEnabled]);
+
+  return isEnabled ? shouldRender : isOpen;
 };
