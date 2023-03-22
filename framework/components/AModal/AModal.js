@@ -36,6 +36,7 @@ const AModal = forwardRef(
       appendTo = null,
       as = "div",
       className: propsClassName,
+      delayMount = 100,
       children,
       lockScroll = true,
       withOverlay = true,
@@ -57,7 +58,7 @@ const AModal = forwardRef(
     const isOpen = !!hasPortalNode && propsIsOpen;
     const _ref = useRef();
 
-    const shouldRender = useDelayUnmount(isOpen, 100);
+    const shouldRender = useDelayUnmount(isOpen, delayMount);
 
     useFocusTrap({
       rootRef: _ref,
