@@ -11,9 +11,9 @@
 
   transform: translateX(0);
 
-  $animation-duration: 0.3s;
-  $animation-timing: ease-in-out;
-  $transition-props: $animation-duration $animation-timing;
+  $transition-duration: 0.3s;
+  $transition-timing: ease-in-out;
+  $transition-props: $transition-duration $transition-timing;
 
   // limit transition properties to avoid animating other properties coming form outside
   $common-transitions: transform $transition-props, width $transition-props,
@@ -118,7 +118,7 @@
     @include transition(
       $common-transitions,
       // delay visibility change after other transitions
-      visibility 0s linear $animation-duration
+      visibility 0s linear $transition-duration
     );
 
     overflow: hidden;
