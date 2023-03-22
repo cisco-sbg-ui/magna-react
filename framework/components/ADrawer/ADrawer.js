@@ -6,6 +6,7 @@ import AButton from "../AButton/AButton";
 import AIcon from "../AIcon/AIcon";
 
 import "./ADrawer.scss";
+import {useDelayUnmount} from "../../utils/hooks";
 
 const ADrawer = forwardRef(
   (
@@ -30,6 +31,7 @@ const ADrawer = forwardRef(
     },
     ref
   ) => {
+    const shouldRender = useDelayUnmount(isOpen, 300);
     // A fixed drawer should automatically render as a modal unless specified
     const shouldRenderModal =
       propsAsModal || (position === "fixed" && propsAsModal == undefined);
@@ -40,6 +42,12 @@ const ADrawer = forwardRef(
     const closeButtonClassName = "a-drawer--close-button";
 
     const style = {...propsStyle};
+
+    if (isOpen) {
+      className += ` slide-in-from-${slideIn}`;
+    } else {
+      className += ` slide-out-to-${slideIn}`;
+    }
 
     if (slim) {
       className += ` a-drawer--slim`;
@@ -55,7 +63,7 @@ const ADrawer = forwardRef(
       }
     }
     if (!isOpen) {
-      className += ` a-drawer--hidden`;
+      //className += ` a-drawer--hidden`;
     } else if (!slim && openWidth) {
       style.width = openWidth;
     } else if (!slim && openHeight) {
@@ -113,11 +121,11 @@ const ADrawer = forwardRef(
     );
 
     if (!shouldRenderModal) {
-      return drawerPanelComponent;
+      return shouldRender && drawerPanelComponent;
     }
 
     return (
-      <AModal isOpen={isOpen} {...rest}>
+      <AModal delayMount={300} isOpen={isOpen} withAnimations={false} {...rest}>
         {drawerPanelComponent}
       </AModal>
     );

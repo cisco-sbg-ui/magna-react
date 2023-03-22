@@ -1,5 +1,14 @@
 @import "../../styles";
 
+$transition-duration: 0.3s;
+$transition-timing: ease-in-out;
+$transition-props: $transition-duration $transition-timing;
+
+//limit transition properties to avoid animating other properties coming form outside
+$common-transitions: transform $transition-props, width $transition-props,
+  height $transition-props, max-width $transition-props,
+  max-height $transition-props;
+
 @include theme(a-drawer) using ($theme) {
   background: map-deep-get($theme, "drawer", "bg");
 }
@@ -9,16 +18,7 @@
 
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
 
-  transform: translateX(0);
-
-  $transition-duration: 0.3s;
-  $transition-timing: ease-in-out;
-  $transition-props: $transition-duration $transition-timing;
-
-  // limit transition properties to avoid animating other properties coming form outside
-  $common-transitions: transform $transition-props, width $transition-props,
-    height $transition-props, max-width $transition-props,
-    max-height $transition-props;
+  transform: translateX(100%);
 
   @include transition(
     $common-transitions,
@@ -113,33 +113,112 @@
     bottom: 0;
     left: 0;
   }
+}
 
-  &--hidden {
-    @include transition(
-      $common-transitions,
-      // delay visibility change after other transitions
-      visibility 0s linear $transition-duration
-    );
+.slide-in-from-right {
+  animation-name: slideInFromRight;
+  animation-delay: 0s;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
 
-    overflow: hidden;
-    visibility: hidden;
+.slide-out-to-right {
+  animation-name: slideOutToRight;
+  animation-delay: 0s;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
 
-    &.a-drawer--left {
-      transform: translateX(-100%);
-    }
+.slide-in-from-left {
+  animation-name: slideInFromLeft;
+  animation-delay: 0s;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
 
-    &.a-drawer--right {
-      transform: translateX(100%);
-    }
+.slide-out-to-left {
+  animation-name: slideOutToLeft;
+  animation-delay: 0s;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
 
-    &.a-drawer--bottom {
-      transform: translateY(100%);
-    }
-  }
+.slide-in-from-bottom {
+  animation-name: slideInFromBottom;
+  animation-delay: 0s;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.slide-out-to-bottom {
+  animation-name: slideOutToBottom;
+  animation-delay: 0s;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
 }
 
 @media (prefers-reduced-motion) {
   .a-drawer {
     transition: none;
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutToRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutToLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOutToBottom {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
   }
 }
