@@ -48,16 +48,20 @@ const ADrawer = forwardRef(
 
     const style = {...propsStyle};
 
-    if (withAnimations && shouldRenderChildren) {
-      className += isOpen
-        ? ` slide-in-from-${slideIn}`
-        : ` slide-out-to-${slideIn}`;
+    let visibilityClassName = "a-drawer";
+
+    if (withAnimations) {
+      visibilityClassName += " a-drawer--transitions";
     }
 
-    className += shouldRenderChildren ? " a-drawer--show" : " a-drawer--hidden";
+    if (shouldRenderChildren) {
+      visibilityClassName += isOpen ? " a-drawer--show" : " a-drawer--hidden";
+    } else {
+      visibilityClassName += " a-drawer--hidden";
+    }
 
     if (slim) {
-      className += ` a-drawer--slim`;
+      className += " a-drawer--slim";
 
       if (slimWidth) {
         style.width = slimWidth;
@@ -69,11 +73,10 @@ const ADrawer = forwardRef(
         style.maxHeight = slimHeight;
       }
     }
-    if (!isOpen) {
-      //className += ` a-drawer--hidden`;
-    } else if (!slim && openWidth) {
+
+    if (isOpen && !slim && openWidth) {
       style.width = openWidth;
-    } else if (!slim && openHeight) {
+    } else if (isOpen && !slim && openHeight) {
       style.height = openHeight;
     }
     if (propsClassName) {
@@ -119,7 +122,7 @@ const ADrawer = forwardRef(
       <DrawerPanelComponent
         {...rest}
         ref={ref}
-        className={className}
+        className={`${className} ${visibilityClassName}`}
         style={style}
       >
         {closeButton}
@@ -133,9 +136,10 @@ const ADrawer = forwardRef(
 
     return (
       <AModal
-        delayMount={withAnimations ? 300 : 0}
-        isOpen={isOpen}
+        alwaysRenderChildren={true}
+        delayMount={300}
         withAnimations={false}
+        isOpen={shouldRenderChildren}
         {...rest}
       >
         {drawerPanelComponent}

@@ -36,7 +36,7 @@ const AModal = forwardRef(
       appendTo = null,
       as = "div",
       className: propsClassName,
-      delayMount = 100,
+      delayMount = 200,
       children,
       lockScroll = true,
       withOverlay = true,
@@ -48,6 +48,7 @@ const AModal = forwardRef(
       large,
       xlarge,
       onClickOutside,
+      alwaysRenderChildren,
       ...rest
     },
     ref
@@ -86,8 +87,15 @@ const AModal = forwardRef(
     let contentClassName = `a-modal-container ${visibilityClass}`;
 
     if (withAnimations) {
-      overlayClassName = isOpen ? "animation-fade-in" : "animation-fade-out";
-      contentClassName += isOpen ? " animation-grow" : " animation-shrink";
+      contentClassName += " a-modal-container--transitions";
+      overlayClassName += " a-modal--transitions";
+    }
+
+    if (shouldRenderChildren) {
+      overlayClassName += isOpen ? " a-modal--show" : " a-modal--hide";
+      contentClassName += isOpen
+        ? " a-modal-container--grow"
+        : " a-modal-container--shrink";
     }
 
     if (small) {
@@ -106,6 +114,14 @@ const AModal = forwardRef(
 
     if (!appendTo && !appRef.current) {
       return null;
+    }
+
+    let resolvedChildren;
+
+    if (alwaysRenderChildren) {
+      resolvedChildren = children;
+    } else {
+      resolvedChildren = shouldRenderChildren ? children : null;
     }
 
     /**
@@ -127,7 +143,7 @@ const AModal = forwardRef(
     if (withOverlay) {
       return ReactDOM.createPortal(
         <APageOverlay
-          className={`${visibilityClass} ${overlayClassName}`}
+          className={`a-modal ${visibilityClass} ${overlayClassName}`}
           onKeyDown={(e) => {
             if (shouldStopPropagation(e)) {
               e.stopPropagation();
@@ -154,7 +170,7 @@ const AModal = forwardRef(
             className={contentClassName}
             {...rest}
           >
-            {shouldRenderChildren && children}
+            {resolvedChildren}
           </Component>
         </APageOverlay>,
         appendTo || appRef.current
@@ -185,7 +201,7 @@ const AModal = forwardRef(
         }}
         {...rest}
       >
-        {shouldRenderChildren && children}
+        {resolvedChildren}
       </Component>,
       appendTo || appRef.current
     );

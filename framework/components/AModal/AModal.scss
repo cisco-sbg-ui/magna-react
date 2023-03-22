@@ -1,3 +1,19 @@
+.a-modal {
+  opacity: 0;
+
+  &--transitions {
+    transition: opacity 0.2s;
+  }
+
+  &--show {
+    opacity: 1;
+  }
+
+  &--hide {
+    opacity: 0;
+  }
+}
+
 .a-modal-container {
   position: fixed;
   left: 0;
@@ -7,7 +23,19 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
-  animation-delay: 0s;
+
+  &--transitions {
+    transform: scale(0);
+    transition: transform 0.2s;
+  }
+
+  &--grow.a-modal-container--transitions {
+    transform: scale(1);
+  }
+
+  &--shrink.a-modal-container--transitions {
+    transform: scale(0);
+  }
 
   .a-panel {
     &__title {
@@ -37,89 +65,9 @@
 .a-modal--hidden {
   visibility: hidden;
 }
-
-.animation-fade-in {
-  animation-name: fadeIn;
-  animation-delay: 0s;
-  animation-duration: 0.15s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
+.a-modal--grow {
+  transform: scale(1);
 }
-
-.animation-fade-out {
-  animation-name: fadeOut;
-  animation-delay: 0s;
-  animation-duration: 0.15s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
-}
-
-.animation-grow {
-  animation-name: grow;
-  animation-delay: 0s;
-  animation-duration: 0.15s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
-}
-
-.animation-shrink {
-  animation-name: shrink;
-  animation-delay: 0s;
-  animation-duration: 0.15s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
-}
-
-@keyframes grow {
-  from {
-    transform: scale(0);
-  }
-  to {
-    transform: scale(1);
-  }
-}
-
-@keyframes shrink {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(0);
-  }
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes slideIn {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-@keyframes slideOut {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
+.a-modal--shrink {
+  transform: scale(0);
 }

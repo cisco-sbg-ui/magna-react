@@ -15,16 +15,27 @@ $common-transitions: transform $transition-props, width $transition-props,
 
 .a-drawer {
   overflow: hidden;
-
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
 
-  @include transition(
-    $common-transitions,
-    visibility 0s // immediate visibility change
-  );
+  &--transitions {
+    @include transition(
+      $common-transitions,
+      visibility 0s // immediate visibility change
+    );
+  }
 
   &--hidden {
-    transform: translateX(100%);
+    &.a-drawer--left {
+      transform: translateX(-100%);
+    }
+
+    &.a-drawer--right {
+      transform: translateX(100%);
+    }
+
+    &.a-drawer--bottom {
+      transform: translateY(100%);
+    }
   }
 
   &--show {
@@ -121,110 +132,8 @@ $common-transitions: transform $transition-props, width $transition-props,
   }
 }
 
-.slide-in-from-right {
-  animation-name: slideInFromRight;
-  animation-delay: 0s;
-  animation-duration: 0.3s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
-}
-
-.slide-out-to-right {
-  animation-name: slideOutToRight;
-  animation-delay: 0s;
-  animation-duration: 0.3s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
-}
-
-.slide-in-from-left {
-  animation-name: slideInFromLeft;
-  animation-delay: 0s;
-  animation-duration: 0.3s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
-}
-
-.slide-out-to-left {
-  animation-name: slideOutToLeft;
-  animation-delay: 0s;
-  animation-duration: 0.3s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
-}
-
-.slide-in-from-bottom {
-  animation-name: slideInFromBottom;
-  animation-delay: 0s;
-  animation-duration: 0.3s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
-}
-
-.slide-out-to-bottom {
-  animation-name: slideOutToBottom;
-  animation-delay: 0s;
-  animation-duration: 0.3s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
-}
-
 @media (prefers-reduced-motion) {
   .a-drawer {
     transition: none;
-  }
-}
-
-@keyframes slideInFromRight {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideOutToRight {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-@keyframes slideInFromLeft {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideOutToLeft {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-@keyframes slideInFromBottom {
-  0% {
-    transform: translateY(100%);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideOutToBottom {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(100%);
   }
 }
