@@ -38,17 +38,17 @@ const AModal = forwardRef(
       className: propsClassName,
       delayUnmount = 200,
       children,
-      lockScroll = true,
-      withOverlay = true,
-      withTransitions = true,
-      trapFocus = true,
       isOpen: propsIsOpen,
       small,
       medium,
       large,
       xlarge,
       onClickOutside,
-      centerContent = true,
+      withCenteredContent = true,
+      withFocusTrap = true,
+      withOverlay = true,
+      withScrollLock = true,
+      withTransitions = true,
       ...rest
     },
     ref
@@ -67,15 +67,18 @@ const AModal = forwardRef(
 
     useFocusTrap({
       rootRef: _ref,
-      isEnabled: trapFocus && shouldRenderChildren
+      isEnabled: withFocusTrap && shouldRenderChildren
     });
 
     useEffect(() => {
-      shouldRenderChildren && lockScroll
+      shouldRenderChildren && withScrollLock
         ? preventBodyScroll()
         : allowBodyScroll();
-      return allowBodyScroll;
-    }, [lockScroll, shouldRenderChildren]);
+
+      if (withScrollLock) {
+        return allowBodyScroll;
+      }
+    }, [withScrollLock, shouldRenderChildren]);
 
     let visibilityClass = "";
 
@@ -108,7 +111,7 @@ const AModal = forwardRef(
       contentClassName += " a-modal-container--xlarge";
     }
 
-    if (centerContent) {
+    if (withCenteredContent) {
       contentClassName += " a-modal-container--center";
     }
 
@@ -245,23 +248,6 @@ You should provide either an \`aria-label\` or \`aria-labelledby\` prop to \`${c
   className: PropTypes.string,
 
   /**
-   * Prevents the user from scrolling when the modal is open.
-   */
-  lockScroll: PropTypes.bool,
-
-  /**
-   * Determines if focus should be trapped when the modal is opened.
-   */
-  trapFocus: PropTypes.bool,
-
-  /**
-   * Renders the modal with a backdrop over the content behind the modal.
-   * To render your own custom backdrop, specify `withOverlay` as false,
-   * and render your own overlay as a child to the Modal content.
-   */
-  withOverlay: PropTypes.bool,
-
-  /**
    * Determines if the modal is opened or closed.
    */
   isOpen: PropTypes.bool,
@@ -290,6 +276,33 @@ You should provide either an \`aria-label\` or \`aria-labelledby\` prop to \`${c
    * If not using the `usePopupQuickExit` hook, pass in a function to handle clicking outside of the modal event. `withOverlay` prop must be set to true.
    */
   onClickOutside: PropTypes.func,
+
+  /**
+   * Determines if the content rendered underneath the modal should
+   * automatically be centered vertically and horizontally.
+   */
+  withCenteredContent: PropTypes.bool,
+
+  /**
+   * Determines if focus should be trapped when the modal is opened.
+   */
+  withFocusTrap: PropTypes.bool,
+
+  /**
+   * Determines if the modal should render with an faded backdrop.
+   */
+  withOverlay: PropTypes.bool,
+
+  /**
+   * Determines if focus should be "trapped" inside the modal when
+   * it is opened (encouraged and recommended).
+   */
+  withScrollLock: PropTypes.bool,
+
+  /**
+   * Determines if the modal should open and close with CSS transitions.
+   */
+  withTransitions: PropTypes.bool,
 
   /**
    * Determines if the modal should open and close with CSS animations.
