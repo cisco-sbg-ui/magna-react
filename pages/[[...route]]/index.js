@@ -93,7 +93,7 @@ export async function getStaticProps({params}) {
   });
 
   const propsInfo = glob
-    .sync("./framework/**/+(A)!(*.spec|*.ct|*Context).js")
+    .sync("./framework/**/+(A)!(*.spec|*.ct|*.cy|*Context).js")
     .map((x) => {
       const componentSource = fs.readFileSync(x, {encoding: "utf8", flag: "r"});
       return reactDocs.parse(componentSource);
