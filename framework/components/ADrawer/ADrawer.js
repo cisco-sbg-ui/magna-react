@@ -121,7 +121,7 @@ const ADrawer = forwardRef(
         {...rest}
         ref={shouldRenderModal ? null : ref}
         className={shouldRenderModal ? "" : className}
-        style={style}
+        style={shouldRenderModal ? {} : style}
       >
         {closeButton}
         {shouldRenderChildren && children}
@@ -141,6 +141,7 @@ const ADrawer = forwardRef(
         withCenteredContent={false}
         withTransitions={false}
         isOpen={shouldRenderChildren}
+        style={style}
       >
         {drawerPanelComponent}
       </AModal>
