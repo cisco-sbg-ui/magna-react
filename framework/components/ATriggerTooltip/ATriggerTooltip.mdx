@@ -135,6 +135,23 @@ return (
 </>
 ); } `} />
 
+## On a disabled element
+
+Use `wrapChildren` to wrapper a disabled element and allow events.
+
+<Playground
+  code={`() => {
+
+return (
+
+<ATriggerTooltip
+  placement="top"
+  content="This works on a disabled element"
+  wrapChildren>
+  <AButton disabled>Disabled Button</AButton>
+</ATriggerTooltip>
+); } `} />
+
 ## TriggerTooltip Props
 
 The `ATriggerTooltip` component inherits passed props.

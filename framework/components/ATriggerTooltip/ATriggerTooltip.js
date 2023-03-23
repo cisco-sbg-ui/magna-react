@@ -15,6 +15,8 @@ const ATriggerTooltip = ({
   closeDelay,
   content,
   disabled = false,
+  wrapChildren = false,
+  wrapperClass,
   ...rest
 }) => {
   const childrenRef = useRef([]);
@@ -87,14 +89,25 @@ const ATriggerTooltip = ({
 
   return (
     <>
-      {React.Children.map(children, (child, index) =>
-        React.cloneElement(child, {
-          ...child.props,
-          ref: handleMultipleRefs(child.props.ref, (node) => {
+      {React.Children.map(children, (child, index) => {
+        const toClone = wrapChildren ? (
+          <div
+            className={wrapperClass}
+            style={{height: "fit-content", width: "fit-content"}}
+          >
+            {child}
+          </div>
+        ) : (
+          child
+        );
+
+        return React.cloneElement(toClone, {
+          ...toClone.props,
+          ref: handleMultipleRefs(toClone.props.ref, (node) => {
             childrenRef.current[index] = node;
           })
-        })
-      )}
+        });
+      })}
       {tooltipElement}
     </>
   );
@@ -118,7 +131,16 @@ ATriggerTooltip.propTypes = {
   /** Tooltip content */
   content: PropTypes.node,
   /** Disable the tooltip */
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
+  /**
+   * Wrap the children elements in a div to allow tooltips on
+   * disabled elements.
+   */
+  wrapChildren: PropTypes.bool,
+  /**
+   * Pass a class to the child wrapper.
+   */
+  wrapperClass: PropTypes.string
 };
 
 ATriggerTooltip.displayName = "ATriggerTooltip";
