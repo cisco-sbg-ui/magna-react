@@ -1,0 +1,86 @@
+@use "sass:math";
+
+@import "../../styles";
+
+$generic-loader-padding: 0;
+$generic-loader-margin: 10px 0;
+$generic-loader-small-font-size: 12px;
+$generic-loader-medium-font-size: 14px;
+$generic-loader-large-font-size: 16px;
+
+@include theme(a-generic-loader) using ($theme) {
+  color: map-deep-get($theme, "loader", "font-color");
+}
+
+.a-generic-loader {
+  display: inline-flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin: $generic-loader-margin;
+  padding: $generic-loader-padding;
+  font-size: $generic-loader-medium-font-size;
+  text-align: center;
+  overflow: hidden;
+  font-weight: 600;
+
+  &__container {
+    position: relative;
+  }
+
+  &--loader-dot {
+    .a-generic-loader__container {
+      align-self: center;
+    }
+
+    .a-dot-loader {
+      margin: 0;
+    }
+  }
+
+  &--loader-progressbar {
+    .a-progressbar {
+      margin: 0;
+    }
+  }
+
+  &--placement-top {
+    .a-generic-loader__container {
+      margin: 0 0 10px 0;
+    }
+  }
+
+  &--placement-right {
+    flex-direction: row;
+    .a-generic-loader__container {
+      margin: 0 0 0 10px;
+    }
+  }
+
+  &--placement-left {
+    flex-direction: row;
+    .a-generic-loader__container {
+      margin: 0 10px 0 0;
+    }
+  }
+
+  &--placement-bottom {
+    .a-generic-loader__container {
+      margin: 10px 0 0 0;
+    }
+  }
+
+  &--size-small {
+    font-size: $generic-loader-small-font-size;
+  }
+  &--size-medium {
+    font-size: $generic-loader-medium-font-size;
+  }
+  &--size-large {
+    font-size: $generic-loader-large-font-size;
+  }
+
+  &--center {
+    display: block;
+    margin: 10px auto;
+  }
+}
