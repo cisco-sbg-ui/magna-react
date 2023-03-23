@@ -59,3 +59,7 @@ Cypress.Commands.add("waitForFonts", function () {
   cy.get(".hidden-font-swatches_10").waitUntil(($el) => $el.width() > 40);
   cy.get(".hidden-font-swatches_11").waitUntil(($el) => $el.width() > 40);
 });
+
+Cypress.Commands.add("getByDataTestId", (id) => {
+  return cy.get(`[data-testid=${id}]`);
+});
