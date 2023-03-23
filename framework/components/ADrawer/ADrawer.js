@@ -119,7 +119,7 @@ const ADrawer = forwardRef(
     const drawerPanelComponent = (
       <DrawerPanelComponent
         {...rest}
-        ref={ref}
+        ref={shouldRenderModal ? null : ref}
         className={shouldRenderModal ? "" : className}
         style={style}
       >
@@ -134,12 +134,13 @@ const ADrawer = forwardRef(
 
     return (
       <AModal
+        {...rest}
+        ref={ref}
         centerContent={false}
         className={className}
         delayUnmount={300}
         withTransitions={false}
         isOpen={shouldRenderChildren}
-        {...rest}
       >
         {drawerPanelComponent}
       </AModal>
