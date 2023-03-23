@@ -48,7 +48,6 @@ const AModal = forwardRef(
       large,
       xlarge,
       onClickOutside,
-      alwaysRenderChildren,
       centerContent = true,
       ...rest
     },
