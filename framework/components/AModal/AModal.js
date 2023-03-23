@@ -40,7 +40,7 @@ const AModal = forwardRef(
       children,
       lockScroll = true,
       withOverlay = true,
-      withAnimations = true,
+      withTransitions = true,
       trapFocus = true,
       isOpen: propsIsOpen,
       small,
@@ -49,6 +49,7 @@ const AModal = forwardRef(
       xlarge,
       onClickOutside,
       alwaysRenderChildren,
+      centerContent = true,
       ...rest
     },
     ref
@@ -62,7 +63,7 @@ const AModal = forwardRef(
     const shouldRenderChildren = useDelayUnmount({
       isOpen,
       delayTime: delayUnmount,
-      isEnabled: withAnimations || delayUnmount
+      isEnabled: withTransitions || delayUnmount
     });
 
     useFocusTrap({
@@ -86,7 +87,7 @@ const AModal = forwardRef(
     let overlayClassName = "";
     let contentClassName = `a-modal-container ${visibilityClass}`;
 
-    if (withAnimations) {
+    if (withTransitions) {
       contentClassName += " a-modal-container--transitions";
       overlayClassName += " a-modal--transitions";
     }
@@ -108,20 +109,16 @@ const AModal = forwardRef(
       contentClassName += " a-modal-container--xlarge";
     }
 
+    if (centerContent) {
+      contentClassName += " a-modal-container--center";
+    }
+
     if (propsClassName) {
       contentClassName += ` ${propsClassName}`;
     }
 
     if (!appendTo && !appRef.current) {
       return null;
-    }
-
-    let resolvedChildren;
-
-    if (alwaysRenderChildren) {
-      resolvedChildren = children;
-    } else {
-      resolvedChildren = shouldRenderChildren ? children : null;
     }
 
     /**
@@ -170,7 +167,7 @@ const AModal = forwardRef(
             className={contentClassName}
             {...rest}
           >
-            {resolvedChildren}
+            {shouldRenderChildren ? children : null}
           </Component>
         </APageOverlay>,
         appendTo || appRef.current
@@ -201,7 +198,7 @@ const AModal = forwardRef(
         }}
         {...rest}
       >
-        {resolvedChildren}
+        {shouldRenderChildren ? children : null}
       </Component>,
       appendTo || appRef.current
     );
@@ -298,7 +295,7 @@ You should provide either an \`aria-label\` or \`aria-labelledby\` prop to \`${c
   /**
    * Determines if the modal should open and close with CSS animations.
    */
-  withAnimations: PropTypes.bool
+  withTransitions: PropTypes.bool
 };
 
 AModal.displayName = "AModal";

@@ -140,7 +140,7 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-### Without Animations
+### Without CSS Transitions
 
 <Playground
   fullWidthPreview
@@ -159,7 +159,7 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
             Open Modal
         </AButton>
         <AModal
-            withAnimations={false}
+            withTransitions={false}
             aria-labelledby='modal-title'
             isOpen={open}>
             <APanel ref={ref} style={{ minWidth: '400px' }} type="dialog">
