@@ -18,7 +18,7 @@ const ALoader = forwardRef(
   (
     {
       className: propsClassName,
-      component = INDICATORS.spinner,
+      variant = INDICATORS.spinner,
       indicatorProps = {},
       size,
       placement = "top",
@@ -30,10 +30,9 @@ const ALoader = forwardRef(
     let className = baseClass,
       containerClassName = `${baseClass}__container`;
 
-    const TagName =
-        typeof component === "string" ? INDICATORS[component] : component,
+    const TagName = typeof variant === "string" ? INDICATORS[variant] : variant,
       indicatorType =
-        typeof component === "string" ? component : TagName.displayName;
+        typeof variant === "string" ? variant : TagName.displayName;
 
     switch (size) {
       case "small": {
@@ -88,7 +87,7 @@ ALoader.propTypes = {
   /**
    * Indicator type to use in the loader. Can be ADotLoader, ASpinLoader, or AProgressbar.
    */
-  component: PropTypes.oneOfType([
+  variant: PropTypes.oneOfType([
     PropTypes.elementType,
     PropTypes.oneOf(["dot", "spinner", "progressbar"])
   ]),
