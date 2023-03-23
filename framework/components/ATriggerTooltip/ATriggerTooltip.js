@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, {useEffect, useRef} from "react";
 
-import ATooltip from "../ATooltip";
+import {ATooltip} from "../ATooltip";
 import useToggle from "../../hooks/useToggle/useToggle";
 import useOutsideClick from "../../hooks/useOutsideClick/useOutsideClick";
 import {handleMultipleRefs} from "../../utils/helpers";
