@@ -136,9 +136,9 @@ const ADrawer = forwardRef(
       <AModal
         {...rest}
         ref={ref}
-        centerContent={false}
         className={className}
         delayUnmount={300}
+        withCenteredContent={false}
         withTransitions={false}
         isOpen={shouldRenderChildren}
       >
