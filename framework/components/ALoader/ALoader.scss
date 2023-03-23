@@ -45,27 +45,27 @@ $generic-loader-large-font-size: 16px;
 
   &--placement-top {
     .a-generic-loader__container {
-      margin: 10px 0 0 0;
+      margin: 0 0 10px 0;
     }
   }
 
   &--placement-right {
     flex-direction: row;
     .a-generic-loader__container {
-      margin: 0 10px 0 0;
+      margin: 0 0 0 10px;
     }
   }
 
   &--placement-left {
     flex-direction: row;
     .a-generic-loader__container {
-      margin: 0 0 0 10px;
+      margin: 0 10px 0 0;
     }
   }
 
   &--placement-bottom {
     .a-generic-loader__container {
-      margin: 0 0 10px 0;
+      margin: 10px 0 0 0;
     }
   }
 

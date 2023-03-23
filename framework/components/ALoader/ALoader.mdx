@@ -43,31 +43,31 @@ import {
 <Playground
   code={`<div>
    <h3>Small</h3>
-    <AGenericLoader component="spinner" size="small">Small loader</AGenericLoader><br />
-    <AGenericLoader component="progressbar" size="small" indicatorProps={{indeterminate: true}}>Small progress bar</AGenericLoader><br />
-    <AGenericLoader component="dot" size="small">Small dot</AGenericLoader>
+    <ALoader component="spinner" size="small">Small loader</ALoader><br />
+    <ALoader component="progressbar" size="small" indicatorProps={{indeterminate: true}}>Small progress bar</ALoader><br />
+    <ALoader component="dot" size="small">Small dot</ALoader>
   <ADivider />
      <h3>Medium</h3>
-    <AGenericLoader component="spinner" size="medium">Medium loader</AGenericLoader><br />
-    <AGenericLoader component="progressbar" size="medium" indicatorProps={{indeterminate: true}}>Medium progress bar</AGenericLoader><br />
-    <AGenericLoader component="dot" size="medium">Medium dot</AGenericLoader>
+    <ALoader component="spinner" size="medium">Medium loader</ALoader><br />
+    <ALoader component="progressbar" size="medium" indicatorProps={{indeterminate: true}}>Medium progress bar</ALoader><br />
+    <ALoader component="dot" size="medium">Medium dot</ALoader>
   <ADivider />
    <h3>Large</h3>
-  <AGenericLoader component="spinner" size="large">Large loader</AGenericLoader><br />
-    <AGenericLoader component="progressbar" size="large" indicatorProps={{indeterminate: true}}>Large progress bar</AGenericLoader><br />
-    <AGenericLoader component="dot" size="large">Large dot</AGenericLoader>
+  <ALoader component="spinner" size="large">Large loader</ALoader><br />
+    <ALoader component="progressbar" size="large" indicatorProps={{indeterminate: true}}>Large progress bar</ALoader><br />
+    <ALoader component="dot" size="large">Large dot</ALoader>
   <ADivider />
-  <h3>Children top</h3>
-  <AGenericLoader childPlacement="top">Top of spinner</AGenericLoader>
+  <h3>Top</h3>
+  <ALoader placement="top">Top of children</ALoader>
   <ADivider />
-  <h3>Children right</h3>
-  <AGenericLoader childPlacement="right">Right of spinner</AGenericLoader>
+  <h3>Right</h3>
+  <ALoader placement="right">Right of children</ALoader>
   <ADivider />
-    <h3>Children bottom</h3>
-  <AGenericLoader childPlacement="bottom">Bottom of spinner</AGenericLoader>
+    <h3>Bottom</h3>
+  <ALoader placement="bottom">Bottom of children</ALoader>
   <ADivider />
-    <h3>Children left</h3>
-  <AGenericLoader childPlacement="left">Left of spinner</AGenericLoader>
+    <h3>Left</h3>
+  <ALoader placement="left">Left of children</ALoader>
 </div>
 `}
 />
@@ -119,9 +119,9 @@ The `ASpinLoader` component inherits passed props.
 
 ## Generic Loader Props
 
-The `AGenericLoader` component inherits passed props.
+The `ALoader` component inherits passed props.
 
-<Props of="AGenericLoader" />
+<Props of="ALoader" />
 
 ## Accessibility Notes
 

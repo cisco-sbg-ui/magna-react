@@ -4,7 +4,7 @@ import ADotLoader from "./ADotLoader";
 import ASpinLoader from "./ASpinLoader";
 import AProgressbar from "../AProgressbar";
 
-import "./AGenericLoader.scss";
+import "./ALoader.scss";
 
 const baseClass = "a-generic-loader";
 
@@ -14,14 +14,14 @@ export const INDICATORS = {
   dot: ADotLoader
 };
 
-const AGenericLoader = forwardRef(
+const ALoader = forwardRef(
   (
     {
       className: propsClassName,
       component = INDICATORS.spinner,
       indicatorProps = {},
       size,
-      childPlacement = "bottom",
+      placement = "top",
       children,
       ...rest
     },
@@ -51,7 +51,7 @@ const AGenericLoader = forwardRef(
       }
     }
 
-    switch (childPlacement) {
+    switch (placement) {
       case "top":
         className += ` ${baseClass}--placement-top`;
         break;
@@ -74,17 +74,17 @@ const AGenericLoader = forwardRef(
 
     return (
       <div ref={ref} className={className} {...rest}>
-        {["top", "left"].includes(childPlacement) && children}
+        {["bottom", "right"].includes(placement) && children}
         <div className={containerClassName}>
           <TagName {...indicatorProps} size={size}></TagName>
         </div>
-        {["bottom", "right"].includes(childPlacement) && children}
+        {["top", "left"].includes(placement) && children}
       </div>
     );
   }
 );
 
-AGenericLoader.propTypes = {
+ALoader.propTypes = {
   /**
    * Indicator type to use in the loader. Can be ADotLoader, ASpinLoader, or AProgressbar.
    */
@@ -101,11 +101,12 @@ AGenericLoader.propTypes = {
    */
   size: PropTypes.oneOf(["small", "medium", "large"]),
   /**
-   * Place children above or below spinner
+   * Place the indicator around the children. Has no effect if
+   * `children` is undefined.
    */
-  childPlacement: PropTypes.oneOf(["top", "bottom", "left", "right"])
+  placement: PropTypes.oneOf(["top", "bottom", "left", "right"])
 };
 
-AGenericLoader.displayName = "AGenericLoader";
+ALoader.displayName = "ALoader";
 
-export default AGenericLoader;
+export default ALoader;

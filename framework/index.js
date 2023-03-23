@@ -44,7 +44,7 @@ import {
   ADotLoader,
   APageLoader,
   ASpinLoader,
-  AGenericLoader
+  ALoader
 } from "./components/ALoader";
 import AMenuBase from "./components/AMenuBase";
 import AMenu from "./components/AMenu";
@@ -137,7 +137,7 @@ export {
   AFooterLegal,
   AForm,
   AFormContext,
-  AGenericLoader,
+  ALoader,
   AHint,
   AIcon,
   AInView,
