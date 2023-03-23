@@ -27,7 +27,7 @@ const ADrawer = forwardRef(
       closeTitle,
       closeBtnProps,
       style: propsStyle,
-      withAnimations = true,
+      withTransitions = true,
       ...rest
     },
     ref
@@ -35,7 +35,7 @@ const ADrawer = forwardRef(
     const shouldRenderChildren = useDelayUnmount({
       isOpen,
       delayTime: 300,
-      isEnabled: withAnimations
+      isEnabled: withTransitions
     });
     // A fixed drawer should automatically render as a modal unless specified
     const shouldRenderModal =
@@ -48,16 +48,14 @@ const ADrawer = forwardRef(
 
     const style = {...propsStyle};
 
-    let visibilityClassName = "a-drawer";
-
-    if (withAnimations) {
-      visibilityClassName += " a-drawer--transitions";
+    if (withTransitions) {
+      className += " a-drawer--transitions";
     }
 
     if (shouldRenderChildren) {
-      visibilityClassName += isOpen ? " a-drawer--show" : " a-drawer--hidden";
+      className += isOpen ? " a-drawer--show" : " a-drawer--hidden";
     } else {
-      visibilityClassName += " a-drawer--hidden";
+      className += " a-drawer--hidden";
     }
 
     if (slim) {
@@ -122,7 +120,7 @@ const ADrawer = forwardRef(
       <DrawerPanelComponent
         {...rest}
         ref={ref}
-        className={`${className} ${visibilityClassName}`}
+        className={shouldRenderModal ? "" : className}
         style={style}
       >
         {closeButton}
@@ -136,9 +134,10 @@ const ADrawer = forwardRef(
 
     return (
       <AModal
-        alwaysRenderChildren={true}
+        centerContent={false}
+        className={className}
         delayUnmount={300}
-        withAnimations={false}
+        withTransitions={false}
         isOpen={shouldRenderChildren}
         {...rest}
       >

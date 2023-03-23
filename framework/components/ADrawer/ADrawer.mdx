@@ -528,7 +528,7 @@ Please note that when `ADrawer` is rendered as a modal, focus will be trapped in
   }`}
 />
 
-### Without Animations
+### Without CSS Transitions
 
 <Playground
   code={`() => {
@@ -545,7 +545,7 @@ Please note that when `ADrawer` is rendered as a modal, focus will be trapped in
         <p>Right slide-in</p>
         <AButton onClick={() => setIsRightOpen(true)} data-test-drawer-trigger-right>Open Right</AButton>
         <ADrawer
-            withAnimations={false}
+            withTransitions={false}
             aria-labelledby='right-drawer-title'
             slideIn='right'
             ref={rightDrawerContentRef}
