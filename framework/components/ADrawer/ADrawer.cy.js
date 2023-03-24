@@ -101,8 +101,6 @@ describe("<AModal />", () => {
       cy.mount(<DrawerTest asModal={false} openWidth="800px" />);
 
       openDrawer();
-      // Assert on drawer content since the drawer itself takes up the
-      // entire width after rendering the page overlay from `AModal`
       cy.getByDataTestId("drawer").invoke("outerWidth").should("eq", 800);
     });
   });
