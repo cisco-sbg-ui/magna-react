@@ -61,5 +61,9 @@ Cypress.Commands.add("waitForFonts", function () {
 });
 
 Cypress.Commands.add("getByDataTestId", (id) => {
-  return cy.get(`[data-testid=${id}]`);
+  return cy.get(`[data-testid="${id}"]`);
+});
+
+Cypress.Commands.add("getByAriaLabel", (label) => {
+  return cy.get(`[aria-label="${label}"]`);
 });
