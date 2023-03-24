@@ -112,12 +112,17 @@ describe("<ADrawer />", () => {
       cy.mount(<DrawerTriggeredByMenuTest />);
     });
 
-    it("should close the drawer on an escape keydown event", () => {
-      cy.getByDataTestId("open-menu-btn")
+    const openDrawerFromWithinMenu = () => {
+      return cy
+        .getByDataTestId("open-menu-btn")
         .click()
         .then(() => {
           return cy.getByDataTestId("open-drawer-btn").click();
-        })
+        });
+    };
+
+    it("should close the drawer on an escape keydown event", () => {
+      openDrawerFromWithinMenu()
         .then(() => {
           cy.getByDataTestId("drawer-content-btn").should("exist");
           return cy.escapeKeydown();
@@ -132,11 +137,7 @@ describe("<ADrawer />", () => {
     });
 
     it("should close the drawer on an outside click", () => {
-      cy.getByDataTestId("open-menu-btn")
-        .click()
-        .then(() => {
-          return cy.getByDataTestId("open-drawer-btn").click();
-        })
+      openDrawerFromWithinMenu()
         .then(() => {
           cy.getByDataTestId("drawer-content-btn").should("exist");
           return cy.get("body").click();
@@ -154,11 +155,7 @@ describe("<ADrawer />", () => {
      * @see https://github.com/cisco-sbg-ui/magna-react/issues/143#issuecomment-1412172046
      */
     it("should not close the drawer when clicking a button inside the drawer", () => {
-      cy.getByDataTestId("open-menu-btn")
-        .click()
-        .then(() => {
-          return cy.getByDataTestId("open-drawer-btn").click();
-        })
+      openDrawerFromWithinMenu()
         .then(() => {
           return cy.getByDataTestId("drawer-content-btn").click();
         })
