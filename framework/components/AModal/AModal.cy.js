@@ -19,11 +19,11 @@ import AModal from "./AModal";
 
 describe("<AModal />", () => {
   it("renders", () => {
-    cy.mount(<StandardSetup />);
+    cy.mount(<ModalTest />);
   });
 
   it("focuses on the first element", () => {
-    cy.mount(<StandardSetup />);
+    cy.mount(<ModalTest />);
 
     // Open modal
     cy.getByDataTestId("open-btn").click();
@@ -31,7 +31,7 @@ describe("<AModal />", () => {
   });
 
   it("should trap focus within the modal", () => {
-    cy.mount(<StandardSetup />);
+    cy.mount(<ModalTest />);
 
     // Open accordion; make sure first focusable element receives the focus
     cy.getByDataTestId("open-btn").click();
@@ -51,7 +51,7 @@ describe("<AModal />", () => {
   });
 
   it("should not propagate click events outside of the modal", () => {
-    cy.mount(<AccordionSetup />);
+    cy.mount(<ModalWithAccordionTest />);
 
     // Open accordion; make sure modal is not opened
     cy.getByDataTestId("toggle-accordion-btn").click();
@@ -71,7 +71,7 @@ describe("<AModal />", () => {
   });
 
   it("should not propagate keydown events outside of the modal", () => {
-    cy.mount(<AccordionSetup />);
+    cy.mount(<ModalWithAccordionTest />);
 
     // Open accordion; make sure modal is not opened
     cy.getByDataTestId("toggle-accordion-btn").click();
@@ -120,7 +120,7 @@ function ContentSetup({onCloseBtnClick}) {
   );
 }
 
-function StandardSetup() {
+function ModalTest() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
@@ -134,7 +134,7 @@ function StandardSetup() {
   );
 }
 
-function AccordionSetup() {
+function ModalWithAccordionTest() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <AAccordion>
