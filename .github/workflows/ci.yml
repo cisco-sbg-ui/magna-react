@@ -27,6 +27,4 @@ jobs:
       - name: Build
         run: npm run build
       - name: Test
-        run: npm run cover:merge
-      - name: Upload Coverage
-        run: npm run upload-coverage
+        run: npm run test
