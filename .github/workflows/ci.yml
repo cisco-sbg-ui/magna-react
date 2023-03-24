@@ -22,8 +22,6 @@ jobs:
         run: npm ci --ignore-scripts --prefer-offline
       - name: Run Cypress Postinstall Script
         run: npm run cypress:install
-      - name: Run ESBuild Postinstall Script
-        run: npm run esbuild:install
       - name: Build
         run: npm run build
       - name: Test
