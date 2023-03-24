@@ -135,3 +135,15 @@
     }
   }
 }
+
+.a-list-item__group {
+  &-title {
+    font-size: $font-size--xs;
+    padding: 6px 10px;
+    color: map-get($grey, "darken-2");
+  }
+
+  .a-list-item {
+    padding: 8px 10px 8px 16px;
+  }
+}
