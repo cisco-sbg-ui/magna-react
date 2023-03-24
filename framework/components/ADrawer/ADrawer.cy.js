@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import AButton from "../AButton";
-import AIcon from "../AIcon";
 import ADrawer from "./ADrawer";
 import ADrawerContent from "./ADrawerContent";
 
@@ -8,7 +7,7 @@ const openDrawer = () => {
   cy.getByDataTestId("open-btn").click();
 };
 
-describe("<AModal />", () => {
+describe("<ADrawer />", () => {
   it("renders", () => {
     cy.mount(<DrawerTest />);
   });
