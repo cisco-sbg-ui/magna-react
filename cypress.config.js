@@ -26,10 +26,7 @@ module.exports = defineConfig({
 
   component: {
     setupNodeEvents(on, config) {},
-    specPattern: "framework/**/*.cy.js"
-  },
-
-  component: {
+    specPattern: "framework/**/*.cy.{js,jsx,ts,tsx}",
     devServer: {
       framework: "next",
       bundler: "webpack"
