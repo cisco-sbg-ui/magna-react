@@ -24,5 +24,7 @@ jobs:
         run: npm run cypress:install
       - name: Build
         run: npm run build
-      - name: Test
-        run: npm run test
+      - name: Test Chrome
+        run: npm run test:components-chrome
+      - name: Test Firefox
+        run: npm run test:components-firefox
