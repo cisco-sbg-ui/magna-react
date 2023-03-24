@@ -1,6 +1,6 @@
 import React, {forwardRef} from "react";
 
-import "./AList.scss";
+import "./AListItemGroup.scss";
 import PropTypes from "prop-types";
 
 const AListItemGroup = forwardRef(
@@ -25,9 +25,9 @@ AListItemGroup.displayName = "AListItemGroup";
 
 AListItemGroup.propTypes = {
   /**
-   * Sets the title for the group
+   * Sets the title for the group, string or other component
    */
-  title: PropTypes.string
+  title: PropTypes.node
 };
 
 export default AListItemGroup;

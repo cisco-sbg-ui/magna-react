@@ -166,8 +166,7 @@ It is necessary for `AMenu` to be a descendant of `AApp` for mounting.
         anchorRef={button3Ref}
         open={open3}
         placement="bottom-left"
-        onClose={() => setOpen3(false)}
-        style={{borderRadius: 0}}>
+        onClose={() => setOpen3(false)}>
         <AListItem onClick={() => {}}>Selection 1</AListItem>
         <AListItem onClick={() => {}}>Selection 2</AListItem>
         <AListItem onClick={() => {}}>Selection 3</AListItem>
@@ -201,8 +200,7 @@ It is necessary for `AMenu` to be a descendant of `AApp` for mounting.
         open={open5}
         compact
         placement="bottom-left"
-        onClose={() => setOpen5(false)}
-        style={{borderRadius: 0}}>
+        onClose={() => setOpen5(false)}>
         <AListItem onClick={() => {}}><ARadio checked={true}>Selected</ARadio></AListItem>
         <AListItem onClick={() => {}}><ARadio checked={false}>UnSelected</ARadio></AListItem>
          <ADivider style={{margin: 0}}/>
