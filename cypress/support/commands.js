@@ -67,3 +67,7 @@ Cypress.Commands.add("getByDataTestId", (id) => {
 Cypress.Commands.add("getByAriaLabel", (label) => {
   return cy.get(`[aria-label="${label}"]`);
 });
+
+Cypress.Commands.add("escapeKeydown", () => {
+  return cy.get("body").trigger("keydown", {key: "Escape"});
+});
