@@ -144,6 +144,10 @@
   }
 
   .a-list-item {
-    padding: 8px 10px 8px 16px;
+    padding: 8px 16px 8px 16px;
+  }
+
+  & ~ .a-divider {
+    margin: 4px 0;
   }
 }

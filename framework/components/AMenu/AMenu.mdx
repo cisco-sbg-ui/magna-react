@@ -36,10 +36,10 @@ It is necessary for `AMenu` to be a descendant of `AApp` for mounting.
   const [menu4Selected, setMenu4Selected] = useState(2);
   return (
     <div className="d-flex" style={{
-        "row-gap": "10px",
-        "column-gap": "20px",
-        "flex-wrap": "wrap",
-        "justify-content": "space-evenly"
+        rowGap: "10px",
+        columnGap: "20px",
+        flexWrap: "wrap",
+        justifyContent: "space-evenly"
       }}>
       <div>
         <AButton
@@ -214,14 +214,13 @@ It is necessary for `AMenu` to be a descendant of `AApp` for mounting.
         open={open6}
         compact
         placement="bottom-left"
-        onClose={() => setOpen6(false)}
-        style={{borderRadius: 0}}>
+        onClose={() => setOpen6(false)}>
           <AListItemGroup title={"Category 1"}>
               <AListItem onClick={() => {}}>Category item 1</AListItem>
               <AListItem onClick={() => {}}>Category item 2</AListItem>
               <AListItem onClick={() => {}}>Category item 3</AListItem>
           </AListItemGroup>
-          <ADivider style={{margin: 0}}/>
+          <ADivider />
           <AListItemGroup title={"Category 2"}>
               <AListItem onClick={() => {}}>Category item 4</AListItem>
               <AListItem onClick={() => {}}>Category item 5</AListItem>
