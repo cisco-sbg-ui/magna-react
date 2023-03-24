@@ -26,7 +26,7 @@ module.exports = defineConfig({
 
   component: {
     setupNodeEvents(on, config) {},
-    specPattern: "framework/**/*.ct.js"
+    specPattern: "framework/**/*.cy.js"
   },
 
   component: {
