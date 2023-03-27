@@ -11,7 +11,7 @@ components: AMenu
 Integrate with your build to [auto-import](/#integrating), or add an import in your component:
 
 ```
-import {AMenu, ADivider} from "@cisco-sbg-ui/magna-react";
+import {AMenu, AListItemDivider} from "@cisco-sbg-ui/magna-react";
 ```
 
 It is necessary for `AMenu` to be a descendant of `AApp` for mounting.
@@ -108,7 +108,7 @@ It is necessary for `AMenu` to be a descendant of `AApp` for mounting.
          <AListItem onClick={() => alert("should not fire")} className="pl-3 py-1" disabled>
           Disabled Item
         </AListItem>
-        <ADivider className="mb-0 mt-3" />
+        <AListItemDivider className="mb-0 mt-3" />
         <AListItem twoLine>
           <AListItemContent className="pb-0">
             <a onClick={() => alert("alert3")}>Connect</a>
@@ -141,7 +141,7 @@ It is necessary for `AMenu` to be a descendant of `AApp` for mounting.
             <a onClick={() => alert("alert warning")}>Action</a>
           </AListItemAction>
         </AListItem>
-        <ADivider className="ma-0" />
+        <AListItemDivider className="ma-0" />
         <AListItem twoLine>
           <AListItemAvatar>
             <AIcon size={16} className="status-orange--text">
@@ -186,13 +186,13 @@ It is necessary for `AMenu` to be a descendant of `AApp` for mounting.
         <AListItem onClick={() => alert("should not fire")} disabled>
           Disabled Item
         </AListItem>
-        <ADivider style={{margin: 0}}/>
+        <AListItemDivider style={{margin: 0}}/>
         <AListItem onClick={() => {}}><ARadio checked={true}>Selected</ARadio></AListItem>
         <AListItem onClick={() => {}}><ARadio checked={false}>UnSelected</ARadio></AListItem>
-         <ADivider style={{margin: 0}}/>
+        <AListItemDivider style={{margin: 0}}/>
         <AListItem onClick={() => {}}><ACheckbox checked={true}>Checked</ACheckbox></AListItem>
         <AListItem onClick={() => {}}><ACheckbox checked={false}>UnChecked</ACheckbox></AListItem>
-         <ADivider style={{margin: 0}}/>
+        <AListItemDivider style={{margin: 0}}/>
         <AListItem onClick={() => {setMenu4Selected(3)}} selected={3 === menu4Selected}>Status</AListItem>
       </AMenu>
       <AMenu
@@ -203,7 +203,7 @@ It is necessary for `AMenu` to be a descendant of `AApp` for mounting.
         onClose={() => setOpen5(false)}>
         <AListItem onClick={() => {}}><ARadio checked={true}>Selected</ARadio></AListItem>
         <AListItem onClick={() => {}}><ARadio checked={false}>UnSelected</ARadio></AListItem>
-         <ADivider style={{margin: 0}}/>
+        <AListItemDivider style={{margin: 0}}/>
         <AListItem onClick={() => {}}><ACheckbox checked={true}>Checked</ACheckbox></AListItem>
         <AListItem onClick={() => {}}><ACheckbox checked={false}>UnChecked</ACheckbox></AListItem>
       </AMenu>
