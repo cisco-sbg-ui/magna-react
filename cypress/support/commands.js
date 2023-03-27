@@ -1,5 +1,6 @@
 import "cypress-wait-until";
 import compareSnapshotCommand from "cypress-visual-regression/dist/command";
+import {keyCodes} from "../../framework/utils/helpers";
 
 compareSnapshotCommand();
 
@@ -68,8 +69,16 @@ Cypress.Commands.add("getByAriaLabel", (label) => {
   return cy.get(`[aria-label="${label}"]`);
 });
 
-Cypress.Commands.add("escapeKeydown", () => {
-  return cy.get("body").trigger("keydown", {key: "Escape"});
+Cypress.Commands.add("escapeKeydown", ($onEl = cy.get("body")) => {
+  return $onEl.trigger("keydown", {key: "Escape"});
+});
+
+Cypress.Commands.add("enterKeydown", ($onEl = cy.get("body")) => {
+  return $onEl.trigger("keydown", {keyCode: keyCodes.enter});
+});
+
+Cypress.Commands.add("spaceKeydown", ($onEl = cy.get("body")) => {
+  return $onEl.trigger("keydown", {keyCode: keyCodes.space});
 });
 
 /**
