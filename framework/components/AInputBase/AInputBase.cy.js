@@ -1,4 +1,3 @@
-import {keyCodes} from "../../utils/helpers";
 import AInputBase from "./AInputBase";
 
 const commonProps = {
