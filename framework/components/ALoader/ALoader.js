@@ -1,4 +1,5 @@
 import React, {forwardRef} from "react";
+import classNames from "classnames";
 import PropTypes from "prop-types";
 import ADotLoader from "./ADotLoader";
 import ASpinLoader from "./ASpinLoader";
@@ -34,45 +35,26 @@ const ALoader = forwardRef(
       indicatorType =
         typeof variant === "string" ? variant : TagName.displayName;
 
-    switch (size) {
-      case "small": {
-        className += ` ${baseClass}--size-small`;
-        break;
-      }
-
-      case "large": {
-        className += ` ${baseClass}--size-large`;
-        break;
-      }
-
-      default: {
-        className += ` ${baseClass}--size-medium`;
-      }
-    }
-
-    switch (placement) {
-      case "top":
-        className += ` ${baseClass}--placement-top`;
-        break;
-      case "right":
-        className += ` ${baseClass}--placement-right`;
-        break;
-      case "bottom":
-        className += ` ${baseClass}--placement-bottom`;
-        break;
-      case "left":
-        className += ` ${baseClass}--placement-left`;
-        break;
-    }
-
-    className += ` ${baseClass}--loader-${indicatorType}`;
-
-    if (propsClassName) {
-      className += ` ${propsClassName}`;
-    }
+    const aLoaderClass = {
+      [baseClass]: true,
+      [`${baseClass}--loader-${indicatorType}`]: true,
+      // size
+      [`${baseClass}--size-small`]: size === "small",
+      [`${baseClass}--size-large`]: size === "large",
+      [`${baseClass}--size-medium`]: size === "medium" || !size,
+      // placement
+      [`${baseClass}--placement-top`]: placement === "top",
+      [`${baseClass}--placement-right`]: placement === "right",
+      [`${baseClass}--placement-bottom`]: placement === "bottom",
+      [`${baseClass}--placement-left`]: placement === "left"
+    };
 
     return (
-      <div ref={ref} className={className} {...rest}>
+      <div
+        ref={ref}
+        className={classNames(aLoaderClass, propsClassName)}
+        {...rest}
+      >
         {["bottom", "right"].includes(placement) && children}
         <div className={containerClassName}>
           <TagName {...indicatorProps} size={size}></TagName>
