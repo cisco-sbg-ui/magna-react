@@ -1,0 +1,75 @@
+@import "../../styles";
+
+@include theme(a-inline-text-input) using ($theme) {
+  color: map-deep-get($theme, "base", "color") !important;
+  .a-icon--pencil-simple {
+    stroke: map-deep-get($theme, "base", "color") !important;
+  }
+
+  &__placeholder {
+    color: map-deep-get($theme, "base", "color--disabled");
+  }
+  &__display:hover {
+    color: map-deep-get($theme, "button", "tertiary", "alt", "color--hover");
+
+    .a-icon--pencil-simple {
+      stroke: map-deep-get(
+        $theme,
+        "button",
+        "tertiary",
+        "alt",
+        "color--hover"
+      ) !important;
+    }
+  }
+}
+
+.a-inline-text-input {
+  display: inline-flex;
+  font-weight: normal !important;
+
+  &__display {
+    display: flex;
+    line-height: 34px;
+    flex-direction: row;
+    cursor: pointer;
+  }
+
+  &__editIcon,
+  &__clearIcon {
+    display: flex;
+    opacity: 0;
+    align-items: center;
+    margin: 0 0 0 5px;
+    transition: opacity 0.2s;
+
+    .a-icon {
+      height: 16px;
+      width: 16px;
+
+      vertical-align: middle;
+    }
+  }
+
+  &__clearIcon {
+    .a-button {
+      padding: 0;
+    }
+  }
+
+  &__display:hover {
+    .a-inline-text-input__editIcon,
+    .a-inline-text-input__clearIcon {
+      opacity: 1;
+    }
+  }
+
+  /*
+  * There are issues with the default value of stretch that
+  * cause the height of the container to change.
+  */
+  .a-text-input__prepend-icon,
+  .a-text-input__append-icon {
+    align-self: unset;
+  }
+}

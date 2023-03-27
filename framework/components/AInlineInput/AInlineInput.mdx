@@ -1,0 +1,111 @@
+---
+name: Inline Text Inputs
+route: /components/inline-text-input
+components: AInlineTextInput, AInlineTextarea
+---
+
+# Text Inputs
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {AInlineTextInput, AInlineTextarea} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+`AInlineTextInput` enters edit mode on click.
+
+Escape key when editing resets value to last entered.
+
+<Playground
+  code={`() => {
+  const [value, setValue] = useState("inline edit value");
+  return (
+    <div>
+      <AInlineTextInput value={value} onChange={(newValue) => {
+        setValue(newValue);
+      }} />
+      <br />
+      Actual Value: {value}
+    </div>
+
+);
+}
+`}
+/>
+
+## Clearable
+
+<Playground
+  code={`() => {
+  const [value, setValue] = useState("inline edit value");
+  return (
+    <div>
+      <AInlineTextInput value={value} onChange={(newValue) => {
+        setValue(newValue);
+      }}
+      clearable
+      />
+      <br />
+      Actual Value: {value}
+    </div>
+
+);
+}
+`}
+/>
+
+## Text Area
+
+<Playground
+  code={`() => {
+  const [value, setValue] = useState("inline edit value ATextarea");
+  return (
+    <div>
+     <AInlineTextarea value={value}onChange={(newValue) => {
+        setValue(newValue);
+      }} />
+    </div>
+
+);
+}
+`}
+/>
+
+## Passed input props
+
+<Playground
+  code={`() => {
+  const [value, setValue] = useState("inline edit value");
+  return (
+    <div>
+      <AInlineTextInput
+        value={value}
+        onChange={(newValue) => {
+          setValue(newValue);
+        }}
+        inputComponentProps={{
+          prependIcon: "tag"
+        }}
+      />
+      <br />
+      Actual Value: {value}
+    </div>
+
+);
+}
+`}
+/>
+
+## Inline Text Input Props
+
+The `AInlineTextInput` component inherits passed props.
+
+<Props of="AInlineTextInput" />
+
+## Accessibility Notes
+
+Interactable prepended and appended icons are tab-focusable with a visual overlay, as well as assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [button](https://www.w3.org/TR/wai-aria/#button).

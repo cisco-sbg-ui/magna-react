@@ -116,28 +116,28 @@ $tooltip-color: map-get($mds-neutral, "neutral-1");
   &.a-menu-base--top,
   &.a-menu-base--top-left,
   &.a-menu-base--top-right {
-    animation-name: slideToTop;
+    animation-name: fade-in, slideToTop;
     animation-duration: $transition-duration--fast;
   }
 
   &.a-menu-base--right,
   &.a-menu-base--right-top,
   &.a-menu-base--right-bottom {
-    animation-name: slideToRight;
+    animation-name: fade-in, slideToRight;
     animation-duration: $transition-duration--fast;
   }
 
   &.a-menu-base--bottom,
   &.a-menu-base--bottom-right,
   &.a-menu-base--bottom-left {
-    animation-name: slideToBottom;
+    animation-name: fade-in, slideToBottom;
     animation-duration: $transition-duration--fast;
   }
 
   &.a-menu-base--left,
   &.a-menu-base--left-bottom,
   &.a-menu-base--left-top {
-    animation-name: slideToLeft;
+    animation-name: fade-in, slideToLeft;
     animation-duration: $transition-duration--fast;
   }
 }
