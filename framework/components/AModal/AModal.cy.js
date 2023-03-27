@@ -65,7 +65,6 @@ describe("<AModal />", () => {
     cy.getByDataTestId("open-modal-btn").click();
     cy.getByDataTestId("modal-title").should("exist");
     cy.getByDataTestId("accordion-content").should("not.be.visible");
-    //cy.getByDataTestId("focusable-item-3").trigger("keydown", {keyCode: 27});
     cy.getByDataTestId("focusable-item-3").click();
     cy.getByDataTestId("accordion-content").should("not.be.visible");
   });
@@ -85,7 +84,7 @@ describe("<AModal />", () => {
     cy.getByDataTestId("open-modal-btn").click();
     cy.getByDataTestId("modal-title").should("exist");
     cy.getByDataTestId("accordion-content").should("not.be.visible");
-    cy.getByDataTestId("focusable-item-1").trigger("keydown", {keyCode: 13});
+    cy.enterKeydown(cy.getByDataTestId("focusable-item-1"));
     cy.getByDataTestId("accordion-content").should("not.be.visible");
   });
 });
