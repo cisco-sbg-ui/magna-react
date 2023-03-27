@@ -69,16 +69,19 @@ Cypress.Commands.add("getByAriaLabel", (label) => {
   return cy.get(`[aria-label="${label}"]`);
 });
 
-Cypress.Commands.add("escapeKeydown", ($onEl = cy.get("body")) => {
-  return $onEl.trigger("keydown", {key: "Escape"});
-});
+const keydownUtils = [
+  {keyCode: keyCodes.esc, name: "escapeKeydown"},
+  {keyCode: keyCodes.enter, name: "enterKeydown"},
+  {keyCode: keyCodes.space, name: "spaceKeydown"},
+  {keyCode: keyCodes.down, name: "downArrowKeydown"},
+  {keyCode: keyCodes.up, name: "upArrowKeydown"},
+  {keyCode: keyCodes.tab, name: "tabKeydown"}
+];
 
-Cypress.Commands.add("enterKeydown", ($onEl = cy.get("body")) => {
-  return $onEl.trigger("keydown", {keyCode: keyCodes.enter});
-});
-
-Cypress.Commands.add("spaceKeydown", ($onEl = cy.get("body")) => {
-  return $onEl.trigger("keydown", {keyCode: keyCodes.space});
+keydownUtils.forEach(({keyCode, name}) => {
+  Cypress.Commands.add(name, ($el = cy.get("body")) => {
+    return $el.trigger("keydown", {keyCode});
+  });
 });
 
 /**
