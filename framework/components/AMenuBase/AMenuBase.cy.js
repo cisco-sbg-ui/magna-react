@@ -86,6 +86,34 @@ describe("<AMenuBase />", () => {
       });
     });
   });
+
+  it("should not hide content when close to the left edge", () => {
+    cy.mount(<EdgeDetectionMenuTest edge="left" placement="left" />);
+    openMenu();
+
+    getMenuContent().should("be.visible");
+  });
+
+  it("should not hide content when close to the right edge", () => {
+    cy.mount(<EdgeDetectionMenuTest edge="right" placement="right" />);
+    openMenu();
+
+    getMenuContent().should("be.visible");
+  });
+
+  it("should not hide content when close to the bottom edge", () => {
+    cy.mount(<EdgeDetectionMenuTest edge="bottom" placement="bottom" />);
+    openMenu();
+
+    getMenuContent().should("be.visible");
+  });
+
+  it("should not hide content when close to the top edge", () => {
+    cy.mount(<EdgeDetectionMenuTest edge="top" placement="top" />);
+    openMenu();
+
+    getMenuContent().should("be.visible");
+  });
 });
 
 function MenuTest(menuBaseProps) {
@@ -110,7 +138,39 @@ function MenuTest(menuBaseProps) {
         anchorRef={btnRef}
         open={isOpen}
       >
-        <p>test</p>
+        <div style={{background: "white", padding: "10px"}}>test</div>
+      </AMenuBase>
+    </div>
+  );
+}
+
+function EdgeDetectionMenuTest({edge, ...menuBaseProps}) {
+  const btnRef = useRef();
+  const [isOpen, setIsOpen] = useState(menuBaseProps?.open);
+  const justifyStyle = `justify-${edge === "right" ? "end" : "left"}`;
+  const alignStyle = `align-${
+    edge === "bottom" ? "end" : edge === "top" ? "start" : "center"
+  }`;
+  return (
+    <div
+      className={`d-flex ${justifyStyle} ${alignStyle}`}
+      data-testid="container"
+      style={{height: "100vh", width: "100vw"}}
+    >
+      <AButton
+        data-testid="open-menu-btn"
+        ref={btnRef}
+        onClick={() => setIsOpen((state) => !state)}
+      >
+        {isOpen ? "close" : "open"}
+      </AButton>
+      <AMenuBase
+        {...menuBaseProps}
+        onClose={() => setIsOpen(false)}
+        anchorRef={btnRef}
+        open={isOpen}
+      >
+        <div style={{background: "white", padding: "10px"}}>test</div>
       </AMenuBase>
     </div>
   );
