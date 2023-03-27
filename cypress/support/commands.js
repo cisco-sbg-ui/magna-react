@@ -71,3 +71,17 @@ Cypress.Commands.add("getByAriaLabel", (label) => {
 Cypress.Commands.add("escapeKeydown", () => {
   return cy.get("body").trigger("keydown", {key: "Escape"});
 });
+
+/**
+ * Specifically for `ATooltip`.
+ */
+Cypress.Commands.add("hoverATooltip", (withClick = false) => {
+  return cy.getByAriaLabel("information icon").trigger("mouseenter");
+});
+
+/**
+ * Specifically for `ATooltip`.
+ */
+Cypress.Commands.add("clickATooltip", (withClick = false) => {
+  return cy.getByAriaLabel("information icon").trigger("click");
+});
