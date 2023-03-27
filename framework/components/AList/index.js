@@ -2,6 +2,7 @@ import AList from "./AList";
 import AListItem from "./AListItem";
 import AListItemAvatar from "./AListItemAvatar";
 import AListItemContent from "./AListItemContent";
+import AListItemDivider from "./AListItemDivider";
 import AListItemGroup from "./AListItemGroup";
 import AListItemSubtitle from "./AListItemSubtitle";
 import AListItemTitle from "./AListItemTitle";
@@ -12,6 +13,7 @@ export {
   AListItem,
   AListItemAvatar,
   AListItemContent,
+  AListItemDivider,
   AListItemGroup,
   AListItemSubtitle,
   AListItemTitle,

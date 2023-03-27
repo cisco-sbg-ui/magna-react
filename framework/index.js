@@ -36,6 +36,7 @@ import {
   AListItemAction,
   AListItemAvatar,
   AListItemContent,
+  AListItemDivider,
   AListItemGroup,
   AListItemSubtitle,
   AListItemTitle
@@ -146,6 +147,7 @@ export {
   AListItemAction,
   AListItemAvatar,
   AListItemContent,
+  AListItemDivider,
   AListItemGroup,
   AListItemSubtitle,
   AListItemTitle,
