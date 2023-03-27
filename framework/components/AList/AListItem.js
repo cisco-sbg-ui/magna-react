@@ -1,5 +1,11 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useEffect, useRef, useState} from "react";
+import React, {
+  forwardRef,
+  useCallback,
+  useEffect,
+  useRef,
+  useState
+} from "react";
 
 import {useCombinedRefs} from "../../utils/hooks";
 import {keyCodes} from "../../utils/helpers";
@@ -13,7 +19,7 @@ const AListItem = forwardRef(
       component,
       href,
       onClick: propsOnClick,
-      onKeyDown,
+      onKeyDown: propsOnKeyDown,
       role,
       selected,
       disabled,
@@ -26,13 +32,29 @@ const AListItem = forwardRef(
     const [roleValue, setRoleValue] = useState(role);
     const listItemRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, listItemRef);
-    const onClick = (e) => {
-      if (disabled) {
-        return;
-      }
 
-      propsOnClick && propsOnClick(e);
-    };
+    const onClick = useCallback(
+      (e) => {
+        if (disabled) {
+          return;
+        }
+
+        propsOnClick && propsOnClick(e);
+      },
+      [disabled, propsOnClick]
+    );
+
+    const onKeyDown = useCallback(
+      (e) => {
+        if (onClick && e.keyCode === keyCodes.enter) {
+          e.preventDefault();
+          onClick(e);
+        }
+
+        propsOnKeyDown && propsOnKeyDown(e);
+      },
+      [onClick, propsOnKeyDown]
+    );
 
     useEffect(() => {
       if (
@@ -69,14 +91,7 @@ const AListItem = forwardRef(
       className,
       disabled,
       onClick,
-      onKeyDown: (e) => {
-        if (onClick && e.keyCode === keyCodes.enter) {
-          e.preventDefault();
-          onClick(e);
-        }
-
-        onKeyDown && onKeyDown(e);
-      },
+      onKeyDown,
       role: roleValue
     };
 

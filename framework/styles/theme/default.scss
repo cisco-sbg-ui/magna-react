@@ -236,6 +236,9 @@ $atomic-default: (
     "color--disabled": map-get($mds-light-theme, "supplemental-text"),
     "opacity--disabled": 1
   ),
+  "list": (
+    "group-title-color": map-get($mds-light-theme, "secondary-gray")
+  ),
   "loader": (
     "background-color": map-get($mds-neutral, "neutral-4"),
     "main-color": map-get($mds-blue, "blue-7"),

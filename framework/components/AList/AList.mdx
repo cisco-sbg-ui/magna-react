@@ -1,7 +1,7 @@
 ---
 name: Lists
 route: /components/list
-components: AList, AListItem, AListItemAvatar, AListItemSubtitle, AListItemAction, AListItemContent
+components: AList, AListItem, AListItemAction, AListItemAvatar, AListItemContent, AListItemGroup, AListItemSubtitle, AListItemTitle
 ---
 
 # Lists
@@ -14,11 +14,13 @@ Integrate with your build to [auto-import](/#integrating), or add an import in y
 import {
   AList,
   AListItem,
+  AListItemAction
   AListItemAvatar,
+  AListItemContent,
+  AListItemDivider,
+  AListItemGroup,
   AListItemSubtitle,
   AListItemTitle,
-  AListItemContent,
-  AListItemAction
 } from "@cisco-sbg-ui/magna-react";
 ```
 
@@ -27,7 +29,7 @@ import {
 <Playground
   fullWidthPreview
   code={`<div className="d-flex align-start">
-  <AList className="mr-2" style={{flexBasis: "33%"}}>
+  <AList className="mr-2" style={{flexBasis: "25%"}}>
     <AListItem twoLine>
       <AListItemAvatar>
         <AIcon size={16} className="status-red--text">
@@ -47,10 +49,10 @@ import {
         </AButton>
       </AListItemAction>
     </AListItem>
-    <ADivider light className="ma-0" />
+    <AListItemDivider className="ma-0" />
     <AListItem onClick={() => {}}>Logout</AListItem>
   </AList>
-  <AList className="ml-2 mr-2 pl-2" style={{flexBasis: "33%"}}>
+  <AList className="ml-2 mr-2 pl-2" style={{flexBasis: "25%"}}>
     <AListItem twoLine>
       <AListItemAvatar className="ma-2 ml-0">
         <div
@@ -72,7 +74,7 @@ import {
         </AListItemSubtitle>
       </AListItemContent>
     </AListItem>
-    <ADivider light className="ma-0" />
+    <AListItemDivider light className="ma-0" />
     <AListItem twoLine>
       <AListItemAvatar className="ma-2 ml-0">
         <div
@@ -95,7 +97,7 @@ import {
       </AListItemContent>
     </AListItem>
   </AList>
-  <AList className="ml-2" style={{flexBasis: "33%"}}>
+  <AList className="ml-2" style={{flexBasis: "25%"}}>
     <AListItem href="#" target="_blank">
       One
     </AListItem>
@@ -108,6 +110,18 @@ import {
       </AListItemAvatar>
       <AListItemContent>Log Out</AListItemContent>
     </AListItem>
+  </AList>
+  <AList className="ml-2" style={{flexBasis: "25%"}}>
+    <AListItemGroup title={"Category 1"}>
+        <AListItem>Category item 1</AListItem>
+        <AListItem>Category item 2</AListItem>
+        <AListItem>Category item 3</AListItem>
+    </AListItemGroup>
+    <AListItemDivider />
+    <AListItemGroup title={"Category 2"}>
+        <AListItem>Category item 4</AListItem>
+        <AListItem>Category item 5</AListItem>
+    </AListItemGroup>
   </AList>
 </div>
 `}
@@ -125,11 +139,35 @@ The `AListItem` component inherits passed props.
 
 <Props of="AListItem" />
 
+## List Item Action Props
+
+The `AListItemAction` component inherits passed props.
+
+<Props of="AListItemAction" />
+
 ## List Item Avatar Props
 
 The `AListItemAvatar` component inherits passed props.
 
 <Props of="AListItemAvatar" />
+
+## List Item Content Props
+
+The `AListItemContent` component inherits passed props.
+
+<Props of="AListItemContent" />
+
+## List Item Divider Props
+
+The `AListItemDivider` component inherits passed props. You can use [ADivider](/components/divider#divider-props) props to configure it.
+
+<Props of="AListItemDivider" />
+
+## List Item Group Props
+
+The `AListItemGroup` component inherits passed props.
+
+<Props of="AListItemGroup" />
 
 ## List Item Subtitle Props
 
@@ -143,17 +181,6 @@ The `AListItemTitle` component inherits passed props.
 
 <Props of="AListItemTitle" />
 
-## List Item Content Props
-
-The `AListItemContent` component inherits passed props.
-
-<Props of="AListItemContent" />
-
-## List Item Action Props
-
-The `AListItemAction` component inherits passed props.
-
-<Props of="AListItemAction" />
 
 ## Router Integrations
 
