@@ -36,16 +36,16 @@ describe("<AMenu />", () => {
     pressDownArrow()
       .then(() => {
         cy.getByDataTestId("menu-item-1").should("have.focus");
+        return pressDownArrow();
       })
-      .then(pressDownArrow)
       .then(() => {
         cy.getByDataTestId("menu-item-2").should("have.focus");
+        return pressDownArrow();
       })
-      .then(pressDownArrow)
       .then(() => {
         cy.getByDataTestId("menu-item-3").should("have.focus");
+        return pressDownArrow();
       })
-      .then(pressDownArrow)
       .then(() => {
         cy.getByDataTestId("menu-item-1").should("have.focus");
       });
@@ -57,16 +57,16 @@ describe("<AMenu />", () => {
     pressUpArrow()
       .then(() => {
         cy.getByDataTestId("menu-item-3").should("have.focus");
+        return pressUpArrow();
       })
-      .then(pressUpArrow)
       .then(() => {
         cy.getByDataTestId("menu-item-2").should("have.focus");
+        return pressUpArrow();
       })
-      .then(pressUpArrow)
       .then(() => {
         cy.getByDataTestId("menu-item-1").should("have.focus");
+        return pressUpArrow();
       })
-      .then(pressUpArrow)
       .then(() => {
         cy.getByDataTestId("menu-item-3").should("have.focus");
       });
