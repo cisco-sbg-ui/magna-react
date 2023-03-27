@@ -30,7 +30,7 @@
 
   &__display {
     display: flex;
-    line-height: 34px;
+
     flex-direction: row;
     cursor: pointer;
   }
@@ -71,5 +71,17 @@
   .a-text-input__prepend-icon,
   .a-text-input__append-icon {
     align-self: unset;
+  }
+
+  &--size-small {
+    line-height: 28px;
+  }
+
+  &--size-medium {
+    line-height: 34px;
+  }
+
+  &--size-large {
+    line-height: 40px;
   }
 }

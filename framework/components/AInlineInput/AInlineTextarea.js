@@ -1,10 +1,10 @@
-import React from "react";
-import AInlineTextInput from "./AInlineTextInput";
+import React, {forwardRef} from "react";
+import AInlineTextInput from "./AInlineInput";
 import ATextarea from "../ATextarea";
 
-const AInlineTextarea = (props) => {
-  return <AInlineTextInput {...props} inputComponent={ATextarea} />;
-};
+const AInlineTextarea = forwardRef((props, ref) => {
+  return <AInlineTextInput ref={ref} {...props} inputComponent={ATextarea} />;
+});
 
 AInlineTextarea.displayName = "AInlineTextarea";
 

@@ -1,4 +1,4 @@
-import AInlineTextInput from "./AInlineTextInput";
+import AInlineInput from "./AInlineInput";
 import AInlineTextarea from "./AInlineTextarea";
 
-export {AInlineTextInput, AInlineTextarea};
+export {AInlineInput as AInlineTextInput, AInlineTextarea};

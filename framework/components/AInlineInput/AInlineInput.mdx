@@ -75,7 +75,7 @@ Escape key when editing resets value to last entered.
 `}
 />
 
-## Passed input props
+## Input props and validation
 
 <Playground
   code={`() => {
@@ -88,7 +88,8 @@ Escape key when editing resets value to last entered.
           setValue(newValue);
         }}
         inputComponentProps={{
-          prependIcon: "tag"
+          prependIcon: "tag",
+          required: true
         }}
       />
       <br />
@@ -100,11 +101,11 @@ Escape key when editing resets value to last entered.
 `}
 />
 
-## Inline Text Input Props
+## Inline Input Props
 
-The `AInlineTextInput` component inherits passed props.
+The `AInlineInput` component inherits passed props. `AInlineTextInput` and `AInlineTextarea` are convenience wrappers around `AInlineInput` that accept the same props.
 
-<Props of="AInlineTextInput" />
+<Props of="AInlineInput" />
 
 ## Accessibility Notes
 

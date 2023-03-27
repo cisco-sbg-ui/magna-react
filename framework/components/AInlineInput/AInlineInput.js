@@ -2,6 +2,7 @@ import React, {forwardRef, useEffect, useRef, useState} from "react";
 import PropTypes from "prop-types";
 import useEscapeKeydown from "../../hooks/useEscapeKeydown/useEscapeKeydown";
 import AButton from "../AButton";
+import {AForm} from "../AForm";
 import AIcon from "../AIcon";
 import ATextInput from "../ATextInput";
 import ATextarea from "../ATextarea";
@@ -9,7 +10,7 @@ import "./AInlineInput.scss";
 
 const baseClass = "a-inline-text-input";
 
-const AInlineTextInput = forwardRef(
+const AInlineInput = forwardRef(
   (
     {
       inputComponent = ATextInput,
@@ -19,11 +20,15 @@ const AInlineTextInput = forwardRef(
       value = "",
       placeholder = "...",
       onChange,
+      small,
+      medium,
+      large,
       ...rest
     },
     ref
   ) => {
-    const inputRef = useRef(),
+    const formRef = useRef(),
+      inputRef = useRef(),
       [isEditing, setIsEditing] = useState(false),
       [displayValue, setDisplayValue] = useState(value),
       [editingValue, setEditingValue] = useState(value),
@@ -51,11 +56,26 @@ const AInlineTextInput = forwardRef(
       editIconClass = `${baseClass}__editIcon`,
       clearIconClass = `${baseClass}__clearIcon`;
 
+    if (small) {
+      className += ` ${baseClass}--size-small`;
+    } else if (large) {
+      className += ` ${baseClass}--size-large`;
+    } else {
+      className += ` ${baseClass}--size-medium`;
+    }
+
     const handleChange = (e) => {
       // won't trigger on Escape key
       e.stopPropagation();
 
       setEditingValue(editingValue);
+
+      const validationStates = formRef.current.validate();
+
+      if (validationStates.length) {
+        return;
+      }
+
       setDisplayValue(editingValue);
       setIsEditing(false);
 
@@ -91,25 +111,29 @@ const AInlineTextInput = forwardRef(
       >
         {isEditing && (
           <div className={inputContainerClass}>
-            <ComponentTag
-              ref={inputRef}
-              value={editingValue}
-              onChange={(e) => {
-                e.stopPropagation();
+            <AForm ref={formRef}>
+              <ComponentTag
+                ref={inputRef}
+                value={editingValue}
+                onChange={(e) => {
+                  e.stopPropagation();
 
-                const {value: eventValue} = e.target;
-                setEditingValue(eventValue);
-              }}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  handleChange(e);
-                }
-              }}
-              onBlur={handleChange}
-              autoFocus // eslint-disable-line
-              medium
-              {...inputComponentProps}
-            />
+                  const {value: eventValue} = e.target;
+                  setEditingValue(eventValue);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleChange(e);
+                  }
+                }}
+                onBlur={handleChange}
+                small={small}
+                medium={medium}
+                large={large}
+                autoFocus // eslint-disable-line
+                {...inputComponentProps}
+              />
+            </AForm>
           </div>
         )}
         {!isEditing && (
@@ -143,9 +167,9 @@ const AInlineTextInput = forwardRef(
   }
 );
 
-AInlineTextInput.displayName = "AInlineTextInput";
+AInlineInput.displayName = "AInlineInput";
 
-AInlineTextInput.propTypes = {
+AInlineInput.propTypes = {
   /**
    * Input component element type
    */
@@ -173,7 +197,19 @@ AInlineTextInput.propTypes = {
   /**
    * Handles the `change` event.
    */
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  /**
+   * Sets widget size to magnetic large
+   */
+  large: PropTypes.bool,
+  /**
+   * Sets widget size to magnetic medium (default)
+   */
+  medium: PropTypes.bool,
+  /**
+   * Sets widget size to magnetic small
+   */
+  small: PropTypes.bool
 };
 
-export default AInlineTextInput;
+export default AInlineInput;
