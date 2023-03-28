@@ -35,7 +35,18 @@ const ACardItem = forwardRef(
 );
 
 ACardItem.propTypes = {
+  /**
+   * Item will fill in the remaining width
+   */
   stretched: PropTypes.bool,
+
+  /**
+   * Removes indentation
+   *
+   * "left": from the left
+   * "right": from the right
+   * "horizontal": from both sides
+   */
   attached: PropTypes.oneOf(["lef", "right", "horizontal"])
 };
 

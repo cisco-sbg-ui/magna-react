@@ -28,6 +28,10 @@ ACardContainer.propTypes = {
    * Sets the base component.
    */
   component: PropTypes.elementType,
+
+  /**
+   * Removes the shadow from the card container.
+   */
   flat: PropTypes.bool
 };
 

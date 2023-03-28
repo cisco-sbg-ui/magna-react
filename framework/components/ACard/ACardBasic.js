@@ -64,6 +64,12 @@ ACardBasic.propTypes = {
    * Sets the base component.
    */
   component: PropTypes.elementType,
+
+  /**
+   * Sets the colour state on the card.
+   * It reflects the colors of the magnetic design states "dormant", "positive", "warning", "negative" and "informational".
+   * Value "custom" sets the state color from "stateCustomColor"
+   */
   state: PropTypes.oneOf([
     "dormant",
     "positive",
@@ -72,7 +78,15 @@ ACardBasic.propTypes = {
     "informational",
     "custom"
   ]),
+
+  /**
+   * If the status is set to "custom", the status color will be set to this value.
+   */
   stateCustomColor: PropTypes.string,
+
+  /**
+   * This sets the shadow on the tab
+   */
   lifted: PropTypes.bool
 };
 
