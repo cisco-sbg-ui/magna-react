@@ -52,7 +52,7 @@ const AToast = forwardRef(
     }
 
     return (
-      <div {...rest} ref={ref} className={className} data-ignore-outside-click>
+      <div {...rest} ref={ref} className={className}>
         <AIcon className="a-toast__icon" size={20}>
           {icon}
         </AIcon>
