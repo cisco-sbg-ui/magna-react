@@ -10,7 +10,7 @@ const screenHeight = 720;
  * `config` is the resolved Cypress config
  */
 module.exports = (on, config) => {
-  if (config.testingType === 'component') {
+  if (config.testingType === "component") {
     injectDevServer(on, config);
   }
   require("@cypress/code-coverage/task")(on, config);

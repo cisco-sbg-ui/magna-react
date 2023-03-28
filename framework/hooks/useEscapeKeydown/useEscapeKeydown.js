@@ -1,4 +1,5 @@
 import {useCallback, useEffect} from "react";
+import {keyCodes} from "../../utils/helpers";
 
 const useEscapeKeydown = (options) => {
   const {isEnabled, onKeydown} = options;
@@ -6,7 +7,8 @@ const useEscapeKeydown = (options) => {
   const detectEscKeydown = useCallback(
     (e) => {
       const key = e.key;
-      if (key === "Escape") {
+      const keyCode = e.keyCode;
+      if (key === "Escape" || keyCode === keyCodes.esc) {
         if (typeof onKeydown === "function") {
           onKeydown(e);
         }
