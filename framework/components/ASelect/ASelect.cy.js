@@ -137,31 +137,11 @@ describe("<ASelect />", () => {
     });
 
     it("should add validation rule props to internal validation rules", () => {
-      cy.mount(
-        <ObjectItemsTest
-          rules={[
-            {
-              test: (item) => {
-                if (!item || !item.id) return true;
-                return item.id == 5 || "test error";
-              },
-              level: "warning"
-            }
-          ]}
-          items={[
-            {
-              id: "",
-              name: ""
-            },
-            ...objectTestItems
-          ]}
-          required
-        />
-      );
+      cy.mount(<ObjectItemsTest {...validationRules} required />);
 
-      // First check for built-in required rule
+      // First check for required validation rule
       openSelect();
-      cy.get('[role="option"]').eq(0).enterKeydown();
+      cy.get("body").click();
       cy.get(".a-alert--state-danger").should("exist");
 
       // Now check for custom validation rule
@@ -189,7 +169,7 @@ describe("<ASelect />", () => {
 
       // Focus to input and immediately tab out to make input dirty
       openSelect();
-      cy.tabKeydown();
+      cy.get("body").click();
       cy.get(".a-alert--state-danger").should("exist");
     });
   });
