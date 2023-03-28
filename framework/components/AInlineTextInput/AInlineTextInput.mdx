@@ -1,7 +1,7 @@
 ---
 name: Inline Text Inputs
 route: /components/inline-text-input
-components: AInlineTextInput, AInlineTextarea
+components: AInlineTextInput
 ---
 
 # Text Inputs
@@ -11,7 +11,7 @@ components: AInlineTextInput, AInlineTextarea
 Integrate with your build to [auto-import](/#integrating), or add an import in your component:
 
 ```
-import {AInlineTextInput, AInlineTextarea} from "@cisco-sbg-ui/magna-react";
+import {AInlineTextInput} from "@cisco-sbg-ui/magna-react";
 ```
 
 ## Usage
@@ -58,23 +58,6 @@ Escape key when editing resets value to last entered.
 `}
 />
 
-## Text Area
-
-<Playground
-  code={`() => {
-  const [value, setValue] = useState("inline edit value ATextarea");
-  return (
-    <div>
-     <AInlineTextarea value={value}onChange={(newValue) => {
-        setValue(newValue);
-      }} />
-    </div>
-
-);
-}
-`}
-/>
-
 ## Input props and validation
 
 <Playground
@@ -101,11 +84,11 @@ Escape key when editing resets value to last entered.
 `}
 />
 
-## Inline Input Props
+## Inline Text Input Props
 
-The `AInlineInput` component inherits passed props. `AInlineTextInput` and `AInlineTextarea` are convenience wrappers around `AInlineInput` that accept the same props.
+The `AInlineTextInput` component inherits passed props.
 
-<Props of="AInlineInput" />
+<Props of="AInlineInputBase" />
 
 ## Accessibility Notes
 

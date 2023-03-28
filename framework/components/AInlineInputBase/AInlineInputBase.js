@@ -6,11 +6,11 @@ import {AForm} from "../AForm";
 import AIcon from "../AIcon";
 import ATextInput from "../ATextInput";
 import ATextarea from "../ATextarea";
-import "./AInlineInput.scss";
+import "./AInlineInputBase.scss";
 
 const baseClass = "a-inline-text-input";
 
-const AInlineInput = forwardRef(
+const AInlineInputBase = forwardRef(
   (
     {
       inputComponent = ATextInput,
@@ -188,9 +188,9 @@ const AInlineInput = forwardRef(
   }
 );
 
-AInlineInput.displayName = "AInlineInput";
+AInlineInputBase.displayName = "AInlineInputBase";
 
-AInlineInput.propTypes = {
+export const AInlineInputBasePropTypes = {
   /**
    * Input component element type
    */
@@ -233,4 +233,6 @@ AInlineInput.propTypes = {
   small: PropTypes.bool
 };
 
-export default AInlineInput;
+AInlineInputBase.propTypes = AInlineInputBasePropTypes;
+
+export default AInlineInputBase;

@@ -1,0 +1,48 @@
+---
+name: Inline Input Base
+route: /extend/inline-input
+components: AInlineInput
+---
+
+# Inline Inputs
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {AInlineInput} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+`AInlineInput` enters edit mode on click.
+
+Escape key when editing resets value to last entered.
+
+<Playground
+  code={`() => {
+  const [value, setValue] = useState("inline edit value");
+  return (
+    <div>
+      <AInlineTextInput value={value} onChange={(newValue) => {
+        setValue(newValue);
+      }} />
+      <br />
+      Actual Value: {value}
+    </div>
+
+);
+}
+`}
+/>
+
+## Inline Input Props
+
+The `AInlineInput` component inherits passed props. `AInlineTextInput` and `AInlineTextarea` are convenience wrappers around `AInlineInput` that accept the same props.
+
+<Props of="AInlineInputBase" />
+
+## Accessibility Notes
+
+Interactable prepended and appended icons are tab-focusable with a visual overlay, as well as assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [button](https://www.w3.org/TR/wai-aria/#button).

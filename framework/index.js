@@ -28,7 +28,8 @@ import {AForm, AFormContext} from "./components/AForm";
 import AHint from "./components/AHint";
 import AIcon from "./components/AIcon";
 import AInView from "./components/AInView";
-import {AInlineTextInput, AInlineTextarea} from "./components/AInlineInput";
+import AInlineTextarea from "./components/AInlineTextarea";
+import AInlineTextInput from "./components/AInlineTextInput";
 import AInputBase from "./components/AInputBase";
 import {AContainer, ARow, ACol, ASpacer} from "./components/ALayout";
 import {

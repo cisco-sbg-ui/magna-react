@@ -81,7 +81,7 @@
     "lodash.debounce": "4.0.8",
     "lodash.isequal": "^4.5.0",
     "next": "12.3.0",
-    "next-mdx-remote": "4.2.0",
+    "next-mdx-remote": "4.4.1",
     "prettier": "2.7.1",
     "prop-types": "15.8.1",
     "react": "17.0.2",
