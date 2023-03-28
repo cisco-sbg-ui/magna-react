@@ -78,6 +78,13 @@ const keydownUtils = [
   {keyCode: keyCodes.tab, name: "tabKeydown"}
 ];
 
+/**
+ * These give us dedicated keydown commands so that we don't have
+ * to remember how to invoke them with the verbose Cypress syntax.
+ *
+ * @example
+ * `cy.trigger("keydown", {keyCode: 13})` can be invoked as `cy.escapeKeydown()`
+ */
 keydownUtils.forEach(({keyCode, name}) => {
   Cypress.Commands.add(name, {prevSubject: "optional"}, (subject) => {
     if (subject) {
