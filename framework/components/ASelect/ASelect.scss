@@ -42,6 +42,7 @@ $select-padding: 6px;
     align-self: stretch;
     display: flex;
     align-items: center;
+    padding: 0 8px 0 12px;
   }
 
   &__chevron {
@@ -51,9 +52,7 @@ $select-padding: 6px;
   }
 
   > .a-input-base__surface {
-    > .a-input-base__prepend,
-    > .a-input-base__control,
-    > .a-input-base__append {
+    > .a-input-base__prepend {
       margin: 0 8px;
       &:first-child {
         margin-left: 12px;
@@ -61,6 +60,15 @@ $select-padding: 6px;
       &:last-child {
         margin-right: 12px;
       }
+    }
+  }
+
+  .a-input-base__append {
+    margin: 0 !important;
+
+    .a-icon {
+      padding: 0 12px 0 8px;
+      height: 100%;
     }
   }
 
