@@ -28,15 +28,19 @@ describe("<AInputBase />", () => {
     });
 
     it("should invoke the clear callback on space keydown", () => {
-      cy.spaceKeydown(cy.get(".a-input-base__clear")).then(() => {
-        expect(mockFn.callCount).to.eq(1);
-      });
+      cy.get(".a-input-base__clear")
+        .spaceKeydown()
+        .then(() => {
+          expect(mockFn.callCount).to.eq(1);
+        });
     });
 
     it("should invoke the clear callback on enter keydown", () => {
-      cy.enterKeydown(cy.get(".a-input-base__clear")).then(() => {
-        expect(mockFn.callCount).to.eq(1);
-      });
+      cy.get(".a-input-base__clear")
+        .enterKeydown()
+        .then(() => {
+          expect(mockFn.callCount).to.eq(1);
+        });
     });
   });
 

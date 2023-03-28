@@ -8,15 +8,11 @@ const openMenu = () => cy.getByDataTestId("open-menu-btn").click();
 const getMenuContent = () => cy.get(".a-menu-base");
 
 const pressDownArrow = () => {
-  return new Cypress.Promise((resolve) => {
-    cy.downArrowKeydown(getMenuContent()).then(resolve);
-  });
+  return getMenuContent().downArrowKeydown();
 };
 
 const pressUpArrow = () => {
-  return new Cypress.Promise((resolve) => {
-    cy.upArrowKeydown(getMenuContent()).then(resolve);
-  });
+  return getMenuContent().upArrowKeydown();
 };
 
 describe("<AMenu />", () => {
@@ -77,9 +73,11 @@ describe("<AMenu />", () => {
     cy.mount(<MenuTest onClose={mockFn} />);
 
     openMenu();
-    cy.escapeKeydown(getMenuContent()).then(() => {
-      expect(mockFn.callCount).to.eq(1);
-    });
+    getMenuContent()
+      .escapeKeydown()
+      .then(() => {
+        expect(mockFn.callCount).to.eq(1);
+      });
   });
 
   it("should call the onClose callback when the tab key is pressed", () => {
@@ -87,9 +85,11 @@ describe("<AMenu />", () => {
     cy.mount(<MenuTest onClose={mockFn} />);
 
     openMenu();
-    cy.tabKeydown(getMenuContent()).then(() => {
-      expect(mockFn.callCount).to.eq(1);
-    });
+    getMenuContent()
+      .tabKeydown()
+      .then(() => {
+        expect(mockFn.callCount).to.eq(1);
+      });
   });
 });
 

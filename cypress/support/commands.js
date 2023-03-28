@@ -79,8 +79,15 @@ const keydownUtils = [
 ];
 
 keydownUtils.forEach(({keyCode, name}) => {
-  Cypress.Commands.add(name, ($el = cy.get("body")) => {
-    return $el.trigger("keydown", {keyCode});
+  Cypress.Commands.add(name, {prevSubject: "optional"}, (subject) => {
+    if (subject) {
+      return cy
+        .wrap(subject)
+        .trigger("keydown", {keyCode})
+        .then(() => subject);
+    } else {
+      return cy.get("body").trigger("keydown", {keyCode});
+    }
   });
 });
 

@@ -84,7 +84,7 @@ describe("<AModal />", () => {
     cy.getByDataTestId("open-modal-btn").click();
     cy.getByDataTestId("modal-title").should("exist");
     cy.getByDataTestId("accordion-content").should("not.be.visible");
-    cy.enterKeydown(cy.getByDataTestId("focusable-item-1"));
+    cy.getByDataTestId("focusable-item-1").enterKeydown();
     cy.getByDataTestId("accordion-content").should("not.be.visible");
   });
 });
