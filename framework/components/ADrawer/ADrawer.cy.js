@@ -6,9 +6,7 @@ import AListItem from "../AList/AListItem";
 import AMenu from "../AMenu/AMenu";
 import usePopupQuickExit from "../../hooks/usePopupQuickExit/usePopupQuickExit";
 
-const openDrawer = () => {
-  cy.getByDataTestId("drawer-trigger").click();
-};
+const openDrawer = () => cy.getByDataTestId("drawer-trigger").click();
 
 describe("<ADrawer />", () => {
   it("renders", () => {
