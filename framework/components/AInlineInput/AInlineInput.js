@@ -33,7 +33,11 @@ const AInlineInput = forwardRef(
       [displayValue, setDisplayValue] = useState(value),
       [editingValue, setEditingValue] = useState(value),
       ComponentTag = inputComponent,
-      {onBlur: propsOnBlur, onKeyDown: propsOnKeyDown} = rest;
+      {
+        onBlur: propsOnBlur,
+        onClick: propsOnClick,
+        onKeyDown: propsOnKeyDown
+      } = rest;
 
     // Re-sync display if props changed, for example API update fails
     useEffect(() => {
@@ -161,6 +165,8 @@ const AInlineInput = forwardRef(
           }
 
           !isEditing && setIsEditing(true);
+
+          propsOnClick && propsOnClick(e);
         }}
         onKeyDown={(e) => {
           if (disabled) {
@@ -171,6 +177,8 @@ const AInlineInput = forwardRef(
             e.preventDefault();
             onClick && onClick(e);
           }
+
+          propsOnKeyDown && propsOnKeyDown(e);
         }}
         {...rest}
       >
