@@ -7,7 +7,7 @@ import AMenu from "../AMenu/AMenu";
 import usePopupQuickExit from "../../hooks/usePopupQuickExit/usePopupQuickExit";
 
 const openDrawer = () => {
-  cy.getByDataTestId("open-btn").click();
+  cy.getByDataTestId("drawer-trigger").click();
 };
 
 describe("<ADrawer />", () => {
@@ -117,7 +117,7 @@ describe("<ADrawer />", () => {
         .getByDataTestId("open-menu-btn")
         .click()
         .then(() => {
-          return cy.getByDataTestId("open-drawer-btn").click();
+          return cy.getByDataTestId("drawer-trigger").click();
         });
     };
 
@@ -170,7 +170,7 @@ function DrawerTest({asModal = true, slideIn = "right", openWidth}) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <AButton data-testid="open-btn" onClick={() => setIsOpen(true)}>
+      <AButton data-testid="drawer-trigger" onClick={() => setIsOpen(true)}>
         Open
       </AButton>
       <ADrawer
@@ -183,7 +183,7 @@ function DrawerTest({asModal = true, slideIn = "right", openWidth}) {
         closeBtnOnClick={() => setIsOpen(false)}
       >
         <ADrawerContent data-testid="drawer-content">
-          <h3 data-testid="drawer-content">drawer content</h3>
+          <h3>drawer content</h3>
         </ADrawerContent>
       </ADrawer>
     </>
@@ -223,7 +223,7 @@ function DrawerTriggeredByMenuTest() {
         style={{borderRadius: 0}}
       >
         <AListItem
-          data-testid="open-drawer-btn"
+          data-testid="drawer-trigger"
           onClick={() => setIsModalOpen(true)}
         >
           open drawer

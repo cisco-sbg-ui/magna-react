@@ -37,11 +37,11 @@ describe("<ATriggerTooltip />", () => {
         <ATriggerTooltip
           content={<span data-testid="tooltip-content">test content</span>}
         >
-          <span data-testid="trigger">test trigger</span>
+          <span data-testid="tooltip-trigger">test trigger</span>
         </ATriggerTooltip>
       );
 
-      cy.getByDataTestId("trigger")
+      cy.getByDataTestId("tooltip-trigger")
         .trigger("mouseenter")
         .then(() => {
           cy.wait(500);
@@ -54,11 +54,11 @@ describe("<ATriggerTooltip />", () => {
         <ATriggerTooltip
           content={<span data-testid="tooltip-content">test content</span>}
         >
-          <span data-testid="trigger">test trigger</span>
+          <span data-testid="tooltip-trigger">test trigger</span>
         </ATriggerTooltip>
       );
 
-      cy.getByDataTestId("trigger")
+      cy.getByDataTestId("tooltip-trigger")
         .trigger("mouseenter")
         .then(($children) => {
           cy.wait(500);
@@ -79,13 +79,13 @@ describe("<ATriggerTooltip />", () => {
           trigger="click"
           content={<span data-testid="tooltip-content">test content</span>}
         >
-          <span data-testid="trigger">test trigger</span>
+          <span data-testid="tooltip-trigger">test trigger</span>
         </ATriggerTooltip>
       );
 
       // First ensure hover does not show tooltip,
       // then test click
-      cy.getByDataTestId("trigger")
+      cy.getByDataTestId("tooltip-trigger")
         .trigger("mouseenter")
         .then(($children) => {
           cy.wait(500);
@@ -106,11 +106,11 @@ describe("<ATriggerTooltip />", () => {
           trigger="click"
           content={<span data-testid="tooltip-content">test content</span>}
         >
-          <span data-testid="trigger">test trigger</span>
+          <span data-testid="tooltip-trigger">test trigger</span>
         </ATriggerTooltip>
       );
 
-      cy.getByDataTestId("trigger")
+      cy.getByDataTestId("tooltip-trigger")
         .trigger("mouseenter")
         .then(($children) => {
           cy.wait(500);

@@ -27,7 +27,7 @@ describe("<AModal />", () => {
 
     // Open modal
     cy.getByDataTestId("open-btn").click();
-    cy.getByDataTestId("close-btn").should("have.focus");
+    cy.getByDataTestId("close-modal-trigger").should("have.focus");
   });
 
   it("should trap focus within the modal", () => {
@@ -35,19 +35,19 @@ describe("<AModal />", () => {
 
     // Open accordion; make sure first focusable element receives the focus
     cy.getByDataTestId("open-btn").click();
-    cy.getByDataTestId("close-btn").should("have.focus");
+    cy.getByDataTestId("close-modal-trigger").should("have.focus");
 
     // Tab focus
     cy.get("body").tab();
-    cy.getByDataTestId("focusable-item-1").should("have.focus");
+    cy.getByDataTestId("focusable-child-1").should("have.focus");
     cy.get("body").tab();
-    cy.getByDataTestId("focusable-item-2").should("have.focus");
+    cy.getByDataTestId("focusable-child-2").should("have.focus");
     cy.get("body").tab();
-    cy.getByDataTestId("focusable-item-3").should("have.focus");
+    cy.getByDataTestId("focusable-child-3").should("have.focus");
 
     // Rove back around to the beginning
     cy.get("body").tab();
-    cy.getByDataTestId("close-btn").should("have.focus");
+    cy.getByDataTestId("close-modal-trigger").should("have.focus");
   });
 
   it("should not propagate click events outside of the modal", () => {
@@ -65,7 +65,7 @@ describe("<AModal />", () => {
     cy.getByDataTestId("open-modal-btn").click();
     cy.getByDataTestId("modal-title").should("exist");
     cy.getByDataTestId("accordion-content").should("not.be.visible");
-    cy.getByDataTestId("focusable-item-3").click();
+    cy.getByDataTestId("focusable-child-3").click();
     cy.getByDataTestId("accordion-content").should("not.be.visible");
   });
 
@@ -84,7 +84,7 @@ describe("<AModal />", () => {
     cy.getByDataTestId("open-modal-btn").click();
     cy.getByDataTestId("modal-title").should("exist");
     cy.getByDataTestId("accordion-content").should("not.be.visible");
-    cy.getByDataTestId("focusable-item-1").enterKeydown();
+    cy.getByDataTestId("focusable-child-1").enterKeydown();
     cy.getByDataTestId("accordion-content").should("not.be.visible");
   });
 });
@@ -97,7 +97,7 @@ function ContentSetup({onCloseBtnClick}) {
           Modal Demo
         </APanelTitle>
         <AButton
-          data-testid="close-btn"
+          data-testid="close-modal-trigger"
           onClick={onCloseBtnClick}
           tertiaryAlt
           icon
@@ -107,13 +107,13 @@ function ContentSetup({onCloseBtnClick}) {
       </APanelHeader>
       <APanelBody>
         <label htmlFor="username">Username</label>
-        <input data-testid="focusable-item-1" id="username" type="text" />
+        <input data-testid="focusable-child-1" id="username" type="text" />
         <br />
         <label htmlFor="password">Password</label>
-        <input data-testid="focusable-item-2" type="password" />
+        <input data-testid="focusable-child-2" type="password" />
       </APanelBody>
       <APanelFooter>
-        <AButton data-testid="focusable-item-3">Action</AButton>
+        <AButton data-testid="focusable-child-3">Action</AButton>
       </APanelFooter>
     </APanel>
   );

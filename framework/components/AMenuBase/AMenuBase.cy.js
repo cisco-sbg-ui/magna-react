@@ -2,8 +2,8 @@ import {useState, useRef} from "react";
 import AButton from "../AButton/AButton";
 import AMenuBase from "./AMenuBase";
 
-const getAnchor = () => cy.getByDataTestId("open-menu-btn");
-const openMenu = () => cy.getByDataTestId("open-menu-btn").click();
+const getAnchor = () => cy.getByDataTestId("menu-trigger");
+const openMenu = () => cy.getByDataTestId("menu-trigger").click();
 const getMenuContent = () => cy.get(".a-menu-base");
 
 const getAnchorAndMenu = () => {
@@ -34,7 +34,7 @@ describe("<AMenuBase />", () => {
     cy.get(".a-menu-base").should("exist");
 
     // Close menu
-    cy.getByDataTestId("container").click();
+    cy.getByDataTestId("test-container").click();
     cy.get(".a-menu-base").should("not.exist");
   });
 
@@ -122,11 +122,11 @@ function MenuTest(menuBaseProps) {
   return (
     <div
       className="d-flex justify-center align-center"
-      data-testid="container"
+      data-testid="test-container"
       style={{height: "100vh", width: "100vw"}}
     >
       <AButton
-        data-testid="open-menu-btn"
+        data-testid="menu-trigger"
         ref={btnRef}
         onClick={() => setIsOpen((state) => !state)}
       >
@@ -154,11 +154,11 @@ function EdgeDetectionMenuTest({edge, ...menuBaseProps}) {
   return (
     <div
       className={`d-flex ${justifyStyle} ${alignStyle}`}
-      data-testid="container"
+      data-testid="test-container"
       style={{height: "100vh", width: "100vw"}}
     >
       <AButton
-        data-testid="open-menu-btn"
+        data-testid="menu-trigger"
         ref={btnRef}
         onClick={() => setIsOpen((state) => !state)}
       >

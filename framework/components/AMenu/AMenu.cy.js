@@ -3,8 +3,8 @@ import AButton from "../AButton/AButton";
 import {AListItem, AListItemTitle} from "../AList";
 import AMenu from "./AMenu";
 
-const getAnchor = () => cy.getByDataTestId("open-menu-btn");
-const openMenu = () => cy.getByDataTestId("open-menu-btn").click();
+const getAnchor = () => cy.getByDataTestId("menu-trigger");
+const openMenu = () => cy.getByDataTestId("menu-trigger").click();
 const getMenuContent = () => cy.get(".a-menu-base");
 
 const pressDownArrow = () => {
@@ -99,11 +99,10 @@ function MenuTest(menuProps) {
   return (
     <div
       className="d-flex justify-center align-center"
-      data-testid="container"
       style={{height: "100vh", width: "100vw"}}
     >
       <AButton
-        data-testid="open-menu-btn"
+        data-testid="menu-trigger"
         ref={btnRef}
         onClick={() => setIsOpen((state) => !state)}
       >
