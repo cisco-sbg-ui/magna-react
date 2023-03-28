@@ -25,6 +25,6 @@ jobs:
       - name: Build
         run: npm run build
       - name: Test Chrome
-        run: npm run test:components-chrome
+        run: npm run test:chrome
       - name: Test Firefox
-        run: npm run test:components-firefox
+        run: npm run test:firefox
