@@ -32,7 +32,8 @@ const AInlineInput = forwardRef(
       [isEditing, setIsEditing] = useState(false),
       [displayValue, setDisplayValue] = useState(value),
       [editingValue, setEditingValue] = useState(value),
-      ComponentTag = inputComponent;
+      ComponentTag = inputComponent,
+      {onBlur: propsOnBlur, onKeyDown: propsOnKeyDown} = rest;
 
     // Re-sync display if props changed, for example API update fails
     useEffect(() => {
@@ -82,6 +83,70 @@ const AInlineInput = forwardRef(
       onChange && onChange(editingValue);
     };
 
+    let content;
+    if (isEditing) {
+      content = (
+        <div className={inputContainerClass}>
+          <AForm ref={formRef}>
+            <ComponentTag
+              ref={inputRef}
+              value={editingValue}
+              onChange={(e) => {
+                e.stopPropagation();
+
+                const {value: eventValue} = e.target;
+                setEditingValue(eventValue);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleChange(e);
+                }
+
+                propsOnKeyDown && propsOnKeyDown(e);
+              }}
+              onBlur={(e) => {
+                handleChange(e);
+
+                propsOnBlur && propsOnBlur(e);
+              }}
+              small={small}
+              medium={medium}
+              large={large}
+              autoFocus // eslint-disable-line
+              {...inputComponentProps}
+            />
+          </AForm>
+        </div>
+      );
+    } else {
+      content = (
+        <div className={displayClass}>
+          <div className={valueClass}>{displayValue || placeholder}</div>
+          <div className={editIconClass}>
+            <AIcon>pencil-simple</AIcon>
+          </div>
+          {clearable && displayValue && (
+            <div className={clearIconClass}>
+              <AButton
+                tertiaryAlt
+                onClick={(e) => {
+                  e.stopPropagation();
+
+                  setEditingValue("");
+                  setDisplayValue("");
+                  setIsEditing(false);
+
+                  onChange && onChange("");
+                }}
+              >
+                <AIcon>x</AIcon>
+              </AButton>
+            </div>
+          )}
+        </div>
+      );
+    }
+
     return (
       <div
         ref={ref}
@@ -109,59 +174,7 @@ const AInlineInput = forwardRef(
         }}
         {...rest}
       >
-        {isEditing && (
-          <div className={inputContainerClass}>
-            <AForm ref={formRef}>
-              <ComponentTag
-                ref={inputRef}
-                value={editingValue}
-                onChange={(e) => {
-                  e.stopPropagation();
-
-                  const {value: eventValue} = e.target;
-                  setEditingValue(eventValue);
-                }}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    handleChange(e);
-                  }
-                }}
-                onBlur={handleChange}
-                small={small}
-                medium={medium}
-                large={large}
-                autoFocus // eslint-disable-line
-                {...inputComponentProps}
-              />
-            </AForm>
-          </div>
-        )}
-        {!isEditing && (
-          <div className={displayClass}>
-            <div className={valueClass}>{displayValue || placeholder}</div>
-            <div className={editIconClass}>
-              <AIcon>pencil-simple</AIcon>
-            </div>
-            {clearable && displayValue && (
-              <div className={clearIconClass}>
-                <AButton
-                  tertiaryAlt
-                  onClick={(e) => {
-                    e.stopPropagation();
-
-                    setEditingValue("");
-                    setDisplayValue("");
-                    setIsEditing(false);
-
-                    onChange && onChange("");
-                  }}
-                >
-                  <AIcon>x</AIcon>
-                </AButton>
-              </div>
-            )}
-          </div>
-        )}
+        {content}
       </div>
     );
   }
