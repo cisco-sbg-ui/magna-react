@@ -49,11 +49,9 @@ const ACardBasic = forwardRef(
 
     return (
       <TagName {...rest} ref={ref} className={className}>
-        {state ? (
-          <div className={"a-card-state"} style={stateStyle}></div>
-        ) : null}
+        {state ? <div className="a-card-state" style={stateStyle}></div> : null}
 
-        <div className={"a-card-wrapper"}>{children}</div>
+        <div className="a-card-wrapper">{children}</div>
       </TagName>
     );
   }
@@ -67,8 +65,8 @@ ACardBasic.propTypes = {
 
   /**
    * Sets the colour state on the card.
-   * It reflects the colors of the magnetic design states "dormant", "positive", "warning", "negative" and "informational".
-   * Value "custom" sets the state color from "stateCustomColor"
+   * It reflects the colors of the magnetic design states "dormant", "positive", "warning", "negative", "informational" and "disabled".
+   * Value "custom" sets the state color from "stateCustomColor" property.
    */
   state: PropTypes.oneOf([
     "dormant",
@@ -76,16 +74,18 @@ ACardBasic.propTypes = {
     "warning",
     "negative",
     "informational",
+    "disabled",
     "custom"
   ]),
 
   /**
    * If the status is set to "custom", the status color will be set to this value.
+   * example: stateCustomColor="#F2638C"
    */
   stateCustomColor: PropTypes.string,
 
   /**
-   * This sets the shadow on the tab
+   * This sets the shadow on the card
    */
   lifted: PropTypes.bool
 };

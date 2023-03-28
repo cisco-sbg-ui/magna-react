@@ -47,7 +47,7 @@ ACardItem.propTypes = {
    * "right": from the right
    * "horizontal": from both sides
    */
-  attached: PropTypes.oneOf(["lef", "right", "horizontal"])
+  attached: PropTypes.oneOf(["left", "right", "horizontal"])
 };
 
 ACardItem.displayName = "ACardItem";
