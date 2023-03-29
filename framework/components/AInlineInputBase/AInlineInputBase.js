@@ -7,7 +7,7 @@ import ATextInput from "../ATextInput";
 import ATextarea from "../ATextarea";
 import "./AInlineInputBase.scss";
 
-const baseClass = "a-inline-text-input";
+const baseClass = "a-inline-input";
 
 const AInlineInputBase = forwardRef(
   (
@@ -16,6 +16,7 @@ const AInlineInputBase = forwardRef(
       inputComponentProps = {},
       clearable,
       disabled,
+      required = false,
       value = "",
       placeholder = "...",
       onChange,
@@ -59,6 +60,10 @@ const AInlineInputBase = forwardRef(
       className += ` ${baseClass}--size-medium`;
     }
 
+    if (disabled) {
+      className += ` ${baseClass}--disabled`;
+    }
+
     const handleEditComplete = (e) => {
       // won't trigger on Escape key
       e.stopPropagation();
@@ -79,6 +84,10 @@ const AInlineInputBase = forwardRef(
 
     let content;
     if (isEditing) {
+      const additionalProps = {
+        required
+      };
+
       content = (
         <div className={inputContainerClass}>
           <AForm ref={formRef}>
@@ -97,8 +106,8 @@ const AInlineInputBase = forwardRef(
                 if (e.key === "Enter") {
                   handleEditComplete(e);
                 } else if (e.key === "Escape") {
-                  setEditingValue(displayValue);
-                  setDisplayValue(displayValue);
+                  setEditingValue(value);
+                  setDisplayValue(value);
                   setIsEditing(false);
                 }
 
@@ -113,6 +122,7 @@ const AInlineInputBase = forwardRef(
               medium={medium}
               large={large}
               autoFocus // eslint-disable-line
+              {...additionalProps}
               {...inputComponentProps}
             />
           </AForm>
@@ -154,11 +164,11 @@ const AInlineInputBase = forwardRef(
         tabIndex={0}
         role="button"
         onClick={(e) => {
-          e.stopPropagation();
-
           if (disabled) {
             return;
           }
+
+          e.stopPropagation();
 
           !isEditing && setIsEditing(true);
 
@@ -171,7 +181,6 @@ const AInlineInputBase = forwardRef(
 
           if (["Enter", "Space"].includes(e.key)) {
             e.preventDefault();
-            onClick && onClick(e);
           }
 
           propsOnKeyDown && propsOnKeyDown(e);
@@ -203,6 +212,10 @@ export const AInlineInputBasePropTypes = {
    * Toggles the `disabled` state.
    */
   disabled: PropTypes.bool,
+  /**
+   * Sets `required` on the input, and makes the value required
+   */
+  required: PropTypes.bool,
   /**
    * The input's `value` attribute.
    */

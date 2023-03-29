@@ -1,6 +1,6 @@
 @import "../../styles";
 
-@include theme(a-inline-text-input) using ($theme) {
+@include theme(a-inline-input) using ($theme) {
   color: map-deep-get($theme, "base", "color") !important;
   .a-icon--pencil-simple {
     stroke: map-deep-get($theme, "base", "color") !important;
@@ -22,9 +22,18 @@
       ) !important;
     }
   }
+
+  &--disabled {
+    .a-inline-input__display {
+      color: map-deep-get($theme, "base", "color") !important;
+    }
+    .a-icon--pencil-simple {
+      display: none;
+    }
+  }
 }
 
-.a-inline-text-input {
+.a-inline-input {
   display: inline-flex;
   font-weight: normal !important;
 
@@ -58,9 +67,15 @@
   }
 
   &__display:hover {
-    .a-inline-text-input__editIcon,
-    .a-inline-text-input__clearIcon {
+    .a-inline-input__editIcon,
+    .a-inline-input__clearIcon {
       opacity: 1;
+    }
+  }
+
+  &--disabled {
+    .a-inline-input__display {
+      cursor: default;
     }
   }
 

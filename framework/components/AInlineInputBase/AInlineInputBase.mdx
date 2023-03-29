@@ -1,7 +1,7 @@
 ---
 name: Inline Input Base
 route: /extend/inline-input
-components: AInlineInput
+components: AInlineInputBase
 ---
 
 # Inline Inputs
@@ -11,12 +11,12 @@ components: AInlineInput
 Integrate with your build to [auto-import](/#integrating), or add an import in your component:
 
 ```
-import {AInlineInput} from "@cisco-sbg-ui/magna-react";
+import {AInlineInputBase} from "@cisco-sbg-ui/magna-react";
 ```
 
 ## Usage
 
-`AInlineInput` enters edit mode on click.
+`AInlineInputBase` enters edit mode on click.
 
 Escape key when editing resets value to last entered.
 
@@ -25,7 +25,26 @@ Escape key when editing resets value to last entered.
   const [value, setValue] = useState("inline edit value");
   return (
     <div>
-      <AInlineTextInput value={value} onChange={(newValue) => {
+      <AInlineInputBase value={value} onChange={(newValue) => {
+        setValue(newValue);
+      }} />
+      <br />
+      Actual Value: {value}
+    </div>
+
+);
+}
+`}
+/>
+
+## Disabled
+
+<Playground
+  code={`() => {
+  const [value, setValue] = useState("inline edit value");
+  return (
+    <div>
+      <AInlineInputBase disabled value={value} onChange={(newValue) => {
         setValue(newValue);
       }} />
       <br />
@@ -39,7 +58,7 @@ Escape key when editing resets value to last entered.
 
 ## Inline Input Props
 
-The `AInlineInput` component inherits passed props. `AInlineTextInput` and `AInlineTextarea` are convenience wrappers around `AInlineInput` that accept the same props.
+The `AInlineInputBase` component inherits passed props. `AInlineTextInput` and `AInlineTextarea` are convenience wrappers around `AInlineInputBase` that accept the same props.
 
 <Props of="AInlineInputBase" />
 

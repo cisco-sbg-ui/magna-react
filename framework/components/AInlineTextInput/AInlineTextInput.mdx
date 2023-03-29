@@ -66,13 +66,13 @@ Escape key when editing resets value to last entered.
   return (
     <div>
       <AInlineTextInput
+        required
         value={value}
         onChange={(newValue) => {
           setValue(newValue);
         }}
         inputComponentProps={{
-          prependIcon: "tag",
-          required: true
+          prependIcon: "tag"
         }}
       />
       <br />

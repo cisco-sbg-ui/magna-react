@@ -28,6 +28,7 @@ import {AForm, AFormContext} from "./components/AForm";
 import AHint from "./components/AHint";
 import AIcon from "./components/AIcon";
 import AInView from "./components/AInView";
+import AInlineInputBase from "./components/AInlineInputBase";
 import AInlineTextarea from "./components/AInlineTextarea";
 import AInlineTextInput from "./components/AInlineTextInput";
 import AInputBase from "./components/AInputBase";
@@ -145,6 +146,7 @@ export {
   AHint,
   AIcon,
   AInView,
+  AInlineInputBase,
   AInlineTextarea,
   AInlineTextInput,
   AInputBase,
