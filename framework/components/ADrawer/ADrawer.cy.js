@@ -9,6 +9,8 @@ import usePopupQuickExit from "../../hooks/usePopupQuickExit/usePopupQuickExit";
 import useAToaster from "../AToaster/useAToaster";
 
 const openDrawer = () => cy.getByDataTestId("drawer-trigger").click();
+const getDrawer = () => cy.getByDataTestId("drawer");
+const getDrawerContent = () => cy.getByDataTestId("drawer-content");
 
 describe("<ADrawer />", () => {
   it("renders", () => {
@@ -20,13 +22,13 @@ describe("<ADrawer />", () => {
       cy.mount(<DrawerTest />);
 
       openDrawer();
-      cy.getByDataTestId("drawer-content").should("exist");
+      getDrawerContent().should("exist");
     });
     it("should slide-in from the left", () => {
       cy.mount(<DrawerTest slideIn="left" />);
 
       openDrawer();
-      cy.getByDataTestId("drawer").should(($el) => {
+      getDrawer().should(($el) => {
         expect($el).to.have.css("left", "0px");
         expect($el).to.have.css("top", "0px");
       });
@@ -36,7 +38,7 @@ describe("<ADrawer />", () => {
       cy.mount(<DrawerTest slideIn="right" />);
 
       openDrawer();
-      cy.getByDataTestId("drawer").should(($el) => {
+      getDrawer().should(($el) => {
         expect($el).to.have.css("right", "0px");
         expect($el).to.have.css("top", "0px");
       });
@@ -46,7 +48,7 @@ describe("<ADrawer />", () => {
       cy.mount(<DrawerTest slideIn="bottom" />);
 
       openDrawer();
-      cy.getByDataTestId("drawer").should(($el) => {
+      getDrawer().should(($el) => {
         expect($el).to.have.css("bottom", "0px");
       });
     });
@@ -57,9 +59,7 @@ describe("<ADrawer />", () => {
       openDrawer();
       // Assert on drawer content since the drawer itself takes up the
       // entire width after rendering the page overlay from `AModal`
-      cy.getByDataTestId("drawer-content")
-        .invoke("outerWidth")
-        .should("eq", 800);
+      getDrawerContent().invoke("outerWidth").should("eq", 800);
     });
   });
 
@@ -68,13 +68,13 @@ describe("<ADrawer />", () => {
       cy.mount(<DrawerTest asModal={false} />);
 
       openDrawer();
-      cy.getByDataTestId("drawer-content").should("exist");
+      getDrawerContent().should("exist");
     });
     it("should slide-in from the left", () => {
       cy.mount(<DrawerTest asModal={false} slideIn="left" />);
 
       openDrawer();
-      cy.getByDataTestId("drawer").should(($el) => {
+      getDrawer().should(($el) => {
         expect($el).to.have.css("left", "0px");
         expect($el).to.have.css("top", "0px");
       });
@@ -84,7 +84,7 @@ describe("<ADrawer />", () => {
       cy.mount(<DrawerTest asModal={false} slideIn="right" />);
 
       openDrawer();
-      cy.getByDataTestId("drawer").should(($el) => {
+      getDrawer().should(($el) => {
         expect($el).to.have.css("right", "0px");
         expect($el).to.have.css("top", "0px");
       });
@@ -94,7 +94,7 @@ describe("<ADrawer />", () => {
       cy.mount(<DrawerTest asModal={false} slideIn="bottom" />);
 
       openDrawer();
-      cy.getByDataTestId("drawer").should(($el) => {
+      getDrawer().should(($el) => {
         expect($el).to.have.css("bottom", "0px");
       });
     });
@@ -103,7 +103,7 @@ describe("<ADrawer />", () => {
       cy.mount(<DrawerTest asModal={false} openWidth="800px" />);
 
       openDrawer();
-      cy.getByDataTestId("drawer").invoke("outerWidth").should("eq", 800);
+      getDrawer().invoke("outerWidth").should("eq", 800);
     });
   });
 
@@ -178,7 +178,7 @@ describe("<ADrawer />", () => {
 
       // Click toast and ensure drawer is not gone
       cy.getByDataTestId("toast-content").click();
-      cy.getByDataTestId("drawer").should("exist");
+      getDrawerContent().should("exist");
     });
 
     it("should not close the drawer when closing the toast", () => {
@@ -193,7 +193,7 @@ describe("<ADrawer />", () => {
 
       // Ensure toast is gone, but drawer is not
       cy.getByDataTestId("toast-content").should("not.exist");
-      cy.getByDataTestId("drawer").should("exist");
+      getDrawerContent().should("exist");
     });
   });
 
@@ -206,17 +206,17 @@ describe("<ADrawer />", () => {
 
       // Open menu an ensure drawer does not close
       cy.getByDataTestId("menu-trigger").click();
-      cy.getByDataTestId("drawer").should("exist");
+      getDrawerContent().should("exist");
 
       for (let i = 1; i <= 3; i++) {
         // Click menu items and ensure drawer does not close
         cy.getByDataTestId(`menu-item-${i}`).click();
         cy.getByDataTestId("menu-trigger").click();
-        cy.getByDataTestId("drawer").should("exist");
+        getDrawerContent().should("exist");
       }
     });
 
-    it("clicking outside the menu within the drawer should close the menu", () => {
+    it("should not close the drawer when clicking clicking outside <AMenu /> while it is opened", () => {
       openDrawer();
 
       // Open menu an ensure drawer does not close
@@ -224,9 +224,9 @@ describe("<ADrawer />", () => {
       cy.getByDataTestId("menu-item-1").should("exist");
 
       // Click drawer to close menu
-      cy.getByDataTestId("drawer").click();
+      getDrawer().click();
       cy.getByDataTestId("menu-item-1").should("not.exist");
-      cy.getByDataTestId("drawer").should("exist");
+      getDrawerContent().should("exist");
     });
   });
 
@@ -240,12 +240,12 @@ describe("<ADrawer />", () => {
 
       // Open popover an ensure drawer does not close
       cy.getByDataTestId("popover-trigger").click();
-      cy.getByDataTestId("drawer").should("exist");
+      getDrawerContent().should("exist");
 
       // Click popover items and ensure drawer does not close
       cy.getByDataTestId("popover-content").click();
       cy.getByDataTestId("popover-trigger").click();
-      cy.getByDataTestId("drawer").should("exist");
+      getDrawerContent().should("exist");
     });
 
     it("clicking outside the popover within the drawer should close the popover", () => {
@@ -256,9 +256,9 @@ describe("<ADrawer />", () => {
       cy.getByDataTestId("popover-content").should("exist");
 
       // Click drawer to close popover
-      cy.getByDataTestId("drawer").click();
+      getDrawer().click();
       cy.getByDataTestId("popover-content").should("not.exist");
-      cy.getByDataTestId("drawer").should("exist");
+      getDrawerContent().should("exist");
     });
   });
 });
@@ -368,25 +368,27 @@ function WithToastTest(drawerProps) {
         slideIn="right"
         {...drawerProps}
       >
-        test
-        <AButton
-          data-testid="toast-trigger"
-          onClick={() => {
-            addToast(
-              {
-                level: "danger",
-                title: "Danger Toast",
-                children: "test toast",
-                dismissable: true,
-                placement: "top",
-                "data-testid": "toast-content"
-              },
-              -1
-            );
-          }}
-        >
-          Notify
-        </AButton>
+        <ADrawerContent data-testid="drawer-content">
+          test
+          <AButton
+            data-testid="toast-trigger"
+            onClick={() => {
+              addToast(
+                {
+                  level: "danger",
+                  title: "Danger Toast",
+                  children: "test toast",
+                  dismissable: true,
+                  placement: "top",
+                  "data-testid": "toast-content"
+                },
+                -1
+              );
+            }}
+          >
+            Notify
+          </AButton>
+        </ADrawerContent>
       </ADrawer>
     </>
   );
@@ -420,24 +422,26 @@ function WithMenuTest(drawerProps) {
         slideIn="right"
         {...drawerProps}
       >
-        <AButton
-          ref={btnRef}
-          data-testid="menu-trigger"
-          onClick={() => setIsMenuOpen(true)}
-        >
-          open menu
-        </AButton>
-        <AMenu
-          anchorRef={btnRef}
-          open={isMenuOpen}
-          placement="bottom-left"
-          onClose={() => setIsMenuOpen(false)}
-          style={{borderRadius: 0}}
-        >
-          <AListItem data-testid="menu-item-1">test menu item</AListItem>
-          <AListItem data-testid="menu-item-2">test menu item</AListItem>
-          <AListItem data-testid="menu-item-3">test menu item</AListItem>
-        </AMenu>
+        <ADrawerContent data-testid="drawer-content">
+          <AButton
+            ref={btnRef}
+            data-testid="menu-trigger"
+            onClick={() => setIsMenuOpen(true)}
+          >
+            open menu
+          </AButton>
+          <AMenu
+            anchorRef={btnRef}
+            open={isMenuOpen}
+            placement="bottom-left"
+            onClose={() => setIsMenuOpen(false)}
+            style={{borderRadius: 0}}
+          >
+            <AListItem data-testid="menu-item-1">test menu item</AListItem>
+            <AListItem data-testid="menu-item-2">test menu item</AListItem>
+            <AListItem data-testid="menu-item-3">test menu item</AListItem>
+          </AMenu>
+        </ADrawerContent>
       </ADrawer>
     </>
   );
@@ -471,21 +475,23 @@ function WithPopoverTest(drawerProps) {
         slideIn="right"
         {...drawerProps}
       >
-        <AButton
-          ref={btnRef}
-          data-testid="popover-trigger"
-          onClick={() => setIsPopoverOpen(true)}
-        >
-          open popover
-        </AButton>
-        <APopover
-          anchorRef={btnRef}
-          open={isPopoverOpen}
-          placement="left-top"
-          onClose={() => setIsPopoverOpen(false)}
-        >
-          <span data-testid="popover-content">test popover content</span>
-        </APopover>
+        <ADrawerContent data-testid="drawer-content">
+          <AButton
+            ref={btnRef}
+            data-testid="popover-trigger"
+            onClick={() => setIsPopoverOpen(true)}
+          >
+            open popover
+          </AButton>
+          <APopover
+            anchorRef={btnRef}
+            open={isPopoverOpen}
+            placement="left-top"
+            onClose={() => setIsPopoverOpen(false)}
+          >
+            <span data-testid="popover-content">test popover content</span>
+          </APopover>
+        </ADrawerContent>
       </ADrawer>
     </>
   );
