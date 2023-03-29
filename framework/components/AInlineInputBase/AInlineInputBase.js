@@ -1,6 +1,5 @@
 import React, {forwardRef, useEffect, useRef, useState} from "react";
 import PropTypes from "prop-types";
-import useEscapeKeydown from "../../hooks/useEscapeKeydown/useEscapeKeydown";
 import AButton from "../AButton";
 import {AForm} from "../AForm";
 import AIcon from "../AIcon";
@@ -45,15 +44,6 @@ const AInlineInputBase = forwardRef(
       setDisplayValue(value);
     }, [value]);
 
-    useEscapeKeydown({
-      isEnabled: isEditing,
-      onKeydown: () => {
-        setEditingValue(displayValue);
-        setDisplayValue(displayValue);
-        setIsEditing(false);
-      }
-    });
-
     let className = baseClass,
       inputContainerClass = `${baseClass}__input`,
       displayClass = `${baseClass}__display`,
@@ -69,7 +59,7 @@ const AInlineInputBase = forwardRef(
       className += ` ${baseClass}--size-medium`;
     }
 
-    const handleChange = (e) => {
+    const handleEditComplete = (e) => {
       // won't trigger on Escape key
       e.stopPropagation();
 
@@ -102,14 +92,20 @@ const AInlineInputBase = forwardRef(
                 setEditingValue(eventValue);
               }}
               onKeyDown={(e) => {
+                e.stopPropagation();
+
                 if (e.key === "Enter") {
-                  handleChange(e);
+                  handleEditComplete(e);
+                } else if (e.key === "Escape") {
+                  setEditingValue(displayValue);
+                  setDisplayValue(displayValue);
+                  setIsEditing(false);
                 }
 
                 propsOnKeyDown && propsOnKeyDown(e);
               }}
               onBlur={(e) => {
-                handleChange(e);
+                handleEditComplete(e);
 
                 propsOnBlur && propsOnBlur(e);
               }}
