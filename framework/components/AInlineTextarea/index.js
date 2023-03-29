@@ -1,3 +1,1 @@
-import AInlineTextarea from "./AInlineTextarea";
-
-export default AInlineTextarea;
+export {default} from "./AInlineTextarea";
