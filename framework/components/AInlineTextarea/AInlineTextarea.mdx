@@ -1,0 +1,90 @@
+---
+name: Inline Text Areas
+route: /components/inline-text-area
+components: AInlineTextarea
+---
+
+# Text Inputs
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {AInlineTextarea} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+`AInlineTextarea` enters edit mode on click.
+
+Escape key when editing resets value to last entered.
+
+<Playground
+  code={`() => {
+  const [value, setValue] = useState("inline edit value");
+  return (
+    <div>
+      <AInlineTextarea value={value} onChange={(newValue) => {
+        setValue(newValue);
+      }} />
+      <br />
+      Actual Value: {value}
+    </div>
+
+);
+}
+`}
+/>
+
+## Clearable
+
+<Playground
+  code={`() => {
+  const [value, setValue] = useState("inline edit value");
+  return (
+    <div>
+      <AInlineTextarea value={value} onChange={(newValue) => {
+        setValue(newValue);
+      }}
+      clearable
+      />
+      <br />
+      Actual Value: {value}
+    </div>
+
+);
+}
+`}
+/>
+
+## Input props and validation
+
+<Playground
+  code={`() => {
+  const [value, setValue] = useState("inline edit value");
+  return (
+    <div>
+      <AInlineTextarea
+        value={value}
+        onChange={(newValue) => {
+          setValue(newValue);
+        }}
+        inputComponentProps={{
+          required: true
+        }}
+      />
+      <br />
+      Actual Value: {value}
+    </div>
+
+);
+}
+`}
+/>
+
+## Inline Text Area Props
+
+The `AInlineTextarea` component inherits passed props.
+
+<Props of="AInlineInputBase" />
