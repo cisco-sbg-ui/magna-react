@@ -1,23 +1,14 @@
 @import "../../styles";
 
-.a-card-basic,
-.a-card-container {
+%a-card-base {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-content: stretch;
   align-items: stretch;
-
-  background: #ffffff;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
   border-radius: 12px;
-
   padding: 24px;
-}
-
-.a-card-container--flat {
-  box-shadow: none;
 }
 
 .a-card__item {
@@ -49,111 +40,6 @@
     flex: 1 1 auto;
   }
 }
-
-.a-card-title {
-  flex: 0 1 auto;
-
-  display: block;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 28px;
-
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.a-card-subtitle {
-  flex: 0 0 auto;
-
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-
-  color: #656c75;
-}
-
-.a-card__footer,
-.a-card__header {
-  flex: 0 0 auto;
-
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-content: stretch;
-  align-items: center;
-}
-
-.a-card__content {
-  flex: 1 1 auto;
-  margin: 16px 0;
-  &:first-child {
-    margin-top: 0;
-  }
-  &:last-child {
-    margin-bottom: 0;
-  }
-}
-
-.a-card-basic {
-  border: 2px solid #e1e4e8;
-  border-radius: 8px;
-  box-shadow: none;
-  padding: 0;
-  .a-card__content {
-    margin: 12px 0;
-    &:first-child {
-      margin-top: 0;
-    }
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  &--lifted {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  }
-
-  &--state-dormant {
-    .a-card-state {
-      background: #889099;
-    }
-  }
-  &--state-positive {
-    .a-card-state {
-      background: #45991f;
-    }
-  }
-  &--state-warning {
-    .a-card-state {
-      background: #d9b216;
-    }
-  }
-  &--state-negative {
-    .a-card-state {
-      background: #c24632;
-    }
-  }
-  &--state-informational {
-    .a-card-state {
-      background: #1d69cc;
-    }
-  }
-  &--state-disabled {
-    .a-card-state {
-      background: #d0d4d9;
-    }
-  }
-}
-.a-card-state {
-  flex: 0 0 auto;
-  height: 6px;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-}
 .a-card-wrapper {
   flex: 1 1 auto;
 
@@ -165,4 +51,125 @@
   align-items: stretch;
 
   padding: 16px;
+}
+.a-card__footer,
+.a-card__header {
+  flex: 0 0 auto;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: center;
+}
+.a-card__content {
+  flex: 1 1 auto;
+  margin: 16px 0;
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+.a-card-state {
+  flex: 0 0 auto;
+  height: 6px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+@include theme(a-card-title) using ($theme) {
+  flex: 0 1 auto;
+
+  display: block;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  color: map-deep-get($theme, "card", "title-color");
+}
+
+@include theme(a-card-subtitle) using ($theme) {
+  flex: 0 0 auto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: map-deep-get($theme, "card", "subtitle-color");
+}
+
+@include theme(a-card-container) using ($theme) {
+  @extend %a-card-base;
+  background: map-deep-get($theme, "card", "container-background");
+  box-shadow: map-deep-get($theme, "card", "container-shadow");
+  border: map-deep-get($theme, "card", "container-border");
+
+  &--flat {
+    box-shadow: map-deep-get($theme, "card", "container-flat-shadow");
+  }
+}
+
+@include theme(a-card-basic) using ($theme) {
+  @extend %a-card-base;
+
+  border-radius: 8px;
+  padding: 0;
+
+  .a-card__content {
+    margin: 12px 0;
+    &:first-child {
+      margin-top: 0;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  background: map-deep-get($theme, "card", "basic-background");
+  box-shadow: map-deep-get($theme, "card", "basic-shadow");
+  border: map-deep-get($theme, "card", "basic-border");
+
+  &.a-card-basic {
+    &--lifted {
+      box-shadow: map-deep-get($theme, "card", "basic-lifted-shadow");
+    }
+
+    &--state-dormant {
+      .a-card-state {
+        background: #889099;
+      }
+    }
+    &--state-positive {
+      .a-card-state {
+        background: map-deep-get($theme, "card", "state-positive");
+      }
+    }
+    &--state-warning {
+      .a-card-state {
+        background: map-deep-get($theme, "card", "state-warning");
+      }
+    }
+    &--state-negative {
+      .a-card-state {
+        background: map-deep-get($theme, "card", "state-negative");
+      }
+    }
+    &--state-informational {
+      .a-card-state {
+        background: map-deep-get($theme, "card", "state-informational");
+      }
+    }
+    &--state-disabled {
+      .a-card-state {
+        background: map-deep-get($theme, "card", "state-disabled");
+      }
+    }
+  }
 }
