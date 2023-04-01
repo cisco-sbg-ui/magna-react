@@ -226,7 +226,7 @@ Used to group content and actions into logical sections or buckets, it can conta
 Cards group related information in a flexible-size containers.
 Basic cards typically contain a few short, related pieces of information and can be
 interactive or non-interactive.
-For page level groupings, use  [Container Cards](/components/card#container-card).
+For page level groupings, use [Container Cards](/components/card#container-card).
 
 ### Anatomy of card
 
@@ -266,57 +266,126 @@ For page level groupings, use  [Container Cards](/components/card#container-card
 
 <Playground
   code={`
-<div className="d-flex flex-row flex-wrap">
-  <ACardBasic state="dormant" className="flex-grow-0 flex-shrink-0 ma-1">
-    <ACardContent>
-      <div>State dormant</div>
-    </ACardContent>
-  </ACardBasic>
+  <div>
+    <div className="d-flex flex-row flex-wrap">
+      <ACardBasic state="dormant" className="flex-grow-0 flex-shrink-0 ma-1">
+        <ACardContent>
+          <div>State dormant</div>
+        </ACardContent>
+      </ACardBasic>
 
-  <ACardBasic state="positive" className="flex-grow-0 flex-shrink-0 ma-1">
-    <ACardContent>
-      <div>State positive</div>
-    </ACardContent>
-  </ACardBasic>
+      <ACardBasic state="positive" className="flex-grow-0 flex-shrink-0 ma-1">
+        <ACardContent>
+          <div>State positive</div>
+        </ACardContent>
+      </ACardBasic>
 
-  <ACardBasic state="warning" className="flex-grow-0 flex-shrink-0 ma-1">
-    <ACardContent>
-      <div>State warning</div>
-    </ACardContent>
-  </ACardBasic>
+      <ACardBasic state="warning" className="flex-grow-0 flex-shrink-0 ma-1">
+        <ACardContent>
+          <div>State warning</div>
+        </ACardContent>
+      </ACardBasic>
 
-  <ACardBasic state="negative" className="flex-grow-0 flex-shrink-0 ma-1">
-    <ACardContent>
-      <div>State negative</div>
-    </ACardContent>
-  </ACardBasic>
+      <ACardBasic state="negative" className="flex-grow-0 flex-shrink-0 ma-1">
+        <ACardContent>
+          <div>State negative</div>
+        </ACardContent>
+      </ACardBasic>
 
-  <ACardBasic state="informational" className="flex-grow-0 flex-shrink-0 ma-1">
-    <ACardContent>
-      <div>State informational</div>
-    </ACardContent>
-  </ACardBasic>
+      <ACardBasic state="informational" className="flex-grow-0 flex-shrink-0 ma-1">
+        <ACardContent>
+          <div>State informational</div>
+        </ACardContent>
+      </ACardBasic>
 
-  <ACardBasic state="disabled" className="flex-grow-0 flex-shrink-0 ma-1">
-    <ACardContent>
-      <div style={{color:'#C1C6CC'}}>State disabled</div>
-    </ACardContent>
-  </ACardBasic>
+      <ACardBasic state="disabled" className="flex-grow-0 flex-shrink-0 ma-1">
+        <ACardContent>
+          <div style={{color:'#C1C6CC'}}>State disabled</div>
+        </ACardContent>
+      </ACardBasic>
 
-  <ACardBasic
-    state="custom"
-    stateCustomColor="#F2638C"
-    className="flex-grow-0 flex-shrink-0 ma-1">
-    <ACardContent>
-      <div>State custom</div>
-    </ACardContent>
-  </ACardBasic>
+      <ACardBasic
+        state="custom"
+        stateCustomColor="#F2638C"
+        className="flex-grow-0 flex-shrink-0 ma-1">
+        <ACardContent>
+          <div>State custom</div>
+        </ACardContent>
+      </ACardBasic>
+    </div>
 
-</div>
+    <ADivider/>
 
+    <div className="d-flex flex-row flex-wrap">
+      <ACardBasic state="informational" className="flex-grow-1 flex-shrink-0 ma-1">
+        <ACardHeader>
+          <ACardTitle>Title</ACardTitle>
+        </ACardHeader>
+        <ACardSubTitle>Subtitle</ACardSubTitle>
+        <ACardContent>
+          <div style={{background:'rgba(0,0,0,0.05)', padding:10}}>State informational</div>
+        </ACardContent>
+        <ACardFooter>
+          <ACardItem stretched></ACardItem>
+          <ACardItem attached="right">
+            <AButton medium tertiary>Button</AButton>
+          </ACardItem>
+          <ACardItem attached="right">
+            <AButton medium secondary>Button</AButton>
+          </ACardItem>
+          <ACardItem>
+            <AButton medium>Button</AButton>
+          </ACardItem>
+        </ACardFooter>
+      </ACardBasic>
+
+      <ACardBasic state="negative" className="flex-grow-1 flex-shrink-0 ma-1">
+        <ACardHeader>
+          <ACardTitle>Title</ACardTitle>
+        </ACardHeader>
+        <ACardSubTitle>Subtitle</ACardSubTitle>
+        <ACardContent>
+          <div style={{background:'rgba(0,0,0,0.05)', padding:10}}>State negative</div>
+        </ACardContent>
+        <ACardFooter>
+          <ACardItem stretched></ACardItem>
+          <ACardItem attached="right">
+            <AButton medium tertiary>Button</AButton>
+          </ACardItem>
+          <ACardItem attached="right">
+            <AButton medium secondary>Button</AButton>
+          </ACardItem>
+          <ACardItem>
+            <AButton medium>Button</AButton>
+          </ACardItem>
+        </ACardFooter>
+      </ACardBasic>
+
+      <ACardBasic state="custom" stateCustomColor="#F2638C" className="flex-grow-1 flex-shrink-0 ma-1">
+        <ACardHeader>
+          <ACardTitle>Title</ACardTitle>
+        </ACardHeader>
+        <ACardSubTitle>Subtitle</ACardSubTitle>
+        <ACardContent>
+          <div style={{background:'rgba(0,0,0,0.05)', padding:10}}>State custom</div>
+        </ACardContent>
+        <ACardFooter>
+          <ACardItem stretched></ACardItem>
+          <ACardItem attached="right">
+            <AButton medium tertiary>Button</AButton>
+          </ACardItem>
+          <ACardItem attached="right">
+            <AButton medium secondary>Button</AButton>
+          </ACardItem>
+          <ACardItem>
+            <AButton medium>Button</AButton>
+          </ACardItem>
+        </ACardFooter>
+      </ACardBasic>
+    </div>
+  </div>
 `}
 />
-
 
 ### Lifted card
 
@@ -337,7 +406,6 @@ For page level groupings, use  [Container Cards](/components/card#container-card
   </>
 `}
 />
-
 
 ### Composition example
 
@@ -384,8 +452,6 @@ For page level groupings, use  [Container Cards](/components/card#container-card
 </ACardContainer>
 `}
 />
-
-
 
 ## Component props
 
