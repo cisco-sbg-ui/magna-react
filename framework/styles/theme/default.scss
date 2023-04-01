@@ -164,12 +164,10 @@ $atomic-default: (
     "container-background": map-get($mds-neutral, "neutral-1"),
     "container-shadow": 0 3px 8px rgba(0, 0, 0, 0.08),
     "container-flat-shadow": none,
-    "container-border": 0px none,
-
     "basic-background": map-get($mds-neutral, "neutral-1"),
     "basic-shadow": none,
     "basic-lifted-shadow": 0 2px 5px rgba(0, 0, 0, 0.05),
-    "basic-border": 2px solid map-get($mds-neutral, "neutral-4"),
+    "basic-border-color": map-get($mds-neutral, "neutral-4"),
     "title-color": map-get($mds-neutral, "neutral-15"),
     "subtitle-color": map-get($mds-neutral, "neutral-12"),
     "state-dormant": map-get($mds-light-theme, "secondary-gray"),

@@ -109,7 +109,6 @@
   @extend %a-card-base;
   background: map-deep-get($theme, "card", "container-background");
   box-shadow: map-deep-get($theme, "card", "container-shadow");
-  border: map-deep-get($theme, "card", "container-border");
 
   &--flat {
     box-shadow: map-deep-get($theme, "card", "container-flat-shadow");
@@ -134,7 +133,7 @@
 
   background: map-deep-get($theme, "card", "basic-background");
   box-shadow: map-deep-get($theme, "card", "basic-shadow");
-  border: map-deep-get($theme, "card", "basic-border");
+  border: 2px solid map-deep-get($theme, "card", "basic-border-color");
 
   &.a-card-basic {
     &--lifted {
