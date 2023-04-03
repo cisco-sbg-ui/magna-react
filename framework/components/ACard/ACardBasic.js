@@ -79,7 +79,7 @@ ACardBasic.propTypes = {
   ]),
 
   /**
-   * If the status is set to "custom", the status color will be set to this value. Color value can be any of the legal CSS color values.
+   * If the card state is set to "custom", the state color will be set to this value. Color value can be any of the legal CSS color values.
    * example: stateCustomColor="#F2638C"
    */
   stateCustomColor: PropTypes.string,
