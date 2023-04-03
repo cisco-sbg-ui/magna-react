@@ -150,11 +150,11 @@ $atomic-dusk: (
     "basic-border-color": map-get($mds-neutral, "neutral-14"),
     "title-color": map-get($mds-neutral, "neutral-4"),
     "subtitle-color": map-get($mds-neutral, "neutral-8"),
-    "state-dormant": map-get($mds-light-theme, "secondary-gray"),
-    "state-positive": map-get($mds-light-theme, "status-positive"),
-    "state-warning": map-get($mds-light-theme, "status-warning"),
-    "state-negative": map-get($mds-light-theme, "status-negative"),
-    "state-informational": map-get($mds-light-theme, "status-info"),
+    "state-dormant": map-get($mds-dark-theme, "secondary-gray"),
+    "state-positive": map-get($mds-dark-theme, "status-positive"),
+    "state-warning": map-get($mds-dark-theme, "status-warning"),
+    "state-negative": map-get($mds-dark-theme, "status-negative"),
+    "state-informational": map-get($mds-dark-theme, "status-info"),
     "state-disabled": map-get($mds-neutral, "neutral-6")
   ),
   "button-group": (
