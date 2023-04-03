@@ -64,7 +64,7 @@ ACardBasic.propTypes = {
   component: PropTypes.elementType,
 
   /**
-   * Sets the colour state on the card.
+   * Sets the card state color.
    * It reflects the colors of the magnetic design states "dormant", "positive", "warning", "negative", "informational" and "disabled".
    * Value "custom" sets the state color from "stateCustomColor" property.
    */
