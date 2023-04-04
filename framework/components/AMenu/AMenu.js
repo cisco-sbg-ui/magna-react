@@ -96,7 +96,7 @@ const AMenu = forwardRef(
     if (propsClassName) {
       className += ` ${propsClassName}`;
     }
-
+    console.log(rest);
     return (
       <AList
         {...rest}

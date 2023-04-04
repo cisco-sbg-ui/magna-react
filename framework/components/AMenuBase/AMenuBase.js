@@ -24,7 +24,9 @@ const calculateMenuPosition = (
   setInvisible,
   removeSpacer = false
 ) => {
-  if (!combinedRef.current) return;
+  if (!combinedRef.current) {
+    return;
+  }
 
   const appCoords = getRoundedBoundedClientRect(appRef.current);
   const wrapCoords = getRoundedBoundedClientRect(wrapRef.current);
@@ -161,13 +163,17 @@ const calculatePointerPosition = (
   setPointerLeft,
   setPointerTop
 ) => {
-  if (!combinedRef.current) return;
+  if (!combinedRef.current) {
+    return;
+  }
 
   const anchorCoords = getRoundedBoundedClientRect(anchorRef.current);
   const menuCoords = getRoundedBoundedClientRect(combinedRef.current);
 
   // Pointer
-  if (!pointer) return;
+  if (!pointer) {
+    return;
+  }
 
   switch (placement) {
     case "top":
@@ -356,6 +362,7 @@ const AMenuBase = forwardRef(
       pointerStyle.top = pointerTop;
     }
 
+    console.log("style", style);
     return (
       (open &&
         appRef.current &&
