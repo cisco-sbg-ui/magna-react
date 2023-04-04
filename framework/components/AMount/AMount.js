@@ -14,6 +14,7 @@ const AMount = forwardRef(
       className: propsClassName,
       component,
       wrapClassName: propsWrapClassName,
+      // @todo remove and make this default in next major version
       withNewWrappingContext = false,
       ...rest
     },
