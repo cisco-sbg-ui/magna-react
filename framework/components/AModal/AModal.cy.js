@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
 import {
   APanel,
   APanelHeader,
@@ -16,6 +16,13 @@ import {
 import AIcon from "../AIcon";
 import AButton from "../AButton";
 import AModal from "./AModal";
+import AMenu from "../AMenu/AMenu";
+import AListItem from "../AList/AListItem";
+import usePopupQuickExit from "../../hooks/usePopupQuickExit/usePopupQuickExit";
+import useAToaster from "../AToaster/useAToaster";
+
+const getModalContent = () => cy.getByDataTestId("modal-content");
+const openModal = () => cy.getByDataTestId("modal-trigger").click();
 
 describe("<AModal />", () => {
   it("renders", () => {
@@ -26,7 +33,7 @@ describe("<AModal />", () => {
     cy.mount(<ModalTest />);
 
     // Open modal
-    cy.getByDataTestId("open-btn").click();
+    cy.getByDataTestId("modal-trigger").click();
     cy.getByDataTestId("close-modal-trigger").should("have.focus");
   });
 
@@ -34,7 +41,7 @@ describe("<AModal />", () => {
     cy.mount(<ModalTest />);
 
     // Open accordion; make sure first focusable element receives the focus
-    cy.getByDataTestId("open-btn").click();
+    cy.getByDataTestId("modal-trigger").click();
     cy.getByDataTestId("close-modal-trigger").should("have.focus");
 
     // Tab focus
@@ -51,51 +58,114 @@ describe("<AModal />", () => {
   });
 
   it("should not propagate click events outside of the modal", () => {
-    cy.mount(<ModalWithAccordionTest />);
+    cy.mount(<WithAccordionTest />);
 
     // Open accordion; make sure modal is not opened
     cy.getByDataTestId("toggle-accordion-btn").click();
-    cy.getByDataTestId("modal-title").should("not.exist");
+    getModalContent().should("not.exist");
     cy.getByDataTestId("accordion-content").should("be.visible");
 
     // Close accordion
     cy.getByDataTestId("toggle-accordion-btn").click();
 
     // Open modal; should _not_ also open the accordion
-    cy.getByDataTestId("open-modal-btn").click();
-    cy.getByDataTestId("modal-title").should("exist");
+    cy.getByDataTestId("modal-trigger").click();
+    getModalContent().should("exist");
     cy.getByDataTestId("accordion-content").should("not.be.visible");
     cy.getByDataTestId("focusable-child-3").click();
     cy.getByDataTestId("accordion-content").should("not.be.visible");
   });
 
   it("should not propagate keydown events outside of the modal", () => {
-    cy.mount(<ModalWithAccordionTest />);
+    cy.mount(<WithAccordionTest />);
 
     // Open accordion; make sure modal is not opened
     cy.getByDataTestId("toggle-accordion-btn").click();
-    cy.getByDataTestId("modal-title").should("not.exist");
+    getModalContent().should("not.exist");
     cy.getByDataTestId("accordion-content").should("be.visible");
 
     // Close accordion
     cy.getByDataTestId("toggle-accordion-btn").click();
 
     // Open modal; should _not_ also open the accordion
-    cy.getByDataTestId("open-modal-btn").click();
-    cy.getByDataTestId("modal-title").should("exist");
+    cy.getByDataTestId("modal-trigger").click();
+    getModalContent().should("exist");
     cy.getByDataTestId("accordion-content").should("not.be.visible");
     cy.getByDataTestId("focusable-child-1").enterKeydown();
     cy.getByDataTestId("accordion-content").should("not.be.visible");
+  });
+
+  describe("when triggering a toast from within the drawer", () => {
+    beforeEach(() => {
+      cy.mount(<WithToastTest />);
+    });
+    it("should not close the drawer when clicking toast content", () => {
+      openModal();
+
+      // Open toast
+      cy.getByDataTestId("toast-trigger").click();
+      cy.getByDataTestId("toast-content").should("exist");
+
+      // Click toast and ensure drawer is not gone
+      cy.getByDataTestId("toast-content").click();
+      getModalContent().should("exist");
+    });
+
+    it("should not close the drawer when closing the toast", () => {
+      openModal();
+
+      // Open toast
+      cy.getByDataTestId("toast-trigger").click();
+      cy.getByDataTestId("toast-content").should("exist");
+
+      // Close toast
+      cy.get(".a-toast__close").click();
+
+      // Ensure toast is gone, but drawer is not
+      cy.getByDataTestId("toast-content").should("not.exist");
+      getModalContent().should("exist");
+    });
+  });
+
+  describe("when rendered with <AMenu /> as a child", () => {
+    beforeEach(() => cy.mount(<WithMenuTest />));
+    it("should not close the modal when opening <AMenu />", () => {
+      openModal();
+
+      // Open menu
+      cy.getByDataTestId("menu-trigger").click();
+      cy.getByDataTestId("menu-item-1").should("exist");
+      // @todo: add screenshot test to ensure menu is not covered by overlay */
+      cy.getByDataTestId("menu-item-1").should("be.visible");
+
+      // Make sure
+      getModalContent().should("exist");
+    });
+
+    it("should not close the modal when clicking clicking outside <AMenu /> while it is opened", () => {
+      openModal();
+
+      // Open menu an ensure modal does not close
+      cy.getByDataTestId("menu-trigger").click();
+      cy.getByDataTestId("menu-item-1").should("exist");
+
+      // Click modal to close menu
+      getModalContent().click("topRight", {force: true});
+      cy.getByDataTestId("menu-item-1").should("not.exist");
+      getModalContent().should("exist");
+    });
   });
 });
 
 function ContentSetup({onCloseBtnClick}) {
   return (
-    <APanel style={{minWidth: "400px"}} type="dialog">
+    <APanel
+      data-testid="modal-content"
+      style={{minWidth: "400px"}}
+      type="dialog"
+    >
       <APanelHeader>
-        <APanelTitle data-testid="modal-title" id="modal-title">
-          Modal Demo
-        </APanelTitle>
+        <APanelTitle>Modal Demo</APanelTitle>
         <AButton
           data-testid="close-modal-trigger"
           onClick={onCloseBtnClick}
@@ -123,17 +193,17 @@ function ModalTest() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <AButton data-testid="open-btn" onClick={() => setIsOpen(true)}>
+      <AButton data-testid="modal-trigger" onClick={() => setIsOpen(true)}>
         Open
       </AButton>
-      <AModal aria-label="standard modal demo" isOpen={isOpen}>
+      <AModal data-testid="modal" aria-label="modal test" isOpen={isOpen}>
         <ContentSetup onCloseBtnClick={() => setIsOpen(false)} />
       </AModal>
     </>
   );
 }
 
-function ModalWithAccordionTest() {
+function WithAccordionTest() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <AAccordion>
@@ -142,7 +212,7 @@ function ModalWithAccordionTest() {
           <AAccordionHeaderTitle>
             Accordion Title{" "}
             <AButton
-              data-testid="open-modal-btn"
+              data-testid="modal-trigger"
               onClick={(e) => {
                 e.stopPropagation();
                 setIsOpen(true);
@@ -160,5 +230,107 @@ function ModalWithAccordionTest() {
         </AAccordionBody>
       </AAccordionPanel>
     </AAccordion>
+  );
+}
+
+function WithMenuTest(modalProps) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const btnRef = useRef(null);
+  const modalContentRef = useRef();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  usePopupQuickExit({
+    popupRef: modalContentRef,
+    isEnabled: isModalOpen,
+    onExit: () => setIsModalOpen(false)
+  });
+
+  return (
+    <>
+      <AButton data-testid="modal-trigger" onClick={() => setIsModalOpen(true)}>
+        open modal
+      </AButton>
+      <AModal
+        data-testid="modal"
+        aria-label="modal with menu test"
+        isOpen={isModalOpen}
+        {...modalProps}
+      >
+        <APanel ref={modalContentRef} data-testid="modal-content">
+          <APanelBody>
+            <AButton
+              ref={btnRef}
+              data-testid="menu-trigger"
+              onClick={() => setIsMenuOpen(true)}
+            >
+              open menu
+            </AButton>
+            <AMenu
+              data-testid="menu"
+              anchorRef={btnRef}
+              open={isMenuOpen}
+              placement="bottom-left"
+              onClose={() => setIsMenuOpen(false)}
+              style={{borderRadius: 0}}
+            >
+              <AListItem data-testid="menu-item-1">test menu item</AListItem>
+              <AListItem data-testid="menu-item-2">test menu item</AListItem>
+              <AListItem data-testid="menu-item-3">test menu item</AListItem>
+            </AMenu>
+          </APanelBody>
+        </APanel>
+      </AModal>
+    </>
+  );
+}
+
+/**
+ * @see https://github.com/cisco-sbg-ui/magna-react/issues/297
+ */
+function WithToastTest(modalProps) {
+  const {addToast} = useAToaster();
+  const [isOpen, setIsOpen] = useState(false);
+  const popupRef = useRef();
+
+  usePopupQuickExit({
+    popupRef,
+    isEnabled: isOpen,
+    onExit: () => setIsOpen(false)
+  });
+
+  return (
+    <>
+      <AButton data-testid="modal-trigger" onClick={() => setIsOpen(true)}>
+        open modal
+      </AButton>
+      <AModal
+        data-testid="modal"
+        ref={popupRef}
+        isOpen={isOpen}
+        {...modalProps}
+      >
+        <APanel data-testid="modal-content">
+          test
+          <AButton
+            data-testid="toast-trigger"
+            onClick={() => {
+              addToast(
+                {
+                  level: "danger",
+                  title: "Danger Toast",
+                  children: "test toast",
+                  dismissable: true,
+                  placement: "top",
+                  "data-testid": "toast-content"
+                },
+                -1
+              );
+            }}
+          >
+            Notify
+          </AButton>
+        </APanel>
+      </AModal>
+    </>
   );
 }

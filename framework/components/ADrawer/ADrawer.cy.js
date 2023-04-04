@@ -4,9 +4,13 @@ import ADrawer from "./ADrawer";
 import ADrawerContent from "./ADrawerContent";
 import AListItem from "../AList/AListItem";
 import AMenu from "../AMenu/AMenu";
+import APopover from "../APopover/APopover";
 import usePopupQuickExit from "../../hooks/usePopupQuickExit/usePopupQuickExit";
+import useAToaster from "../AToaster/useAToaster";
 
 const openDrawer = () => cy.getByDataTestId("drawer-trigger").click();
+const getDrawer = () => cy.getByDataTestId("drawer");
+const getDrawerContent = () => cy.getByDataTestId("drawer-content");
 
 describe("<ADrawer />", () => {
   it("renders", () => {
@@ -18,13 +22,13 @@ describe("<ADrawer />", () => {
       cy.mount(<DrawerTest />);
 
       openDrawer();
-      cy.getByDataTestId("drawer-content").should("exist");
+      getDrawerContent().should("exist");
     });
     it("should slide-in from the left", () => {
       cy.mount(<DrawerTest slideIn="left" />);
 
       openDrawer();
-      cy.getByDataTestId("drawer").should(($el) => {
+      getDrawer().should(($el) => {
         expect($el).to.have.css("left", "0px");
         expect($el).to.have.css("top", "0px");
       });
@@ -34,7 +38,7 @@ describe("<ADrawer />", () => {
       cy.mount(<DrawerTest slideIn="right" />);
 
       openDrawer();
-      cy.getByDataTestId("drawer").should(($el) => {
+      getDrawer().should(($el) => {
         expect($el).to.have.css("right", "0px");
         expect($el).to.have.css("top", "0px");
       });
@@ -44,7 +48,7 @@ describe("<ADrawer />", () => {
       cy.mount(<DrawerTest slideIn="bottom" />);
 
       openDrawer();
-      cy.getByDataTestId("drawer").should(($el) => {
+      getDrawer().should(($el) => {
         expect($el).to.have.css("bottom", "0px");
       });
     });
@@ -55,9 +59,7 @@ describe("<ADrawer />", () => {
       openDrawer();
       // Assert on drawer content since the drawer itself takes up the
       // entire width after rendering the page overlay from `AModal`
-      cy.getByDataTestId("drawer-content")
-        .invoke("outerWidth")
-        .should("eq", 800);
+      getDrawerContent().invoke("outerWidth").should("eq", 800);
     });
   });
 
@@ -66,13 +68,13 @@ describe("<ADrawer />", () => {
       cy.mount(<DrawerTest asModal={false} />);
 
       openDrawer();
-      cy.getByDataTestId("drawer-content").should("exist");
+      getDrawerContent().should("exist");
     });
     it("should slide-in from the left", () => {
       cy.mount(<DrawerTest asModal={false} slideIn="left" />);
 
       openDrawer();
-      cy.getByDataTestId("drawer").should(($el) => {
+      getDrawer().should(($el) => {
         expect($el).to.have.css("left", "0px");
         expect($el).to.have.css("top", "0px");
       });
@@ -82,7 +84,7 @@ describe("<ADrawer />", () => {
       cy.mount(<DrawerTest asModal={false} slideIn="right" />);
 
       openDrawer();
-      cy.getByDataTestId("drawer").should(($el) => {
+      getDrawer().should(($el) => {
         expect($el).to.have.css("right", "0px");
         expect($el).to.have.css("top", "0px");
       });
@@ -92,7 +94,7 @@ describe("<ADrawer />", () => {
       cy.mount(<DrawerTest asModal={false} slideIn="bottom" />);
 
       openDrawer();
-      cy.getByDataTestId("drawer").should(($el) => {
+      getDrawer().should(($el) => {
         expect($el).to.have.css("bottom", "0px");
       });
     });
@@ -101,13 +103,13 @@ describe("<ADrawer />", () => {
       cy.mount(<DrawerTest asModal={false} openWidth="800px" />);
 
       openDrawer();
-      cy.getByDataTestId("drawer").invoke("outerWidth").should("eq", 800);
+      getDrawer().invoke("outerWidth").should("eq", 800);
     });
   });
 
-  describe("when integrating with usePopupQuickExit", () => {
+  describe("when integrating with `usePopupQuickExit()`", () => {
     beforeEach(() => {
-      cy.mount(<DrawerTriggeredByMenuTest />);
+      cy.mount(<PopupQuickExitTest />);
     });
 
     const openDrawerFromWithinMenu = () => {
@@ -162,6 +164,103 @@ describe("<ADrawer />", () => {
         });
     });
   });
+
+  describe("when triggering a toast from within the drawer", () => {
+    beforeEach(() => {
+      cy.mount(<WithToastTest />);
+    });
+    it("should not close the drawer when clicking toast content", () => {
+      openDrawer();
+
+      // Open toast
+      cy.getByDataTestId("toast-trigger").click();
+      cy.getByDataTestId("toast-content").should("exist");
+
+      // Click toast and ensure drawer is not gone
+      cy.getByDataTestId("toast-content").click();
+      getDrawerContent().should("exist");
+    });
+
+    it("should not close the drawer when closing the toast", () => {
+      openDrawer();
+
+      // Open toast
+      cy.getByDataTestId("toast-trigger").click();
+      cy.getByDataTestId("toast-content").should("exist");
+
+      // Close toast
+      cy.get(".a-toast__close").click();
+
+      // Ensure toast is gone, but drawer is not
+      cy.getByDataTestId("toast-content").should("not.exist");
+      getDrawerContent().should("exist");
+    });
+  });
+
+  describe("when rendered with <AMenu /> as a child", () => {
+    beforeEach(() => {
+      cy.mount(<WithMenuTest />);
+    });
+    it("should not close the drawer when opening <AMenu />", () => {
+      openDrawer();
+
+      // Open menu an ensure drawer does not close
+      cy.getByDataTestId("menu-trigger").click();
+      getDrawerContent().should("exist");
+
+      for (let i = 1; i <= 3; i++) {
+        // Click menu items and ensure drawer does not close
+        cy.getByDataTestId(`menu-item-${i}`).click();
+        cy.getByDataTestId("menu-trigger").click();
+        getDrawerContent().should("exist");
+      }
+    });
+
+    it("should not close the drawer when clicking clicking outside <AMenu /> while it is opened", () => {
+      openDrawer();
+
+      // Open menu an ensure drawer does not close
+      cy.getByDataTestId("menu-trigger").click();
+      cy.getByDataTestId("menu-item-1").should("exist");
+
+      // Click drawer to close menu
+      getDrawer().click();
+      cy.getByDataTestId("menu-item-1").should("not.exist");
+      getDrawerContent().should("exist");
+    });
+  });
+
+  describe("when rendered with <APopover /> as a child", () => {
+    beforeEach(() => {
+      cy.mount(<WithPopoverTest />);
+    });
+
+    it("should not close the drawer when opening <APopover />", () => {
+      openDrawer();
+
+      // Open popover an ensure drawer does not close
+      cy.getByDataTestId("popover-trigger").click();
+      getDrawerContent().should("exist");
+
+      // Click popover items and ensure drawer does not close
+      cy.getByDataTestId("popover-content").click();
+      cy.getByDataTestId("popover-trigger").click();
+      getDrawerContent().should("exist");
+    });
+
+    it("clicking outside the popover within the drawer should close the popover", () => {
+      openDrawer();
+
+      // Open popover an ensure drawer does not close
+      cy.getByDataTestId("popover-trigger").click();
+      cy.getByDataTestId("popover-content").should("exist");
+
+      // Click drawer to close popover
+      getDrawer().click();
+      cy.getByDataTestId("popover-content").should("not.exist");
+      getDrawerContent().should("exist");
+    });
+  });
 });
 
 function DrawerTest({asModal = true, slideIn = "right", openWidth}) {
@@ -192,7 +291,7 @@ function DrawerTest({asModal = true, slideIn = "right", openWidth}) {
  *
  * @see https://github.com/cisco-sbg-ui/magna-react/issues/143
  */
-function DrawerTriggeredByMenuTest() {
+function PopupQuickExitTest() {
   const triggerRef = useRef(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -237,6 +336,162 @@ function DrawerTriggeredByMenuTest() {
         <AButton data-testid="drawer-content-btn">
           drawer content button
         </AButton>
+      </ADrawer>
+    </>
+  );
+}
+
+/**
+ * @see https://github.com/cisco-sbg-ui/magna-react/issues/297
+ */
+function WithToastTest(drawerProps) {
+  const {addToast} = useAToaster();
+  const [isOpen, setIsOpen] = useState(false);
+  const popupRef = useRef();
+
+  usePopupQuickExit({
+    popupRef,
+    isEnabled: isOpen,
+    onExit: () => setIsOpen(false)
+  });
+
+  return (
+    <>
+      <AButton data-testid="drawer-trigger" onClick={() => setIsOpen(true)}>
+        open drawer
+      </AButton>
+      <ADrawer
+        data-testid="drawer"
+        ref={popupRef}
+        asModal={false}
+        isOpen={isOpen}
+        slideIn="right"
+        {...drawerProps}
+      >
+        <ADrawerContent data-testid="drawer-content">
+          test
+          <AButton
+            data-testid="toast-trigger"
+            onClick={() => {
+              addToast(
+                {
+                  level: "danger",
+                  title: "Danger Toast",
+                  children: "test toast",
+                  dismissable: true,
+                  placement: "top",
+                  "data-testid": "toast-content"
+                },
+                -1
+              );
+            }}
+          >
+            Notify
+          </AButton>
+        </ADrawerContent>
+      </ADrawer>
+    </>
+  );
+}
+
+function WithMenuTest(drawerProps) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const btnRef = useRef(null);
+  const drawerRef = useRef();
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  usePopupQuickExit({
+    popupRef: drawerRef,
+    isEnabled: isDrawerOpen,
+    onExit: () => setIsDrawerOpen(false)
+  });
+
+  return (
+    <>
+      <AButton
+        data-testid="drawer-trigger"
+        onClick={() => setIsDrawerOpen(true)}
+      >
+        open drawer
+      </AButton>
+      <ADrawer
+        data-testid="drawer"
+        ref={drawerRef}
+        asModal={false}
+        isOpen={isDrawerOpen}
+        slideIn="right"
+        {...drawerProps}
+      >
+        <ADrawerContent data-testid="drawer-content">
+          <AButton
+            ref={btnRef}
+            data-testid="menu-trigger"
+            onClick={() => setIsMenuOpen(true)}
+          >
+            open menu
+          </AButton>
+          <AMenu
+            anchorRef={btnRef}
+            open={isMenuOpen}
+            placement="bottom-left"
+            onClose={() => setIsMenuOpen(false)}
+            style={{borderRadius: 0}}
+          >
+            <AListItem data-testid="menu-item-1">test menu item</AListItem>
+            <AListItem data-testid="menu-item-2">test menu item</AListItem>
+            <AListItem data-testid="menu-item-3">test menu item</AListItem>
+          </AMenu>
+        </ADrawerContent>
+      </ADrawer>
+    </>
+  );
+}
+
+function WithPopoverTest(drawerProps) {
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+
+  const btnRef = useRef(null);
+  const drawerRef = useRef();
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  usePopupQuickExit({
+    popupRef: drawerRef,
+    isEnabled: isDrawerOpen,
+    onExit: () => setIsDrawerOpen(false)
+  });
+
+  return (
+    <>
+      <AButton
+        data-testid="drawer-trigger"
+        onClick={() => setIsDrawerOpen(true)}
+      >
+        open drawer
+      </AButton>
+      <ADrawer
+        data-testid="drawer"
+        ref={drawerRef}
+        asModal={false}
+        isOpen={isDrawerOpen}
+        slideIn="right"
+        {...drawerProps}
+      >
+        <ADrawerContent data-testid="drawer-content">
+          <AButton
+            ref={btnRef}
+            data-testid="popover-trigger"
+            onClick={() => setIsPopoverOpen(true)}
+          >
+            open popover
+          </AButton>
+          <APopover
+            anchorRef={btnRef}
+            open={isPopoverOpen}
+            placement="left-top"
+            onClose={() => setIsPopoverOpen(false)}
+          >
+            <span data-testid="popover-content">test popover content</span>
+          </APopover>
+        </ADrawerContent>
       </ADrawer>
     </>
   );
