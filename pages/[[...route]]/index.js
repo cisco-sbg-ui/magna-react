@@ -4,7 +4,14 @@ import {serialize} from "next-mdx-remote/serialize";
 import {MDXRemote} from "next-mdx-remote";
 import React from "react";
 
-import {AApp, AAutoTheme, ACol, AContainer, ARow} from "../../framework";
+import {
+  AApp,
+  AAutoTheme,
+  ACol,
+  AContainer,
+  ARow,
+  AMount
+} from "../../framework";
 import HiddenFontSwatches from "../../docs/HiddenFontSwatches";
 import Sidebar from "../../docs/Sidebar";
 import PropsContext from "../../docs/PropsContext";
@@ -36,11 +43,16 @@ export default function TestPage({currentDoc, menus, propsInfo}) {
               <ACol style={{maxWidth: 330}}>
                 <Sidebar currentDoc={currentDoc} menus={menus} />
               </ACol>
-              <ACol className="pa-8" style={{maxWidth: "calc(100vw - 347px)"}}>
-                <PropsContext.Provider value={propsInfo}>
-                  <MDXRemote {...currentDoc.source} components={components} />
-                </PropsContext.Provider>
-              </ACol>
+              <AMount>
+                <ACol
+                  className="pa-8"
+                  style={{maxWidth: "calc(100vw - 347px)"}}
+                >
+                  <PropsContext.Provider value={propsInfo}>
+                    <MDXRemote {...currentDoc.source} components={components} />
+                  </PropsContext.Provider>
+                </ACol>
+              </AMount>
             </ARow>
           </AContainer>
         </AAutoTheme>
