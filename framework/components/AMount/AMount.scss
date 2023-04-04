@@ -11,5 +11,9 @@
 .a-mount {
   &--withNewWrappingContext {
     position: relative;
+
+    & .a-mount--wrap {
+      width: fit-content;
+    }
   }
 }
