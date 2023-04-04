@@ -118,15 +118,21 @@ const calculateMenuPosition = (
 
   const xOffset = appRef.current.offsetParent?.isSameNode(document.body)
     ? window.pageXOffset
-    : wrapCoords.left - appCoords.scrollLeft;
+    : wrapRef.current.offsetLeft - appRef.current.scrollLeft;
   const yOffset = appRef.current.offsetParent?.isSameNode(document.body)
     ? window.pageYOffset
-    : wrapCoords.top - appCoords.scrollTop;
+    : wrapRef.current.offsetTop - appRef.current.scrollTop;
 
-  const pageWidth =
-    document.documentElement.clientWidth + xOffset - wrapRef.current.offsetLeft;
-  const pageHeight =
-    document.documentElement.clientHeight + yOffset - wrapRef.current.offsetTop;
+  const pageWidth = appRef.current.offsetParent?.isSameNode(document.body)
+    ? document.documentElement.clientWidth +
+      xOffset -
+      wrapRef.current.offsetLeft
+    : wrapCoords.width;
+  const pageHeight = appRef.current.offsetParent?.isSameNode(document.body)
+    ? document.documentElement.clientHeight +
+      yOffset -
+      wrapRef.current.offsetTop
+    : wrapCoords.height;
 
   // Edge detection: max x
   if (baseLeft + menuCoords.width + marginLeft > pageWidth) {

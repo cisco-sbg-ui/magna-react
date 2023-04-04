@@ -5,6 +5,8 @@ import AAppContext from "../AApp/AAppContext";
 import {AToastPlate} from "../AToaster";
 import {useCombinedRefs} from "../../utils/hooks";
 
+import "./AMount.scss";
+
 const AMount = forwardRef(
   (
     {
