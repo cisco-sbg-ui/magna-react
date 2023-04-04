@@ -120,7 +120,7 @@ describe("<AMenuBase />", () => {
     getMenuContent().should("be.visible");
   });
 
-  describe.only("when rendered with a custom <AMount /> component", () => {
+  describe("when rendered with a custom <AMount /> component", () => {
     it("should not hide content when close to the left edge", () => {
       cy.mount(<CustomEdgeDetectionMenuTest edge="eft" placement="left" />);
 
