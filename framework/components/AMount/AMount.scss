@@ -9,5 +9,7 @@
  * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetParent
  */
 .a-mount {
-  position: relative;
+  &--withNewWrappingContext {
+    position: relative;
+  }
 }

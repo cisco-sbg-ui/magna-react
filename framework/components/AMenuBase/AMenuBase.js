@@ -22,7 +22,8 @@ const calculateMenuPosition = (
   setMenuLeft,
   setMenuTop,
   setInvisible,
-  removeSpacer = false
+  removeSpacer = false,
+  withNewWrappingContext
 ) => {
   if (!combinedRef.current) return;
 
@@ -116,23 +117,34 @@ const calculateMenuPosition = (
     window.getComputedStyle(combinedRef.current).marginTop
   );
 
-  const xOffset = appRef.current.offsetParent?.isSameNode(document.body)
-    ? window.pageXOffset
-    : wrapRef.current.offsetLeft - appRef.current.scrollLeft;
-  const yOffset = appRef.current.offsetParent?.isSameNode(document.body)
-    ? window.pageYOffset
-    : wrapRef.current.offsetTop - appRef.current.scrollTop;
+  const isAppWrappedByBody = appRef.current.offsetParent?.isSameNode(
+    document.body
+  );
 
-  const pageWidth = appRef.current.offsetParent?.isSameNode(document.body)
-    ? document.documentElement.clientWidth +
+  let xOffset, yOffset, pageWidth, pageHeight;
+
+  if (isAppWrappedByBody || !withNewWrappingContext) {
+    // Calculate positioning relative to viewport
+    xOffset = window.pageXOffset;
+    yOffset = window.pageYOffset;
+
+    pageWidth =
+      document.documentElement.clientWidth +
       xOffset -
-      wrapRef.current.offsetLeft
-    : wrapCoords.width;
-  const pageHeight = appRef.current.offsetParent?.isSameNode(document.body)
-    ? document.documentElement.clientHeight +
+      wrapRef.current.offsetLeft;
+
+    pageHeight =
+      document.documentElement.clientHeight +
       yOffset -
-      wrapRef.current.offsetTop
-    : wrapCoords.height;
+      wrapRef.current.offsetTop;
+  } else {
+    // Calculate positioning relative to `AMenuBase`
+    xOffset = wrapRef.current.offsetLeft - appRef.current.scrollLeft;
+    yOffset = wrapRef.current.offsetTop - appRef.current.scrollTop;
+
+    pageWidth = wrapCoords.width;
+    pageHeight = wrapCoords.height;
+  }
 
   // Edge detection: max x
   if (baseLeft + menuCoords.width + marginLeft > pageWidth) {
@@ -225,7 +237,7 @@ const AMenuBase = forwardRef(
     },
     ref
   ) => {
-    const {appRef, wrapRef} = useContext(AAppContext);
+    const {appRef, wrapRef, withNewWrappingContext} = useContext(AAppContext);
     const menuRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, menuRef);
     const [menuLeft, setMenuLeft] = useState(0);
@@ -244,7 +256,8 @@ const AMenuBase = forwardRef(
         setMenuLeft,
         setMenuTop,
         setInvisible,
-        removeSpacer
+        removeSpacer,
+        withNewWrappingContext
       );
     }, [
       open,
@@ -253,7 +266,8 @@ const AMenuBase = forwardRef(
       placement,
       appRef,
       wrapRef,
-      removeSpacer
+      removeSpacer,
+      withNewWrappingContext
     ]);
 
     useEffect(() => {
@@ -278,7 +292,8 @@ const AMenuBase = forwardRef(
           setMenuLeft,
           setMenuTop,
           setInvisible,
-          removeSpacer
+          removeSpacer,
+          withNewWrappingContext
         );
       };
 
@@ -289,7 +304,15 @@ const AMenuBase = forwardRef(
         window.removeEventListener("resize", screenChangeHandler);
         window.removeEventListener("fullscreenchange", screenChangeHandler);
       };
-    }, [anchorRef, combinedRef, placement, appRef, wrapRef, removeSpacer]);
+    }, [
+      anchorRef,
+      combinedRef,
+      placement,
+      appRef,
+      wrapRef,
+      removeSpacer,
+      withNewWrappingContext
+    ]);
 
     useEffect(() => {
       const screenChangeHandler = () => {
@@ -302,7 +325,8 @@ const AMenuBase = forwardRef(
           setMenuLeft,
           setMenuTop,
           setInvisible,
-          removeSpacer
+          removeSpacer,
+          withNewWrappingContext
         );
       };
 
@@ -311,7 +335,15 @@ const AMenuBase = forwardRef(
       return () => {
         window.removeEventListener("resize", screenChangeHandler);
       };
-    }, [anchorRef, combinedRef, placement, appRef, wrapRef, removeSpacer]);
+    }, [
+      anchorRef,
+      combinedRef,
+      placement,
+      appRef,
+      wrapRef,
+      removeSpacer,
+      withNewWrappingContext
+    ]);
 
     useEffect(() => {
       const clickOutsideHandler = (e) => {

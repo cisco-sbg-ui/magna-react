@@ -14,6 +14,7 @@ const AMount = forwardRef(
       className: propsClassName,
       component,
       wrapClassName: propsWrapClassName,
+      withNewWrappingContext = false,
       ...rest
     },
     ref
@@ -25,6 +26,9 @@ const AMount = forwardRef(
     const [toasts2, setToasts2] = useState([]);
 
     let className = "a-mount";
+    if (withNewWrappingContext) {
+      className += ` ${className}--withNewWrappingContext`;
+    }
     if (propsClassName) {
       className += ` ${propsClassName}`;
     }
@@ -40,7 +44,8 @@ const AMount = forwardRef(
       appRef: combinedRef,
       wrapRef: newWrapRef,
       toasts: toasts || toasts2,
-      setToasts: setToasts || setToasts2
+      setToasts: setToasts || setToasts2,
+      withNewWrappingContext
     };
 
     const hasToastPlate =
