@@ -43,7 +43,7 @@ export default function TestPage({currentDoc, menus, propsInfo}) {
               <ACol style={{maxWidth: 330}}>
                 <Sidebar currentDoc={currentDoc} menus={menus} />
               </ACol>
-              <AMount>
+              <AMount withNewWrappingContext={true}>
                 <ACol
                   className="pa-8"
                   style={{maxWidth: "calc(100vw - 347px)"}}
