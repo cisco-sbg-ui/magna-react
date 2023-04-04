@@ -117,13 +117,16 @@ const calculateMenuPosition = (
     window.getComputedStyle(combinedRef.current).marginTop
   );
 
-  const isAppWrappedByBody = appRef.current.offsetParent?.isSameNode(
-    document.body
-  );
-
   let xOffset, yOffset, pageWidth, pageHeight;
 
-  if (isAppWrappedByBody || !withNewWrappingContext) {
+  if (withNewWrappingContext) {
+    // Calculate positioning relative to `AMenuBase`
+    xOffset = wrapRef.current.offsetLeft - appRef.current.scrollLeft;
+    yOffset = wrapRef.current.offsetTop - appRef.current.scrollTop;
+
+    pageWidth = wrapCoords.width;
+    pageHeight = wrapCoords.height;
+  } else {
     // Calculate positioning relative to viewport
     xOffset = window.pageXOffset;
     yOffset = window.pageYOffset;
@@ -137,13 +140,6 @@ const calculateMenuPosition = (
       document.documentElement.clientHeight +
       yOffset -
       wrapRef.current.offsetTop;
-  } else {
-    // Calculate positioning relative to `AMenuBase`
-    xOffset = wrapRef.current.offsetLeft - appRef.current.scrollLeft;
-    yOffset = wrapRef.current.offsetTop - appRef.current.scrollTop;
-
-    pageWidth = wrapCoords.width;
-    pageHeight = wrapCoords.height;
   }
 
   // Edge detection: max x
