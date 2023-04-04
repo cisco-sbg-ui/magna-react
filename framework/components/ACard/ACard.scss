@@ -1,0 +1,174 @@
+@import "../../styles";
+
+%a-card-base {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: stretch;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.a-card__item {
+  flex: 0 0 auto;
+  align-self: auto;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: center;
+
+  margin: 0 8px;
+
+  &:first-child,
+  &--attached-left,
+  &--attached-horizontal {
+    margin-left: 0;
+  }
+
+  &:last-child,
+  &--attached-right,
+  &--attached-horizontal {
+    margin-right: 0;
+  }
+
+  &--stretched {
+    flex: 1 1 auto;
+  }
+}
+.a-card-wrapper {
+  flex: 1 1 auto;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: stretch;
+
+  padding: 16px;
+}
+.a-card__footer,
+.a-card__header {
+  flex: 0 0 auto;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: center;
+}
+.a-card__content {
+  flex: 1 1 auto;
+  margin: 16px 0;
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+.a-card-state {
+  flex: 0 0 auto;
+  height: 6px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+@include theme(a-card-title) using ($theme) {
+  flex: 0 1 auto;
+
+  display: block;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  color: map-deep-get($theme, "card", "title-color");
+}
+
+@include theme(a-card-subtitle) using ($theme) {
+  flex: 0 0 auto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: map-deep-get($theme, "card", "subtitle-color");
+}
+
+@include theme(a-card-container) using ($theme) {
+  @extend %a-card-base;
+  background: map-deep-get($theme, "card", "container-background");
+  box-shadow: map-deep-get($theme, "card", "container-shadow");
+
+  &--flat {
+    box-shadow: map-deep-get($theme, "card", "container-flat-shadow");
+  }
+}
+
+@include theme(a-card-basic) using ($theme) {
+  @extend %a-card-base;
+
+  border-radius: 8px;
+  padding: 0;
+
+  .a-card__content {
+    margin: 12px 0;
+    &:first-child {
+      margin-top: 0;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  background: map-deep-get($theme, "card", "basic-background");
+  box-shadow: map-deep-get($theme, "card", "basic-shadow");
+  border: 2px solid map-deep-get($theme, "card", "basic-border-color");
+
+  &.a-card-basic {
+    &--lifted {
+      box-shadow: map-deep-get($theme, "card", "basic-lifted-shadow");
+    }
+
+    &--state-dormant {
+      .a-card-state {
+        background: #889099;
+      }
+    }
+    &--state-positive {
+      .a-card-state {
+        background: map-deep-get($theme, "card", "state-positive");
+      }
+    }
+    &--state-warning {
+      .a-card-state {
+        background: map-deep-get($theme, "card", "state-warning");
+      }
+    }
+    &--state-negative {
+      .a-card-state {
+        background: map-deep-get($theme, "card", "state-negative");
+      }
+    }
+    &--state-informational {
+      .a-card-state {
+        background: map-deep-get($theme, "card", "state-informational");
+      }
+    }
+    &--state-disabled {
+      .a-card-state {
+        background: map-deep-get($theme, "card", "state-disabled");
+      }
+    }
+  }
+}

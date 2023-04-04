@@ -1,0 +1,490 @@
+---
+name: Cards**
+route: /components/card
+components: ACard, ACardHeader
+---
+
+# Cards
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {
+  ACardContainer,
+  ACardBasic,
+  ACardItem,
+  ACardHeader,
+  ACardTitle,
+  ACardSubTitle,
+  ACardContent,
+  ACardFooter
+} from "@cisco-sbg-ui/magna-react";
+```
+
+## Container card
+
+Used to group content and actions into logical sections or buckets, it can contain [Basic cards](/components/card#basic-card).
+
+<br />
+
+<Playground
+  code={`
+<ACardContainer>
+  <ACardHeader>
+    <ACardTitle>Hi I'am Container</ACardTitle>
+  </ACardHeader>
+  <ACardContent>
+    <div style={{background:'rgba(0,0,0,0.05)', padding:10}}>Sample Content</div>
+  </ACardContent>
+</ACardContainer>
+`}
+/>
+
+### Anatomy of container
+
+- Title / Subtitle are optional
+- Content area can be single or multi-column layouts
+- Buttons are optional and are typically positioned to the right in the bottom or top of the container.
+
+<br />
+
+<Playground
+  code={`
+<ACardContainer>
+  <ACardHeader>
+    <ACardTitle>Title</ACardTitle>
+  </ACardHeader>
+  <ACardSubTitle>Subtitle</ACardSubTitle>
+  <ACardContent>
+    <div style={{background:'rgba(0,0,0,0.05)', padding:10}}>Sample Content</div>
+  </ACardContent>
+  <ACardFooter>
+    <ACardItem stretched></ACardItem>
+    <ACardItem attached="right">
+      <AButton medium tertiary>Button</AButton>
+    </ACardItem>
+    <ACardItem attached="right">
+      <AButton medium secondary>Button</AButton>
+    </ACardItem>
+    <ACardItem>
+      <AButton medium>Button</AButton>
+    </ACardItem>
+  </ACardFooter>
+</ACardContainer>
+`}
+/>
+
+### Flat container
+
+<Playground
+  code={`
+<>
+  <ACardContainer>
+    <ACardContent>
+      <div>Default container card</div>
+    </ACardContent>
+  </ACardContainer>
+  <ADivider />
+  <ACardContainer flat>
+    <ACardContent>
+      <div>Flat container card</div>
+    </ACardContent>
+  </ACardContainer>
+
+ </>
+`}
+/>
+
+### Composition example 1
+
+<Playground
+  code={`
+<ACardContainer>
+  <ACardHeader>
+    <ACardTitle>Title</ACardTitle>
+    <ACardItem stretched attached="horizontal">
+      <ATag style={{fontWeight:600}}>Default</ATag>
+    </ACardItem>
+    <ACardItem>
+        <AIcon size="medium">x</AIcon>
+    </ACardItem>
+  </ACardHeader>
+  <ACardSubTitle>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</ACardSubTitle>
+  <ACardContent>
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus et lorem
+    id felis nonummy placerat. Nam libero tempore, cum soluta nobis est eligendi
+    optio cumque nihil impedit quo minus id quod maxime placeat facere possimus,
+    omnis voluptas assumenda est, omnis dolor repellendus.
+  </ACardContent>
+  <ACardFooter>
+    <ACardItem stretched></ACardItem>
+    <ACardItem attached="right">
+      <AButton medium secondary>Button</AButton>
+    </ACardItem>
+    <ACardItem>
+      <AButton medium>Button</AButton>
+    </ACardItem>
+  </ACardFooter>
+</ACardContainer>
+`}
+/>
+
+### Composition example 2
+
+<Playground
+  code={`
+<ACardContainer>
+  <ACardHeader>
+    <ACardItem attached="right">
+      <AIcon size="medium">positive</AIcon>
+    </ACardItem>
+    <ACardTitle title="Very long title quo minus id quod maxime placeat facere possimus">
+        Very long title quo minus id quod maxime placeat facere possimus
+    </ACardTitle>
+  </ACardHeader>
+  <ACardSubTitle>Very long subtitle nam libero tempore, cum soluta nobis est eligendi
+    optio cumque nihil impedit quo minus id quod maxime placeat facere possimus</ACardSubTitle>
+  <ACardContent>
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus et lorem
+    id felis nonummy placerat. Nam libero tempore, cum soluta nobis est eligendi
+    optio cumque nihil impedit quo minus id quod maxime placeat facere possimus,
+    omnis voluptas assumenda est, omnis dolor repellendus.
+  </ACardContent>
+</ACardContainer>
+`}
+/>
+
+### Composition example 3
+
+<Playground
+  code={`
+<ACardContainer>
+  <ACardSubTitle>Nam libero tempore, cum soluta nobis est eligendi
+    optio cumque nihil impedit quo minus id quod maxime placeat facere possimus,
+    omnis voluptas assumenda est, omnis dolor repellendus.</ACardSubTitle>
+  <ACardContent>
+    <AList className="pl-2"  style={{border:0}}>
+    <AListItem twoLine>
+      <AListItemAvatar className="ma-2 ml-0">
+        <div
+          className="d-flex align-center justify-center"
+          style={{
+            width: 48,
+            height: 48,
+            color: "#f2f2f2",
+            borderRadius: 4,
+            backgroundColor: "#750b76"
+          }}>
+          AMP
+        </div>
+      </AListItemAvatar>
+      <AListItemContent>
+        <AListItemTitle>AMP for Endpoints</AListItemTitle>
+        <AListItemSubtitle>
+          <a href="#">New in 5.4.2</a> | <a href="#">API Docs</a>
+        </AListItemSubtitle>
+      </AListItemContent>
+    </AListItem>
+    <ADivider light className="ma-0" />
+    <AListItem twoLine>
+      <AListItemAvatar className="ma-2 ml-0">
+        <div
+          className="d-flex align-center justify-center ma-0"
+          style={{
+            width: 48,
+            height: 48,
+            color: "#f2f2f2",
+            borderRadius: 4,
+            backgroundColor: "#191970"
+          }}>
+          Cdo
+        </div>
+      </AListItemAvatar>
+      <AListItemContent>
+        <AListItemTitle>Cisco Defense Orchestrator</AListItemTitle>
+        <AListItemSubtitle>
+          <a href="#">What's New</a> | <a href="#">API Docs</a>
+        </AListItemSubtitle>
+      </AListItemContent>
+    </AListItem>
+  </AList>
+  </ACardContent>
+  <ACardFooter>
+    <ACardItem stretched></ACardItem>
+    <ACardItem>
+      <AButton medium secondary>Button</AButton>
+    </ACardItem>
+  </ACardFooter>
+</ACardContainer>
+`}
+/>
+
+## Basic card
+
+Cards group related information in a flexible-size containers.
+Basic cards typically contain a few short, related pieces of information and can be
+interactive or non-interactive.
+For page level groupings, use [Container Cards](/components/card#container-card).
+
+### Anatomy of card
+
+- Title / Subtitle are optional
+- Content area can be single or multi-column layouts
+- Buttons are optional and are typically positioned to the right in the bottom or top of the container.
+
+<br />
+
+<Playground
+  code={`
+<ACardBasic>
+  <ACardHeader>
+    <ACardTitle>Title</ACardTitle>
+  </ACardHeader>
+  <ACardSubTitle>Subtitle</ACardSubTitle>
+  <ACardContent>
+    <div style={{background:'rgba(0,0,0,0.05)', padding:10}}>Sample Content</div>
+  </ACardContent>
+  <ACardFooter>
+    <ACardItem stretched></ACardItem>
+    <ACardItem attached="right">
+      <AButton medium tertiary>Button</AButton>
+    </ACardItem>
+    <ACardItem attached="right">
+      <AButton medium secondary>Button</AButton>
+    </ACardItem>
+    <ACardItem>
+      <AButton medium>Button</AButton>
+    </ACardItem>
+  </ACardFooter>
+</ACardBasic>
+`}
+/>
+
+### Card States
+
+<Playground
+  code={`
+  <div>
+    <div className="d-flex flex-row flex-wrap">
+      <ACardBasic state="dormant" className="flex-grow-0 flex-shrink-0 ma-1">
+        <ACardContent>
+          <div>State dormant</div>
+        </ACardContent>
+      </ACardBasic>
+
+      <ACardBasic state="positive" className="flex-grow-0 flex-shrink-0 ma-1">
+        <ACardContent>
+          <div>State positive</div>
+        </ACardContent>
+      </ACardBasic>
+
+      <ACardBasic state="warning" className="flex-grow-0 flex-shrink-0 ma-1">
+        <ACardContent>
+          <div>State warning</div>
+        </ACardContent>
+      </ACardBasic>
+
+      <ACardBasic state="negative" className="flex-grow-0 flex-shrink-0 ma-1">
+        <ACardContent>
+          <div>State negative</div>
+        </ACardContent>
+      </ACardBasic>
+
+      <ACardBasic state="informational" className="flex-grow-0 flex-shrink-0 ma-1">
+        <ACardContent>
+          <div>State informational</div>
+        </ACardContent>
+      </ACardBasic>
+
+      <ACardBasic state="disabled" className="flex-grow-0 flex-shrink-0 ma-1">
+        <ACardContent>
+          <div style={{color:'#C1C6CC'}}>State disabled</div>
+        </ACardContent>
+      </ACardBasic>
+
+      <ACardBasic
+        state="custom"
+        stateCustomColor="#F2638C"
+        className="flex-grow-0 flex-shrink-0 ma-1">
+        <ACardContent>
+          <div>State custom</div>
+        </ACardContent>
+      </ACardBasic>
+    </div>
+
+    <ADivider/>
+
+    <div className="d-flex flex-row flex-wrap">
+      <ACardBasic state="informational" className="flex-grow-1 flex-shrink-0 ma-1">
+        <ACardHeader>
+          <ACardTitle>Title</ACardTitle>
+        </ACardHeader>
+        <ACardSubTitle>Subtitle</ACardSubTitle>
+        <ACardContent>
+          <div style={{background:'rgba(0,0,0,0.05)', padding:10}}>State informational</div>
+        </ACardContent>
+        <ACardFooter>
+          <ACardItem stretched></ACardItem>
+          <ACardItem attached="right">
+            <AButton medium tertiary>Button</AButton>
+          </ACardItem>
+          <ACardItem attached="right">
+            <AButton medium secondary>Button</AButton>
+          </ACardItem>
+          <ACardItem>
+            <AButton medium>Button</AButton>
+          </ACardItem>
+        </ACardFooter>
+      </ACardBasic>
+
+      <ACardBasic state="negative" className="flex-grow-1 flex-shrink-0 ma-1">
+        <ACardHeader>
+          <ACardTitle>Title</ACardTitle>
+        </ACardHeader>
+        <ACardSubTitle>Subtitle</ACardSubTitle>
+        <ACardContent>
+          <div style={{background:'rgba(0,0,0,0.05)', padding:10}}>State negative</div>
+        </ACardContent>
+        <ACardFooter>
+          <ACardItem stretched></ACardItem>
+          <ACardItem attached="right">
+            <AButton medium tertiary>Button</AButton>
+          </ACardItem>
+          <ACardItem attached="right">
+            <AButton medium secondary>Button</AButton>
+          </ACardItem>
+          <ACardItem>
+            <AButton medium>Button</AButton>
+          </ACardItem>
+        </ACardFooter>
+      </ACardBasic>
+
+      <ACardBasic state="custom" stateCustomColor="rgb(242, 99, 140)" className="flex-grow-1 flex-shrink-0 ma-1">
+        <ACardHeader>
+          <ACardTitle>Title</ACardTitle>
+        </ACardHeader>
+        <ACardSubTitle>Subtitle</ACardSubTitle>
+        <ACardContent>
+          <div style={{background:'rgba(0,0,0,0.05)', padding:10}}>State custom</div>
+        </ACardContent>
+        <ACardFooter>
+          <ACardItem stretched></ACardItem>
+          <ACardItem attached="right">
+            <AButton medium tertiary>Button</AButton>
+          </ACardItem>
+          <ACardItem attached="right">
+            <AButton medium secondary>Button</AButton>
+          </ACardItem>
+          <ACardItem>
+            <AButton medium>Button</AButton>
+          </ACardItem>
+        </ACardFooter>
+      </ACardBasic>
+    </div>
+  </div>
+`}
+/>
+
+### Lifted card
+
+<Playground
+  code={`
+  <>
+  <ACardBasic>
+    <ACardContent>
+      <div>Default card</div>
+    </ACardContent>
+  </ACardBasic>
+  <ADivider />
+  <ACardBasic lifted>
+    <ACardContent>
+      <div>Lifted card</div>
+    </ACardContent>
+  </ACardBasic>
+  </>
+`}
+/>
+
+### Composition example
+
+<Playground
+  code={`
+  <ACardContainer>
+  <ACardHeader>
+    <ACardTitle>Hi I'am Container Card</ACardTitle>
+    <ACardItem stretched/>
+    <ACardItem>
+        <AIcon size="medium">caret-down</AIcon>
+    </ACardItem>
+  </ACardHeader>
+  <ACardSubTitle>Subtitle</ACardSubTitle>
+  <ACardContent>
+    <ACardBasic>
+      <ACardHeader>
+        <ACardTitle>Card Title</ACardTitle>
+        <ACardItem stretched attached="left" style={{color:"#656C75"}}>83 total</ACardItem>
+        <ACardItem>
+            <AIcon size="medium">globe</AIcon>
+        </ACardItem>
+      </ACardHeader>
+      <ACardSubTitle>Subtitle</ACardSubTitle>
+      <ACardContent>
+        <AProgressbar size="large" percentage={30} style={{padding: 0, margin:0}} />
+      </ACardContent>
+    </ACardBasic>
+    <ADivider />
+    <ACardBasic>
+      <ACardHeader>
+        <ACardTitle>Card Title</ACardTitle>
+        <ACardItem stretched attached="left" style={{color:"#656C75"}}>982 total</ACardItem>
+        <ACardItem>
+            <AIcon size="medium">globe</AIcon>
+        </ACardItem>
+      </ACardHeader>
+      <ACardSubTitle>Subtitle</ACardSubTitle>
+      <ACardContent>
+        <AProgressbar size="large" percentage={70} style={{padding: 0, margin:0}} />
+      </ACardContent>
+    </ACardBasic>
+  </ACardContent>
+</ACardContainer>
+`}
+/>
+
+## Component props
+
+All Card components (`ACard`) inherit passed props.
+
+### ACardContainer
+
+<Props of="ACardContainer" />
+
+### ACardBasic
+
+<Props of="ACardBasic" />
+
+### ACardItem
+
+<Props of="ACardItem" />
+
+### ACardHeader
+
+<Props of="ACardHeader" />
+
+### ACardTitle
+
+<Props of="ACardTitle" />
+
+### ACardSubTitle
+
+<Props of="ACardSubTitle" />
+
+### ACardContent
+
+<Props of="ACardContent" />
+
+### ACardFooter
+
+<Props of="ACardFooter" />
