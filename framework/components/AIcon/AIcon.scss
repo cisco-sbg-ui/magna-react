@@ -65,7 +65,19 @@ svg.a-icon {
   &--text-bolder,
   &--text-h,
   &--text-italic,
-  &--text-strikethrough {
+  &--text-strikethrough,
+  &--type_Admin,
+  &--type_Cameras,
+  &--type_Cellular_gateway,
+  &--type_Environmental,
+  &--type_Insight,
+  &--type_Network,
+  &--type_Network-wide,
+  &--type_Organization,
+  &--type_Security,
+  &--type_Switch,
+  &--type_Systems_Manager,
+  &--type_Wireless {
     fill: map-deep-get($theme, "icon", "icon-color");
   }
 
