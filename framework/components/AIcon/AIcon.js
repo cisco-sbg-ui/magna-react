@@ -29,6 +29,7 @@ const ignoreStrokeReplace = [
   "first-page",
   "malicious",
   "suspicious"
+  // icons that start with "type_"
 ];
 
 const AIcon = forwardRef(
@@ -58,10 +59,10 @@ const AIcon = forwardRef(
 
     const ariaLabel = label || `${children} icon`,
       componentProps = {
+        style: {},
         ...rest,
         ref,
         className,
-        style: {},
         "aria-label": ariaLabel
       };
 
@@ -92,7 +93,10 @@ const AIcon = forwardRef(
     if (magneticIconDef) {
       const {props: iconProps, xml} = magneticIconDef;
 
-      if (ignoreStrokeReplace.includes(children)) {
+      if (
+        ignoreStrokeReplace.includes(children) ||
+        children.startsWith("type_")
+      ) {
         componentProps.style.stroke = "none";
       }
 
