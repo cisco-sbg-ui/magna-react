@@ -1,0 +1,19 @@
+/**
+ * Needed for properly calculating menu positions within Magna React since
+ * the calculations depend on the `HTMLElement.offsetParent` property for
+ * its calculations.
+ * 
+ * In order for our menu positions to be correct, we need to set this element
+ * to something non statically-positioned.
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetParent
+ */
+.a-mount {
+  &--withNewWrappingContext {
+    position: relative;
+
+    & .a-mount--wrap {
+      width: fit-content;
+    }
+  }
+}

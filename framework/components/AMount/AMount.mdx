@@ -60,6 +60,38 @@ It is necessary for `AMount` to be a descendant of `AApp`.
 `}
 />
 
+### With A New Wrapping Context (AKA Boundary)
+
+In the example below, `AMount` creates a new boundary for any children that render menu content. If you drag the button outside of the green box, notice how the menu will stay within the playground area (since we wrapped the container in this demo with `AMount`).
+
+<Playground
+  
+  code={`() => {
+    const ENTER_PLACEMENT_HERE = "bottom";
+
+    const { useDraggable } = mockImport("useDraggable");
+
+    const anchorRef = useRef();
+    useDraggable(anchorRef);
+
+    const { open, close, isOpen } = useToggle(0, 0);
+
+    return (
+      <AMount withNewWrappingContext={true}>
+        <div className="d-flex align-center justify-center mds-green--green-4" style={{height: "350px", width: '350px'}}>
+          <AButton ref={anchorRef} onMouseDown={close} onMouseUp={open}>
+            Drag Me
+          </AButton>
+          <AMenu anchorRef={anchorRef} open={isOpen} onClose={close} placement={ENTER_PLACEMENT_HERE}>
+            <APanelBody>Hello world</APanelBody>
+          </AMenu>
+        </div>
+      </AMount>
+    )
+
+}`}
+/>
+
 ## Props
 
 `AMount` inherits passed props.

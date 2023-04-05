@@ -1,6 +1,8 @@
 import {useState, useRef} from "react";
 import AButton from "../AButton/AButton";
 import AMenuBase from "./AMenuBase";
+import AMount from "../AMount/AMount";
+import {getRoundedBoundedClientRect} from "../../utils/helpers";
 
 const getAnchor = () => cy.getByDataTestId("menu-trigger");
 const openMenu = () => cy.getByDataTestId("menu-trigger").click();
@@ -21,7 +23,10 @@ const getAnchorAndMenu = () => {
 const getAnchorAndMenuPositions = () => {
   return getAnchorAndMenu().then((els) => {
     const [anchorEl, menuEl] = els;
-    return [anchorEl.getBoundingClientRect(), menuEl.getBoundingClientRect()];
+    return [
+      getRoundedBoundedClientRect(anchorEl),
+      getRoundedBoundedClientRect(menuEl)
+    ];
   });
 };
 
@@ -114,6 +119,71 @@ describe("<AMenuBase />", () => {
 
     getMenuContent().should("be.visible");
   });
+
+  describe("when rendered with a custom <AMount /> component", () => {
+    it("should not hide content when close to the left edge", () => {
+      cy.mount(<CustomEdgeDetectionMenuTest edge="eft" placement="left" />);
+
+      openMenu();
+      getMenuContent().should("be.visible");
+    });
+
+    it("should not push content outside the custom <AMount /> when close to the left edge", () => {
+      cy.mount(<CustomEdgeDetectionMenuTest edge="eft" placement="left" />);
+
+      getAnchorAndMenuPositions().then(([anchorPos, menuPos]) => {
+        expect(menuPos.left === anchorPos.left).to.equal(true);
+      });
+    });
+
+    it("should not hide content when close to the right edge", () => {
+      cy.mount(<CustomEdgeDetectionMenuTest edge="right" placement="right" />);
+      openMenu();
+      getMenuContent().should("be.visible");
+    });
+
+    it("should not push content outside the custom <AMount /> when close to the right edge", () => {
+      cy.mount(<CustomEdgeDetectionMenuTest edge="right" placement="right" />);
+
+      getAnchorAndMenuPositions().then(([anchorPos, menuPos]) => {
+        expect(menuPos.right === anchorPos.right).to.equal(true);
+      });
+    });
+
+    it("should not hide content when close to the bottom edge", () => {
+      cy.mount(
+        <CustomEdgeDetectionMenuTest edge="bottom" placement="bottom" />
+      );
+
+      openMenu();
+      getMenuContent().should("be.visible");
+    });
+
+    it("should not push content outside the custom <AMount /> when close to the bottom edge", () => {
+      cy.mount(
+        <CustomEdgeDetectionMenuTest edge="bottom" placement="bottom" />
+      );
+
+      getAnchorAndMenuPositions().then(([anchorPos, menuPos]) => {
+        expect(menuPos.top === anchorPos.top).to.equal(true);
+      });
+    });
+
+    it("should not hide content when close to the top edge", () => {
+      cy.mount(<CustomEdgeDetectionMenuTest edge="top" placement="top" />);
+
+      openMenu();
+      getMenuContent().should("be.visible");
+    });
+
+    it("should not push content outside the custom <AMount /> when close to the top edge", () => {
+      cy.mount(<CustomEdgeDetectionMenuTest edge="top" placement="top" />);
+
+      getAnchorAndMenuPositions().then(([anchorPos, menuPos]) => {
+        expect(menuPos.top === anchorPos.top).to.equal(true);
+      });
+    });
+  });
 });
 
 function MenuTest(menuBaseProps) {
@@ -172,6 +242,46 @@ function EdgeDetectionMenuTest({edge, ...menuBaseProps}) {
       >
         <div style={{background: "white", padding: "10px"}}>test</div>
       </AMenuBase>
+    </div>
+  );
+}
+
+function CustomEdgeDetectionMenuTest({edge, ...menuBaseProps}) {
+  const btnRef = useRef();
+  const [isOpen, setIsOpen] = useState(menuBaseProps?.open);
+  const justifyStyle = `justify-${edge === "right" ? "end" : "left"}`;
+  const alignStyle = `align-${
+    edge === "bottom" ? "end" : edge === "top" ? "start" : "center"
+  }`;
+  return (
+    <div
+      data-testid="test-container"
+      className="d-flex justify-center align-center"
+      style={{height: "100vh", width: "100vw"}}
+    >
+      <AMount withNewWrappingContext={true}>
+        <div
+          className={`d-flex ${justifyStyle} ${alignStyle} mds-green--green-4`}
+          style={{height: "350px", width: "350px"}}
+          data-testid="edge-container"
+        >
+          <AButton
+            data-testid="menu-trigger"
+            ref={btnRef}
+            onClick={() => setIsOpen((state) => !state)}
+          >
+            {isOpen ? "close" : "open"}
+          </AButton>
+          <AMenuBase
+            {...menuBaseProps}
+            onClose={() => setIsOpen(false)}
+            anchorRef={btnRef}
+            open={isOpen}
+          >
+            <div style={{background: "white", padding: "10px"}}>test</div>
+          </AMenuBase>
+        </div>
+      </AMount>
     </div>
   );
 }
