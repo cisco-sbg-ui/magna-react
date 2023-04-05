@@ -44,13 +44,63 @@ import {ASelect} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
+### Truncating Select Options
+
+<Playground
+  code={`() => {
+      const items = [
+        "Magic: Casting various combat and utility spells",
+        "Runecraft: Creating runes used for casting Magic",
+        "Crafting: 	Creating items such as jewellery, pottery, and ranged armour",
+        "Agility: Traversing shortcuts and increases the rate at which energy recharges",
+      ];
+      const [selectedItem, setSelectedItem] = useState(items[2]);
+      return (
+        <div style={{ minHeight: 220, width: 375, marginRight: 20 }}>
+          <ASelect
+            label="RuneScape Skills"
+            items={items}
+            truncateMenuItems
+            placeholder="Runecraft"
+            onSelected={(item) => setSelectedItem(item)}
+          />
+        </div>
+      );
+  
+  }`}
+/>
+
+### Wrapping Long Select Options
+
+<Playground
+  code={`() => {
+      const items = [
+        "Magic: Casting various combat and utility spells",
+        "Runecraft: Creating runes used for casting Magic",
+        "Crafting: 	Creating items such as jewellery, pottery, and ranged armour",
+        "Agility: Traversing shortcuts and increases the rate at which energy recharges",
+      ];
+      const [selectedItem, setSelectedItem] = useState(items[2]);
+      return (
+        <div style={{ minHeight: 220, width: 375, marginRight: 20 }}>
+          <ASelect
+            label="RuneScape Skills"
+            items={items}
+            textWrapMenuItems
+            placeholder="Runecraft"
+            onSelected={(item) => setSelectedItem(item)}
+          />
+        </div>
+      );
+  
+  }`}
+/>
+
 ## Select Props
 
 The `ASelect` component inherits passed props.
 
 <Props of="ASelect" />
-
-
 
 ## Many Dropdown Options
 
@@ -125,7 +175,6 @@ The `ASelect` component inherits passed props.
 }
 `}
 />
-
 
 ## Validation
 
