@@ -422,7 +422,10 @@ const ASelect = forwardRef(
 
                   if (truncateMenuItems) {
                     itemProps.children = (
-                      <span className="a-select__menu-item-wrap">
+                      <span
+                        title={itemProps.children}
+                        className="a-select__menu-item-wrap"
+                      >
                         {itemProps.children}
                       </span>
                     );
@@ -439,7 +442,10 @@ const ASelect = forwardRef(
 
                   if (truncateMenuItems) {
                     itemProps.children = (
-                      <span className="a-select__menu-item-wrap">
+                      <span
+                        title={item[itemText]}
+                        className="a-select__menu-item-wrap"
+                      >
                         {itemProps.children}
                       </span>
                     );
