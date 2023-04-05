@@ -124,6 +124,7 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
       * The code below has not been verified nor
       * tested in a production environment. It is
       * used for the purposes of this demonstration.
+      * Use with caution.
       */
     useEffect(() => {
       const scrollPosition = window.pageYOffset;
@@ -481,7 +482,11 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
 ### With onClickOutside
 
 <AAlert className="mb-2" level="info" dismissable={false}>
-  `withOverlay` must be true for the `onClickOutside` prop to take effect.
+  `withOverlay` must be true for the `onClickOutside` prop to take effect. If
+  you would like to integrate an outside click handler with a non-overlayed
+  `AModal`, consider using the{" "}
+  <a href="/hooks/use-outside-click#description">`useOutsideClick` hook</a>{" "}
+  alongside the `AModal`.
 </AAlert>
 
 <Playground
