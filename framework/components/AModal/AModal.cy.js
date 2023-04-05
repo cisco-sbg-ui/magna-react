@@ -60,12 +60,12 @@ function testPropagation(testComponent) {
     cy.mount(testComponent);
 
     // Open accordion; make sure modal is not opened
-    cy.getByDataTestId("toggle-accordion-btn").click();
+    cy.getByDataTestId("toggle-accordion-btn").click(10, 10); // set click position to not also click modal button
     getModalContent().should("not.exist");
     cy.getByDataTestId("accordion-content").should("be.visible");
 
     // Close accordion
-    cy.getByDataTestId("toggle-accordion-btn").click();
+    cy.getByDataTestId("toggle-accordion-btn").click(10, 10); // set click position to not also click modal button
 
     // Open modal; should _not_ also open the accordion
     cy.getByDataTestId("modal-trigger").click();
@@ -79,12 +79,12 @@ function testPropagation(testComponent) {
     cy.mount(testComponent);
 
     // Open accordion; make sure modal is not opened
-    cy.getByDataTestId("toggle-accordion-btn").click();
+    cy.getByDataTestId("toggle-accordion-btn").click(10, 10); // set click position to not also click modal button
     getModalContent().should("not.exist");
     cy.getByDataTestId("accordion-content").should("be.visible");
 
     // Close accordion
-    cy.getByDataTestId("toggle-accordion-btn").click();
+    cy.getByDataTestId("toggle-accordion-btn").click(10, 10); // set click position to not also click modal button
 
     // Open modal; should _not_ also open the accordion
     cy.getByDataTestId("modal-trigger").click();
@@ -121,6 +121,19 @@ describe("<AModal />", () => {
     );
     testPropagation(
       <AMount>
+        <WithAccordionTest />
+      </AMount>
+    );
+  });
+
+  describe("when rendered within another <AMount /> component that has experimental wrapping", () => {
+    testCoreFunctionality(
+      <AMount withNewWrappingContext={true}>
+        <ModalTest />
+      </AMount>
+    );
+    testPropagation(
+      <AMount withNewWrappingContext={true}>
         <WithAccordionTest />
       </AMount>
     );
