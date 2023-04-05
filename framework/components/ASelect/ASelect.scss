@@ -138,5 +138,8 @@ $select-padding: 6px;
   overflow-y: auto;
   .a-list-item.a-select__menu-item {
     white-space: normal;
+    text-indent: unset;
+    /* preserve the original 4px padding and add the negated text-indent */
+    padding-left: calc(4px + $select-padding);
   }
 }
