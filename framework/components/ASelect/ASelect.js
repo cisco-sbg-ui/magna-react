@@ -47,6 +47,8 @@ const ASelect = forwardRef(
       useTemplateForSelectedItem = false,
       selectedDisplayTemplate,
       selectedDisplayItem,
+      textWrapMenuItems,
+      truncateMenuItems,
       ...rest
     },
     ref
@@ -152,7 +154,9 @@ const ASelect = forwardRef(
     };
 
     const getPreviousItem = (selectedIndex) => {
-      if (items.every((x) => x[itemDisabled])) return null;
+      if (items.every((x) => x[itemDisabled])) {
+        return null;
+      }
 
       let newItem = items[selectedIndex - 1];
       if (!newItem) {
@@ -167,7 +171,9 @@ const ASelect = forwardRef(
     };
 
     const getNextItem = (selectedIndex) => {
-      if (items.every((x) => x[itemDisabled])) return null;
+      if (items.every((x) => x[itemDisabled])) {
+        return null;
+      }
 
       let newItem = items[selectedIndex + 1];
       if (!newItem) {
@@ -297,6 +303,12 @@ const ASelect = forwardRef(
       menuClassName += ` ${dropdownClassName}`;
     }
 
+    if (textWrapMenuItems) {
+      menuClassName += " a-select__menu-items--text-wrap-menu-items";
+    } else if (truncateMenuItems) {
+      menuClassName += " a-select__menu-items--truncate-menu-items";
+    }
+
     const menuComponentProps = {
       anchorRef: inputBaseSurfaceRef,
       className: menuClassName,
@@ -408,6 +420,17 @@ const ASelect = forwardRef(
                     selectItem(item);
                   };
 
+                  if (truncateMenuItems) {
+                    itemProps.children = (
+                      <span
+                        title={itemProps.children}
+                        className="a-select__menu-item-wrap"
+                      >
+                        {itemProps.children}
+                      </span>
+                    );
+                  }
+
                   if (item === selectedItem) {
                     itemProps.className += " a-select__menu-item--selected";
                     itemProps["aria-selected"] = true;
@@ -416,6 +439,18 @@ const ASelect = forwardRef(
                 } else if (typeof item === "object") {
                   itemProps.value = item[itemValue];
                   itemProps.children = item[itemText];
+
+                  if (truncateMenuItems) {
+                    itemProps.children = (
+                      <span
+                        title={item[itemText]}
+                        className="a-select__menu-item-wrap"
+                      >
+                        {itemProps.children}
+                      </span>
+                    );
+                  }
+
                   if (item[itemDisabled]) {
                     itemProps["aria-disabled"] = true;
                     itemProps.onClick = (e) => {
@@ -571,8 +606,19 @@ ASelect.propTypes = {
    * Sets a React component to use when rendering the selected menu item. The component will be sent the following props: `item`. This overrides `useTemplateForSelectedItem`.
    */
   selectedDisplayTemplate: PropTypes.elementType,
-  /** If set, uses a custom item rather than the selectedItem when using `selectedDisplayTemplate` */
-  selectedDisplayItem: PropTypes.object
+  /**
+   * If set, uses a custom item rather than the selectedItem when using `selectedDisplayTemplate` */
+  selectedDisplayItem: PropTypes.object,
+  /**
+   * If item display is a string (no template), set white-space:normal on each
+   * item and limit width of the menu.
+   */
+  textWrapMenuItems: PropTypes.bool,
+  /**
+   * If item display is a string (no template), truncate the display string with
+   * ellipsis and limit width of the menu.
+   */
+  truncateMenuItems: PropTypes.bool
 };
 
 ASelect.displayName = "ASelect";

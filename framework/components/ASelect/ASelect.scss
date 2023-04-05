@@ -119,3 +119,27 @@ $select-padding: 6px;
     cursor: not-allowed;
   }
 }
+
+.a-select__menu-items--truncate-menu-items {
+  min-width: unset !important;
+  .a-list-item.a-select__menu-item {
+    overflow: hidden;
+  }
+  .a-select__menu-item-wrap {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.a-select__menu-items--text-wrap-menu-items {
+  min-width: unset !important;
+  max-height: 400px;
+  overflow-y: auto;
+  .a-list-item.a-select__menu-item {
+    white-space: normal;
+    text-indent: unset;
+    /* preserve the original 4px padding and add the negated text-indent */
+    padding-left: calc(4px + $select-padding);
+  }
+}
