@@ -362,7 +362,6 @@ const AMenuBase = forwardRef(
       pointerStyle.top = pointerTop;
     }
 
-    console.log("style", style);
     return (
       (open &&
         appRef.current &&
