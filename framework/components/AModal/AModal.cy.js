@@ -17,6 +17,7 @@ import AIcon from "../AIcon";
 import AButton from "../AButton";
 import AModal from "./AModal";
 import AMenu from "../AMenu/AMenu";
+import AMount from "../AMount/AMount";
 import AListItem from "../AList/AListItem";
 import usePopupQuickExit from "../../hooks/usePopupQuickExit/usePopupQuickExit";
 import useAToaster from "../AToaster/useAToaster";
@@ -24,13 +25,9 @@ import useAToaster from "../AToaster/useAToaster";
 const getModalContent = () => cy.getByDataTestId("modal-content");
 const openModal = () => cy.getByDataTestId("modal-trigger").click();
 
-describe("<AModal />", () => {
-  it("renders", () => {
-    cy.mount(<ModalTest />);
-  });
-
+function testCoreFunctionality(testComponent) {
   it("focuses on the first element", () => {
-    cy.mount(<ModalTest />);
+    cy.mount(testComponent);
 
     // Open modal
     cy.getByDataTestId("modal-trigger").click();
@@ -38,7 +35,7 @@ describe("<AModal />", () => {
   });
 
   it("should trap focus within the modal", () => {
-    cy.mount(<ModalTest />);
+    cy.mount(testComponent);
 
     // Open accordion; make sure first focusable element receives the focus
     cy.getByDataTestId("modal-trigger").click();
@@ -56,9 +53,11 @@ describe("<AModal />", () => {
     cy.get("body").tab();
     cy.getByDataTestId("close-modal-trigger").should("have.focus");
   });
+}
 
+function testPropagation(testComponent) {
   it("should not propagate click events outside of the modal", () => {
-    cy.mount(<WithAccordionTest />);
+    cy.mount(testComponent);
 
     // Open accordion; make sure modal is not opened
     cy.getByDataTestId("toggle-accordion-btn").click();
@@ -77,7 +76,7 @@ describe("<AModal />", () => {
   });
 
   it("should not propagate keydown events outside of the modal", () => {
-    cy.mount(<WithAccordionTest />);
+    cy.mount(testComponent);
 
     // Open accordion; make sure modal is not opened
     cy.getByDataTestId("toggle-accordion-btn").click();
@@ -94,65 +93,37 @@ describe("<AModal />", () => {
     cy.getByDataTestId("focusable-child-1").enterKeydown();
     cy.getByDataTestId("accordion-content").should("not.be.visible");
   });
+}
+
+describe("<AModal />", () => {
+  it("renders", () => {
+    cy.mount(<ModalTest />);
+  });
+
+  testCoreFunctionality(<ModalTest />);
+  testPropagation(<WithAccordionTest />);
 
   describe("when rendered without <APageOverlay />", () => {
-    it("should trap focus within the modal", () => {
-      cy.mount(<ModalTest withOverlay={false} />);
+    testCoreFunctionality(<ModalTest withOverlay={false} />);
+    testPropagation(<WithAccordionTest withOverlay={false} />);
+  });
 
-      // Open accordion; make sure first focusable element receives the focus
-      cy.getByDataTestId("modal-trigger").click();
-      cy.getByDataTestId("close-modal-trigger").should("have.focus");
+  describe("when rendered without transitions", () => {
+    testCoreFunctionality(<ModalTest withTransitions={false} />);
+    testPropagation(<WithAccordionTest withTransitions={false} />);
+  });
 
-      // Tab focus
-      cy.get("body").tab();
-      cy.getByDataTestId("focusable-child-1").should("have.focus");
-      cy.get("body").tab();
-      cy.getByDataTestId("focusable-child-2").should("have.focus");
-      cy.get("body").tab();
-      cy.getByDataTestId("focusable-child-3").should("have.focus");
-
-      // Rove back around to the beginning
-      cy.get("body").tab();
-      cy.getByDataTestId("close-modal-trigger").should("have.focus");
-    });
-
-    it("should not propagate click events outside of the modal", () => {
-      cy.mount(<WithAccordionTest withOverlay={false} />);
-
-      // Open accordion; make sure modal is not opened
-      cy.getByDataTestId("toggle-accordion-btn").click();
-      getModalContent().should("not.exist");
-      cy.getByDataTestId("accordion-content").should("be.visible");
-
-      // Close accordion
-      cy.getByDataTestId("toggle-accordion-btn").click();
-
-      // Open modal; should _not_ also open the accordion
-      cy.getByDataTestId("modal-trigger").click();
-      getModalContent().should("exist");
-      cy.getByDataTestId("accordion-content").should("not.be.visible");
-      cy.getByDataTestId("focusable-child-3").click();
-      cy.getByDataTestId("accordion-content").should("not.be.visible");
-    });
-
-    it("should not propagate keydown events outside of the modal", () => {
-      cy.mount(<WithAccordionTest withOverlay={false} />);
-
-      // Open accordion; make sure modal is not opened
-      cy.getByDataTestId("toggle-accordion-btn").click();
-      getModalContent().should("not.exist");
-      cy.getByDataTestId("accordion-content").should("be.visible");
-
-      // Close accordion
-      cy.getByDataTestId("toggle-accordion-btn").click();
-
-      // Open modal; should _not_ also open the accordion
-      cy.getByDataTestId("modal-trigger").click();
-      getModalContent().should("exist");
-      cy.getByDataTestId("accordion-content").should("not.be.visible");
-      cy.getByDataTestId("focusable-child-1").enterKeydown();
-      cy.getByDataTestId("accordion-content").should("not.be.visible");
-    });
+  describe("when rendered within another <AMount /> component", () => {
+    testCoreFunctionality(
+      <AMount>
+        <ModalTest />
+      </AMount>
+    );
+    testPropagation(
+      <AMount>
+        <WithAccordionTest />
+      </AMount>
+    );
   });
 
   describe("when triggering a toast from within the drawer", () => {
@@ -268,7 +239,7 @@ function ModalTest(modalProps) {
   );
 }
 
-function WithAccordionTest(modalProps) {
+function WithAccordionTest({children, ...modalProps}) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <AAccordion>
@@ -285,13 +256,15 @@ function WithAccordionTest(modalProps) {
             >
               Open Modal
             </AButton>{" "}
-            <AModal
-              aria-label="modal-accordion-setup"
-              isOpen={isOpen}
-              {...modalProps}
-            >
-              <ContentSetup onCloseBtnClick={() => setIsOpen(false)} />
-            </AModal>
+            {children || (
+              <AModal
+                aria-label="modal-accordion-setup"
+                isOpen={isOpen}
+                {...modalProps}
+              >
+                <ContentSetup onCloseBtnClick={() => setIsOpen(false)} />
+              </AModal>
+            )}
           </AAccordionHeaderTitle>
         </AAccordionHeader>
         <AAccordionBody data-testid="accordion-content">
