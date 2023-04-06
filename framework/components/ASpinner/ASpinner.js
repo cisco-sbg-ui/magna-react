@@ -45,11 +45,11 @@ const ASpinner = forwardRef(
       case "bottom":
         className += " a-spinner--label-alignment-bottom";
         break;
-      case "left":
-        className += " a-spinner--label-alignment-left";
+      case "right":
+        className += " a-spinner--label-alignment-right";
         break;
       default:
-        className += " a-spinner--label-alignment-left";
+        className += " a-spinner--label-alignment-right";
     }
 
     const TagName = component || "div";
@@ -81,9 +81,9 @@ ASpinner.propTypes = {
 
   /**
    * Sets how the label will be displayed.
-   * The default label alignment is set to "left".
+   * The default label alignment is set to "right".
    */
-  labelAlignment: PropTypes.oneOf(["bottom", "left"]),
+  labelAlignment: PropTypes.oneOf(["bottom", "right"]),
 
   /**
    * If stopped is set to true, the spinner will not be animated.
