@@ -66,8 +66,6 @@ const useAToaster = () => {
         timeout = 8000;
       }
 
-      console.log(props);
-
       setToasts((current) => {
         return [
           ...current,
