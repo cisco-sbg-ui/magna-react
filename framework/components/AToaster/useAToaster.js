@@ -63,12 +63,21 @@ const AToasterToast = forwardRef(
 
 AToasterToast.displayName = "AToasterToast";
 
+const DEFAULT_TIMEOUT = 6000;
+
 const useAToaster = () => {
   const {setToasts} = useContext(AAppContext);
 
   return {
-    addToast: (props, timeout = 5000) => {
+    addToast: (props, customTimeout) => {
       const id = toastId++;
+
+      let timeout = DEFAULT_TIMEOUT;
+      if (customTimeout) {
+        timeout = customTimeout;
+      } else if (["warning", "danger"].includes(props.level)) {
+        timeout = 8000;
+      }
 
       setToasts((current) => {
         return [
