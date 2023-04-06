@@ -308,6 +308,10 @@ $atomic-default: (
     "label-color--disabled": map-get($mds-neutral, "neutral-7"),
     "opacity-disabled": 1
   ),
+  "spinner": (
+    "stroke-color": map-get($mds-neutral, "neutral-10"),
+    "label-color": map-get($mds-neutral, "neutral-12")
+  ),
   "select": (
     "border-color--focus": map-get($cisco-blue, "base")
   ),

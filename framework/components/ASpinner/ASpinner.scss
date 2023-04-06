@@ -1,12 +1,11 @@
+@import "../../styles";
+
 .a-spinner {
   display: inline-flex;
   flex-wrap: nowrap;
   justify-content: center;
   align-content: center;
   align-items: center;
-}
-.a-spinner__label {
-  flex: 1 1 auto;
 }
 
 .a-spinner__figure {
@@ -19,12 +18,12 @@
   align-items: center;
 }
 
-.a-spinner__svg {
+@include theme(a-spinner__svg) using ($theme) {
   flex: 0 0 auto;
   display: block;
   animation: a-spinner__svg-rotate 1s linear infinite;
   & .path {
-    stroke: #7e868f;
+    stroke: map-deep-get($theme, "spinner", "stroke-color");
     stroke-linecap: round;
     stroke-width: 6;
     fill: none;
@@ -56,10 +55,11 @@
   }
 }
 
-.a-spinner__label {
+@include theme(a-spinner__label) using ($theme) {
+  flex: 1 1 auto;
   font-style: normal;
   font-weight: 600;
-  color: #656c75;
+  color: map-deep-get($theme, "spinner", "label-color");
 }
 
 .a-spinner--label-alignment-right {
