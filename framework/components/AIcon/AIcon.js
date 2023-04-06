@@ -66,6 +66,10 @@ const AIcon = forwardRef(
         "aria-label": ariaLabel
       };
 
+    if (!componentProps.style) {
+      componentProps.style = {};
+    }
+
     if (size && !isNaN(size)) {
       componentProps.style.width = size;
     }
