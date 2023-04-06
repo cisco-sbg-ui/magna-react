@@ -2,6 +2,7 @@ import React, {forwardRef, useContext, useEffect, useRef} from "react";
 
 import AAppContext from "../AApp/AAppContext";
 import AToast from "../AToast";
+import PausableTimeout from "./customTimeout";
 import "./AToaster.scss";
 
 let toastId = 1;
@@ -16,14 +17,13 @@ const AToasterToast = forwardRef(
         clearTimeout(timeoutRef.current);
       }
 
-      if (!timeout || timeout === -1) return;
-      timeoutRef.current = setTimeout(
-        () =>
-          setToasts((current) =>
-            current.filter((x) => x.id !== toasterToastId)
-          ),
-        timeout
-      );
+      if (!timeout || timeout === -1) {
+        return;
+      }
+
+      timeoutRef.current = new PausableTimeout(() => {
+        setToasts((current) => current.filter((x) => x.id !== toasterToastId));
+      }, timeout);
     }, [timeout, setToasts, toasterToastId]);
 
     let className = "a-toaster__toast";
@@ -43,6 +43,20 @@ const AToasterToast = forwardRef(
         onClose={() =>
           setToasts((current) => current.filter((x) => x.id !== toasterToastId))
         }
+        onMouseEnter={() => {
+          if (!timeoutRef.current) {
+            return;
+          }
+
+          timeoutRef.current.pause();
+        }}
+        onMouseLeave={() => {
+          if (!timeoutRef.current) {
+            return;
+          }
+
+          timeoutRef.current.start();
+        }}
       />
     );
   }
