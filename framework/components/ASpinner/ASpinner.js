@@ -8,9 +8,9 @@ const ASpinner = forwardRef(
     {
       className: propsClassName,
       component,
-      size,
-      labelAlignment,
-      stopped,
+      size = "medium",
+      labelAlignment = "right",
+      stopped = false,
       children,
       ...rest
     },
