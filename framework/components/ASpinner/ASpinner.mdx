@@ -1,0 +1,99 @@
+---
+name: Spinner**
+route: /components/spinner
+components: ASpinner
+---
+
+# Spinner
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import { ASpinner } from "@cisco-sbg-ui/magna-react";
+```
+
+## Basic usage
+
+<Playground
+  code={`
+<div>
+    <h3>Default spinner</h3>
+    <div>
+      <ASpinner/>
+  </div>
+  <ADivider/>
+  <div>
+      <h3>Spinner with label</h3>
+      <ASpinner>spinner label</ASpinner>
+  </div>
+</div>
+`}
+/>
+
+## Spinner size
+
+<Playground
+  code={`
+<div>
+    <h3>Small</h3>
+    <div>
+      <ASpinner size="small">spinner label</ASpinner>
+  </div>
+  <ADivider/>
+  <div>
+      <h3>Medium</h3>
+      <ASpinner size="medium">spinner label</ASpinner>
+  </div>
+  <ADivider/>
+  <div>
+      <h3>Large</h3>
+      <ASpinner size="large">spinner label</ASpinner>
+  </div>
+  <ADivider/>
+  <div>
+      <h3>Extra Large</h3>
+      <ASpinner size="extra-large">spinner label</ASpinner>
+  </div>
+</div>
+`}
+/>
+
+## Label orientation
+
+<Playground
+  code={`
+<div>
+    <h3>Horizontal</h3>
+    <div>
+      <ASpinner orientation="horizontal">spinner label</ASpinner>
+  </div>
+  <ADivider/>
+  <div>
+      <h3>Vertical</h3>
+      <ASpinner orientation="vertical">spinner label</ASpinner>
+  </div>
+</div>
+`}
+/>
+
+## Spinner without animation
+
+<Playground
+  code={`
+<div>
+    <div>
+      <ASpinner stopped={true}>no animation</ASpinner>
+  </div>
+</div>
+`}
+/>
+
+
+## Props
+
+All Panel components (`ASpinner`) inherit passed props.
+
+<Props of="ASpinner" />
+

@@ -86,6 +86,7 @@ import {
   ASkeletonText
 } from "./components/ASkeleton";
 import ASlider from "./components/ASlider";
+import ASpinner from "./components/ASpinner";
 import {
   AStepper,
   AStep,
@@ -202,6 +203,7 @@ export {
   ASlider,
   ASpacer,
   ASpinLoader,
+  ASpinner,
   AStepper,
   AStep,
   AStepTitle,
