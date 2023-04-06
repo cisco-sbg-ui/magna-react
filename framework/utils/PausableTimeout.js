@@ -7,6 +7,11 @@ class PausableTimeout {
     this.resume();
   }
 
+  restart() {
+    this.clear();
+    this.resume();
+  }
+
   resume() {
     this.running = true;
     this.started = new Date();
