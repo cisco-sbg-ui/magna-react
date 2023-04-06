@@ -14,44 +14,57 @@ Integrate with your build to [auto-import](/#integrating), or add an import in y
 import { ASpinner } from "@cisco-sbg-ui/magna-react";
 ```
 
-## Basic usage
-
+## Usage
+Spinners provide feedback to users while a process, action or content is being loaded, and are used when the specific duration or progress cannot be estimated or determined.
+### When to use Spinner
+ - When the load time of a process is more than 300 ms.
+ - For user-initiated processes such as saving or submitting a form, applying filters, or asynchronous updates on a part of a page (section or inline content).
+ - When the duration or completion status of the process cannot be estimated (indeterminate).
+### When not to use Spinner
+ - When load time is 300 ms or shorter, just show the data once it is loaded.
+ - For initial page load or full page refreshes, use [Skeleton](/components/skeleton).
+ - When the duration or progress can be estimated, use a [Progress Bar](/components/progressbar).
+<br/>
 <Playground
   code={`
 <div>
-  <div>simple spinner without label</div>
+  <div>Simple spinner without label</div>
   <ASpinner/>
   <ADivider/>
-  <div>spinner with label</div>
+  <div>Spinner with label</div>
   <ASpinner>spinner label</ASpinner>
 </div>
 `}
 />
 
-## Spinner size
+## Sizes
 
 <Playground
   code={`
 <div>
-  <ASpinner size="small">small spinner with label</ASpinner>
+  <ASpinner size="small">Small - 20px</ASpinner>
   <ADivider/>
-  <ASpinner size="medium">medium spinner with label</ASpinner>
+  <ASpinner size="medium">Medium - 36px</ASpinner>
   <ADivider/>
-  <ASpinner size="large">large spinner with label</ASpinner>
+  <ASpinner size="large">Large - 48px</ASpinner>
   <ADivider/>
-  <ASpinner size="extra-large">extra large spinner with label</ASpinner>
+  <ASpinner size="extra-large">Extra Large - 72px</ASpinner>
 </div>
 `}
 />
 
-## Label alignment
+## Spinner label
+Consider adding a label to communicate useful information about the process being performed.
+ - Use words or phrases that concisely describe the process.
+ - Avoid using “Loading” as it does not provide useful information about the process.
+<br/>
 
 <Playground
   code={`
 <div>
-    <ASpinner labelAlignment="right">label aligned to the right</ASpinner>
+    <ASpinner labelAlignment="right">Label on right of spinner</ASpinner>
     <ADivider/>
-    <ASpinner labelAlignment="bottom">label aligned at the bottom</ASpinner>
+    <ASpinner labelAlignment="bottom">Label below spinner</ASpinner>
 </div>
 `}
 />
@@ -60,7 +73,7 @@ import { ASpinner } from "@cisco-sbg-ui/magna-react";
 
 <Playground
   code={`
-      <ASpinner stopped={true}>no animation</ASpinner>
+      <ASpinner stopped={true}>No animation</ASpinner>
 `}
 />
 
@@ -68,7 +81,7 @@ import { ASpinner } from "@cisco-sbg-ui/magna-react";
 
 ## Props
 
-All Panel components (`ASpinner`) inherit passed props.
+Component (`ASpinner`) inherit passed props.
 
 <Props of="ASpinner" />
 
