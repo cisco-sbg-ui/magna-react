@@ -9,7 +9,7 @@ const ASpinner = forwardRef(
       className: propsClassName,
       component,
       size,
-      orientation,
+      labelAlignment,
       stopped,
       children,
       ...rest
@@ -41,15 +41,15 @@ const ASpinner = forwardRef(
         className += " a-spinner--medium";
     }
 
-    switch (orientation) {
-      case "vertical":
-        className += " a-spinner--vertical";
+    switch (labelAlignment) {
+      case "bottom":
+        className += " a-spinner--label-alignment-bottom";
         break;
-      case "horizontal":
-        className += " a-spinner--horizontal";
+      case "left":
+        className += " a-spinner--label-alignment-left";
         break;
       default:
-        className += " a-spinner--horizontal";
+        className += " a-spinner--label-alignment-left";
     }
 
     const TagName = component || "div";
@@ -81,11 +81,9 @@ ASpinner.propTypes = {
 
   /**
    * Sets how the label will be displayed.
-   * If the value is "horizontal" the label will be displayed to the left of the spinner.
-   * if the value is "vertical" label will be displayed below the spinner.
-   * The default spinner orientation is set to "horizontal".
+   * The default label alignment is set to "left".
    */
-  orientation: PropTypes.oneOf(["vertical", "horizontal"]),
+  labelAlignment: PropTypes.oneOf(["bottom", "left"]),
 
   /**
    * If stopped is set to true, the spinner will not be animated.

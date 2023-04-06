@@ -1,5 +1,5 @@
 ---
-name: Spinner**
+name: Spinner
 route: /components/spinner
 components: ASpinner
 ---
@@ -60,19 +60,19 @@ import { ASpinner } from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-## Label orientation
+## Label alignment
 
 <Playground
   code={`
 <div>
-    <h3>Horizontal</h3>
+    <h3>Left</h3>
     <div>
-      <ASpinner orientation="horizontal">spinner label</ASpinner>
+      <ASpinner labelAlignment="right">spinner label</ASpinner>
   </div>
   <ADivider/>
   <div>
-      <h3>Vertical</h3>
-      <ASpinner orientation="vertical">spinner label</ASpinner>
+      <h3>Bottom</h3>
+      <ASpinner labelAlignment="bottom">spinner label</ASpinner>
   </div>
 </div>
 `}
@@ -82,13 +82,10 @@ import { ASpinner } from "@cisco-sbg-ui/magna-react";
 
 <Playground
   code={`
-<div>
-    <div>
       <ASpinner stopped={true}>no animation</ASpinner>
-  </div>
-</div>
 `}
 />
+
 
 
 ## Props

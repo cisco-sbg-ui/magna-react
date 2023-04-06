@@ -62,7 +62,7 @@
   color: #656c75;
 }
 
-.a-spinner--horizontal {
+.a-spinner--label-alignment-left {
   flex-direction: row;
   &.a-spinner--small {
     .a-spinner__label {
@@ -86,7 +86,7 @@
   }
 }
 
-.a-spinner--vertical {
+.a-spinner--label-alignment-bottom {
   flex-direction: column;
   &.a-spinner--small {
     .a-spinner__label {
