@@ -4,10 +4,10 @@ class PausableTimeout {
     this.delay = delay;
     this.remaining = delay;
 
-    this.start();
+    this.resume();
   }
 
-  start() {
+  resume() {
     this.running = true;
     this.started = new Date();
     this.id = setTimeout(() => {
@@ -23,13 +23,14 @@ class PausableTimeout {
 
   clear() {
     this.running = false;
+    this.remaining = this.delay;
     clearTimeout(this.id);
   }
 
   getTimeLeft() {
     if (this.running) {
       this.pause();
-      this.start();
+      this.resume();
     }
 
     return this.remaining;
