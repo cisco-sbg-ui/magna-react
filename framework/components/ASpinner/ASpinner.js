@@ -61,7 +61,7 @@ const ASpinner = forwardRef(
             <circle className="path" cx="25" cy="25" r="19"></circle>
           </svg>
         </div>
-        <div className="a-spinner__label">{children}</div>
+        {children ? <div className="a-spinner__label">{children}</div> : null}
       </TagName>
     );
   }
