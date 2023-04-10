@@ -1,7 +1,7 @@
 ---
 name: Loaders**
 route: /components/loader
-components: ACiscoLoader, ADotLoader, APageLoader, ASpinLoader
+components: ACiscoLoader, ALoader
 ---
 
 # Loaders
@@ -13,9 +13,8 @@ Integrate with your build to [auto-import](/#integrating), or add an import in y
 ```
 import {
   ACiscoLoader,
-  ADotLoader,
   APageLoader,
-  ASpinLoader
+  ALoader
 } from "@cisco-sbg-ui/magna-react";
 ```
 
@@ -27,13 +26,13 @@ import {
   <ACiscoLoader className="mx-auto" />
   <ADivider />
   <h3>Dot Loader</h3>
-  <ADotLoader className="mx-auto" />
+  ADotLoader is deprecated. Use ASpinner instead
   <ADivider />
   <h3>Page Loader</h3>
-  <APageLoader size="small" center />
+  APageLoader is deprecated. Use ASpinner instead
   <ADivider />
    <h3>Spin Loader</h3>
-  <ASpinLoader>Loading Text</ASpinLoader><br />
+  <ASpinner>Loading Text</ASpinner><br />
 </div>
 `}
 />
@@ -45,17 +44,14 @@ import {
    <h3>Small</h3>
     <ALoader variant="spinner" size="small">Small loader</ALoader><br />
     <ALoader variant="progressbar" size="small" indicatorProps={{indeterminate: true}}>Small progress bar</ALoader><br />
-    <ALoader variant="dot" size="small">Small dot</ALoader>
   <ADivider />
      <h3>Medium</h3>
     <ALoader variant="spinner" size="medium">Medium loader</ALoader><br />
     <ALoader variant="progressbar" size="medium" indicatorProps={{indeterminate: true}}>Medium progress bar</ALoader><br />
-    <ALoader variant="dot" size="medium">Medium dot</ALoader>
   <ADivider />
    <h3>Large</h3>
   <ALoader variant="spinner" size="large">Large loader</ALoader><br />
     <ALoader variant="progressbar" size="large" indicatorProps={{indeterminate: true}}>Large progress bar</ALoader><br />
-    <ALoader variant="dot" size="large">Large dot</ALoader>
   <ADivider />
   <h3>Top</h3>
   <ALoader placement="top">Top of children</ALoader>
@@ -72,50 +68,11 @@ import {
 `}
 />
 
-## APageLoader as a Wrapper
-
-<Playground
-  code={`()=> {
-      const [loading, setLoading] = useState(true)
-
-return (<div>
-
-<AButton onClick={() => {
-  setLoading(!loading)
-}}>{loading ? "Loading" : "Not loading"}</AButton>
-<br />
-<br />
-<br />
-  <APageLoader size="small" loading={loading} center>
-  <div>Render me after load</div>
-  </APageLoader>
-</div>)
-  }`}
-/>
-
 ## Cisco Loader Props
 
 The `ACiscoLoader` component inherits passed props.
 
 <Props of="ACiscoLoader" />
-
-## Dot Loader Props
-
-The `ADotLoader` component inherits passed props.
-
-<Props of="ADotLoader" />
-
-## Page Loader Props
-
-The `APageLoader` component inherits passed props.
-
-<Props of="APageLoader" />
-
-## Spin Loader Props
-
-The `ASpinLoader` component inherits passed props.
-
-<Props of="ASpinLoader" />
 
 ## Generic Loader Props
 
@@ -125,5 +82,5 @@ The `ALoader` component inherits passed props.
 
 ## Accessibility Notes
 
-By default, `ACiscoLoader`, `ADotLoader`, `APageLoader`, and `ASpinLoader` are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [progressbar](https://www.w3.org/TR/wai-aria/#progressbar).
+By default, `ACiscoLoader`, is assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [progressbar](https://www.w3.org/TR/wai-aria/#progressbar).
 Additionally applied are the suggested `aria-valuemin` and `aria-valuemax` set at `0` and `100`, respectively, although all loaders are indeterminate.

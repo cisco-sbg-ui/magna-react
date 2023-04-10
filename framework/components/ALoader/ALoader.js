@@ -1,7 +1,6 @@
 import React, {forwardRef} from "react";
 import PropTypes from "prop-types";
-import ADotLoader from "./ADotLoader";
-import ASpinLoader from "./ASpinLoader";
+import ASpinner from "../ASpinner";
 import AProgressbar from "../AProgressbar";
 
 import "./ALoader.scss";
@@ -9,9 +8,8 @@ import "./ALoader.scss";
 const baseClass = "a-generic-loader";
 
 export const INDICATORS = {
-  spinner: ASpinLoader,
-  progressbar: AProgressbar,
-  dot: ADotLoader
+  spinner: ASpinner,
+  progressbar: AProgressbar
 };
 
 const ALoader = forwardRef(
@@ -31,8 +29,7 @@ const ALoader = forwardRef(
       containerClassName = `${baseClass}__container`;
 
     const TagName = typeof variant === "string" ? INDICATORS[variant] : variant,
-      indicatorType =
-        typeof variant === "string" ? variant : TagName.displayName;
+      indicatorType = TagName.displayName;
 
     switch (size) {
       case "small": {

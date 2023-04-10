@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 
 import "./ADotLoader.scss";
 
+/**
+ * DEPRECATED
+ */
 const ADotLoader = forwardRef(
   ({className: propsClassName, size, ...rest}, ref) => {
     let className = "a-dot-loader";

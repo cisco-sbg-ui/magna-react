@@ -58,7 +58,6 @@ import {
   ACiscoLoader,
   ADotLoader,
   APageLoader,
-  ASpinLoader,
   ALoader
 } from "./components/ALoader";
 import AMenuBase from "./components/AMenuBase";
@@ -202,7 +201,6 @@ export {
   ASkeletonText,
   ASlider,
   ASpacer,
-  ASpinLoader,
   ASpinner,
   AStepper,
   AStep,
