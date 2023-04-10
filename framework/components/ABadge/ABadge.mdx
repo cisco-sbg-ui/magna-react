@@ -2,106 +2,84 @@
 name: Badges**
 route: /components/badge
 components: ABadge
+title: ABadge
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/ABadge
 ---
-
-# Badges
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {ABadge} from "@cisco-sbg-ui/magna-react";
-```
 
 ## Usage
 
+### Import
+
+<ComponentImport components="ABadge" />
+
+### Usage
+
+<Playground
+  withTwoPanes
+  code={`<ABadge content="3" large>
+  <AButton icon>
+    <AIcon size={48}>bell</AIcon>
+  </AButton>
+</ABadge>`}
+/>
+
+#### Badge Sizes
+
 <Playground
   code={`<>
-  <div>
-    <ABadge color="cisco-blue" content="3" large className="mr-4">
-      <AButton tertiaryAlt icon className="pa-1" onClick={() => {}}>
-        <AIcon size={48}>bell</AIcon>
-      </AButton>
-    </ABadge>
-    <ABadge color="status-red" content="99+" large>
-      <AButton tertiaryAlt icon className="pa-1" onClick={() => {}}>
-        <AIcon size={48}>bell</AIcon>
-      </AButton>
-    </ABadge>
-  </div>
-  <div className="mt-4">
-    <ABadge color="cisco-blue" content="3" className="mr-4">
-      <AButton secondary icon className="pa-1" onClick={() => {}}>
-        <AIcon size={24}>bell</AIcon>
-      </AButton>
-    </ABadge>
-    <ABadge color="status-red" content="99+">
-      <AButton secondary icon className="pa-1" onClick={() => {}}>
-        <AIcon size={24}>bell</AIcon>
-      </AButton>
-    </ABadge>
-  </div>
-  <div className="mt-4">
-    <ABadge color="cisco-blue" content="3" small className="mr-4">
-      <AButton primary icon className="pa-1" onClick={() => {}}>
-        <AIcon size={16}>bell</AIcon>
-      </AButton>
-    </ABadge>
-    <ABadge color="status-red" content="99+" small>
-      <AButton primary icon className="pa-1" onClick={() => {}}>
-        <AIcon size={16}>bell</AIcon>
-      </AButton>
-    </ABadge>
-  </div>
-  <div className="mt-4">
-      <ABadge color="cisco-blue" content="3" small className="mr-4">
-        <AButton tertiary icon className="pa-1" onClick={() => {}}>
-          <AIcon size={16}>bell</AIcon>
+  {["small", "medium", "large"].map((size) => {
+    const sizeProp = {
+      [size]: true,
+    };
+    return (
+      <ABadge {...sizeProp} content="3" className="mr-4">
+        <AButton icon>
+          <AIcon size={48}>bell</AIcon>
         </AButton>
       </ABadge>
-      <ABadge color="status-red" content="99+" small>
-        <AButton tertiary icon className="pa-1" onClick={() => {}}>
-          <AIcon size={16}>bell</AIcon>
-        </AButton>
-      </ABadge>
-    </div>
-    <div className="mt-4">
-      <ABadge color="cisco-blue" content="3" small className="mr-4">
-        <AButton tertiaryAlt icon className="pa-1" onClick={() => {}}>
-          <AIcon size={16}>bell</AIcon>
-        </AButton>
-      </ABadge>
-      <ABadge color="status-red" content="99+" small>
-        <AButton tertiaryAlt icon className="pa-1" onClick={() => {}}>
-          <AIcon size={16}>bell</AIcon>
-        </AButton>
-      </ABadge>
-    </div>
-    <div>Using "level" prop for themed colors</div>
-    <div className="mt-4">
-      <ABadge level="error" content="99+" large className="mr-4">
-        <AButton tertiaryAlt icon className="pa-1" onClick={() => {}}>
-          <AIcon size={16}>bell</AIcon>
-        </AButton>
-      </ABadge>
-      <ABadge level="info" content="99+" large className="mr-4">
-        <AButton tertiaryAlt icon className="pa-1" onClick={() => {}}>
-          <AIcon size={16}>bell</AIcon>
-        </AButton>
-      </ABadge>
-      <ABadge level="success" content="99+" large className="mr-4">
-        <AButton tertiaryAlt icon className="pa-1" onClick={() => {}}>
-          <AIcon size={16}>bell</AIcon>
-        </AButton>
-      </ABadge>
-    </div>
+    );
+  })}
+</>;
+`}
+/>
 
+#### Badge Statuses
+
+<Playground
+  code={`<>
+  {["error", "info", "success"].map((level) => {
+    return (
+      <ABadge level={level} content="99+" large className="mr-4">
+        <AButton tertiaryAlt icon className="pa-1">
+          <AIcon size={48}>bell</AIcon>
+        </AButton>
+      </ABadge>
+    );
+  })}
 </>
 `}
 />
 
-## Badge Props
+#### With Different Button Variants
+
+<Playground
+  code={`<>
+  {["primary", "secondary", "tertiary", "tertiaryAlt"].map((btnVariant) => {
+    const variantProp = {
+      [btnVariant]: true,
+    }
+    return (
+      <ABadge content="3" large className='mr-4'>
+        <AButton {...variantProp} icon>
+          <AIcon size={48}>bell</AIcon>
+        </AButton>
+      </ABadge>
+    );
+  })}
+</>`}
+/>
+
+## Component Props
 
 The `ABadge` component inherits passed props.
 

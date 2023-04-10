@@ -1,9 +1,16 @@
 import React, {useEffect, useRef, useState} from "react";
 import Link from "next/link";
 
-import {AButton, ADivider, AIcon, ATree, useATheme} from "../framework";
+import {
+  AButton,
+  ADrawer,
+  ADrawerContent,
+  AIcon,
+  ATree,
+  useATheme
+} from "../framework";
 
-import ThemeSwitcher from "./ThemeSwitcher";
+import "./Sidebar.scss";
 
 const CustomLink = ({children, href, ...rest}) => {
   return (
@@ -115,43 +122,36 @@ const Sidebar = ({menus, currentDoc}) => {
   }, [menus, currentDoc]);
 
   return (
-    <div
-      className={`root-sidebar overflow-y-scroll py-3${
-        currentTheme === "dusk"
-          ? " mds-dark-theme--background"
-          : " mds-light-theme--background"
-      }`}
+    <ADrawer
+      position="relative"
+      isOpen={true}
+      id="sidebar"
+      className={`root-sidebar py-4 sidebar`}
       style={{
         position: "fixed",
         height: "100%",
-        width: 330
+        width: 330,
+        overflowY: "auto",
+        background: "inherit",
+        boxShadow: "none"
       }}
     >
-      <div
-        className={`${currentTheme === "dusk" ? "white--text" : "black--text"}`}
-        style={{display: "flex", padding: "0 15px"}}
+      <ADrawerContent
+        style={{
+          transition: "all 0.5s ease"
+        }}
+        className="pa-0"
       >
-        <h1 style={{flex: "1"}}>
-          <AIcon size={60} className="pr-3 vertical-align-center">
-            cisco
-          </AIcon>
-          Magna-React
-        </h1>
-        <GitHubIcon />
-      </div>
-      <div className={`${styleColor} d-flex align-center px-3 py-2}`}>
-        <ThemeSwitcher />
-      </div>
-      <ADivider />
-      <ATree
-        className={`${styleColor}`}
-        hoverable
-        activatable
-        expandOnClick
-        items={menus ? items : []}
-        onChange={(x) => setItems(x)}
-      />
-    </div>
+        <ATree
+          className={`${styleColor} px-4`}
+          hoverable
+          activatable
+          expandOnClick
+          items={menus ? items : []}
+          onChange={(x) => setItems(x)}
+        />
+      </ADrawerContent>
+    </ADrawer>
   );
 };
 

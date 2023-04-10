@@ -2,7 +2,7 @@ import matter from "gray-matter";
 import Head from "next/head";
 import {serialize} from "next-mdx-remote/serialize";
 import {MDXRemote} from "next-mdx-remote";
-import React from "react";
+import React, {useEffect, useRef, useState} from "react";
 
 import {
   AApp,
@@ -10,7 +10,8 @@ import {
   ACol,
   AContainer,
   ARow,
-  AMount
+  AMount,
+  useInView
 } from "../../framework";
 import HiddenFontSwatches from "../../docs/HiddenFontSwatches";
 import Sidebar from "../../docs/Sidebar";
@@ -19,6 +20,14 @@ import PropsContext from "../../docs/PropsContext";
 import MdxHeadings from "../../docs/MdxHeadings";
 import * as AtomicReactComponents from "../../framework";
 import * as DocsComponents from "../../docs";
+import {useRouter} from "next/router";
+import ComponentTitle from "../../docs/ComponentTitle";
+import ComponentTabs from "../../docs/ComponentTabs";
+import CodeBlock from "../../docs/CodeBlock";
+import Header from "../../docs/Header";
+import PropsHelper from "../../docs/PropsHelper";
+import TableOfContents from "../../docs/TableOfContents";
+import DocsPageContext from "../../docs/DocsPageContext";
 
 const components = {
   ...AtomicReactComponents,
@@ -26,7 +35,21 @@ const components = {
   ...MdxHeadings
 };
 
-export default function TestPage({currentDoc, menus, propsInfo}) {
+export default function DocsPage({currentDoc, menus, propsInfo}) {
+  const {asPath} = useRouter();
+  const [activeTab, setActiveTab] = useState("usage");
+  const [hasScrolledPastTabs, setHasScrolledPastTabs] = useState(false);
+  const tableOfContentsRefs = useRef(new Map());
+  const inViewRef = useInView(({inView}) => setHasScrolledPastTabs(!inView));
+
+  // Force initial active tab to be set on client-side
+  // This prevents server and client mismatches
+  useEffect(() => {
+    const requestedTab = asPath?.split("#")[1];
+    const firstTab = Object.keys(currentDoc?.pageTabsMdx)[0];
+    setActiveTab(requestedTab || firstTab);
+  }, [setActiveTab, asPath, currentDoc]);
+
   if (!currentDoc) return null;
 
   return (
@@ -39,20 +62,114 @@ export default function TestPage({currentDoc, menus, propsInfo}) {
         <AAutoTheme>
           <HiddenFontSwatches />
           <AContainer fluid className="pa-0">
-            <ARow noGutters>
+            <Header />
+            <ARow noGutters style={{width: "100%"}}>
               <ACol style={{maxWidth: 330}}>
                 <Sidebar currentDoc={currentDoc} menus={menus} />
               </ACol>
-              <AMount withNewWrappingContext={true}>
-                <ACol
-                  className="pa-8"
-                  style={{maxWidth: "calc(100vw - 347px)"}}
-                >
-                  <PropsContext.Provider value={propsInfo}>
-                    <MDXRemote {...currentDoc.source} components={components} />
-                  </PropsContext.Provider>
-                </ACol>
-              </AMount>
+              <ACol
+                className="py-4 px-6"
+                style={{
+                  maxWidth: "calc(100vw - 347px - 275px)",
+                  width: "100%"
+                }}
+              >
+                <AMount withNewWrappingContext={true}>
+                  <div style={{width: "100%"}}>
+                    <PropsContext.Provider value={propsInfo}>
+                      <DocsPageContext.Provider
+                        value={{
+                          registerCodePlayground: (name) => (ref) => {
+                            if (!name) {
+                              return;
+                            }
+                            tableOfContentsRefs.set(name, ref);
+                          },
+                          componentName: currentDoc.title
+                        }}
+                      >
+                        <ComponentTitle
+                          sourceCodeLink={currentDoc.sourceCodeLink}
+                          title={currentDoc.title}
+                        />
+                        <ComponentTabs
+                          ref={inViewRef}
+                          tabs={currentDoc.tabs}
+                          onTabClick={setActiveTab}
+                          activeTab={activeTab}
+                        />
+
+                        <MDXRemote
+                          {...(currentDoc?.pageTabsMdx[activeTab] ||
+                            currentDoc.source)}
+                          components={{
+                            ...components,
+                            pre: (props) => {
+                              const language =
+                                props.children.props?.className?.split("-")[1];
+                              const code = props.children.props.children;
+                              return (
+                                <CodeBlock code={code} language={language} />
+                              );
+                            },
+                            p: (props) => (
+                              // eslint-disable-next-line
+                              <p
+                                className="mt-4 mb-4"
+                                style={{fontSize: "1rem"}}
+                                {...props}
+                              />
+                            ),
+                            h2: (props) => (
+                              // eslint-disable-next-line
+                              <h2
+                                className="mt-10 mb-6"
+                                style={{fontSize: "2rem"}}
+                                {...props}
+                              />
+                            ),
+                            h3: (props) => (
+                              // eslint-disable-next-line
+                              <h3
+                                className="mt-10 mb-6"
+                                style={{fontSize: "1.5rem"}}
+                                {...props}
+                              />
+                            ),
+                            h4: (props) => (
+                              // eslint-disable-next-line
+                              <h4
+                                className="mt-6 mb-4"
+                                style={{fontSize: "1.2rem"}}
+                                {...props}
+                              />
+                            ),
+                            h5: (props) => (
+                              // eslint-disable-next-line
+                              <h5
+                                className="mt-6 mb-5"
+                                style={{fontSize: "1rem"}}
+                                {...props}
+                              />
+                            )
+                          }}
+                        />
+                        <PropsHelper
+                          componentName={currentDoc.title}
+                          shouldShowBtn={hasScrolledPastTabs}
+                        />
+                      </DocsPageContext.Provider>
+                    </PropsContext.Provider>
+                  </div>
+                </AMount>
+              </ACol>
+              <ACol style={{maxWidth: 275}}>
+                <TableOfContents
+                  items={currentDoc?.pageTabsData[
+                    activeTab
+                  ]?.tableOfContents.map((toc) => toc.heading || "")}
+                />
+              </ACol>
             </ARow>
           </AContainer>
         </AAutoTheme>
@@ -98,9 +215,33 @@ export async function getStaticProps({params}) {
       target = {content, data};
     }
 
+    const headings = [...content.matchAll(/[^#]+## ([^\r\n]+)/g)].map(
+      (y) => y[1]
+    );
+
+    const h2Pattern = /##\s+(.+)[\r\n]+([\s\S]*?)(?=\n\n## |$)/g;
+    const h4Pattern = /####\s+(.+)[\r\n]+([\s\S]*?)(?=\n\n#### |$)/g;
+
+    const h2Matches = [...content.matchAll(h2Pattern)];
+
+    const tabsWithContent = h2Matches.map((match) => {
+      const heading = match[1];
+      const tabContent = match[2].trim();
+
+      const h4Matches = [...tabContent.matchAll(h4Pattern)];
+
+      const tableOfContents = h4Matches.map((match) => {
+        const entry = match[1];
+        return {heading: entry};
+      });
+
+      return {heading, content: tabContent, tableOfContents};
+    });
+
     return {
       ...data,
-      headings: [...content.matchAll(/[^#]+## ([^\r\n]+)/g)].map((y) => y[1])
+      headings,
+      tabsWithContent
     };
   });
 
@@ -112,17 +253,53 @@ export async function getStaticProps({params}) {
     });
 
   const source = await serialize(target.content, {
-    scope: target.data,
-    mdxOptions: {
-      remarkPlugins: [require("remark-slug")]
+    scope: target.data
+    // Uncomment to add IDs back to headings
+    // mdxOptions: {
+    //   remarkPlugins: [require("remark-slug")]
+    // }
+  });
+
+  const targetMenu = menus.find((menu) => menu.route === `/${route}`);
+
+  const getTabSectionSource = targetMenu.tabsWithContent.map(
+    async (section) => {
+      const sectionSource = await serialize(section.content, {
+        // mdxOptions: {
+        //   remarkPlugins: [require("remark-slug")]
+        // }
+      });
+      return sectionSource;
     }
+  );
+
+  const tabSectionsSource = await Promise.all(getTabSectionSource);
+
+  const pageTabsMdx = {};
+  const pageTabsData = {};
+
+  const toKebabCase = (str) => str.replaceAll(" ", "-").toLowerCase();
+
+  targetMenu.headings.forEach((heading, i) => {
+    pageTabsMdx[toKebabCase(heading)] = tabSectionsSource[i];
+  });
+
+  targetMenu.tabsWithContent.forEach((tab) => {
+    pageTabsData[toKebabCase(tab.heading)] = tab;
   });
 
   return {
     props: {
       currentDoc: {
         ...target.data,
-        source
+        source,
+        tabs: targetMenu.headings,
+        pageTabsData,
+        pageTabsMdx,
+        tabSections: menus
+          .filter((menu) => menu.route === `/${route}`)
+          .map((menu) => menu.tabsWithContent)
+          .flat()
       },
       menus,
       propsInfo

@@ -1,11 +1,23 @@
 import debounce from "lodash.debounce";
-import React, {useCallback, useEffect, useMemo, useRef, useState} from "react";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
+} from "react";
 import {LiveProvider, LiveEditor, LiveError, LivePreview} from "react-live";
+import Highlight, {defaultProps} from "prism-react-renderer";
+
+import theme from "prism-react-renderer/themes/oceanicNext";
 
 import * as AtomicReactComponentsAndHooks from "../framework";
 import {AList} from "../framework";
 import LoremIpsum from "../framework/utils/lorem-ipsum";
 import mockImport from "./mock_modules";
+import CodeBlock from "./CodeBlock";
+import DocsPageContext from "./DocsPageContext";
 
 const scope = {
   ...AtomicReactComponentsAndHooks,
@@ -19,7 +31,64 @@ const scope = {
   mockImport
 };
 
-const Playground = ({code, fullWidthPreview, noInline}) => {
+const Playground = ({
+  withTwoPanes = false,
+  code,
+  fullWidthPreview,
+  noInline,
+  sectionName
+}) => {
+  // todo: register first div with context
+  // const {registerCodePlayground} = useContext(DocsPageContext);
+  if (withTwoPanes) {
+    return (
+      <LiveProvider code={code.trim()} scope={scope} noInline={noInline}>
+        <div className="d-flex mb-10">
+          <div style={{flexBasis: "50%", flexShrink: "0", marginRight: "5px"}}>
+            <LiveEditor
+              theme={theme}
+              style={{
+                backgroundColor: "rgb(40, 44, 52)",
+                borderRadius: "6px",
+                padding: "10px",
+                fontFamily: "SFMono-Regular,Menlo,Monaco,Consolas,monospace"
+              }}
+            />
+          </div>
+          <AtomicReactComponentsAndHooks.ACardContainer
+            className="d-flex align-center justify-center"
+            style={{flexBasis: "50%", borderRadius: "6px"}}
+          >
+            <LiveError />
+            <LivePreview />
+          </AtomicReactComponentsAndHooks.ACardContainer>
+        </div>
+      </LiveProvider>
+    );
+  }
+
+  return (
+    <LiveProvider code={code.trim()} scope={scope} noInline={noInline}>
+      <AtomicReactComponentsAndHooks.ACardContainer>
+        <LiveError />
+        <LivePreview />
+      </AtomicReactComponentsAndHooks.ACardContainer>
+      <div
+        className="overflow-y-scroll black mt-2 mb-10"
+        style={{borderRadius: "6px"}}
+      >
+        <LiveEditor
+          theme={theme}
+          style={{
+            backgroundColor: "rgb(40, 44, 52)",
+            padding: "10px",
+            fontFamily: "SFMono-Regular,Menlo,Monaco,Consolas,monospace"
+          }}
+        />
+      </div>
+    </LiveProvider>
+  );
+
   return (
     <LiveProvider code={code} scope={scope} noInline={noInline}>
       <AList

@@ -2,19 +2,17 @@
 name: Application
 route: /components/app
 components: AApp
+title: AApp
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/AApp
 ---
 
-# The Application Component
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {AApp} from "@cisco-sbg-ui/magna-react";
-```
-
 ## Usage
+
+### Import
+
+<ComponentImport components="AApp" />
+
+### Usage
 
 The `AApp` component provides theming, typography, scrollbar stylings as well as other helpers.
 
@@ -45,7 +43,7 @@ The `AApp` component provides theming, typography, scrollbar stylings as well as
 `}
 />
 
-## Props
+## Component Props
 
 <Props of="AApp" />
 
@@ -183,10 +181,11 @@ The `AApp` component provides theming, typography, scrollbar stylings as well as
 
 ## Lists
 
+### Ordered Lists
+
 <Playground
   code={`
   <div className="pr-3">
-    <h2>List Ordered</h2>
     <ol>
       <li>Lorem ipsum dolor sit amet</li>
       <li>Consectetur adipiscing elit</li>
@@ -208,10 +207,12 @@ The `AApp` component provides theming, typography, scrollbar stylings as well as
   </div>
 `}
 />
+
+### Unordered Lists
+
 <Playground
   code={`
   <div className="pr-3">
-    <h2>List Unordered</h2>
     <ul>
       <li>Lorem ipsum dolor sit amet</li>
       <li>Consectetur adipiscing elit</li>
@@ -233,10 +234,12 @@ The `AApp` component provides theming, typography, scrollbar stylings as well as
   </div>
 `}
 />
+
+### Unstyled Lists
+
 <Playground
   code={`
   <div className="pr-3">
-    <h2>List Unstyled</h2>
     <ul className="unstyled">
       <li>Lorem ipsum dolor sit amet</li>
       <li>Consectetur adipiscing elit</li>
@@ -259,7 +262,7 @@ The `AApp` component provides theming, typography, scrollbar stylings as well as
 `}
 />
 
-## Color Palette - magnetic
+## Magnetic Color Palette
 
 <div className="d-flex flex-wrap mb-8">
   <ColorSwatch
@@ -492,7 +495,7 @@ The `AApp` component provides theming, typography, scrollbar stylings as well as
 
 </div>
 
-## Color Palette - atomic
+## Atomic Color Palette (Deprecated)
 
 Apply color overrides using helper classes:
 

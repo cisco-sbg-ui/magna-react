@@ -2,87 +2,88 @@
 name: Breadcrumb**
 route: /components/breadcrumb
 components: ABreadcrumb
+title: ABreadcrumb
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/ABreadCrumb
 ---
-
-# Breadcrumb
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {ABreadcrumb} from "@cisco-sbg-ui/magna-react";
-```
 
 ## Usage
 
+### Import
+
+<ComponentImport components="ABreadcrumb" />
+
+### Usage
+
 <Playground
+  withTwoPanes
   code={`<ABreadcrumb
-  items={[{
-    content: "Root",
-    contentProps: {
-      href: "/"
-    }
-  }, {
-    content: "components",
-    contentProps: {
-      className: "disabled"
-    }
-  }, {
-    content: "breadcrumb",
-    contentProps: {
-      href: "/components/breadcrumb"
-    }
-  }]} />
+  items={[
+    {
+      content: "Root",
+      contentProps: {
+        href: "/",
+      },
+    },
+    {
+      content: "components",
+      contentProps: {
+        className: "disabled",
+      },
+    },
+    {
+      content: "breadcrumb",
+      contentProps: {
+        href: "/components/breadcrumb",
+      },
+    },
+  ]}
+/>;
 `}
 />
 
-## Usage (single level)
-
-<Playground
-  code={`
-  <ABreadcrumb
-  items={[{
-    content: "Single level",
-    contentProps: {
-      href: "/",
-      onClick: () => {
-        window.alert('Single level breadcrumb click')
-      }
-    }
-  }]} />
-`}
-/>
-
-
-## Breadcrumb Props
-
-The `ABreadcrumb` component inherits passed props.
-
-<Props of="ABreadcrumb" />
-
-## Custom Breadcrumb
+#### Single level
 
 <Playground
   code={`<ABreadcrumb
-  item={(item) => {
+  items={[
+    {
+      content: "Single level",
+      contentProps: {
+        href: "/",
+        onClick: () => {
+          window.alert("Single level breadcrumb click");
+        },
+      },
+    },
+  ]}
+/>`}
+/>
+
+#### Custom Breadcrumb
+
+<Playground
+  code={`function Example() {
+  // Define what each breadcrumb item should render
+  function CustomBreadcrumbItem(item) {
     const buttonRef = useRef(null);
     const [open, setOpen] = useState(false);
-    const {options, ...props} = item;
+    const { options, ...props } = item;
     if (!options) {
-      return (
-        <a {...props.contentProps}>
-          {props.content}
-        </a>
-      );
+      return <a {...props.contentProps}>{props.content}</a>;
     }
     return (
       <>
-        <a {...item.contentProps}>
-          {item.content}
-        </a>
-        <AButton ref={buttonRef} tertiaryAlt icon className="pa-0" onClick={() => setOpen(!open)}>
-          <AIcon left right size={10}>{open ? "chevron-up" : "chevron-down"}</AIcon>
+        <a {...item.contentProps}>{item.content}</a>
+        <AButton
+          ref={buttonRef}
+          tertiaryAlt
+          icon
+          className="pa-0"
+          onClick={() => setOpen(!open)}
+        >
+          <AIcon left right size={10}>
+            {open ? "chevron-up" : "chevron-down"}
+          </AIcon>
         </AButton>
         <AMenu anchorRef={buttonRef} open={open}>
           {options.map((x, index) => (
@@ -93,57 +94,83 @@ The `ABreadcrumb` component inherits passed props.
         </AMenu>
       </>
     );
-  }}
-  items={[{
-    content: "Root",
-    contentProps: {
-      href: "/"
-    }
-  }, {
-    content: "components",
-    contentProps: {
-      className: "disabled"
-    }
-  }, {
-    content: "breadcrumb",
-    contentProps: {
-      href: "/components/breadcrumb"
-    },
-    options: [{
-      content: "Install",
-      href: "#install"
-    }, {
-      content: "Usage",
-      href: "#usage"
-    }, {
-      content: "Breadcrumb Props",
-      href: "#breadcrumb-props"
-    }, {
-      content: "Custom Breadcrumb",
-      href: "#custom-breadcrumb"
-    }]
-  }]} />
-`}
+  }
+  return (
+    <ABreadcrumb
+      // Be sure to pass the custom breadcrumb item
+      item={CustomBreadcrumbItem}
+      items={[
+        {
+          content: "Root",
+          contentProps: {
+            href: "/",
+          },
+        },
+        {
+          content: "components",
+          contentProps: {
+            className: "disabled",
+          },
+        },
+        {
+          content: "breadcrumb",
+          contentProps: {
+            href: "/components/breadcrumb",
+          },
+          options: [
+            {
+              content: "Install",
+              href: "#install",
+            },
+            {
+              content: "Usage",
+              href: "#usage",
+            },
+            {
+              content: "Breadcrumb Props",
+              href: "#breadcrumb-props",
+            },
+            {
+              content: "Custom Breadcrumb",
+              href: "#custom-breadcrumb",
+            },
+          ],
+        },
+      ]}
+    />
+  );
+  }`}
 />
+
+## Component Props
+
+The `ABreadcrumb` component inherits passed props.
+
+<Props of="ABreadcrumb" />
 
 ## Router Integrations
 
 Set the `component` property to your router's link type, for example:
 
-```
-// With react-router:
+```jsx
+import {Link} from "next/link";
+
 <ABreadcrumb
-  items={[{
-    component: Link,
-    content: "Root",
-    contentProps: {
-      to: "/"
+  items={[
+    {
+      component: Link,
+      content: "Root",
+      contentProps: {
+        to: "/"
+      }
+    },
+    {
+      component: Link,
+      content: "breadcrumb",
+      contentProps: {
+        to: "/components/breadcrumb"
+      }
     }
-  }, {
-    component: Link,
-    content: "breadcrumb",
-    contentProps: {
-      to: "/components/breadcrumb"
-    }
-  }]} />
+  ]}
+/>;
 ```

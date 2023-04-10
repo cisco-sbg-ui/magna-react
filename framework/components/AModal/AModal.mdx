@@ -2,24 +2,274 @@
 name: Modals
 route: /components/modal
 components: AModal
+title: AModal
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/AModal
 ---
-
-# Modals
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {AModal} from "@cisco-sbg-ui/magna-react";
-```
 
 ## Usage
 
+### Import
+
+<ComponentImport components="AModal" />
+
+### Usage
+
+<Playground
+  withTwoPanes
+  code={`function Example() {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <AButton secondary onClick={() => setIsOpen(true)}>
+        Open
+      </AButton>
+      
+      <AModal
+        aria-label='Modal Example'
+        isOpen={isOpen}
+        small>
+        <APanel>
+          <APanelHeader>
+            <APanelTitle>Hello World!</APanelTitle>
+            <AButton
+              tertiaryAlt
+              icon
+              onClick={() => setIsOpen(false)}>
+              <AIcon>x</AIcon>
+            </AButton>
+          </APanelHeader>
+          <APanelBody>A modal with a panel.</APanelBody>
+        </APanel>
+      </AModal>
+    </>
+  );
+}
+`}
+/>
+
+#### Closing on Escape Keypresses
+
+<Playground
+  code={`function Example() {
+  const [isOpen, setIsOpen] = useState(false);
+  useEscapeKeydown({
+    isEnabled: isOpen,
+    onKeydown: () => setIsOpen(false)
+  });
+  return (
+    <>
+      <AButton secondary onClick={() => setIsOpen(true)}>
+        Open
+      </AButton>
+      <AModal
+        aria-label='Modal Example'
+        isOpen={isOpen}
+        small>
+        <APanel>
+          <APanelHeader>
+            <APanelTitle>Hello World!</APanelTitle>
+            <AButton tertiaryAlt icon onClick={() => setIsOpen(false)}>
+              <AIcon>x</AIcon>
+            </AButton>
+          </APanelHeader>
+          <APanelBody>A modal with a panel.</APanelBody>
+        </APanel>
+      </AModal>
+    </>
+  );
+}
+`}
+/>
+
+#### Closing on Outside Clicks
+
+<Playground
+  code={`function Example() {
+  const ref = useRef();
+  const [isOpen, setIsOpen] = useState(false);
+  useOutsideClick({
+    rootRef: ref,
+    isEnabled: isOpen,
+    onClick: () => setIsOpen(false)
+  });
+  return (
+    <>
+      <AButton secondary onClick={() => setIsOpen(true)}>
+        Open
+      </AButton>
+      <AModal
+        aria-label='Modal Example'
+        isOpen={isOpen}
+        small>
+        <APanel ref={ref}>
+          <APanelHeader>
+            <APanelTitle>Hello World!</APanelTitle>
+            <AButton tertiaryAlt icon onClick={() => setIsOpen(false)}>
+              <AIcon>x</AIcon>
+            </AButton>
+          </APanelHeader>
+          <APanelBody>A modal with a panel.</APanelBody>
+        </APanel>
+      </AModal>
+    </>
+  );
+}
+`}
+/>
+
+#### Closing on Outside Clicks with the `onClickOutside` prop
+
+Alternatively, if you are rendering the modal **with** a page overlay, then you can pass `onClickOutside` to `<AModal />` so that you do not have to register your own hook.
+
+<Playground
+  code={`function Example() {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <AButton secondary onClick={() => setIsOpen(true)}>
+        Open
+      </AButton>
+      <AModal
+        aria-label='Modal Example'
+        onClickOutside={() => setIsOpen(false)}
+        isOpen={isOpen}
+        small>
+        <APanel>
+          <APanelHeader>
+            <APanelTitle>Hello World!</APanelTitle>
+            <AButton tertiaryAlt icon onClick={() => setIsOpen(false)}>
+              <AIcon>x</AIcon>
+            </AButton>
+          </APanelHeader>
+          <APanelBody>A modal with a panel.</APanelBody>
+        </APanel>
+      </AModal>
+    </>
+  );
+}
+`}
+/>
+
+#### Closing on Both Esacape Keypresses and Outside Clicks
+
+If you want both esacpe keypresses and outside clicks to close your modal, you can leverage the `usePopupQuickExit` hook.
+
+<Playground
+  code={`function Example() {
+  const ref = useRef();
+  const [isOpen, setIsOpen] = useState(false);
+  usePopupQuickExit({
+    rootRef: ref,
+    isEnabled: isOpen,
+    onExit: () => setIsOpen(false)
+  });
+  return (
+    <>
+      <AButton secondary onClick={() => setIsOpen(true)}>
+        Open
+      </AButton>
+      <AModal
+        aria-label='Modal Example'
+        isOpen={isOpen}
+        small>
+        <APanel ref={ref}>
+          <APanelHeader>
+            <APanelTitle>Hello World!</APanelTitle>
+            <AButton tertiaryAlt icon onClick={() => setIsOpen(false)}>
+              <AIcon>x</AIcon>
+            </AButton>
+          </APanelHeader>
+          <APanelBody>A modal with a panel.</APanelBody>
+        </APanel>
+      </AModal>
+    </>
+  );
+}
+`}
+/>
+
+#### Without a Page Overlay
+
+<Playground
+  code={`function Example() {
+  const ref = useRef();
+  const [isOpen, setIsOpen] = useState(false);
+  usePopupQuickExit({
+    rootRef: ref,
+    isEnabled: isOpen,
+    onExit: () => setIsOpen(false)
+  });
+  return (
+    <>
+      <AButton secondary onClick={() => setIsOpen(true)}>
+        Open
+      </AButton>
+      <AModal
+        aria-label='Modal Example'
+        withOverlay={false}
+        isOpen={isOpen}
+        small>
+        <APanel ref={ref}>
+          <APanelHeader>
+            <APanelTitle>Hello World!</APanelTitle>
+            <AButton tertiaryAlt icon onClick={() => setIsOpen(false)}>
+              <AIcon>x</AIcon>
+            </AButton>
+          </APanelHeader>
+          <APanelBody>A modal without a backdrop.</APanelBody>
+        </APanel>
+      </AModal>
+    </>
+  );
+}
+`}
+/>
+
+#### Without Scroll Locking
+
+<Playground
+  code={`function Example() {
+  const ref = useRef();
+  const [isOpen, setIsOpen] = useState(false);
+  usePopupQuickExit({
+    rootRef: ref,
+    isEnabled: isOpen,
+    onExit: () => setIsOpen(false)
+  });
+  return (
+    <>
+      <AButton secondary onClick={() => setIsOpen(true)}>
+        Open
+      </AButton>
+      <AModal
+        aria-label='Modal Example'
+        lockScroll={false}
+        isOpen={isOpen}
+        small>
+        <APanel ref={ref}>
+          <APanelHeader>
+            <APanelTitle>Hello World!</APanelTitle>
+            <AButton tertiaryAlt icon onClick={() => setIsOpen(false)}>
+              <AIcon>x</AIcon>
+            </AButton>
+          </APanelHeader>
+          <APanelBody>A modal which doesn't prevent body scrolling.</APanelBody>
+        </APanel>
+      </AModal>
+    </>
+  );
+}
+`}
+/>
+#### Size variants
+
+_This assumes a single direct child, such as `APanel`, as the modal content._
+
 <Playground
   fullWidthPreview
-  code={`() => {
+  code={`function Example() {
     const [open, setOpen] = useState(false);
+    const [size, setSize] = useState("small");
     const ref = useRef();
     usePopupQuickExit({
       popupRef: ref,
@@ -29,145 +279,30 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
     return (
       <div>
         <AButton
-            onClick={() => setOpen(true)}>
-            Open Modal
+            secondary
+            onClick={() => {setOpen(true); setSize("small")}}>
+            Open Small Modal
+        </AButton>{" "}
+         <AButton
+            secondary
+            onClick={() => {setOpen(true); setSize("medium")}}>
+            Open Medium Modal
+        </AButton>{" "}
+         <AButton
+            secondary
+            onClick={() => {setOpen(true); setSize("large")}}>
+            Open Large Modal
+        </AButton>{" "}
+         <AButton
+            secondary
+            onClick={() => {setOpen(true); setSize("xlarge")}}>
+            Open Extra Large Modal
         </AButton>
         <AModal
             aria-labelledby='modal-title'
-            isOpen={open}>
-            <APanel ref={ref} style={{ minWidth: '400px' }} type="dialog">
-              <APanelHeader>
-                <APanelTitle id='modal-title'>Modal Demo</APanelTitle>
-                <AButton aria-label="Close modal 1" onClick={() => setOpen(false)} tertiaryAlt icon>
-                  <AIcon>close</AIcon>
-                </AButton>
-              </APanelHeader>
-              <APanelBody>
-                Modal content goes here.
-              </APanelBody>
-              <APanelFooter>
-                <AButton>Action</AButton>
-              </APanelFooter>
-            </APanel>
-        </AModal>
-      </div>
-    )
-  }
-`}
-/>
-
-### Without a Page Overlay
-
-<Playground
-  fullWidthPreview
-  code={`() => {
-    const [open, setOpen] = useState(false);
-    const ref = useRef();
-    usePopupQuickExit({
-      popupRef: ref,
-      isEnabled: open,
-      onExit: () => setOpen(false)
-    });
-    return (
-      <div>
-        <AButton
-            onClick={() => setOpen(true)}>
-            Open Modal
-        </AButton>
-        <AModal
-            aria-labelledby='modal-title'
-            withOverlay={false}
-            isOpen={open}>
-            <APanel ref={ref} style={{ minWidth: '400px' }} type="dialog">
-              <APanelHeader>
-                <APanelTitle id='modal-title'>Modal Demo</APanelTitle>
-                <AButton onClick={() => setOpen(false)} tertiaryAlt icon>
-                  <AIcon>close</AIcon>
-                </AButton>
-              </APanelHeader>
-              <APanelBody>
-                Modal content goes here.
-              </APanelBody>
-              <APanelFooter>
-                <AButton>Action</AButton>
-              </APanelFooter>
-            </APanel>
-        </AModal>
-      </div>
-    )
-  }
-`}
-/>
-
-### Custom Scroll Locking
-
-<AAlert className="mb-2" level="warning" dismissable={false}>
-  Because content outside of a modal is inaccessible, it would be considered an
-  anti-pattern to allow the document body to scroll while a modal is opened.
-  Passing `withLockFocus={false}` should only be used in cases where you need to
-  provide your own body scrolling functionality, like in the example below.
-</AAlert>
-
-<Playground
-  fullWidthPreview
-  code={`() => {
-    const [open, setOpen] = useState(false);
-    const ref = useRef();
-    const lastScrollPos = useRef();
-    usePopupQuickExit({
-      popupRef: ref,
-      isEnabled: open,
-      onExit: () => setOpen(false)
-    });
-
-    /**
-      * The code below has not been verified nor
-      * tested in a production environment. It is
-      * used for the purposes of this demonstration.
-      * Use with caution.
-      */
-    useEffect(() => {
-      const scrollPosition = window.pageYOffset;
-      const sidebar = document.querySelector(".root-sidebar");
-      const sidebarPosition = sidebar.scrollTop;
-      const container = document.querySelector('.a-app');
-      const body = document.body;
-
-      const disableScrolling = () => {
-        lastScrollPos.current = scrollPosition;
-        container.style.top = -scrollPosition + "px";
-        container.style.position = "relative";
-        sidebar.style.top = sidebarPosition;
-        sidebar.style.position = "relative";
-        body.style.position = "fixed";
-        body.style.top = "0";
-        body.style.left = "0";
-        body.style.height = "100%";
-        body.style.width = "100%";
-      }
-
-      const enableScrolling = () => {
-        container.style.top = "0";
-        container.style.position = "unset";
-        sidebar.style.top = "0";
-        sidebar.style.position = "unset";
-        body.style.position = "unset";
-        window.scrollTo({
-          top: lastScrollPos.current,
-          behavior: 'instant'
-        });
-      }
-
-      open ? disableScrolling() : enableScrolling();
-    }, [open]);
-    return (
-      <div>
-        <AButton onClick={() => setOpen(true)}>Open Modal</AButton>
-        <AModal
-            aria-labelledby='modal-title'
-            withScrollLock={false}
-            isOpen={open}>
-          <APanel ref={ref} style={{ minWidth: '400px' }} type="dialog">
+            isOpen={open}
+            {...{[size]: true}}>
+            <APanel ref={ref} type="dialog">
             <APanelHeader>
               <APanelTitle id='modal-title'>Modal Demo</APanelTitle>
               <AButton onClick={() => setOpen(false)} tertiaryAlt icon>
@@ -275,7 +410,53 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-### Form Example
+## Component Props
+
+<Props of="AModal" />
+
+## Accessibility Notes
+
+By default, `AModal` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [dialog](https://w3c.github.io/aria/#dialog).
+
+`AModal` should have either an `aria-label` or `aria-labelledby` prop to serve as the title of the modal's content when opened. Examples:
+
+```
+<AModal aria-label='Sign up sheet'>
+  <h3>Sign-up Sheet</h3>
+
+  <form>
+    <label htmlFor='name'>Name:</label>
+    <input id='name' type='text' />
+
+    <button type='submit'>Submit</button>
+  </form>
+</AModal>
+```
+
+or
+
+```
+<AModal aria-labelledby='modal-title'>
+  <h3 id='modal-title'>Sign-up Sheet</h3>
+
+  <form>
+    <label htmlFor='name'>Name:</label>
+    <input id='name' type='text' />
+
+    <button type='submit'>Submit</button>
+  </form>
+</AModal>
+```
+
+Additinoally, `AModal` components are assigned the `aria-modal` attribute to indicate that content behind the modal should be hidden to screen readers.
+
+### Focus Management
+
+When `AModal` is open, only its child elements are focusable, meaning content outside the modal is not keyboard accessible. More often than not, this is all you will need when rendering an accessible modal. However, if you need more refined focus management, you can disable this default implementation by passing `AModal` a `trapFocus` prop value of `false` in order to implement your own solution.
+
+## Recipes
+
+### Modal Form
 
 <Playground
   code={`() => {
@@ -288,7 +469,7 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
   });
   return (
     <>
-      <AButton onClick={() => setOpen(true)}>Start</AButton>
+      <AButton secondary onClick={() => setOpen(true)}>Start</AButton>
       <AModal
           aria-labelledby='modal-title'
           isOpen={open}>
@@ -418,156 +599,3 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
 }
 `}
 />
-
-### Size variants
-
-<AAlert className="mb-2" level="info" dismissable={false}>
-  This assumes a single direct child, such as `APanel`, as the modal content.
-</AAlert>
-
-<Playground
-  fullWidthPreview
-  code={`() => {
-    const [open, setOpen] = useState(false);
-    const [size, setSize] = useState("small");
-    const ref = useRef();
-    usePopupQuickExit({
-      popupRef: ref,
-      isEnabled: open,
-      onExit: () => setOpen(false)
-    });
-    return (
-      <div>
-        <AButton
-            onClick={() => {setOpen(true); setSize("small")}}>
-            Open Small Modal
-        </AButton>{" "}
-         <AButton
-            onClick={() => {setOpen(true); setSize("medium")}}>
-            Open Medium Modal
-        </AButton>{" "}
-         <AButton
-            onClick={() => {setOpen(true); setSize("large")}}>
-            Open Large Modal
-        </AButton>{" "}
-         <AButton
-            onClick={() => {setOpen(true); setSize("xlarge")}}>
-            Open Extra Large Modal
-        </AButton>
-        <AModal
-            aria-labelledby='modal-title'
-            isOpen={open}
-            {...{[size]: true}}>
-            <APanel ref={ref} type="dialog">
-            <APanelHeader>
-              <APanelTitle id='modal-title'>Modal Demo</APanelTitle>
-              <AButton onClick={() => setOpen(false)} tertiaryAlt icon>
-                <AIcon>close</AIcon>
-              </AButton>
-            </APanelHeader>
-            <APanelBody>
-              Modal content goes here.
-            </APanelBody>
-            <APanelFooter>
-              <AButton>Action</AButton>
-            </APanelFooter>
-          </APanel>
-        </AModal>
-      </div>
-    )
-  }
-`}
-/>
-
-### With onClickOutside
-
-<AAlert className="mb-2" level="info" dismissable={false}>
-  `withOverlay` must be true for the `onClickOutside` prop to take effect. If
-  you would like to integrate an outside click handler with a non-overlayed
-  `AModal`, consider using the{" "}
-  <a href="/hooks/use-outside-click#description">`useOutsideClick` hook</a>{" "}
-  alongside the `AModal`.
-</AAlert>
-
-<Playground
-  fullWidthPreview
-  code={`() => {
-    const [open, setOpen] = useState(false);
-    const [size, setSize] = useState("small");
-
-    return (
-      <div>
-        <AButton
-            onClick={() => {setOpen(true)}}>
-            Open Modal
-        </AButton>
-        <AModal
-            aria-labelledby='modal-title'
-            isOpen={open}
-            onClickOutside={() => {setOpen(false)}}
-            {...{[size]: true}}>
-            <APanel type="dialog">
-            <APanelHeader>
-              <APanelTitle id='modal-title'>Modal Demo</APanelTitle>
-              <AButton onClick={() => setOpen(false)} tertiaryAlt icon>
-                <AIcon>close</AIcon>
-              </AButton>
-            </APanelHeader>
-            <APanelBody>
-              Modal content goes here.
-            </APanelBody>
-            <APanelFooter>
-              <AButton>Action</AButton>
-            </APanelFooter>
-          </APanel>
-        </AModal>
-      </div>
-    )
-
-}
-`}
-/>
-
-## Modal Props
-
-<Props of="AModal" />
-
-## Accessibility Notes
-
-By default, `AModal` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [dialog](https://w3c.github.io/aria/#dialog).
-
-`AModal` should have either an `aria-label` or `aria-labelledby` prop to serve as the title of the modal's content when opened. Examples:
-
-```
-<AModal aria-label='Sign up sheet'>
-  <h3>Sign-up Sheet</h3>
-
-  <form>
-    <label htmlFor='name'>Name:</label>
-    <input id='name' type='text' />
-
-    <button type='submit'>Submit</button>
-  </form>
-</AModal>
-```
-
-or
-
-```
-<AModal aria-labelledby='modal-title'>
-  <h3 id='modal-title'>Sign-up Sheet</h3>
-
-  <form>
-    <label htmlFor='name'>Name:</label>
-    <input id='name' type='text' />
-
-    <button type='submit'>Submit</button>
-  </form>
-</AModal>
-```
-
-Additinoally, `AModal` components are assigned the `aria-modal` attribute to indicate that content behind the modal should be hidden to screen readers.
-
-### Focus Management
-
-When `AModal` is open, only its child elements are focusable, meaning content outside the modal is not keyboard accessible. More often than not, this is all you will need when rendering an accessible modal. However, if you need more refined focus management, you can disable this default implementation by passing `AModal` a `withFocusTrap` prop value of `false` in order to implement your own solution.

@@ -1,57 +1,30 @@
-import React from "react";
+import React, {forwardRef} from "react";
 
-import {
-  AButton,
-  AButtonGroup,
-  ASwitch,
-  useATheme,
-  useAAutoTheme
-} from "../framework";
+import {AButton, AIcon, ASwitch, useATheme} from "../framework";
 
-const ThemeSwitcher = () => {
+const ThemeSwitcher = (props, ref) => {
   const {currentTheme, setCurrentTheme} = useATheme();
-  const autoTheme = useAAutoTheme();
-  const styleColor = currentTheme === "dusk" ? "white--text" : "black--text";
+  const styleColor =
+    currentTheme === "dusk"
+      ? "mds-yellow--yellow-3--text"
+      : "mds-neutral--neutral-14--text";
   return (
-    <div>
-      <div style={{display: "flex"}}>
-        <p style={{marginRight: "15px"}}>Theme:</p>
-        <AButtonGroup
-          selectedValues={[currentTheme]}
-          onChange={(value) => {
-            if (autoTheme.enabled) {
-              autoTheme.disable();
-            }
-            setCurrentTheme(value);
-          }}
-        >
-          <AButton
-            secondary={currentTheme === "dusk"}
-            data-testid="enable-default-theme"
-            style={{color: `${styleColor}`}}
-            disabled={autoTheme.enabled}
-            value="default"
-          >
-            Light
-          </AButton>
-          <AButton
-            secondary={currentTheme !== "dusk"}
-            data-testid="enable-dusk-theme"
-            style={{color: `${styleColor}`}}
-            disabled={autoTheme.enabled}
-            value="dusk"
-          >
-            Dusk
-          </AButton>
-        </AButtonGroup>
-      </div>
-      <ASwitch checked={autoTheme.enabled} onClick={autoTheme.toggle}>
-        <span className={styleColor}>Match System Theme</span>
-      </ASwitch>
-    </div>
+    <AButton
+      ref={ref}
+      tertiary
+      icon
+      onClick={() =>
+        setCurrentTheme(currentTheme === "dusk" ? "default" : "dusk")
+      }
+      {...props}
+    >
+      <AIcon size={24} className={styleColor}>
+        theme
+      </AIcon>
+    </AButton>
   );
 };
 
 ThemeSwitcher.displayName = "ThemeSwitcher";
 
-export default ThemeSwitcher;
+export default forwardRef(ThemeSwitcher);

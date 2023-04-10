@@ -2,336 +2,135 @@
 name: Buttons**
 route: /components/button
 components: AButton
+title: AButton
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/AButton
 ---
-
-# Buttons
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {AButton} from "@cisco-sbg-ui/magna-react";
-```
 
 ## Usage
 
+### Import
+
+<ComponentImport components="AButton" />
+
+### Usage
+
 <Playground
-  code={`() => {
-  const [count, setCount] = useState(0);
-  return (
-    <div>
-      <AButton data-testid="click-test-button" onClick={() => setCount(count + 1)}>Click Me</AButton>
-      <p data-testid="click-test-text">Button has been clicked {count} times.</p>
-    </div>
-  );
-}
+  withTwoPanes
+  code={`<AButton
+  onClick={() => alert("Hello world!")}>
+  Button
+</AButton>`}
+/>
+
+#### Button Variants
+
+<Playground
+  code={`<>
+  <AButton primary className="mr-2">
+    Button
+  </AButton>
+  <AButton secondary className="mr-2">
+    Button
+  </AButton>
+  <AButton tertiary className="mr-2">
+    Button
+  </AButton>
+  <AButton tertiaryAlt className="mr-2">
+    Button
+  </AButton>
+  <AButton destructive className="mr-2">
+    Button
+  </AButton>
+  <AButton destructive secondary>
+    Button
+  </AButton>
+</>
+  `}
+/>
+
+#### Sizes
+
+`AButton` supports the small and medium size options. The `medium` prop is encouraged in the Magnetic Design System.
+
+<Playground
+  code={`<>
+  <AButton small className="mr-2">
+    Button
+  </AButton>
+  <AButton medium>
+    Button
+  </AButton>
+</>
+  `}
+/>
+
+#### With Icons
+
+To render a button with an icon, render `<AIcon />` to either the left or right of your text, and be sure to pass the direction in which the icon sits relative to the button text to `<AIcon />`
+
+<Playground
+  code={`<div className='d-flex align-center'>
+  <AButton className="mr-2">
+    <AIcon left>pencil-simple</AIcon>
+    Edit
+  </AButton>
+  <AButton secondary className="mr-2">
+    Save
+    <AIcon right>save</AIcon>
+  </AButton>
+</div>`}
+/>
+
+#### Only With An Icon
+
+To render a button with just an icon, pass the `icon` prop to the button to indicate that there is no text to represent the button content, and then render `<AIcon />` as a direct child.
+
+<Playground
+  code={`<>
+  {["primary", "secondary", "tertiary", "tertiaryAlt"].map((variant) => {
+    const variantProp = {
+      [variant]: true,
+    };
+    return (
+      <AButton icon {...variantProp} className="mr-2" key={variant}>
+        <AIcon>sync</AIcon>
+      </AButton>
+    );
+  })}
+</>
 `}
 />
 
-## Button Props
-
-The `AButton` component inherits passed props.
-
-<Props of="AButton" />
-
-## Variants
-
-<Playground
-  fullWidthPreview
-  code={`<div className="container"><div className="d-flex">
-  <div>
-    <p>
-      <AButton>Primary</AButton>
-    </p>
-    <p>
-      <AButton>
-        <AIcon left>edit</AIcon>
-        Primary with Icon
-      </AButton>
-    </p>
-    <p>
-      <AButton icon>
-        <AIcon>sync</AIcon>
-      </AButton>
-    </p>
-    <p>
-      <AButton disabled>Primary Disabled</AButton>
-    </p>
-  </div>
-  <div className="ml-4">
-    <p>
-      <AButton secondary>Secondary</AButton>
-    </p>
-    <p>
-      <AButton secondary>
-        <AIcon left>edit</AIcon>
-        Secondary with Icon
-      </AButton>
-    </p>
-    <p>
-      <AButton secondary icon>
-        <AIcon>sync</AIcon>
-      </AButton>
-    </p>
-    <p>
-      <AButton secondary disabled>
-        Secondary Disabled
-      </AButton>
-    </p>
-  </div>
-  <div className="ml-4">
-    <p>
-      <AButton tertiary>Tertiary</AButton>
-    </p>
-    <p>
-      <AButton tertiary>
-        <AIcon left>edit</AIcon>
-        Tertiary with Icon
-      </AButton>
-    </p>
-    <p>
-      <AButton tertiary icon>
-        <AIcon>sync</AIcon>
-      </AButton>
-    </p>
-    <p>
-      <AButton tertiary disabled>
-        Tertiary Disabled
-      </AButton>
-    </p>
-  </div>
-  <div className="ml-4">
-    <p>
-      <AButton tertiaryAlt>Tertiary Alt</AButton>
-    </p>
-    <p>
-      <AButton tertiaryAlt>
-        <AIcon left>edit</AIcon>
-        Tertiary Alt with Icon
-      </AButton>
-    </p>
-    <p>
-      <AButton tertiaryAlt icon>
-        <AIcon>sync</AIcon>
-      </AButton>
-    </p>
-    <p>
-      <AButton tertiaryAlt disabled>
-        Tertiary Alt Disabled
-      </AButton>
-    </p>
-  </div>
-</div>
-<div className="d-flex"><h3>Destructive</h3></div>
-  <div className="d-flex">
-    <div>
-      <p>
-        <AButton data-testid="destructive-test-btn" destructive>Ask Google</AButton>
-      </p>
-      <p>
-        <AButton destructive>
-          <AIcon left>edit</AIcon>
-          Primary with Icon
-        </AButton>
-      </p>
-      <p>
-        <AButton icon destructive>
-          <AIcon>sync</AIcon>
-        </AButton>
-      </p>
-      <p>
-        <AButton primary disabled destructive >Primary  Disabled</AButton>
-      </p>
-    </div>
-    <div className="ml-4">
-      <p>
-        <AButton secondary destructive>Secondary</AButton>
-      </p>
-      <p>
-        <AButton secondary destructive>
-          <AIcon left>edit</AIcon>
-          Secondary with Icon
-        </AButton>
-      </p>
-      <p>
-        <AButton secondary icon destructive>
-          <AIcon>sync</AIcon>
-        </AButton>
-      </p>
-      <p>
-        <AButton secondary disabled destructive>
-          Secondary Disabled
-        </AButton>
-      </p>
-    </div>
-  </div>
-<div className="d-flex"><h3>Loading</h3></div>
-  <div className="d-flex">
-    <div>
-      <p>
-        <AButton data-testid="destructive-test-btn" loading>Ask Google</AButton>
-      </p>
-      <p>
-        <AButton loading>
-          <AIcon left>edit</AIcon>
-          Primary with Icon
-        </AButton>
-      </p>
-      <p>
-        <AButton icon loading>
-          <AIcon>sync</AIcon>
-        </AButton>
-      </p>
-      <p>
-        <AButton primary disabled loading >Primary  Disabled</AButton>
-      </p>
-    </div>
-    <div className="ml-4">
-      <p>
-        <AButton secondary loading>Secondary</AButton>
-      </p>
-      <p>
-        <AButton secondary loading>
-          <AIcon left>edit</AIcon>
-          Secondary with Icon
-        </AButton>
-      </p>
-      <p>
-        <AButton secondary icon loading>
-          <AIcon>sync</AIcon>
-        </AButton>
-      </p>
-      <p>
-        <AButton secondary disabled loading>
-          Secondary Disabled
-        </AButton>
-      </p>
-    </div>
-  </div>  
-</div>
-`}
-/>
-
-## Magnetized (left) / Re-skin only (right)
-
-<Playground
-  fullWidthPreview
-  code={`<div className="container"><div className="d-flex">
-  <div>
-    <p>
-      <AButton medium>Button</AButton>
-    </p>
-    <p>
-      <AButton  medium>
-        <AIcon left>edit</AIcon>
-        Primary with Icon
-      </AButton>
-    </p>
-    <p>
-      <AButton  medium icon>
-        <AIcon>sync</AIcon>
-      </AButton>
-    </p>
-    <p>
-      <AButton disabled  medium>Primary Disabled</AButton>
-    </p>
-    <hr />
-    <p>
-      <AButton medium secondary>Secondary</AButton>
-    </p>
-    <p>
-      <AButton  medium secondary>
-        <AIcon left>edit</AIcon>
-        Secondary with Icon
-      </AButton>
-    </p>
-    <p>
-      <AButton  medium icon secondary>
-        <AIcon>sync</AIcon>
-      </AButton>
-    </p>
-    <p>
-      <AButton disabled  medium>Primary Disabled</AButton>
-    </p>
-  </div>
-    <div style={{marginLeft: 10}}>
-      <p>
-        <AButton>Button</AButton>
-      </p>
-      <p>
-        <AButton>
-          <AIcon left>edit</AIcon>
-          Primary with Icon
-        </AButton>
-      </p>
-      <p>
-        <AButton icon>
-          <AIcon>sync</AIcon>
-        </AButton>
-      </p>
-      <p>
-        <AButton disabled>Primary Disabled</AButton>
-      </p>
-      <hr />
-      <p>
-        <AButton secondary>Secondary</AButton>
-      </p>
-      <p>
-        <AButton  secondary>
-          <AIcon left>edit</AIcon>
-          Primary with Icon
-        </AButton>
-      </p>
-      <p>
-        <AButton  secondary icon>
-          <AIcon>sync</AIcon>
-        </AButton>
-      </p>
-      <p>
-        <AButton disabled  secondary>Primary Disabled</AButton>
-      </p>
-    </div>
-    </div>
-</div>
-`}
-/>
-
-## Link Buttons
+#### Buttons as Links
 
 If the `href` property is used, the component will render as an HTML anchor.
 
 <Playground
   code={`<>
-  <AButton secondary href="https://www.cisco.com">
-  Launch Cisco.com
-</AButton>
-<AButton tertiary href="https://www.cisco.com">
-  Launch Cisco.com (tertiary)
-</AButton>
-</>`}
+  <AButton href="https://www.cisco.com" className="mr-2">
+    Launch Cisco.com
+  </AButton>
+  <AButton href="https://www.oldschool.runescape.com" secondary>
+    Launch Nostalgia
+  </AButton>
+</>
+`}
 />
 
-## Size Variants
+## Component Props
 
-<Playground
-  code={`() => {
+The `AButton` component inherits passed props.
 
-return (
-
-<div>
-  <AButton small>Small Magnetic Button</AButton>
-  <br />
-  <br />
-  <AButton medium>Medium Magnetic Button</AButton>
-</div>
-); } `} />
+<Props of="AButton" />
 
 ## Router Integrations
 
 Set the `component` property to your router's link type, for example:
 
-```
-// With react-router:
-<AButton component={RouterLink} to="/">Button 1</AButton>
+```jsx
+import {Link} from "next/link";
+
+<AButton component={Link} href="/">
+  Home
+</AButton>;
 ```

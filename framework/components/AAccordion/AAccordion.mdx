@@ -2,119 +2,152 @@
 name: Accordions**
 route: /components/accordion
 components: AAccordion, AAccordionPanel, AAccordionHeader, AAccordionHeaderTitle, AAccordionBody
+title: AAccordion
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/AAccordion
 ---
 
-# Accordions
+## Usage
 
-## Install
+### Import
 
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {
-  AAccordion,
-  AAccordionPanel,
-  AAccordionHeader,
-  AAccordionHeaderTitle,
-  AAccordionBody
-} from "@cisco-sbg-ui/magna-react";
-```
-
-## Uncontrolled Usage
-
-<Playground
-  code={`() => {
-  const buttonRef = useRef(null);
-  const [active, setActive] = useState(false);
-  return (
-    <AAccordion bordered>
-      <AAccordionPanel>
-        <AAccordionHeader>
-          <AAccordionHeaderTitle chevron={false}>
-            Accordion Item 1
-          </AAccordionHeaderTitle>
-          <AButton ref={buttonRef} icon tertiaryAlt onClick={() => setActive(!active)}>
-            <AIcon>ellipsis-horizontal</AIcon>
-          </AButton>
-          <AMenu anchorRef={buttonRef} open={active} onClose={() => setActive(false)}>
-            <AListItem>See More</AListItem>
-          </AMenu>
-        </AAccordionHeader>
-      </AAccordionPanel>
-      <AAccordionPanel collapsed={false}>
-        <AAccordionHeader>
-          <AAccordionHeaderTitle>Accordion Item 2</AAccordionHeaderTitle>
-        </AAccordionHeader>
-        <AAccordionBody>{LoremIpsum}</AAccordionBody>
-      </AAccordionPanel>
-      <AAccordionPanel>
-        <AAccordionHeader>
-          <AAccordionHeaderTitle>Accordion Item 3</AAccordionHeaderTitle>
-          <AButton icon tertiaryAlt href="/" target="_blank">
-            <AIcon>info</AIcon>
-          </AButton>
-        </AAccordionHeader>
-        <AAccordionBody>{LoremIpsum}</AAccordionBody>
-      </AAccordionPanel>
-      <AAccordionPanel collapsed={false}>
-        <AAccordionHeader>
-          <AAccordionHeaderTitle>
-            Additional Accordion Item
-          </AAccordionHeaderTitle>
-        </AAccordionHeader>
-        <AAccordionBody>{LoremIpsum}</AAccordionBody>
-      </AAccordionPanel>
-    </AAccordion>
-  );
-}
-`}
+<ComponentImport
+  components={[
+    "AAccordion",
+    "AAccordionPanel",
+    "AAccordionHeader",
+    "AAccordionHeaderTitle",
+    "AAccordionBody"
+  ]}
 />
 
-## Controlled Usage
+### Usage
 
 <Playground
-  code={`() => {
-  const [panels, setPanels] = useState([{
-    name: "Panel 1",
-    content: LoremIpsum,
-    collapsed: true
-  },
-  {
-    name: "Panel 2",
-    content: LoremIpsum,
-    collapsed: false
-  },
-  {
-    name: "Panel 3",
-    content: LoremIpsum,
-    collapsed: true
-  }]);
+  withTwoPanes
+  code={`<AAccordion>
+  <AAccordionPanel>
+    <AAccordionHeader>
+      <AAccordionHeaderTitle>
+        Hello from title!
+      </AAccordionHeaderTitle>
+    </AAccordionHeader>
+
+    <AAccordionBody>
+      Hello world!
+    </AAccordionBody>
+
+  </AAccordionPanel>
+</AAccordion>`}
+/>
+
+#### Uncontrolled Usage
+
+When using uncontrolled accordions, `collapsed` refers to the initial collapsed state. Any updates to this value after initial render are ignored.
+
+<Playground
+  code={`
+<AAccordion>
+  {["0", "1", "2"].map((index) => {
+    return (
+      <AAccordionPanel collapsed={index !== '1'}>
+        <AAccordionHeader>
+          <AAccordionHeaderTitle>Accordion Item {index}</AAccordionHeaderTitle>
+        </AAccordionHeader>
+        <AAccordionBody>{LoremIpsum}</AAccordionBody>
+      </AAccordionPanel>
+    );
+  })}
+</AAccordion>
+  `}
+/>
+
+#### Controlled Usage
+
+The combination of `collapsed` and `panelKey` are what make an accordion controlled. To run logic when the accordion is clicked, pass the `onToggle` prop to the `AAccordionPanel` component.
+
+<Playground
+  code={`function Controlled() {
+  const [openedIndex, setOpenedIndex] = useState('1');
   return (
     <AAccordion>
-      {panels.map((panel, index) => (
-        <AAccordionPanel key={index} collapsed={panel.collapsed} panelKey={index.toString()} onToggle={(panelKey) => setPanels(panels.map((panel, index) => {
-          if (panelKey === index.toString()) {
-            panel.collapsed = !panel.collapsed;
-          }
-          return panel;
-        }))}>
-          <AAccordionHeader>
-            <AAccordionHeaderTitle>{panel.name}</AAccordionHeaderTitle>
-          </AAccordionHeader>
-          <AAccordionBody>{panel.content}</AAccordionBody>
-        </AAccordionPanel>
-      ))}
+      {["0", "1", "2"].map((index) => {
+        return (
+          <AAccordionPanel
+            key={index}
+            // panelkey is required for the accordion to be controlled
+            panelKey={index}
+            collapsed={openedIndex != index}
+            onToggle={(panelKey) => {
+              // Close if current one is clicked twice
+              setOpenedIndex(prevOpened => prevOpened === panelKey ? null : panelKey);
+            }}>
+            <AAccordionHeader>
+              <AAccordionHeaderTitle>Accordion Item</AAccordionHeaderTitle>
+            </AAccordionHeader>
+            <AAccordionBody>{LoremIpsum}</AAccordionBody>
+          </AAccordionPanel>
+        );
+      })}
     </AAccordion>
   );
-}
-`}
+}`}
 />
+
+#### Alternative Icons
+
+<Playground
+  code={`<AAccordion>
+  {[
+    ["triangle-right", "triangle-down"],
+    ["add", "subtract"],
+    ["triangle-down", "triangle-up"],
+  ].map(([expandIcon, collapseIcon]) => (
+    <AAccordionPanel>
+      <AAccordionHeader>
+        <AAccordionHeaderTitle
+          expandIcon={expandIcon}
+          collapseIcon={collapseIcon}
+        >
+          Accordion item with {expandIcon} and {collapseIcon} icons
+        </AAccordionHeaderTitle>
+      </AAccordionHeader>
+      <AAccordionBody>{LoremIpsum}</AAccordionBody>
+    </AAccordionPanel>
+  ))}
+</AAccordion>`}
+/>
+
+## Component Props
+
+All Accordion components (`AAccordion`, `AAccordionPanel`, `AAccordionHeader`, `AAccordionHeaderTitle`, `AAccordionBody`) inherit passed props.
+
+#### Accordion Props
+
+<Props of="AAccordion" />
+
+#### AccordionPanel Props
+
+<Props of="AAccordionPanel" />
+
+#### AccordionHeader Props
+
+<Props of="AAccordionHeader" />
+
+#### AccordionHeaderTitle Props
+
+<Props of="AAccordionHeaderTitle" />
+
+#### AccordionBody Props
+
+<Props of="AAccordionBody" />
 
 ## Event Propagation
 
 It's important to note that if you render a component inside `AAccordionHeader` that registers `onClick` or `onKeyDown` handlers (such as another button), those events will also bubble up to the `AAccordionHeader`, thus toggling the opened/closed stateof the accordion.
 
 To prevent this behavior, you should invoke the `stopPropagation()` method on the inner component's event handlers causing such side effects.
+
+### Demonstration
 
 <Playground
   code={`() => {
@@ -165,72 +198,6 @@ To prevent this behavior, you should invoke the `stopPropagation()` method on th
       </>
     )
   }`}
-/>
-
-## Props
-
-All Accordion components (`AAccordion`, `AAccordionPanel`, `AAccordionHeader`, `AAccordionHeaderTitle`, `AAccordionBody`) inherit passed props.
-
-### Accordion Props
-
-<Props of="AAccordion" />
-
-### AccordionPanel Props
-
-<Props of="AAccordionPanel" />
-
-### AccordionHeader Props
-
-<Props of="AAccordionHeader" />
-
-### AccordionHeaderTitle Props
-
-<Props of="AAccordionHeaderTitle" />
-
-### AccordionBody Props
-
-<Props of="AAccordionBody" />
-
-## Alternative Icons
-
-<Playground
-  code={`<AAccordion>
-  <AAccordionPanel>
-    <AAccordionHeader>
-      <AAccordionHeaderTitle
-        expandIcon="triangle-right"
-        collapseIcon="triangle-down">
-        Accordion Item 1
-      </AAccordionHeaderTitle>
-    </AAccordionHeader>
-    <AAccordionBody>{LoremIpsum}</AAccordionBody>
-  </AAccordionPanel>
-  <AAccordionPanel collapsed={false}>
-    <AAccordionHeader>
-      <AAccordionHeaderTitle expandIcon="add" collapseIcon="subtract">
-        Accordion Item 2
-      </AAccordionHeaderTitle>
-    </AAccordionHeader>
-    <AAccordionBody>{LoremIpsum}</AAccordionBody>
-  </AAccordionPanel>
-  <AAccordionPanel>
-    <AAccordionHeader>
-      <AAccordionHeaderTitle
-        expandIcon="triangle-down"
-        collapseIcon="triangle-up">
-        Accordion Item 3
-      </AAccordionHeaderTitle>
-    </AAccordionHeader>
-    <AAccordionBody>{LoremIpsum}</AAccordionBody>
-  </AAccordionPanel>
-  <AAccordionPanel collapsed={false}>
-    <AAccordionHeader>
-      <AAccordionHeaderTitle>Additional Accordion Item</AAccordionHeaderTitle>
-    </AAccordionHeader>
-    <AAccordionBody>{LoremIpsum}</AAccordionBody>
-  </AAccordionPanel>
-</AAccordion>
-`}
 />
 
 ## Accessibility Notes

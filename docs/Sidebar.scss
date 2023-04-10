@@ -1,0 +1,24 @@
+// https://stackoverflow.com/a/53221672
+
+#sidebar {
+  scrollbar-width: auto;
+  scrollbar-color: #8f54a0 #dd2727;
+}
+
+/* Chrome, Edge, and Safari */
+#sidebar::-webkit-scrollbar {
+  width: 16px;
+  outline: none;
+  border: none;
+}
+
+#sidebar::-webkit-scrollbar-track {
+  background: transparent;
+  outline: none;
+  border: none;
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+  outline: none;
+  height: 5px;
+}
