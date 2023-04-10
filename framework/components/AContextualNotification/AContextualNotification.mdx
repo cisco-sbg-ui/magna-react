@@ -2,43 +2,38 @@
 name: Contextual Notifications
 route: /components/contextual-notification
 components: AContextualNotification
+title: AContextualNotification
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/AContextualNotification
 ---
-
-# Contextual Notifications
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {AContextualNotification} from "@cisco-sbg-ui/magna-react";
-```
 
 ## Usage
 
+### Import
+
+<ComponentImport components="AContextualNotification" />
+
+### Usage
+
 <Playground
+  withTwoPanes
   code={`<>
   <AContextualNotification variant="success">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua.
+    Success notification
   </AContextualNotification>
   <AContextualNotification variant="info">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua.
+    Informational notification
   </AContextualNotification>
   <AContextualNotification variant="warning">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua.
+    Warning notification
   </AContextualNotification>
   <AContextualNotification variant="danger">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua.
+    Danger notification
   </AContextualNotification>
 </>
 `}
 />
 
-## Contextual Notification Props
+## Component Props
 
 The `AContextualNotification` component inherits passed props.
 

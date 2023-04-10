@@ -1,40 +1,45 @@
 import React, {useEffect, useRef, useState} from "react";
 import Link from "next/link";
 
-import {AButton, ADivider, AIcon, ATree, useATheme} from "../framework";
+import {
+  AButton,
+  ADrawer,
+  ADrawerContent,
+  AIcon,
+  useATheme,
+  useMediaQuery,
+  usePopupQuickExit
+} from "../framework";
 
-import ThemeSwitcher from "./ThemeSwitcher";
+import "./Sidebar.scss";
+import SidebarTree from "./SidebarTree";
 
 const CustomLink = ({children, href, ...rest}) => {
   return (
-    <Link href={href} passHref {...rest}>
-      {children}
+    <Link href={href} passHref>
+      <a {...rest}>{children}</a>
     </Link>
   );
 };
 
-const GitHubIcon = (props) => {
-  let {styleColor} = props;
-  return (
-    <AButton
-      className={`${styleColor}`}
-      icon
-      tertiaryAlt
-      href="https://www.github.com/cisco-sbg-ui/magna-react"
-      target="_blank"
-      rel="noopener noreferrer"
-      {...props}
-    >
-      <AIcon>github</AIcon>
-    </AButton>
-  );
-};
-
-const Sidebar = ({menus, currentDoc}) => {
+const Sidebar = ({
+  menus,
+  currentDoc,
+  isSlim,
+  isDrawerOpen,
+  setIsDrawerOpen
+}) => {
+  const ref = useRef();
+  usePopupQuickExit({
+    popupRef: ref,
+    isEnabled: isDrawerOpen,
+    onExit: () => setIsDrawerOpen(false)
+  });
+  const {matches: isMobile} = useMediaQuery("(max-width: 1000px)");
   const [items, setItems] = useState([]);
   const currentDocRef = useRef();
-  const {currentTheme, isDark} = useATheme();
-  const styleColor = isDark ? "white--text" : "black--text";
+  const {currentTheme} = useATheme();
+  const styleColor = currentTheme === "dusk" ? "white--text" : "black--text";
   useEffect(() => {
     if (currentDocRef.current) {
       window.scrollTo(0, Math.max(0, currentDocRef.current.offsetTop - 65));
@@ -46,38 +51,48 @@ const Sidebar = ({menus, currentDoc}) => {
       {
         content: "Getting Started",
         contentComponent: CustomLink,
+        customIcon: "information",
         contentProps: {
-          href: "/"
+          href: "/",
+          className: "pl-0"
         },
         active: "/" === currentDoc.route
       },
       {
         content: "Changelog",
         contentComponent: CustomLink,
+        customIcon: "list-bullets",
         contentProps: {
-          href: "/changelog"
+          href: "/changelog",
+          className: "pl-0"
         },
         active: "/changelog" === currentDoc.route
       },
       {
         content: "Components",
         items: [],
-        expanded: currentDoc.route.startsWith("/components/")
+        expanded: currentDoc.route.startsWith("/components/"),
+        className: "pl-0",
+        customIcon: "puzzle-piece"
       },
       {
         content: "Hooks",
         items: [],
-        expanded: currentDoc.route.startsWith("/hooks/")
+        expanded: currentDoc.route.startsWith("/hooks/"),
+        className: "pl-0",
+        customIcon: "troubleshoot"
       },
       {
         content: "Extend",
         items: [],
-        expanded: currentDoc.route?.startsWith("/extend/")
+        expanded: currentDoc.route?.startsWith("/extend/"),
+        customIcon: "arrows-out"
       },
       {
         content: "Services",
         items: [],
-        expanded: currentDoc.route?.startsWith("/services/")
+        expanded: currentDoc.route?.startsWith("/services/"),
+        customIcon: "plugs"
       }
     ];
 
@@ -104,7 +119,8 @@ const Sidebar = ({menus, currentDoc}) => {
         items: item.headings.map((heading) => ({
           contentComponent: CustomLink,
           contentProps: {
-            href: item.route + "#" + heading.toLowerCase().replace(/ /g, "-")
+            href:
+              item.route + "?page=" + heading.toLowerCase().replace(/ /g, "-")
           },
           content: heading
         }))
@@ -114,40 +130,79 @@ const Sidebar = ({menus, currentDoc}) => {
     setItems(newItems);
   }, [menus, currentDoc]);
 
+  if (isMobile) {
+    return (
+      <ADrawer
+        isOpen={isDrawerOpen}
+        withTransitions={false}
+        id="sidebar"
+        aria-labelledby="title"
+        className={`root-sidebar py-4 sidebar`}
+        openWidth="300px"
+        style={{
+          height: "100%",
+          overflowY: "scroll"
+        }}>
+        <ADrawerContent
+          style={{
+            height: "100%"
+          }}
+          ref={ref}
+          className="pt-0">
+          <div className="d-flex align-center justify-space-between">
+            <h3 id="title">Navigation</h3>
+            <AButton
+              className="text-align--right align-self-end"
+              icon
+              tertiaryAlt
+              onClick={() => setIsDrawerOpen(false)}>
+              <AIcon size={24}>x</AIcon>
+            </AButton>
+          </div>
+          <SidebarTree
+            className={`${styleColor}`}
+            hoverable
+            activatable
+            expandOnClick
+            items={menus ? items : []}
+            onChange={(x) => setItems(x)}
+          />
+        </ADrawerContent>
+      </ADrawer>
+    );
+  }
+
   return (
-    <div
-      className={`root-sidebar overflow-y-scroll py-3`}
+    <ADrawer
+      slim={isSlim}
+      slimWidth="50px"
+      withTransitions={false}
+      position="relative"
+      isOpen={true}
+      id="sidebar"
+      className={`root-sidebar py-4 sidebar`}
+      openWidth={300 - 12}
       style={{
-        position: "fixed",
         height: "100%",
-        width: 330
-      }}
-    >
-      <div
-        className={`${isDark ? "white--text" : "black--text"}`}
-        style={{display: "flex", padding: "0 15px"}}
-      >
-        <h1 style={{flex: "1"}}>
-          <AIcon size={60} className="pr-3 vertical-align-center">
-            cisco
-          </AIcon>
-          Magna-React
-        </h1>
-        <GitHubIcon />
-      </div>
-      <div className={`${styleColor} d-flex align-center px-3 py-2}`}>
-        <ThemeSwitcher />
-      </div>
-      <ADivider />
-      <ATree
-        className={`${styleColor}`}
-        hoverable
-        activatable
-        expandOnClick
-        items={menus ? items : []}
-        onChange={(x) => setItems(x)}
-      />
-    </div>
+        overflowY: "auto",
+        background: "inherit",
+        boxShadow: "none"
+      }}>
+      <ADrawerContent
+        style={{
+          transition: "all 0.5s ease"
+        }}
+        className="pa-0">
+        <SidebarTree
+          className={`${styleColor}`}
+          hoverable
+          activatable
+          expandOnClick
+          items={menus ? items : []}
+          onChange={(x) => setItems(x)}
+        />
+      </ADrawerContent>
+    </ADrawer>
   );
 };
 

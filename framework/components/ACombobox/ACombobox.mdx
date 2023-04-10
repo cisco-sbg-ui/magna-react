@@ -2,100 +2,339 @@
 name: Comboboxes
 route: /components/combobox
 components: ACombobox
+title: ACombobox
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/ACombobox
 ---
-
-# Comboboxes
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {ACombobox} from "@cisco-sbg-ui/magna-react";
-```
 
 ## Usage
 
+### Import
+
+<ComponentImport components="ACombobox" />
+
+### Usage
+
 <Playground
-  code={`() => {
+  withTwoPanes
+  code={`function Example() {
   const items = [
-    {id: 1, name: "Bread, Cereal, Rice, and Pasta"},
-    {id: 2, name: "Vegetables"},
-    {id: 3, name: "Fruit", selected: true},
-    {id: 4, name: "Milk, Yogurt, and Cheese"},
-    {id: 5, name: "Meat, Poultry, Fish", disabled: true},
-    {id: 6, name: "Fats, Oils, and Sweets"}
+    "Air rune",
+    "Cosmic rune",
+    "Fire rune",
+    "Nature rune",
+    "Law rune",
+    "Water rune",
   ];
   const [value, setValue] = useState("");
   const [filteredItems, setFilteredItems] = useState(items);
+  const handleChange = (e) => {
+    const searchTerm = e.target.value;
+    const matches = items.filter((item) =>
+      item.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setValue(searchTerm);
+    setFilteredItems(matches);
+  };
   return (
-    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
-      <h3>Combobox with Objects</h3>
+    <ACombobox
+      label="Select an elemental rune"
+      items={filteredItems}
+      placeholder="Pick a rune"
+      onSelected={setValue}
+      value={value}
+      onChange={handleChange}
+    />
+  );
+}
+`}
+/>
+
+#### Clearable Field
+
+<Playground
+  code={`function Example() {
+  const items = [
+    "Air rune",
+    "Cosmic rune",
+    "Fire rune",
+    "Nature rune",
+    "Law rune",
+    "Water rune",
+  ];
+  const [value, setValue] = useState("");
+  const [filteredItems, setFilteredItems] = useState(items);
+  const handleChange = (e) => {
+    const searchTerm = e.target.value;
+    const matches = items.filter((item) =>
+      item.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setValue(searchTerm);
+    setFilteredItems(matches);
+  };
+  return (
+    <ACombobox
+      clearable
+      label="Select an elemental rune"
+      items={filteredItems}
+      placeholder="Pick a rune"
+      onSelected={setValue}
+      value={value}
+      onChange={handleChange}
+    />
+  );
+}
+`}
+/>
+
+#### Disabled State
+
+<Playground
+  code={`function Example() {
+  const items = [
+    "Air rune",
+    "Cosmic rune",
+    "Fire rune",
+    "Nature rune",
+    "Law rune",
+    "Water rune",
+  ];
+  const [value, setValue] = useState("");
+  const [filteredItems, setFilteredItems] = useState(items);
+  const handleChange = (e) => {
+    const searchTerm = e.target.value;
+    const matches = items.filter((item) =>
+      item.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setValue(searchTerm);
+    setFilteredItems(matches);
+  };
+  return (
+    <ACombobox
+      disabled
+      label="Select an elemental rune"
+      items={filteredItems}
+      placeholder="Pick a rune"
+      onSelected={setValue}
+      value={value}
+      onChange={handleChange}
+    />
+  );
+}
+`}
+/>
+
+#### Readonly State
+
+Passing `readOnly` to `ACombobox` **only** styles the input as readOnly. It does not, however, handle logic for preventing the user from interacting with the menu.
+
+In the example below, we don't pass on `onSelected` handler so that the user cannot change the value.
+
+<Playground
+  code={`function Example() {
+  const items = [
+    "Air rune",
+    "Cosmic rune",
+    "Fire rune",
+    "Nature rune",
+    "Law rune",
+    "Water rune",
+  ];
+  const [value, setValue] = useState("Cosmic rune");
+  const [filteredItems, setFilteredItems] = useState(items);
+  return (
+    <ACombobox
+      readOnly
+      label="Select an elemental rune"
+      items={filteredItems}
+      placeholder="Pick a rune"
+      value={value}
+    />
+  );
+}
+`}
+/>
+
+#### Validation States
+
+Pass a `hint` to get the alert to render underneath the combobox.
+
+<Playground
+  code={`function Example() {
+  return (
+    <>
       <ACombobox
-        clearable
-        label="Food Group"
-        items={filteredItems}
-        itemValue="id"
-        itemText="name"
-        placeholder="Pick a Food Group"
-        onSelected={(item) => {
-          setValue(item.name);
-        }}
-        value={value}
-        onChange={(e) => {
-          setFilteredItems(
-            items.filter((x) =>
-              x.name.toLowerCase().includes(e.target.value.toLowerCase())
-            )
-          );
-          setValue(e.target.value);
-        }}
+        validationState="warning"
+        hint="Warning hint"
+        label="Select an elemental rune"
+        placeholder="Pick a rune"
       />
-      <ADivider />
+      <ACombobox
+        validationState="danger"
+        hint="Danger hint"
+        label="Select an elemental rune"
+        placeholder="Pick a rune"
+      />
+    </>
+  );
+}
+`}
+/>
+
+#### Sizes
+
+`ACombobox` supports small, medium, and large sizes.
+
+<Playground
+  code={`function Example() {
+  return (
+    <>    
+      <ACombobox
+        small
+        label="Select an elemental rune"
+        placeholder="Small"
+      />
       <ACombobox
         medium
-        clearable
-        label="Medium"
-        items={filteredItems}
-        itemValue="id"
-        itemText="name"
-        placeholder="Pick a Food Group"
-        onSelected={(item) => {
-          setValue(item.name);
-        }}
-        value={value}
-        onChange={(e) => {
-          setFilteredItems(
-            items.filter((x) =>
-              x.name.toLowerCase().includes(e.target.value.toLowerCase())
-            )
-          );
-          setValue(e.target.value);
-        }}
+        label="Select an elemental rune"
+        placeholder="Medium"
       />
-      <ADivider />
       <ACombobox
         large
-        clearable
-        label="Large"
-        items={filteredItems}
-        itemValue="id"
-        itemText="name"
-        placeholder="Pick a Food Group"
-        onSelected={(item) => {
-          setValue(item.name);
-        }}
-        value={value}
-        onChange={(e) => {
-          setFilteredItems(
-            items.filter((x) =>
-              x.name.toLowerCase().includes(e.target.value.toLowerCase())
-            )
-          );
-          setValue(e.target.value);
-        }}
+        label="Select an elemental rune"
+        placeholder="Large"
       />
-    </div>
+    </>
+  );
+}
+`}
+/>
+
+#### Adding Static Options to the Beginning and End
+
+In the example below, we add content that will be rendered between the selectable items with the `prependContent` and `appendContent` props.
+
+<Playground
+  code={`function Example() {
+  const items = [
+    "Air rune",
+    "Cosmic rune",
+    "Fire rune",
+    "Nature rune",
+    "Law rune",
+    "Water rune",
+  ];
+  const [value, setValue] = useState("");
+  const [filteredItems, setFilteredItems] = useState(items);
+  const handleChange = (e) => {
+    const searchTerm = e.target.value;
+    const matches = items.filter((item) =>
+      item.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setValue(searchTerm);
+    setFilteredItems(matches);
+  };
+  return (
+    <ACombobox
+      prependContent={
+        <AListItem twoLine className="mds-blue--blue-2">
+          <AIcon size={16} left>
+            question
+          </AIcon>
+          <a
+            href="https://oldschool.runescape.wiki/w/Runes#Free-to-play_runes"
+            target="_blank"
+          >
+            View the full list of runes.
+          </a>
+        </AListItem>
+      }
+      appendContent={
+        <>
+          <ADivider className="ma-0" />
+          <AListItem
+            onClick={() => {
+              const response = prompt("Name: ");
+              setFilteredItems([...filteredItems, response]);
+            }}
+          >
+            <AIcon size={12} left>
+              add
+            </AIcon>
+            Add Rune
+          </AListItem>
+        </>
+      }
+      label="Select an elemental rune"
+      items={filteredItems}
+      placeholder="Pick a rune"
+      onSelected={setValue}
+      value={value}
+      onChange={handleChange}
+      style={{ width: "350px" }}
+    />
+  );
+}
+`}
+/>
+
+#### Using Your Own Item Templates
+
+Sometimes, the default options rendered within `ACombobox` might not be enough. To have the component render your own custom selectable options, utilize the `itemTemplate` prop, which should be a functional component. It will be passed `item`, `index`, `aria-selected`, `children`, `className`, `onClick`, `role`, `value` as props.
+
+<Playground
+  code={`function Example() {
+  function ItemTemplate({ className, index, item, onClick, ...rest }) {
+    const runeType = item.split(" ")[0];
+    const { isDark } = useATheme();
+    const link =
+      "https://oldschool.runescape.wiki/images/" + runeType + "_rune.png?acf91";
+    return (
+      <AListItem
+        {...rest}
+        twoLine
+        className={
+          className + (isDark ? " white--text" : " grey--darken-7--text")
+        }
+        style={{ backgroundColor: "transparent" }}
+      >
+        <AListItemAvatar>
+          <img src={link} alt="rune" />
+        </AListItemAvatar>
+        <AListItemContent onClick={onClick}>
+          <AListItemTitle>{item}</AListItemTitle>
+        </AListItemContent>
+      </AListItem>
+    );
+  }
+  const items = [
+    "Air rune",
+    "Cosmic rune",
+    "Fire rune",
+    "Nature rune",
+    "Law rune",
+    "Water rune",
+  ];
+  const [value, setValue] = useState("");
+  const [filteredItems, setFilteredItems] = useState(items);
+  const handleChange = (e) => {
+    const searchTerm = e.target.value;
+    const matches = items.filter((item) =>
+      item.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setValue(searchTerm);
+    setFilteredItems(matches);
+  };
+  return (
+    <ACombobox
+      label="Select an elemental rune"
+      items={filteredItems}
+      itemTemplate={ItemTemplate}
+      placeholder="Pick a rune"
+      onSelected={setValue}
+      value={value}
+      onChange={handleChange}
+      style={{ width: "350px" }}
+    />
   );
 }
 `}
@@ -109,229 +348,45 @@ The `ACombobox` component inherits passed props.
 
 ## Validation
 
+We provide an example of validation with `ACombobox` by having a user hypothetically choose a username. We pass `items` as a prop to `ACombobox` to represent a list of available usernames. Additionally, we pass the `rules` prop to validate that the username entered is not reserved or taken.
+
+In the example below, if you type "snoopy" or "snoopy dog", you will be warned they are taken. If you type "admin", you will be alerted that this is not a valid username.
+
 <Playground
-  code={`() => {
-  const items = [
-    "Bread, Cereal, Rice, and Pasta",
-    "Vegetables",
-    "Fruit",
-    "Milk, Yogurt, and Cheese",
-    "Meat, Poultry, Fish",
-    "Fats, Oils, and Sweets"
-  ];
+  code={`function Example() {
+  const suggestedUsernames = ["Snoopy Fan", "Snoopy 23", "Snooooopy"];
   const [value, setValue] = useState("");
-  const [filteredItems, setFilteredItems] = useState(items);
-  const [validateOnBlur, setValidateOnBlur] = useState(true);
+  const [filteredItems, setFilteredItems] = useState(suggestedUsernames);
+  const handleChange = (e) => {
+    const searchTerm = e.target.value;
+    const matches = suggestedUsernames.filter((item) =>
+      item.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setValue(searchTerm);
+    setFilteredItems(matches);
+  };
   return (
-    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
-      <ACombobox
-        medium
-        clearable
-        label="Food Group"
-        items={filteredItems}
-        placeholder="Pick a Food Group"
-        onSelected={(item) => {
-          setValue(item);
-        }}
-        required
-        rules={[
-          {
-            test: (v) => /[A-Z]+/.test(v) || "Must have a capital letter",
-            level: "warning"
-          }
-        ]}
-        value={value}
-        onChange={(e) => {
-          setFilteredItems(
-            items.filter((x) =>
-              x.toLowerCase().includes(e.target.value.toLowerCase())
-            )
-          );
-          setValue(e.target.value);
-        }}
-        validateOnBlur={validateOnBlur}
-      />
-      <ADivider />
-      <ASwitch
-        checked={validateOnBlur}
-        onClick={() => setValidateOnBlur(!validateOnBlur)}>
-        Postpone validation until blur
-      </ASwitch>
-    </div>
-  );
-}
-`}
-/>
-
-## States
-
-<Playground
-  code={`<>
-  <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
-    <h3>Default</h3>
     <ACombobox
-      medium
-      clearable
-      label="Food Group"
-      items={[
-        "Bread, Cereal, Rice, and Pasta",
-        "Vegetables",
-        "Fruit",
-        "Milk, Yogurt, and Cheese",
-        "Meat, Poultry, Fish",
-        "Fats, Oils, and Sweets"
+      rules={[
+        {
+          test: (v) => v?.toLowerCase() !== "admin" || "You cannot be an admin",
+          level: "danger",
+        },
+        {
+          test: (v) =>
+            !["snoopy", "snoopy dog"].includes(v?.toLowerCase()) ||
+            "Sorry, that username is taken",
+          level: "warning"
+        },
       ]}
-      placeholder="Pick a Food Group"
-      hint="Hint: Clearable"
+      items={filteredItems}
+      label="Enter a username"
+      suggestedUsernames={filteredItems}
+      placeholder="Your username"
+      onSelected={setValue}
+      value={value}
+      onChange={handleChange}
     />
-  </div>
-  <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
-    <h3>Disabled Combobox</h3>
-    <ACombobox
-      medium
-      disabled
-      label="Food Group"
-      placeholder="Pick a Food Group"
-      hint="Hint: Disabled"
-    />
-  </div>
-  <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
-    <h3>Read-only Combobox</h3>
-    <ACombobox
-      medium
-      readOnly
-      label="Food Group"
-      placeholder="Pick a Food Group"
-      hint="Hint: Read-only"
-    />
-  </div>
-  <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
-    <h3>Warning Combobox</h3>
-    <ACombobox
-      medium
-      label="Food Group"
-      placeholder="Pick a Food Group"
-      hint="Hint: Warning"
-      validationState="warning"
-    />
-  </div>
-  <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
-    <h3>Danger Combobox</h3>
-    <ACombobox
-      medium
-      label="Food Group"
-      placeholder="Pick a Food Group"
-      hint="Hint: Danger"
-      validationState="danger"
-    />
-  </div>
-  <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
-    <h3>No Data Combobox</h3>
-    <ACombobox
-      medium
-      label="Food Group"
-      placeholder="Pick a Food Group"
-      noDataContent="Check again when we restock!"
-      hint="Hint: No Data"
-    />
-  </div>
-</>
-`}
-/>
-
-## Prepend/Append Content
-
-<Playground
-  code={`() => {
-  const items = [
-    "Bread, Cereal, Rice, and Pasta",
-    "Vegetables",
-    "Fruit",
-    "Milk, Yogurt, and Cheese",
-    "Meat, Poultry, Fish",
-    "Fats, Oils, and Sweets"
-  ];
-  const [value, setValue] = useState("");
-  const [filteredItems, setFilteredItems] = useState(items);
-  return (
-    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
-      <ACombobox
-        medium
-        prependContent={<AListItem twoLine className="my-1 mx-2">Advertisement</AListItem>}
-        appendContent={<><ADivider className="ma-0" /><AListItem><AIcon size={12} left>add</AIcon>Add Role</AListItem></>}
-        clearable
-        label="Food Group"
-        items={filteredItems}
-        placeholder="Pick a Food Group"
-        onSelected={(item) => {
-          setValue(item);
-        }}
-        value={value}
-        onChange={(e) => {
-          setFilteredItems(
-            items.filter((x) =>
-              x.toLowerCase().includes(e.target.value.toLowerCase())
-            )
-          );
-          setValue(e.target.value);
-        }}
-      />
-    </div>
-  );
-}
-`}
-/>
-
-## Menu Item Templates
-
-<Playground
-  code={`() => {
-  const items = [
-    {id: 1, name: "Bread, Cereal, Rice, and Pasta", healthy: true},
-    {id: 2, name: "Vegetables", healthy: true},
-    {id: 3, name: "Fruit", selected: true, healthy: true},
-    {id: 4, name: "Milk, Yogurt, and Cheese", healthy: true},
-    {id: 5, name: "Meat, Poultry, Fish", disabled: true, healthy: true},
-    {id: 6, name: "Fats, Oils, and Sweets", healthy: false}
-  ];
-  const [value, setValue] = useState("");
-  const [filteredItems, setFilteredItems] = useState(items);
-  const {isDark} = useATheme();
-  return (
-    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
-      <ACombobox
-        medium
-        itemTemplate={({className, index, item, onClick, ...rest}) => (
-          <AListItem {...rest} twoLine className={className + (isDark ? " white--text" : " grey--darken-7--text")} style={{backgroundColor: "transparent"}}>
-            <AListItemContent onClick={onClick}>
-              <AListItemTitle>{item.name}</AListItemTitle>
-              <AListItemSubtitle>Healthy? {item.healthy ? "Yes" : "No"}</AListItemSubtitle>
-            </AListItemContent>
-            <AListItemAction>
-              <AButton icon tertiary><AIcon>edit</AIcon></AButton>
-            </AListItemAction>
-          </AListItem>
-        )}
-        clearable
-        label="Food Group"
-        itemText="name"
-        itemValue="id"
-        items={filteredItems}
-        placeholder="Pick a Food Group"
-        onSelected={(item) => {
-          setValue(item.name);
-        }}
-        value={value}
-        onChange={(e) => {
-          setFilteredItems(
-            items.filter((x) =>
-              x.name.toLowerCase().includes(e.target.value.toLowerCase())
-            )
-          );
-          setValue(e.target.value);
-        }}
-      />
-    </div>
   );
 }
 `}

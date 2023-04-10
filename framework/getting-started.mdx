@@ -1,19 +1,33 @@
 ---
 name: Getting Started
 route: /
+title: Getting Started
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary
 ---
 
-<hr />
+<AAlert>
+  **Components with Magnetic changes are marked with an \* for light only, \*\*
+  for light and dark**
+</AAlert>
 
-# Getting Started
+## About
+
+Magna React is a fork of [Atomic React](https://atomic-react.security.cisco.com/).
 
 ## Install
 
 The package is available privately on GitHub Packages. `npm login` with the scope `@cisco-sbg-ui`. ([Read more here.](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry))
 
-`npm i @cisco-sbg-ui/magna-react`
+```bash
+# npm
+npm i @cisco-sbg-ui/magna-react
 
-<br />
+# pnpm
+pnpm add @cisco-sbg-ui/magna-react
+
+# yarn
+yarn add @cisco-sbg-ui/magna-react
+```
 
 ### Content Security Policy
 
@@ -21,19 +35,20 @@ If your website has a content security policy, in order for the fonts to load an
 
 `font-src https://brand-assets.security.cisco.com`
 
-<br />
-
-## Sass Required
+## Sass Requirements
 
 The components import sass modules. The dart-sass (`sass` package) must be installed and integrated into your bundler. Recommended to use `sass@1.43.3` or greater.
 
-```
+```bash
+# npm
 npm install --save-dev sass
 
+# pnpm
+pnpm add sass --dev
+
+# yarn
 yarn add sass --dev
 ```
-
-<br />
 
 ### Optional Babel Preset and ESLint Config
 
@@ -44,7 +59,7 @@ The Babel preset **automatically imports** components. Add the following to your
   "presets": [
     "@babel/preset-env",
     "@babel/preset-react",
-+    "@cisco-sbg-ui/magna-react/babel-preset"
++   "@cisco-sbg-ui/magna-react/babel-preset"
   ]
 }
 ```

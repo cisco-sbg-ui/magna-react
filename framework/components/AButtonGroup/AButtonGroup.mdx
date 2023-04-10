@@ -2,140 +2,130 @@
 name: Button Groups
 route: /components/button-group
 components: AButtonGroup
+title: AButtonGroup
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/AButtonGroup
 ---
-
-# Button Groups
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {AButtonGroup} from "@cisco-sbg-ui/magna-react";
-```
 
 ## Usage
 
+### Import
+
+<ComponentImport components="AButtonGroup" />
+
+### Usage
+
 <Playground
-  code={`() => {
-  const [selectedValues1, setSelectedValues1] = useState(["One", "Three"]);
-  const [selectedValues2, setSelectedValues2] = useState(["Two"]);
-  const [selectedValues3, setSelectedValues3] = useState(["bar"]);
+  withTwoPanes
+  code={`function Example() {
+  const [selectedValues, setSelectedValues] = useState(["One"]);
+  return (
+    <AButtonGroup
+      selectedValues={selectedValues}
+      onChange={(_, selected) => setSelectedValues(selected)}
+    >
+      <AButton value="One">One</AButton>
+      <AButton value="Two">Two</AButton>
+      <AButton value="Three">Three</AButton>
+    </AButtonGroup>
+  );
+}`}
+/>
+
+#### With Multiple Selections
+
+<Playground
+  code={`function Example() {
+  const [selectedValues, setSelectedValues] = useState(["One", "Two"]);
+  return (
+    <AButtonGroup
+      multiple
+      selectedValues={selectedValues}
+      onChange={(_, selected) => setSelectedValues(selected)}
+    >
+      <AButton value="One">One</AButton>
+      <AButton value="Two">Two</AButton>
+      <AButton value="Three">Three</AButton>
+    </AButtonGroup>
+  );
+}`}
+/>
+
+#### Disabled
+
+<Playground
+  code={`function Example() {
+  const [selectedValues, setSelectedValues] = useState(["Three"]);
+  return (
+    <AButtonGroup
+      disabled
+      selectedValues={selectedValues}
+      onChange={(_, selected) => setSelectedValues(selected)}
+    >
+      <AButton value="One">One</AButton>
+      <AButton value="Two">Two</AButton>
+      <AButton value="Three">Three</AButton>
+    </AButtonGroup>
+  );
+}`}
+/>
+
+#### With Icons
+
+<Playground
+  code={`function Example() {
+  const [selectedValues, setSelectedValues] = useState(["pie"]);
+  return (
+    <AButtonGroup
+      selectedValues={selectedValues}
+      onChange={(_, selected) => setSelectedValues(selected)}
+    >
+      <AButton value="bar" icon>
+        <AIcon>chart-bar</AIcon>
+      </AButton>
+      <AButton value="line" icon>
+        <AIcon>chart-curve</AIcon>
+      </AButton>
+      <AButton value="pie" icon>
+        <AIcon>chart-pie</AIcon>
+      </AButton>
+    </AButtonGroup>
+  );
+}`}
+/>
+
+#### Sizes
+
+To set sizing for a button group, size each button individually like you would for `AButton`.
+
+<Playground
+  code={`function Example() {
+  const [selectedValues, setSelectedValues] = useState(["pie"]);
   return (
     <>
-      <div>
-        <h3>Button Group - Multiple</h3>
-        <AButtonGroup
-          multiple
-          selectedValues={selectedValues1}
-          onChange={(_, selectedValues) =>
-            setSelectedValues1(selectedValues)
-          }>
-          <AButton primary value="One">One</AButton>
-          <AButton primary value="Two">Two</AButton>
-          <AButton primary value="Three">Three</AButton>
-        </AButtonGroup>
-        <p>Selected Values: {JSON.stringify(selectedValues1)}</p>
-      </div>
+      <AButtonGroup
+        selectedValues={selectedValues}
+        onChange={(_, selected) => setSelectedValues(selected)}
+      >
+        <AButton small value="One">One</AButton>
+        <AButton small value="Two">Two</AButton>
+        <AButton small value="Three">Three</AButton>
+      </AButtonGroup>
       <ADivider />
-      <div>
-        <h3>Button Group - Single</h3>
-        <AButtonGroup
-          selectedValues={selectedValues2}
-          onChange={(_, selectedValues) =>
-            setSelectedValues2(selectedValues)
-          }>
-          <AButton value="One">One</AButton>
-          <AButton value="Two">Two</AButton>
-          <AButton value="Three">Three</AButton>
-        </AButtonGroup>
-        <p>Selected Values: {JSON.stringify(selectedValues2)}</p>
-      </div>
-      <ADivider />
-      <div>
-        <h3>Button Group - Disabled</h3>
-        <AButtonGroup
-          disabled
-          selectedValues={selectedValues2}
-          onChange={(_, selectedValues) =>
-            setSelectedValues2(selectedValues)
-          }>
-          <AButton value="One">One</AButton>
-          <AButton value="Two">Two</AButton>
-          <AButton value="Three">Three</AButton>
-        </AButtonGroup>
-        <p>Selected Values: {JSON.stringify(selectedValues2)}</p>
-      </div>
-      <ADivider />
-      <div>
-        <h3>Button Group - Icons</h3>
-        <AButtonGroup
-          selectedValues={selectedValues3}
-          onChange={(_, selectedValues) =>
-            setSelectedValues3(selectedValues)
-          }>
-          <AButton value="bar" icon>
-            <AIcon>chart-bar</AIcon>
-          </AButton>
-          <AButton value="line" icon>
-            <AIcon>chart-curve</AIcon>
-          </AButton>
-          <AButton value="pie" icon>
-            <AIcon>chart-pie</AIcon>
-          </AButton>
-        </AButtonGroup>
-        <p>Selected Values: {JSON.stringify(selectedValues3)}</p>
-      </div>
+      <AButtonGroup
+        selectedValues={selectedValues}
+        onChange={(_, selected) => setSelectedValues(selected)}
+      >
+        <AButton medium value="One">One</AButton>
+        <AButton medium value="Two">Two</AButton>
+        <AButton medium value="Three">Three</AButton>
+      </AButtonGroup>
     </>
   );
 }
 `}
 />
 
-## Size Variant
-
-<Playground
-  code={`() => {
-  const [selectedValues1, setSelectedValues1] = useState(["One", "Three"]);
-  const [selectedValues2, setSelectedValues2] = useState(["Two"]);
-  const [selectedValues3, setSelectedValues3] = useState(["bar"]);
-  return (
-    <>
-     <div>
-        <h3>Button Group - Medium variant</h3>
-       <AButtonGroup
-          medium
-          selectedValues={selectedValues2}
-          onChange={(_, selectedValues) =>
-            setSelectedValues2(selectedValues)
-          }>
-          <AButton value="One">One</AButton>
-          <AButton value="Two">Two</AButton>
-          <AButton value="Three">Three</AButton>
-        </AButtonGroup>
-        <p>Selected Values: {JSON.stringify(selectedValues2)}</p>
-      </div>
-      <ADivider />
-      <div>
-        <h3>Button Group - Medium button size (verbose)</h3>
-       <AButtonGroup
-          selectedValues={selectedValues2}
-          onChange={(_, selectedValues) =>
-            setSelectedValues2(selectedValues)
-          }>
-          <AButton value="One" medium>One</AButton>
-          <AButton value="Two" medium>Two</AButton>
-          <AButton value="Three" medium>Three</AButton>
-        </AButtonGroup>
-        <p>Selected Values: {JSON.stringify(selectedValues2)}</p>
-      </div>
-    </>
-  );
-}
-`}
-/>
-
-## Button Group Props
+## Component Props
 
 The `AButtonGroup` component inherits passed props.
 
@@ -144,29 +134,33 @@ The `AButtonGroup` component inherits passed props.
 ## Validation
 
 <Playground
-  code={`() => {
-  const [selectedValues, setSelectedValues] = useState(["Two"]);
+  code={`function Example() {
+  const [selectedValues, setSelectedValues] = useState([]);
   return (
     <>
       <AButtonGroup
-        hint="Not One and Three!"
-        label="Validated Button Group"
+        hint="Select invisibility and giant"
+        label="Select your in-game boost"
         multiple
-        required
-        rules={[{
-          test: (v) => !v.includes("One") || !v.includes("Three") || "Whatever you do, not One AND Three."
-        }]}
+        rules={[
+          {
+            test: (v) =>
+              !v.includes("Invisibility") ||
+              !v.includes("Giant") ||
+              "Does your size really matter if you are invisible?",
+            level: 'warning'
+          },
+        ]}
         selectedValues={selectedValues}
-        onChange={(_, selectedValues) =>
-          setSelectedValues(selectedValues)
-        }>
-        <AButton value="One">One</AButton>
-        <AButton value="Two">Two</AButton>
-        <AButton value="Three">Three</AButton>
+        onChange={(_, selectedValues) => setSelectedValues(selectedValues)}
+      >
+        <AButton value="Invisibility">Invisibility</AButton>
+        <AButton value="Giant">Giant Mode</AButton>
+        <AButton value="Jump">Double Jump</AButton>
       </AButtonGroup>
-      <p>Selected Values: {JSON.stringify(selectedValues)}</p>
     </>
   );
 }
+
 `}
 />

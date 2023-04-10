@@ -1,4 +1,4 @@
-import React from "react";
+import React, {forwardRef} from "react";
 
 import {
   AButton,
@@ -32,8 +32,7 @@ const ThemeSwitcher = () => {
               autoTheme.disable();
             }
             setCurrentTheme(value);
-          }}
-        >
+          }}>
           <AButton secondary data-testid="enable-default-theme" value="default">
             Light
           </AButton>
@@ -51,20 +50,17 @@ const ThemeSwitcher = () => {
               autoTheme.disable();
             }
             setCurrentTheme(value);
-          }}
-        >
+          }}>
           <AButton
             secondary
             data-testid="enable-classic-light-theme"
-            value="classic-light"
-          >
+            value="classic-light">
             Light
           </AButton>
           <AButton
             secondary
             data-testid="enable-classic-dark-theme"
-            value="classic-dark"
-          >
+            value="classic-dark">
             Dark
           </AButton>
         </AButtonGroup>
@@ -85,4 +81,4 @@ const ThemeSwitcher = () => {
 
 ThemeSwitcher.displayName = "ThemeSwitcher";
 
-export default ThemeSwitcher;
+export default forwardRef(ThemeSwitcher);

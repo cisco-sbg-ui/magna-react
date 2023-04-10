@@ -2,24 +2,21 @@
 name: Contextual Notification Menus
 route: /components/contextual-notification-menu
 components: AContextualNotificationMenu
+title: AContextualNotificationMenu
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/AContextualNotificationMenu
 ---
-
-# Contextual Notification Menus
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {AContextualNotificationMenu} from "@cisco-sbg-ui/magna-react";
-```
-
-It is necessary for `AContextualNotificationMenu` to be a descendant of `AApp` for mounting.
 
 ## Usage
 
+### Import
+
+<ComponentImport components="AContextualNotificationMenu" />
+
+### Usage
+
 <Playground
-  code={`() => {
+  withTwoPanes
+  code={`function Example() {
   const buttonRef = useRef(null);
   const textInputRef = useRef(null);
   const [open, setOpen] = useState(false);
@@ -69,16 +66,9 @@ It is necessary for `AContextualNotificationMenu` to be a descendant of `AApp` f
 `}
 />
 
-## Contextual Notification Menu Props
-
-The `AContextualNotificationMenu` component inherits passed props.
-
-<Props of="AContextualNotificationMenu" />
-
-## Variants
+#### Variants
 
 <Playground
-  fullWidthPreview
   code={`() => {
   const button1Ref = useRef(null);
   const button2Ref = useRef(null);
@@ -384,6 +374,12 @@ The `AContextualNotificationMenu` component inherits passed props.
 }
 `}
 />
+
+## Component Props
+
+The `AContextualNotificationMenu` component inherits passed props.
+
+<Props of="AContextualNotificationMenu" />
 
 ## Accessibility Notes
 
