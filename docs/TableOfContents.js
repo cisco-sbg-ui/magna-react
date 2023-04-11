@@ -2,7 +2,9 @@ import {AIcon, ATab, ATabGroup} from "../framework";
 import {getRoundedBoundedClientRect} from "../framework/utils/helpers";
 import "./TableOfContents.scss";
 
-const TableOfContents = ({items}) => {
+const toKebabCase = (str) => str.replaceAll(" ", "-").toLowerCase();
+
+const TableOfContents = ({items, activeSection, setActiveSection}) => {
   return (
     <section className="toc">
       <h3 className="d-flex align-center">
@@ -11,8 +13,11 @@ const TableOfContents = ({items}) => {
       <ATabGroup className="ml-5" vertical>
         {items?.map((section, i) => (
           <ATab
+            tabKey={section}
+            selected={toKebabCase(section) === activeSection}
             key={section}
             onClick={() => {
+              setActiveSection(toKebabCase(section));
               const heading = document.querySelectorAll("h4")[i];
 
               if (heading) {

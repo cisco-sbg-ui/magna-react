@@ -16,7 +16,7 @@ const Header = (props) => {
         width: "100%",
         position: "sticky",
         top: "0",
-        zIndex: "4"
+        zIndex: "3"
       }}
     >
       <div
