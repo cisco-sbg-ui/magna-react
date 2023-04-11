@@ -1,14 +1,6 @@
 import debounce from "lodash.debounce";
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useRef,
-  useState
-} from "react";
+import React, {useCallback, useEffect, useMemo, useRef, useState} from "react";
 import {LiveProvider, LiveEditor, LiveError, LivePreview} from "react-live";
-import Highlight, {defaultProps} from "prism-react-renderer";
 
 import theme from "prism-react-renderer/themes/oceanicNext";
 
@@ -16,9 +8,6 @@ import * as AtomicReactComponentsAndHooks from "../framework";
 import {AList} from "../framework";
 import LoremIpsum from "../framework/utils/lorem-ipsum";
 import mockImport from "./mock_modules";
-import CodeBlock from "./CodeBlock";
-import DocsPageContext from "./DocsPageContext";
-
 const scope = {
   ...AtomicReactComponentsAndHooks,
   LoremIpsum,
@@ -35,11 +24,8 @@ const Playground = ({
   withTwoPanes = false,
   code,
   fullWidthPreview,
-  noInline,
-  sectionName
+  noInline
 }) => {
-  // todo: register first div with context
-  // const {registerCodePlayground} = useContext(DocsPageContext);
   if (withTwoPanes) {
     return (
       <LiveProvider code={code.trim()} scope={scope} noInline={noInline}>

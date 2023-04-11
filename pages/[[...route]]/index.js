@@ -35,9 +35,12 @@ const components = {
   ...MdxHeadings
 };
 
+const toKebabCase = (str) => str.replaceAll(" ", "-").toLowerCase();
+
 export default function DocsPage({currentDoc, menus, propsInfo}) {
-  const {asPath} = useRouter();
+  const {query} = useRouter();
   const [activeTab, setActiveTab] = useState("usage");
+  const [activeSection, setActiveSection] = useState();
   const [hasScrolledPastTabs, setHasScrolledPastTabs] = useState(false);
   const tableOfContentsRefs = useRef(new Map());
   const inViewRef = useInView(({inView}) => setHasScrolledPastTabs(!inView));
@@ -45,10 +48,10 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
   // Force initial active tab to be set on client-side
   // This prevents server and client mismatches
   useEffect(() => {
-    const requestedTab = asPath?.split("#")[1];
+    const requestedTab = query?.page;
     const firstTab = Object.keys(currentDoc?.pageTabsMdx)[0];
     setActiveTab(requestedTab || firstTab);
-  }, [setActiveTab, asPath, currentDoc]);
+  }, [setActiveTab, currentDoc, query]);
 
   if (!currentDoc) return null;
 
@@ -88,10 +91,19 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
                           componentName: currentDoc.title
                         }}
                       >
-                        <ComponentTitle
-                          sourceCodeLink={currentDoc.sourceCodeLink}
-                          title={currentDoc.title}
-                        />
+                        <AtomicReactComponents.AInView
+                          threshold={0}
+                          onChange={(stuff) => {
+                            if (stuff.inView) {
+                              setActiveSection(null);
+                            }
+                          }}
+                        >
+                          <ComponentTitle
+                            sourceCodeLink={currentDoc.sourceCodeLink}
+                            title={currentDoc.title}
+                          />
+                        </AtomicReactComponents.AInView>
                         <ComponentTabs
                           ref={inViewRef}
                           tabs={currentDoc.tabs}
@@ -110,6 +122,24 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
                               const code = props.children.props.children;
                               return (
                                 <CodeBlock code={code} language={language} />
+                              );
+                            },
+                            blockquote: (props) => {
+                              return (
+                                <AtomicReactComponents.AAlert
+                                  className="mb-4"
+                                  dismissable={false}
+                                >
+                                  <span
+                                    style={{
+                                      display: "block",
+                                      marginTop: "-20px",
+                                      marginBottom: "-20px"
+                                    }}
+                                  >
+                                    {props.children}
+                                  </span>
+                                </AtomicReactComponents.AAlert>
                               );
                             },
                             p: (props) => (
@@ -137,12 +167,30 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
                               />
                             ),
                             h4: (props) => (
-                              // eslint-disable-next-line
-                              <h4
-                                className="mt-6 mb-4"
-                                style={{fontSize: "1.2rem"}}
-                                {...props}
-                              />
+                              <AtomicReactComponents.AInView
+                                rootMargin="-70px 0px -90% 0px"
+                                //rootMargin="0px 0px -95%"
+                                threshold={0}
+                                onChange={(stuff) => {
+                                  const {entry, inView} = stuff;
+                                  if (!entry) {
+                                    return;
+                                  }
+                                  const sectionId =
+                                    entry?.target?.getAttribute("id");
+
+                                  if (inView && activeSection !== sectionId) {
+                                    setActiveSection(sectionId);
+                                  }
+                                }}
+                              >
+                                {/* eslint-disable-next-line */}
+                                <h4
+                                  className="mt-6 mb-4"
+                                  style={{fontSize: "1.2rem"}}
+                                  {...props}
+                                />
+                              </AtomicReactComponents.AInView>
                             ),
                             h5: (props) => (
                               // eslint-disable-next-line
@@ -165,6 +213,8 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
               </ACol>
               <ACol style={{maxWidth: 275}}>
                 <TableOfContents
+                  setActiveSection={setActiveSection}
+                  activeSection={activeSection}
                   items={currentDoc?.pageTabsData[
                     activeTab
                   ]?.tableOfContents.map((toc) => toc.heading || "")}
@@ -253,11 +303,11 @@ export async function getStaticProps({params}) {
     });
 
   const source = await serialize(target.content, {
-    scope: target.data
+    scope: target.data,
     // Uncomment to add IDs back to headings
-    // mdxOptions: {
-    //   remarkPlugins: [require("remark-slug")]
-    // }
+    mdxOptions: {
+      remarkPlugins: [require("remark-slug")]
+    }
   });
 
   const targetMenu = menus.find((menu) => menu.route === `/${route}`);
@@ -265,9 +315,9 @@ export async function getStaticProps({params}) {
   const getTabSectionSource = targetMenu.tabsWithContent.map(
     async (section) => {
       const sectionSource = await serialize(section.content, {
-        // mdxOptions: {
-        //   remarkPlugins: [require("remark-slug")]
-        // }
+        mdxOptions: {
+          remarkPlugins: [require("remark-slug")]
+        }
       });
       return sectionSource;
     }
@@ -277,8 +327,6 @@ export async function getStaticProps({params}) {
 
   const pageTabsMdx = {};
   const pageTabsData = {};
-
-  const toKebabCase = (str) => str.replaceAll(" ", "-").toLowerCase();
 
   targetMenu.headings.forEach((heading, i) => {
     pageTabsMdx[toKebabCase(heading)] = tabSectionsSource[i];

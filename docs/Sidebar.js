@@ -20,23 +20,6 @@ const CustomLink = ({children, href, ...rest}) => {
   );
 };
 
-const GitHubIcon = (props) => {
-  let {styleColor} = props;
-  return (
-    <AButton
-      className={`${styleColor}`}
-      icon
-      tertiaryAlt
-      href="https://www.github.com/cisco-sbg-ui/magna-react"
-      target="_blank"
-      rel="noopener noreferrer"
-      {...props}
-    >
-      <AIcon>github</AIcon>
-    </AButton>
-  );
-};
-
 const Sidebar = ({menus, currentDoc}) => {
   const [items, setItems] = useState([]);
   const currentDocRef = useRef();
@@ -111,7 +94,8 @@ const Sidebar = ({menus, currentDoc}) => {
         items: item.headings.map((heading) => ({
           contentComponent: CustomLink,
           contentProps: {
-            href: item.route + "#" + heading.toLowerCase().replace(/ /g, "-")
+            href:
+              item.route + "?page=" + heading.toLowerCase().replace(/ /g, "-")
           },
           content: heading
         }))
