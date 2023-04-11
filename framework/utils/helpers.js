@@ -46,7 +46,7 @@ export const preventBodyScroll = () => {
 
 export const allowBodyScroll = () => {
   document.documentElement.style.removeProperty("overflow-y");
-  document.body.style.overflow = "auto";
+  document.body.style.overflow = "unset";
   document.body.style.height = "auto";
 };
 
