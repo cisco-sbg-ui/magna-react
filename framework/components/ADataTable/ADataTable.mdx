@@ -1,251 +1,503 @@
 ---
 name: Data Tables**
 route: /components/data-table
-components: ADataTable, useInfiniteScroll
+components: ADataTable
+title: ADataTable
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/ADataTable
 ---
-
-# Data Tables
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {ADataTable} from "@cisco-sbg-ui/magna-react";
-```
 
 ## Usage
 
-### Basic
+### Import
+
+<ComponentImport components="ADataTable" />
+
+### Usage
 
 <Playground
-  code={`() => {
-  const [sort, setSort] = useState();
+  withTwoPanes
+  code={`function Example() {
   const headers = [
     {
-      name: "Alpha",
-      key: "a",
-      align: "end",
-      className: "text-capitalize",
-      sortable: true
+      name: "World",
+      key: "world",
     },
     {
-      name: "Bravo",
-      key: "b",
-      align: "center",
-      sortable: true,
-      sort: false
+      name: "Players",
+      key: "players",
     },
     {
-      name: "Charlie",
-      key: "c",
-      sortable: true,
-      sort: (a, b) =>
-        a.toUpperCase() === b.toUpperCase()
-          ? 0
-          : a.toUpperCase() > b.toUpperCase()
-          ? 1
-          : -1
+      name: "Location",
+      key: "location",
     },
-    {
-      name: "Delta",
-      align: "center",
-      cell: {
-        component: (item) => (
-          <a href="/" target="_blank">
-            Details
-          </a>
-        )
-      }
-    }
   ];
   const items = [
     {
-      a: 11.1,
-      b: 526,
-      c: "aardvark"
+      world: "World 1",
+      players: 1238,
+      location: "United States",
     },
     {
-      a: 8.9,
-      b: 611,
-      c: "Argentina"
+      world: "World 34",
+      players: 189,
+      location: "United States",
     },
     {
-      a: 10.5,
-      b: 475,
-      c: "Zanzibar"
-    }
+      world: "World 81",
+      players: 72,
+      location: "United Kingdom",
+    },
   ];
   return (
     <ADataTable
-      striped
-      tight
       headers={headers}
       items={items}
-      className="mx-auto"
-      style={{maxWidth: 500}}
-      sort={sort}
-      onSort={(s) => setSort(s)}
-      truncateHeaders
+      striped
     />
   );
 }
 `}
 />
 
-### Two Stage Sort
-
-By default a table column can be unsorted. Use `disableSortReset` to change sorting to flip between "asc" and "desc" on click without the unsorted state.
+#### Column Sorting
 
 <Playground
-  code={`() => {
+  code={`function Example() {
   const [sort, setSort] = useState();
   const headers = [
     {
-      name: "Alpha",
-      key: "a",
-      align: "end",
-      className: "text-capitalize",
-      sortable: true
-    },
-    {
-      name: "Bravo",
-      key: "b",
-      align: "center",
+      name: "World",
+      key: "world",
       sortable: true,
-      sort: false
     },
     {
-      name: "Charlie",
-      key: "c",
+      name: "Players",
+      key: "players",
       sortable: true,
-      sort: (a, b) =>
-        a.toUpperCase() === b.toUpperCase()
-          ? 0
-          : a.toUpperCase() > b.toUpperCase()
-          ? 1
-          : -1
-    },
-    {
-      name: "Delta",
-      align: "center",
-      cell: {
-        component: (item) => (
-          <a href="/" target="_blank">
-            Details
-          </a>
-        )
+      // Passing a custom sort to put "FULL" worlds at end
+      sort: (a, b) => {
+        if (a === 'FULL') {
+          return 1;
+        } else if (b === 'FULL') {
+          return -1;
+        } else {
+          return a - b;
+        }
       }
-    }
+    },
+    {
+      name: "Location",
+      key: "location",
+      sortable: true,
+    },
   ];
   const items = [
     {
-      a: 11.1,
-      b: 526,
-      c: "aardvark"
+      world: "World 1",
+      players: 'FULL',
+      location: "United States",
     },
     {
-      a: 8.9,
-      b: 611,
-      c: "Argentina"
+      world: "World 34",
+      players: 189,
+      location: "United States",
     },
     {
-      a: 10.5,
-      b: 475,
-      c: "Zanzibar"
-    }
+      world: "World 81",
+      players: 72,
+      location: "United Kingdom",
+    },
+  ];
+  return (
+    <ADataTable
+      sort={sort}
+      onSort={setSort}
+      headers={headers}
+      items={items}
+      striped
+    />
+  );
+}
+`}
+/>
+
+##### Disable Column Sort Resets
+
+By default, when you click a sortable column for a third time, it will reset the sorts, i.e., the column will return to an unsorted state.
+
+However, if you prefer for the column to mainting the sorting state after subsequent clicks, pass `disableSortReset={true}`to `ADataTable`.
+
+> Please note that with this option enabled, the table will **stay sorted** (either ascending or descending) after the user initiates a sort.
+
+<Playground
+  code={`function Example() {
+  const [sort, setSort] = useState();
+  const headers = [
+    {
+      name: "World",
+      key: "world",
+      sortable: true,
+    },
+    {
+      name: "Players",
+      key: "players",
+      sortable: true,
+      // Passing a custom sort to put "FULL" worlds at end
+      sort: (a, b) => {
+        if (a === 'FULL') {
+          return 1;
+        } else if (b === 'FULL') {
+          return -1;
+        } else {
+          return a - b;
+        }
+      }
+    },
+    {
+      name: "Location",
+      key: "location",
+      sortable: true,
+    },
+  ];
+  const items = [
+    {
+      world: "World 1",
+      players: 'FULL',
+      location: "United States",
+    },
+    {
+      world: "World 34",
+      players: 189,
+      location: "United States",
+    },
+    {
+      world: "World 81",
+      players: 72,
+      location: "United Kingdom",
+    },
   ];
   return (
     <ADataTable
       disableSortReset
-      striped
-      tight
+      sort={sort}
+      onSort={setSort}
       headers={headers}
       items={items}
-      className="mx-auto"
-      style={{maxWidth: 500}}
-      sort={sort}
-      onSort={(s) => setSort(s)}
-      truncateHeaders
+      striped
     />
   );
 }
 `}
 />
 
-### Selectable Rows
-
-Rows can be selected by passing the `isRowSelected` prop to `ADataTable`, which is a function called for every row with the associated data in order to determine if the row should be highlighted in the selected state.
-
-Often times, you'll need to select the row when the row itself is clicked, in which you can leverage the `onRowClick` prop of `ADataTable`, which is a callback function invoked with the associated row item data and the native event object.
+#### Expandable Rows
 
 <Playground
-  code={`() => {
-  const [allSelected, setAllSelected] = useState(false);
-  const [selected, setSelected] = useState({
-    "First row": false,
-    "Second row": false,
-    "Third row": false
-  });
-  const isRowSelected = (rowItem) => selected[rowItem['firstCol']];
-  const onRowClick = (rowItem) => {
-    setSelected(selectedState => {
-        const key = rowItem['firstCol'];
-        return { ...selectedState, [key]: !selectedState[key] };
-    })
-  };
+  code={`function Example() {
   const headers = [
     {
-      name: "First Col",
-      key: "firstCol",
-      align: "start",
-      className: "text-capitalize",
-      sortable: false
+      name: "World",
+      key: "world",
     },
     {
-      name: "Second Col",
-      key: "secondCol",
-      align: "start",
-      className: "text-capitalize",
-      sortable: false
+      name: "Players",
+      key: "players",
     },
     {
-      name: "Third Col",
-      key: "thirdCol",
-      align: "start",
-      className: "text-capitalize",
-      sortable: false
-    }
+      name: "Location",
+      key: "location",
+    },
   ];
   const items = [
     {
-      firstCol: "First row",
-      secondCol: "First row",
-      thirdCol: "First row"
+      world: "World 1",
+      players: 1238,
+      location: "United States",
+      activity: "trading",
     },
     {
-      firstCol: "Second row",
-      secondCol: "Second row",
-      thirdCol: "Second row"
+      world: "World 34",
+      players: 189,
+      location: "United States",
+      activity: "group ironman",
     },
     {
-      firstCol: "Third row",
-      secondCol: "Third row",
-      thirdCol: "Third row"
+      world: "World 81",
+      players: 72,
+      location: "United Kingdom",
+      activity: "speedrunning",
+    },
+  ];
+  const expandableConfig = {
+    component: (rowItem) => {
+      return (
+        <div className="py-2">
+          <div className="d-flex align-center">
+            <AIcon className="mr-3">users-three</AIcon>
+            Players primarily use this server for {rowItem.activity}.
+          </div>
+          <div className="d-flex align-center">
+            <AIcon className="mr-3">activity</AIcon>
+            This world is at {Math.round((rowItem.players / 2000) * 100)}%
+            player capacity.
+          </div>
+          <div className="d-flex align-center">
+            <AIcon className="mr-3">globe-stand</AIcon>
+            This server is located in the {rowItem.location}.
+          </div>
+        </div>
+      );
+    },
+  };
+  return (
+    <ADataTable
+      expandable={expandableConfig}
+      headers={headers}
+      items={items}
+      striped
+    />
+  );
+}
+  `}
+/>
+
+##### Conditionally Expandable Rows
+
+Sometimes, you might only want certain table rows to be expandable.
+
+<Playground
+  code={`function Example() {
+  const headers = [
+    {
+      name: "World",
+      key: "world",
+      cell: {
+        component: (rowItem) => (
+          <>
+            {rowItem.world}
+            {rowItem.minimumLevel ? (
+              <span className="ml-1 mds-red--red-12--text">*</span>
+            ) : null}
+          </>
+        ),
+      },
+    },
+    {
+      name: "Players",
+      key: "players",
+    },
+    {
+      name: "Location",
+      key: "location",
+    },
+  ];
+  const items = [
+    {
+      world: "World 1",
+      players: 1238,
+      location: "United States",
+      minimumLevel: 0,
+    },
+    {
+      world: "World 34",
+      players: 189,
+      location: "United States",
+      minimumLevel: 750,
+    },
+    {
+      world: "World 81",
+      players: 1072,
+      location: "United Kingdom",
+      minimumLevel: 0,
+    },
+  ];
+  const expandableConfig = {
+    isRowExpandable: (rowItem) => rowItem.minimumLevel > 0,
+    component: (rowItem) => {
+      return (
+        <div className="py-3">
+          <AAlert level="warning" dismissable={false}>
+            This world requires a minimum level of {rowItem.minimumLevel} to
+            enter.
+          </AAlert>
+        </div>
+      );
+    },
+  };
+  return (
+    <ADataTable
+      expandable={expandableConfig}
+      headers={headers}
+      items={items}
+      striped
+    />
+  );
+}
+  `}
+/>
+
+#### Seletable Rows
+
+To make row items selectable, pass both the `onRowClick` and `isRowSelected` props to `ADataTable`. Both of these props expect a function that will be called with the row item's data so that you can return a truthy or falsy value to indicate the selected state.
+
+> The example below only handles one row being selected at a time. To handle multiple rows being selected at once, you'll want to update the way you store selected rows in state and perform the proper conditional for `isRowSelected`.
+
+<Playground
+  code={`function Example() {
+  const [selectedWorld, setSelectedWorld] = useState();
+  const headers = [
+    {
+      name: "World",
+      key: "world",
+    },
+    {
+      name: "Players",
+      key: "players",
+    },
+    {
+      name: "Location",
+      key: "location",
+    },
+  ];
+  const items = [
+    {
+      world: "World 1",
+      players: 1238,
+      location: "United States",
+    },
+    {
+      world: "World 34",
+      players: 189,
+      location: "United States",
+    },
+    {
+      world: "World 81",
+      players: 72,
+      location: "United Kingdom",
     },
   ];
   return (
     <ADataTable
-      isRowSelected={isRowSelected}
-      onRowClick={onRowClick}
-      tight
+      onRowClick={(rowItem) => setSelectedWorld(rowItem.world)}
+      isRowSelected={(rowItem) => rowItem.world === selectedWorld}
       headers={headers}
       items={items}
-      className="mx-auto"
-      style={{maxWidth: 500}}
-      data-testid='selectable-rows'
     />
   );
+}
+`}
+/>
+
+#### Custom Data Table Cell Components
+
+To render custom content inside a data table cell associated with its text content, you can configure the `cell` property in the `headers` array in order to render a `component` for each data table cell associated with that specific column.
+
+In the example below, we add a cell configuration to the "World" column so that we can render a star in each row.
+
+<Playground
+  code={`function Example() {
+  const headers = [
+    {
+      name: "World",
+      key: "world",
+      cell: {
+        component: (rowItem) => {
+          const world = rowItem.world;
+          return (
+            <div className='d-flex align-center'>
+              <AIcon size={20} left>star</AIcon>
+              {world}
+            </div>
+          )
+        }
+      }
+    },
+    {
+      name: "Players",
+      key: "players",
+    },
+    {
+      name: "Location",
+      key: "location",
+    },
+  ];
+  const items = [
+    {
+      world: "World 1",
+      players: 1238,
+      location: "United States",
+    },
+    {
+      world: "World 34",
+      players: 189,
+      location: "United States",
+    },
+    {
+      world: "World 81",
+      players: 72,
+      location: "United Kingdom",
+    },
+  ];
+  return <ADataTable headers={headers} items={items} striped />;
+}
+`}
+/>
+
+#### Custom Header Cell Components
+
+To render custom content inside a data header cell, you can configure the `name` property in the `headers` array to render your own react component instead.
+
+<Playground
+  code={`function Example() {
+  const headers = [
+    {
+      name: "World",
+      key: "world",
+      name: (
+        <div className='d-flex align-center'>
+          <AIcon size={20} left>globe</AIcon>
+          World
+        </div>
+      ),
+      cell: {
+        component: (rowItem) => {
+          const world = rowItem.world;
+          return (
+            <div className='d-flex align-center'>
+              <AIcon size={20} left>star</AIcon>
+              {world}
+            </div>
+          )
+        }
+      }
+    },
+    {
+      name: "Players",
+      key: "players",
+    },
+    {
+      name: "Location",
+      key: "location",
+    },
+  ];
+  const items = [
+    {
+      world: "World 1",
+      players: 1238,
+      location: "United States",
+    },
+    {
+      world: "World 34",
+      players: 189,
+      location: "United States",
+    },
+    {
+      world: "World 81",
+      players: 72,
+      location: "United Kingdom",
+    },
+  ];
+  return <ADataTable headers={headers} items={items} striped />;
 }
 `}
 />
@@ -360,277 +612,7 @@ You can also pass a React element to a header's `name` key in order to handle mo
 `}
 />
 
-#### With a Drawer
-
-In this example, the associated more details drawer that is opened is used to determine which item should be styled as selected.
-
-<Playground
-  code={`() => {
-  const drawerRef = useRef();
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [drawerContent, setDrawerContent] = useState({});
-  // Allows us to close the drawer with escape key/outside clicks
-  usePopupQuickExit({
-    popupRef: drawerRef,
-    isEnabled: isDrawerOpen,
-    onExit: () => setIsDrawerOpen(false)
-  });
-  const isRowSelected = rowItem => isDrawerOpen && drawerContent['firstCol'] === rowItem['firstCol'];
-  const headers = [
-    {
-      name: "First Col",
-      key: "firstCol",
-      align: "start",
-      className: "text-capitalize",
-      sortable: false
-    },
-    {
-      name: "Second Col",
-      key: "secondCol",
-      align: "start",
-      className: "text-capitalize",
-      sortable: false
-    },
-    {
-      name: "Third Col",
-      key: "thirdCol",
-      align: "start",
-      className: "text-capitalize",
-      sortable: false
-    },
-    {
-      name: "Details",
-      align: "center",
-      cell: {
-        component: (item) => (
-          <AButton className='ma-0 pa-0' tertiaryAlt icon onClick={() => {
-            setIsDrawerOpen(true);
-            setDrawerContent(item);
-          }}>
-            <AIcon>dots-three-outline-vertical</AIcon>
-          </AButton>
-        )
-      }
-    }
-  ];
-  const items = [
-    {
-      firstCol: "First row",
-      secondCol: "First row",
-      thirdCol: "First row"
-    },
-    {
-      firstCol: "Second row",
-      secondCol: "Second row",
-      thirdCol: "Second row"
-    },
-    {
-      firstCol: "Third row",
-      secondCol: "Third row",
-      thirdCol: "Third row"
-    }
-  ];
-  return (
-    <div
-        style={{
-          position: 'relative',
-          height: '300px',
-          overflow: 'hidden'
-        }}>
-        <ADataTable
-          tight
-          headers={headers}
-          items={items}
-          isRowSelected={isRowSelected}
-          className="mx-auto"
-          style={{maxWidth: 500}}
-        />
-        <ADrawer
-            ref={drawerRef}
-            position='absolute'
-            slideIn='right'
-            openWidth='200px'
-            closeBtnOnClick={() => setIsDrawerOpen(false)}
-            isOpen={isDrawerOpen}>
-          <ADrawerContent>
-            <p className='mt-0'>More details about the {drawerContent['firstCol']?.toLowerCase()}.</p>
-            <AButton onClick={() => setIsDrawerOpen(false)}>Close</AButton>
-          </ADrawerContent>
-        </ADrawer>
-    </div>
-  );
-}
-`}
-/>
-
-## Expandable Rows
-
-<Playground
-  code={`() => {
-  const [sort, setSort] = useState();
-  const headers = [
-    {
-      name: "alpha",
-      key: "a",
-      align: "start",
-      className: "text-capitalize",
-      sortable: true
-    },
-    {
-      name: "Bravo",
-      key: "b",
-      align: "start",
-      sortable: true,
-      sort: false
-    },
-    {
-      name: "Charlie",
-      key: "c",
-      sortable: true,
-      sort: (a, b) =>
-        a.toUpperCase() === b.toUpperCase()
-          ? 0
-          : a.toUpperCase() > b.toUpperCase()
-          ? 1
-          : -1
-    },
-    {
-      name: "Delta",
-      align: "center",
-      cell: {
-        component: (item) => (
-          <a href="/" target="_blank">
-            Details
-          </a>
-        )
-      }
-    }
-  ];
-  const items = [
-    {
-      a: 11.1,
-      b: 526,
-      c: "aardvark"
-    },
-    {
-      a: 8.9,
-      b: 611,
-      c: "Argentina"
-    },
-    {
-      a: 10.5,
-      b: 475,
-      c: "Zanzibar"
-    }
-  ];
-  const expandableConfig = {
-    component: (props) => (
-      <p>
-        Additional information about {props.a} and {props.b}.
-      </p>
-    )
-  };
-  return (
-    <ADataTable
-      headers={headers}
-      items={items}
-      expandable={expandableConfig}
-      className="mx-auto"
-      style={{maxWidth: 500}}
-      sort={sort}
-      onSort={(s) => setSort(s)}
-    />
-  );
-}
-`}
-/>
-
-## Conditional Expandable Rows
-
-<Playground
-  code={`() => {
-  const [sort, setSort] = useState();
-  const headers = [
-    {
-      name: "alpha",
-      key: "a",
-      align: "start",
-      className: "text-capitalize",
-      sortable: true
-    },
-    {
-      name: "Bravo",
-      key: "b",
-      align: "center",
-      sortable: true,
-      sort: false
-    },
-    {
-      name: "Charlie",
-      key: "c",
-      sortable: true,
-      sort: (a, b) =>
-        a.toUpperCase() === b.toUpperCase()
-          ? 0
-          : a.toUpperCase() > b.toUpperCase()
-          ? 1
-          : -1
-    },
-    {
-      name: "Delta",
-      align: "center",
-      cell: {
-        component: (item) => (
-          <a href="/" target="_blank">
-            Details
-          </a>
-        )
-      }
-    }
-  ];
-  const items = [
-    {
-      a: 11.1,
-      b: 526,
-      c: "aardvark"
-    },
-    {
-      a: 8.9,
-      b: 611,
-      c: "Argentina"
-    },
-    {
-      a: 10.5,
-      b: 475,
-      c: "Zanzibar"
-    }
-  ];
-  const expandableConfig = {
-    isRowExpandable: (rowData) => rowData.a > 10,
-    component: (props) => (
-      <p>
-        Column "a" of row {props.c} has a value greater than 10.
-      </p>
-    )
-  }
-  return (
-    <ADataTable
-      striped
-      tight
-      headers={headers}
-      items={items}
-      expandable={expandableConfig}
-      className="mx-auto"
-      style={{maxWidth: 500}}
-      sort={sort}
-      onSort={(s) => setSort(s)}
-    />
-  );
-}
-`}
-/>
-
-## Data Table Loading
+#### Data Table Loading
 
 <Playground
   code={`() => {
@@ -682,7 +664,7 @@ const headers = [
 
 />
 
-## Data Table Props
+## Component Props
 
 The `ADataTable` component inherits passed props.
 
@@ -691,3 +673,386 @@ The `ADataTable` component inherits passed props.
 ## Accessibility Notes
 
 When using infinite scroll within the `ADataTable`, it is recommended to set a maxinumum infinite scrolling threshold in your implementation so that screen readers and keyboard users can also have a good user experience. To continue loading more content after reaching the target threshold, you can use the "Load More" pattern by rendering a button that will then begin to explicitly load more table content with the user's consent.
+
+## Recipes
+
+#### Selecting Rows With Checkboxes
+
+<Playground
+  code={`function Example() {
+  const [allSelected, setAllSelected] = useState(false);
+  const [selected, setSelected] = useState({});
+  const isRowSelected = (rowItem) => selected[rowItem?.world];
+  const items = [
+    {
+      world: "World 1",
+      players: 1238,
+      location: "United States",
+      type: "Free",
+    },
+    {
+      world: "World 2",
+      players: 1238,
+      location: "United States",
+      type: "Members",
+    },
+    {
+      world: "World 34",
+      players: 189,
+      location: "United States",
+      type: "Free",
+    },
+    {
+      world: "World 51",
+      players: 231,
+      location: "United States",
+      type: "Members",
+    },
+    {
+      world: "World 81",
+      players: 72,
+      location: "United Kingdom",
+      type: "Free",
+    },
+  ];
+  const headers = [
+    {
+      style: {
+        width: '1%'
+      },
+      name: (
+        <div>
+          <ACheckbox
+            style={{
+              width: '1px !important'
+            }}
+            checked={allSelected}
+            className="ma-0 pa-0"
+            onChange={(e) => {
+              const isAllSelected = e.target.checked;
+              const toggledState = {};
+              for (const row of items) {
+                toggledState[row.world] = isAllSelected;
+              }
+              setSelected(toggledState);
+              setAllSelected(isAllSelected);
+            }}
+          />
+        </div>
+      ),
+      cell: {
+        component: (rowItem) => {
+          const world = rowItem.world;
+          return (
+            <ACheckbox
+              checked={selected[world]}
+              onChange={() => {
+                setSelected((state) => ({
+                  ...state,
+                  [world]: !state[world],
+                }));
+              }}
+            />
+          );
+        },
+      },
+    },
+    {
+      name: "World",
+      key: "world",
+      sortable: true,
+    },
+    {
+      name: "Players",
+      key: "players",
+      sortable: true,
+    },
+    {
+      name: "Location",
+      key: "location",
+    },
+    {
+      name: "Type",
+      key: "type",
+      sortable: true,
+    },
+  ];
+  return (
+    <ADataTable
+      isRowSelected={isRowSelected}
+      onRowClick={(rowItem) =>
+        setSelected((selectedState) => {
+          const key = rowItem["firstCol"];
+          return { ...selectedState, [key]: !selectedState[key] };
+        })
+      }
+      headers={headers}
+      items={items}
+    />
+  );
+}
+  `}
+/>
+
+#### Opening a Modal Within a Table Cell
+
+<Playground
+  code={`function Example() {
+  const [selectedWorld, setSelectedWorld] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  useEscapeKeydown({
+    isEnabled: isModalOpen,
+    onKeydown: () => setIsModalOpen(false),
+  });
+  const [sort, setSort] = useState("");
+  const headers = [
+    {
+      name: "World",
+      key: "world",
+      cell: {
+        component: (rowItem) => {
+          const world = rowItem.world;
+          const starStyles = {
+            stroke: rowItem.type === "Members" ? "#e0a419" : "#c1c6cc",
+            boxShadow: "",
+          };
+          return (
+            <AButton className='pa-0' tertiary onClick={() => {
+              setSelectedWorld(world);
+              setIsModalOpen(true);
+            }}>
+              <AIcon size={20} left style={starStyles}>
+                star
+              </AIcon>
+              {world}
+            </AButton>
+          );
+        },
+      },
+    },
+    {
+      name: "Players",
+      key: "players",
+      sortable: true,
+    },
+    {
+      name: "Location",
+      key: "location",
+    },
+    {
+      name: "Type",
+      key: "type",
+      sortable: true,
+    },
+  ];
+  const items = [
+    {
+      world: "World 1",
+      players: 1238,
+      location: "United States",
+      type: "Free",
+    },
+    {
+      world: "World 2",
+      players: 1238,
+      location: "United States",
+      type: "Members",
+    },
+    {
+      world: "World 34",
+      players: 189,
+      location: "United States",
+      type: "Free",
+    },
+    {
+      world: "World 51",
+      players: 231,
+      location: "United States",
+      type: "Members",
+    },
+    {
+      world: "World 81",
+      players: 72,
+      location: "United Kingdom",
+      type: "Free",
+    },
+  ];
+  return (
+    <>
+      <ADataTable
+        headers={headers}
+        items={items}
+        sort={sort}
+        onSort={setSort}
+        striped
+      />
+      <AModal aria-labelledby="modal-title" isOpen={isModalOpen} small>
+        <APanel>
+          <APanelHeader>
+            <APanelTitle id="modal-title">World Select</APanelTitle>
+            <AButton tertiaryAlt icon onClick={() => setIsModalOpen(false)}>
+              <AIcon>x</AIcon>
+            </AButton>
+          </APanelHeader>
+          <APanelBody>
+            Are you sure you want to enter {selectedWorld}?
+          </APanelBody>
+          <APanelFooter>
+            <AButton
+              onClick={() => setIsModalOpen(false)}
+              secondary
+              className="mr-2"
+            >
+              Cancel
+            </AButton>
+            <AButton onClick={() => setIsModalOpen(false)}>Enter</AButton>
+          </APanelFooter>
+        </APanel>
+      </AModal>
+    </>
+  );
+}
+`}
+/>
+
+#### Opening a Drawer Within a Table Cell
+
+<Playground
+  code={`function Example() {
+  const [selectedRowData, setSelectedRowData] = useState({});
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  useEscapeKeydown({
+    isEnabled: isDrawerOpen,
+    onKeydown: () => setIsDrawerOpen(false),
+  });
+  const [sort, setSort] = useState("");
+  const headers = [
+    {
+      name: "World",
+      key: "world",
+      cell: {
+        component: (rowItem) => {
+          const world = rowItem.world;
+          const starStyles = {
+            stroke: rowItem.type === "Members" ? "#e0a419" : "#c1c6cc",
+            boxShadow: "",
+          };
+          return (
+            <div className="d-flex align-center">
+              <AIcon size={20} left style={starStyles}>
+                star
+              </AIcon>
+              {world}
+            </div>
+          );
+        },
+      },
+    },
+    {
+      name: "Players",
+      key: "players",
+      sortable: true,
+    },
+    {
+      name: "Location",
+      key: "location",
+    },
+    {
+      name: "Type",
+      key: "type",
+      sortable: true,
+    },
+    {
+      name: "Learn More",
+      key: "learn",
+      sortable: false,
+      cell: {
+        component: (rowItem) => {
+          return (
+            <AButton
+              medium
+              tertiary
+              onClick={() => {
+                setSelectedRowData(rowItem);
+                setIsDrawerOpen(true);
+              }}
+            >
+              Learn More
+            </AButton>
+          );
+        },
+      },
+    },
+  ];
+  const items = [
+    {
+      world: "World 1",
+      players: 1238,
+      location: "United States",
+      type: "Free",
+      activity: "speedrunning",
+    },
+    {
+      world: "World 2",
+      players: 1238,
+      location: "United States",
+      type: "Members",
+      activity: "trading",
+    },
+    {
+      world: "World 34",
+      players: 189,
+      location: "United States",
+      type: "Free",
+      activity: "group ironman",
+    },
+    {
+      world: "World 51",
+      players: 231,
+      location: "United States",
+      type: "Members",
+      activity: "speedrunning",
+    },
+    {
+      world: "World 81",
+      players: 72,
+      location: "United Kingdom",
+      type: "Free",
+      activity: "questing",
+    },
+  ];
+  return (
+    <>
+      <ADataTable
+        headers={headers}
+        items={items}
+        sort={sort}
+        onSort={setSort}
+        striped
+      />
+      <ADrawer
+        isOpen={isDrawerOpen}
+        closeBtnOnClick={() => setIsDrawerOpen(false)}
+        slideIn='right'
+        aria-labelledby="drawer-title"
+        asModal={false}
+        style={{ zIndex: "99" }}
+      >
+        <ADrawerContent>
+          <h3>{selectedRowData.world}</h3>
+          <p>
+            {selectedRowData.world}'s server is located in the{" "}
+            {selectedRowData.location}. Players primarily use this server for{" "}
+            {selectedRowData.activity}.
+          </p>
+          <AAlert dismissable={false}>
+            This server is at{" "}
+            {Math.round((selectedRowData.players / 2000) * 100)}% capacity
+          </AAlert>
+        </ADrawerContent>
+      </ADrawer>
+    </>
+  );
+}
+  `}
+/>

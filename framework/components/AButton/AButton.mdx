@@ -17,6 +17,7 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
 <Playground
   withTwoPanes
   code={`<AButton
+  medium
   onClick={() => alert("Hello world!")}>
   Button
 </AButton>`}
@@ -26,22 +27,22 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
 
 <Playground
   code={`<>
-  <AButton primary className="mr-2">
+  <AButton medium primary className="mr-2">
     Button
   </AButton>
-  <AButton secondary className="mr-2">
+  <AButton medium secondary className="mr-2">
     Button
   </AButton>
-  <AButton tertiary className="mr-2">
+  <AButton medium tertiary className="mr-2">
     Button
   </AButton>
-  <AButton tertiaryAlt className="mr-2">
+  <AButton medium tertiaryAlt className="mr-2">
     Button
   </AButton>
-  <AButton destructive className="mr-2">
+  <AButton medium destructive className="mr-2">
     Button
   </AButton>
-  <AButton destructive secondary>
+  <AButton medium destructive secondary>
     Button
   </AButton>
 </>
@@ -70,11 +71,11 @@ To render a button with an icon, render `<AIcon />` to either the left or right 
 
 <Playground
   code={`<div className='d-flex align-center'>
-  <AButton className="mr-2">
+  <AButton medium className="mr-2">
     <AIcon left>pencil-simple</AIcon>
     Edit
   </AButton>
-  <AButton secondary className="mr-2">
+  <AButton medium secondary className="mr-2">
     Save
     <AIcon right>save</AIcon>
   </AButton>
@@ -92,7 +93,7 @@ To render a button with just an icon, pass the `icon` prop to the button to indi
       [variant]: true,
     };
     return (
-      <AButton icon {...variantProp} className="mr-2" key={variant}>
+      <AButton medium icon {...variantProp} className="mr-2" key={variant}>
         <AIcon>sync</AIcon>
       </AButton>
     );
@@ -107,10 +108,10 @@ If the `href` property is used, the component will render as an HTML anchor.
 
 <Playground
   code={`<>
-  <AButton href="https://www.cisco.com" className="mr-2">
+  <AButton medium href="https://www.cisco.com" className="mr-2">
     Launch Cisco.com
   </AButton>
-  <AButton href="https://www.oldschool.runescape.com" secondary>
+  <AButton medium href="https://www.oldschool.runescape.com" secondary>
     Launch Nostalgia
   </AButton>
 </>

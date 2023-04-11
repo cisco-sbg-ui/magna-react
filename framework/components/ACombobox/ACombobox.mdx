@@ -254,6 +254,9 @@ In the example below, we add content that will be rendered between the selectabl
           <AListItem
             onClick={() => {
               const response = prompt("Name: ");
+              if (!response) {
+                return;
+              }
               setFilteredItems([...filteredItems, response]);
             }}
           >
@@ -340,7 +343,7 @@ Sometimes, the default options rendered within `ACombobox` might not be enough. 
 `}
 />
 
-## Combobox Props
+## Component Props
 
 The `ACombobox` component inherits passed props.
 
