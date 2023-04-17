@@ -187,6 +187,8 @@ const ASelect = forwardRef(
       return newItem;
     };
 
+    const ruleKeys = rules ? rules.map((r) => r.key) : [];
+
     const validate = (testValue = selectedItem) => {
       if (rules || required) {
         let workingRules = [];
@@ -194,9 +196,10 @@ const ASelect = forwardRef(
           workingRules = [...rules];
         }
 
-        if (required) {
+        if (required && !ruleKeys.includes("required")) {
           workingRules = [
             {
+              key: "required",
               test: (v) => {
                 if (typeof testValue === "string") {
                   return !!v || `${label ? label + " is r" : "R"}equired`;

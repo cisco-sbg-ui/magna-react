@@ -250,6 +250,43 @@ The `ATextInput` component inherits passed props.
 `}
 />
 
+## Skip internal validation rules
+
+Override internal validation rules by specifying a `key` on the rule. Valid keys [`required`, `min`, `max`].
+
+<Playground
+  code={`() => {
+  const [value, setValue] = useState("");
+  return (
+    <AContainer>
+      <ARow>
+        <ACol>
+          <h3>Required Field</h3>
+          <ATextInput
+            label="Name"
+            onChange={(e) => {
+              setValue(e.target.value);
+            }}
+            placeholder="Firstname Lastname"
+            value={value}
+            required
+            maxLength={50}
+            hint="Your name"
+            rules={[
+              {
+              key: "required",
+                test: (value) => !!value || "This field is required, but show as a warning for now",
+                level: "warning"
+              }]}
+          />
+        </ACol>
+      </ARow>
+  </AContainer>
+  );
+}
+`}
+/>
+
 ## States
 
 <Playground

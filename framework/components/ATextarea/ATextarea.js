@@ -111,6 +111,8 @@ const ATextarea = forwardRef(
       input.style.height = Math.max(minHeight, height) + "px";
     };
 
+    const ruleKeys = rules ? rules.map((r) => r.key) : [];
+
     const validate = (testValue = value) => {
       if (rules || required) {
         let workingRules = [];
@@ -118,7 +120,7 @@ const ATextarea = forwardRef(
           workingRules = [...rules];
         }
 
-        if (required) {
+        if (required && !ruleKeys.includes("required")) {
           workingRules = [
             {
               test: (v) => !!v || `${label ? label + " is r" : "R"}equired`,
