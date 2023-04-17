@@ -2,46 +2,70 @@
 name: Date Pickers**
 route: /components/date-picker
 components: ADatePicker, useDateRange
+title: ADatePicker
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/ADatePicker
 ---
-
-# Date Picker
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {ADatePicker} from "@cisco-sbg-ui/magna-react";
-```
 
 ## Usage
 
+### Import
+
+<ComponentImport components={["ADataTable", "useADateRange"]} />
+
+### Usage
+
 <Playground
-  code={`() => {
-  const [date, setDate] = useState(new Date(2021, 0, 14));
+  withTwoPanes
+  code={`function Example() {
+  const [date, setDate] = useState(new Date());
   return (
-    <ADatePicker value={date} onChange={(date) => setDate(date)} />
-  );
+    <ADatePicker
+      value={date}
+      onChange={(date) => setDate(date)}
+    />
+  )
 }
 `}
 />
 
-### With Minimum and Maximum Dates
+#### Date Ranges
+
+For rendering a date range, pass an array to the `value` prop instead, The index at `0` should represent the range's starting date, and the index at `1` should represent the range's ending date, i.e., `[earlierDate, laterDate]`. Visually, you can think of the tuple structure as `[leftDate, rightDate]`.
+
+> Please note that it is up to you to ensure the dates passed to the `value` prop maintain the `[earlierDate, laterDate]` tuple structure. `ADatePicker` does _not_ automatically sort the dates.
+>
+> While this may seem cumbersome, it keeps the range logic flexible for a variety of different use-cases, and doesn't lock the range selection logic to one-specific implementation.
 
 <Playground
-  code={`() => {
-  const earliestDay = new Date(2022, 2, 13);
-  const latestDay = new Date(earliestDay);
-  latestDay.setDate(earliestDay.getDate() + 13);
-  const [date, setDate] = useState(earliestDay);
+  code={`function Example() {
+  const [range, setRange] = useState([]);
   return (
-    <ADatePicker value={date} onChange={(date) => setDate(date)} minDate={earliestDay} maxDate={latestDay}/>
+    <ADatePicker
+      value={range}
+      onChange={(incomingDate) =>
+        setRange(([start, end]) => {
+          if ((start && end) || (!start && !end)) {
+            // Reset. Since we don't yet have the second selection,
+            // place the incoming date as the starting date.
+            return [incomingDate];
+          } else {
+            // Now that we have the second selection, sort
+            // it relative to the one we assumed was earlier
+            return [start, incomingDate].sort(
+              (a, b) => Date.parse(a) - Date.parse(b)
+            );
+          }
+        })
+      }
+    />
   );
 }
-`}
+  `}
 />
 
-## Date Range
+The example above implements logic such that the second selection will _always_ complete the date range, regardless of its position relative to the firsrt seleciton, e.g., selecting January 1 _after_ having first selected January 24 would set the range as Janurary 1 - Janurary 24.
+
+If this is the type of logic you'd like to use, too, then you can save the burden of writing the logic yourself, and instead, import the `useADateRange` hook, which contains `value` and `onChange` props that already have the logic baked into them, so long as you pass them to `ADatePicker`:
 
 <Playground
   code={`() => {
@@ -53,50 +77,161 @@ import {ADatePicker} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-### Date Range with Initial Range
+To set the initial range with `useADateRange`, pass the array to the `initialRange` configuration option:
 
 <Playground
   code={`() => {
-  const { value, onChange, } = useADateRange([new Date(2022, 2, 28), new Date(2022, 3, 5)]);
-  const [firstSelection, secondSelection] = value;
-  // You can destructure the values from useADateRange to use ...
-  // ... the date picker's range value in your component
-  return (
-    <>
-      <ADatePicker value={value} onChange={onChange} />
-        <p aria-live="polite">
-          Selected range: <i>{firstSelection && firstSelection.toLocaleDateString()} - {secondSelection && secondSelection.toLocaleDateString()}</i>
-        </p>
-    </>
-  );
-}
-`}
-/>
-
-### Date Range with Maximum Days
-
-<Playground
-  code={`() => {
-  const { value, ...datePickerProps } = useADateRange({
-    initialRange: [new Date(2022, 2, 14), new Date(2022, 2, 16)],
-    maxDays: 3
+  const today = new Date();
+  const weekFromToday = new Date(today);
+  weekFromToday.setDate(today.getDate() + 7);
+  const { value, onChange, } = useADateRange({
+    initialRange: [today, weekFromToday]
   });
-  const [firstSelection, secondSelection] = value;
-  // Alternatively, you can spread out the remaining values ...
-  // ... to be passed to the date picker
   return (
-    <>
-      <ADatePicker value={value} {...datePickerProps} />
-      <p aria-live="polite">
-        Selected range: <i>{firstSelection && firstSelection.toLocaleDateString()} - {secondSelection && secondSelection.toLocaleDateString()}</i>
-      </p>
-    </>
+    <ADatePicker value={value} onChange={onChange} />
   );
 }
 `}
 />
 
-## Date Picker Props
+#### Restricting Dates
+
+To limit the days in which a user can select, pass the `minDate` and/or `maxDate` props. If only one is supplied, it was act as the floor or ceiling respectively.
+
+In the example below, the user is only permitted to select a date within a week from the current date.
+
+<Playground
+  code={`function Example() {
+  const today = new Date();
+  const weekFromToday = new Date(today);
+  weekFromToday.setDate(today.getDate() + 7);
+  const [date, setDate] = useState(today);
+  return (
+    <ADatePicker
+      value={date}
+      onChange={(date) => setDate(date)}
+      minDate={today}
+      maxDate={weekFromToday}
+    />
+  );
+}
+`}
+/>
+
+To do the same with a range:
+
+<Playground
+  code={`function Example() {
+  const today = new Date();
+  const weekFromToday = new Date(today);
+  weekFromToday.setDate(today.getDate() + 7);
+  const { value, onChange } = useADateRange();
+  return (
+    <ADatePicker
+      value={value}
+      onChange={onChange}
+      minDate={today}
+      maxDate={weekFromToday}
+    />
+  );
+}
+`}
+/>
+
+##### Restricting a range's length
+
+Sometimes, you might want to restrict the number of days the user can select in the range, like if you are trying to prevent a user from downloading a full months of log data that could potentially overwhelm the server on such a request.
+
+This is possible by dynamically setting the `minDate` and `maxDate` props after the user's first range selection. Since that can be non trival to implement, it's also a configuration option in `useADateRange`:
+
+> As of latest Magna React release, it is not possible to have both static and dynamic date restrictions. For example, you cannot limit the user's date range to be within the month of March **and** also restrict their range selection to 7 days.
+>
+> If this is something you need, please consider [opening an feature request in GitHub](https://github.com/cisco-sbg-ui/magna-react/issues/new?assignees=&labels=&template=feature_request.md&title=).
+
+<Playground
+  code={`function Example{
+  const today = new Date();
+  const weekFromToday = new Date(today);
+  weekFromToday.setDate(today.getDate() + 7);
+  const { value, onChange, minDate, maxDate } = useADateRange({
+    initialRange: [],
+    maxDays: 7 // Will restrict second selection to 6 days before/after the first selection
+  });
+  return (
+    <ADatePicker
+      value={value}
+      onChange={onChange}
+      minDate={minDate}
+      maxDate={maxDate}
+    />
+  );
+}
+`}
+/>
+
+Or, with your own logic:
+
+<Playground
+  code={`function Example() {
+  const MAX_RANGE = 3;
+  // Usually, you'd define reducer outside of the component, but we are limited
+  // in the docs example playground.
+  const reducer = useCallback(function rangeReducer(state, action) {
+    const { type, payload } = action;
+    switch (type) {
+      case "SET_NEW_RANGE":
+        // Initialize the range restriction
+        const base = new Date(payload);
+        const minDate = new Date(base);
+        const maxDate = new Date(base);\n
+        minDate.setDate(base.getDate() - (MAX_RANGE - 1));
+        maxDate.setDate(base.getDate() + (MAX_RANGE - 1));\n
+        return {
+          ...state,
+          range: [payload],
+          minDate,
+          maxDate,
+        };\n
+      case "SET_FINAL_RANGE":
+        const sorted = [payload, state.range[0]].sort(
+          (a, b) => Date.parse(a) - Date.parse(b)
+        );\n
+        return {
+          ...state,
+          range: sorted,
+          minDate: null,
+          maxDate: null,
+        };\n
+      default:
+        return { ...state };
+    }
+  }, []);\n
+  const [state, dispatch] = useReducer(reducer, {
+    range: [],
+    minDate: null,
+    maxDate: null,
+  });\n
+  const handleChange = (incomingDate) => {
+    const [start, end] = state.range;
+    const isPickerEmpty = !start && !end;
+    const isPickerFull = start && end;
+    const type =
+      isPickerEmpty || isPickerFull ? "SET_NEW_RANGE" : "SET_FINAL_RANGE";\n
+    dispatch({ type, payload: incomingDate });
+  };\n
+  return (
+    <ADatePicker
+      value={state.range}
+      onChange={handleChange}
+      minDate={state.minDate}
+      maxDate={state.maxDate}
+    />
+  );
+}
+`}
+/>
+
+## Component Props
 
 The `ADatePicker` component inherits passed props.
 
