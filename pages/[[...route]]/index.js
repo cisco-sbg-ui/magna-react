@@ -71,7 +71,7 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
                 <Sidebar currentDoc={currentDoc} menus={menus} />
               </ACol>
               <ACol
-                className="py-4 px-6"
+                className="py-4 px-12"
                 style={{
                   maxWidth: "calc(100vw - 347px - 275px)",
                   width: "100%"
@@ -127,6 +127,7 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
                             blockquote: (props) => {
                               return (
                                 <AtomicReactComponents.AAlert
+                                  fitContentWidth
                                   className="mb-4"
                                   dismissable={false}
                                 >
