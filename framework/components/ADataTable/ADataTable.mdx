@@ -52,7 +52,55 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
     <ADataTable
       headers={headers}
       items={items}
+    />
+  );
+}
+`}
+/>
+
+#### Styling
+
+You can optionally render the table with alternating stripes, as well as compact the table as a whole.
+
+<Playground
+  code={`function Example() {
+  const headers = [
+    {
+      name: "World",
+      key: "world",
+    },
+    {
+      name: "Players",
+      key: "players",
+    },
+    {
+      name: "Location",
+      key: "location",
+    },
+  ];
+  const items = [
+    {
+      world: "World 1",
+      players: 1238,
+      location: "United States",
+    },
+    {
+      world: "World 34",
+      players: 189,
+      location: "United States",
+    },
+    {
+      world: "World 81",
+      players: 72,
+      location: "United Kingdom",
+    },
+  ];
+  return (
+    <ADataTable
+      headers={headers}
+      items={items}
       striped
+      tight
     />
   );
 }
@@ -336,7 +384,7 @@ Sometimes, you might only want certain table rows to be expandable.
   `}
 />
 
-#### Seletable Rows
+#### Selectable Rows
 
 To make row items selectable, pass both the `onRowClick` and `isRowSelected` props to `ADataTable`. Both of these props expect a function that will be called with the row item's data so that you can return a truthy or falsy value to indicate the selected state.
 
@@ -502,166 +550,42 @@ To render custom content inside a data header cell, you can configure the `name`
 `}
 />
 
-#### With a Checkbox
-
-You can also pass a React element to a header's `name` key in order to handle more advanced use-cases, like when selecting all items in the table.
+#### Render Table Cells as Loading
 
 <Playground
-  code={`() => {
-  const [allSelected, setAllSelected] = useState(false);
-  const [selected, setSelected] = useState({
-    "First row": false,
-    "Second row": false,
-    "Third row": false
-  });
-  const isRowSelected = (rowItem) => selected[rowItem['firstCol']];
+  code={`function Example() {
   const headers = [
     {
-      name: (
-        <ACheckbox
-            checked={allSelected}
-            className='ma-0 pa-0'
-            onChange={(e) => {
-              const isAllSelected = e.target.checked;
-              const toggledState = {};
-              for (const key in selected) {
-                toggledState[key] = isAllSelected;
-              }
-              setSelected(toggledState);
-              setAllSelected(isAllSelected);
-            }}
-        >
-          {allSelected ? 'Unselect' : 'Select'} all
-        </ACheckbox>
-      ),
-      cell: {
-        component: (rowItem) => {
-          const rowId = rowItem['firstCol'];
-          return (
-            <ACheckbox
-              checked={selected[rowId]}
-              onChange={() => {
-                setSelected(selectedState => ({
-                  ...selectedState,
-                  [rowId]: !selectedState[rowId]
-                }));
-              }}
-            />
-          )
-        },
-      },
-      key: "itemSelectionCol",
-      align: "start",
-      className: "text-capitalize",
-      sortable: false
+      name: "World",
+      key: "world",
     },
     {
-      name: "First Col",
-      key: "firstCol",
-      align: "start",
-      className: "text-capitalize",
-      sortable: false
+      name: "Players",
+      key: "players",
     },
     {
-      name: "Second Col",
-      key: "secondCol",
-      align: "start",
-      className: "text-capitalize",
-      sortable: false
+      name: "Location",
+      key: "location",
     },
-    {
-      name: "Third Col",
-      key: "thirdCol",
-      align: "start",
-      className: "text-capitalize",
-      sortable: false
-    }
   ];
   const items = [
     {
-      firstCol: "First row",
-      secondCol: "First row",
-      thirdCol: "First row"
+      world: "World 1",
+      players: 1238,
+      location: "United States",
     },
     {
-      firstCol: "Second row",
-      secondCol: "Second row",
-      thirdCol: "Second row"
+      cellLoading: true,
     },
     {
-      firstCol: "Third row",
-      secondCol: "Third row",
-      thirdCol: "Third row"
-    }
+      cellLoading: true,
+    },
   ];
   return (
-    <ADataTable
-      isRowSelected={isRowSelected}
-      onRowClick={(rowItem) => setSelected(selectedState => {
-        const key = rowItem['firstCol'];
-        return { ...selectedState, [key]: !selectedState[key] };
-      })}
-      tight
-      headers={headers}
-      items={items}
-      className="mx-auto"
-      style={{maxWidth: 500}}
-    />
+    <ADataTable headers={headers} items={items} />
   );
 }
-`}
-/>
-
-#### Data Table Loading
-
-<Playground
-  code={`() => {
-const headers = [
-    {
-      name: "Alpha",
-      key: "a",
-      align: "end"
-    },
-    {
-      name: "Bravo",
-      key: "b",
-      align: "center"
-    },
-    {
-      name: "Charlie",
-      key: "c"
-    }
-  ];
-  const items = [
-    {
-      a: 11.1,
-      b: 526,
-      c: "aardvark"
-    },
-    {
-      a: 8.9,
-      b: 611,
-      c: "Argentina"
-    },
-    {
-      cellLoading: true
-    }, {
-      cellLoading: true
-    }, {
-      cellLoading: true
-    }
-  ];
-  return (
-    <ADataTable
-      tight
-      headers={headers}
-      items={items}
-      className="mx-auto"
-    />
-  );
-}`
-}
-
+  `}
 />
 
 ## Component Props
@@ -1045,7 +969,7 @@ When using infinite scroll within the `ADataTable`, it is recommended to set a m
             {selectedRowData.location}. Players primarily use this server for{" "}
             {selectedRowData.activity}.
           </p>
-          <AAlert dismissable={false}>
+          <AAlert level={(selectedRowData.players / 2000) >= .5 ? 'warning' : 'info'} dismissable={false}>
             This server is at{" "}
             {Math.round((selectedRowData.players / 2000) * 100)}% capacity
           </AAlert>
