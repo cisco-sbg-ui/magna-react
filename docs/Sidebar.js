@@ -1,16 +1,10 @@
 import React, {useEffect, useRef, useState} from "react";
 import Link from "next/link";
 
-import {
-  AButton,
-  ADrawer,
-  ADrawerContent,
-  AIcon,
-  ATree,
-  useATheme
-} from "../framework";
+import {ADrawer, ADrawerContent, useATheme} from "../framework";
 
 import "./Sidebar.scss";
+import SidebarTree from "./SidebarTree";
 
 const CustomLink = ({children, href, ...rest}) => {
   return (
@@ -36,6 +30,7 @@ const Sidebar = ({menus, currentDoc}) => {
       {
         content: "Getting Started",
         contentComponent: CustomLink,
+        customIcon: "information",
         contentProps: {
           href: "/"
         },
@@ -44,6 +39,7 @@ const Sidebar = ({menus, currentDoc}) => {
       {
         content: "Changelog",
         contentComponent: CustomLink,
+        customIcon: "list-bullets",
         contentProps: {
           href: "/changelog"
         },
@@ -126,7 +122,7 @@ const Sidebar = ({menus, currentDoc}) => {
         }}
         className="pa-0"
       >
-        <ATree
+        <SidebarTree
           className={`${styleColor} px-4`}
           hoverable
           activatable
