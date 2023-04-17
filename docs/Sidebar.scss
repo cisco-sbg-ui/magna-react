@@ -7,7 +7,7 @@
 
 /* Chrome, Edge, and Safari */
 #sidebar::-webkit-scrollbar {
-  width: 16px;
+  width: 12px;
   outline: none;
   border: none;
 }
@@ -20,5 +20,4 @@
 
 #sidebar::-webkit-scrollbar-thumb {
   outline: none;
-  height: 5px;
 }
