@@ -444,6 +444,13 @@ $btn-transition: color $transition-duration--extra-fast
     stroke: currentColor;
   }
 
+  .a-icon.a-icon--dots-three,
+  .a-icon.a-icon--dots-six,
+  .a-icon.a-icon--dots-nine {
+    stroke: unset;
+    fill: currentColor;
+  }
+
   &:focus,
   &:hover {
     text-decoration: none !important;
