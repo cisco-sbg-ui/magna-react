@@ -192,16 +192,9 @@ const Sidebar = ({
         style={{
           transition: "all 0.5s ease"
         }}
-<<<<<<< HEAD
         className="pa-0">
         <SidebarTree
           className={`${styleColor}`}
-=======
-        className="pa-0"
-      >
-        <SidebarTree
-          className={`${styleColor} px-4`}
->>>>>>> 725c65f (docs: adjust sidebar tree styling)
           hoverable
           activatable
           expandOnClick
