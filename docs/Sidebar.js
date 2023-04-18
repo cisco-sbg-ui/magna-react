@@ -107,10 +107,9 @@ const Sidebar = ({menus, currentDoc}) => {
       isOpen={true}
       id="sidebar"
       className={`root-sidebar py-4 sidebar`}
+      openWidth={300 - 12}
       style={{
-        position: "fixed",
         height: "100%",
-        width: 330,
         overflowY: "auto",
         background: "inherit",
         boxShadow: "none"

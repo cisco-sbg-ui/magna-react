@@ -71,7 +71,7 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
           <AContainer fluid className="pa-0">
             <Header />
             <ARow noGutters style={{width: "100%"}}>
-              <ACol style={{maxWidth: 330}}>
+              <ACol className="px-12" style={{maxWidth: "350px"}}>
                 <Sidebar currentDoc={currentDoc} menus={menus} />
               </ACol>
               <ACol
@@ -240,7 +240,7 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
                   </div>
                 </AMount>
               </ACol>
-              <ACol style={{maxWidth: 275}}>
+              <ACol style={{maxWidth: 375}} className="px-12">
                 <TableOfContents
                   setActiveSection={setActiveSection}
                   activeSection={activeSection}
