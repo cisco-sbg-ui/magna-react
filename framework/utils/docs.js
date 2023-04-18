@@ -26,7 +26,7 @@ export const getNestedChildrenText = (children) => {
 export const removeTextFromChildren = (children, text) => {
   return Children.map(children, (child) => {
     if (!isValidElement(child) && typeof child === "string") {
-      let sanitized = child.replace(text, "");
+      const sanitized = child.replace(text, "");
       return sanitized;
     } else if (child?.props?.children) {
       return cloneElement(child, {
