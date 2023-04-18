@@ -28,6 +28,10 @@ import Header from "../../docs/Header";
 import PropsHelper from "../../docs/PropsHelper";
 import TableOfContents from "../../docs/TableOfContents";
 import DocsPageContext from "../../docs/DocsPageContext";
+import {
+  getNestedChildrenText,
+  removeTextFromChildren
+} from "../../framework/utils/docs";
 
 const components = {
   ...AtomicReactComponents,
@@ -125,9 +129,33 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
                               );
                             },
                             blockquote: (props) => {
+                              const {combined} = getNestedChildrenText(
+                                props.children
+                              );
+
+                              let level;
+
+                              if (combined.includes(":warning:")) {
+                                level = "warning";
+                              } else if (combined.includes(":danger:")) {
+                                level = "danger";
+                              } else if (combined.includes("success")) {
+                                level = "success";
+                              } else {
+                                level = "info";
+                              }
+
+                              const alertChildren = level
+                                ? removeTextFromChildren(
+                                    props.children,
+                                    `:${level}:`
+                                  )
+                                : props.children;
+
                               return (
                                 <AtomicReactComponents.AAlert
                                   fitContentWidth
+                                  level={level}
                                   className="mb-4"
                                   dismissable={false}
                                 >
@@ -138,7 +166,7 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
                                       marginBottom: "-20px"
                                     }}
                                   >
-                                    {props.children}
+                                    {alertChildren}
                                   </span>
                                 </AtomicReactComponents.AAlert>
                               );
