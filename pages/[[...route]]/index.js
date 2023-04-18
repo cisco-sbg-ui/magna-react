@@ -154,20 +154,18 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
 
                               return (
                                 <AtomicReactComponents.AAlert
-                                  fitContentWidth
                                   level={level}
-                                  className="mb-4"
+                                  className="d-flex mb-4 mt-4"
                                   dismissable={false}
                                 >
-                                  <span
+                                  <div
                                     style={{
-                                      display: "block",
                                       marginTop: "-20px",
                                       marginBottom: "-20px"
                                     }}
                                   >
                                     {alertChildren}
-                                  </span>
+                                  </div>
                                 </AtomicReactComponents.AAlert>
                               );
                             },
