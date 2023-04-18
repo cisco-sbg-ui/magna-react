@@ -2,58 +2,37 @@
 name: Dialogs
 route: /components/dialog
 components: ADialog
+title: ADialog
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/ADialog
 ---
-
-# Dialogs
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {ADialog} from "@cisco-sbg-ui/magna-react";
-```
-
-It is necessary for `ADialog` to be a descendant of `AApp` for mounting.
 
 ## Usage
 
+> :danger: This component has been deprecated and will no longer be maintained in favor of [`AModal`](/components/modal)
+
+### Import
+
+<ComponentImport components={"ADialog"} />
+
+### Usage
+
+> It is necessary for `ADialog` to be a descendant of `AApp` for mounting.
+
 <Playground
-  code={`() => {
-  const [open1, setOpen1] = useState(false);
-  const [open2, setOpen2] = useState(false);
+  code={`function Example() {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <div style={{minHeight: 500}}>
-      <AButton onClick={() => setOpen1(true)}>Open Dialog 1</AButton>
-      <ADialog onClickOutside={() => setOpen1(false)} open={open1}>
-        <APanel type="dialog">
+    <div>
+      <AButton onClick={() => setIsOpen(true)}>Open Dialog 1</AButton>
+      <ADialog onClickOutside={() => setIsOpen(false)} open={isOpen}>
+        <APanel type='dialog'>
           <APanelHeader>
-            <APanelTitle>Feature: Panels</APanelTitle>
-            <AButton onClick={() => setOpen1(false)} tertiaryAlt icon>
-              <AIcon>close</AIcon>
+            <APanelTitle>Hello World!</APanelTitle>
+            <AButton tertiaryAlt icon onClick={() => setIsOpen(false)}>
+              <AIcon>x</AIcon>
             </AButton>
           </APanelHeader>
-          <APanelBody>
-            Panels create a sense of discreteness in the content.
-          </APanelBody>
-          <APanelFooter>Use panels today!</APanelFooter>
-        </APanel>
-      </ADialog>
-      <AButton onClick={() => setOpen2(true)} className="ml-3">
-        Open Dialog 2
-      </AButton>
-      <ADialog onClickOutside={() => setOpen2(false)} open={open2}>
-        <APanel type="dialog">
-          <APanelHeader>
-            <APanelTitle>Feature: Panels</APanelTitle>
-            <AButton onClick={() => setOpen2(false)} tertiaryAlt icon>
-              <AIcon>close</AIcon>
-            </AButton>
-          </APanelHeader>
-          <APanelBody>
-            Panels create a sense of discreteness in the content.
-          </APanelBody>
-          <APanelFooter>Use panels today!</APanelFooter>
+          <APanelBody>A modal with a panel.</APanelBody>
         </APanel>
       </ADialog>
     </div>
@@ -62,13 +41,7 @@ It is necessary for `ADialog` to be a descendant of `AApp` for mounting.
 `}
 />
 
-## Dialog Props
-
-The `ADialog` component inherits passed props to the dialog content wrapper.
-
-<Props of="ADialog" />
-
-## Autofocused Child
+#### Autofocused Child
 
 <Playground
   code={`() => {
@@ -101,6 +74,12 @@ The `ADialog` component inherits passed props to the dialog content wrapper.
 }
 `}
 />
+
+## Component Props
+
+The `ADialog` component inherits passed props to the dialog content wrapper.
+
+<Props of="ADialog" />
 
 ## Accessibility Notes
 
