@@ -5,54 +5,95 @@ title: Getting Started
 sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary
 ---
 
-<AAlert>
-  **Components with Magnetic changes are marked with an \* for light only, \*\*
-  for light and dark**
-</AAlert>
+## Usage
 
-## About
+> :info: **Components with Magnetic changes are marked with an \* for light only, \*\*
+> for light and dark**
 
 Magna React is a fork of [Atomic React](https://atomic-react.security.cisco.com/).
 
-## Install
+#### Installation
 
 The package is available privately on GitHub Packages. `npm login` with the scope `@cisco-sbg-ui`. ([Read more here.](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry))
-
-```bash
-# npm
-npm i @cisco-sbg-ui/magna-react
-
-# pnpm
-pnpm add @cisco-sbg-ui/magna-react
-
-# yarn
-yarn add @cisco-sbg-ui/magna-react
-```
-
-### Content Security Policy
-
-If your website has a content security policy, in order for the fonts to load an entry will need to be added:
-
-`font-src https://brand-assets.security.cisco.com`
-
-## Sass Requirements
 
 The components import sass modules. The dart-sass (`sass` package) must be installed and integrated into your bundler. Recommended to use `sass@1.43.3` or greater.
 
 ```bash
 # npm
-npm install --save-dev sass
+npm i @cisco-sbg-ui/magna-react
+npm i -D sass
 
 # pnpm
-pnpm add sass --dev
+pnpm add @cisco-sbg-ui/magna-react
+pnpm add sass -D
 
 # yarn
-yarn add sass --dev
+yarn add @cisco-sbg-ui/magna-react
+yarn add sass -D
 ```
 
-### Optional Babel Preset and ESLint Config
+#### Content Security Policy
 
-The Babel preset **automatically imports** components. Add the following to your Babel configuration:
+If your website has a content security policy, in order for the fonts to load an entry will need to be added:
+
+`font-src https://brand-assets.security.cisco.com`
+
+## Automatic Component Imports
+
+Magna React comes with a Babel preset that automatically imports components, meaning you don't need to explicitly import them at the top of each file.
+
+#### Why?
+
+Given the compositional nature of Magna React components, the imports can add up quickly. For example, the accordion component alone exports a total of five components.
+
+So, with the Babel preset enabled, you can go from this:
+
+```jsx
+import React from "react";
+import {
+  AAccordion,
+  AAccordionPanel,
+  AAccordionHeader,
+  AAccordionHeaderTitle,
+  AAccordionBody
+} from "@cisco-sbg-ui/AButton";
+
+export default function () {
+  return (
+    <AAccordion>
+      <AAccordionPanel>
+        <AAccordionHeader>
+          <AAccordionHeaderTitle>Hello from title!</AAccordionHeaderTitle>
+        </AAccordionHeader>
+        <AAccordionBody>Hello world!</AAccordionBody>
+      </AAccordionPanel>
+    </AAccordion>
+  );
+}
+```
+
+To this:
+
+```jsx
+import React from "react";
+
+export default function () {
+  return (
+    <AAccordion>
+      <AAccordionPanel>
+        <AAccordionHeader>
+          <AAccordionHeaderTitle>Hello from title!</AAccordionHeaderTitle>
+        </AAccordionHeader>
+        <AAccordionBody>Hello world!</AAccordionBody>
+      </AAccordionPanel>
+    </AAccordion>
+  );
+}
+```
+
+#### Installation
+
+If you like the idea of auto imports, add the following to your Babel configuration:
 
 ```diff
 {
@@ -64,11 +105,24 @@ The Babel preset **automatically imports** components. Add the following to your
 }
 ```
 
-Without import statements, ESLint will complain about your source code. The magna-react ESLint plugin will take care of that. First install the ESLint plugin:
+> To use the babel preset and eslint config with `create-react-app`, use `craco`.
+>
+> For usage with `next`, use `next-transpile-modules`
 
-`npm i -D @cisco-sbg-ui/eslint-config-magna-react`
+However, without component import statements, ESLint will complain (as it should). To resolve the warnings, you can install the `eslint-config-magna-react` package and apply it to your ESLint configuration:
 
-Then add the following to your ESLint configuration:
+```bash
+# npm
+npm i -D @cisco-sbg-ui/eslint-config-magna-react
+
+# pnpm
+pnpm add @cisco-sbg-ui/eslint-config-magna-react -D
+
+# yarn
+yarn add @cisco-sbg-ui/eslint-config-magna-react -D
+```
+
+Now, add the following to your ESLint configuration:
 
 ```diff
 {
@@ -80,10 +134,6 @@ Then add the following to your ESLint configuration:
   ...
 }
 ```
-
-To use the babel preset and eslint config with `create-react-app`, use `craco`.
-
-For usage with `next`, use `next-transpile-modules`
 
 ## Contributions
 
