@@ -3,7 +3,6 @@ name: Drawers*
 route: /components/drawer
 components: ADrawer
 title: ADrawer
-usage: import { ADrawer } from '@cisco-sbg-ui/magna-react;
 sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/ADrawer
 ---
 
@@ -357,13 +356,11 @@ By default, `ADrawer` renders as a modal. To override this behavior, pass `ADraw
 
 ## Recipes
 
-### Application Toolbar
+#### Application Toolbar
 
 <Playground
   code={`function ApplicationToolbar() {
   const { currentTheme } = useATheme();
-  const bgColor =
-    currentTheme === "default" ? "white" : "mds-neutral--neutral-16";
   const toolbarRef = useRef();
   const [isOpen, setIsOpen] = useState(false);
   const [isSlim, setIsSlim] = useState(true);
@@ -372,6 +369,29 @@ By default, `ADrawer` renders as a modal. To override this behavior, pass `ADraw
     isEnabled: isOpen,
     onExit: () => setIsOpen(false),
   });
+  const toolbarItems = [
+    {
+      icon: isSlim ? "caret-right" : "caret-left",
+      onClick: () => setIsSlim((state) => !state),
+    },
+    {
+      icon: "envelope",
+      text: "Inbox",
+    },
+    {
+      icon: "upload-simple",
+      text: "Sent",
+    },
+    {
+      icon: "trash",
+      text: "Trash",
+    },
+    {
+      icon: "x",
+      onClick: () => setIsOpen(false),
+      text: "Close",
+    },
+  ];
   return (
     <>
       <AButton onClick={() => setIsOpen((prevState) => !prevState)}>
@@ -385,65 +405,39 @@ By default, `ADrawer` renders as a modal. To override this behavior, pass `ADraw
         isOpen={isOpen}
         slim={isSlim}
       >
-        <AList className={bgColor} style={{ border: "none" }}>
-          <AListItem
-            title={isSlim ? "Expand toolbar" : "Shrink toolbar"}
-            twoLine
-          >
-            <AListItemAvatar>
-              <AButton
-                className="white--text"
-                onClick={() => setIsSlim((prevState) => !prevState)}
-                icon
-              >
-                <AIcon>{isSlim ? "caret-right" : "caret-left"}</AIcon>
-              </AButton>
-            </AListItemAvatar>
-          </AListItem>
-          <AListItem twoLine>
-            <AListItemAvatar className="flex-shrink-0 mr-4">
-              <AButton className="white--text" icon>
-                <AIcon>envelope</AIcon>
-              </AButton>
-            </AListItemAvatar>
-            <AListItemContent>Inbox</AListItemContent>
-          </AListItem>
-          <AListItem twoLine>
-            <AListItemAvatar className="flex-shrink-0 mr-4">
-              <AButton className="white--text" icon>
-                <AIcon>upload-simple</AIcon>
-              </AButton>
-            </AListItemAvatar>
-            <AListItemContent>Sent</AListItemContent>
-          </AListItem>
-          <AListItem twoLine>
-            <AListItemAvatar className="flex-shrink-0 mr-4">
-              <AButton className="white--text" icon>
-                <AIcon>trash</AIcon>
-              </AButton>
-            </AListItemAvatar>
-            <AListItemContent>Trash</AListItemContent>
-          </AListItem>
-          <AListItem title="Close toolbar" twoLine>
-            <AListItemAvatar className="flex-shrink-0 mr-4">
-              <AButton
-                className="coral--burnt-1 white--text"
-                onClick={() => setIsOpen(false)}
-                icon
-              >
-                <AIcon>x</AIcon>
-              </AButton>
-            </AListItemAvatar>
-            <AListItemContent>Close</AListItemContent>
-          </AListItem>
+        <AList
+          className={
+            currentTheme === "default" ? "white" : "mds-neutral--neutral-16"
+          }
+          style={{ border: "none" }}
+        >
+          {toolbarItems.map(({ icon, text, onClick, ...rest }) => (
+            <AListItem twoLine key={text} {...rest}>
+              <AListItemAvatar className="flex-shrink-0 mr-4">
+                <AButton
+                  onClick={onClick}
+                  className={
+                    text === "Close"
+                      ? "coral--burnt-1 white--text"
+                      : "white--text"
+                  }
+                  icon
+                >
+                  <AIcon>{icon}</AIcon>
+                </AButton>
+              </AListItemAvatar>
+              {text && <AListItemContent>{text}</AListItemContent>}
+            </AListItem>
+          ))}
         </AList>
       </ADrawer>
     </>
   );
-  }`}
+}
+  `}
 />
 
-### Additional Details Fly-out
+#### Additional Details Fly-out
 
 <Playground
   code={`function FlyOut() {
@@ -496,7 +490,7 @@ By default, `ADrawer` renders as a modal. To override this behavior, pass `ADraw
   }`}
 />
 
-### Persistent Sidebar
+#### Persistent Sidebar
 
 <Playground
   code={`function Sidebar() {
