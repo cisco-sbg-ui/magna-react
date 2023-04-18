@@ -5,7 +5,7 @@ const Header = (props) => {
   const {isDark} = useATheme();
   return (
     <ARow
-      className={`px-6 py-2 ${
+      className={`px-12 py-2 ${
         isDark ? "mds-neutral--neutral-16" : "mds-neutral--neutral-1"
       }`}
       noGutters
