@@ -2,56 +2,62 @@
 name: EmptyStates
 route: /components/emptyState
 components: AEmptyState
+title: AEmptyState
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/AEmptyState
 ---
-
-# EmptyStates
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {AEmptyState} from "@cisco-sbg-ui/magna-react";
-```
 
 ## Usage
 
+### Import
+
+<ComponentImport components="AEmptyState" />
+
+### Usage
+
 <Playground
-  code={`<AEmptyState variant="positive" label="Create a Thing" message="Message about what this page is for and what the user can do here."/>`}
+  withTwoPanes
+  code={`<AEmptyState
+  variant="positive"
+  label="Create a Thing"
+  message="Message about what this page is for and what the user can do here."
 />
+`}
+/>
+
+#### Variants
 
 <Playground
   code={`
 <>
-<AEmptyState variant="success" />
-<AEmptyState variant="positive" />
-<AEmptyState variant="warning" />
-<AEmptyState variant="danger" />
+  <AEmptyState variant="success" />
+  <AEmptyState variant="positive" />
+  <AEmptyState variant="warning" />
+  <AEmptyState variant="danger" />
 </>`}
 />
 
-## Size Variants
+##### Sizes
 
 <Playground
-  code={`() => {
-    const props = {
-      label:"Some Label",
-      message:"Message about what this page is for and what the user can do here."
-    }
-
-    return (<>
-        <AEmptyState variant="success" small {...props} />
-        <AEmptyState variant="positive" medium {...props} />
-        <AEmptyState variant="warning" large {...props} />
-        <AEmptyState variant="danger" xlarge {...props} />
-        </>
-      )
-    }`
-
+  code={`function Example() {
+  const props = {
+    label: "Some Label",
+    message:
+      "Message about what this page is for and what the user can do here.",
+  };
+  return (
+    <>
+      <AEmptyState variant="success" small {...props} />
+      <AEmptyState variant="positive" medium {...props} />
+      <AEmptyState variant="warning" large {...props} />
+      <AEmptyState variant="danger" xlarge {...props} />
+    </>
+  );
 }
+  `}
 />
 
-## AEmptyState Props
+## Component Props
 
 The `AEmptyState` component inherits passed props.
 

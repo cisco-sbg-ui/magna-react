@@ -2,19 +2,17 @@
 name: Field Base
 route: /extend/field-base
 components: AFieldBase
+title: AFieldBase
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/AFieldBase
 ---
 
-# Field Base Component
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {AFieldBase} from "@cisco-sbg-ui/magna-react";
-```
-
 ## Usage
+
+### Import
+
+<ComponentImport components="AFieldBase" />
+
+### Usage
 
 <Playground
   code={`<div style={{maxWidth: 300}}>
@@ -22,21 +20,21 @@ import {AFieldBase} from "@cisco-sbg-ui/magna-react";
     className="mb-3"
     label="Label - Normal"
     hint="This is a sample of hint text below a form field">
-    [Children]
+    <input type='text' />
   </AFieldBase>
   <AFieldBase
     className="mb-3"
     label="Label - Warning"
     hint="This is a sample of hint text below a form field"
     validationState="warning">
-    [Children]
+    <input type='text' />
   </AFieldBase>
   <AFieldBase
     className="mb-3"
     label="Label - Danger"
     hint="This is a sample of hint text below a form field"
     validationState="danger">
-    [Children]
+    <input type='text' />
   </AFieldBase>
 
   <AFieldBase
@@ -67,7 +65,7 @@ import {AFieldBase} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-## Field Base Props
+## Component Props
 
 The `AFieldBase` component inherits passed props.
 
