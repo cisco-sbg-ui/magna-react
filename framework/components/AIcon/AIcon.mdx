@@ -2,19 +2,17 @@
 name: Icons
 route: /components/icon
 components: AIcon
+title: AIcon
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/AIcon
 ---
 
-# Icons
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {AIcon} from "@cisco-sbg-ui/magna-react";
-```
-
 ## Usage
+
+### Import
+
+<ComponentImport components="AIcon" />
+
+### Usage
 
 <Playground
   code={`<>
@@ -27,7 +25,7 @@ import {AIcon} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-## Props
+## Component Props
 
 The `AIcon` component inherits passed props.
 
@@ -35,9 +33,11 @@ The `AIcon` component inherits passed props.
 
 ## Gallery
 
+> Any icons not in the Gallery that were previously available in Atomic will still be used if referenced. They have been removed from the Gallery since there is no direct replacement with the Phosphor icon set.
+
 <MagnaIconGallery />
 
-## Legacy Atomic Gallery
+## Atomic Gallery (Legacy)
 
 <AtomicIconGallery />
 
@@ -56,10 +56,6 @@ The `AIcon` component inherits passed props.
 </>
 `}
 />
-
-## General Notes
-
-Any icons not in the Gallery that were previously available in Atomic will still be used if references. They have been removed from the Gallery since there is no direct replacement with the Phosphor icon set.
 
 ## Accessibility Notes
 
