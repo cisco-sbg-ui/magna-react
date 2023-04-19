@@ -45,12 +45,11 @@ For rendering a date range, pass an array to the `value` prop instead, The index
       onChange={(incomingDate) =>
         setRange(([start, end]) => {
           if ((start && end) || (!start && !end)) {
-            // Reset. Since we don't yet have the second selection,
-            // place the incoming date as the starting date.
+            // Reset. Since we don't have user's second selection,
+            // place it at the beginning to start.
             return [incomingDate];
           } else {
-            // Now that we have the second selection, sort
-            // it relative to the one we assumed was earlier
+            // Now that we have the two selections, sort them
             return [start, incomingDate].sort(
               (a, b) => Date.parse(a) - Date.parse(b)
             );
