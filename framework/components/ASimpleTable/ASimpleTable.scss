@@ -49,7 +49,7 @@ $table-cell-spacious-padding-top-bottom: math.div(
 
   &--striped {
     tbody tr:nth-child(even):not(:hover) {
-      background-color: map-deep-get($theme, "table", "row-stripe-color");
+      background: map-deep-get($theme, "table", "row-stripe-color");
     }
   }
 
