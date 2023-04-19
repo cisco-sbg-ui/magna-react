@@ -191,5 +191,76 @@ describe("<ATextInput />", () => {
       cy.get(".a-input-base__clear").click();
       cy.get(".a-alert").should("not.exist");
     });
+
+    it("should override internal rule for min", () => {
+      const min = 5;
+      cy.mount(
+        <ATextInput
+          type="number"
+          {...commonProps}
+          min={min}
+          rules={[
+            {
+              key: "min",
+              test: (v) => v >= min || "TEST WARNING",
+              level: "warning"
+            }
+          ]}
+        />
+      );
+
+      cy.get(".a-text-input__input").type("1");
+
+      cy.get(".a-alert").should("exist");
+      cy.get(".a-alert--state-warning").should("exist");
+      cy.get(".a-alert__message").should("have.text", "TEST WARNING");
+    });
+
+    it("should override internal rule for max", () => {
+      const max = 5;
+      cy.mount(
+        <ATextInput
+          type="number"
+          {...commonProps}
+          max={max}
+          rules={[
+            {
+              key: "max",
+              test: (v) => v <= max || "TEST WARNING",
+              level: "warning"
+            }
+          ]}
+        />
+      );
+
+      cy.get(".a-text-input__input").type("10");
+
+      cy.get(".a-alert").should("exist");
+      cy.get(".a-alert--state-warning").should("exist");
+      cy.get(".a-alert__message").should("have.text", "TEST WARNING");
+    });
+
+    it("should override internal rule for required", () => {
+      cy.mount(
+        <ATextInput
+          {...commonProps}
+          required
+          rules={[
+            {
+              key: "required",
+              test: (v) => !!v || "TEST WARNING",
+              level: "warning"
+            }
+          ]}
+        />
+      );
+
+      cy.get(".a-text-input__input").focus();
+      cy.tab();
+
+      cy.get(".a-alert").should("exist");
+      cy.get(".a-alert--state-warning").should("exist");
+      cy.get(".a-alert__message").should("have.text", "TEST WARNING");
+    });
   });
 });

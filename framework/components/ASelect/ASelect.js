@@ -187,7 +187,7 @@ const ASelect = forwardRef(
       return newItem;
     };
 
-    const ruleKeys = rules ? rules.map((r) => r.key) : [];
+    const ruleKeys = rules ? rules.map((r) => r.key).filter((k) => !!k) : [];
 
     const validate = (testValue = selectedItem) => {
       if (rules || required) {

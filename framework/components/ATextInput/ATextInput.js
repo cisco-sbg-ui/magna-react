@@ -263,7 +263,7 @@ const ATextInput = forwardRef(
       appendContent.push(<AIcon {...appendProps}>{appendIcon}</AIcon>);
     }
 
-    const ruleKeys = rules ? rules.map((r) => r.key) : [];
+    const ruleKeys = rules ? rules.map((r) => r.key).filter((k) => !!k) : [];
 
     const validate = (testValue = value) => {
       if (
@@ -280,7 +280,7 @@ const ATextInput = forwardRef(
         if (typeof max !== "undefined" && !ruleKeys.includes("max")) {
           workingRules = [
             {
-              key: "min",
+              key: "max",
               test: (v) =>
                 v <= max ||
                 `${label ? label + " has a m" : "M"}aximum value of ${max}`,
@@ -291,9 +291,10 @@ const ATextInput = forwardRef(
         }
 
         if (typeof min !== "undefined" && !ruleKeys.includes("min")) {
+          console.log("????");
           workingRules = [
             {
-              key: "max",
+              key: "min",
               test: (v) =>
                 v >= min ||
                 `${label ? label + " has a m" : "M"}inimum value of ${min}`,
