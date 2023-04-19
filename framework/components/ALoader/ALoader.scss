@@ -27,17 +27,11 @@ $generic-loader-large-font-size: 16px;
     position: relative;
   }
 
-  &--loader-dot {
-    .a-generic-loader__container {
-      align-self: center;
-    }
-
-    .a-dot-loader {
-      margin: 0;
-    }
+  &--loader-ASpinner {
+    align-items: center;
   }
 
-  &--loader-progressbar {
+  &--loader-AProgressbar {
     .a-progressbar {
       margin: 0;
     }

@@ -4,6 +4,9 @@ import React, {forwardRef} from "react";
 import "./APageLoader.scss";
 const baseClass = "a-page-loader";
 
+/**
+ * DEPRECATED
+ */
 const APageLoader = forwardRef(
   (
     {className: propsClassName, size, center, children, loading, ...rest},
