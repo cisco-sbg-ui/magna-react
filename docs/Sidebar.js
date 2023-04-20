@@ -1,7 +1,14 @@
 import React, {useEffect, useRef, useState} from "react";
 import Link from "next/link";
 
-import {ADrawer, ADrawerContent, useATheme, useMediaQuery} from "../framework";
+import {
+  AButton,
+  ADrawer,
+  ADrawerContent,
+  AIcon,
+  useATheme,
+  useMediaQuery
+} from "../framework";
 
 import "./Sidebar.scss";
 import SidebarTree from "./SidebarTree";
@@ -14,7 +21,13 @@ const CustomLink = ({children, href, ...rest}) => {
   );
 };
 
-const Sidebar = ({menus, currentDoc, isSlim, isDrawerOpen}) => {
+const Sidebar = ({
+  menus,
+  currentDoc,
+  isSlim,
+  isDrawerOpen,
+  setIsDrawerOpen
+}) => {
   const {matches: isMobile} = useMediaQuery("(max-width: 800px)");
   const [items, setItems] = useState([]);
   const currentDocRef = useRef();
@@ -115,12 +128,15 @@ const Sidebar = ({menus, currentDoc, isSlim, isDrawerOpen}) => {
           boxShadow: "none"
         }}
       >
-        <ADrawerContent
-          style={{
-            transition: "all 0.5s ease"
-          }}
-          className="pa-0"
-        >
+        <ADrawerContent className="d-flex flex-column pa-0">
+          <AButton
+            className="text-align--right align-self-end"
+            icon
+            tertiaryAlt
+            onClick={() => setIsDrawerOpen(false)}
+          >
+            <AIcon size={24}>x</AIcon>
+          </AButton>
           <SidebarTree
             className={`${styleColor}`}
             hoverable

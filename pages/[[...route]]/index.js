@@ -87,6 +87,7 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
               <ACol className="col col--left" style={{maxWidth: "350px"}}>
                 <Sidebar
                   //isSlim={isSlim}
+                  setIsDrawerOpen={setIsDrawerOpen}
                   isDrawerOpen={isDrawerOpen}
                   currentDoc={currentDoc}
                   menus={menus}
