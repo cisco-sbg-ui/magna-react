@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import Link from "next/link";
 
-import {ADrawer, ADrawerContent, useATheme} from "../framework";
+import {ADrawer, ADrawerContent, useATheme, useMediaQuery} from "../framework";
 
 import "./Sidebar.scss";
 import SidebarTree from "./SidebarTree";
@@ -15,6 +15,7 @@ const CustomLink = ({children, href, ...rest}) => {
 };
 
 const Sidebar = ({menus, currentDoc}) => {
+  const {matches: isSlim} = useMediaQuery("(max-width: 800px)");
   const [items, setItems] = useState([]);
   const currentDocRef = useRef();
   const {currentTheme} = useATheme();
@@ -103,6 +104,8 @@ const Sidebar = ({menus, currentDoc}) => {
 
   return (
     <ADrawer
+      // slim={isSlim}
+      // slimWidth="50px"
       position="relative"
       isOpen={true}
       id="sidebar"
@@ -122,7 +125,7 @@ const Sidebar = ({menus, currentDoc}) => {
         className="pa-0"
       >
         <SidebarTree
-          className={`${styleColor} px-4`}
+          className={`${styleColor}`}
           hoverable
           activatable
           expandOnClick

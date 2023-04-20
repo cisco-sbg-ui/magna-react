@@ -39,6 +39,8 @@ const components = {
   ...MdxHeadings
 };
 
+import "./index.scss";
+
 const toKebabCase = (str) => str.replaceAll(" ", "-").toLowerCase();
 
 export default function DocsPage({currentDoc, menus, propsInfo}) {
@@ -69,18 +71,12 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
         <AAutoTheme>
           <HiddenFontSwatches />
           <AContainer fluid className="pa-0">
-            <Header />
+            <Header className="col" />
             <ARow noGutters style={{width: "100%"}}>
-              <ACol className="px-12" style={{maxWidth: "350px"}}>
+              <ACol className="col col--left" style={{maxWidth: "350px"}}>
                 <Sidebar currentDoc={currentDoc} menus={menus} />
               </ACol>
-              <ACol
-                className="py-4 px-12"
-                style={{
-                  maxWidth: "calc(100vw - 347px - 275px)",
-                  width: "100%"
-                }}
-              >
+              <ACol className={`col col--center py-4`}>
                 <AMount withNewWrappingContext={true}>
                   <div style={{width: "100%"}}>
                     <PropsContext.Provider value={propsInfo}>
@@ -238,7 +234,7 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
                   </div>
                 </AMount>
               </ACol>
-              <ACol style={{maxWidth: 375}} className="px-12">
+              <ACol style={{maxWidth: 375}} className={`col col--right`}>
                 <TableOfContents
                   setActiveSection={setActiveSection}
                   activeSection={activeSection}
