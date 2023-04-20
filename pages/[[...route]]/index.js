@@ -45,6 +45,12 @@ const toKebabCase = (str) => str.replaceAll(" ", "-").toLowerCase();
 
 export default function DocsPage({currentDoc, menus, propsInfo}) {
   const {query} = useRouter();
+  //const [isSlim, setIsSlim] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  AtomicReactComponents.useEscapeKeydown({
+    isEnabled: isDrawerOpen,
+    onKeydown: () => setIsDrawerOpen(false)
+  });
   const [activeTab, setActiveTab] = useState("usage");
   const [activeSection, setActiveSection] = useState();
   const [hasScrolledPastTabs, setHasScrolledPastTabs] = useState(false);
@@ -71,10 +77,20 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
         <AAutoTheme>
           <HiddenFontSwatches />
           <AContainer fluid className="pa-0">
-            <Header className="col" />
+            <Header
+              onHamburgerClick={() => {
+                setIsDrawerOpen(true);
+              }}
+              className="col"
+            />
             <ARow noGutters style={{width: "100%"}}>
               <ACol className="col col--left" style={{maxWidth: "350px"}}>
-                <Sidebar currentDoc={currentDoc} menus={menus} />
+                <Sidebar
+                  //isSlim={isSlim}
+                  isDrawerOpen={isDrawerOpen}
+                  currentDoc={currentDoc}
+                  menus={menus}
+                />
               </ACol>
               <ACol className={`col col--center py-4`}>
                 <AMount withNewWrappingContext={true}>

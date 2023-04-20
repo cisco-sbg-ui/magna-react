@@ -14,8 +14,8 @@ const CustomLink = ({children, href, ...rest}) => {
   );
 };
 
-const Sidebar = ({menus, currentDoc}) => {
-  const {matches: isSlim} = useMediaQuery("(max-width: 800px)");
+const Sidebar = ({menus, currentDoc, isSlim, isDrawerOpen}) => {
+  const {matches: isMobile} = useMediaQuery("(max-width: 800px)");
   const [items, setItems] = useState([]);
   const currentDocRef = useRef();
   const {currentTheme} = useATheme();
@@ -102,10 +102,42 @@ const Sidebar = ({menus, currentDoc}) => {
     setItems(newItems);
   }, [menus, currentDoc]);
 
+  if (isMobile) {
+    return (
+      <ADrawer
+        isOpen={isDrawerOpen}
+        id="sidebar"
+        className={`root-sidebar py-4 sidebar`}
+        openWidth="100vw"
+        style={{
+          height: "100%",
+          overflowY: "auto",
+          boxShadow: "none"
+        }}
+      >
+        <ADrawerContent
+          style={{
+            transition: "all 0.5s ease"
+          }}
+          className="pa-0"
+        >
+          <SidebarTree
+            className={`${styleColor}`}
+            hoverable
+            activatable
+            expandOnClick
+            items={menus ? items : []}
+            onChange={(x) => setItems(x)}
+          />
+        </ADrawerContent>
+      </ADrawer>
+    );
+  }
+
   return (
     <ADrawer
-      // slim={isSlim}
-      // slimWidth="50px"
+      slim={isSlim}
+      slimWidth="50px"
       position="relative"
       isOpen={true}
       id="sidebar"
