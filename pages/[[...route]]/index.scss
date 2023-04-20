@@ -1,17 +1,31 @@
+.a-app--wrap {
+  background: inherit;
+}
+
 .col {
+  background: transparent;
   padding-left: 10px !important;
   padding-right: 10px !important;
 
   &--left {
-    flex-grow: 0 !important;
-  }
-
-  &--center {
-    max-width: calc(100vw - 288px);
+    display: none;
   }
 
   &--right {
     display: none;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .col {
+    &--left {
+      display: block;
+      flex-grow: 0 !important;
+    }
+
+    &--center {
+      max-width: calc(100vw - 288px);
+    }
   }
 }
 
