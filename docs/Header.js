@@ -1,11 +1,11 @@
 import {AButton, AIcon, ARow, useATheme} from "../framework";
 import ThemeSwitcher from "./ThemeSwitcher";
 
-const Header = (props) => {
+const Header = ({className}) => {
   const {isDark} = useATheme();
   return (
     <ARow
-      className={`px-12 py-2 ${
+      className={`${className} py-2 ${
         isDark ? "mds-neutral--neutral-16" : "mds-neutral--neutral-1"
       }`}
       noGutters

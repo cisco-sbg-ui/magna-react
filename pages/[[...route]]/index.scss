@@ -1,0 +1,38 @@
+.col {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+
+  &--left {
+    flex-grow: 0 !important;
+  }
+
+  &--center {
+    max-width: calc(100vw - 288px);
+  }
+
+  &--right {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .col {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+
+    &--right {
+      display: block;
+    }
+
+    &--center {
+      max-width: calc(100vw - 288px - 375px);
+    }
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  .col {
+    padding-left: 50px !important;
+    padding-right: 50px !important;
+  }
+}
