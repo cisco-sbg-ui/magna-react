@@ -47,10 +47,6 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
   const {query} = useRouter();
   //const [isSlim, setIsSlim] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  AtomicReactComponents.useEscapeKeydown({
-    isEnabled: isDrawerOpen,
-    onKeydown: () => setIsDrawerOpen(false)
-  });
   const [activeTab, setActiveTab] = useState("usage");
   const [activeSection, setActiveSection] = useState();
   const [hasScrolledPastTabs, setHasScrolledPastTabs] = useState(false);

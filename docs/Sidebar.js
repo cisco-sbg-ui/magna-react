@@ -7,7 +7,8 @@ import {
   ADrawerContent,
   AIcon,
   useATheme,
-  useMediaQuery
+  useMediaQuery,
+  usePopupQuickExit
 } from "../framework";
 
 import "./Sidebar.scss";
@@ -28,7 +29,13 @@ const Sidebar = ({
   isDrawerOpen,
   setIsDrawerOpen
 }) => {
-  const {matches: isMobile} = useMediaQuery("(max-width: 800px)");
+  const ref = useRef();
+  usePopupQuickExit({
+    popupRef: ref,
+    isEnabled: isDrawerOpen,
+    onExit: () => setIsDrawerOpen(false)
+  });
+  const {matches: isMobile} = useMediaQuery("(max-width: 1000px)");
   const [items, setItems] = useState([]);
   const currentDocRef = useRef();
   const {currentTheme} = useATheme();
@@ -120,23 +127,32 @@ const Sidebar = ({
       <ADrawer
         isOpen={isDrawerOpen}
         id="sidebar"
+        aria-labelledby="title"
         className={`root-sidebar py-4 sidebar`}
-        openWidth="75%"
+        openWidth="300px"
         style={{
           height: "100%",
-          overflowY: "auto",
-          boxShadow: "none"
+          overflowY: "scroll"
         }}
       >
-        <ADrawerContent className="d-flex flex-column pa-0">
-          <AButton
-            className="text-align--right align-self-end"
-            icon
-            tertiaryAlt
-            onClick={() => setIsDrawerOpen(false)}
-          >
-            <AIcon size={24}>x</AIcon>
-          </AButton>
+        <ADrawerContent
+          style={{
+            height: "100%"
+          }}
+          ref={ref}
+          className="pt-0"
+        >
+          <div className="d-flex align-center justify-space-between">
+            <h3 id="title">Navigation</h3>
+            <AButton
+              className="text-align--right align-self-end"
+              icon
+              tertiaryAlt
+              onClick={() => setIsDrawerOpen(false)}
+            >
+              <AIcon size={24}>x</AIcon>
+            </AButton>
+          </div>
           <SidebarTree
             className={`${styleColor}`}
             hoverable
