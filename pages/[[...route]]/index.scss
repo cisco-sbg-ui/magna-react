@@ -5,15 +5,11 @@
 .row {
   max-width: 1800px;
   margin: 0 auto;
+  padding: 0 10px;
 }
 
 .col {
   background: transparent;
-
-  &--center {
-    padding-left: 20px !important;
-    padding-right: 20px !important;
-  }
 
   &--left {
     display: none;
@@ -32,8 +28,15 @@
     }
 
     &--center {
+      padding-left: 40px !important;
       max-width: calc(100vw - 288px);
     }
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .row {
+    padding: 0 20px;
   }
 }
 
@@ -44,7 +47,6 @@
     }
 
     &--center {
-      padding-left: 40px !important;
       padding-right: 40px !important;
       max-width: calc(100vw - 288px - 375px);
     }

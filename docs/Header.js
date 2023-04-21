@@ -50,26 +50,32 @@ const Header = ({className, onHamburgerClick}) => {
         }}
       >
         <div
-          className="d-flex justify-space-between align-center"
+          className="d-flex justify-space-between align-center row"
           style={{
             height: "50px",
             width: "100%",
             zIndex: "9",
             maxWidth: "1800px",
             margin: "0 auto"
+            // padding: "0 30px"
           }}
         >
           <div className="d-flex align-center">
             {isMobile && (
-              <AButton onClick={onHamburgerClick} icon tertiaryAlt>
+              <AButton
+                className="pl-0"
+                onClick={onHamburgerClick}
+                icon
+                tertiaryAlt
+              >
                 <AIcon size={24}>list</AIcon>
               </AButton>
             )}
             <h1
               className="ma-0"
-              style={{fontSize: isMobile ? "1.2rem" : "2rem"}}
+              style={{fontSize: isMobile ? "1.75rem" : "2rem"}}
             >
-              <AButton className="pa-0 mr-1" tertiaryAlt icon href="/">
+              <AButton className="pa-0" tertiaryAlt icon href="/">
                 {/* {!isMobile && (
                 <AIcon size={24} className="mds-blue--blue-10--text">
                   circle
