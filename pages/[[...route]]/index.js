@@ -63,6 +63,7 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
     const requestedTab = query?.page;
     const firstTab = Object.keys(currentDoc?.pageTabsMdx)[0];
     setActiveTab(requestedTab || firstTab);
+    setIsDrawerOpen(false);
   }, [setActiveTab, currentDoc, query]);
 
   if (!currentDoc) return null;
