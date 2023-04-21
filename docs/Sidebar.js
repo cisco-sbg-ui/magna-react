@@ -121,7 +121,7 @@ const Sidebar = ({
         isOpen={isDrawerOpen}
         id="sidebar"
         className={`root-sidebar py-4 sidebar`}
-        openWidth="100vw"
+        openWidth="75%"
         style={{
           height: "100%",
           overflowY: "auto",
