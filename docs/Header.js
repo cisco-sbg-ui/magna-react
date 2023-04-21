@@ -54,7 +54,9 @@ const Header = ({className, onHamburgerClick}) => {
           style={{
             height: "50px",
             width: "100%",
-            zIndex: "9"
+            zIndex: "9",
+            maxWidth: "1800px",
+            margin: "0 auto"
           }}
         >
           <div className="d-flex align-center">
