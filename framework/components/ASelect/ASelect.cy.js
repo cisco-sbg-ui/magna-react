@@ -172,6 +172,29 @@ describe("<ASelect />", () => {
       cy.get("body").click();
       cy.get(".a-alert--state-danger").should("exist");
     });
+
+    it("should override internal rule for required", () => {
+      cy.mount(
+        <ObjectItemsTest
+          required
+          validateOnBlur={true}
+          rules={[
+            {
+              key: "required",
+              test: (v) => !!v || "TEST WARNING",
+              level: "warning"
+            }
+          ]}
+        />
+      );
+
+      openSelect();
+      cy.get("body").click();
+
+      cy.get(".a-alert").should("exist");
+      cy.get(".a-alert--state-warning").should("exist");
+      cy.get(".a-alert__message").should("have.text", "TEST WARNING");
+    });
   });
 
   describe("when rendered as readOnly", () => {
