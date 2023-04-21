@@ -9,11 +9,11 @@ const ComponentTitle = ({title, sourceCodeLink}, ref) => {
           {title}
         </h1>
       </div>
-      <AButton className="mr-2" href={sourceCodeLink}>
+      <AButton medium className="mr-2" href={sourceCodeLink}>
         <AIcon left>code</AIcon>
         Source
       </AButton>
-      <AButton href={`${sourceCodeLink}/${title}.mdx`}>
+      <AButton medium href={`${sourceCodeLink}/${title}.mdx`}>
         <AIcon left>pencil-simple</AIcon>
         Edit this page
       </AButton>
