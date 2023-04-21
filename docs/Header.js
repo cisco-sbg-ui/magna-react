@@ -2,7 +2,7 @@ import {AButton, AIcon, ARow, useATheme, useMediaQuery} from "../framework";
 import ThemeSwitcher from "./ThemeSwitcher";
 
 const Header = ({className, onHamburgerClick}) => {
-  const {matches: isMobile} = useMediaQuery("(max-width: 800px)");
+  const {matches: isMobile} = useMediaQuery("(max-width: 1000px)");
   const {isDark} = useATheme();
   return (
     <ARow
@@ -34,7 +34,7 @@ const Header = ({className, onHamburgerClick}) => {
               <AIcon size={24}>list</AIcon>
             </AButton>
           )}
-          <h1 className="ma-0" style={{fontSize: isMobile ? "1.5rem" : "2rem"}}>
+          <h1 className="ma-0" style={{fontSize: isMobile ? "1.2rem" : "2rem"}}>
             <AButton className="pa-0 mr-1" tertiaryAlt icon href="/">
               {!isMobile && (
                 <AIcon size={24} className="mds-blue--blue-10--text">
