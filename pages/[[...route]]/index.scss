@@ -2,10 +2,18 @@
   background: inherit;
 }
 
+.row {
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
 .col {
   background: transparent;
-  padding-left: 10px !important;
-  padding-right: 10px !important;
+
+  &--center {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
 
   &--left {
     display: none;
@@ -31,14 +39,13 @@
 
 @media screen and (min-width: 1600px) {
   .col {
-    padding-left: 20px !important;
-    padding-right: 20px !important;
-
     &--right {
       display: block;
     }
 
     &--center {
+      padding-left: 40px !important;
+      padding-right: 40px !important;
       max-width: calc(100vw - 288px - 375px);
     }
   }
@@ -46,7 +53,9 @@
 
 @media screen and (min-width: 2000px) {
   .col {
-    padding-left: 50px !important;
-    padding-right: 50px !important;
+    &--center {
+      padding-left: 100px !important;
+      padding-right: 100px !important;
+    }
   }
 }

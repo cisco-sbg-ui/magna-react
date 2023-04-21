@@ -80,7 +80,7 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
               }}
               className="col"
             />
-            <ARow noGutters style={{width: "100%"}}>
+            <ARow noGutters className="row" style={{width: "100%"}}>
               <ACol className="col col--left" style={{maxWidth: "350px"}}>
                 <Sidebar
                   //isSlim={isSlim}
