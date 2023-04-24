@@ -28,9 +28,54 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
 `}
 />
 
+#### Disabling Dates
+
+To disable certain dates from being selectable, you can pass a `minDate`, `maxDate`, or both. Suppling only one will act as a floor or ceiling respectively.
+
+In the example below, the user is only permitted to select a date within a week from the current date.
+
+> As of the latest Magna React release, it is only possible to disable consecutive days.
+
+<Playground
+  code={`function Example() {
+  const today = new Date();
+  const weekFromToday = new Date(today);
+  weekFromToday.setDate(today.getDate() + 7);
+  const [date, setDate] = useState(today);
+  return (
+    <ADatePicker
+      value={date}
+      onChange={(date) => setDate(date)}
+      minDate={today}
+      maxDate={weekFromToday}
+    />
+  );
+}
+`}
+/>
+
 #### Date Ranges
 
-For rendering a date range, pass an array to the `value` prop instead, The index at `0` should represent the range's starting date, and the index at `1` should represent the range's ending date, i.e., `[earlierDate, laterDate]`. Visually, you can think of the tuple structure as `[leftDate, rightDate]`.
+To render a date range, you can import the `useADateRange` hook, which takes care of the logic for you:
+
+<Playground
+  code={`function Example() {
+  const today = new Date();
+  const weekFromToday = new Date(today);
+  weekFromToday.setDate(today.getDate() + 7);\n
+  const { value, onChange, } = useADateRange({
+    initialRange: [today, weekFromToday]
+  });\n
+  return (
+    <ADatePicker value={value} onChange={onChange} />
+  );
+}
+`}
+/>
+
+The logic for `useADateRange` ensures that the first and second clicks will alawys close the range, regardless of their dates relative to each other. This means that a user can hypothetically click the last day of their range _before_ they click the starting day. Any clicks after a range is closed will always initiate a new range selection, in which the same logic applies.
+
+If this is not desirable, you can use your own logic, and instead, pass an array containing two dates to the `value` prop of `ADatePicker`. The 0th index should represent the starting date, and the 1st index should represent the ending date.
 
 > Please note that it is up to you to ensure the dates passed to the `value` prop maintain the `[earlierDate, laterDate]` tuple structure. `ADatePicker` does _not_ automatically sort the dates.
 >
@@ -62,82 +107,7 @@ For rendering a date range, pass an array to the `value` prop instead, The index
   `}
 />
 
-The example above implements logic such that the second selection will _always_ complete the date range, regardless of its position relative to the firsrt seleciton, e.g., selecting January 1 _after_ having first selected January 24 would set the range as Janurary 1 - Janurary 24.
-
-If this is the type of logic you'd like to use, too, then you can save the burden of writing the logic yourself, and instead, import the `useADateRange` hook, which contains `value` and `onChange` props that already have the logic baked into them, so long as you pass them to `ADatePicker`:
-
-<Playground
-  code={`() => {
-  const { value, onChange, } = useADateRange();
-  return (
-    <ADatePicker value={value} onChange={onChange} />
-  );
-}
-`}
-/>
-
-To set the initial range with `useADateRange`, pass the array to the `initialRange` configuration option:
-
-<Playground
-  code={`() => {
-  const today = new Date();
-  const weekFromToday = new Date(today);
-  weekFromToday.setDate(today.getDate() + 7);
-  const { value, onChange, } = useADateRange({
-    initialRange: [today, weekFromToday]
-  });
-  return (
-    <ADatePicker value={value} onChange={onChange} />
-  );
-}
-`}
-/>
-
-#### Restricting Dates
-
-To limit the days in which a user can select, pass the `minDate` and/or `maxDate` props. If only one is supplied, it was act as the floor or ceiling respectively.
-
-In the example below, the user is only permitted to select a date within a week from the current date.
-
-<Playground
-  code={`function Example() {
-  const today = new Date();
-  const weekFromToday = new Date(today);
-  weekFromToday.setDate(today.getDate() + 7);
-  const [date, setDate] = useState(today);
-  return (
-    <ADatePicker
-      value={date}
-      onChange={(date) => setDate(date)}
-      minDate={today}
-      maxDate={weekFromToday}
-    />
-  );
-}
-`}
-/>
-
-To do the same with a range:
-
-<Playground
-  code={`function Example() {
-  const today = new Date();
-  const weekFromToday = new Date(today);
-  weekFromToday.setDate(today.getDate() + 7);
-  const { value, onChange } = useADateRange();
-  return (
-    <ADatePicker
-      value={value}
-      onChange={onChange}
-      minDate={today}
-      maxDate={weekFromToday}
-    />
-  );
-}
-`}
-/>
-
-##### Restricting a range's length
+#### Limiting Date Range Selection
 
 Sometimes, you might want to restrict the number of days the user can select in the range, like if you are trying to prevent a user from downloading a full months of log data that could potentially overwhelm the server on such a request.
 
