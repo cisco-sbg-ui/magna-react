@@ -444,6 +444,13 @@ $btn-transition: color $transition-duration--extra-fast
     stroke: currentColor;
   }
 
+  .a-spinner {
+    margin-right: 2px;
+    circle {
+      stroke: currentColor !important;
+    }
+  }
+
   .a-icon.a-icon--dots-three,
   .a-icon.a-icon--dots-six,
   .a-icon.a-icon--dots-nine {
