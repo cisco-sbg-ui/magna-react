@@ -53,11 +53,22 @@ const ATooltip = forwardRef(
 
 export const ATooltipPropTypes = {
   /**
-   * The reference to the menu anchor.
+   * The reference to the menu anchor. Can either be a React ref or a DOMRect object.
    */
   anchorRef: PropTypes.oneOfType([
     PropTypes.func,
-    PropTypes.shape({current: PropTypes.any})
+    PropTypes.shape({current: PropTypes.any}),
+    // DOMRect shape
+    PropTypes.shape({
+      x: PropTypes.number,
+      y: PropTypes.number,
+      width: PropTypes.number,
+      height: PropTypes.number,
+      top: PropTypes.number,
+      right: PropTypes.number,
+      bottom: PropTypes.number,
+      left: PropTypes.number
+    })
   ]).isRequired,
   /**
    * Handles the request to close the menu.

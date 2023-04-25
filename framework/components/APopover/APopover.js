@@ -11,6 +11,7 @@ const APopover = forwardRef(
   (
     {
       anchorRef,
+      anchorDOMRect,
       children,
       className: propsClassName,
       focusOnOpen = true,
@@ -40,6 +41,9 @@ const APopover = forwardRef(
     };
 
     const keyDownHandler = (e) => {
+      if (anchorRef instanceof DOMRect) {
+        return;
+      }
       if (onClose && e.keyCode === keyCodes.esc) {
         e.preventDefault();
         closeHandler(e);
@@ -72,7 +76,8 @@ const APopover = forwardRef(
         anchorRef={anchorRef}
         pointer={true}
         type="dialog"
-        tabIndex={-1}>
+        tabIndex={-1}
+      >
         {children}
       </APanel>
     );
@@ -81,11 +86,22 @@ const APopover = forwardRef(
 
 APopover.propTypes = {
   /**
-   * The reference to the menu anchor.
+   * The reference to the menu anchor. Can either be a React ref or a DOMRect object.
    */
   anchorRef: PropTypes.oneOfType([
     PropTypes.func,
-    PropTypes.shape({current: PropTypes.any})
+    PropTypes.shape({current: PropTypes.any}),
+    // DOMRect shape
+    PropTypes.shape({
+      x: PropTypes.number,
+      y: PropTypes.number,
+      width: PropTypes.number,
+      height: PropTypes.number,
+      top: PropTypes.number,
+      right: PropTypes.number,
+      bottom: PropTypes.number,
+      left: PropTypes.number
+    })
   ]).isRequired,
   /**
    * Toggles the behavior of focusing the menu on open.

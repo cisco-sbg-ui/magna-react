@@ -36,11 +36,17 @@ const AContextualNotificationMenu = forwardRef(
     }, [open, combinedRef, focusOnOpen]);
 
     const closeHandler = (e) => {
+      if (anchorRef instanceof DOMRect) {
+        return;
+      }
       anchorRef.current && anchorRef.current.focus();
       onClose && onClose(e);
     };
 
     const keyDownHandler = (e) => {
+      if (anchorRef instanceof DOMRect) {
+        return;
+      }
       if (onClose && e.keyCode === keyCodes.esc) {
         e.preventDefault();
         closeHandler(e);
@@ -73,7 +79,8 @@ const AContextualNotificationMenu = forwardRef(
         anchorRef={anchorRef}
         pointer={true}
         variant={variant}
-        tabIndex={-1}>
+        tabIndex={-1}
+      >
         {children}
       </AContextualNotification>
     );
@@ -82,11 +89,22 @@ const AContextualNotificationMenu = forwardRef(
 
 AContextualNotificationMenu.propTypes = {
   /**
-   * The reference to the menu anchor.
+   * The reference to the menu anchor. Can either be a React ref or a DOMRect object.
    */
   anchorRef: PropTypes.oneOfType([
     PropTypes.func,
-    PropTypes.shape({current: PropTypes.any})
+    PropTypes.shape({current: PropTypes.any}),
+    // DOMRect shape
+    PropTypes.shape({
+      x: PropTypes.number,
+      y: PropTypes.number,
+      width: PropTypes.number,
+      height: PropTypes.number,
+      top: PropTypes.number,
+      right: PropTypes.number,
+      bottom: PropTypes.number,
+      left: PropTypes.number
+    })
   ]).isRequired,
   /**
    * Toggles the behavior of focusing the menu on open.

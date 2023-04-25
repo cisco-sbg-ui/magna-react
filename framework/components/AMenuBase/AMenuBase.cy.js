@@ -120,6 +120,19 @@ describe("<AMenuBase />", () => {
     getMenuContent().should("be.visible");
   });
 
+  it("should allow an DOMRect object to be passed instead of a React ref", () => {
+    const anchorDOMRect = new DOMRect(
+      window.innerWidth / 2, // middle x-axis
+      window.innerHeight / 2 // middle y-axis
+    );
+
+    cy.mount(<MenuTest anchorRef={anchorDOMRect} />);
+
+    // Open menu
+    openMenu();
+    cy.get(".a-menu-base").should("exist");
+  });
+
   describe("when rendered with a custom <AMount /> component", () => {
     it("should not hide content when close to the left edge", () => {
       cy.mount(<CustomEdgeDetectionMenuTest edge="eft" placement="left" />);
@@ -203,10 +216,10 @@ function MenuTest(menuBaseProps) {
         {isOpen ? "close" : "open"}
       </AButton>
       <AMenuBase
-        {...menuBaseProps}
         onClose={() => setIsOpen(false)}
         anchorRef={btnRef}
         open={isOpen}
+        {...menuBaseProps}
       >
         <div style={{background: "white", padding: "10px"}}>test</div>
       </AMenuBase>
@@ -235,10 +248,10 @@ function EdgeDetectionMenuTest({edge, ...menuBaseProps}) {
         {isOpen ? "close" : "open"}
       </AButton>
       <AMenuBase
-        {...menuBaseProps}
         onClose={() => setIsOpen(false)}
         anchorRef={btnRef}
         open={isOpen}
+        {...menuBaseProps}
       >
         <div style={{background: "white", padding: "10px"}}>test</div>
       </AMenuBase>
@@ -273,10 +286,10 @@ function CustomEdgeDetectionMenuTest({edge, ...menuBaseProps}) {
             {isOpen ? "close" : "open"}
           </AButton>
           <AMenuBase
-            {...menuBaseProps}
             onClose={() => setIsOpen(false)}
             anchorRef={btnRef}
             open={isOpen}
+            {...menuBaseProps}
           >
             <div style={{background: "white", padding: "10px"}}>test</div>
           </AMenuBase>
