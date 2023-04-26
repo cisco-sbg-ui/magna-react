@@ -118,7 +118,7 @@ This is possible by dynamically setting the `minDate` and `maxDate` props after 
 > If this is something you need, please consider [opening an feature request in GitHub](https://github.com/cisco-sbg-ui/magna-react/issues/new?assignees=&labels=&template=feature_request.md&title=).
 
 <Playground
-  code={`function Example{
+  code={`function Example() {
   const today = new Date();
   const weekFromToday = new Date(today);
   weekFromToday.setDate(today.getDate() + 7);
