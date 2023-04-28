@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
 import "./SidebarTree.scss";
-import {AButton, AIcon} from "../../framework";
+import {AButton, AIcon, useATheme} from "../../framework";
 
 const SidebarTree = forwardRef(
   (
@@ -18,6 +18,7 @@ const SidebarTree = forwardRef(
     },
     ref
   ) => {
+    const {isDark} = useATheme();
     let className = "sidebar-tree";
     if (dense) {
       className = " sidebar-tree--dense";
@@ -108,7 +109,11 @@ const SidebarTree = forwardRef(
         "div";
       const contentProps = {
         ...item.contentProps,
-        className: "sidebar-tree__content",
+        className: `sidebar-tree__content ${
+          isDark
+            ? "mds-neutral--neutral-9--text"
+            : "mds-neutral--neutral-14--text"
+        }`,
         onFocus: (e) => {
           const allItems = {items: items.slice()};
           const thisItem = path.reduce((acc, nextIndex) => {
@@ -176,6 +181,19 @@ const SidebarTree = forwardRef(
                 className="sidebar-tree__level"
               />
             ))}
+            {item.customIcon && (
+              <AButton
+                className="sidebar-tree__chevron"
+                tertiaryAlt
+                icon
+                style={{color: "currentColor"}}
+              >
+                <AIcon size={18}>{item.customIcon}</AIcon>
+              </AButton>
+            )}
+            <ContentComponent {...contentProps}>
+              {item.content}
+            </ContentComponent>
             {item.items && (
               <AButton
                 tertiaryAlt
@@ -185,23 +203,10 @@ const SidebarTree = forwardRef(
                 style={{color: "currentColor"}}
               >
                 <AIcon size={16}>
-                  {item.expanded ? "chevron-up" : "chevron-right"}
+                  {item.expanded ? "chevron-down" : "chevron-right"}
                 </AIcon>
               </AButton>
             )}
-            {item.customIcon && (
-              <AButton
-                className="sidebar-tree__chevron"
-                tertiaryAlt
-                icon
-                style={{color: "currentColor"}}
-              >
-                <AIcon size={16}>{item.customIcon}</AIcon>
-              </AButton>
-            )}
-            <ContentComponent {...contentProps}>
-              {item.content}
-            </ContentComponent>
           </div>
           {item.items && item.expanded && (
             <div className="sidebar-tree__children">

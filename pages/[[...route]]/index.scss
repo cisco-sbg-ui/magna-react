@@ -3,7 +3,7 @@
 }
 
 .row {
-  max-width: 1800px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 0 10px;
 }
@@ -48,7 +48,7 @@
 
     &--center {
       padding-right: 40px !important;
-      max-width: calc(100vw - 288px - 375px);
+      max-width: calc(100vw - 250px - 250px);
     }
   }
 }

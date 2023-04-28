@@ -55,7 +55,7 @@ const Header = ({className, onHamburgerClick}) => {
             height: "50px",
             width: "100%",
             zIndex: "9",
-            maxWidth: "1800px",
+            maxWidth: "1600px",
             margin: "0 auto"
             // padding: "0 30px"
           }}
