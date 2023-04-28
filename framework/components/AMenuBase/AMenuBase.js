@@ -17,7 +17,7 @@ const calculateMenuPosition = (
   combinedRef,
   appRef,
   wrapRef,
-  anchorRef,
+  anchorRef, // Can be either a React Ref or DOMRect
   placement,
   setMenuLeft,
   setMenuTop,
@@ -31,7 +31,10 @@ const calculateMenuPosition = (
 
   const appCoords = getRoundedBoundedClientRect(appRef.current);
   const wrapCoords = getRoundedBoundedClientRect(wrapRef.current);
-  const anchorCoords = getRoundedBoundedClientRect(anchorRef.current);
+  const anchorCoords =
+    anchorRef instanceof DOMRect
+      ? anchorRef
+      : getRoundedBoundedClientRect(anchorRef.current);
   const menuCoords = getRoundedBoundedClientRect(combinedRef.current);
   const magneticSpacer = removeSpacer ? 0 : 4;
 
@@ -171,7 +174,7 @@ const calculateMenuPosition = (
 
 const calculatePointerPosition = (
   combinedRef,
-  anchorRef,
+  anchorRef, // Can be either a React Ref or DOMRect
   pointer,
   placement,
   setPointerLeft,
@@ -181,7 +184,10 @@ const calculatePointerPosition = (
     return;
   }
 
-  const anchorCoords = getRoundedBoundedClientRect(anchorRef.current);
+  const anchorCoords =
+    anchorRef instanceof DOMRect
+      ? anchorRef
+      : getRoundedBoundedClientRect(anchorRef.current);
   const menuCoords = getRoundedBoundedClientRect(combinedRef.current);
 
   // Pointer
@@ -349,6 +355,10 @@ const AMenuBase = forwardRef(
 
     useEffect(() => {
       const clickOutsideHandler = (e) => {
+        if (anchorRef instanceof DOMRect) {
+          return;
+        }
+
         if (
           anchorRef.current &&
           combinedRef.current &&
@@ -421,11 +431,22 @@ const AMenuBase = forwardRef(
 
 AMenuBase.propTypes = {
   /**
-   * The reference to the menu anchor.
+   * The reference to the menu anchor. Can either be a React ref or a DOMRect object.
    */
   anchorRef: PropTypes.oneOfType([
     PropTypes.func,
-    PropTypes.shape({current: PropTypes.any})
+    PropTypes.shape({current: PropTypes.any}),
+    // DOMRect shape
+    PropTypes.shape({
+      x: PropTypes.number,
+      y: PropTypes.number,
+      width: PropTypes.number,
+      height: PropTypes.number,
+      top: PropTypes.number,
+      right: PropTypes.number,
+      bottom: PropTypes.number,
+      left: PropTypes.number
+    })
   ]).isRequired,
   /**
    * Handles the request to close the menu.
