@@ -32,7 +32,7 @@
 
   &__content {
     color: currentColor;
-    font-weight: 400;
+    font-weight: 700;
     font-family: "Inter var", CiscoSans, Arial, sans-serif;
 
     &:hover,
@@ -77,30 +77,30 @@
 }
 
 .sidebar-tree {
+  &__node {
+    margin-bottom: 5px;
+  }
   &__root {
     display: flex;
     height: 30px;
     position: relative;
     align-items: center;
-
-    &--leaf {
-      padding-left: 35px;
-    }
+    margin-left: 29px;
 
     > .a-button {
       position: relative;
       flex-shrink: 0;
-      padding-right: 20px;
+      padding-right: 16px;
     }
 
     &--icon {
       padding-left: 0px;
+      margin-left: 0px;
     }
   }
 
   &__content {
     flex-grow: 1;
-    padding-right: 30px;
     user-select: none;
     text-decoration: none;
     overflow: hidden;

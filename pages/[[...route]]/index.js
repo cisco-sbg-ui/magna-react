@@ -248,7 +248,7 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
                   </div>
                 </AMount>
               </ACol>
-              <ACol style={{maxWidth: 375}} className={`col col--right`}>
+              <ACol style={{maxWidth: 250}} className={`col col--right`}>
                 <TableOfContents
                   setActiveSection={setActiveSection}
                   activeSection={activeSection}

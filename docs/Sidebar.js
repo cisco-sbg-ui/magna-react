@@ -53,7 +53,8 @@ const Sidebar = ({
         contentComponent: CustomLink,
         customIcon: "information",
         contentProps: {
-          href: "/"
+          href: "/",
+          className: "pl-0"
         },
         active: "/" === currentDoc.route
       },
@@ -62,29 +63,36 @@ const Sidebar = ({
         contentComponent: CustomLink,
         customIcon: "list-bullets",
         contentProps: {
-          href: "/changelog"
+          href: "/changelog",
+          className: "pl-0"
         },
         active: "/changelog" === currentDoc.route
       },
       {
         content: "Components",
         items: [],
-        expanded: currentDoc.route.startsWith("/components/")
+        expanded: currentDoc.route.startsWith("/components/"),
+        className: "pl-0",
+        customIcon: "puzzle-piece"
       },
       {
         content: "Hooks",
         items: [],
-        expanded: currentDoc.route.startsWith("/hooks/")
+        expanded: currentDoc.route.startsWith("/hooks/"),
+        className: "pl-0",
+        customIcon: "troubleshoot"
       },
       {
         content: "Extend",
         items: [],
-        expanded: currentDoc.route?.startsWith("/extend/")
+        expanded: currentDoc.route?.startsWith("/extend/"),
+        customIcon: "arrows-out"
       },
       {
         content: "Services",
         items: [],
-        expanded: currentDoc.route?.startsWith("/services/")
+        expanded: currentDoc.route?.startsWith("/services/"),
+        customIcon: "plugs"
       }
     ];
 
