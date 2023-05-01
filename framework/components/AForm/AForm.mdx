@@ -10,12 +10,12 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
 
 ### Import
 
-<ComponentImport components="AFieldBase" />
+<ComponentImport components="AForm" />
 
 ### Usage
 
 <Playground
-  code={`() => {
+  code={`function Example() {
   const [email, setEmail] = useState("");
   const [favNum, setFavNum] = useState("");
   const [errors, setErrors] = useState([]);
@@ -52,14 +52,14 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
                     !["@gmail.com", "@hotmail.com"].some((v) =>
                       value.includes(v)
                     ) || "Please provide a business email address",
-                  level: "warning"
+                  level: "warning",
                 },
                 {
                   test: (value) =>
-                    /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value) ||
+                    /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,}$/i.test(value) ||
                     "Invalid Email",
-                  level: "danger"
-                }
+                  level: "danger",
+                },
               ]}
               hint="Please use a business email address"
             />
@@ -67,17 +67,17 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
           <ACol>
             <ASelect
               items={[
-                {value: 1, text: "Read"},
-                {value: 2, text: "Write"},
-                {value: 3, text: "Admin"}
+                { value: 1, text: "Read" },
+                { value: 2, text: "Write" },
+                { value: 3, text: "Admin" },
               ]}
               label="Role"
               required
               rules={[
                 {
                   test: (v) => v.value !== 3 || "Role is set to Admin",
-                  level: "warning"
-                }
+                  level: "warning",
+                },
               ]}
               onSelected={(item) => setRole(item)}
             />
@@ -95,10 +95,9 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
               rules={[
                 {
                   test: (v) =>
-                    v.length < 10 ||
-                    "Comments must be less than 10 characters",
-                  level: "danger"
-                }
+                    v.length < 10 || "Comments must be less than 10 characters",
+                  level: "danger",
+                },
               ]}
               validateOnBlur
               hint="Keep it short"
@@ -113,7 +112,8 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
               onClick={() => {
                 setErrors([]);
                 form.current.reset();
-              }}>
+              }}
+            >
               Reset
             </AButton>
             <AButton onClick={() => setErrors(form.current.validate())}>
@@ -124,8 +124,8 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
       </AContainer>
     </AForm>
   );
-}
-`}
+};
+  `}
 />
 
 ## Component Props
