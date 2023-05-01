@@ -279,7 +279,7 @@ However, if you prefer for the column to mainting the sorting state after subseq
   const expandableConfig = {
     component: (rowItem) => {
       return (
-        <div className="py-2">
+        <ACardContainer className="my-4 py-2">
           <div className="d-flex align-center">
             <AIcon className="mr-3">users-three</AIcon>
             Players primarily use this server for {rowItem.activity}.
@@ -293,7 +293,7 @@ However, if you prefer for the column to mainting the sorting state after subseq
             <AIcon className="mr-3">globe-stand</AIcon>
             This server is located in the {rowItem.location}.
           </div>
-        </div>
+        </ACardContainer>
       );
     },
   };
