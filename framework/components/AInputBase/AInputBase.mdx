@@ -2,125 +2,154 @@
 name: Input Base
 route: /extend/input-base
 components: AInputBase
+title: AInputBase
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/AInputBase
 ---
-
-# Input Base Component
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {AInputBase} from "@cisco-sbg-ui/magna-react";
-```
 
 ## Usage
 
+### Import
+
+<ComponentImport components="AInputBase" />
+
+### Usage
+
 <Playground
-  code={`<div style={{maxWidth: 300}}>
-  <AInputBase
-    append="[Append]"
-    prepend="[Prepend]"
-    className="mb-3"
-    clearable
-    onClear={() => alert("cleared")}
-    label="Label - Normal"
-    hint="This is a sample of hint text below a form input (hover over the input box to see the hover effect)">
-    [Children]
-  </AInputBase>
-  <AInputBase
-    append="[Append]"
-    prepend="[Prepend]"
-    className="mb-3"
-    clearable
-    onClear={() => alert("cleared")}
-    label="Label - Focused"
-    hint="This is a sample of hint text below a form input"
-    focused>
-    [Children]
-  </AInputBase>
-  <AInputBase
-    append="[Append]"
-    prepend="[Prepend]"
-    className="mb-3"
-    clearable
-    onClear={() => alert("cleared")}
-    label="Label - Read-only"
-    hint="This is a sample of hint text below a form input"
-    readOnly>
-    [Children]
-  </AInputBase>
-  <AInputBase
-    append="[Append]"
-    prepend="[Prepend]"
-    className="mb-3"
-    clearable
-    onClear={() => alert("cleared")}
-    label="Label - Disabled"
-    hint="This is a sample of hint text below a form input"
-    disabled>
-    [Children]
-  </AInputBase>
-  <AInputBase
-    append="[Append]"
-    prepend="[Prepend]"
-    className="mb-3"
-    clearable
-    onClear={() => alert("cleared")}
-    label="Label - Warning"
-    hint="This is a sample of hint text below a form input"
-    validationState="warning">
-    [Children]
-  </AInputBase>
-  <AInputBase
-    append="[Append]"
-    prepend="[Prepend]"
-    className="mb-3"
-    clearable
-    onClear={() => alert("cleared")}
-    label="Label - Danger"
-    hint="This is a sample of hint text below a form input"
-    validationState="danger">
-    [Children]
-  </AInputBase>
-  <AInputBase
-    append="[Append]"
-    prepend="[Prepend]"
-    className="mb-3"
-    clearable
-    onClear={() => alert("cleared")}
-    label="Label - LARGE"
-    hint="This is a sample of hint text below a form input"
-    large>
-    [Children]
-  </AInputBase>
-   <AInputBase
-    append="[Append]"
-    prepend="[Prepend]"
-    className="mb-3"
-    clearable
-    onClear={() => alert("cleared")}
-    label="Label - MEDIUM"
-    hint="This is a sample of hint text below a form input"
-    medium>
-    [Children]
-  </AInputBase>
-   <AInputBase
-    append="[Append]"
-    prepend="[Prepend]"
-    className="mb-3"
-    clearable
-    onClear={() => alert("cleared")}
-    label="Label - SMALL"
-    hint="This is a sample of hint text below a form input"
-    small>
-    [Children]
-  </AInputBase>
-</div>
+  withTwoPanes
+  code={`
+<AInputBase
+  append="[Append]"
+  prepend="[Prepend]"
+  className="mb-3"
+  clearable
+  onClear={() => alert("cleared")}
+  label="Label - Normal"
+  hint="This is a sample of hint text below a form input (hover over the input box to see the hover effect)"
+>
+  [Children]
+</AInputBase>
+  `}
+/>
+
+#### Focused
+
+<Playground
+  code={`
+<AInputBase
+  append="[Append]"
+  prepend="[Prepend]"
+  className="mb-3"
+  clearable
+  onClear={() => alert("cleared")}
+  label="Label - Focused"
+  hint="This is a sample of hint text below a form input"
+  focused
+>
+  [Children]
+</AInputBase>
+  `}
+/>
+
+#### Read Only
+
+<Playground
+  code={`
+<AInputBase
+  append="[Append]"
+  prepend="[Prepend]"
+  className="mb-3"
+  clearable
+  onClear={() => alert("cleared")}
+  label="Label - Read-only"
+  hint="This is a sample of hint text below a form input"
+  readOnly
+>
+  [Children]
+</AInputBase>
+  `}
+/>
+
+#### Read Only
+
+<Playground
+  code={`
+<AInputBase
+  append="[Append]"
+  prepend="[Prepend]"
+  className="mb-3"
+  clearable
+  onClear={() => alert("cleared")}
+  label="Label - Disabled"
+  hint="This is a sample of hint text below a form input"
+  disabled
+>
+  [Children]
+</AInputBase>
+  `}
+/>
+
+#### Warning
+
+<Playground
+  code={`
+<AInputBase
+  append="[Append]"
+  prepend="[Prepend]"
+  className="mb-3"
+  clearable
+  onClear={() => alert("cleared")}
+  label="Label - Warning"
+  hint="This is a sample of hint text below a form input"
+  validationState="warning"
+>
+  [Children]
+</AInputBase>
+  `}
+/>
+
+#### Danger
+
+<Playground
+  code={`
+<AInputBase
+  append="[Append]"
+  prepend="[Prepend]"
+  className="mb-3"
+  clearable
+  onClear={() => alert("cleared")}
+  label="Label - Danger"
+  hint="This is a sample of hint text below a form input"
+  validationState="danger"
+>
+  [Children]
+</AInputBase>
+  `}
+/>
+
+#### Sizes
+
+<Playground
+  code={`
+<>
+  {["small", "medium", "large"].map((size) => (
+    <AInputBase
+      append="[Append]"
+      prepend="[Prepend]"
+      className="mb-3"
+      clearable
+      onClear={() => alert("cleared")}
+      label={size}
+      hint="This is a sample of hint text below a form input"
+      {...{ [size]: true }}
+    >
+      [Children]
+    </AInputBase>
+  ))}
+</>
 `}
 />
 
-## Input Base Props
+## Component Props
 
 The `AInputBase` component inherits passed props.
 
