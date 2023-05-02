@@ -73,6 +73,8 @@ To render a date range, you can import the `useADateRange` hook, which takes car
 `}
 />
 
+#### Custom Date Range Logic
+
 The logic for `useADateRange` ensures that the first and second clicks will alawys close the range, regardless of their dates relative to each other. This means that a user can hypothetically click the last day of their range _before_ they click the starting day. Any clicks after a range is closed will always initiate a new range selection, in which the same logic applies.
 
 If this is not desirable, you can use your own logic, and instead, pass an array containing two dates to the `value` prop of `ADatePicker`. The 0th index should represent the starting date, and the 1st index should represent the ending date.
