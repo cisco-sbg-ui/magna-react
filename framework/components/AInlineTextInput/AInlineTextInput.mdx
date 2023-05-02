@@ -95,10 +95,10 @@ Below, this is demonstrated by setting a `prependIcon` key for the `<ATextInput 
 `}
 />
 
-#### Input props and validation
+## Validation
 
 <Playground
-  code={`() => {
+  code={`function Example() {
   const [value, setValue] = useState("Click to edit");
   return (
     <div>
@@ -108,17 +108,11 @@ Below, this is demonstrated by setting a `prependIcon` key for the `<ATextInput 
         onChange={(newValue) => {
           setValue(newValue);
         }}
-        inputComponentProps={{
-          prependIcon: "tag"
-        }}
       />
       <br />
-      <i className='mds-neutral--neutral-10--text'>
-        Actual Value: {value}
-      </i>
+      <i className="mds-neutral--neutral-10--text">Actual Value: {value}</i>
     </div>
-
-);
+  );
 }
 `}
 />
