@@ -95,10 +95,10 @@ Below, this is demonstrated by setting a `hint` key for the `<ATextarea />`.
 `}
 />
 
-## Input props and validation
+## Validation
 
 <Playground
-  code={`() => {
+  code={`function Example() {
   const [value, setValue] = useState("inline edit value");
   return (
     <div>
@@ -108,14 +108,13 @@ Below, this is demonstrated by setting a `hint` key for the `<ATextarea />`.
           setValue(newValue);
         }}
         inputComponentProps={{
-          required: true
+          required: true,
         }}
       />
       <br />
       Actual Value: {value}
     </div>
-
-);
+  );
 }
 `}
 />
