@@ -25,6 +25,8 @@ const ACombobox = forwardRef(
       appendContent,
       className: propsClassName,
       clearable,
+      dropdownClassName,
+      dropdownStyle,
       disabled,
       hint,
       itemTemplate,
@@ -222,9 +224,14 @@ const ACombobox = forwardRef(
       value
     };
 
+    let menuClassName = "a-combobox__menu-items";
+    if (dropdownClassName) {
+      menuClassName += ` ${dropdownClassName}`;
+    }
+
     const menuComponentProps = {
       anchorRef: inputBaseSurfaceRef,
-      className: "a-combobox__menu-items",
+      className: menuClassName,
       closeOnClick: false,
       focusOnOpen: false,
       onClose: () => setIsOpen(false),
@@ -232,7 +239,8 @@ const ACombobox = forwardRef(
       role: "listbox",
       style: {
         minWidth: "max-content",
-        width: inputBaseSurfaceRef?.current?.clientWidth + 2 || "auto"
+        width: inputBaseSurfaceRef?.current?.clientWidth + 2 || "auto",
+        ...dropdownStyle
       },
       placement: menuPlacement
     };
@@ -304,6 +312,17 @@ ACombobox.propTypes = {
    * Toggles the disabled state.
    */
   disabled: PropTypes.bool,
+  /**
+   * Because ASelect uses an AMenu, the dropdown interface
+   * is mounted outside of the application area. To style
+   * this portion of ASelect, a class can be provided.
+   */
+  dropdownClassName: PropTypes.string,
+  /**
+   * Similar to the dropdownClassName prop, this can be used
+   * to pass a style object to the dropdown interface
+   */
+  dropdownStyle: PropTypes.object,
   /**
    * Sets the hint content.
    */
