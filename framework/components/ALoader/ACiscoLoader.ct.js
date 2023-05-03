@@ -1,5 +1,3 @@
-import {mount} from "@cypress/react";
-
 import AApp from "../AApp";
 import ACiscoLoader from "./ACiscoLoader";
 
