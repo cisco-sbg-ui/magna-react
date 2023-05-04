@@ -476,6 +476,7 @@ $btn-transition: color $transition-duration--extra-fast
   &--icon {
     padding: 10px !important;
     height: auto !important;
+    margin: 0 !important;
   }
 
   &.disabled,
