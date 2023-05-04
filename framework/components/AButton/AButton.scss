@@ -359,10 +359,6 @@ $btn-transition: color $transition-duration--extra-fast
 
   &--tertiary {
     color: map-deep-get($theme, "button", "tertiary", "color");
-    height: 20px;
-    padding: 0;
-    margin: 0 15px;
-
     &:hover {
       color: map-deep-get($theme, "button", "tertiary", "color--hover");
       background-color: map-deep-get($theme, "button", "tertiary", "bg--hover");
@@ -474,8 +470,8 @@ $btn-transition: color $transition-duration--extra-fast
   }
 
   &--icon {
-    padding: 10px !important;
-    height: auto !important;
+    padding: 10px;
+    height: auto;
   }
 
   &.disabled,
