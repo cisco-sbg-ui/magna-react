@@ -21,6 +21,8 @@ const ignoreStrokeReplace = [
   "cisco",
   "dots-three",
   "dots-six",
+  "dots-nine",
+  "export",
   "sort-up",
   "sort-down",
   "sort",

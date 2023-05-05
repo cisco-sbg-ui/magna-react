@@ -452,7 +452,8 @@ $btn-transition: color $transition-duration--extra-fast
 
   .a-icon.a-icon--dots-three,
   .a-icon.a-icon--dots-six,
-  .a-icon.a-icon--dots-nine {
+  .a-icon.a-icon--dots-nine,
+  .a-icon.a-icon--export {
     stroke: unset;
     fill: currentColor;
   }
