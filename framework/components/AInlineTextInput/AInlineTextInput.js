@@ -1,10 +1,10 @@
-import React from "react";
+import React, {forwardRef} from "react";
 import AInlineInputBase, {AInlineInputBasePropTypes} from "../AInlineInputBase";
 import ATextInput from "../ATextInput";
 
-const AInlineTextInput = (props) => {
-  return <AInlineInputBase {...props} inputComponent={ATextInput} />;
-};
+const AInlineTextInput = forwardRef((props, ref) => {
+  return <AInlineInputBase ref={ref} {...props} inputComponent={ATextInput} />;
+});
 
 AInlineTextInput.displayName = "AInlineTextInput";
 

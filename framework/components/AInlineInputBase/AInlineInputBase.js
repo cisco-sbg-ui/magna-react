@@ -5,6 +5,7 @@ import {AForm} from "../AForm";
 import AIcon from "../AIcon";
 import ATextInput from "../ATextInput";
 import ATextarea from "../ATextarea";
+import ATriggerTooltip from "../ATriggerTooltip";
 import "./AInlineInputBase.scss";
 
 const baseClass = "a-inline-input";
@@ -23,6 +24,7 @@ const AInlineInputBase = forwardRef(
       small,
       medium,
       large,
+      showTooltip = false,
       ...rest
     },
     ref
@@ -37,7 +39,8 @@ const AInlineInputBase = forwardRef(
         onBlur: propsOnBlur,
         onClick: propsOnClick,
         onKeyDown: propsOnKeyDown
-      } = rest;
+      } = rest,
+      tooltipDisabled = !showTooltip || !displayValue || isEditing;
 
     // Re-sync display if props changed, for example API update fails
     useEffect(() => {
@@ -79,7 +82,9 @@ const AInlineInputBase = forwardRef(
       setDisplayValue(editingValue);
       setIsEditing(false);
 
-      onChange && onChange(editingValue);
+      if (value !== editingValue) {
+        onChange && onChange(editingValue);
+      }
     };
 
     let content;
@@ -131,7 +136,9 @@ const AInlineInputBase = forwardRef(
     } else {
       content = (
         <div className={displayClass}>
-          <div className={valueClass}>{displayValue || placeholder}</div>
+          <ATriggerTooltip content={displayValue} disabled={tooltipDisabled}>
+            <div className={valueClass}>{displayValue || placeholder}</div>
+          </ATriggerTooltip>
           <div className={editIconClass}>
             <AIcon>pencil-simple</AIcon>
           </div>
@@ -239,7 +246,11 @@ export const AInlineInputBasePropTypes = {
   /**
    * Sets widget size to magnetic small
    */
-  small: PropTypes.bool
+  small: PropTypes.bool,
+  /**
+   * Show a tooltip on the displayed value
+   */
+  showTooltip: PropTypes.bool
 };
 
 AInlineInputBase.propTypes = AInlineInputBasePropTypes;
