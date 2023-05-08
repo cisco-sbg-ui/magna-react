@@ -5,12 +5,8 @@ $tabs-margin: 10px 0 0;
 $tab-font-size: $font-size--sm;
 $tab-bottom-bar-height: -4px;
 $tab-top-bar-height: 5px;
-$tab-min-width: 75px;
-$tab-padding-top: 0;
-$tab-padding-right: 15px;
 $tab-padding-bottom: 12px;
-$tab-padding-left: 15px;
-$tab-margin: 0 0 1px 0;
+$tab-margin: 2px 15px 3px 15px;
 $tab-heading-margin: 0;
 $tab-heading-font-size: $font-size--xl;
 $tab-tall-padding: 0 15px 19px 15px;
@@ -191,6 +187,7 @@ $tab-oversized-margin: 0;
 
   &__tab-content--vertical {
     flex-direction: column;
+    box-shadow: inset -1px 0 map-get($mds-neutral, "neutral-4");
   }
 
   &__scroll-left,
@@ -202,11 +199,7 @@ $tab-oversized-margin: 0;
   &__tab {
     display: inline-block;
     margin: $tab-margin;
-    padding-top: $tab-padding-top;
-    padding-right: $tab-padding-right;
     padding-bottom: $tab-padding-bottom;
-    padding-left: $tab-padding-left;
-    min-width: $tab-min-width;
     border: none;
     text-align: center;
     user-select: none;
@@ -220,7 +213,11 @@ $tab-oversized-margin: 0;
 
     &--vertical {
       min-width: 150px;
+      margin: 0 0 8px;
       padding-top: $tab-padding-bottom;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
     }
   }
 
