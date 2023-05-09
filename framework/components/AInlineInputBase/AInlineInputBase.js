@@ -40,7 +40,8 @@ const AInlineInputBase = forwardRef(
         onClick: propsOnClick,
         onKeyDown: propsOnKeyDown
       } = rest,
-      tooltipDisabled = !showTooltip || !displayValue || isEditing;
+      tooltipDisabled = !showTooltip || !displayValue || isEditing,
+      {name} = rest;
 
     // Re-sync display if props changed, for example API update fails
     useEffect(() => {
@@ -83,7 +84,7 @@ const AInlineInputBase = forwardRef(
       setIsEditing(false);
 
       if (value !== editingValue) {
-        onChange && onChange(editingValue);
+        onChange && onChange(editingValue, {name});
       }
     };
 
