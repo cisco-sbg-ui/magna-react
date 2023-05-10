@@ -67,6 +67,7 @@ const ATextInput = forwardRef(
     const [longClickTimeout, setLongClickTimeout] = useState(null);
     const [longClickInterval, setLongClickInterval] = useState(null);
     const [error, setError] = useState("");
+    const [hasValue, setHasValue] = useState(!!value);
     const [workingValidationState, setWorkingValidationState] =
       useState(validationState);
     const combinedRef = useCombinedRefs(ref, textInputRef);
@@ -291,7 +292,6 @@ const ATextInput = forwardRef(
         }
 
         if (typeof min !== "undefined" && !ruleKeys.includes("min")) {
-          console.log("????");
           workingRules = [
             {
               key: "min",
@@ -334,13 +334,14 @@ const ATextInput = forwardRef(
     const reset = () => {
       setWorkingValidationState(validationState);
       setError("");
+      setHasValue(false);
     };
 
     const inputBaseProps = {
       ...rest,
       ref: combinedRef,
       className: "a-text-input",
-      clearable,
+      clearable: hasValue,
       error,
       hint,
       label,
@@ -391,6 +392,8 @@ const ATextInput = forwardRef(
       onChange: (e) => {
         !validateOnBlur && validate(e.target.value);
         onChange && onChange(e);
+
+        setHasValue(!!value || !!e.target.value);
       },
       onClick,
       onFocus: (e) => {

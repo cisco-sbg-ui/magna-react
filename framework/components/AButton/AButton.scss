@@ -396,7 +396,8 @@ $btn-transition: color $transition-duration--extra-fast
   &.a-button--tertiary-alt {
     color: map-get($theme, "button", "tertiary", "alt", "color");
 
-    &:hover {
+    &:hover,
+    &:focus {
       color: map-deep-get($theme, "button", "tertiary", "alt", "color--hover");
     }
 

@@ -109,6 +109,20 @@ describe("<ATextInput />", () => {
           expect(mockFn.callCount).to.eq(0);
         });
     });
+
+    it("should should only show clear when the input has text", () => {
+      cy.mount(<ATextInput {...commonProps} clearable />);
+
+      cy.get(".a-input-base__clear").should("not.exist");
+
+      // Type into input to trigger error
+      cy.get(".a-text-input__input").type("clearable text");
+      cy.get(".a-input-base__clear").should("exist");
+
+      // Clear entered value
+      cy.get(".a-input-base__clear").click();
+      cy.get(".a-input-base__clear").should("not.exist");
+    });
   });
 
   describe("when rendered with validation", () => {
@@ -157,7 +171,12 @@ describe("<ATextInput />", () => {
     });
 
     it("should support automatic required value validation", () => {
-      cy.mount(<ATextInput {...commonProps} required />);
+      cy.mount(
+        <>
+          <ATextInput {...commonProps} required />
+          <button tabIndex={0} />
+        </>
+      );
 
       // Focus to input and immediately tab out
       // to make input dirty
@@ -242,20 +261,26 @@ describe("<ATextInput />", () => {
 
     it("should override internal rule for required", () => {
       cy.mount(
-        <ATextInput
-          {...commonProps}
-          required
-          rules={[
-            {
-              key: "required",
-              test: (v) => !!v || "TEST WARNING",
-              level: "warning"
-            }
-          ]}
-        />
+        <>
+          <ATextInput
+            {...commonProps}
+            required
+            rules={[
+              {
+                key: "required",
+                test: (v) => !!v || "TEST WARNING",
+                level: "warning"
+              }
+            ]}
+          />
+          <button tabIndex={0} />
+        </>
       );
 
+      // The test needs another tabbable element since the clear button is no longer always present
+
       cy.get(".a-text-input__input").focus();
+
       cy.tab();
 
       cy.get(".a-alert").should("exist");
