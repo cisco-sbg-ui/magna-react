@@ -1,9 +1,8 @@
 @import "../../styles";
 
-$tag-height: 22px;
 $tag-font-size: $font-size--xs;
 $tag-padding: 0 12px;
-$tag-border-radius: 17px;
+$tag-border-radius: 12px;
 $tag-icon-font-size: $font-size--xxs;
 
 @include theme(a-tag) using ($theme) {
@@ -41,14 +40,15 @@ $tag-icon-font-size: $font-size--xxs;
 
 .a-tag {
   display: inline-flex;
-  height: $tag-height;
   font-size: $tag-font-size;
   line-height: 22px;
-  align-items: center;
+  align-items: flex-start;
   padding: $tag-padding;
   border-radius: $tag-border-radius;
   vertical-align: middle;
   cursor: default;
+  margin: 2px;
+  word-break: break-word;
 
   &.interactable {
     cursor: pointer;
@@ -63,6 +63,7 @@ $tag-icon-font-size: $font-size--xxs;
     width: $tag-icon-font-size;
     stroke: currentColor;
     fill: currentColor;
+    padding-top: 6px;
   }
 
   &--count {
