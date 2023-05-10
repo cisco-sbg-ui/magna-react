@@ -24,31 +24,31 @@ import {ATag} from "@cisco-sbg-ui/magna-react";
   return (
     <div style={{minHeight: 120}}>
       <ATag>Simple Tag</ATag>
-      <ATag count>7</ATag>
-      <ATag count>88</ATag>
-      <ATag count>987</ATag>
-      <ATag>Some Other Tag</ATag>
-      <ATag>VERY-VERY-LONG-TAG-WHICH-DOES-NOT-CONTAIN-BREAKABLE-SPACES-BUT-IT-CAN-BE-DIVIDED-TO-MULTIPLE-LINES-BY-HYPHENS-SPLITTING</ATag>
-      <ATag className="status-red white--text">
+      <ATag count className="ma-1">7</ATag>
+      <ATag count className="ma-1">88</ATag>
+      <ATag count className="ma-1">987</ATag>
+      <ATag className="ma-1">Some Other Tag</ATag>
+      <ATag className="ma-1">VERY-VERY-LONG-TAG-WHICH-DOES-NOT-CONTAIN-BREAKABLE-SPACES-BUT-IT-CAN-BE-DIVIDED-TO-MULTIPLE-LINES-BY-HYPHENS-SPLITTING</ATag>
+      <ATag className="status-red white--text ma-1">
         <AIcon left>critical-stop</AIcon>
         Status Tag
       </ATag>
-      <ATag className="status-green white--text">
+      <ATag className="status-green white--text ma-1">
         <AIcon left>critical-stop</AIcon>
         VERYVERYLONGTAGWHICHDOESNOTCONTAINBREAKABLESPACESSOITCANNOTBEDIVIDEDNATURALYTOMULTIPLELINES
       </ATag>
-      <ATag className="mds-light-theme--status-negative white--text">
+      <ATag className="mds-light-theme--status-negative white--text ma-1">
         <AIcon left>critical-stop</AIcon>
         Negative Light
       </ATag>
-      <ATag className="mds-dark-theme--status-negative white--text">
+      <ATag className="mds-dark-theme--status-negative white--text ma-1">
         <AIcon left>critical-stop</AIcon>
         Negative Dark
       </ATag>
-      <ATag href="/" target="_blank">
+      <ATag href="/" target="_blank" className="ma-1">
         Linked Tag
       </ATag>
-      <ATag className="cisco-blue white--text">
+      <ATag className="cisco-blue white--text ma-1">
         <AIcon left>user</AIcon>User Tag
         <AIcon
           right
@@ -57,7 +57,7 @@ import {ATag} from "@cisco-sbg-ui/magna-react";
           close
         </AIcon>
       </ATag>
-      <ATag className="cisco-blue white--text">
+      <ATag className="cisco-blue white--text ma-1">
         <AIcon left>user</AIcon>
         VERY VERY LONG USER TAG WHICH CONTAINS BREAKABLE SPACES SO IT CAN BE DIVIDED TO MULTIPLE LINES
         <AIcon
@@ -68,7 +68,7 @@ import {ATag} from "@cisco-sbg-ui/magna-react";
         </AIcon>
       </ATag>
       <ATag
-        className="grape white--text"
+        className="grape white--text ma-1"
         ref={tagRef}
         onClick={() => setActive(!active)}>
         {selectedOption} Tag
