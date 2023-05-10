@@ -90,7 +90,7 @@ const AInputBase = forwardRef(
           <div className="a-input-base__control">{children}</div>
           {(append || clearable) && (
             <div className="a-input-base__append">
-              {clearable && !readOnly && (
+              {clearable && !readOnly && value && (
                 <AIcon
                   tabIndex={0}
                   role="button"
