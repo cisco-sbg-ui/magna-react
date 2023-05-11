@@ -48,6 +48,10 @@ const ADrawer = forwardRef(
 
     const style = {...propsStyle};
 
+    if (shouldRenderModal) {
+      className += " a-drawer--modal";
+    }
+
     if (withTransitions) {
       className += " a-drawer--transitions";
     }
