@@ -25,6 +25,20 @@ import useAToaster from "../AToaster/useAToaster";
 const getModalContent = () => cy.getByDataTestId("modal-content");
 const openModal = () => cy.getByDataTestId("modal-trigger").click();
 
+/**
+ * Tests core modal functionality assuming the component to be tested contains the following `data-testids`:
+ *    `modal-trigger` - the element that opens the modal
+ *
+ *    `close-modal-trigger` - the element that closes the modal
+ *
+ *    `focusable-child-1` - the first child of the modal that can receive focus
+ *
+ *    `focusable-child-2` - the second child of the modal that can receive focus
+ *
+ *    `focusable-child-3` - the third child of the modal that can receive focus
+ *
+ * @param {React Component} testComponent
+ */
 function testCoreFunctionality(testComponent) {
   it("focuses on the first element", () => {
     cy.mount(testComponent);
@@ -55,6 +69,22 @@ function testCoreFunctionality(testComponent) {
   });
 }
 
+/**
+ * Test modal propagation assuming the component to be tested contains the following `data-testids`:
+ *    `modal-trigger` - the element that opens the modal
+ *
+ *    `toggle-accordion-btn` - an element that opens/closes an accordion
+ *
+ *    `accordion-content` - the element that is rendered with the accordion is opened
+ *
+ *    `focusable-child-1` - the first child of the modal that can receive focus
+ *
+ *    `focusable-child-2` - the second child of the modal that can receive focus
+ *
+ *    `focusable-child-3` - the third child of the modal that can receive focus
+ *
+ * @param {React Component} testComponent
+ */
 function testPropagation(testComponent) {
   it("should not propagate click events outside of the modal", () => {
     cy.mount(testComponent);
