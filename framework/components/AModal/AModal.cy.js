@@ -25,6 +25,10 @@ import useAToaster from "../AToaster/useAToaster";
 const getModalContent = () => cy.getByDataTestId("modal-content");
 const openModal = () => cy.getByDataTestId("modal-trigger").click();
 
+/* -------------------------------------------------------------------------- */
+/*                                 Test suites                                */
+/* -------------------------------------------------------------------------- */
+
 /**
  * Tests core modal functionality assuming the component to be tested contains the following `data-testids`:
  *    `modal-trigger` - the element that opens the modal
@@ -124,6 +128,10 @@ function testPropagation(testComponent) {
     cy.getByDataTestId("accordion-content").should("not.be.visible");
   });
 }
+
+/* -------------------------------------------------------------------------- */
+/*                               Test assertions                              */
+/* -------------------------------------------------------------------------- */
 
 describe("<AModal />", () => {
   it("renders", () => {
@@ -230,6 +238,10 @@ describe("<AModal />", () => {
     });
   });
 });
+
+/* -------------------------------------------------------------------------- */
+/*                             Components to test                             */
+/* -------------------------------------------------------------------------- */
 
 function ContentSetup({onCloseBtnClick}) {
   return (
