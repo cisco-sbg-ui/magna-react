@@ -4,6 +4,7 @@ import ADrawer from "./ADrawer";
 import ADrawerContent from "./ADrawerContent";
 import AListItem from "../AList/AListItem";
 import AMenu from "../AMenu/AMenu";
+import AMount from "../AMount/AMount";
 import APopover from "../APopover/APopover";
 import usePopupQuickExit from "../../hooks/usePopupQuickExit/usePopupQuickExit";
 import useAToaster from "../AToaster/useAToaster";
@@ -12,99 +13,92 @@ const openDrawer = () => cy.getByDataTestId("drawer-trigger").click();
 const getDrawer = () => cy.getByDataTestId("drawer");
 const getDrawerContent = () => cy.getByDataTestId("drawer-content");
 
+function testSlideDirections(testComponent) {
+  it("should slide-in from the left", () => {
+    const Decorated = React.cloneElement(testComponent, {
+      slideIn: "left"
+    });
+    cy.mount(Decorated);
+
+    openDrawer();
+    getDrawer().should(($el) => {
+      expect($el).to.have.css("left", "0px");
+      expect($el).to.have.css("top", "0px");
+    });
+  });
+
+  it("should slide-in from the right", () => {
+    const Decorated = React.cloneElement(testComponent, {
+      slideIn: "right"
+    });
+    cy.mount(Decorated);
+
+    openDrawer();
+    getDrawer().should(($el) => {
+      expect($el).to.have.css("right", "0px");
+      expect($el).to.have.css("top", "0px");
+    });
+  });
+
+  it("should slide-in from the bottom", () => {
+    const Decorated = React.cloneElement(testComponent, {
+      slideIn: "bottom"
+    });
+    cy.mount(Decorated);
+
+    openDrawer();
+    getDrawer().should(($el) => {
+      expect($el).to.have.css("bottom", "0px");
+    });
+  });
+}
+
+function testCoreFunctionality(testComponent) {
+  it("should open", () => {
+    cy.mount(testComponent);
+
+    openDrawer();
+    getDrawerContent().should("exist");
+  });
+
+  testSlideDirections(testComponent);
+
+  it("should prioritize the width passed in as a prop", () => {
+    const Decorated = React.cloneElement(testComponent, {
+      openWidth: "800px"
+    });
+    cy.mount(Decorated);
+
+    openDrawer();
+    // Assert on drawer content since the drawer itself takes up the
+    // entire width after rendering the page overlay from `AModal`
+    getDrawerContent().invoke("outerWidth").should("eq", 800);
+  });
+}
+
 describe("<ADrawer />", () => {
   it("renders", () => {
     cy.mount(<DrawerTest />);
   });
 
   describe("when rendered as a modal", () => {
-    it("should open", () => {
-      cy.mount(<DrawerTest />);
-
-      openDrawer();
-      getDrawerContent().should("exist");
-    });
-    it("should slide-in from the left", () => {
-      cy.mount(<DrawerTest slideIn="left" />);
-
-      openDrawer();
-      getDrawer().should(($el) => {
-        expect($el).to.have.css("left", "0px");
-        expect($el).to.have.css("top", "0px");
-      });
-    });
-
-    it("should slide-in from the right", () => {
-      cy.mount(<DrawerTest slideIn="right" />);
-
-      openDrawer();
-      getDrawer().should(($el) => {
-        expect($el).to.have.css("right", "0px");
-        expect($el).to.have.css("top", "0px");
-      });
-    });
-
-    it("should slide-in from the bottom", () => {
-      cy.mount(<DrawerTest slideIn="bottom" />);
-
-      openDrawer();
-      getDrawer().should(($el) => {
-        expect($el).to.have.css("bottom", "0px");
-      });
-    });
-
-    it("should prioritize the width passed in as a prop", () => {
-      cy.mount(<DrawerTest openWidth="800px" />);
-
-      openDrawer();
-      // Assert on drawer content since the drawer itself takes up the
-      // entire width after rendering the page overlay from `AModal`
-      getDrawerContent().invoke("outerWidth").should("eq", 800);
-    });
+    testCoreFunctionality(<DrawerTest />);
   });
 
   describe("when not rendered as a modal", () => {
-    it("should open", () => {
-      cy.mount(<DrawerTest asModal={false} />);
+    testCoreFunctionality(<DrawerTest asModal={false} />);
+  });
 
-      openDrawer();
-      getDrawerContent().should("exist");
-    });
-    it("should slide-in from the left", () => {
-      cy.mount(<DrawerTest asModal={false} slideIn="left" />);
+  describe("when rendered as an absolutely positioned element", () => {
+    testCoreFunctionality(<DrawerTest position="absolute" />);
+  });
 
-      openDrawer();
-      getDrawer().should(($el) => {
-        expect($el).to.have.css("left", "0px");
-        expect($el).to.have.css("top", "0px");
-      });
-    });
+  describe("when rendered as an relatively positioned element", () => {
+    testCoreFunctionality(<DrawerTest position="relative" />);
+  });
 
-    it("should slide-in from the right", () => {
-      cy.mount(<DrawerTest asModal={false} slideIn="right" />);
-
-      openDrawer();
-      getDrawer().should(($el) => {
-        expect($el).to.have.css("right", "0px");
-        expect($el).to.have.css("top", "0px");
-      });
-    });
-
-    it("should slide-in from the bottom", () => {
-      cy.mount(<DrawerTest asModal={false} slideIn="bottom" />);
-
-      openDrawer();
-      getDrawer().should(($el) => {
-        expect($el).to.have.css("bottom", "0px");
-      });
-    });
-
-    it("should prioritize the width passed in as a prop", () => {
-      cy.mount(<DrawerTest asModal={false} openWidth="800px" />);
-
-      openDrawer();
-      getDrawer().invoke("outerWidth").should("eq", 800);
-    });
+  describe("when rendered within another <AMount /> component", () => {
+    testCoreFunctionality(<MountTest />);
   });
 
   describe("when integrating with `usePopupQuickExit()`", () => {
@@ -263,10 +257,18 @@ describe("<ADrawer />", () => {
   });
 });
 
-function DrawerTest({asModal = true, slideIn = "right", openWidth}) {
+function MountTest(props) {
+  return (
+    <AMount>
+      <DrawerTest {...props} />
+    </AMount>
+  );
+}
+
+function DrawerTest({asModal = true, slideIn = "right", openWidth, ...rest}) {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <>
+    <div>
       <AButton data-testid="drawer-trigger" onClick={() => setIsOpen(true)}>
         Open
       </AButton>
@@ -278,12 +280,13 @@ function DrawerTest({asModal = true, slideIn = "right", openWidth}) {
         openWidth={openWidth}
         slideIn={slideIn}
         closeBtnOnClick={() => setIsOpen(false)}
+        {...rest}
       >
         <ADrawerContent data-testid="drawer-content">
           <h3>drawer content</h3>
         </ADrawerContent>
       </ADrawer>
-    </>
+    </div>
   );
 }
 
@@ -291,7 +294,7 @@ function DrawerTest({asModal = true, slideIn = "right", openWidth}) {
  *
  * @see https://github.com/cisco-sbg-ui/magna-react/issues/143
  */
-function PopupQuickExitTest() {
+function PopupQuickExitTest(drawerProps) {
   const triggerRef = useRef(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -331,6 +334,7 @@ function PopupQuickExitTest() {
         asModal={false}
         isOpen={isModalOpen}
         slideIn="right"
+        {...drawerProps}
       >
         drawer content
         <AButton data-testid="drawer-content-btn">

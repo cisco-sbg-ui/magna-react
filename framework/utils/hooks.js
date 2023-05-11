@@ -1,4 +1,4 @@
-import {useEffect, useLayoutEffect, useRef} from "react";
+import {useEffect, useLayoutEffect, useRef, useState} from "react";
 
 export const useCombinedRefs = (...refs) => {
   const targetRef = useRef();
@@ -20,3 +20,25 @@ export const useCombinedRefs = (...refs) => {
 
 export const useIsomorphicLayoutEffect =
   typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
+export const useDelayUnmount = ({isEnabled = true, isOpen, delayTime}) => {
+  const timeout = useRef();
+  const [shouldRender, setShouldRender] = useState(false);
+
+  useLayoutEffect(() => {
+    if (!isEnabled) {
+      return;
+    }
+    if (isOpen && !shouldRender) {
+      setShouldRender(true);
+    } else if (!isOpen && shouldRender) {
+      timeout.current = setTimeout(() => {
+        setShouldRender(false);
+        clearTimeout(timeout.current);
+      }, delayTime);
+    }
+    return () => clearTimeout(timeout.current);
+  }, [isOpen, delayTime, shouldRender, isEnabled]);
+
+  return isEnabled ? shouldRender : isOpen;
+};

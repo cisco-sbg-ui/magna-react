@@ -99,25 +99,73 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-### Without Scroll Locking
+### Custom Scroll Locking
+
+<AAlert className="mb-2" level="warning" dismissable={false}>
+  Because content outside of a modal is inaccessible, it would be considered an
+  anti-pattern to allow the document body to scroll while a modal is opened.
+  Passing `withLockFocus={false}` should only be used in cases where you need to
+  provide your own body scrolling functionality, like in the example below.
+</AAlert>
 
 <Playground
   fullWidthPreview
   code={`() => {
     const [open, setOpen] = useState(false);
     const ref = useRef();
+    const lastScrollPos = useRef();
     usePopupQuickExit({
       popupRef: ref,
       isEnabled: open,
       onExit: () => setOpen(false)
     });
+
+    /**
+      * The code below has not been verified nor
+      * tested in a production environment. It is
+      * used for the purposes of this demonstration.
+      * Use with caution.
+      */
+    useEffect(() => {
+      const scrollPosition = window.pageYOffset;
+      const sidebar = document.querySelector(".root-sidebar");
+      const sidebarPosition = sidebar.scrollTop;
+      const container = document.querySelector('.a-app');
+      const body = document.body;
+
+      const disableScrolling = () => {
+        lastScrollPos.current = scrollPosition;
+        container.style.top = -scrollPosition + "px";
+        container.style.position = "relative";
+        sidebar.style.top = sidebarPosition;
+        sidebar.style.position = "relative";
+        body.style.position = "fixed";
+        body.style.top = "0";
+        body.style.left = "0";
+        body.style.height = "100%";
+        body.style.width = "100%";
+      }
+
+      const enableScrolling = () => {
+        container.style.top = "0";
+        container.style.position = "unset";
+        sidebar.style.top = "0";
+        sidebar.style.position = "unset";
+        body.style.position = "unset";
+        window.scrollTo({
+          top: lastScrollPos.current,
+          behavior: 'instant'
+        });
+      }
+
+      open ? disableScrolling() : enableScrolling();
+    }, [open]);
     return (
       <div>
         <AButton onClick={() => setOpen(true)}>Open Modal</AButton>
         <AModal
             aria-labelledby='modal-title'
-            lockScroll={false}
-            withOverlay={false}
+            withScrollLock={false}
             isOpen={open}>
           <APanel ref={ref} style={{ minWidth: '400px' }} type="dialog">
             <APanelHeader>
@@ -133,6 +181,93 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
               <AButton>Action</AButton>
             </APanelFooter>
           </APanel>
+        </AModal>
+      </div>
+    )
+
+}
+`}
+/>
+
+### Without Centered Content
+
+<Playground
+  fullWidthPreview
+  code={`() => {
+    const [open, setOpen] = useState(false);
+    const ref = useRef();
+    usePopupQuickExit({
+      popupRef: ref,
+      isEnabled: open,
+      onExit: () => setOpen(false)
+    });
+    return (
+      <div>
+        <AButton
+            onClick={() => setOpen(true)}>
+            Open Modal
+        </AButton>
+        <AModal
+            withCenteredContent={false}
+            aria-labelledby='modal-title'
+            isOpen={open}>
+            <APanel ref={ref} style={{ minWidth: '400px' }} type="dialog">
+              <APanelHeader>
+                <APanelTitle id='modal-title'>Modal Demo</APanelTitle>
+                <AButton aria-label="Close modal 1" onClick={() => setOpen(false)} tertiaryAlt icon>
+                  <AIcon>close</AIcon>
+                </AButton>
+              </APanelHeader>
+              <APanelBody>
+                Modal content goes here.
+              </APanelBody>
+              <APanelFooter>
+                <AButton>Action</AButton>
+              </APanelFooter>
+            </APanel>
+        </AModal>
+      </div>
+    )
+  }
+`}
+/>
+
+### Without CSS Transitions
+
+<Playground
+  fullWidthPreview
+  code={`() => {
+    const [open, setOpen] = useState(false);
+    const ref = useRef();
+    usePopupQuickExit({
+      popupRef: ref,
+      isEnabled: open,
+      onExit: () => setOpen(false)
+    });
+    return (
+      <div>
+        <AButton
+            onClick={() => setOpen(true)}>
+            Open Modal
+        </AButton>
+        <AModal
+            withTransitions={false}
+            aria-labelledby='modal-title'
+            isOpen={open}>
+            <APanel ref={ref} style={{ minWidth: '400px' }} type="dialog">
+              <APanelHeader>
+                <APanelTitle id='modal-title'>Modal Demo</APanelTitle>
+                <AButton aria-label="Close modal 1" onClick={() => setOpen(false)} tertiaryAlt icon>
+                  <AIcon>close</AIcon>
+                </AButton>
+              </APanelHeader>
+              <APanelBody>
+                Modal content goes here.
+              </APanelBody>
+              <APanelFooter>
+                <AButton>Action</AButton>
+              </APanelFooter>
+            </APanel>
         </AModal>
       </div>
     )
@@ -286,7 +421,9 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
 
 ### Size variants
 
-_This assumes a single direct child, such as `APanel`, as the modal content._
+<AAlert className="mb-2" level="info" dismissable={false}>
+  This assumes a single direct child, such as `APanel`, as the modal content.
+</AAlert>
 
 <Playground
   fullWidthPreview
@@ -344,7 +481,13 @@ _This assumes a single direct child, such as `APanel`, as the modal content._
 
 ### With onClickOutside
 
-_`withOverlay` must be true for the `onClickOutside` prop to take effect._
+<AAlert className="mb-2" level="info" dismissable={false}>
+  `withOverlay` must be true for the `onClickOutside` prop to take effect. If
+  you would like to integrate an outside click handler with a non-overlayed
+  `AModal`, consider using the{" "}
+  <a href="/hooks/use-outside-click#description">`useOutsideClick` hook</a>{" "}
+  alongside the `AModal`.
+</AAlert>
 
 <Playground
   fullWidthPreview
@@ -427,4 +570,4 @@ Additinoally, `AModal` components are assigned the `aria-modal` attribute to ind
 
 ### Focus Management
 
-When `AModal` is open, only its child elements are focusable, meaning content outside the modal is not keyboard accessible. More often than not, this is all you will need when rendering an accessible modal. However, if you need more refined focus management, you can disable this default implementation by passing `AModal` a `trapFocus` prop value of `false` in order to implement your own solution.
+When `AModal` is open, only its child elements are focusable, meaning content outside the modal is not keyboard accessible. More often than not, this is all you will need when rendering an accessible modal. However, if you need more refined focus management, you can disable this default implementation by passing `AModal` a `withFocusTrap` prop value of `false` in order to implement your own solution.

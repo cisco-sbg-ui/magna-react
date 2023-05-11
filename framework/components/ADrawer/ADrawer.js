@@ -6,6 +6,7 @@ import AButton from "../AButton/AButton";
 import AIcon from "../AIcon/AIcon";
 
 import "./ADrawer.scss";
+import {useDelayUnmount} from "../../utils/hooks";
 
 const ADrawer = forwardRef(
   (
@@ -26,10 +27,16 @@ const ADrawer = forwardRef(
       closeTitle,
       closeBtnProps,
       style: propsStyle,
+      withTransitions = true,
       ...rest
     },
     ref
   ) => {
+    const shouldRenderChildren = useDelayUnmount({
+      isOpen,
+      delayTime: 300,
+      isEnabled: withTransitions
+    });
     // A fixed drawer should automatically render as a modal unless specified
     const shouldRenderModal =
       propsAsModal || (position === "fixed" && propsAsModal == undefined);
@@ -41,8 +48,22 @@ const ADrawer = forwardRef(
 
     const style = {...propsStyle};
 
+    if (shouldRenderModal) {
+      className += " a-drawer--modal";
+    }
+
+    if (withTransitions) {
+      className += " a-drawer--transitions";
+    }
+
+    if (shouldRenderChildren) {
+      className += isOpen ? " a-drawer--show" : " a-drawer--hidden";
+    } else {
+      className += " a-drawer--hidden";
+    }
+
     if (slim) {
-      className += ` a-drawer--slim`;
+      className += " a-drawer--slim";
 
       if (slimWidth) {
         style.width = slimWidth;
@@ -54,11 +75,10 @@ const ADrawer = forwardRef(
         style.maxHeight = slimHeight;
       }
     }
-    if (!isOpen) {
-      className += ` a-drawer--hidden`;
-    } else if (!slim && openWidth) {
+
+    if (isOpen && !slim && openWidth) {
       style.width = openWidth;
-    } else if (!slim && openHeight) {
+    } else if (isOpen && !slim && openHeight) {
       style.height = openHeight;
     }
     if (propsClassName) {
@@ -103,12 +123,12 @@ const ADrawer = forwardRef(
     const drawerPanelComponent = (
       <DrawerPanelComponent
         {...rest}
-        ref={ref}
-        className={className}
-        style={style}
+        ref={shouldRenderModal ? null : ref}
+        className={shouldRenderModal ? "" : className}
+        style={shouldRenderModal ? {} : style}
       >
         {closeButton}
-        {children}
+        {shouldRenderChildren && children}
       </DrawerPanelComponent>
     );
 
@@ -117,7 +137,16 @@ const ADrawer = forwardRef(
     }
 
     return (
-      <AModal isOpen={isOpen} {...rest}>
+      <AModal
+        {...rest}
+        ref={ref}
+        className={className}
+        delayUnmount={300}
+        withCenteredContent={false}
+        withTransitions={false}
+        isOpen={shouldRenderChildren}
+        style={style}
+      >
         {drawerPanelComponent}
       </AModal>
     );

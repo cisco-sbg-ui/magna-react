@@ -102,6 +102,41 @@ The drawer can slide-in from the left, right, or bottom of the page.
 }`}
 />
 
+### Custom Width
+
+<Playground
+  code={`() => {
+
+    const rightDrawerContentRef = useRef();
+    const [isRightOpen, setIsRightOpen] = useState(false);
+    usePopupQuickExit({
+      popupRef: rightDrawerContentRef,
+      isEnabled: isRightOpen,
+      onExit: () => setIsRightOpen(false)
+    });
+
+    return (
+      <>
+        <p>Right slide-in</p>
+        <AButton onClick={() => setIsRightOpen(true)} data-test-drawer-trigger-right>Open Right</AButton>
+        <ADrawer
+            openWidth='800px'
+            aria-labelledby='right-drawer-title'
+            slideIn='right'
+            ref={rightDrawerContentRef}
+            isOpen={isRightOpen}
+            closeBtnOnClick={() => setIsRightOpen(false)}
+            data-test-drawer-right>
+          <ADrawerContent>
+            <h3 id='right-drawer-title' className="mt-1">Right Drawer </h3> <ADivider /> <AButton onClick={() => setIsRightOpen(false)} data-test-drawer-close-right>Close</AButton>
+          </ADrawerContent>
+        </ADrawer>
+      </>
+    )
+
+}`}
+/>
+
 ### Drawer Positioning Strategies
 
 By default, `ADrawer` is rendered as a fixed element. This means that the drawer will pan the entire viewport, covering any content underneath [0].
@@ -526,6 +561,40 @@ Please note that when `ADrawer` is rendered as a modal, focus will be trapped in
       </AContainer>
     )
   }`}
+/>
+
+### Without CSS Transitions
+
+<Playground
+  code={`() => {
+    const rightDrawerContentRef = useRef();
+    const [isRightOpen, setIsRightOpen] = useState(false);
+    usePopupQuickExit({
+      popupRef: rightDrawerContentRef,
+      isEnabled: isRightOpen,
+      onExit: () => setIsRightOpen(false)
+    });
+
+    return (
+      <>
+        <p>Right slide-in</p>
+        <AButton onClick={() => setIsRightOpen(true)} data-test-drawer-trigger-right>Open Right</AButton>
+        <ADrawer
+            withTransitions={false}
+            aria-labelledby='right-drawer-title'
+            slideIn='right'
+            ref={rightDrawerContentRef}
+            isOpen={isRightOpen}
+            closeBtnOnClick={() => setIsRightOpen(false)}
+            data-test-drawer-right>
+          <ADrawerContent>
+            <h3 id='right-drawer-title' className="mt-1">Right Drawer </h3> <ADivider /> <AButton onClick={() => setIsRightOpen(false)} data-test-drawer-close-right>Close</AButton>
+          </ADrawerContent>
+        </ADrawer>
+      </>
+    )
+
+}`}
 />
 
 ## Drawer Props

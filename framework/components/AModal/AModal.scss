@@ -1,12 +1,44 @@
+.a-modal {
+  opacity: 0;
+
+  &--transitions {
+    transition: opacity 0.2s;
+  }
+
+  &--show {
+    opacity: 1;
+  }
+
+  &--hide {
+    opacity: 0;
+  }
+}
+
 .a-modal-container {
   position: fixed;
-  left: 0;
   top: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
+  left: 0;
+
+  &--center {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &--transitions {
+    transform: scale(0);
+    transition: transform 0.2s;
+  }
+
+  &--grow.a-modal-container--transitions {
+    transform: scale(1);
+  }
+
+  &--shrink.a-modal-container--transitions {
+    transform: scale(0);
+  }
 
   .a-panel {
     &__title {
@@ -35,4 +67,10 @@
 
 .a-modal--hidden {
   visibility: hidden;
+}
+.a-modal--grow {
+  transform: scale(1);
+}
+.a-modal--shrink {
+  transform: scale(0);
 }
