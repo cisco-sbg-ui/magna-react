@@ -157,9 +157,19 @@ describe("<AModal />", () => {
         <ModalTest />
       </AMount>
     );
+    testCoreFunctionality(
+      <AMount>
+        <ModalTest withOverlay={false} />
+      </AMount>
+    );
     testPropagation(
       <AMount>
         <WithAccordionTest />
+      </AMount>
+    );
+    testPropagation(
+      <AMount>
+        <WithAccordionTest withOverlay={false} />
       </AMount>
     );
   });
@@ -170,9 +180,19 @@ describe("<AModal />", () => {
         <ModalTest />
       </AMount>
     );
+    testCoreFunctionality(
+      <AMount withNewWrappingContext={true}>
+        <ModalTest withOverlay={false} />
+      </AMount>
+    );
     testPropagation(
       <AMount withNewWrappingContext={true}>
         <WithAccordionTest />
+      </AMount>
+    );
+    testPropagation(
+      <AMount withNewWrappingContext={true}>
+        <WithAccordionTest withOverlay={false} />
       </AMount>
     );
   });
