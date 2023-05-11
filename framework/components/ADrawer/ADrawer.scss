@@ -124,16 +124,19 @@ $common-transitions: transform $transition-props, width $transition-props,
   &--left:not(.a-drawer--relative) {
     top: 0;
     left: 0;
+    right: unset;
   }
 
   &--right:not(.a-drawer--relative) {
     top: 0;
     right: 0;
+    left: unset;
   }
 
   &--bottom:not(.a-drawer--relative) {
     bottom: 0;
     left: 0;
+    top: unset;
   }
 }
 
