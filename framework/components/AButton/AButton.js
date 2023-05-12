@@ -115,7 +115,7 @@ const AButton = forwardRef(
     return (
       <TagName {...props}>
         {loading && <ASpinner size="small" />}
-        {children}
+        {(!icon || (icon && !loading)) && children}
       </TagName>
     );
   }
