@@ -248,6 +248,15 @@ You should provide either an \`aria-label\` or \`aria-labelledby\` prop to \`${c
   className: PropTypes.string,
 
   /**
+   * When the modal is rendered `withTransitions`, there is technically a
+   * delay from when you set `isOpen` to `false` to when the component
+   * actually unmounts from the DOM. This is done to preserve the transition.
+   *
+   * You can adjust that delay with this prop.
+   */
+  delayUnmount: PropTypes.number,
+
+  /**
    * Determines if the modal is opened or closed.
    */
   isOpen: PropTypes.bool,
