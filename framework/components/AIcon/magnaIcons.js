@@ -5830,6 +5830,48 @@ const MagnaIcons = {
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
   },
+  "trend-down": {
+    xml: (
+      <>
+        <polyline
+          points="232 200 136 104 96 144 24 72"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <polyline
+          points="232 136 232 200 168 200"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  "trend-up": {
+    xml: (
+      <>
+        <polyline
+          points="232 56 136 152 96 112 24 184"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+        <polyline
+          points="232 120 232 56 168 56"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="16"
+        ></polyline>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
   type_Admin: {
     xml: (
       <>

@@ -246,6 +246,8 @@ export const iconNameMap = {
   "time-range": "calendar-blank",
   "time-zone": "",
   trash: "",
+  "trend-down": "",
+  "trend-up": "",
   "triangle-down": "",
   "triangle-left": "",
   "triangle-right": "",
