@@ -2,6 +2,8 @@ import PropTypes from "prop-types";
 import React, {forwardRef, useContext} from "react";
 
 import AButtonGroupContext from "../AButtonGroup/AButtonGroupContext";
+import ASpinner from "../ASpinner";
+
 import "./AButton.scss";
 
 const AButton = forwardRef(
@@ -24,6 +26,7 @@ const AButton = forwardRef(
       tertiaryAlt,
       type = "button",
       value,
+      loading = false,
       ...rest
     },
     ref
@@ -44,7 +47,7 @@ const AButton = forwardRef(
       className += destructive ? "primary-destructive" : "primary";
     }
 
-    if (disabled) {
+    if (disabled || loading) {
       className += " disabled";
     }
 
@@ -76,6 +79,10 @@ const AButton = forwardRef(
       ref,
       className,
       onClick: (e) => {
+        if (loading) {
+          return;
+        }
+
         if (toggleValue) {
           toggleValue(value);
         }
@@ -105,7 +112,12 @@ const AButton = forwardRef(
       props.value = value;
     }
 
-    return <TagName {...props}>{children}</TagName>;
+    return (
+      <TagName {...props}>
+        {loading && <ASpinner size="small" />}
+        {children}
+      </TagName>
+    );
   }
 );
 
@@ -161,7 +173,11 @@ AButton.propTypes = {
   /**
    * Apply Magnetic medium size styles vs only re-skin styles, defaults to false
    */
-  medium: PropTypes.bool
+  medium: PropTypes.bool,
+  /**
+   * Automatically add a loading spinner to the button
+   */
+  loading: PropTypes.bool
 };
 
 AButton.displayName = "AButton";
