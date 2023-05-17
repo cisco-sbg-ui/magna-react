@@ -166,6 +166,49 @@ The `AButton` component inherits passed props.
       </p>
     </div>
   </div>
+<div className="d-flex"><h3>Loading</h3></div>
+  <div className="d-flex">
+    <div>
+      <p>
+        <AButton data-testid="destructive-test-btn" loading>Ask Google</AButton>
+      </p>
+      <p>
+        <AButton loading>
+          <AIcon left>edit</AIcon>
+          Primary with Icon
+        </AButton>
+      </p>
+      <p>
+        <AButton icon loading>
+          <AIcon>sync</AIcon>
+        </AButton>
+      </p>
+      <p>
+        <AButton primary disabled loading >Primary  Disabled</AButton>
+      </p>
+    </div>
+    <div className="ml-4">
+      <p>
+        <AButton secondary loading>Secondary</AButton>
+      </p>
+      <p>
+        <AButton secondary loading>
+          <AIcon left>edit</AIcon>
+          Secondary with Icon
+        </AButton>
+      </p>
+      <p>
+        <AButton secondary icon loading>
+          <AIcon>sync</AIcon>
+        </AButton>
+      </p>
+      <p>
+        <AButton secondary disabled loading>
+          Secondary Disabled
+        </AButton>
+      </p>
+    </div>
+  </div>  
 </div>
 `}
 />
