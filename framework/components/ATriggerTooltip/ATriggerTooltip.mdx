@@ -152,6 +152,46 @@ return (
 </ATriggerTooltip>
 ); } `} />
 
+## On if anchor is truncated
+
+Use `onlyIfTruncated` to show the tooltip only if the content is truncated.
+
+<Playground
+  code={`() => {
+
+    const longText = "Some text that gets truncated";
+    const noTruncation = "Text that does not get truncated";
+
+return (
+
+<>
+  <ATriggerTooltip
+    placement="top"
+    content="This works on a disabled element"
+    onlyIfTruncated>
+    <div
+      style={{
+        width: "100px",
+        overflow: "hidden",
+        whiteSpace: "nowrap",
+        textOverflow: "ellipsis"
+      }}>
+      {longText}
+    </div>
+  </ATriggerTooltip>
+  <br />
+  <br />
+  <br />
+  <br />
+  <ATriggerTooltip
+    placement="top"
+    content="This works on a disabled element"
+    onlyIfTruncated>
+    <div>{noTruncation}</div>
+  </ATriggerTooltip>
+</>
+); } `} />
+
 ## TriggerTooltip Props
 
 The `ATriggerTooltip` component inherits passed props.

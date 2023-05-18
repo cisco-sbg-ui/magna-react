@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, {useEffect, useRef} from "react";
+import React, {useCallback, useEffect, useRef} from "react";
 
 import {ATooltip} from "../ATooltip";
 import useToggle from "../../hooks/useToggle/useToggle";
@@ -17,16 +17,40 @@ const ATriggerTooltip = ({
   disabled = false,
   wrapChildren = false,
   wrapperClass,
+  onlyIfTruncated,
   ...rest
 }) => {
   const childrenRef = useRef([]);
-  const {isOpen, open, close, toggle} = useToggle(openDelay, closeDelay);
+  const childrenRefCurrent = childrenRef.current;
+  const firstChildRef = {current: childrenRefCurrent[0]};
+  // If an anchorRef is provided, use it. Otherwise, attach to first child.
+  const tooltipAnchorRef = anchorRef || firstChildRef;
+
+  const checkForTruncation = useCallback(() => {
+    if (!onlyIfTruncated) {
+      return true;
+    }
+
+    const element = (anchorRef && anchorRef.current) || childrenRef.current[0];
+
+    if (!element) {
+      return true;
+    }
+
+    return element.offsetWidth < element.scrollWidth;
+  }, [onlyIfTruncated, anchorRef, childrenRef]);
+
+  const {isOpen, open, close, toggle} = useToggle(
+    openDelay,
+    closeDelay,
+    checkForTruncation
+  );
+
   useOutsideClick({
     isEnabled: triggerRef && triggerRef.current && trigger === "click",
     rootRef: triggerRef,
     onClick: close
   });
-  const childrenRefCurrent = childrenRef.current;
 
   useEffect(() => {
     if (!content || disabled) {
@@ -73,20 +97,6 @@ const ATriggerTooltip = ({
     content
   ]);
 
-  // If an anchorRef is provided, use it. Otherwise, attach to first child.
-  const tooltipAnchorRef = anchorRef || {current: childrenRef.current[0]};
-  const tooltipElement = (
-    <ATooltip
-      anchorRef={tooltipAnchorRef}
-      open={isOpen}
-      onClose={close}
-      pointer
-      {...rest}
-    >
-      {content}
-    </ATooltip>
-  );
-
   return (
     <>
       {React.Children.map(children, (child, index) => {
@@ -108,7 +118,15 @@ const ATriggerTooltip = ({
           })
         });
       })}
-      {tooltipElement}
+      <ATooltip
+        anchorRef={tooltipAnchorRef}
+        open={isOpen}
+        onClose={close}
+        pointer
+        {...rest}
+      >
+        {content}
+      </ATooltip>
     </>
   );
 };

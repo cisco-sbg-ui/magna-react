@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useRef, useState} from "react";
 
-const useToggle = (openDelay = 400, closeDelay) => {
+const useToggle = (openDelay = 400, closeDelay, canOpen) => {
   const [isOpen, setIsOpen] = useState(false);
   const timeout = useRef();
 
@@ -8,9 +8,11 @@ const useToggle = (openDelay = 400, closeDelay) => {
     timeout.current && clearTimeout(timeout.current);
 
     timeout.current = setTimeout(() => {
-      setIsOpen(true);
+      console.log("trying to open?");
+      const canTooltipOpen = canOpen ? canOpen() : true;
+      canTooltipOpen && setIsOpen(true);
     }, openDelay);
-  }, [openDelay, timeout]);
+  }, [openDelay, timeout, canOpen]);
 
   const close = useCallback(() => {
     timeout.current && clearTimeout(timeout.current);
