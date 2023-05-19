@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-autofocus */
+
 import React, {useState, useRef} from "react";
 import {
   APanel,
@@ -21,6 +23,7 @@ import AMount from "../AMount/AMount";
 import AListItem from "../AList/AListItem";
 import usePopupQuickExit from "../../hooks/usePopupQuickExit/usePopupQuickExit";
 import useAToaster from "../AToaster/useAToaster";
+import ATextarea from "../ATextarea";
 
 const getModalContent = () => cy.getByDataTestId("modal-content");
 const openModal = () => cy.getByDataTestId("modal-trigger").click();
@@ -41,25 +44,37 @@ const openModal = () => cy.getByDataTestId("modal-trigger").click();
  *
  *    `focusable-child-3` - the third child of the modal that can receive focus
  *
- * @param {React Component} testComponent
+ * @param {React.Component} TestComponent
+ * @param {Object} props?
  */
-function testCoreFunctionality(testComponent) {
-  it("focuses on the first element", () => {
-    cy.mount(testComponent);
+function testCoreFunctionality(TestComponent, props = {}) {
+  it("focuses on the root element by default", () => {
+    cy.mount(<TestComponent {...props} />);
 
-    // Open modal
+    // Open modal; root modal element gets the focus
+    cy.getByDataTestId("modal-trigger").focus();
     cy.getByDataTestId("modal-trigger").click();
-    cy.getByDataTestId("close-modal-trigger").should("have.focus");
+    cy.get("[role='dialog']").should("have.focus");
+  });
+
+  it("focuses on the root element if specified to", () => {
+    cy.mount(<TestComponent {...props} focusTrapAutoFocus="root" />);
+
+    // Open modal; root modal element gets the focus
+    cy.getByDataTestId("modal-trigger").focus();
+    cy.getByDataTestId("modal-trigger").click();
+    cy.get("[role='dialog']").should("have.focus");
   });
 
   it("should trap focus within the modal", () => {
-    cy.mount(testComponent);
+    cy.mount(<TestComponent {...props} />);
 
-    // Open accordion; make sure first focusable element receives the focus
+    // Open modal
     cy.getByDataTestId("modal-trigger").click();
-    cy.getByDataTestId("close-modal-trigger").should("have.focus");
 
     // Tab focus
+    cy.get("body").tab();
+    cy.getByDataTestId("close-modal-trigger").should("have.focus");
     cy.get("body").tab();
     cy.getByDataTestId("focusable-child-1").should("have.focus");
     cy.get("body").tab();
@@ -70,6 +85,42 @@ function testCoreFunctionality(testComponent) {
     // Rove back around to the beginning
     cy.get("body").tab();
     cy.getByDataTestId("close-modal-trigger").should("have.focus");
+  });
+
+  it("opts-out from the auto focus while still trapping the focus", () => {
+    cy.mount(<TestComponent {...props} focusTrapAutoFocus="none" />);
+
+    // Open modal; the opening trigger keeps the focus
+    cy.getByDataTestId("modal-trigger").focus();
+    cy.getByDataTestId("modal-trigger").click();
+    cy.getByDataTestId("modal-trigger").should("have.focus");
+
+    // Tab focus
+    cy.get("body").tab();
+    cy.getByDataTestId("close-modal-trigger").should("have.focus");
+    cy.get("body").tab();
+    cy.getByDataTestId("focusable-child-1").should("have.focus");
+    cy.get("body").tab();
+    cy.getByDataTestId("focusable-child-2").should("have.focus");
+    cy.get("body").tab();
+    cy.getByDataTestId("focusable-child-3").should("have.focus");
+
+    // Rove back around to the beginning
+    cy.get("body").tab();
+    cy.getByDataTestId("close-modal-trigger").should("have.focus");
+  });
+
+  it("opts-out from the auto focus and allows an inner element to autofocus itself", () => {
+    cy.mount(
+      <TestComponent {...props} focusTrapAutoFocus="none">
+        <ATextarea autoFocus />
+      </TestComponent>
+    );
+
+    // Open modal; the opening trigger keeps the focus
+    cy.getByDataTestId("modal-trigger").focus();
+    cy.getByDataTestId("modal-trigger").click();
+    cy.get("textarea").should("have.focus");
   });
 }
 
@@ -87,11 +138,12 @@ function testCoreFunctionality(testComponent) {
  *
  *    `focusable-child-3` - the third child of the modal that can receive focus
  *
- * @param {React Component} testComponent
+ * @param {React.Component} TestComponent
+ * @param {Object} props?
  */
-function testPropagation(testComponent) {
+function testPropagation(TestComponent, props) {
   it("should not propagate click events outside of the modal", () => {
-    cy.mount(testComponent);
+    cy.mount(<TestComponent {...props} />);
 
     // Open accordion; make sure modal is not opened
     cy.getByDataTestId("toggle-accordion-btn").click(10, 10); // set click position to not also click modal button
@@ -110,7 +162,7 @@ function testPropagation(testComponent) {
   });
 
   it("should not propagate keydown events outside of the modal", () => {
-    cy.mount(testComponent);
+    cy.mount(<TestComponent {...props} />);
 
     // Open accordion; make sure modal is not opened
     cy.getByDataTestId("toggle-accordion-btn").click(10, 10); // set click position to not also click modal button
@@ -138,63 +190,63 @@ describe("<AModal />", () => {
     cy.mount(<ModalTest />);
   });
 
-  testCoreFunctionality(<ModalTest />);
-  testPropagation(<WithAccordionTest />);
+  testCoreFunctionality(ModalTest);
+  testPropagation(WithAccordionTest);
 
   describe("when rendered without <APageOverlay />", () => {
-    testCoreFunctionality(<ModalTest withOverlay={false} />);
-    testPropagation(<WithAccordionTest withOverlay={false} />);
+    testCoreFunctionality(ModalTest, {withOverlay: false});
+    testPropagation(WithAccordionTest, {withOverlay: false});
   });
 
   describe("when rendered without transitions", () => {
-    testCoreFunctionality(<ModalTest withTransitions={false} />);
-    testPropagation(<WithAccordionTest withTransitions={false} />);
+    testCoreFunctionality(ModalTest, {withTransitions: false});
+    testPropagation(WithAccordionTest, {withTransitions: false});
   });
 
   describe("when rendered within another <AMount /> component", () => {
-    testCoreFunctionality(
+    testCoreFunctionality((props) => (
       <AMount>
-        <ModalTest />
+        <ModalTest {...props} />
       </AMount>
-    );
-    testCoreFunctionality(
+    ));
+    testCoreFunctionality((props) => (
       <AMount>
-        <ModalTest withOverlay={false} />
+        <ModalTest {...props} withOverlay={false} />
       </AMount>
-    );
-    testPropagation(
+    ));
+    testPropagation((props) => (
       <AMount>
-        <WithAccordionTest />
+        <WithAccordionTest {...props} />
       </AMount>
-    );
-    testPropagation(
+    ));
+    testPropagation((props) => (
       <AMount>
-        <WithAccordionTest withOverlay={false} />
+        <WithAccordionTest {...props} withOverlay={false} />
       </AMount>
-    );
+    ));
   });
 
   describe("when rendered within another <AMount /> component that has experimental wrapping", () => {
-    testCoreFunctionality(
+    testCoreFunctionality((props) => (
       <AMount withNewWrappingContext={true}>
-        <ModalTest />
+        <ModalTest {...props} />
       </AMount>
-    );
-    testCoreFunctionality(
+    ));
+    testCoreFunctionality((props) => (
       <AMount withNewWrappingContext={true}>
-        <ModalTest withOverlay={false} />
+        <ModalTest {...props} withOverlay={false} />
       </AMount>
-    );
-    testPropagation(
+    ));
+    testPropagation((props) => (
       <AMount withNewWrappingContext={true}>
-        <WithAccordionTest />
+        <WithAccordionTest {...props} />
       </AMount>
-    );
-    testPropagation(
+    ));
+    testPropagation((props) => (
       <AMount withNewWrappingContext={true}>
-        <WithAccordionTest withOverlay={false} />
+        <WithAccordionTest {...props} withOverlay={false} />
       </AMount>
-    );
+    ));
   });
 
   describe("when triggering a toast from within the drawer", () => {
@@ -263,7 +315,7 @@ describe("<AModal />", () => {
 /*                             Components to test                             */
 /* -------------------------------------------------------------------------- */
 
-function ContentSetup({onCloseBtnClick}) {
+function ContentSetup({onCloseBtnClick, children}) {
   return (
     <APanel
       data-testid="modal-content"
@@ -287,6 +339,7 @@ function ContentSetup({onCloseBtnClick}) {
         <br />
         <label htmlFor="password">Password</label>
         <input data-testid="focusable-child-2" type="password" />
+        {children}
       </APanelBody>
       <APanelFooter>
         <AButton data-testid="focusable-child-3">Action</AButton>
@@ -295,7 +348,7 @@ function ContentSetup({onCloseBtnClick}) {
   );
 }
 
-function ModalTest(modalProps) {
+function ModalTest({children, ...modalProps}) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
@@ -308,7 +361,9 @@ function ModalTest(modalProps) {
         isOpen={isOpen}
         {...modalProps}
       >
-        <ContentSetup onCloseBtnClick={() => setIsOpen(false)} />
+        <ContentSetup onCloseBtnClick={() => setIsOpen(false)}>
+          {children}
+        </ContentSetup>
       </AModal>
     </>
   );
@@ -331,15 +386,15 @@ function WithAccordionTest({children, ...modalProps}) {
             >
               Open Modal
             </AButton>{" "}
-            {children || (
-              <AModal
-                aria-label="modal-accordion-setup"
-                isOpen={isOpen}
-                {...modalProps}
-              >
-                <ContentSetup onCloseBtnClick={() => setIsOpen(false)} />
-              </AModal>
-            )}
+            <AModal
+              aria-label="modal-accordion-setup"
+              isOpen={isOpen}
+              {...modalProps}
+            >
+              <ContentSetup onCloseBtnClick={() => setIsOpen(false)}>
+                {children}
+              </ContentSetup>
+            </AModal>
           </AAccordionHeaderTitle>
         </AAccordionHeader>
         <AAccordionBody data-testid="accordion-content">

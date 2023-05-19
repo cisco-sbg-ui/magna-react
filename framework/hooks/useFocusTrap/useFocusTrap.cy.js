@@ -1,11 +1,15 @@
+/* eslint-disable jsx-a11y/no-autofocus */
+
 import {useRef} from "react";
 
 import useFocusTrap from "./useFocusTrap";
+import {ATextarea} from "../../index";
 
 describe("useFocusTrap()", () => {
   it("should trap focus when tabbing forward", () => {
     cy.mount(<FocusTrapTest />);
 
+    cy.get("body").tab();
     cy.getByDataTestId("trapped-item-1").should("have.focus");
     cy.get("body").tab();
     cy.getByDataTestId("trapped-item-2").should("have.focus");
@@ -18,6 +22,7 @@ describe("useFocusTrap()", () => {
   it("should trap focus when tabbing backwards", () => {
     cy.mount(<FocusTrapTest />);
 
+    cy.get("body").tab({shift: true});
     cy.getByDataTestId("trapped-item-1").should("have.focus");
     cy.get("body").tab({shift: true});
     cy.getByDataTestId("trapped-item-3").should("have.focus");
@@ -26,13 +31,24 @@ describe("useFocusTrap()", () => {
     cy.get("body").tab({shift: true});
     cy.getByDataTestId("trapped-item-1").should("have.focus");
   });
+
+  it("allows inner element to autofocus itself", () => {
+    cy.mount(
+      <FocusTrapTest>
+        <ATextarea autoFocus />
+      </FocusTrapTest>
+    );
+
+    cy.get("textarea").should("have.focus");
+  });
 });
 
-function FocusTrapTest() {
+const FocusTrapTest = ({children, autoFocus}) => {
   const trapRef = useRef();
   useFocusTrap({
     rootRef: trapRef,
-    isEnabled: true
+    isEnabled: true,
+    autoFocus
   });
   return (
     <>
@@ -58,6 +74,8 @@ function FocusTrapTest() {
           <br />
           <button data-testid="trapped-item-3">Submit</button>
         </form>
+
+        {children}
       </div>
 
       <div>
@@ -75,4 +93,4 @@ function FocusTrapTest() {
       </div>
     </>
   );
-}
+};
