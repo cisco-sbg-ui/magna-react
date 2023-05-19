@@ -72,6 +72,22 @@ $hidden-table-col-width: 45px;
     }
   }
 
+  &__header,
+  &__cell {
+    .a-checkbox__wrap {
+      padding: 0 !important;
+    }
+
+    .a-checkbox__box {
+      margin-top: 0px !important;
+      align-self: center;
+    }
+
+    .a-checkbox__label {
+      top: 0px !important;
+    }
+  }
+
   .text-start {
     text-align: start;
   }
