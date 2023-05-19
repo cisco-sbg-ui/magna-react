@@ -46,7 +46,7 @@ const AModal = forwardRef(
       onClickOutside,
       withCenteredContent = true,
       withFocusTrap = true,
-      focusTrapAutoFocus = "first",
+      focusTrapAutoFocus = "root",
       withOverlay = true,
       withScrollLock = true,
       withTransitions = true,
@@ -302,9 +302,9 @@ You should provide either an \`aria-label\` or \`aria-labelledby\` prop to \`${c
   withFocusTrap: PropTypes.bool,
 
   /**
-   * Specifies what element to autofocus when the modal is opened. Allows to choose between first focusable element, the modal root or opt-opt from element autofocus.
+   * Specifies what element to autofocus when the modal is opened. Allows to choose between the modal root or to opt-opt from element autofocus.
    */
-  focusTrapAutoFocus: PropTypes.oneOf(["first", "root", "none"]),
+  focusTrapAutoFocus: PropTypes.oneOf(["root", "none"]),
 
   /**
    * Determines if the modal should render with an faded backdrop.

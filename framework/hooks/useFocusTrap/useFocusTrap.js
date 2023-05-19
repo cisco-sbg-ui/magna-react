@@ -51,9 +51,6 @@ export default function useFocusTrap({rootRef, autoFocus, isEnabled = true}) {
       );
       let elementToAutoFocus;
       switch (autoFocus) {
-        case "first":
-          elementToAutoFocus = treeWalker.nextNode();
-          break;
         case "root":
           elementToAutoFocus = rootRef.current;
           break;
