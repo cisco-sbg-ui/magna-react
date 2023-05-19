@@ -46,6 +46,7 @@ const AModal = forwardRef(
       onClickOutside,
       withCenteredContent = true,
       withFocusTrap = true,
+      focusTrapAutoFocus = "first",
       withOverlay = true,
       withScrollLock = true,
       withTransitions = true,
@@ -67,7 +68,8 @@ const AModal = forwardRef(
 
     useFocusTrap({
       rootRef: _ref,
-      isEnabled: withFocusTrap && shouldRenderChildren
+      isEnabled: withFocusTrap && shouldRenderChildren,
+      autoFocus: focusTrapAutoFocus
     });
 
     useEffect(() => {
@@ -165,6 +167,7 @@ const AModal = forwardRef(
           <Component
             role="dialog"
             aria-modal="true"
+            tabIndex={-1}
             ref={handleMultipleRefs(_ref, ref)}
             className={contentClassName}
             {...rest}
@@ -180,6 +183,7 @@ const AModal = forwardRef(
       <Component
         role="dialog"
         aria-modal="true"
+        tabIndex={-1}
         className={`${contentClassName}`}
         ref={handleMultipleRefs(_ref, ref)}
         onKeyDown={(e) => {
@@ -298,6 +302,11 @@ You should provide either an \`aria-label\` or \`aria-labelledby\` prop to \`${c
   withFocusTrap: PropTypes.bool,
 
   /**
+   * Specifies what element to autofocus when the modal is opened. Allows to choose between first focusable element, the modal root or opt-opt from element autofocus.
+   */
+  focusTrapAutoFocus: PropTypes.oneOf(["first", "root", "none"]),
+
+  /**
    * Determines if the modal should render with an faded backdrop.
    */
   withOverlay: PropTypes.bool,
@@ -310,11 +319,6 @@ You should provide either an \`aria-label\` or \`aria-labelledby\` prop to \`${c
 
   /**
    * Determines if the modal should open and close with CSS transitions.
-   */
-  withTransitions: PropTypes.bool,
-
-  /**
-   * Determines if the modal should open and close with CSS animations.
    */
   withTransitions: PropTypes.bool
 };
