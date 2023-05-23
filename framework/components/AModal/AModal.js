@@ -302,7 +302,7 @@ You should provide either an \`aria-label\` or \`aria-labelledby\` prop to \`${c
   withFocusTrap: PropTypes.bool,
 
   /**
-   * Specifies what element to autofocus when the modal is opened. Allows to choose between the modal root or to opt-opt from element autofocus.
+   * Specifies what element to autofocus when the modal is opened. Allows to choose between the modal root or to opt-out from element autofocus.
    */
   focusTrapAutoFocus: PropTypes.oneOf(["root", "none"]),
 
