@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
+import AButton from "../AButton";
 import AIcon from "../AIcon";
 import AFieldBase from "../AFieldBase";
 import {keyCodes} from "../../utils/helpers";
@@ -91,11 +92,9 @@ const AInputBase = forwardRef(
           {(append || clearable) && (
             <div className="a-input-base__append">
               {clearable && !readOnly && (
-                <AIcon
-                  tabIndex={0}
-                  role="button"
-                  className="a-input-base__clear"
-                  size={16}
+                <AButton
+                  tertiaryAlt
+                  style={{padding: 0, height: "unset"}}
                   onClick={onClear}
                   onKeyDown={(e) => {
                     if ([keyCodes.enter, keyCodes.space].includes(e.keyCode)) {
@@ -104,8 +103,15 @@ const AInputBase = forwardRef(
                     }
                   }}
                 >
-                  close
-                </AIcon>
+                  <AIcon
+                    tabIndex={0}
+                    role="button"
+                    className="a-input-base__clear"
+                    size={16}
+                  >
+                    close
+                  </AIcon>
+                </AButton>
               )}
               {append}
             </div>
