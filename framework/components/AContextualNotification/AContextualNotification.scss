@@ -41,7 +41,7 @@ $context-arrow-left: 10%;
     border-color: map-deep-get($theme, "control", "warning-color");
 
     .a-context__icon {
-      color: $color-warning;
+      color: map-deep-get($theme, "control", "warning-color");
     }
     .a-icon-bg {
       fill: map-deep-get($theme, "control", "warning-color");
@@ -71,7 +71,7 @@ $context-arrow-left: 10%;
   border-radius: $border-radius--sm;
   &__icon {
     margin: $context-icon-margin;
-    height: 19px;
-    width: 19px;
+    height: 24px;
+    width: 24px;
   }
 }
