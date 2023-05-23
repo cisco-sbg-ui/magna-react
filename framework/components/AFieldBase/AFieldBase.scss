@@ -4,6 +4,11 @@
   &__label {
     color: map-deep-get($theme, "label", "color");
   }
+
+  .a-icon--information:hover {
+    stroke: map-deep-get($theme, "button-group", "color--hover");
+    fill: map-deep-get($theme, "button-group", "color--hover");
+  }
 }
 
 .a-field-base {
@@ -23,6 +28,7 @@
     }
 
     .a-icon--information {
+      transition: all 0.3s;
       height: 16px;
       width: 16px;
       vertical-align: text-bottom;
