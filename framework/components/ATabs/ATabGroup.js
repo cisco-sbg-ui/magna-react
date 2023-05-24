@@ -10,7 +10,7 @@ import React, {
 import AButton from "../AButton";
 import AIcon from "../AIcon";
 import ATabContext from "./ATabContext";
-import {getRoundedBoundedClientRect, debounce} from "../../utils/helpers";
+import {getRoundedBoundedClientRect} from "../../utils/helpers";
 import {useCombinedRefs} from "../../utils/hooks";
 import "./ATabs.scss";
 
@@ -59,7 +59,7 @@ const ATabGroup = forwardRef(
 
       const target = combinedRef.current.parentNode;
 
-      const callback = debounce(() => {
+      const callback = () => {
         const wrapper = combinedRef.current.querySelector(
           ".a-tab-group__tab-wrapper"
         );
@@ -68,7 +68,7 @@ const ATabGroup = forwardRef(
         );
 
         setShowScrolling(content.scrollWidth - wrapper.clientWidth + 1 > 0);
-      });
+      };
 
       const resizeObserver = new ResizeObserver(callback);
 
