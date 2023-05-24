@@ -1,5 +1,11 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useEffect, useRef, useState} from "react";
+import React, {
+  forwardRef,
+  useCallback,
+  useEffect,
+  useRef,
+  useState
+} from "react";
 
 import AButton from "../AButton";
 import AIcon from "../AIcon";
@@ -7,6 +13,16 @@ import ATabContext from "./ATabContext";
 import {getRoundedBoundedClientRect} from "../../utils/helpers";
 import {useCombinedRefs} from "../../utils/hooks";
 import "./ATabs.scss";
+
+const debounce = (func, timeout = 100) => {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, timeout);
+  };
+};
 
 const ATabGroup = forwardRef(
   (
@@ -45,6 +61,33 @@ const ATabGroup = forwardRef(
         );
       }
     }, [scrolling, combinedRef, children.length]);
+
+    useEffect(() => {
+      if (!combinedRef.current || !scrolling) {
+        return;
+      }
+
+      const target = combinedRef.current.parentNode;
+
+      const callback = debounce(() => {
+        const wrapper = combinedRef.current.querySelector(
+          ".a-tab-group__tab-wrapper"
+        );
+        const content = combinedRef.current.querySelector(
+          ".a-tab-group__tab-content"
+        );
+
+        setShowScrolling(content.scrollWidth - wrapper.clientWidth + 1 > 0);
+      });
+
+      const resizeObserver = new ResizeObserver(callback);
+
+      resizeObserver.observe(target);
+
+      return () => {
+        resizeObserver.unobserve(target);
+      };
+    }, [combinedRef, scrolling]);
 
     let className = "a-tab-group";
 
