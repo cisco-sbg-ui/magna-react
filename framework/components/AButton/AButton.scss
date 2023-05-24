@@ -478,7 +478,7 @@ $btn-transition: color $transition-duration--extra-fast
   }
 
   &--disabled {
-    //Wrapper for cursor allows us to cursor not allowed when pointer events are disabled
+    //Wrapper class for disabled button to display `cursor: not allowed` when pointer events are disabled
     cursor: not-allowed;
     padding-bottom: 10px;
   }
