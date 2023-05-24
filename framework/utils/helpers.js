@@ -280,3 +280,13 @@ export const isForwardTab = (e) => {
   const isTabbingForward = !isBackwardTab(e) && key === "Tab";
   return isTabbingForward;
 };
+
+export const debounce = (func, timeout = 100) => {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, timeout);
+  };
+};

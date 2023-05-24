@@ -10,19 +10,9 @@ import React, {
 import AButton from "../AButton";
 import AIcon from "../AIcon";
 import ATabContext from "./ATabContext";
-import {getRoundedBoundedClientRect} from "../../utils/helpers";
+import {getRoundedBoundedClientRect, debounce} from "../../utils/helpers";
 import {useCombinedRefs} from "../../utils/hooks";
 import "./ATabs.scss";
-
-const debounce = (func, timeout = 100) => {
-  let timer;
-  return (...args) => {
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      func.apply(this, args);
-    }, timeout);
-  };
-};
 
 const ATabGroup = forwardRef(
   (
