@@ -79,6 +79,12 @@ const ATabGroup = forwardRef(
       };
     }, [combinedRef, scrolling]);
 
+    useEffect(() => {
+      if (!showScrolling) {
+        setTranslateX(0);
+      }
+    }, [showScrolling]);
+
     let className = "a-tab-group";
 
     if (oversized) {
