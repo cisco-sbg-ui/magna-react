@@ -60,6 +60,10 @@ const ATabGroup = forwardRef(
       const target = combinedRef.current.parentNode;
 
       const callback = () => {
+        if (!combinedRef.current) {
+          return;
+        }
+
         const wrapper = combinedRef.current.querySelector(
           ".a-tab-group__tab-wrapper"
         );
