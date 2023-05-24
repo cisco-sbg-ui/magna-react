@@ -477,10 +477,14 @@ $btn-transition: color $transition-duration--extra-fast
     height: auto;
   }
 
+  &--disabled {
+    //Wrapper for cursor allows us to cursor not allowed when pointer events are disabled
+    cursor: not-allowed;
+    padding-bottom: 10px;
+  }
   &.disabled,
   &:disabled {
-    pointer-events: auto;
-    cursor: not-allowed;
+    pointer-events: none;
   }
 
   &.a-button--medium {

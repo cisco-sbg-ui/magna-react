@@ -34,6 +34,7 @@ const AButton = forwardRef(
     const {selectedValues, toggleValue} = useContext(AButtonGroupContext);
 
     let className = "a-button focus-box-shadow a-button--";
+    let disabledWrapperClass = "";
 
     if (primary) {
       className += destructive ? "primary-destructive" : "primary";
@@ -49,6 +50,7 @@ const AButton = forwardRef(
 
     if (disabled || loading) {
       className += " disabled";
+      disabledWrapperClass = "a-button--disabled";
     }
 
     if (small) {
@@ -113,10 +115,12 @@ const AButton = forwardRef(
     }
 
     return (
-      <TagName {...props}>
-        {loading && <ASpinner size="small" />}
-        {(!icon || (icon && !loading)) && children}
-      </TagName>
+      <span className={disabledWrapperClass}>
+        <TagName {...props}>
+          {loading && <ASpinner size="small" />}
+          {(!icon || (icon && !loading)) && children}
+        </TagName>
+      </span>
     );
   }
 );
