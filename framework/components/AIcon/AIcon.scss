@@ -85,6 +85,12 @@ svg.a-icon {
   &--critical-stop {
     fill: map-get($mds-status, "negative") !important;
   }
+
+  &--warning {
+    .a-icon-text {
+      fill: #494a4a !important;
+    }
+  }
 }
 
 .a-icon {
