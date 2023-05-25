@@ -34,7 +34,6 @@ const AButton = forwardRef(
     const {selectedValues, toggleValue} = useContext(AButtonGroupContext);
 
     let className = "a-button focus-box-shadow a-button--";
-    let disabledWrapperClass = "a-button--disabled";
 
     if (primary) {
       className += destructive ? "primary-destructive" : "primary";
@@ -113,18 +112,12 @@ const AButton = forwardRef(
       props.value = value;
     }
 
-    const btnComponent = (
+    return (
       <TagName {...props}>
         {loading && <ASpinner size="small" />}
         {(!icon || (icon && !loading)) && children}
       </TagName>
     );
-
-    if (disabled) {
-      return <span className={disabledWrapperClass}>{btnComponent}</span>;
-    }
-
-    return btnComponent;
   }
 );
 
