@@ -32,7 +32,11 @@ function createTrap(walker) {
   };
 }
 
-export default function useFocusTrap({rootRef, autoFocus, isEnabled = true}) {
+export default function useFocusTrap({
+  rootRef,
+  autoFocusElementRef,
+  isEnabled = true
+}) {
   useEffect(() => {
     if (isEnabled && rootRef.current) {
       const treeWalker = document.createTreeWalker(
@@ -49,25 +53,17 @@ export default function useFocusTrap({rootRef, autoFocus, isEnabled = true}) {
           }
         }
       );
-      let elementToAutoFocus;
-      switch (autoFocus) {
-        case "root":
-          elementToAutoFocus = rootRef.current;
-          break;
-        default:
-          elementToAutoFocus = undefined;
-      }
-      if (elementToAutoFocus) {
+      if (autoFocusElementRef) {
         const animationPromises = rootRef.current
           .getAnimations({subtree: true})
           .map((animation) => animation.finished);
         Promise.allSettled(animationPromises).then(() =>
-          elementToAutoFocus.focus({focusVisible: true})
+          autoFocusElementRef.current.focus({focusVisible: true})
         );
       }
       const trap = createTrap(treeWalker);
       document.addEventListener("keydown", trap);
       return () => document.removeEventListener("keydown", trap);
     }
-  }, [rootRef, autoFocus, isEnabled]);
+  }, [rootRef, autoFocusElementRef, isEnabled]);
 }

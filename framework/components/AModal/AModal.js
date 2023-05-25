@@ -1,4 +1,4 @@
-import React, {forwardRef, useContext, useEffect, useRef} from "react";
+import React, {forwardRef, useContext, useEffect, useRef, useMemo} from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 
@@ -46,7 +46,7 @@ const AModal = forwardRef(
       onClickOutside,
       withCenteredContent = true,
       withFocusTrap = true,
-      focusTrapAutoFocus = "root",
+      autoFocusElementRef,
       withOverlay = true,
       withScrollLock = true,
       withTransitions = true,
@@ -66,10 +66,21 @@ const AModal = forwardRef(
       isEnabled: withTransitions || delayUnmount
     });
 
+    const elementRefToAutoFocus = useMemo(() => {
+      if (autoFocusElementRef) {
+        return autoFocusElementRef;
+      } else if (typeof autoFocusElementRef === "undefined") {
+        return _ref;
+      } else {
+        // if (autoFocusElementRef === null) - disable autofocus
+        return undefined;
+      }
+    }, [_ref, autoFocusElementRef]);
+
     useFocusTrap({
       rootRef: _ref,
       isEnabled: withFocusTrap && shouldRenderChildren,
-      autoFocus: focusTrapAutoFocus
+      autoFocusElementRef: elementRefToAutoFocus
     });
 
     useEffect(() => {
@@ -302,9 +313,12 @@ You should provide either an \`aria-label\` or \`aria-labelledby\` prop to \`${c
   withFocusTrap: PropTypes.bool,
 
   /**
-   * Specifies what element to autofocus when the modal is opened. Allows to choose between the modal root or to opt-out from element autofocus.
+   * Specifies what element to autofocus when the modal is opened. By default, when omitted or undefined, the modal root is focused. When null is passed, the modal does not do any autofocus.
    */
-  focusTrapAutoFocus: PropTypes.oneOf(["root", "none"]),
+  autoFocusElementRef: PropTypes.oneOf([
+    null,
+    PropTypes.shape({current: PropTypes.any})
+  ]),
 
   /**
    * Determines if the modal should render with an faded backdrop.

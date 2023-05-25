@@ -9,6 +9,7 @@ describe("useFocusTrap()", () => {
   it("should trap focus when tabbing forward", () => {
     cy.mount(<FocusTrapTest />);
 
+    cy.get("#trap").should("have.focus");
     cy.get("body").tab();
     cy.getByDataTestId("trapped-item-1").should("have.focus");
     cy.get("body").tab();
@@ -22,6 +23,7 @@ describe("useFocusTrap()", () => {
   it("should trap focus when tabbing backwards", () => {
     cy.mount(<FocusTrapTest />);
 
+    cy.get("#trap").should("have.focus");
     cy.get("body").tab({shift: true});
     cy.getByDataTestId("trapped-item-1").should("have.focus");
     cy.get("body").tab({shift: true});
@@ -34,7 +36,7 @@ describe("useFocusTrap()", () => {
 
   it("allows inner element to autofocus itself", () => {
     cy.mount(
-      <FocusTrapTest>
+      <FocusTrapTest enableAutofocus={false}>
         <ATextarea autoFocus />
       </FocusTrapTest>
     );
@@ -43,12 +45,12 @@ describe("useFocusTrap()", () => {
   });
 });
 
-const FocusTrapTest = ({children, autoFocus}) => {
+const FocusTrapTest = ({children, enableAutofocus = true}) => {
   const trapRef = useRef();
   useFocusTrap({
     rootRef: trapRef,
     isEnabled: true,
-    autoFocus
+    autoFocusElementRef: enableAutofocus ? trapRef : undefined
   });
   return (
     <>
@@ -64,7 +66,7 @@ const FocusTrapTest = ({children, autoFocus}) => {
         ))}
       </div>
 
-      <div id="trap" ref={trapRef}>
+      <div id="trap" tabIndex={-1} ref={trapRef}>
         <form>
           <label htmlFor="username">Username</label>
           <input data-testid="trapped-item-1" id="username" type="text" />

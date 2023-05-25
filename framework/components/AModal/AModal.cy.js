@@ -57,15 +57,6 @@ function testCoreFunctionality(TestComponent, props = {}) {
     cy.get("[role='dialog']").should("have.focus");
   });
 
-  it("focuses on the root element if specified to", () => {
-    cy.mount(<TestComponent {...props} focusTrapAutoFocus="root" />);
-
-    // Open modal; root modal element gets the focus
-    cy.getByDataTestId("modal-trigger").focus();
-    cy.getByDataTestId("modal-trigger").click();
-    cy.get("[role='dialog']").should("have.focus");
-  });
-
   it("should trap focus within the modal", () => {
     cy.mount(<TestComponent {...props} />);
 
@@ -88,7 +79,7 @@ function testCoreFunctionality(TestComponent, props = {}) {
   });
 
   it("opts-out from the auto focus while still trapping the focus", () => {
-    cy.mount(<TestComponent {...props} focusTrapAutoFocus="none" />);
+    cy.mount(<TestComponent {...props} autoFocusElementRef={null} />);
 
     // Open modal; the opening trigger keeps the focus
     cy.getByDataTestId("modal-trigger").focus();
@@ -112,7 +103,7 @@ function testCoreFunctionality(TestComponent, props = {}) {
 
   it("opts-out from the auto focus and allows an inner element to autofocus itself", () => {
     cy.mount(
-      <TestComponent {...props} focusTrapAutoFocus="none">
+      <TestComponent {...props} autoFocusElementRef={null}>
         <ATextarea autoFocus />
       </TestComponent>
     );
