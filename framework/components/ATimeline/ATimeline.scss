@@ -1,6 +1,6 @@
 @import "../../styles";
 
-$timeline-item-margin: 20px auto;
+$timeline-item-margin: 0 auto;
 $timeline-item-padding: $base-padding-small;
 $timeline-item-width: 100%;
 $timeline-icon-border-radius: 50%;
@@ -21,11 +21,6 @@ $timeline-transition: background-color $timeline-item-transition;
   color: map-deep-get($theme, "label", "color");
 
   &__item {
-    &:active,
-    &:hover {
-      background-color: map-deep-get($theme, "timeline", "item-bg-hover-color");
-    }
-
     &--state-success {
       .a-timeline__icon {
         background-color: map-deep-get($theme, "control", "success-color");
