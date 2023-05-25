@@ -134,6 +134,7 @@ const Sidebar = ({
     return (
       <ADrawer
         isOpen={isDrawerOpen}
+        withTransitions={false}
         id="sidebar"
         aria-labelledby="title"
         className={`root-sidebar py-4 sidebar`}
@@ -178,6 +179,7 @@ const Sidebar = ({
     <ADrawer
       slim={isSlim}
       slimWidth="50px"
+      withTransitions={false}
       position="relative"
       isOpen={true}
       id="sidebar"
