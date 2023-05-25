@@ -1,5 +1,11 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useEffect, useRef, useState} from "react";
+import React, {
+  forwardRef,
+  useCallback,
+  useEffect,
+  useRef,
+  useState
+} from "react";
 
 import AButton from "../AButton";
 import AIcon from "../AIcon";
@@ -45,6 +51,41 @@ const ATabGroup = forwardRef(
         );
       }
     }, [scrolling, combinedRef, children.length]);
+
+    useEffect(() => {
+      if (!combinedRef.current || !scrolling) {
+        return;
+      }
+
+      const target = combinedRef.current.parentNode;
+
+      const callback = () => {
+        if (!combinedRef.current) {
+          return;
+        }
+
+        const wrapper = combinedRef.current.querySelector(
+          ".a-tab-group__tab-wrapper"
+        );
+        const content = combinedRef.current.querySelector(
+          ".a-tab-group__tab-content"
+        );
+
+        setShowScrolling(content.scrollWidth - wrapper.clientWidth + 1 > 0);
+      };
+
+      const resizeObserver = new ResizeObserver(callback);
+
+      resizeObserver.observe(target);
+
+      return () => {
+        resizeObserver.unobserve(target);
+      };
+    }, [combinedRef, scrolling]);
+
+    useEffect(() => {
+      setTranslateX(0);
+    }, [showScrolling]);
 
     let className = "a-tab-group";
 
