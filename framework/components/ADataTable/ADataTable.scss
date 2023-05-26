@@ -49,9 +49,18 @@ $hidden-table-col-width: 45px;
 
 .a-data-table {
   &__header {
+    transition: all 0.3s;
+
+    &--sortable:not(.text-end) {
+      .a-data-table__header__sort {
+        display: none;
+      }
+    }
+
     &__sort {
       &__button {
         display: inline-flex;
+        flex: 1 1 auto;
         align-items: center;
         outline: none;
         font-family: inherit !important;
@@ -85,6 +94,13 @@ $hidden-table-col-width: 45px;
 
     .a-checkbox__label {
       top: 0px !important;
+    }
+  }
+
+  &__header:hover,
+  &__header:focus {
+    .a-data-table__header__sort {
+      display: block;
     }
   }
 
