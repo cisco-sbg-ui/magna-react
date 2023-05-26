@@ -51,10 +51,14 @@ $hidden-table-col-width: 45px;
   &__header {
     transition: all 0.3s;
 
-    &--sortable:not(.text-end) {
-      .a-data-table__header__sort {
-        display: none;
-      }
+    &__label {
+      line-height: $font-size;
+    }
+
+    &__sort-wrap {
+      display: flex;
+
+      height: 100%;
     }
 
     &__sort {
@@ -77,6 +81,7 @@ $hidden-table-col-width: 45px;
         vertical-align: middle;
         width: 20px;
         cursor: pointer;
+        opacity: 0;
       }
     }
   }
@@ -100,7 +105,7 @@ $hidden-table-col-width: 45px;
   &__header:hover,
   &__header:focus {
     .a-data-table__header__sort {
-      display: block;
+      opacity: 1;
     }
   }
 
@@ -225,10 +230,6 @@ $hidden-table-col-width: 45px;
           display: inline-flex;
           overflow: hidden;
         }
-      }
-
-      &__sort-wrap {
-        display: flex;
       }
 
       &__label {
