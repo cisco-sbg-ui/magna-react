@@ -479,8 +479,7 @@ $btn-transition: color $transition-duration--extra-fast
 
   &.disabled,
   &:disabled {
-    pointer-events: auto;
-    cursor: not-allowed;
+    pointer-events: none;
   }
 
   &.a-button--medium {
