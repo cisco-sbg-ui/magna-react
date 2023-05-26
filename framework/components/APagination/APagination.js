@@ -54,7 +54,7 @@ const APagination = forwardRef(
     }
 
     const content = () => {
-      if (total && resultsPerPage) {
+      if (typeof total === "number" && resultsPerPage) {
         const pages = Math.ceil(total / resultsPerPage);
         const firstResultIndex = (page - 1) * resultsPerPage + 1;
         const lastResultIndex = Math.min(
@@ -207,7 +207,7 @@ const APagination = forwardRef(
         );
       }
 
-      if (total) {
+      if (typeof total === "number") {
         // PADDING is what to show around the current page.
         // If on page 50 of 100 pages, show 48, 49, 50, 51, 52
         const PADDING = 2;
