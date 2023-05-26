@@ -49,9 +49,22 @@ $hidden-table-col-width: 45px;
 
 .a-data-table {
   &__header {
+    transition: all 0.3s;
+
+    &__label {
+      line-height: $font-size;
+    }
+
+    &__sort-wrap {
+      display: flex;
+
+      height: 100%;
+    }
+
     &__sort {
       &__button {
         display: inline-flex;
+        flex: 1 1 auto;
         align-items: center;
         outline: none;
         font-family: inherit !important;
@@ -68,6 +81,7 @@ $hidden-table-col-width: 45px;
         vertical-align: middle;
         width: 20px;
         cursor: pointer;
+        opacity: 0;
       }
     }
   }
@@ -85,6 +99,13 @@ $hidden-table-col-width: 45px;
 
     .a-checkbox__label {
       top: 0px !important;
+    }
+  }
+
+  &__header:hover,
+  &__header:focus {
+    .a-data-table__header__sort {
+      opacity: 1;
     }
   }
 
@@ -209,10 +230,6 @@ $hidden-table-col-width: 45px;
           display: inline-flex;
           overflow: hidden;
         }
-      }
-
-      &__sort-wrap {
-        display: flex;
       }
 
       &__label {
