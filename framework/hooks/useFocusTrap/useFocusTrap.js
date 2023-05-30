@@ -32,38 +32,38 @@ function createTrap(walker) {
   };
 }
 
-const useFocusTrap = ({rootRef, isEnabled = true}) => {
+export default function useFocusTrap({
+  rootRef,
+  autoFocusElementRef,
+  isEnabled = true
+}) {
   useEffect(() => {
-    if (!isEnabled || !rootRef.current) {
-      return;
-    }
-    const treeWalker = document.createTreeWalker(
-      rootRef.current,
-      NodeFilter.SHOW_ELEMENT,
-      {
-        acceptNode: (node) => {
-          if (node === rootRef.current) {
-            return NodeFilter.FILTER_ACCEPT;
+    if (isEnabled && rootRef.current) {
+      const treeWalker = document.createTreeWalker(
+        rootRef.current,
+        NodeFilter.SHOW_ELEMENT,
+        {
+          acceptNode: (node) => {
+            if (node === rootRef.current) {
+              return NodeFilter.FILTER_ACCEPT;
+            }
+            return node.tabIndex < 0
+              ? NodeFilter.FILTER_SKIP
+              : NodeFilter.FILTER_ACCEPT;
           }
-          return node.tabIndex < 0
-            ? NodeFilter.FILTER_SKIP
-            : NodeFilter.FILTER_ACCEPT;
         }
-      }
-    );
-    const firstFocusableNode = treeWalker.nextNode();
-    if (firstFocusableNode) {
-      const animationPromises = rootRef.current
-        .getAnimations({subtree: true})
-        .map((animation) => animation.finished);
-      Promise.allSettled(animationPromises).then(() =>
-        firstFocusableNode.focus({focusVisible: true})
       );
+      if (autoFocusElementRef) {
+        const animationPromises = rootRef.current
+          .getAnimations({subtree: true})
+          .map((animation) => animation.finished);
+        Promise.allSettled(animationPromises).then(() =>
+          autoFocusElementRef.current.focus({focusVisible: true})
+        );
+      }
+      const trap = createTrap(treeWalker);
+      document.addEventListener("keydown", trap);
+      return () => document.removeEventListener("keydown", trap);
     }
-    const trap = createTrap(treeWalker);
-    document.addEventListener("keydown", trap);
-    return () => document.removeEventListener("keydown", trap);
-  }, [rootRef, isEnabled]);
-};
-
-export default useFocusTrap;
+  }, [rootRef, autoFocusElementRef, isEnabled]);
+}

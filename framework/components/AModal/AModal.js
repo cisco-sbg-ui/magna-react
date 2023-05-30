@@ -1,4 +1,4 @@
-import React, {forwardRef, useContext, useEffect, useRef} from "react";
+import React, {forwardRef, useContext, useEffect, useRef, useMemo} from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 
@@ -46,6 +46,7 @@ const AModal = forwardRef(
       onClickOutside,
       withCenteredContent = true,
       withFocusTrap = true,
+      autoFocusElementRef,
       withOverlay = true,
       withScrollLock = true,
       withTransitions = true,
@@ -65,9 +66,21 @@ const AModal = forwardRef(
       isEnabled: withTransitions || delayUnmount
     });
 
+    const elementRefToAutoFocus = useMemo(() => {
+      if (autoFocusElementRef) {
+        return autoFocusElementRef;
+      } else if (typeof autoFocusElementRef === "undefined") {
+        return _ref;
+      } else {
+        // if (autoFocusElementRef === null) - disable autofocus
+        return undefined;
+      }
+    }, [_ref, autoFocusElementRef]);
+
     useFocusTrap({
       rootRef: _ref,
-      isEnabled: withFocusTrap && shouldRenderChildren
+      isEnabled: withFocusTrap && shouldRenderChildren,
+      autoFocusElementRef: elementRefToAutoFocus
     });
 
     useEffect(() => {
@@ -165,6 +178,7 @@ const AModal = forwardRef(
           <Component
             role="dialog"
             aria-modal="true"
+            tabIndex={-1}
             ref={handleMultipleRefs(_ref, ref)}
             className={contentClassName}
             {...rest}
@@ -180,6 +194,7 @@ const AModal = forwardRef(
       <Component
         role="dialog"
         aria-modal="true"
+        tabIndex={-1}
         className={`${contentClassName}`}
         ref={handleMultipleRefs(_ref, ref)}
         onKeyDown={(e) => {
@@ -298,6 +313,14 @@ You should provide either an \`aria-label\` or \`aria-labelledby\` prop to \`${c
   withFocusTrap: PropTypes.bool,
 
   /**
+   * Specifies what element to autofocus when the modal is opened. By default, when omitted or undefined, the modal root is focused. When null is passed, the modal does not do any autofocus.
+   */
+  autoFocusElementRef: PropTypes.oneOf([
+    null,
+    PropTypes.shape({current: PropTypes.any})
+  ]),
+
+  /**
    * Determines if the modal should render with an faded backdrop.
    */
   withOverlay: PropTypes.bool,
@@ -310,11 +333,6 @@ You should provide either an \`aria-label\` or \`aria-labelledby\` prop to \`${c
 
   /**
    * Determines if the modal should open and close with CSS transitions.
-   */
-  withTransitions: PropTypes.bool,
-
-  /**
-   * Determines if the modal should open and close with CSS animations.
    */
   withTransitions: PropTypes.bool
 };
