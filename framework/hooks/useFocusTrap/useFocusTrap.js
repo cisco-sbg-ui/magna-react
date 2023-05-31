@@ -58,7 +58,7 @@ export default function useFocusTrap({
           .getAnimations({subtree: true})
           .map((animation) => animation.finished);
         Promise.allSettled(animationPromises).then(() =>
-          autoFocusElementRef.current.focus({focusVisible: true})
+          autoFocusElementRef.current?.focus({focusVisible: true})
         );
       }
       const trap = createTrap(treeWalker);
