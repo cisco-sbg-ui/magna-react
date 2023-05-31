@@ -446,7 +446,10 @@ $btn-transition: color $transition-duration--extra-fast
   }
 
   .a-spinner {
-    margin-right: 3px;
+    margin-right: 5px;
+    height: 16px;
+    width: 16px;
+
     circle {
       stroke: currentColor !important;
     }
@@ -479,6 +482,9 @@ $btn-transition: color $transition-duration--extra-fast
   &--icon {
     padding: 10px;
     height: auto;
+    .a-spinner {
+      margin-right: unset;
+    }
   }
 
   &.disabled,
