@@ -450,6 +450,10 @@ $btn-transition: color $transition-duration--extra-fast
     circle {
       stroke: currentColor !important;
     }
+    //Hide icon if in loading state
+    + .a-icon {
+      display: none;
+    }
   }
 
   .a-icon.a-icon--dots-three,
