@@ -165,10 +165,7 @@ Use `onlyIfTruncated` to show the tooltip only if the content is truncated.
 return (
 
 <>
-  <ATriggerTooltip
-    placement="top"
-    content="This works on a disabled element"
-    onlyIfTruncated>
+  <ATriggerTooltip placement="top" content={longText} onlyIfTruncated>
     <div
       style={{
         width: "100px",
@@ -183,10 +180,7 @@ return (
   <br />
   <br />
   <br />
-  <ATriggerTooltip
-    placement="top"
-    content="This works on a disabled element"
-    onlyIfTruncated>
+  <ATriggerTooltip placement="top" content={noTruncation} onlyIfTruncated>
     <div>{noTruncation}</div>
   </ATriggerTooltip>
 </>
