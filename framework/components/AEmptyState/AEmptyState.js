@@ -14,6 +14,7 @@ const AEmptyState = forwardRef(
       label,
       message,
       children,
+      xsmall,
       small,
       medium,
       large,
@@ -49,7 +50,9 @@ const AEmptyState = forwardRef(
       icon = "info";
     }
 
-    if (small) {
+    if (xsmall) {
+      className += ` ${baseClass}--xsmall`;
+    } else if (small) {
       className += ` ${baseClass}--small`;
     } else if (medium) {
       className += ` ${baseClass}--medium`;

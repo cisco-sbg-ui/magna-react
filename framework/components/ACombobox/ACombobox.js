@@ -12,6 +12,7 @@ import {AFormContext} from "../AForm";
 import AIcon from "../AIcon";
 import AMenu from "../AMenu";
 import {AListItem} from "../AList";
+import AEmptyState from "../AEmptyState";
 import {useCombinedRefs} from "../../utils/hooks";
 import {keyCodes} from "../../utils/helpers";
 import useMenuSpacing from "../AMenuBase/hooks";
@@ -34,7 +35,8 @@ const ACombobox = forwardRef(
       itemValue = "value",
       items = [],
       label,
-      noDataContent,
+      noDataContent: propsNoDataContent,
+      noDataMessage = "No matches found",
       onChange,
       onClear,
       onSelected,
@@ -147,6 +149,15 @@ const ACombobox = forwardRef(
         combinedRef.current.querySelector(".a-combobox__input").focus();
       };
     }
+
+    const noDataContent = propsNoDataContent ?? (
+      <AEmptyState
+        message={noDataMessage}
+        variant="positive"
+        className="a-combobox__nodata"
+        xsmall
+      />
+    );
 
     const inputBaseProps = {
       ...rest,
