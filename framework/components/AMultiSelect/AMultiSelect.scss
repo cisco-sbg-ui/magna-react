@@ -1,0 +1,141 @@
+@import "../../styles";
+
+@include theme(a-multiselect) using ($theme) {
+  &__menu-items.a-menu {
+    border-color: map-deep-get($theme, "combobox", "border-color");
+    box-shadow: map-deep-get($theme, "combobox", "box-shadow");
+  }
+
+  &__menu-item-content__check {
+    svg {
+      stroke: map-deep-get($theme, "base", "color--selected");
+    }
+  }
+
+  &__menu-item--selected {
+    background-color: map-deep-get($theme, "menu", "color--selected");
+  }
+
+  &__menu-item:focus {
+    background-color: map-deep-get($theme, "menu", "color--hover") !important;
+  }
+
+  &__tags {
+    .a-tag {
+      .a-button:focus,
+      .a-button:hover {
+        svg {
+          stroke: map-deep-get($theme, "color", "warning--state-hover");
+        }
+      }
+    }
+  }
+}
+
+.a-multiselect {
+  max-height: 116px;
+
+  &__input {
+    display: inline-flex;
+    flex: 1 1 auto;
+    background: transparent;
+    box-sizing: border-box;
+    color: currentColor;
+    min-height: 24px;
+    max-width: 100%;
+    position: relative;
+    padding: 0 8px;
+    border: none;
+    appearance: none;
+    text-indent: 1px;
+    align-self: stretch;
+    //width: 0;
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-right: 54px;
+    .a-tag {
+      margin: 2px 5px;
+      word-break: normal;
+      font-weight: bold;
+
+      .a-button {
+        padding: 4px;
+        margin-left: 4px;
+      }
+    }
+  }
+
+  &__chevron {
+    cursor: pointer;
+    align-self: stretch;
+  }
+
+  &__menu-item.a-list-item {
+    min-height: 28px;
+    line-height: $line-height--lg;
+    padding: 4px 6px;
+    text-indent: 6px;
+  }
+
+  &.a-input-base--clearable {
+    .a-multiselect__menu-items {
+      right: -50px;
+    }
+  }
+  .a-input-base__control {
+    flex-wrap: wrap;
+    overflow-y: auto;
+  }
+  .a-input-base__surface {
+    padding: 0 4px;
+  }
+  .a-input-base__append {
+    position: absolute;
+    right: 0;
+    top: calc(100% - 50% - 8px);
+
+    .a-button {
+      width: 30px;
+    }
+    > .a-icon {
+      padding: 0;
+      margin-right: 8px;
+    }
+  }
+
+  &--hasScroll {
+    .a-input-base__append {
+      right: 16px;
+    }
+  }
+
+  &__menu-item-content {
+    display: flex;
+    flex: 1 0 auto;
+
+    &__label {
+      flex: 1 0 auto;
+    }
+
+    &__check {
+      display: flex;
+      align-items: center;
+
+      svg {
+        height: 14px;
+        width: 14px;
+      }
+    }
+  }
+
+  &__nodata {
+    margin: 0 auto;
+  }
+}
