@@ -4,8 +4,10 @@ import React, {
   useCallback,
   useEffect,
   useRef,
-  useState
+  useState,
+  Children
 } from "react";
+import AIcon from "../AIcon/AIcon";
 
 import {useCombinedRefs} from "../../utils/hooks";
 import {keyCodes} from "../../utils/helpers";
@@ -25,6 +27,8 @@ const AListItem = forwardRef(
       disabled,
       target,
       twoLine,
+      subMenu,
+      subMenuOnClose,
       ...rest
     },
     ref
@@ -32,6 +36,7 @@ const AListItem = forwardRef(
     const [roleValue, setRoleValue] = useState(role);
     const listItemRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, listItemRef);
+    const subMenuSelected = useRef(false);
 
     const onClick = useCallback(
       (e) => {
@@ -40,20 +45,52 @@ const AListItem = forwardRef(
         }
 
         propsOnClick && propsOnClick(e);
+        subMenuOnClose && subMenuOnClose(false);
       },
-      [disabled, propsOnClick]
+      [disabled, propsOnClick, subMenuOnClose]
+    );
+
+    const onMouseEnter = useCallback(
+      (e) => {
+        if (disabled) {
+          return;
+        }
+        subMenuSelected.current = true;
+        subMenuOnClose && subMenuOnClose(true);
+      },
+      [disabled, subMenuOnClose]
+    );
+
+    const onMouseLeave = useCallback(
+      (e) => {
+        if (disabled) {
+          return;
+        }
+        subMenuSelected.current = false;
+        subMenuOnClose && subMenuOnClose(false);
+      },
+      [disabled, subMenuOnClose]
     );
 
     const onKeyDown = useCallback(
       (e) => {
-        if (onClick && e.keyCode === keyCodes.enter) {
+        if (
+          (onClick && e.keyCode === keyCodes.enter) ||
+          (onClick && e.keyCode === keyCodes.right)
+        ) {
           e.preventDefault();
           onClick(e);
+          if (subMenu) {
+            subMenuOnClose && subMenuOnClose(true);
+          }
+        }
+        if (onClick && e.keyCode === keyCodes.left && subMenu) {
+          subMenuOnClose && subMenuOnClose(false);
         }
 
         propsOnKeyDown && propsOnKeyDown(e);
       },
-      [onClick, propsOnKeyDown]
+      [onClick, propsOnKeyDown, subMenu, subMenuOnClose]
     );
 
     useEffect(() => {
@@ -72,7 +109,11 @@ const AListItem = forwardRef(
       className += " a-list-item--two-line";
     }
 
-    if (selected) {
+    if (subMenu) {
+      className += " a-list-item--submenu";
+    }
+
+    if (selected || (subMenuSelected.current && subMenu)) {
       className += " a-list-item--selected";
     }
 
@@ -92,7 +133,9 @@ const AListItem = forwardRef(
       disabled,
       onClick,
       onKeyDown,
-      role: roleValue
+      role: roleValue,
+      onMouseEnter,
+      onMouseLeave
     };
 
     if (href) {
@@ -109,7 +152,24 @@ const AListItem = forwardRef(
       TagName = component;
     }
 
-    return <TagName {...props}>{children}</TagName>;
+    const handleChildren = () => {
+      const arrayChildren = Children.toArray(children);
+      Children.map(arrayChildren, (child) => {
+        const nestedChild = child.props?.children;
+        const hasNestedChild = nestedChild && typeof nestedChild !== "string";
+        return hasNestedChild ? nestedChild : null;
+      });
+    };
+
+    const displaySubMenu = (
+      <>
+        {children}
+        <AIcon size={16}>caret-right</AIcon>
+        {handleChildren()}
+      </>
+    );
+
+    return <TagName {...props}>{subMenu ? displaySubMenu : children}</TagName>;
   }
 );
 
@@ -131,6 +191,14 @@ AListItem.propTypes = {
    * Toggles the `selected` state.
    */
   selected: PropTypes.bool,
+  /**
+   * Gives list item submenu behavior and styling
+   */
+  subMenu: PropTypes.bool,
+  /**
+   * Required for handling of respective submenus mouseover and click events
+   */
+  subMenuOnClose: PropTypes.func,
   /**
    * Toggles the `disabled` state.
    */

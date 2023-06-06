@@ -62,6 +62,10 @@
       white-space: normal;
     }
 
+    &--submenu {
+      justify-content: space-between;
+    }
+
     &[tabindex] {
       cursor: pointer;
     }

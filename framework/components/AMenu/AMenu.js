@@ -84,6 +84,11 @@ const AMenu = forwardRef(
         e.preventDefault();
         const previous = getPrevious();
         previous && previous.focus();
+      } else if (e.keyCode === keyCodes.right) {
+        //TODO find item
+      } else if (e.keyCode === keyCodes.left) {
+        const previous = getPrevious();
+        previous && previous.focus();
       } else if (e.keyCode === keyCodes.down) {
         e.preventDefault();
         const next = getNext();
