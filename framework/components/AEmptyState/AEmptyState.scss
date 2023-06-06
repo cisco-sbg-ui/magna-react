@@ -2,10 +2,12 @@
 
 @import "../../styles";
 
+$icon-xs: 20px;
 $icon-sm: 50px;
 $icon-md: 100px;
 $icon-lg: 150px;
 $icon-xl: 200px;
+$container-xs: 40px;
 $container-sm: 100px;
 $container-md: 200px;
 $container-lg: 300px;
@@ -23,12 +25,8 @@ $container-xl: 400px;
   &--state-info {
     border-color: map-deep-get($theme, "control", "info-color");
 
-    .a-empty-state__icon {
-      color: $color-information;
-    }
-
-    .a-icon-bg {
-      fill: map-deep-get($theme, "control", "info-color");
+    .a-empty-state__background {
+      fill: #a6c4f5;
     }
   }
   &--state-warning {
@@ -83,6 +81,31 @@ $container-xl: 400px;
 
   &__message {
     text-align: center;
+  }
+
+  &--xsmall {
+    .a-empty-state__container {
+      height: $container-xs;
+      width: $container-xs;
+    }
+
+    .a-empty-state__icon {
+      height: $icon-xs;
+      width: $icon-xs;
+
+      top: calc(50% - math.div($icon-xs, 2));
+      left: calc(50% - math.div($icon-xs, 2));
+    }
+
+    .a-empty-state__label {
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .a-empty-state__message {
+      font-weight: 400;
+      font-size: 12px;
+    }
   }
 
   &--small {
