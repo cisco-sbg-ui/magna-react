@@ -132,9 +132,14 @@ const calculateMenuPosition = (
     pageWidth = wrapCoords.width;
     pageHeight = wrapCoords.height;
   } else {
-    // Calculate positioning relative to viewport
-    xOffset = window.pageXOffset;
-    yOffset = window.pageYOffset;
+    // Calculate positioning relative to window or app/wrap elements
+    xOffset = appRef.current.offsetParent?.isSameNode(document.body)
+      ? window.pageXOffset
+      : wrapCoords.left - appCoords.scrollLeft;
+
+    yOffset = appRef.current.offsetParent?.isSameNode(document.body)
+      ? window.pageYOffset
+      : wrapCoords.top - appCoords.scrollTop;
 
     pageWidth =
       document.documentElement.clientWidth +
