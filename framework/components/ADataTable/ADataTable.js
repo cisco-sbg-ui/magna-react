@@ -105,6 +105,7 @@ const ADataTable = forwardRef(
       sort,
       selectedItems,
       truncateHeaders,
+      stickyHeader = false,
       ...rest
     },
     ref
@@ -118,6 +119,9 @@ const ADataTable = forwardRef(
     let className = "a-data-table";
     if (ExpandableComponent) {
       className += " a-data-table--expandable";
+    }
+    if (stickyHeader) {
+      className += " a-data-table--sticky";
     }
     if (truncateHeaders) {
       className += " a-data-table--truncate-headers";
@@ -506,7 +510,11 @@ ADataTable.propTypes = {
   /**
    * Automatically truncate header text with ellipses when applicable
    */
-  truncateHeaders: PropTypes.bool
+  truncateHeaders: PropTypes.bool,
+  /**
+   * Enable sticky header
+   */
+  stickyHeader: PropTypes.bool
 };
 
 ADataTable.displayName = "ADataTable";
