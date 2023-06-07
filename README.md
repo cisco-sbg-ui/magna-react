@@ -1,6 +1,6 @@
 # Magna-React (BETA)
 
-## *THIS REPOSITORY AND PACKAGE IS CURRENTLY IN BETA. DO _NOT_ USE THIS IN PRODUCTION. ANY PRODUCTION USAGE AT THIS TIME WILL RESULT IN SEVERE CONSEQUENCES.*
+## *THIS REPOSITORY AND PACKAGE IS CURRENTLY IN BETA. COMPONENT SIGNATURES AND FUNCTIONALITY MAY CHANGE AND POTENTIALLY BE BREAKING CHANGES.*
 
 ## Introduction
 
@@ -49,7 +49,7 @@ Magna-React is provided as an npm package from GitHub packages. To configure for
 //npm.pkg.github.com/:_authToken=TOKEN
 ```
 
-### Installation 
+### Installation
 
 1) Run
 
@@ -65,7 +65,7 @@ npm install @cisco-sbg-ui/magna-react@beta
 
 ## Component Development
 
-Feel free to reach out to Robert Harris (roberha2) or Brennan Arvo via Webex Teams to discuss contributions.
+Feel free to reach out to Robert Harris (roberha2) via Webex Teams to discuss contributions.
 ## DEV ===============
 ### Run Locally
 ```
@@ -73,8 +73,6 @@ npm ci
 npm run dev
 ```
 
-[Status page for known component migration](./MagneticStylingStatus.md)
-
 -------------
 
-## *THIS REPOSITORY AND PACKAGE IS CURRENTLY IN BETA. DO _NOT_ USE THIS IN PRODUCTION. ANY PRODUCTION USAGE AT THIS TIME WILL RESULT IN SEVERE CONSEQUENCES.*
+## *THIS REPOSITORY AND PACKAGE IS CURRENTLY IN BETA. COMPONENT SIGNATURES AND FUNCTIONALITY MAY CHANGE AND POTENTIALLY BE BREAKING CHANGES.*
