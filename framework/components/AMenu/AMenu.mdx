@@ -27,30 +27,20 @@ It is necessary for `AMenu` to be a descendant of `AApp` for mounting.
   const button4Ref = useRef(null);
   const button5Ref = useRef(null);
   const button6Ref = useRef(null);
-  const button7Ref = useRef(null);
-  const submenu7Ref = useRef(null);
-  const nestedSubmenu7Ref = useRef(null); 
-  const nestedSubmenu7Ref1 = useRef(null);  
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [open3, setOpen3] = useState(false);
   const [open4, setOpen4] = useState(false);
   const [open5, setOpen5] = useState(false);
   const [open6, setOpen6] = useState(false);
-  const [open7, setOpen7] = useState(false);
-  const [open7Submenu, setOpen7Submenu] = useState(false);
-  const [open7NestedSubmenu, setOpen7NestedSubmenu] = useState(false);
-  const [open7NestedSubmenu1, setOpen7NestedSubmenu1] = useState(false);
 
 const [menu4Selected, setMenu4Selected] = useState(2);
 
-const closeMainMenu = () => {
-setOpen7(false);
-}
-
 return (
 
-<div className="d-flex" style={{
+<div
+  className="d-flex"
+  style={{
     rowGap: "10px",
     columnGap: "20px",
     flexWrap: "wrap",
@@ -101,15 +91,7 @@ return (
       ref={button6Ref}
       onClick={() => setOpen6(!open6)}
       aria-haspopup="true">
-      Menu With Groups
-    </AButton>
-  </div>
-  <div>
-    <AButton
-      ref={button7Ref}
-      onClick={() => setOpen7(!open7)}
-      aria-haspopup="true">
-      Menu with Submenus
+      Menu with Groups
     </AButton>
   </div>
   <AMenu
@@ -128,7 +110,10 @@ return (
     <AListItem onClick={() => alert("alert2")} className="pl-3 py-1">
       Example
     </AListItem>
-    <AListItem onClick={() => alert("should not fire")} className="pl-3 py-1" disabled>
+    <AListItem
+      onClick={() => alert("should not fire")}
+      className="pl-3 py-1"
+      disabled>
       Disabled Item
     </AListItem>
     <AListItemDivider className="mb-0 mt-3" />
@@ -154,8 +139,8 @@ return (
       <AListItemContent>
         <AListItemTitle>Source Application</AListItemTitle>
         <AListItemSubtitle>
-          Danger. Text to describe the notification or an issue that needs 
-          to be addressed. Very, very, very, very, very long text.
+          Danger. Text to describe the notification or an issue that needs to be
+          addressed. Very, very, very, very, very long text.
         </AListItemSubtitle>
       </AListItemContent>
       <AListItemAction
@@ -174,8 +159,8 @@ return (
       <AListItemContent>
         <AListItemTitle>Source Application</AListItemTitle>
         <AListItemSubtitle>
-          Warning. Text to describe the notification or an issue that 
-          needs to be addressed. Very, very, very, very, very long text.
+          Warning. Text to describe the notification or an issue that needs to
+          be addressed. Very, very, very, very, very long text.
         </AListItemSubtitle>
       </AListItemContent>
       <AListItemAction
@@ -201,22 +186,56 @@ return (
     anchorRef={button4Ref}
     open={open4}
     placement="bottom-right"
-    onClose={() => setOpen4(false)}
-    >
-    <AListItem onClick={() => {setMenu4Selected(0)}} selected={0 === menu4Selected}>Selection Uno</AListItem>
-    <AListItem onClick={() => {setMenu4Selected(1)}} selected={1 === menu4Selected}>Selection Dos <AIcon size={12} className="ml-2">judgement</AIcon></AListItem>
-    <AListItem onClick={() => {setMenu4Selected(2)}} selected={2 === menu4Selected}>Selection Tres</AListItem>
+    onClose={() => setOpen4(false)}>
+    <AListItem
+      onClick={() => {
+        setMenu4Selected(0);
+      }}
+      selected={0 === menu4Selected}>
+      Selection Uno
+    </AListItem>
+    <AListItem
+      onClick={() => {
+        setMenu4Selected(1);
+      }}
+      selected={1 === menu4Selected}>
+      Selection Dos
+      <AIcon size={12} className="ml-2">
+        judgement
+      </AIcon>
+    </AListItem>
+    <AListItem
+      onClick={() => {
+        setMenu4Selected(2);
+      }}
+      selected={2 === menu4Selected}>
+      Selection Tres
+    </AListItem>
     <AListItem onClick={() => alert("should not fire")} disabled>
       Disabled Item
     </AListItem>
-    <AListItemDivider style={{margin: 0}}/>
-    <AListItem onClick={() => {}}><ARadio checked={true}>Selected</ARadio></AListItem>
-    <AListItem onClick={() => {}}><ARadio checked={false}>UnSelected</ARadio></AListItem>
-    <AListItemDivider style={{margin: 0}}/>
-    <AListItem onClick={() => {}}><ACheckbox checked={true}>Checked</ACheckbox></AListItem>
-    <AListItem onClick={() => {}}><ACheckbox checked={false}>UnChecked</ACheckbox></AListItem>
-    <AListItemDivider style={{margin: 0}}/>
-    <AListItem onClick={() => {setMenu4Selected(3)}} selected={3 === menu4Selected}>Status</AListItem>
+    <AListItemDivider style={{margin: 0}} />
+    <AListItem onClick={() => {}}>
+      <ARadio checked={true}>Selected</ARadio>
+    </AListItem>
+    <AListItem onClick={() => {}}>
+      <ARadio checked={false}>UnSelected</ARadio>
+    </AListItem>
+    <AListItemDivider style={{margin: 0}} />
+    <AListItem onClick={() => {}}>
+      <ACheckbox checked={true}>Checked</ACheckbox>
+    </AListItem>
+    <AListItem onClick={() => {}}>
+      <ACheckbox checked={false}>UnChecked</ACheckbox>
+    </AListItem>
+    <AListItemDivider style={{margin: 0}} />
+    <AListItem
+      onClick={() => {
+        setMenu4Selected(3);
+      }}
+      selected={3 === menu4Selected}>
+      Status
+    </AListItem>
   </AMenu>
   <AMenu
     anchorRef={button5Ref}
@@ -224,11 +243,19 @@ return (
     compact
     placement="bottom-left"
     onClose={() => setOpen5(false)}>
- <AListItem onClick={() => {}}><ARadio checked={true}>Selected</ARadio></AListItem>
-        <AListItem onClick={() => {}}><ARadio checked={false}>UnSelected</ARadio></AListItem>
-        <AListItemDivider style={{margin: 0}}/>
-        <AListItem onClick={() => {}}><ACheckbox checked={true}>Checked</ACheckbox></AListItem>
-        <AListItem onClick={() => {}}><ACheckbox checked={false}>UnChecked</ACheckbox></AListItem>
+    <AListItem onClick={() => {}}>
+      <ARadio checked={true}>Selected</ARadio>
+    </AListItem>
+    <AListItem onClick={() => {}}>
+      <ARadio checked={false}>UnSelected</ARadio>
+    </AListItem>
+    <AListItemDivider style={{margin: 0}} />
+    <AListItem onClick={() => {}}>
+      <ACheckbox checked={true}>Checked</ACheckbox>
+    </AListItem>
+    <AListItem onClick={() => {}}>
+      <ACheckbox checked={false}>UnChecked</ACheckbox>
+    </AListItem>
   </AMenu>
   <AMenu
     anchorRef={button6Ref}
@@ -247,70 +274,122 @@ return (
       <AListItem onClick={() => {}}>Category item 5</AListItem>
     </AListItemGroup>
   </AMenu>
+</div>
+); } `} />
+
+## Cascading Menus
+
+<Playground
+  fullWidthPreview
+  code={`() => {
+  const buttonRef = useRef(null);
+  const button2Ref = useRef(null);
+  const submenuRef = useRef(null);
+  const nestedSubmenuRef = useRef(null); 
+  const nestedSubmenuRef1 = useRef(null);  
+  const [open, setOpen] = useState(false);
+  const [open2, setOpen2] = useState(false);
+  const [openSubmenu, setOpenSubmenu] = useState(false);
+  const [openNestedSubmenu, setOpenNestedSubmenu] = useState(false);
+  const [openNestedSubmenu1, setOpenNestedSubmenu1] = useState(false);
+
+return (
+
+<div
+  className="d-flex"
+  style={{
+    rowGap: "10px",
+    flexWrap: "wrap",
+    justifyContent: "space-evenly"
+  }}>
+  <div>
+    <AButton
+      ref={buttonRef}
+      onClick={() => setOpen(!open)}
+      aria-haspopup="true">
+      Menu with Submenu
+    </AButton>
+  </div>
+  <div>
+    <AButton
+      ref={button2Ref}
+      onClick={() => setOpen2(!open2)}
+      aria-haspopup="true">
+      Menu with Nested Submenu
+    </AButton>
+  </div>
   <AMenu
-    anchorRef={button7Ref}
-    open={open7}
+    anchorRef={buttonRef}
+    open={open}
     placement="bottom-left"
     onClose={() => {
       //Allow default closing of main menu if submenus aren't open
-      if(!open7Submenu && !open7NestedSubmenu) {
-        setOpen7(false);
+      if (!openSubmenu && !openNestedSubmenu) {
+        setOpen(false);
       }
     }}>
-    <AListItem onClick={() => alert("Menu alert")}>
-      Selection 1
-    </AListItem>
-    <AListItem 
-      ref={submenu7Ref}
-      subMenu
-      subMenuOnClose={setOpen7Submenu}
-    >
-      Selection 2
-      <AMenu anchorRef={submenu7Ref} open={open7Submenu} placement="right-top">
+    <AListItem onClick={() => alert("Menu alert")}>Selection 1</AListItem>
+    <AListItem onClick={() => alert("Menu alert")}>Selection 2</AListItem>
+    <AListItem ref={submenuRef} subMenu subMenuOnClose={setOpenSubmenu}>
+      Selection 3
+      <AMenu anchorRef={submenuRef} open={openSubmenu} placement="right-top">
         <AListItem
-           tabIndex={0}
+          tabIndex={0}
           onClick={() => {
             alert("Submenu alert");
-            closeMainMenu();
+            setOpen(false);
           }}>
           Selection 2(a)
         </AListItem>
       </AMenu>
     </AListItem>
+  </AMenu>
+  <AMenu
+    anchorRef={button2Ref}
+    open={open2}
+    placement="bottom-left"
+    onClose={() => {
+      //Allow default closing of main menu if submenus aren't open
+      if (!openSubmenu && !openNestedSubmenu) {
+        setOpen2(false);
+      }
+    }}>
+    <AListItem onClick={() => alert("Menu alert")}>Selection 1</AListItem>
+    <AListItem onClick={() => {}}>Selection 2</AListItem>
     <AListItem
-      ref={nestedSubmenu7Ref}
+      ref={nestedSubmenuRef}
       subMenu
-      subMenuOnClose={setOpen7NestedSubmenu}>
+      subMenuOnClose={setOpenNestedSubmenu}>
       Selection 3
       <AMenu
-        anchorRef={nestedSubmenu7Ref}
-        open={open7NestedSubmenu}
+        anchorRef={nestedSubmenuRef}
+        open={openNestedSubmenu}
         placement="right-top">
         <AListItem
           onClick={() => {
             alert("Submenu alert");
-            closeMainMenu();
+            setOpen2(false);
           }}>
           Selection 3(a)
         </AListItem>
         <AListItem
-          ref={nestedSubmenu7Ref1}
+          ref={nestedSubmenuRef1}
           subMenu
-          subMenuOnClose={setOpen7NestedSubmenu1}>
+          subMenuOnClose={setOpenNestedSubmenu1}>
           Selection 3(b)
           <AMenu
-            anchorRef={nestedSubmenu7Ref1}
-            open={open7NestedSubmenu1}
-            onClose={() => setOpen7NestedSubmenu1(false)}
+            anchorRef={nestedSubmenuRef1}
+            open={openNestedSubmenu1}
+            onClose={() => setOpenNestedSubmenu1(false)}
             placement="right-top">
             <AListItem
               onClick={() => {
                 alert("Nested submenu alert");
-                closeMainMenu();
+                setOpen2(false);
               }}>
               Selection 3(b)-1
             </AListItem>
-            <AListItem onClick={() => closeMainMenu()}>
+            <AListItem onClick={() => setOpen2(false)}>
               Selection 3(b)-2
             </AListItem>
           </AMenu>
@@ -320,13 +399,9 @@ return (
     <AListItem onClick={() => alert("should not fire")} disabled>
       Disabled Item
     </AListItem>
-
   </AMenu>
 </div>
-); 
-} 
-`} 
-/>
+); } `} />
 
 ## Menu Props
 
