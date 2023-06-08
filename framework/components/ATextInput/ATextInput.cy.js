@@ -3,8 +3,7 @@ import ATextInput from "./ATextInput";
 const commonProps = {
   labelId: "test",
   labelFor: "test",
-  label: "test label",
-  clearable: true
+  label: "test label"
 };
 
 describe("<ATextInput />", () => {
@@ -20,7 +19,7 @@ describe("<ATextInput />", () => {
   });
 
   it("should clear input text if specified", () => {
-    cy.mount(<ATextInput {...commonProps} />);
+    cy.mount(<ATextInput {...commonProps} clearable />);
 
     // Type text
     cy.get(".a-text-input__input").type("test input");
@@ -110,17 +109,34 @@ describe("<ATextInput />", () => {
         });
     });
 
-    it("should should only show clear when the input has text", () => {
+    it("should only show clear when the input has text", () => {
+      const textualInput = "clearable text";
       cy.mount(<ATextInput {...commonProps} clearable />);
-
       cy.get(".a-input-base__clear").should("not.exist");
 
-      // Type into input to trigger error
-      cy.get(".a-text-input__input").type("clearable text");
+      // shows clear icon for input
+      cy.get(".a-text-input__input").type(textualInput);
       cy.get(".a-input-base__clear").should("exist");
 
-      // Clear entered value
+      // hides clear icon when input is manually deleted
+      cy.get(".a-text-input__input").type(
+        "{backspace}".repeat(textualInput.length)
+      );
+      cy.get(".a-input-base__clear").should("not.exist");
+
+      // hides clear icon after click
+      cy.get(".a-text-input__input").type("clearable text");
+      cy.get(".a-input-base__clear").should("exist");
       cy.get(".a-input-base__clear").click();
+      cy.get(".a-input-base__clear").should("not.exist");
+    });
+
+    it("should not show clear when not clearable (default)", () => {
+      cy.mount(<ATextInput {...commonProps} />);
+      cy.get(".a-input-base__clear").should("not.exist");
+
+      cy.get(".a-text-input__input").type("clearable text");
+
       cy.get(".a-input-base__clear").should("not.exist");
     });
   });

@@ -22,6 +22,10 @@ const chevronUp =
 
 let textInputCounter = 0;
 
+function isNonEmptyString(maybeString) {
+  return typeof maybeString === "string" && maybeString.length > 0;
+}
+
 const ATextInput = forwardRef(
   (
     {
@@ -56,7 +60,7 @@ const ATextInput = forwardRef(
       type = "text",
       validateOnBlur,
       validationState = "default",
-      value,
+      value: valueProp,
       ...rest
     },
     ref
@@ -67,7 +71,13 @@ const ATextInput = forwardRef(
     const [longClickTimeout, setLongClickTimeout] = useState(null);
     const [longClickInterval, setLongClickInterval] = useState(null);
     const [error, setError] = useState("");
-    const [hasValue, setHasValue] = useState(!!value);
+
+    const [nativeInputValue, setNativeInputValue] = useState(valueProp);
+    useEffect(() => {
+      // sync `value` prop to the internal component state
+      setNativeInputValue(valueProp);
+    }, [valueProp]);
+
     const [workingValidationState, setWorkingValidationState] =
       useState(validationState);
     const combinedRef = useCombinedRefs(ref, textInputRef);
@@ -96,7 +106,7 @@ const ATextInput = forwardRef(
           validate
         });
       }
-    }, [validationState, value, rules]); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [validationState, nativeInputValue, rules]); // eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
       if (unregister) {
@@ -266,7 +276,7 @@ const ATextInput = forwardRef(
 
     const ruleKeys = rules ? rules.map((r) => r.key).filter((k) => !!k) : [];
 
-    const validate = (testValue = value) => {
+    const validate = (testValue = nativeInputValue) => {
       if (
         rules ||
         required ||
@@ -334,14 +344,13 @@ const ATextInput = forwardRef(
     const reset = () => {
       setWorkingValidationState(validationState);
       setError("");
-      setHasValue(false);
     };
 
     const inputBaseProps = {
       ...rest,
       ref: combinedRef,
       className: "a-text-input",
-      clearable: hasValue,
+      clearable: clearable && isNonEmptyString(nativeInputValue),
       error,
       hint,
       label,
@@ -391,9 +400,8 @@ const ATextInput = forwardRef(
       },
       onChange: (e) => {
         !validateOnBlur && validate(e.target.value);
+        setNativeInputValue(e.target.value);
         onChange && onChange(e);
-
-        setHasValue(!!value || !!e.target.value);
       },
       onClick,
       onFocus: (e) => {
@@ -406,7 +414,7 @@ const ATextInput = forwardRef(
       readOnly,
       step,
       type,
-      value
+      value: nativeInputValue
     };
 
     return (
