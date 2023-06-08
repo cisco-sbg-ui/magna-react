@@ -27,8 +27,7 @@ const AListItem = forwardRef(
       disabled,
       target,
       twoLine,
-      subMenu,
-      subMenuOnClose,
+      submenu,
       ...rest
     },
     ref
@@ -38,6 +37,13 @@ const AListItem = forwardRef(
     const combinedRef = useCombinedRefs(ref, listItemRef);
     const subMenuSelected = useRef(false);
 
+    const [subMenuOpen, setSubMenuOpen] = useState(false);
+
+    const handleSubmenu = useCallback(
+      () => setSubMenuOpen(!subMenuOpen),
+      [subMenuOpen]
+    );
+
     const onClick = useCallback(
       (e) => {
         if (disabled) {
@@ -45,9 +51,9 @@ const AListItem = forwardRef(
         }
 
         propsOnClick && propsOnClick(e);
-        subMenuOnClose && subMenuOnClose(false);
+        submenu && handleSubmenu();
       },
-      [disabled, propsOnClick, subMenuOnClose]
+      [disabled, propsOnClick, submenu, handleSubmenu]
     );
 
     const onMouseEnter = useCallback(
@@ -56,9 +62,9 @@ const AListItem = forwardRef(
           return;
         }
         subMenuSelected.current = true;
-        subMenuOnClose && subMenuOnClose(true);
+        submenu && handleSubmenu();
       },
-      [disabled, subMenuOnClose]
+      [disabled, submenu, handleSubmenu]
     );
 
     const onMouseLeave = useCallback(
@@ -67,9 +73,9 @@ const AListItem = forwardRef(
           return;
         }
         subMenuSelected.current = false;
-        subMenuOnClose && subMenuOnClose(false);
+        submenu && handleSubmenu();
       },
-      [disabled, subMenuOnClose]
+      [disabled, submenu, handleSubmenu]
     );
 
     const onKeyDown = useCallback(
@@ -80,17 +86,15 @@ const AListItem = forwardRef(
         ) {
           e.preventDefault();
           onClick(e);
-          if (subMenu) {
-            subMenuOnClose && subMenuOnClose(true);
-          }
+          submenu && handleSubmenu();
         }
-        if (onClick && e.keyCode === keyCodes.left && subMenu) {
-          subMenuOnClose && subMenuOnClose(false);
+        if (onClick && e.keyCode === keyCodes.left && submenu) {
+          submenu && handleSubmenu();
         }
 
         propsOnKeyDown && propsOnKeyDown(e);
       },
-      [onClick, propsOnKeyDown, subMenu, subMenuOnClose]
+      [onClick, propsOnKeyDown, submenu, handleSubmenu]
     );
 
     useEffect(() => {
@@ -109,11 +113,11 @@ const AListItem = forwardRef(
       className += " a-list-item--two-line";
     }
 
-    if (subMenu) {
+    if (submenu) {
       className += " a-list-item--submenu";
     }
 
-    if (selected || (subMenuSelected.current && subMenu)) {
+    if (selected || (subMenuSelected.current && submenu)) {
       className += " a-list-item--selected";
     }
 
@@ -154,10 +158,14 @@ const AListItem = forwardRef(
 
     const handleChildren = () => {
       const arrayChildren = Children.toArray(children);
-      Children.map(arrayChildren, (child) => {
+      return Children.map(arrayChildren, (child) => {
         const nestedChild = child.props?.children;
         const hasNestedChild = nestedChild && typeof nestedChild !== "string";
-        return hasNestedChild ? nestedChild : null;
+        if (hasNestedChild) {
+          return React.cloneElement(child, {open: subMenuOpen});
+        }
+
+        return null;
       });
     };
 
@@ -169,7 +177,7 @@ const AListItem = forwardRef(
       </>
     );
 
-    return <TagName {...props}>{subMenu ? displaySubMenu : children}</TagName>;
+    return <TagName {...props}>{submenu ? displaySubMenu : children}</TagName>;
   }
 );
 
@@ -194,11 +202,7 @@ AListItem.propTypes = {
   /**
    * Gives list item submenu behavior and styling
    */
-  subMenu: PropTypes.bool,
-  /**
-   * Required for handling of respective submenus mouseover and click events
-   */
-  subMenuOnClose: PropTypes.func,
+  submenu: PropTypes.bool,
   /**
    * Toggles the `disabled` state.
    */

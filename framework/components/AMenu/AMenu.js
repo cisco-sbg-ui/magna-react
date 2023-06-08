@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useEffect, useRef} from "react";
+import React, {forwardRef, useEffect, useRef, useCallback} from "react";
 
 import {keyCodes} from "../../utils/helpers";
 import {useCombinedRefs} from "../../utils/hooks";
@@ -24,12 +24,27 @@ const AMenu = forwardRef(
       placement,
       pointer,
       role = "menu",
+      submenu = false,
       ...rest
     },
     ref
   ) => {
     const menuRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, menuRef);
+
+    // useEffect(() => {
+    //   console.log("here", ref, menuRef);
+    //   const handleClickOutside = (e) => {
+    //     console.log("here", anchorRef.current);
+    //     if (anchorRef.current && !anchorRef.current.contains(e.target)) {
+    //       closeHandler(e);
+    //     }
+    //   };
+    //   document.addEventListener("click", handleClickOutside, false);
+    //   return () => {
+    //     document.removeEventListener("click", handleClickOutside, false);
+    //   };
+    // });
 
     useEffect(() => {
       if (open && focusOnOpen) {
@@ -103,10 +118,14 @@ const AMenu = forwardRef(
     if (compact) {
       className += ` compact`;
     }
+    if (submenu) {
+      className += ` a-menu--submenu`;
+    }
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
     }
+
     return (
       <AList
         {...rest}
@@ -119,7 +138,14 @@ const AMenu = forwardRef(
           closeOnClick && closeHandler(e);
           onClick && onClick(e);
         }}
-        onClose={onClose}
+        onClose={(e) => {
+          const isSubmenuActive = Boolean(
+            document.querySelector(".a-menu--submenu")
+          );
+          if (!isSubmenuActive) {
+            onClose(e);
+          }
+        }}
         onKeyDown={(e) => {
           keyDownHandler(e);
           onKeyDown && onKeyDown(e);

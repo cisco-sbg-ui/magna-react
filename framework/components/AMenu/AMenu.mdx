@@ -289,9 +289,6 @@ return (
   const nestedSubmenuRef1 = useRef(null);  
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
-  const [openSubmenu, setOpenSubmenu] = useState(false);
-  const [openNestedSubmenu, setOpenNestedSubmenu] = useState(false);
-  const [openNestedSubmenu1, setOpenNestedSubmenu1] = useState(false);
 
 return (
 
@@ -322,23 +319,13 @@ return (
     anchorRef={buttonRef}
     open={open}
     placement="bottom-left"
-    onClose={() => {
-      //Allow default closing of main menu if submenus aren't open
-      if (!openSubmenu && !openNestedSubmenu) {
-        setOpen(false);
-      }
-    }}>
+    onClose={() => setOpen(false)}>
     <AListItem onClick={() => alert("Menu alert")}>Selection 1</AListItem>
     <AListItem onClick={() => alert("Menu alert")}>Selection 2</AListItem>
-    <AListItem ref={submenuRef} subMenu subMenuOnClose={setOpenSubmenu}>
+    <AListItem ref={submenuRef} submenu>
       Selection 3
-      <AMenu anchorRef={submenuRef} open={openSubmenu} placement="right-top">
-        <AListItem
-          tabIndex={0}
-          onClick={() => {
-            alert("Submenu alert");
-            setOpen(false);
-          }}>
+      <AMenu submenu anchorRef={submenuRef} placement="right-top">
+        <AListItem tabIndex={0} onClick={() => alert("Submenu alert")}>
           Selection 2(a)
         </AListItem>
       </AMenu>
@@ -347,51 +334,23 @@ return (
   <AMenu
     anchorRef={button2Ref}
     open={open2}
-    placement="bottom-left"
-    onClose={() => {
-      //Allow default closing of main menu if submenus aren't open
-      if (!openSubmenu && !openNestedSubmenu) {
-        setOpen2(false);
-      }
-    }}>
+    onClose={() => setOpen2(false)}
+    placement="bottom-left">
     <AListItem onClick={() => alert("Menu alert")}>Selection 1</AListItem>
     <AListItem onClick={() => {}}>Selection 2</AListItem>
-    <AListItem
-      ref={nestedSubmenuRef}
-      subMenu
-      subMenuOnClose={setOpenNestedSubmenu}>
+    <AListItem ref={nestedSubmenuRef} submenu>
       Selection 3
-      <AMenu
-        anchorRef={nestedSubmenuRef}
-        open={openNestedSubmenu}
-        placement="right-top">
-        <AListItem
-          onClick={() => {
-            alert("Submenu alert");
-            setOpen2(false);
-          }}>
+      <AMenu submenu anchorRef={nestedSubmenuRef} placement="right-top">
+        <AListItem onClick={() => alert("Submenu alert")}>
           Selection 3(a)
         </AListItem>
-        <AListItem
-          ref={nestedSubmenuRef1}
-          subMenu
-          subMenuOnClose={setOpenNestedSubmenu1}>
+        <AListItem ref={nestedSubmenuRef1} submenu>
           Selection 3(b)
-          <AMenu
-            anchorRef={nestedSubmenuRef1}
-            open={openNestedSubmenu1}
-            onClose={() => setOpenNestedSubmenu1(false)}
-            placement="right-top">
-            <AListItem
-              onClick={() => {
-                alert("Nested submenu alert");
-                setOpen2(false);
-              }}>
+          <AMenu submenu anchorRef={nestedSubmenuRef1} placement="right-top">
+            <AListItem onClick={() => alert("Nested submenu alert")}>
               Selection 3(b)-1
             </AListItem>
-            <AListItem onClick={() => setOpen2(false)}>
-              Selection 3(b)-2
-            </AListItem>
+            <AListItem onClick={() => {}}> Selection 3(b)-2 </AListItem>
           </AMenu>
         </AListItem>
       </AMenu>
