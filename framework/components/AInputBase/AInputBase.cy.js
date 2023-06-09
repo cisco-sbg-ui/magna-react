@@ -21,7 +21,7 @@ describe("<AInputBase />", () => {
 
     it("should invoke the clear callback on click", () => {
       cy.get(".a-input-base__clear")
-        .click()
+        .click({force: true})
         .then(() => {
           expect(mockFn.callCount).to.eq(1);
         });
@@ -29,7 +29,7 @@ describe("<AInputBase />", () => {
 
     it("should invoke the clear callback on space keydown", () => {
       cy.get(".a-input-base__clear")
-        .spaceKeydown()
+        .type("space", {force: true})
         .then(() => {
           expect(mockFn.callCount).to.eq(1);
         });
@@ -37,7 +37,7 @@ describe("<AInputBase />", () => {
 
     it("should invoke the clear callback on enter keydown", () => {
       cy.get(".a-input-base__clear")
-        .enterKeydown()
+        .type("enter", {force: true})
         .then(() => {
           expect(mockFn.callCount).to.eq(1);
         });

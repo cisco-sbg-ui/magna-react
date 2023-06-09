@@ -26,7 +26,7 @@ describe("<ATextInput />", () => {
     cy.get(".a-text-input__input").should("have.value", "test input");
 
     // Clear text
-    cy.get(".a-input-base__clear").click();
+    cy.get(".a-input-base__clear").click({force: true});
     cy.get(".a-text-input__input").should("have.value", "");
   });
 
@@ -127,7 +127,7 @@ describe("<ATextInput />", () => {
       // hides clear icon after click
       cy.get(".a-text-input__input").type("clearable text");
       cy.get(".a-input-base__clear").should("exist");
-      cy.get(".a-input-base__clear").click();
+      cy.get(".a-input-base__clear").click({force: true});
       cy.get(".a-input-base__clear").should("not.exist");
     });
 
@@ -223,7 +223,7 @@ describe("<ATextInput />", () => {
       cy.get(".a-alert").should("exist");
 
       // Clear entered value
-      cy.get(".a-input-base__clear").click();
+      cy.get(".a-input-base__clear").click({force: true});
       cy.get(".a-alert").should("not.exist");
     });
 

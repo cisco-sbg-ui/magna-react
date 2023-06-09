@@ -133,12 +133,15 @@ $input-transition: border-color $transition-duration--extra-fast
     flex-grow: 1;
     display: inline-flex;
     align-items: center;
+    width: 100%;
   }
 
   &__append {
     display: inline-grid;
     align-items: center;
     grid-auto-flow: column;
+    flex-grow: 1;
+    padding-left: 24px;
   }
 
   &--disabled {
