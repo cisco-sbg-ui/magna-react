@@ -196,7 +196,8 @@ $input-transition: border-color $transition-duration--extra-fast
   }
 
   &__clear {
-    padding: 0 7px;
+    position: absolute;
+    right: 5px;
     cursor: pointer;
   }
 }
