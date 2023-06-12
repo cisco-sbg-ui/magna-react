@@ -14,3 +14,5 @@
 .turbo/
 
 .DS_Store
+
+test-incident-manager.sh
