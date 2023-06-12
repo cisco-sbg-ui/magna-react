@@ -85,16 +85,17 @@ const AListItem = forwardRef(
           (onClick && e.keyCode === keyCodes.right)
         ) {
           e.preventDefault();
+          e.stopPropagation();
           onClick(e);
-          submenu && handleSubmenu();
-        }
-        if (onClick && e.keyCode === keyCodes.left && submenu) {
-          submenu && handleSubmenu();
+          submenu && setSubMenuOpen(true);
+        } else if (onClick && e.keyCode === keyCodes.left && submenu) {
+          e.stopPropagation();
+          setSubMenuOpen(false);
         }
 
         propsOnKeyDown && propsOnKeyDown(e);
       },
-      [onClick, propsOnKeyDown, submenu, handleSubmenu]
+      [onClick, propsOnKeyDown, submenu, setSubMenuOpen]
     );
 
     useEffect(() => {

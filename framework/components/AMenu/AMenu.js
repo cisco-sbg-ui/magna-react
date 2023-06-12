@@ -46,17 +46,11 @@ const AMenu = forwardRef(
     //   };
     // });
 
-    useEffect(() => {
-      if (open && focusOnOpen) {
-        setTimeout(() => {
-          combinedRef.current?.focus();
-        }, 0);
-      }
-    }, [open, combinedRef, focusOnOpen]);
-
     const getPrevious = () => {
       const items = Array.from(
-        combinedRef.current.querySelectorAll(".a-list-item[tabindex]")
+        combinedRef.current.querySelectorAll(
+          ".a-list-item[tabindex]:not([disabled])"
+        )
       );
       return (
         items[
@@ -65,16 +59,30 @@ const AMenu = forwardRef(
       );
     };
 
-    const getNext = () => {
+    const getNext = useCallback(() => {
       const items = Array.from(
-        combinedRef.current.querySelectorAll(".a-list-item[tabindex]")
+        combinedRef.current.querySelectorAll(
+          ".a-list-item[tabindex]:not([disabled])"
+        )
       );
       return (
         items[
           items.findIndex((x) => x.isSameNode(document.activeElement)) + 1
         ] || items[0]
       );
-    };
+    }, [combinedRef]);
+
+    useEffect(() => {
+      if (open && focusOnOpen) {
+        setTimeout(() => {
+          combinedRef.current?.focus();
+
+          if (submenu) {
+            getNext()?.focus();
+          }
+        }, 0);
+      }
+    }, [open, combinedRef, focusOnOpen, submenu, getNext]);
 
     const closeHandler = (e) => {
       if (anchorRef instanceof DOMRect) {
@@ -88,6 +96,7 @@ const AMenu = forwardRef(
       if (anchorRef instanceof DOMRect) {
         return;
       }
+
       if (onClose && e.keyCode === keyCodes.esc) {
         e.preventDefault();
         closeHandler(e);
@@ -97,15 +106,17 @@ const AMenu = forwardRef(
         anchorRef.current.focus();
       } else if (e.keyCode === keyCodes.up) {
         e.preventDefault();
+        e.stopPropagation();
         const previous = getPrevious();
         previous && previous.focus();
       } else if (e.keyCode === keyCodes.right) {
-        //TODO find item
+        e.preventDefault();
       } else if (e.keyCode === keyCodes.left) {
-        const previous = getPrevious();
-        previous && previous.focus();
+        e.preventDefault();
+        submenu && closeHandler(e);
       } else if (e.keyCode === keyCodes.down) {
         e.preventDefault();
+        e.stopPropagation();
         const next = getNext();
         next && next.focus();
       }
@@ -140,11 +151,11 @@ const AMenu = forwardRef(
         }}
         onClose={(e) => {
           const isSubmenuActive = Boolean(
-            document.querySelector(".a-menu--submenu")
+            combinedRef?.current?.querySelector(".a-menu--submenu")
           );
-          if (!isSubmenuActive) {
-            onClose(e);
-          }
+          //if (!isSubmenuActive) {
+          onClose(e);
+          //  }
         }}
         onKeyDown={(e) => {
           keyDownHandler(e);
