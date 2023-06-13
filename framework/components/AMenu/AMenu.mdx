@@ -33,202 +33,334 @@ It is necessary for `AMenu` to be a descendant of `AApp` for mounting.
   const [open4, setOpen4] = useState(false);
   const [open5, setOpen5] = useState(false);
   const [open6, setOpen6] = useState(false);
-  const [menu4Selected, setMenu4Selected] = useState(2);
-  return (
-    <div className="d-flex" style={{
-        rowGap: "10px",
-        columnGap: "20px",
-        flexWrap: "wrap",
-        justifyContent: "space-evenly"
-      }}>
-      <div>
-        <AButton
-          ref={button1Ref}
-          onClick={() => setOpen1(!open1)}
-          aria-haspopup="true">
-          Pivot Menu
-        </AButton>
-      </div>
-      <div>
-        <AButton
-          ref={button2Ref}
-          onClick={() => setOpen2(!open2)}
-          aria-haspopup="true">
-          Alert Notification Menu
-        </AButton>
-      </div>
-      <div>
-        <AButton
-          ref={button3Ref}
-          onClick={() => setOpen3(!open3)}
-          aria-haspopup="true">
-          Drop Down Menu
-        </AButton>
-      </div>
-      <div>
-        <AButton
-          ref={button4Ref}
-          onClick={() => setOpen4(!open4)}
-          aria-haspopup="true">
-          More Menu
-        </AButton>
-      </div>
-      <div>
-        <AButton
-          ref={button5Ref}
-          onClick={() => setOpen5(!open5)}
-          aria-haspopup="true">
-          Compact Menu
-        </AButton>
-      </div>
-      <div>
-        <AButton
-          ref={button6Ref}
-          onClick={() => setOpen6(!open6)}
-          aria-haspopup="true">
-          Menu With Groups
-        </AButton>
-      </div>
-      <AMenu
-        anchorRef={button1Ref}
-        open={open1}
-        placement="bottom"
-        onClose={() => setOpen1(false)}
-        pointer
-        className="py-3">
-        <AListItem twoLine className="px-3 h3 my-0 pb-1">
-          <AListItemTitle>Bottom</AListItemTitle>
-        </AListItem>
-        <AListItem onClick={() => alert("alert1")} className="pl-3 py-1">
-          Example
-        </AListItem>
-        <AListItem onClick={() => alert("alert2")} className="pl-3 py-1">
-          Example
-        </AListItem>
-         <AListItem onClick={() => alert("should not fire")} className="pl-3 py-1" disabled>
-          Disabled Item
-        </AListItem>
-        <AListItemDivider className="mb-0 mt-3" />
-        <AListItem twoLine>
-          <AListItemContent className="pb-0">
-            <a onClick={() => alert("alert3")}>Connect</a>
-          </AListItemContent>
+
+const [menu4Selected, setMenu4Selected] = useState(2);
+
+return (
+
+<div
+  className="d-flex"
+  style={{
+    rowGap: "10px",
+    columnGap: "20px",
+    flexWrap: "wrap",
+    justifyContent: "space-evenly"
+  }}>
+  <div>
+    <AButton
+      ref={button1Ref}
+      onClick={() => setOpen1(!open1)}
+      aria-haspopup="true">
+      Pivot Menu
+    </AButton>
+  </div>
+  <div>
+    <AButton
+      ref={button2Ref}
+      onClick={() => setOpen2(!open2)}
+      aria-haspopup="true">
+      Alert Notification Menu
+    </AButton>
+  </div>
+  <div>
+    <AButton
+      ref={button3Ref}
+      onClick={() => setOpen3(!open3)}
+      aria-haspopup="true">
+      Drop Down Menu
+    </AButton>
+  </div>
+  <div>
+    <AButton
+      ref={button4Ref}
+      onClick={() => setOpen4(!open4)}
+      aria-haspopup="true">
+      More Menu
+    </AButton>
+  </div>
+  <div>
+    <AButton
+      ref={button5Ref}
+      onClick={() => setOpen5(!open5)}
+      aria-haspopup="true">
+      Compact Menu
+    </AButton>
+  </div>
+  <div>
+    <AButton
+      ref={button6Ref}
+      onClick={() => setOpen6(!open6)}
+      aria-haspopup="true">
+      Menu with Groups
+    </AButton>
+  </div>
+  <AMenu
+    anchorRef={button1Ref}
+    open={open1}
+    placement="bottom"
+    onClose={() => setOpen1(false)}
+    pointer
+    className="py-3">
+    <AListItem twoLine className="px-3 h3 my-0 pb-1">
+      <AListItemTitle>Bottom</AListItemTitle>
+    </AListItem>
+    <AListItem onClick={() => alert("alert1")} className="pl-3 py-1">
+      Example
+    </AListItem>
+    <AListItem onClick={() => alert("alert2")} className="pl-3 py-1">
+      Example
+    </AListItem>
+    <AListItem
+      onClick={() => alert("should not fire")}
+      className="pl-3 py-1"
+      disabled>
+      Disabled Item
+    </AListItem>
+    <AListItemDivider className="mb-0 mt-3" />
+    <AListItem twoLine>
+      <AListItemContent className="pb-0">
+        <a onClick={() => alert("alert3")}>Connect</a>
+      </AListItemContent>
+    </AListItem>
+  </AMenu>
+  <AMenu
+    anchorRef={button2Ref}
+    open={open2}
+    placement="bottom"
+    onClose={() => setOpen2(false)}
+    pointer
+    style={{maxWidth: 450}}>
+    <AListItem twoLine>
+      <AListItemAvatar>
+        <AIcon size={16} className="status-red--text">
+          critical-stop
+        </AIcon>
+      </AListItemAvatar>
+      <AListItemContent>
+        <AListItemTitle>Source Application</AListItemTitle>
+        <AListItemSubtitle>
+          Danger. Text to describe the notification or an issue that needs to be
+          addressed. Very, very, very, very, very long text.
+        </AListItemSubtitle>
+      </AListItemContent>
+      <AListItemAction
+        className="pr-3 align-self-start"
+        style={{paddingTop: 12}}>
+        <a onClick={() => alert("alert warning")}>Action</a>
+      </AListItemAction>
+    </AListItem>
+    <AListItemDivider className="ma-0" />
+    <AListItem twoLine>
+      <AListItemAvatar>
+        <AIcon size={16} className="status-orange--text">
+          warning
+        </AIcon>
+      </AListItemAvatar>
+      <AListItemContent>
+        <AListItemTitle>Source Application</AListItemTitle>
+        <AListItemSubtitle>
+          Warning. Text to describe the notification or an issue that needs to
+          be addressed. Very, very, very, very, very long text.
+        </AListItemSubtitle>
+      </AListItemContent>
+      <AListItemAction
+        className="pr-3 align-self-start"
+        style={{paddingTop: 12}}>
+        <a onClick={() => alert("alert warning")}>Action</a>
+      </AListItemAction>
+    </AListItem>
+  </AMenu>
+  <AMenu
+    anchorRef={button3Ref}
+    open={open3}
+    placement="bottom-left"
+    onClose={() => setOpen3(false)}>
+    <AListItem onClick={() => {}}>Selection 1</AListItem>
+    <AListItem onClick={() => {}}>Selection 2</AListItem>
+    <AListItem onClick={() => {}}>Selection 3</AListItem>
+    <AListItem onClick={() => alert("should not fire")} disabled>
+      Disabled Item
+    </AListItem>
+  </AMenu>
+  <AMenu
+    anchorRef={button4Ref}
+    open={open4}
+    placement="bottom-right"
+    onClose={() => setOpen4(false)}>
+    <AListItem
+      onClick={() => {
+        setMenu4Selected(0);
+      }}
+      selected={0 === menu4Selected}>
+      Selection Uno
+    </AListItem>
+    <AListItem
+      onClick={() => {
+        setMenu4Selected(1);
+      }}
+      selected={1 === menu4Selected}>
+      Selection Dos
+      <AIcon size={12} className="ml-2">
+        judgement
+      </AIcon>
+    </AListItem>
+    <AListItem
+      onClick={() => {
+        setMenu4Selected(2);
+      }}
+      selected={2 === menu4Selected}>
+      Selection Tres
+    </AListItem>
+    <AListItem onClick={() => alert("should not fire")} disabled>
+      Disabled Item
+    </AListItem>
+    <AListItemDivider style={{margin: 0}} />
+    <AListItem onClick={() => {}}>
+      <ARadio checked={true}>Selected</ARadio>
+    </AListItem>
+    <AListItem onClick={() => {}}>
+      <ARadio checked={false}>UnSelected</ARadio>
+    </AListItem>
+    <AListItemDivider style={{margin: 0}} />
+    <AListItem onClick={() => {}}>
+      <ACheckbox checked={true}>Checked</ACheckbox>
+    </AListItem>
+    <AListItem onClick={() => {}}>
+      <ACheckbox checked={false}>UnChecked</ACheckbox>
+    </AListItem>
+    <AListItemDivider style={{margin: 0}} />
+    <AListItem
+      onClick={() => {
+        setMenu4Selected(3);
+      }}
+      selected={3 === menu4Selected}>
+      Status
+    </AListItem>
+  </AMenu>
+  <AMenu
+    anchorRef={button5Ref}
+    open={open5}
+    compact
+    placement="bottom-left"
+    onClose={() => setOpen5(false)}>
+    <AListItem onClick={() => {}}>
+      <ARadio checked={true}>Selected</ARadio>
+    </AListItem>
+    <AListItem onClick={() => {}}>
+      <ARadio checked={false}>UnSelected</ARadio>
+    </AListItem>
+    <AListItemDivider style={{margin: 0}} />
+    <AListItem onClick={() => {}}>
+      <ACheckbox checked={true}>Checked</ACheckbox>
+    </AListItem>
+    <AListItem onClick={() => {}}>
+      <ACheckbox checked={false}>UnChecked</ACheckbox>
+    </AListItem>
+  </AMenu>
+  <AMenu
+    anchorRef={button6Ref}
+    open={open6}
+    compact
+    placement="bottom-left"
+    onClose={() => setOpen6(false)}>
+    <AListItemGroup title={"Category 1"}>
+      <AListItem onClick={() => {}}>Category item 1</AListItem>
+      <AListItem onClick={() => {}}>Category item 2</AListItem>
+      <AListItem onClick={() => {}}>Category item 3</AListItem>
+    </AListItemGroup>
+    <AListItemDivider />
+    <AListItemGroup title={"Category 2"}>
+      <AListItem onClick={() => {}}>Category item 4</AListItem>
+      <AListItem onClick={() => {}}>Category item 5</AListItem>
+    </AListItemGroup>
+  </AMenu>
+</div>
+); } `} />
+
+## Cascading Menus
+
+<Playground
+  fullWidthPreview
+  code={`() => {
+  const buttonRef = useRef(null);
+  const button2Ref = useRef(null);
+  const submenuRef = useRef(null);
+  const nestedSubmenuRef = useRef(null); 
+  const nestedSubmenuRef1 = useRef(null);  
+  const [open, setOpen] = useState(false);
+  const [open2, setOpen2] = useState(false);
+
+return (
+
+<div
+  className="d-flex"
+  style={{
+    rowGap: "10px",
+    flexWrap: "wrap",
+    justifyContent: "space-evenly"
+  }}>
+  <div>
+    <AButton
+      ref={buttonRef}
+      onClick={() => setOpen(!open)}
+      aria-haspopup="true">
+      Menu with Submenu
+    </AButton>
+  </div>
+  <div>
+    <AButton
+      ref={button2Ref}
+      onClick={() => setOpen2(!open2)}
+      aria-haspopup="true">
+      Menu with Nested Submenu
+    </AButton>
+  </div>
+  <AMenu
+    anchorRef={buttonRef}
+    open={open}
+    placement="bottom-left"
+    onClose={() => setOpen(false)}>
+    <AListItem onClick={() => alert("Selection 1")}>Selection 1</AListItem>
+    <AListItem onClick={() => alert("Selection 2")}>Selection 2</AListItem>
+    <AListItem ref={submenuRef} submenu>
+      Selection 3
+      <AMenu submenu anchorRef={submenuRef} placement="right-top">
+        <AListItem tabIndex={0} onClick={() => alert("Selection 2(a)")}>
+          Selection 2(a)
         </AListItem>
       </AMenu>
-      <AMenu
-        anchorRef={button2Ref}
-        open={open2}
-        placement="bottom"
-        onClose={() => setOpen2(false)}
-        pointer
-        style={{maxWidth: 450}}>
-        <AListItem twoLine>
-          <AListItemAvatar>
-            <AIcon size={16} className="status-red--text">
-              critical-stop
-            </AIcon>
-          </AListItemAvatar>
-          <AListItemContent>
-            <AListItemTitle>Source Application</AListItemTitle>
-            <AListItemSubtitle>
-              Danger. Text to describe the notification or an issue that needs
-              to be addressed. Very, very, very, very, very long text.
-            </AListItemSubtitle>
-          </AListItemContent>
-          <AListItemAction
-            className="pr-3 align-self-start"
-            style={{paddingTop: 12}}>
-            <a onClick={() => alert("alert warning")}>Action</a>
-          </AListItemAction>
+    </AListItem>
+  </AMenu>
+  <AMenu
+    anchorRef={button2Ref}
+    open={open2}
+    onClose={() => setOpen2(false)}
+    placement="bottom-left">
+    <AListItem onClick={() => alert("Selection 1")}>Selection 1</AListItem>
+    <AListItem onClick={() => {}}>Selection 2</AListItem>
+    <AListItem ref={nestedSubmenuRef} submenu>
+      Selection 3
+      <AMenu submenu anchorRef={nestedSubmenuRef} placement="right-top">
+        <AListItem onClick={() => alert("Selection 3(a)")}>
+          Selection 3(a)
         </AListItem>
-        <AListItemDivider className="ma-0" />
-        <AListItem twoLine>
-          <AListItemAvatar>
-            <AIcon size={16} className="status-orange--text">
-              warning
-            </AIcon>
-          </AListItemAvatar>
-          <AListItemContent>
-            <AListItemTitle>Source Application</AListItemTitle>
-            <AListItemSubtitle>
-              Warning. Text to describe the notification or an issue that
-              needs to be addressed. Very, very, very, very, very long text.
-            </AListItemSubtitle>
-          </AListItemContent>
-          <AListItemAction
-            className="pr-3 align-self-start"
-            style={{paddingTop: 12}}>
-            <a onClick={() => alert("alert warning")}>Action</a>
-          </AListItemAction>
+        <AListItem ref={nestedSubmenuRef1} submenu>
+          Selection 3(b)
+          <AMenu submenu anchorRef={nestedSubmenuRef1} placement="right-top">
+            <AListItem onClick={() => alert("Selection 3(b)-1")}>
+              Selection 3(b)-1
+            </AListItem>
+            <AListItem onClick={() => {}}> Selection 3(b)-2 </AListItem>
+          </AMenu>
         </AListItem>
       </AMenu>
-      <AMenu
-        anchorRef={button3Ref}
-        open={open3}
-        placement="bottom-left"
-        onClose={() => setOpen3(false)}>
-        <AListItem onClick={() => {}}>Selection 1</AListItem>
-        <AListItem onClick={() => {}}>Selection 2</AListItem>
-        <AListItem onClick={() => {}}>Selection 3</AListItem>
-        <AListItem onClick={() => alert("should not fire")} disabled>
-          Disabled Item
-        </AListItem>
-      </AMenu>
-      <AMenu
-        anchorRef={button4Ref}
-        open={open4}
-        placement="bottom-right"
-        onClose={() => setOpen4(false)}
-        >
-        <AListItem onClick={() => {setMenu4Selected(0)}} selected={0 === menu4Selected}>Selection Uno</AListItem>
-        <AListItem onClick={() => {setMenu4Selected(1)}} selected={1 === menu4Selected}>Selection Dos <AIcon size={12} className="ml-2">judgement</AIcon></AListItem>
-        <AListItem onClick={() => {setMenu4Selected(2)}} selected={2 === menu4Selected}>Selection Tres</AListItem>
-        <AListItem onClick={() => alert("should not fire")} disabled>
-          Disabled Item
-        </AListItem>
-        <AListItemDivider style={{margin: 0}}/>
-        <AListItem onClick={() => {}}><ARadio checked={true}>Selected</ARadio></AListItem>
-        <AListItem onClick={() => {}}><ARadio checked={false}>UnSelected</ARadio></AListItem>
-        <AListItemDivider style={{margin: 0}}/>
-        <AListItem onClick={() => {}}><ACheckbox checked={true}>Checked</ACheckbox></AListItem>
-        <AListItem onClick={() => {}}><ACheckbox checked={false}>UnChecked</ACheckbox></AListItem>
-        <AListItemDivider style={{margin: 0}}/>
-        <AListItem onClick={() => {setMenu4Selected(3)}} selected={3 === menu4Selected}>Status</AListItem>
-      </AMenu>
-      <AMenu
-        anchorRef={button5Ref}
-        open={open5}
-        compact
-        placement="bottom-left"
-        onClose={() => setOpen5(false)}>
-        <AListItem onClick={() => {}}><ARadio checked={true}>Selected</ARadio></AListItem>
-        <AListItem onClick={() => {}}><ARadio checked={false}>UnSelected</ARadio></AListItem>
-        <AListItemDivider style={{margin: 0}}/>
-        <AListItem onClick={() => {}}><ACheckbox checked={true}>Checked</ACheckbox></AListItem>
-        <AListItem onClick={() => {}}><ACheckbox checked={false}>UnChecked</ACheckbox></AListItem>
-      </AMenu>
-      <AMenu
-        anchorRef={button6Ref}
-        open={open6}
-        compact
-        placement="bottom-left"
-        onClose={() => setOpen6(false)}>
-          <AListItemGroup title={"Category 1"}>
-              <AListItem onClick={() => {}}>Category item 1</AListItem>
-              <AListItem onClick={() => {}}>Category item 2</AListItem>
-              <AListItem onClick={() => {}}>Category item 3</AListItem>
-          </AListItemGroup>
-          <AListItemDivider />
-          <AListItemGroup title={"Category 2"}>
-              <AListItem onClick={() => {}}>Category item 4</AListItem>
-              <AListItem onClick={() => {}}>Category item 5</AListItem>
-          </AListItemGroup>
-      </AMenu>
-    </div>
-);
-}
-`}
-/>
+    </AListItem>
+    <AListItem onClick={() => alert("should not fire")} disabled>
+      Disabled Item
+    </AListItem>
+  </AMenu>
+</div>
+); } `} />
 
 ## Menu Props
 

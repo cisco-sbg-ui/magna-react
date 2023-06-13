@@ -91,6 +91,21 @@ describe("<AMenu />", () => {
         expect(mockFn.callCount).to.eq(1);
       });
   });
+
+  it("should open submenu on hover", () => {
+    cy.mount(<SubMenuTest />);
+    openMenu();
+    getMenuContent().get(".a-list-item--submenu").trigger("mouseover");
+    cy.get(".a-menu--submenu").should("exist");
+  });
+
+  it("should close submenu after selection", () => {
+    cy.mount(<SubMenuTest />);
+    openMenu();
+    getMenuContent().get(".a-list-item--submenu").trigger("mouseover");
+    cy.getByDataTestId("submenu-item-1").click();
+    cy.get(".a-menu--submenu").should("not.exist");
+  });
 });
 
 function MenuTest(menuProps) {
@@ -111,6 +126,42 @@ function MenuTest(menuProps) {
       <AMenu {...menuProps} open={isOpen} anchorRef={btnRef}>
         <AListItem data-testid="menu-item-1">
           <AListItemTitle>Bottom</AListItemTitle>
+        </AListItem>
+        <AListItem data-testid="menu-item-2">Example</AListItem>
+        <AListItem data-testid="menu-item-3">Example</AListItem>
+      </AMenu>
+    </div>
+  );
+}
+
+function SubMenuTest(menuProps) {
+  const btnRef = useRef();
+  const submenuRef = useRef();
+  const [isOpen, setIsOpen] = useState(menuProps?.open);
+  return (
+    <div
+      className="d-flex justify-center align-center"
+      style={{height: "100vh", width: "100vw"}}
+    >
+      <AButton
+        data-testid="menu-trigger"
+        ref={btnRef}
+        onClick={() => setIsOpen((state) => !state)}
+      >
+        {isOpen ? "close" : "open"}
+      </AButton>
+      <AMenu
+        {...menuProps}
+        open={isOpen}
+        anchorRef={btnRef}
+        onClose={() => setIsOpen(false)}
+      >
+        <AListItem ref={submenuRef} submenu data-testid="menu-item-1">
+          <AListItemTitle>Bottom</AListItemTitle>
+          <AMenu submenu anchorRef={submenuRef}>
+            <AListItem data-testid="submenu-item-1">Example</AListItem>
+            <AListItem data-testid="submenu-item-2">Example</AListItem>
+          </AMenu>
         </AListItem>
         <AListItem data-testid="menu-item-2">Example</AListItem>
         <AListItem data-testid="menu-item-3">Example</AListItem>

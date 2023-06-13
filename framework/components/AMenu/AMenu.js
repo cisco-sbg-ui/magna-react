@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useEffect, useRef} from "react";
+import React, {forwardRef, useEffect, useRef, useCallback} from "react";
 
 import {keyCodes} from "../../utils/helpers";
 import {useCombinedRefs} from "../../utils/hooks";
@@ -24,6 +24,7 @@ const AMenu = forwardRef(
       placement,
       pointer,
       role = "menu",
+      submenu = false,
       ...rest
     },
     ref
@@ -31,17 +32,11 @@ const AMenu = forwardRef(
     const menuRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, menuRef);
 
-    useEffect(() => {
-      if (open && focusOnOpen) {
-        setTimeout(() => {
-          combinedRef.current?.focus();
-        }, 0);
-      }
-    }, [open, combinedRef, focusOnOpen]);
-
     const getPrevious = () => {
       const items = Array.from(
-        combinedRef.current.querySelectorAll(".a-list-item[tabindex]")
+        combinedRef.current.querySelectorAll(
+          ".a-list-item[tabindex]:not([disabled])"
+        )
       );
       return (
         items[
@@ -50,16 +45,30 @@ const AMenu = forwardRef(
       );
     };
 
-    const getNext = () => {
+    const getNext = useCallback(() => {
       const items = Array.from(
-        combinedRef.current.querySelectorAll(".a-list-item[tabindex]")
+        combinedRef.current.querySelectorAll(
+          ".a-list-item[tabindex]:not([disabled])"
+        )
       );
       return (
         items[
           items.findIndex((x) => x.isSameNode(document.activeElement)) + 1
         ] || items[0]
       );
-    };
+    }, [combinedRef]);
+
+    useEffect(() => {
+      if (open && focusOnOpen) {
+        setTimeout(() => {
+          combinedRef.current?.focus();
+
+          if (submenu) {
+            getNext()?.focus();
+          }
+        }, 0);
+      }
+    }, [open, combinedRef, focusOnOpen, submenu, getNext]);
 
     const closeHandler = (e) => {
       if (anchorRef instanceof DOMRect) {
@@ -73,6 +82,7 @@ const AMenu = forwardRef(
       if (anchorRef instanceof DOMRect) {
         return;
       }
+
       if (onClose && e.keyCode === keyCodes.esc) {
         e.preventDefault();
         closeHandler(e);
@@ -82,10 +92,17 @@ const AMenu = forwardRef(
         anchorRef.current.focus();
       } else if (e.keyCode === keyCodes.up) {
         e.preventDefault();
+        e.stopPropagation();
         const previous = getPrevious();
         previous && previous.focus();
+      } else if (e.keyCode === keyCodes.right) {
+        e.preventDefault();
+      } else if (e.keyCode === keyCodes.left) {
+        e.preventDefault();
+        submenu && closeHandler(e);
       } else if (e.keyCode === keyCodes.down) {
         e.preventDefault();
+        e.stopPropagation();
         const next = getNext();
         next && next.focus();
       }
@@ -98,10 +115,14 @@ const AMenu = forwardRef(
     if (compact) {
       className += ` compact`;
     }
+    if (submenu) {
+      className += ` a-menu--submenu`;
+    }
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
     }
+
     return (
       <AList
         {...rest}
@@ -114,7 +135,15 @@ const AMenu = forwardRef(
           closeOnClick && closeHandler(e);
           onClick && onClick(e);
         }}
-        onClose={onClose}
+        onClose={(e) => {
+          const isSubmenuActive = Boolean(
+            document.querySelector(".a-menu--submenu")
+          );
+          //If submenu is not active, proceed with unmounting parent amenu
+          if (!isSubmenuActive) {
+            onClose(e);
+          }
+        }}
         onKeyDown={(e) => {
           keyDownHandler(e);
           onKeyDown && onKeyDown(e);
