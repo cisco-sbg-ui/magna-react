@@ -32,20 +32,6 @@ const AMenu = forwardRef(
     const menuRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, menuRef);
 
-    // useEffect(() => {
-    //   console.log("here", ref, menuRef);
-    //   const handleClickOutside = (e) => {
-    //     console.log("here", anchorRef.current);
-    //     if (anchorRef.current && !anchorRef.current.contains(e.target)) {
-    //       closeHandler(e);
-    //     }
-    //   };
-    //   document.addEventListener("click", handleClickOutside, false);
-    //   return () => {
-    //     document.removeEventListener("click", handleClickOutside, false);
-    //   };
-    // });
-
     const getPrevious = () => {
       const items = Array.from(
         combinedRef.current.querySelectorAll(
@@ -151,8 +137,9 @@ const AMenu = forwardRef(
         }}
         onClose={(e) => {
           const isSubmenuActive = Boolean(
-            combinedRef?.current?.querySelector(".a-menu--submenu")
+            document.querySelector(".a-menu--submenu")
           );
+          //If submenu is not active, proceed with unmounting parent amenu
           if (!isSubmenuActive) {
             onClose(e);
           }
