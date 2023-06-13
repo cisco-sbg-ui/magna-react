@@ -78,4 +78,11 @@
       left: calc(100% - 5px);
     }
   }
+
+  .a-button {
+    height: unset;
+    .a-icon {
+      height: unset !important;
+    }
+  }
 }

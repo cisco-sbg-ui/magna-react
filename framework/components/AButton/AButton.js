@@ -53,7 +53,7 @@ const AButton = forwardRef(
 
     if (small) {
       className += " a-button--small";
-    } else {
+    } else if (medium) {
       className += " a-button--medium";
     }
 
