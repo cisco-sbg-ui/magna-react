@@ -9,6 +9,10 @@ const AProgressbar = forwardRef(
   (
     {
       className: propsClassName,
+      barClassName: propsBarClassName,
+      fillClassName: propsFillClassName,
+      barStyle,
+      fillStyle,
       animationDuration,
       size,
       disabled,
@@ -20,7 +24,9 @@ const AProgressbar = forwardRef(
     },
     ref
   ) => {
-    let className = baseClass;
+    let className = baseClass,
+      barClass = `${baseClass}__bar`,
+      fillClass = `${baseClass}__fill`;
 
     switch (size) {
       case "small": {
@@ -55,6 +61,14 @@ const AProgressbar = forwardRef(
       className += ` ${propsClassName}`;
     }
 
+    if (propsBarClassName) {
+      barClassName += ` ${propsBarClassName}`;
+    }
+
+    if (propsFillClassName) {
+      fillClassName += ` ${propsFillClassName}`;
+    }
+
     const fixedPercentage = Math.max(0, Math.min(percentage, 100));
 
     return (
@@ -70,12 +84,13 @@ const AProgressbar = forwardRef(
         {displayText && (
           <span className={`${baseClass}__label`}>{fixedPercentage}%</span>
         )}
-        <div className={`${baseClass}__bar`}>
+        <div className={barClass} style={barStyle}>
           <div
-            className={`${baseClass}__fill`}
+            className={fillClass}
             style={{
               width: `${fixedPercentage}%`,
-              animationDuration
+              animationDuration,
+              ...fillStyle
             }}
           ></div>
         </div>
@@ -113,7 +128,23 @@ AProgressbar.propTypes = {
   /**
    * Adds animation for an indeterminate progress
    */
-  indeterminate: PropTypes.bool
+  indeterminate: PropTypes.bool,
+  /**
+   * Class to apply to the bar element
+   */
+  barClassName: PropTypes.string,
+  /**
+   * Class to apply to the fill element
+   */
+  fillClassName: PropTypes.string,
+  /**
+   * Style to apply to the bar element
+   */
+  barStyle: PropTypes.object,
+  /**
+   * Style to apply to the fill element
+   */
+  fillStyle: PropTypes.object
 };
 
 AProgressbar.displayName = "AProgressbar";
