@@ -1,11 +1,15 @@
 @import "../../styles";
 
-$switch-width: 38px;
-$switch-height: 21px;
+$switch-width: 40px;
+$switch-height: 20px;
+$switch-width-sm: 32px;
+$switch-height-sm: 16px;
 $switch-border-radius: 14px;
 $switch__label-margin: 0 0 0 10px;
-$switch__circle-width: 21px;
-$switch__circle-height: 21px;
+$switch__circle-width: 14px;
+$switch__circle-height: 14px;
+$switch__circle-width-sm: 10px;
+$switch__circle-height-sm: 10px;
 $switch__circle-border-radius: 30px;
 $switch-transition: background-color $transition-duration--slow ease-out;
 $switch-after-transition: transform $transition-duration--fast
@@ -23,21 +27,12 @@ $switch-after-transition: transform $transition-duration--fast
     ~ .a-switch__box {
       &:after {
         background-color: map-deep-get($theme, "switch", "circle-color");
-        border: $border-width solid map-deep-get($theme, "switch", "bg");
-      }
-      &:hover:after {
-        border: $border-width solid map-deep-get($theme, "switch", "bg--hover");
       }
     }
 
     &:checked {
       ~ .a-switch__box {
         background-color: map-deep-get($theme, "switch", "bg--checked");
-
-        &:after {
-          border: $border-width solid
-            map-deep-get($theme, "switch", "bg--checked");
-        }
       }
     }
 
@@ -50,17 +45,6 @@ $switch-after-transition: transform $transition-duration--fast
             "switch",
             "bg--checked--hover"
           );
-          &:after {
-            border: $border-width solid
-              map-deep-get($theme, "switch", "bg--checked--hover");
-          }
-        }
-
-        &:active {
-          &:after {
-            border: $border-width solid
-              map-deep-get($theme, "switch", "bg--checked");
-          }
         }
       }
     }
@@ -70,10 +54,6 @@ $switch-after-transition: transform $transition-duration--fast
         opacity: map-deep-get($theme, "switch", "opacity-disabled");
         background-color: map-deep-get($theme, "switch", "bg--disabled");
         cursor: not-allowed;
-        &:after {
-          border: $border-width solid
-            map-deep-get($theme, "switch", "bg--disabled");
-        }
       }
 
       ~ .a-switch__label {
@@ -121,7 +101,7 @@ $switch-after-transition: transform $transition-duration--fast
       position: absolute;
       width: $switch__circle-width;
       height: $switch__circle-height;
-      left: 0;
+      left: 3px;
       border-radius: $switch__circle-border-radius;
       content: "";
     }
@@ -133,7 +113,7 @@ $switch-after-transition: transform $transition-duration--fast
     &:checked {
       ~ .a-switch__box {
         &:after {
-          transform: translateX(82%);
+          transform: translateX(142%);
         }
       }
     }
@@ -154,6 +134,26 @@ $switch-after-transition: transform $transition-duration--fast
 
   &--disabled .a-switch__wrap {
     cursor: default;
+  }
+
+  &--small {
+    .a-switch__box {
+      width: $switch-width-sm;
+      height: $switch-height-sm;
+
+      &:after {
+        width: $switch__circle-width-sm;
+        height: $switch__circle-height-sm;
+      }
+    }
+
+    .a-switch__input:checked {
+      ~ .a-switch__box {
+        &:after {
+          transform: translateX(156%);
+        }
+      }
+    }
   }
 }
 
