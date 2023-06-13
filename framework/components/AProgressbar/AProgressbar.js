@@ -62,11 +62,11 @@ const AProgressbar = forwardRef(
     }
 
     if (propsBarClassName) {
-      barClassName += ` ${propsBarClassName}`;
+      barClass += ` ${propsBarClassName}`;
     }
 
     if (propsFillClassName) {
-      fillClassName += ` ${propsFillClassName}`;
+      fillClass += ` ${propsFillClassName}`;
     }
 
     const fixedPercentage = Math.max(0, Math.min(percentage, 100));
