@@ -153,9 +153,9 @@ const AMenu = forwardRef(
           const isSubmenuActive = Boolean(
             combinedRef?.current?.querySelector(".a-menu--submenu")
           );
-          //if (!isSubmenuActive) {
-          onClose(e);
-          //  }
+          if (!isSubmenuActive) {
+            onClose(e);
+          }
         }}
         onKeyDown={(e) => {
           keyDownHandler(e);
