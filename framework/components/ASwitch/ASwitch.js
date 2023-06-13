@@ -28,6 +28,7 @@ const ASwitch = forwardRef(
       validationState,
       value,
       wrap,
+      small,
       ...rest
     },
     ref
@@ -113,6 +114,10 @@ const ASwitch = forwardRef(
       className += ` ${propsClassName}`;
     }
 
+    if (small) {
+      className += ` a-switch--small`;
+    }
+
     const boxProps = {
       "aria-hidden": "true",
       className: "a-switch__box"
@@ -139,9 +144,8 @@ const ASwitch = forwardRef(
           />
           <span {...boxProps} />
           <span
-            className={`a-switch__label${
-              wrap ? " a-switch__label--wrap" : ""
-            }`}>
+            className={`a-switch__label${wrap ? " a-switch__label--wrap" : ""}`}
+          >
             {children}
           </span>
         </label>
@@ -196,7 +200,11 @@ ASwitch.propTypes = {
   /**
    * Toggles wrapping of long text in the label.
    */
-  wrap: PropTypes.bool
+  wrap: PropTypes.bool,
+  /**
+   * Small size variant
+   */
+  small: PropTypes.bool
 };
 
 ASwitch.displayName = "ASwitch";
