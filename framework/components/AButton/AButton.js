@@ -17,7 +17,7 @@ const AButton = forwardRef(
       href,
       icon,
       small = false,
-      medium = false,
+      medium = true,
       onClick,
       primary,
       secondary,
@@ -53,7 +53,7 @@ const AButton = forwardRef(
 
     if (small) {
       className += " a-button--small";
-    } else if (medium) {
+    } else {
       className += " a-button--medium";
     }
 

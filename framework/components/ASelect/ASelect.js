@@ -43,7 +43,7 @@ const ASelect = forwardRef(
       rules,
       validateOnBlur,
       validationState,
-      medium,
+      medium = true,
       useTemplateForSelectedItem = false,
       selectedDisplayTemplate,
       selectedDisplayItem,
