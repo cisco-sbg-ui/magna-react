@@ -111,6 +111,7 @@ $input-transition: border-color $transition-duration--extra-fast
 }
 
 .a-input-base {
+  display: block;
   &__surface {
     display: flex;
     box-sizing: border-box;
