@@ -6,14 +6,14 @@ $timeline-item-width: 100%;
 $timeline-icon-border-radius: 50%;
 $timeline-icon-width: 24px;
 $timeline-icon-height: 24px;
-$timeline-icon-z-index: 2;
+$timeline-icon-z-index: 200;
 $timeline-icon-border-width: 5px;
 $timeline-time-width: 125px;
 $timeline-time-min-width: 125px;
 $timeline-time-padding: 0 10px 0 0;
 $timeline-content-margin: 0 0 0 50px;
 $timeline-line-width: 2px;
-$timeline-line-z-index: 1;
+$timeline-line-z-index: 100;
 $timeline-item-transition: $transition-duration--fast;
 $timeline-transition: background-color $timeline-item-transition;
 

@@ -87,6 +87,7 @@
     "react-docgen": "5.4.3",
     "react-dom": "18.2.0",
     "react-live": "3.1.1",
+    "remark-gfm": "^3.0.1",
     "remark-slug": "6.1.0",
     "remove-markdown": "0.5.0",
     "rimraf": "3.0.2",

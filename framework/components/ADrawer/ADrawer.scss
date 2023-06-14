@@ -79,18 +79,18 @@ $common-transitions: transform $transition-props, width $transition-props,
     */
   &--fixed {
     position: fixed;
-    z-index: 1;
+    z-index: 100;
   }
 
   /**
     * In situations where the Drawer should _not_ fill
     * up the entire viewport
-    * 
+    *
     * e.g., underneath a nav bar
     */
   &--absolute {
     position: absolute;
-    z-index: 1;
+    z-index: 100;
 
     &.a-drawer--horizontal {
       width: 100%;
@@ -105,7 +105,7 @@ $common-transitions: transform $transition-props, width $transition-props,
     * In situations where the Drawer should not fill
     * up the entire viewport _and_ it should reposition
     * its surrounding content
-    
+
     * e.g., a permanent sidebar where we don't
     * want the sidebar covering the main content
     */

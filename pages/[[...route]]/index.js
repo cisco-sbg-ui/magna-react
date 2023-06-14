@@ -3,6 +3,7 @@ import Head from "next/head";
 import {serialize} from "next-mdx-remote/serialize";
 import {MDXRemote} from "next-mdx-remote";
 import React from "react";
+import remarkGfm from "remark-gfm";
 
 import {
   AApp,
@@ -114,7 +115,7 @@ export async function getStaticProps({params}) {
   const source = await serialize(target.content, {
     scope: target.data,
     mdxOptions: {
-      remarkPlugins: [require("remark-slug")]
+      remarkPlugins: [require("remark-slug"), remarkGfm]
     }
   });
 
