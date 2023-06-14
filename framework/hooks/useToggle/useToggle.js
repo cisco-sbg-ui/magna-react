@@ -8,7 +8,6 @@ const useToggle = (openDelay = 400, closeDelay, canOpen) => {
     timeout.current && clearTimeout(timeout.current);
 
     timeout.current = setTimeout(() => {
-      console.log("trying to open?");
       const canTooltipOpen = canOpen ? canOpen() : true;
       canTooltipOpen && setIsOpen(true);
     }, openDelay);
