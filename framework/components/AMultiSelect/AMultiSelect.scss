@@ -105,11 +105,15 @@
     }
     > .a-icon {
       padding: 0;
-      margin-right: 8px;
+      padding-right: 8px;
     }
   }
 
   &--hasScroll {
+    .a-multiselect__tags {
+      padding-right: 36px;
+    }
+
     .a-input-base__append {
       right: 16px;
     }

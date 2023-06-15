@@ -188,7 +188,10 @@ const AMultiSelect = forwardRef(
         ".a-input-base__control"
       );
 
-      if (controlEl.scrollHeight > inputBaseSurfaceRef?.current?.offsetHeight) {
+      if (
+        controlEl.scrollHeight >
+        inputBaseSurfaceRef?.current?.offsetHeight - 4
+      ) {
         className += " a-multiselect--hasScroll";
       }
     }
