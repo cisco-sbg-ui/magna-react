@@ -81,7 +81,7 @@ const AMultiSelect = forwardRef(
           } else if (typeof item === "object") {
             displayValue = item[itemText];
           }
-          return displayValue.toLowerCase().includes(val);
+          return displayValue && displayValue.toLowerCase().includes(val);
         };
     const filteredItems = filterValue
       ? items.filter((item) => {
@@ -291,6 +291,7 @@ const AMultiSelect = forwardRef(
         } else {
           e.target.style.width = `${e.target.parentNode?.parentNode?.clientWidth}px`;
         }
+
         multiselectRef.current?.removeChild(span);
 
         onChange && onChange(e);
