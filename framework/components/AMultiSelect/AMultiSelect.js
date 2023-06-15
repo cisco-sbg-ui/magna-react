@@ -9,10 +9,8 @@ import React, {
 
 import AInputBase from "../AInputBase";
 import {AFormContext} from "../AForm";
-import AButton from "../AButton";
 import AIcon from "../AIcon";
 import AMenu from "../AMenu";
-import ATag from "../ATag";
 import {AListItem} from "../AList";
 import AEmptyState from "../AEmptyState";
 import {useCombinedRefs} from "../../utils/hooks";
@@ -274,26 +272,6 @@ const AMultiSelect = forwardRef(
 
         setFilterValue(e.target.value);
 
-        // Measure the size of the actual text being entered to quickly
-        // resize the input so it stretches and wraps in the input surface
-        const span = document.createElement("span");
-        span.style.opacity = 0;
-        span.style.position = "absolute";
-        span.innerHTML = e.target.value;
-        multiselectRef.current?.appendChild(span);
-        const offsetWidth = span.offsetWidth;
-
-        if (
-          offsetWidth + 1 <
-          e.target.parentNode?.parentNode?.clientWidth - 16
-        ) {
-          e.target.style.width = `${offsetWidth + 16 + 1}px`;
-        } else {
-          e.target.style.width = `${e.target.parentNode?.parentNode?.clientWidth}px`;
-        }
-
-        multiselectRef.current?.removeChild(span);
-
         onChange && onChange(e);
       },
       onClick: () => {
@@ -338,7 +316,8 @@ const AMultiSelect = forwardRef(
           <AMultiSelectTag
             key={v[itemValue] || v}
             items={items}
-            value={v}
+            tagValue={v}
+            value={value}
             onSelected={onSelected}
             itemValue={itemValue}
             itemText={itemText}
@@ -375,7 +354,7 @@ const AMultiSelect = forwardRef(
         onClick: () => {
           validate(itemValue);
 
-          let newValue = [...value];
+          let newValue = Array.isArray(value) ? [...value] : [];
           if (value.includes(computedValue)) {
             newValue = newValue.filter((v) => v !== computedValue);
           } else {

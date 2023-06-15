@@ -3,9 +3,16 @@ import AButton from "../AButton";
 import AIcon from "../AIcon";
 import ATag from "../ATag";
 
-const AMultiSelectTag = ({items, value, onSelected, itemValue, itemText}) => {
+const AMultiSelectTag = ({
+  items,
+  tagValue,
+  value,
+  onSelected,
+  itemValue,
+  itemText
+}) => {
   const tagItem = items.find((item) =>
-    typeof item === "string" ? item === value : item[itemValue] === value
+    typeof item === "string" ? item === tagValue : item[itemValue] === tagValue
   );
 
   let computedValue, displayValue;
@@ -27,9 +34,7 @@ const AMultiSelectTag = ({items, value, onSelected, itemValue, itemText}) => {
         onClick={(e) => {
           e.stopPropagation();
 
-          const newValue = [...value].filter(
-            (value) => value !== computedValue
-          );
+          const newValue = [...value].filter((v) => v !== computedValue);
 
           onSelected && onSelected(newValue);
         }}

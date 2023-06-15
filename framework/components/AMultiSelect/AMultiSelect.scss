@@ -34,7 +34,7 @@
 
 .a-multiselect {
   &__input {
-    display: inline-flex;
+    display: block;
     flex: 1 1 auto;
     background: transparent;
     box-sizing: border-box;
@@ -47,14 +47,14 @@
     appearance: none;
     text-indent: 1px;
     align-self: stretch;
+    width: 100%;
     &:focus {
       outline: none;
     }
   }
 
   &__tags {
-    display: flex;
-    flex-wrap: wrap;
+    display: block;
     width: 100%;
     padding-right: 54px;
     .a-tag {
