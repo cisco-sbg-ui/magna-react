@@ -5,6 +5,7 @@ $tag-font-size: $font-size--xs;
 $tag-padding: 0 10px;
 $tag-border-radius: 12px;
 $tag-icon-font-size: $font-size--xxs;
+$tag-font-weight: 600;
 
 @include theme(a-tag) using ($theme) {
   background-color: map-deep-get($theme, "tag", "bg-color");
@@ -49,6 +50,7 @@ $tag-icon-font-size: $font-size--xxs;
   vertical-align: middle;
   word-break: break-all;
   cursor: default;
+  font-weight: $tag-font-weight;
 
   &.interactable {
     cursor: pointer;
