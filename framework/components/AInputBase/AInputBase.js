@@ -60,10 +60,10 @@ const AInputBase = forwardRef(
 
     if (large) {
       className += " a-input-base--large";
-    } else if (medium) {
-      className += " a-input-base--medium";
     } else if (small) {
       className += " a-input-base--small";
+    } else {
+      className += " a-input-base--medium";
     }
 
     if (validationState !== "default") {

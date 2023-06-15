@@ -22,7 +22,7 @@ const AButtonGroup = forwardRef(
       selectedValues,
       validationState = "default",
       small = false,
-      medium = false,
+      medium = true,
       ...rest
     },
     ref

@@ -17,7 +17,7 @@ const AButton = forwardRef(
       href,
       icon,
       small = false,
-      medium = false,
+      medium = true,
       onClick,
       primary,
       secondary,
