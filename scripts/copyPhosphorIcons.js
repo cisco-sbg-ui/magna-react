@@ -20,7 +20,7 @@ const {iconNameMap} = require("./iconMap");
  * `iconPath`.
  */
 
-const phosphorPath = `${os.homedir()}/Downloads/phosphor-icons/SVGs/Regular`;
+const phosphorPath = `${os.homedir()}/Downloads/phosphor-icons/SVGs/Bold`;
 const outputBase = "./svg";
 
 const generatedListForPhosphor = Object.entries(iconNameMap).map(
@@ -30,15 +30,20 @@ const generatedListForPhosphor = Object.entries(iconNameMap).map(
 const copyIconFiles = () => {
   generatedListForPhosphor.forEach((key) => {
     let outputName = key;
+
     if (key === "info") {
       outputName = "information";
     }
 
     try {
-      const iconPath = path.resolve(`${phosphorPath}/${key}.svg`);
+      const iconPath = path.resolve(`${phosphorPath}/${key}-bold.svg`);
+
+      console.log(iconPath);
 
       const iconData = fs.readFileSync(iconPath, {encoding: "utf-8"}),
-        outputPath = path.resolve(`${outputBase}/${outputName}.svg`);
+        outputPath = path.resolve(
+          `${outputBase}/${outputName.replace("-bold", "")}.svg`
+        );
 
       fs.writeFileSync(outputPath, iconData);
     } catch {

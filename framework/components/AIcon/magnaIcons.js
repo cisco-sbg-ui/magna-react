@@ -11,14 +11,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></circle>
         <path
           d="M181.1,208A96,96,0,1,1,224,128c0,22.1-8,40-28,40s-28-17.9-28-40V88"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -32,14 +32,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
           d="M96,192v8a32,32,0,0,0,64,0v-8"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -65,15 +65,16 @@ const MagnaIcons = {
           cy="128"
           r="96"
           fill="none"
-          strokeMiterlimit="10"
-          strokeWidth="16"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
         ></circle>
         <polyline
           points="128 72 128 128 184 128"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -90,14 +91,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></rect>
         <polyline
           points="168 168 216 168 216 40 88 40 88 88"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -114,21 +115,21 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></ellipse>
         <path
           d="M40,80v48c0,26.5,39.4,48,88,48s88-21.5,88-48V80"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
           d="M40,128v48c0,26.5,39.4,48,88,48s88-21.5,88-48V128"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -141,13 +142,13 @@ const MagnaIcons = {
           x="32"
           y="48"
           width="192"
-          height="144"
+          height="140"
           rx="16"
-          transform="translate(256 240) rotate(180)"
+          transform="translate(256 236) rotate(180)"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></rect>
         <line
           x1="160"
@@ -157,17 +158,17 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="32"
-          y1="152"
+          y1="148"
           x2="224"
-          y2="152"
+          y2="148"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="128"
@@ -177,7 +178,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -191,14 +192,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <path
-          d="M32,56H224a0,0,0,0,1,0,0V192a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V56A0,0,0,0,1,32,56Z"
+          d="M32,56H224a0,0,0,0,1,0,0V192a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V56a0,0,0,0,1,0,0Z"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <line
           x1="110.5"
@@ -208,7 +209,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="221.5"
@@ -218,7 +219,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -232,14 +233,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <polyline
-          points="152 32 152 88 208 88"
+          points="148 32 148 92 208 92"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -253,8 +254,9 @@ const MagnaIcons = {
           cy="128"
           r="96"
           fill="none"
-          strokeMiterlimit="10"
-          strokeWidth="16"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
         ></circle>
         <line
           x1="37.5"
@@ -264,7 +266,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="37.5"
@@ -274,7 +276,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <ellipse
           cx="128"
@@ -282,8 +284,9 @@ const MagnaIcons = {
           rx="40"
           ry="93.4"
           fill="none"
-          strokeMiterlimit="10"
-          strokeWidth="16"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
         ></ellipse>
       </>
     ),
@@ -297,14 +300,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
           d="M180,132l31-31a24,24,0,0,0,0-34L189,45a24,24,0,0,0-34,0L124,76"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <line
           x1="56"
@@ -314,7 +317,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="232"
@@ -324,30 +327,30 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
-          x1="144"
-          y1="144"
+          x1="140"
+          y1="148"
           x2="120"
           y2="168"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
-        <line x1="144" y1="144" x2="120" y2="168" fill="#231f20"></line>
+        <line x1="140" y1="148" x2="120" y2="168" fill="#231f20"></line>
         <line
-          x1="112"
-          y1="112"
+          x1="108"
+          y1="116"
           x2="88"
           y2="136"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
-        <line x1="112" y1="112" x2="88" y2="136" fill="#231f20"></line>
+        <line x1="108" y1="116" x2="88" y2="136" fill="#231f20"></line>
         <line
           x1="116"
           y1="68"
@@ -356,7 +359,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="68"
@@ -366,7 +369,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -382,15 +385,15 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></circle>
-        <circle cx="128" cy="180" r="12"></circle>
+        <circle cx="128" cy="176" r="16"></circle>
         <path
-          d="M128,144v-8a28,28,0,1,0-28-28"
+          d="M128,136a28,28,0,1,0-28-28"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -404,7 +407,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <line
           x1="176"
@@ -414,7 +417,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="200"
@@ -424,7 +427,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="224"
@@ -434,7 +437,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="240"
@@ -444,7 +447,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -458,7 +461,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -472,9 +475,9 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
-        <circle cx="84" cy="84" r="12"></circle>
+        <circle cx="84" cy="84" r="16"></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -487,7 +490,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <line
           x1="120"
@@ -497,7 +500,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -515,14 +518,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></rect>
         <path
-          d="M40,160H76.7a7.9,7.9,0,0,1,5.6,2.3l19.4,19.4a7.9,7.9,0,0,0,5.6,2.3h41.4a7.9,7.9,0,0,0,5.6-2.3l19.4-19.4a7.9,7.9,0,0,1,5.6-2.3H216"
+          d="M40,156H76.7a7.9,7.9,0,0,1,5.6,2.3l19.4,19.4a7.9,7.9,0,0,0,5.6,2.3h41.4a7.9,7.9,0,0,0,5.6-2.3l19.4-19.4a7.9,7.9,0,0,1,5.6-2.3H216"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -536,15 +539,16 @@ const MagnaIcons = {
           cy="96"
           r="64"
           fill="none"
-          strokeMiterlimit="10"
-          strokeWidth="16"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
         ></circle>
         <path
           d="M31,216a112,112,0,0,1,194,0"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -558,7 +562,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -568,39 +572,40 @@ const MagnaIcons = {
     xml: (
       <>
         <polyline
-          points="128 72 128 128 184 128"
+          points="128 80 128 128 176 128"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <circle
           cx="128"
           cy="128"
           r="88"
           fill="none"
-          strokeMiterlimit="10"
-          strokeWidth="16"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
         ></circle>
         <line
-          x1="195.9"
-          y1="26.2"
-          x2="229.8"
-          y2="60.1"
+          x1="201.5"
+          y1="20.5"
+          x2="235.5"
+          y2="54.5"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
-          x1="26.2"
-          y1="60.1"
-          x2="60.1"
-          y2="26.2"
+          x1="20.5"
+          y1="54.5"
+          x2="54.5"
+          y2="20.5"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -723,7 +728,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></circle>
         <line
           x1="128"
@@ -733,7 +738,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="44.9"
@@ -743,7 +748,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="44.9"
@@ -753,7 +758,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="128"
@@ -763,7 +768,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="211.1"
@@ -773,7 +778,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="211.1"
@@ -783,7 +788,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -801,31 +806,31 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></rect>
         <polyline
-          points="94.1 118.1 128 152 161.9 118.1"
+          points="99.7 115.7 128 144 156.3 115.7"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <line
           x1="128"
-          y1="72"
+          y1="76"
           x2="128"
-          y2="152"
+          y2="144"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <path
-          d="M40,160H76.7a7.9,7.9,0,0,1,5.6,2.3l19.4,19.4a7.9,7.9,0,0,0,5.6,2.3h41.4a7.9,7.9,0,0,0,5.6-2.3l19.4-19.4a7.9,7.9,0,0,1,5.6-2.3H216"
+          d="M40,156H76.7a7.9,7.9,0,0,1,5.6,2.3l19.4,19.4a7.9,7.9,0,0,0,5.6,2.3h41.4a7.9,7.9,0,0,0,5.6-2.3l19.4-19.4a7.9,7.9,0,0,1,5.6-2.3H216"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -839,14 +844,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <path
           d="M224,200a96,96,0,0,0-96-96H32"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -860,15 +865,16 @@ const MagnaIcons = {
           cy="128"
           r="96"
           fill="none"
-          strokeMiterlimit="10"
-          strokeWidth="16"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
         ></circle>
         <polyline
           points="108 156 156 156 156 108"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <line
           x1="100"
@@ -878,7 +884,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -892,15 +898,16 @@ const MagnaIcons = {
           cy="128"
           r="96"
           fill="none"
-          strokeMiterlimit="10"
-          strokeWidth="16"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
         ></circle>
         <polyline
           points="134.1 161.9 168 128 134.1 94.1"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <line
           x1="88"
@@ -910,7 +917,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -924,15 +931,16 @@ const MagnaIcons = {
           cy="128"
           r="96"
           fill="none"
-          strokeMiterlimit="10"
-          strokeWidth="16"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
         ></circle>
         <polyline
           points="94.1 121.9 128 88 161.9 121.9"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <line
           x1="128"
@@ -942,7 +950,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -956,14 +964,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <path
           d="M190.2,190.2a88,88,0,1,1,0-124.4l34,33.9"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -980,14 +988,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <polyline
           points="168 192 64 192 64 88"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -1004,14 +1012,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <polyline
           points="88 192 192 192 192 88"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -1028,14 +1036,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <polyline
           points="56 144 128 216 200 144"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -1049,14 +1057,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <polyline
           points="32 192 176 192 176 48"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -1073,14 +1081,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <polyline
           points="112 56 40 128 112 200"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -1092,12 +1100,12 @@ const MagnaIcons = {
         <line
           x1="224"
           y1="128"
-          x2="72"
+          x2="80"
           y2="128"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="40"
@@ -1107,14 +1115,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <polyline
-          points="144 56 72 128 144 200"
+          points="152 56 80 128 152 200"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -1126,12 +1134,12 @@ const MagnaIcons = {
         <line
           x1="32"
           y1="128"
-          x2="184"
+          x2="176"
           y2="128"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="216"
@@ -1141,14 +1149,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <polyline
-          points="112 56 184 128 112 200"
+          points="104 56 176 128 104 200"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -1165,14 +1173,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <polyline
           points="144 56 216 128 144 200"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -1186,7 +1194,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <line
           x1="40"
@@ -1196,14 +1204,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <path
           d="M160,192h48a8,8,0,0,0,8-8V48a8,8,0,0,0-8-8H72a8,8,0,0,0-8,8V96"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -1217,7 +1225,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <line
           x1="144"
@@ -1227,14 +1235,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <path
           d="M184,144v64a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V80a8,8,0,0,1,8-8h64"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -1251,14 +1259,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <polyline
           points="168 64 64 64 64 168"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -1275,14 +1283,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <polyline
           points="88 64 192 64 192 168"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -1299,14 +1307,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <polyline
           points="56 112 128 40 200 112"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -1320,28 +1328,28 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <polyline
           points="79.8 156.3 31.8 156.3 31.8 204.3"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <path
           d="M65.8,65.8a87.9,87.9,0,0,1,124.4,0l34,33.9"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
           d="M190.2,190.2a87.9,87.9,0,0,1-124.4,0l-34-33.9"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -1355,14 +1363,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <polyline
           points="144 80 176 48 208 80"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <line
           x1="80"
@@ -1372,7 +1380,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="176"
@@ -1382,7 +1390,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -1396,28 +1404,28 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <polyline
           points="64 152 104 152 104 192"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <polyline
           points="152 192 152 152 192 152"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <polyline
           points="104 64 104 104 64 104"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <line
           x1="208"
@@ -1427,7 +1435,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="48"
@@ -1437,7 +1445,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="208"
@@ -1447,7 +1455,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="48"
@@ -1457,7 +1465,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -1471,14 +1479,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <polyline
           points="80 112 48 80 80 48"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <line
           x1="48"
@@ -1488,7 +1496,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="208"
@@ -1498,7 +1506,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -1512,28 +1520,28 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <polyline
           points="88 208 48 208 48 168"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <polyline
           points="208 168 208 208 168 208"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <polyline
           points="48 88 48 48 88 48"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <line
           x1="152"
@@ -1543,7 +1551,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="104"
@@ -1553,7 +1561,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="152"
@@ -1563,7 +1571,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="104"
@@ -1573,7 +1581,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -1590,7 +1598,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="51.8"
@@ -1600,7 +1608,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="51.8"
@@ -1610,7 +1618,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -1627,21 +1635,21 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <path
           d="M229.6,154.3,185.9,55A24.1,24.1,0,0,0,152,55V168"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
           d="M104,168V55a24.1,24.1,0,0,0-33.9,0L26.4,154.3"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <circle
           cx="64"
@@ -1650,7 +1658,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></circle>
         <circle
           cx="192"
@@ -1659,7 +1667,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></circle>
       </>
     ),
@@ -1673,14 +1681,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
           d="M24,192a8,8,0,0,0,8,8H96a32,32,0,0,1,32,32V88A32,32,0,0,0,96,56H32a8,8,0,0,0-8,8Z"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -1698,7 +1706,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></rect>
         <line
           x1="32"
@@ -1708,7 +1716,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -1718,32 +1726,32 @@ const MagnaIcons = {
     xml: (
       <>
         <rect
-          x="32"
-          y="80"
+          x="28"
+          y="84"
           width="160"
           height="128"
           rx="8"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></rect>
         <path
-          d="M64,80V56a8,8,0,0,1,8-8H216a8,8,0,0,1,8,8V168a8,8,0,0,1-8,8H192"
+          d="M68,84V52a8,8,0,0,1,8-8H220a8,8,0,0,1,8,8V164a8,8,0,0,1-8,8H188"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <line
-          x1="32"
-          y1="112"
-          x2="192"
-          y2="112"
+          x1="28"
+          y1="124"
+          x2="188"
+          y2="124"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -1761,27 +1769,27 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></rect>
         <line
           x1="176"
-          y1="24"
+          y1="20"
           x2="176"
-          y2="56"
+          y2="40"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="80"
-          y1="24"
+          y1="20"
           x2="80"
-          y2="56"
+          y2="40"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="40"
@@ -1791,7 +1799,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -1805,14 +1813,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <polyline
           points="120 208 40 128 120 48"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -1826,14 +1834,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <polyline
           points="136 48 216 128 136 208"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -1847,7 +1855,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -1861,7 +1869,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -1875,7 +1883,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -1889,7 +1897,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -1906,22 +1914,8 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></rect>
-        <polyline
-          points="44 208 44 136 100 136"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
-        ></polyline>
-        <polyline
-          points="100 208 100 88 156 88"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
-        ></polyline>
         <line
           x1="228"
           y1="208"
@@ -1930,8 +1924,22 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
+        <polyline
+          points="100 208 100 88 156 88"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></polyline>
+        <polyline
+          points="44 208 44 136 100 136"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></polyline>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -1944,14 +1952,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <polyline
           points="224 96 160 152 96 104 32 160"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -1968,7 +1976,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="211.1"
@@ -1978,21 +1986,21 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
-        <path
-          d="M33.6,145.6A92.9,92.9,0,0,1,32,128,95.9,95.9,0,0,1,96,37.5v72Z"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
-        ></path>
         <path
           d="M128,32A96,96,0,1,1,45.2,176.6"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
+        ></path>
+        <path
+          d="M88,106.1,32.5,138.2c-.3-3.4-.5-6.8-.5-10.2A96,96,0,0,1,88,40.7Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -2003,30 +2011,30 @@ const MagnaIcons = {
       <>
         <line
           x1="96"
-          y1="104"
+          y1="100"
           x2="160"
-          y2="104"
+          y2="100"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="96"
-          y1="136"
+          y1="140"
           x2="160"
-          y2="136"
+          y2="140"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <path
           d="M149.7,195.9l-14.8,24.7a8.1,8.1,0,0,1-13.8,0l-14.8-24.7a7.9,7.9,0,0,0-6.8-3.9H40a8,8,0,0,1-8-8V56a8,8,0,0,1,8-8H216a8,8,0,0,1,8,8V184a8,8,0,0,1-8,8H156.5A7.9,7.9,0,0,0,149.7,195.9Z"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -2040,11 +2048,10 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
-        <circle cx="128" cy="128" r="12"></circle>
-        <circle cx="80" cy="128" r="12"></circle>
-        <circle cx="176" cy="128" r="12"></circle>
+        <circle cx="100" cy="128" r="16"></circle>
+        <circle cx="156" cy="128" r="16"></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -2057,27 +2064,27 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <line
           x1="96"
-          y1="112"
+          y1="108"
           x2="160"
-          y2="112"
+          y2="108"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="96"
-          y1="144"
+          y1="148"
           x2="160"
-          y2="144"
+          y2="148"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -2091,7 +2098,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <circle
           cx="128"
@@ -2100,7 +2107,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></circle>
       </>
     ),
@@ -2114,7 +2121,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -2130,7 +2137,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></circle>
         <line
           x1="128"
@@ -2140,27 +2147,17 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
-          x1="192"
-          y1="56.5"
-          x2="192"
-          y2="199.5"
+          x1="176"
+          y1="44.8"
+          x2="176"
+          y2="211.2"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
-        ></line>
-        <line
-          x1="160"
-          y1="37.5"
-          x2="160"
-          y2="218.5"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -2174,14 +2171,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <polyline
           points="172 104 113.3 160 84 132"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -2195,7 +2192,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -2206,37 +2203,37 @@ const MagnaIcons = {
       <>
         <line
           x1="96"
-          y1="152"
+          y1="156"
           x2="160"
-          y2="152"
+          y2="156"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="96"
-          y1="120"
+          y1="116"
           x2="160"
-          y2="120"
+          y2="116"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <path
           d="M160,40h40a8,8,0,0,1,8,8V216a8,8,0,0,1-8,8H56a8,8,0,0,1-8-8V48a8,8,0,0,1,8-8H96"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
           d="M88,72V64a40,40,0,0,1,80,0v8Z"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -2253,7 +2250,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="169.6"
@@ -2263,21 +2260,21 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <polyline
           points="184.2 99.7 224.2 99.7 224.2 59.7"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <path
           d="M190.2,190.2a88,88,0,1,1,0-124.4l34,33.9"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -2294,7 +2291,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="169.6"
@@ -2304,21 +2301,21 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <polyline
           points="71.8 99.7 31.8 99.7 31.8 59.7"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <path
           d="M65.8,190.2a88,88,0,1,0,0-124.4l-34,33.9"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -2332,7 +2329,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -2346,14 +2343,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <polyline
           points="192 88 240 128 192 168"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <line
           x1="160"
@@ -2363,7 +2360,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -2380,7 +2377,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></rect>
         <rect
           x="48"
@@ -2391,7 +2388,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></rect>
         <line
           x1="208"
@@ -2401,7 +2398,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="208"
@@ -2411,7 +2408,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="24"
@@ -2421,7 +2418,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="24"
@@ -2431,7 +2428,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="152"
@@ -2441,7 +2438,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="104"
@@ -2451,7 +2448,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="152"
@@ -2461,7 +2458,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="104"
@@ -2471,7 +2468,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -2487,7 +2484,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></circle>
         <line
           x1="128"
@@ -2497,7 +2494,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="36"
@@ -2507,7 +2504,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="128"
@@ -2517,7 +2514,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="220"
@@ -2527,7 +2524,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -2541,14 +2538,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <polyline
           points="222.9 74.6 128.9 128 33.1 74.6"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <line
           x1="128.9"
@@ -2558,7 +2555,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -2689,15 +2686,15 @@ const MagnaIcons = {
   "dots-nine": {
     xml: (
       <>
-        <circle cx="60" cy="60" r="12"></circle>
-        <circle cx="128" cy="60" r="12"></circle>
-        <circle cx="196" cy="60" r="12"></circle>
-        <circle cx="60" cy="128" r="12"></circle>
-        <circle cx="128" cy="128" r="12"></circle>
-        <circle cx="196" cy="128" r="12"></circle>
-        <circle cx="60" cy="196" r="12"></circle>
-        <circle cx="128" cy="196" r="12"></circle>
-        <circle cx="196" cy="196" r="12"></circle>
+        <circle cx="60" cy="60" r="16"></circle>
+        <circle cx="128" cy="60" r="16"></circle>
+        <circle cx="196" cy="60" r="16"></circle>
+        <circle cx="60" cy="128" r="16"></circle>
+        <circle cx="128" cy="128" r="16"></circle>
+        <circle cx="196" cy="128" r="16"></circle>
+        <circle cx="60" cy="196" r="16"></circle>
+        <circle cx="128" cy="196" r="16"></circle>
+        <circle cx="196" cy="196" r="16"></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -2705,12 +2702,12 @@ const MagnaIcons = {
   "dots-six-vertical": {
     xml: (
       <>
-        <circle cx="92" cy="60" r="12"></circle>
-        <circle cx="164" cy="60" r="12"></circle>
-        <circle cx="92" cy="128" r="12"></circle>
-        <circle cx="164" cy="128" r="12"></circle>
-        <circle cx="92" cy="196" r="12"></circle>
-        <circle cx="164" cy="196" r="12"></circle>
+        <circle cx="92" cy="60" r="16"></circle>
+        <circle cx="164" cy="60" r="16"></circle>
+        <circle cx="92" cy="128" r="16"></circle>
+        <circle cx="164" cy="128" r="16"></circle>
+        <circle cx="92" cy="196" r="16"></circle>
+        <circle cx="164" cy="196" r="16"></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -2718,12 +2715,12 @@ const MagnaIcons = {
   "dots-six": {
     xml: (
       <>
-        <circle cx="60" cy="92" r="12"></circle>
-        <circle cx="128" cy="92" r="12"></circle>
-        <circle cx="196" cy="92" r="12"></circle>
-        <circle cx="60" cy="164" r="12"></circle>
-        <circle cx="128" cy="164" r="12"></circle>
-        <circle cx="196" cy="164" r="12"></circle>
+        <circle cx="60" cy="92" r="16"></circle>
+        <circle cx="128" cy="92" r="16"></circle>
+        <circle cx="196" cy="92" r="16"></circle>
+        <circle cx="60" cy="164" r="16"></circle>
+        <circle cx="128" cy="164" r="16"></circle>
+        <circle cx="196" cy="164" r="16"></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -2734,26 +2731,29 @@ const MagnaIcons = {
         <circle
           cx="128"
           cy="128"
-          r="24"
+          r="20"
           fill="none"
-          strokeMiterlimit="10"
-          strokeWidth="16"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
         ></circle>
         <circle
           cx="128"
           cy="48"
-          r="24"
+          r="20"
           fill="none"
-          strokeMiterlimit="10"
-          strokeWidth="16"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
         ></circle>
         <circle
           cx="128"
           cy="208"
-          r="24"
+          r="20"
           fill="none"
-          strokeMiterlimit="10"
-          strokeWidth="16"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
         ></circle>
       </>
     ),
@@ -2765,26 +2765,29 @@ const MagnaIcons = {
         <circle
           cx="128"
           cy="128"
-          r="24"
+          r="20"
           fill="none"
-          strokeMiterlimit="10"
-          strokeWidth="16"
-        ></circle>
-        <circle
-          cx="48"
-          cy="128"
-          r="24"
-          fill="none"
-          strokeMiterlimit="10"
-          strokeWidth="16"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
         ></circle>
         <circle
           cx="208"
           cy="128"
-          r="24"
+          r="20"
           fill="none"
-          strokeMiterlimit="10"
-          strokeWidth="16"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></circle>
+        <circle
+          cx="48"
+          cy="128"
+          r="20"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
         ></circle>
       </>
     ),
@@ -2793,9 +2796,9 @@ const MagnaIcons = {
   "dots-three-vertical": {
     xml: (
       <>
-        <circle cx="128" cy="128" r="12"></circle>
-        <circle cx="128" cy="64" r="12"></circle>
-        <circle cx="128" cy="192" r="12"></circle>
+        <circle cx="128" cy="64" r="16"></circle>
+        <circle cx="128" cy="128" r="16"></circle>
+        <circle cx="128" cy="192" r="16"></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -2803,9 +2806,9 @@ const MagnaIcons = {
   "dots-three": {
     xml: (
       <>
-        <circle cx="128" cy="128" r="12"></circle>
-        <circle cx="192" cy="128" r="12"></circle>
-        <circle cx="64" cy="128" r="12"></circle>
+        <circle cx="128" cy="128" r="16"></circle>
+        <circle cx="64" cy="128" r="16"></circle>
+        <circle cx="192" cy="128" r="16"></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -2818,7 +2821,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <line
           x1="128"
@@ -2828,14 +2831,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <path
           d="M216,152v56a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V152"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -2845,11 +2848,11 @@ const MagnaIcons = {
     xml: (
       <>
         <path
-          d="M32,96V200a8,8,0,0,0,8,8H216a8,8,0,0,0,8-8V96L128,32Z"
+          d="M224,96V200a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V96l96-64Z"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <line
           x1="110.5"
@@ -2859,7 +2862,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="221.5"
@@ -2869,14 +2872,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <polyline
           points="224 96 145.5 152 110.5 152 32 96"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -2893,35 +2896,21 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
-        <path
-          d="M154.9,157.6A39.6,39.6,0,0,1,128,168a40,40,0,0,1-26.9-69.6"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
-        ></path>
         <path
           d="M74,68.6C33.2,89.2,16,128,16,128s32,72,112,72a117.9,117.9,0,0,0,54-12.6"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
-          d="M208.6,169.1C230.4,149.6,240,128,240,128S208,56,128,56a123.9,123.9,0,0,0-20.7,1.7"
+          d="M214.4,163.6C232.1,145.7,240,128,240,128S208,56,128,56c-3.8,0-7.4.2-11,.5"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
-        ></path>
-        <path
-          d="M135.5,88.7a39.9,39.9,0,0,1,32.3,35.5"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -2935,16 +2924,16 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <circle
           cx="128"
           cy="128"
-          r="40"
+          r="32"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></circle>
       </>
     ),
@@ -2954,32 +2943,32 @@ const MagnaIcons = {
     xml: (
       <>
         <polyline
-          points="152 32 152 88 208 88"
+          points="148 132 172 156 148 180"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <polyline
-          points="148 128 172 152 148 176"
+          points="108 132 84 156 108 180"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <polyline
-          points="108 128 84 152 108 176"
+          points="148 32 148 92 208 92"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <path
-          d="M200,224a8,8,0,0,0,8-8V88L152,32H56a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8Z"
+          d="M200,224H56a8,8,0,0,1-8-8V40a8,8,0,0,1,8-8h96l56,56V216A8,8,0,0,1,200,224Z"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -2989,82 +2978,82 @@ const MagnaIcons = {
     xml: (
       <>
         <line
-          x1="120"
-          y1="176"
-          x2="88"
-          y2="176"
+          x1="140"
+          y1="164"
+          x2="60"
+          y2="164"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
-          x1="104"
-          y1="216"
-          x2="104"
-          y2="176"
+          x1="100"
+          y1="220"
+          x2="100"
+          y2="164"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
-          x1="36"
-          y1="176"
-          x2="36"
-          y2="216"
+          x1="20"
+          y1="164"
+          x2="20"
+          y2="220"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
-          x1="64"
-          y1="176"
-          x2="64"
-          y2="216"
+          x1="60"
+          y1="164"
+          x2="60"
+          y2="220"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
-          x1="36"
-          y1="196"
-          x2="64"
-          y2="196"
+          x1="20"
+          y1="192"
+          x2="60"
+          y2="192"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <polyline
-          points="212 176 212 216 236 216"
+          points="220 164 220 220 244 220"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <polyline
-          points="144 216 144 176 164 204 184 176 184 216"
+          points="140 220 140 164 164 196 188 164 188 220"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <polyline
-          points="152 32 152 88 208 88"
+          points="148 36 148 100 212 100"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <path
-          d="M48,136V40a8,8,0,0,1,8-8h96l56,56v48"
+          d="M44,124V44a8,8,0,0,1,8-8H156l56,56v32"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -3078,21 +3067,21 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
-          d="M192,224h8a8,8,0,0,0,8-8V88L152,32H56a8,8,0,0,0-8,8v96"
+          d="M196,224h4a8,8,0,0,0,8-8V88L152,32H56a8,8,0,0,0-8,8v88"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <polyline
-          points="152 32 152 88 208 88"
+          points="148 32 148 92 208 92"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -3101,51 +3090,51 @@ const MagnaIcons = {
   "file-pdf": {
     xml: (
       <>
-        <path
-          d="M48,128V40a8,8,0,0,1,8-8h96l56,56v40"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
-        ></path>
-        <path
-          d="M48,200H64a16,16,0,0,0,0-32H48v48"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
-        ></path>
-        <path
-          d="M128,216a24,24,0,0,0,0-48H114v48Z"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
-        ></path>
         <polyline
-          points="152 32 152 88 208 88"
+          points="228 164 196 164 196 220"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <polyline
-          points="216 168 188 168 188 216"
+          points="148 36 148 100 212 100"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <line
-          x1="212"
+          x1="224"
           y1="196"
-          x2="188"
+          x2="196"
           y2="196"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
+        <path
+          d="M44,124V44a8,8,0,0,1,8-8H156l56,56v32"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></path>
+        <path
+          d="M112,220V164h16a28,28,0,0,1,0,56Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></path>
+        <path
+          d="M36,204H52a20,20,0,0,0,0-40H36v56"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -3158,14 +3147,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <polyline
-          points="152 32 152 88 208 88"
+          points="148 32 148 92 208 92"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <line
           x1="104"
@@ -3175,7 +3164,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="128"
@@ -3185,7 +3174,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -3199,34 +3188,34 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <polyline
-          points="152 32 152 88 208 88"
+          points="148 32 148 92 208 92"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
+        <circle
+          cx="124"
+          cy="148"
+          r="24"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></circle>
         <line
-          x1="143.8"
-          y1="167.8"
+          x1="141"
+          y1="165"
           x2="159.8"
           y2="183.8"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
-        <circle
-          cx="124"
-          cy="148"
-          r="28"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
-        ></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -3239,34 +3228,34 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <polyline
-          points="152 32 152 88 208 88"
+          points="148 32 148 92 208 92"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <line
           x1="96"
-          y1="136"
+          y1="132"
           x2="160"
-          y2="136"
+          y2="132"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="96"
-          y1="168"
+          y1="172"
           x2="160"
-          y2="168"
+          y2="172"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -3276,53 +3265,46 @@ const MagnaIcons = {
     xml: (
       <>
         <path
-          d="M50.7,184.9A127.4,127.4,0,0,0,64,128,64.2,64.2,0,0,1,88,78"
+          d="M108,128a20,20,0,0,1,40,0,210.5,210.5,0,0,1-25,99.9"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
-          d="M128,128a191.2,191.2,0,0,1-24,93"
+          d="M128,68a60,60,0,0,1,60,60c0,8.1-.4,16.1-1.1,24"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
-          d="M96,128a32,32,0,0,1,64,0,222.3,222.3,0,0,1-21.3,95.4"
+          d="M51.3,192.2A130.4,130.4,0,0,0,68,128,59.7,59.7,0,0,1,88,83.3"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
-          d="M218.6,184a294.6,294.6,0,0,0,5.4-56,96,96,0,0,0-192,0,94.4,94.4,0,0,1-5.5,32"
+          d="M103.3,168A168.7,168.7,0,0,1,83,217.3"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
-          d="M92.8,160a161.9,161.9,0,0,1-18.1,47.9"
+          d="M179.8,192a233.4,233.4,0,0,1-8.4,26.1"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
-          d="M120,64.5a70.1,70.1,0,0,1,8-.5,64,64,0,0,1,64,64,260.6,260.6,0,0,1-2,32"
+          d="M22.3,160A91.7,91.7,0,0,0,28,128h0a100,100,0,0,1,200,0h0a293.3,293.3,0,0,1-7,64"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
-        ></path>
-        <path
-          d="M183.9,192c-1.5,5.9-3.2,11.8-5.1,17.5"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -3336,24 +3318,24 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
           d="M80,216V152a8,8,0,0,1,8-8h80a8,8,0,0,1,8,8v64"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <line
           x1="152"
-          y1="72"
+          y1="80"
           x2="96"
-          y2="72"
+          y2="80"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -3367,14 +3349,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
-          d="M32,208l30.2-90.5a8,8,0,0,1,7.6-5.5H228.9a8,8,0,0,1,7.6,10.5L208,208Z"
+          d="M32,208l30.1-86.6a8.2,8.2,0,0,1,7.6-5.4h159a8,8,0,0,1,7.6,10.6L208,208Z"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -3388,14 +3370,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
-          d="M32,80V56a8,8,0,0,1,8-8H92.7a7.9,7.9,0,0,1,5.6,2.3L128,80"
+          d="M98.4,46.7,128,80H32V52a8,8,0,0,1,8-8H92.4A8,8,0,0,1,98.4,46.7Z"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -3409,27 +3391,30 @@ const MagnaIcons = {
           y1="128"
           x2="192"
           y2="128"
+          fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="24"
           y1="80"
           x2="232"
           y2="80"
+          fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="104"
           y1="176"
           x2="152"
           y2="176"
+          fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -3441,18 +3426,18 @@ const MagnaIcons = {
         <circle
           cx="128"
           cy="128"
-          r="48"
+          r="44"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></circle>
         <path
-          d="M183.7,65.1q3.8,3.5,7.2,7.2l27.3,3.9a103.2,103.2,0,0,1,10.2,24.6l-16.6,22.1s.3,6.8,0,10.2l16.6,22.1a102.2,102.2,0,0,1-10.2,24.6l-27.3,3.9s-4.7,4.9-7.2,7.2l-3.9,27.3a103.2,103.2,0,0,1-24.6,10.2l-22.1-16.6a57.9,57.9,0,0,1-10.2,0l-22.1,16.6a102.2,102.2,0,0,1-24.6-10.2l-3.9-27.3q-3.7-3.5-7.2-7.2l-27.3-3.9a103.2,103.2,0,0,1-10.2-24.6l16.6-22.1s-.3-6.8,0-10.2L27.6,100.8A102.2,102.2,0,0,1,37.8,76.2l27.3-3.9q3.5-3.7,7.2-7.2l3.9-27.3a103.2,103.2,0,0,1,24.6-10.2l22.1,16.6a57.9,57.9,0,0,1,10.2,0l22.1-16.6a102.2,102.2,0,0,1,24.6,10.2Z"
+          d="M183.7,65.1q3.8,3.5,7.2,7.2l27.3,3.9a103.2,103.2,0,0,1,10.2,24.6l-16.6,22.1s.3,6.8,0,10.2l16.6,22.1a102.2,102.2,0,0,1-10.2,24.6l-27.3,3.9s-4.7,4.9-7.2,7.2l-3.9,27.3a103.2,103.2,0,0,1-24.6,10.2l-22.1-16.6a57.9,57.9,0,0,1-10.2,0l-22.1,16.6a102.2,102.2,0,0,1-24.6-10.2l-3.9-27.3q-3.7-3.5-7.2-7.2l-27.3-3.9a103.2,103.2,0,0,1-10.2-24.6l16.6-22.1s-.2-6.8,0-10.2L27.6,100.8A102.2,102.2,0,0,1,37.8,76.2l27.3-3.9q3.5-3.7,7.2-7.2l3.9-27.3a103.2,103.2,0,0,1,24.6-10.2l22.1,16.6a57.9,57.9,0,0,1,10.2,0l22.1-16.6a102.2,102.2,0,0,1,24.6,10.2Z"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -3461,39 +3446,12 @@ const MagnaIcons = {
   "git-branch": {
     xml: (
       <>
-        <circle
-          cx="68"
-          cy="188"
-          r="28"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
-        ></circle>
-        <circle
-          cx="188"
-          cy="68"
-          r="28"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
-        ></circle>
-        <circle
-          cx="68"
-          cy="68"
-          r="28"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
-        ></circle>
         <path
           d="M68,160v-8a23.9,23.9,0,0,1,24-24h72a23.9,23.9,0,0,0,24-24V96"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <line
           x1="68"
@@ -3503,8 +3461,35 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
+        <circle
+          cx="68"
+          cy="188"
+          r="28"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></circle>
+        <circle
+          cx="188"
+          cy="68"
+          r="28"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></circle>
+        <circle
+          cx="68"
+          cy="68"
+          r="28"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -3517,35 +3502,35 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
           d="M172,240a23.9,23.9,0,0,1-24-24V168"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
           d="M152,168h16a23.9,23.9,0,0,1,24,24v8a23.9,23.9,0,0,0,24,24"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
           d="M104,168H88a23.9,23.9,0,0,0-24,24v8a23.9,23.9,0,0,1-24,24"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
           d="M111.8,64A52,52,0,0,0,68,40a52,52,0,0,0-3.5,44.7A49.3,49.3,0,0,0,56,112v8a48,48,0,0,0,48,48h48a48,48,0,0,0,48-48v-8a49.3,49.3,0,0,0-8.5-27.3A52,52,0,0,0,188,40a52,52,0,0,0-43.8,24Z"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -3557,38 +3542,38 @@ const MagnaIcons = {
         <circle
           cx="128"
           cy="96"
-          r="72"
+          r="64"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></circle>
         <path
           d="M201.5,169.5a103.9,103.9,0,0,1-147-147"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <line
           x1="96"
-          y1="232"
+          y1="236"
           x2="160"
-          y2="232"
+          y2="236"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="128"
           y1="200"
           x2="128"
-          y2="232"
+          y2="236"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -3606,9 +3591,9 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></rect>
-        <circle cx="188" cy="128" r="12"></circle>
+        <circle cx="180" cy="128" r="16"></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -3618,28 +3603,27 @@ const MagnaIcons = {
       <>
         <rect
           x="40"
-          y="144"
-          width="176"
-          height="64"
-          rx="8"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
-        ></rect>
-        <rect
-          x="40"
           y="48"
           width="176"
-          height="64"
+          height="160"
           rx="8"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></rect>
-        <circle cx="180" cy="80" r="12"></circle>
-        <circle cx="180" cy="176" r="12"></circle>
+        <line
+          x1="216"
+          y1="128"
+          x2="40"
+          y2="128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></line>
+        <circle cx="176" cy="88" r="16"></circle>
+        <circle cx="176" cy="168" r="16"></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -3652,24 +3636,24 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
           d="M128,128,67.2,173.6A8.1,8.1,0,0,0,64,180v36a8,8,0,0,0,8,8H184a8,8,0,0,0,8-8V180.4a8.1,8.1,0,0,0-3.2-6.4L128,128h0"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <line
           x1="64"
-          y1="64"
+          y1="72"
           x2="192"
-          y2="64"
+          y2="72"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -3683,7 +3667,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -3701,16 +3685,16 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></rect>
         <path
           d="M32,168l50.3-50.3a8,8,0,0,1,11.4,0l44.6,44.6a8,8,0,0,0,11.4,0l20.6-20.6a8,8,0,0,1,11.4,0L224,184"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
-        <circle cx="156" cy="100" r="12"></circle>
+        <circle cx="156" cy="100" r="16"></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -3725,15 +3709,15 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></circle>
-        <circle cx="126" cy="84" r="12"></circle>
+        <circle cx="126" cy="84" r="16"></circle>
         <polyline
-          points="120 120 128 120 128 176 136 176"
+          points="120 124 128 124 128 176 136 176"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -3747,7 +3731,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polygon>
       </>
     ),
@@ -3757,18 +3741,18 @@ const MagnaIcons = {
     xml: (
       <>
         <path
-          d="M122.3,71.4l19.8-19.8a44.1,44.1,0,0,1,62.3,62.3l-28.3,28.2a43.9,43.9,0,0,1-62.2,0"
+          d="M132.5,61.3l9.6-9.7a44.1,44.1,0,0,1,62.3,62.3l-30.3,30.2a43.9,43.9,0,0,1-62.2,0"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
-          d="M133.7,184.6l-19.8,19.8a44.1,44.1,0,0,1-62.3-62.3l28.3-28.2a43.9,43.9,0,0,1,62.2,0"
+          d="M123.5,194.7l-9.6,9.7a44.1,44.1,0,0,1-62.3-62.3l30.3-30.2a43.9,43.9,0,0,1,62.2,0"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -3785,7 +3769,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="88"
@@ -3795,7 +3779,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="88"
@@ -3805,11 +3789,11 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
-        <circle cx="44" cy="64" r="12"></circle>
-        <circle cx="44" cy="128" r="12"></circle>
-        <circle cx="44" cy="192" r="12"></circle>
+        <circle cx="44" cy="128" r="16"></circle>
+        <circle cx="44" cy="64" r="16"></circle>
+        <circle cx="44" cy="192" r="16"></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -3818,55 +3802,55 @@ const MagnaIcons = {
     xml: (
       <>
         <line
-          x1="128"
+          x1="136"
           y1="128"
           x2="216"
           y2="128"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
-          x1="128"
+          x1="136"
           y1="64"
           x2="216"
           y2="64"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
-          x1="128"
+          x1="136"
           y1="192"
           x2="216"
           y2="192"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <polyline
           points="92 48 57.3 80 40 64"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <polyline
           points="92 112 57.3 144 40 128"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <polyline
           points="92 176 57.3 208 40 192"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -3883,7 +3867,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="96"
@@ -3893,7 +3877,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="96"
@@ -3903,7 +3887,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="40"
@@ -3913,7 +3897,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="40"
@@ -3923,7 +3907,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="40"
@@ -3933,7 +3917,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -3943,45 +3927,48 @@ const MagnaIcons = {
     xml: (
       <>
         <line
-          x1="104"
+          x1="108"
           y1="128"
           x2="216"
           y2="128"
+          fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
-          x1="104"
+          x1="108"
           y1="64"
           x2="216"
           y2="64"
+          fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
-          x1="104"
+          x1="108"
           y1="192"
           x2="216"
           y2="192"
+          fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <polyline
           points="40 60 56 52 56 108"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <path
           d="M41.1,152.6a14,14,0,1,1,24.5,13.2L40,200H68"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -3995,27 +3982,30 @@ const MagnaIcons = {
           y1="128"
           x2="216"
           y2="128"
+          fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="40"
           y1="64"
           x2="216"
           y2="64"
+          fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="40"
           y1="192"
           x2="216"
           y2="192"
+          fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -4033,14 +4023,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></rect>
         <path
-          d="M92,88V52a36,36,0,0,1,72,0"
+          d="M92,88V52a36,36,0,0,1,71.8-4"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -4058,16 +4048,16 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></rect>
         <path
           d="M92,88V52a36,36,0,0,1,72,0V88"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
-        <circle cx="128" cy="152" r="12"></circle>
+        <circle cx="128" cy="152" r="16"></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -4083,7 +4073,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="116"
@@ -4093,7 +4083,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="175.4"
@@ -4103,7 +4093,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <circle
           cx="116"
@@ -4112,7 +4102,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></circle>
       </>
     ),
@@ -4128,7 +4118,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></circle>
         <line
           x1="175.4"
@@ -4138,7 +4128,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -4155,7 +4145,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -4169,7 +4159,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -4183,24 +4173,24 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polygon>
         <line
-          x1="168"
-          y1="56"
-          x2="200"
-          y2="88"
+          x1="164"
+          y1="60"
+          x2="196"
+          y2="92"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <path
-          d="M216,120v88a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V48a8,8,0,0,1,8-8h88"
+          d="M216,128.6V208a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V48a8,8,0,0,1,8-8h79.4"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -4218,27 +4208,27 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></rect>
         <line
-          x1="112"
-          y1="112"
+          x1="120"
+          y1="108"
           x2="176"
-          y2="112"
+          y2="108"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
-          x1="112"
-          y1="144"
+          x1="120"
+          y1="148"
           x2="176"
-          y2="144"
+          y2="148"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="80"
@@ -4248,7 +4238,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -4259,33 +4249,33 @@ const MagnaIcons = {
       <>
         <line
           x1="96"
-          y1="128"
+          y1="124"
           x2="160"
-          y2="128"
+          y2="124"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="96"
-          y1="160"
+          y1="164"
           x2="160"
-          y2="160"
+          y2="164"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
-          x1="80"
+          x1="84"
           y1="24"
-          x2="80"
+          x2="84"
           y2="56"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="128"
@@ -4295,24 +4285,24 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
-          x1="176"
+          x1="172"
           y1="24"
-          x2="176"
+          x2="172"
           y2="56"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <path
           d="M56,40H200a8,8,0,0,1,8,8V200a24,24,0,0,1-24,24H72a24,24,0,0,1-24-24V48A8,8,0,0,1,56,40Z"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -4326,7 +4316,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <line
           x1="110.9"
@@ -4336,7 +4326,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -4354,7 +4344,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></rect>
         <rect
           x="48"
@@ -4365,7 +4355,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></rect>
       </>
     ),
@@ -4379,7 +4369,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <line
           x1="136"
@@ -4389,7 +4379,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -4403,7 +4393,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -4417,7 +4407,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <line
           x1="88"
@@ -4427,7 +4417,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="144"
@@ -4437,7 +4427,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="232"
@@ -4447,7 +4437,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="224"
@@ -4457,7 +4447,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -4476,27 +4466,27 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></rect>
         <line
           x1="80"
           y1="176"
-          x2="24"
-          y2="232"
+          x2="28"
+          y2="228"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
-          x1="232"
-          y1="24"
+          x1="228"
+          y1="28"
           x2="176"
           y2="80"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="92"
@@ -4506,47 +4496,47 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
-          x1="224"
-          y1="160"
-          x2="200"
-          y2="152"
+          x1="156"
+          y1="212"
+          x2="161.3"
+          y2="228"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
-          x1="56"
-          y1="104"
-          x2="32"
-          y2="96"
+          x1="94.7"
+          y1="28"
+          x2="100"
+          y2="44"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
-          x1="96"
-          y1="32"
-          x2="104"
-          y2="56"
+          x1="212"
+          y1="156"
+          x2="228"
+          y2="161.3"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
-          x1="152"
-          y1="200"
-          x2="160"
-          y2="224"
+          x1="28"
+          y1="94.7"
+          x2="44"
+          y2="100"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -4563,7 +4553,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="128"
@@ -4573,7 +4563,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -4590,14 +4580,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <path
           d="M176,54.2a88,88,0,1,1-96,0"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -4611,8 +4601,9 @@ const MagnaIcons = {
           cy="128"
           r="96"
           fill="none"
-          strokeMiterlimit="10"
-          strokeWidth="16"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
         ></circle>
         <line
           x1="99.7"
@@ -4622,7 +4613,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -4636,8 +4627,9 @@ const MagnaIcons = {
           cy="128"
           r="96"
           fill="none"
-          strokeMiterlimit="10"
-          strokeWidth="16"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
         ></circle>
         <line
           x1="60.1"
@@ -4647,7 +4639,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -4661,7 +4653,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -4675,14 +4667,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
           d="M224,144H156a8,8,0,0,1-8-8V72a8,8,0,0,1,8-8h60a8,8,0,0,1,8,8v88a40,40,0,0,1-40,40"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -4692,27 +4684,27 @@ const MagnaIcons = {
     xml: (
       <>
         <path
-          d="M48,144a63.8,63.8,0,0,1,64,64"
+          d="M48,144a64,64,0,0,1,64,64"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
           d="M48,96A112,112,0,0,1,160,208"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
           d="M48,48A159.1,159.1,0,0,1,161.1,94.9,159.1,159.1,0,0,1,208,208"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
-        <circle cx="52" cy="204" r="12"></circle>
+        <circle cx="52" cy="204" r="16"></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -4728,7 +4720,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="104"
@@ -4738,7 +4730,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="56"
@@ -4748,21 +4740,21 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <path
           d="M24,168c0,17.7,20,24,32,24s32-6.3,32-24L56,88Z"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
           d="M168,136c0,17.7,20,24,32,24s32-6.3,32-24L200,56Z"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -4773,14 +4765,14 @@ const MagnaIcons = {
       <>
         <rect
           x="40"
-          y="88"
-          width="128"
-          height="128"
-          rx="8"
+          y="92"
+          width="124"
+          height="124"
+          rx="7.8"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></rect>
         <line
           x1="160"
@@ -4790,7 +4782,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="216"
@@ -4800,28 +4792,28 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <path
           d="M200,40h8a8,8,0,0,1,8,8v8"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
           d="M200,168h8a8,8,0,0,0,8-8v-8"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
           d="M104,40H96a8,8,0,0,0-8,8v8"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -4838,7 +4830,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="112"
@@ -4848,7 +4840,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="216"
@@ -4858,7 +4850,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="40"
@@ -4868,35 +4860,35 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <path
           d="M184,40h24a8,8,0,0,1,8,8V72"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
           d="M184,216h24a8,8,0,0,0,8-8V184"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
           d="M72,216H48a8,8,0,0,1-8-8V184"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
           d="M72,40H48a8,8,0,0,0-8,8V72"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -4910,14 +4902,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <polyline
           points="172 104 113.3 160 84 132"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -4931,7 +4923,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -4945,7 +4937,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <line
           x1="104"
@@ -4955,14 +4947,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <path
           d="M104,216H48a8,8,0,0,1-8-8V48a8,8,0,0,1,8-8h56"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -4974,48 +4966,48 @@ const MagnaIcons = {
         <circle
           cx="92"
           cy="132"
-          r="20"
+          r="12"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></circle>
         <circle
           cx="164"
           cy="132"
-          r="20"
+          r="12"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></circle>
+        <line
+          x1="108"
+          y1="224"
+          x2="108"
+          y2="192"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></line>
+        <line
+          x1="148"
+          y1="224"
+          x2="148"
+          y2="192"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></line>
         <path
-          d="M80,194.5a92,92,0,1,1,96,0V216a8,8,0,0,1-8,8H88a8,8,0,0,1-8-8Z"
+          d="M180,224H76a8,8,0,0,1-8-8V185.7a92,92,0,0,1-32-69.5C35.9,66.1,76.6,24.7,126.7,24A92,92,0,0,1,188,185.7V216A8,8,0,0,1,180,224Z"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
-        <line
-          x1="112"
-          y1="224"
-          x2="112"
-          y2="192"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
-        ></line>
-        <line
-          x1="144"
-          y1="224"
-          x2="144"
-          y2="192"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
-        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -5028,49 +5020,50 @@ const MagnaIcons = {
           cy="128"
           r="96"
           fill="none"
-          strokeMiterlimit="10"
-          strokeWidth="16"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
         ></circle>
-        <circle cx="128" cy="180" r="12"></circle>
+        <circle cx="128" cy="180" r="16"></circle>
         <line
-          x1="184"
+          x1="180"
           y1="96"
-          x2="152"
+          x2="148"
           y2="128"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
-          x1="184"
+          x1="180"
           y1="128"
-          x2="152"
+          x2="148"
           y2="96"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
-          x1="104"
+          x1="108"
           y1="96"
-          x2="72"
+          x2="76"
           y2="128"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
-          x1="104"
+          x1="108"
           y1="128"
-          x2="72"
+          x2="76"
           y2="96"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -5084,7 +5077,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <line
           x1="184"
@@ -5094,34 +5087,37 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="48"
           y1="128"
           x2="120"
           y2="128"
+          fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="48"
           y1="64"
           x2="184"
           y2="64"
+          fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="48"
           y1="192"
           x2="104"
           y2="192"
+          fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -5135,7 +5131,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <line
           x1="184"
@@ -5145,34 +5141,37 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="48"
           y1="128"
           x2="120"
           y2="128"
+          fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="48"
           y1="64"
           x2="104"
           y2="64"
+          fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="48"
           y1="192"
           x2="184"
           y2="192"
+          fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -5189,7 +5188,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="195.9"
@@ -5199,7 +5198,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="224"
@@ -5209,7 +5208,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="195.9"
@@ -5219,7 +5218,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="128"
@@ -5229,7 +5228,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="60.1"
@@ -5239,7 +5238,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="32"
@@ -5249,7 +5248,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="60.1"
@@ -5259,7 +5258,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -5277,7 +5276,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></rect>
         <line
           x1="128"
@@ -5287,47 +5286,37 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="128"
-          y1="80"
+          y1="84"
           x2="212"
-          y2="80"
+          y2="84"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="128"
-          y1="112"
+          y1="128"
           x2="212"
-          y2="112"
+          y2="128"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="128"
-          y1="144"
+          y1="172"
           x2="212"
-          y2="144"
+          y2="172"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
-        ></line>
-        <line
-          x1="128"
-          y1="176"
-          x2="212"
-          y2="176"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -5337,18 +5326,18 @@ const MagnaIcons = {
     xml: (
       <>
         <polygon
-          points="16 104 128 168 240 104 128 40 16 104"
+          points="16 100 128 164 240 100 128 36 16 100"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polygon>
         <polyline
-          points="16 144 128 208 240 144"
+          points="16 148 128 212 240 148"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -5366,7 +5355,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></rect>
       </>
     ),
@@ -5380,7 +5369,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <line
           x1="32"
@@ -5390,7 +5379,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="32"
@@ -5400,7 +5389,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="88"
@@ -5410,7 +5399,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -5424,7 +5413,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -5434,39 +5423,39 @@ const MagnaIcons = {
     xml: (
       <>
         <polyline
-          points="152 192 80 56 8 192"
+          points="140 192 76 56 12 192"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
-        <ellipse
-          cx="208"
-          cy="166.9"
-          rx="32"
-          ry="28"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
-        ></ellipse>
-        <path
-          d="M184,112.4a34.1,34.1,0,0,1,24-9.5c17.7,0,32,12.5,32,28V192"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
-        ></path>
         <line
-          x1="130.8"
+          x1="121.2"
           y1="152"
-          x2="29.2"
+          x2="30.8"
           y2="152"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
+        <ellipse
+          cx="204"
+          cy="167"
+          rx="32"
+          ry="27"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></ellipse>
+        <path
+          d="M184,109a35.1,35.1,0,0,1,20-6.1c17.7,0,32,12.5,32,28V192"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></path>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -5482,7 +5471,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="64"
@@ -5492,7 +5481,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="40"
@@ -5502,7 +5491,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="64"
@@ -5512,7 +5501,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -5529,7 +5518,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="40"
@@ -5539,7 +5528,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="40"
@@ -5549,7 +5538,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="40"
@@ -5559,7 +5548,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -5576,7 +5565,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="88"
@@ -5586,7 +5575,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="40"
@@ -5596,7 +5585,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="88"
@@ -5606,7 +5595,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -5637,7 +5626,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="200"
@@ -5647,7 +5636,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="200"
@@ -5657,7 +5646,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -5674,7 +5663,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="64"
@@ -5684,7 +5673,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="112"
@@ -5694,7 +5683,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -5711,21 +5700,21 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <path
-          d="M76.3,96a25.3,25.3,0,0,1-1.2-8c0-22.1,22-40,52.9-40,23.8,0,42.3,10.6,49.5,25.5"
+          d="M75.1,88c0-22.1,22-40,52.9-40,23.8,0,42.3,10.6,49.5,25.5"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
           d="M72,168c0,22.1,25.1,40,56,40s56-17.9,56-40c0-23.8-21.6-33-45.6-40"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -5742,14 +5731,28 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <path
-          d="M64,56v64a64,64,0,0,0,128,0V56"
+          d="M64,56v60a64,64,0,0,0,128,0V56"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
+        ></path>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  texter: {
+    xml: (
+      <>
+        <path
+          d="M64,120h88a40,40,0,0,1,0,80H64V48h76a36,36,0,0,1,0,72"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -5766,14 +5769,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <path
           d="M24,167.2a7.9,7.9,0,0,1,6.4-7.8,32.1,32.1,0,0,0,0-62.8A7.9,7.9,0,0,1,24,88.8V64a8,8,0,0,1,8-8H224a8,8,0,0,1,8,8V88.8a7.9,7.9,0,0,1-6.4,7.8,32.1,32.1,0,0,0,0,62.8,7.9,7.9,0,0,1,6.4,7.8V192a8,8,0,0,1-8,8H32a8,8,0,0,1-8-8Z"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -5784,13 +5787,13 @@ const MagnaIcons = {
       <>
         <line
           x1="216"
-          y1="56"
+          y1="60"
           x2="40"
-          y2="56"
+          y2="60"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="104"
@@ -5800,7 +5803,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="152"
@@ -5810,21 +5813,21 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <path
-          d="M200,56V208a8,8,0,0,1-8,8H64a8,8,0,0,1-8-8V56"
+          d="M200,60V208a8,8,0,0,1-8,8H64a8,8,0,0,1-8-8V60"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
-          d="M168,56V40a16,16,0,0,0-16-16H104A16,16,0,0,0,88,40V56"
+          d="M168,60V36a16,16,0,0,0-16-16H104A16,16,0,0,0,88,36V60"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -6305,7 +6308,7 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <line
           x1="128"
@@ -6315,14 +6318,14 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <path
           d="M216,152v56a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V152"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -6338,42 +6341,42 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></circle>
         <path
           d="M63.8,199.4a72,72,0,0,1,128.4,0"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
-          d="M224,152V128A96,96,0,0,0,47.3,75.9"
+          d="M224,152V128A96,96,0,0,0,52,69.3"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
-          d="M32,104v24a96,96,0,0,0,176.7,52.1"
+          d="M32,104v24a96,96,0,0,0,172,58.7"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <polyline
-          points="200 128 224 152 248 128"
+          points="204 132 224 152 244 132"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
         <polyline
-          points="8 128 32 104 56 128"
+          points="12 124 32 104 52 124"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></polyline>
       </>
     ),
@@ -6389,42 +6392,42 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></circle>
-        <path
-          d="M196,116a59.8,59.8,0,0,1,48,24"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
-        ></path>
-        <path
-          d="M12,140a59.8,59.8,0,0,1,48-24"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="16"
-        ></path>
         <path
           d="M70.4,216a64.1,64.1,0,0,1,115.2,0"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
-          d="M60,116A32,32,0,1,1,91.4,78"
+          d="M204.5,116.6A60.1,60.1,0,0,1,244,140"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
-          d="M164.6,78A32,32,0,1,1,196,116"
+          d="M167.1,70.2A32,32,0,1,1,204,115"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
+        ></path>
+        <path
+          d="M52,115A32,32,0,1,1,88.9,70.2"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></path>
+        <path
+          d="M12,140a60.1,60.1,0,0,1,39.5-23.4"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
         ></path>
       </>
     ),
@@ -6438,19 +6441,20 @@ const MagnaIcons = {
           cy="128"
           r="96"
           fill="none"
-          strokeMiterlimit="10"
-          strokeWidth="16"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
         ></circle>
-        <circle cx="128" cy="172" r="12"></circle>
+        <circle cx="128" cy="172" r="16"></circle>
         <line
           x1="128"
           y1="80"
           x2="128"
-          y2="136"
+          y2="132"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
@@ -6464,23 +6468,23 @@ const MagnaIcons = {
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
           d="M59,132.1a98.8,98.8,0,0,1,138,0"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
         <path
           d="M25.1,98.2a146.6,146.6,0,0,1,205.8,0"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></path>
-        <circle cx="128" cy="200" r="12"></circle>
+        <circle cx="128" cy="200" r="16"></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -6493,18 +6497,20 @@ const MagnaIcons = {
           y1="56"
           x2="56"
           y2="200"
+          fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
         <line
           x1="200"
           y1="200"
           x2="56"
           y2="56"
+          fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="16"
+          strokeWidth="24"
         ></line>
       </>
     ),
