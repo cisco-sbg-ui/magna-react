@@ -79,18 +79,17 @@ const AMenu = forwardRef(
     };
 
     const keyDownHandler = (e) => {
-      if (anchorRef instanceof DOMRect) {
-        return;
-      }
-
       if (onClose && e.keyCode === keyCodes.esc) {
         e.preventDefault();
         closeHandler(e);
-        anchorRef.current.focus();
+        !(anchorRef instanceof DOMRect) && anchorRef.current.focus();
       } else if (e.keyCode === keyCodes.tab) {
         closeHandler(e);
-        anchorRef.current.focus();
+        !(anchorRef instanceof DOMRect) && anchorRef.current.focus();
       } else if (e.keyCode === keyCodes.up) {
+        if (open) {
+          e.stopPropagation();
+        }
         e.preventDefault();
         e.stopPropagation();
         const previous = getPrevious();
@@ -101,6 +100,9 @@ const AMenu = forwardRef(
         e.preventDefault();
         submenu && closeHandler(e);
       } else if (e.keyCode === keyCodes.down) {
+        if (open) {
+          e.stopPropagation();
+        }
         e.preventDefault();
         e.stopPropagation();
         const next = getNext();
@@ -152,8 +154,7 @@ const AMenu = forwardRef(
         placement={placement}
         anchorRef={anchorRef}
         pointer={pointer}
-        tabIndex={-1}
-      >
+        tabIndex={-1}>
         {children}
       </AList>
     );

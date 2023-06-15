@@ -62,7 +62,7 @@ $tag-font-weight: 600;
   }
 
   .a-icon {
-    width: $tag-icon-font-size;
+    width: $tag-icon-font-size !important;
     stroke: currentColor;
     fill: currentColor;
   }

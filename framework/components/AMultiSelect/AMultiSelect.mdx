@@ -1,0 +1,294 @@
+---
+name: Multi Selects
+route: /components/multiselect
+components: AMultiSelect
+---
+
+# Multi Selects
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {AMultiSelect} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`() => {
+  const items = [
+    {id: 1, name: "Bread, Cereal, Rice, and Pasta"},
+    {id: 2, name: "Vegetables"},
+    {id: 3, name: "Fruit", selected: true},
+    {id: 4, name: "Milk, Yogurt, and Cheese"},
+    {id: 5, name: "Meat, Poultry, Fish", disabled: true},
+    {id: 6, name: "Fats, Oils, and Sweets"}
+  ];
+  const [value1, setValue1] = useState([]);
+  const [value2, setValue2] = useState([]);
+  const [value3, setValue3] = useState([]);
+  return (
+    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+      <h3>MultiSelect with Objects</h3>
+      <AMultiSelect
+        label="Food Group"
+        items={items}
+        itemValue="id"
+        itemText="name"
+        placeholder="Pick a Food Group"
+        onSelected={(newValue) => {
+          setValue1(newValue);
+        }}
+        value={value1}
+      />
+      <ADivider />
+      <AMultiSelect
+        medium
+        label="Medium (default)"
+        items={items}
+        itemValue="id"
+        itemText="name"
+        placeholder="Pick a Food Group"
+        onSelected={(newValue) => {
+          setValue2(newValue);
+        }}
+        value={value2}
+      />
+      <ADivider />
+      <AMultiSelect
+        large
+        label="Large"
+        items={items}
+        itemValue="id"
+        itemText="name"
+        placeholder="Pick a Food Group"
+        onSelected={(newValue) => {
+          setValue3(newValue);
+        }}
+        value={value3}
+      />
+    </div>
+  );
+}
+`}
+/>
+
+## MultiSelect Props
+
+The `AMultiSelect` component inherits passed props.
+
+<Props of="AMultiSelect" />
+
+## Validation
+
+<Playground
+  code={`() => {
+  const items = [
+    "Bread, Cereal, Rice, and Pasta",
+    "Vegetables",
+    "Fruit",
+    "Milk, Yogurt, and Cheese",
+    "Meat, Poultry, Fish",
+    "Fats, Oils, and Sweets"
+  ];
+  const [value, setValue] = useState([]);
+  const [filteredItems, setFilteredItems] = useState(items);
+  return (
+    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+      <AMultiSelect
+        medium
+        clearable
+        label="Food Group"
+        items={filteredItems}
+        placeholder="Pick a Food Group"
+        onSelected={(item) => {
+          setValue(item);
+        }}
+        required
+        rules={[
+          {
+            test: (v) => /[A-Z]+/.test(v) || "Must have a capital letter",
+            level: "warning"
+          }
+        ]}
+        value={value}
+        onChange={(e) => {
+          setFilteredItems(
+            items.filter((x) =>
+              x.toLowerCase().includes(e.target.value.toLowerCase())
+            )
+          );
+        }}
+      />
+    </div>
+  );
+}
+`}
+/>
+
+## States
+
+<Playground
+  code={`<>
+  <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+    <h3>Default</h3>
+    <AMultiSelect
+      medium
+      clearable
+      label="Food Group"
+      items={[
+        "Bread, Cereal, Rice, and Pasta",
+        "Vegetables",
+        "Fruit",
+        "Milk, Yogurt, and Cheese",
+        "Meat, Poultry, Fish",
+        "Fats, Oils, and Sweets"
+      ]}
+      placeholder="Pick a Food Group"
+      hint="Hint: Clearable"
+    />
+  </div>
+  <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+    <h3>Disabled MultiSelect</h3>
+    <AMultiSelect
+      medium
+      disabled
+      label="Food Group"
+      placeholder="Pick a Food Group"
+      hint="Hint: Disabled"
+    />
+  </div>
+  <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+    <h3>Read-only MultiSelect</h3>
+    <AMultiSelect
+      medium
+      readOnly
+      label="Food Group"
+      placeholder="Pick a Food Group"
+      hint="Hint: Read-only"
+    />
+  </div>
+  <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+    <h3>Warning MultiSelect</h3>
+    <AMultiSelect
+      medium
+      label="Food Group"
+      placeholder="Pick a Food Group"
+      hint="Hint: Warning"
+      validationState="warning"
+    />
+  </div>
+  <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+    <h3>Danger MultiSelect</h3>
+    <AMultiSelect
+      medium
+      label="Food Group"
+      placeholder="Pick a Food Group"
+      hint="Hint: Danger"
+      validationState="danger"
+    />
+  </div>
+  <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+    <h3>No Data MultiSelect</h3>
+    <AMultiSelect
+      medium
+      label="Food Group"
+      placeholder="Pick a Food Group"
+      noDataContent="Check again when we restock!"
+      hint="Hint: No Data"
+    />
+  </div>
+</>
+`}
+/>
+
+## Prepend/Append Content
+
+<Playground
+  code={`() => {
+  const items = [
+    "Bread, Cereal, Rice, and Pasta",
+    "Vegetables",
+    "Fruit",
+    "Milk, Yogurt, and Cheese",
+    "Meat, Poultry, Fish",
+    "Fats, Oils, and Sweets"
+  ];
+  const [value, setValue] = useState([]);
+  const [filteredItems, setFilteredItems] = useState(items);
+  return (
+    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+      <AMultiSelect
+        medium
+        prependContent={<AListItem twoLine className="my-1 mx-2">Advertisement</AListItem>}
+        appendContent={<><ADivider className="ma-0" /><AListItem><AIcon size={12} left>add</AIcon>Add Role</AListItem></>}
+        clearable
+        label="Food Group"
+        items={filteredItems}
+        placeholder="Pick a Food Group"
+        onSelected={(item) => {
+          setValue(item);
+        }}
+        value={value}
+      />
+    </div>
+
+);
+}
+`}
+/>
+
+## Menu Item Templates
+
+<Playground
+  code={`() => {
+  const items = [
+    {id: 1, name: "Bread, Cereal, Rice, and Pasta", healthy: true},
+    {id: 2, name: "Vegetables", healthy: true},
+    {id: 3, name: "Fruit", selected: true, healthy: true},
+    {id: 4, name: "Milk, Yogurt, and Cheese", healthy: true},
+    {id: 5, name: "Meat, Poultry, Fish", disabled: true, healthy: true},
+    {id: 6, name: "Fats, Oils, and Sweets", healthy: false}
+  ];
+  const [value, setValue] = useState([]);
+  const [filteredItems, setFilteredItems] = useState(items);
+  const {isDark} = useATheme();
+  return (
+    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+      <AMultiSelect
+        medium
+        itemTemplate={({className, index, item, onClick, ...rest}) => (
+          <AListItem {...rest} twoLine className={className + (isDark ? " white--text" : " grey--darken-7--text")} style={{backgroundColor: "transparent"}}>
+            <AListItemContent onClick={onClick}>
+              <AListItemTitle>{item.name}</AListItemTitle>
+              <AListItemSubtitle>Healthy? {item.healthy ? "Yes" : "No"}</AListItemSubtitle>
+            </AListItemContent>
+            <AListItemAction>
+              <AButton icon tertiary><AIcon>edit</AIcon></AButton>
+            </AListItemAction>
+          </AListItem>
+        )}
+        clearable
+        label="Food Group"
+        itemText="name"
+        itemValue="id"
+        items={filteredItems}
+        placeholder="Pick a Food Group"
+        onSelected={(newValue) => {
+          setValue(newValue);
+        }}
+        value={value}
+      />
+    </div>
+  );
+}
+`}
+/>
+
+## Accessibility Notes
+
+`AMultiSelect` inherits the accessibility features of `AMenu`.
+
+the `AMultiSelect` will select and focus previous/next items on `up` or `down` keys for the `keydown` event.

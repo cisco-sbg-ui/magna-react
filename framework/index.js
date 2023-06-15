@@ -64,6 +64,7 @@ import AMenuBase from "./components/AMenuBase";
 import AMenu from "./components/AMenu";
 import AModal from "./components/AModal";
 import AMount from "./components/AMount";
+import AMultiSelect from "./components/AMultiSelect";
 import APageOverlay from "./components/APageOverlay";
 import APagination from "./components/APagination";
 import {
@@ -181,6 +182,7 @@ export {
   AMenu,
   AModal,
   AMount,
+  AMultiSelect,
   APageLoader,
   APageOverlay,
   APagination,
