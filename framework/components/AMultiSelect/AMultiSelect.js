@@ -409,8 +409,8 @@ const AMultiSelect = forwardRef(
           role="button"
         >
           {tags}
-          <input {...inputProps} />
         </div>
+        <input {...inputProps} />
         <AMenu ref={menuRef} {...menuComponentProps}>
           {prependContent}
           <div className="a-multiselect__menu-items__wrapper">

@@ -55,7 +55,8 @@
 
   &__tags {
     display: block;
-    width: 100%;
+    width: min-content;
+    flex: 1 0 auto;
     padding-right: 54px;
     .a-tag {
       margin: 2px 5px;

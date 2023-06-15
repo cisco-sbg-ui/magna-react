@@ -60,7 +60,7 @@ $tag-icon-font-size: $font-size--xxs;
   }
 
   .a-icon {
-    width: $tag-icon-font-size;
+    width: $tag-icon-font-size !important;
     stroke: currentColor;
     fill: currentColor;
   }
