@@ -48,7 +48,7 @@ $tooltip-color: map-get($mds-neutral, "neutral-1");
   max-width: 200px;
   padding: 8px 12px;
   border-radius: $border-radius--lg;
-  z-index: 8;
+  z-index: 800;
 
   &--arrow.a-menu-base--top,
   &--arrow.a-menu-base--top-left,

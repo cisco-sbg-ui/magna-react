@@ -148,7 +148,7 @@
     &:active {
       border-width: $border-width;
       border-style: solid;
-      z-index: 1;
+      z-index: 100;
     }
   }
 
