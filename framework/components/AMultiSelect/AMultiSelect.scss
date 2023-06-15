@@ -33,6 +33,8 @@
 }
 
 .a-multiselect {
+  width: unset;
+
   &__input {
     display: block;
     flex: 1 1 auto;
