@@ -7,7 +7,7 @@ exports.iconNameMap = void 0;
 function cov_f48blbjub() {
   var path =
     "/Users/roberha2/workspaces/cisco-sbg-ui/magna-react/framework/components/AIcon/atomicMap.js";
-  var hash = "45c51d883cc94315199ce657839b947acefcf29e";
+  var hash = "52259c08b1211a787c724454bf19147845ebfa44";
   var global = new Function("return this")();
   var gcv = "__coverage__";
   var coverageData = {
@@ -19,7 +19,7 @@ function cov_f48blbjub() {
           column: 27
         },
         end: {
-          line: 287,
+          line: 288,
           column: 1
         }
       }
@@ -32,7 +32,7 @@ function cov_f48blbjub() {
     f: {},
     b: {},
     _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    hash: "45c51d883cc94315199ce657839b947acefcf29e"
+    hash: "52259c08b1211a787c724454bf19147845ebfa44"
   };
   var coverage = global[gcv] || (global[gcv] = {});
   if (!coverage[path] || coverage[path].hash !== hash) {
@@ -102,6 +102,7 @@ var iconNameMap =
     "chevron-left": "caret-left",
     "chevron-right": "caret-right",
     "chevron-up": "caret-up",
+    circle: "",
     cisco: "",
     clean: "sparkle",
     cli: "terminal",

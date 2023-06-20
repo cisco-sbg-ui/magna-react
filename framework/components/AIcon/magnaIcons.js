@@ -45,18 +45,6 @@ const MagnaIcons = {
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
   },
-  circle: {
-    xml: (
-      <>
-        <circle cx="128" cy="128" r="104"></circle>
-      </>
-    ),
-    props: {
-      xmlns: "http://www.w3.org/2000/svg",
-      fill: "none",
-      viewBox: "0 0 256 256"
-    }
-  },
   clock: {
     xml: (
       <>
@@ -2250,6 +2238,22 @@ const MagnaIcons = {
           strokeLinejoin="round"
           strokeWidth="24"
         ></path>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  circle: {
+    xml: (
+      <>
+        <circle
+          cx="128"
+          cy="128"
+          r="96"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}

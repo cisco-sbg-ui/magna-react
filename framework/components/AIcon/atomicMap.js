@@ -50,6 +50,7 @@ export const iconNameMap = {
   "chevron-left": "caret-left",
   "chevron-right": "caret-right",
   "chevron-up": "caret-up",
+  circle: "",
   cisco: "",
   clean: "sparkle",
   cli: "terminal",
