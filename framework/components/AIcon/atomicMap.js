@@ -20,6 +20,8 @@ export const iconNameMap = {
   "arrow-up-left": "arrow-up-left",
   "arrow-down-right": "arrow-down-right",
   "arrow-down-left": "arrow-down-left",
+  "arrows-in-simple": "",
+  "arrows-out-simple": "",
   "asa-zone": "",
   at: "at",
   back: "arrow-bend-up-left",
@@ -48,6 +50,7 @@ export const iconNameMap = {
   "chevron-left": "caret-left",
   "chevron-right": "caret-right",
   "chevron-up": "caret-up",
+  circle: "",
   cisco: "",
   clean: "sparkle",
   cli: "terminal",
@@ -62,6 +65,8 @@ export const iconNameMap = {
   connectivity: "wifi-high",
   convergence: "",
   copy: "",
+  "corners-in": "",
+  "corners-out": "",
   crashy: "",
   created: "file-plus",
   "critical-stop": "",
@@ -156,6 +161,7 @@ export const iconNameMap = {
   "malicious-alt": "",
   "merge-down": "stack-simple", // fill
   minus: "",
+  "minus-circle": "",
   module: "puzzle-piece",
   monitor: "arrow-circle-down-right",
   "move-document": "",
@@ -186,6 +192,7 @@ export const iconNameMap = {
   play: "play",
   prepend: "",
   progress: "spinner",
+  prohibit: "",
   query: "magnifying-glass-plus",
   question: "",
   quotes: "",
@@ -276,5 +283,6 @@ export const iconNameMap = {
   vpn: "",
   walkthrough: "chat-centered-text",
   "web-tracking": "user-switch",
-  "would-have-dropped": ""
+  "would-have-dropped": "",
+  "x-circle": ""
 };

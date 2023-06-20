@@ -50,6 +50,7 @@ const mapSprites = () => {
       .replaceAll("stroke-width=", "strokeWidth=")
       .replaceAll('fill="#889099"', "")
       .replaceAll(`stroke="#000"`, "")
+      .replaceAll(`stroke="currentColor"`, "")
       .replaceAll("class=", "className=")
       .replaceAll("stroke-linejoin=", "strokeLinejoin=")
       .replaceAll("stroke-linecap=", "strokeLinecap=")
