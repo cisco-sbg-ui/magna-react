@@ -38,8 +38,6 @@ const copyIconFiles = () => {
     try {
       const iconPath = path.resolve(`${phosphorPath}/${key}-bold.svg`);
 
-      console.log(iconPath);
-
       const iconData = fs.readFileSync(iconPath, {encoding: "utf-8"}),
         outputPath = path.resolve(
           `${outputBase}/${outputName.replace("-bold", "")}.svg`

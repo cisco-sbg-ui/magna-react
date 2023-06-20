@@ -7,7 +7,7 @@ exports.iconNameMap = void 0;
 function cov_f48blbjub() {
   var path =
     "/Users/roberha2/workspaces/cisco-sbg-ui/magna-react/framework/components/AIcon/atomicMap.js";
-  var hash = "caaa7086cb1fdbad6aa3fb8ae5673b240b470e35";
+  var hash = "45c51d883cc94315199ce657839b947acefcf29e";
   var global = new Function("return this")();
   var gcv = "__coverage__";
   var coverageData = {
@@ -19,7 +19,7 @@ function cov_f48blbjub() {
           column: 27
         },
         end: {
-          line: 280,
+          line: 287,
           column: 1
         }
       }
@@ -32,7 +32,7 @@ function cov_f48blbjub() {
     f: {},
     b: {},
     _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    hash: "caaa7086cb1fdbad6aa3fb8ae5673b240b470e35"
+    hash: "45c51d883cc94315199ce657839b947acefcf29e"
   };
   var coverage = global[gcv] || (global[gcv] = {});
   if (!coverage[path] || coverage[path].hash !== hash) {
@@ -72,6 +72,8 @@ var iconNameMap =
     "arrow-up-left": "arrow-up-left",
     "arrow-down-right": "arrow-down-right",
     "arrow-down-left": "arrow-down-left",
+    "arrows-in-simple": "",
+    "arrows-out-simple": "",
     "asa-zone": "",
     at: "at",
     back: "arrow-bend-up-left",
@@ -114,6 +116,8 @@ var iconNameMap =
     connectivity: "wifi-high",
     convergence: "",
     copy: "",
+    "corners-in": "",
+    "corners-out": "",
     crashy: "",
     created: "file-plus",
     "critical-stop": "",
@@ -214,6 +218,7 @@ var iconNameMap =
     "merge-down": "stack-simple",
     // fill
     minus: "",
+    "minus-circle": "",
     module: "puzzle-piece",
     monitor: "arrow-circle-down-right",
     "move-document": "",
@@ -247,6 +252,7 @@ var iconNameMap =
     play: "play",
     prepend: "",
     progress: "spinner",
+    prohibit: "",
     query: "magnifying-glass-plus",
     question: "",
     quotes: "",
@@ -341,6 +347,7 @@ var iconNameMap =
     vpn: "",
     walkthrough: "chat-centered-text",
     "web-tracking": "user-switch",
-    "would-have-dropped": ""
+    "would-have-dropped": "",
+    "x-circle": ""
   });
 exports.iconNameMap = iconNameMap;
