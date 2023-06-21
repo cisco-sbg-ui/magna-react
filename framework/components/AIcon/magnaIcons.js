@@ -4234,6 +4234,15 @@ const MagnaIcons = {
   "minus-circle": {
     xml: (
       <>
+        <circle
+          cx="128"
+          cy="128"
+          r="96"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></circle>
         <line
           x1="88"
           y1="128"
@@ -4244,15 +4253,6 @@ const MagnaIcons = {
           strokeLinejoin="round"
           strokeWidth="24"
         ></line>
-        <circle
-          cx="128"
-          cy="128"
-          r="96"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="24"
-        ></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -6628,6 +6628,15 @@ const MagnaIcons = {
   "x-circle": {
     xml: (
       <>
+        <circle
+          cx="128"
+          cy="128"
+          r="96"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></circle>
         <line
           x1="160"
           y1="96"
@@ -6648,15 +6657,6 @@ const MagnaIcons = {
           strokeLinejoin="round"
           strokeWidth="24"
         ></line>
-        <circle
-          cx="128"
-          cy="128"
-          r="96"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="24"
-        ></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}

@@ -29,7 +29,11 @@ $icon-width: 1.167rem;
   &--state-information,
   &--state-info,
   &--binary-active {
-    background-color: map-deep-get($theme, "alert", "bg");
+    background-color: map-deep-get(
+      $theme,
+      "button-group",
+      "background-color--selected"
+    );
     color: map-deep-get($theme, "base", "color");
   }
 
@@ -44,6 +48,32 @@ $icon-width: 1.167rem;
   &--status-negative {
     background-color: map-deep-get($theme, "alert", "danger-bg");
     color: map-deep-get($theme, "base", "color");
+  }
+
+  .a-icon {
+    &--x-circle,
+    &--minus-circle {
+      line {
+        stroke: map-deep-get($theme, "control", "fill-color");
+      }
+    }
+    &--x-circle circle {
+      fill: map-deep-get($theme, "control", "error-color");
+      stroke: map-deep-get($theme, "control", "error-color");
+    }
+    &--minus-circle circle,
+    &--prohibit {
+      stroke: map-deep-get($theme, "button-group", "color");
+      fill: map-deep-get($theme, "button-group", "color");
+    }
+    &--warning-circle {
+      stroke: map-get($mds-neutral, "neutral-14");
+      fill: map-get($mds-neutral, "neutral-14");
+      circle:first-of-type {
+        fill: map-deep-get($theme, "control", "warning-color");
+        stroke: map-deep-get($theme, "control", "warning-color");
+      }
+    }
   }
 }
 
@@ -97,19 +127,6 @@ $icon-width: 1.167rem;
     &--positive {
       //positive icon has different dimensions than circle
       width: 16px;
-    }
-
-    &--warning-circle {
-      stroke: map-get($mds-neutral, "neutral-14");
-      fill: map-get($mds-neutral, "neutral-14");
-      circle:first-of-type {
-        fill: map-get($mds-light-theme, "status-warning");
-        stroke: map-get($mds-light-theme, "status-warning");
-      }
-    }
-
-    &--prohibit {
-      stroke: map-get($mds-neutral, "neutral-10");
     }
   }
 
