@@ -1,11 +1,17 @@
 @import "../../styles";
 
-$tag-height: 24px;
+$tag-height: 26px;
+$tag-height-sm: 20px;
+$tag-height-lg: 28px;
+$tag-padding: 4px 12px;
+$tag-padding-sm: 0 8px;
 $tag-font-size: $font-size--xs;
-$tag-padding: 0 10px;
-$tag-border-radius: 12px;
-$tag-icon-font-size: $font-size--xxs;
+$tag-font-size-lg: $font-size--sm;
+$tag-border-radius: 17px;
+$tag-icon-font-size: $font-size--sm;
+$tag-icon-font-size-sm: $font-size--xs;
 $tag-font-weight: 600;
+$icon-width: 1.167rem;
 
 @include theme(a-tag) using ($theme) {
   background-color: map-deep-get($theme, "tag", "bg-color");
@@ -21,20 +27,21 @@ $tag-font-weight: 600;
   }
 
   &--state-information,
-  &--state-info {
+  &--state-info,
+  &--binary-active {
     background-color: map-deep-get($theme, "alert", "bg");
     color: map-deep-get($theme, "base", "color");
   }
 
-  &--state-positive {
+  &--status-positive {
     background-color: map-deep-get($theme, "alert", "success-bg");
     color: map-deep-get($theme, "base", "color");
   }
-  &--state-warning {
+  &--status-warning {
     background-color: map-deep-get($theme, "alert", "warning-bg");
     color: map-deep-get($theme, "base", "color");
   }
-  &--state-negative {
+  &--status-negative {
     background-color: map-deep-get($theme, "alert", "danger-bg");
     color: map-deep-get($theme, "base", "color");
   }
@@ -43,7 +50,7 @@ $tag-font-weight: 600;
 .a-tag {
   display: inline-flex;
   font-size: $tag-font-size;
-  line-height: $tag-height;
+  min-height: $tag-height;
   align-items: center;
   padding: $tag-padding;
   border-radius: $tag-border-radius;
@@ -61,14 +68,92 @@ $tag-font-weight: 600;
     }
   }
 
-  .a-icon {
-    width: $tag-icon-font-size !important;
-    stroke: currentColor;
-    fill: currentColor;
+  .a-radio {
+    pointer-events: none;
+    padding: 0;
+    width: 12px;
+    transform: scale(0.6);
+
+    &--disabled {
+      .a-radio__box__outer {
+        stroke: map-get($mds-neutral, "neutral-10") !important;
+      }
+      circle {
+        fill: map-get($mds-neutral, "neutral-4") !important;
+      }
+    }
+    &__box {
+      transform: translate(-50%, 2%);
+    }
   }
 
-  &--count {
-    border-radius: 10px;
-    padding: 1px 8px;
+  .a-icon {
+    width: calc(
+      $tag-icon-font-size * 1.334
+    ); // 14px for circle - svg needs to be larger as phosphorus circle does not reach edges
+    stroke: currentColor;
+    fill: currentColor;
+
+    &--positive {
+      //positive icon has different dimensions than circle
+      width: 16px;
+    }
+
+    &--warning-circle {
+      stroke: map-get($mds-neutral, "neutral-14");
+      fill: map-get($mds-neutral, "neutral-14");
+      circle:first-of-type {
+        fill: map-get($mds-light-theme, "status-warning");
+        stroke: map-get($mds-light-theme, "status-warning");
+      }
+    }
+
+    &--prohibit {
+      stroke: map-get($mds-neutral, "neutral-10");
+    }
+  }
+
+  &--status {
+    padding-left: 6px;
+    padding-right: 8px;
+    + .a-tag--lg {
+      padding-right: 12px;
+    }
+  }
+
+  &--sm {
+    min-height: $tag-height-sm;
+    padding: $tag-padding-sm;
+    .a-icon {
+      width: calc($tag-icon-font-size * 1.143); //12px phosphorus circle
+
+      &--positive {
+        width: $tag-icon-font-size !important;
+      }
+    }
+    .a-radio {
+      transform: scale(0.5);
+      &__box {
+        transform: translate(-45%, 5%);
+      }
+    }
+  }
+
+  &--lg {
+    min-height: $tag-height-lg;
+    font-size: $tag-font-size-lg;
+    .a-icon {
+      width: calc($tag-icon-font-size * 1.524); //16px phosphorus circle
+      &--positive {
+        width: 18px;
+      }
+    }
+
+    .a-radio {
+      transform: scale(0.7);
+      &__box {
+        transform: translate(-45%, -10%);
+      }
+    }
   }
 }

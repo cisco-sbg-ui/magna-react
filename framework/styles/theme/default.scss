@@ -381,7 +381,7 @@ $atomic-default: (
     "bar-color--selected": map-get($mds-interactive, "interactive-10")
   ),
   "tag": (
-    "bg-color": map-get($mds-light-theme, "non-essential-lines"),
+    "bg-color": map-get($mds-neutral, "neutral-4"),
     "color": map-get($mds-neutral, "neutral-15")
   ),
   "text-input": (

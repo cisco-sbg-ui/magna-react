@@ -1,8 +1,23 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
+import AIcon from "../AIcon";
+import ARadio from "../ARadio/ARadio";
 
 import {keyCodes} from "../../utils/helpers";
 import "./ATag.scss";
+
+const STATUS_ICON = {
+  positive: "positive",
+  warning: "warning-circle",
+  negative: "x-circle",
+  inactive: "minus-circle",
+  disabled: "prohibit"
+};
+
+const BINARY_ICON = {
+  active: <ARadio checked />,
+  inactive: <ARadio disabled />
+};
 
 const ATag = forwardRef(
   (
@@ -16,6 +31,11 @@ const ATag = forwardRef(
       onKeyDown,
       target,
       level,
+      small,
+      large,
+      color,
+      status,
+      binary,
       ...rest
     },
     ref
@@ -30,12 +50,20 @@ const ATag = forwardRef(
       className += ` ${propsClassName}`;
     }
 
-    if (count) {
-      className += ` a-tag--count`;
+    if (large) {
+      className += ` a-tag--lg`;
     }
 
-    if (level) {
-      className += ` a-tag--state-${level}`;
+    if (small) {
+      className += ` a-tag--sm`;
+    }
+
+    if (status) {
+      className += ` a-tag--status a-tag--status-${status}`;
+    }
+
+    if (binary === "active") {
+      className += ` a-tag--binary-active`;
     }
 
     let TagName = "div";
@@ -72,7 +100,26 @@ const ATag = forwardRef(
       TagName = component;
     }
 
-    return <TagName {...props}>{children}</TagName>;
+    let tagWithIcon = null;
+
+    if (status) {
+      tagWithIcon = (
+        <>
+          <AIcon left>{STATUS_ICON[status]}</AIcon> {children}
+        </>
+      );
+    }
+
+    if (binary) {
+      tagWithIcon = (
+        <>
+          {BINARY_ICON[binary]}
+          {children}
+        </>
+      );
+    }
+
+    return <TagName {...props}>{tagWithIcon || children}</TagName>;
   }
 );
 
@@ -82,7 +129,18 @@ ATag.propTypes = {
    */
   component: PropTypes.elementType,
   /**
+   * Apply small tag style. Default is false.
+   */
+  small: PropTypes.bool,
+  /**
+   * Apply large tag style. Default is false.
+   */
+  large: PropTypes.bool,
+  /**
+   * ** Deprecated **
+   *  Style differentiation no longer necessary.
    * Indicates if the data should represent a count - more rounded
+   *
    */
   count: PropTypes.bool,
   /**
@@ -96,13 +154,29 @@ ATag.propTypes = {
   /**
    * Specifies the display variant.
    */
+  large: PropTypes.bool,
+  /**
+   * ** Deprecated **
+   *  statuses and binarys are now handled by the status and binary props
+   */
   level: PropTypes.oneOf([
     "info",
     "information",
     "positive",
     "warning",
     "negative"
-  ])
+  ]),
+  /**
+   * Will apply the icon along with the level.
+   * Status tags have slightly different styles.
+   */ status: PropTypes.oneOf([
+    "positive",
+    "warning",
+    "negative",
+    "inactive",
+    "disabled"
+  ]),
+  binary: PropTypes.oneOf(["active", "inactive"])
 };
 
 ATag.displayName = "ATag";
