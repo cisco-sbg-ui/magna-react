@@ -422,5 +422,17 @@ $atomic-dusk: (
   "tree": (
     "color": map-get($mds-dark-theme, "default-text"),
     "background-color--hover": map-get($mds-neutral, "neutral-15")
+  ),
+  "accent-colors": (
+    "accentA": rgba(map-get($mds-violetblue, "violetblue-5"), 0.35),
+    "accentB": rgba(map-get($mds-magenta, "magenta-5"), 0.35),
+    "accentC": rgba(map-get($mds-magenta, "magenta-4"), 0.35),
+    "accentD": rgba(map-get($mds-purple, "purple-5"), 0.35),
+    "accentE": rgba(#85bd46, 0.35),
+    "accentF": rgba(map-get($mds-orange, "orange-5"), 0.35),
+    "accentG": rgba(map-get($mds-teal, "teal-5"), 0.35),
+    "accentH": rgba(map-get($mds-teal, "teal-3"), 0.35),
+    "accentI": rgba(map-get($mds-fuchsia, "fuchsia-5"), 0.35),
+    "accentK": rgba(#4cbf7f, 0.35)
   )
 );

@@ -2137,13 +2137,6 @@ const MagnaIcons = {
   "check-circle": {
     xml: (
       <>
-        <polyline
-          points="88 136 112 160 168 104"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="24"
-        ></polyline>
         <circle
           cx="128"
           cy="128"
@@ -2153,6 +2146,13 @@ const MagnaIcons = {
           strokeLinejoin="round"
           strokeWidth="24"
         ></circle>
+        <polyline
+          points="88 136 112 160 168 104"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></polyline>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}

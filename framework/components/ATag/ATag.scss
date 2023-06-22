@@ -13,6 +13,8 @@ $tag-icon-font-size-sm: $font-size--xs;
 $tag-font-weight: 600;
 $icon-width: 1.167rem;
 
+$colors: "A", "B", "C", "D", "E", "F", "G", "H", "I", "K";
+
 @include theme(a-tag) using ($theme) {
   background-color: map-deep-get($theme, "tag", "bg-color");
   color: map-deep-get($theme, "tag", "color");
@@ -50,11 +52,34 @@ $icon-width: 1.167rem;
     color: map-deep-get($theme, "base", "color");
   }
 
+  @each $accent in $colors {
+    &--accent#{$accent} {
+      background-color: map-deep-get(
+        $theme,
+        "accent-colors",
+        "accent#{$accent}"
+      );
+    }
+  }
   .a-icon {
+    &--check-circle,
     &--x-circle,
     &--minus-circle {
-      line {
+      line,
+      polyline {
         stroke: map-deep-get($theme, "control", "fill-color");
+      }
+    }
+    &--check-circle circle {
+      fill: map-deep-get($theme, "control", "success-color");
+      stroke: map-deep-get($theme, "control", "success-color");
+    }
+    &--warning-circle {
+      stroke: map-get($mds-neutral, "neutral-14");
+      fill: map-get($mds-neutral, "neutral-14");
+      circle:first-of-type {
+        fill: map-deep-get($theme, "control", "warning-color");
+        stroke: map-deep-get($theme, "control", "warning-color");
       }
     }
     &--x-circle circle {
@@ -65,14 +90,6 @@ $icon-width: 1.167rem;
     &--prohibit {
       stroke: map-deep-get($theme, "button-group", "color");
       fill: map-deep-get($theme, "button-group", "color");
-    }
-    &--warning-circle {
-      stroke: map-get($mds-neutral, "neutral-14");
-      fill: map-get($mds-neutral, "neutral-14");
-      circle:first-of-type {
-        fill: map-deep-get($theme, "control", "warning-color");
-        stroke: map-deep-get($theme, "control", "warning-color");
-      }
     }
   }
 }
@@ -97,12 +114,18 @@ $icon-width: 1.167rem;
       text-decoration: none;
     }
   }
-
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  //Binary tags
   .a-radio {
     pointer-events: none;
     padding: 0;
     width: 12px;
     transform: scale(0.6);
+    margin-right: 4px;
 
     &--disabled {
       .a-radio__box__outer {
@@ -112,22 +135,14 @@ $icon-width: 1.167rem;
         fill: map-get($mds-neutral, "neutral-4") !important;
       }
     }
-    &__box {
-      transform: translate(-50%, 2%);
-    }
   }
-
+  //Status tags
   .a-icon {
     width: calc(
       $tag-icon-font-size * 1.334
     ); // 14px for circle - svg needs to be larger as phosphorus circle does not reach edges
     stroke: currentColor;
     fill: currentColor;
-
-    &--positive {
-      //positive icon has different dimensions than circle
-      width: 16px;
-    }
   }
 
   &--status {
@@ -143,16 +158,10 @@ $icon-width: 1.167rem;
     padding: $tag-padding-sm;
     .a-icon {
       width: calc($tag-icon-font-size * 1.143); //12px phosphorus circle
-
-      &--positive {
-        width: $tag-icon-font-size !important;
-      }
     }
     .a-radio {
       transform: scale(0.5);
-      &__box {
-        transform: translate(-45%, 5%);
-      }
+      margin-right: 2.5px;
     }
   }
 
@@ -161,15 +170,13 @@ $icon-width: 1.167rem;
     font-size: $tag-font-size-lg;
     .a-icon {
       width: calc($tag-icon-font-size * 1.524); //16px phosphorus circle
-      &--positive {
-        width: 18px;
-      }
     }
 
     .a-radio {
       transform: scale(0.7);
+
       &__box {
-        transform: translate(-45%, -10%);
+        transform: translate(-15%, -10%);
       }
     }
   }

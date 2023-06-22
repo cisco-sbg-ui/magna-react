@@ -7,7 +7,7 @@ import {keyCodes} from "../../utils/helpers";
 import "./ATag.scss";
 
 const STATUS_ICON = {
-  positive: "positive",
+  positive: "check-circle",
   warning: "warning-circle",
   negative: "x-circle",
   inactive: "minus-circle",
@@ -33,9 +33,9 @@ const ATag = forwardRef(
       level,
       small,
       large,
-      color,
       status,
       binary,
+      color,
       ...rest
     },
     ref
@@ -64,6 +64,10 @@ const ATag = forwardRef(
 
     if (binary === "active") {
       className += ` a-tag--binary-active`;
+    }
+
+    if (color) {
+      className += ` a-tag--${color}`;
     }
 
     let TagName = "div";
@@ -112,10 +116,10 @@ const ATag = forwardRef(
 
     if (binary) {
       tagWithIcon = (
-        <>
+        <div>
           {BINARY_ICON[binary]}
           {children}
-        </>
+        </div>
       );
     }
 
@@ -129,11 +133,11 @@ ATag.propTypes = {
    */
   component: PropTypes.elementType,
   /**
-   * Apply small tag style. Default is false.
+   * Apply small tag style. Default is false (medium size).
    */
   small: PropTypes.bool,
   /**
-   * Apply large tag style. Default is false.
+   * Apply large tag style. Default is false (medium size).
    */
   large: PropTypes.bool,
   /**
@@ -157,7 +161,7 @@ ATag.propTypes = {
   large: PropTypes.bool,
   /**
    * ** Deprecated **
-   *  statuses and binarys are now handled by the status and binary props
+   *  States now handled by the status and binary props
    */
   level: PropTypes.oneOf([
     "info",
@@ -167,8 +171,7 @@ ATag.propTypes = {
     "negative"
   ]),
   /**
-   * Will apply the icon along with the level.
-   * Status tags have slightly different styles.
+   * Will apply the icon along with the status color.
    */ status: PropTypes.oneOf([
     "positive",
     "warning",
@@ -176,7 +179,25 @@ ATag.propTypes = {
     "inactive",
     "disabled"
   ]),
-  binary: PropTypes.oneOf(["active", "inactive"])
+  /**
+   * Will apply the icon along with the binary color.
+   */
+  binary: PropTypes.oneOf(["active", "inactive"]),
+  /**
+   * Optional accent colors
+   */
+  color: PropTypes.oneOf([
+    "accentA",
+    "accentB",
+    "accentC",
+    "accentD",
+    "accentE",
+    "accentF",
+    "accentG",
+    "accentH",
+    "accentI",
+    "accentK"
+  ])
 };
 
 ATag.displayName = "ATag";
