@@ -282,6 +282,7 @@ describe("<AModal />", () => {
       cy.getByDataTestId("menu-item-1").should("exist");
       // @todo: add screenshot test to ensure menu is not covered by overlay */
       cy.getByDataTestId("menu-item-1").should("be.visible");
+      cy.getByDataTestId("menu-item-1").click();
 
       // Make sure
       getModalContent().should("exist");
