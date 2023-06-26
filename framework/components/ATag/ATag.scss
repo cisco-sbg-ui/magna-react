@@ -136,16 +136,30 @@ $colors: "A", "B", "C", "D", "E", "F", "G", "H", "I", "K";
       }
     }
   }
-  //Status tags
+  //Size management for any provided icons
   .a-icon {
-    width: calc(
-      $tag-icon-font-size * 1.334
-    ); // 14px for circle - svg needs to be larger as phosphorus circle does not reach edges
+    width: 14px;
     stroke: currentColor;
     fill: currentColor;
   }
+  &--sm {
+    .a-icon {
+      width: 12px;
+    }
+  }
+  &--lg {
+    .a-icon {
+      width: 16px;
+    }
+  }
 
+  //Status tags
   &--status {
+    .a-icon--status {
+      width: calc(
+        $tag-icon-font-size * 1.334
+      ); // 14px for circle - svg needs to be larger as phosphorus circle does not reach edges
+    }
     padding-left: 6px;
     padding-right: 8px;
     + .a-tag--lg {
@@ -156,7 +170,7 @@ $colors: "A", "B", "C", "D", "E", "F", "G", "H", "I", "K";
   &--sm {
     min-height: $tag-height-sm;
     padding: $tag-padding-sm;
-    .a-icon {
+    .a-icon--status {
       width: calc($tag-icon-font-size * 1.143); //12px phosphorus circle
     }
     .a-radio {
@@ -168,7 +182,7 @@ $colors: "A", "B", "C", "D", "E", "F", "G", "H", "I", "K";
   &--lg {
     min-height: $tag-height-lg;
     font-size: $tag-font-size-lg;
-    .a-icon {
+    .a-icon--status {
       width: calc($tag-icon-font-size * 1.524); //16px phosphorus circle
     }
 

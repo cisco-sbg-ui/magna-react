@@ -109,7 +109,10 @@ const ATag = forwardRef(
     if (status) {
       tagWithIcon = (
         <>
-          <AIcon left>{STATUS_ICON[status]}</AIcon> {children}
+          <AIcon className="a-icon--status" left>
+            {STATUS_ICON[status]}
+          </AIcon>
+          {children}
         </>
       );
     }
