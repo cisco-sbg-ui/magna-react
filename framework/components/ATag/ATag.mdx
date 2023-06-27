@@ -24,18 +24,9 @@ import {ATag} from "@cisco-sbg-ui/magna-react";
   return (
     <div style={{minHeight: 120}}>
       <ATag>Simple Tag</ATag>
-      <ATag count className="ma-1">7</ATag>
-      <ATag count className="ma-1">88</ATag>
-      <ATag count className="ma-1">987</ATag>
-      <ATag className="status-red white--text ma-1">
-        <AIcon left>critical-stop</AIcon>Status Tag
-      </ATag>
-      <ATag className="mds-light-theme--status-negative white--text ma-1">
-        <AIcon left>critical-stop</AIcon>Negative Light
-      </ATag>
-      <ATag className="mds-dark-theme--status-negative white--text ma-1">
-        <AIcon left>critical-stop</AIcon>Negative Dark
-      </ATag>
+      <ATag color="accentH" className="ma-1">7</ATag>
+      <ATag className="ma-1">88</ATag>
+      <ATag color="accentB" className="ma-1">987</ATag>
       <ATag href="/" target="_blank" className="ma-1">
         Linked Tag
       </ATag>
@@ -85,7 +76,7 @@ import {ATag} from "@cisco-sbg-ui/magna-react";
         </AListItem>
       </AMenu>
     </div>
-  );
+);
 }
 `}
 />
@@ -103,20 +94,89 @@ import {ATag} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-## Display Variants
+## Status Tags
 
-Basic variants for the standard states
+Basic variants for the standard status states
 
 <Playground
   code={`() => {
   return (
-    <div style={{minHeight: 120}}>
-      <ATag level="information">info</ATag>
-      <ATag level="positive">positive</ATag>
-      <ATag level="warning">warning</ATag>
-      <ATag level="negative">negative</ATag>
-    </div>
-  );
+    <>
+      <div style={{minHeight: "50px"}}>
+        <ATag large status="positive" className="ma-1">Positive</ATag>
+        <ATag large status="warning" className="ma-1">Warning</ATag>
+        <ATag large status="negative" className="ma-1">Negative</ATag>
+        <ATag large status="inactive" className="ma-1">Inactive</ATag>
+        <ATag large status="disabled" className="ma-1">Disabled</ATag>
+      </div>
+      <div style={{minHeight: "50px"}}>
+        <ATag status="positive" className="ma-1">Positive</ATag>
+        <ATag status="warning" className="ma-1">Warning</ATag>
+        <ATag status="negative" className="ma-1">Negative</ATag>
+        <ATag status="inactive" className="ma-1">Inactive</ATag>
+        <ATag status="disabled" className="ma-1">Disabled</ATag>
+      </div>
+      <div style={{minHeight: "50px"}}>
+        <ATag small status="positive" className="ma-1">positive</ATag>
+        <ATag small status="warning" className="ma-1">warning</ATag>
+        <ATag small status="negative" className="ma-1">negative</ATag>
+        <ATag small status="inactive" className="ma-1">inactive</ATag>
+        <ATag small status="disabled" className="ma-1">disabled</ATag>
+      </div>
+    </>
+);
+}
+`}
+/>
+
+## Binary Tags
+
+Basic variants for the binary states
+
+<Playground
+  code={`() => {
+  return (
+    <>
+      <div style={{minHeight: "50px"}}>
+        <ATag large binary="active" className="ma-1">Active</ATag>
+        <ATag large binary="inactive" className="ma-1">Inactive</ATag>
+      </div>
+      <div style={{minHeight: "50px"}}>
+        <ATag binary="active" className="ma-1">Active</ATag>
+        <ATag binary="inactive" className="ma-1">Inactive</ATag>
+      </div>
+      <div style={{minHeight: "50px"}}>
+        <ATag small binary="active" className="ma-1">Active</ATag>
+        <ATag small binary="inactive" className="ma-1">Inactive</ATag>
+      </div>
+    </>
+);
+}
+`}
+/>
+
+## Colors
+
+Accent colors
+
+<Playground
+  code={`() => {
+  return (
+    <>
+      <div style={{minHeight: "50px"}}>
+        <ATag color="accentA" className="ma-1">Tag</ATag>
+        <ATag color="accentB" className="ma-1">Tag</ATag>
+        <ATag color="accentD" className="ma-1">Tag</ATag>
+        <ATag color="accentE" className="ma-1">Tag</ATag>
+        <ATag color="accentF" className="ma-1">Tag</ATag>
+        <ATag color="accentG" className="ma-1">Tag</ATag>
+        <ATag color="accentI" className="ma-1">Tag</ATag>
+        <ATag color="accentK" className="ma-1">Tag</ATag>
+        <ATag color="accentC" className="ma-1">Tag</ATag>
+        <ATag color="accentH" className="ma-1">Tag</ATag>
+      </div>
+    </>
+);
 }
 `}
 />

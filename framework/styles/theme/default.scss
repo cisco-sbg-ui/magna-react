@@ -381,7 +381,7 @@ $atomic-default: (
     "bar-color--selected": map-get($mds-interactive, "interactive-10")
   ),
   "tag": (
-    "bg-color": map-get($mds-light-theme, "non-essential-lines"),
+    "bg-color": map-get($mds-neutral, "neutral-4"),
     "color": map-get($mds-neutral, "neutral-15")
   ),
   "text-input": (
@@ -413,5 +413,17 @@ $atomic-default: (
   "tree": (
     "color": map-get($mds-light-theme, "default-text"),
     "background-color--hover": map-get($mds-interactive, "interactive-2")
+  ),
+  "accent-colors": (
+    "accentA": map-get($mds-violetblue, "violetblue-1"),
+    "accentB": map-get($mds-magenta, "magenta-1"),
+    "accentC": map-get($mds-magenta, "magenta-2"),
+    "accentD": map-get($mds-purple, "purple-1"),
+    "accentE": #ebf5e0,
+    "accentF": map-get($mds-orange, "orange-1"),
+    "accentG": map-get($mds-teal, "teal-1"),
+    "accentH": map-get($mds-teal, "teal-2"),
+    "accentI": map-get($mds-fuchsia, "fuchsia-1"),
+    "accentK": #d4f5e1
   )
 );

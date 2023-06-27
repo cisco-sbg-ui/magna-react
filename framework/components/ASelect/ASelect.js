@@ -598,9 +598,13 @@ ASelect.propTypes = {
    */
   validationState: PropTypes.oneOf(["default", "warning", "danger"]),
   /**
-   * Magnetic medium size variant
+   * Magnetic small size variant (default is medium)
    */
-  medium: PropTypes.bool,
+  small: PropTypes.bool,
+  /**
+   * Magnetic large size variant (default is medium)
+   */
+  large: PropTypes.bool,
   /**
    * Use the `itemTemplate` with the selectedItem in the ASelect input.
    */

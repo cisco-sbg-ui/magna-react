@@ -1,8 +1,23 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
+import AIcon from "../AIcon";
+import ARadio from "../ARadio/ARadio";
 
 import {keyCodes} from "../../utils/helpers";
 import "./ATag.scss";
+
+const STATUS_ICON = {
+  positive: "check-circle",
+  warning: "warning-circle",
+  negative: "x-circle",
+  inactive: "minus-circle",
+  disabled: "prohibit"
+};
+
+const BINARY_ICON = {
+  active: <ARadio checked />,
+  inactive: <ARadio disabled />
+};
 
 const ATag = forwardRef(
   (
@@ -16,6 +31,11 @@ const ATag = forwardRef(
       onKeyDown,
       target,
       level,
+      small,
+      large,
+      status,
+      binary,
+      color,
       ...rest
     },
     ref
@@ -30,12 +50,24 @@ const ATag = forwardRef(
       className += ` ${propsClassName}`;
     }
 
-    if (count) {
-      className += ` a-tag--count`;
+    if (large) {
+      className += ` a-tag--lg`;
     }
 
-    if (level) {
-      className += ` a-tag--state-${level}`;
+    if (small) {
+      className += ` a-tag--sm`;
+    }
+
+    if (status) {
+      className += ` a-tag--status a-tag--status-${status}`;
+    }
+
+    if (binary === "active") {
+      className += ` a-tag--binary-active`;
+    }
+
+    if (color) {
+      className += ` a-tag--${color}`;
     }
 
     let TagName = "div";
@@ -72,7 +104,29 @@ const ATag = forwardRef(
       TagName = component;
     }
 
-    return <TagName {...props}>{children}</TagName>;
+    let tagWithIcon = null;
+
+    if (status) {
+      tagWithIcon = (
+        <>
+          <AIcon className="a-icon--status" left>
+            {STATUS_ICON[status]}
+          </AIcon>
+          {children}
+        </>
+      );
+    }
+
+    if (binary) {
+      tagWithIcon = (
+        <div>
+          {BINARY_ICON[binary]}
+          {children}
+        </div>
+      );
+    }
+
+    return <TagName {...props}>{tagWithIcon || children}</TagName>;
   }
 );
 
@@ -82,7 +136,18 @@ ATag.propTypes = {
    */
   component: PropTypes.elementType,
   /**
+   * Apply small tag style. Default is false (medium size).
+   */
+  small: PropTypes.bool,
+  /**
+   * Apply large tag style. Default is false (medium size).
+   */
+  large: PropTypes.bool,
+  /**
+   * ** Deprecated **
+   *  Style differentiation no longer necessary.
    * Indicates if the data should represent a count - more rounded
+   *
    */
   count: PropTypes.bool,
   /**
@@ -96,12 +161,45 @@ ATag.propTypes = {
   /**
    * Specifies the display variant.
    */
+  large: PropTypes.bool,
+  /**
+   * ** Deprecated **
+   *  States now handled by the status and binary props
+   */
   level: PropTypes.oneOf([
     "info",
     "information",
     "positive",
     "warning",
     "negative"
+  ]),
+  /**
+   * Will apply the icon along with the status color.
+   */ status: PropTypes.oneOf([
+    "positive",
+    "warning",
+    "negative",
+    "inactive",
+    "disabled"
+  ]),
+  /**
+   * Will apply the icon along with the binary color.
+   */
+  binary: PropTypes.oneOf(["active", "inactive"]),
+  /**
+   * Optional accent colors
+   */
+  color: PropTypes.oneOf([
+    "accentA",
+    "accentB",
+    "accentC",
+    "accentD",
+    "accentE",
+    "accentF",
+    "accentG",
+    "accentH",
+    "accentI",
+    "accentK"
   ])
 };
 
