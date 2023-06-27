@@ -158,7 +158,11 @@ ATriggerTooltip.propTypes = {
   /**
    * Pass a class to the child wrapper.
    */
-  wrapperClass: PropTypes.string
+  wrapperClass: PropTypes.string,
+  /**
+   * Only show tooltip if the anchor element is truncated
+   */
+  onlyIfTruncated: PropTypes.bool
 };
 
 ATriggerTooltip.displayName = "ATriggerTooltip";
