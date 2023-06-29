@@ -284,5 +284,6 @@ export const iconNameMap = {
   walkthrough: "chat-centered-text",
   "web-tracking": "user-switch",
   "would-have-dropped": "",
-  "x-circle": ""
+  "x-circle": "",
+  "bell-slash": ""
 };
