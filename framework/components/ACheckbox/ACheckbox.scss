@@ -1,10 +1,12 @@
 @import "../../styles";
 
 $checkbox-box-border-radius: $border-radius--md;
-$checkbox-box-side-length: rem(0.9375);
-$checkbox-box-side-length-magna-medium: rem(1.25);
+$checkbox-box-side-length: rem(1);
+$checkbox-box-side-length-magna-medium: $font-size--lg;
 $checkbox-box-side-length-magna-small: rem(1);
 $checkbox-icon-size: $font-size--xxs;
+$checkbox-label-font-size: $font-size--xs;
+$checkbox-label-font-size-medium: $font-size--sm;
 $checkbox-icon-padding-left: $base-padding-xsmall;
 $checkbox-padding: $base-padding-xsmall 0;
 $checkbox-transition: box-shadow $transition-duration--extra-fast
@@ -13,21 +15,13 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
 @include theme(a-checkbox) using ($theme) {
   .a-checkbox {
     &__box {
-      background-color: map-deep-get($theme, "radio", "bg");
+      background-color: map-deep-get($theme, "checkbox", "fill-enabled");
     }
   }
 
   &__box {
     &:hover:after {
       box-shadow: none;
-      opacity: 0.6;
-    }
-
-    &:hover {
-      svg {
-        fill: currentColor !important;
-        fill-opacity: 0.7;
-      }
     }
   }
 
@@ -35,13 +29,20 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
     .a-checkbox__box {
       fill: map-deep-get($theme, "checkbox", "border--enabled");
       color: map-deep-get($theme, "checkbox", "border--checked");
+      &:hover {
+        svg {
+          fill: map-deep-get($theme, "checkbox", "border--hover");
+        }
+      }
     }
   }
 
   &--selected {
     .a-checkbox__box {
-      fill: map-deep-get($theme, "checkbox", "border--checked");
-      color: map-deep-get($theme, "checkbox", "border--checked");
+      fill: map-deep-get($theme, "checkbox", "fill-checked");
+      &:hover svg {
+        fill: map-deep-get($theme, "checkbox", "fill-checked--hover");
+      }
     }
   }
 
@@ -67,6 +68,9 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
           color: map-deep-get($theme, "checkbox", "border--disabled");
           background-color: map-deep-get($theme, "checkbox", "fill--disabled");
           cursor: not-allowed;
+          > svg:hover {
+            fill: map-deep-get($theme, "checkbox", "border--disabled");
+          }
         }
 
         &__input:checked {
@@ -140,13 +144,8 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
       position: absolute;
       height: $checkbox-box-side-length;
       width: $checkbox-box-side-length;
-      opacity: 0.4;
       left: 0;
       border-radius: $checkbox-box-border-radius;
-    }
-
-    &:hover:after {
-      opacity: 0.6;
     }
   }
 
@@ -159,10 +158,15 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
       width: $checkbox-box-side-length-magna-medium;
     }
   }
+  &__box.a-medium-box + .a-checkbox__label {
+    top: unset;
+    font-size: $checkbox-label-font-size-medium;
+  }
 
   &__box.a-small-box {
     height: $checkbox-box-side-length-magna-small;
     width: $checkbox-box-side-length-magna-small;
+
     &:after {
       height: $checkbox-box-side-length-magna-small;
       width: $checkbox-box-side-length-magna-small;
@@ -172,7 +176,8 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
   &__label {
     display: inline-block;
     position: relative;
-    top: -1px;
+    top: 1px;
+    font-size: $checkbox-label-font-size;
     padding-left: 8px;
     flex: 1 1 0%;
     @include text-truncate;

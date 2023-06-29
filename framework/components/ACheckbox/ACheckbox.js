@@ -34,13 +34,14 @@ const ACheckbox = forwardRef(
       disabled = false,
       hint,
       indeterminate = false,
-      size = "default",
+      size = "medium",
       onClick,
       required,
       rules,
       validationState,
       value,
       wrap,
+      small,
       ...rest
     },
     ref
@@ -112,7 +113,8 @@ const ACheckbox = forwardRef(
       setError("");
     };
 
-    let className = "a-checkbox";
+    let className = "a-checkbox",
+      boxClassName = `${className} a-checkbox__box `;
 
     if (["danger", "warning"].includes(workingValidationState)) {
       className += ` a-checkbox--${workingValidationState}`;
@@ -136,10 +138,12 @@ const ACheckbox = forwardRef(
 
     const boxProps = {
       "aria-hidden": "true",
-      className: `a-checkbox__box${
-        size && (size === "medium" || size === "small") ? ` a-${size}-box` : ""
-      }`
+      className: `${boxClassName} a-medium-box`
     };
+
+    if (small || size === "small") {
+      boxProps.className = `${boxClassName} a-small-box`;
+    }
 
     if (!disabled && !["danger", "warning"].includes(workingValidationState)) {
       if (isStockColor(color)) {
@@ -254,10 +258,12 @@ ACheckbox.propTypes = {
    */
   wrap: PropTypes.bool,
   /**
-   * Size options ["default","medium","small"]
-   * Default size is 15px, Magnetic Medium = 20px, Magnetic Small = 16px
+   * Option for small size (default is medium)
    */
-  size: PropTypes.oneOf(["default", "small", "medium"])
+  small: PropTypes.bool,
+  /**
+   * ** Deprecated ** Use small prop for sizing down (medium is default)
+   */ size: PropTypes.oneOf(["default", "small", "medium"])
 };
 
 ACheckbox.displayName = "ACheckbox";

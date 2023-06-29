@@ -27,7 +27,6 @@ import {ACheckbox} from "@cisco-sbg-ui/magna-react";
     <div>
       <h3>Example</h3>
       <ACheckbox
-        size={"small"}
         data-testid="example-checkbox-test"
         checked={checked}
         color={color}
@@ -66,6 +65,30 @@ import {ACheckbox} from "@cisco-sbg-ui/magna-react";
         />
       </div>
     </div>
+  );
+}
+`}
+/>
+
+## Sizes
+
+<Playground
+  code={`() => {
+  return (
+    <>
+      <div style={{display: "flex", minHeight: "3rem"}}>
+        <ACheckbox className="mr-2">Enabled</ACheckbox>
+        <ACheckbox checked className="mr-2">Checked</ACheckbox>
+        <ACheckbox checked disabled className="mr-2">Disabled Checked</ACheckbox>
+        <ACheckbox disabled>Disabled</ACheckbox>
+      </div>
+      <div style={{display: "flex"}}>
+        <ACheckbox small className="mr-2">Enabled</ACheckbox>
+        <ACheckbox small checked className="mr-2">Checked</ACheckbox>
+        <ACheckbox small checked disabled className="mr-2">Disabled Checked</ACheckbox>
+        <ACheckbox small disabled>Disabled</ACheckbox>
+      </div>
+    </>
   );
 }
 `}
