@@ -63,6 +63,13 @@ $table-cell-spacious-padding-top-bottom: math.div(
     border-bottom-color: map-deep-get($theme, "table", "header-border");
   }
 
+  &--sticky {
+    thead {
+      background: map-deep-get($theme, "base", "bg");
+      box-shadow: 0 2.5px 2px -2px map-deep-get($theme, "table", "header-border");
+    }
+  }
+
   tr {
     td {
       color: map-deep-get($theme, "table", "color");
@@ -95,6 +102,13 @@ $table-cell-spacious-padding-top-bottom: math.div(
 
   &__total {
     padding-top: $table__total--padding-top;
+  }
+
+  &--sticky {
+    thead {
+      position: sticky;
+      top: 0;
+    }
   }
 
   tbody {
