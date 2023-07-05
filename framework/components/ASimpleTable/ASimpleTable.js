@@ -14,6 +14,7 @@ const ASimpleTable = forwardRef(
       spacious,
       comfy,
       compact,
+      stickyHeader = false,
       ...rest
     },
     ref
@@ -22,6 +23,10 @@ const ASimpleTable = forwardRef(
 
     if (altLinks) {
       className += ` a-simple-table--alt-links`;
+    }
+
+    if (stickyHeader) {
+      className += " a-simple-table--sticky";
     }
 
     if (striped) {
@@ -76,7 +81,11 @@ ASimpleTable.propTypes = {
   /**
    * Toggles the `spacious` display variant. Largest row heights.
    */
-  spacious: PropTypes.bool
+  spacious: PropTypes.bool,
+  /**
+   * Enable sticky header
+   */
+  stickyHeader: PropTypes.bool
 };
 
 ASimpleTable.displayName = "ASimpleTable";

@@ -36,7 +36,8 @@ $hidden-table-col-width: 45px;
     }
   }
   &--sticky {
-    th {
+    thead {
+      box-shadow: 0 2.5px 2px -2px map-deep-get($theme, "table", "header-border");
       background: map-deep-get($theme, "base", "bg");
     }
   }
@@ -127,7 +128,7 @@ $hidden-table-col-width: 45px;
   }
 
   &--sticky {
-    th {
+    thead {
       position: sticky;
       top: 0;
     }
