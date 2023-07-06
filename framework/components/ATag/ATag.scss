@@ -7,6 +7,8 @@ $tag-padding: 4px 12px;
 $tag-padding-sm: 0 8px;
 $tag-font-size: $font-size--xs;
 $tag-font-size-lg: $font-size--sm;
+$tag-line-height: calc($font-size--xs + 6px);
+$tag-line-height-lg: calc($font-size--sm + 6px);
 $tag-border-radius: 17px;
 $tag-icon-font-size: $font-size--sm;
 $tag-icon-font-size-sm: $font-size--xs;
@@ -98,6 +100,7 @@ $colors: "A", "B", "C", "D", "E", "F", "G", "H", "I", "K";
   display: inline-flex;
   font-size: $tag-font-size;
   min-height: $tag-height;
+  line-height: $tag-line-height;
   align-items: center;
   padding: $tag-padding;
   border-radius: $tag-border-radius;
@@ -170,6 +173,7 @@ $colors: "A", "B", "C", "D", "E", "F", "G", "H", "I", "K";
   &--sm {
     min-height: $tag-height-sm;
     padding: $tag-padding-sm;
+
     .a-icon--status {
       width: calc($tag-icon-font-size * 1.143); //12px phosphorus circle
     }
@@ -182,6 +186,7 @@ $colors: "A", "B", "C", "D", "E", "F", "G", "H", "I", "K";
   &--lg {
     min-height: $tag-height-lg;
     font-size: $tag-font-size-lg;
+    line-height: $tag-line-height-lg;
     .a-icon--status {
       width: calc($tag-icon-font-size * 1.524); //16px phosphorus circle
     }
