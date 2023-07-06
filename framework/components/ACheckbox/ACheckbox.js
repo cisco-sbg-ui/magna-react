@@ -136,14 +136,12 @@ const ACheckbox = forwardRef(
       className += ` ${propsClassName}`;
     }
 
+    const boxSize = size === "small" || small ? "small" : "medium";
+
     const boxProps = {
       "aria-hidden": "true",
-      className: `${boxClassName} a-medium-box`
+      className: `${boxClassName} a-${boxSize}-box`
     };
-
-    if (small || size === "small") {
-      boxProps.className = `${boxClassName} a-small-box`;
-    }
 
     if (!disabled && !["danger", "warning"].includes(workingValidationState)) {
       if (isStockColor(color)) {
@@ -263,7 +261,8 @@ ACheckbox.propTypes = {
   small: PropTypes.bool,
   /**
    * ** Deprecated ** Use small prop for sizing down (medium is default)
-   */ size: PropTypes.oneOf(["default", "small", "medium"])
+   */
+  size: PropTypes.oneOf(["default", "small", "medium"])
 };
 
 ACheckbox.displayName = "ACheckbox";
