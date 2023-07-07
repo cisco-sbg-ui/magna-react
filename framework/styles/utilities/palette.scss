@@ -471,7 +471,9 @@ $mds-light-theme: (
   "status-positive-bg": #eaf7e4,
   "status-warning-bg": #fcf5d4,
   "status-negative-bg": #fce2de,
-  "table-border": map-get($mds-neutral, "neutral-11")
+  "table-border": map-get($mds-neutral, "neutral-11"),
+  "interact-bg-weak-active": #cce1ff,
+  "control-border-focus": #3e84e5
 );
 $mds-dark-theme: (
   "background": map-get($mds-neutral, "neutral-17"),
@@ -502,7 +504,9 @@ $mds-dark-theme: (
   "status-positive-bg": darken(#6dc242, 35%),
   "status-warning-bg": rgba(224, 164, 25, 0.302),
   "status-negative-bg": rgba(217, 56, 67, 0.4),
-  "table-border": map-get($mds-neutral, "neutral-7")
+  "table-border": map-get($mds-neutral, "neutral-7"),
+  "interact-bg-weak-active": map-get($mds-interactive, "interactive-7"),
+  "control-border-focus": map-get($mds-interactive, "interactive-9")
 );
 
 $secure-blue: (

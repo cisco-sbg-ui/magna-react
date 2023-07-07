@@ -143,6 +143,10 @@ $atomic-default: (
     ),
     "group": (
       "color": map-get($grey, "darken-7")
+    ),
+    "focus-visible": (
+      bg: map-get($mds-light-theme, "interact-bg-weak-active"),
+      control: map-get($mds-light-theme, "control-border-focus")
     )
   ),
   "button-group": (
