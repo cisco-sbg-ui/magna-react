@@ -172,12 +172,16 @@ $atomic-dusk: (
     "border-color--disabled": map-get($mds-neutral, "neutral-12")
   ),
   "checkbox": (
+    "fill-enabled": map-get($mds-neutral, "neutral-16"),
     "border--disabled": map-get($mds-neutral, "neutral-13"),
-    "label-color--disabled": map-get($mds-neutral, "neutral-12"),
+    "label-color--disabled": map-get($mds-neutral, "neutral-11"),
     "icon--disabled": map-get($mds-neutral, "neutral-7"),
     "fill--disabled": map-get($mds-neutral, "neutral-15"),
     "border--checked": map-get($mds-interactive, "interactive-6"),
-    "border--enabled": map-get($mds-neutral, "neutral-11")
+    "fill-checked--hover": map-get($mds-interactive, "interactive-7"),
+    "fill-checked": map-get($mds-interactive, "interactive-6"),
+    "border--enabled": map-get($mds-neutral, "neutral-10"),
+    "border--hover": map-get($mds-interactive, "interactive-7")
   ),
   "color": (
     "warning--state-hover": map-get($mds-dark-theme, "status-warning"),
