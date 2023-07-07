@@ -34,7 +34,6 @@ const ACheckbox = forwardRef(
       disabled = false,
       hint,
       indeterminate = false,
-      size = "medium",
       onClick,
       required,
       rules,
@@ -136,7 +135,7 @@ const ACheckbox = forwardRef(
       className += ` ${propsClassName}`;
     }
 
-    const boxSize = size === "small" || small ? "small" : "medium";
+    const boxSize = small ? "small" : "medium";
 
     const boxProps = {
       "aria-hidden": "true",
@@ -258,11 +257,7 @@ ACheckbox.propTypes = {
   /**
    * Option for small size (default is medium)
    */
-  small: PropTypes.bool,
-  /**
-   * ** Deprecated ** Use small prop for sizing down (medium is default)
-   */
-  size: PropTypes.oneOf(["default", "small", "medium"])
+  small: PropTypes.bool
 };
 
 ACheckbox.displayName = "ACheckbox";

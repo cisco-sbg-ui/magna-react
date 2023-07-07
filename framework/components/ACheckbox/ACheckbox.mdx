@@ -76,13 +76,13 @@ import {ACheckbox} from "@cisco-sbg-ui/magna-react";
   code={`() => {
   return (
     <>
-      <div style={{display: "flex", minHeight: "3rem"}}>
+      <div className="d-flex flex-wrap" style={{minHeight: "3rem"}}>
         <ACheckbox className="mr-2">Enabled</ACheckbox>
         <ACheckbox checked className="mr-2">Checked</ACheckbox>
         <ACheckbox checked disabled className="mr-2">Disabled Checked</ACheckbox>
         <ACheckbox disabled>Disabled</ACheckbox>
       </div>
-      <div style={{display: "flex"}}>
+      <div className="d-flex flex-wrap">
         <ACheckbox small className="mr-2">Enabled</ACheckbox>
         <ACheckbox small checked className="mr-2">Checked</ACheckbox>
         <ACheckbox small checked disabled className="mr-2">Disabled Checked</ACheckbox>
@@ -130,7 +130,7 @@ The `ACheckbox` component inherits passed props.
 
 <Playground
   fullWidthPreview
-  code={`<div className="d-flex">
+  code={`<div className="d-flex flex-wrap">
   <div className="d-flex flex-column">
     <h3>Default Color</h3>
     <ACheckbox>Default</ACheckbox>
@@ -211,17 +211,6 @@ The `ACheckbox` component inherits passed props.
   code={`<div className="d-flex flex-column">
   <ACheckbox>Very long truncated text. {LoremIpsum}</ACheckbox>
   <ACheckbox wrap>Very long wrapping text. {LoremIpsum}</ACheckbox>
-</div>
-`}
-/>
-
-## Size options
-
-<Playground
-  code={`<div className="d-flex flex-column">
-  <ACheckbox >Default - legacy (15px)</ACheckbox>
-  <ACheckbox size={"small"}>Magnetic Small (16px)</ACheckbox>
-  <ACheckbox size={"medium"}>Magnetic Medium (20px)</ACheckbox>
 </div>
 `}
 />
