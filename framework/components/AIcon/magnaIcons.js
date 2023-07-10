@@ -6569,6 +6569,43 @@ const MagnaIcons = {
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
   },
+  users: {
+    xml: (
+      <>
+        <circle
+          cx="84"
+          cy="108"
+          r="52"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></circle>
+        <path
+          d="M152.69,59.7A52,52,0,1,1,172,160"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></path>
+        <path
+          d="M13,196a88,88,0,0,1,142,0"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></path>
+        <path
+          d="M172,160a87.86,87.86,0,0,1,71,36"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></path>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
   "warning-circle": {
     xml: (
       <>
