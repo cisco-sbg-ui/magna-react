@@ -274,6 +274,7 @@ export const iconNameMap = {
   upload: "upload-simple",
   url: "browser",
   user: "",
+  users: "",
   variable: "",
   verdict: "",
   "view-metadata": "",
