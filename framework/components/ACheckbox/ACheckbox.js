@@ -27,6 +27,7 @@ let checkboxCounter = 0;
 const ACheckbox = forwardRef(
   (
     {
+      id,
       checked = false,
       children,
       className: propsClassName,
@@ -41,6 +42,7 @@ const ACheckbox = forwardRef(
       value,
       wrap,
       small,
+      withLabel = true,
       ...rest
     },
     ref
@@ -160,32 +162,46 @@ const ACheckbox = forwardRef(
       currentPath = Icons.checked;
     }
 
-    return (
-      <div {...rest} ref={combinedRef} className={className}>
+    const handleKeyDown = (e) => {
+      if (["Enter", "Space"].includes(e.code)) {
+        e.preventDefault();
+      }
+
+      onClick && onClick(e);
+    };
+
+    const checkboxContent = (
+      <>
+        <input
+          id={id}
+          type="checkbox"
+          className="a-checkbox__input"
+          value={value}
+          aria-checked={indeterminate ? "mixed" : checked}
+          checked={checked}
+          aria-disabled={disabled}
+          disabled={disabled}
+          onChange={() => {}}
+          onClick={(e) => {
+            validate(e.target.checked);
+            onClick && onClick(e);
+          }}
+          ref={(el) =>
+            el && ((el.indeterminate = indeterminate) || (el.checked = checked))
+          }
+        />
+        <span {...boxProps}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15">
+            <path d={currentPath} />
+          </svg>
+        </span>
+      </>
+    );
+
+    const content =
+      withLabel && children ? (
         <label className="a-checkbox__wrap">
-          <input
-            type="checkbox"
-            className="a-checkbox__input"
-            value={value}
-            aria-checked={indeterminate ? "mixed" : checked}
-            checked={checked}
-            aria-disabled={disabled}
-            disabled={disabled}
-            onChange={() => {}}
-            onClick={(e) => {
-              validate(e.target.checked);
-              onClick && onClick(e);
-            }}
-            ref={(el) =>
-              el &&
-              ((el.indeterminate = indeterminate) || (el.checked = checked))
-            }
-          />
-          <span {...boxProps}>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15">
-              <path d={currentPath} />
-            </svg>
-          </span>
+          {checkboxContent}
           <span
             className={`a-checkbox__label${
               wrap ? " a-checkbox__label--wrap" : ""
@@ -194,6 +210,22 @@ const ACheckbox = forwardRef(
             {children}
           </span>
         </label>
+      ) : (
+        <div
+          className="a-checkbox__wrap"
+          onClick={onClick}
+          onKeyDown={handleKeyDown}
+          aria-checked={checked}
+          role="checkbox"
+          tabIndex={0}
+        >
+          {checkboxContent}
+        </div>
+      );
+
+    return (
+      <div {...rest} ref={combinedRef} className={className}>
+        {content}
         {(error || hint) && (
           <AHint validationState={workingValidationState}>
             {error || hint}
@@ -205,6 +237,10 @@ const ACheckbox = forwardRef(
 );
 
 ACheckbox.propTypes = {
+  /**
+   * ID to be passed to the checkbox <input>
+   */
+  id: PropTypes.string,
   /**
    * Toggles the `checked` state.
    */
@@ -257,7 +293,11 @@ ACheckbox.propTypes = {
   /**
    * Option for small size (default is medium)
    */
-  small: PropTypes.bool
+  small: PropTypes.bool,
+  /**
+   * Wrap the checkbox in the <label> tag. Defaults to true
+   */
+  withLabel: PropTypes.bool
 };
 
 ACheckbox.displayName = "ACheckbox";

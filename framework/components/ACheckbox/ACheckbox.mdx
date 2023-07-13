@@ -94,6 +94,30 @@ import {ACheckbox} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
+## No label wrapper
+
+<Playground
+  code={`() => {
+  const [checked, setChecked] = useState(false);
+
+return (
+
+<>
+  <div style={{minHeight: "3rem"}}>
+    <label htmlFor="noLabel">Label for checkbox</label>
+    <ACheckbox
+      className="mr-2"
+      withLabel={false}
+      id="noLabel"
+      checked={checked}
+      onClick={() => {
+        setChecked(!checked);
+      }}
+    />
+  </div>
+</>
+); } `} />
+
 ## Checkbox Props
 
 The `ACheckbox` component inherits passed props.
