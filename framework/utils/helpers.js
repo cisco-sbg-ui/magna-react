@@ -308,4 +308,19 @@ export const localeIncludes = (
   }
 
   return false;
+export const copyToClipboard = (value, containerId) => {
+  const parentEl = containerId
+    ? document.getElementById(containerId)
+    : document.body;
+
+  let t = document.createElement("textarea");
+  t.id = "t";
+  t.style.height = 0;
+  parentEl.appendChild(t);
+  t.value = value;
+  let selector = document.querySelector("#t");
+  selector.select();
+  selector.focus();
+  document.execCommand("copy");
+  parentEl.removeChild(t);
 };

@@ -26,6 +26,7 @@ import ACheckbox from "./components/ACheckbox";
 import ACombobox from "./components/ACombobox";
 import AContextualNotification from "./components/AContextualNotification";
 import AContextualNotificationMenu from "./components/AContextualNotificationMenu";
+import ACopyButton from "./components/ACopyButton/ACopyButton";
 import ADataTable from "./components/ADataTable";
 import {ADatePicker, useADateRange} from "./components/ADatePicker";
 import ADialog from "./components/ADialog";
@@ -148,6 +149,7 @@ export {
   AContainer,
   AContextualNotification,
   AContextualNotificationMenu,
+  ACopyButton,
   ADataTable,
   ADatePicker,
   ADialog,

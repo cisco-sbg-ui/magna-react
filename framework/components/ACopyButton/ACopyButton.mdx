@@ -1,0 +1,36 @@
+---
+name: Copy Button
+route: /components/copy-button
+components: ACopyButton
+---
+
+# Copy Button
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {ACopyButton} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`<>
+  <ACopyButton value="VALUE TO COPY">
+   Copy value
+  </ACopyButton>
+  <ACopyButton value="VALUE TO COPY" />
+  <ACopyButton value="VALUE TO COPY" tertiaryAlt />
+  <ACopyButton value="VALUE TO COPY" defaultLabel={false} />
+  <ACopyButton value="VALUE TO COPY" defaultLabel={false} tertiaryAlt />
+</>
+`}
+/>
+
+## Copy Button Props
+
+The `ACopyButton` component inherits passed props.
+
+<Props of="ACopyButton" />

@@ -38,6 +38,40 @@ $tooltip-color: map-get($mds-neutral, "neutral-1");
         map-get($theme, "tooltip", "background-color");
     }
   }
+
+  &--context.a-menu-base--top,
+  &--context.a-menu-base--top-left,
+  &--context.a-menu-base--top-right {
+    .a-menu-base__pointer {
+      border-color: map-get($theme, "control", "fill-color") transparent
+        transparent transparent !important;
+    }
+  }
+  &--context.a-menu-base--right,
+  &--context.a-menu-base--right-top,
+  &--context.a-menu-base--right-bottom {
+    .a-menu-base__pointer {
+      border-color: transparent map-get($theme, "control", "fill-color")
+        transparent transparent !important;
+    }
+  }
+
+  &--context.a-menu-base--bottom,
+  &--context.a-menu-base--bottom-left,
+  &--context.a-menu-base--bottom-right {
+    .a-menu-base__pointer {
+      border-color: transparent transparent
+        map-get($theme, "control", "fill-color") transparent !important;
+    }
+  }
+  &--context.a-menu-base--left,
+  &--context.a-menu-base--left-top,
+  &--context.a-menu-base--left-bottom {
+    .a-menu-base__pointer {
+      border-color: transparent transparent transparent
+        map-get($theme, "control", "fill-color") !important;
+    }
+  }
 }
 
 .a-tooltip {
