@@ -1,4 +1,5 @@
-import ADatePicker from './ADatePicker';
-import useADateRange from './useADateRange';
+import ADatePicker from "./ADatePicker";
+import ADateRangePicker from "./ADateRangePicker";
+import useADateRange from "./useADateRange";
 
-export {ADatePicker, useADateRange};
+export {ADatePicker, ADateRangePicker, useADateRange};

@@ -28,7 +28,11 @@ import AContextualNotification from "./components/AContextualNotification";
 import AContextualNotificationMenu from "./components/AContextualNotificationMenu";
 import ACopyButton from "./components/ACopyButton/ACopyButton";
 import ADataTable from "./components/ADataTable";
-import {ADatePicker, useADateRange} from "./components/ADatePicker";
+import {
+  ADatePicker,
+  ADateRangePicker,
+  useADateRange
+} from "./components/ADatePicker";
 import ADialog from "./components/ADialog";
 import ADivider from "./components/ADivider";
 import {ADrawer, ADrawerContent} from "./components/ADrawer";
@@ -152,6 +156,7 @@ export {
   ACopyButton,
   ADataTable,
   ADatePicker,
+  ADateRangePicker,
   ADialog,
   ADivider,
   ADotLoader,
