@@ -1,8 +1,9 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useState, useEffect} from "react";
+import React, {forwardRef, useState, useEffect, useRef} from "react";
 import DateInputs from "./DateInputs";
 import ADatePicker from "./ADatePicker";
 import useADateRange from "./useADateRange";
+import useOutsideClick from "../../hooks/useOutsideClick/useOutsideClick";
 
 const defaultRange = {
   startDT: null,
@@ -21,6 +22,7 @@ const ADateRangePicker = forwardRef(() =>
   // ref
 
   {
+    const calendarRef = useRef(null);
     const [dateRange, setDateRange] = useState(defaultRange);
     const [showCalendar, setShowCalendar] = useState(false);
     const {value, onChange} = useADateRange();
@@ -34,19 +36,19 @@ const ADateRangePicker = forwardRef(() =>
       setDateRange({startDT: calendarStartDate, endDT: calendarEndDate});
     }, [value]);
 
-    useEffect(() => {
-      if (dateRange.startDT && dateRange.endDT) {
-        setShowCalendar(false);
-      }
-    }, [dateRange.startDT, dateRange.endDT]);
-
     const formattedStartDate = dateRange.startDT
       ? new Date(dateRange.startDT)
       : null;
     const formattedEndDate = dateRange.endDT ? new Date(dateRange.endDT) : null;
 
+    useOutsideClick({
+      isEnabled: calendarRef?.current && showCalendar,
+      rootRef: calendarRef,
+      onClick: () => setShowCalendar(false)
+    });
+
     return (
-      <>
+      <div ref={calendarRef}>
         <DateInputs
           openCalendar={setShowCalendar}
           showCalendar={showCalendar}
@@ -59,7 +61,7 @@ const ADateRangePicker = forwardRef(() =>
             onChange={onChange}
           />
         )}
-      </>
+      </div>
     );
   }
 );

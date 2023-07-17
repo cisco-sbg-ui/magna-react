@@ -7,7 +7,8 @@ import {
   isDateBetweenRange,
   isDateTipOfRange,
   isSameDate,
-  sortDates } from "./helpers";
+  sortDates
+} from "./helpers";
 import "./ADatePicker.scss";
 
 const fullMonthNames = [
@@ -28,7 +29,17 @@ const fullMonthNames = [
 const ICON_SIZE = 10;
 
 const ADatePicker = forwardRef(
-  ({className: propsClassName, onChange, value = new Date(), minDate, maxDate, ...rest}, ref) => {
+  (
+    {
+      className: propsClassName,
+      onChange,
+      value = new Date(),
+      minDate,
+      maxDate,
+      ...rest
+    },
+    ref
+  ) => {
     const hasMinDate = minDate instanceof Date;
     const hasMaxDate = maxDate instanceof Date;
     // Because date comparisons in this widget are ...
@@ -47,10 +58,10 @@ const ADatePicker = forwardRef(
       if (!isRange) {
         return value;
       }
-    
+
       // If range has a Date object, use the latest one
       // to initialize the calendar UI
-      const dates = value.filter(d => d instanceof Date);
+      const dates = value.filter((d) => d instanceof Date);
       if (!dates.length) {
         return new Date();
       }
@@ -88,9 +99,14 @@ const ADatePicker = forwardRef(
             className="a-date-picker__prev"
             onClick={() => {
               setCalendarDate(
-                new Date(calendarDate.getFullYear(), calendarDate.getMonth() - 1, 1)
+                new Date(
+                  calendarDate.getFullYear(),
+                  calendarDate.getMonth() - 1,
+                  1
+                )
               );
-            }}>
+            }}
+          >
             <AIcon size={ICON_SIZE}>chevron-left</AIcon>
           </AButton>
           <div className="a-date-picker__title">
@@ -107,9 +123,14 @@ const ADatePicker = forwardRef(
             className="a-date-picker__next"
             onClick={() => {
               setCalendarDate(
-                new Date(calendarDate.getFullYear(), calendarDate.getMonth() + 1, 1)
+                new Date(
+                  calendarDate.getFullYear(),
+                  calendarDate.getMonth() + 1,
+                  1
+                )
               );
-            }}>
+            }}
+          >
             <AIcon size={ICON_SIZE}>chevron-right</AIcon>
           </AButton>
         </div>
@@ -148,17 +169,30 @@ const ADatePicker = forwardRef(
                   {[...Array(7)].map((y, j) => {
                     const currWeekDay = new Date(+sunday);
                     currWeekDay.setDate(currWeekDay.getDate() + j);
-                    const isBeforeMinDate = hasMinDate && Date.parse(currWeekDay) < Date.parse(minDate);
-                    const isPastMaxDate = hasMaxDate && Date.parse(currWeekDay) > Date.parse(maxDate);
-                    const isDisabled = currWeekDay.getMonth() !== calendarDate.getMonth() || isBeforeMinDate || isPastMaxDate;
-                    const isSelected = isRange ?
-                      isDateTipOfRange(currWeekDay, value) :
-                      isSameDate(currWeekDay, value);
-                    const isBetweenRange = isRange && isDateBetweenRange(currWeekDay, value);
+                    const isBeforeMinDate =
+                      hasMinDate &&
+                      Date.parse(currWeekDay) < Date.parse(minDate);
+                    const isPastMaxDate =
+                      hasMaxDate &&
+                      Date.parse(currWeekDay) > Date.parse(maxDate);
+                    const isDisabled =
+                      currWeekDay.getMonth() !== calendarDate.getMonth() ||
+                      isBeforeMinDate ||
+                      isPastMaxDate;
+                    const isSelected = isRange
+                      ? isDateTipOfRange(currWeekDay, value)
+                      : isSameDate(currWeekDay, value);
+                    const isBetweenRange =
+                      isRange && isDateBetweenRange(currWeekDay, value);
                     return (
                       <td
                         key={j}
-                        className={`a-date-picker__day${isDisabled ? " disabled" : ""}${isSelected ? " selected" : ""}${isBetweenRange ? " between" : ""}`}>
+                        className={`a-date-picker__day${
+                          isDisabled ? " disabled" : ""
+                        }${isSelected ? " selected" : ""}${
+                          isBetweenRange ? " between" : ""
+                        }`}
+                      >
                         {isDisabled ? (
                           currWeekDay.getDate()
                         ) : (
@@ -167,7 +201,8 @@ const ADatePicker = forwardRef(
                             className="a-date-picker__day__label"
                             onClick={() => {
                               onChange && onChange(currWeekDay);
-                            }}>
+                            }}
+                          >
                             {currWeekDay.getDate()}
                           </button>
                         )}
@@ -186,7 +221,8 @@ const ADatePicker = forwardRef(
 
 const isValidDateTuple = (range) => {
   const isArray = Array.isArray(range);
-  const isValidTypes = isArray && range.every(value => value instanceof Date || value === null);
+  const isValidTypes =
+    isArray && range.every((value) => value instanceof Date || value === null);
   const isValidLength = isValidTypes && range.length <= 2;
   return isArray && isValidDateTuple && isValidLength;
 };
@@ -194,10 +230,12 @@ const isValidDateTuple = (range) => {
 function rangeTupleValidator(propValue, key, componentName) {
   if (!isValidDateTuple(propValue)) {
     throw new Error(
-      "Invalid prop 'value' supplied to '" + componentName + "'. "
-      + "When using a range, pass a tuple indicting a start and end "
-      + "date, or 'null' if empty."   
-    )
+      "Invalid prop 'value' supplied to '" +
+        componentName +
+        "'. " +
+        "When using a range, pass a tuple indicting a start and end " +
+        "date, or 'null' if empty."
+    );
   }
   return null;
 }
