@@ -16,10 +16,12 @@ $btn-transition: color $transition-duration--extra-fast
     $transition-timing-function--standard !default;
 
 @include theme(a-button) using ($theme) {
+  /*
   &:focus-visible {
     box-shadow: 0 0 0 2px map-deep-get($theme, "button", "focus-visible", "bg"),
       0 0 0 4px map-deep-get($theme, "button", "focus-visible", "control");
   }
+  */
 
   &--primary {
     color: map-deep-get($theme, "button", "primary", "color");
