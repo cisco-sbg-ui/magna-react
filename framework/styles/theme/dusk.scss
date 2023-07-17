@@ -138,6 +138,10 @@ $atomic-dusk: (
     ),
     "group": (
       "color": map-get($grey, "lighten-5")
+    ),
+    "focus-visible": (
+      bg: map-get($mds-dark-theme, "interact-bg-weak-active"),
+      control: map-get($mds-dark-theme, "control-border-focus")
     )
   ),
   "card": (
