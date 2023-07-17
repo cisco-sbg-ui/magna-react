@@ -22,6 +22,13 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
   &__box {
     &:hover:after {
       box-shadow: none;
+      opacity: 0.6;
+    }
+    &:hover {
+      svg {
+        fill: currentColor !important;
+        fill-opacity: 0.7;
+      }
     }
   }
 
