@@ -183,6 +183,10 @@ $date-picker-day-border-radius: 4px;
   }
 }
 
+.a-date-range-picker {
+  width: $date-picker-width;
+}
+
 .a-date-picker {
   display: block;
   height: $date-picker-height;

@@ -31,7 +31,8 @@ import ADataTable from "./components/ADataTable";
 import {
   ADatePicker,
   ADateRangePicker,
-  useADateRange
+  useADateRange,
+  useGetADateRange
 } from "./components/ADatePicker";
 import ADialog from "./components/ADialog";
 import ADivider from "./components/ADivider";
@@ -235,6 +236,7 @@ export {
   ATriggerTooltip,
   useABreakpoint,
   useADateRange,
+  useGetADateRange,
   useAAutoTheme,
   useATheme,
   useAToaster,

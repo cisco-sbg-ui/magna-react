@@ -35,11 +35,11 @@ const DateInputs = ({openCalendar, setDateRange, dateRange}) => {
         label="Start date"
         labelHidden
         className="a-date-picker__inputs--start"
-        clearable
         onClick={handleInput}
+        onKeyUp={handleInput}
         placeholder="Start date"
         appendIcon="arrow-right"
-        value={dateRange.startDT}
+        value={dateRange.startDT ?? ""}
         onChange={(e) => {
           if (tempValidateDate(e.target.value)) {
             setDateRange({
@@ -54,10 +54,10 @@ const DateInputs = ({openCalendar, setDateRange, dateRange}) => {
         labelHidden
         className="a-date-picker__inputs--end"
         placeholder="End date"
-        clearable
         onClick={handleInput}
+        onKeyUp={handleInput}
         appendIcon="calendar"
-        value={dateRange.endDT}
+        value={dateRange.endDT ?? ""}
         onChange={(e) => {
           if (tempValidateDate(e.target.value)) {
             setDateRange({

@@ -10,22 +10,13 @@ const defaultRange = {
   endDT: null
 };
 
-const ADateRangePicker = forwardRef(() =>
-  // {
-  //   className: propsClassName,
-  //   onChange,
-  //   value = new Date(),
-  //   minDate,
-  //   maxDate,
-  //   ...rest
-  // },
-  // ref
-
-  {
+const ADateRangePicker = forwardRef(
+  ({className, getDateRange, options, ...rest}, ref) => {
     const calendarRef = useRef(null);
     const [dateRange, setDateRange] = useState(defaultRange);
     const [showCalendar, setShowCalendar] = useState(false);
-    const {value, onChange} = useADateRange();
+    const {value, onChange, ...datePickerProps} = useADateRange(options);
+    const inputClassName = "a-date-range-picker";
 
     useEffect(() => {
       const calendarStartDate =
@@ -41,6 +32,13 @@ const ADateRangePicker = forwardRef(() =>
       : null;
     const formattedEndDate = dateRange.endDT ? new Date(dateRange.endDT) : null;
 
+    const formattedDates = [formattedStartDate, formattedEndDate];
+
+    useEffect(() => {
+      getDateRange(formattedDates);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [dateRange]);
+
     useOutsideClick({
       isEnabled: calendarRef?.current && showCalendar,
       rootRef: calendarRef,
@@ -48,7 +46,7 @@ const ADateRangePicker = forwardRef(() =>
     });
 
     return (
-      <div ref={calendarRef}>
+      <div id="calendarContainer" ref={calendarRef} className={inputClassName}>
         <DateInputs
           openCalendar={setShowCalendar}
           showCalendar={showCalendar}
@@ -57,8 +55,12 @@ const ADateRangePicker = forwardRef(() =>
         />
         {showCalendar && (
           <ADatePicker
-            value={[formattedStartDate, formattedEndDate]}
+            ref={ref}
+            className={className}
+            value={formattedDates}
             onChange={onChange}
+            {...datePickerProps}
+            {...rest}
           />
         )}
       </div>

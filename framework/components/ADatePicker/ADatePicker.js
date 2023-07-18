@@ -91,7 +91,7 @@ const ADatePicker = forwardRef(
     }
 
     return (
-      <div {...rest} ref={ref} className={className}>
+      <div {...rest} title="Datepicker" ref={ref} className={className}>
         <div className="a-date-picker__header">
           <AButton
             tertiaryAlt
