@@ -216,6 +216,7 @@ const ACheckbox = forwardRef(
           onClick={onClick}
           onKeyDown={handleKeyDown}
           aria-checked={checked}
+          aria-labelledby={children}
           role="checkbox"
           tabIndex={0}
         >

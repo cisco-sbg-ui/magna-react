@@ -96,6 +96,8 @@ import {ACheckbox} from "@cisco-sbg-ui/magna-react";
 
 ## No label wrapper
 
+For accessibility, pass the label as `children`. When `withLabel` is set to false, the checkbox will _not_ be wrapped in the `<label`> component, but it will be set as `aria-labeledby`.
+
 <Playground
   code={`() => {
   const [checked, setChecked] = useState(false);
