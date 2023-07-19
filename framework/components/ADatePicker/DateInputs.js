@@ -3,11 +3,13 @@ import React, {useState, useEffect} from "react";
 import ATextInput from "../ATextInput";
 
 //TEMP FOR DEVELOPMENT PURPOSES ONLY - REPLACE WITH MORE ROBUST DATE VALIDATION LIBRARY
+var date_regex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
+var date_regex_noZero = /^([1-9]|1[0-2])\/([1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
 const tempValidateDate = (date) => {
-  if (!date || isNaN(Date.parse(date))) {
-    return false;
-  }
-  return true;
+  const invalidDate =
+    ((!date || isNaN(Date.parse(date))) && !date_regex.test(date)) ||
+    !date_regex_noZero.test(date);
+  return !invalidDate;
 };
 
 const DateInputs = ({openCalendar, setDateRange, dateRange}) => {
