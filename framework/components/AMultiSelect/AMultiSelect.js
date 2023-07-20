@@ -14,7 +14,7 @@ import AMenu from "../AMenu";
 import {AListItem} from "../AList";
 import AEmptyState from "../AEmptyState";
 import {useCombinedRefs} from "../../utils/hooks";
-import {keyCodes} from "../../utils/helpers";
+import {keyCodes, localeIncludes} from "../../utils/helpers";
 import useMenuSpacing from "../AMenuBase/hooks";
 import useOutsideClick from "../../hooks/useOutsideClick/useOutsideClick";
 import usePopupQuickExit from "../../hooks/usePopupQuickExit/usePopupQuickExit";
@@ -79,7 +79,13 @@ const AMultiSelect = forwardRef(
           } else if (typeof item === "object") {
             displayValue = item[itemText];
           }
-          return displayValue && displayValue.toLowerCase().includes(val);
+          return (
+            displayValue &&
+            localeIncludes(displayValue, val, {
+              usage: "search",
+              sensitivity: "base"
+            })
+          );
         };
     const filteredItems = filterValue
       ? items.filter((item) => {
