@@ -27,6 +27,19 @@ const DateInputs = ({openCalendar, setDateRange, dateRange}) => {
     openCalendar(true);
   };
 
+  //Clear end date if start date is greater
+  useEffect(() => {
+    if (dateRange.startDT && dateRange.endDT) {
+      if (Date.parse(dateRange.startDT) > Date.parse(dateRange.endDT)) {
+        setDateRange({
+          ...dateRange,
+          endDT: null
+        });
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dateRange.startDT, dateRange.endDT]);
+
   return (
     <div
       className={`a-date-picker__inputs ${hover ? "inputs--hover" : ""}`}
