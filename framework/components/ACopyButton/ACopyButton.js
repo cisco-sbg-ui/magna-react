@@ -56,7 +56,7 @@ const ACopyButton = forwardRef(
         <AButton
           ref={ref}
           className="a-copy-button"
-          iconOnly={!children}
+          icon={!children}
           onClick={() => {
             copyToClipboard(value, containerId);
             setClicked(clicked + 1);
