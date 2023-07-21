@@ -280,3 +280,32 @@ export const isForwardTab = (e) => {
   const isTabbingForward = !isBackwardTab(e) && key === "Tab";
   return isTabbingForward;
 };
+
+export const localeIncludes = (
+  string,
+  searchString,
+  {position = 0, locales, ...options} = {}
+) => {
+  if (
+    string === undefined ||
+    string === null ||
+    searchString === undefined ||
+    searchString === null
+  ) {
+    return true;
+  }
+
+  const lengthDiff = string.length - searchString.length;
+
+  for (let i = position; i <= lengthDiff; i++) {
+    if (
+      string
+        .substring(i, i + searchString.length)
+        .localeCompare(searchString, locales, options) === 0
+    ) {
+      return true;
+    }
+  }
+
+  return false;
+};
