@@ -308,6 +308,8 @@ export const localeIncludes = (
   }
 
   return false;
+};
+
 export const copyToClipboard = (value, containerId) => {
   const parentEl = containerId
     ? document.getElementById(containerId)
