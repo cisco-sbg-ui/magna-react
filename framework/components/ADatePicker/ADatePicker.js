@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useMemo, useState} from "react";
+import React, {forwardRef, useMemo, useState, useEffect} from "react";
 
 import AButton from "../AButton";
 import AIcon from "../AIcon";
@@ -52,7 +52,8 @@ const ADatePicker = forwardRef(
       maxDate.setHours(0, 0, 0, 0);
     }
     const isRange = Array.isArray(value);
-    const [calendarDate, setCalendarDate] = useState(() => {
+
+    const handleInitialDate = () => {
       const isRange = Array.isArray(value);
 
       if (!isRange) {
@@ -66,7 +67,15 @@ const ADatePicker = forwardRef(
         return new Date();
       }
       return sortDates(dates)[dates.length - 1];
-    });
+    };
+    const [calendarDate, setCalendarDate] = useState(handleInitialDate);
+
+    //When value changes, update calendar UI.
+    useEffect(() => {
+      setCalendarDate(handleInitialDate());
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [value]);
+
     const firstCalendarDate = useMemo(() => {
       let currDate = new Date(
         calendarDate.getFullYear(),
