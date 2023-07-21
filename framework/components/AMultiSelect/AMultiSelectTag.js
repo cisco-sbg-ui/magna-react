@@ -26,10 +26,11 @@ const AMultiSelectTag = ({
   }
 
   return (
-    <ATag>
+    <ATag small>
       {displayValue}
       <AButton
         icon
+        small
         tertiaryAlt
         onClick={(e) => {
           e.stopPropagation();
