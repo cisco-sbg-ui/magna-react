@@ -3,7 +3,7 @@ import React, {forwardRef, useState, useEffect, useRef} from "react";
 import DateInputs from "./DateInputs";
 import ADatePicker from "./ADatePicker";
 import useADateRange from "./useADateRange";
-import useOutsideClick from "../../hooks/useOutsideClick/useOutsideClick";
+import AMenu from "../AMenu/AMenu";
 
 const defaultRange = {
   startDT: null,
@@ -11,12 +11,22 @@ const defaultRange = {
 };
 
 const ADateRangePicker = forwardRef(
-  ({className, getDateRange, options, ...rest}, ref) => {
+  (
+    {className, getDateRange, options, initialRange, maxDays, minDays, ...rest},
+    ref
+  ) => {
+    const defaultOptions = options || {
+      initialRange: initialRange,
+      maxDays: maxDays,
+      minDays: minDays
+    };
     const calendarRef = useRef(null);
     const [dateRange, setDateRange] = useState(defaultRange);
     const [showCalendar, setShowCalendar] = useState(false);
-    const {value, onChange, ...datePickerProps} = useADateRange(options);
-    const inputClassName = "a-date-range-picker";
+    const {value, onChange, ...datePickerProps} = useADateRange(defaultOptions);
+
+    const inputClassName = "a-date-range-picker",
+      menuClassName = "a-menu--datepicker";
 
     useEffect(() => {
       const calendarStartDate =
@@ -39,21 +49,22 @@ const ADateRangePicker = forwardRef(
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dateRange]);
 
-    useOutsideClick({
-      isEnabled: calendarRef?.current && showCalendar,
-      rootRef: calendarRef,
-      onClick: () => setShowCalendar(false)
-    });
-
     return (
-      <div id="calendarContainer" ref={calendarRef} className={inputClassName}>
+      <div id="calendarContainer" className={inputClassName} ref={calendarRef}>
         <DateInputs
           openCalendar={setShowCalendar}
           showCalendar={showCalendar}
           setDateRange={setDateRange}
           dateRange={dateRange}
         />
-        {showCalendar && (
+        <AMenu
+          anchorRef={calendarRef}
+          open={showCalendar}
+          closeOnClick={false}
+          placement="bottom"
+          className={menuClassName}
+          onClose={() => setShowCalendar(false)}
+        >
           <ADatePicker
             ref={ref}
             className={className}
@@ -62,7 +73,7 @@ const ADateRangePicker = forwardRef(
             {...datePickerProps}
             {...rest}
           />
-        )}
+        </AMenu>
       </div>
     );
   }
