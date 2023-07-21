@@ -1,0 +1,13 @@
+@import "../../styles";
+
+.a-copy-button-tooltip.a-copy-button-tooltip--copied {
+  padding: 0 !important;
+  max-width: unset;
+  .a-context {
+    margin: 0;
+    border-radius: $border-radius--lg;
+    border-left: 0;
+    white-space: nowrap;
+    align-items: center;
+  }
+}

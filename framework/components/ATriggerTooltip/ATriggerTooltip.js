@@ -13,6 +13,7 @@ const ATriggerTooltip = ({
   trigger = "hover",
   openDelay = 400,
   closeDelay,
+  onClose,
   content,
   disabled = false,
   wrapChildren = false,
@@ -40,11 +41,18 @@ const ATriggerTooltip = ({
     return element.offsetWidth < element.scrollWidth;
   }, [onlyIfTruncated, anchorRef, childrenRef]);
 
-  const {isOpen, open, close, toggle} = useToggle(
-    openDelay,
-    closeDelay,
-    checkForTruncation
-  );
+  const {
+    isOpen,
+    open,
+    close: toggleClose,
+    toggle
+  } = useToggle(openDelay, closeDelay, checkForTruncation);
+
+  const close = useCallback(() => {
+    toggleClose();
+
+    onClose && onClose();
+  }, [toggleClose, onClose]);
 
   useOutsideClick({
     isEnabled: triggerRef && triggerRef.current && trigger === "click",
@@ -146,6 +154,10 @@ ATriggerTooltip.propTypes = {
   openDelay: PropTypes.number,
   /** Delay in milliseconds before tooltip will close */
   closeDelay: PropTypes.number,
+  /**
+   * On close callback
+   */
+  onClose: PropTypes.func,
   /** Tooltip content */
   content: PropTypes.node,
   /** Disable the tooltip */
