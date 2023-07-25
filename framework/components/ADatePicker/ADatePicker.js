@@ -7,7 +7,8 @@ import {
   isDateBetweenRange,
   isDateTipOfRange,
   isSameDate,
-  sortDates
+  sortDates,
+  rangeTupleValidator
 } from "./helpers";
 import "./ADatePicker.scss";
 
@@ -63,6 +64,9 @@ const ADatePicker = forwardRef(
       // If range has a Date object, use the latest one
       // to initialize the calendar UI
       const dates = value.filter((d) => d instanceof Date);
+      if (hasMinDate) {
+        return minDate;
+      }
       if (!dates.length) {
         return new Date();
       }
@@ -227,27 +231,6 @@ const ADatePicker = forwardRef(
     );
   }
 );
-
-const isValidDateTuple = (range) => {
-  const isArray = Array.isArray(range);
-  const isValidTypes =
-    isArray && range.every((value) => value instanceof Date || value === null);
-  const isValidLength = isValidTypes && range.length <= 2;
-  return isArray && isValidDateTuple && isValidLength;
-};
-
-function rangeTupleValidator(propValue, key, componentName) {
-  if (!isValidDateTuple(propValue)) {
-    throw new Error(
-      "Invalid prop 'value' supplied to '" +
-        componentName +
-        "'. " +
-        "When using a range, pass a tuple indicting a start and end " +
-        "date, or 'null' if empty."
-    );
-  }
-  return null;
-}
 
 ADatePicker.propTypes = {
   /**

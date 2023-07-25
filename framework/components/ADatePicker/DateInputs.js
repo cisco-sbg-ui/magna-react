@@ -1,19 +1,22 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useRef} from "react";
 
 import ATextInput from "../ATextInput";
 
 //TEMP FOR DEVELOPMENT PURPOSES ONLY - REPLACE WITH MORE ROBUST DATE VALIDATION LIBRARY
-var date_regex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
-var date_regex_noZero = /^([1-9]|1[0-2])\/([1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
+var date_regex =
+  /^(0[1-9]|[1-9]|1[0-2])\/(0[1-9]|[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
 const tempValidateDate = (date) => {
   const invalidDate =
-    ((!date || isNaN(Date.parse(date))) && !date_regex.test(date)) ||
-    !date_regex_noZero.test(date);
+    !date || isNaN(Date.parse(date)) || !date_regex.test(date);
   return !invalidDate;
 };
 
-const DateInputs = ({openCalendar, setDateRange, dateRange}) => {
+const DateInputs = ({openCalendar, setDateRange, dateRange, ...rest}) => {
   const [hover, setHover] = useState(false);
+  const [invalid, setInvalid] = useState(false);
+  const {maxDate, minDate} = {...rest};
+  const hasMinDate = minDate instanceof Date;
+  const hasMaxDate = maxDate instanceof Date;
 
   useEffect(() => {
     const hasFocus = document.querySelectorAll(".a-input-base--focused").length;
@@ -27,14 +30,10 @@ const DateInputs = ({openCalendar, setDateRange, dateRange}) => {
     openCalendar(true);
   };
 
-  //Clear end date if start date is greater
   useEffect(() => {
     if (dateRange.startDT && dateRange.endDT) {
       if (Date.parse(dateRange.startDT) > Date.parse(dateRange.endDT)) {
-        setDateRange({
-          ...dateRange,
-          endDT: null
-        });
+        setInvalid(true);
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -42,7 +41,9 @@ const DateInputs = ({openCalendar, setDateRange, dateRange}) => {
 
   return (
     <div
-      className={`a-date-picker__inputs ${hover ? "inputs--hover" : ""}`}
+      className={`a-date-picker__inputs ${hover ? "inputs--hover" : ""} ${
+        invalid ? "inputs--invalid" : ""
+      }`}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
@@ -57,10 +58,19 @@ const DateInputs = ({openCalendar, setDateRange, dateRange}) => {
         value={dateRange.startDT ?? ""}
         onChange={(e) => {
           if (tempValidateDate(e.target.value)) {
-            setDateRange({
-              ...dateRange,
-              startDT: new Date(e.target.value).toLocaleDateString()
-            });
+            const minDateInvalid =
+              hasMinDate && Date.parse(e.target.value) < Date.parse(minDate);
+            if (minDateInvalid) {
+              setInvalid(true);
+            } else {
+              setDateRange({
+                ...dateRange,
+                startDT: new Date(e.target.value).toLocaleDateString()
+              });
+              setInvalid(false);
+            }
+          } else {
+            setInvalid(true);
           }
         }}
       />
@@ -75,10 +85,20 @@ const DateInputs = ({openCalendar, setDateRange, dateRange}) => {
         value={dateRange.endDT ?? ""}
         onChange={(e) => {
           if (tempValidateDate(e.target.value)) {
-            setDateRange({
-              ...dateRange,
-              endDT: new Date(e.target.value).toLocaleDateString()
-            });
+            const maxDateInvalid =
+              hasMaxDate && Date.parse(e.target.value) > Date.parse(maxDate);
+
+            if (maxDateInvalid) {
+              setInvalid(true);
+            } else {
+              setDateRange({
+                ...dateRange,
+                endDT: new Date(e.target.value).toLocaleDateString()
+              });
+              setInvalid(false);
+            }
+          } else {
+            setInvalid(true);
           }
         }}
       />

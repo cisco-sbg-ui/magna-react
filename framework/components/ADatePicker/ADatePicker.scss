@@ -132,15 +132,24 @@ $date-picker-day-border-radius: 4px;
       border-color: map-deep-get($theme, "control", "stroke-color");
     }
 
-    &.inputs--hover {
-      .a-input-base__surface {
-        border-color: map-deep-get($theme, "text-input", "border-color--focus");
-      }
+    &.inputs--hover,
+    &.inputs--invalid {
       .a-date-picker__inputs--start .a-input-base__surface {
         border-right: 0;
       }
       .a-date-picker__inputs--end .a-input-base__surface {
         border-left: 0;
+      }
+    }
+    &.inputs--hover:not(.a-date-picker__inputs-inputs--invalid) {
+      .a-input-base__surface {
+        border-color: map-deep-get($theme, "text-input", "border-color--focus");
+      }
+    }
+    &.inputs--invalid {
+      box-shadow: 0px 0px 0px 2px map-deep-get($theme, "alert", "danger-bg");
+      .a-input-base__surface {
+        border-color: map-deep-get($theme, "color", "error--state-hover");
       }
     }
 
