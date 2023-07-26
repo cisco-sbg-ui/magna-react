@@ -149,7 +149,11 @@ $date-picker-day-border-radius: 4px;
     &.inputs--invalid {
       box-shadow: 0px 0px 0px 2px map-deep-get($theme, "alert", "danger-bg");
       .a-input-base__surface {
-        border-color: map-deep-get($theme, "color", "error--state-hover");
+        border-color: map-deep-get(
+          $theme,
+          "color",
+          "error--state-hover"
+        ) !important; //Override gray border on focused field
       }
     }
 
