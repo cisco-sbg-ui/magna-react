@@ -1,7 +1,7 @@
 ---
 name: Date Pickers
 route: /components/date-picker
-components: ADatePicker, useDateRange
+components: ADatePicker, ADateRangePicker, useDateRange
 ---
 
 # Date Picker
@@ -11,7 +11,7 @@ components: ADatePicker, useDateRange
 Integrate with your build to [auto-import](/#integrating), or add an import in your component:
 
 ```
-import {ADatePicker} from "@cisco-sbg-ui/magna-react";
+import {ADatePicker, ADateRangePicker} from "@cisco-sbg-ui/magna-react";
 ```
 
 ## Usage
@@ -101,3 +101,34 @@ import {ADatePicker} from "@cisco-sbg-ui/magna-react";
 The `ADatePicker` component inherits passed props.
 
 <Props of="ADatePicker" />
+
+## Date Range with inputs provided
+
+<Playground
+  code={`() => {
+  const {dates, getDateRange} = useGetADateRange();
+  const [startDate, endDate] = dates;
+return (
+
+<>
+  <ADateRangePicker
+    getDateRange={getDateRange}
+    initialRange={[new Date(2022, 2, 28), new Date(2022, 3, 5)]}
+  />
+  {startDate && (
+    <p aria-live="polite">
+      Selected range:
+      <i>
+        {startDate.toLocaleDateString()} -{" "}
+        {endDate && endDate.toLocaleDateString()}
+      </i>
+    </p>
+  )}
+</>
+); } `} />
+
+## Date Range Picker Props
+
+The `ADateRangePicker` component inherits passed props.
+
+<Props of="ADateRangePicker" />

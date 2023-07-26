@@ -19,6 +19,7 @@ const AInputBase = forwardRef(
       hint,
       surfaceRef,
       label,
+      labelHidden,
       labelFor,
       labelId,
       onClear,
@@ -82,6 +83,7 @@ const AInputBase = forwardRef(
         label={label}
         labelId={labelId}
         labelFor={labelFor}
+        labelHidden={labelHidden}
         onClickLabel={onClickLabel}
         hint={hint}
         validationState={validationState}

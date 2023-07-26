@@ -409,9 +409,9 @@ $atomic-dusk: (
     "border-color--readonly": map-get($mds-dark-theme, "component-border"),
     "border-color": map-get($mds-dark-theme, "component-border"),
     "border-color--hover": map-get($mds-interactive, "interactive-6"),
-    "border-color--focus": map-get($mds-interactive, "interactive-4"),
-    "border-color--active": map-get($mds-interactive, "interactive-4"),
-    "box-shadow-color--active": map-get($mds-interactive, "interactive-8"),
+    "border-color--focus": map-get($mds-interactive, "interactive-7"),
+    "border-color--active": map-get($mds-interactive, "interactive-7"),
+    "box-shadow-color--active": #5191f080,
     "bg--readonly": map-get($mds-dark-theme, "background"),
     "icon-fill": map-get($mds-neutral, "neutral-6")
   ),

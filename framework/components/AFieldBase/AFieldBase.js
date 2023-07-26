@@ -16,6 +16,7 @@ const AFieldBase = forwardRef(
       hint,
       hintUsesValidationState = true,
       label,
+      labelHidden = false,
       labelFor,
       labelId,
       onClickLabel,
@@ -76,7 +77,7 @@ const AFieldBase = forwardRef(
             id={labelId}
             htmlFor={labelFor}
             onClick={onClickLabel}
-            className="a-field-base__label"
+            className={`a-field-base__label ${labelHidden ? "d-none" : ""}`}
           >
             {label}
             {required && (

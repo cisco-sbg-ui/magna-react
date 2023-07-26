@@ -400,9 +400,9 @@ $atomic-default: (
     "border-color--readonly": map-get($mds-light-theme, "component-border"),
     "border-color": map-get($mds-light-theme, "component-border"),
     "border-color--hover": map-get($mds-interactive, "interactive-5"),
-    "border-color--focus": #4a84e8,
-    "border-color--active": #4a84e8,
-    "box-shadow-color--active": #d1e2ff,
+    "border-color--focus": map-get($mds-interactive, "interactive-10"),
+    "border-color--active": map-get($mds-interactive, "interactive-10"),
+    "box-shadow-color--active": #d8e6fa,
     "bg--readonly": map-get($mds-light-theme, "background"),
     "icon-fill": map-get($mds-neutral, "neutral-9")
   ),

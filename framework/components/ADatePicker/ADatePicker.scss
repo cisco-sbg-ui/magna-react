@@ -120,6 +120,89 @@ $date-picker-day-border-radius: 4px;
   & .disabled {
     color: map-deep-get($theme, "base", "color--disabled");
   }
+
+  &__inputs {
+    display: flex;
+    position: relative;
+    width: $date-picker-width;
+    border-radius: $border-radius--lg;
+    margin-bottom: 5px;
+
+    .a-input-base__surface:hover {
+      border-color: map-deep-get($theme, "control", "stroke-color");
+    }
+
+    &.inputs--hover,
+    &.inputs--invalid {
+      .a-date-picker__inputs--start .a-input-base__surface {
+        border-right: 0;
+      }
+      .a-date-picker__inputs--end .a-input-base__surface {
+        border-left: 0;
+      }
+    }
+    &.inputs--hover:not(.a-date-picker__inputs-inputs--invalid) {
+      .a-input-base__surface {
+        border-color: map-deep-get($theme, "text-input", "border-color--focus");
+      }
+    }
+    &.inputs--invalid {
+      box-shadow: 0px 0px 0px 2px map-deep-get($theme, "alert", "danger-bg");
+      .a-input-base__surface {
+        border-color: map-deep-get(
+          $theme,
+          "color",
+          "error--state-hover"
+        ) !important; //Override gray border on focused field
+      }
+    }
+
+    .a-input-base--focused {
+      .a-input-base__surface {
+        border-color: map-deep-get($theme, "control", "stroke-color");
+        box-shadow: none;
+      }
+    }
+    &--start {
+      .a-input-base__surface {
+        border-right: none;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: $border-radius--xlg; //clip input's base border-radius to avoid showing above focus's border-radius
+        border-bottom-left-radius: $border-radius--xlg; //clip input's base border-radius to avoid showing above focus's border-radius
+        :focus {
+          border: 2px solid
+            map-deep-get($theme, "text-input", "border-color--focus");
+          box-shadow: 0px 0px 0px 2px
+            map-deep-get($theme, "text-input", "box-shadow-color--active");
+          border-radius: $border-radius--lg;
+        }
+      }
+    }
+    &--end {
+      .a-input-base__surface {
+        border-left: none;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        :focus {
+          border: 2px solid
+            map-deep-get($theme, "text-input", "border-color--focus");
+          box-shadow: 0px 0px 0px 2px
+            map-deep-get($theme, "text-input", "box-shadow-color--active");
+          border-radius: $border-radius--lg;
+        }
+      }
+    }
+  }
+}
+
+//Prevent double border from a-menu
+.a-menu--datepicker {
+  border: none;
+}
+
+.a-date-range-picker {
+  width: $date-picker-width;
 }
 
 .a-date-picker {
