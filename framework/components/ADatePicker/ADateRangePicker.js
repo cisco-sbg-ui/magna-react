@@ -56,7 +56,7 @@ const ADateRangePicker = forwardRef(
     }, [dateRange]);
 
     return (
-      <div id="calendarContainer" className={inputClassName} ref={calendarRef}>
+      <div className={inputClassName} ref={calendarRef}>
         <DateInputs
           openCalendar={setShowCalendar}
           showCalendar={showCalendar}
