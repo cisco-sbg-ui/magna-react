@@ -18,6 +18,7 @@ const ADateRangePicker = forwardRef(
       getDateRange,
       initialRange = new Date(),
       maxDays = null,
+      label,
       ...rest
     },
     ref
@@ -61,6 +62,7 @@ const ADateRangePicker = forwardRef(
           openCalendar={setShowCalendar}
           showCalendar={showCalendar}
           setDateRange={setDateRange}
+          label={label}
           dateRange={dateRange}
           {...rest}
         />
@@ -115,7 +117,11 @@ ADateRangePicker.propTypes = {
   /**
    * The maximum date allowed for selection
    */
-  maxDate: PropTypes.instanceOf(Date)
+  maxDate: PropTypes.instanceOf(Date),
+  /**
+   * Optional label for the date picker
+   */
+  label: PropTypes.string
 };
 
 ADateRangePicker.displayName = "ADateRangePicker";

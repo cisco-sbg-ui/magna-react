@@ -121,12 +121,16 @@ $date-picker-day-border-radius: 4px;
     color: map-deep-get($theme, "base", "color--disabled");
   }
 
+  &__range-label {
+    font-weight: 600;
+    line-height: 2;
+  }
+
   &__inputs {
     display: flex;
     position: relative;
     width: $date-picker-width;
     border-radius: $border-radius--lg;
-    margin-bottom: 5px;
 
     .a-input-base__surface:hover {
       border-color: map-deep-get($theme, "control", "stroke-color");

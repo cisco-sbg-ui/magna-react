@@ -11,7 +11,13 @@ const tempValidateDate = (date) => {
   return !invalidDate;
 };
 
-const DateInputs = ({openCalendar, setDateRange, dateRange, ...rest}) => {
+const DateInputs = ({
+  openCalendar,
+  setDateRange,
+  dateRange,
+  label,
+  ...rest
+}) => {
   const [hover, setHover] = useState(false);
   const [invalid, setInvalid] = useState(false);
   const {maxDate, minDate} = {...rest};
@@ -38,71 +44,85 @@ const DateInputs = ({openCalendar, setDateRange, dateRange, ...rest}) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateRange.startDT, dateRange.endDT]);
-
   return (
-    <div
-      className={`a-date-picker__inputs ${hover ? "inputs--hover" : ""} ${
-        invalid ? "inputs--invalid" : ""
-      }`}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-    >
-      <ATextInput
-        label="Start date"
-        labelHidden
-        className="a-date-picker__inputs--start"
-        onClick={handleInput}
-        onKeyUp={handleInput}
-        placeholder="Start date"
-        appendIcon="arrow-right"
-        value={dateRange.startDT ?? ""}
-        onChange={(e) => {
-          if (tempValidateDate(e.target.value)) {
-            const minDateInvalid =
-              hasMinDate && Date.parse(e.target.value) < Date.parse(minDate);
-            if (minDateInvalid) {
-              setInvalid(true);
+    <>
+      {label && (
+        // Allow an actionable label
+        // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+        <span
+          className="a-date-picker__range-label"
+          onClick={handleInput}
+          onKeyUp={handleInput}
+          aria-label="Date range inputs label"
+        >
+          {label}
+        </span>
+      )}
+      <div
+        className={`a-date-picker__inputs ${hover ? "inputs--hover" : ""} ${
+          invalid ? "inputs--invalid" : ""
+        }`}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        aria-label="Date picker inputs"
+      >
+        <ATextInput
+          label="Start date"
+          labelHidden
+          className="a-date-picker__inputs--start"
+          onClick={handleInput}
+          onKeyUp={handleInput}
+          placeholder="Start date"
+          appendIcon="arrow-right"
+          value={dateRange.startDT ?? ""}
+          onChange={(e) => {
+            if (tempValidateDate(e.target.value)) {
+              const minDateInvalid =
+                hasMinDate && Date.parse(e.target.value) < Date.parse(minDate);
+              if (minDateInvalid) {
+                setInvalid(true);
+              } else {
+                setDateRange({
+                  ...dateRange,
+                  startDT: new Date(e.target.value).toLocaleDateString()
+                });
+                setInvalid(false);
+              }
             } else {
-              setDateRange({
-                ...dateRange,
-                startDT: new Date(e.target.value).toLocaleDateString()
-              });
-              setInvalid(false);
+              setInvalid(true);
             }
-          } else {
-            setInvalid(true);
-          }
-        }}
-      />
-      <ATextInput
-        label="End date"
-        labelHidden
-        className="a-date-picker__inputs--end"
-        placeholder="End date"
-        onClick={handleInput}
-        onKeyUp={handleInput}
-        appendIcon="calendar"
-        value={dateRange.endDT ?? ""}
-        onChange={(e) => {
-          if (tempValidateDate(e.target.value)) {
-            const maxDateInvalid =
-              hasMaxDate && Date.parse(e.target.value) > Date.parse(maxDate);
+          }}
+        />
+        <ATextInput
+          label="End date"
+          labelHidden
+          className="a-date-picker__inputs--end"
+          placeholder="End date"
+          onClick={handleInput}
+          onKeyUp={handleInput}
+          appendIcon="calendar"
+          value={dateRange.endDT ?? ""}
+          onChange={(e) => {
+            if (tempValidateDate(e.target.value)) {
+              const maxDateInvalid =
+                hasMaxDate && Date.parse(e.target.value) > Date.parse(maxDate);
 
-            if (maxDateInvalid) {
-              setInvalid(true);
+              if (maxDateInvalid) {
+                setInvalid(true);
+              } else {
+                setDateRange({
+                  ...dateRange,
+                  endDT: new Date(e.target.value).toLocaleDateString()
+                });
+                setInvalid(false);
+              }
             } else {
-              setDateRange({
-                ...dateRange,
-                endDT: new Date(e.target.value).toLocaleDateString()
-              });
-              setInvalid(false);
+              setInvalid(true);
             }
-          } else {
-            setInvalid(true);
-          }
-        }}
-      />
-    </div>
+          }}
+        />
+      </div>
+    </>
   );
 };
 
