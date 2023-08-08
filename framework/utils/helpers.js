@@ -326,3 +326,37 @@ export const copyToClipboard = (value, containerId) => {
   document.execCommand("copy");
   parentEl.removeChild(t);
 };
+
+const isFormControl = (element) => {
+  if (!element?.tagName) {
+    return false;
+  } else {
+    return ["input", "select", "textarea", "button"].includes(
+      element.tagName.toLowerCase()
+    );
+  }
+};
+
+export const canNodeReceiveFocus = (node) => {
+  if (!node) {
+    return false;
+  }
+
+  if (node.hidden || node.disabled) {
+    return false;
+  }
+
+  if (parseInt(node.tabIndex) >= 0) {
+    return true;
+  }
+
+  if (isFormControl(node) && parseInt(node.tabIndex) >= 0) {
+    return true;
+  }
+
+  if (node.isContentEditable) {
+    return true;
+  }
+
+  return false;
+};

@@ -1,5 +1,9 @@
 import {useCallback, useEffect} from "react";
-import {isBackwardTab, isForwardTab} from "../../utils/helpers";
+import {
+  canNodeReceiveFocus,
+  isBackwardTab,
+  isForwardTab
+} from "../../utils/helpers";
 
 function createTrap(walker) {
   return function trap(e) {
@@ -37,9 +41,9 @@ export default function useFocusTrap({
   autoFocusElementRef,
   isEnabled = true
 }) {
-  const canNodeReceiveFocus = useCallback(
+  const getTreeWalkerNodeDisposition = useCallback(
     (node) => {
-      if (node === rootRef?.current || node.tabIndex >= 0) {
+      if (node === rootRef?.current || canNodeReceiveFocus(node)) {
         return NodeFilter.FILTER_ACCEPT;
       } else {
         return NodeFilter.FILTER_SKIP;
@@ -54,7 +58,7 @@ export default function useFocusTrap({
         rootRef.current,
         NodeFilter.SHOW_ELEMENT,
         {
-          acceptNode: canNodeReceiveFocus
+          acceptNode: getTreeWalkerNodeDisposition
         }
       );
 
@@ -76,7 +80,7 @@ export default function useFocusTrap({
         });
       } else if (
         rootRef?.current.contains(document.activeElement) &&
-        canNodeReceiveFocus(document?.activeElement) ===
+        getTreeWalkerNodeDisposition(document?.activeElement) ===
           NodeFilter.FILTER_ACCEPT
       ) {
         // This covers the situation when a developer passes `autoFocusElement` as a
@@ -91,5 +95,5 @@ export default function useFocusTrap({
       document.addEventListener("keydown", trap);
       return () => document.removeEventListener("keydown", trap);
     }
-  }, [rootRef, autoFocusElementRef, isEnabled, canNodeReceiveFocus]);
+  }, [rootRef, autoFocusElementRef, isEnabled, getTreeWalkerNodeDisposition]);
 }
