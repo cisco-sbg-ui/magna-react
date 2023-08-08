@@ -1,4 +1,4 @@
-import {useEffect} from "react";
+import {useCallback, useEffect} from "react";
 import {isBackwardTab, isForwardTab} from "../../utils/helpers";
 
 function createTrap(walker) {
@@ -37,35 +37,59 @@ export default function useFocusTrap({
   autoFocusElementRef,
   isEnabled = true
 }) {
+  const canNodeReceiveFocus = useCallback(
+    (node) => {
+      if (node === rootRef?.current || node.tabIndex >= 0) {
+        return NodeFilter.FILTER_ACCEPT;
+      } else {
+        return NodeFilter.FILTER_SKIP;
+      }
+    },
+    [rootRef]
+  );
+
   useEffect(() => {
     if (isEnabled && rootRef.current) {
       const treeWalker = document.createTreeWalker(
         rootRef.current,
         NodeFilter.SHOW_ELEMENT,
         {
-          acceptNode: (node) => {
-            if (node === rootRef.current) {
-              return NodeFilter.FILTER_ACCEPT;
-            }
-            return node.tabIndex < 0
-              ? NodeFilter.FILTER_SKIP
-              : NodeFilter.FILTER_ACCEPT;
-          }
+          acceptNode: canNodeReceiveFocus
         }
       );
+
       if (autoFocusElementRef) {
         const animationPromises = rootRef.current
           .getAnimations({subtree: true})
           .map((animation) => animation.finished);
-        Promise.allSettled(animationPromises).then(() =>
-          (autoFocusElementRef.current ?? rootRef.current).focus({
+        Promise.allSettled(animationPromises).then(() => {
+          const initialFocusNode =
+            autoFocusElementRef.current ?? rootRef.current;
+
+          initialFocusNode.focus({
             focusVisible: true
-          })
-        );
+          });
+
+          // Point the `TreeWalker` instance's active node to the one the developer
+          // passed in order to preserver tab order within the trap.
+          treeWalker.currentNode = initialFocusNode;
+        });
+      } else if (
+        rootRef?.current.contains(document.activeElement) &&
+        canNodeReceiveFocus(document?.activeElement) ===
+          NodeFilter.FILTER_ACCEPT
+      ) {
+        // This covers the situation when a developer passes `autoFocusElement` as a
+        // falsy value to prevent `useFocusTrap` from stealing initial focus from any
+        // externally defined focus logic, e.g., an `autofocus` attribute on an element.
+        // Point the `TreeWalker` instance's active node to one that was externally
+        // focused to within the trap, e.g., one with an `autofocus` attribute.
+        treeWalker.currentNode = document.activeElement;
       }
+
       const trap = createTrap(treeWalker);
       document.addEventListener("keydown", trap);
       return () => document.removeEventListener("keydown", trap);
     }
-  }, [rootRef, autoFocusElementRef, isEnabled]);
+  }, [rootRef, autoFocusElementRef, isEnabled, canNodeReceiveFocus]);
 }
