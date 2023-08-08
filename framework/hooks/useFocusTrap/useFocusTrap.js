@@ -53,9 +53,13 @@ export default function useFocusTrap({
   );
 
   useEffect(() => {
+    let trapContainerEl;
+
     if (isEnabled && rootRef.current) {
+      trapContainerEl = rootRef.current;
+
       const treeWalker = document.createTreeWalker(
-        rootRef.current,
+        trapContainerEl,
         NodeFilter.SHOW_ELEMENT,
         {
           acceptNode: getTreeWalkerNodeDisposition
@@ -63,12 +67,12 @@ export default function useFocusTrap({
       );
 
       if (autoFocusElementRef) {
-        const animationPromises = rootRef.current
+        const animationPromises = trapContainerEl
           .getAnimations({subtree: true})
           .map((animation) => animation.finished);
         Promise.allSettled(animationPromises).then(() => {
           const initialFocusNode =
-            autoFocusElementRef.current ?? rootRef.current;
+            autoFocusElementRef.current ?? trapContainerEl;
 
           initialFocusNode.focus({
             focusVisible: true
@@ -79,8 +83,8 @@ export default function useFocusTrap({
           treeWalker.currentNode = initialFocusNode;
         });
       } else if (
-        rootRef?.current.contains(document.activeElement) &&
-        getTreeWalkerNodeDisposition(document?.activeElement) ===
+        trapContainerEl.contains(document.activeElement) &&
+        getTreeWalkerNodeDisposition(document.activeElement) ===
           NodeFilter.FILTER_ACCEPT
       ) {
         // This covers the situation when a developer passes `autoFocusElement` as a
@@ -93,7 +97,23 @@ export default function useFocusTrap({
 
       const trap = createTrap(treeWalker);
       document.addEventListener("keydown", trap);
-      return () => document.removeEventListener("keydown", trap);
+
+      function resetTreeWalkerHeadOnClick(e) {
+        const target = e.target;
+        if (canNodeReceiveFocus(target)) {
+          treeWalker.currentNode = target;
+        }
+      }
+
+      trapContainerEl.addEventListener("mousedown", resetTreeWalkerHeadOnClick);
+
+      return () => {
+        document.removeEventListener("keydown", trap);
+        trapContainerEl.removeEventListener(
+          "mousedown",
+          resetTreeWalkerHeadOnClick
+        );
+      };
     }
   }, [rootRef, autoFocusElementRef, isEnabled, getTreeWalkerNodeDisposition]);
 }

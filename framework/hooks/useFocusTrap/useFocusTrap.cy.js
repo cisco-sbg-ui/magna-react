@@ -44,6 +44,25 @@ describe("useFocusTrap()", () => {
     cy.get("textarea").should("have.focus");
   });
 
+  it("should preserve tab order when an element within the focus trap is explicitly clicked", () => {
+    cy.mount(<FocusTrapTest />);
+
+    cy.get("#trap").should("have.focus");
+
+    cy.getByDataTestId("trapped-item-2").click();
+    cy.getByDataTestId("trapped-item-2").should("have.focus");
+
+    cy.get("body").tab();
+    cy.getByDataTestId("trapped-item-3").should("have.focus");
+
+    cy.get("body").tab();
+    cy.getByDataTestId("trapped-item-1").should("have.focus");
+
+    cy.getByDataTestId("trapped-item-3").click();
+    cy.get("body").tab({shift: true});
+    cy.getByDataTestId("trapped-item-2").should("have.focus");
+  });
+
   it("should preserve tab order when the inner element receives auto focus", () => {
     cy.mount(<AutoInitialFocusTest />);
 
@@ -90,7 +109,9 @@ const FocusTrapTest = ({children, enableAutofocus = true}) => {
           <label htmlFor="password">Password</label>
           <input data-testid="trapped-item-2" type="password" />
           <br />
-          <button data-testid="trapped-item-3">Submit</button>
+          <button data-testid="trapped-item-3" type="button">
+            Submit
+          </button>
         </form>
 
         {children}
