@@ -57,7 +57,7 @@ import {ADatePicker, ADateRangePicker} from "@cisco-sbg-ui/magna-react";
 
 <Playground
   code={`() => {
-  const { value, onChange, } = useADateRange([new Date(2022, 2, 28), new Date(2022, 3, 5)]);
+  const { value, onChange } = useADateRange([new Date(2022, 2, 28), new Date(2022, 3, 5)]);
   const [firstSelection, secondSelection] = value;
   // You can destructure the values from useADateRange to use ...
   // ... the date picker's range value in your component

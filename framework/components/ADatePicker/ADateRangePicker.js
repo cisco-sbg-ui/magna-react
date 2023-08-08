@@ -36,10 +36,8 @@ const ADateRangePicker = forwardRef(
       menuClassName = "a-menu--datepicker";
 
     useEffect(() => {
-      const calendarStartDate =
-        value[0] && new Date(value[0]).toLocaleDateString();
-      const calendarEndDate =
-        value[1] && new Date(value[1]).toLocaleDateString();
+      const calendarStartDate = value[0] && new Date(value[0]);
+      const calendarEndDate = value[1] && new Date(value[1]);
 
       setDateRange({startDT: calendarStartDate, endDT: calendarEndDate});
     }, [value]);

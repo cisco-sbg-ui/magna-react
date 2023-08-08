@@ -53,8 +53,7 @@ const DateInputs = ({
           className="a-date-picker__range-label"
           onClick={handleInput}
           onKeyUp={handleInput}
-          aria-label="Date range inputs label"
-        >
+          aria-label="Date range inputs label">
           {label}
         </span>
       )}
@@ -64,8 +63,7 @@ const DateInputs = ({
         }`}
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
-        aria-label="Date picker inputs"
-      >
+        aria-label="Date picker inputs">
         <ATextInput
           label="Start date"
           labelHidden
@@ -74,7 +72,7 @@ const DateInputs = ({
           onKeyUp={handleInput}
           placeholder="Start date"
           appendIcon="arrow-right"
-          value={dateRange.startDT ?? ""}
+          value={dateRange.startDT?.toLocaleDateString() ?? ""}
           onChange={(e) => {
             if (tempValidateDate(e.target.value)) {
               const minDateInvalid =
@@ -84,7 +82,7 @@ const DateInputs = ({
               } else {
                 setDateRange({
                   ...dateRange,
-                  startDT: new Date(e.target.value).toLocaleDateString()
+                  startDT: new Date(e.target.value)
                 });
                 setInvalid(false);
               }
@@ -101,7 +99,7 @@ const DateInputs = ({
           onClick={handleInput}
           onKeyUp={handleInput}
           appendIcon="calendar"
-          value={dateRange.endDT ?? ""}
+          value={dateRange.endDT?.toLocaleDateString() ?? ""}
           onChange={(e) => {
             if (tempValidateDate(e.target.value)) {
               const maxDateInvalid =
@@ -112,7 +110,7 @@ const DateInputs = ({
               } else {
                 setDateRange({
                   ...dateRange,
-                  endDT: new Date(e.target.value).toLocaleDateString()
+                  endDT: new Date(e.target.value)
                 });
                 setInvalid(false);
               }
