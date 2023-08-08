@@ -100,8 +100,16 @@ export default function useFocusTrap({
 
       function resetTreeWalkerHeadOnClick(e) {
         const target = e.target;
+
         if (canNodeReceiveFocus(target)) {
+          // The user is clicking a focusable element within the trap, so
+          // we need to ensure that their next `Tab` or `Shift` + `Tab`
+          // keydown focuses to an element closest to the one just clicked.
           treeWalker.currentNode = target;
+        } else {
+          // The user is clicking a non-focusable element within the trap, so
+          // we should reset the tab order sequence to start from the beginning.
+          treeWalker.currentNode = trapContainerEl;
         }
       }
 

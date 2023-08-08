@@ -78,6 +78,21 @@ describe("useFocusTrap()", () => {
     cy.get("body").tab();
     cy.getByDataTestId("trapped-item-3").should("have.focus");
   });
+
+  it("should reset the tab order when a non-focusable element within the focus trap is explicitly clicked", () => {
+    cy.mount(<FocusTrapTest />);
+
+    cy.get("#trap").should("have.focus");
+
+    cy.getByDataTestId("trapped-item-2").click();
+    cy.getByDataTestId("trapped-item-2").should("have.focus");
+
+    cy.get("label").eq(1).click();
+    cy.getByDataTestId("trapped-item-2").should("not.have.focus");
+
+    cy.get("body").tab();
+    cy.getByDataTestId("trapped-item-1").should("have.focus");
+  });
 });
 
 const FocusTrapTest = ({children, enableAutofocus = true}) => {
