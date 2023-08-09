@@ -9,7 +9,6 @@ const AStepTitle = forwardRef(
     return (
       <div {...rest} ref={ref} className={className}>
         <span className="a-step__title">{children}</span>
-        <hr className="a-step__divider" />
       </div>
     );
   }

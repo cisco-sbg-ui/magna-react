@@ -348,14 +348,16 @@ $atomic-default: (
     "track-color": map-get($mds-neutral, "neutral-7")
   ),
   "steps": (
-    "step-main-color": map-get($mds-interactive, "interactive-8"),
+    "step-main-color": map-get($mds-light-theme, "status-info"),
     "step-active-color": map-get($mds-neutral, "neutral-1"),
-    "step-visited-title-color": map-get($mds-misc, "visited-blue"),
-    "step-icon-border-color": map-get($mds-interactive, "interactive-8"),
+    "step-visited-title-color": map-get($mds-neutral, "neutral-16"),
+    "step-icon-border-color": map-get($mds-interactive, "interactive-11"),
     "step-line-color": map-get($mds-interactive, "interactive-8"),
     "step-default-color": map-get($mds-neutral, "neutral-7"),
-    "step-icon-default-color": map-get($mds-neutral, "neutral-7"),
-    "step-icon-default-border-color": map-get($mds-neutral, "neutral-6")
+    "step-icon-default-color": map-get($mds-neutral, "neutral-12"),
+    "step-icon-default-border-color": map-get($mds-neutral, "neutral-4"),
+    "step-icon-disabled-color": map-get($mds-neutral, "neutral-6"),
+    "step-icon-disabled-border-color": map-get($mds-neutral, "neutral-4")
   ),
   "switch": (
     "bg": map-get($mds-neutral, "neutral-12"),

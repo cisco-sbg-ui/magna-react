@@ -29,7 +29,7 @@ import {AStepper, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/magna
       <h3>Stepper</h3>
       <AStepper>
         <AStep stepNumber={1} active={active === 1} visited={active > 1}>
-          <AStepTitle>Title </AStepTitle>
+          <AStepTitle>Stepped modal title 1</AStepTitle>
           <AStepDescription>
             Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </AStepDescription>
@@ -39,13 +39,13 @@ import {AStepper, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/magna
           active={active === 2}
           visited={active > 2}
           disabled={true}>
-          <AStepTitle>Title</AStepTitle>
+          <AStepTitle>Stepped modal title 2</AStepTitle>
           <AStepDescription>
             Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </AStepDescription>
         </AStep>
         <AStep stepNumber={3} active={active === 3} visited={active > 3}>
-          <AStepTitle>Title</AStepTitle>
+          <AStepTitle>Stepped modal title 3</AStepTitle>
           <AStepDescription>
               Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </AStepDescription>
@@ -54,7 +54,7 @@ import {AStepper, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/magna
           stepNumber={4}
           active={active === 4}
           visited={active > 4}>
-          <AStepTitle>Title</AStepTitle>
+          <AStepTitle>Stepped modal title 4</AStepTitle>
           <AStepDescription>
             Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </AStepDescription>
@@ -107,7 +107,7 @@ import {AStepper, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/magna
         {active > data.length ? "Completed" : "Step " + active}
       </div>
       <h3>Stepper with icon:</h3>
-      <AStepper className="AStepper">
+      <AStepper>
         {data.map((item, index) => {
           const stepNumber = index + 1;
           return (
@@ -117,7 +117,6 @@ import {AStepper, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/magna
               active={active === stepNumber}
               visited={active > stepNumber}
               disabled={stepNumber === 2}
-              className="AStep"
               showIconOnVisited={true}>
               <AStepTitle className="AStepTitle">
                 {item.title}

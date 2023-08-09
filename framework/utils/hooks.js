@@ -42,3 +42,31 @@ export const useDelayUnmount = ({isEnabled = true, isOpen, delayTime}) => {
 
   return isEnabled ? shouldRender : isOpen;
 };
+
+export const useResizeObserver = (containerRef) => {
+  const [width, setWidth] = useState();
+  const [height, setHeight] = useState();
+  useEffect(() => {
+    if (!containerRef.current) {
+      return;
+    }
+    const resizeObserver = new ResizeObserver(() => {
+      if (containerRef.current?.offsetWidth !== width) {
+        setWidth(containerRef.current.offsetWidth);
+      }
+      if (containerRef.current?.offsetHeight !== height) {
+        setHeight(containerRef.current.offsetHeight);
+      }
+    });
+
+    resizeObserver.observe(containerRef.current);
+
+    return function cleanup() {
+      resizeObserver.disconnect();
+    };
+  }, [containerRef, width, height]);
+  return {
+    width,
+    height
+  };
+};
