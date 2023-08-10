@@ -115,7 +115,7 @@ const ACheckbox = forwardRef(
     };
 
     let className = "a-checkbox",
-      boxClassName = `${className} a-checkbox__box `;
+      boxClassName = `${className}__box`;
 
     if (["danger", "warning"].includes(workingValidationState)) {
       className += ` a-checkbox--${workingValidationState}`;
