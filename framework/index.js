@@ -36,7 +36,15 @@ import {
 } from "./components/ADatePicker";
 import ADialog from "./components/ADialog";
 import ADivider from "./components/ADivider";
-import {ADrawer, ADrawerContent} from "./components/ADrawer";
+import {
+  ADrawer,
+  ADrawerBody,
+  ADrawerContent,
+  ADrawerHeader,
+  ADrawerFooter,
+  ADrawerSubtitle,
+  ADrawerTitle
+} from "./components/ADrawer";
 import AEmptyState from "./components/AEmptyState";
 import AFieldBase from "./components/AFieldBase";
 import {AFooter, AFooterLegal} from "./components/AFooter";
@@ -162,7 +170,12 @@ export {
   ADivider,
   ADotLoader,
   ADrawer,
+  ADrawerBody,
   ADrawerContent,
+  ADrawerHeader,
+  ADrawerFooter,
+  ADrawerSubtitle,
+  ADrawerTitle,
   AEmptyState,
   AFieldBase,
   AFooter,

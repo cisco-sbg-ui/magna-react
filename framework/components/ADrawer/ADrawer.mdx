@@ -62,11 +62,19 @@ The drawer can slide-in from the left, right, or bottom of the page.
             slideIn='left'
             ref={leftDrawerContentRef}
             isOpen={isLeftOpen}
-            closeBtnOnClick={() => setIsLeftOpen(false)}
             data-test-drawer-left>
-          <ADrawerContent>
-            <h3 id='left-drawer-title' className="mt-1">Left Drawer</h3> <ADivider /> <AButton onClick={() => setIsLeftOpen(false)} data-test-drawer-close-left>Close</AButton>
-          </ADrawerContent>
+          <ADrawerHeader>
+          <ADrawerTitle onCloseButtonClick={() => setIsLeftOpen(false)}>
+            <h1 id='left-drawer-title'>Left Drawer</h1>
+          </ADrawerTitle>
+          <ADrawerSubtitle>Old School RuneScape is an MMORPG with adventure elements.</ADrawerSubtitle>
+          </ADrawerHeader>
+          <ADrawerBody>
+             It features a persistent world in which players can interact with each other and the environment. The basic mechanics are largely the same as RuneScape on 10 August 2007.
+            </ADrawerBody>
+          <ADrawerFooter>
+            <AButton onClick={() => setIsLeftOpen(false)} data-test-drawer-close-left>Close</AButton>
+          </ADrawerFooter>
         </ADrawer>
 
         <p>Right slide-in</p>
@@ -76,11 +84,19 @@ The drawer can slide-in from the left, right, or bottom of the page.
             slideIn='right'
             ref={rightDrawerContentRef}
             isOpen={isRightOpen}
-            closeBtnOnClick={() => setIsRightOpen(false)}
             data-test-drawer-right>
-          <ADrawerContent>
-            <h3 id='right-drawer-title' className="mt-1">Right Drawer </h3> <ADivider /> <AButton onClick={() => setIsRightOpen(false)} data-test-drawer-close-right>Close</AButton>
-          </ADrawerContent>
+           <ADrawerHeader>
+          <ADrawerTitle onCloseButtonClick={() => setIsRightOpen(false)}>
+            <h1 id='left-drawer-title'>Right Drawer</h1>
+          </ADrawerTitle>
+          <ADrawerSubtitle>Old School RuneScape is an MMORPG with adventure elements.</ADrawerSubtitle>
+          </ADrawerHeader>
+          <ADrawerBody>
+             It features a persistent world in which players can interact with each other and the environment. The basic mechanics are largely the same as RuneScape on 10 August 2007.
+            </ADrawerBody>
+          <ADrawerFooter>
+            <AButton onClick={() => setIsRightOpen(false)} data-test-drawer-close-right>Close</AButton>
+          </ADrawerFooter>
         </ADrawer>
 
         <p>Bottom slide-in</p>
@@ -90,11 +106,19 @@ The drawer can slide-in from the left, right, or bottom of the page.
             slideIn='bottom'
             ref={bottomDrawerContentRef}
             isOpen={isBottomOpen}
-            closeBtnOnClick={() => setIsBottomOpen(false)}
             data-test-drawer-bottom>
-          <ADrawerContent>
-            <h3 id='bottom-drawer-title' className="mt-1">Bottom Drawer</h3> <ADivider /> <AButton onClick={() => setIsBottomOpen(false)} data-test-drawer-close-bottom>Close</AButton>
-          </ADrawerContent>
+          <ADrawerHeader>
+          <ADrawerTitle onCloseButtonClick={() => setIsBottomOpen(false)}>
+            <h1 id='left-drawer-title'>Bottom Drawer</h1>
+          </ADrawerTitle>
+          <ADrawerSubtitle>Old School RuneScape is an MMORPG with adventure elements.</ADrawerSubtitle>
+          </ADrawerHeader>
+          <ADrawerBody>
+             It features a persistent world in which players can interact with each other and the environment. The basic mechanics are largely the same as RuneScape on 10 August 2007.
+            </ADrawerBody>
+          <ADrawerFooter>
+            <AButton onClick={() => setIsBottomOpen(false)} data-test-drawer-close-bottom>Close</AButton>
+          </ADrawerFooter>
         </ADrawer>
       </>
     )
@@ -125,11 +149,18 @@ The drawer can slide-in from the left, right, or bottom of the page.
             slideIn='right'
             ref={rightDrawerContentRef}
             isOpen={isRightOpen}
-            closeBtnOnClick={() => setIsRightOpen(false)}
             data-test-drawer-right>
-          <ADrawerContent>
-            <h3 id='right-drawer-title' className="mt-1">Right Drawer </h3> <ADivider /> <AButton onClick={() => setIsRightOpen(false)} data-test-drawer-close-right>Close</AButton>
-          </ADrawerContent>
+           <ADrawerHeader>
+          <ADrawerTitle onCloseButtonClick={() => setIsRightOpen(false)}>
+            <h1 id='left-drawer-title'>Custom Width Drawer</h1>
+          </ADrawerTitle>
+          </ADrawerHeader>
+          <ADrawerBody>
+             This drawer has a custom width of 800px set.
+            </ADrawerBody>
+          <ADrawerFooter>
+            <AButton onClick={() => setIsRightOpen(false)} data-test-drawer-close-right>Close</AButton>
+          </ADrawerFooter>
         </ADrawer>
       </>
     )
@@ -255,15 +286,17 @@ To contain the drawer within something other than the viewport, you can render t
                   position='fixed'
                   ref={fixedDrawerRef}
                   isOpen={isFixedOpen}>
-                <ADrawerContent>
-                  <h3 id='left-drawer-title'>
-                    Fixed Drawer
-                  </h3>
-                  <ADivider />
+                <ADrawerHeader divider>
+                  <ADrawerTitle>
+                    <h1>Fixed Drawer</h1>
+                  </ADrawerTitle>
+                </ADrawerHeader>
+                <ADrawerBody />
+                <ADrawerFooter>
                   <AButton onClick={() => setIsFixedOpen(false)}>
                     Close
                   </AButton>
-                </ADrawerContent>
+                </ADrawerFooter>
               </ADrawer>
             </main>
         </div>
@@ -328,37 +361,33 @@ Please note that when `ADrawer` is rendered as a modal, focus will be trapped in
             asModal={false}
             isOpen={nonModalOpen}
             slideIn='right'>
-          <MockDrawerContent
-              title='Non-Modal Drawer'
-              content='Focus is not trapped and scrolling is not locked.'
-              onClose={() => setNonModalOpen(false)} />
+          <div style={{
+            display: "flex",
+            flexDirection: "column",
+            height: "100%"
+          }}>
+            <MockDrawerContent
+                title='Non-Modal Drawer'
+                content='Focus is not trapped and scrolling is not locked.'
+                onClose={() => setNonModalOpen(false)} />
+          </div>
         </ADrawer>
       </>
     )
     function MockDrawerContent({ content, onClose, title }) {
       return (
         <>
-          <AListItem twoLine>
-            <AListItemContent>
-              <AListItemTitle><h4><b>{title}</b></h4></AListItemTitle>
-            </AListItemContent>
-            <AListItemAction>
-              <AButton onClick={onClose} tertiaryAlt icon>
-                <AIcon>close</AIcon>
-              </AButton>
-            </AListItemAction>
-          </AListItem>
-          <AListItem twoLine>
-            <AListItemContent style={{paddingTop: '0'}}>
-              {content}
-            </AListItemContent>
-          </AListItem>
-          <div style={{width: '100%', position: 'absolute', bottom: '0', height: '50px'}}>
-            <ADivider style={{margin: 0}} />
-            <AListItem twoLine>
-              <AListItemContent><AButton>Footer Content</AButton></AListItemContent>
-            </AListItem>
-          </div>
+          <ADrawerHeader divider>
+            <ADrawerTitle onCloseButtonClick={onClose}>
+              <h1>{title}</h1>
+            </ADrawerTitle>
+          </ADrawerHeader>
+          <ADrawerBody>{content}</ADrawerBody>
+          <ADrawerFooter>
+            <AButton onClick={onClose}>
+              Close
+            </AButton>
+          </ADrawerFooter>
         </>
       )
     }
@@ -388,7 +417,7 @@ Please note that when `ADrawer` is rendered as a modal, focus will be trapped in
         <ADrawer
             aria-label='Application toolbar.'
             ref={toolbarRef}
-            slimWidth='75px'
+            slimWidth='70px'
             openWidth='250px'
             isOpen={isOpen}
             slim={isSlim}>
@@ -577,7 +606,7 @@ Please note that when `ADrawer` is rendered as a modal, focus will be trapped in
 
     return (
       <>
-        <p>Right slide-in</p>
+        <p>Right without slide-in</p>
         <AButton onClick={() => setIsRightOpen(true)} data-test-drawer-trigger-right>Open Right</AButton>
         <ADrawer
             withTransitions={false}
@@ -585,11 +614,18 @@ Please note that when `ADrawer` is rendered as a modal, focus will be trapped in
             slideIn='right'
             ref={rightDrawerContentRef}
             isOpen={isRightOpen}
-            closeBtnOnClick={() => setIsRightOpen(false)}
             data-test-drawer-right>
-          <ADrawerContent>
-            <h3 id='right-drawer-title' className="mt-1">Right Drawer </h3> <ADivider /> <AButton onClick={() => setIsRightOpen(false)} data-test-drawer-close-right>Close</AButton>
-          </ADrawerContent>
+          <ADrawerHeader>
+            <ADrawerTitle onCloseButtonClick={() => setIsRightOpen(false)}>
+              <h1 id='left-drawer-title'>No Slide</h1>
+            </ADrawerTitle>
+          </ADrawerHeader>
+          <ADrawerBody>
+             This drawer had no animation
+            </ADrawerBody>
+          <ADrawerFooter divider>
+            <AButton onClick={() => setIsRightOpen(false)} data-test-drawer-close-right>Close</AButton>
+          </ADrawerFooter>
         </ADrawer>
       </>
     )
@@ -604,3 +640,23 @@ Please note that when `ADrawer` is rendered as a modal, focus will be trapped in
 ## Accessibility Notes
 
 By default, `ADrawer` renders as a modal. To override this behavior, pass `ADrawer` the `asModal` prop value of `false`. For documentation on modals, reference the [`AModal` documentation](/components/modal).
+
+## Drawer Header Props
+
+<Props of="ADrawerHeader" />
+
+## Drawer Title Props
+
+<Props of="ADrawerTitle" />
+
+## Drawer Subtitle Props
+
+<Props of="ADrawerSubtitle" />
+
+## Drawer Body Props
+
+<Props of="ADrawerBody" />
+
+## Drawer Footer Props
+
+<Props of="ADrawerFooter" />

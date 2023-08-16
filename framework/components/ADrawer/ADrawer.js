@@ -221,15 +221,21 @@ ADrawer.propTypes = {
    */
   slimWidth: PropTypes.string,
   /**
+   * ***DEPRECATED*** (use same prop on ADrawerTitle)
+   *
    * Pass onClose handler for Drawer to handle onClose icon and action.
    * Default: x Icon
    */
   closeBtnOnClick: PropTypes.func,
   /**
+   * ***DEPRECATED*** (use same prop on ADrawerTitle)
+   *
    * Option for close button title instead of default icon
    */
   closeTitle: PropTypes.string,
   /**
+   * ***DEPRECATED*** (use same prop on ADrawerTitle)
+   *
    * Any additional props for close button
    */
   closeBtnProps: PropTypes.oneOfType([
