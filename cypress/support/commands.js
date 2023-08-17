@@ -70,12 +70,12 @@ Cypress.Commands.add("getByAriaLabel", (label) => {
 });
 
 const keydownUtils = [
-  {keyCode: keyCodes.esc, name: "escapeKeydown"},
-  {keyCode: keyCodes.enter, name: "enterKeydown"},
-  {keyCode: keyCodes.space, name: "spaceKeydown"},
-  {keyCode: keyCodes.down, name: "downArrowKeydown"},
-  {keyCode: keyCodes.up, name: "upArrowKeydown"},
-  {keyCode: keyCodes.tab, name: "tabKeydown"}
+  {key: "Escape", keyCode: keyCodes.esc, name: "escapeKeydown"},
+  {key: "Enter", keyCode: keyCodes.enter, name: "enterKeydown"},
+  {key: " ", keyCode: keyCodes.space, name: "spaceKeydown"},
+  {key: "ArrowDown", keyCode: keyCodes.down, name: "downArrowKeydown"},
+  {key: "ArrowUp", keyCode: keyCodes.up, name: "upArrowKeydown"},
+  {key: "Tab", keyCode: keyCodes.tab, name: "tabKeydown"}
 ];
 
 /**
@@ -85,15 +85,15 @@ const keydownUtils = [
  * @example
  * `cy.trigger("keydown", {keyCode: 13})` can be invoked as `cy.escapeKeydown()`
  */
-keydownUtils.forEach(({keyCode, name}) => {
+keydownUtils.forEach(({key, keyCode, name}) => {
   Cypress.Commands.add(name, {prevSubject: "optional"}, (subject) => {
     if (subject) {
       return cy
         .wrap(subject)
-        .trigger("keydown", {keyCode})
+        .trigger("keydown", {key, keyCode})
         .then(() => subject);
     } else {
-      return cy.get("body").trigger("keydown", {keyCode});
+      return cy.get("body").trigger("keydown", {key, keyCode});
     }
   });
 });

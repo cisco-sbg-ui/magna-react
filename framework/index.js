@@ -120,6 +120,7 @@ import {useABreakpoint} from "./components/ABreakpoint";
 import {useAToaster, AToastPlate} from "./components/AToaster";
 import useEscapeKeydown from "./hooks/useEscapeKeydown/useEscapeKeydown";
 import useFocusTrap from "./hooks/useFocusTrap/useFocusTrap";
+import useKeydown from "./hooks/useKeydown/useKeydown";
 import useInView from "./hooks/useInView/useInView";
 import useMediaQuery from "./hooks/useMediaQuery/useMediaQuery";
 import useOutsideClick from "./hooks/useOutsideClick/useOutsideClick";
@@ -242,6 +243,7 @@ export {
   useAToaster,
   useEscapeKeydown,
   useFocusTrap,
+  useKeydown,
   useInView,
   useMediaQuery,
   useOutsideClick,
