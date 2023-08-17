@@ -50,6 +50,10 @@ $hidden-table-col-width: 45px;
         background: map-deep-get($theme, "table", "row-selected") !important;
       }
     }
+
+    &--key-selected {
+      background: map-deep-get($theme, "table", "row-selected");
+    }
   }
 }
 

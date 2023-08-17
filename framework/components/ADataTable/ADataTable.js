@@ -1,13 +1,26 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useMemo, useRef, useCallback, useState} from "react";
+import React, {
+  forwardRef,
+  useMemo,
+  useRef,
+  useCallback,
+  useState,
+  useEffect
+} from "react";
 
 import {keyCodes} from "../../utils/helpers";
+import {useKeydown} from "../../index";
 
 import AInView from "../AInView";
 import AIcon from "../AIcon";
 import ASimpleTable from "../ASimpleTable";
 import {ASkeleton, ASkeletonText} from "../ASkeleton";
 import "./ADataTable.scss";
+import {useCombinedRefs} from "../../utils/hooks";
+
+const ARROW_UP = "ArrowUp";
+const ARROW_DOWN = "ArrowDown";
+const ARROW_KEYS = [ARROW_UP, ARROW_DOWN];
 
 /**
  * Used inside ADataTable to enable proper styling
@@ -16,7 +29,7 @@ import "./ADataTable.scss";
 const ADataTableWrapper = React.forwardRef(
   ({shouldWrap, maxHeight, style, children, ...rest}, ref) => {
     if (!shouldWrap) {
-      return children;
+      return children; // TODO: ref is lost ?
     }
 
     return (
@@ -50,10 +63,13 @@ const TableHeader = React.forwardRef(({className, ...rest}, ref) => {
 TableHeader.displayName = "TableHeader";
 
 const TableRow = React.forwardRef(
-  ({className: propsClassName, isSelected, ...rest}, ref) => {
+  ({className: propsClassName, isKeySelected, isSelected, ...rest}, ref) => {
     let className = "a-data-table__row";
     if (isSelected) {
       className += " a-data-table__row--selected";
+    }
+    if (isKeySelected) {
+      className += " a-data-table__row--key-selected";
     }
     if (propsClassName) {
       className += ` ${propsClassName}`;
@@ -106,12 +122,107 @@ const ADataTable = forwardRef(
       selectedItems,
       truncateHeaders,
       stickyHeader = false,
+      keyboardArrowSupport = null,
       ...rest
     },
     ref
   ) => {
     const tableWrapperRef = useRef();
+    const simpleTableRef = useRef();
+    const combinedTableRef = useCombinedRefs(simpleTableRef, ref);
     const [expandedRows, setExpandedRows] = useState({});
+    const [selectedRowIndex, setSelectedRowIndex] = useState(-1); // zero based index in items array, -1 for no index
+
+    const handleArrowKeydown = useCallback(
+      (key, event) => {
+        let nextRowIndex;
+
+        if (selectedRowIndex === -1) {
+          // first move
+          if (key === ARROW_UP) nextRowIndex = items.length - 1;
+          else nextRowIndex = 0;
+        } else {
+          // subsequent moves
+          if (key === ARROW_UP) nextRowIndex = selectedRowIndex - 1;
+          else nextRowIndex = selectedRowIndex + 1;
+        }
+
+        if (items[nextRowIndex] === undefined) {
+          // out of items index
+          return;
+        }
+
+        setSelectedRowIndex(nextRowIndex);
+
+        if (typeof keyboardArrowSupport?.onKeyboardSelect === "function") {
+          keyboardArrowSupport?.onKeyboardSelect(
+            {index: nextRowIndex, item: items[nextRowIndex]},
+            event
+          );
+        }
+      },
+      // having keyboardArrowSupport in deps causes unnecessary re-renders
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      [
+        items,
+        selectedRowIndex,
+        setSelectedRowIndex,
+        keyboardArrowSupport?.onKeyboardSelect
+      ]
+    );
+
+    useEffect(() => {
+      if (keyboardArrowSupport === null || selectedRowIndex === -1) return;
+
+      const {
+        disableRowAutoFocus,
+        activeRowFocusSelector,
+        overrideFocusOptions = {}
+      } = keyboardArrowSupport;
+
+      if (disableRowAutoFocus) return;
+
+      const row = combinedTableRef.current?.querySelector(
+        `[row-index="${selectedRowIndex}"]`
+      );
+      if (!row) return;
+
+      if (activeRowFocusSelector) {
+        const element = row.querySelector(activeRowFocusSelector);
+        if (element && element.focus) {
+          element.focus(overrideFocusOptions);
+        }
+      } else {
+        row.focus(overrideFocusOptions);
+      }
+      // combinedTableRef should not need to be in deps
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [
+      keyboardArrowSupport?.disableRowAutoFocus,
+      keyboardArrowSupport?.activeRowFocusSelector,
+      keyboardArrowSupport?.overrideFocusOptions,
+      selectedRowIndex
+    ]);
+
+    useEffect(() => {
+      if (keyboardArrowSupport === null) return;
+
+      const index = keyboardArrowSupport.initiallySelectedRowIndex;
+      if (typeof index === "number" && items[index]) {
+        setSelectedRowIndex(index);
+      } else {
+        setSelectedRowIndex(-1);
+      }
+      // having keyboardArrowSupport in deps causes unnecessary re-renders
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [
+      keyboardArrowSupport?.initiallySelectedRowIndex,
+      setSelectedRowIndex,
+      items
+    ]);
+
+    useKeydown(ARROW_KEYS, handleArrowKeydown, keyboardArrowSupport !== null);
+
     const ExpandableComponent = useMemo(
       () => expandable?.component,
       [expandable]
@@ -166,7 +277,7 @@ const ADataTable = forwardRef(
           shouldWrap={typeof onScrollToEnd === "function" || maxHeight}
           maxHeight={maxHeight}
         >
-          <ASimpleTable {...rest} ref={ref} className={className}>
+          <ASimpleTable {...rest} ref={combinedTableRef} className={className}>
             {headers && (
               <thead>
                 <TableRow
@@ -292,7 +403,7 @@ const ADataTable = forwardRef(
                         }}
                       >
                         <div className="a-data-table__header__sort-wrap">
-                          {x.align == "end" && sortIcon}
+                          {x.align === "end" && sortIcon}
                           <button
                             {...sortableBtnProps}
                             tabIndex={-1}
@@ -317,7 +428,7 @@ const ADataTable = forwardRef(
               {sortedItems.map((rowItem, i) => {
                 const key = `a-data-table_row_${i}`;
                 const id = `a-data-table_row_${i}`;
-                const isLastRow = i == items.length - 1;
+                const isLastRow = i === items.length - 1;
                 const isInfiniteScrollTarget =
                   isLastRow && typeof onScrollToEnd === "function";
                 const hasExpandedRowContent =
@@ -328,11 +439,15 @@ const ADataTable = forwardRef(
                 const isRowSelected =
                   typeof propsIsRowSelected === "function" &&
                   propsIsRowSelected(rowItem);
+                const isRowKeySelected = selectedRowIndex === i;
                 const rowContent = (
                   <TableRow
                     data-expandable-row={hasExpandedRowContent}
                     isSelected={isRowSelected}
                     key={key}
+                    isKeySelected={isRowKeySelected}
+                    row-index={i}
+                    tabIndex="-1"
                     onClick={(e) =>
                       typeof propsOnRowClick === "function" &&
                       propsOnRowClick(rowItem, e)
@@ -375,6 +490,8 @@ const ADataTable = forwardRef(
 
                       return (
                         <TableCell
+                          tabIndex="-1"
+                          col-index={j}
                           key={`a-data-table_cell_${j}`}
                           className={`text-${y.align || "start"} ${
                             y.cell?.className || ""
@@ -514,7 +631,48 @@ ADataTable.propTypes = {
   /**
    * Enable sticky header
    */
-  stickyHeader: PropTypes.bool
+  stickyHeader: PropTypes.bool,
+
+  /**
+   * Enable and configure support for moving in table using pageup/pagedown keys. `null` (turned off) by default.
+   * `a-data-table__row--key-selected` class is added to currently active row and can be used for styling of key selection.
+   */
+  keyboardArrowSupport: PropTypes.shape({
+    /**
+     * Callback function for key selection. To callback are sent two params
+     * - object {index, item}
+     *    - index - zero based index of currently selected row,
+     *    - item - current data row
+     * - event - triggering event to prevent default, stop propagation etc.
+     */
+    onKeyboardSelect: PropTypes.func,
+
+    /**
+     * Optional way how to select first active row from which we can continue with arrow up/down.
+     * Zero based. It should be within items array range. Set `-1` to unselect.
+     */
+    initiallySelectedRowIndex: PropTypes.number,
+
+    /**
+     * Active row or element in row (specified by `activeRowFocusSelector` param)
+     * is focused by default. This option can turn focus off.
+     */
+    disableRowAutoFocus: PropTypes.bool,
+
+    /**
+     * When this selector is provided we try to focus element by `css` selector in active row.
+     * `disableRowAutoFocus` will turn focus feature off.
+     */
+    activeRowFocusSelector: PropTypes.string,
+
+    /**
+     * When focusing element we can override focus options, e.g. to prevent focus scroll, etc.
+     */
+    overrideFocusOptions: PropTypes.shape({
+      preventScroll: PropTypes.bool,
+      focusVisible: PropTypes.bool
+    })
+  })
 };
 
 ADataTable.displayName = "ADataTable";

@@ -677,9 +677,75 @@ const headers = [
       className="mx-auto"
     />
   );
-}`
-}
+}`}
+/>
 
+## Keyboard Selection In Table
+
+<Playground
+  code={`() => {
+    const headers = [
+        {
+            name: "Alpha",
+            key: "a",
+        },
+        {
+            name: "Bravo",
+            key: "b",
+            cell: {
+                component: (item) => {
+                    return (<input type="text" value={item.b} />);
+                }
+            }
+        },
+    ];
+    const items = [
+        {
+            a: 1428627663,
+            b: "India"
+        },
+        {
+            a: 1425671352,
+            b: "China"
+        },
+        {
+            a: 339996563,
+            b: "United States"
+        },
+        {
+            a: 277534122,
+            b: "Indonesia"
+        },
+        {
+            a: 240485658,
+            b: "Pakistan"
+        },
+        {
+            a: 223804632,
+            b: "Nigeria"
+        },
+        {
+            a: 216422446,
+            b: "Brazil"
+        }
+    ];
+    return (
+        <ADataTable
+            headers={headers}
+            items={items}
+            className="mx-auto"
+            style={{maxWidth: 500}}
+            keyboardArrowSupport={{
+                onKeyboardSelect: (item, event) => {
+                    console.info(item, event);
+                },
+                activeRowFocusSelector: 'input',
+                initiallySelectedRowIndex: 3
+            }}
+        />
+    );
+}
+`}
 />
 
 ## Data Table Props
