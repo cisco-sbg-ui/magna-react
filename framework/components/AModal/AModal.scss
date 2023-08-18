@@ -47,6 +47,14 @@
     }
   }
 
+  .a-card__footer {
+    justify-content: flex-end;
+
+    .a-button + .a-button {
+      margin-left: 8px;
+    }
+  }
+
   &--small > :first-child {
     width: 384px;
     min-width: unset;

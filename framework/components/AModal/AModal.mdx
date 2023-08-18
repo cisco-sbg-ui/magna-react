@@ -35,20 +35,18 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
         <AModal
             aria-labelledby='modal-title'
             isOpen={open}>
-            <APanel ref={ref} style={{ minWidth: '400px' }} type="dialog">
-              <APanelHeader>
-                <APanelTitle id='modal-title'>Modal Demo</APanelTitle>
-                <AButton aria-label="Close modal 1" onClick={() => setOpen(false)} tertiaryAlt icon>
-                  <AIcon>close</AIcon>
-                </AButton>
-              </APanelHeader>
-              <APanelBody>
+            <ACardBasic ref={ref} style={{ minWidth: '400px' }} type="dialog">
+              <ACardHeader>
+                <ACardTitle id='modal-title'>Modal Demo</ACardTitle>
+              </ACardHeader>
+              <ACardContent>
                 Modal content goes here.
-              </APanelBody>
-              <APanelFooter>
+              </ACardContent>
+              <ACardFooter>
+                <AButton tertiary onClick={() => setOpen(false)}>Close</AButton>
                 <AButton>Action</AButton>
-              </APanelFooter>
-            </APanel>
+              </ACardFooter>
+            </ACard>
         </AModal>
       </div>
     )
@@ -78,20 +76,18 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
             aria-labelledby='modal-title'
             withOverlay={false}
             isOpen={open}>
-            <APanel ref={ref} style={{ minWidth: '400px' }} type="dialog">
-              <APanelHeader>
-                <APanelTitle id='modal-title'>Modal Demo</APanelTitle>
-                <AButton onClick={() => setOpen(false)} tertiaryAlt icon>
-                  <AIcon>close</AIcon>
-                </AButton>
-              </APanelHeader>
-              <APanelBody>
+            <ACardBasic ref={ref} style={{ minWidth: '400px' }} type="dialog">
+              <ACardHeader>
+                <ACardTitle id='modal-title'>Modal Demo</ACardTitle>
+              </ACardHeader>
+              <ACardContent>
                 Modal content goes here.
-              </APanelBody>
-              <APanelFooter>
+              </ACardContent>
+              <ACardFooter>
+                <AButton tertiary onClick={() => setOpen(false)}>Close</AButton>
                 <AButton>Action</AButton>
-              </APanelFooter>
-            </APanel>
+              </ACardFooter>
+            </ACard>
         </AModal>
       </div>
     )
@@ -167,20 +163,18 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
             aria-labelledby='modal-title'
             withScrollLock={false}
             isOpen={open}>
-          <APanel ref={ref} style={{ minWidth: '400px' }} type="dialog">
-            <APanelHeader>
-              <APanelTitle id='modal-title'>Modal Demo</APanelTitle>
-              <AButton onClick={() => setOpen(false)} tertiaryAlt icon>
-                <AIcon>close</AIcon>
-              </AButton>
-            </APanelHeader>
-            <APanelBody>
+          <ACardBasic ref={ref} style={{ minWidth: '400px' }} type="dialog">
+            <ACardHeader>
+              <ACardTitle id='modal-title'>Modal Demo</ACardTitle>
+            </ACardHeader>
+            <ACardContent>
               Modal content goes here.
-            </APanelBody>
-            <APanelFooter>
+            </ACardContent>
+            <ACardFooter>
+              <AButton tertiary onClick={() => setOpen(false)}>Close</AButton>
               <AButton>Action</AButton>
-            </APanelFooter>
-          </APanel>
+            </ACardFooter>
+          </ACard>
         </AModal>
       </div>
     )
@@ -211,20 +205,18 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
             withCenteredContent={false}
             aria-labelledby='modal-title'
             isOpen={open}>
-            <APanel ref={ref} style={{ minWidth: '400px' }} type="dialog">
-              <APanelHeader>
-                <APanelTitle id='modal-title'>Modal Demo</APanelTitle>
-                <AButton aria-label="Close modal 1" onClick={() => setOpen(false)} tertiaryAlt icon>
-                  <AIcon>close</AIcon>
-                </AButton>
-              </APanelHeader>
-              <APanelBody>
+            <ACardBasic ref={ref} style={{ minWidth: '400px' }} type="dialog">
+              <ACardHeader>
+                <ACardTitle id='modal-title'>Modal Demo</ACardTitle>
+              </ACardHeader>
+              <ACardContent>
                 Modal content goes here.
-              </APanelBody>
-              <APanelFooter>
+              </ACardContent>
+              <ACardFooter>
+                <AButton tertiary onClick={() => setOpen(false)}>Close</AButton>
                 <AButton>Action</AButton>
-              </APanelFooter>
-            </APanel>
+              </ACardFooter>
+            </ACard>
         </AModal>
       </div>
     )
@@ -254,20 +246,18 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
             withTransitions={false}
             aria-labelledby='modal-title'
             isOpen={open}>
-            <APanel ref={ref} style={{ minWidth: '400px' }} type="dialog">
-              <APanelHeader>
-                <APanelTitle id='modal-title'>Modal Demo</APanelTitle>
-                <AButton aria-label="Close modal 1" onClick={() => setOpen(false)} tertiaryAlt icon>
-                  <AIcon>close</AIcon>
-                </AButton>
-              </APanelHeader>
-              <APanelBody>
+            <ACardBasic ref={ref} style={{ minWidth: '400px' }} type="dialog">
+              <ACardHeader>
+                <ACardTitle id='modal-title'>Modal Demo</ACardTitle>
+              </ACardHeader>
+              <ACardContent>
                 Modal content goes here.
-              </APanelBody>
-              <APanelFooter>
+              </ACardContent>
+              <ACardFooter>
+                <AButton tertiary onClick={() => setOpen(false)}>Close</AButton>
                 <AButton>Action</AButton>
-              </APanelFooter>
-            </APanel>
+              </ACardFooter>
+            </ACard>
         </AModal>
       </div>
     )
@@ -292,17 +282,14 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
       <AModal
           aria-labelledby='modal-title'
           isOpen={open}>
-        <APanel ref={ref} style={{width: '700px'}}>
-          <APanelHeader>
-            <APanelTitle id='modal-content'>Embedded Form</APanelTitle>
-            <AButton aria-label="Close form" onClick={() => setOpen(false)} tertiaryAlt icon>
-              <AIcon>close</AIcon>
-            </AButton>
-          </APanelHeader>
-          <APanelBody>
+        <ACardBasic ref={ref} style={{width: '700px'}}>
+          <ACardHeader>
+            <ACardTitle id='modal-content'>Embedded Form</ACardTitle>
+          </ACardHeader>
+          <ACardContent>
             <FormContent />
-          </APanelBody>
-        </APanel>
+          </ACardContent>
+        </ACard>
       </AModal>
     </>
   );
@@ -398,6 +385,12 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
           <ARow>
             <ACol className="text-right">
               <AButton
+                tertiary
+                onClick={() => setOpen(false)}
+                style={{marginRight: "8px"}}>
+                Close
+              </AButton>
+              <AButton
                 secondary
                 className="mr-2"
                 onClick={() => {
@@ -422,7 +415,7 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
 ### Size variants
 
 <AAlert className="mb-2" level="info" dismissable={false}>
-  This assumes a single direct child, such as `APanel`, as the modal content.
+  This assumes a single direct child, such as `ACard`, as the modal content.
 </AAlert>
 
 <Playground
@@ -458,20 +451,18 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
             aria-labelledby='modal-title'
             isOpen={open}
             {...{[size]: true}}>
-            <APanel ref={ref} type="dialog">
-            <APanelHeader>
-              <APanelTitle id='modal-title'>Modal Demo</APanelTitle>
-              <AButton onClick={() => setOpen(false)} tertiaryAlt icon>
-                <AIcon>close</AIcon>
-              </AButton>
-            </APanelHeader>
-            <APanelBody>
+            <ACardBasic ref={ref} type="dialog">
+            <ACardHeader>
+              <ACardTitle id='modal-title'>Modal Demo</ACardTitle>
+            </ACardHeader>
+            <ACardContent>
               Modal content goes here.
-            </APanelBody>
-            <APanelFooter>
+            </ACardContent>
+            <ACardFooter>
+              <AButton tertiary onClick={() => setOpen(false)}>Close</AButton>
               <AButton>Action</AButton>
-            </APanelFooter>
-          </APanel>
+            </ACardFooter>
+          </ACard>
         </AModal>
       </div>
     )
@@ -506,20 +497,18 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
             isOpen={open}
             onClickOutside={() => {setOpen(false)}}
             {...{[size]: true}}>
-            <APanel type="dialog">
-            <APanelHeader>
-              <APanelTitle id='modal-title'>Modal Demo</APanelTitle>
-              <AButton onClick={() => setOpen(false)} tertiaryAlt icon>
-                <AIcon>close</AIcon>
-              </AButton>
-            </APanelHeader>
-            <APanelBody>
+            <ACardBasic type="dialog">
+            <ACardHeader>
+              <ACardTitle id='modal-title'>Modal Demo</ACardTitle>
+            </ACardHeader>
+            <ACardContent>
               Modal content goes here.
-            </APanelBody>
-            <APanelFooter>
+            </ACardContent>
+            <ACardFooter>
+              <AButton tertiary onClick={() => setOpen(false)}>Close</AButton>
               <AButton>Action</AButton>
-            </APanelFooter>
-          </APanel>
+            </ACardFooter>
+          </ACard>
         </AModal>
       </div>
     )
