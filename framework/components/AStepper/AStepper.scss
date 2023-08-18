@@ -1,85 +1,106 @@
 @import "../../styles/index.scss";
 
-@include theme(a-steps) using ($theme) {
-  .a-step {
-    &__icon {
-      border: $border-width solid
-        map-deep-get($theme, "steps", "step-main-color");
-      color: map-deep-get($theme, "steps", "step-main-color");
-    }
-    &__label {
-      color: map-deep-get($theme, "base", "color--disabled");
-    }
-    &__active {
-      .a-step__icon {
-        background: map-get($theme, "steps", "step-icon-border-color");
-        color: map-get($theme, "steps", "step-active-color");
-        border: $border-width solid
-          map-get($theme, "steps", "step-icon-border-color");
+@include theme(a-steps-container) using ($theme) {
+  //Typical usage will be in modal, but fallback to same color as panel for icon and container backgrounds.
+  background-color: map-deep-get($theme, "panel", "bg");
+  .a-steps {
+    .a-step {
+      &__icon-container {
+        background-color: map-deep-get($theme, "panel", "bg");
       }
-      .a-step__label {
-        color: map-get($theme, "steps", "step-icon-border-color");
+
+      &__divider {
+        background-color: map-deep-get(
+          $theme,
+          "steps",
+          "step-icon-default-border-color"
+        );
       }
-    }
-    &__divider {
-      background-color: map-deep-get($theme, "steps", "step-main-color");
-    }
-    &__visited {
-      .a-step__divider {
-        height: 2px;
-        background-color: map-get($theme, "steps", "step-icon-border-color");
+      &__label {
+        color: map-deep-get($theme, "base", "color--disabled");
       }
-      .a-step__icon {
-        border: $border-width solid
-          map-get($theme, "steps", "step-icon-border-color");
-        color: map-get($theme, "steps", "step-icon-border-color");
-        &__checkmark {
+      &__hint {
+        color: map-deep-get($theme, "steps", "step-icon-default-color");
+      }
+      &__active {
+        .a-step__icon {
+          background: map-deep-get($theme, "steps", "step-main-color");
+          color: map-get($theme, "steps", "step-active-color");
+          border: $border-width solid
+            map-deep-get($theme, "steps", "step-main-color");
+        }
+        .a-step__label {
           color: map-get($theme, "steps", "step-icon-border-color");
         }
       }
+      &__visited {
+        .a-step__divider {
+          height: 2px;
+          background-color: map-get($theme, "steps", "step-icon-border-color");
+        }
+        .a-step__icon {
+          border: $border-width solid
+            map-get($theme, "steps", "step-icon-border-color");
+          color: map-get($theme, "steps", "step-icon-border-color");
+          &__checkmark {
+            color: map-get($theme, "steps", "step-icon-border-color");
+            stroke: map-get($theme, "steps", "step-icon-border-color");
+            polyline {
+              stroke-width: 35; //Remove if magnetic updates icon
+            }
+          }
+        }
 
-      .a-step__label {
-        color: map-deep-get($theme, "base", "color");
+        .a-step__label {
+          color: map-deep-get($theme, "base", "color");
+        }
+
+        .a-step__title {
+          color: map-deep-get($theme, "steps", "step-visited-title-color");
+        }
+      }
+      &__disabled {
+        .a-step__icon {
+          border: $border-width solid
+            map-deep-get($theme, "steps", "step-icon-disabled-border-color");
+          color: map-deep-get($theme, "steps", "step-icon-disabled-color");
+        }
+        .a-step__title,
+        .a-step__hint {
+          color: map-deep-get($theme, "steps", "step-icon-disabled-color");
+        }
+      }
+      &__default {
+        .a-step__icon {
+          border: $border-width solid
+            map-deep-get($theme, "steps", "step-icon-default-border-color");
+          color: map-deep-get($theme, "steps", "step-icon-default-color");
+        }
+        .a-step__title,
+        .a-step__hint {
+          color: map-deep-get($theme, "steps", "step-icon-default-color");
+        }
       }
 
-      .a-step__title {
-        color: map-deep-get($theme, "steps", "step-visited-title-color");
+      &--cursor {
+        cursor: pointer;
       }
     }
-    &__disabled {
-      .a-step__icon {
-        border: $border-width solid
-          map-deep-get($theme, "base", "color--disabled");
-        color: map-deep-get($theme, "base", "color--disabled");
+    &--orientation-vertical {
+      .a-step__active {
+        border-right: 3px solid;
+        border-color: map-deep-get($theme, "steps", "step-icon-border-color");
       }
-    }
-    &__default {
-      .a-step__icon {
-        border: $border-width solid
-          map-deep-get($theme, "steps", "step-icon-default-border-color");
-        color: map-deep-get($theme, "steps", "step-icon-default-color");
-      }
-      .a-step__title,
-      .a-step__hint {
-        color: map-deep-get($theme, "base", "step-default-color");
-      }
-    }
 
-    &--cursor {
-      cursor: pointer;
+      .a-step__visited {
+        border-color: transparent;
+      }
     }
   }
-  &--orientation-vertical {
-    .a-step__active {
-      border-right: 2px solid;
-      border-color: map-deep-get($theme, "steps", "step-icon-border-color");
-    }
+}
 
-    .a-step__visited {
-      border-right: 2px solid;
-      border-color: map-deep-get($theme, "steps", "step-visited-title-color");
-    }
-  }
+.a-steps-container {
+  padding: 24px 0;
 }
 
 .a-steps {
@@ -87,22 +108,46 @@
   flex: 1;
   align-items: top;
   justify-content: space-around;
-  margin: 0 auto 20px;
-  padding: 20px 0;
+  padding: 0 0 24px;
   text-align: center;
+
+  &__description {
+    padding: 0 28px;
+  }
+
   .a-step {
     position: relative;
-    display: inline-flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     flex: 1;
+    max-width: 200px;
+    overflow-wrap: anywhere;
+
+    &__icon-container {
+      z-index: 1;
+      display: inherit;
+      justify-content: center;
+      align-items: center;
+      height: 38px;
+      min-width: 60px;
+    }
+
+    &__divider {
+      height: 1px;
+      position: absolute;
+      top: 19px;
+      left: 60%;
+    }
+
     &__icon {
-      width: 24px;
-      min-width: 24px;
-      max-width: 24px;
-      height: 24px;
+      width: 28px;
+      min-width: 28px;
+      max-width: 28px;
+      height: 28px;
       line-height: $line-height--lg;
       font-size: $font-size--sm;
       font-weight: 600;
-      margin: 10px;
       position: relative;
       display: inline-flex;
       align-items: center;
@@ -119,14 +164,6 @@
       display: flex;
       align-items: center;
       font-weight: 600;
-    }
-    &__divider {
-      flex-grow: 1;
-      border: 0px;
-      height: 1px;
-    }
-    &__title {
-      padding: 0 10px 0 0;
     }
     &__hint {
       color: map-get($grey, "darken-2");
@@ -150,15 +187,27 @@
     text-align: left;
     .a-step {
       display: flex;
-      &__divider {
-        display: none;
-      }
-      .a-step__icon {
-        flex: 1;
+      flex-direction: row;
+      max-width: 100%;
+      align-items: unset;
+
+      &__icon-container {
+        margin-top: 4px;
       }
       &__content {
         flex: 2;
         align-self: center;
+      }
+
+      &__title {
+        padding: 0 10px 0 0;
+      }
+
+      &__hint {
+        font-size: 12px;
+        line-height: 20px;
+        font-weight: 400;
+        padding-right: 24px;
       }
 
       &:last-child {

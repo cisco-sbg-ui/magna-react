@@ -16,6 +16,8 @@ const AStep = forwardRef(
       stepNumber,
       children,
       setActiveStep,
+      isVertical,
+      dividerStyle,
       ...rest
     },
     ref
@@ -42,7 +44,7 @@ const AStep = forwardRef(
       React.Children.count(children) === 1 ||
       (children[1] && !children[1].props.children)
     ) {
-      style = {margin: "0"};
+      style = {marginTop: "3px"};
     }
 
     const onClick = (e) => {
@@ -63,6 +65,17 @@ const AStep = forwardRef(
         }
       };
 
+    const titleView = isVertical ? (
+      <div className="a-step__content" style={style}>
+        {children}
+      </div>
+    ) : (
+      <>
+        <span className="a-step__divider" style={dividerStyle} />
+        {children[0] || children}
+      </>
+    );
+
     return (
       <div
         {...rest}
@@ -73,18 +86,18 @@ const AStep = forwardRef(
         tabIndex={0}
         role="menuitem"
       >
-        <div className="a-step__icon">
-          {!disabled && visited && showIconOnVisited ? (
-            <AIcon size={12} className="a-step__icon__checkmark">
-              checkmark
-            </AIcon>
-          ) : (
-            stepNumber
-          )}
+        <div className="a-step__icon-container">
+          <div className="a-step__icon">
+            {!disabled && visited && showIconOnVisited ? (
+              <AIcon size={16} className="a-step__icon__checkmark">
+                check
+              </AIcon>
+            ) : (
+              stepNumber
+            )}
+          </div>
         </div>
-        <div className="a-step__content" style={style}>
-          {children}
-        </div>
+        {titleView}
       </div>
     );
   }
