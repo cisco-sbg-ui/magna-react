@@ -1,15 +1,6 @@
-import React, {useState, useEffect, useRef} from "react";
-
+import React, {useState, useEffect} from "react";
+import {convertToStandardDateFormat, isValidDateStr} from "./helpers";
 import ATextInput from "../ATextInput";
-
-//TEMP FOR DEVELOPMENT PURPOSES ONLY - REPLACE WITH MORE ROBUST DATE VALIDATION LIBRARY
-var date_regex =
-  /^(0[1-9]|[1-9]|1[0-2])\/(0[1-9]|[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
-const tempValidateDate = (date) => {
-  const invalidDate =
-    !date || isNaN(Date.parse(date)) || !date_regex.test(date);
-  return !invalidDate;
-};
 
 const DateInputs = ({
   openCalendar,
@@ -20,6 +11,7 @@ const DateInputs = ({
 }) => {
   const [hover, setHover] = useState(false);
   const [invalid, setInvalid] = useState(false);
+  const {startDT, endDT} = dateRange;
   const {maxDate, minDate} = {...rest};
   const hasMinDate = minDate instanceof Date;
   const hasMaxDate = maxDate instanceof Date;
@@ -37,13 +29,14 @@ const DateInputs = ({
   };
 
   useEffect(() => {
-    if (dateRange.startDT && dateRange.endDT) {
-      if (Date.parse(dateRange.startDT) > Date.parse(dateRange.endDT)) {
+    setInvalid(false);
+    if (startDT && endDT) {
+      if (Date.parse(startDT) > Date.parse(endDT)) {
         setInvalid(true);
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dateRange.startDT, dateRange.endDT]);
+  }, [startDT, endDT]);
+
   return (
     <>
       {label && (
@@ -74,19 +67,22 @@ const DateInputs = ({
           onKeyUp={handleInput}
           placeholder="Start date"
           appendIcon="arrow-right"
-          value={dateRange.startDT ?? ""}
+          value={startDT?.toLocaleDateString() || ""}
           onChange={(e) => {
-            if (tempValidateDate(e.target.value)) {
+            if (isValidDateStr(e.target.value)) {
+              const {dateObj} = convertToStandardDateFormat(e.target.value);
+
               const minDateInvalid =
-                hasMinDate && Date.parse(e.target.value) < Date.parse(minDate);
+                hasMinDate &&
+                Date.parse(dateObj) <
+                  Date.parse(convertToStandardDateFormat(minDate).dateObj);
               if (minDateInvalid) {
                 setInvalid(true);
               } else {
                 setDateRange({
                   ...dateRange,
-                  startDT: new Date(e.target.value).toLocaleDateString()
+                  startDT: dateObj
                 });
-                setInvalid(false);
               }
             } else {
               setInvalid(true);
@@ -101,20 +97,23 @@ const DateInputs = ({
           onClick={handleInput}
           onKeyUp={handleInput}
           appendIcon="calendar"
-          value={dateRange.endDT ?? ""}
+          value={endDT?.toLocaleDateString() || ""}
           onChange={(e) => {
-            if (tempValidateDate(e.target.value)) {
+            if (isValidDateStr(e.target.value)) {
+              const {dateObj} = convertToStandardDateFormat(e.target.value);
+
               const maxDateInvalid =
-                hasMaxDate && Date.parse(e.target.value) > Date.parse(maxDate);
+                hasMaxDate &&
+                Date.parse(dateObj) >
+                  Date.parse(convertToStandardDateFormat(maxDate).dateObj);
 
               if (maxDateInvalid) {
                 setInvalid(true);
               } else {
                 setDateRange({
                   ...dateRange,
-                  endDT: new Date(e.target.value).toLocaleDateString()
+                  endDT: dateObj
                 });
-                setInvalid(false);
               }
             } else {
               setInvalid(true);
