@@ -29,6 +29,7 @@ const DateInputs = ({
   };
 
   useEffect(() => {
+    setInvalid(false);
     if (startDT && endDT) {
       if (Date.parse(startDT) > Date.parse(endDT)) {
         setInvalid(true);
@@ -82,7 +83,6 @@ const DateInputs = ({
                   ...dateRange,
                   startDT: dateObj
                 });
-                setInvalid(false);
               }
             } else {
               setInvalid(true);
@@ -114,7 +114,6 @@ const DateInputs = ({
                   ...dateRange,
                   endDT: dateObj
                 });
-                setInvalid(false);
               }
             } else {
               setInvalid(true);
