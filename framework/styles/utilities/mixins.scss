@@ -115,7 +115,7 @@
 // -----------------------------------------------------------------------------
 @mixin medium-button {
   height: 34px;
-  padding: 7px 12px;
+  padding: 8px 12px;
 
   &.a-button--icon {
     padding: 8.25px;
@@ -127,8 +127,8 @@
 
 @mixin small-button {
   height: 28px;
-  padding: 5px 8px;
-  font-size: $font-size--xs;
+  padding: 4px 8px;
+  font-size: $font-size--sm;
 
   &.a-button--icon {
     padding: 8.25px;

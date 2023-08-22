@@ -2,7 +2,7 @@
 
 $footer-min-height: 35px;
 $footer-padding: 10px 20px;
-$footer-font-size: $font-size--xs;
+$footer-font-size: $font-size--sm;
 
 @include theme(a-footer) using ($theme) {
   color: map-deep-get($theme, "footer", "color");

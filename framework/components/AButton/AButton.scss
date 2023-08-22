@@ -443,7 +443,7 @@ $btn-transition: color $transition-duration--extra-fast
   line-height: 0;
   padding: $btn-padding;
   margin: $btn-margin;
-  font-size: $font-size--sm;
+  font-size: $font-size--md;
   height: 34px;
   vertical-align: middle;
 
@@ -454,7 +454,7 @@ $btn-transition: color $transition-duration--extra-fast
   }
 
   .a-spinner {
-    margin-right: 5px;
+    margin-right: 4px;
     height: 16px;
     width: 16px;
 

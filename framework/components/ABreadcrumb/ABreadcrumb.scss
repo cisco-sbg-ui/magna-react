@@ -4,7 +4,7 @@
   &__item {
     > a {
       color: map-deep-get($theme, "breadcrumb", "default-color");
-      font-size: $font-size--sm;
+      font-size: $font-size--md;
       font-weight: 600;
 
       &:hover {
@@ -36,7 +36,7 @@
   li.a-breadcrumb__item {
     padding: 0;
     float: left;
-    font-size: $font-size--sm;
+    font-size: $font-size--md;
     font-weight: 600;
   }
 

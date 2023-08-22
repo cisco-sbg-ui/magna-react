@@ -76,7 +76,7 @@ $tooltip-color: map-get($mds-neutral, "neutral-1");
 
 .a-tooltip {
   display: inline-block;
-  font-size: $font-size--xs;
+  font-size: $font-size--sm;
   line-height: $line-height;
   min-width: 75px;
   max-width: 200px;
