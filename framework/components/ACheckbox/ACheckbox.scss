@@ -17,6 +17,14 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
     &__box {
       background-color: map-deep-get($theme, "checkbox", "fill-enabled");
     }
+
+    &__focuswrap:focus-within {
+      outline: none;
+      border-radius: 4px;
+      box-shadow: 0 0 0 2px
+          map-deep-get($theme, "checkbox", "focus-shadow-light"),
+        0 0 0 4px map-deep-get($theme, "checkbox", "focus-shadow-dark");
+    }
   }
 
   &__box {
@@ -118,10 +126,16 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
 .a-checkbox {
   &__wrap {
     display: flex;
-    position: relative;
     padding: $checkbox-padding;
     align-items: flex-start;
     cursor: pointer;
+  }
+
+  &__focuswrap {
+    display: flex;
+    position: relative;
+    padding: 0;
+    align-items: flex-start;
   }
 
   &__input {

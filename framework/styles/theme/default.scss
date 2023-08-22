@@ -191,7 +191,9 @@ $atomic-default: (
     "fill-checked": map-get($mds-light-theme, "status-info"),
     "fill-checked--hover": map-get($mds-interactive, "interactive-12"),
     "border--checked": map-get($mds-interactive, "interactive-10"),
-    "border--hover": map-get($mds-interactive, "interactive-11")
+    "border--hover": map-get($mds-interactive, "interactive-11"),
+    "focus-shadow-light": map-get($mds-light-theme, "interact-bg-weak-active"),
+    "focus-shadow-dark": map-get($mds-light-theme, "control-border-focus")
   ),
   "color": (
     "warning--state-hover": map-get($mds-light-theme, "status-warning"),

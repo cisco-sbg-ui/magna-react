@@ -156,10 +156,14 @@ const ACheckbox = forwardRef(
     }
 
     let currentPath = Icons.unchecked;
+    // TODO: "unchecked" svg is smaller (19.6px) I need to update scale, replace it with svg of same size as "indeterminate" and "checked" (20px)
+    let currentViewBox = "0 0 14.6 14.6";
     if (indeterminate) {
       currentPath = Icons.indeterminate;
+      currentViewBox = "0 0 15 15";
     } else if (checked) {
       currentPath = Icons.checked;
+      currentViewBox = "0 0 15 15";
     }
 
     const handleKeyDown = (e) => {
@@ -171,7 +175,7 @@ const ACheckbox = forwardRef(
     };
 
     const checkboxContent = (
-      <>
+      <div className="a-checkbox__focuswrap">
         <input
           id={id}
           type="checkbox"
@@ -191,11 +195,11 @@ const ACheckbox = forwardRef(
           }
         />
         <span {...boxProps}>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox={currentViewBox}>
             <path d={currentPath} />
           </svg>
         </span>
-      </>
+      </div>
     );
 
     const content =
