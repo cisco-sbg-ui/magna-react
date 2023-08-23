@@ -250,25 +250,38 @@ const ADataTable = forwardRef(
       [setExpandedRows]
     );
 
-    const sortedItems = useMemo(() => [...items], [items], sort);
-    if (sort) {
-      const sortDir = sort.direction === "desc" ? -1 : 1;
-      const targetHeader = Object.values(headers).find(
-        (x) => x.key === sort.key
-      );
+    const sortedItems = useMemo(() => {
+      if (sort) {
+        const sortDirection = sort.direction === "desc" ? -1 : 1;
+        const sortKey = sort.key;
 
-      let sortFunc = (a, b) => (a === b ? 0 : a < b ? -1 : 1);
-
-      if (targetHeader && typeof targetHeader.sort === "function") {
-        sortFunc = targetHeader.sort;
-      }
-
-      if (!targetHeader || targetHeader.sort !== false) {
-        sortedItems.sort(
-          (a, b) => sortDir * sortFunc(a[sort.key], b[sort.key])
+        const sortingHeader = Object.values(headers).find(
+          (header) => header.key === sortKey
         );
+        let sortFunc = (a, b) => (a === b ? 0 : a < b ? -1 : 1);
+        if (sortingHeader && typeof sortingHeader.sort === "function") {
+          sortFunc = sortingHeader.sort;
+        }
+
+        if (!sortingHeader || sortingHeader.sort !== false) {
+          return items.toSorted(
+            (a, b) => sortDirection * sortFunc(a[sortKey], b[sortKey])
+          );
+        }
       }
-    }
+
+      return [...items];
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [
+      sort,
+      items,
+      // Optimize headers deps to compare only used properties because "headers" array reference will be probably changed every re-render.
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      ...headers.map((header) => header.key),
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      ...headers.map((header) => header.sort)
+    ]);
+
     return (
       headers &&
       items && (
