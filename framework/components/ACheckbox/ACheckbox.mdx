@@ -112,8 +112,10 @@ return (
       withLabel={false}
       id="noLabel"
       checked={checked}
-      onClick={() => {
-        setChecked(!checked);
+      onClick={(e) => {
+        if (e.type === "click") {
+          setChecked(!checked);
+        }
       }}
     />
   </div>
