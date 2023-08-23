@@ -169,9 +169,9 @@ const ACheckbox = forwardRef(
     const handleKeyDown = (e) => {
       if (["Enter", "Space"].includes(e.code)) {
         e.preventDefault();
-      }
 
-      onClick && onClick(e);
+        onClick && onClick(e);
+      }
     };
 
     const checkboxContent = (
