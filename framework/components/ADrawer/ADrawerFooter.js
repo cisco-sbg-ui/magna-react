@@ -14,7 +14,7 @@ const ADrawerFooter = forwardRef(
       children,
       className: propsClassName,
       variant = "shadow",
-      wrapChildren = true,
+      withPadding = true,
       ...rest
     },
     ref
@@ -39,7 +39,7 @@ const ADrawerFooter = forwardRef(
     return (
       <div {...rest} ref={ref} className={className}>
         {divider}
-        {wrapChildren ? <ADrawerContent>{children}</ADrawerContent> : children}
+        {withPadding ? <ADrawerContent>{children}</ADrawerContent> : children}
       </div>
     );
   }
@@ -59,7 +59,7 @@ ADrawerFooter.propTypes = {
   /**
    * Wrap the component children in an ADrawerContent element
    */
-  wrapChildren: PropTypes.bool
+  withPadding: PropTypes.bool
 };
 
 ADrawerFooter.displayName = "ADrawerFooter";

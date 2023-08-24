@@ -8,10 +8,7 @@ import "./ADrawerBody.scss";
  * The area for the drawer's main content.
  */
 const ADrawerBody = forwardRef(
-  (
-    {children, className: propsClassName, wrapChildren = true, ...rest},
-    ref
-  ) => {
+  ({children, className: propsClassName, withPadding = true, ...rest}, ref) => {
     let className = "a-drawer__body";
 
     if (propsClassName) {
@@ -20,7 +17,7 @@ const ADrawerBody = forwardRef(
 
     return (
       <div ref={ref} className={className} {...rest}>
-        {wrapChildren ? <ADrawerContent>{children}</ADrawerContent> : children}
+        {withPadding ? <ADrawerContent>{children}</ADrawerContent> : children}
       </div>
     );
   }
@@ -36,7 +33,7 @@ ADrawerBody.propTypes = {
   /**
    * Wrap the component children in an ADrawerContent element
    */
-  wrapChildren: PropTypes.bool
+  withPadding: PropTypes.bool
 };
 
 ADrawerBody.displayName = "ADrawerBody";
