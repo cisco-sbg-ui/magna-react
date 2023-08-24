@@ -195,5 +195,61 @@ describe("ADataTable", async () => {
         expect(onKeyboardSelectStub.callCount).to.eq(1);
       });
     });
+
+    it("lost focus when clicking outside of the table", () => {
+      const onKeyboardSelectStub = cy.stub();
+
+      cy.mount(
+        <div style={{height: "500px"}}>
+          <ADataTable
+            headers={HEADERS}
+            items={ITEMS}
+            keyboardArrowSupport={{
+              onKeyboardSelect: onKeyboardSelectStub,
+              initiallySelectedRowIndex: 1
+            }}
+          />
+        </div>
+      );
+
+      cy.get("body")
+        .click(0, 499) // 3 rows table + header has 167px height
+        .then(() => {
+          cy.get("table tbody tr").should(
+            "not.have.class",
+            "a-data-table__row--key-selected"
+          );
+          expect(onKeyboardSelectStub.callCount).to.eq(1);
+          expect(onKeyboardSelectStub).to.be.calledWith({
+            index: -1,
+            item: undefined
+          });
+        });
+    });
+
+    it("keeps focus when clicking outside of the table when loosing focus is disabled by disableOnBlurReset param", () => {
+      cy.mount(
+        <div style={{height: "500px"}}>
+          <ADataTable
+            headers={HEADERS}
+            items={ITEMS}
+            keyboardArrowSupport={{
+              onKeyboardSelect: cy.stub(),
+              initiallySelectedRowIndex: 1,
+              disableOnBlurReset: true
+            }}
+          />
+        </div>
+      );
+
+      cy.get("body")
+        .click(0, 499) // 3 rows table + header has 167px height
+        .then(() => {
+          cy.get("table tbody tr").should(
+            "have.class",
+            "a-data-table__row--key-selected"
+          );
+        });
+    });
   });
 });

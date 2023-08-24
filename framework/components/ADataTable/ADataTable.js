@@ -171,6 +171,31 @@ const ADataTable = forwardRef(
       ]
     );
 
+    const onTableBlur = useCallback(
+      (event) => {
+        if (keyboardArrowSupport?.disableOnBlurReset) return;
+
+        const isEventsInTable = event.currentTarget.contains(
+          event.relatedTarget
+        );
+        if (!isEventsInTable) {
+          setSelectedRowIndex(-1);
+          if (typeof keyboardArrowSupport?.onKeyboardSelect === "function") {
+            keyboardArrowSupport?.onKeyboardSelect(
+              {index: -1, item: undefined},
+              event
+            );
+          }
+        }
+      },
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      [
+        setSelectedRowIndex,
+        keyboardArrowSupport?.disableOnBlurReset,
+        keyboardArrowSupport?.onKeyboardSelect
+      ]
+    );
+
     useEffect(() => {
       if (keyboardArrowSupport === null || selectedRowIndex === -1) return;
 
@@ -290,7 +315,12 @@ const ADataTable = forwardRef(
           shouldWrap={typeof onScrollToEnd === "function" || maxHeight}
           maxHeight={maxHeight}
         >
-          <ASimpleTable {...rest} ref={combinedTableRef} className={className}>
+          <ASimpleTable
+            {...rest}
+            ref={combinedTableRef}
+            className={className}
+            onBlur={onTableBlur}
+          >
             {headers && (
               <thead>
                 <TableRow
@@ -671,6 +701,11 @@ ADataTable.propTypes = {
      * is focused by default. This option can turn focus off.
      */
     disableRowAutoFocus: PropTypes.bool,
+
+    /**
+     * Disable resetting selection and positon in table when table component looses focus.
+     */
+    disableOnBlurReset: PropTypes.bool,
 
     /**
      * When this selector is provided we try to focus element by `css` selector in active row.
