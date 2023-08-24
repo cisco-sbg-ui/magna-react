@@ -23,9 +23,9 @@ const ADrawer = forwardRef(
       slim = false,
       slimHeight,
       slimWidth,
-      closeBtnOnClick,
-      closeTitle,
-      closeBtnProps,
+      closeBtnOnClick, //***DEPRECATED***
+      closeTitle, //***DEPRECATED***
+      closeBtnProps, //***DEPRECATED***
       style: propsStyle,
       withTransitions = true,
       ...rest

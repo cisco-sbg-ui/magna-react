@@ -9,21 +9,37 @@ import "./ADrawerFooter.scss";
  * The area displayed at the bottom of the drawer.
  */
 const ADrawerFooter = forwardRef(
-  ({children, className: propsClassName, divider, ...rest}, ref) => {
+  (
+    {
+      children,
+      className: propsClassName,
+      variant = "shadow",
+      wrapChildren = true,
+      ...rest
+    },
+    ref
+  ) => {
     let className = "a-drawer__footer";
+    let divider;
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
     }
 
-    if (divider) {
-      className += ` a-drawer__footer--hasDivider`;
+    switch (variant) {
+      case "shadow":
+        break;
+      case "divider":
+        className += ` a-drawer__footer--hasDivider`;
+
+        divider = <ADivider />;
+        break;
     }
 
     return (
       <div {...rest} ref={ref} className={className}>
-        {divider && <ADivider />}
-        <ADrawerContent>{children}</ADrawerContent>
+        {divider}
+        {wrapChildren ? <ADrawerContent>{children}</ADrawerContent> : children}
       </div>
     );
   }
@@ -39,7 +55,11 @@ ADrawerFooter.propTypes = {
   /**
    * Replace the default box shadow with an ADivider above the footer
    */
-  divider: PropTypes.bool
+  variant: PropTypes.oneOf(["shadow", "divider"]),
+  /**
+   * Wrap the component children in an ADrawerContent element
+   */
+  wrapChildren: PropTypes.bool
 };
 
 ADrawerFooter.displayName = "ADrawerFooter";

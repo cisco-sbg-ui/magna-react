@@ -8,7 +8,10 @@ import "./ADrawerBody.scss";
  * The area for the drawer's main content.
  */
 const ADrawerBody = forwardRef(
-  ({children, className: propsClassName, ...rest}, ref) => {
+  (
+    {children, className: propsClassName, wrapChildren = true, ...rest},
+    ref
+  ) => {
     let className = "a-drawer__body";
 
     if (propsClassName) {
@@ -17,7 +20,7 @@ const ADrawerBody = forwardRef(
 
     return (
       <div ref={ref} className={className} {...rest}>
-        <ADrawerContent>{children}</ADrawerContent>
+        {wrapChildren ? <ADrawerContent>{children}</ADrawerContent> : children}
       </div>
     );
   }
@@ -29,7 +32,11 @@ ADrawerBody.propTypes = {
    * If rendering the drawer as a modal, it will still be passed to the drawer
    * panel content element.
    */
-  className: PropTypes.string
+  className: PropTypes.string,
+  /**
+   * Wrap the component children in an ADrawerContent element
+   */
+  wrapChildren: PropTypes.bool
 };
 
 ADrawerBody.displayName = "ADrawerBody";
