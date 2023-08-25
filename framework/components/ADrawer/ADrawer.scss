@@ -20,6 +20,12 @@ $common-transitions: transform $transition-props, width $transition-props,
   &--modal {
     top: unset;
     left: unset;
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
   }
 
   &--transitions {

@@ -1,0 +1,32 @@
+@import "../../styles";
+
+@include theme(a-drawer__footer) using ($theme) {
+  border-color: map-deep-get($theme, "menu", "border-color");
+}
+
+.a-drawer__footer {
+  position: sticky;
+  bottom: 0;
+  margin-top: auto;
+  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.12);
+  border-top-left-radius: $border-radius--lg;
+  border-top-right-radius: $border-radius--lg;
+
+  .a-drawer__content {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &-action {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .a-divider {
+    margin: 0;
+  }
+
+  &--hasDivider {
+    box-shadow: none;
+  }
+}

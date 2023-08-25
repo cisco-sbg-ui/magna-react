@@ -1,0 +1,9 @@
+.a-drawer__title {
+  display: flex;
+  align-items: center;
+
+  .a-drawer__title-content {
+    flex: 1 1 auto;
+    word-break: break-all;
+  }
+}
