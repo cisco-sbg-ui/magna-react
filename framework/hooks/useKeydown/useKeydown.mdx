@@ -1,0 +1,59 @@
+---
+name: useKeydown
+route: /hooks/use-keydown
+components: useKeydown
+---
+
+# useKeyDown
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import { useKeydown } from "@cisco-sbg-ui/magna-react";
+```
+
+## Description
+
+`useKeydown` hook notifies when a user presses the keys specified in the parameter.
+
+### Parameters
+
+A configuration object with the following keys:
+
+- `targetKeys`: An array of key codes that the user would like to respond to. These codes are case-sensitive and must correspond to the values defined by the `KeyboardEvent.key` property. For a list of codes, you can refer to this [page](https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values)
+- `onKeydown`: Function to be called when the user presses any key from the `targetKeys` array. `key`(KeyboardEvent.key) and `event` which was triggered ara passed to this callback function.
+- `isEnabled`: If the hook should listen for `keydown` event. "true" by default.
+
+## Usage
+
+<Playground
+  code={`() => {
+    const [collapsed, setCollapsed] = useState(false);
+    useKeydown(["ArrowUp","ArrowDown"], (key) => {
+        switch (key) {
+            case "ArrowUp":
+                setCollapsed(true);
+                break;
+            case "ArrowDown":
+                setCollapsed(false);
+                break;
+        }
+      });
+      return (
+        <AAccordion>
+          <AAccordionPanel
+              collapsed={collapsed}
+              panelKey='demo'>
+            <AAccordionHeader>
+              <AAccordionHeaderTitle>ArrowUp/ArrowDown Keydown Accordion</AAccordionHeaderTitle>
+            </AAccordionHeader>
+            <AAccordionBody>
+              I collapse with an ArrowUp key. Press and expand again with ArrowDown press.
+            </AAccordionBody>
+          </AAccordionPanel>
+        </AAccordion>
+      )
+    }`}
+/>
