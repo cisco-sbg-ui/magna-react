@@ -13,14 +13,6 @@ $font-size--md: rem(0.875) !default; // 14px
 $font-size--sm: rem(0.75) !default; // 12px
 $font-size--xs: rem(0.625) !default; // 10px
 // -----------------------------------------------------------------------------
-// Font-size: h1-h4
-// -----------------------------------------------------------------------------
-$h1-font-size: rem(1.5); // 24px
-$h2-font-size: rem(1.125) !default; // 20px
-$h3-font-size: rem(1) !default; // 16px
-$h4-font-size: rem(0.875) !default; // 14px
-$h5-font-size: rem(0.75) !default; // 12px
-// -----------------------------------------------------------------------------
 // Font-weight, line-height
 // -----------------------------------------------------------------------------
 $font-weight-light: 300 !default;
@@ -65,11 +57,17 @@ $headings-font-weight: 700 !default;
 $headings-margin: $spacer * 3 !default;
 $headings-color: inherit !default;
 
+$h1-font-size: rem(1.5); // 24px
+$h2-font-size: rem(1.125) !default; // 20px
+$h3-font-size: rem(1) !default; // 16px
+$h4-font-size: rem(0.875) !default; // 14px
+$h5-font-size: rem(0.75) !default; // 12px
+
 $h1-line-height: rem(2.125); // 34px
 $h2-line-height: rem(1.5) !default; // 24px
 $h3-line-height: rem(1.375) !default; // 22px
 $h4-line-height: rem(1.25) !default; // 20px
-$h5-line-height: rem(0.625) !default; // 14px
+$h5-line-height: rem(1) !default; // 16px
 
 // -----------------------------------------------------------------------------
 // Display Heading
