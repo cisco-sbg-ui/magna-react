@@ -9,7 +9,7 @@ import React, {
 } from "react";
 
 import {keyCodes} from "../../utils/helpers";
-import {useKeydown} from "../../index";
+import useKeydown from "../../hooks/useKeydown/useKeydown";
 
 import AInView from "../AInView";
 import AIcon from "../AIcon";

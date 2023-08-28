@@ -1,4 +1,4 @@
-import {useKeydown} from "../../index";
+import useKeydown from "../useKeydown/useKeydown";
 
 const useEscapeKeydown = (options) => {
   const {isEnabled, onKeydown} = options;
