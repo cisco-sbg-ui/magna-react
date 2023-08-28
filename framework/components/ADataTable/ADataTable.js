@@ -289,7 +289,7 @@ const ADataTable = forwardRef(
         }
 
         if (!sortingHeader || sortingHeader.sort !== false) {
-          return items.toSorted(
+          return [...items].sort(
             (a, b) => sortDirection * sortFunc(a[sortKey], b[sortKey])
           );
         }
