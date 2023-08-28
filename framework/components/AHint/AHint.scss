@@ -3,8 +3,8 @@
 .a-hint {
   display: flex;
   line-height: 16px;
-  margin: 5px 0 0 0;
-  font-size: $font-size--xs;
+  margin: 4px 0 0 0;
+  font-size: $font-size--sm;
   color: map-get($mds-neutral, "neutral-10");
 
   &__icon.a-icon {

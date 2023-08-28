@@ -20,7 +20,7 @@ $date-picker-next-right: 13px;
 $date-picker-title-line-height: 28px;
 $date-picker-calendar-width: 245px;
 $date-picker-calendar-min-width: 245px;
-$date-picker-calendar-font-size: $font-size--sm;
+$date-picker-calendar-font-size: $font-size--md;
 $date-picker-calendar-margin: 10px 15px;
 $date-picker-calendar-disabled-opacity: 0.35;
 $date-picker-day-width: 30px;
@@ -43,7 +43,7 @@ $date-picker-day-border-radius: 4px;
   &__next {
     color: map-deep-get($theme, "base", "color");
     & span {
-      font-size: $font-size--xxs;
+      font-size: $font-size--sm;
     }
     &:hover {
       & span {
@@ -272,7 +272,7 @@ $date-picker-day-border-radius: 4px;
   &__week {
     text-align: center;
     font-weight: normal;
-    font-size: $font-size--xs;
+    font-size: $font-size--sm;
   }
 
   &__day {

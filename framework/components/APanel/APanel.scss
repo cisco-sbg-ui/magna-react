@@ -76,7 +76,7 @@
     text-align: left;
     @include flex-fluid;
     &--size-small {
-      font-size: $font-size--sm;
+      font-size: $font-size--md;
     }
   }
 

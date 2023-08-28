@@ -7,20 +7,11 @@ $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
 // Font-size: xxs, xs, sm, base, lg, xl
 // -----------------------------------------------------------------------------
 $font-size: 16px !default; // Base
-$font-size--xl: rem(1.5) !default; // 24px
-$font-size--lg: rem(1.25) !default; // 20px
-$font-size--md: rem(1.125) !default; // 18px
-$font-size--sm: rem(0.875) !default; // 14px
-$font-size--xs: rem(0.75) !default; // 12px
-$font-size--xxs: rem(0.625) !default; // 10px
-// -----------------------------------------------------------------------------
-// Font-size: h1-h4
-// -----------------------------------------------------------------------------
-$h1-font-size: rem(1.5); // 24px
-$h2-font-size: rem(1.125) !default; // 20px
-$h3-font-size: rem(1.1) !default; // 18px
-$h4-font-size: rem(0.875) !default; // 16px
-$h5-font-size: rem(0.625) !default; // 14px
+$font-size--xl: rem(1.125) !default; // 18px
+$font-size--lg: rem(1) !default; // 16px
+$font-size--md: rem(0.875) !default; // 14px
+$font-size--sm: rem(0.75) !default; // 12px
+$font-size--xs: rem(0.625) !default; // 10px
 // -----------------------------------------------------------------------------
 // Font-weight, line-height
 // -----------------------------------------------------------------------------
@@ -30,9 +21,13 @@ $font-weight-bold: 700 !default;
 $font-weight-xbold: 800 !default;
 $font-weight: $font-weight-normal !default;
 
-$font-weight--bold: bold !default;
-$line-height: 1.5 !default;
-$line-height--lg: rem(1.5) !default; // 24px
+$font-weight--bold: $font-weight-bold !default;
+$line-height: 1.25 !default;
+$line-height--xl: rem(1.5) !default; // 24px
+$line-height--lg: rem(1.375) !default; // 22px
+$line-height--md: rem(1.25) !default; // 20px
+$line-height--sm: rem(1.125) !default; // 18px
+$line-height--xs: rem(1) !default; // 16px
 // -----------------------------------------------------------------------------
 // Spacing, padding, border radius
 // -----------------------------------------------------------------------------
@@ -43,7 +38,7 @@ $border-radius--md: rem(0.25) !default; // 4px
 $border-radius--sm: rem(0.1875) !default; // 3px
 $border-radius--xs: rem(0.125) !default; // 2px
 $border-width: 2px !default;
-$spacer: 5px !default;
+$spacer: 4px !default;
 $spacing: rem(1.25) !default; // 20px
 $spacers: () !default;
 @for $i from 0 through 12 {
@@ -59,9 +54,21 @@ $spacers: () !default;
 // -----------------------------------------------------------------------------
 $headings-font-family: "Sharp Sans", $font-family;
 $headings-font-weight: 700 !default;
-$headings-line-height: 1.4 !default;
-$headings-margin: $spacer * 2 !default;
+$headings-margin: $spacer * 3 !default;
 $headings-color: inherit !default;
+
+$h1-font-size: rem(1.5); // 24px
+$h2-font-size: rem(1.125) !default; // 18px
+$h3-font-size: rem(1) !default; // 16px
+$h4-font-size: rem(0.875) !default; // 14px
+$h5-font-size: rem(0.75) !default; // 12px
+
+$h1-line-height: rem(2.125); // 34px
+$h2-line-height: rem(1.5) !default; // 24px
+$h3-line-height: rem(1.375) !default; // 22px
+$h4-line-height: rem(1.25) !default; // 20px
+$h5-line-height: rem(1) !default; // 16px
+
 // -----------------------------------------------------------------------------
 // Display Heading
 // -----------------------------------------------------------------------------
@@ -70,6 +77,9 @@ $display2-size: rem(2) !default; // 32px
 
 $display1-weight: 300 !default;
 $display2-weight: 300 !default;
+
+$display1-line-height: rem(4.5) !default;
+$display2-line-height: rem(2.375) !default;
 // -----------------------------------------------------------------------------
 // Subheadings, Emphasis
 // -----------------------------------------------------------------------------
@@ -93,9 +103,9 @@ $grid-breakpoints: map-merge(
   $grid-breakpoints
 );
 $grid-columns: 12 !default;
-$grid-gutter: $spacer * 5 !default;
+$grid-gutter: $spacer * 4 !default;
 $form-grid-gutter: $spacer * 2 !default;
-$grid-gutter-width: 30px !default;
+$grid-gutter-width: 24px !default;
 
 $container-padding-x: math.div($grid-gutter, 2) !default;
 
@@ -163,11 +173,11 @@ $danger-box-shadow: 0 0 2px 2px rgba(207, 32, 48, 0.4);
 // -----------------------------------------------------------------------------
 // Base Padding
 // -----------------------------------------------------------------------------
-$base-padding: rem(0.9375); // 15px
-$base-padding-top: rem(0.9375);
-$base-padding-right: rem(0.9375);
-$base-padding-bottom: rem(0.9375);
-$base-padding-left: rem(0.9375);
+$base-padding: rem(0.875); // 14px
+$base-padding-top: rem(0.875);
+$base-padding-right: rem(0.875);
+$base-padding-bottom: rem(0.875);
+$base-padding-left: rem(0.875);
 $base-padding-small: rem(0.625); // 10px
 $base-padding-small-top: rem(0.625);
 $base-padding-small-right: rem(0.625);

@@ -2,7 +2,7 @@
 
 $carousel-margin: 20px 0;
 $carousel-controls-margin-top: 20px;
-$carousel-dot-margin: 0 5px;
+$carousel-dot-margin: 0 4px;
 $carousel-dot-color: map-get($grey, "lighten-2");
 $carousel-dot-color-hover: map-get($cisco-blue, "base");
 $carousel-dot-color-selected: $base-color--selected;
@@ -46,7 +46,7 @@ $carousel-dot-color-selected: $base-color--selected;
   }
   &__dot {
     margin: $carousel-dot-margin;
-    font-size: $font-size--xs;
+    font-size: $font-size--sm;
     transition: color 0.5s;
     &:hover {
       text-decoration: none;

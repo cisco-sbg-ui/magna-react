@@ -3,14 +3,14 @@
 $accordion-min-width: 0;
 $accordion-width: 100%;
 $accordion-margin: 20px 0;
-$accordion-header-font-size: $font-size--sm;
+$accordion-header-font-size: $font-size--md;
 $accordion-header-font-weight: 600;
 //$accordion-header-padding: 16px 12px 16px 24px; magnetic spacing, ignoring for now
 $accordion-header-padding: 8px 12px;
 $accordion-body-padding: 15px 10px;
 $accordion-border-radius: 6px;
 $accordion-message-font-size: 13px;
-$accordion-toggle-font-size: $font-size--xxs;
+$accordion-toggle-font-size: $font-size--xs;
 $accordion-toggle-margin: 0 8px 0 0;
 $accordion-transition: visibility 0s ease, max-height $transition-duration ease,
   opacity $transition-duration--fast ease, margin $transition-duration ease;
