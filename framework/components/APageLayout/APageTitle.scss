@@ -1,0 +1,13 @@
+.a-page-title {
+  display: flex;
+
+  &__text {
+    margin-right: 12px !important;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    line-height: 26px;
+  }
+}

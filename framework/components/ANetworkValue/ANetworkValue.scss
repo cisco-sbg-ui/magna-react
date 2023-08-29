@@ -1,0 +1,9 @@
+@import "../../styles";
+
+.a-network-value {
+  font-family: monospace; // Add in Roboto Mono some day from the CDN
+  font-size: $font-size--md;
+  font-style: normal;
+  font-weight: $font-weight-normal;
+  line-height: $line-height--md;
+}

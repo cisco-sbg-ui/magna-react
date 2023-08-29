@@ -1,0 +1,35 @@
+---
+name: Network Values
+route: /components/networkvalues
+components: ANetworkValue
+---
+
+# Network Value
+
+Use for MAC addresses, IP addresses, networking IDs
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```js
+import {ANetworkValue} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage
+
+<Playground
+  code={`() => {
+
+return (
+
+<>
+  <ANetworkValue>e0:cb:bc:a3:03:48</ANetworkValue>
+</>
+); } `} />
+
+## Network Value Props
+
+The `ANetworkValue` component inherits passed props.
+
+<Props of="ANetworkValue" />

@@ -1,0 +1,113 @@
+---
+name: Page Layout
+route: /components/pagelayout
+components: APageContainer, APageHeader, APageTitle, APageDescription, APageLabel
+---
+
+# Page Layout
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```js
+import {APageContainer, APageHeader} from "@cisco-sbg-ui/magna-react";
+```
+
+## Terminology
+
+- Top line - breadcrumbs and actions that can impact the entire page
+- Page title - may contain tags, filters, loading status, and page-level actions like “Add XXX”
+- Page description - Key top-level information to highlight
+- Page label like MAC details - can be placed next to primary tabs
+
+## Basic Usage
+
+<Playground
+  fullWidthPreview
+  previewStyle={{padding: "0 !important"}}
+  code={`() => {
+
+return (
+<APageContainer>
+<APageHeader>
+<APageTitle title="Page Title">
+<ATag>Some tag</ATag>
+</APageTitle>
+</APageHeader>
+</APageContainer>
+);
+}
+`}
+/>
+
+## Advanced Usage
+
+<Playground
+  fullWidthPreview
+  previewStyle={{padding: "0 !important"}}
+  code={`() => {
+
+    const breadcrumbItems = [{
+    content: "Quests",
+    contentProps: {
+      href: "/"
+    }
+
+}, {
+content: "Recipe for Disaster",
+contentProps: {
+href: "/components/breadcrumb"
+}
+}];
+
+return (
+<APageContainer>
+<APageHeader hasTopLine>
+<ABreadcrumb items={breadcrumbItems} />
+<APageTitle title="Recipe for Disaster">
+<ATag>Special</ATag>
+</APageTitle>
+<APageDescription>
+The cook in Lumbridge has a surprisingly small number of ingredients on hand in his kitchen, possibly as a result of an endless stream of newcomers with light fingers, taking anything that isn't nailed down from his kitchen.
+</APageDescription>
+<APageLabel>
+<div style={{fontWeight: 600, marginRight: "5px"}}>MX450</div>
+<ANetworkValue>e0:cb:bc:a3:03:48</ANetworkValue>
+</APageLabel>
+</APageHeader>
+<ACardContainer>
+<ACardHeader>
+<ACardTitle>Quest Description</ACardTitle>
+</ACardHeader>
+<ACardContent>
+<p>The cook is preparing for a party in Lumbridge. He tells the player that a hundred years ago, a very important meeting was held in Lumbridge. Supposedly his ancestor, Franizzard Van Lumbcook, cooked such an amazing banquet for the occasion that he was offered a job as head cook, along with all his descendants, for life.</p>
+</ACardContent>
+</ACardContainer>
+</APageContainer>
+);
+}
+`}
+/>
+
+## Page Layout Props
+
+The `APageContainer` component inherits passed props.
+
+<Props of="APageContainer" />
+
+The `APageHeader` component inherits passed props.
+
+<Props of="APageHeader" />
+
+The `APageTitle` component inherits passed props.
+
+<Props of="APageTitle" />
+
+The `APageDescription` component inherits passed props.
+
+<Props of="APageDescription" />
+
+The `APageLabel` component inherits passed props.
+
+<Props of="APageLabel" />
