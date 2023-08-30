@@ -88,7 +88,8 @@ import {
   APageLabel,
   APageTitleContent,
   APageTitleContentLeft,
-  APageTitleContentRight
+  APageTitleContentRight,
+  APageTitleText
 } from "./components/APageLayout";
 import APageOverlay from "./components/APageOverlay";
 import APagination from "./components/APagination";
@@ -225,6 +226,7 @@ export {
   APageTitleContent,
   APageTitleContentLeft,
   APageTitleContentRight,
+  APageTitleText,
   APageLoader,
   APageOverlay,
   APagination,

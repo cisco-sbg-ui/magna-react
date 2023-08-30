@@ -6,6 +6,7 @@ import APageLabel from "./APageLabel";
 import APageTitleContent from "./APageTitleContent";
 import APageTitleContentLeft from "./content/APageTitleContentLeft";
 import APageTitleContentRight from "./content/APageTitleContentRight";
+import APageTitleText from "./APageTitleText";
 
 export {
   APageContainer,
@@ -15,5 +16,6 @@ export {
   APageLabel,
   APageTitleContent,
   APageTitleContentLeft,
-  APageTitleContentRight
+  APageTitleContentRight,
+  APageTitleText
 };

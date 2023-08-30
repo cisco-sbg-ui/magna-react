@@ -1,7 +1,7 @@
 ---
 name: Page Layout
 route: /components/pagelayout
-components: APageContainer, APageHeader, APageTitle, APageDescription, APageLabel,  APageTitleContent, APageTitleContentLeft, APageTitleContentRight
+components: APageContainer, APageHeader, APageTitle, APageDescription, APageLabel,  APageTitleContent, APageTitleContentLeft, APageTitleContentRight, APageTitleText
 ---
 
 # Page Layout
@@ -119,6 +119,55 @@ return (
 </APageContainer>
 ); } `} />
 
+## Other Designs
+
+<Playground
+  fullWidthPreview
+  previewStyle={{padding: "0 !important"}}
+  code={`() => {
+
+    const breadcrumbItems = [{
+    content: "Main Page",
+    contentProps: {
+      href: "/"
+    }
+
+}, {
+content: "Some Detail Page",
+contentProps: {
+href: "/components/breadcrumb"
+}
+}];
+
+return (
+
+<APageContainer>
+  <APageHeader hasTopLine>
+    <ABreadcrumb items={breadcrumbItems} />
+    <APageTitle>
+      <APageTitleContent variant="left">
+        <ATag color="accentA">New</ATag>
+        <ATag color="accentF">500</ATag>
+      </APageTitleContent>
+      <APageTitleText>Some Detail Page</APageTitleText>
+      <APageTitleContent>
+        <APageTitleContentLeft>
+          <ATag>Right Tag</ATag>
+        </APageTitleContentLeft>
+        <APageTitleContentRight>
+          <AButton>
+            <AIcon left>eye</AIcon>Do More Stuff
+          </AButton>
+        </APageTitleContentRight>
+      </APageTitleContent>
+    </APageTitle>
+    <APageDescription>
+      {"This example has content to the left of the main '<h1>' title"}
+    </APageDescription>
+  </APageHeader>
+</APageContainer>
+); } `} />
+
 ## Page Layout Props
 
 The `APageContainer` component inherits passed props.
@@ -132,6 +181,10 @@ The `APageHeader` component inherits passed props.
 The `APageTitle` component inherits passed props.
 
 <Props of="APageTitle" />
+
+The `APageTitleContent` component inherits passed props.
+
+<Props of="APageTitleContent" />
 
 The `APageDescription` component inherits passed props.
 

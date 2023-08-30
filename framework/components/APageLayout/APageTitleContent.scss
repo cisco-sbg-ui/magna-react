@@ -6,15 +6,19 @@
 
   &__left {
     flex: 1 0 auto;
-
-    .a-tag + .a-tag {
-      margin-left: 4px;
-    }
   }
 
   &__right {
     display: flex;
     flex: 0 1 auto;
     justify-content: flex-end;
+  }
+
+  &--left {
+    flex: 0 1 auto;
+  }
+
+  .a-tag + .a-tag {
+    margin-left: 4px;
   }
 }
