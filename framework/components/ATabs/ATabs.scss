@@ -1,15 +1,16 @@
 @import "../../styles";
 
 $tabs-padding: 0;
-$tabs-margin: 10px 0 0;
+$tabs-margin: 8px 0 0;
 $tab-font-size: $font-size--md;
 $tab-bottom-bar-height: -4px;
 $tab-top-bar-height: 4px;
 $tab-padding-bottom: 12px;
-$tab-margin: 2px 15px 4px 15px;
+$tab-margin: 0 16px;
+$tab-padding: 12px 0; // doesn't match magnetic, but magnetic doesn't align to the 4px pattern here either
 $tab-heading-margin: 0;
 $tab-heading-font-size: $font-size--lg;
-$tab-tall-padding: 0 15px 19px 15px;
+$tab-tall-padding: 0 16px 20px 16px;
 $tab-tall-margin: 0;
 $tab-oversized-height: 110px;
 $tab-oversized--selected-background-color: transparent;
@@ -199,7 +200,7 @@ $tab-oversized-margin: 0;
   &__tab {
     display: inline-block;
     margin: $tab-margin;
-    padding-bottom: $tab-padding-bottom;
+    padding: $tab-padding;
     border: none;
     text-align: center;
     user-select: none;

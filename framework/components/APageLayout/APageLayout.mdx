@@ -29,17 +29,15 @@ import {APageContainer, APageHeader} from "@cisco-sbg-ui/magna-react";
   code={`() => {
 
 return (
+
 <APageContainer>
-<APageHeader>
-<APageTitle title="Page Title">
-<ATag>Some tag</ATag>
-</APageTitle>
-</APageHeader>
+  <APageHeader>
+    <APageTitle title="Page Title">
+      <ATag>Some tag</ATag>
+    </APageTitle>
+  </APageHeader>
 </APageContainer>
-);
-}
-`}
-/>
+); } `} />
 
 ## Advanced Usage
 
@@ -62,33 +60,51 @@ href: "/components/breadcrumb"
 }];
 
 return (
+
 <APageContainer>
-<APageHeader hasTopLine>
-<ABreadcrumb items={breadcrumbItems} />
-<APageTitle title="Recipe for Disaster">
-<ATag>Special</ATag>
-</APageTitle>
-<APageDescription>
-The cook in Lumbridge has a surprisingly small number of ingredients on hand in his kitchen, possibly as a result of an endless stream of newcomers with light fingers, taking anything that isn't nailed down from his kitchen.
-</APageDescription>
-<APageLabel>
-<div style={{fontWeight: 600, marginRight: "5px"}}>MX450</div>
-<ANetworkValue>e0:cb:bc:a3:03:48</ANetworkValue>
-</APageLabel>
-</APageHeader>
-<ACardContainer>
-<ACardHeader>
-<ACardTitle>Quest Description</ACardTitle>
-</ACardHeader>
-<ACardContent>
-<p>The cook is preparing for a party in Lumbridge. He tells the player that a hundred years ago, a very important meeting was held in Lumbridge. Supposedly his ancestor, Franizzard Van Lumbcook, cooked such an amazing banquet for the occasion that he was offered a job as head cook, along with all his descendants, for life.</p>
-</ACardContent>
-</ACardContainer>
+  <APageHeader hasTopLine>
+    <ABreadcrumb items={breadcrumbItems} />
+    <APageTitle title="Recipe for Disaster">
+      <ATag>Special</ATag>
+    </APageTitle>
+    <APageDescription>
+      The cook in Lumbridge has a surprisingly small number of ingredients on
+      hand in his kitchen, possibly as a result of an endless stream of
+      newcomers with light fingers, taking anything that isn't nailed down from
+      his kitchen.
+    </APageDescription>
+    <APageLabel>
+      <div style={{fontWeight: 600, marginRight: "5px"}}>MX450</div>
+      <ANetworkValue>e0:cb:bc:a3:03:48</ANetworkValue>
+    </APageLabel>
+    <ATabGroup>
+      <ATab>One</ATab>
+      <ATab>Two</ATab>
+      <ATab selected>Three</ATab>
+      <ATab>Four</ATab>
+      <ATab>Five</ATab>
+      <ATab>Six</ATab>
+      <ATab>Seven</ATab>
+      <ATab>Eight</ATab>
+      <ATab>Nine</ATab>
+    </ATabGroup>
+  </APageHeader>
+  <ACardContainer>
+    <ACardHeader>
+      <ACardTitle>Quest Description</ACardTitle>
+    </ACardHeader>
+    <ACardContent>
+      <p>
+        The cook is preparing for a party in Lumbridge. He tells the player that
+        a hundred years ago, a very important meeting was held in Lumbridge.
+        Supposedly his ancestor, Franizzard Van Lumbcook, cooked such an amazing
+        banquet for the occasion that he was offered a job as head cook, along
+        with all his descendants, for life.
+      </p>
+    </ACardContent>
+  </ACardContainer>
 </APageContainer>
-);
-}
-`}
-/>
+); } `} />
 
 ## Page Layout Props
 
