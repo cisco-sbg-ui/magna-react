@@ -1,7 +1,7 @@
 ---
 name: Page Layout
 route: /components/pagelayout
-components: APageContainer, APageHeader, APageTitle, APageDescription, APageLabel
+components: APageContainer, APageHeader, APageTitle, APageDescription, APageLabel,  APageTitleContent, APageTitleContentLeft, APageTitleContentRight
 ---
 
 # Page Layout
@@ -32,7 +32,7 @@ return (
 
 <APageContainer>
   <APageHeader>
-    <APageTitle title="Page Title">
+    <APageTitle title="Page Title" withChildrenContainer>
       <ATag>Some tag</ATag>
     </APageTitle>
   </APageHeader>
@@ -65,7 +65,17 @@ return (
   <APageHeader hasTopLine>
     <ABreadcrumb items={breadcrumbItems} />
     <APageTitle title="Recipe for Disaster">
-      <ATag>Special</ATag>
+      <APageTitleContent>
+        <APageTitleContentLeft>
+          <ATag>Special</ATag>
+          <ATag color="accentB">Very Long</ATag>
+        </APageTitleContentLeft>
+        <APageTitleContentRight>
+          <AButton>
+            <AIcon left>eye</AIcon>View Walkthrough
+          </AButton>
+        </APageTitleContentRight>
+      </APageTitleContent>
     </APageTitle>
     <APageDescription>
       The cook in Lumbridge has a surprisingly small number of ingredients on

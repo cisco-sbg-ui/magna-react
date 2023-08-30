@@ -1,0 +1,20 @@
+.a-page-title-content {
+  display: flex;
+  flex: 1 0 auto;
+  align-items: center;
+  line-height: 26px;
+
+  &__left {
+    flex: 1 0 auto;
+
+    .a-tag + .a-tag {
+      margin-left: 4px;
+    }
+  }
+
+  &__right {
+    display: flex;
+    flex: 0 1 auto;
+    justify-content: flex-end;
+  }
+}

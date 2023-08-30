@@ -85,7 +85,10 @@ import {
   APageHeader,
   APageTitle,
   APageDescription,
-  APageLabel
+  APageLabel,
+  APageTitleContent,
+  APageTitleContentLeft,
+  APageTitleContentRight
 } from "./components/APageLayout";
 import APageOverlay from "./components/APageOverlay";
 import APagination from "./components/APagination";
@@ -219,6 +222,9 @@ export {
   APageTitle,
   APageDescription,
   APageLabel,
+  APageTitleContent,
+  APageTitleContentLeft,
+  APageTitleContentRight,
   APageLoader,
   APageOverlay,
   APagination,
