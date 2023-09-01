@@ -19,7 +19,7 @@ const scope = {
   mockImport
 };
 
-const Playground = ({code, fullWidthPreview, noInline}) => {
+const Playground = ({code, fullWidthPreview, noInline, previewStyle = {}}) => {
   return (
     <LiveProvider code={code} scope={scope} noInline={noInline}>
       <AList
@@ -41,7 +41,12 @@ const Playground = ({code, fullWidthPreview, noInline}) => {
             </div>
             <div
               className="pa-4 playground__preview"
-              style={{flexBasis: "50%", marginLeft: "50%", maxWidth: "50%"}}
+              style={{
+                flexBasis: "50%",
+                marginLeft: "50%",
+                maxWidth: "50%",
+                ...previewStyle
+              }}
             >
               <LiveError />
               <LivePreview />
@@ -50,7 +55,7 @@ const Playground = ({code, fullWidthPreview, noInline}) => {
         )}
         {fullWidthPreview && (
           <>
-            <div className="pa-4 playground__preview">
+            <div className="pa-4 playground__preview" style={previewStyle}>
               <LiveError />
               <LivePreview />
             </div>

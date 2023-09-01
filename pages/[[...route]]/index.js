@@ -45,10 +45,7 @@ export default function TestPage({currentDoc, menus, propsInfo}) {
                 <Sidebar currentDoc={currentDoc} menus={menus} />
               </ACol>
               <AMount withNewWrappingContext={true}>
-                <ACol
-                  className="pa-8"
-                  style={{maxWidth: "calc(100vw - 347px)"}}
-                >
+                <ACol className="pa-8" style={{width: "calc(100vw - 347px)"}}>
                   <PropsContext.Provider value={propsInfo}>
                     <MDXRemote {...currentDoc.source} components={components} />
                   </PropsContext.Provider>

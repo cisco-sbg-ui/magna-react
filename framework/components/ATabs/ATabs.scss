@@ -1,15 +1,16 @@
 @import "../../styles";
 
 $tabs-padding: 0;
-$tabs-margin: 10px 0 0;
+$tabs-margin: 8px 0 0;
 $tab-font-size: $font-size--md;
 $tab-bottom-bar-height: -4px;
 $tab-top-bar-height: 4px;
 $tab-padding-bottom: 12px;
-$tab-margin: 2px 15px 4px 15px;
+$tab-margin: 0 16px;
+$tab-padding: 4px 0; // doesn't match magnetic (overall height 41px, but magnetic doesn't align to the multiple of 4px pattern here either
 $tab-heading-margin: 0;
 $tab-heading-font-size: $font-size--lg;
-$tab-tall-padding: 0 15px 19px 15px;
+$tab-tall-padding: 0 16px 20px 16px;
 $tab-tall-margin: 0;
 $tab-oversized-height: 110px;
 $tab-oversized--selected-background-color: transparent;
@@ -162,6 +163,7 @@ $tab-oversized-margin: 0;
   list-style: none;
   background-color: transparent;
   display: flex;
+  align-items: center;
 
   &__tab-wrapper {
     display: flex;
@@ -192,14 +194,13 @@ $tab-oversized-margin: 0;
 
   &__scroll-left,
   &__scroll-right {
-    margin-top: -10px;
     flex-shrink: 0;
   }
 
   &__tab {
     display: inline-block;
     margin: $tab-margin;
-    padding-bottom: $tab-padding-bottom;
+    padding: $tab-padding;
     border: none;
     text-align: center;
     user-select: none;
@@ -219,6 +220,14 @@ $tab-oversized-margin: 0;
         margin-bottom: 0;
       }
     }
+  }
+
+  &__tab:first-of-type {
+    margin-left: 0;
+  }
+
+  &__tab:last-of-type {
+    margin-right: 0;
   }
 
   .a-tab-group__tab {

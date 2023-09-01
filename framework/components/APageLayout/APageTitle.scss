@@ -1,0 +1,23 @@
+.a-page-title {
+  display: flex;
+
+  &__text {
+    margin-right: 12px !important;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    line-height: 26px;
+  }
+
+  .a-page-title-text {
+    margin: 0 12px !important;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
