@@ -6,16 +6,20 @@
 
   &__left {
     flex: 1 0 auto;
+    white-space: nowrap;
   }
 
   &__right {
     display: flex;
     flex: 0 1 auto;
     justify-content: flex-end;
+    white-space: nowrap;
+    padding-left: 12px;
   }
 
   &--left {
     flex: 0 1 auto;
+    white-space: nowrap;
   }
 
   .a-tag + .a-tag {

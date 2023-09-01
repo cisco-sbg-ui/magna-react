@@ -3,6 +3,9 @@
 
   &__text {
     margin-right: 12px !important;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   &__content {
@@ -13,5 +16,8 @@
 
   .a-page-title-text {
     margin: 0 12px !important;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 }
