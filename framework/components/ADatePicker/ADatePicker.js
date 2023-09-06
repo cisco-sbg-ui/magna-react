@@ -64,9 +64,6 @@ const ADatePicker = forwardRef(
       // If range has a Date object, use the latest one
       // to initialize the calendar UI
       const dates = value.filter((d) => d instanceof Date);
-      if (hasMinDate) {
-        return minDate;
-      }
       if (!dates.length) {
         return new Date();
       }
