@@ -7,7 +7,7 @@ module.exports = {
   entry: "./framework/index.js",
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "../lib/styles/magna-react.css"
+      filename: "../lib/styles/magna-react.css" // could also output in dist/magna-react.css if we can troubleshoot es bundle.js
     })
   ],
   module: {
@@ -27,16 +27,30 @@ module.exports = {
               ["@babel/preset-env", {/*targets: "defaults",*/ modules: false}]
             ]
           }
+        },
+        resolve: {
+          fullySpecified: false
         }
       }
     ]
   },
   output: {
-    //Not used but required
     path: path.resolve(__dirname, "./dist"),
     filename: `bundle.js`,
     libraryTarget: "umd"
   },
+  // Note* Cant seem to get es modules to work in IM for "dist/bundle.js",
+  // So left lib entry for module for now while troubleshooting
+  // output: {
+  //   path: path.resolve(__dirname, "./dist"),
+  //   filename: "bundle.js",
+  //   library: {
+  //     type: "module"
+  //   }
+  // },
+  // experiments: {
+  //   outputModule: true
+  // },
   resolve: {
     alias: {
       react: path.resolve(__dirname, "./node_modules/react"),
