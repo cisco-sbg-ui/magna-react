@@ -7,7 +7,7 @@ module.exports = {
   entry: "./framework/index.js",
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "../lib/styles/magna-react.css" // could also output in dist/magna-react.css if we can troubleshoot es bundle.js
+      filename: "magna-react.css" // could also output in dist/magna-react.css if we can troubleshoot es bundle.js
     })
   ],
   module: {
@@ -34,44 +34,44 @@ module.exports = {
       }
     ]
   },
-  output: {
-    path: path.resolve(__dirname, "./dist"),
-    filename: `bundle.js`,
-    libraryTarget: "umd"
-  },
-  // Note* Cant seem to get es modules to work in IM for "dist/bundle.js",
-  // So left lib entry for module for now while troubleshooting
   // output: {
   //   path: path.resolve(__dirname, "./dist"),
-  //   filename: "bundle.js",
-  //   library: {
-  //     type: "module"
-  //   }
+  //   filename: `bundle.js`,
+  //   libraryTarget: "umd"
   // },
-  // experiments: {
-  //   outputModule: true
-  // },
+  // Note* Cant seem to get es modules to work in IM for "dist/bundle.js",
+  // So left lib entry for module for now while troubleshooting
+  output: {
+    path: path.resolve(__dirname, "./dist"),
+    filename: "bundle.js",
+    library: {
+      type: "module"
+    }
+  },
+  experiments: {
+    outputModule: true
+  },
   resolve: {
     alias: {
       react: path.resolve(__dirname, "./node_modules/react"),
       "react-dom": path.resolve(__dirname, "./node_modules/react-dom")
     }
   },
-  externals: {
-    // Don't bundle react or react-dom
-    react: {
-      commonjs: "react",
-      commonjs2: "react",
-      amd: "React",
-      root: "React"
-    },
-    "react-dom": {
-      commonjs: "react-dom",
-      commonjs2: "react-dom",
-      amd: "ReactDOM",
-      root: "ReactDOM"
-    }
-  },
+  // externals: {
+  //   // Don't bundle react or react-dom
+  //   react: {
+  //     commonjs: "react",
+  //     commonjs2: "react",
+  //     amd: "React",
+  //     root: "React"
+  //   },
+  //   "react-dom": {
+  //     commonjs: "react-dom",
+  //     commonjs2: "react-dom",
+  //     amd: "ReactDOM",
+  //     root: "ReactDOM"
+  //   }
+  // },
   performance: {
     hints: false,
     maxEntrypointSize: 512000,

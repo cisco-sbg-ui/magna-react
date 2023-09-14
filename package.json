@@ -3,7 +3,7 @@
   "version": "1.0.0-canary.0",
   "description": "",
   "main": "lib/index.js",
-  "module": "lib/index.js",
+  "module": "dist/bundle.js",
   "scripts": {
     "build:babel-preset": "node build/generate-babel-preset.js",
     "build:lib": "babel --no-babelrc --config-file ./babel-lib.config.js framework --out-dir lib --copy-files",
