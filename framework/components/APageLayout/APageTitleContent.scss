@@ -22,6 +22,10 @@
     white-space: nowrap;
   }
 
+  &__right--noLeftContent {
+    flex: 1 0 auto !important;
+  }
+
   .a-tag + .a-tag {
     margin-left: 4px;
   }
