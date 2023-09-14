@@ -121,6 +121,21 @@ const AAutocomplete = forwardRef(
       setError("");
     };
 
+    const handleBoldText = (item) => {
+      if (!value) {
+        return item;
+      }
+      const regex = new RegExp(`(${value})`, "gi");
+      const itemArray = item.split(regex);
+      const boldText = itemArray.map((str, i) => {
+        if (regex.test(str)) {
+          return <b key={`bold-item-${i}`}>{str}</b>;
+        }
+        return str;
+      });
+      return boldText;
+    };
+
     const inputBaseProps = {
       ...rest,
       ref: combinedRef,
@@ -253,10 +268,12 @@ const AAutocomplete = forwardRef(
 
                 if (typeof item === "string") {
                   itemProps.value = item;
-                  itemProps.children = item;
+                  itemProps.children = <span>{handleBoldText(item)}</span>;
                 } else if (typeof item === "object") {
                   itemProps.value = item[itemValue];
-                  itemProps.children = item[itemText];
+                  itemProps.children = (
+                    <span>{handleBoldText(item[itemText])}</span>
+                  );
                 }
 
                 const MenuItemComponent = itemTemplate
