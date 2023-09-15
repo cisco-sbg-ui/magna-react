@@ -1,9 +1,16 @@
 {
   "name": "@cisco-sbg-ui/magna-react",
-  "version": "1.0.0-canary.0",
+  "version": "0.0.0-esm.0",
   "description": "",
   "main": "lib/index.js",
   "module": "dist/index.es.js",
+  "files": [
+    "lib",
+    "dist",
+    "svg",
+    "babel-preset.js",
+    "babel-preset-es.js"
+  ],
   "scripts": {
     "build:babel-preset": "node build/generate-babel-preset.js",
     "build:babel-preset-es": "node build/generate-babel-preset-es.js",

@@ -1,0 +1,31 @@
+name: ESM Experiment
+
+on:
+  push:
+    tags:
+      - "**-esm.*"
+
+jobs:
+  publish:
+    name: Publish NPM
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - run: |
+          echo "@cisco-sbg-ui:registry=https://npm.pkg.github.com/" >> .npmrc
+      - run: npm ci
+      - run: npm run build
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          registry: https://npm.pkg.github.com/
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: esexperimental
