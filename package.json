@@ -1,6 +1,6 @@
 {
   "name": "@cisco-sbg-ui/magna-react",
-  "version": "0.0.0-esm.0",
+  "version": "0.0.0-esm.1",
   "description": "",
   "main": "lib/index.js",
   "module": "dist/index.es.js",
@@ -16,7 +16,7 @@
     "build:babel-preset-es": "node build/generate-babel-preset-es.js",
     "build:lib": "babel --no-babelrc --config-file ./babel-lib.config.js framework --out-dir lib --copy-files",
     "build:docs": "next build",
-    "build:es": "env NODE_ENV='production' npm run rollup && node build/css.mjs && npm run build:babel-preset-es",
+    "build:es": "env NODE_ENV='production' npm run rollup && npm run build:babel-preset-es",
     "build": "npm run build:lib && npm run build:babel-preset && npm run build:es",
     "vercel-build": "npm run build:docs",
     "cover": "npm run cover:unit && npm run cover:integration && npm run coverage-report",

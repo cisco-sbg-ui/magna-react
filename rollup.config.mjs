@@ -7,6 +7,25 @@ import {readFileSync} from "fs";
 
 const pkg = JSON.parse(readFileSync("./package.json"));
 
+const inject = (cssVariableName, fileId) => {
+  const split = fileId.split("/");
+  const componentName = split[split.length - 1].split(".")[0];
+  const id = `@cisco-sbg-ui/magna-react--${componentName}`;
+
+  const ret = `
+    if (document && !document.getElementById('${id}')) {
+      const style = document.createElementNS(
+        "http://www.w3.org/1999/xhtml",
+        "style"
+      );
+      style.id = '${id}';
+      style.innerHTML = ${cssVariableName};
+      document.getElementsByTagName("head")[0].appendChild(style);
+    }`;
+
+  return ret;
+};
+
 const plugins = [
   json(),
   nodeResolve(),
@@ -16,7 +35,7 @@ const plugins = [
         preset: "default"
       })
     ],
-    extract: true
+    inject
   }),
   babel({
     babelHelpers: "runtime",

@@ -1,7 +1,6 @@
 const fs = require("fs");
 const glob = require("glob");
 
-const localDeclarations = [];
 const declarations = [];
 const files = glob.sync("./framework/components/**/index.js");
 
@@ -14,28 +13,27 @@ const getComponents = (data) => {
   });
 };
 
+const allMembers = [];
 files.forEach((x) => {
   const path = x.split("/");
   console.log(`Adding ${path[3]}`);
   const data = fs.readFileSync(x, {encoding: "utf8", flag: "r"});
 
-  if (data.includes("export {default} from")) {
-    declarations.push({
-      default: path[3],
-      path: `@cisco-sbg-ui/magna-react`
-    });
-    localDeclarations.push({
-      default: path[3],
-      path: `@cisco-sbg-ui/magna-react`
-    });
-    return;
+  console.log(getComponents(data));
+  const members = getComponents(data);
+
+  if (members.includes("default")) {
+    members.pop();
+    members.push(path[3]);
   }
 
-  declarations.push({
-    default: path[3] + "Exports",
-    members: getComponents(data),
-    path: `@cisco-sbg-ui/magna-react`
-  });
+  allMembers.push(...members);
+});
+
+declarations.push({
+  default: "Exports",
+  members: allMembers,
+  path: `@cisco-sbg-ui/magna-react`
 });
 
 const template = (value) => `module.exports = function () {
@@ -59,15 +57,5 @@ fs.writeFile(
   (err) => {
     if (err) throw err;
     console.log("Babel preset successfully generated!");
-  }
-);
-
-fs.writeFile(
-  "babel-preset-local.js",
-  template(localDeclarations),
-  {flag: "w+"},
-  (err) => {
-    if (err) throw err;
-    console.log("Babel preset (local) successfully generated!");
   }
 );
