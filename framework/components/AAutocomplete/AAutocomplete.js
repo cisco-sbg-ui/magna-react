@@ -14,7 +14,7 @@ import AIcon from "../AIcon";
 import AMenu from "../AMenu";
 import {AListItem} from "../AList";
 import {useCombinedRefs} from "../../utils/hooks";
-import {keyCodes} from "../../utils/helpers";
+import {keyCodes, handleBoldText} from "../../utils/helpers";
 import "./AAutocomplete.scss";
 
 let autocompleteCounter = 0;
@@ -119,21 +119,6 @@ const AAutocomplete = forwardRef(
     const reset = () => {
       setWorkingValidationState(validationState);
       setError("");
-    };
-
-    const handleBoldText = (item) => {
-      if (!value) {
-        return item;
-      }
-      const regex = new RegExp(`(${value})`, "gi");
-      const itemArray = item.split(regex);
-      const boldText = itemArray.map((str, i) => {
-        if (regex.test(str)) {
-          return <b key={`bold-item-${i}`}>{str}</b>;
-        }
-        return str;
-      });
-      return boldText;
     };
 
     const inputBaseProps = {
@@ -268,11 +253,13 @@ const AAutocomplete = forwardRef(
 
                 if (typeof item === "string") {
                   itemProps.value = item;
-                  itemProps.children = <span>{handleBoldText(item)}</span>;
+                  itemProps.children = (
+                    <span>{handleBoldText(value, item)}</span>
+                  );
                 } else if (typeof item === "object") {
                   itemProps.value = item[itemValue];
                   itemProps.children = (
-                    <span>{handleBoldText(item[itemText])}</span>
+                    <span>{handleBoldText(value, item[itemText])}</span>
                   );
                 }
 

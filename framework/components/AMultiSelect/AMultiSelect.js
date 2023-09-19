@@ -14,7 +14,7 @@ import AMenu from "../AMenu";
 import {AListItem} from "../AList";
 import AEmptyState from "../AEmptyState";
 import {useCombinedRefs} from "../../utils/hooks";
-import {keyCodes, localeIncludes} from "../../utils/helpers";
+import {keyCodes, localeIncludes, handleBoldText} from "../../utils/helpers";
 import useMenuSpacing from "../AMenuBase/hooks";
 import useOutsideClick from "../../hooks/useOutsideClick/useOutsideClick";
 import usePopupQuickExit from "../../hooks/usePopupQuickExit/usePopupQuickExit";
@@ -345,10 +345,10 @@ const AMultiSelect = forwardRef(
 
       if (typeof item === "string") {
         computedValue = item;
-        children = item;
+        children = handleBoldText(filterValue, item);
       } else if (typeof item === "object") {
         computedValue = item[itemValue];
-        children = item[itemText];
+        children = handleBoldText(filterValue, item[itemText]);
       }
 
       if (value.includes(computedValue)) {
@@ -384,7 +384,7 @@ const AMultiSelect = forwardRef(
       itemProps.children = (
         <div className="a-multiselect__menu-item-content">
           <div className="a-multiselect__menu-item-content__label">
-            {children}
+            <span>{children}</span>
           </div>
           {value.includes(computedValue) && (
             <div className="a-multiselect__menu-item-content__check">
