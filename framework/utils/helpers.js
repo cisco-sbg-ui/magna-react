@@ -360,3 +360,25 @@ export const canNodeReceiveFocus = (node) => {
 
   return false;
 };
+
+/**
+ * @param {String} value value of the search input
+ * @param {String|Object} item item to be searched
+ * @returns {Array}  Returns an array of strings and JSX elements. Wrap in an element such as <span> to render.
+ */
+export const handleBoldText = (value, item) => {
+  if (!value) {
+    return item;
+  }
+
+  const regex = new RegExp(`(${value})`, "gi");
+  const itemArray = item.split(regex);
+  const boldText = itemArray.map((str, i) => {
+    if (regex.test(str)) {
+      return <b key={`bold-item-${i}`}>{str}</b>;
+    }
+    return str;
+  });
+
+  return boldText;
+};

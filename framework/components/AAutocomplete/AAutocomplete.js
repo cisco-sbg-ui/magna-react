@@ -14,7 +14,7 @@ import AIcon from "../AIcon";
 import AMenu from "../AMenu";
 import {AListItem} from "../AList";
 import {useCombinedRefs} from "../../utils/hooks";
-import {keyCodes} from "../../utils/helpers";
+import {keyCodes, handleBoldText} from "../../utils/helpers";
 import "./AAutocomplete.scss";
 
 let autocompleteCounter = 0;
@@ -253,10 +253,14 @@ const AAutocomplete = forwardRef(
 
                 if (typeof item === "string") {
                   itemProps.value = item;
-                  itemProps.children = item;
+                  itemProps.children = (
+                    <span>{handleBoldText(value, item)}</span>
+                  );
                 } else if (typeof item === "object") {
                   itemProps.value = item[itemValue];
-                  itemProps.children = item[itemText];
+                  itemProps.children = (
+                    <span>{handleBoldText(value, item[itemText])}</span>
+                  );
                 }
 
                 const MenuItemComponent = itemTemplate
