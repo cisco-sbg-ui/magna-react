@@ -157,7 +157,7 @@ const AInlineInputBase = forwardRef(
                   onChange && onChange("");
                 }}
               >
-                <AIcon>x</AIcon>
+                <AIcon>x-circle</AIcon>
               </AButton>
             </div>
           )}

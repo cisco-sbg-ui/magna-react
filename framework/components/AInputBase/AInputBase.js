@@ -111,7 +111,7 @@ const AInputBase = forwardRef(
                     className="a-input-base__clear"
                     size={16}
                   >
-                    close
+                    x-circle
                   </AIcon>
                 </AButton>
               )}
