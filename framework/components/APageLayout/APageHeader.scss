@@ -1,5 +1,5 @@
 .a-page-header {
-  margin: 0 0 24px 0;
+  padding: 0 0 24px 0;
   line-height: 34px;
 
   .a-breadcrumb {
@@ -7,12 +7,12 @@
   }
 
   .a-page-title {
-    margin: 24px 0;
+    padding: 0 0;
   }
 
   &--top-line {
     .a-page-title {
-      margin: 4px 0 0 0;
+      padding: 4px 0 4px 0;
     }
   }
 }
