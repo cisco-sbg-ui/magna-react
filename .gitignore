@@ -7,8 +7,10 @@
 /cypress/snapshots/diff/
 /lib/
 /node_modules/
+/dist
 
 /babel-preset.js
+/babel-preset-es.js
 /babel-preset-local.js
 .idea/
 .turbo/
