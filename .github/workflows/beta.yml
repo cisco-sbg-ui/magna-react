@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
-          node-version: 16
+          node-version: 18
       - run: |
           echo "@cisco-sbg-ui:registry=https://npm.pkg.github.com/" >> .npmrc
       - run: npm ci

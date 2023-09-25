@@ -17,7 +17,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: 18
       - name: NPM Install
         run: npm ci --ignore-scripts --prefer-offline
       - name: Run Cypress Postinstall Script
