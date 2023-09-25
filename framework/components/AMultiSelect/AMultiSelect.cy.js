@@ -120,7 +120,7 @@ describe("<AMultiSelect />", () => {
 
     cy.focused().click();
 
-    cy.get(".a-icon--close").click();
+    cy.get(".a-icon--x-circle").click();
 
     cy.get(".tag").should("not.exist");
   });
