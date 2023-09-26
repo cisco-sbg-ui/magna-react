@@ -185,7 +185,7 @@ $atomic-default: (
     "fill-enabled": $white,
     "border--enabled": map-get($mds-neutral, "neutral-9"),
     "border--disabled": map-get($mds-neutral, "neutral-5"),
-    "fill--disabled": map-get($mds-neutral, "neutral-2"),
+    "fill--disabled": map-get($mds-neutral, "neutral-3"),
     "label-color--disabled": map-get($mds-neutral, "neutral-6"),
     "icon--disabled": map-get($mds-neutral, "neutral-7"),
     "fill-checked": map-get($mds-light-theme, "status-info"),
