@@ -38,7 +38,9 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
   &--enabled {
     .a-checkbox__box {
       border-color: map-deep-get($theme, "checkbox", "border--enabled");
+      color: map-deep-get($theme, "checkbox", "border--checked");
       &:hover {
+        opacity: 0.7;
         border-color: map-deep-get($theme, "checkbox", "border--hover");
       }
     }
@@ -50,17 +52,17 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
       fill: map-deep-get($theme, "checkbox", "fill-enabled");
 
       &:hover {
-        background-color: map-deep-get(
-          $theme,
-          "checkbox",
-          "fill-checked--hover"
-        );
+        opacity: 0.7;
       }
     }
   }
 
   &--warning {
     .a-checkbox__box {
+      border-color: map-deep-get($theme, "control", "warning-color");
+    }
+
+    .a-checkbox__box:hover {
       border-color: map-deep-get($theme, "control", "warning-color");
     }
   }
@@ -73,6 +75,10 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
 
   &--danger {
     .a-checkbox__box {
+      border-color: map-deep-get($theme, "control", "error-color");
+    }
+
+    .a-checkbox__box:hover {
       border-color: map-deep-get($theme, "control", "error-color");
     }
   }
@@ -88,6 +94,7 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
       .a-checkbox {
         &__box {
           border-color: map-deep-get($theme, "checkbox", "border--disabled");
+          color: map-deep-get($theme, "checkbox", "border--disabled");
           background-color: map-deep-get(
             $theme,
             "checkbox",
@@ -159,6 +166,7 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
   }
 
   &__box {
+    color: currentColor;
     position: relative;
     flex: 0 0 auto;
     height: $checkbox-box-side-length;
