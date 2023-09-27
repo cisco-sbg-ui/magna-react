@@ -7,7 +7,7 @@ exports.iconNameMap = void 0;
 function cov_f48blbjub() {
   var path =
     "/Users/roberha2/workspaces/cisco-sbg-ui/magna-react/framework/components/AIcon/atomicMap.js";
-  var hash = "52259c08b1211a787c724454bf19147845ebfa44";
+  var hash = "51de1a9f02650d5c0e5d1cf712b0c9118d395ed0";
   var global = new Function("return this")();
   var gcv = "__coverage__";
   var coverageData = {
@@ -19,7 +19,7 @@ function cov_f48blbjub() {
           column: 27
         },
         end: {
-          line: 288,
+          line: 289,
           column: 1
         }
       }
@@ -32,7 +32,7 @@ function cov_f48blbjub() {
     f: {},
     b: {},
     _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    hash: "52259c08b1211a787c724454bf19147845ebfa44"
+    hash: "51de1a9f02650d5c0e5d1cf712b0c9118d395ed0"
   };
   var coverage = global[gcv] || (global[gcv] = {});
   if (!coverage[path] || coverage[path].hash !== hash) {
@@ -133,6 +133,7 @@ var iconNameMap =
     disconnected: "plugs",
     domain: "globe",
     // TODO  (needs to be regular outline not fill)
+    dot: "",
     "dots-three": "",
     "dots-six": "",
     "dots-nine": "",
@@ -219,7 +220,6 @@ var iconNameMap =
     "merge-down": "stack-simple",
     // fill
     minus: "",
-    "minus-circle": "",
     module: "puzzle-piece",
     monitor: "arrow-circle-down-right",
     "move-document": "",
@@ -339,6 +339,7 @@ var iconNameMap =
     upload: "upload-simple",
     url: "browser",
     user: "",
+    users: "",
     variable: "",
     verdict: "",
     "view-metadata": "",
@@ -349,6 +350,6 @@ var iconNameMap =
     walkthrough: "chat-centered-text",
     "web-tracking": "user-switch",
     "would-have-dropped": "",
-    "x-circle": ""
+    "bell-slash": ""
   });
 exports.iconNameMap = iconNameMap;

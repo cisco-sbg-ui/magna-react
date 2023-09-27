@@ -51,6 +51,7 @@ svg.a-icon {
   * Some of the phosphor icons don't adhere to the same pattern
   * as the other "stroke" styled icons, so override.
   */
+  &--dot,
   &--dots-three,
   &--dots-three-vertical,
   &--dots-six,
