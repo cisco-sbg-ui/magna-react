@@ -80,6 +80,7 @@ export const iconNameMap = {
   "device-type": "hard-drives",
   disconnected: "plugs",
   domain: "globe", // TODO  (needs to be regular outline not fill)
+  dot: "",
   "dots-three": "",
   "dots-six": "",
   "dots-nine": "",
@@ -161,7 +162,6 @@ export const iconNameMap = {
   "malicious-alt": "",
   "merge-down": "stack-simple", // fill
   minus: "",
-  "minus-circle": "",
   module: "puzzle-piece",
   monitor: "arrow-circle-down-right",
   "move-document": "",
@@ -285,6 +285,5 @@ export const iconNameMap = {
   walkthrough: "chat-centered-text",
   "web-tracking": "user-switch",
   "would-have-dropped": "",
-  "x-circle": "",
   "bell-slash": ""
 };

@@ -2825,6 +2825,14 @@ const MagnaIcons = {
       xmlns: "http://www.w3.org/2000/svg"
     }
   },
+  dot: {
+    xml: (
+      <>
+        <circle cx="128" cy="128" r="16"></circle>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
   "dots-nine": {
     xml: (
       <>
@@ -4260,32 +4268,6 @@ const MagnaIcons = {
           y1="168.57"
           x2="224"
           y2="224"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="24"
-        ></line>
-      </>
-    ),
-    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
-  },
-  "minus-circle": {
-    xml: (
-      <>
-        <circle
-          cx="128"
-          cy="128"
-          r="96"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="24"
-        ></circle>
-        <line
-          x1="88"
-          y1="128"
-          x2="168"
-          y2="128"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -6431,6 +6413,32 @@ const MagnaIcons = {
       xmlns: "http://www.w3.org/2000/svg"
     }
   },
+  "minus-circle": {
+    xml: (
+      <>
+        <circle
+          cx="128"
+          cy="128"
+          r="96"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></circle>
+        <line
+          x1="88"
+          y1="128"
+          x2="168"
+          y2="128"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></line>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
   "sort-down": {
     xml: (
       <>
@@ -6487,6 +6495,42 @@ const MagnaIcons = {
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg"
     }
+  },
+  "x-circle": {
+    xml: (
+      <>
+        <circle
+          cx="128"
+          cy="128"
+          r="96"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></circle>
+        <line
+          x1="160"
+          y1="96"
+          x2="96"
+          y2="160"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></line>
+        <line
+          x1="96"
+          y1="96"
+          x2="160"
+          y2="160"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></line>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
   },
   "upload-simple": {
     xml: (
@@ -6696,42 +6740,6 @@ const MagnaIcons = {
           strokeLinejoin="round"
           strokeWidth="24"
         ></path>
-      </>
-    ),
-    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
-  },
-  "x-circle": {
-    xml: (
-      <>
-        <circle
-          cx="128"
-          cy="128"
-          r="96"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="24"
-        ></circle>
-        <line
-          x1="160"
-          y1="96"
-          x2="96"
-          y2="160"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="24"
-        ></line>
-        <line
-          x1="96"
-          y1="96"
-          x2="160"
-          y2="160"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="24"
-        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
