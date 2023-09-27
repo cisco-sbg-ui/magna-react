@@ -2,6 +2,10 @@
   background-color: $color_value !important;
 }
 
+@mixin border-color($color_value) {
+  border-color: $color_value !important;
+}
+
 @mixin text-color($color_value) {
   color: $color_value !important;
   fill: $color_value !important;
@@ -24,6 +28,9 @@
         .a-app .#{$color_name}--text {
           @include text-color($color_value);
         }
+        .a-app .#{$color_name}--border-color {
+          @include border-color($color_value);
+        }
       } @else {
         .a-app .#{$color_name}--#{$color_type} {
           @include background-color($color_value);
@@ -36,6 +43,10 @@
 
         .a-app .#{$color_name}--#{$color_type}--text {
           @include text-color($color_value);
+        }
+
+        .a-app .#{$color_name}--#{$color_type}--border-color {
+          @include border-color($color_value);
         }
       }
     }

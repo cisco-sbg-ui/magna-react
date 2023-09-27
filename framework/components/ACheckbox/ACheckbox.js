@@ -15,11 +15,8 @@ import "./ACheckbox.scss";
 
 const Icons = {
   checked:
-    "M 2.9999998,0 C 1.3380015,0 0,1.3380016 0,3 v 9 c 0,1.661998 1.3380015,3 2.9999998,3 H 12 c 1.661997,0 3,-1.338002 3,-3 V 3 C 15,1.3380016 13.661997,0 12,0 Z M 10.344726,4.3447266 11.405273,5.4052734 6.3749998,10.435546 3.5947265,7.6552732 4.6552731,6.5947266 6.3749998,8.3144535 Z",
-  unchecked:
-    "M 2.9093777,0 C 1.3101651,0 0,1.3101651 0,2.9093777 v 8.7281333 c 0,1.599213 1.3101651,2.909377 2.9093777,2.909377 h 8.7281333 c 1.599213,0 2.909377,-1.310164 2.909377,-2.909377 V 2.9093777 C 14.546888,1.3101651 13.236724,0 11.637511,0 Z m 0,1.4546888 h 8.7281333 c 0.818477,0 1.454689,0.636211 1.454689,1.4546889 v 8.7281333 c 0,0.818477 -0.636212,1.454689 -1.454689,1.454689 H 2.9093777 c -0.8184779,0 -1.4546889,-0.636212 -1.4546889,-1.454689 V 2.9093777 c 0,-0.8184779 0.636211,-1.4546889 1.4546889,-1.4546889 z",
-  indeterminate:
-    "M 3,0 C 1.3380017,0 0,1.3380017 0,3 v 9 c 0,1.661999 1.3380017,3 3,3 h 9 c 1.661999,0 3,-1.338001 3,-3 V 3 C 15,1.3380017 13.661999,0 12,0 Z m 0.75,6.75 h 7.5 v 1.5 h -7.5 z"
+    "M13.2072 5.20718L6.50008 11.9143L2.79297 8.20718L4.20718 6.79297L6.50008 9.08586L11.793 3.79297L13.2072 5.20718Z",
+  indeterminate: "M13 9H3V7H13V9Z"
 };
 
 let checkboxCounter = 0;
@@ -146,24 +143,32 @@ const ACheckbox = forwardRef(
 
     if (!disabled && !["danger", "warning"].includes(workingValidationState)) {
       if (isStockColor(color)) {
-        boxProps.className += ` ${color}--text`;
+        boxProps.className += ` ${color}--border-color`;
       } else {
         boxProps.style = {
-          fill: color,
-          color
+          borderColor: color
         };
       }
     }
 
-    let currentPath = Icons.unchecked;
-    // TODO: "unchecked" svg is smaller (19.6px) I need to update scale, replace it with svg of same size as "indeterminate" and "checked" (20px)
-    let currentViewBox = "0 0 14.6 14.6";
+    let currentPath;
+    const currentViewBox = "0 0 16 16";
+    let empty = false;
     if (indeterminate) {
       currentPath = Icons.indeterminate;
-      currentViewBox = "0 0 15 15";
     } else if (checked) {
       currentPath = Icons.checked;
-      currentViewBox = "0 0 15 15";
+    } else {
+      empty = true;
+      boxProps.className += " a-empty-box";
+    }
+
+    if (!empty) {
+      if (isStockColor(color)) {
+        boxProps.className += ` ${color}`;
+      } else {
+        boxProps.style = {backgroundColor: color};
+      }
     }
 
     const handleKeyDown = (e) => {
@@ -194,17 +199,21 @@ const ACheckbox = forwardRef(
             el && ((el.indeterminate = indeterminate) || (el.checked = checked))
           }
         />
-        <span {...boxProps}>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox={currentViewBox}>
-            <path d={currentPath} />
-          </svg>
-        </span>
+        {empty ? (
+          <div {...boxProps}></div>
+        ) : (
+          <span {...boxProps}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox={currentViewBox}>
+              <path d={currentPath} />
+            </svg>
+          </span>
+        )}
       </div>
     );
 
     const content =
       withLabel && children ? (
-        <label className="a-checkbox__wrap">
+        <label className={`a-checkbox__wrap a-checkbox--${boxSize}`}>
           {checkboxContent}
           <span
             className={`a-checkbox__label${

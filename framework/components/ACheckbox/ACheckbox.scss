@@ -1,12 +1,13 @@
 @import "../../styles";
 
 $checkbox-box-border-radius: $border-radius--md;
-$checkbox-box-side-length: rem(1);
-$checkbox-box-side-length-magna-medium: $font-size--lg;
-$checkbox-box-side-length-magna-small: rem(1);
-$checkbox-icon-size: $font-size--xs;
-$checkbox-label-font-size: $font-size--sm;
-$checkbox-label-font-size-medium: $font-size--md;
+$checkbox-box-side-length: 20px;
+$checkbox-box-side-length-magna-medium: 20px;
+$checkbox-box-side-length-magna-small: 16px;
+$checkbox-icon-size: 16px;
+$checkbox-icon-size-small: 12px;
+$checkbox-label-font-size: $font-size--md;
+$checkbox-label-font-size-small: $font-size--sm;
 $checkbox-icon-padding-left: $base-padding-xsmall;
 $checkbox-padding: $base-padding-xsmall 0;
 $checkbox-transition: box-shadow $transition-duration--extra-fast
@@ -32,46 +33,54 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
       box-shadow: none;
       opacity: 0.6;
     }
-    &:hover {
-      svg {
-        fill: currentColor !important;
-        fill-opacity: 0.7;
-      }
-    }
   }
 
   &--enabled {
     .a-checkbox__box {
-      fill: map-deep-get($theme, "checkbox", "border--enabled");
+      border-color: map-deep-get($theme, "checkbox", "border--enabled");
       color: map-deep-get($theme, "checkbox", "border--checked");
       &:hover {
-        svg {
-          fill: map-deep-get($theme, "checkbox", "border--hover");
-        }
+        border-color: map-deep-get($theme, "checkbox", "border--hover");
       }
     }
   }
 
   &--selected {
     .a-checkbox__box {
-      fill: map-deep-get($theme, "checkbox", "fill-checked");
-      &:hover svg {
-        fill: map-deep-get($theme, "checkbox", "fill-checked--hover");
+      background-color: map-deep-get($theme, "checkbox", "fill-checked");
+      fill: map-deep-get($theme, "checkbox", "fill-enabled");
+
+      &:hover {
+        background-color: map-deep-get(
+          $theme,
+          "checkbox",
+          "fill-checked--hover"
+        );
       }
     }
   }
 
   &--warning {
     .a-checkbox__box {
-      fill: map-deep-get($theme, "control", "warning-color");
-      color: map-deep-get($theme, "control", "warning-color");
+      border-color: map-deep-get($theme, "control", "warning-color");
+    }
+  }
+
+  &--warning.a-checkbox--selected {
+    .a-checkbox__box {
+      background-color: map-deep-get($theme, "control", "warning-color");
     }
   }
 
   &--danger {
     .a-checkbox__box {
-      fill: map-deep-get($theme, "control", "error-color");
-      color: map-deep-get($theme, "control", "error-color");
+      border-color: map-deep-get($theme, "control", "error-color");
+    }
+  }
+
+  &--danger.a-checkbox--selected {
+    .a-checkbox__box {
+      background-color: map-deep-get($theme, "control", "error-color");
     }
   }
 
@@ -79,16 +88,22 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
     .a-checkbox__wrap {
       .a-checkbox {
         &__box {
-          fill: map-deep-get($theme, "checkbox", "border--disabled");
+          border-color: map-deep-get($theme, "checkbox", "border--disabled");
           color: map-deep-get($theme, "checkbox", "border--disabled");
-          background-color: map-deep-get($theme, "checkbox", "fill--disabled");
+          background-color: map-deep-get(
+            $theme,
+            "checkbox",
+            "fill--disabled"
+          ) !important;
           cursor: not-allowed;
-          > svg:hover {
-            fill: map-deep-get($theme, "checkbox", "border--disabled");
-          }
+
+          box-shadow: inset 0 0 0 2px
+            map-deep-get($theme, "checkbox", "border--disabled");
+          border: none;
         }
 
-        &__input:checked {
+        &__input:checked,
+        &__input[aria-checked="mixed"] {
           ~ .a-checkbox {
             &__box {
               svg {
@@ -154,9 +169,13 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
     border-radius: $checkbox-box-border-radius;
     vertical-align: middle;
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     > svg {
-      position: absolute;
+      height: $checkbox-icon-size;
+      width: $checkbox-icon-size;
     }
 
     &:after {
@@ -178,10 +197,6 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
       width: $checkbox-box-side-length-magna-medium;
     }
   }
-  &__box.a-medium-box + .a-checkbox__label {
-    top: unset;
-    font-size: $checkbox-label-font-size-medium;
-  }
 
   &__box.a-small-box {
     height: $checkbox-box-side-length-magna-small;
@@ -191,6 +206,17 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
       height: $checkbox-box-side-length-magna-small;
       width: $checkbox-box-side-length-magna-small;
     }
+
+    > svg {
+      height: $checkbox-icon-size-small;
+      width: $checkbox-icon-size-small;
+    }
+  }
+
+  &__box.a-empty-box {
+    border: 2px solid;
+    border-radius: $checkbox-box-border-radius;
+    border-color: red;
   }
 
   &__label {
@@ -226,6 +252,12 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
       &:hover:after {
         box-shadow: 0 0 2px 2px transparent;
       }
+    }
+  }
+
+  &--small {
+    .a-checkbox__label {
+      font-size: $checkbox-label-font-size-small;
     }
   }
 }
