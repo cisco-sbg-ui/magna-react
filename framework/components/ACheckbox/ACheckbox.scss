@@ -38,7 +38,7 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
   &--enabled {
     .a-checkbox__box {
       border-color: map-deep-get($theme, "checkbox", "border--enabled");
-      color: map-deep-get($theme, "checkbox", "border--checked");
+
       &:hover {
         opacity: 0.7;
         border-color: map-deep-get($theme, "checkbox", "border--hover");
@@ -63,13 +63,23 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
     }
 
     .a-checkbox__box:hover {
-      border-color: map-deep-get($theme, "control", "warning-color");
+      border-color: darken(
+        map-deep-get($theme, "control", "warning-color"),
+        5%
+      );
     }
   }
 
   &--warning.a-checkbox--selected {
     .a-checkbox__box {
       background-color: map-deep-get($theme, "control", "warning-color");
+    }
+
+    .a-checkbox__box:hover {
+      background-color: darken(
+        map-deep-get($theme, "control", "warning-color"),
+        5%
+      );
     }
   }
 
@@ -79,13 +89,20 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
     }
 
     .a-checkbox__box:hover {
-      border-color: map-deep-get($theme, "control", "error-color");
+      border-color: darken(map-deep-get($theme, "control", "error-color"), 5%);
     }
   }
 
   &--danger.a-checkbox--selected {
     .a-checkbox__box {
       background-color: map-deep-get($theme, "control", "error-color");
+    }
+
+    .a-checkbox__box:hover {
+      background-color: darken(
+        map-deep-get($theme, "control", "error-color"),
+        5%
+      );
     }
   }
 
@@ -139,6 +156,16 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
           }
         }
       }
+    }
+  }
+
+  &--hasColor.a-checkbox__box:hover {
+    opacity: 0.7;
+  }
+
+  .a-checkbox--selected {
+    &--hasColor.a-checkbox__box:hover {
+      opacity: 0.7;
     }
   }
 }
@@ -221,7 +248,6 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
   &__box.a-empty-box {
     border: 2px solid;
     border-radius: $checkbox-box-border-radius;
-    border-color: red;
   }
 
   &__label {

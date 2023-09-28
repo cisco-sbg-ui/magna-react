@@ -163,12 +163,16 @@ const ACheckbox = forwardRef(
       boxProps.className += " a-empty-box";
     }
 
-    if (!empty) {
+    if (!empty && color) {
       if (isStockColor(color)) {
         boxProps.className += ` ${color}`;
       } else {
         boxProps.style = {backgroundColor: color};
       }
+    }
+
+    if (color && !disabled) {
+      boxProps.className += ` a-checkbox--hasColor`;
     }
 
     const handleKeyDown = (e) => {
