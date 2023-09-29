@@ -100,6 +100,7 @@ export const iconNameMap = {
   "email-subject": "envelope-open",
   "event-total": "",
   expand: "arrows-out",
+  export: "",
   diverge: "now",
   favorable: "check-circle",
   favorites: "star",
