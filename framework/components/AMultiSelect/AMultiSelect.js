@@ -11,6 +11,7 @@ import AInputBase from "../AInputBase";
 import {AFormContext} from "../AForm";
 import AIcon from "../AIcon";
 import AMenu from "../AMenu";
+import ACheckbox from "../ACheckbox";
 import {AListItem} from "../AList";
 import AEmptyState from "../AEmptyState";
 import {useCombinedRefs} from "../../utils/hooks";
@@ -20,6 +21,7 @@ import useOutsideClick from "../../hooks/useOutsideClick/useOutsideClick";
 import usePopupQuickExit from "../../hooks/usePopupQuickExit/usePopupQuickExit";
 import "./AMultiSelect.scss";
 import AMultiSelectTag from "./AMultiSelectTag";
+import AMultiSelectCounter from "./AMultiSelectCounter";
 
 let multiselectCounter = 0;
 
@@ -40,6 +42,7 @@ const AMultiSelect = forwardRef(
       noDataContent: propsNoDataContent,
       noDataMessage = "No matches found",
       onChange,
+      withTags = false,
       onClear,
       onSelected,
       placeholder,
@@ -93,7 +96,9 @@ const AMultiSelect = forwardRef(
         })
       : items;
 
-    let className = "a-multiselect";
+    let className = "a-multiselect",
+      tagsClass = `${className}__tags`,
+      counterClass = `${className}__counter`;
 
     const {register, unregister} = useContext(AFormContext);
     useEffect(() => {
@@ -248,6 +253,10 @@ const AMultiSelect = forwardRef(
       inputBaseProps.className += ` ${propsClassName}`;
     }
 
+    if (!withTags) {
+      inputBaseProps.className += ` ${counterClass}`;
+    }
+
     const onKeyDown = (e) => {
       if (e.keyCode === keyCodes.up) {
         e.preventDefault();
@@ -290,7 +299,11 @@ const AMultiSelect = forwardRef(
         setIsFocused(true);
       },
       onKeyDown,
-      placeholder: value && !value.length ? placeholder : "",
+      placeholder: withTags
+        ? value && !value.length
+          ? placeholder
+          : ""
+        : label,
       readOnly,
       value: filterValue
     };
@@ -317,6 +330,16 @@ const AMultiSelect = forwardRef(
       },
       placement: menuPlacement
     };
+
+    const counter = value && (
+      <AMultiSelectCounter
+        items={items}
+        value={value}
+        onSelected={onSelected}
+        itemValue={itemValue}
+        itemText={itemText}
+      />
+    );
 
     const tags =
       value &&
@@ -351,47 +374,43 @@ const AMultiSelect = forwardRef(
         children = handleBoldText(filterValue, item[itemText]);
       }
 
-      if (value.includes(computedValue)) {
-        itemClass += ` a-multiselect__menu-item--selected`;
-      }
+      const handleClick = () => {
+        validate(itemValue);
+
+        let newValue = Array.isArray(value) ? [...value] : [];
+        if (value.includes(computedValue)) {
+          newValue = newValue.filter((v) => v !== computedValue);
+        } else {
+          newValue.push(computedValue);
+          newValue = newValue.filter(
+            (value, i, arr) => arr.indexOf(value) === i
+          );
+        }
+
+        onSelected && onSelected(newValue);
+      };
 
       const itemProps = {
         value: computedValue,
         className: itemClass,
         role: "option",
-        "aria-selected": false,
-        onClick: () => {
-          validate(itemValue);
-
-          let newValue = Array.isArray(value) ? [...value] : [];
-          if (value.includes(computedValue)) {
-            newValue = newValue.filter((v) => v !== computedValue);
-          } else {
-            newValue.push(computedValue);
-            newValue = newValue.filter(
-              (value, i, arr) => arr.indexOf(value) === i
-            );
+        onKeyDown: (e) => {
+          if (e.keyCode === keyCodes.enter) {
+            handleClick();
           }
+        },
 
-          onSelected && onSelected(newValue);
-
-          setTimeout(() => {
-            combinedRef.current.querySelector(".a-multiselect__input").focus();
-          }, 30);
-        }
+        "aria-selected": false
       };
 
       itemProps.children = (
-        <div className="a-multiselect__menu-item-content">
-          <div className="a-multiselect__menu-item-content__label">
-            <span>{children}</span>
-          </div>
-          {value.includes(computedValue) && (
-            <div className="a-multiselect__menu-item-content__check">
-              <AIcon>check</AIcon>
-            </div>
-          )}
-        </div>
+        <ACheckbox
+          className="a-multiselect__menu-item-content"
+          checked={value.includes(computedValue)}
+          onClick={handleClick}
+        >
+          {children}
+        </ACheckbox>
       );
 
       const MenuItemComponent = itemTemplate ? itemTemplate : AListItem;
@@ -405,20 +424,24 @@ const AMultiSelect = forwardRef(
       );
     });
 
+    const InputTypeStyle = () => (
+      <div
+        className={withTags ? tagsClass : ""}
+        onClick={(e) => {
+          e.stopPropagation();
+          setIsOpen(true);
+        }}
+        tabIndex={0}
+        onKeyDown={onKeyDown}
+        role="button"
+      >
+        {withTags ? tags : counter}
+      </div>
+    );
+
     return (
       <AInputBase {...inputBaseProps}>
-        <div
-          className="a-multiselect__tags"
-          onClick={(e) => {
-            e.stopPropagation();
-            setIsOpen(true);
-          }}
-          tabIndex={0}
-          onKeyDown={onKeyDown}
-          role="button"
-        >
-          {tags}
-        </div>
+        <InputTypeStyle />
         <input {...inputProps} />
         <AMenu ref={menuRef} {...menuComponentProps}>
           {prependContent}
@@ -521,6 +544,10 @@ AMultiSelect.propTypes = {
       level: PropTypes.string
     })
   ),
+  /**
+   * Applies tag style to input. Default is counter style.
+   */
+  withTags: PropTypes.bool,
   /**
    * Applies a validation state.
    */

@@ -6,20 +6,6 @@
     box-shadow: map-deep-get($theme, "combobox", "box-shadow");
   }
 
-  &__menu-item-content__check {
-    svg {
-      stroke: map-deep-get($theme, "base", "color--selected");
-    }
-  }
-
-  &__menu-item--selected {
-    background-color: map-deep-get($theme, "menu", "color--selected");
-  }
-
-  &__menu-item:focus {
-    background-color: map-deep-get($theme, "menu", "color--hover") !important;
-  }
-
   &__tags {
     .a-tag {
       .a-button:focus,
@@ -72,23 +58,28 @@
     }
   }
 
+  &__counter {
+    .a-input-base__control {
+      flex-wrap: nowrap !important;
+    }
+  }
+
   &__chevron {
     cursor: pointer;
     align-self: stretch;
   }
 
-  &__menu-item.a-list-item {
-    min-height: 28px;
-    line-height: $line-height--lg;
-    padding: 4px 6px;
-    text-indent: 6px;
-  }
-
-  &.a-input-base--clearable {
-    .a-multiselect__menu-items {
-      right: -50px;
+  &__menu-items {
+    padding: 0;
+    .a-checkbox {
+      width: 100%;
     }
   }
+
+  &__menu-item.a-list-item {
+    padding: 0 10px;
+  }
+
   .a-input-base__control {
     max-height: 100px;
     flex-wrap: wrap;
@@ -118,25 +109,6 @@
 
     .a-input-base__append {
       right: 16px;
-    }
-  }
-
-  &__menu-item-content {
-    display: flex;
-    flex: 1 0 auto;
-
-    &__label {
-      flex: 1 0 auto;
-    }
-
-    &__check {
-      display: flex;
-      align-items: center;
-
-      svg {
-        height: 14px;
-        width: 14px;
-      }
     }
   }
 
