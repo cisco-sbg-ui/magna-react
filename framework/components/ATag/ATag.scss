@@ -63,6 +63,15 @@ $colors: "A", "B", "C", "D", "E", "F", "G", "H", "I", "K";
       );
     }
   }
+
+  //binary check icon override
+  &--binary-active {
+    .a-icon--check-circle circle {
+      fill: map-deep-get($theme, "control", "info-color") !important;
+      stroke: map-deep-get($theme, "control", "info-color") !important;
+    }
+  }
+
   .a-icon {
     &--check-circle,
     &--x-circle,
@@ -122,23 +131,7 @@ $colors: "A", "B", "C", "D", "E", "F", "G", "H", "I", "K";
     align-items: center;
     justify-content: center;
   }
-  //Binary tags
-  .a-radio {
-    pointer-events: none;
-    padding: 0;
-    width: 12px;
-    transform: scale(0.6);
-    margin-right: 4px;
 
-    &--disabled {
-      .a-radio__box__outer {
-        stroke: map-get($mds-neutral, "neutral-10") !important;
-      }
-      circle {
-        fill: map-get($mds-neutral, "neutral-4") !important;
-      }
-    }
-  }
   //Size management for any provided icons
   .a-icon {
     width: 14px;
@@ -156,7 +149,7 @@ $colors: "A", "B", "C", "D", "E", "F", "G", "H", "I", "K";
     }
   }
 
-  //Status tags
+  //Status & binary tags
   &--status {
     .a-icon--status {
       width: calc(
@@ -177,10 +170,6 @@ $colors: "A", "B", "C", "D", "E", "F", "G", "H", "I", "K";
     .a-icon--status {
       width: calc($tag-icon-font-size * 1.143); //12px phosphorus circle
     }
-    .a-radio {
-      transform: scale(0.5);
-      margin-right: 2.5px;
-    }
   }
 
   &--lg {
@@ -189,14 +178,6 @@ $colors: "A", "B", "C", "D", "E", "F", "G", "H", "I", "K";
     line-height: $tag-line-height-lg;
     .a-icon--status {
       width: calc($tag-icon-font-size * 1.524); //16px phosphorus circle
-    }
-
-    .a-radio {
-      transform: scale(0.7);
-
-      &__box {
-        transform: translate(-15%, -10%);
-      }
     }
   }
 }
