@@ -51,6 +51,9 @@ export const useResizeObserver = (containerRef) => {
       return;
     }
     const resizeObserver = new ResizeObserver(() => {
+      if (!containerRef.current) {
+        return;
+      }
       if (containerRef.current?.offsetWidth !== width) {
         setWidth(containerRef.current.offsetWidth);
       }
