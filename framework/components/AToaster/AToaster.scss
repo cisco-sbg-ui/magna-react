@@ -18,4 +18,9 @@
     left: 50%;
     transform: translateX(-50%);
   }
+
+  &--top-right {
+    top: 80px;
+    right: 24px;
+  }
 }

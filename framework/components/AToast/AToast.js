@@ -13,7 +13,7 @@ const AToast = forwardRef(
       dismissable = true,
       level = "info",
       onClose,
-      placement = "bottom-right",
+      placement = "top-right",
       title,
       ...rest
     },
@@ -92,7 +92,7 @@ AToast.propTypes = {
   /**
    * Specifies the placement of the toast.
    */
-  placement: PropTypes.oneOf(["bottom-right", "top"]),
+  placement: PropTypes.oneOf(["bottom-right", "top", "top-right"]),
   /**
    * Sets the title.
    */

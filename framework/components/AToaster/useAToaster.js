@@ -84,7 +84,7 @@ const useAToaster = () => {
           ...current,
           {
             id: id,
-            placement: props.placement || "bottom-right",
+            placement: props.placement || "top-right",
             component: (
               <AToasterToast
                 {...props}
