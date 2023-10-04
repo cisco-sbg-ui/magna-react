@@ -11,7 +11,9 @@ const AToastPlate = () => {
   }
 
   const components = toasts
-    .filter(({placement}) => ["bottom-right", "top"].includes(placement))
+    .filter(({placement}) =>
+      ["bottom-right", "top", "top-right"].includes(placement)
+    )
     .reduce(
       (toastsAcc, {placement, component}) => ({
         ...toastsAcc,
@@ -19,7 +21,8 @@ const AToastPlate = () => {
       }),
       {
         "bottom-right": [],
-        top: []
+        top: [],
+        "top-right": []
       }
     );
 
@@ -30,7 +33,8 @@ const AToastPlate = () => {
           !!components.length && (
             <div
               className={`a-toast-plate a-toast-plate--${placement}`}
-              key={index}>
+              key={index}
+            >
               {components}
             </div>
           )
