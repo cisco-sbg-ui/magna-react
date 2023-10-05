@@ -1,5 +1,5 @@
 import ATabGroup from "./ATabGroup";
 import ATab from "./ATab";
-import ATabHeading from "./ATabHeading";
+import AMenuTab from "./AMenuTab";
 
-export {ATabGroup, ATab, ATabHeading};
+export {ATabGroup, ATab, AMenuTab};

@@ -1,16 +1,8 @@
 import PropTypes from "prop-types";
-import React, {
-  forwardRef,
-  useCallback,
-  useEffect,
-  useRef,
-  useState
-} from "react";
+import React, {forwardRef, useEffect, useRef, useState} from "react";
 
-import AButton from "../AButton";
-import AIcon from "../AIcon";
+import AMenuTab from "./AMenuTab";
 import ATabContext from "./ATabContext";
-import {getRoundedBoundedClientRect} from "../../utils/helpers";
 import {useCombinedRefs} from "../../utils/hooks";
 import "./ATabs.scss";
 
@@ -19,41 +11,19 @@ const ATabGroup = forwardRef(
     {
       className: propsClassName,
       children = [],
-      oversized,
-      scrolling,
-      tall,
       vertical = false,
+      secondary = false,
       ...rest
     },
     ref
   ) => {
     const [tabChanged, setTabChanged] = useState(false);
-    const [translateX, setTranslateX] = useState(0);
-    const [showScrolling, setShowScrolling] = useState(false);
-
+    const [menuItems, setMenuItems] = useState([]);
     const tabGroupRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, tabGroupRef);
 
     useEffect(() => {
-      if (scrolling && combinedRef && combinedRef.current) {
-        const wrapper = combinedRef.current.querySelector(
-          ".a-tab-group__tab-wrapper"
-        );
-        const content = combinedRef.current.querySelector(
-          ".a-tab-group__tab-content"
-        );
-
-        setShowScrolling(content.scrollWidth - wrapper.clientWidth + 1 > 0);
-
-        const maxTranslateValue = content.scrollWidth - wrapper.clientWidth + 1;
-        setTranslateX(
-          (current) => -Math.max(Math.min(current, maxTranslateValue), 0)
-        );
-      }
-    }, [scrolling, combinedRef, children.length]);
-
-    useEffect(() => {
-      if (!combinedRef.current || !scrolling) {
+      if (!combinedRef.current) {
         return;
       }
 
@@ -63,15 +33,60 @@ const ATabGroup = forwardRef(
         if (!combinedRef.current) {
           return;
         }
+        const overflowMenuItems = [];
 
-        const wrapper = combinedRef.current.querySelector(
-          ".a-tab-group__tab-wrapper"
-        );
-        const content = combinedRef.current.querySelector(
+        const tabWrapper = combinedRef.current;
+
+        const contentWrapper = combinedRef.current.querySelector(
           ".a-tab-group__tab-content"
         );
 
-        setShowScrolling(content.scrollWidth - wrapper.clientWidth + 1 > 0);
+        //More tab
+        const tab = combinedRef.current.querySelector("[data-set='menu']");
+
+        if (!tab) {
+          return;
+        }
+
+        const tabStyle = window.getComputedStyle(tab);
+
+        const tabMargin =
+          parseInt(tabStyle.marginLeft) + parseInt(tabStyle.marginRight);
+
+        //Calculate width of more button which serves as our minimum width.
+        let overflowLimit = tab.offsetWidth + tabMargin;
+
+        Array.from(contentWrapper.childNodes).forEach((item, i) => {
+          if (!item || !item.classList) {
+            return;
+          }
+          //If vertical view, skip
+          const classList = Array.from(item.classList);
+          if (classList.includes("a-tab-group__tab--vertical")) {
+            return;
+          }
+          //Show all elements initially while we calculate size
+          item.classList.remove("hide");
+          //Tab item's width
+          const tabWidth = item.offsetWidth + tabMargin;
+          //If items' total width falls under overall container width, skip
+          if (tabWrapper.offsetWidth >= overflowLimit + tabWidth) {
+            overflowLimit += tabWidth;
+          } else if (item.dataset.set !== "menu") {
+            //If items' total width exceeds overall container width, hide and push to overflow menu
+            item.classList.add("hide");
+            overflowMenuItems.push(item);
+          }
+        });
+
+        //Handles more button's visibility
+        if (!overflowMenuItems.length) {
+          tab.classList.add("hide");
+        } else if (overflowMenuItems.length) {
+          tab.classList.remove("hide");
+        }
+
+        setMenuItems(overflowMenuItems);
       };
 
       const resizeObserver = new ResizeObserver(callback);
@@ -81,168 +96,40 @@ const ATabGroup = forwardRef(
       return () => {
         resizeObserver.unobserve(target);
       };
-    }, [combinedRef, scrolling]);
-
-    useEffect(() => {
-      setTranslateX(0);
-    }, [showScrolling]);
+    }, [combinedRef]);
 
     let className = "a-tab-group";
-
-    if (oversized) {
-      className += " a-tab-group--size-oversized";
-      if (vertical) {
-        className += " a-tab-group--size-oversized--vertical";
-      }
-    } else if (tall) {
-      className += " a-tab-group--size-tall";
-    }
-
-    if (scrolling) {
-      className += " a-tab-group--scrolling";
-    }
-
     let tabContentClassName = "a-tab-group__tab-content";
+
     if (vertical) {
       tabContentClassName += " a-tab-group__tab-content--vertical";
+    }
+    if (secondary) {
+      tabContentClassName += " a-tab-group__tab-content--secondary";
     }
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
     }
 
-    let maxTranslateValue = -1;
-    if (scrolling && combinedRef && combinedRef.current) {
-      const wrapper = combinedRef.current.querySelector(
-        ".a-tab-group__tab-wrapper"
-      );
-      const content = combinedRef.current.querySelector(
-        ".a-tab-group__tab-content"
-      );
-
-      maxTranslateValue = content.scrollWidth - wrapper.clientWidth + 1;
-    }
-
     const tabContext = {
       tabChanged,
       setTabChanged,
-      scrollToMe: (meRef) => {
-        if (!scrolling || !combinedRef.current) return;
-
-        const tabWrapper = combinedRef.current.querySelector(
-          ".a-tab-group__tab-wrapper"
-        );
-        const contentWrapper = combinedRef.current.querySelector(
-          ".a-tab-group__tab-content"
-        );
-
-        const maxTranslateValue2 =
-          contentWrapper.scrollWidth - tabWrapper.clientWidth + 1;
-
-        tabWrapper.scrollLeft = 0;
-        contentWrapper.scrollLeft = 0;
-
-        const selectedTabBounds = getRoundedBoundedClientRect(meRef.current);
-        const tabWrapperBounds = getRoundedBoundedClientRect(tabWrapper);
-
-        const translateValue =
-          selectedTabBounds.left -
-          tabWrapperBounds.left -
-          tabWrapperBounds.width / 2 +
-          selectedTabBounds.width / 2;
-
-        setTranslateX(
-          (current) =>
-            -Math.max(
-              Math.min(translateValue - 1 - current, maxTranslateValue2),
-              0
-            )
-        );
-      },
       vertical
     };
 
     return (
       <div {...rest} role="tablist" ref={combinedRef} className={className}>
-        {showScrolling && (
-          <AButton
-            tertiaryAlt
-            icon
-            className="a-tab-group__scroll-left"
-            disabled={translateX >= 0}
-            onClick={() => {
-              const wrapperBounds = getRoundedBoundedClientRect(
-                combinedRef.current.querySelector(".a-tab-group__tab-wrapper")
-              );
-
-              const tabs = [
-                ...combinedRef.current.querySelectorAll(".a-tab-group__tab")
-              ].map(getRoundedBoundedClientRect);
-
-              const translateValue =
-                Math.max(
-                  wrapperBounds.left + translateX,
-                  ...tabs
-                    .filter((x) => x.left < wrapperBounds.left)
-                    .map((x) => x.right)
-                ) -
-                wrapperBounds.width -
-                wrapperBounds.left -
-                translateX +
-                1;
-
-              const finalTranslateValue = Math.max(translateValue, 0);
-              setTranslateX(-finalTranslateValue);
-            }}
-          >
-            <AIcon>chevron-left</AIcon>
-          </AButton>
-        )}
         <div className="a-tab-group__tab-wrapper">
-          <div
-            className={tabContentClassName}
-            style={{transform: `translateX(${translateX}px)`}}
-          >
+          <div className={tabContentClassName}>
             <ATabContext.Provider value={tabContext}>
               {children}
+              {!vertical && (
+                <AMenuTab tabKey={children.length + 1}>{menuItems}</AMenuTab>
+              )}
             </ATabContext.Provider>
           </div>
         </div>
-        {showScrolling && (
-          <AButton
-            tertiaryAlt
-            icon
-            className="a-tab-group__scroll-right"
-            disabled={translateX <= -maxTranslateValue}
-            onClick={() => {
-              const wrapperBounds = getRoundedBoundedClientRect(
-                combinedRef.current.querySelector(".a-tab-group__tab-wrapper")
-              );
-
-              const tabs = [
-                ...combinedRef.current.querySelectorAll(".a-tab-group__tab")
-              ].map(getRoundedBoundedClientRect);
-
-              const translateValue =
-                Math.min(
-                  ...tabs
-                    .filter((x) => x.right > wrapperBounds.right)
-                    .map((x) => x.left)
-                ) -
-                wrapperBounds.left -
-                translateX;
-
-              const finalTranslateValue = Math.min(
-                translateValue - 1,
-                maxTranslateValue
-              );
-
-              setTranslateX(-finalTranslateValue);
-            }}
-          >
-            <AIcon>chevron-right</AIcon>
-          </AButton>
-        )}
       </div>
     );
   }
@@ -250,17 +137,9 @@ const ATabGroup = forwardRef(
 
 ATabGroup.propTypes = {
   /**
-   * Toggle the oversized style variant.
+   * Color of tabs primary (default) is green, blue is secondary
    */
-  oversized: PropTypes.bool,
-  /**
-   * Toggles scrolling behavior.
-   */
-  scrolling: PropTypes.bool,
-  /**
-   * Toggle the tall style variant.
-   */
-  tall: PropTypes.bool
+  secondary: PropTypes.bool
 };
 
 ATabGroup.displayName = "ATabGroup";

@@ -7,16 +7,10 @@ $tab-bottom-bar-height: -4px;
 $tab-top-bar-height: 4px;
 $tab-padding-bottom: 12px;
 $tab-margin: 0 12px;
-$tab-padding: 4px 0; // doesn't match magnetic (overall height 41px, but magnetic doesn't align to the multiple of 4px pattern here either
+$tab-padding: 4px 0 8px 0; //doesn't match magnetic (overall height 41px, but magnetic doesn't align to the multiple of 4px pattern here either //Update - Added padding on the bottom to try to match height of the bar
 $tab-heading-margin: 0;
 $tab-heading-font-size: $font-size--lg;
-$tab-tall-padding: 0 16px 20px 16px;
-$tab-tall-margin: 0;
-$tab-oversized-height: 110px;
-$tab-oversized--selected-background-color: transparent;
-$tab-oversized-padding: 11px 15px 50px 15px;
-$tab-oversized-margin: 0;
-
+//TODO ADD NEW PRIMARY COLOR AND STATES
 @include theme(a-tab-group) using ($theme) {
   &__tab {
     color: map-deep-get($theme, "tabs", "text-color");
@@ -85,75 +79,8 @@ $tab-oversized-margin: 0;
       @include vertical-tab-bar($tab-bottom-bar-height, inherit);
     }
   }
-
-  &--size-oversized {
-    .a-tab-group__tab {
-      border-top: $border-width solid
-        map-deep-get($theme, "control", "stroke-color");
-      border-bottom: $border-width solid
-        map-deep-get($theme, "control", "stroke-color");
-      border-left: $border-width solid
-        map-deep-get($theme, "control", "stroke-color");
-      background-color: map-deep-get(
-        $theme,
-        "tabs",
-        "oversized-background-color"
-      );
-
-      &--vertical:not(:last-of-type) {
-        border-bottom: unset;
-      }
-
-      &:not(&--vertical):last-of-type {
-        border-right: $border-width solid
-          map-deep-get($theme, "control", "stroke-color");
-      }
-
-      &--selected:not(&--vertical) {
-        background-color: $tab-oversized--selected-background-color;
-        border-top: $border-width solid transparent;
-        border-bottom: $border-width solid transparent;
-        @include tab-bar(
-          $tab-top-bar-height,
-          map-deep-get($theme, "tabs", "bar-color--selected")
-        );
-      }
-
-      &--selected--vertical {
-        background-color: $tab-oversized--selected-background-color;
-        @include vertical-tab-bar(
-          $tab-top-bar-height,
-          map-deep-get($theme, "tabs", "bar-color--selected")
-        );
-      }
-
-      &:not(&--vertical):focus,
-      &:not(&--vertical):hover {
-        border-top: $border-width solid transparent;
-        @include tab-bar(
-          $tab-top-bar-height,
-          map-deep-get($theme, "tabs", "bar-color--hover")
-        );
-        background-color: map-deep-get(
-          $theme,
-          "tabs",
-          "oversized--hover-background-color"
-        );
-      }
-
-      &--vertical:focus,
-      &--vertical:hover {
-        @include vertical-tab-bar(
-          $tab-top-bar-height,
-          map-deep-get($theme, "tabs", "bar-color--hover")
-        );
-        background-color: map-deep-get(
-          $theme,
-          "tabs",
-          "oversized--hover-background-color"
-        );
-      }
-    }
+  .hide {
+    display: none;
   }
 }
 
@@ -169,25 +96,8 @@ $tab-oversized-margin: 0;
     display: flex;
   }
 
-  &--scrolling {
-    .a-tab-group__tab-wrapper {
-      white-space: nowrap;
-      overflow: hidden;
-      padding: 1px 1px;
-      display: flex;
-      flex-wrap: nowrap;
-    }
-
-    .a-tab-group__tab {
-      flex-shrink: 0;
-    }
-  }
-
-  &__tab-content {
-    display: flex;
-  }
-
   &__tab-content--vertical {
+    display: flex;
     flex-direction: column;
     box-shadow: inset -1px 0 map-get($mds-neutral, "neutral-4");
   }
@@ -208,6 +118,12 @@ $tab-oversized-margin: 0;
     background-color: transparent;
     cursor: pointer;
 
+    svg {
+      vertical-align: middle;
+      width: 12px;
+      margin: 0 0 2px 3px;
+    }
+
     &:active {
       outline: none;
     }
@@ -216,6 +132,7 @@ $tab-oversized-margin: 0;
       min-width: 150px;
       margin: 0 0 8px;
       padding-top: $tab-padding-bottom;
+      height: unset;
       &:last-of-type {
         margin-bottom: 0;
       }
@@ -235,30 +152,6 @@ $tab-oversized-margin: 0;
     &--vertical {
       text-align: left;
     }
-  }
-
-  &--size-tall {
-    .a-tab-group__tab {
-      padding: $tab-tall-padding;
-      margin: $tab-tall-margin;
-    }
-  }
-
-  &--size-oversized {
-    display: flex;
-
-    .a-tab-group__tab {
-      text-align: left;
-      height: $tab-oversized-height;
-      margin: $tab-oversized-margin;
-      padding: $tab-oversized-padding;
-    }
-  }
-
-  &__tab-heading {
-    margin: $tab-heading-margin;
-    font-size: $tab-heading-font-size;
-    display: block;
   }
 }
 
