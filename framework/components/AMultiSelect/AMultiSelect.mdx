@@ -75,6 +75,41 @@ import {AMultiSelect} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
+## With tags
+
+<Playground
+  code={`() => {
+  const items = [
+    "Bread, Cereal, Rice, and Pasta",
+    "Vegetables",
+    "Fruit",
+    "Milk, Yogurt, and Cheese",
+    "Meat, Poultry, Fish",
+    "Fats, Oils, and Sweets"
+  ];
+  const [value, setValue] = useState([]);
+  const [filteredItems, setFilteredItems] = useState(items);
+  return (
+    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+      <AMultiSelect
+        medium
+        withTags
+        clearable
+        label="Food Group"
+        items={filteredItems}
+        placeholder="Pick a Food Group"
+        onSelected={(item) => {
+          setValue(item);
+        }}
+        value={value}
+      />
+    </div>
+
+);
+}
+`}
+/>
+
 ## MultiSelect Props
 
 The `AMultiSelect` component inherits passed props.

@@ -66,17 +66,13 @@ describe("<AMultiSelect />", () => {
 
     cy.focused().click();
 
-    cy.get(".a-list-item")
-      .first()
-      .should("have.class", "a-multiselect__menu-item--selected");
+    cy.get(".a-list-item .a-checkbox__input").first().should("be.checked");
 
     pressUpArrow();
 
     cy.focused().click();
 
-    cy.get(".a-list-item")
-      .last()
-      .should("have.class", "a-multiselect__menu-item--selected");
+    cy.get(".a-list-item .a-checkbox__input").last().should("be.checked");
   });
 
   it("should select items on enter", () => {
@@ -88,21 +84,33 @@ describe("<AMultiSelect />", () => {
 
     cy.focused().type("{enter}");
 
-    cy.get(".a-list-item")
-      .first()
-      .should("have.class", "a-multiselect__menu-item--selected");
+    cy.get(".a-list-item .a-checkbox__input").first().should("be.checked");
 
     pressUpArrow();
 
     cy.focused().type("{enter}");
 
-    cy.get(".a-list-item")
-      .last()
-      .should("have.class", "a-multiselect__menu-item--selected");
+    cy.get(".a-list-item .a-checkbox__input").last().should("be.checked");
+  });
+
+  it("should show items on counter hover", () => {
+    cy.mount(<AMultiSelectTest />);
+
+    openWidget();
+
+    cy.get(".a-multiselect__input").type("fruit");
+
+    pressDownArrow();
+
+    cy.focused().click();
+
+    cy.get(".a-tag").should("have.text", "1").trigger("mouseover");
+
+    cy.get(".a-tooltip").should("be.visible").should("have.text", "Fruit");
   });
 
   it("should show tags", () => {
-    cy.mount(<AMultiSelectTest value={[1, 3]} />);
+    cy.mount(<AMultiSelectTest withTags value={[1, 3]} />);
 
     cy.get(".a-tag")
       .first()
@@ -180,7 +188,7 @@ const items = [
   {id: 6, name: "Fats, Oils, and Sweets"}
 ];
 
-const AMultiSelectTest = ({value: propsValue = []}) => {
+const AMultiSelectTest = ({value: propsValue = [], withTags = false}) => {
   const [value, setValue] = useState(propsValue);
 
   return (
@@ -191,6 +199,7 @@ const AMultiSelectTest = ({value: propsValue = []}) => {
       <AMultiSelect
         data-testid="select-trigger"
         label="Food Group"
+        withTags={withTags}
         items={items}
         itemValue="id"
         itemText="name"
