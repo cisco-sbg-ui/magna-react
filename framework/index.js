@@ -121,7 +121,7 @@ import {
 } from "./components/AStepper";
 import ASwitch from "./components/ASwitch";
 import {AAutoTheme, useAAutoTheme} from "./components/AAutoTheme";
-import {ATabGroup, ATab, AMenuTab} from "./components/ATabs";
+import {ATabGroup, ATab} from "./components/ATabs";
 import ATag from "./components/ATag";
 import ATextarea from "./components/ATextarea";
 import ATextInput from "./components/ATextInput";
@@ -256,7 +256,6 @@ export {
   AAutoTheme,
   ATabGroup,
   ATab,
-  AMenuTab,
   ATag,
   ATextarea,
   ATextInput,

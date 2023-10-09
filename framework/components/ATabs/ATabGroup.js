@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
 import React, {forwardRef, useEffect, useRef, useState} from "react";
 
-import AMenuTab from "./AMenuTab";
+import OverflowMenuTab from "./OverflowMenuTab";
+import AListItem from "../AList/AListItem";
 import ATabContext from "./ATabContext";
 import {useCombinedRefs} from "../../utils/hooks";
 import "./ATabs.scss";
@@ -42,7 +43,7 @@ const ATabGroup = forwardRef(
         );
 
         //More tab
-        const tab = combinedRef.current.querySelector("[data-set='menu']");
+        const tab = combinedRef.current.querySelector(".menu-tab");
 
         if (!tab) {
           return;
@@ -72,10 +73,10 @@ const ATabGroup = forwardRef(
           //If items' total width falls under overall container width, skip
           if (tabWrapper.offsetWidth >= overflowLimit + tabWidth) {
             overflowLimit += tabWidth;
-          } else if (item.dataset.set !== "menu") {
+          } else if (!classList.includes("menu-tab")) {
             //If items' total width exceeds overall container width, hide and push to overflow menu
             item.classList.add("hide");
-            overflowMenuItems.push(item);
+            overflowMenuItems.push(i);
           }
         });
 
@@ -118,15 +119,20 @@ const ATabGroup = forwardRef(
       vertical
     };
 
+    const renderChildren = React.Children.map(children, (child, i) => {
+      const isOverflowItem = menuItems.includes(i);
+      if (isOverflowItem) {
+        return <AListItem {...child.props} />;
+      }
+    });
+
     return (
       <div {...rest} role="tablist" ref={combinedRef} className={className}>
         <div className="a-tab-group__tab-wrapper">
           <div className={tabContentClassName}>
             <ATabContext.Provider value={tabContext}>
               {children}
-              {!vertical && (
-                <AMenuTab tabKey={children.length + 1}>{menuItems}</AMenuTab>
-              )}
+              {!vertical && <OverflowMenuTab>{renderChildren}</OverflowMenuTab>}
             </ATabContext.Provider>
           </div>
         </div>

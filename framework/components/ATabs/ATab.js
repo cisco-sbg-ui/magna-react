@@ -36,6 +36,12 @@ const ATab = forwardRef(
     const [tabId, setTabId] = useState(null);
     const [isSelected, setIsSelected] = useState(null);
     const {tabChanged, setTabChanged, vertical} = useContext(ATabContext);
+
+    const menuTab =
+      tabRef.current && tabRef.current.classList.contains("menu-tab")
+        ? tabRef.current
+        : null;
+
     useEffect(() => {
       if (tabKey) return;
       if (!tabId) {
@@ -58,6 +64,7 @@ const ATab = forwardRef(
     }, [selected, tabKey]); // eslint-disable-line react-hooks/exhaustive-deps
 
     let className = "a-tab-group__tab";
+
     if ((tabKey && selected) || isSelected) {
       className += " a-tab-group__tab--selected";
 
@@ -74,6 +81,17 @@ const ATab = forwardRef(
       className += ` ${propsClassName}`;
     }
 
+    //If in controlled mode, handle previously selected class.
+    const handleSiblingSelectedClass = () => {
+      const parent = combinedRef.current.parentNode;
+      const previousSelectedEl = parent.querySelector("[aria-selected=true]");
+      if (previousSelectedEl) {
+        previousSelectedEl.classList.remove("a-tab-group__tab--selected");
+      }
+    };
+
+    //TODO ARIASELECT ON THE NEW ONES
+    //TODO SET ACTIVE ON NOT CONTROLLED COMPONENTS
     let TagName = "div";
     const props = {
       ...rest,
@@ -82,12 +100,18 @@ const ATab = forwardRef(
       className,
       onClick: (e) => {
         !tabKey && setTabChanged(tabId);
+        if (menuTab) {
+          handleSiblingSelectedClass();
+        }
         onClick && onClick(e);
       },
       onKeyDown: (e) => {
         if (!href && [keyCodes.enter].includes(e.keyCode)) {
           e.preventDefault();
           !tabKey && setTabChanged(tabId);
+          if (menuTab) {
+            handleSiblingSelectedClass();
+          }
           onClick && onClick(e);
         } else {
           onKeyDown && onKeyDown(e);
