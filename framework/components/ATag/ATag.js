@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 import AIcon from "../AIcon";
-import ARadio from "../ARadio/ARadio";
 
 import {keyCodes} from "../../utils/helpers";
 import "./ATag.scss";
@@ -15,8 +14,8 @@ const STATUS_ICON = {
 };
 
 const BINARY_ICON = {
-  active: <ARadio checked />,
-  inactive: <ARadio disabled />
+  active: "check-circle",
+  inactive: "minus-circle"
 };
 
 const ATag = forwardRef(
@@ -36,6 +35,7 @@ const ATag = forwardRef(
       status,
       binary,
       color,
+      customIcon = false,
       ...rest
     },
     ref
@@ -58,12 +58,18 @@ const ATag = forwardRef(
       className += ` a-tag--sm`;
     }
 
-    if (status) {
-      className += ` a-tag--status a-tag--status-${status}`;
+    {
+      /**
+       *Previously, binary and status tags types had different spacing and icons (binary had radio buttons).
+       *As of 10/23, These types have been redesigned to be one and the same.
+       *In order to avoid another round of breaking changes, we are tacking on binary classes to status classes.
+       *This also preserves the ability to alter easily if they diverge again in the future.
+       **/
     }
-
-    if (binary === "active") {
-      className += ` a-tag--binary-active`;
+    if (status || binary === "inactive") {
+      className += ` a-tag--status a-tag--status-${status || binary}`;
+    } else if (binary) {
+      className += ` a-tag--status a-tag--binary-${binary}`;
     }
 
     if (color) {
@@ -109,9 +115,12 @@ const ATag = forwardRef(
     if (status) {
       tagWithIcon = (
         <>
-          <AIcon className="a-icon--status" left>
-            {STATUS_ICON[status]}
-          </AIcon>
+          {!customIcon && (
+            <AIcon className="a-icon--status" left>
+              {STATUS_ICON[status]}
+            </AIcon>
+          )}
+          {React.isValidElement(customIcon) && customIcon}
           {children}
         </>
       );
@@ -119,10 +128,15 @@ const ATag = forwardRef(
 
     if (binary) {
       tagWithIcon = (
-        <div>
-          {BINARY_ICON[binary]}
+        <>
+          {!customIcon && (
+            <AIcon className="a-icon--binary" left>
+              {BINARY_ICON[binary]}
+            </AIcon>
+          )}
+          {React.isValidElement(customIcon) && customIcon}
           {children}
-        </div>
+        </>
       );
     }
 
@@ -200,7 +214,11 @@ ATag.propTypes = {
     "accentH",
     "accentI",
     "accentK"
-  ])
+  ]),
+  /**
+   * Option for custom icon, can pass through children or directly into props.
+   */
+  customIcon: PropTypes.oneOfType([PropTypes.boolean, PropTypes.node])
 };
 
 ATag.displayName = "ATag";
