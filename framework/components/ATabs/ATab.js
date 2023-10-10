@@ -87,11 +87,10 @@ const ATab = forwardRef(
       const previousSelectedEl = parent.querySelector("[aria-selected=true]");
       if (previousSelectedEl) {
         previousSelectedEl.classList.remove("a-tab-group__tab--selected");
+        previousSelectedEl.setAttribute("aria-selected", false);
       }
     };
 
-    //TODO ARIASELECT ON THE NEW ONES
-    //TODO SET ACTIVE ON NOT CONTROLLED COMPONENTS
     let TagName = "div";
     const props = {
       ...rest,

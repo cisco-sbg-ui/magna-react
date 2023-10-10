@@ -34,20 +34,19 @@ const ATabGroup = forwardRef(
         if (!combinedRef.current) {
           return;
         }
-        const overflowMenuItems = [];
-
-        const tabWrapper = combinedRef.current;
-
-        const contentWrapper = combinedRef.current.querySelector(
-          ".a-tab-group__tab-content"
-        );
-
-        //More tab
+        //Overflow tab
         const tab = combinedRef.current.querySelector(".menu-tab");
 
         if (!tab) {
           return;
         }
+
+        const overflowMenuItems = [];
+
+        const tabWrapper = combinedRef.current;
+        const contentWrapper = combinedRef.current.querySelector(
+          ".a-tab-group__tab-content"
+        );
 
         const tabStyle = window.getComputedStyle(tab);
 
@@ -80,7 +79,7 @@ const ATabGroup = forwardRef(
           }
         });
 
-        //Handles more button's visibility
+        //Handles overflow tab's visibility
         if (!overflowMenuItems.length) {
           tab.classList.add("hide");
         } else if (overflowMenuItems.length) {
@@ -122,7 +121,9 @@ const ATabGroup = forwardRef(
     const renderChildren = React.Children.map(children, (child, i) => {
       const isOverflowItem = menuItems.includes(i);
       if (isOverflowItem) {
-        return <AListItem {...child.props} />;
+        //tabKey is not recognized by AListItem and gets added to DOM so we remove it here.
+        const {tabKey, ...rest} = child.props;
+        return <AListItem {...rest} />;
       }
     });
 
