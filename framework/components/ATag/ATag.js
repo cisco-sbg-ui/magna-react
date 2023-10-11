@@ -218,7 +218,7 @@ ATag.propTypes = {
   /**
    * Option for custom icon, can pass through children or directly into props.
    */
-  customIcon: PropTypes.oneOfType([PropTypes.boolean, PropTypes.node])
+  customIcon: PropTypes.oneOfType([PropTypes.bool, PropTypes.node])
 };
 
 ATag.displayName = "ATag";
