@@ -28,7 +28,6 @@ const OverflowMenuTab = ({children}) => {
         data-set="menu"
         className="menu-tab"
         selected={menuOpen || hasSelected.current}
-        // ariaSelected={hasSelected.current}
         onClick={() => setMenuOpen(!menuOpen)}
       >
         More <AIcon>{menuIcon}</AIcon>

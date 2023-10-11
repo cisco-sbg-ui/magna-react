@@ -4,7 +4,7 @@ import React, {forwardRef, useEffect, useRef, useState} from "react";
 import OverflowMenuTab from "./OverflowMenuTab";
 import AListItem from "../AList/AListItem";
 import ATabContext from "./ATabContext";
-import {useCombinedRefs} from "../../utils/hooks";
+import {useCombinedRefs, useResizeObserver} from "../../utils/hooks";
 import "./ATabs.scss";
 
 const ATabGroup = forwardRef(
@@ -22,81 +22,65 @@ const ATabGroup = forwardRef(
     const [menuItems, setMenuItems] = useState([]);
     const tabGroupRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, tabGroupRef);
+    const {width} = useResizeObserver(combinedRef);
 
     useEffect(() => {
-      if (!combinedRef.current) {
+      if (!width) {
+        return;
+      }
+      //Overflow tab
+      const tab = combinedRef.current.querySelector(".menu-tab");
+
+      if (!tab) {
         return;
       }
 
-      const target = combinedRef.current.parentNode;
+      const overflowMenuItems = [];
 
-      const callback = () => {
-        if (!combinedRef.current) {
+      const contentWrapper = combinedRef.current.querySelector(
+        ".a-tab-group__tab-content"
+      );
+
+      const tabStyle = window.getComputedStyle(tab);
+
+      const tabMargin =
+        parseInt(tabStyle.marginLeft) + parseInt(tabStyle.marginRight);
+
+      //Calculate width of overflow tab which serves as our minimum width.
+      let overflowLimit = tab.offsetWidth + tabMargin + 5; //Increase by 5 as a width buffer on tabs with smaller words
+
+      Array.from(contentWrapper.childNodes).forEach((item, i) => {
+        if (!item || !item.classList) {
           return;
         }
-        //Overflow tab
-        const tab = combinedRef.current.querySelector(".menu-tab");
-
-        if (!tab) {
+        //If vertical view, skip
+        const classList = Array.from(item.classList);
+        if (classList.includes("a-tab-group__tab--vertical")) {
           return;
         }
-
-        const overflowMenuItems = [];
-
-        const tabWrapper = combinedRef.current;
-        const contentWrapper = combinedRef.current.querySelector(
-          ".a-tab-group__tab-content"
-        );
-
-        const tabStyle = window.getComputedStyle(tab);
-
-        const tabMargin =
-          parseInt(tabStyle.marginLeft) + parseInt(tabStyle.marginRight);
-
-        //Calculate width of more button which serves as our minimum width.
-        let overflowLimit = tab.offsetWidth + tabMargin;
-
-        Array.from(contentWrapper.childNodes).forEach((item, i) => {
-          if (!item || !item.classList) {
-            return;
-          }
-          //If vertical view, skip
-          const classList = Array.from(item.classList);
-          if (classList.includes("a-tab-group__tab--vertical")) {
-            return;
-          }
-          //Show all elements initially while we calculate size
-          item.classList.remove("hide");
-          //Tab item's width
-          const tabWidth = item.offsetWidth + tabMargin;
-          //If items' total width falls under overall container width, skip
-          if (tabWrapper.offsetWidth >= overflowLimit + tabWidth) {
-            overflowLimit += tabWidth;
-          } else if (!classList.includes("menu-tab")) {
-            //If items' total width exceeds overall container width, hide and push to overflow menu
-            item.classList.add("hide");
-            overflowMenuItems.push(i);
-          }
-        });
-
-        //Handles overflow tab's visibility
-        if (!overflowMenuItems.length) {
-          tab.classList.add("hide");
-        } else if (overflowMenuItems.length) {
-          tab.classList.remove("hide");
+        //Show all elements initially while we calculate size
+        item.classList.remove("hide");
+        //Tab item's width
+        const tabWidth = item.offsetWidth + tabMargin;
+        //If items' total width falls under overall container width, skip
+        if (width >= overflowLimit + tabWidth) {
+          overflowLimit += tabWidth;
+        } else if (!classList.includes("menu-tab")) {
+          //If items' total width exceeds overall container width, hide and push to overflow menu
+          item.classList.add("hide");
+          overflowMenuItems.push(i);
         }
+      });
 
-        setMenuItems(overflowMenuItems);
-      };
+      //Handles overflow tab's visibility
+      if (!overflowMenuItems.length) {
+        tab.classList.add("hide");
+      } else if (overflowMenuItems.length) {
+        tab.classList.remove("hide");
+      }
 
-      const resizeObserver = new ResizeObserver(callback);
-
-      resizeObserver.observe(target);
-
-      return () => {
-        resizeObserver.unobserve(target);
-      };
-    }, [combinedRef]);
+      setMenuItems(overflowMenuItems);
+    }, [width, combinedRef, children]);
 
     let className = "a-tab-group";
     let tabContentClassName = "a-tab-group__tab-content";

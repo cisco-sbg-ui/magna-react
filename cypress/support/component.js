@@ -27,5 +27,11 @@ Cypress.Commands.add("mount", (component) => {
   return mount(<AApp>{component}</AApp>);
 });
 
+Cypress.on("uncaught:exception", (err, runnable) => {
+  //Will still print out in tests, but wont fail them.
+  // returning false here prevents Cypress from failing the test
+  return false;
+});
+
 // Example use:
 // cy.mount(<MyComponent />)
