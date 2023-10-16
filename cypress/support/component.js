@@ -27,10 +27,15 @@ Cypress.Commands.add("mount", (component) => {
   return mount(<AApp>{component}</AApp>);
 });
 
-Cypress.on("uncaught:exception", (err, runnable) => {
+const resizeObserverLoopErrRe =
+  /^[^(ResizeObserver loop completed with undelivered notifications.)]/;
+
+Cypress.on("uncaught:exception", (err) => {
   //Will still print out in tests, but wont fail them.
   // returning false here prevents Cypress from failing the test
-  return false;
+  if (resizeObserverLoopErrRe.test(err.message)) {
+    return false;
+  }
 });
 
 // Example use:

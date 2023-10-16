@@ -2,19 +2,19 @@
 
 $tabs-padding: 0;
 $tabs-margin: 8px 0 0;
-$tab-font-size: $font-size--md;
+$tab-font-size: $font-size--lg;
+$tab-font-size-secondary: $font-size--md;
 $tab-bottom-bar-height: -4px;
 $tab-top-bar-height: 4px;
 $tab-padding-bottom: 12px;
-$tab-margin: 0 12px;
+$tab-margin: 32px;
+$tab-margin-secondary: 24px;
 $tab-padding: 4px 0 8px 0; //doesn't match magnetic (overall height 41px, but magnetic doesn't align to the multiple of 4px pattern here either //Update - Added padding on the bottom to try to match height of the bar
 $tab-heading-margin: 0;
-$tab-heading-font-size: $font-size--lg;
-//TODO ADD NEW PRIMARY COLOR AND STATES
+
 @include theme(a-tab-group) using ($theme) {
   &__tab {
     color: map-deep-get($theme, "tabs", "text-color");
-    font-weight: 600;
     &:active,
     &:focus,
     &:hover {
@@ -26,57 +26,77 @@ $tab-heading-font-size: $font-size--lg;
       );
     }
 
+    &--secondary {
+      color: map-deep-get($theme, "tabs", "text-color-secondary");
+      &:active,
+      &:focus,
+      &:hover {
+        color: map-deep-get($theme, "tabs", "text-color-secondary--selected");
+
+        @include tab-bar(
+          $tab-bottom-bar-height,
+          map-deep-get($theme, "tabs", "bar-color-secondary--hover")
+        );
+      }
+    }
+
     &--vertical:active,
     &--vertical:focus,
     &--vertical:hover {
+      color: map-deep-get($theme, "tabs", "text-color-secondary--selected");
       @include vertical-tab-bar(
         $tab-bottom-bar-height,
-        map-deep-get($theme, "tabs", "bar-color--hover")
+        map-deep-get($theme, "tabs", "bar-color-secondary--hover")
       );
     }
 
     &--selected {
-      font-weight: 700;
-      color: map-deep-get($theme, "tabs", "text-color--selected");
-      @include tab-bar(
-        $tab-bottom-bar-height,
-        map-deep-get($theme, "tabs", "bar-color--selected")
-      );
-
-      &:active,
-      &:focus,
-      &:hover {
+      //Primary
+      &:not(.a-tab-group__tab--secondary) {
         color: map-deep-get($theme, "tabs", "text-color--selected");
         @include tab-bar(
           $tab-bottom-bar-height,
           map-deep-get($theme, "tabs", "bar-color--selected")
         );
+        &:active,
+        &:focus,
+        &:hover {
+          color: map-deep-get($theme, "tabs", "text-color--selected");
+          @include tab-bar(
+            $tab-bottom-bar-height,
+            map-deep-get($theme, "tabs", "bar-color--selected")
+          );
+        }
+      }
+
+      //Secondary
+      &.a-tab-group__tab--secondary {
+        color: map-deep-get($theme, "tabs", "text-color-secondary--selected");
+        @include tab-bar(
+          $tab-bottom-bar-height,
+          map-deep-get($theme, "tabs", "bar-color-secondary--selected")
+        );
+
+        &:active,
+        &:focus,
+        &:hover {
+          color: map-deep-get($theme, "tabs", "text-color-secondary--selected");
+
+          @include tab-bar(
+            $tab-bottom-bar-height,
+            map-deep-get($theme, "tabs", "bar-color-secondary--selected")
+          );
+        }
       }
 
       &--vertical {
+        color: map-deep-get($theme, "tabs", "text-color-secondary--selected");
         @include vertical-tab-bar(
           $tab-bottom-bar-height,
-          map-deep-get($theme, "tabs", "bar-color--selected")
+          map-deep-get($theme, "tabs", "bar-color-secondary--selected")
+            !important
         );
       }
-
-      &--vertical:active,
-      &--vertical:focus,
-      &--vertical:hover {
-        color: map-deep-get($theme, "tabs", "text-color--selected");
-        @include vertical-tab-bar(
-          $tab-bottom-bar-height,
-          map-deep-get($theme, "tabs", "bar-color--selected")
-        );
-      }
-    }
-
-    &:focus {
-      @include tab-bar($tab-bottom-bar-height, inherit);
-    }
-
-    &--vertical:focus {
-      @include vertical-tab-bar($tab-bottom-bar-height, inherit);
     }
   }
   .hide {
@@ -108,8 +128,9 @@ $tab-heading-font-size: $font-size--lg;
   }
 
   &__tab {
+    font-weight: 600;
     display: inline-block;
-    margin: $tab-margin;
+    margin-right: $tab-margin;
     padding: $tab-padding;
     border: none;
     text-align: center;
@@ -126,6 +147,11 @@ $tab-heading-font-size: $font-size--lg;
 
     &:active {
       outline: none;
+    }
+
+    &--secondary {
+      margin-right: $tab-margin-secondary;
+      font-size: $tab-font-size-secondary;
     }
 
     &--vertical {

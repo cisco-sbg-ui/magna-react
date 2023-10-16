@@ -7,7 +7,36 @@ describe("<ATabGroup />", () => {
     cy.mount(<ATagTest />);
   });
 
-  it("should have visisble overflow tab", () => {
+  it("should have primary style", () => {
+    cy.mount(<ATagTest />);
+    cy.get(".a-tab-group__tab--selected").should(
+      "have.css",
+      "color",
+      "rgb(35, 40, 46)"
+    );
+    cy.get(".a-tab-group__tab--selected").should(
+      "have.css",
+      "box-shadow",
+      "rgb(69, 153, 31) 0px -4px 0px -1px inset"
+    );
+  });
+
+  it("should have secondary style", () => {
+    cy.mount(<ATagTest secondary />);
+    cy.get(".a-tab-group__tab--secondary").should("exist");
+    cy.get(".a-tab-group__tab--selected").should(
+      "have.css",
+      "color",
+      "rgb(29, 105, 204)"
+    );
+    cy.get(".a-tab-group__tab--selected").should(
+      "have.css",
+      "box-shadow",
+      "rgb(29, 105, 204) 0px -4px 0px -1px inset"
+    );
+  });
+
+  it("should have visible overflow tab", () => {
     cy.mount(<ATagTest />);
     cy.get(".menu-tab").should("be.visible");
   });
@@ -15,17 +44,17 @@ describe("<ATabGroup />", () => {
   it("overflow tab should be populated with remaining items", () => {
     cy.mount(<ATagTest />);
     cy.get(".menu-tab").click();
-    cy.get(".a-list-item").first().should("be.visible").contains("Five");
+    cy.get(".a-list-item").first().should("be.visible").contains("Six");
   });
 
   it("should move more items into overflow menu after resize", () => {
-    cy.mount(<ATagTest width={"12rem"} />);
+    cy.mount(<ATagTest width={"20rem"} />);
     cy.get(".menu-tab").click();
-    cy.get(".a-list-item").first().should("be.visible").contains("Three");
+    cy.get(".a-list-item").first().should("be.visible").contains("Four");
   });
 
-  it("should move more items into overflow menu after resize", () => {
-    cy.mount(<ATagTest width={"12rem"} />);
+  it("should move even more items into overflow menu after resize", () => {
+    cy.mount(<ATagTest width={"15rem"} />);
     cy.get(".menu-tab").click();
     cy.get(".a-list-item").first().should("be.visible").contains("Three");
   });
@@ -36,7 +65,7 @@ describe("<ATabGroup />", () => {
   });
 
   it("should maintain highlighted state if overflow menu item is selected", () => {
-    cy.mount(<ATagTest width={"12rem"} />);
+    cy.mount(<ATagTest width={"15rem"} />);
     cy.get(".menu-tab").click();
     cy.get(".a-list-item")
       .last()
@@ -53,7 +82,7 @@ describe("<ATabGroup />", () => {
   });
 
   it("should maintain highlighted state if overflow menu item is selected by keystroke", () => {
-    cy.mount(<ATagTest width={"10rem"} />);
+    cy.mount(<ATagTest width={"15rem"} />);
     cy.get(".a-tab-group__tab")
       .first()
       .tab({shift: true})
@@ -68,21 +97,22 @@ describe("<ATabGroup />", () => {
     cy.get(".a-list-item")
       .get(".a-list-item--selected")
       .should("exist")
-      .contains("Two");
+      .contains("Three");
   });
 
   it("should not render overflow tab if in vertical position", () => {
-    cy.mount(<ATagTest width={"10rem"} vertical />);
+    cy.mount(<ATagTest width={"15rem"} vertical />);
     cy.get(".menu-tab").should("not.exist");
   });
 });
 
-const ATagTest = ({width = "20rem", vertical = false}) => {
+const ATagTest = ({width = "30rem", vertical = false, secondary = false}) => {
   const tabs = ["One", "Two", "Three", "Four", "Five", "Six", "Seven"];
   const [activeTab, setActiveTab] = useState(tabs[2]);
+  console.log(secondary);
   return (
     <div style={{width, border: "1px solid red"}}>
-      <ATabGroup vertical={vertical}>
+      <ATabGroup vertical={vertical} secondary={secondary}>
         {tabs.map((x) => (
           <ATab
             key={x}

@@ -88,9 +88,6 @@ const ATabGroup = forwardRef(
     if (vertical) {
       tabContentClassName += " a-tab-group__tab-content--vertical";
     }
-    if (secondary) {
-      tabContentClassName += " a-tab-group__tab-content--secondary";
-    }
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
@@ -99,7 +96,8 @@ const ATabGroup = forwardRef(
     const tabContext = {
       tabChanged,
       setTabChanged,
-      vertical
+      vertical,
+      secondary
     };
 
     const renderChildren = React.Children.map(children, (child, i) => {

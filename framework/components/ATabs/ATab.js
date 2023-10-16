@@ -35,7 +35,8 @@ const ATab = forwardRef(
     const combinedRef = useCombinedRefs(ref, tabRef);
     const [tabId, setTabId] = useState(null);
     const [isSelected, setIsSelected] = useState(null);
-    const {tabChanged, setTabChanged, vertical} = useContext(ATabContext);
+    const {tabChanged, setTabChanged, vertical, secondary} =
+      useContext(ATabContext);
 
     const menuTab =
       tabRef.current && tabRef.current.classList.contains("menu-tab")
@@ -74,7 +75,11 @@ const ATab = forwardRef(
     }
 
     if (vertical) {
-      className += " a-tab-group__tab--vertical";
+      className += " a-tab-group__tab--vertical a-tab-group__tab--secondary";
+    } else if (!vertical && secondary) {
+      className += " a-tab-group__tab--secondary";
+    } else {
+      className += " a-tab-group__tab--primary";
     }
 
     if (propsClassName) {
