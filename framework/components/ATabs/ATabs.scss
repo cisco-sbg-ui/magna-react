@@ -7,8 +7,8 @@ $tab-font-size-secondary: $font-size--md;
 $tab-bottom-bar-height: -4px;
 $tab-top-bar-height: 4px;
 $tab-padding-bottom: 12px;
-$tab-margin: 32px;
-$tab-margin-secondary: 24px;
+$tab-margin: 0 16px;
+$tab-margin-secondary: 0 12px;
 $tab-padding: 4px 0 8px 0; //doesn't match magnetic (overall height 41px, but magnetic doesn't align to the multiple of 4px pattern here either //Update - Added padding on the bottom to try to match height of the bar
 $tab-heading-margin: 0;
 
@@ -99,9 +99,9 @@ $tab-heading-margin: 0;
       }
     }
   }
-  .hide {
-    display: none;
-  }
+}
+.hide {
+  display: none !important;
 }
 
 .a-tab-group {
@@ -130,7 +130,7 @@ $tab-heading-margin: 0;
   &__tab {
     font-weight: 600;
     display: inline-block;
-    margin-right: $tab-margin;
+    margin: $tab-margin;
     padding: $tab-padding;
     border: none;
     text-align: center;
@@ -150,7 +150,7 @@ $tab-heading-margin: 0;
     }
 
     &--secondary {
-      margin-right: $tab-margin-secondary;
+      margin: $tab-margin-secondary;
       font-size: $tab-font-size-secondary;
     }
 

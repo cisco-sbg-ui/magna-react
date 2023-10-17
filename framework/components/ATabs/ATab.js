@@ -76,10 +76,10 @@ const ATab = forwardRef(
 
     if (vertical) {
       className += " a-tab-group__tab--vertical a-tab-group__tab--secondary";
-    } else if (!vertical && secondary) {
+    }
+
+    if (secondary) {
       className += " a-tab-group__tab--secondary";
-    } else {
-      className += " a-tab-group__tab--primary";
     }
 
     if (propsClassName) {

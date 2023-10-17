@@ -14,9 +14,14 @@ const OverflowMenuTab = ({children}) => {
     for (let child of children) {
       if (child.props.selected) {
         hasSelected.current = child.props.selected;
+        //Q: "Why not use react state for this?" - A: "It won't let me."
+        menuRef.current.setAttribute("aria-selected", true);
+        menuRef.current.classList.add("a-tab-group__tab--selected");
         break; //Skip out once we find the first selected item.
-      } else {
+      } else if (!child.props.selected) {
         hasSelected.current = false;
+        menuRef.current.setAttribute("aria-selected", false);
+        menuRef.current.classList.remove("a-tab-group__tab--selected");
       }
     }
   }, [children]);

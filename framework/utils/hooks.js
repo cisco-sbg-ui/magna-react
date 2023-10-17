@@ -61,15 +61,13 @@ export const useResizeObserver = (containerRef) => {
         setHeight(containerRef.current.offsetHeight);
       }
     });
-    //Allows silent error in cypress of "ResizeObserver loop completed with undelivered notifications"
-    setTimeout(() => {
-      resizeObserver.observe(containerRef.current);
-    }, 0);
+
+    resizeObserver.observe(containerRef.current);
+
     return function cleanup() {
       resizeObserver.disconnect();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [containerRef]);
+  }, [containerRef, width, height]);
   return {
     width,
     height

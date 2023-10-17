@@ -1,10 +1,16 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useEffect, useRef, useState} from "react";
+import React, {
+  forwardRef,
+  useEffect,
+  useRef,
+  useState,
+  useCallback
+} from "react";
 
 import OverflowMenuTab from "./OverflowMenuTab";
 import AListItem from "../AList/AListItem";
 import ATabContext from "./ATabContext";
-import {useCombinedRefs, useResizeObserver} from "../../utils/hooks";
+import {useCombinedRefs} from "../../utils/hooks";
 import "./ATabs.scss";
 
 const ATabGroup = forwardRef(
@@ -22,10 +28,9 @@ const ATabGroup = forwardRef(
     const [menuItems, setMenuItems] = useState([]);
     const tabGroupRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, tabGroupRef);
-    const {width} = useResizeObserver(combinedRef);
 
-    useEffect(() => {
-      if (!width) {
+    const handleOverflow = useCallback(() => {
+      if (!combinedRef.current) {
         return;
       }
       //Overflow tab
@@ -34,8 +39,8 @@ const ATabGroup = forwardRef(
       if (!tab) {
         return;
       }
-
       const overflowMenuItems = [];
+      const tabWrapper = combinedRef.current;
 
       const contentWrapper = combinedRef.current.querySelector(
         ".a-tab-group__tab-content"
@@ -63,7 +68,7 @@ const ATabGroup = forwardRef(
         //Tab item's width
         const tabWidth = item.offsetWidth + tabMargin;
         //If items' total width falls under overall container width, skip
-        if (width >= overflowLimit + tabWidth) {
+        if (tabWrapper.offsetWidth >= overflowLimit + tabWidth) {
           overflowLimit += tabWidth;
         } else if (!classList.includes("menu-tab")) {
           //If items' total width exceeds overall container width, hide and push to overflow menu
@@ -80,7 +85,18 @@ const ATabGroup = forwardRef(
       }
 
       setMenuItems(overflowMenuItems);
-    }, [width, combinedRef, children]);
+    }, [combinedRef]);
+
+    useEffect(() => {
+      const target = combinedRef.current.parentNode;
+      const resizeObserver = new ResizeObserver(handleOverflow);
+
+      resizeObserver.observe(target);
+
+      return () => {
+        resizeObserver.unobserve(target);
+      };
+    }, [combinedRef, handleOverflow]);
 
     let className = "a-tab-group";
     let tabContentClassName = "a-tab-group__tab-content";
@@ -101,6 +117,7 @@ const ATabGroup = forwardRef(
     };
 
     const renderChildren = React.Children.map(children, (child, i) => {
+      if (!menuItems.length) return null;
       const isOverflowItem = menuItems.includes(i);
       if (isOverflowItem) {
         //tabKey is not recognized by AListItem and gets added to DOM so we remove it here.
