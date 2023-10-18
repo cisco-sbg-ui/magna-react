@@ -7,8 +7,8 @@ $tab-font-size-secondary: $font-size--md;
 $tab-bottom-bar-height: -4px;
 $tab-top-bar-height: 4px;
 $tab-padding-bottom: 12px;
-$tab-margin: 0 16px;
-$tab-margin-secondary: 0 12px;
+$tab-margin: 32px;
+$tab-margin-secondary: 24px;
 $tab-padding: 4px 0 8px 0; //doesn't match magnetic (overall height 41px, but magnetic doesn't align to the multiple of 4px pattern here either //Update - Added padding on the bottom to try to match height of the bar
 $tab-heading-margin: 0;
 
@@ -99,6 +99,14 @@ $tab-heading-margin: 0;
       }
     }
   }
+
+  &:has(.a-tab-group__tab--secondary :not(.a-tab-group__tab--vertical)) {
+    border-bottom-color: map-deep-get(
+      $theme,
+      "tabs",
+      "border-bottom-secondary"
+    );
+  }
 }
 .hide {
   display: none !important;
@@ -130,15 +138,19 @@ $tab-heading-margin: 0;
   &__tab {
     font-weight: 600;
     display: inline-block;
-    margin: $tab-margin;
+    margin-right: $tab-margin;
     padding: $tab-padding;
     border: none;
     text-align: center;
     user-select: none;
     font-size: $tab-font-size;
     background-color: transparent;
+    line-height: 25px;
     cursor: pointer;
-
+    //If has tag, provide some margin
+    .a-tag {
+      margin: 0 4px 2px 4px;
+    }
     svg {
       vertical-align: middle;
       width: 12px;
@@ -150,7 +162,7 @@ $tab-heading-margin: 0;
     }
 
     &--secondary {
-      margin: $tab-margin-secondary;
+      margin-right: $tab-margin-secondary;
       font-size: $tab-font-size-secondary;
     }
 
@@ -159,6 +171,7 @@ $tab-heading-margin: 0;
       margin: 0 0 8px;
       padding-top: $tab-padding-bottom;
       height: unset;
+      line-height: unset;
       &:last-of-type {
         margin-bottom: 0;
       }
@@ -179,10 +192,21 @@ $tab-heading-margin: 0;
       text-align: left;
     }
   }
+
+  &:has(.a-tab-group__tab--secondary :not(.a-tab-group__tab--vertical)) {
+    border-bottom: 1px solid;
+  }
 }
 
 .a-app--animated .a-tab-group {
   &__tab-content {
     transition: transform $transition-duration--fast ease;
+  }
+}
+
+//If tab with tag moves to list item, carry over margin
+.tab-overflow-menu {
+  .a-list-item .a-tag {
+    margin: 0 4px;
   }
 }
