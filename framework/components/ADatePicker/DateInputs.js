@@ -3,7 +3,7 @@ import {convertToStandardDateFormat, isValidDateStr} from "./helpers";
 import ATextInput from "../ATextInput";
 
 const DateInputs = ({
-  openCalendar,
+  setShowCalendar,
   setDateRange,
   dateRange,
   label,
@@ -25,7 +25,7 @@ const DateInputs = ({
 
   const handleInput = () => {
     setHover(false);
-    openCalendar(true);
+    setShowCalendar(true);
   };
 
   useEffect(() => {
