@@ -65,6 +65,7 @@ const AMultiSelect = forwardRef(
     const [multiselectId] = useState(multiselectCounter++);
     const [isFocused, setIsFocused] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+    const [hasScroll, setHasScroll] = useState(false);
     const [filterValue, setFilterValue] = useState("");
     const [error, setError] = useState("");
     const [workingValidationState, setWorkingValidationState] =
@@ -194,17 +195,25 @@ const AMultiSelect = forwardRef(
       };
     }
 
-    if (inputBaseSurfaceRef?.current) {
-      const controlEl = inputBaseSurfaceRef?.current?.querySelector(
-        ".a-input-base__control"
-      );
-
-      if (
-        controlEl.scrollHeight >
-        inputBaseSurfaceRef?.current?.offsetHeight - 4
-      ) {
-        className += " a-multiselect--hasScroll";
+    useEffect(() => {
+      if (withTags) {
+        const tagsEl = inputBaseSurfaceRef?.current?.querySelector(
+          ".a-multiselect__tags"
+        );
+        if (tagsEl) {
+          const inputEl = inputBaseSurfaceRef.current.querySelector(
+            ".a-multiselect__input"
+          );
+          tagsEl.offsetHeight + inputEl.offsetHeight >
+          inputBaseSurfaceRef.current.offsetHeight
+            ? setHasScroll(true)
+            : setHasScroll(false);
+        }
       }
+    }, [onSelected, withTags]);
+
+    if (hasScroll && withTags) {
+      className += " a-multiselect--hasScroll";
     }
 
     const noDataContent = propsNoDataContent ?? (
