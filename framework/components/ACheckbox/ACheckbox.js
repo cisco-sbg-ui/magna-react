@@ -35,6 +35,7 @@ const ACheckbox = forwardRef(
       onClick,
       required,
       rules,
+      skipValidation = false,
       validationState,
       value,
       wrap,
@@ -74,6 +75,9 @@ const ACheckbox = forwardRef(
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     const validate = (testValue = checked) => {
+      if (skipValidation) {
+        return;
+      }
       if (rules || required) {
         let workingRules = [];
         if (rules) {
@@ -296,6 +300,10 @@ ACheckbox.propTypes = {
       level: PropTypes.string
     })
   ),
+  /**
+   * Skips internal and/or extra validation rules
+   */
+  skipValidation: PropTypes.bool,
   /**
    * Applies a validation state.
    */

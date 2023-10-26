@@ -45,6 +45,7 @@ const ACombobox = forwardRef(
       readOnly,
       required,
       rules,
+      skipValidation = false,
       validateOnBlur,
       validationState,
       value,
@@ -101,6 +102,9 @@ const ACombobox = forwardRef(
     }, [isOpen, checkMenuSpacing, menuRef]);
 
     const validate = (testValue = value) => {
+      if (skipValidation) {
+        return;
+      }
       if (rules || required) {
         let workingRules = [];
         if (rules) {
@@ -402,6 +406,10 @@ ACombobox.propTypes = {
       level: PropTypes.string
     })
   ),
+  /**
+   * Skips internal and/or extra validation rules
+   */
+  skipValidation: PropTypes.bool,
   /**
    * Delays validation until the `blur` event.
    */
