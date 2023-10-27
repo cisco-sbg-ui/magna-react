@@ -1,9 +1,27 @@
 @import "../../styles";
 
 .a-network-value {
-  font-family: monospace; // Add in Roboto Mono some day from the CDN
+  font-family: "RobotoMono", monospace;
   font-size: $font-size--md;
   font-style: normal;
   font-weight: $font-weight-normal;
   line-height: $line-height--md;
+  display: inline-flex;
+  align-items: center;
+  overflow: hidden;
+
+  &__value {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &__copy {
+    display: flex;
+    margin-left: 4px;
+
+    .a-button {
+      height: $line-height--md; // keeps the line height
+    }
+  }
 }
