@@ -16,3 +16,10 @@ html {
   src: url("https://brand-assets.security.cisco.com/fonts/inter/Inter-roman.var.woff2?v=3.19")
     format("woff2");
 }
+
+@font-face {
+  font-family: "RobotoMono";
+  font-style: normal;
+  src: url("https://brand-assets.security.cisco.com/fonts/RobotoMono/RobotoMono-Regular.ttf")
+    format("truetype");
+}
