@@ -56,6 +56,7 @@ const ATextInput = forwardRef(
       readOnly,
       required,
       rules,
+      skipValidation = false,
       spinner = true,
       step,
       type = "text",
@@ -278,6 +279,10 @@ const ATextInput = forwardRef(
     const ruleKeys = rules ? rules.map((r) => r.key).filter((k) => !!k) : [];
 
     const validate = (testValue = nativeInputValue) => {
+      if (skipValidation) {
+        return;
+      }
+
       if (
         rules ||
         required ||
@@ -543,6 +548,10 @@ ATextInput.propTypes = {
       level: PropTypes.string
     })
   ),
+  /**
+   * Skips internal and/or extra validation rules
+   */
+  skipValidation: PropTypes.bool,
   /**
    * Toggles the spinner for number type inputs.
    */

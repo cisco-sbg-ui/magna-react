@@ -50,6 +50,7 @@ const AMultiSelect = forwardRef(
       readOnly,
       required,
       rules,
+      skipValidation = false,
       validationState,
       value = [],
       filterFunction: propsFilterFunction,
@@ -146,6 +147,9 @@ const AMultiSelect = forwardRef(
     });
 
     const validate = (testValue = value) => {
+      if (skipValidation) {
+        return;
+      }
       if (rules || required) {
         let workingRules = [];
         if (rules) {
@@ -553,6 +557,10 @@ AMultiSelect.propTypes = {
       level: PropTypes.string
     })
   ),
+  /**
+   * Skips internal and/or extra validation rules
+   */
+  skipValidation: PropTypes.bool,
   /**
    * Applies tag style to input. Default is counter style.
    */

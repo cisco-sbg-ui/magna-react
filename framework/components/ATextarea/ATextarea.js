@@ -35,6 +35,7 @@ const ATextarea = forwardRef(
       required,
       rules,
       rows = 3,
+      skipValidation = false,
       validateOnBlur,
       validationState = "default",
       value,
@@ -114,6 +115,9 @@ const ATextarea = forwardRef(
     const ruleKeys = rules ? rules.map((r) => r.key) : [];
 
     const validate = (testValue = value) => {
+      if (skipValidation) {
+        return;
+      }
       if (rules || required) {
         let workingRules = [];
         if (rules) {
@@ -290,6 +294,10 @@ ATextarea.propTypes = {
       level: PropTypes.string
     })
   ),
+  /**
+   * Skips internal and/or extra validation rules
+   */
+  skipValidation: PropTypes.bool,
   /**
    * Delays validation until the `blur` event.
    */
