@@ -7,8 +7,8 @@ import ThemeSwitcher from "./ThemeSwitcher";
 
 const CustomLink = ({children, href, ...rest}) => {
   return (
-    <Link href={href} passHref>
-      <a {...rest}>{children}</a>
+    <Link href={href} passHref {...rest}>
+      {children}
     </Link>
   );
 };
