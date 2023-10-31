@@ -362,7 +362,7 @@ The `ACombobox` component inherits passed props.
             if (!userInput) {
               setFilteredItems(items);
             } else {
-              setFilteredItems(items.filter(item => item === e.target.value));
+              setFilteredItems(items.filter(item => item === userInput));
             }
           }}
           hint={\`Your lucky number: \${JSON.stringify(comboboxValue) || ''}\`}
