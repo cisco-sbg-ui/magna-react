@@ -35,6 +35,7 @@ const ACombobox = forwardRef(
       itemValue = "value",
       items = [],
       label,
+      maxHeight,
       noDataContent: propsNoDataContent,
       noDataMessage = "No matches found",
       onChange,
@@ -265,7 +266,12 @@ const ACombobox = forwardRef(
         <input {...inputProps} />
         <AMenu ref={menuRef} {...menuComponentProps}>
           {prependContent}
-          <div className="a-combobox__menu-items__wrapper">
+          <div
+            className={`a-combobox__menu-items__wrapper${
+              maxHeight ? " overflow-y-scroll" : ""
+            }`}
+            style={{maxHeight}}
+          >
             {!items.length && !!noDataContent && (
               <AListItem>{noDataContent}</AListItem>
             )}
@@ -365,6 +371,14 @@ ACombobox.propTypes = {
    * Sets the label content.
    */
   label: PropTypes.node,
+  /**
+   * Sets the max-height of the select dropdown
+   * in the case of many dropdown options needing
+   * overflow styling
+   *
+   * @example maxHeight="300px"
+   */
+  maxHeight: PropTypes.string,
   /**
    * Sets the content for when no matches are available.
    */

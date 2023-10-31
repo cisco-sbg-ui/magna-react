@@ -337,6 +337,42 @@ The `ACombobox` component inherits passed props.
 `}
 />
 
+## Dropdown Menu Max Height
+
+<Playground
+  code={`() => {
+    const items = useMemo(() => Array.from({length: 100}, (_, i) => (i + 1).toString()), []);
+    const [filteredItems, setFilteredItems] = useState(items);
+    const [comboboxValue, setComboboxValue] = useState();
+    // Add the maxHeight prop in order to prevent options from overflowing
+    return (
+      <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+        <ACombobox
+          placeholder="Find a lucky number"
+          maxHeight="300px"
+          value={comboboxValue}
+          label="Numbers"
+          items={filteredItems}
+          onSelected={item => setComboboxValue(item)}
+          onChange={e => {
+            const userInput = e.target.value;
+
+            setComboboxValue(userInput);
+
+            if (!userInput) {
+              setFilteredItems(items);
+            } else {
+              setFilteredItems(items.filter(item => item === userInput));
+            }
+          }}
+          hint={\`Your lucky number: \${JSON.stringify(comboboxValue) || ''}\`}
+        />
+      </div>
+    )
+
+}`}
+/>
+
 ## Accessibility Notes
 
 `ACombobox` inherits the accessibility features of `AMenu`.
