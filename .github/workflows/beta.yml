@@ -24,7 +24,7 @@ jobs:
           echo "@cisco-sbg-ui:registry=https://npm.pkg.github.com/" >> .npmrc
       - run: npm ci
       - run: npm run build
-      - uses: JS-DevTools/npm-publish@v1
+      - uses: JS-DevTools/npm-publish@v2
         with:
           registry: https://npm.pkg.github.com/
           token: ${{ secrets.GITHUB_TOKEN }}
