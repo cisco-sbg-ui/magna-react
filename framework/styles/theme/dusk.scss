@@ -1,3 +1,5 @@
+@import "mag-dusk";
+
 $atomic-dusk: (
   "accordion": (
     "body-color": map-get($mds-dark-theme, "secondary-gray"),
@@ -145,7 +147,7 @@ $atomic-dusk: (
     )
   ),
   "card": (
-    "container-background": map-get($mds-neutral, "neutral-16"),
+    "container-background": $base-bg-weak-default,
     "container-shadow": 0 3px 8px rgba(0, 0, 0, 0.08),
     "container-flat-shadow": none,
     "basic-background": map-get($mds-neutral, "neutral-16"),

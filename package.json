@@ -43,6 +43,7 @@
     "react-dom": "^16.8.0 || ^17.0.2 || ^18.2.0"
   },
   "dependencies": {
+    "@ciscodesignsystems/cds-magnetic-theme-web": "file:tarballs/ciscodesignsystems-cds-magnetic-theme-web-0.15.0.tgz",
     "babel-plugin-auto-import": "1.1.0"
   },
   "devDependencies": {
