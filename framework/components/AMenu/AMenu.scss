@@ -127,6 +127,10 @@ configuration environments.
       border-bottom-right-radius: $menu-item-first-last-border-radius;
       border-bottom-left-radius: $menu-item-first-last-border-radius;
     }
+
+    .a-empty-state {
+      margin: 20px auto;
+    }
   }
   &.compact {
     > .a-list-item {

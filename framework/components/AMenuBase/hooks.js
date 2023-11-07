@@ -10,23 +10,22 @@ import {useCallback, useState} from "react";
  */
 
 const useMenuSpacing = (surfaceRef, menuRef, maxHeight) => {
-  const [menuSpace, setMenuSpace] = useState(0);
+  const [menuPlacement, setMenuPlacement] = useState("bottom");
 
   const checkMenuSpacing = useCallback(() => {
     const inputBottom = surfaceRef?.current?.getBoundingClientRect().bottom,
-      verticalSpace = inputBottom
-        ? window.innerHeight - inputBottom - 10
-        : null;
+      verticalSpace = inputBottom ? window.innerHeight - inputBottom - 10 : 0;
 
-    verticalSpace && setMenuSpace(verticalSpace);
-  }, [surfaceRef]);
+    const menuHeight = menuRef?.current?.clientHeight || 0;
 
-  const menuHeight = menuRef?.current?.clientHeight || 0;
+    const placement =
+      menuHeight < verticalSpace ||
+      (maxHeight && verticalSpace > parseInt(maxHeight))
+        ? "bottom"
+        : "top";
 
-  const menuPlacement =
-    menuHeight < menuSpace || (maxHeight && menuSpace > parseInt(maxHeight))
-      ? "bottom"
-      : "top";
+    setMenuPlacement(placement);
+  }, [surfaceRef, menuRef, maxHeight]);
 
   return {checkMenuSpacing, menuPlacement};
 };
