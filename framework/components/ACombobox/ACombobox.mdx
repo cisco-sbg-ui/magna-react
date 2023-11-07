@@ -373,6 +373,63 @@ The `ACombobox` component inherits passed props.
 }`}
 />
 
+## Menu Placement Override
+
+<AAlert className="mb-2" level="info" dismissable={false}>
+  {
+    /**
+     * We wrap the text content for this message in curly braces and quotes so that it is treated as a JSX expression,
+     * which will prevent the markdown processor from wrapping it with a `<p>` tag, which adds unnecessary margins inside
+     * this `AAlert` component (ultimately making it look broken).
+     */
+    "Passing a `placement` prop to `ACombobox` will disable automatic edge detection placement, meaning the placement of the menu is controlled entirely by you."
+  }
+  <br />
+  <br />
+  {"For more on edge detection, reference the "}
+  <a
+    rel="noreferrer noopener"
+    href="../extend/menu-base#edge-detection"
+    target="_blank">
+    {"`AMenuBase` edge detection documentation"}
+  </a>
+</AAlert>
+
+<Playground
+  code={`() => {
+    const items = useMemo(() => Array.from({length: 100}, (_, i) => (i + 1).toString()), []);
+    const [filteredItems, setFilteredItems] = useState(items);
+    const [comboboxValue, setComboboxValue] = useState();
+    // Add the maxHeight prop in order to prevent options from overflowing
+    return (
+      <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+        <ACombobox
+          placeholder="Find a lucky number"
+          maxHeight="300px"
+          value={comboboxValue}
+          label="Numbers"
+          placement="top"
+          items={filteredItems}
+          onSelected={item => setComboboxValue(item)}
+          onChange={e => {
+            const userInput = e.target.value;
+
+            setComboboxValue(userInput);
+
+            if (!userInput) {
+              setFilteredItems(items);
+            } else {
+              setFilteredItems(items.filter(item => item === userInput));
+            }
+          }}
+          hint={\`Your lucky number: \${JSON.stringify(comboboxValue) || ''}\`}
+        />
+      </div>
+    )
+
+}`}
+/>
+
 ## Accessibility Notes
 
 `ACombobox` inherits the accessibility features of `AMenu`.

@@ -42,6 +42,7 @@ const ACombobox = forwardRef(
       onClear,
       onSelected,
       placeholder,
+      placement: propsPlacement,
       prependContent,
       readOnly,
       required,
@@ -258,7 +259,7 @@ const ACombobox = forwardRef(
         width: inputBaseSurfaceRef?.current?.clientWidth + 2 || "auto",
         ...dropdownStyle
       },
-      placement: menuPlacement
+      placement: propsPlacement || menuPlacement
     };
 
     return (
@@ -399,6 +400,23 @@ ACombobox.propTypes = {
    * Sets the text when no option is selected.
    */
   placeholder: PropTypes.string,
+  /**
+   * Overrides the automatic, dynamic menu placement calculation in favor of what is passed.
+   */
+  placement: PropTypes.oneOf([
+    "top",
+    "top-right",
+    "right-top",
+    "right",
+    "right-bottom",
+    "bottom-right",
+    "bottom",
+    "bottom-left",
+    "left-bottom",
+    "left",
+    "left-top",
+    "top-left"
+  ]),
   /**
    * Sets the content to prepend to the dropdown list.
    */
