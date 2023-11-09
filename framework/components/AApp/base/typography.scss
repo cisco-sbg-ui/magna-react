@@ -4,11 +4,11 @@
 }
 
 .a-app.theme--default {
-  @include theme-app($atomic-default);
+  @include theme-app($magnetic-light);
 }
 
 .a-app.theme--dusk {
-  @include theme-app($atomic-dusk);
+  @include theme-app($magnetic-dark);
 }
 
 .a-app {

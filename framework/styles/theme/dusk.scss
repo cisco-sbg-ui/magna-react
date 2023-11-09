@@ -1,6 +1,6 @@
-@import "mag-dusk";
+@import "../magnetic-tokens/theme-dark.scss";
 
-$atomic-dusk: (
+$magnetic-dark: (
   "accordion": (
     "body-color": map-get($mds-dark-theme, "secondary-gray"),
     "chevron-color": map-get($mds-neutral, "neutral-6"),

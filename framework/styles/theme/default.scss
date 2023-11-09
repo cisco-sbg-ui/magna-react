@@ -1,6 +1,6 @@
-@import "mag-default";
+@import "../magnetic-tokens/theme-light.scss";
 
-$atomic-default: (
+$magnetic-light: (
   "accordion": (
     "body-color": map-get($mds-light-theme, "secondary-gray"),
     "chevron-color": map-get($mds-neutral, "neutral-9"),
