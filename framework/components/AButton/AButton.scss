@@ -509,6 +509,11 @@ $btn-transition: color $transition-duration--extra-fast
   }
 }
 
+a.disabled.a-button,
+a:disabled.a-button {
+  opacity: unset;
+}
+
 .a-app--animated .a-button {
   @include transition($btn-transition);
 }
