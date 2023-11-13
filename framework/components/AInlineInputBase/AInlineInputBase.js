@@ -25,6 +25,7 @@ const AInlineInputBase = forwardRef(
       medium,
       large,
       showTooltip = false,
+      tooltipProps = {},
       ...rest
     },
     ref
@@ -137,7 +138,11 @@ const AInlineInputBase = forwardRef(
     } else {
       content = (
         <div className={displayClass}>
-          <ATriggerTooltip content={displayValue} disabled={tooltipDisabled}>
+          <ATriggerTooltip
+            content={displayValue}
+            disabled={tooltipDisabled}
+            {...tooltipProps}
+          >
             <div className={valueClass}>{displayValue || placeholder}</div>
           </ATriggerTooltip>
           <div className={editIconClass}>
@@ -251,7 +256,11 @@ export const AInlineInputBasePropTypes = {
   /**
    * Show a tooltip on the displayed value
    */
-  showTooltip: PropTypes.bool
+  showTooltip: PropTypes.bool,
+  /**
+   * Pass props to the tooltip component
+   */
+  tooltipProps: PropTypes.object
 };
 
 AInlineInputBase.propTypes = AInlineInputBasePropTypes;

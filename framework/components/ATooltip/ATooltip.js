@@ -16,12 +16,15 @@ const ATooltip = forwardRef(
       placement,
       pointer = true,
       role = "tooltip",
+      maxWidth,
+      style: propsStyle,
       ...rest
     },
     ref
   ) => {
     const tooltipRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, tooltipRef);
+    const style = {...propsStyle};
 
     let className = `a-tooltip`;
     if (pointer) {
@@ -32,9 +35,14 @@ const ATooltip = forwardRef(
       className += ` ${propsClassName}`;
     }
 
+    if (maxWidth) {
+      style.maxWidth = maxWidth;
+    }
+
     return (
       <AMenuBase
         {...rest}
+        style={style}
         ref={combinedRef}
         role={role}
         className={className}
@@ -70,6 +78,10 @@ export const ATooltipPropTypes = {
       left: PropTypes.number
     })
   ]).isRequired,
+  /**
+   * Override the default max-width
+   */
+  maxWidth: PropTypes.string,
   /**
    * Handles the request to close the menu.
    */
