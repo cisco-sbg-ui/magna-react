@@ -2,19 +2,19 @@
 
 $magnetic-light: (
   "accordion": (
-    "body-color": map-get($mds-light-theme, "secondary-gray"),
-    "chevron-color": map-get($mds-neutral, "neutral-9"),
-    "color": map-get($mds-light-theme, "default-text"),
-    "header-color": map-get($mds-light-theme, "heading-gray"),
-    "header-focus": map-get($mds-blue, "blue-8")
+    "bg": $control-bg-weak-default,
+    "body-color": $base-text-medium-default,
+    "chevron-color": $interact-icon-weak-default,
+    "color": $base-text-default,
+    "header-focus": $interact-border-focus
   ),
   "alert": (
-    "bg": map-get($mds-light-theme, "status-info-bg"),
-    "success-bg": map-get($mds-light-theme, "status-positive-bg"),
-    "warning-bg": map-get($mds-light-theme, "status-warning-bg"),
-    "danger-bg": map-get($mds-light-theme, "status-negative-bg"),
-    "close": map-get($mds-neutral, "neutral-9"),
-    "close-hover": map-get($mds-neutral, "neutral-9")
+    "bg": $info-bg-strong-default,
+    "success-bg": $positive-bg-strong-default,
+    "warning-bg": $warning-bg-strong-default,
+    "danger-bg": $negative-bg-strong-default,
+    "close": $interact-icon-weak-default,
+    "close-hover": $interact-icon-weak-hover
   ),
   "app": (
     "scrollbar": (
@@ -250,6 +250,10 @@ $magnetic-light: (
     "control-text-color": map-get($grey, "darken-5")
   ),
   "icon": (
+    "info-fill": $info-icon-default,
+    "positive-fill": $positive-icon-strong-default,
+    "negative-fill": $negative-icon-default,
+    "warning-fill": $warning-icon-strong-default,
     "icon-color": map-get($mds-light-theme, "icons"),
     "disposition-fill": map-get($mds-neutral, "neutral-2")
   ),

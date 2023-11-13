@@ -2,19 +2,19 @@
 
 $magnetic-dark: (
   "accordion": (
-    "body-color": map-get($mds-dark-theme, "secondary-gray"),
-    "chevron-color": map-get($mds-neutral, "neutral-6"),
-    "color": map-get($mds-dark-theme, "default-text"),
-    "header-color": map-get($mds-dark-theme, "heading-gray"),
-    "header-focus": map-get($mds-blue, "blue-1")
+    "bg": $control-bg-weak-default,
+    "body-color": $base-text-medium-default,
+    "chevron-color": $interact-icon-weak-default,
+    "color": $base-text-default,
+    "header-focus": $interact-border-focus
   ),
   "alert": (
-    "bg": map-get($mds-dark-theme, "status-info-bg"),
-    "success-bg": map-get($mds-dark-theme, "status-positive-bg"),
-    "warning-bg": map-get($mds-dark-theme, "status-warning-bg"),
-    "danger-bg": map-get($mds-dark-theme, "status-negative-bg"),
-    "close": map-get($mds-neutral, "neutral-6"),
-    "close-hover": map-get($mds-neutral, "neutral-6")
+    "bg": $info-bg-strong-default,
+    "success-bg": $positive-bg-strong-default,
+    "warning-bg": $warning-bg-strong-default,
+    "danger-bg": $negative-bg-strong-default,
+    "close": $interact-icon-weak-default,
+    "close-hover": $interact-icon-weak-hover
   ),
   "app": (
     "scrollbar": (
@@ -250,6 +250,10 @@ $magnetic-dark: (
     "control-text-color": map-get($grey, "lighten-3")
   ),
   "icon": (
+    "info-fill": $info-icon-default,
+    "positive-fill": $positive-icon-strong-default,
+    "negative-fill": $negative-icon-default,
+    "warning-fill": $warning-icon-strong-default,
     "icon-color": map-get($mds-dark-theme, "icons"),
     "disposition-fill": map-get($mds-neutral, "neutral-17")
   ),

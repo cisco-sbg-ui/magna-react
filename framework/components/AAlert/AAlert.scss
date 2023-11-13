@@ -23,7 +23,7 @@ $alert-close-icon-size: 10.5px;
 
   &__icon {
     .a-icon-bg {
-      fill: map-deep-get($theme, "control", "info-color");
+      fill: map-deep-get($theme, "icon", "info-fill");
     }
 
     &.a-alert__icon--close {
@@ -46,7 +46,7 @@ $alert-close-icon-size: 10.5px;
     color: map-deep-get($theme, "base", "color");
     .a-alert__icon {
       .a-icon-bg {
-        fill: map-deep-get($theme, "control", "success-color");
+        fill: map-deep-get($theme, "icon", "positive-fill");
       }
     }
     .a-alert__icon--close:focus {
@@ -61,7 +61,7 @@ $alert-close-icon-size: 10.5px;
     color: map-deep-get($theme, "base", "color");
     .a-alert__icon {
       .a-icon-bg {
-        fill: map-deep-get($theme, "control", "warning-color");
+        fill: map-deep-get($theme, "icon", "warning-fill");
       }
     }
     .a-alert__icon--close:focus {
@@ -76,7 +76,7 @@ $alert-close-icon-size: 10.5px;
     color: map-deep-get($theme, "base", "color");
     .a-alert__icon {
       .a-icon-bg {
-        fill: map-deep-get($theme, "control", "error-color");
+        fill: map-deep-get($theme, "icon", "negative-fill");
       }
     }
     .a-alert__icon--close:focus {
