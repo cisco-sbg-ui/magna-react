@@ -191,6 +191,7 @@ export const iconNameMap = {
   pdf: "file-pdf",
   phishing: "",
   play: "play",
+  "play-circle": "",
   prepend: "",
   progress: "spinner",
   prohibit: "",
