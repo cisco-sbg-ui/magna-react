@@ -89,14 +89,14 @@
   }
 
   &--size-small {
-    line-height: 28px;
+    line-height: $line-height--sm;
   }
 
   &--size-medium {
-    line-height: 34px;
+    line-height: $line-height--md;
   }
 
   &--size-large {
-    line-height: 40px;
+    line-height: $line-height--lg;
   }
 }

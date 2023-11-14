@@ -56,6 +56,32 @@ Escape key when editing resets value to last entered.
 `}
 />
 
+## Tooltip control
+
+While it is not recommended to put long values in tooltips, sometimes it is more practical than a popover.
+
+<Playground
+  code={`() => {
+  const [value, setValue] = useState("Some extra long value that may be better than having in a popover");
+  return (
+    <div>
+      <AInlineInputBase
+        value={value}
+          onChange={(newValue) => {
+            setValue(newValue);
+          }}
+        showTooltip
+        tooltipProps={{maxWidth: "500px"}}
+      />
+      <br />
+      Actual Value: {value}
+    </div>
+
+);
+}
+`}
+/>
+
 ## Inline Input Props
 
 The `AInlineInputBase` component inherits passed props. `AInlineTextInput` and `AInlineTextarea` are convenience wrappers around `AInlineInputBase` that accept the same props.
