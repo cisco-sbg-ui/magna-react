@@ -7,7 +7,6 @@ $toast-max-width: 465px;
 @include theme(a-toast) using ($theme) {
   color: map-deep-get($theme, "toast", "color");
   background: map-deep-get($theme, "control", "fill-color");
-  border-color: map-deep-get($theme, "control", "stroke-color");
 
   &__body {
     color: map-deep-get($theme, "toast", "color-message");
@@ -17,34 +16,34 @@ $toast-max-width: 465px;
   }
 
   .a-icon-text {
-    fill: map-deep-get($theme, "control", "fill-color");
+    fill: map-deep-get($theme, "control", "fill-color") !important;
   }
 
   &--success {
     border-left-color: map-deep-get($theme, "control", "success-color");
     .a-icon-bg {
-      fill: map-deep-get($theme, "control", "success-color");
+      fill: map-deep-get($theme, "icon", "positive-fill");
     }
   }
 
   &--warning {
     border-left-color: map-deep-get($theme, "control", "warning-color");
     .a-icon-bg {
-      fill: map-deep-get($theme, "control", "warning-color");
+      fill: map-deep-get($theme, "icon", "warning-fill");
     }
   }
 
   &--danger {
     border-left-color: map-deep-get($theme, "control", "error-color");
     .a-icon-bg {
-      fill: map-deep-get($theme, "control", "error-color");
+      fill: map-deep-get($theme, "icon", "negative-fill");
     }
   }
 
   &--information {
     border-left-color: map-deep-get($theme, "control", "info-color");
     .a-icon-bg {
-      fill: map-deep-get($theme, "control", "info-color");
+      fill: map-deep-get($theme, "icon", "info-fill");
     }
   }
 }

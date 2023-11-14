@@ -200,14 +200,14 @@ $magnetic-dark: (
     "box-shadow": 0px 2px 5px rgba(0, 0, 0, 0.05)
   ),
   "control": (
-    "fill-color": map-get($mds-neutral, "neutral-16"),
-    "fill-color--disabled": map-get($mds-dark-theme, "multipurpose-gray"),
-    "stroke-color": map-get($mds-neutral, "neutral-11"),
-    "warning-color": map-get($mds-dark-theme, "status-warning"),
-    "error-color": map-get($mds-dark-theme, "status-negative"),
-    "info-color": map-get($mds-dark-theme, "status-info"),
-    "success-color": map-get($mds-dark-theme, "status-positive"),
-    "row-effect-color": map-get($mds-neutral, "neutral-17"),
+    "fill-color": $base-icon-in-default,
+    "fill-color--disabled": $base-icon-in-disabled,
+    "stroke-color": $control-border-default,
+    "warning-color": $warning-border-default,
+    "error-color": $negative-border-default,
+    "info-color": $info-border-default,
+    "success-color": $positive-border-default,
+    "row-effect-color": $control-bg-weak-active,
     "row-effect-image":
       linear-gradient(
         0deg,
@@ -438,8 +438,8 @@ $magnetic-dark: (
     "background-color": map-get($mds-neutral, "neutral-14")
   ),
   "tree": (
-    "color": map-get($mds-dark-theme, "default-text"),
-    "background-color--hover": map-get($mds-neutral, "neutral-15")
+    "color": $base-text-default,
+    "background-color--hover": $control-bg-weak-hover
   ),
   "accent-colors": (
     "accentA": rgba(map-get($mds-violetblue, "violetblue-5"), 0.35),

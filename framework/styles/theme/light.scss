@@ -206,14 +206,14 @@ $magnetic-light: (
     "box-shadow": 0px 2px 5px rgba(0, 0, 0, 0.05)
   ),
   "control": (
-    "fill-color": map-get($mds-neutral, "neutral-1"),
-    "fill-color--disabled": map-get($mds-light-theme, "multipurpose-gray"),
-    "stroke-color": map-get($mds-neutral, "neutral-9"),
-    "warning-color": map-get($mds-light-theme, "status-warning"),
-    "error-color": map-get($mds-light-theme, "status-negative"),
-    "info-color": map-get($mds-light-theme, "status-info"),
-    "success-color": map-get($mds-light-theme, "status-positive"),
-    "row-effect-color": map-get($mds-interactive, "interactive-1"),
+    "fill-color": $base-icon-in-default,
+    "fill-color--disabled": $base-icon-in-disabled,
+    "stroke-color": $control-border-default,
+    "warning-color": $warning-border-default,
+    "error-color": $negative-border-default,
+    "info-color": $info-border-default,
+    "success-color": $positive-border-default,
+    "row-effect-color": $control-bg-weak-active,
     "row-effect-image": none
   ),
   "date-picker": (
@@ -429,8 +429,8 @@ $magnetic-light: (
     "background-color": map-get($mds-neutral, "neutral-15")
   ),
   "tree": (
-    "color": map-get($mds-light-theme, "default-text"),
-    "background-color--hover": map-get($mds-interactive, "interactive-2")
+    "color": $base-text-default,
+    "background-color--hover": $control-bg-weak-hover
   ),
   "accent-colors": (
     "accentA": map-get($mds-violetblue, "violetblue-1"),

@@ -18,7 +18,7 @@ $alert-close-icon-size: 10.5px;
   background-color: map-deep-get($theme, "alert", "bg");
   color: map-deep-get($theme, "base", "color");
   .a-icon-text {
-    fill: map-deep-get($theme, "control", "fill-color");
+    fill: map-deep-get($theme, "control", "fill-color") !important;
   }
 
   &__icon {
