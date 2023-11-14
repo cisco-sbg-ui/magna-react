@@ -15,36 +15,20 @@ $toast-max-width: 465px;
     color: map-deep-get($theme, "toast", "color");
   }
 
-  .a-icon-text {
-    fill: map-deep-get($theme, "control", "fill-color") !important;
-  }
-
   &--success {
     border-left-color: map-deep-get($theme, "control", "success-color");
-    .a-icon-bg {
-      fill: map-deep-get($theme, "icon", "positive-fill");
-    }
   }
 
   &--warning {
     border-left-color: map-deep-get($theme, "control", "warning-color");
-    .a-icon-bg {
-      fill: map-deep-get($theme, "icon", "warning-fill");
-    }
   }
 
   &--danger {
     border-left-color: map-deep-get($theme, "control", "error-color");
-    .a-icon-bg {
-      fill: map-deep-get($theme, "icon", "negative-fill");
-    }
   }
 
   &--information {
     border-left-color: map-deep-get($theme, "control", "info-color");
-    .a-icon-bg {
-      fill: map-deep-get($theme, "icon", "info-fill");
-    }
   }
 }
 
