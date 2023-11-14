@@ -16,34 +16,22 @@ $magnetic-light: (
     "close": $interact-icon-weak-default,
     "close-hover": $interact-icon-weak-hover
   ),
-  "app": (
-    "scrollbar": (
-      "track-bg": map-get($grey, "lighten-6"),
-      "track-border-color": map-get($grey, "lighten-5"),
-      "thumb-bg": map-get($grey, "lighten-1")
-    ),
-    "code": (
-      "bg": map-get($grey, "lighten-5"),
-      "color": map-get($status-red, "burnt-2")
-    )
-  ),
   "badge": (
     "border-color": $white
   ),
   "base": (
-    "bg": map-get($mds-light-theme, "background"),
-    "brand-color": map-get($cisco-blue, "base"),
-    "color": map-get($mds-light-theme, "default-text"),
-    "color--active": map-get($mds-blue, "blue-6"),
-    "color--hover": map-get($mds-blue, "blue-2"),
-    "color--selected": map-get($mds-blue, "blue-7"),
-    "color--disabled": map-get($mds-light-theme, "disabled-text"),
-    "inverse-color": map-get($mds-dark-theme, "default-text"),
-    "pg-bg": map-get($mds-light-theme, "background-section"),
-    "stroke-color": map-get($mds-light-theme, "icon-text-gray"),
-    "box-shadow": 0 0 2px 2px rgba(map-get($cisco-blue, "base"), 0.4),
-    "outline": 1px solid map-get($cisco-blue, "base"),
-    "color-blue-primary": map-get($mds-light-theme, "primary-blue")
+    "bg-default": $base-bg-default,
+    "bg": $base-bg-weak-default,
+    "brand-color": $brand-bg-default,
+    "color": $base-text-default,
+    "color--active": $interact-text-active,
+    "color--hover": $interact-text-hover,
+    "color--selected": $interact-text-active,
+    "color--disabled": $base-text-disabled,
+    "inverse-color": $inverse-text-default,
+    "stroke-color": $control-border-default,
+    "box-shadow": 0 0 0 2px $control-border-active,
+    "color-blue-primary": $control-icon-default
   ),
   "breadcrumb": (
     "divider-color": map-get($mds-neutral, "neutral-9"),
@@ -280,7 +268,7 @@ $magnetic-light: (
   "menu": (
     "box-shadow": 0px 2px 5px rgba(0, 0, 0, 0.05),
     "bg-color": map-get($mds-neutral, "neutral-1"),
-    "border-color": map-get($mds-neutral, "neutral-9"),
+    "border-color": $control-border-default,
     "color--hover": map-get($mds-interactive, "interactive-2"),
     "color--selected": map-get($mds-interactive, "interactive-1"),
     "color--focused": map-get($mds-interactive, "interactive-1")

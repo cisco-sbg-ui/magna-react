@@ -1,6 +1,10 @@
 @mixin theme-app($theme) {
-  background-color: map-deep-get($theme, "base", "bg");
+  background-color: map-deep-get($theme, "base", "bg-default");
   color: map-deep-get($theme, "base", "color");
+
+  .playground__preview {
+    background-color: map-deep-get($theme, "base", "bg-default");
+  }
 }
 
 .a-app.theme--default {
