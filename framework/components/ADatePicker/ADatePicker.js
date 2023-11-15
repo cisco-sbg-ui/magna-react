@@ -43,6 +43,7 @@ const ADatePicker = forwardRef(
   ) => {
     const hasMinDate = minDate instanceof Date;
     const hasMaxDate = maxDate instanceof Date;
+
     // Because date comparisons in this widget are ...
     // ... only concerned with the day, reset the ...
     // ... time to midnight for equal comparisons
@@ -53,6 +54,7 @@ const ADatePicker = forwardRef(
       maxDate.setHours(0, 0, 0, 0);
     }
     const isRange = Array.isArray(value);
+    const singleDayClass = !isRange || !value[1] ? "single-day" : "";
 
     const handleInitialDate = () => {
       const isRange = Array.isArray(value);
@@ -199,7 +201,7 @@ const ADatePicker = forwardRef(
                         key={j}
                         className={`a-date-picker__day${
                           isDisabled ? " disabled" : ""
-                        }${isSelected ? " selected" : ""}${
+                        }${isSelected ? ` selected ${singleDayClass}` : ""}${
                           isBetweenRange ? " between" : ""
                         }`}
                       >

@@ -62,6 +62,17 @@ $date-picker-day-border-radius: 4px;
     background: transparent;
   }
 
+  &__day:nth-last-child(1 of .selected):not(.single-day) {
+    .a-date-picker__day__label {
+      background-color: map-deep-get(
+        $theme,
+        "date-picker",
+        "background-color--selected"
+      );
+      color: map-deep-get($theme, "date-picker", "color--selected");
+    }
+  }
+
   &__day {
     &__label {
       color: inherit;
@@ -73,7 +84,6 @@ $date-picker-day-border-radius: 4px;
       .a-date-picker__day__label {
         border: $border-width solid;
         border-color: map-deep-get($theme, "date-picker", "label-border-color");
-        color: map-deep-get($theme, "base", "color");
         font-weight: 600;
       }
     }
@@ -81,6 +91,8 @@ $date-picker-day-border-radius: 4px;
     &.between {
       .a-date-picker__day__label {
         background-color: map-deep-get($theme, "date-picker", "range-bg");
+        border: 2px solid map-deep-get($theme, "date-picker", "range-border");
+        color: map-deep-get($theme, "date-picker", "range-color");
         font-weight: 600;
       }
     }

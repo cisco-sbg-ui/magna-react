@@ -158,26 +158,21 @@ $magnetic-dark: (
     "state-disabled": $control-bg-disabled
   ),
   "checkbox": (
-    "fill-enabled": map-get($mds-neutral, "neutral-16"),
-    "border--disabled": map-get($mds-neutral, "neutral-13"),
-    "label-color--disabled": map-get($mds-neutral, "neutral-11"),
-    "icon--disabled": map-get($mds-neutral, "neutral-7"),
-    "fill--disabled": map-get($mds-neutral, "neutral-15"),
-    "border--checked": map-get($mds-interactive, "interactive-6"),
-    "fill-checked--hover": map-get($mds-interactive, "interactive-7"),
-    "fill-checked": map-get($mds-interactive, "interactive-6"),
-    "border--enabled": map-get($mds-neutral, "neutral-10"),
-    "border--hover": map-get($mds-interactive, "interactive-7"),
-    "focus-shadow-light": map-get($mds-dark-theme, "interact-bg-weak-active"),
-    "focus-shadow-dark": map-get($mds-dark-theme, "control-border-focus")
+    "fill-enabled": $control-bg-weak-default,
+    "fill-checked": $control-bg-strong-default,
+    "fill-checked--hover": $control-bg-strong-hover,
+    "fill--disabled": $control-bg-weak-disabled,
+    "border--enabled": $control-border-default,
+    "border--hover": $control-border-hover,
+    "border--checked": $control-bg-strong-default,
+    "border--disabled": $control-border-disabled,
+    "label-color--disabled": $base-text-disabled,
+    "focus-shadow-light": $interact-bg-weak-active,
+    "focus-shadow-dark": $control-border-focus
   ),
   "color": (
-    "warning--state-hover": map-get($mds-dark-theme, "status-warning"),
-    "error--state-hover": map-get($mds-dark-theme, "status-negative")
-  ),
-  "combobox": (
-    "border-color": map-get($mds-neutral, "neutral-9"),
-    "box-shadow": 0px 2px 5px rgba(0, 0, 0, 0.05)
+    "warning--state-hover": $severe-warning-border-active,
+    "error--state-hover": $negative-border-medium-active
   ),
   "control": (
     "fill-color": $base-icon-in-default,
@@ -196,11 +191,14 @@ $magnetic-dark: (
       )
   ),
   "date-picker": (
-    "header-border-color": rgba(map-get($grey, "base"), $alpha-3),
-    "range-bg": rgba(map-get($grey, "lighten-5"), $alpha-2),
-    "background-color--hover": map-get($mds-neutral, "neutral-15"),
-    "label-border-color": map-get($mds-border, "dark"),
-    "label-selected-hover": rgba(108, 158, 245, 0.25)
+    "range-bg": $control-bg-weak-active,
+    "range-start-color": $base-text-default,
+    "range-color": $interact-text-default,
+    "range-border": $control-border-medium-active,
+    "background-color--hover": $control-bg-weak-hover,
+    "background-color--selected": $control-bg-strong-default,
+    "color--selected": $interact-text-in-default,
+    "label-border-color": $control-bg-strong-default
   ),
   "disposition": (
     "malicious": #fa5762,
