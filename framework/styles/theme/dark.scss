@@ -209,65 +209,50 @@ $magnetic-dark: (
     "targets": #b587fa
   ),
   "divider": (
-    "color-default": map-get($mds-neutral, "neutral-14"),
-    "color-light": map-get($mds-neutral, "neutral-13"),
-    "color-lighter": map-get($mds-neutral, "neutral-12")
+    "color-default": $base-border-default,
+    "color-light": $base-border-medium-default
   ),
   "drawer": (
-    "bg": map-get($mds-neutral, "neutral-16")
+    "bg": $control-bg-weak-default
   ),
   "emptyState": (
-    "color": map-get($mds-neutral, "neutral-6")
+    "color": $base-text-medium-default
   ),
   "footer": (
-    "color": map-get($mds-neutral, "neutral-2")
-  ),
-  "header": (
-    "bg-color": map-get($dusk, "4"),
-    "icon-color": map-get($grey, "lighten-3"),
-    "control-text-color": map-get($grey, "lighten-3")
+    "color": $base-border-default
   ),
   "icon": (
     "info-fill": $info-icon-default,
     "positive-fill": $positive-icon-strong-default,
     "negative-fill": $negative-icon-default,
     "warning-fill": $warning-icon-strong-default,
-    "icon-color": map-get($mds-dark-theme, "icons"),
-    "disposition-fill": map-get($mds-neutral, "neutral-17")
+    "icon-color": $interact-icon-weak-default,
+    "disposition-fill": $base-bg-weak-default
   ),
   "label": (
-    "color": map-get($mds-dark-theme, "default-text")
-  ),
-  "link": (
-    "color": map-get($mds-interactive, "interactive-6"),
-    "color--hover": map-get($mds-interactive, "interactive-9"),
-    "color--active": map-get($mds-interactive, "interactive-9"),
-    "color--focus": map-get($mds-interactive, "interactive-9"),
-    "color--visited": map-get($mds-interactive, "interactive-8"),
-    "color--disabled": map-get($mds-dark-theme, "supplemental-text"),
-    "opacity--disabled": 1
+    "color": $base-text-default
   ),
   "list": (
-    "group-title-color": map-get($mds-dark-theme, "secondary-gray")
+    "group-title-color": $base-text-medium-default
   ),
   "loader": (
-    "background-color": map-get($mds-neutral, "neutral-12"),
-    "main-color": map-get($mds-blue, "blue-5"),
-    "font-color": map-get($mds-neutral, "neutral-12")
+    "background-color": $base-border-default,
+    "main-color": $positive-bg-default,
+    "font-color": $base-text-medium-default
   ),
   "menu": (
-    "box-shadow": 0px 2px 5px rgba(0, 0, 0, 0.05),
-    "bg-color": map-get($mds-neutral, "neutral-16"),
+    "bg-color": $control-bg-weak-default,
     "border-color": $control-border-default,
-    "color--hover": map-get($mds-neutral, "neutral-15"),
-    "color--selected": map-get($mds-neutral, "neutral-17"),
-    "color--focused": map-get($mds-neutral, "neutral-17")
+    "color--hover": $control-bg-weak-hover,
+    "color--selected": $control-bg-weak-active,
+    "color--focused": $control-bg-weak-focus
   ),
   "pagination": (
-    "background-color": map-get($mds-neutral, "neutral-15"),
-    "label-border-color": map-get($mds-border, "dark"),
-    "label-color": map-get($mds-interactive, "interactive-6"),
-    "label-selected-hover": rgba(108, 158, 245, 0.25)
+    "background-color-hover": $control-bg-weak-hover,
+    "label-border-color": $control-border-medium-active,
+    "label-color": $base-text-default,
+    "label-color-hover": $interact-text-hover,
+    "label-selected-hover": $control-border-medium-active
   ),
   "panel": (
     "bg": map-get($mds-neutral, "neutral-16"),

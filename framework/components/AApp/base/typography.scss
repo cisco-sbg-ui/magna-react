@@ -2,7 +2,7 @@
   background-color: map-deep-get($theme, "base", "bg-default");
   color: map-deep-get($theme, "base", "color");
 
-  .playground__preview {
+  .playground {
     background-color: map-deep-get($theme, "base", "bg-default");
   }
 }

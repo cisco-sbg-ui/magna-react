@@ -6,10 +6,6 @@
   &--color-light {
     border-color: map-deep-get($theme, "divider", "color-light");
   }
-
-  &--color-lighter {
-    border-color: map-deep-get($theme, "divider", "color-lighter");
-  }
 }
 
 .a-divider {
