@@ -426,6 +426,13 @@ const AMultiSelect = forwardRef(
         </ACheckbox>
       );
 
+      // If using a template, the children shouldn't be rendered
+      // so add the click handler
+      if (!!itemTemplate) {
+        itemProps.onClick = handleClick;
+        delete itemProps.children;
+      }
+
       const MenuItemComponent = itemTemplate ? itemTemplate : AListItem;
       return (
         <MenuItemComponent
