@@ -171,8 +171,10 @@ $magnetic-light: (
     "focus-shadow-dark": $control-border-focus
   ),
   "color": (
-    "warning--state-hover": $severe-warning-border-active,
-    "error--state-hover": $negative-border-medium-active
+    "warning--state-default-hover": $severe-warning-border-hover,
+    "warning--state-hover": $severe-warning-border-hover,
+    "error--state-default-hover": $negative-border-hover,
+    "error--state-hover": $negative-border-medium-hover
   ),
   "control": (
     "fill-color": $base-icon-in-default,
@@ -250,68 +252,66 @@ $magnetic-light: (
     "label-selected-hover": $control-border-medium-active
   ),
   "panel": (
-    "bg": map-get($mds-neutral, "neutral-1"),
-    "bg-gray": map-get($mds-neutral, "neutral-2"),
-    "dialog-header-bg": map-get($mds-neutral, "neutral-1"),
-    "header-color": map-get($mds-neutral, "neutral-15"),
-    "box-shadow": 0px 2px 5px rgba(0, 0, 0, 0.05),
-    "border-color": map-get($mds-neutral, "neutral-4")
+    "bg": $control-bg-weak-default,
+    "bg-gray": $base-bg-default,
+    "header-color": $base-text-default,
+    "box-shadow": 0px 4px 12px 0px rgba(0, 0, 0, 0.18),
+    "border-color": $control-bg-weak-default
   ),
   "popover": (
-    "filter": drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.18))
+    "filter": drop-shadow(0px 4px 12px 0px rgba(0, 0, 0, 0.18))
   ),
   "progressbar": (
-    "default-bg-color": map-get($mds-neutral, "neutral-4"),
-    "fill-bg-color": map-get($mds-blue, "blue-7"),
-    "disabled-bg-color": map-get($status-blue, "wash-1")
+    //TODO need to remove disabled and add error and info states, success should be blue
+    "default-bg-color": $base-border-default,
+    "fill-bg-color": $positive-border-default,
+    "disabled-bg-color": $positive-border-default
   ),
   "radio": (
-    "bg": map-get($mds-neutral, "neutral-1"),
-    "bg--disabled": map-get($mds-neutral, "neutral-3"),
-    "border--active--hover": #82aefa,
-    "border--checked": map-get($mds-interactive, "interactive-10"),
-    "border--disabled": map-get($mds-neutral, "neutral-5"),
-    "border--enabled": map-get($mds-neutral, "neutral-9"),
-    "border--enabled--active": map-get($mds-neutral, "neutral-9"),
-    "box-bg--disabled": map-get($mds-neutral, "neutral-3"),
-    "box-border--enabled--hover": #82aefa,
-    "fill--active--hover": map-get($mds-interactive, "interactive-10"),
-    "fill--checked--hover": map-get($mds-interactive, "interactive-10"),
-    "fill--enabled": map-get($mds-interactive, "interactive-10"),
-    "fill-color--disabled": map-get($mds-neutral, "neutral-7"),
-    "label-color--disabled": map-get($mds-neutral, "neutral-7"),
-    "opacity-disabled": 1
+    "bg": $control-bg-weak-default,
+    "bg--disabled": $control-bg-weak-disabled,
+    "border--active--hover": $control-border-hover,
+    "border--checked": $control-border-strong-active,
+    "border--disabled": $control-border-disabled,
+    "border--enabled": $control-border-default,
+    "border--enabled--active": $control-border-default,
+    "box-bg--disabled": $control-bg-weak-disabled,
+    "box-border--enabled--hover": $control-border-hover,
+    "fill--active--hover": $control-icon-in-strong-active,
+    "fill--checked--hover": $control-icon-in-strong-active,
+    "fill--enabled": $control-icon-in-strong-active,
+    "fill-color--disabled": $control-border-disabled,
+    "label-color--disabled": $base-text-disabled
   ),
   "spinner": (
-    "stroke-color": map-get($mds-neutral, "neutral-10"),
-    "label-color": map-get($mds-neutral, "neutral-12")
-  ),
-  "select": (
-    "border-color--focus": map-get($cisco-blue, "base")
+    "stroke-color": $interact-icon-weak-default,
+    "label-color": $base-text-medium-default
   ),
   "skeleton": (
-    "header-bg": map-get($mds-neutral, "neutral-4"),
-    "content-bg": map-get($mds-neutral, "neutral-2"),
+    "header-bg": $base-border-medium-default,
+    "content-bg": $base-bg-default,
     "animation-bg":
       linear-gradient(
-        110deg,
-        map-get($mds-neutral, "neutral-2") 0%,
-        #ddd 50%,
-        map-get($mds-neutral, "neutral-2") 100%
+        90deg,
+        $base-bg-default 0%,
+        $base-border-medium-default 40%,
+        $base-bg-default 90%
       )
   ),
   "slider": (
-    "opacity-disabled": 1,
-    "selection-bg-disabled": map-get($grey, "lighten-2"),
-    "handle-border-disabled": map-get($grey, "lighten-2"),
-    "handle-border": map-get($mds-neutral, "neutral-11"),
-    "bg": map-get($mds-interactive, "interactive-8"),
-    "handle-bg": $white,
-    "box-shadow": 0 0 4px 4px
-      rgba(map-get($mds-interactive, "interactive-8"), 0.5),
-    "box-shadow--warning": 0 0 4px 4px rgba($color-warning, 0.3),
-    "box-shadow--danger": 0 0 4px 4px rgba($color-error, 0.3),
-    "track-color": map-get($mds-neutral, "neutral-7")
+    "selection-bg-disabled": $control-border-strong-disabled,
+    "handle-border-disabled": $control-border-disabled,
+    "handle-border": $control-border-strong-default,
+    "handle-border-hover": $control-border-hover,
+    "handle-border-active": $control-border-active,
+    "bg": $control-bg-strong-default,
+    "handle-bg": $inverse-icon-strong-default,
+    //TODO waiting for correct color/token
+    "box-shadow": 0 0 0px 2px $control-border-medium-hover,
+    "box-shadow--warning": 0 0 0 2px $warning-bg-strong-default,
+    //TODO waiting for correct color/token
+    "box-shadow--danger": 0 0 0 2px $negative-border-disabled,
+    "track-color": $base-border-medium-default
   ),
   "steps": (
     "step-main-color": map-get($mds-light-theme, "status-info"),
@@ -370,7 +370,8 @@ $magnetic-light: (
     "border-color--hover": map-get($mds-interactive, "interactive-5"),
     "border-color--focus": map-get($mds-interactive, "interactive-10"),
     "border-color--active": map-get($mds-interactive, "interactive-10"),
-    "box-shadow-color--active": #d8e6fa,
+    //TODO waiting for correct color/token
+    "box-shadow-color--active": $control-border-medium-hover,
     "bg--readonly": map-get($mds-light-theme, "background"),
     "icon-fill": map-get($mds-neutral, "neutral-9")
   ),

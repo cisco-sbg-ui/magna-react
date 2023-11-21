@@ -12,16 +12,13 @@
     background-color: map-deep-get($theme, "slider", "handle-bg");
     border-color: map-deep-get($theme, "slider", "handle-border");
     &:hover {
-      border-color: map-deep-get($theme, "slider", "handle-border");
-      box-shadow: map-deep-get($theme, "slider", "box-shadow");
+      border-color: map-deep-get($theme, "slider", "handle-border-hover");
     }
 
-    &:focus {
-      box-shadow: map-deep-get($theme, "slider", "box-shadow");
-    }
-
+    &:focus,
     &:active {
-      border-color: map-get($grey, "darken-4");
+      box-shadow: map-deep-get($theme, "slider", "box-shadow");
+      border-color: map-deep-get($theme, "slider", "handle-border-active");
     }
   }
 
@@ -36,17 +33,17 @@
 
     & .a-slider__handle {
       &:hover {
-        border-color: map-get($grey, "darken-4");
-        box-shadow: map-deep-get($theme, "slider", "box-shadow--warning");
+        border-color: map-deep-get($theme, "color", "warning--state-hover");
       }
 
-      &:focus {
-        box-shadow: map-deep-get($theme, "slider", "box-shadow--warning");
-      }
-
+      &:focus,
       &:active {
-        border-color: map-get($grey, "darken-4");
         box-shadow: map-deep-get($theme, "slider", "box-shadow--warning");
+        border-color: map-deep-get(
+          $theme,
+          "color",
+          "warning--state-default-hover"
+        );
       }
     }
   }
@@ -58,23 +55,22 @@
 
     & .a-slider__handle {
       &:hover {
-        border-color: map-get($grey, "darken-4");
-        box-shadow: map-deep-get($theme, "slider", "box-shadow--danger");
+        border-color: map-deep-get($theme, "color", "error--state-hover");
       }
 
-      &:focus {
-        box-shadow: map-deep-get($theme, "slider", "box-shadow--danger");
-      }
-
+      &:focus,
       &:active {
-        border-color: map-get($grey, "darken-4");
+        border-color: map-deep-get(
+          $theme,
+          "color",
+          "error--state-default-hover"
+        );
         box-shadow: map-deep-get($theme, "slider", "box-shadow--danger");
       }
     }
   }
 
   &--disabled {
-    opacity: map-deep-get($theme, "slider", "opacity-disabled");
     & .a-slider__selection {
       background-color: map-deep-get($theme, "slider", "selection-bg-disabled");
     }
