@@ -319,26 +319,26 @@ $magnetic-dark: (
     "track-color": $base-border-medium-default
   ),
   "steps": (
-    "step-main-color": map-get($mds-interactive, "interactive-6"),
-    "step-active-color": map-get($mds-neutral, "neutral-16"),
-    "step-icon-border-color": map-get($mds-interactive, "interactive-6"),
-    "step-line-color": map-get($mds-interactive, "interactive-6"),
-    "step-default-color": map-get($mds-neutral, "neutral-7"),
-    "step-icon-default-color": map-get($mds-neutral, "neutral-5"),
-    "step-icon-default-border-color": map-get($mds-neutral, "neutral-12"),
-    "step-icon-disabled-color": map-get($mds-neutral, "neutral-11"),
-    "step-icon-disabled-border-color": map-get($mds-neutral, "neutral-13")
+    "step-main-color": $interact-bg-medium-default,
+    "step-active-color": $interact-text-in-default,
+    "step-line-active-default": $interact-border-medium-default,
+    "step-icon-border-color": $interact-border-default,
+    "step-label-active": $interact-text-default,
+    "step-visited-title-color": $base-text-default,
+    "step-icon-default-color": $base-text-medium-default,
+    "step-icon-default-border-color": $interact-border-weak-default,
+    "step-icon-disabled-color": $base-text-disabled,
+    "step-icon-disabled-border-color": $interact-border-weak-disabled
   ),
   "switch": (
-    "bg": map-get($mds-neutral, "neutral-6"),
-    "bg--hover": map-get($mds-neutral, "neutral-7"),
-    "bg--checked": map-get($mds-interactive, "interactive-6"),
-    "bg--checked--hover": map-get($mds-interactive, "interactive-7"),
-    "bg--disabled": map-get($mds-neutral, "neutral-13"),
-    "bg--disabled--checked": #405d8e,
-    "circle-color": map-get($mds-neutral, "neutral-16"),
-    "label-color--disabled": map-get($mds-neutral, "neutral-12"),
-    "opacity-disabled": 1
+    "bg": $base-bg-strong-default,
+    "bg--hover": $base-bg-strong-hover,
+    "bg--checked": $control-bg-strong-default,
+    "bg--checked--hover": $control-bg-strong-hover,
+    "bg--disabled": $base-bg-strong-disabled,
+    "bg--disabled--checked": $control-bg-strong-disabled,
+    "circle-color": $control-icon-in-default,
+    "label-color--disabled": $base-text-disabled
   ),
   "table": (
     "bg": transparent,
@@ -371,8 +371,8 @@ $magnetic-dark: (
     "bar-color--selected": map-get($mds-interactive, "interactive-6")
   ),
   "tag": (
-    "bg-color": map-get($mds-dark-theme, "non-essential-lines"),
-    "color": map-get($mds-neutral, "neutral-4")
+    "bg-color": $control-bg-medium-disabled,
+    "color": $base-text-default
   ),
   "text-input": (
     "bg": transparent,
@@ -389,9 +389,11 @@ $magnetic-dark: (
     "icon-fill": map-get($mds-neutral, "neutral-6")
   ),
   "timeline": (
-    "item-bg-hover-color": map-get($mds-dark-theme, "non-essential-lines"),
-    "icon-border-color": map-get($mds-dark-theme, "non-essential-lines"),
-    "icon-bg-color": map-get($mds-neutral, "neutral-13")
+    "icon-border-color": $control-border-weak-default,
+    "icon-bg-color": $interact-bg-default,
+    "icon-bg-inactive": $base-bg-default,
+    "icon-border-inactive": $control-border-default,
+    "header-text": $base-text-strong-default
   ),
   "toast": (
     "color": map-get($mds-dark-theme, "default-text"),

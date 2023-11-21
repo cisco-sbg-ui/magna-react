@@ -30,21 +30,25 @@
             map-deep-get($theme, "steps", "step-main-color");
         }
         .a-step__label {
-          color: map-get($theme, "steps", "step-icon-border-color");
+          color: map-get($theme, "steps", "step-label-active");
         }
       }
       &__visited {
         .a-step__divider {
           height: 2px;
-          background-color: map-get($theme, "steps", "step-icon-border-color");
+          background-color: map-get(
+            $theme,
+            "steps",
+            "step-line-active-default"
+          );
         }
         .a-step__icon {
           border: $border-width solid
             map-get($theme, "steps", "step-icon-border-color");
-          color: map-get($theme, "steps", "step-icon-border-color");
+          color: map-get($theme, "steps", "step-icon--color");
           &__checkmark {
-            color: map-get($theme, "steps", "step-icon-border-color");
-            stroke: map-get($theme, "steps", "step-icon-border-color");
+            color: map-get($theme, "steps", "step-icon--color");
+            stroke: map-get($theme, "steps", "step-icon--color");
             polyline {
               stroke-width: 35; //Remove if magnetic updates icon
             }

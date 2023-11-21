@@ -51,7 +51,6 @@ $switch-after-transition: transform $transition-duration--fast
 
     &:disabled {
       ~ .a-switch__box {
-        opacity: map-deep-get($theme, "switch", "opacity-disabled");
         background-color: map-deep-get($theme, "switch", "bg--disabled");
         cursor: not-allowed;
       }
@@ -68,11 +67,6 @@ $switch-after-transition: transform $transition-duration--fast
           "switch",
           "bg--disabled--checked"
         );
-
-        &:after {
-          border: $border-width solid
-            map-deep-get($theme, "switch", "bg--disabled--checked");
-        }
       }
     }
   }
