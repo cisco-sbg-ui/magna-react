@@ -54,8 +54,7 @@ $table-cell-spacious-padding-top-bottom: math.div(
   }
 
   tbody tr:hover {
-    background: map-deep-get($theme, "table", "row-hover-image"),
-      map-deep-get($theme, "table", "row-hover-color");
+    background: map-deep-get($theme, "table", "row-hover-color");
   }
 
   th {

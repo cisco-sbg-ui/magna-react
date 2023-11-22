@@ -202,12 +202,12 @@ $magnetic-dark: (
     "label-border-color": $control-bg-strong-default
   ),
   "disposition": (
-    "malicious": #fa5762,
-    "suspicious": #f7782f,
-    "common": #f0c243,
-    "unknown": #889099,
-    "clean": #3fb6f2,
-    "targets": #b587fa
+    "malicious": $negative-bg-default,
+    "suspicious": $severe-warning-bg-default,
+    "common": $warning-bg-default,
+    "unknown": $dormant-border-default,
+    "clean": $positive-bg-default,
+    "targets": $info-bg-default
   ),
   "divider": (
     "color-default": $base-border-default,
@@ -341,26 +341,14 @@ $magnetic-dark: (
     "label-color--disabled": $base-text-disabled
   ),
   "table": (
-    "bg": transparent,
-    "color": map-get($mds-neutral, "neutral-2"),
-    "header-color": map-get($mds-dark-theme, "default-text"),
-    "header-border": map-get($mds-dark-theme, "table-border"),
-    "header-focus": map-get($mds-interactive, "interactive-6"),
-    "row-hover-color": map-get($mds-neutral, "neutral-17"),
-    "row-hover-image":
-      linear-gradient(
-        0deg,
-        rgba(108, 158, 245, 0.25),
-        rgba(108, 158, 245, 0.25)
-      ),
+    "bg": $base-bg-weak-default,
+    "color": $base-text-default,
+    "header-border": $control-border-strong-default,
+    "header-focus": $control-bg-weak-active,
+    "row-hover-color": $control-bg-weak-hover,
     "row-stripe-color": transparent,
-    "row-selected":
-      linear-gradient(
-        0deg,
-        rgba(108, 158, 245, 0.25),
-        rgba(108, 158, 245, 0.25)
-      ),
-    "cell-border-color": map-get($mds-neutral, "neutral-7")
+    "row-selected": $control-bg-weak-active,
+    "cell-border-color": $control-border-weak-default
   ),
   "tabs": (
     "oversized-background-color": transparent,
@@ -396,26 +384,26 @@ $magnetic-dark: (
     "header-text": $base-text-strong-default
   ),
   "toast": (
-    "color": map-get($mds-dark-theme, "default-text"),
-    "color-message": map-get($mds-dark-theme, "default-text")
+    "color": $base-text-default,
+    "color-message": $base-text-default
   ),
   "tooltip": (
-    "background-color": map-get($mds-neutral, "neutral-14")
+    "background-color": $inverse-bg-weak-default
   ),
   "tree": (
     "color": $base-text-default,
     "background-color--hover": $control-bg-weak-hover
   ),
   "accent-colors": (
-    "accentA": rgba(map-get($mds-violetblue, "violetblue-5"), 0.35),
-    "accentB": rgba(map-get($mds-magenta, "magenta-5"), 0.35),
-    "accentC": rgba(map-get($mds-magenta, "magenta-4"), 0.35),
-    "accentD": rgba(map-get($mds-purple, "purple-5"), 0.35),
-    "accentE": rgba(#85bd46, 0.35),
-    "accentF": rgba(map-get($mds-orange, "orange-5"), 0.35),
-    "accentG": rgba(map-get($mds-teal, "teal-5"), 0.35),
-    "accentH": rgba(map-get($mds-teal, "teal-3"), 0.35),
-    "accentI": rgba(map-get($mds-fuchsia, "fuchsia-5"), 0.35),
-    "accentK": rgba(#4cbf7f, 0.35)
+    "accentA": $accent-a-weak-default,
+    "accentB": $accent-b-weak-default,
+    "accentC": $accent-c-weak-default,
+    "accentD": $accent-d-weak-default,
+    "accentE": $accent-e-weak-default,
+    "accentF": $accent-f-weak-default,
+    "accentG": $accent-g-weak-default,
+    "accentH": $accent-h-weak-default,
+    "accentI": $accent-i-weak-default,
+    "accentK": $accent-k-weak-default
   )
 );
