@@ -314,9 +314,9 @@ const AMultiSelect = forwardRef(
       onKeyDown,
       placeholder: withTags
         ? value && !value.length
-          ? placeholder || label
+          ? label
           : ""
-        : label,
+        : placeholder || label,
       readOnly,
       value: filterValue
     };
