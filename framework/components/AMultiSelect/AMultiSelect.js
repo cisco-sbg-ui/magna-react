@@ -316,7 +316,7 @@ const AMultiSelect = forwardRef(
         ? value && !value.length
           ? placeholder
           : ""
-        : label,
+        : placeholder || label,
       readOnly,
       value: filterValue
     };
