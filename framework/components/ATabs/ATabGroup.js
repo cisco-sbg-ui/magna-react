@@ -19,7 +19,7 @@ const ATabGroup = forwardRef(
       className: propsClassName,
       children = [],
       vertical = false,
-      secondary = false,
+      secondary = true,
       ...rest
     },
     ref

@@ -101,11 +101,13 @@ $tab-heading-margin: 0;
   }
 
   &:has(.a-tab-group__tab--secondary :not(.a-tab-group__tab--vertical)) {
-    border-bottom-color: map-deep-get(
-      $theme,
-      "tabs",
-      "border-bottom-secondary"
-    );
+    border-bottom-color: transparent;
+    //TODO mark back in when UX decides on primary vs secondary
+    // border-bottom-color: map-deep-get(
+    //   $theme,
+    //   "tabs",
+    //   "border-bottom-secondary"
+    // );
   }
 }
 .hide {
