@@ -3,13 +3,15 @@ import {ATooltip} from "../ATooltip";
 import ATag from "../ATag";
 import useToggle from "../../hooks/useToggle/useToggle";
 
-const AMultiSelectCounter = ({items, value}) => {
+const AMultiSelectCounter = ({items, value, itemValue, itemText}) => {
   const {isOpen, open, close} = useToggle();
   const iconRef = useRef(null);
 
   const itemsMap = new Map(
     items.map((item) =>
-      typeof item === "string" ? [item, item] : [item.id, item.name]
+      typeof item === "string"
+        ? [item, item]
+        : [item[itemValue], item[itemText]]
     )
   );
   const selectedItems = value.map((item) => itemsMap.get(item));
