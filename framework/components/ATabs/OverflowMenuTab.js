@@ -18,7 +18,9 @@ const OverflowMenuTab = ({children}) => {
 
     if (isTab?.length) {
       isTab.forEach((item) => {
-        item.className = "";
+        if (item.classList.contains("a-tab-group__tab")) {
+          item.className = "";
+        }
       });
     }
     if (isNestedTab?.length) {
