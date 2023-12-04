@@ -40,7 +40,7 @@ const ATabGroup = forwardRef(
         return;
       }
       const overflowMenuItems = [];
-      const tabWrapper = combinedRef.current;
+      const tabWrapper = combinedRef.current.parentNode;
 
       const contentWrapper = combinedRef.current.querySelector(
         ".a-tab-group__tab-content"
@@ -88,13 +88,27 @@ const ATabGroup = forwardRef(
     }, [combinedRef]);
 
     useEffect(() => {
+      handleOverflow();
+    }, [handleOverflow]);
+
+    useEffect(() => {
+      if (!combinedRef.current) {
+        return;
+      }
+
       const target = combinedRef.current.parentNode;
-      const resizeObserver = new ResizeObserver(handleOverflow);
+      const resizeObserver = new ResizeObserver(() => {
+        if (combinedRef.current) {
+          handleOverflow();
+        }
+      });
 
       resizeObserver.observe(target);
 
       return () => {
-        resizeObserver.unobserve(target);
+        if (resizeObserver && target) {
+          resizeObserver.unobserve(target);
+        }
       };
     }, [combinedRef, handleOverflow]);
 
@@ -115,13 +129,20 @@ const ATabGroup = forwardRef(
       vertical,
       secondary
     };
-
     const renderChildren = React.Children.map(children, (child, i) => {
       if (!menuItems.length) return null;
       const isOverflowItem = menuItems.includes(i);
       if (isOverflowItem) {
         //tabKey is not recognized by AListItem and gets added to DOM so we remove it here.
         const {tabKey, ...rest} = child.props;
+        const routerLink = child.props.tab?.route;
+        if (routerLink) {
+          return (
+            <AListItem component="div" {...rest}>
+              {child}
+            </AListItem>
+          );
+        }
         return <AListItem {...rest} />;
       }
     });

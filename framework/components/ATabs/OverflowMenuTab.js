@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from "react";
+import React, {useState, useRef, useEffect, useCallback} from "react";
 import ATab from "./ATab";
 import AIcon from "../AIcon";
 import AMenu from "../AMenu";
@@ -9,19 +9,41 @@ const OverflowMenuTab = ({children}) => {
   const menuIcon = menuOpen ? "caret-up" : "caret-down";
   const hasSelected = useRef(false);
 
+  //Force remove tab styles on nested children with links.
+  useEffect(() => {
+    const isTab = document.querySelectorAll(".a-list-item a");
+    const isNestedTab = document.querySelectorAll(
+      ".a-list-item a .a-tab-group__tab"
+    );
+
+    if (isTab?.length) {
+      isTab.forEach((item) => {
+        item.className = "";
+      });
+    }
+    if (isNestedTab?.length) {
+      isNestedTab.forEach((item) => {
+        item.className = "";
+      });
+    }
+  });
+
   //If overflow item is selected, let menu know to maintain selected state once closed.
   useEffect(() => {
+    const menuTabEl = menuRef.current;
+
     for (let child of children) {
-      if (child.props.selected) {
-        hasSelected.current = child.props.selected;
+      const {props} = child;
+      if (props.selected) {
+        hasSelected.current = props.selected || props.children.props.selected;
         //Q: "Why not use react state for this?" - A: "It won't let me."
-        menuRef.current.setAttribute("aria-selected", true);
-        menuRef.current.classList.add("a-tab-group__tab--selected");
+        menuTabEl.setAttribute("aria-selected", true);
+        menuTabEl.classList.add("a-tab-group__tab--selected");
         break; //Skip out once we find the first selected item.
-      } else if (!child.props.selected) {
+      } else if (!props.selected) {
         hasSelected.current = false;
-        menuRef.current.setAttribute("aria-selected", false);
-        menuRef.current.classList.remove("a-tab-group__tab--selected");
+        menuTabEl.setAttribute("aria-selected", false);
+        menuTabEl.classList.remove("a-tab-group__tab--selected");
       }
     }
   }, [children]);
@@ -41,7 +63,7 @@ const OverflowMenuTab = ({children}) => {
         className="tab-overflow-menu"
         anchorRef={menuRef}
         open={menuOpen}
-        closeOnClick={false}
+        closeOnClick
         placement="bottom"
         onClose={() => setMenuOpen(false)}
       >

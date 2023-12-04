@@ -118,13 +118,15 @@ configuration environments.
     > label {
       padding-left: 0;
     }
-    &:first-of-type {
-      border-top-left-radius: $menu-item-first-last-border-radius;
-      border-top-right-radius: $menu-item-first-last-border-radius;
+    &:first-child {
+      border-top-left-radius: $menu-item-first-last-border-radius !important;
+      border-top-right-radius: $menu-item-first-last-border-radius !important;
     }
-    &:last-of-type {
-      border-bottom-right-radius: $menu-item-first-last-border-radius;
-      border-bottom-left-radius: $menu-item-first-last-border-radius;
+    &:last-child {
+      border-bottom-right-radius: $menu-item-first-last-border-radius !important;
+      border-bottom-left-radius: $menu-item-first-last-border-radius !important;
+      border-top-left-radius: unset;
+      border-top-right-radius: unset;
     }
 
     .a-empty-state {

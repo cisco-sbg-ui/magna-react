@@ -70,14 +70,10 @@ describe("<ATabGroup />", () => {
     cy.get(".a-list-item")
       .last()
       .click()
+      .get(".menu-tab")
+      .click()
+      .get(".a-menu-base")
       .get(".a-list-item--selected")
-      .should("exist");
-    cy.get("body").click(0, 0);
-    cy.get(".a-tab-group__tab--selected").should("exist");
-    cy.get(".menu-tab").click();
-    cy.get(".a-list-item")
-      .get(".a-list-item--selected")
-      .should("exist")
       .contains("Seven");
   });
 
@@ -90,14 +86,14 @@ describe("<ATabGroup />", () => {
       .type("{enter}")
       .get(".a-tab-group__tab--selected")
       .should("exist");
-    cy.get(".a-list-item").first().type("{downArrow}").type("{enter}");
+    cy.get(".a-list-item").first().next().type("{enter}");
     cy.get("body").click(0, 0);
     cy.get(".a-tab-group__tab--selected").should("exist");
     cy.get(".menu-tab").click();
     cy.get(".a-list-item")
       .get(".a-list-item--selected")
       .should("exist")
-      .contains("Three");
+      .contains("Four");
   });
 
   it("should not render overflow tab if in vertical position", () => {
@@ -109,7 +105,6 @@ describe("<ATabGroup />", () => {
 const ATagTest = ({width = "30rem", vertical = false, secondary = false}) => {
   const tabs = ["One", "Two", "Three", "Four", "Five", "Six", "Seven"];
   const [activeTab, setActiveTab] = useState(tabs[2]);
-  console.log(secondary);
   return (
     <div style={{width, border: "1px solid red"}}>
       <ATabGroup vertical={vertical} secondary={secondary}>

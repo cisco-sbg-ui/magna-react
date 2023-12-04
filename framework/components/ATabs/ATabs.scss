@@ -13,6 +13,12 @@ $tab-padding: 4px 0 8px 0; //doesn't match magnetic (overall height 41px, but ma
 $tab-heading-margin: 0;
 
 @include theme(a-tab-group) using ($theme) {
+  //Remove link style from tabs
+  a {
+    background: unset !important;
+    border-radius: unset !important;
+  }
+
   &__tab {
     color: map-deep-get($theme, "tabs", "text-color");
     &:active,
@@ -208,7 +214,12 @@ $tab-heading-margin: 0;
 
 //If tab with tag moves to list item, carry over margin
 .tab-overflow-menu {
-  .a-list-item .a-tag {
-    margin: 0 4px;
+  .a-list-item {
+    .a-tag {
+      margin: 0 4px;
+    }
+    a {
+      width: 100%;
+    }
   }
 }

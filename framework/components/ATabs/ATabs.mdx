@@ -16,13 +16,17 @@ import {ATabGroup, ATab} from "@cisco-sbg-ui/magna-react";
 
 ## Usage
 
+##### Note regarding Primary v. Secondary - There is no use case for Primary currently so we are setting Secondary to true.
+
+##### If you need primary immedaitely, set secondary to false and please reach out to magna team so we can coordinate with UX on the path forward to implimenting primary as default.
+
 ### Uncontrolled Mode
 
 <Playground
   code={`<>
   <div>
   <h4>Primary</h4>
-  <ATabGroup>
+  <ATabGroup secondary={false}>
   <ATab>One</ATab>
   <ATab>Two <ATag small>New</ATag></ATab>
   <ATab selected>Three</ATab>
