@@ -43,8 +43,10 @@
     "react-dom": "^16.8.0 || ^17.0.2 || ^18.2.0"
   },
   "dependencies": {
-    "@ciscodesignsystems/cds-magnetic-design-tokens-web-scss": "0.16.0",
-    "@ciscodesignsystems/cds-magnetic-theme-web-scss": "0.16.0",
+    "@ciscodesignsystems/cds-magnetic-design-tokens-web-css": "0.16.1",
+    "@ciscodesignsystems/cds-magnetic-design-tokens-web-scss": "0.16.1",
+    "@ciscodesignsystems/cds-magnetic-theme-web-css": "0.16.1",
+    "@ciscodesignsystems/cds-magnetic-theme-web-scss": "0.16.1",
     "babel-plugin-auto-import": "1.1.0"
   },
   "devDependencies": {
