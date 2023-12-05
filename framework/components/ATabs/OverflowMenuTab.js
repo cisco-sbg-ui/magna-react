@@ -55,7 +55,7 @@ const OverflowMenuTab = ({children}) => {
       <ATab
         ref={menuRef}
         data-set="menu"
-        className="menu-tab"
+        className={`menu-tab ${!children.length ? "hide" : ""}`}
         selected={menuOpen || hasSelected.current}
         onClick={() => setMenuOpen(!menuOpen)}
       >

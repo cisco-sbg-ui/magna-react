@@ -40,7 +40,7 @@ const ATabGroup = forwardRef(
         return;
       }
       const overflowMenuItems = [];
-      const tabWrapper = combinedRef.current.parentNode;
+      const tabWrapper = combinedRef.current;
 
       const contentWrapper = combinedRef.current.querySelector(
         ".a-tab-group__tab-content"
@@ -117,6 +117,7 @@ const ATabGroup = forwardRef(
 
     if (vertical) {
       tabContentClassName += " a-tab-group__tab-content--vertical";
+      className += " a-tab-group--vertical";
     }
 
     if (propsClassName) {

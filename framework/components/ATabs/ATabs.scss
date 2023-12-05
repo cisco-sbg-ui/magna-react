@@ -116,9 +116,6 @@ $tab-heading-margin: 0;
     // );
   }
 }
-.hide {
-  display: none !important;
-}
 
 .a-tab-group {
   margin: $tabs-margin;
@@ -127,6 +124,10 @@ $tab-heading-margin: 0;
   background-color: transparent;
   display: flex;
   align-items: center;
+
+  &:not(&--vertical) {
+    width: 100%;
+  }
 
   &__tab-wrapper {
     display: flex;
@@ -158,6 +159,10 @@ $tab-heading-margin: 0;
     //If has tag, provide some margin
     .a-tag {
       margin: 0 4px 2px 4px;
+    }
+
+    &.hide {
+      display: none !important;
     }
     svg {
       vertical-align: middle;
