@@ -1,0 +1,19 @@
+{
+  "name": "@ciscodesignsystems/cds-magnetic-design-tokens-web-scss",
+  "version": "1.0.0",
+  "description": "Magnetic Common - Design Tokens: Web/SCSS",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ciscodesignsystems/magnetic-common-design-system.git",
+    "directory": "libs/design-tokens/packages/magnetic/src/lib/packages/web/scss"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": {
+    "name": "Jesse Clark",
+    "email": "jesclark@cisco.com"
+  },
+  "license": "MIT",
+  "gitHead": "16542b7495eeb63080f1ec911b434a80d24e2695"
+}
