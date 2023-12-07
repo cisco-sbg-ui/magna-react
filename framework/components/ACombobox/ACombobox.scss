@@ -1,12 +1,5 @@
 @import "../../styles";
 
-@include theme(a-combobox) using ($theme) {
-  &__menu-items.a-menu {
-    border-color: map-deep-get($theme, "combobox", "border-color");
-    box-shadow: map-deep-get($theme, "combobox", "box-shadow");
-  }
-}
-
 .a-combobox {
   &__input {
     background: transparent;

@@ -16,6 +16,33 @@ svg.a-icon {
     fill: map-deep-get($theme, "icon", "icon-color");
   }
 
+  //Status icon text
+  .a-icon-text {
+    fill: map-deep-get($theme, "control", "fill-color");
+  }
+
+  //Status icon backgrounds
+  &--positive {
+    .a-icon-bg {
+      fill: map-deep-get($theme, "icon", "positive-fill");
+    }
+  }
+  &--warning {
+    .a-icon-bg {
+      fill: map-deep-get($theme, "icon", "warning-fill");
+    }
+  }
+  &--danger,
+  &--negative {
+    .a-icon-bg {
+      fill: map-deep-get($theme, "icon", "negative-fill");
+    }
+  }
+  &--info {
+    .a-icon-bg {
+      fill: map-deep-get($theme, "icon", "info-fill");
+    }
+  }
   &--malicious,
   &--suspicious,
   &--unknown,
@@ -85,12 +112,6 @@ svg.a-icon {
 
   &--critical-stop {
     fill: map-get($mds-status, "negative") !important;
-  }
-
-  &--warning {
-    .a-icon-text {
-      fill: #494a4a !important;
-    }
   }
 }
 

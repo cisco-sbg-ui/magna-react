@@ -1,15 +1,22 @@
 {
   "name": "@cisco-sbg-ui/magna-react",
-  "version": "1.0.0-canary.0",
+  "version": "1.1.0-canary.0",
   "description": "",
   "main": "lib/index.js",
   "module": "lib/index.js",
+  "files": [
+    "tokens",
+    "framework",
+    "lib",
+    "babel-preset.js",
+    "svg"
+  ],
   "scripts": {
     "build:babel-preset": "node build/generate-babel-preset.js",
     "build:lib": "babel --no-babelrc --config-file ./babel-lib.config.js framework --out-dir lib --copy-files",
     "build:docs": "next build",
-    "build": "npm run build:lib && npm run build:babel-preset",
-    "vercel-build": "npm run build:docs",
+    "build": "npm run addTokens && npm run build:lib && npm run build:babel-preset",
+    "vercel-build": "npm run addTokens && npm run build:docs",
     "cover": "npm run cover:unit && npm run cover:integration && npm run coverage-report",
     "cover:unit": "nyc --silent npx cypress run-ct",
     "cover:integration": "nyc --silent --no-clean npm run test:components",
@@ -21,7 +28,7 @@
     "prepare": "husky install",
     "publish-package": "rimraf lib && npm ci && npm run build && npm publish",
     "dev": "next dev -p 8001",
-    "start": "next start -p 8001",
+    "start": "npm run addTokens next start -p 8001",
     "start-ci": "next -p $npm_config_port || 3232",
     "test:dev": "cypress open --component",
     "test:chrome": "cypress run --component --browser chrome",
@@ -35,7 +42,8 @@
     "buildIcons": "node scripts/iconBuilder.js && npm run formatIconFile",
     "transform:iconMap": "babel --plugins @babel/plugin-transform-modules-commonjs framework/components/AIcon/atomicMap.js -o scripts/iconMap/index.js",
     "copyPhosphorIcons": "npm run transform:iconMap && node scripts/copyPhosphorIcons.js",
-    "copyAndBuildIcons": "npm run copyPhosphorIcons && npm run buildIcons"
+    "copyAndBuildIcons": "npm run copyPhosphorIcons && npm run buildIcons",
+    "addTokens": "rm -rf ./tokens && mkdir ./tokens && cp -r ./node_modules/@ciscodesignsystems/* ./tokens/"
   },
   "peerDependencies": {
     "prop-types": "^15.0.0",
@@ -94,7 +102,11 @@
     "sass": "1.54.9",
     "start-server-and-test": "1.14.0",
     "webpack": "^5.76.0",
-    "webpack-dev-server": "^4.11.1"
+    "webpack-dev-server": "^4.11.1",
+    "@ciscodesignsystems/cds-magnetic-design-tokens-web-css": "1.0.0",
+    "@ciscodesignsystems/cds-magnetic-design-tokens-web-scss": "1.0.0",
+    "@ciscodesignsystems/cds-magnetic-theme-web-css": "1.0.0",
+    "@ciscodesignsystems/cds-magnetic-theme-web-scss": "1.0.0"
   },
   "lint-staged": {
     "*.js": [

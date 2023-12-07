@@ -43,8 +43,14 @@ ATimelineItem.propTypes = {
   /**
    * Item type variation
    */
-  variant: PropTypes.oneOf(["default", "success", "info", "warning", "danger"])
-    .isRequired
+  variant: PropTypes.oneOf([
+    "default",
+    "success",
+    "info",
+    "warning",
+    "danger",
+    "inactive"
+  ]).isRequired
 };
 
 ATimelineItem.defaultProps = {

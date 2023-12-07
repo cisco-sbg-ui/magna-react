@@ -18,14 +18,10 @@ $alert-close-icon-size: 10.5px;
   background-color: map-deep-get($theme, "alert", "bg");
   color: map-deep-get($theme, "base", "color");
   .a-icon-text {
-    fill: map-deep-get($theme, "control", "fill-color");
+    fill: map-deep-get($theme, "control", "fill-color") !important;
   }
 
   &__icon {
-    .a-icon-bg {
-      fill: map-deep-get($theme, "control", "info-color");
-    }
-
     &.a-alert__icon--close {
       &:focus {
         box-shadow: map-deep-get($theme, "base", "box-shadow");
@@ -44,11 +40,6 @@ $alert-close-icon-size: 10.5px;
   &--state-success {
     background-color: map-deep-get($theme, "alert", "success-bg");
     color: map-deep-get($theme, "base", "color");
-    .a-alert__icon {
-      .a-icon-bg {
-        fill: map-deep-get($theme, "control", "success-color");
-      }
-    }
     .a-alert__icon--close:focus {
       box-shadow: $success-box-shadow;
     }
@@ -59,11 +50,6 @@ $alert-close-icon-size: 10.5px;
   &--state-warning {
     background-color: map-deep-get($theme, "alert", "warning-bg");
     color: map-deep-get($theme, "base", "color");
-    .a-alert__icon {
-      .a-icon-bg {
-        fill: map-deep-get($theme, "control", "warning-color");
-      }
-    }
     .a-alert__icon--close:focus {
       box-shadow: $warning-box-shadow;
     }
@@ -74,11 +60,6 @@ $alert-close-icon-size: 10.5px;
   &--state-danger {
     background-color: map-deep-get($theme, "alert", "danger-bg");
     color: map-deep-get($theme, "base", "color");
-    .a-alert__icon {
-      .a-icon-bg {
-        fill: map-deep-get($theme, "control", "error-color");
-      }
-    }
     .a-alert__icon--close:focus {
       box-shadow: $danger-box-shadow;
     }

@@ -1,0 +1,11 @@
+@import "../magnetic-tokens/theme-light.scss";
+
+//Magnetic dark v. light shadow customizations (dark v. light customizations are limited to shadows only)
+$card-shadow-dimensions: 0 2px 5px;
+$card-shadow-color: rgba(0, 0, 0, 0.08);
+$row-effect-image: none;
+$text-input-shadow-color: $control-border-medium-hover;
+
+@import "./theme-map.scss";
+
+$magnetic-light: ($themeMap);

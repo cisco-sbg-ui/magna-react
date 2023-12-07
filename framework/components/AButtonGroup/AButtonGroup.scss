@@ -20,7 +20,7 @@ $btn-group-icon-font-size: rem(1);
         background-color: map-deep-get(
           $theme,
           "button-group",
-          "background-color--disabled"
+          "background-color--selected-disabled"
         );
         border-color: map-deep-get(
           $theme,

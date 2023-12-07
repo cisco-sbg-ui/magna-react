@@ -12,7 +12,7 @@ const AStep = forwardRef(
       active,
       visited,
       disabled,
-      showIconOnVisited,
+      showIconOnVisited = true,
       stepNumber,
       children,
       setActiveStep,

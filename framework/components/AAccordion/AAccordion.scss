@@ -21,7 +21,8 @@ $accordion-divider-border-width: thin;
 
 @include theme(a-accordion) using ($theme) {
   &__card {
-    background-color: transparent;
+    background-color: map-deep-get($theme, "accordion", "bg");
+    color: map-deep-get($theme, "accordion", "body-color");
     border-bottom: $border-width solid;
     border-color: map-deep-get($theme, "control", "stroke-color");
 
@@ -150,6 +151,16 @@ $accordion-divider-border-width: thin;
   &--style-bordered {
     border-width: $border-width;
     border-style: solid;
+
+    .a-accordion__card:first-of-type {
+      border-top-right-radius: $accordion-border-radius;
+      border-top-left-radius: $accordion-border-radius;
+    }
+
+    .a-accordion__card:last-of-type {
+      border-bottom-right-radius: $accordion-border-radius;
+      border-bottom-left-radius: $accordion-border-radius;
+    }
   }
 }
 

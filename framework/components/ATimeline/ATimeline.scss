@@ -4,10 +4,10 @@ $timeline-item-margin: 0 auto;
 $timeline-item-padding: $base-padding-small;
 $timeline-item-width: 100%;
 $timeline-icon-border-radius: 50%;
-$timeline-icon-width: 24px;
-$timeline-icon-height: 24px;
+$timeline-icon-width: 18px;
+$timeline-icon-height: 18px;
 $timeline-icon-z-index: 200;
-$timeline-icon-border-width: 5px;
+$timeline-icon-border-width: 2px;
 $timeline-time-width: 125px;
 $timeline-time-min-width: 125px;
 $timeline-time-padding: 0 10px 0 0;
@@ -18,46 +18,45 @@ $timeline-item-transition: $transition-duration--fast;
 $timeline-transition: background-color $timeline-item-transition;
 
 @include theme(a-timeline) using ($theme) {
-  color: map-deep-get($theme, "label", "color");
+  color: map-deep-get($theme, "label", "color-medium");
+  .a-timeline__title {
+    color: map-deep-get($theme, "timeline", "header-text");
+  }
 
   &__item {
+    &--state-default {
+      .a-timeline__icon {
+        background-color: map-deep-get($theme, "timeline", "icon-bg-color");
+      }
+    }
     &--state-success {
       .a-timeline__icon {
-        background-color: map-deep-get($theme, "control", "success-color");
-      }
-
-      .a-timeline__title {
-        color: map-deep-get($theme, "control", "success-color");
+        background-color: map-deep-get($theme, "icon", "positive-fill");
       }
     }
 
     &--state-info {
       .a-timeline__icon {
-        background-color: map-deep-get($theme, "control", "info-color");
-      }
-
-      .a-timeline__title {
-        color: map-deep-get($theme, "control", "info-color");
+        background-color: map-deep-get($theme, "icon", "info-fill");
       }
     }
 
     &--state-warning {
       .a-timeline__icon {
-        background-color: map-deep-get($theme, "control", "warning-color");
-      }
-
-      .a-timeline__title {
-        color: map-deep-get($theme, "control", "warning-color");
+        background-color: map-deep-get($theme, "icon", "warning-fill");
       }
     }
 
     &--state-danger {
       .a-timeline__icon {
-        background-color: map-deep-get($theme, "control", "error-color");
+        background-color: map-deep-get($theme, "icon", "negative-fill");
       }
-
-      .a-timeline__title {
-        color: map-deep-get($theme, "control", "error-color");
+    }
+    &--state-inactive {
+      .a-timeline__icon {
+        background-color: map-deep-get($theme, "timeline", "icon-bg-inactive");
+        border: $timeline-icon-border-width solid
+          map-deep-get($theme, "timeline", "icon-border-inactive");
       }
     }
   }
@@ -65,7 +64,6 @@ $timeline-transition: background-color $timeline-item-transition;
   &__icon {
     border: $timeline-icon-border-width solid
       map-deep-get($theme, "timeline", "icon-border-color");
-    background-color: map-deep-get($theme, "timeline", "icon-bg-color");
   }
 
   &::after {
@@ -108,7 +106,7 @@ $timeline-transition: background-color $timeline-item-transition;
     width: $timeline-icon-width;
     height: $timeline-icon-height;
     position: absolute;
-    left: 139px;
+    left: 142.5px;
     z-index: $timeline-icon-z-index;
   }
 

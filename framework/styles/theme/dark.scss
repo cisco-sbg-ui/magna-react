@@ -1,0 +1,13 @@
+@import "../magnetic-tokens/theme-dark.scss";
+
+//Magnetic dark v. light shadow customizations (dark v. light customizations are limited to shadows only)
+$card-shadow-dimensions: $card-shadow-lifted;
+$card-shadow-color: #00000014;
+$row-effect-image: (
+  linear-gradient(0deg, rgba(108, 158, 245, 0.25), rgba(108, 158, 245, 0.25))
+);
+$text-input-shadow-color: #5191f080; //TODO waiting for new shadow color/tokens
+
+@import "./theme-map.scss";
+
+$magnetic-dark: ($themeMap);

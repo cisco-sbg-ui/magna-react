@@ -3,23 +3,31 @@
 @include theme(a-pagination) using ($theme) {
   .a-button-group {
     .a-button {
-      color: map-deep-get($theme, "base", "color");
-
-      &--selected,
-      &:hover {
-        background-color: map-deep-get(
-          $theme,
-          "pagination",
-          "background-color"
-        ) !important;
+      color: map-deep-get($theme, "pagination", "label-color");
+      &--selected {
         border: 2px solid
           map-deep-get($theme, "pagination", "label-border-color") !important;
         color: map-deep-get($theme, "pagination", "label-color");
         font-weight: 600;
       }
 
+      &:hover {
+        background-color: map-deep-get(
+          $theme,
+          "pagination",
+          "background-color-hover"
+        ) !important;
+        color: map-deep-get(
+          $theme,
+          "pagination",
+          "label-color-hover"
+        ) !important;
+        //TODO need to stabilize width of remaining buttons on hover
+        // font-weight: 600;
+      }
       &:focus {
         box-shadow: none;
+        background-color: none !important;
       }
 
       &:focus:not(&--selected) {

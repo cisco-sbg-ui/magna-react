@@ -7,7 +7,7 @@
 /cypress/snapshots/diff/
 /lib/
 /node_modules/
-/dist/
+/tokens/
 
 /babel-preset.js
 /babel-preset-local.js

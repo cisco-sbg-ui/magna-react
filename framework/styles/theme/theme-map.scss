@@ -1,0 +1,406 @@
+$themeMap: (
+  "accordion": (
+    "bg": $control-bg-weak-default,
+    "body-color": $base-text-medium-default,
+    "chevron-color": $interact-icon-weak-default,
+    "color": $base-text-default,
+    "header-focus": $interact-border-focus
+  ),
+  "alert": (
+    "bg": $info-bg-strong-default,
+    "success-bg": $positive-bg-strong-default,
+    "warning-bg": $warning-bg-strong-default,
+    "danger-bg": $negative-bg-strong-default,
+    "close": $interact-icon-weak-default,
+    "close-hover": $interact-icon-weak-hover
+  ),
+  "badge": (
+    "border-color": $base-bg-weak-default
+  ),
+  "base": (
+    "bg-default": $base-bg-default,
+    "bg": $base-bg-weak-default,
+    "brand-color": $brand-bg-default,
+    "color": $base-text-default,
+    "color--active": $interact-text-active,
+    "color--hover": $interact-text-hover,
+    "color--selected": $interact-text-active,
+    "color--disabled": $base-text-disabled,
+    "inverse-color": $inverse-text-default,
+    "stroke-color": $control-border-default,
+    "box-shadow": $shadow-focus $control-border-active,
+    "color-blue-primary": $control-icon-default
+  ),
+  "breadcrumb": (
+    "divider-color": $interact-icon-weak-default,
+    "default-color": $interact-text-weak-default,
+    "hover-color": $interact-text-weak-hover
+  ),
+  "button": (
+    "primary": (
+      "bg": $interact-bg-default,
+      "bg--active": $interact-bg-active,
+      "bg--hover": $interact-bg-hover,
+      "bg--focus": $interact-bg-focus,
+      "bg--disabled": $interact-bg-disabled,
+      "border": $interact-border-default,
+      "border--active": $interact-border-active,
+      "border--hover": $interact-border-hover,
+      "border--focus": $interact-border-focus,
+      "border--disabled": $interact-border-disabled,
+      "color": $interact-text-in-default,
+      "color--disabled": $interact-text-in-disabled,
+      "destructive": (
+        "bg": $negative-bg-default,
+        "bg--active": $negative-bg-active,
+        "bg--hover": $negative-bg-hover,
+        "bg--focus": $negative-bg-focus,
+        "bg--disabled": $negative-bg-disabled,
+        "border": $negative-border-default,
+        "border--active": $negative-border-active,
+        "border--hover": $negative-border-hover,
+        "border--focus": $negative-border-focus,
+        "border--disabled": $negative-border-disabled,
+        "color": $negative-text-in-default,
+        "color--disabled": $interact-text-in-disabled
+      )
+    ),
+    "secondary": (
+      "bg": $interact-bg-weak-default,
+      "bg--hover": $interact-bg-weak-hover,
+      "bg--active": $interact-bg-weak-active,
+      "bg--focus": $interact-bg-weak-focus,
+      "bg--disabled": $interact-bg-weak-disabled,
+      "border": $interact-border-default,
+      "border--hover": $interact-border-hover,
+      "border--active": $interact-border-active,
+      "border--focus": $interact-border-focus,
+      "border--disabled": $interact-border-disabled,
+      "color": $interact-text-default,
+      "color--hover": $interact-text-hover,
+      "color--active": $interact-text-active,
+      "color--focus": $interact-text-focus,
+      "color--disabled": $interact-text-disabled,
+      "destructive": (
+        "bg": $negative-bg-weak-default,
+        "bg--hover": $negative-bg-weak-hover,
+        "bg--active": $negative-bg-weak-active,
+        "bg--focus": $negative-bg-weak-focus,
+        "bg--disabled": $negative-bg-weak-disabled,
+        "border": $negative-border-default,
+        "border--hover": $negative-border-hover,
+        "border--active": $negative-border-active,
+        "border--focus": $negative-border-focus,
+        "border--disabled": $negative-border-disabled,
+        "color": $negative-text-default,
+        "color--hover": $negative-text-hover,
+        "color--active": $negative-text-hover,
+        "color--focus": $negative-text-hover,
+        "color--disabled": $negative-text-disabled
+      )
+    ),
+    "tertiary": (
+      "bg--hover": $interact-bg-weak-hover,
+      "bg--active": $interact-bg-weak-active,
+      "bg--focus": $interact-bg-weak-focus,
+      "bg--disabled": $interact-bg-weak-disabled,
+      "border--focus": $interact-border-weak-hover,
+      "color": $interact-text-default,
+      "color--hover": $interact-text-hover,
+      "color--active": $interact-text-active,
+      "color--focus": $interact-text-focus,
+      "color--disabled": $interact-text-disabled,
+      "alt": (
+        "color": $interact-text-weak-default,
+        "color--hover": $interact-text-weak-hover,
+        "color--active": $interact-text-weak-active,
+        "color--focus": $interact-text-weak-focus,
+        "color--disabled": $interact-text-weak-disabled
+      )
+    ),
+    "focus-visible": (
+      "bg": $interact-bg-weak-active,
+      "control": $control-border-focus
+    )
+  ),
+  "button-group": (
+    "color": $base-text-medium-default,
+    "color--disabled": $base-text-disabled,
+    "color--hover": $base-text-default,
+    "color--selected": $interact-text-weak-active,
+    "background-color": $control-bg-medium-default,
+    "background-color--disabled": $control-bg-medium-default,
+    "background-color--hover": $control-bg-medium-hover,
+    "background-color--selected": $control-bg-medium-active,
+    "background-color--selected-disabled": $base-bg-disabled,
+    "border-color": $control-border-weak-default,
+    "border-color--hover": none,
+    "border-color--selected": $control-border-active,
+    "border-color--disabled": $control-border-weak-default
+  ),
+  "card": (
+    "container-background": $base-bg-weak-default,
+    "container-shadow": $card-shadow-dimensions $card-shadow-color,
+    "container-flat-shadow": none,
+    "basic-background": $base-bg-weak-default,
+    "basic-shadow": none,
+    "basic-lifted-shadow": $card-shadow-lifted $card-shadow-color,
+    "basic-border-color": $control-border-weak-default,
+    "title-color": $base-text-strong-default,
+    "subtitle-color": $base-text-medium-default,
+    "state-dormant": $dormant-border-default,
+    "state-positive": $positive-border-default,
+    "state-warning": $warning-border-default,
+    "state-negative": $negative-border-default,
+    "state-informational": $info-border-default,
+    "state-disabled": $control-bg-disabled
+  ),
+  "checkbox": (
+    "fill-enabled": $control-bg-weak-default,
+    "fill-checked": $control-bg-strong-default,
+    "fill-checked--hover": $control-bg-strong-hover,
+    "fill--disabled": $control-bg-weak-disabled,
+    "border--enabled": $control-border-default,
+    "border--hover": $control-border-hover,
+    "border--checked": $control-bg-strong-default,
+    "border--disabled": $control-border-disabled,
+    "label-color--disabled": $base-text-disabled,
+    "focus-shadow-light": $interact-bg-weak-active,
+    "focus-shadow-dark": $control-border-focus
+  ),
+  "color": (
+    "warning--state-default-hover": $severe-warning-border-hover,
+    "warning--state-hover": $severe-warning-border-hover,
+    "error--state-default-hover": $negative-border-hover,
+    "error--state-hover": $negative-border-medium-hover
+  ),
+  "control": (
+    "fill-color": $base-icon-in-default,
+    "fill-color--disabled": $base-icon-in-disabled,
+    "stroke-color": $control-border-default,
+    "warning-color": $warning-border-default,
+    "error-color": $negative-border-default,
+    "info-color": $info-border-default,
+    "success-color": $positive-border-default,
+    "row-effect-color": $control-bg-weak-active,
+    "row-effect-image": $row-effect-image
+  ),
+  "date-picker": (
+    "range-bg": $control-bg-weak-active,
+    "range-start-color": $base-text-default,
+    "range-color": $interact-text-default,
+    "range-border": $control-border-medium-active,
+    "background-color--hover": $control-bg-weak-hover,
+    "background-color--selected": $control-bg-strong-default,
+    "color--selected": $interact-text-in-default,
+    "label-border-color": $control-bg-strong-default
+  ),
+  "disposition": (
+    "malicious": $negative-bg-default,
+    "suspicious": $severe-warning-bg-default,
+    "common": $warning-bg-default,
+    "unknown": $dormant-border-default,
+    "clean": $positive-bg-default,
+    "targets": $info-bg-default
+  ),
+  "divider": (
+    "color-default": $base-border-default,
+    "color-light": $base-border-medium-default
+  ),
+  "drawer": (
+    "bg": $control-bg-weak-default
+  ),
+  "emptyState": (
+    "color": $base-text-medium-default
+  ),
+  "footer": (
+    "color": $base-border-default
+  ),
+  "icon": (
+    "info-fill": $info-icon-default,
+    "positive-fill": $positive-icon-strong-default,
+    "negative-fill": $negative-icon-default,
+    "warning-fill": $warning-icon-strong-default,
+    "icon-color": $interact-icon-weak-default,
+    "disposition-fill": $base-bg-weak-default
+  ),
+  "label": (
+    "color": $base-text-default,
+    "color-medium": $base-text-medium-default
+  ),
+  "list": (
+    "group-title-color": $base-text-medium-default
+  ),
+  "loader": (
+    "background-color": $base-border-default,
+    "main-color": $positive-bg-default,
+    "font-color": $base-text-medium-default
+  ),
+  "menu": (
+    "bg-color": $control-bg-weak-default,
+    "border-color": $control-border-default,
+    "color--hover": $control-bg-weak-hover,
+    "color--selected": $control-bg-weak-active,
+    "color--focused": $control-bg-weak-focus
+  ),
+  "pagination": (
+    "background-color-hover": $control-bg-weak-hover,
+    "label-border-color": $control-border-medium-active,
+    "label-color": $base-text-default,
+    "label-color-hover": $interact-text-hover,
+    "label-selected-hover": $control-border-medium-active
+  ),
+  "panel": (
+    "bg": $control-bg-weak-default,
+    "bg-gray": $base-bg-default,
+    "header-color": $base-text-default,
+    "box-shadow": $panel-shadow,
+    "border-color": $control-bg-weak-default
+  ),
+  "popover": (
+    "filter": drop-shadow($panel-shadow)
+  ),
+  "progressbar": (
+    //TODO need to remove disabled and add error and info states, success should be blue
+    "default-bg-color": $base-border-default,
+    "fill-bg-color": $positive-border-default,
+    "disabled-bg-color": $positive-border-default
+  ),
+  "radio": (
+    "bg": $control-bg-weak-default,
+    "bg--disabled": $control-bg-weak-disabled,
+    "border--active--hover": $control-border-hover,
+    "border--checked": $control-border-strong-active,
+    "border--disabled": $control-border-disabled,
+    "border--enabled": $control-border-default,
+    "border--enabled--active": $control-border-default,
+    "box-bg--disabled": $control-bg-weak-disabled,
+    "box-border--enabled--hover": $control-border-hover,
+    "fill--active--hover": $control-icon-in-strong-active,
+    "fill--checked--hover": $control-icon-in-strong-active,
+    "fill--enabled": $control-icon-in-strong-active,
+    "fill-color--disabled": $control-border-disabled,
+    "label-color--disabled": $base-text-disabled
+  ),
+  "spinner": (
+    "stroke-color": $interact-icon-weak-default,
+    "label-color": $base-text-medium-default
+  ),
+  "skeleton": (
+    "header-bg": $base-border-medium-default,
+    "content-bg": $base-bg-default,
+    //These animation colors don't look great in dark mode, but it's what CDS uses
+    "animation-bg":
+      linear-gradient(
+        90deg,
+        $base-bg-default 0%,
+        $base-border-medium-default 40%,
+        $base-bg-default 90%
+      )
+  ),
+  "slider": (
+    "selection-bg-disabled": $control-border-strong-disabled,
+    "handle-border-disabled": $control-border-disabled,
+    "handle-border": $control-border-strong-default,
+    "handle-border-hover": $control-border-hover,
+    "handle-border-active": $control-border-active,
+    "bg": $control-bg-strong-default,
+    "handle-bg": $inverse-icon-strong-default,
+    //TODO waiting for new shadow color/tokens
+    "box-shadow": $shadow-focus $control-border-medium-hover,
+    "box-shadow--warning": $shadow-focus $warning-bg-strong-default,
+    //TODO waiting for new shadow color/tokens
+    "box-shadow--danger": $shadow-focus $negative-border-disabled,
+    "track-color": $base-border-medium-default
+  ),
+  "steps": (
+    "step-main-color": $interact-bg-medium-default,
+    "step-active-color": $interact-text-in-default,
+    "step-line-active-default": $interact-border-medium-default,
+    "step-icon-border-color": $interact-border-default,
+    "step-label-active": $interact-text-default,
+    "step-visited-title-color": $base-text-default,
+    "step-icon-default-color": $base-text-medium-default,
+    "step-icon-default-border-color": $interact-border-weak-default,
+    "step-icon-disabled-color": $base-text-disabled,
+    "step-icon-disabled-border-color": $interact-border-weak-disabled
+  ),
+  "switch": (
+    "bg": $base-bg-strong-default,
+    "bg--hover": $base-bg-strong-hover,
+    "bg--checked": $control-bg-strong-default,
+    "bg--checked--hover": $control-bg-strong-hover,
+    "bg--disabled": $base-bg-strong-disabled,
+    "bg--disabled--checked": $control-bg-strong-disabled,
+    "circle-color": $control-icon-in-default,
+    "label-color--disabled": $base-text-disabled
+  ),
+  "table": (
+    "bg": $base-bg-weak-default,
+    "color": $base-text-default,
+    "header-border": $control-border-strong-default,
+    "header-focus": $control-bg-weak-active,
+    "row-hover-color": $control-bg-weak-hover,
+    "row-stripe-color": $base-bg-disabled,
+    "row-selected": $control-bg-weak-active,
+    "cell-border-color": $control-border-weak-default
+  ),
+  "tabs": (
+    //TODO Requires Tabs PR
+    "oversized-background-color": $base-bg-default,
+    "oversized--hover-background-color": $base-bg-weak-default,
+    "text-color": $interact-text-weak-default,
+    "text-color--selected": $interact-text-weak-active,
+    "bar-color--hover": $interact-border-medium-hover,
+    "bar-color--selected": $interact-border-medium-active
+  ),
+  "tag": (
+    "bg-color": $control-bg-medium-disabled,
+    "color": $base-text-default
+  ),
+  "text-input": (
+    "bg": $control-bg-weak-default,
+    "color--disabled": $base-text-disabled,
+    "bg--disabled": $control-bg-weak-disabled,
+    "border-color--disabled": $control-border-disabled,
+    "border-color--readonly": $control-border-default,
+    "border-color": $control-border-default,
+    "border-color--hover": $control-border-hover,
+    "border-color--focus": $control-border-focus,
+    "border-color--active": $control-border-active,
+    //TODO waiting for new shadow color/tokens
+    "box-shadow-color--active": $text-input-shadow-color,
+    "bg--readonly": $base-bg-default,
+    "icon-fill": $control-icon-weak-default
+  ),
+  "timeline": (
+    "icon-border-color": $control-border-weak-default,
+    "icon-bg-color": $interact-bg-default,
+    "icon-bg-inactive": $base-bg-default,
+    "icon-border-inactive": $control-border-default,
+    "header-text": $base-text-strong-default
+  ),
+  "toast": (
+    "color": $base-text-default,
+    "color-message": $base-text-default
+  ),
+  "tooltip": (
+    "background-color": $inverse-bg-weak-default
+  ),
+  "tree": (
+    "color": $base-text-default,
+    "background-color--hover": $control-bg-weak-hover
+  ),
+  "accent-colors": (
+    "accentA": $accent-a-weak-default,
+    "accentB": $accent-b-weak-default,
+    "accentC": $accent-c-weak-default,
+    "accentD": $accent-d-weak-default,
+    "accentE": $accent-e-weak-default,
+    "accentF": $accent-f-weak-default,
+    "accentG": $accent-g-weak-default,
+    "accentH": $accent-h-weak-default,
+    "accentI": $accent-i-weak-default,
+    "accentK": $accent-k-weak-default
+  )
+);
