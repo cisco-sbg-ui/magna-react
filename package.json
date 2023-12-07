@@ -1,15 +1,22 @@
 {
   "name": "@cisco-sbg-ui/magna-react",
-  "version": "1.0.0-canary.0",
+  "version": "0.0.1-cds-test.2",
   "description": "",
   "main": "lib/index.js",
   "module": "lib/index.js",
+  "files": [
+    "tokens",
+    "framework",
+    "lib",
+    "babel-preset.js",
+    "svg"
+  ],
   "scripts": {
     "build:babel-preset": "node build/generate-babel-preset.js",
     "build:lib": "babel --no-babelrc --config-file ./babel-lib.config.js framework --out-dir lib --copy-files",
     "build:docs": "next build",
     "build": "npm run addTokens && npm run build:lib && npm run build:babel-preset",
-    "vercel-build": "npm run build:docs",
+    "vercel-build": "npm run addTokens && npm run build:docs",
     "cover": "npm run cover:unit && npm run cover:integration && npm run coverage-report",
     "cover:unit": "nyc --silent npx cypress run-ct",
     "cover:integration": "nyc --silent --no-clean npm run test:components",
@@ -36,7 +43,7 @@
     "transform:iconMap": "babel --plugins @babel/plugin-transform-modules-commonjs framework/components/AIcon/atomicMap.js -o scripts/iconMap/index.js",
     "copyPhosphorIcons": "npm run transform:iconMap && node scripts/copyPhosphorIcons.js",
     "copyAndBuildIcons": "npm run copyPhosphorIcons && npm run buildIcons",
-    "addTokens": "cp -r ./node_modules/@ciscodesignsystems ./dist"
+    "addTokens": "rm -rf ./tokens && mkdir ./tokens && cp -r ./node_modules/@ciscodesignsystems/* ./tokens/"
   },
   "peerDependencies": {
     "prop-types": "^15.0.0",
