@@ -17,78 +17,14 @@ import ASimpleTable from "../ASimpleTable";
 import {ASkeleton, ASkeletonText} from "../ASkeleton";
 import "./ADataTable.scss";
 import {useCombinedRefs} from "../../utils/hooks";
+import ADataTableWrapper from "./ADataTableWrapper";
+import ADataTableHeader from "./ADataTableHeader";
+import ADataTableRow from "./ADataTableRow";
+import ADataTableCell from "./ADataTableCell";
 
 const ARROW_UP = "ArrowUp";
 const ARROW_DOWN = "ArrowDown";
 const ARROW_KEYS = [ARROW_UP, ARROW_DOWN];
-
-/**
- * Used inside ADataTable to enable proper styling
- * for infinite scrolling
- */
-const ADataTableWrapper = React.forwardRef(
-  ({shouldWrap, maxHeight, style, children, ...rest}, ref) => {
-    if (!shouldWrap) {
-      return children; // TODO: ref is lost ?
-    }
-
-    return (
-      <div
-        ref={ref}
-        data-testid="table-wrapper"
-        style={{
-          ...style,
-          overflowY: "scroll",
-          maxHeight
-        }}
-        {...rest}
-      >
-        {children}
-      </div>
-    );
-  }
-);
-ADataTableWrapper.displayName = "ADataTableWrapper";
-
-const TableHeader = React.forwardRef(({className, ...rest}, ref) => {
-  return (
-    <th
-      ref={ref}
-      role="columnheader"
-      className={`a-data-table__header${className ? ` ${className}` : ""}`}
-      {...rest}
-    />
-  );
-});
-TableHeader.displayName = "TableHeader";
-
-const TableRow = React.forwardRef(
-  ({className: propsClassName, isKeySelected, isSelected, ...rest}, ref) => {
-    let className = "a-data-table__row";
-    if (isSelected) {
-      className += " a-data-table__row--selected";
-    }
-    if (isKeySelected) {
-      className += " a-data-table__row--key-selected";
-    }
-    if (propsClassName) {
-      className += ` ${propsClassName}`;
-    }
-
-    return <tr ref={ref} role="row" className={className} {...rest} />;
-  }
-);
-TableRow.displayName = "TableRow";
-
-const TableCell = React.forwardRef(({className, ...rest}, ref) => (
-  <td
-    ref={ref}
-    role="cell"
-    className={`a-data-table__cell${className ? ` ${className}` : ""}`}
-    {...rest}
-  />
-));
-TableCell.displayName = "TableCell";
 
 export const getSortIconName = (column, sort) => {
   if (!sort || column.key !== sort.key) {
@@ -127,7 +63,6 @@ const ADataTable = forwardRef(
     },
     ref
   ) => {
-    const tableWrapperRef = useRef();
     const simpleTableRef = useRef();
     const combinedTableRef = useCombinedRefs(simpleTableRef, ref);
     const [expandedRows, setExpandedRows] = useState({});
@@ -311,7 +246,6 @@ const ADataTable = forwardRef(
       headers &&
       items && (
         <ADataTableWrapper
-          ref={tableWrapperRef}
           shouldWrap={typeof onScrollToEnd === "function" || maxHeight}
           maxHeight={maxHeight}
         >
@@ -323,18 +257,18 @@ const ADataTable = forwardRef(
           >
             {headers && (
               <thead>
-                <TableRow
+                <ADataTableRow
                   onClick={(e) =>
                     typeof propsOnRowClick === "function" &&
                     propsOnRowClick(headers, e)
                   }
                 >
                   {ExpandableComponent && (
-                    <TableHeader className="a-data-table__header a-data-table__header--hidden">
+                    <ADataTableHeader className="a-data-table__header a-data-table__header--hidden">
                       <span className="a-data-table__header--hidden__text">
                         Toggle
                       </span>
-                    </TableHeader>
+                    </ADataTableHeader>
                   )}
                   {headers.map((x, i) => {
                     const headerProps = {
@@ -405,14 +339,14 @@ const ADataTable = forwardRef(
 
                     if (!x.sortable) {
                       return (
-                        <TableHeader
+                        <ADataTableHeader
                           {...headerProps}
                           key={`a-data-table_header_${i}`}
                         >
                           <span className="a-data-table__header__label">
                             {x.name}
                           </span>
-                        </TableHeader>
+                        </ADataTableHeader>
                       );
                     }
 
@@ -431,7 +365,7 @@ const ADataTable = forwardRef(
                     );
 
                     return (
-                      <TableHeader
+                      <ADataTableHeader
                         {...headerProps}
                         key={`a-data-table_header_${i}`}
                         tabIndex={0}
@@ -458,13 +392,13 @@ const ADataTable = forwardRef(
                           </button>
                           {x.align !== "end" && sortIcon}
                         </div>
-                      </TableHeader>
+                      </ADataTableHeader>
                     );
                   })}
                   {ExpandableComponent && (
-                    <TableHeader>Additional Details</TableHeader>
+                    <ADataTableHeader>Additional Details</ADataTableHeader>
                   )}
-                </TableRow>
+                </ADataTableRow>
               </thead>
             )}
             <tbody>
@@ -484,7 +418,7 @@ const ADataTable = forwardRef(
                   propsIsRowSelected(rowItem);
                 const isRowKeySelected = selectedRowIndex === i;
                 const rowContent = (
-                  <TableRow
+                  <ADataTableRow
                     data-expandable-row={hasExpandedRowContent}
                     isSelected={isRowSelected}
                     key={key}
@@ -497,7 +431,7 @@ const ADataTable = forwardRef(
                     }
                   >
                     {ExpandableComponent && (
-                      <TableCell>
+                      <ADataTableCell>
                         {hasExpandedRowContent && (
                           <button
                             aria-expanded={expandedRows[id] ? true : false}
@@ -512,7 +446,7 @@ const ADataTable = forwardRef(
                             </AIcon>
                           </button>
                         )}
-                      </TableCell>
+                      </ADataTableCell>
                     )}
                     {headers.map((y, j) => {
                       const {cellLoading} = rowItem;
@@ -532,7 +466,7 @@ const ADataTable = forwardRef(
                       );
 
                       return (
-                        <TableCell
+                        <ADataTableCell
                           tabIndex="-1"
                           col-index={j}
                           key={`a-data-table_cell_${j}`}
@@ -541,20 +475,20 @@ const ADataTable = forwardRef(
                           }`.trim()}
                         >
                           {content}
-                        </TableCell>
+                        </ADataTableCell>
                       );
                     })}
                     {hasExpandedRowContent && (
-                      <TableCell
+                      <ADataTableCell
                         id={id}
                         data-expandable-content
                         hidden={!expandedRows[id]}
                         role="cell"
                       >
                         <ExpandableComponent {...rowItem} />
-                      </TableCell>
+                      </ADataTableCell>
                     )}
-                  </TableRow>
+                  </ADataTableRow>
                 );
                 if (!isInfiniteScrollTarget) {
                   return rowContent;
