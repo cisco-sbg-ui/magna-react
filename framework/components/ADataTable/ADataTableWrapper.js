@@ -27,6 +27,7 @@ const ADataTableWrapper = ({
     </div>
   );
 };
+
 ADataTableWrapper.displayName = "ADataTableWrapper";
 
 export default ADataTableWrapper;

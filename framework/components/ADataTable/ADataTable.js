@@ -1,34 +1,15 @@
 import PropTypes from "prop-types";
 import React, {forwardRef, useMemo, useRef, useCallback, useState} from "react";
 
-import {keyCodes} from "../../utils/helpers";
-
-import AInView from "../AInView";
-import AIcon from "../AIcon";
 import ASimpleTable from "../ASimpleTable";
-import {ASkeleton, ASkeletonText} from "../ASkeleton";
 import "./ADataTable.scss";
 import {useCombinedRefs} from "../../utils/hooks";
 import ADataTableWrapper from "./ADataTableWrapper";
 import ADataTableHeader from "./ADataTableHeader";
 import ADataTableRow from "./ADataTableRow";
-import ADataTableCell from "./ADataTableCell";
 import useKeyboardNavigation from "./useKeyboardNavigation";
-
-export const getSortIconName = (column, sort) => {
-  if (!sort || column.key !== sort.key) {
-    return "sort-empty";
-  }
-
-  switch (sort.direction) {
-    case "asc":
-      return "sort-up";
-    case "desc":
-      return "sort-down";
-    default:
-      return "sort-empty";
-  }
-};
+import ADataTableHeaderTemplate from "./ADataTableHeaderTemplate";
+import ADataTableRowTemplate from "./ADataTableRowTemplate";
 
 const ADataTable = forwardRef(
   (
@@ -125,276 +106,72 @@ const ADataTable = forwardRef(
       ...headers.map((header) => header.sort)
     ]);
 
+    if (!headers || !items) return null;
+
     return (
-      headers &&
-      items && (
-        <ADataTableWrapper
-          shouldWrap={typeof onScrollToEnd === "function" || maxHeight}
-          maxHeight={maxHeight}
+      <ADataTableWrapper
+        shouldWrap={typeof onScrollToEnd === "function" || maxHeight}
+        maxHeight={maxHeight}
+      >
+        <ASimpleTable
+          {...rest}
+          ref={combinedTableRef}
+          className={className}
+          onBlur={onTableBlur}
         >
-          <ASimpleTable
-            {...rest}
-            ref={combinedTableRef}
-            className={className}
-            onBlur={onTableBlur}
-          >
-            {headers && (
-              <thead>
-                <ADataTableRow
-                  onClick={(e) =>
-                    typeof propsOnRowClick === "function" &&
-                    propsOnRowClick(headers, e)
-                  }
-                >
-                  {ExpandableComponent && (
-                    <ADataTableHeader className="a-data-table__header a-data-table__header--hidden">
-                      <span className="a-data-table__header--hidden__text">
-                        Toggle
-                      </span>
-                    </ADataTableHeader>
-                  )}
-                  {headers.map((x, i) => {
-                    const headerProps = {
-                      className: `a-data-table__header ${
-                        x.sortable ? "a-data-table__header--sortable" : ""
-                      } text-${x.align || "start"} ${x.className || ""}`
-                        .replace("  ", " ")
-                        .trim(),
-                      role: "columnheader",
-                      scope: "col",
-                      "aria-label": x.name,
-                      style: x.style,
-                      wrap: x.wrap
-                    };
-
-                    const sortableBtnProps = {};
-                    let onClick;
-                    if (x.sortable) {
-                      if (!sort || x.key !== sort.key) {
-                        headerProps["aria-label"] +=
-                          ": Not sorted. Activate to sort ascending.";
-                        headerProps["aria-sort"] = "none";
-                      } else if (sort && sort.direction === "asc") {
-                        headerProps["aria-label"] +=
-                          ": Sorted ascending. Activate to sort descending.";
-                        headerProps["aria-sort"] = "ascending";
-                      } else {
-                        headerProps["aria-label"] +=
-                          ": Sorted descending. Activate to remove sorting.";
-                        headerProps["aria-sort"] = "descending";
-                      }
-
-                      onClick = () => {
-                        setExpandedRows({});
-                        if (!onSort) {
-                          return;
-                        }
-
-                        if (!disableSortReset) {
-                          onSort(
-                            sort &&
-                              sort.key === x.key &&
-                              sort.direction === "desc"
-                              ? null
-                              : {
-                                  key: x.key,
-                                  direction:
-                                    sort &&
-                                    x.key === sort.key &&
-                                    sort.direction === "asc"
-                                      ? "desc"
-                                      : "asc"
-                                }
-                          );
-                        } else {
-                          onSort({
-                            key: x.key,
-                            direction:
-                              sort &&
-                              x.key === sort.key &&
-                              sort.direction === "asc"
-                                ? "desc"
-                                : "asc"
-                          });
-                        }
-                      };
-                    }
-
-                    if (!x.sortable) {
-                      return (
-                        <ADataTableHeader
-                          {...headerProps}
-                          key={`a-data-table_header_${i}`}
-                        >
-                          <span className="a-data-table__header__label">
-                            {x.name}
-                          </span>
-                        </ADataTableHeader>
-                      );
-                    }
-
-                    let sortIcon = x.sortable && (
-                      <AIcon
-                        left={x.align === "end"}
-                        right={x.align !== "end"}
-                        className={`a-data-table__header__sort ${
-                          sort && x.key === sort.key
-                            ? "a-data-table__header__sort--active"
-                            : ""
-                        }`}
-                      >
-                        {getSortIconName(x, sort)}
-                      </AIcon>
-                    );
-
-                    return (
-                      <ADataTableHeader
-                        {...headerProps}
-                        key={`a-data-table_header_${i}`}
-                        tabIndex={0}
-                        onClick={onClick}
-                        onKeyDown={(e) => {
-                          if (
-                            [keyCodes.enter, keyCodes.space].includes(e.keyCode)
-                          ) {
-                            e.preventDefault();
-                            onClick && onClick(e);
-                          }
-                        }}
-                      >
-                        <div className="a-data-table__header__sort-wrap">
-                          {x.align === "end" && sortIcon}
-                          <button
-                            {...sortableBtnProps}
-                            tabIndex={-1}
-                            className="a-data-table__header__sort__button"
-                          >
-                            <span className="a-data-table__header__label">
-                              {x.name}
-                            </span>
-                          </button>
-                          {x.align !== "end" && sortIcon}
-                        </div>
-                      </ADataTableHeader>
-                    );
-                  })}
-                  {ExpandableComponent && (
-                    <ADataTableHeader>Additional Details</ADataTableHeader>
-                  )}
-                </ADataTableRow>
-              </thead>
-            )}
-            <tbody>
-              {sortedItems.map((rowItem, i) => {
-                const key = `a-data-table_row_${i}`;
-                const id = `a-data-table_row_${i}`;
-                const isLastRow = i === items.length - 1;
-                const isInfiniteScrollTarget =
-                  isLastRow && typeof onScrollToEnd === "function";
-                const hasExpandedRowContent =
-                  ExpandableComponent &&
-                  (typeof expandable.isRowExpandable === "function"
-                    ? expandable.isRowExpandable(rowItem)
-                    : true);
-                const isRowSelected =
-                  typeof propsIsRowSelected === "function" &&
-                  propsIsRowSelected(rowItem);
-                const isRowKeySelected = selectedRowIndex === i;
-                const rowContent = (
-                  <ADataTableRow
-                    data-expandable-row={hasExpandedRowContent}
-                    isSelected={isRowSelected}
-                    key={key}
-                    isKeySelected={isRowKeySelected}
-                    row-index={i}
-                    tabIndex="-1"
-                    onClick={(e) =>
-                      typeof propsOnRowClick === "function" &&
-                      propsOnRowClick(rowItem, e)
-                    }
-                  >
-                    {ExpandableComponent && (
-                      <ADataTableCell>
-                        {hasExpandedRowContent && (
-                          <button
-                            aria-expanded={!!expandedRows[id]}
-                            aria-controls={id}
-                            className="a-data-table__cell__btn--expand"
-                            onClick={toggleRow(id)}
-                          >
-                            <AIcon size={12}>
-                              {expandedRows[id]
-                                ? "chevron-down"
-                                : "chevron-right"}
-                            </AIcon>
-                          </button>
-                        )}
-                      </ADataTableCell>
-                    )}
-                    {headers.map((y, j) => {
-                      const {cellLoading} = rowItem;
-
-                      const content = cellLoading ? (
-                        <ASkeleton
-                          hidePanelBackdrop
-                          animated
-                          style={{padding: 0}}
-                        >
-                          <ASkeletonText />
-                        </ASkeleton>
-                      ) : y.cell && y.cell.component ? (
-                        y.cell.component(rowItem)
-                      ) : (
-                        rowItem[y.key]
-                      );
-
-                      return (
-                        <ADataTableCell
-                          tabIndex="-1"
-                          col-index={j}
-                          key={`a-data-table_cell_${j}`}
-                          className={`text-${y.align || "start"} ${
-                            y.cell?.className || ""
-                          }`.trim()}
-                        >
-                          {content}
-                        </ADataTableCell>
-                      );
-                    })}
-                    {hasExpandedRowContent && (
-                      <ADataTableCell
-                        id={id}
-                        data-expandable-content
-                        hidden={!expandedRows[id]}
-                        role="cell"
-                      >
-                        <ExpandableComponent {...rowItem} />
-                      </ADataTableCell>
-                    )}
-                  </ADataTableRow>
-                );
-                if (!isInfiniteScrollTarget) {
-                  return rowContent;
+          {
+            <thead>
+              <ADataTableRow
+                onClick={(e) =>
+                  typeof propsOnRowClick === "function" &&
+                  propsOnRowClick(headers, e)
                 }
-
-                return (
-                  <AInView
-                    key={key}
-                    triggerOnce
-                    onChange={({inView, entry}) => {
-                      if (inView) {
-                        onScrollToEnd(entry);
-                      }
-                    }}
-                  >
-                    {rowContent}
-                  </AInView>
-                );
-              })}
-            </tbody>
-          </ASimpleTable>
-        </ADataTableWrapper>
-      )
+              >
+                {ExpandableComponent && (
+                  <ADataTableHeader className="a-data-table__header a-data-table__header--hidden">
+                    <span className="a-data-table__header--hidden__text">
+                      Toggle
+                    </span>
+                  </ADataTableHeader>
+                )}
+                {headers.map((headerItem, headerIndex) => (
+                  <ADataTableHeaderTemplate
+                    key={`a-data-table_header_${headerIndex}`}
+                    headerItem={headerItem}
+                    index={headerIndex}
+                    sort={sort}
+                    onSort={onSort}
+                    disableSortReset={disableSortReset}
+                    setExpandedRows={setExpandedRows}
+                  />
+                ))}
+                {ExpandableComponent && (
+                  <ADataTableHeader>Additional Details</ADataTableHeader>
+                )}
+              </ADataTableRow>
+            </thead>
+          }
+          <tbody>
+            {sortedItems.map((rowItem, rowIndex) => (
+              <ADataTableRowTemplate
+                key={`a-data-table_row_${rowIndex}`}
+                rowItem={rowItem}
+                rowIndex={rowIndex}
+                headers={headers}
+                isLastRow={rowIndex === sortedItems.length - 1}
+                onScrollToEnd={onScrollToEnd}
+                expandable={expandable}
+                expandedRows={expandedRows}
+                ExpandableComponent={ExpandableComponent}
+                toggleRow={toggleRow}
+                propsIsRowSelected={propsIsRowSelected}
+                selectedRowIndex={selectedRowIndex}
+                propsOnRowClick={propsOnRowClick}
+              />
+            ))}
+          </tbody>
+        </ASimpleTable>
+      </ADataTableWrapper>
     );
   }
 );
@@ -520,7 +297,7 @@ ADataTable.propTypes = {
     disableRowAutoFocus: PropTypes.bool,
 
     /**
-     * Disable resetting selection and positon in table when table component looses focus.
+     * Disable resetting selection and position in table when table component looses focus.
      */
     disableOnBlurReset: PropTypes.bool,
 

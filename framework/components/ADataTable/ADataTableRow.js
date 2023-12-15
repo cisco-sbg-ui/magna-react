@@ -20,6 +20,6 @@ const ADataTableRow = ({
   return <tr role="row" className={className} {...rest} />;
 };
 
-ADataTableRow.displayName = "TableRow";
+ADataTableRow.displayName = "ADataTableRow";
 
 export default ADataTableRow;

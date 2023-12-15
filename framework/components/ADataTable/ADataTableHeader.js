@@ -8,6 +8,6 @@ const ADataTableHeader = ({className, ...rest}) => (
   />
 );
 
-ADataTableHeader.displayName = "TableHeader";
+ADataTableHeader.displayName = "ADataTableHeader";
 
 export default ADataTableHeader;

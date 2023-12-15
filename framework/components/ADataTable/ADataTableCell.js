@@ -8,6 +8,6 @@ const ADataTableCell = ({className, ...rest}) => (
   />
 );
 
-ADataTableCell.displayName = "TableCell";
+ADataTableCell.displayName = "ADataTableCell";
 
 export default ADataTableCell;
