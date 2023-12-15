@@ -1,15 +1,7 @@
 import PropTypes from "prop-types";
-import React, {
-  forwardRef,
-  useMemo,
-  useRef,
-  useCallback,
-  useState,
-  useEffect
-} from "react";
+import React, {forwardRef, useMemo, useRef, useCallback, useState} from "react";
 
 import {keyCodes} from "../../utils/helpers";
-import useKeydown from "../../hooks/useKeydown/useKeydown";
 
 import AInView from "../AInView";
 import AIcon from "../AIcon";
@@ -21,10 +13,7 @@ import ADataTableWrapper from "./ADataTableWrapper";
 import ADataTableHeader from "./ADataTableHeader";
 import ADataTableRow from "./ADataTableRow";
 import ADataTableCell from "./ADataTableCell";
-
-const ARROW_UP = "ArrowUp";
-const ARROW_DOWN = "ArrowDown";
-const ARROW_KEYS = [ARROW_UP, ARROW_DOWN];
+import useKeyboardNavigation from "./useKeyboardNavigation";
 
 export const getSortIconName = (column, sort) => {
   if (!sort || column.key !== sort.key) {
@@ -66,122 +55,16 @@ const ADataTable = forwardRef(
     const simpleTableRef = useRef();
     const combinedTableRef = useCombinedRefs(simpleTableRef, ref);
     const [expandedRows, setExpandedRows] = useState({});
-    const [selectedRowIndex, setSelectedRowIndex] = useState(-1); // zero based index in items array, -1 for no index
-
-    const handleArrowKeydown = useCallback(
-      (key, event) => {
-        let nextRowIndex;
-
-        if (selectedRowIndex === -1) {
-          // first move
-          if (key === ARROW_UP) nextRowIndex = items.length - 1;
-          else nextRowIndex = 0;
-        } else {
-          // subsequent moves
-          if (key === ARROW_UP) nextRowIndex = selectedRowIndex - 1;
-          else nextRowIndex = selectedRowIndex + 1;
-        }
-
-        if (items[nextRowIndex] === undefined) {
-          // out of items index
-          return;
-        }
-
-        setSelectedRowIndex(nextRowIndex);
-
-        if (typeof keyboardArrowSupport?.onKeyboardSelect === "function") {
-          keyboardArrowSupport?.onKeyboardSelect(
-            {index: nextRowIndex, item: items[nextRowIndex]},
-            event
-          );
-        }
-      },
-      // having keyboardArrowSupport in deps causes unnecessary re-renders
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      [
-        items,
-        selectedRowIndex,
-        setSelectedRowIndex,
-        keyboardArrowSupport?.onKeyboardSelect
-      ]
+    const getRowByIndex = useCallback(
+      (index) =>
+        combinedTableRef.current?.querySelector(`[row-index="${index}"]`),
+      [combinedTableRef]
     );
-
-    const onTableBlur = useCallback(
-      (event) => {
-        if (keyboardArrowSupport?.disableOnBlurReset) return;
-
-        const isEventsInTable = event.currentTarget.contains(
-          event.relatedTarget
-        );
-        if (!isEventsInTable) {
-          setSelectedRowIndex(-1);
-          if (typeof keyboardArrowSupport?.onKeyboardSelect === "function") {
-            keyboardArrowSupport?.onKeyboardSelect(
-              {index: -1, item: undefined},
-              event
-            );
-          }
-        }
-      },
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      [
-        setSelectedRowIndex,
-        keyboardArrowSupport?.disableOnBlurReset,
-        keyboardArrowSupport?.onKeyboardSelect
-      ]
-    );
-
-    useEffect(() => {
-      if (keyboardArrowSupport === null || selectedRowIndex === -1) return;
-
-      const {
-        disableRowAutoFocus,
-        activeRowFocusSelector,
-        overrideFocusOptions = {}
-      } = keyboardArrowSupport;
-
-      if (disableRowAutoFocus) return;
-
-      const row = combinedTableRef.current?.querySelector(
-        `[row-index="${selectedRowIndex}"]`
-      );
-      if (!row) return;
-
-      if (activeRowFocusSelector) {
-        const element = row.querySelector(activeRowFocusSelector);
-        if (element && element.focus) {
-          element.focus(overrideFocusOptions);
-        }
-      } else {
-        row.focus(overrideFocusOptions);
-      }
-      // combinedTableRef should not need to be in deps
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [
-      keyboardArrowSupport?.disableRowAutoFocus,
-      keyboardArrowSupport?.activeRowFocusSelector,
-      keyboardArrowSupport?.overrideFocusOptions,
-      selectedRowIndex
-    ]);
-
-    useEffect(() => {
-      if (keyboardArrowSupport === null) return;
-
-      const index = keyboardArrowSupport.initiallySelectedRowIndex;
-      if (typeof index === "number" && items[index]) {
-        setSelectedRowIndex(index);
-      } else {
-        setSelectedRowIndex(-1);
-      }
-      // having keyboardArrowSupport in deps causes unnecessary re-renders
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [
-      keyboardArrowSupport?.initiallySelectedRowIndex,
-      setSelectedRowIndex,
-      items
-    ]);
-
-    useKeydown(ARROW_KEYS, handleArrowKeydown, keyboardArrowSupport !== null);
+    const {selectedRowIndex, onTableBlur} = useKeyboardNavigation({
+      items,
+      keyboardArrowSupport,
+      getRowByIndex
+    });
 
     const ExpandableComponent = useMemo(
       () => expandable?.component,
@@ -434,7 +317,7 @@ const ADataTable = forwardRef(
                       <ADataTableCell>
                         {hasExpandedRowContent && (
                           <button
-                            aria-expanded={expandedRows[id] ? true : false}
+                            aria-expanded={!!expandedRows[id]}
                             aria-controls={id}
                             className="a-data-table__cell__btn--expand"
                             onClick={toggleRow(id)}
