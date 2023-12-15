@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const ADataTableRow = ({
   className: propsClassName,
@@ -21,5 +22,16 @@ const ADataTableRow = ({
 };
 
 ADataTableRow.displayName = "ADataTableRow";
+
+ADataTableRow.propTypes = {
+  /**  Additional class names to be applied to the table row. */
+  className: PropTypes.string,
+
+  /** Is this row selected */
+  isSelected: PropTypes.bool,
+
+  /** Is this row selected by keyboard navigation */
+  isKeySelected: PropTypes.bool
+};
 
 export default ADataTableRow;

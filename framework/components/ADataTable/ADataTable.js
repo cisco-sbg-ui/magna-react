@@ -16,8 +16,8 @@ const ADataTable = forwardRef(
     {
       className: propsClassName,
       expandable,
-      isRowSelected: propsIsRowSelected,
-      onRowClick: propsOnRowClick,
+      isRowSelected: isRowSelectedPredicate,
+      onRowClick,
       headers,
       maxHeight,
       items,
@@ -35,22 +35,29 @@ const ADataTable = forwardRef(
   ) => {
     const simpleTableRef = useRef();
     const combinedTableRef = useCombinedRefs(simpleTableRef, ref);
-    const [expandedRows, setExpandedRows] = useState({});
     const getRowByIndex = useCallback(
       (index) =>
         combinedTableRef.current?.querySelector(`[row-index="${index}"]`),
       [combinedTableRef]
     );
-    const {selectedRowIndex, onTableBlur} = useKeyboardNavigation({
-      items,
-      keyboardArrowSupport,
-      getRowByIndex
-    });
+    const [expandedRows, setExpandedRows] = useState({});
+
+    const toggleExpandedRow = useCallback((id) => {
+      setExpandedRows((prevState) => {
+        const {[id]: toggledId, ...remainingIds} = prevState;
+        if (toggledId) {
+          return remainingIds;
+        } else {
+          return {...remainingIds, [id]: true};
+        }
+      });
+    }, []);
 
     const ExpandableComponent = useMemo(
       () => expandable?.component,
       [expandable]
     );
+
     let className = "a-data-table";
     if (ExpandableComponent) {
       className += " a-data-table--expandable";
@@ -64,15 +71,6 @@ const ADataTable = forwardRef(
     if (propsClassName) {
       className += ` ${propsClassName}`;
     }
-
-    const toggleRow = useCallback(
-      (id) => {
-        return () => {
-          setExpandedRows((prev) => ({...prev, [id]: !prev[id]}));
-        };
-      },
-      [setExpandedRows]
-    );
 
     const sortedItems = useMemo(() => {
       if (sort) {
@@ -106,6 +104,12 @@ const ADataTable = forwardRef(
       ...headers.map((header) => header.sort)
     ]);
 
+    const {keySelectedRowIndex, onTableBlur} = useKeyboardNavigation({
+      items: sortedItems,
+      keyboardArrowSupport,
+      getRowByIndex
+    });
+
     if (!headers || !items) return null;
 
     return (
@@ -123,8 +127,7 @@ const ADataTable = forwardRef(
             <thead>
               <ADataTableRow
                 onClick={(e) =>
-                  typeof propsOnRowClick === "function" &&
-                  propsOnRowClick(headers, e)
+                  typeof onRowClick === "function" && onRowClick(headers, e)
                 }
               >
                 {ExpandableComponent && (
@@ -138,11 +141,11 @@ const ADataTable = forwardRef(
                   <ADataTableHeaderTemplate
                     key={`a-data-table_header_${headerIndex}`}
                     headerItem={headerItem}
-                    index={headerIndex}
                     sort={sort}
                     onSort={onSort}
                     disableSortReset={disableSortReset}
                     setExpandedRows={setExpandedRows}
+                    {...headerItem.properties}
                   />
                 ))}
                 {ExpandableComponent && (
@@ -161,12 +164,15 @@ const ADataTable = forwardRef(
                 isLastRow={rowIndex === sortedItems.length - 1}
                 onScrollToEnd={onScrollToEnd}
                 expandable={expandable}
-                expandedRows={expandedRows}
+                toggleExpandedRow={toggleExpandedRow}
+                isExpandedRow={!!expandedRows[`${rowIndex}`]}
                 ExpandableComponent={ExpandableComponent}
-                toggleRow={toggleRow}
-                propsIsRowSelected={propsIsRowSelected}
-                selectedRowIndex={selectedRowIndex}
-                propsOnRowClick={propsOnRowClick}
+                onRowClick={onRowClick}
+                isSelected={
+                  typeof isRowSelectedPredicate === "function" &&
+                  isRowSelectedPredicate(rowItem)
+                }
+                isKeySelected={keySelectedRowIndex === rowIndex}
               />
             ))}
           </tbody>
@@ -200,6 +206,9 @@ ADataTable.propTypes = {
     PropTypes.shape({
       /** The text to be displayed in the header column */
       name: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+      /** Standard set of HTML TH properties to set on each header element.
+       * Some of these properties can be superseded by computed properties utilized for table functionality. */
+      properties: PropTypes.object,
       /** The unique identifier to associate a column with subsequent row data */
       key: PropTypes.string,
       /** CSS class used to style the header column */

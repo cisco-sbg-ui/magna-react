@@ -10,20 +10,20 @@ const useKeyboardNavigation = ({
   items,
   getRowByIndex
 }) => {
-  const [selectedRowIndex, setSelectedRowIndex] = useState(-1); // zero based index in items array, -1 for no index
+  const [keySelectedRowIndex, setKeySelectedRowIndex] = useState(-1); // zero based index in items array, -1 for no index
 
   const handleArrowKeydown = useCallback(
     (key, event) => {
       let nextRowIndex;
 
-      if (selectedRowIndex === -1) {
+      if (keySelectedRowIndex === -1) {
         // first move
         if (key === ARROW_UP) nextRowIndex = items.length - 1;
         else nextRowIndex = 0;
       } else {
         // subsequent moves
-        if (key === ARROW_UP) nextRowIndex = selectedRowIndex - 1;
-        else nextRowIndex = selectedRowIndex + 1;
+        if (key === ARROW_UP) nextRowIndex = keySelectedRowIndex - 1;
+        else nextRowIndex = keySelectedRowIndex + 1;
       }
 
       if (items[nextRowIndex] === undefined) {
@@ -31,7 +31,7 @@ const useKeyboardNavigation = ({
         return;
       }
 
-      setSelectedRowIndex(nextRowIndex);
+      setKeySelectedRowIndex(nextRowIndex);
 
       if (typeof keyboardArrowSupport?.onKeyboardSelect === "function") {
         keyboardArrowSupport?.onKeyboardSelect(
@@ -42,7 +42,7 @@ const useKeyboardNavigation = ({
     },
     // having keyboardArrowSupport in deps causes unnecessary re-renders
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [items, selectedRowIndex, keyboardArrowSupport?.onKeyboardSelect]
+    [items, keySelectedRowIndex, keyboardArrowSupport?.onKeyboardSelect]
   );
 
   const onTableBlur = useCallback(
@@ -51,7 +51,7 @@ const useKeyboardNavigation = ({
 
       const isEventsInTable = event.currentTarget.contains(event.relatedTarget);
       if (!isEventsInTable) {
-        setSelectedRowIndex(-1);
+        setKeySelectedRowIndex(-1);
         if (typeof keyboardArrowSupport?.onKeyboardSelect === "function") {
           keyboardArrowSupport?.onKeyboardSelect(
             {index: -1, item: undefined},
@@ -68,7 +68,7 @@ const useKeyboardNavigation = ({
   );
 
   useEffect(() => {
-    if (keyboardArrowSupport === null || selectedRowIndex === -1) return;
+    if (keyboardArrowSupport === null || keySelectedRowIndex === -1) return;
 
     const {
       disableRowAutoFocus,
@@ -78,7 +78,7 @@ const useKeyboardNavigation = ({
 
     if (disableRowAutoFocus) return;
 
-    const row = getRowByIndex && getRowByIndex(selectedRowIndex);
+    const row = getRowByIndex && getRowByIndex(keySelectedRowIndex);
     if (!row) return;
 
     if (activeRowFocusSelector) {
@@ -95,7 +95,7 @@ const useKeyboardNavigation = ({
     keyboardArrowSupport?.disableRowAutoFocus,
     keyboardArrowSupport?.activeRowFocusSelector,
     keyboardArrowSupport?.overrideFocusOptions,
-    selectedRowIndex
+    keySelectedRowIndex
   ]);
 
   useEffect(() => {
@@ -103,9 +103,9 @@ const useKeyboardNavigation = ({
 
     const index = keyboardArrowSupport.initiallySelectedRowIndex;
     if (typeof index === "number" && items[index]) {
-      setSelectedRowIndex(index);
+      setKeySelectedRowIndex(index);
     } else {
-      setSelectedRowIndex(-1);
+      setKeySelectedRowIndex(-1);
     }
     // having keyboardArrowSupport in deps causes unnecessary re-renders
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -114,7 +114,7 @@ const useKeyboardNavigation = ({
   useKeydown(ARROW_KEYS, handleArrowKeydown, keyboardArrowSupport !== null);
 
   return {
-    selectedRowIndex,
+    keySelectedRowIndex,
     onTableBlur
   };
 };

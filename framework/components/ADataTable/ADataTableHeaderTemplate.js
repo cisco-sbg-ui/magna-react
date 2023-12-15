@@ -2,6 +2,7 @@ import React from "react";
 import ADataTableHeader from "./ADataTableHeader";
 import AIcon from "../AIcon";
 import {keyCodes} from "../../utils/helpers";
+import PropTypes from "prop-types";
 
 export const getSortIconName = (column, sort) => {
   if (!sort || column.key !== sort.key) {
@@ -20,11 +21,11 @@ export const getSortIconName = (column, sort) => {
 
 const ADataTableHeaderTemplate = ({
   headerItem,
-  index,
   sort,
   onSort,
+  disableSortReset,
   setExpandedRows,
-  disableSortReset
+  ...rest
 }) => {
   const headerProps = {
     className: `a-data-table__header ${
@@ -36,10 +37,10 @@ const ADataTableHeaderTemplate = ({
     scope: "col",
     "aria-label": headerItem.name,
     style: headerItem.style,
-    wrap: headerItem.wrap
+    wrap: headerItem.wrap,
+    ...rest
   };
 
-  const sortableBtnProps = {};
   let onClick;
   if (headerItem.sortable) {
     if (!sort || headerItem.key !== sort.key) {
@@ -89,7 +90,7 @@ const ADataTableHeaderTemplate = ({
 
   if (!headerItem.sortable) {
     return (
-      <ADataTableHeader {...headerProps} key={`a-data-table_header_${index}`}>
+      <ADataTableHeader {...headerProps}>
         <span className="a-data-table__header__label">{headerItem.name}</span>
       </ADataTableHeader>
     );
@@ -123,11 +124,7 @@ const ADataTableHeaderTemplate = ({
     >
       <div className="a-data-table__header__sort-wrap">
         {headerItem.align === "end" && sortIcon}
-        <button
-          {...sortableBtnProps}
-          tabIndex={-1}
-          className="a-data-table__header__sort__button"
-        >
+        <button tabIndex={-1} className="a-data-table__header__sort__button">
           <span className="a-data-table__header__label">{headerItem.name}</span>
         </button>
         {headerItem.align !== "end" && sortIcon}
@@ -137,5 +134,56 @@ const ADataTableHeaderTemplate = ({
 };
 
 ADataTableHeaderTemplate.displayName = "ADataTableHeaderTemplate";
+
+ADataTableHeaderTemplate.propTypes = {
+  /** Particular header item which is currently being rendered */
+  headerItem: PropTypes.shape({
+    /** The text to be displayed in the header column */
+    name: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+    /** Standard set of HTML TH properties to set on each header element.
+     * Some of these properties can be superseded by computed properties utilized for table functionality. */
+    properties: PropTypes.object,
+    /** The unique identifier to associate a column with subsequent row data */
+    key: PropTypes.string,
+    /** CSS class used to style the header column */
+    className: PropTypes.string,
+    /** The alignment of the header column text content */
+    align: PropTypes.oneOf(["start", "center", "end"]),
+    /** Determines if the column can be sorted by the user */
+    sortable: PropTypes.bool,
+    /** Sorting function for the column data */
+    sort: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
+    /** Object that refers to the column's associated data table cells, i.e., <td /> elements */
+    cell: PropTypes.shape({
+      /** Class to be added to each table data element */
+      className: PropTypes.string,
+      /** Custom component to be rendered for each table data item */
+      component: PropTypes.func
+    }).isRequired
+  }),
+
+  /**
+   * `sort` configuration
+   */
+  sort: PropTypes.shape({
+    key: PropTypes.string,
+    direction: PropTypes.oneOf(["asc", "desc"])
+  }),
+
+  /**
+   * `sort` click event handler
+   */
+  onSort: PropTypes.func,
+
+  /**
+   * Disables third click of header sort icon to unset sorting.
+   */
+  disableSortReset: PropTypes.bool,
+
+  /**
+   * Expanded row's state setter.
+   */
+  setExpandedRows: PropTypes.func
+};
 
 export default ADataTableHeaderTemplate;
