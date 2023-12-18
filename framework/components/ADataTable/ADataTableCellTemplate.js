@@ -55,7 +55,7 @@ ADataTableCellTemplate.propTypes = {
       className: PropTypes.string,
       /** Custom component to be rendered for each table data item */
       component: PropTypes.func
-    }).isRequired
+    })
   }),
 
   /** Row item we are currently rendering */

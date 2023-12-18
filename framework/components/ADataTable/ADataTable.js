@@ -18,6 +18,8 @@ const ADataTable = forwardRef(
       expandable,
       isRowSelected: isRowSelectedPredicate,
       onRowClick,
+      onRowMouseEnter,
+      onRowMouseLeave,
       headers,
       maxHeight,
       items,
@@ -129,6 +131,14 @@ const ADataTable = forwardRef(
                 onClick={(e) =>
                   typeof onRowClick === "function" && onRowClick(headers, e)
                 }
+                onMouseEnter={(e) => {
+                  typeof onRowMouseEnter === "function" &&
+                    onRowMouseEnter(headers, e);
+                }}
+                onMouseLeave={(e) => {
+                  typeof onRowMouseLeave === "function" &&
+                    onRowMouseLeave(headers, e);
+                }}
               >
                 {ExpandableComponent && (
                   <ADataTableHeader className="a-data-table__header a-data-table__header--hidden">
@@ -168,6 +178,8 @@ const ADataTable = forwardRef(
                 isExpandedRow={!!expandedRows[`${rowIndex}`]}
                 ExpandableComponent={ExpandableComponent}
                 onRowClick={onRowClick}
+                onRowMouseEnter={onRowMouseEnter}
+                onRowMouseLeave={onRowMouseLeave}
                 isSelected={
                   typeof isRowSelectedPredicate === "function" &&
                   isRowSelectedPredicate(rowItem)
@@ -243,6 +255,18 @@ ADataTable.propTypes = {
    * object as the second.
    */
   onRowClick: PropTypes.func,
+  /**
+   * A function called when the mouse enters the table row (<tr>). It is passed
+   * the associated row item as the first argument, and the native event
+   * object as the second.
+   */
+  onRowMouseEnter: PropTypes.func,
+  /**
+   * A function called when the mouse leaves the table row (<tr>). It is passed
+   * the associated row item as the first argument, and the native event
+   * object as the second.
+   */
+  onRowMouseLEave: PropTypes.func,
   /**
    * Called when the user reaches the bottom of the data table for the first time.
    */

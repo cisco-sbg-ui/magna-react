@@ -17,6 +17,8 @@ const ADataTableRowTemplate = ({
   isExpandedRow,
   ExpandableComponent,
   onRowClick,
+  onRowMouseEnter,
+  onRowMouseLeave,
   isSelected,
   isKeySelected
 }) => {
@@ -39,6 +41,12 @@ const ADataTableRowTemplate = ({
       onClick={(e) =>
         typeof onRowClick === "function" && onRowClick(rowItem, e)
       }
+      onMouseEnter={(e) => {
+        typeof onRowMouseEnter === "function" && onRowMouseEnter(rowItem, e);
+      }}
+      onMouseLeave={(e) => {
+        typeof onRowMouseLeave === "function" && onRowMouseLeave(rowItem, e);
+      }}
     >
       {ExpandableComponent && (
         <ADataTableCell>
@@ -101,7 +109,7 @@ ADataTableRowTemplate.propTypes = {
   rowItem: PropTypes.object.isRequired,
 
   /** Zero based index of row item being rendered */
-  rowIndex: PropTypes.object.isRequired,
+  rowIndex: PropTypes.number.isRequired,
 
   /** The table headers containing row renderers */
   headers: PropTypes.arrayOf(
