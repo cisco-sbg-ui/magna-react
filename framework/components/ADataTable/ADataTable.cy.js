@@ -32,6 +32,31 @@ const ITEMS = [
 ];
 
 describe("ADataTable", async () => {
+  it("renders data-testid in the table header elements", () => {
+    const headersWithProperties = [
+      {
+        ...HEADERS[0],
+        properties: {
+          "data-testid": "alpha"
+        }
+      },
+      {
+        ...HEADERS[1],
+        properties: {
+          "data-testid": "bravo"
+        }
+      }
+    ];
+    cy.mount(<ADataTable headers={headersWithProperties} items={ITEMS} />);
+
+    cy.get("table thead th:first")
+      .invoke("attr", "data-testid")
+      .should("eq", "alpha");
+    cy.get("table thead th:last")
+      .invoke("attr", "data-testid")
+      .should("eq", "bravo");
+  });
+
   describe("keyboardArrowSupport", () => {
     it("selects first line with arrow down and assign key-selected class to it", () => {
       const onKeyboardSelectStub = cy.stub();

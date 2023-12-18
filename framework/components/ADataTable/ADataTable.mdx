@@ -688,13 +688,19 @@ const headers = [
         {
             name: "Alpha",
             key: "a",
+            properties: {
+              "data-testid": "alpha"
+            }
         },
         {
             name: "Bravo",
             key: "b",
+            properties: {
+              "data-testid": "bravo"
+            },
             cell: {
                 component: (item) => {
-                    return (<input type="text" value={item.b} />);
+                    return (<input type="text" defaultValue={item.b} />);
                 }
             }
         },
