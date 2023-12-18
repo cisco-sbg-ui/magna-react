@@ -255,7 +255,7 @@ $themeMap: (
     "bg-gray": $base-bg-default,
     "header-color": $base-text-default,
     "box-shadow": $panel-shadow,
-    "border-color": $control-bg-weak-default
+    "border-color": $control-border-weak-default
   ),
   "popover": (
     "filter": drop-shadow($panel-shadow)
