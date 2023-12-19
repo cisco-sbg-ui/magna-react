@@ -346,13 +346,15 @@ $themeMap: (
     "cell-border-color": $control-border-weak-default
   ),
   "tabs": (
-    //TODO Requires Tabs PR
-    "oversized-background-color": $base-bg-default,
-    "oversized--hover-background-color": $base-bg-weak-default,
-    "text-color": $interact-text-weak-default,
-    "text-color--selected": $interact-text-weak-active,
-    "bar-color--hover": $interact-border-medium-hover,
-    "bar-color--selected": $interact-border-medium-active
+    "text-color": $base-text-medium-default,
+    "text-color-secondary": $interact-text-weak-default,
+    "text-color--selected": $base-text-default,
+    "text-color-secondary--selected": $interact-text-weak-active,
+    "bar-color--hover": $brand-accent-border-hover,
+    "bar-color-secondary--hover": $interact-border-medium-hover,
+    "bar-color--selected": $brand-accent-border-active,
+    "bar-color-secondary-selected": $interact-border-medium-active,
+    "border-bottom-secondary": $control-border-weak-default
   ),
   "tag": (
     "bg-color": $control-bg-medium-disabled,

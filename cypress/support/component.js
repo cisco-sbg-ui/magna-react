@@ -31,8 +31,9 @@ const resizeObserverLoopErrRe =
   /^[^(ResizeObserver loop completed with undelivered notifications.)]/;
 
 Cypress.on("uncaught:exception", (err) => {
-  //Will still print out in tests, but wont fail them.
-  //Returning false here prevents Cypress from failing the test
+  //Returning false here prevents Cypress from failing the test.
+  //This will go off when opening a dropdown in tabs. When "fixed" with a setTimeout, the UI glitches.
+  //Referencing here in case we need to revisit this in the future.
   if (resizeObserverLoopErrRe.test(err.message)) {
     return false;
   }
