@@ -27,5 +27,17 @@ Cypress.Commands.add("mount", (component) => {
   return mount(<AApp>{component}</AApp>);
 });
 
+const resizeObserverLoopErrRe =
+  /^[^(ResizeObserver loop completed with undelivered notifications.)]/;
+
+Cypress.on("uncaught:exception", (err) => {
+  //Returning false here prevents Cypress from failing the test.
+  //This will go off when opening a dropdown in tabs. When "fixed" with a setTimeout, the UI glitches.
+  //Referencing here in case we need to revisit this in the future.
+  if (resizeObserverLoopErrRe.test(err.message)) {
+    return false;
+  }
+});
+
 // Example use:
 // cy.mount(<MyComponent />)

@@ -35,8 +35,14 @@ const ATab = forwardRef(
     const combinedRef = useCombinedRefs(ref, tabRef);
     const [tabId, setTabId] = useState(null);
     const [isSelected, setIsSelected] = useState(null);
-    const {tabChanged, setTabChanged, scrollToMe, vertical} =
+    const {tabChanged, setTabChanged, vertical, secondary} =
       useContext(ATabContext);
+
+    const menuTab =
+      tabRef.current && tabRef.current.classList.contains("menu-tab")
+        ? tabRef.current
+        : null;
+
     useEffect(() => {
       if (tabKey) return;
       if (!tabId) {
@@ -58,15 +64,8 @@ const ATab = forwardRef(
       }
     }, [selected, tabKey]); // eslint-disable-line react-hooks/exhaustive-deps
 
-    useEffect(() => {
-      if ((tabKey && selected) || isSelected) {
-        document.fonts.ready.then(() => {
-          scrollToMe(combinedRef);
-        });
-      }
-    }, [selected, isSelected, combinedRef]); // eslint-disable-line react-hooks/exhaustive-deps
-
     let className = "a-tab-group__tab";
+
     if ((tabKey && selected) || isSelected) {
       className += " a-tab-group__tab--selected";
 
@@ -76,12 +75,26 @@ const ATab = forwardRef(
     }
 
     if (vertical) {
-      className += " a-tab-group__tab--vertical";
+      className += " a-tab-group__tab--vertical a-tab-group__tab--secondary";
+    }
+
+    if (secondary) {
+      className += " a-tab-group__tab--secondary";
     }
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
     }
+
+    //If in controlled mode, handle previously selected class.
+    const handleSiblingSelectedClass = () => {
+      const parent = combinedRef.current.parentNode;
+      const previousSelectedEl = parent.querySelector("[aria-selected=true]");
+      if (previousSelectedEl) {
+        previousSelectedEl.classList.remove("a-tab-group__tab--selected");
+        previousSelectedEl.setAttribute("aria-selected", false);
+      }
+    };
 
     let TagName = "div";
     const props = {
@@ -91,22 +104,24 @@ const ATab = forwardRef(
       className,
       onClick: (e) => {
         !tabKey && setTabChanged(tabId);
+        if (menuTab) {
+          handleSiblingSelectedClass();
+        }
         onClick && onClick(e);
       },
       onKeyDown: (e) => {
         if (!href && [keyCodes.enter].includes(e.keyCode)) {
           e.preventDefault();
           !tabKey && setTabChanged(tabId);
+          if (menuTab) {
+            handleSiblingSelectedClass();
+          }
           onClick && onClick(e);
         } else {
           onKeyDown && onKeyDown(e);
         }
       },
       onKeyUp: (e) => {
-        if ([keyCodes.tab].includes(e.keyCode)) {
-          scrollToMe(combinedRef);
-        }
-
         onKeyUp && onKeyUp(e);
       },
       role: "tab",

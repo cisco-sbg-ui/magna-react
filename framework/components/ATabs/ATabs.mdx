@@ -1,7 +1,7 @@
 ---
 name: Tabs
 route: /components/tab
-components: ATabGroup, ATab, ATabHeading
+components: ATabGroup, ATab
 ---
 
 # Tabs
@@ -11,19 +11,38 @@ components: ATabGroup, ATab, ATabHeading
 Integrate with your build to [auto-import](/#integrating), or add an import in your component:
 
 ```
-import {ATabGroup, ATab, ATabHeading} from "@cisco-sbg-ui/magna-react";
+import {ATabGroup, ATab} from "@cisco-sbg-ui/magna-react";
 ```
 
 ## Usage
 
+#### \*\*\*\*Note regarding Primary v. Secondary - There is no use case for Primary currently so we are setting Secondary to true.
+
+#### If you need primary immedaitely, set secondary to false and please reach out to magna team so we can coordinate with UX on the path forward to implimenting primary as default.
+
+#### \*\*\*\*
+
 ### Uncontrolled Mode
 
 <Playground
-  code={`<ATabGroup>
+  code={`<>
+  <div>
+  <h4>Primary</h4>
+  <ATabGroup secondary={false}>
   <ATab>One</ATab>
-  <ATab>Two</ATab>
+  <ATab>Two <ATag small>New</ATag></ATab>
   <ATab selected>Three</ATab>
 </ATabGroup>
+</div>
+<div className="mt-5">
+<h4>Secondary</h4>
+<ATabGroup secondary>
+  <ATab>One</ATab>
+  <ATab>Two <ATag small>2</ATag> </ATab>
+  <ATab selected>Three</ATab>
+</ATabGroup>
+</div>
+</>
 `}
 />
 
@@ -32,7 +51,7 @@ import {ATabGroup, ATab, ATabHeading} from "@cisco-sbg-ui/magna-react";
 <Playground
   code={`() => {
   // Add a comment
-  const tabs = ["One", "Two", "Three"];
+  const tabs = ["One", "Two", "Three", "Four", "Five", "Six", "Seven"];
   const [activeTab, setActiveTab] = useState(tabs[2]);
   return (
     <ATabGroup>
@@ -62,23 +81,11 @@ import {ATabGroup, ATab, ATabHeading} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-## Tab Group Props
-
-The `ATabGroup` component inherits passed props.
-
-<Props of="ATabGroup" />
-
-## Tab Props
-
-The `ATab` component inherits passed props.
-
-<Props of="ATab" />
-
-## Scrolling
+## Menu overflow
 
 <Playground
   code={`<>
-  <ATabGroup scrolling className="mb-6">
+  <ATabGroup className="mb-6">
     <ATab>One</ATab>
     <ATab>Two</ATab>
     <ATab>Three</ATab>
@@ -91,9 +98,12 @@ The `ATab` component inherits passed props.
     <ATab>Ten</ATab>
     <ATab>Eleven</ATab>
     <ATab>Twelve</ATab>
+    <ATab href="https://www.cisco.com" target="_blank">
+    Cisco.com
+  </ATab>
   </ATabGroup>
-  <p>If tabs do not exceed the container width, scrolling buttons will not show.</p>
-  <ATabGroup scrolling>
+  <p>If tabs do not exceed the container width, menu will not show.</p>
+  <ATabGroup>
     <ATab selected>One</ATab>
     <ATab>Two</ATab>
     <ATab>Three</ATab>
@@ -107,7 +117,7 @@ The `ATab` component inherits passed props.
 Tabs will render in the DOM as anchor tags if the `href` property is defined.
 
 <Playground
-  code={`<ATabGroup tall>
+  code={`<ATabGroup>
   <ATab selected>One</ATab>
   <ATab href="https://www.github.com">GitHub</ATab>
   <ATab href="https://www.cisco.com" target="_blank">
@@ -117,88 +127,17 @@ Tabs will render in the DOM as anchor tags if the `href` property is defined.
 `}
 />
 
-## Display Variants
+## Tab Group Props
 
-### Tall
+The `ATabGroup` component inherits passed props.
 
-<Playground
-  code={`<ATabGroup tall>
-  <ATab>One</ATab>
-  <ATab selected>Two</ATab>
-  <ATab>Three</ATab>
-</ATabGroup>
-`}
-/>
+<Props of="ATabGroup" />
 
-### Oversized
+## Tab Props
 
-<Playground
-  code={`<>
-  <ATabGroup oversized>
-    <ATab>
-      <ATabHeading>Heading One</ATabHeading>
-      Subtext One
-    </ATab>
-    <ATab>
-      <ATabHeading>Heading Two</ATabHeading>
-      Subtext Two
-    </ATab>
-    <ATab selected>
-      <ATabHeading>Heading Three</ATabHeading>
-      Subtext Three
-    </ATab>
-  </ATabGroup>
-  <ATabGroup oversized scrolling>
-    <ATab>
-      <ATabHeading>Heading One</ATabHeading>
-      Subtext One
-    </ATab>
-    <ATab>
-      <ATabHeading>Heading Two</ATabHeading>
-      Subtext Two
-    </ATab>
-    <ATab selected>
-      <ATabHeading>Heading Three</ATabHeading>
-      Subtext Three
-    </ATab>
-    <ATab>
-      <ATabHeading>Heading Four</ATabHeading>
-      Subtext Four
-    </ATab>
-    <ATab>
-      <ATabHeading>Heading Five</ATabHeading>
-      Subtext Five
-    </ATab>
-    <ATab>
-      <ATabHeading>Heading Six</ATabHeading>
-      Subtext Six
-    </ATab>
-  </ATabGroup>
-</>
-`}
-/>
+The `ATab` component inherits passed props.
 
-### Oversized Vertical
-
-<Playground
-  code={`<>
-  <ATabGroup oversized vertical>
-    <ATab>
-      <ATabHeading>Heading One</ATabHeading>
-      Subtext One
-    </ATab>
-    <ATab>
-      <ATabHeading>Heading Two</ATabHeading>
-      Subtext Two
-    </ATab>
-    <ATab selected>
-      <ATabHeading>Heading Three</ATabHeading>
-      Subtext Three
-    </ATab>
-  </ATabGroup>
-</>
-`}
-/>
+<Props of="ATab" />
 
 ## Router Integrations
 

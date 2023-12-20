@@ -6,9 +6,11 @@
   border-color: map-deep-get($theme, "control", "stroke-color");
 
   &--hoverable .a-list-item:not(.a-list-item--two-line) {
-    &:hover {
-      color: map-deep-get($theme, "base", "color");
-      background-color: map-deep-get($theme, "menu", "color--hover");
+    &:hover,
+    a:hover,
+    a.a-list-item:hover {
+      color: map-deep-get($theme, "base", "color") !important;
+      background-color: map-deep-get($theme, "menu", "color--hover") !important;
     }
   }
 
@@ -26,6 +28,12 @@
     color: map-deep-get($theme, "base", "color");
     background: map-deep-get($theme, "control", "row-effect-image"),
       map-deep-get($theme, "menu", "color--selected");
+
+    a:hover,
+    a.a-list-item:hover {
+      background: map-deep-get($theme, "control", "row-effect-image"),
+        map-deep-get($theme, "menu", "color--selected") !important;
+    }
   }
 
   &-item--disabled:not(.a-list-item--two-line) {
@@ -33,8 +41,10 @@
     background: none;
   }
 
-  a.a-list-item--two-line {
-    color: currentColor;
+  a.a-list-item,
+  a:not(.a-tab-group__tab) {
+    color: map-deep-get($theme, "base", "color") !important;
+    font-weight: unset;
   }
 }
 
@@ -44,6 +54,10 @@
   border-radius: $border-radius--sm;
   display: flex;
   flex-direction: column;
+
+  &--hoverable > a {
+    font-weight: unset;
+  }
 
   &-item {
     align-items: center;
@@ -56,6 +70,12 @@
     font-size: $font-size--md;
     text-overflow: ellipsis;
     white-space: nowrap;
+
+    //Target sibling or child
+    + a,
+    a {
+      font-weight: unset !important;
+    }
 
     &--two-line {
       padding: 0;
@@ -74,6 +94,7 @@
   .a-list-item:hover,
   .a-list-item:focus {
     text-decoration: none;
+    border-radius: 0;
   }
 
   &-item__content {

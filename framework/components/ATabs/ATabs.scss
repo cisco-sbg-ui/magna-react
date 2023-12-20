@@ -2,25 +2,25 @@
 
 $tabs-padding: 0;
 $tabs-margin: 8px 0 0;
-$tab-font-size: $font-size--md;
+$tab-font-size: $font-size--lg;
+$tab-font-size-secondary: $font-size--md;
 $tab-bottom-bar-height: -4px;
 $tab-top-bar-height: 4px;
 $tab-padding-bottom: 12px;
-$tab-margin: 0 12px;
-$tab-padding: 4px 0; // doesn't match magnetic (overall height 41px, but magnetic doesn't align to the multiple of 4px pattern here either
+$tab-margin: 32px;
+$tab-margin-secondary: 24px;
+$tab-padding: 4px 0 8px 0; //doesn't match magnetic (overall height 41px, but magnetic doesn't align to the multiple of 4px pattern here either //Update - Added padding on the bottom to try to match height of the bar
 $tab-heading-margin: 0;
-$tab-heading-font-size: $font-size--lg;
-$tab-tall-padding: 0 16px 20px 16px;
-$tab-tall-margin: 0;
-$tab-oversized-height: 110px;
-$tab-oversized--selected-background-color: transparent;
-$tab-oversized-padding: 11px 15px 50px 15px;
-$tab-oversized-margin: 0;
 
 @include theme(a-tab-group) using ($theme) {
+  //Remove link style from tabs
+  a {
+    background: unset !important;
+    border-radius: unset !important;
+  }
+
   &__tab {
     color: map-deep-get($theme, "tabs", "text-color");
-    font-weight: 600;
     &:active,
     &:focus,
     &:hover {
@@ -32,128 +32,88 @@ $tab-oversized-margin: 0;
       );
     }
 
+    &--secondary {
+      color: map-deep-get($theme, "tabs", "text-color-secondary");
+      &:active,
+      &:focus,
+      &:hover {
+        color: map-deep-get($theme, "tabs", "text-color-secondary--selected");
+
+        @include tab-bar(
+          $tab-bottom-bar-height,
+          map-deep-get($theme, "tabs", "bar-color-secondary--hover")
+        );
+      }
+    }
+
     &--vertical:active,
     &--vertical:focus,
     &--vertical:hover {
+      color: map-deep-get($theme, "tabs", "text-color-secondary--selected");
       @include vertical-tab-bar(
         $tab-bottom-bar-height,
-        map-deep-get($theme, "tabs", "bar-color--hover")
+        map-deep-get($theme, "tabs", "bar-color-secondary--hover")
       );
     }
 
     &--selected {
-      font-weight: 700;
-      color: map-deep-get($theme, "tabs", "text-color--selected");
-      @include tab-bar(
-        $tab-bottom-bar-height,
-        map-deep-get($theme, "tabs", "bar-color--selected")
-      );
-
-      &:active,
-      &:focus,
-      &:hover {
+      //Primary
+      &:not(.a-tab-group__tab--secondary) {
         color: map-deep-get($theme, "tabs", "text-color--selected");
         @include tab-bar(
           $tab-bottom-bar-height,
           map-deep-get($theme, "tabs", "bar-color--selected")
         );
+        &:active,
+        &:focus,
+        &:hover {
+          color: map-deep-get($theme, "tabs", "text-color--selected");
+          @include tab-bar(
+            $tab-bottom-bar-height,
+            map-deep-get($theme, "tabs", "bar-color--selected")
+          );
+        }
+      }
+
+      //Secondary
+      &.a-tab-group__tab--secondary {
+        color: map-deep-get($theme, "tabs", "text-color-secondary--selected");
+        @include tab-bar(
+          $tab-bottom-bar-height,
+          map-deep-get($theme, "tabs", "bar-color-secondary--selected")
+        );
+
+        &:active,
+        &:focus,
+        &:hover {
+          color: map-deep-get($theme, "tabs", "text-color-secondary--selected");
+
+          @include tab-bar(
+            $tab-bottom-bar-height,
+            map-deep-get($theme, "tabs", "bar-color-secondary--selected")
+          );
+        }
       }
 
       &--vertical {
+        color: map-deep-get($theme, "tabs", "text-color-secondary--selected");
         @include vertical-tab-bar(
           $tab-bottom-bar-height,
-          map-deep-get($theme, "tabs", "bar-color--selected")
+          map-deep-get($theme, "tabs", "bar-color-secondary--selected")
+            !important
         );
       }
-
-      &--vertical:active,
-      &--vertical:focus,
-      &--vertical:hover {
-        color: map-deep-get($theme, "tabs", "text-color--selected");
-        @include vertical-tab-bar(
-          $tab-bottom-bar-height,
-          map-deep-get($theme, "tabs", "bar-color--selected")
-        );
-      }
-    }
-
-    &:focus {
-      @include tab-bar($tab-bottom-bar-height, inherit);
-    }
-
-    &--vertical:focus {
-      @include vertical-tab-bar($tab-bottom-bar-height, inherit);
     }
   }
 
-  &--size-oversized {
-    .a-tab-group__tab {
-      border-top: $border-width solid
-        map-deep-get($theme, "control", "stroke-color");
-      border-bottom: $border-width solid
-        map-deep-get($theme, "control", "stroke-color");
-      border-left: $border-width solid
-        map-deep-get($theme, "control", "stroke-color");
-      background-color: map-deep-get(
-        $theme,
-        "tabs",
-        "oversized-background-color"
-      );
-
-      &--vertical:not(:last-of-type) {
-        border-bottom: unset;
-      }
-
-      &:not(&--vertical):last-of-type {
-        border-right: $border-width solid
-          map-deep-get($theme, "control", "stroke-color");
-      }
-
-      &--selected:not(&--vertical) {
-        background-color: $tab-oversized--selected-background-color;
-        border-top: $border-width solid transparent;
-        border-bottom: $border-width solid transparent;
-        @include tab-bar(
-          $tab-top-bar-height,
-          map-deep-get($theme, "tabs", "bar-color--selected")
-        );
-      }
-
-      &--selected--vertical {
-        background-color: $tab-oversized--selected-background-color;
-        @include vertical-tab-bar(
-          $tab-top-bar-height,
-          map-deep-get($theme, "tabs", "bar-color--selected")
-        );
-      }
-
-      &:not(&--vertical):focus,
-      &:not(&--vertical):hover {
-        border-top: $border-width solid transparent;
-        @include tab-bar(
-          $tab-top-bar-height,
-          map-deep-get($theme, "tabs", "bar-color--hover")
-        );
-        background-color: map-deep-get(
-          $theme,
-          "tabs",
-          "oversized--hover-background-color"
-        );
-      }
-
-      &--vertical:focus,
-      &--vertical:hover {
-        @include vertical-tab-bar(
-          $tab-top-bar-height,
-          map-deep-get($theme, "tabs", "bar-color--hover")
-        );
-        background-color: map-deep-get(
-          $theme,
-          "tabs",
-          "oversized--hover-background-color"
-        );
-      }
-    }
+  &:has(.a-tab-group__tab--secondary :not(.a-tab-group__tab--vertical)) {
+    border-bottom-color: transparent;
+    //TODO mark back in when UX decides on primary vs secondary
+    // border-bottom-color: map-deep-get(
+    //   $theme,
+    //   "tabs",
+    //   "border-bottom-secondary"
+    // );
   }
 }
 
@@ -165,29 +125,16 @@ $tab-oversized-margin: 0;
   display: flex;
   align-items: center;
 
+  &:not(&--vertical) {
+    width: 100%;
+  }
+
   &__tab-wrapper {
     display: flex;
   }
 
-  &--scrolling {
-    .a-tab-group__tab-wrapper {
-      white-space: nowrap;
-      overflow: hidden;
-      padding: 1px 1px;
-      display: flex;
-      flex-wrap: nowrap;
-    }
-
-    .a-tab-group__tab {
-      flex-shrink: 0;
-    }
-  }
-
-  &__tab-content {
-    display: flex;
-  }
-
   &__tab-content--vertical {
+    display: flex;
     flex-direction: column;
     box-shadow: inset -1px 0 map-get($mds-neutral, "neutral-4");
   }
@@ -198,24 +145,46 @@ $tab-oversized-margin: 0;
   }
 
   &__tab {
+    font-weight: 600;
     display: inline-block;
-    margin: $tab-margin;
+    margin-right: $tab-margin;
     padding: $tab-padding;
     border: none;
     text-align: center;
     user-select: none;
     font-size: $tab-font-size;
     background-color: transparent;
+    line-height: 25px;
     cursor: pointer;
+    //If has tag, provide some margin
+    .a-tag {
+      margin: 0 4px 2px 4px;
+    }
+
+    &.hide {
+      display: none !important;
+    }
+    svg {
+      vertical-align: middle;
+      width: 12px;
+      margin: 0 0 2px 3px;
+    }
 
     &:active {
       outline: none;
+    }
+
+    &--secondary {
+      margin-right: $tab-margin-secondary;
+      font-size: $tab-font-size-secondary;
     }
 
     &--vertical {
       min-width: 150px;
       margin: 0 0 8px;
       padding-top: $tab-padding-bottom;
+      height: unset;
+      line-height: unset;
       &:last-of-type {
         margin-bottom: 0;
       }
@@ -237,33 +206,25 @@ $tab-oversized-margin: 0;
     }
   }
 
-  &--size-tall {
-    .a-tab-group__tab {
-      padding: $tab-tall-padding;
-      margin: $tab-tall-margin;
-    }
-  }
-
-  &--size-oversized {
-    display: flex;
-
-    .a-tab-group__tab {
-      text-align: left;
-      height: $tab-oversized-height;
-      margin: $tab-oversized-margin;
-      padding: $tab-oversized-padding;
-    }
-  }
-
-  &__tab-heading {
-    margin: $tab-heading-margin;
-    font-size: $tab-heading-font-size;
-    display: block;
+  &:has(.a-tab-group__tab--secondary :not(.a-tab-group__tab--vertical)) {
+    border-bottom: 1px solid;
   }
 }
 
 .a-app--animated .a-tab-group {
   &__tab-content {
     transition: transform $transition-duration--fast ease;
+  }
+}
+
+//If tab with tag moves to list item, carry over margin
+.tab-overflow-menu {
+  .a-list-item {
+    .a-tag {
+      margin: 0 4px;
+    }
+    a {
+      width: 100%;
+    }
   }
 }
