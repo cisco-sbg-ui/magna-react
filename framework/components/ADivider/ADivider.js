@@ -4,11 +4,24 @@ import React, {forwardRef} from "react";
 import "./ADivider.scss";
 
 const ADivider = forwardRef(
-  ({className: propsClassName, light, role = "separator", ...rest}, ref) => {
+  (
+    {
+      className: propsClassName,
+      light = false,
+      strong = false,
+      role = "separator",
+      ...rest
+    },
+    ref
+  ) => {
     let className = "a-divider";
 
     if (light) {
-      className += " a-divider--color-light";
+      className += " a-divider--light";
+    }
+
+    if (strong) {
+      className += " a-divider--strong";
     }
 
     if (propsClassName) {
@@ -25,9 +38,13 @@ ADivider.defaultProps = {
 
 ADivider.propTypes = {
   /**
-   * Toggles the light variant.
+   * Toggles the light variant (1px vs 2px).
    */
   light: PropTypes.bool,
+  /**
+   * Toggles the strong variant.
+   */
+  strong: PropTypes.bool,
   /**
    * Sets the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role.
    */
