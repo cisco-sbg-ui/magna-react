@@ -42,7 +42,7 @@
   }
 
   a.a-list-item,
-  a:not(.a-tab-group__tab) {
+  &a:not(.a-tab-group__tab) {
     color: map-deep-get($theme, "base", "color") !important;
     font-weight: unset;
   }
