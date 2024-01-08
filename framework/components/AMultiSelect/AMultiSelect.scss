@@ -65,7 +65,14 @@
   }
 
   &__menu-items {
+    max-height: 400px;
+    overflow: hidden;
     padding: 0;
+
+    &__wrapper {
+      overflow-y: auto;
+    }
+
     .a-checkbox {
       width: 100%;
     }
