@@ -266,7 +266,7 @@ ADataTable.propTypes = {
    * the associated row item as the first argument, and the native event
    * object as the second.
    */
-  onRowMouseLEave: PropTypes.func,
+  onRowMouseLeave: PropTypes.func,
   /**
    * Called when the user reaches the bottom of the data table for the first time.
    */
