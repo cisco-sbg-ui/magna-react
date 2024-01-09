@@ -278,7 +278,7 @@ const AMultiSelect = forwardRef(
           ".a-multiselect__menu-items__wrapper .a-list-item[tabindex]"
         );
         menuItems && menuItems[menuItems.length - 1]?.focus();
-      } else if (e.keyCode === keyCodes.down) {
+      } else if (e.keyCode === keyCodes.down || e.keyCode === keyCodes.enter) {
         e.preventDefault();
         setIsOpen(filteredItems.length || noDataContent);
         menuRef.current
@@ -444,24 +444,15 @@ const AMultiSelect = forwardRef(
       );
     });
 
-    const InputTypeStyle = () => (
-      <div
-        className={withTags ? tagsClass : ""}
-        onClick={(e) => {
-          e.stopPropagation();
-          setIsOpen(true);
-        }}
-        tabIndex={0}
-        onKeyDown={onKeyDown}
-        role="button"
-      >
-        {withTags ? tags : counter}
-      </div>
+    const inputStyleType = withTags ? (
+      <div className={tagsClass}>{tags}</div>
+    ) : (
+      counter
     );
 
     return (
       <AInputBase {...inputBaseProps}>
-        <InputTypeStyle />
+        {inputStyleType}
         <input {...inputProps} />
         <AMenu ref={menuRef} {...menuComponentProps}>
           {prependContent}
