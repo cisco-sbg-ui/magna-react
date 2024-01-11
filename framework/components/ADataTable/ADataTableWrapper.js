@@ -1,3 +1,5 @@
+import React from "react";
+
 /**
  * Used inside ADataTable to enable proper styling
  * for infinite scrolling
