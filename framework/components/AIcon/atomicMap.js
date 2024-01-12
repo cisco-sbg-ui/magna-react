@@ -27,6 +27,7 @@ export const iconNameMap = {
   back: "arrow-bend-up-left",
   "bandwidth-quota": "arrows-down-up",
   bell: "bell",
+  "bell-slash": "bell-slash",
   "bidirectional-tunnel": "arrows-left-right",
   block: "prohibit",
   blocked: "prohibit-inset",
