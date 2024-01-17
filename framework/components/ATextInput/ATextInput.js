@@ -451,7 +451,8 @@ const {anchorRef, ...infoTooltipProps} = ATooltipPropTypes;
 
 ATextInput.propTypes = {
   /**
-   * Append elements inside the text input
+   * Append elements inside the text input. This allows for custom buttons or other
+   * DOM elements to be used instead of an icon or icon+button.
    */
   append: PropTypes.node,
   /**
@@ -547,7 +548,8 @@ ATextInput.propTypes = {
    */
   placeholder: PropTypes.string,
   /**
-   * Append elements inside the text input
+   * Append elements inside the text input. This allows for custom buttons or other
+   * DOM elements to be used instead of an icon or icon+button.
    */
   prepend: PropTypes.node,
   /**
