@@ -1,3 +1,4 @@
+import AButton from "../AButton";
 import ATextInput from "./ATextInput";
 
 const commonProps = {
@@ -138,6 +139,41 @@ describe("<ATextInput />", () => {
       cy.get(".a-text-input__input").type("clearable text");
 
       cy.get(".a-input-base__clear").should("not.exist");
+    });
+  });
+
+  describe("when rendered with an append icon", () => {
+    let mockFn;
+    let appendProps;
+
+    beforeEach(() => {
+      mockFn = cy.stub();
+      appendProps = {
+        appendIcon: "star",
+        onClickAppend: mockFn
+      };
+    });
+  });
+
+  describe("when rendered with append content", () => {
+    let mockFn;
+
+    beforeEach(() => {
+      mockFn = cy.stub();
+    });
+
+    it("should handle clicks to the button", () => {
+      cy.mount(
+        <ATextInput
+          {...commonProps}
+          append={<AButton onClick={mockFn}>Show</AButton>}
+        />
+      );
+      cy.get(".a-button")
+        .click()
+        .then(() => {
+          expect(mockFn.callCount).to.eq(1);
+        });
     });
   });
 

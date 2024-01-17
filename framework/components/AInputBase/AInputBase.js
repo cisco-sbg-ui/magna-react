@@ -34,12 +34,19 @@ const AInputBase = forwardRef(
     },
     ref
   ) => {
+    const showPrepend =
+        (Array.isArray(prepend) && prepend.length) ||
+        (!Array.isArray(prepend) && prepend),
+      showAppend =
+        (Array.isArray(append) && append.length) ||
+        (!Array.isArray(append) && append);
+
     let className = "a-input-base";
-    if (prepend) {
+    if (showPrepend) {
       className += " a-input-base--prepend";
     }
 
-    if (append) {
+    if (showAppend) {
       className += " a-input-base--append";
     }
 
@@ -89,9 +96,11 @@ const AInputBase = forwardRef(
         validationState={validationState}
       >
         <div ref={surfaceRef} className="a-input-base__surface">
-          {prepend && <div className="a-input-base__prepend">{prepend}</div>}
+          {showPrepend && (
+            <div className="a-input-base__prepend">{prepend}</div>
+          )}
           <div className="a-input-base__control">{children}</div>
-          {(append || clearable) && (
+          {(showAppend || clearable) && (
             <div className="a-input-base__append">
               {clearable && !readOnly && (
                 <AButton

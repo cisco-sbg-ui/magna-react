@@ -29,6 +29,7 @@ function isNonEmptyString(maybeString) {
 const ATextInput = forwardRef(
   (
     {
+      append: propsAppend,
       appendIcon,
       autoComplete,
       autoFocus,
@@ -52,6 +53,7 @@ const ATextInput = forwardRef(
       onKeyUp,
       onPaste,
       placeholder,
+      prepend: propsPrepend,
       prependIcon,
       readOnly,
       required,
@@ -159,7 +161,8 @@ const ATextInput = forwardRef(
       appendProps.role = "button";
     }
 
-    let appendContent = [];
+    let prependContent = [],
+      appendContent = [];
 
     const isNumberType = type === "number";
 
@@ -276,6 +279,18 @@ const ATextInput = forwardRef(
       appendContent.push(<AIcon {...appendProps}>{appendIcon}</AIcon>);
     }
 
+    if (propsAppend) {
+      appendContent.push(propsAppend);
+    }
+
+    if (propsPrepend) {
+      prependContent.push(propsPrepend);
+    }
+
+    if (prependIcon) {
+      prependContent.push(<AIcon {...prependProps}>{prependIcon}</AIcon>);
+    }
+
     const ruleKeys = rules ? rules.map((r) => r.key).filter((k) => !!k) : [];
 
     const validate = (testValue = nativeInputValue) => {
@@ -366,7 +381,7 @@ const ATextInput = forwardRef(
       disabled,
       focused: isFocused,
       append: appendContent,
-      prepend: prependIcon && <AIcon {...prependProps}>{prependIcon}</AIcon>,
+      prepend: prependContent,
       readOnly,
       validationState: workingValidationState,
       onClear: () => {
@@ -435,6 +450,11 @@ const ATextInput = forwardRef(
 const {anchorRef, ...infoTooltipProps} = ATooltipPropTypes;
 
 ATextInput.propTypes = {
+  /**
+   * Append elements inside the text input. This allows for custom buttons or other
+   * DOM elements to be used instead of an icon or icon+button.
+   */
+  append: PropTypes.node,
   /**
    * Appends an icon inside the text input. The value should be an [icon name](/components/icon).
    */
@@ -527,6 +547,11 @@ ATextInput.propTypes = {
    * The input's `placeholder` attribute.
    */
   placeholder: PropTypes.string,
+  /**
+   * Append elements inside the text input. This allows for custom buttons or other
+   * DOM elements to be used instead of an icon or icon+button.
+   */
+  prepend: PropTypes.node,
   /**
    * Prepends an icon inside the text input. The value should be an [icon name](/components/icon).
    */

@@ -142,6 +142,13 @@ $input-transition: border-color $transition-duration--extra-fast
     grid-auto-flow: column;
   }
 
+  &__prepend,
+  &__append {
+    .a-button {
+      height: unset;
+    }
+  }
+
   &--disabled {
     .a-input-base__surface {
       @include disabled;

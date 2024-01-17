@@ -372,6 +372,32 @@ Override internal validation rules by specifying a `key` on the rule. Valid keys
 `}
 />
 
+## Extra Content
+
+Use `append` or `prepend` to add custom content, such as a button with text, to the input.
+
+<Playground
+  code={`
+  () => {
+  const [isShown, setIsShown] = useState(false);
+  const [value, setValue] = useState("");
+
+return <ATextInput
+label="Password"
+type={!isShown && "password"}
+append={<AButton
+tertiary
+autoComplete="off"
+style={{margin: "0 4px"}}
+onClick={() => {setIsShown(!isShown)}}>
+Show
+
+ </AButton>}
+onChange={(e) => {setValue(e.target.value)}}
+/>}`
+}
+/>
+
 ## Accessibility Notes
 
 The `ATextInput` `click` event handlers for prepended and appended icons are triggered both by the `click` event and by the `keyDown` event for both the `Enter` and `Space` keys.
