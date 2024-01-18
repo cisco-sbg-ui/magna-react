@@ -1,7 +1,6 @@
 import React, {forwardRef, useContext, useEffect} from "react";
 
 import AAccordionPanelContext from "./AAccordionPanelContext";
-import "./AAccordion.scss";
 
 const AAccordionBody = forwardRef(
   ({children, className: propsClassName, ...rest}, ref) => {

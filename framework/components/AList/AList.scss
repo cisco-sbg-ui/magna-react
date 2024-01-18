@@ -1,5 +1,3 @@
-@import "../../styles";
-
 @include theme(a-list) using ($theme) {
   color: map-deep-get($theme, "base", "color");
   background: map-deep-get($theme, "base", "bg");

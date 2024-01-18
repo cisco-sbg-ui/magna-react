@@ -1,5 +1,4 @@
 import React from "react";
-import "./APageTitleContent.scss";
 
 const APageTitleContent = ({
   className: propsClassName,

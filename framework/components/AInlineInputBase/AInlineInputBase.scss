@@ -1,5 +1,3 @@
-@import "../../styles";
-
 @include theme(a-inline-input) using ($theme) {
   color: map-deep-get($theme, "base", "color") !important;
   .a-icon--pencil-simple {

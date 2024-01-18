@@ -3,7 +3,6 @@ import React, {forwardRef} from "react";
 
 import AButton from "../AButton";
 import AIcon from "../AIcon";
-import "./ATree.scss";
 
 const ATree = forwardRef(
   (

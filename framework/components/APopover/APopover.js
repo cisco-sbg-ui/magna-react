@@ -5,7 +5,6 @@ import {keyCodes} from "../../utils/helpers";
 import {useCombinedRefs} from "../../utils/hooks";
 import AMenuBase from "../AMenuBase";
 import {APanel} from "../APanel";
-import "./APopover.scss";
 
 const APopover = forwardRef(
   (

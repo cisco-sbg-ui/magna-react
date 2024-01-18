@@ -1,8 +1,6 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
-import "./ASkeleton.scss";
-
 const ASkeletonBlock = forwardRef(
   ({className: propsClassName, height, style: propsStyle, ...rest}, ref) => {
     let className = `a-skeleton__block`,

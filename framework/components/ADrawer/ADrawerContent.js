@@ -1,7 +1,5 @@
 import React, {forwardRef} from "react";
 
-import "./ADrawerContent.scss";
-
 const ADrawerContent = forwardRef(
   ({children, className: propsClassName, ...rest}, ref) => {
     let className = "a-drawer__content";

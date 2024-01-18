@@ -19,7 +19,6 @@ import {keyCodes, localeIncludes, handleBoldText} from "../../utils/helpers";
 import useMenuSpacing from "../AMenuBase/hooks";
 import useOutsideClick from "../../hooks/useOutsideClick/useOutsideClick";
 import usePopupQuickExit from "../../hooks/usePopupQuickExit/usePopupQuickExit";
-import "./AMultiSelect.scss";
 import AMultiSelectTag from "./AMultiSelectTag";
 import AMultiSelectCounter from "./AMultiSelectCounter";
 

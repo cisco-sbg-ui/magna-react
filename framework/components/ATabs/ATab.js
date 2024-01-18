@@ -10,7 +10,6 @@ import React, {
 import ATabContext from "./ATabContext";
 import {keyCodes} from "../../utils/helpers";
 import {useCombinedRefs} from "../../utils/hooks";
-import "./ATabs.scss";
 
 let tabCounter = 1;
 

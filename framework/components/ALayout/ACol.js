@@ -1,8 +1,6 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
-import "./ALayout.scss";
-
 const ACol = forwardRef(
   ({className: propsClassName, cols, xs, sm, md, lg, xl, ...rest}, ref) => {
     let className = "a-col";

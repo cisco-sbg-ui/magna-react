@@ -1,7 +1,5 @@
 import React, {forwardRef} from "react";
 
-import "./AFooter.scss";
-
 const AFooterLegal = forwardRef(
   ({children, className: propsClassName, ...rest}, ref) => {
     let className = "a-footer__legal";

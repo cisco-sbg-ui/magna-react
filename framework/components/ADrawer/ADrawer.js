@@ -5,7 +5,6 @@ import AModal from "../AModal/AModal";
 import AButton from "../AButton/AButton";
 import AIcon from "../AIcon/AIcon";
 
-import "./ADrawer.scss";
 import {useDelayUnmount} from "../../utils/hooks";
 
 const ADrawer = forwardRef(

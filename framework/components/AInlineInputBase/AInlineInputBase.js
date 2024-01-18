@@ -6,7 +6,6 @@ import AIcon from "../AIcon";
 import ATextInput from "../ATextInput";
 import ATextarea from "../ATextarea";
 import ATriggerTooltip from "../ATriggerTooltip";
-import "./AInlineInputBase.scss";
 
 const baseClass = "a-inline-input";
 

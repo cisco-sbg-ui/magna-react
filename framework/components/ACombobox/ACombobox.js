@@ -16,7 +16,6 @@ import AEmptyState from "../AEmptyState";
 import {useCombinedRefs} from "../../utils/hooks";
 import {keyCodes} from "../../utils/helpers";
 import useMenuSpacing from "../AMenuBase/hooks";
-import "./ACombobox.scss";
 
 let comboboxCounter = 0;
 

@@ -1,5 +1,14 @@
 @use "sass:math";
 
+// NEEDED TO RE-DECLARE - THEY ARE MISSING !
+$base-color: black;
+$base-color--selected: black;
+$base-brand-color: black;
+$base-inverse-color: white;
+$base-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.4);
+$base-border-radius: 4px;
+$base-color--hover: black;
+
 $font-family: "Inter var", CiscoSans, Arial, sans-serif !default;
 $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
   "Liberation Mono", "Courier New", monospace !default;

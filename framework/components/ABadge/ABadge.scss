@@ -1,5 +1,3 @@
-@import "../../styles";
-
 @include theme(a-badge) using ($theme) {
   &__badge {
     border-color: map-deep-get($theme, "badge", "border-color");

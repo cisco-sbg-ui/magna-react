@@ -3,7 +3,6 @@ import React, {forwardRef} from "react";
 
 import AIcon from "../AIcon";
 import {keyCodes} from "../../utils/helpers";
-import "./AToast.scss";
 
 const AToast = forwardRef(
   (

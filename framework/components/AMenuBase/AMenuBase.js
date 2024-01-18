@@ -11,7 +11,6 @@ import PropTypes from "prop-types";
 import AAppContext from "../AApp/AAppContext";
 import {useCombinedRefs} from "../../utils/hooks";
 import {getRoundedBoundedClientRect} from "../../utils/helpers";
-import "./AMenuBase.scss";
 
 const calculateMenuPosition = (
   combinedRef,

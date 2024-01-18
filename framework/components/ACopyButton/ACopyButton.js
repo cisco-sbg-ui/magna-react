@@ -6,8 +6,6 @@ import AIcon from "../AIcon/AIcon";
 import ATriggerTooltip from "../ATriggerTooltip/ATriggerTooltip";
 import {copyToClipboard} from "../../utils/helpers";
 
-import "./ACopyButton.scss";
-
 const ACopyButton = forwardRef(
   (
     {

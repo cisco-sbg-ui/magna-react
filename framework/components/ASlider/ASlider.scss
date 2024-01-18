@@ -1,5 +1,3 @@
-@import "../../styles";
-
 @include theme(a-slider) using ($theme) {
   &__track {
     &--low,

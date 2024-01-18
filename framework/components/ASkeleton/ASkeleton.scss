@@ -1,5 +1,3 @@
-@import "../../styles";
-
 @include theme("a-skeleton") using ($theme) {
   &__header {
     background-color: map-deep-get($theme, "skeleton", "header-bg");

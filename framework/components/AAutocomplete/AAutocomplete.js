@@ -15,7 +15,6 @@ import AMenu from "../AMenu";
 import {AListItem} from "../AList";
 import {useCombinedRefs} from "../../utils/hooks";
 import {keyCodes, handleBoldText} from "../../utils/helpers";
-import "./AAutocomplete.scss";
 
 let autocompleteCounter = 0;
 

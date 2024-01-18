@@ -14,7 +14,6 @@ import AFieldBase from "../AFieldBase";
 
 import {useCombinedRefs} from "../../utils/hooks";
 import {getRoundedBoundedClientRect, keyCodes} from "../../utils/helpers";
-import "./ASlider.scss";
 
 const floatSafeRemainder = (val, step) => {
   var valDecCount = (val.toString().split(".")[1] || "").length;

@@ -12,7 +12,6 @@ import PropTypes from "prop-types";
 import AAppContext from "../AApp/AAppContext";
 import {useCombinedRefs, useIsomorphicLayoutEffect} from "../../utils/hooks";
 import {keyCodes} from "../../utils/helpers";
-import "./ADialog.scss";
 
 const ADialog = forwardRef(
   (
@@ -101,7 +100,8 @@ const ADialog = forwardRef(
                 }
 
                 onMouseDown && onMouseDown(e);
-              }}>
+              }}
+            >
               {children}
             </div>
             {/* eslint-enable jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/no-noninteractive-tabindex */}

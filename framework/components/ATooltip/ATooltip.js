@@ -3,7 +3,6 @@ import React, {forwardRef, useRef} from "react";
 
 import AMenuBase from "../AMenuBase";
 import {useCombinedRefs} from "../../utils/hooks";
-import "./ATooltip.scss";
 
 const ATooltip = forwardRef(
   (

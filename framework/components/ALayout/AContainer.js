@@ -1,8 +1,6 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
-import "./ALayout.scss";
-
 const AContainer = forwardRef(
   ({className: propsClassName, fluid = false, ...rest}, ref) => {
     let className = "a-container";

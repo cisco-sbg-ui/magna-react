@@ -13,7 +13,6 @@ import {
   preventBodyScroll
 } from "../../utils/helpers";
 
-import "./AModal.scss";
 import {useDelayUnmount} from "../../utils/hooks";
 
 /**

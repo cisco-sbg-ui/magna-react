@@ -1,7 +1,5 @@
-import React, {forwardRef} from "react";
-
-import "./AListItemGroup.scss";
 import PropTypes from "prop-types";
+import React, {forwardRef} from "react";
 
 const AListItemGroup = forwardRef(
   ({children, title, className: propsClassName, ...rest}, ref) => {

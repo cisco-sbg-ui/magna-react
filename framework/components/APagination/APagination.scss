@@ -1,5 +1,3 @@
-@import "../../styles";
-
 @include theme(a-pagination) using ($theme) {
   .a-button-group {
     .a-button {

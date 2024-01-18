@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import React, {forwardRef, useMemo, useRef, useCallback, useState} from "react";
 
 import ASimpleTable from "../ASimpleTable";
-import "./ADataTable.scss";
 import {useCombinedRefs} from "../../utils/hooks";
 import ADataTableWrapper from "./ADataTableWrapper";
 import ADataTableHeader from "./ADataTableHeader";

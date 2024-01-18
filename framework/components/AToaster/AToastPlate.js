@@ -1,7 +1,6 @@
 import React, {useContext} from "react";
 
 import AAppContext from "../AApp/AAppContext";
-import "./AToaster.scss";
 
 const AToastPlate = () => {
   const {toasts} = useContext(AAppContext);

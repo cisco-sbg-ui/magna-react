@@ -2,7 +2,6 @@ import React, {forwardRef, useContext, useEffect, useRef} from "react";
 import PausableTimeout from "../../utils/PausableTimeout";
 import AAppContext from "../AApp/AAppContext";
 import AToast from "../AToast";
-import "./AToaster.scss";
 
 let toastId = 1;
 

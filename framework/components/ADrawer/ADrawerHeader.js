@@ -2,7 +2,6 @@ import React, {forwardRef} from "react";
 import PropTypes from "prop-types";
 
 import ADivider from "../ADivider/ADivider";
-import "./ADrawerHeader.scss";
 
 /**
  * The area displayed at the top of the drawer.

@@ -3,8 +3,6 @@ import React, {forwardRef} from "react";
 
 import AIcon from "../AIcon";
 
-import "./AStepper.scss";
-
 const AStep = forwardRef(
   (
     {

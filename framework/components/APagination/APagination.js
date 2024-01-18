@@ -6,7 +6,6 @@ import AButton from "../AButton";
 import AButtonGroup from "../AButtonGroup";
 import ATextInput from "../ATextInput";
 import AIcon from "../AIcon";
-import "./APagination.scss";
 
 const ICON_SIZE = 10;
 

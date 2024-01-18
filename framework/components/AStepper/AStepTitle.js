@@ -1,8 +1,6 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
-import "./AStepper.scss";
-
 const AStepTitle = forwardRef(
   ({className: propsClassName = "", children, ...rest}, ref) => {
     const className = `a-step__label ${propsClassName}`.trim();

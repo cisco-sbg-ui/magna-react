@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import ASpinner from "../ASpinner";
 import AProgressbar from "../AProgressbar";
 
-import "./ALoader.scss";
-
 const baseClass = "a-generic-loader";
 
 export const INDICATORS = {

@@ -4,7 +4,6 @@ import React, {forwardRef, useContext, useEffect, useState} from "react";
 import AFieldBase from "../AFieldBase";
 import {AFormContext} from "../AForm";
 import AButtonGroupContext from "./AButtonGroupContext";
-import "./AButtonGroup.scss";
 
 let buttonGroupCounter = 0;
 

@@ -3,7 +3,6 @@ import React, {forwardRef} from "react";
 
 import {keyCodes} from "../../utils/helpers";
 import AIcon from "../AIcon";
-import "./AAlert.scss";
 
 const AAlert = forwardRef(
   (

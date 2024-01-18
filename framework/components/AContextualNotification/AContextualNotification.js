@@ -2,7 +2,6 @@ import React, {forwardRef} from "react";
 import PropTypes from "prop-types";
 
 import AIcon from "../AIcon";
-import "./AContextualNotification.scss";
 
 const baseClass = "a-context";
 

@@ -10,7 +10,6 @@ import {
   sortDates,
   rangeTupleValidator
 } from "./helpers";
-import "./ADatePicker.scss";
 
 const fullMonthNames = [
   "January",

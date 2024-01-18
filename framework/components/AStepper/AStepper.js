@@ -2,8 +2,6 @@ import PropTypes from "prop-types";
 import React, {forwardRef, useRef, useMemo} from "react";
 import {useResizeObserver} from "../../utils/hooks";
 
-import "./AStepper.scss";
-
 const AStepper = forwardRef(
   ({className: propsClassName = "", children, vertical, ...rest}, ref) => {
     const containerRef = useRef(null);

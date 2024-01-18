@@ -11,7 +11,6 @@ import AIcon from "../AIcon/AIcon";
 
 import {useCombinedRefs} from "../../utils/hooks";
 import {keyCodes} from "../../utils/helpers";
-import "./AList.scss";
 
 const AListItem = forwardRef(
   (

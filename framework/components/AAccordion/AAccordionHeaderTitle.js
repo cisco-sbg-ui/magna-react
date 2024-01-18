@@ -4,7 +4,6 @@ import React, {forwardRef, useContext} from "react";
 import AAccordionContext from "./AAccordionContext";
 import AAccordionPanelContext from "./AAccordionPanelContext";
 import {keyCodes} from "../../utils/helpers";
-import "./AAccordion.scss";
 
 import AIcon from "../AIcon";
 

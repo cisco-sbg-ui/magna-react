@@ -4,8 +4,6 @@ import React, {forwardRef, useContext} from "react";
 import AButtonGroupContext from "../AButtonGroup/AButtonGroupContext";
 import ASpinner from "../ASpinner";
 
-import "./AButton.scss";
-
 const AButton = forwardRef(
   (
     {

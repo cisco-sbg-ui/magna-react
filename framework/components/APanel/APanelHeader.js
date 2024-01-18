@@ -1,7 +1,5 @@
 import React, {forwardRef} from "react";
 
-import "./APanel.scss";
-
 const APanelHeader = forwardRef(
   ({children, className: propsClassName, ...rest}, ref) => {
     let className = "a-panel__header";

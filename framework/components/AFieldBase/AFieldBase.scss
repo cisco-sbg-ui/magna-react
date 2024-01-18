@@ -1,5 +1,3 @@
-@import "../../styles";
-
 @include theme(a-field-base) using ($theme) {
   &__label {
     color: map-deep-get($theme, "label", "color");

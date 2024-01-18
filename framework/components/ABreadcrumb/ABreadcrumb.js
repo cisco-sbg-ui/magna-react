@@ -2,8 +2,6 @@ import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 import AIcon from "../AIcon";
 
-import "./ABreadcrumb.scss";
-
 const ABreadcrumb = forwardRef(
   ({className: propsClassName, item, items = [], ...rest}, ref) => {
     let className = `a-breadcrumb`,

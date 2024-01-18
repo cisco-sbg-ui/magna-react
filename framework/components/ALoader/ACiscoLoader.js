@@ -1,8 +1,6 @@
 import React, {forwardRef} from "react";
 import PropTypes from "prop-types";
 
-import "./ACiscoLoader.scss";
-
 const baseClass = "a-cisco-loader";
 
 const ACiscoLoader = forwardRef(

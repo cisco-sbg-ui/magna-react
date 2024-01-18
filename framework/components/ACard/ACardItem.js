@@ -1,8 +1,6 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
-import "./ACard.scss";
-
 const ACardItem = forwardRef(
   (
     {children, className: propsClassName, stretched, attached, ...rest},

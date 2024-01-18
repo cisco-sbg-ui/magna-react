@@ -5,7 +5,6 @@ import {keyCodes} from "../../utils/helpers";
 import {useCombinedRefs} from "../../utils/hooks";
 import AMenuBase from "../AMenuBase";
 import {AList} from "../AList";
-import "./AMenu.scss";
 
 const AMenu = forwardRef(
   (
@@ -154,7 +153,8 @@ const AMenu = forwardRef(
         placement={placement}
         anchorRef={anchorRef}
         pointer={pointer}
-        tabIndex={-1}>
+        tabIndex={-1}
+      >
         {children}
       </AList>
     );

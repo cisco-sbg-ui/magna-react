@@ -1,5 +1,3 @@
-@import "../../styles/index.scss";
-
 @include theme(a-steps-container) using ($theme) {
   //Typical usage will be in modal, but fallback to same color as panel for icon and container backgrounds.
   background-color: map-deep-get($theme, "panel", "bg");

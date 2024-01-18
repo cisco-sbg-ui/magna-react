@@ -1,7 +1,5 @@
 import React, {forwardRef} from "react";
 
-import "./ALayout.scss";
-
 const ASpacer = forwardRef(({className: propsClassName, ...rest}, ref) => {
   let className = "a-spacer";
 

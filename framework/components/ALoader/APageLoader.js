@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
-import "./APageLoader.scss";
 const baseClass = "a-page-loader";
 
 /**

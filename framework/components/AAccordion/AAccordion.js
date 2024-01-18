@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import React, {forwardRef, useState} from "react";
 
 import AAccordionContext from "./AAccordionContext";
-import "./AAccordion.scss";
 
 const AAccordion = forwardRef(
   ({bordered, children, className: propsClassName, ...rest}, ref) => {

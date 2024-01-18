@@ -1,5 +1,3 @@
-@import "../../styles";
-
 @include theme(a-popover) using ($theme) {
   filter: map-deep-get($theme, "popover", "filter");
 

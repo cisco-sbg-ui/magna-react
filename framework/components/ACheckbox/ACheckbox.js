@@ -11,7 +11,6 @@ import {AFormContext} from "../AForm";
 import AHint from "../AHint";
 import {isStockColor, isValidColor} from "../../utils/helpers";
 import {useCombinedRefs} from "../../utils/hooks";
-import "./ACheckbox.scss";
 
 const Icons = {
   checked:

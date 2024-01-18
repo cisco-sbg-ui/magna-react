@@ -1,5 +1,3 @@
-@import "../../styles";
-
 @include theme(a-breadcrumb) using ($theme) {
   &__item {
     > a {

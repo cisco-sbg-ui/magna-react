@@ -1,8 +1,6 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
-import "./ARadio.scss";
-
 const ARadio = forwardRef(
   (
     {
@@ -49,7 +47,8 @@ const ARadio = forwardRef(
           </svg>
         </span>
         <span
-          className={`a-radio__label${wrap ? " a-radio__label--wrap" : ""}`}>
+          className={`a-radio__label${wrap ? " a-radio__label--wrap" : ""}`}
+        >
           {children}
         </span>
       </label>

@@ -3,7 +3,6 @@ import React, {forwardRef, useContext, useEffect, useState} from "react";
 
 import AAccordionContext from "./AAccordionContext";
 import AAccordionPanelContext from "./AAccordionPanelContext";
-import "./AAccordion.scss";
 
 let accordionPanelCounter = 1;
 

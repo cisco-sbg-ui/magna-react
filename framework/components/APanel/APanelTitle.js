@@ -1,8 +1,6 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
-import "./APanel.scss";
-
 const APanelTitle = forwardRef(
   ({children, className: propsClassName, small, ...rest}, ref) => {
     let className = "a-panel__title";

@@ -3,7 +3,6 @@ import React, {forwardRef} from "react";
 import AIcon from "../AIcon";
 
 import {keyCodes} from "../../utils/helpers";
-import "./ATag.scss";
 
 const STATUS_ICON = {
   positive: "check-circle",
@@ -172,10 +171,6 @@ ATag.propTypes = {
    * If the `href` property is defined, the target can be set (ex: `_blank`, `_self`, `_parent`, `_top`)
    */
   target: PropTypes.string,
-  /**
-   * Specifies the display variant.
-   */
-  large: PropTypes.bool,
   /**
    * ** Deprecated **
    *  States now handled by the status and binary props

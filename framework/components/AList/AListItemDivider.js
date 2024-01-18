@@ -1,7 +1,6 @@
 import React, {forwardRef} from "react";
 
 import ADivider from "../ADivider";
-import "./AListItemDivider.scss";
 
 const AListItemDivider = forwardRef(
   ({className: propsClassName, ...rest}, ref) => {

@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
 import AIcon from "../AIcon";
-import "./AEmptyState.scss";
 
 const AEmptyState = forwardRef(
   (

@@ -1,7 +1,5 @@
 import React, {forwardRef} from "react";
 
-import "./AList.scss";
-
 const AListItemSubtitle = forwardRef(
   ({children, className: propsClassName, ...rest}, ref) => {
     let className = "a-list-item__subtitle";

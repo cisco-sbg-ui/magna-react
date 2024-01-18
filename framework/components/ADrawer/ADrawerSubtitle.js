@@ -1,8 +1,6 @@
 import React, {forwardRef} from "react";
 import PropTypes from "prop-types";
 
-import "./ADrawerSubtitle.scss";
-
 /**
  * The area displayed at the top of the drawer underneath the title.
  */

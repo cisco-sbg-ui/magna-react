@@ -1,5 +1,3 @@
-@import "../../styles";
-
 @include theme(a-list-item__group) using($theme) {
   &-title {
     font-size: $font-size--sm;

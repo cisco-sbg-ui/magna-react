@@ -1,6 +1,4 @@
-import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
-import "./ACard.scss";
 
 const ACardSubTitle = forwardRef(
   ({children, className: propsClassName, ...rest}, ref) => {

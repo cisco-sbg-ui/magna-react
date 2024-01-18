@@ -1,5 +1,3 @@
-@import "../../styles";
-
 @include theme(a-multiselect) using ($theme) {
   &__tags {
     .a-tag {

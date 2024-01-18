@@ -1,8 +1,6 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
-import "./ALayout.scss";
-
 const ARow = forwardRef(
   ({className: propsClassName, noGutters = false, ...rest}, ref) => {
     let className = "a-row";

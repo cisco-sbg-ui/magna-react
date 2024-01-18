@@ -5,7 +5,6 @@ import {keyCodes} from "../../utils/helpers";
 import {useCombinedRefs} from "../../utils/hooks";
 import AMenuBase from "../AMenuBase";
 import AContextualNotification from "../AContextualNotification";
-import "./AContextualNotificationMenu.scss";
 
 const AContextualNotificationMenu = forwardRef(
   (

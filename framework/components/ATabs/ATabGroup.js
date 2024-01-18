@@ -11,7 +11,6 @@ import OverflowMenuTab from "./OverflowMenuTab";
 import AListItem from "../AList/AListItem";
 import ATabContext from "./ATabContext";
 import {useCombinedRefs} from "../../utils/hooks";
-import "./ATabs.scss";
 
 const ATabGroup = forwardRef(
   (

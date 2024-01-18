@@ -3,7 +3,6 @@ import React, {forwardRef} from "react";
 
 import AMount from "../AMount";
 import {ATheme} from "../ATheme";
-import "./AApp.scss";
 
 const AApp = forwardRef(
   (

@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 import ADivider from "../ADivider/ADivider";
 import ADrawerContent from "./ADrawerContent";
-import "./ADrawerFooter.scss";
 
 /**
  * The area displayed at the bottom of the drawer.

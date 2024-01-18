@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
 import AAlert from "../AAlert";
-import "./AHint.scss";
 
 const AHint = forwardRef(
   (

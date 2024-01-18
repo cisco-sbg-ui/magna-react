@@ -1,7 +1,5 @@
 import React, {forwardRef} from "react";
 
-import "./AAccordion.scss";
-
 const AAccordionHeader = forwardRef(
   ({children, className: propsClassName, ...rest}, ref) => {
     let className = "a-accordion__header";

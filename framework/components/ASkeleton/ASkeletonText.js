@@ -1,7 +1,4 @@
-import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
-
-import "./ASkeleton.scss";
 
 const ASkeletonText = forwardRef(
   ({className: propsClassName, ...rest}, ref) => {

@@ -10,7 +10,6 @@ import React, {
 import {AFormContext} from "../AForm";
 import AHint from "../AHint";
 import {useCombinedRefs} from "../../utils/hooks";
-import "./ASwitch.scss";
 
 let switchCounter = 0;
 

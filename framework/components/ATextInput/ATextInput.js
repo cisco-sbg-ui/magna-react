@@ -13,7 +13,6 @@ import {AFormContext} from "../AForm";
 import AIcon from "../AIcon";
 import {useCombinedRefs} from "../../utils/hooks";
 import {keyCodes} from "../../utils/helpers";
-import "./ATextInput.scss";
 
 const chevronDown =
   "M15.787 4.837a.686.686 0 000-.994.744.744 0 00-1.029 0L8 10.376 1.24 3.843a.744.744 0 00-1.028 0 .69.69 0 000 .994L8 12.364l7.787-7.527z";

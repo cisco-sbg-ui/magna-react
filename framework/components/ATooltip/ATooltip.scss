@@ -1,5 +1,3 @@
-@import "../../styles";
-
 $tooltip-color: map-get($mds-neutral, "neutral-1");
 
 @include theme(a-tooltip) using ($theme) {

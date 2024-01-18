@@ -5,7 +5,6 @@ import AButton from "../AButton";
 import AIcon from "../AIcon";
 import AFieldBase from "../AFieldBase";
 import {keyCodes} from "../../utils/helpers";
-import "./AInputBase.scss";
 
 const AInputBase = forwardRef(
   (

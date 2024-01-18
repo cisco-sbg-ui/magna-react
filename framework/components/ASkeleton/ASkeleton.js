@@ -3,8 +3,6 @@ import React, {forwardRef} from "react";
 import {APanel} from "../APanel";
 import ASkeletonHeader from "./ASkeletonHeader";
 
-import "./ASkeleton.scss";
-
 const baseClass = "a-skeleton";
 
 const ASkeleton = forwardRef(

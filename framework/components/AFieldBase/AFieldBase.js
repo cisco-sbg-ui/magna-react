@@ -5,7 +5,6 @@ import AHint from "../AHint";
 import AIcon from "../AIcon";
 import ATriggerTooltip from "../ATriggerTooltip";
 import {ATooltipPropTypes} from "../ATooltip";
-import "./AFieldBase.scss";
 
 const AFieldBase = forwardRef(
   (

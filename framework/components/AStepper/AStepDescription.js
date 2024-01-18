@@ -1,8 +1,6 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
-import "./AStepper.scss";
-
 const AStepDescription = forwardRef(
   ({className: propsClassName = "", children, ...rest}, ref) => {
     const containerClassName = " a-step__hint";

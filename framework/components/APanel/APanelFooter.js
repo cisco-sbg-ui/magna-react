@@ -1,7 +1,5 @@
 import React, {forwardRef} from "react";
 
-import "./APanel.scss";
-
 const APanelFooter = forwardRef(
   ({children, className: propsClassName, ...rest}, ref) => {
     let className = "a-panel__footer";

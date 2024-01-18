@@ -2,7 +2,6 @@ import React, {forwardRef} from "react";
 import PropTypes from "prop-types";
 
 import ADrawerContent from "./ADrawerContent";
-import "./ADrawerBody.scss";
 
 /**
  * The area for the drawer's main content.

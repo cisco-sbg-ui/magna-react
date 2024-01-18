@@ -1,7 +1,5 @@
 import React, {forwardRef} from "react";
 
-import "./APageOverlay.scss";
-
 const APageOverlay = forwardRef(
   ({children, className: propsClassName, as, ...rest}, ref) => {
     const Component = as || "div";

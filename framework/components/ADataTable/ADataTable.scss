@@ -1,5 +1,3 @@
-@import "../../styles";
-
 $hidden-table-col-width: 45px;
 
 @include theme(a-data-table) using ($theme) {

@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 import AButton from "../AButton/AButton";
 import AIcon from "../AIcon/AIcon";
-import "./ADrawerTitle.scss";
 
 /**
  * The area displayed at the top of the drawer containing a title and close button.

@@ -1,7 +1,5 @@
 @use "sass:math";
 
-@import "../../styles";
-
 $radio-border--enabled: map-get($mds-neutral, "neutral-5");
 $radio-height: 15px;
 $radio-padding: 10px;

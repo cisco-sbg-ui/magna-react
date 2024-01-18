@@ -1,8 +1,6 @@
 import React, {forwardRef} from "react";
 import PropTypes from "prop-types";
 
-import "./ADotLoader.scss";
-
 /**
  * DEPRECATED
  */

@@ -10,7 +10,6 @@ import React, {
 import AInputBase from "../AInputBase";
 import {AFormContext} from "../AForm";
 import {useCombinedRefs} from "../../utils/hooks";
-import "./ATextarea.scss";
 
 let textareaCounter = 0;
 

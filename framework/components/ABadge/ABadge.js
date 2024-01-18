@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
 import {isStockColor, isValidColor} from "../../utils/helpers";
-import "./ABadge.scss";
 
 const ABadge = forwardRef(
   (

@@ -5,7 +5,6 @@ import {kebabify} from "../../utils/helpers";
 import Icons from "./icons.json";
 import MagnaIcons from "./magnaIcons.js";
 import {iconNameMap} from "./atomicMap.js";
-import "./AIcon.scss";
 
 /**
  * For icons that should not be styled as "regular",

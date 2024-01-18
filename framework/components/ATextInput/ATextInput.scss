@@ -1,5 +1,3 @@
-@import "../../styles";
-
 @include theme(a-text-input) using ($theme) {
   &__prepend-icon,
   &__append-icon {

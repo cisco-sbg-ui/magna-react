@@ -14,7 +14,6 @@ import AMenu from "../AMenu";
 import {AListItem} from "../AList";
 import {keyCodes} from "../../utils/helpers";
 import useMenuSpacing from "../AMenuBase/hooks";
-import "./ASelect.scss";
 
 let selectCounter = 0;
 

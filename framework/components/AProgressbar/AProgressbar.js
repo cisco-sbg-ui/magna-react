@@ -1,8 +1,6 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
-import "./AProgressbar.scss";
-
 const baseClass = "a-progressbar";
 
 const AProgressbar = forwardRef(
