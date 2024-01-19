@@ -116,15 +116,12 @@ const ATheme = forwardRef(
       }
     };
 
-    let className;
-    let dataTheme;
+    let className = "theme--default";
+    let dataTheme = "magnetic-light";
 
     if (isDark) {
       className = "theme--dusk";
       dataTheme = "magnetic-dark";
-    } else {
-      className = "theme--default";
-      dataTheme = "magnetic-light";
     }
     if (propsClassName) {
       className += ` ${propsClassName}`;
