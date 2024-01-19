@@ -116,15 +116,19 @@ const ATheme = forwardRef(
       }
     };
 
-    let className =
-      currentTheme === DUSK_THEME ? "theme--dusk" : "theme--default";
+    let className = "theme--default";
+    let dataTheme = "magnetic-light";
 
+    if (isDark) {
+      className = "theme--dusk";
+      dataTheme = "magnetic-dark";
+    }
     if (propsClassName) {
       className += ` ${propsClassName}`;
     }
 
     return (
-      <div {...rest} ref={ref} className={className}>
+      <div {...rest} ref={ref} className={className} data-cds-theme={dataTheme}>
         <AThemeContext.Provider value={themeContext}>
           {children}
         </AThemeContext.Provider>
