@@ -276,7 +276,11 @@ const ATextInput = forwardRef(
     }
 
     if (appendIcon) {
-      appendContent.push(<AIcon {...appendProps}>{appendIcon}</AIcon>);
+      appendContent.push(
+        <AIcon key="appendIcon" {...appendProps}>
+          {appendIcon}
+        </AIcon>
+      );
     }
 
     if (propsAppend) {
@@ -288,7 +292,11 @@ const ATextInput = forwardRef(
     }
 
     if (prependIcon) {
-      prependContent.push(<AIcon {...prependProps}>{prependIcon}</AIcon>);
+      prependContent.push(
+        <AIcon key="prependIcon" {...prependProps}>
+          {prependIcon}
+        </AIcon>
+      );
     }
 
     const ruleKeys = rules ? rules.map((r) => r.key).filter((k) => !!k) : [];
