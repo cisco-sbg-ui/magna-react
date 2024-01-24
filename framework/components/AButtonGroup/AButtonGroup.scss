@@ -61,11 +61,7 @@ $btn-group-icon-font-size: rem(1);
         "button-group",
         "background-color--hover"
       );
-      border-color: map-deep-get(
-        $theme,
-        "button-group",
-        "border-color--hover"
-      ) !important;
+      border-color: map-deep-get($theme, "button-group", "border-color--hover");
     }
 
     &:focus {
