@@ -134,7 +134,7 @@ $themeMap: (
     "background-color--selected": $control-bg-medium-active,
     "background-color--selected-disabled": $base-bg-disabled,
     "border-color": $control-border-weak-default,
-    "border-color--hover": none,
+    "border-color--hover": $control-border-weak-default,
     "border-color--selected": $control-border-active,
     "border-color--disabled": $control-border-weak-default
   ),
