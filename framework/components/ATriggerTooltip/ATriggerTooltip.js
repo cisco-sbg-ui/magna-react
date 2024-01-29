@@ -38,7 +38,10 @@ const ATriggerTooltip = ({
       return true;
     }
 
-    return element.offsetWidth < element.scrollWidth;
+    return (
+      element.offsetHeight < element.scrollHeight ||
+      element.offsetWidth < element.scrollWidth
+    );
   }, [onlyIfTruncated, anchorRef, childrenRef]);
 
   const {
