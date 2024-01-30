@@ -170,7 +170,6 @@ $accordion-divider-border-width: thin;
       display: block;
       padding: 0 14px;
       visibility: visible;
-      overflow: hidden;
       opacity: 1;
       @include transition($accordion-transition);
       margin: 0 0 15px 0;
