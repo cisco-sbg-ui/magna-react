@@ -67,8 +67,8 @@ $colors: "A", "B", "C", "D", "E", "F", "G", "H", "I", "K";
   //binary check icon override
   &--binary-active {
     .a-icon--check-circle circle {
-      fill: map-deep-get($theme, "control", "info-color") !important;
-      stroke: map-deep-get($theme, "control", "info-color") !important;
+      fill: var(--control-icon-medium-default) !important;
+      stroke: var(--control-icon-medium-default) !important;
     }
   }
 
