@@ -10,6 +10,7 @@ export const iconNameMap = {
   "allow-list": "list-checks",
   "api-cloud": "",
   append: "arrow-elbow-right-up",
+  "apple-logo": "",
   "arrow-bar-left": "arrow-line-left",
   "arrow-bar-right": "arrow-line-right",
   "arrow-left": "arrow-left",
@@ -155,6 +156,7 @@ export const iconNameMap = {
   "last-page": "caret-double-right",
   lightning: "",
   link: "link",
+  "linux-logo": "",
   "list-menu": "list",
   lock: "lock",
   "mac-address": "cpu",
@@ -286,6 +288,7 @@ export const iconNameMap = {
   vpn: "",
   walkthrough: "chat-centered-text",
   "web-tracking": "user-switch",
+  "windows-logo": "",
   "would-have-dropped": "",
   "bell-slash": ""
 };
