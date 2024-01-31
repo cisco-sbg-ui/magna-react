@@ -66,10 +66,7 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
     }
 
     .a-checkbox__box:hover {
-      border-color: darken(
-        map-deep-get($theme, "control", "warning-color"),
-        5%
-      );
+      border-color: darken(#cc8604, 5%);
     }
   }
 
@@ -79,10 +76,7 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
     }
 
     .a-checkbox__box:hover {
-      background-color: darken(
-        map-deep-get($theme, "control", "warning-color"),
-        5%
-      );
+      background-color: darken(#cc8604, 5%);
     }
   }
 
@@ -92,7 +86,7 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
     }
 
     .a-checkbox__box:hover {
-      border-color: darken(map-deep-get($theme, "control", "error-color"), 5%);
+      border-color: darken(#cc2d37, 5%);
     }
   }
 
@@ -102,10 +96,7 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
     }
 
     .a-checkbox__box:hover {
-      background-color: darken(
-        map-deep-get($theme, "control", "error-color"),
-        5%
-      );
+      background-color: darken(#cc2d37, 5%);
     }
   }
 
