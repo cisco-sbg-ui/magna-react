@@ -779,6 +779,27 @@ const MagnaIcons = {
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
   },
+  "apple-logo": {
+    xml: (
+      <>
+        <path
+          d="M216,73.52C204.53,62.66,185,56,168,56a63.72,63.72,0,0,0-40,14h0A63.71,63.71,0,0,0,88.88,56C52,55.5,23.06,86.3,24,123.19a119.62,119.62,0,0,0,37.65,84.12A31.92,31.92,0,0,0,83.6,216h87.7a31.75,31.75,0,0,0,23.26-10c15.85-17,21.44-33.2,21.44-33.2h0c-16.79-11.53-24-30.87-24-52.78,0-18.3,11.68-34.81,24-46.48Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></path>
+        <path
+          d="M148,12a32.12,32.12,0,0,0-9.77,8.37"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></path>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
   "archive-tray": {
     xml: (
       <>
@@ -3932,6 +3953,36 @@ const MagnaIcons = {
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
   },
+  "linux-logo": {
+    xml: (
+      <>
+        <path
+          d="M32,216S64,176,64,96a64,64,0,0,1,128,0c0,80,32,120,32,120"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></path>
+        <path
+          d="M97.46,216a44.86,44.86,0,0,1,61.08,0"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></path>
+        <circle cx="104" cy="112" r="16"></circle>
+        <circle cx="152" cy="112" r="16"></circle>
+        <polyline
+          points="156 152 128 164 100 152"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></polyline>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
   "list-bullets": {
     xml: (
       <>
@@ -6793,6 +6844,41 @@ const MagnaIcons = {
           strokeLinejoin="round"
           strokeWidth="24"
         ></path>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  "windows-logo": {
+    xml: (
+      <>
+        <polygon
+          points="100 108 100 61.09 40 72 40 108 100 108"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></polygon>
+        <polygon
+          points="216 108 216 40 140 53.82 140 108 216 108"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></polygon>
+        <polygon
+          points="100 148 100 194.91 40 184 40 148 100 148"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></polygon>
+        <polygon
+          points="216 148 216 216 140 202.18 140 148 216 148"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></polygon>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}

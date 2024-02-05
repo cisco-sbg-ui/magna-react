@@ -7,7 +7,7 @@ exports.iconNameMap = void 0;
 function cov_f48blbjub() {
   var path =
     "/Users/roberha2/workspaces/cisco-sbg-ui/magna-react/framework/components/AIcon/atomicMap.js";
-  var hash = "87ed633b7f0522a7bd8600fe5b3a55550d9f31d0";
+  var hash = "9d307fb6f33bf94fea6a2be1f29c42205e0bef81";
   var global = new Function("return this")();
   var gcv = "__coverage__";
   var coverageData = {
@@ -19,7 +19,7 @@ function cov_f48blbjub() {
           column: 27
         },
         end: {
-          line: 291,
+          line: 294,
           column: 1
         }
       }
@@ -32,7 +32,7 @@ function cov_f48blbjub() {
     f: {},
     b: {},
     _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    hash: "87ed633b7f0522a7bd8600fe5b3a55550d9f31d0"
+    hash: "9d307fb6f33bf94fea6a2be1f29c42205e0bef81"
   };
   var coverage = global[gcv] || (global[gcv] = {});
   if (!coverage[path] || coverage[path].hash !== hash) {
@@ -48,7 +48,7 @@ function cov_f48blbjub() {
   return actualCoverage;
 }
 cov_f48blbjub();
-var iconNameMap =
+var iconNameMap = (exports.iconNameMap =
   (cov_f48blbjub().s[0]++,
   {
     add: "plus",
@@ -62,6 +62,7 @@ var iconNameMap =
     "allow-list": "list-checks",
     "api-cloud": "",
     append: "arrow-elbow-right-up",
+    "apple-logo": "",
     "arrow-bar-left": "arrow-line-left",
     "arrow-bar-right": "arrow-line-right",
     "arrow-left": "arrow-left",
@@ -211,6 +212,7 @@ var iconNameMap =
     "last-page": "caret-double-right",
     lightning: "",
     link: "link",
+    "linux-logo": "",
     "list-menu": "list",
     lock: "lock",
     "mac-address": "cpu",
@@ -351,7 +353,7 @@ var iconNameMap =
     vpn: "",
     walkthrough: "chat-centered-text",
     "web-tracking": "user-switch",
+    "windows-logo": "",
     "would-have-dropped": "",
     "bell-slash": ""
-  });
-exports.iconNameMap = iconNameMap;
+  }));
