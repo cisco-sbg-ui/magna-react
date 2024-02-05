@@ -17,6 +17,7 @@ const AInlineInputBase = forwardRef(
       inputComponentProps = {},
       clearable,
       disabled,
+      displayValue: propsDisplayValue,
       required = false,
       value = "",
       placeholder = "...",
@@ -139,11 +140,13 @@ const AInlineInputBase = forwardRef(
       content = (
         <div className={displayClass}>
           <ATriggerTooltip
-            content={displayValue}
+            content={propsDisplayValue || displayValue}
             disabled={tooltipDisabled}
             {...tooltipProps}
           >
-            <div className={valueClass}>{displayValue || placeholder}</div>
+            <div className={valueClass}>
+              {propsDisplayValue || displayValue || placeholder}
+            </div>
           </ATriggerTooltip>
           <div className={editIconClass}>
             <AIcon>pencil-simple</AIcon>
@@ -225,6 +228,10 @@ export const AInlineInputBasePropTypes = {
    * Toggles the `disabled` state.
    */
   disabled: PropTypes.bool,
+  /**
+   * Display custom content rather than the computed value
+   */
+  displayValue: PropTypes.node,
   /**
    * Sets `required` on the input, and makes the value required
    */
