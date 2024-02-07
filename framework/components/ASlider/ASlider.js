@@ -33,6 +33,7 @@ const ASlider = forwardRef(
       className: propsClassName,
       disabled,
       hint,
+      hints,
       label,
       min = 0,
       max = 100,
@@ -286,6 +287,7 @@ const ASlider = forwardRef(
         label={label}
         error={error}
         hint={hint}
+        hints={hints}
         validationState={workingValidationState}
       >
         <div className="a-slider__control">
@@ -490,7 +492,36 @@ ASlider.propTypes = {
    */
   disabled: PropTypes.bool,
   /**
+   * Sets hint or multiple hints.
+   */
+  hints: PropTypes.arrayOf(
+    PropTypes.shape({
+      /**
+       * Hint content.
+       */
+      content: PropTypes.node.isRequired,
+      /**
+       * Style the hint with the component validation state. Default: false.
+       */
+      hintUsesValidationState: PropTypes.bool,
+      /**
+       * Override the validation state of the hint by incorporating the desired state.
+       * The component validation state is disregarded when this property is configured.
+       */
+      validationStateOverride: PropTypes.oneOf([
+        "default",
+        "warning",
+        "danger"
+      ]),
+      /**
+       * Do not show hint when there are validation errors.
+       */
+      hideHintOnError: PropTypes.bool
+    })
+  ),
+  /**
    * Sets the hint content.
+   * @deprecated use "hints" property
    */
   hint: PropTypes.node,
   /**
