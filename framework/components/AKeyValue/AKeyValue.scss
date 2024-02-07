@@ -1,0 +1,70 @@
+@import "../../styles";
+
+.a-key-value {
+  display: flex;
+  flex-direction: column;
+  font-size: $font-size--md;
+
+  > div:last-child {
+    font-weight: 600;
+  }
+
+  > div + div {
+    margin-top: 4px;
+  }
+
+  &--small {
+    > div {
+      font-size: $font-size--sm;
+    }
+  }
+}
+
+.a-key-value + .a-key-value {
+  margin-top: 16px;
+}
+
+.a-key-value-table {
+  display: table;
+  font-size: $font-size--md;
+
+  &--small {
+    font-size: $font-size--sm;
+  }
+
+  .a-key-value {
+    display: table-row;
+
+    > div:first-child {
+      display: table-cell;
+      font-weight: 600;
+      padding-right: 24px;
+
+      .a-icon {
+        vertical-align: middle;
+        height: 14px;
+        width: 14px;
+        margin: 0 4px;
+      }
+    }
+
+    > div:last-child {
+      display: table-cell;
+      font-weight: normal;
+    }
+
+    > div {
+      padding-bottom: 16px;
+    }
+  }
+
+  .a-key-value:last-of-type {
+    > div {
+      padding-bottom: 0;
+    }
+  }
+}
+
+.a-key-value-table + .a-key-value-table {
+  margin-left: 72px;
+}

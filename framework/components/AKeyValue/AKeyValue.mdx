@@ -1,0 +1,73 @@
+---
+name: Key Value
+route: /components/keyvalue
+components: AKeyValue, AKeyValueTable
+---
+
+# Modals
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {AKeyValue, AKeyValueTable} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage (Table)
+
+Emphasis: keys
+
+Best to use for a long list or when vertical space is a concern
+
+<Playground
+  code={`
+  <AKeyValueTable>
+    <AKeyValue label="Data key">Data value</AKeyValue>
+    <AKeyValue
+      label="Data key 2"
+      tooltip="Help tooltip text">Data value 2</AKeyValue>
+    <AKeyValue label="Data key 3">Data value 3</AKeyValue>
+  </AKeyValueTable>
+`}
+/>
+
+## Usage (Value)
+
+Empasis: value
+
+<Playground
+  code={`
+  <>
+    <AKeyValue label="Data key">Data value</AKeyValue>
+    <AKeyValue label="Data key 2">Data value 2</AKeyValue>
+    <AKeyValue label="Data key 3">Data value 3</AKeyValue>
+  </>
+`}
+/>
+
+## Size variants
+
+<Playground
+  code={`
+  <>
+    <AKeyValueTable size="small">
+      <AKeyValue label="Data key">Data value</AKeyValue>
+      <AKeyValue label="Data key 2">Data value 2</AKeyValue>
+      <AKeyValue label="Data key 3">Data value 3</AKeyValue>
+    </AKeyValueTable>
+    <br /><br />
+    <AKeyValue label="Data key">Data value</AKeyValue>
+    <AKeyValue label="Data key 2">Data value 2</AKeyValue>
+    <AKeyValue label="Data key 3">Data value 3</AKeyValue>
+  </>
+`}
+/>
+
+## AKeyValueTable Props
+
+<Props of="AKeyValueTable" />
+
+## AKeyValue Props
+
+<Props of="AKeyValue" />
