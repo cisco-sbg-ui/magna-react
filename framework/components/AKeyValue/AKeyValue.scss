@@ -4,8 +4,21 @@
   display: flex;
   flex-direction: column;
   font-size: $font-size--md;
+  line-height: $font-size--md;
+
+  > div:first-child {
+    display: flex;
+    align-items: center;
+    .a-icon {
+      height: 14px;
+      width: 14px;
+      margin: 0 4px;
+    }
+  }
 
   > div:last-child {
+    display: flex;
+    align-items: center;
     font-weight: 600;
   }
 
@@ -16,6 +29,14 @@
   &--small {
     > div {
       font-size: $font-size--sm;
+      line-height: $font-size--sm;
+    }
+
+    > div:first-child {
+      .a-icon {
+        height: 12px;
+        width: 12px;
+      }
     }
   }
 }
@@ -24,13 +45,14 @@
   margin-top: 16px;
 }
 
+.a-key-value--small + .a-key-value--small {
+  margin-top: 12px;
+}
+
 .a-key-value-table {
   display: table;
   font-size: $font-size--md;
-
-  &--small {
-    font-size: $font-size--sm;
-  }
+  line-height: $font-size--md;
 
   .a-key-value {
     display: table-row;
@@ -55,6 +77,24 @@
 
     > div {
       padding-bottom: 16px;
+    }
+  }
+
+  &--small {
+    .a-key-value {
+      font-size: $font-size--sm;
+      line-height: $font-size--sm;
+
+      > div:first-child {
+        .a-icon {
+          height: 12px;
+          width: 12px;
+        }
+      }
+
+      > div {
+        padding-bottom: 8px;
+      }
     }
   }
 
