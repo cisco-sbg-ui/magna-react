@@ -99,7 +99,7 @@ const AFieldBase = forwardRef(
           </label>
         )}
         {children}
-        {hints &&
+        {Array.isArray(hints) &&
           hints.map((hintObject, index) => {
             // "hints" block should be before "error" hint
             if (hintObject.hideHintOnError && error) return null;
