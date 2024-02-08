@@ -19,67 +19,32 @@ $accordion--state-collapsed-transition: visibility $transition-duration ease,
   margin $transition-duration ease;
 $accordion-divider-border-width: thin;
 
-@include theme(a-accordion) using ($theme) {
-  &__card {
-    background-color: map-deep-get($theme, "accordion", "bg");
-    color: map-deep-get($theme, "accordion", "body-color");
-    border-bottom: $border-width solid;
-    border-color: map-deep-get($theme, "control", "stroke-color");
-
-    &--is-focused .a-accordion__header {
-      border-color: map-deep-get($theme, "accordion", "header-focus");
-    }
-  }
-
-  /* for future thin dividers, if needed
-  &--style-bordered .a-accordion__card {
-    border-bottom: $accordion-divider-border-width solid
-      map-deep-get($theme, "control", "stroke-color");
-  }
-  */
-
-  &--style-bordered .a-accordion__card:last-of-type {
-    border-bottom: 0;
-  }
-
-  :last-of-type &__link {
-    color: map-deep-get($theme, "accordion", "color");
-
-    &:visited,
-    &:hover,
-    &:focus,
-    &:active {
-      color: map-deep-get($theme, "accordion", "color");
-    }
-  }
-
-  &__body {
-    color: map-deep-get($theme, "accordion", "body-color");
-  }
-
-  &--style-bordered {
-    border-color: map-deep-get($theme, "control", "stroke-color");
-  }
-
-  &__chevron {
-    .a-icon {
-      fill: map-deep-get($theme, "accordion", "chevron-color");
-    }
-  }
-}
-
 .a-accordion {
   margin: $accordion-margin;
   border-radius: $accordion-border-radius;
 
   &__card {
+    background-color: var(--control-bg-weak-default);
+    color: var(--base-text-medium-default);
     position: relative;
     display: flex;
     flex-direction: column;
     min-width: $accordion-min-width;
     width: $accordion-width;
     word-wrap: break-word;
+    border-bottom: $border-width solid;
+    border-color: var(--control-border-default);
 
+    &--is-focused .a-accordion__header {
+      border-color: var(--interact-border-focus) !important;
+    }
+
+    /* for future thin dividers, if needed
+  &--style-bordered .a-accordion__card {
+    border-bottom: $accordion-divider-border-width solid
+      map-deep-get($theme, "control", "stroke-color");
+  }
+  */
     &--state-collapsed {
       .a-accordion__body {
         display: none;
@@ -139,6 +104,7 @@ $accordion-divider-border-width: thin;
       width: $accordion-toggle-font-size;
       margin: $accordion-toggle-margin;
       vertical-align: middle;
+      fill: var(--interact-icon-weak-default);
     }
   }
 
@@ -146,11 +112,13 @@ $accordion-divider-border-width: thin;
     padding: $accordion-body-padding;
     font-size: $accordion-message-font-size;
     flex: 1 1 auto;
+    color: var(--base-text-medium-default);
   }
 
   &--style-bordered {
     border-width: $border-width;
     border-style: solid;
+    border-color: var(--control-border-default);
 
     .a-accordion__card:first-of-type {
       border-top-right-radius: $accordion-border-radius;
@@ -160,6 +128,18 @@ $accordion-divider-border-width: thin;
     .a-accordion__card:last-of-type {
       border-bottom-right-radius: $accordion-border-radius;
       border-bottom-left-radius: $accordion-border-radius;
+      border-bottom: 0;
+    }
+  }
+
+  :last-of-type &__link {
+    color: var(--base-text-default);
+
+    &:visited,
+    &:hover,
+    &:focus,
+    &:active {
+      color: var(--base-text-default);
     }
   }
 }
