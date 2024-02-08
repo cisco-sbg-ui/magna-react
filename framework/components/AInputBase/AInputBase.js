@@ -17,6 +17,7 @@ const AInputBase = forwardRef(
       disabled,
       focused,
       hint,
+      hints,
       surfaceRef,
       label,
       labelHidden,
@@ -93,6 +94,7 @@ const AInputBase = forwardRef(
         labelHidden={labelHidden}
         onClickLabel={onClickLabel}
         hint={hint}
+        hints={hints}
         validationState={validationState}
       >
         <div ref={surfaceRef} className="a-input-base__surface">
@@ -151,7 +153,36 @@ AInputBase.propTypes = {
    */
   focused: PropTypes.bool,
   /**
+   * Sets hint or multiple hints.
+   */
+  hints: PropTypes.arrayOf(
+    PropTypes.shape({
+      /**
+       * Hint content.
+       */
+      content: PropTypes.node.isRequired,
+      /**
+       * Style the hint with the component validation state. Default: false.
+       */
+      hintUsesValidationState: PropTypes.bool,
+      /**
+       * Override the validation state of the hint by incorporating the desired state.
+       * The component validation state is disregarded when this property is configured.
+       */
+      validationStateOverride: PropTypes.oneOf([
+        "default",
+        "warning",
+        "danger"
+      ]),
+      /**
+       * Do not show hint when there are validation errors.
+       */
+      hideHintOnError: PropTypes.bool
+    })
+  ),
+  /**
    * Sets the hint content.
+   * @deprecated use "hints" property
    */
   hint: PropTypes.node,
   /**

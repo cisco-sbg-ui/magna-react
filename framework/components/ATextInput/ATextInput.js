@@ -37,6 +37,7 @@ const ATextInput = forwardRef(
       clearable,
       disabled,
       hint,
+      hints,
       label,
       labelHidden,
       max,
@@ -382,6 +383,7 @@ const ATextInput = forwardRef(
       clearable: clearable && isNonEmptyString(nativeInputValue),
       error,
       hint,
+      hints,
       label,
       labelHidden,
       required,
@@ -484,7 +486,36 @@ ATextInput.propTypes = {
    */
   disabled: PropTypes.bool,
   /**
+   * Sets hint or multiple hints.
+   */
+  hints: PropTypes.arrayOf(
+    PropTypes.shape({
+      /**
+       * Hint content.
+       */
+      content: PropTypes.node.isRequired,
+      /**
+       * Style the hint with the component validation state. Default: false.
+       */
+      hintUsesValidationState: PropTypes.bool,
+      /**
+       * Override the validation state of the hint by incorporating the desired state.
+       * The component validation state is disregarded when this property is configured.
+       */
+      validationStateOverride: PropTypes.oneOf([
+        "default",
+        "warning",
+        "danger"
+      ]),
+      /**
+       * Do not show hint when there are validation errors.
+       */
+      hideHintOnError: PropTypes.bool
+    })
+  ),
+  /**
    * Sets the hint content.
+   * @deprecated use "hints" property
    */
   hint: PropTypes.node,
   /**

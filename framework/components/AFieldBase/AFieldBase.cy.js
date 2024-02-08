@@ -90,4 +90,115 @@ describe("<AFieldBase />", () => {
       cy.get(".a-menu-base__pointer").should("not.exist");
     });
   });
+
+  describe("when rendered with a hints", () => {
+    it("should render single hint", () => {
+      cy.mount(
+        <AFieldBase
+          {...commonProps}
+          hints={[
+            {
+              content: "Simple hint"
+            }
+          ]}
+        />
+      );
+
+      cy.get(".a-field-base__hint").should("have.length", 1);
+      cy.get(".a-field-base__hint").should("have.text", "Simple hint");
+    });
+
+    it("should render two hints", () => {
+      cy.mount(
+        <AFieldBase
+          {...commonProps}
+          hints={[
+            {
+              content: "Simple hint 1"
+            },
+            {
+              content: "Simple hint 2"
+            }
+          ]}
+        />
+      );
+
+      cy.get(".a-field-base__hint").should("have.length", 2);
+      cy.get(".a-field-base__hint:first").should("have.text", "Simple hint 1");
+      cy.get(".a-field-base__hint:last").should("have.text", "Simple hint 2");
+    });
+
+    it("should render hint with component validation state", () => {
+      cy.mount(
+        <AFieldBase
+          {...commonProps}
+          validationState="danger"
+          hints={[
+            {
+              content: "Simple hint",
+              hintUsesValidationState: true
+            }
+          ]}
+        />
+      );
+
+      cy.get(".a-field-base__hint").should("have.length", 1);
+      cy.get(".a-field-base__hint").should("have.text", "Simple hint");
+      cy.get(".a-alert--state-danger").should("exist");
+    });
+
+    it("should render hint with overridden validation state ", () => {
+      cy.mount(
+        <AFieldBase
+          {...commonProps}
+          validationState="warning"
+          hints={[
+            {
+              content: "Simple hint",
+              validationStateOverride: "danger"
+            }
+          ]}
+        />
+      );
+
+      cy.get(".a-field-base__hint").should("have.length", 1);
+      cy.get(".a-field-base__hint").should("have.text", "Simple hint");
+      cy.get(".a-alert--state-danger").should("exist");
+    });
+
+    it("should render hint when there is no error and we have set hideHintOnError", () => {
+      cy.mount(
+        <AFieldBase
+          {...commonProps}
+          hints={[
+            {
+              content: "Simple hint",
+              hideHintOnError: true
+            }
+          ]}
+        />
+      );
+
+      cy.get(".a-field-base__hint").should("have.length", 1);
+      cy.get(".a-field-base__hint").should("have.text", "Simple hint");
+    });
+
+    it("should not render hint when there is error and we have set hideHintOnError", () => {
+      cy.mount(
+        <AFieldBase
+          {...commonProps}
+          error="ERROR !"
+          hints={[
+            {
+              content: "Simple hint",
+              hideHintOnError: true
+            }
+          ]}
+        />
+      );
+
+      cy.get(".a-field-base__hint").should("have.length", 1);
+      cy.get(".a-field-base__hint").should("have.text", "ERROR !");
+    });
+  });
 });

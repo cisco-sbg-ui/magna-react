@@ -38,6 +38,31 @@ import {AFieldBase} from "@cisco-sbg-ui/magna-react";
     validationState="danger">
     [Children]
   </AFieldBase>
+
+  <AFieldBase
+    className="mb-3"
+    label="'hints' usage example (with danger validation state)"
+    error="We have an error here !"
+    hints={[
+        {
+            content: "Simple hint, no alert."
+        },
+        {
+            content: "Inferred danger validation.",
+            hintUsesValidationState: true
+        },
+        {
+            content: "Overridden warning validation.",
+            validationStateOverride: "warning"
+        },
+        {
+            content: "THIS HINT SHOULD BE HIDDEN !",
+            hideHintOnError: true
+        }
+    ]}
+    validationState="danger">
+    [Children]
+  </AFieldBase>
 </div>
 `}
 />
