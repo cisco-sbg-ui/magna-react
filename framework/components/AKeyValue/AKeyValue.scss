@@ -98,6 +98,14 @@
     }
   }
 
+  &--right-align {
+    .a-key-value {
+      > div:last-child {
+        text-align: right;
+      }
+    }
+  }
+
   .a-key-value:last-of-type {
     > div {
       padding-bottom: 0;

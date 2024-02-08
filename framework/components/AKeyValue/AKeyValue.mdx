@@ -46,7 +46,9 @@ Empasis: value
 `}
 />
 
-## Size variants
+## Variants
+
+### Size
 
 <Playground
   code={`
@@ -60,6 +62,22 @@ Empasis: value
     <AKeyValue label="Data key" size="small">Data value</AKeyValue>
     <AKeyValue label="Data key 2" size="small" tooltip="Help tooltip text">Data value 2</AKeyValue>
     <AKeyValue label="Data key 3" size="small">Data value 3</AKeyValue>
+  </>
+`}
+/>
+
+### Table Alignment
+
+<Playground
+  code={`
+  <>
+    <AKeyValueTable rightAlignValue>
+      <AKeyValue label="Rune full helm">$100</AKeyValue>
+      <AKeyValue label="Rune kiteshield">$50</AKeyValue>
+      <AKeyValue label="Rune platebody">$200</AKeyValue>
+      <AKeyValue label="Barrows gloves">$1300</AKeyValue>
+      <AKeyValue label="Discount" tooltip="Elite Lumbridge & Draynor Diary completion">-$240</AKeyValue>
+    </AKeyValueTable>
   </>
 `}
 />

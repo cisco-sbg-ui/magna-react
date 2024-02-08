@@ -6,6 +6,7 @@ const baseClass = "a-key-value-table";
 const AKeyValueTable = ({
   className: propsClassName,
   size,
+  rightAlignValue = false,
   children,
   ...rest
 }) => {
@@ -17,6 +18,10 @@ const AKeyValueTable = ({
 
   if (size) {
     className += ` ${baseClass}--${size}`;
+  }
+
+  if (rightAlignValue) {
+    className += ` ${baseClass}--right-align`;
   }
 
   return (
@@ -34,7 +39,11 @@ AKeyValueTable.propTypes = {
   /**
    * Sets the font size
    */
-  size: PropTypes.oneOf(["small"])
+  size: PropTypes.oneOf(["small"]),
+  /**
+   * Right align the value, for use with numbers
+   */
+  rightAlignValue: PropTypes.bool
 };
 
 export default AKeyValueTable;
