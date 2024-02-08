@@ -57,6 +57,7 @@ import AInlineTextarea from "./components/AInlineTextarea";
 import AInlineTextInput from "./components/AInlineTextInput";
 import AInputBase from "./components/AInputBase";
 import {AContainer, ARow, ACol, ASpacer} from "./components/ALayout";
+import {AKeyValue, AKeyValueTable} from "./components/AKeyValue";
 import {
   AList,
   AListItem,
@@ -203,6 +204,8 @@ export {
   AInlineTextarea,
   AInlineTextInput,
   AInputBase,
+  AKeyValue,
+  AKeyValueTable,
   AList,
   AListItem,
   AListItemAction,

@@ -1,0 +1,91 @@
+---
+name: Key Value
+route: /components/keyvalue
+components: AKeyValue, AKeyValueTable
+---
+
+# Modals
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {AKeyValue, AKeyValueTable} from "@cisco-sbg-ui/magna-react";
+```
+
+## Usage (Table)
+
+Emphasis: keys
+
+Best to use for a long list or when vertical space is a concern
+
+<Playground
+  code={`
+  <AKeyValueTable>
+    <AKeyValue label="Data key">Data value</AKeyValue>
+    <AKeyValue
+      label="Data key 2"
+      tooltip="Help tooltip text">Data value 2</AKeyValue>
+    <AKeyValue label="Data key 3">Data value 3</AKeyValue>
+  </AKeyValueTable>
+`}
+/>
+
+## Usage (Value)
+
+Empasis: value
+
+<Playground
+  code={`
+  <>
+    <AKeyValue label="Data key">Data value</AKeyValue>
+    <AKeyValue label="Data key 2" tooltip="Help tooltip text">Data value 2</AKeyValue>
+    <AKeyValue label="Data key 3">Data value 3</AKeyValue>
+  </>
+`}
+/>
+
+## Variants
+
+### Size
+
+<Playground
+  code={`
+  <>
+    <AKeyValueTable size="small">
+      <AKeyValue label="Data key">Data value</AKeyValue>
+      <AKeyValue label="Data key 2" tooltip="Help tooltip text">Data value 2</AKeyValue>
+      <AKeyValue label="Data key 3">Data value 3</AKeyValue>
+    </AKeyValueTable>
+    <br /><br />
+    <AKeyValue label="Data key" size="small">Data value</AKeyValue>
+    <AKeyValue label="Data key 2" size="small" tooltip="Help tooltip text">Data value 2</AKeyValue>
+    <AKeyValue label="Data key 3" size="small">Data value 3</AKeyValue>
+  </>
+`}
+/>
+
+### Table Alignment
+
+<Playground
+  code={`
+  <>
+    <AKeyValueTable rightAlignValue>
+      <AKeyValue label="Rune full helm">$100</AKeyValue>
+      <AKeyValue label="Rune kiteshield">$50</AKeyValue>
+      <AKeyValue label="Rune platebody">$200</AKeyValue>
+      <AKeyValue label="Barrows gloves">$1300</AKeyValue>
+      <AKeyValue label="Discount" tooltip="Elite Lumbridge & Draynor Diary completion">-$260</AKeyValue>
+    </AKeyValueTable>
+  </>
+`}
+/>
+
+## AKeyValueTable Props
+
+<Props of="AKeyValueTable" />
+
+## AKeyValue Props
+
+<Props of="AKeyValue" />
