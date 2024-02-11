@@ -11,18 +11,18 @@ $select-padding: 6px;
   &__menu-item {
     &--selected {
       &::after {
-        color: map-deep-get($theme, "base", "color-blue-primary");
+        color: var(--control-icon-default);
       }
     }
 
     &[aria-disabled] {
-      color: map-deep-get($theme, "base", "color--disabled");
+      color: var(--base-text-disabled);
       background-color: transparent;
     }
 
     &.a-list-item[aria-disabled]:hover,
     &.a-list-item[aria-disabled]:focus {
-      color: map-deep-get($theme, "base", "color--disabled");
+      color: var(--base-text-disabled);
       background-color: transparent;
     }
   }

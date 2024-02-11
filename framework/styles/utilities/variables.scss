@@ -225,4 +225,7 @@ $input-height-medium: 34px;
 //MAGNETIC SHADOWS
 $shadow-focus: 0 0 0 2px;
 $card-shadow-lifted: 0px 3px 8px 0px;
-$panel-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.18);
+
+:root {
+  --panel-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.18);
+}

@@ -57,7 +57,7 @@ $radio-transition: stroke $transition-duration--extra-fast
 
     &:focus ~ .a-radio__box {
       > svg {
-        box-shadow: map-deep-get($theme, "base", "box-shadow");
+        box-shadow: var(--shadow-focus) var(--control-border-active);
       }
 
       .a-radio__box__outer {

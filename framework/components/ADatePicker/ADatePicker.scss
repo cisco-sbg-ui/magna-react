@@ -29,7 +29,7 @@ $date-picker-day-padding-bottom: 4px;
 $date-picker-day-border-radius: 4px;
 
 @include theme(a-date-picker) using ($theme) {
-  color: map-deep-get($theme, "base", "color");
+  color: var(--base-text-default);
   background-color: map-deep-get($theme, "control", "fill-color");
   border: $border-width solid map-deep-get($theme, "control", "stroke-color");
   &__header {
@@ -41,19 +41,19 @@ $date-picker-day-border-radius: 4px;
 
   &__prev,
   &__next {
-    color: map-deep-get($theme, "base", "color");
+    color: var(--base-text-default);
     & span {
       font-size: $font-size--sm;
     }
     &:hover {
       & span {
-        color: map-deep-get($theme, "base", "color--hover");
+        color: var(--interact-text-hover);
       }
     }
 
     &:focus {
       & span {
-        box-shadow: map-deep-get($theme, "base", "box-shadow");
+        box-shadow: var(--shadow-focus) var(--control-border-active);
       }
     }
   }
@@ -111,8 +111,8 @@ $date-picker-day-border-radius: 4px;
 
     &:active {
       .a-date-picker__day__label {
-        background-color: map-deep-get($theme, "base", "color--active");
-        color: map-deep-get($theme, "base", "inverse-color");
+        background-color: var(--interact-text-active);
+        color: var(--inverse-text-default);
       }
     }
 
@@ -130,7 +130,7 @@ $date-picker-day-border-radius: 4px;
   }
 
   & .disabled {
-    color: map-deep-get($theme, "base", "color--disabled");
+    color: var(--base-text-disabled);
   }
 
   &__range-label {
@@ -164,7 +164,7 @@ $date-picker-day-border-radius: 4px;
       }
     }
     &.inputs--invalid {
-      box-shadow: 0px 0px 0px 2px map-deep-get($theme, "alert", "danger-bg");
+      box-shadow: 0px 0px 0px 2px var(--negative-bg-strong-default);
       .a-input-base__surface {
         border-color: map-deep-get(
           $theme,

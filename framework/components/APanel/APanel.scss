@@ -3,7 +3,7 @@
 @include theme(a-panel) using ($theme) {
   background: map-deep-get($theme, "panel", "bg");
   border-color: map-deep-get($theme, "panel", "border-color");
-  color: map-deep-get($theme, "base", "color");
+  color: var(--base-text-default);
   box-shadow: map-deep-get($theme, "panel", "box-shadow");
 
   &__header {

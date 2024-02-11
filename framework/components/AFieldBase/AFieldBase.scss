@@ -1,16 +1,5 @@
 @import "../../styles";
 
-@include theme(a-field-base) using ($theme) {
-  &__label {
-    color: map-deep-get($theme, "label", "color");
-  }
-
-  .a-icon--information:hover {
-    stroke: map-deep-get($theme, "button-group", "color--hover");
-    fill: map-deep-get($theme, "button-group", "color--hover");
-  }
-}
-
 .a-field-base {
   position: relative;
   display: inline-flex;
@@ -22,8 +11,7 @@
     margin: 0 0 4px 0;
     font-size: $font-size--md;
     font-weight: 600;
-
-    &--required {
+    color: var(--base-text-default) &--required {
       color: $color-error;
     }
 
@@ -34,5 +22,10 @@
       vertical-align: text-bottom;
       padding: 0 5px;
     }
+  }
+
+  .a-icon--information:hover {
+    stroke: var(--base-text-default);
+    fill: var(--base-text-default);
   }
 }

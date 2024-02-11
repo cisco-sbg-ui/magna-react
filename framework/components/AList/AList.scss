@@ -1,15 +1,15 @@
 @import "../../styles";
 
 @include theme(a-list) using ($theme) {
-  color: map-deep-get($theme, "base", "color");
-  background: map-deep-get($theme, "base", "bg");
+  color: var(--base-text-default);
+  background: var(--base-bg-weak-default);
   border-color: map-deep-get($theme, "control", "stroke-color");
 
   &--hoverable .a-list-item:not(.a-list-item--two-line) {
     &:hover,
     a:hover,
     a.a-list-item:hover {
-      color: map-deep-get($theme, "base", "color") !important;
+      color: var(--base-text-default) !important;
       background-color: map-deep-get($theme, "menu", "color--hover") !important;
     }
   }
@@ -18,14 +18,14 @@
     color: currentColor;
 
     &:focus {
-      color: map-deep-get($theme, "base", "color");
+      color: var(--base-text-default);
       background: map-deep-get($theme, "control", "row-effect-image"),
         map-deep-get($theme, "menu", "color--focused");
     }
   }
 
   &-item--selected:not(.a-list-item--two-line) {
-    color: map-deep-get($theme, "base", "color");
+    color: var(--base-text-default);
     background: map-deep-get($theme, "control", "row-effect-image"),
       map-deep-get($theme, "menu", "color--selected");
 
@@ -37,13 +37,13 @@
   }
 
   &-item--disabled:not(.a-list-item--two-line) {
-    color: map-deep-get($theme, "base", "color--disabled");
+    color: var(--base-text-disabled);
     background: none;
   }
 
   a.a-list-item,
   &a:not(.a-tab-group__tab) {
-    color: map-deep-get($theme, "base", "color") !important;
+    color: var(--base-text-default) !important;
     font-weight: unset;
   }
 }

@@ -7,7 +7,7 @@ $input-transition: border-color $transition-duration--extra-fast
   &__surface {
     background: map-deep-get($theme, "text-input", "bg");
     border-color: map-deep-get($theme, "text-input", "border-color");
-    color: map-deep-get($theme, "base", "color");
+    color: var(--base-text-default);
 
     &:hover {
       border-color: map-deep-get($theme, "text-input", "border-color--hover");
@@ -106,7 +106,7 @@ $input-transition: border-color $transition-duration--extra-fast
 
   &__clear:focus,
   &__clear:hover {
-    fill: map-deep-get($theme, "base", "color--selected") !important;
+    fill: var(--interact-text-active) !important;
   }
 }
 

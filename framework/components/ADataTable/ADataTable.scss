@@ -6,7 +6,7 @@ $hidden-table-col-width: 45px;
   &__header {
     &__sort {
       &__button {
-        color: map-deep-get($theme, "base", "color");
+        color: var(--base-text-default);
       }
     }
 
@@ -38,7 +38,7 @@ $hidden-table-col-width: 45px;
   &--sticky {
     thead {
       box-shadow: 0 2.5px 2px -2px map-deep-get($theme, "table", "header-border");
-      background: map-deep-get($theme, "base", "bg");
+      background: var(--base-bg-weak-default);
     }
   }
 

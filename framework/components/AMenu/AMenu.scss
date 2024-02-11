@@ -21,8 +21,8 @@ configuration environments.
   &--pointer.a-menu-base--top-left,
   &--pointer.a-menu-base--top-right {
     .a-menu-base__pointer {
-      border-color: map-deep-get($theme, "base", "stroke-color") transparent
-        transparent transparent;
+      border-color: var(--control-border-default) transparent transparent
+        transparent;
 
       &:after {
         border-color: map-deep-get($theme, "control", "fill-color") transparent

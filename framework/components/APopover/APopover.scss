@@ -1,14 +1,13 @@
 @import "../../styles";
 
 @include theme(a-popover) using ($theme) {
-  filter: map-deep-get($theme, "popover", "filter");
+  filter: drop-shadow(var(--panel-shadow));
 
   &.a-menu-base--top,
   &.a-menu-base--top-left,
   &.a-menu-base--top-right {
     .a-menu-base__pointer {
-      border-color: map-deep-get($theme, "base", "dialog-header-bg") transparent
-        transparent transparent;
+      border-color: transparent;
 
       &:after {
         border-color: map-deep-get($theme, "control", "fill-color") transparent
@@ -21,8 +20,7 @@
   &.a-menu-base--bottom-left,
   &.a-menu-base--bottom-right {
     .a-menu-base__pointer {
-      border-color: transparent transparent
-        map-deep-get($theme, "base", "dialog-header-bg") transparent;
+      border-color: transparent;
 
       &:after {
         border-color: transparent transparent
@@ -32,8 +30,7 @@
   }
 
   &.a-menu-base--right .a-menu-base__pointer {
-    border-color: transparent map-deep-get($theme, "base", "dialog-header-bg")
-      transparent transparent;
+    border-color: transparent;
 
     &:after {
       border-color: transparent map-deep-get($theme, "control", "fill-color")
@@ -42,8 +39,7 @@
   }
 
   &.a-menu-base--left .a-menu-base__pointer {
-    border-color: transparent transparent transparent
-      map-deep-get($theme, "base", "dialog-header-bg");
+    border-color: transparent;
 
     &:after {
       border-color: transparent transparent transparent
@@ -52,8 +48,7 @@
   }
 
   &.a-menu-base--right-top .a-menu-base__pointer {
-    border-color: transparent map-deep-get($theme, "base", "dialog-header-bg")
-      transparent transparent;
+    border-color: transparent;
 
     &:after {
       border-color: transparent map-deep-get($theme, "control", "fill-color")
@@ -62,8 +57,7 @@
   }
 
   &.a-menu-base--left-top .a-menu-base__pointer {
-    border-color: transparent transparent transparent
-      map-deep-get($theme, "base", "dialog-header-bg");
+    border-color: transparent;
 
     &:after {
       border-color: transparent transparent transparent
@@ -72,8 +66,7 @@
   }
 
   &.a-menu-base--right-bottom .a-menu-base__pointer {
-    border-color: transparent map-deep-get($theme, "base", "dialog-header-bg")
-      transparent transparent;
+    border-color: transparent;
 
     &:after {
       border-color: transparent map-deep-get($theme, "control", "fill-color")
@@ -82,9 +75,7 @@
   }
 
   &.a-menu-base--left-bottom .a-menu-base__pointer {
-    border-color: transparent transparent transparent
-      map-deep-get($theme, "base", "dialog-header-bg");
-
+    border-color: transparent;
     &:after {
       border-color: transparent transparent transparent
         map-deep-get($theme, "control", "fill-color");

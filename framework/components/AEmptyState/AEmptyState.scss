@@ -51,7 +51,7 @@ $container-xl: 400px;
   }
 
   .a-empty-state__label {
-    border-color: map-deep-get($theme, "base", "color");
+    border-color: var(--base-text-default);
   }
 
   .a-empty-state__message {

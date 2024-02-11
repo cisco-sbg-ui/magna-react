@@ -17,7 +17,7 @@
         );
       }
       &__label {
-        color: map-deep-get($theme, "base", "color--disabled");
+        color: mvar(--base-text-disabled);
       }
       &__hint {
         color: map-deep-get($theme, "steps", "step-icon-default-color");
@@ -56,7 +56,7 @@
         }
 
         .a-step__label {
-          color: map-deep-get($theme, "base", "color");
+          color: var(--base-text-default);
         }
 
         .a-step__title {
