@@ -2,53 +2,41 @@
 
 @include theme(a-steps-container) using ($theme) {
   //Typical usage will be in modal, but fallback to same color as panel for icon and container backgrounds.
-  background-color: map-deep-get($theme, "panel", "bg");
+  background-color: var(--control-bg-weak-default);
   .a-steps {
     .a-step {
       &__icon-container {
-        background-color: map-deep-get($theme, "panel", "bg");
+        background-color: var(--control-bg-weak-default);
       }
 
       &__divider {
-        background-color: map-deep-get(
-          $theme,
-          "steps",
-          "step-icon-default-border-color"
-        );
+        background-color: var(--interact-border-weak-default);
       }
       &__label {
         color: mvar(--base-text-disabled);
       }
       &__hint {
-        color: map-deep-get($theme, "steps", "step-icon-default-color");
+        color: var(--base-text-medium-default);
       }
       &__active {
         .a-step__icon {
-          background: map-deep-get($theme, "steps", "step-main-color");
-          color: map-get($theme, "steps", "step-active-color");
-          border: $border-width solid
-            map-deep-get($theme, "steps", "step-main-color");
+          background: var(--interact-bg-medium-default);
+          color: var(--interact-text-in-default);
+          border: $border-width solid var(--interact-bg-medium-default);
         }
         .a-step__label {
-          color: map-get($theme, "steps", "step-label-active");
+          color: var(--interact-text-default);
         }
       }
       &__visited {
         .a-step__divider {
           height: 2px;
-          background-color: map-get(
-            $theme,
-            "steps",
-            "step-line-active-default"
-          );
+          background-color: var(--interact-border-medium-default);
         }
         .a-step__icon {
-          border: $border-width solid
-            map-get($theme, "steps", "step-icon-border-color");
-          color: map-get($theme, "steps", "step-icon--color");
+          border: $border-width solid var(--interact-border-default);
+
           &__checkmark {
-            color: map-get($theme, "steps", "step-icon--color");
-            stroke: map-get($theme, "steps", "step-icon--color");
             polyline {
               stroke-width: 35; //Remove if magnetic updates icon
             }
@@ -60,29 +48,27 @@
         }
 
         .a-step__title {
-          color: map-deep-get($theme, "steps", "step-visited-title-color");
+          color: var(--base-text-default);
         }
       }
       &__disabled {
         .a-step__icon {
-          border: $border-width solid
-            map-deep-get($theme, "steps", "step-icon-disabled-border-color");
-          color: map-deep-get($theme, "steps", "step-icon-disabled-color");
+          border: $border-width solid var(--interact-border-weak-disabled);
+          color: var(--base-text-disabled);
         }
         .a-step__title,
         .a-step__hint {
-          color: map-deep-get($theme, "steps", "step-icon-disabled-color");
+          color: var(--base-text-disabled);
         }
       }
       &__default {
         .a-step__icon {
-          border: $border-width solid
-            map-deep-get($theme, "steps", "step-icon-default-border-color");
-          color: map-deep-get($theme, "steps", "step-icon-default-color");
+          border: $border-width solid var(--interact-border-weak-default);
+          color: var(--base-text-medium-default);
         }
         .a-step__title,
         .a-step__hint {
-          color: map-deep-get($theme, "steps", "step-icon-default-color");
+          color: var(--base-text-medium-default);
         }
       }
 
@@ -93,7 +79,7 @@
     &--orientation-vertical {
       .a-step__active {
         border-right: 3px solid;
-        border-color: map-deep-get($theme, "steps", "step-icon-border-color");
+        border-color: var(--interact-border-default);
       }
 
       .a-step__visited {

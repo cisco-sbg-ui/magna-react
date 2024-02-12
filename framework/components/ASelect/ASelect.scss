@@ -5,7 +5,7 @@ $select-padding: 6px;
 
 @include theme(a-select) using ($theme) {
   &__menu-items.a-menu {
-    border-color: map-deep-get($theme, "menu", "border-color");
+    border-color: var(--control-border-default);
   }
 
   &__menu-item {

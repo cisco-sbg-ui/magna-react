@@ -10,7 +10,7 @@
     a:hover,
     a.a-list-item:hover {
       color: var(--base-text-default) !important;
-      background-color: map-deep-get($theme, "menu", "color--hover") !important;
+      background-color: var(--control-bg-weak-hover) !important;
     }
   }
 
@@ -19,20 +19,17 @@
 
     &:focus {
       color: var(--base-text-default);
-      background: var(--row-effect-image)
-        map-deep-get($theme, "menu", "color--focused");
+      background: var(--row-effect-image) var(--control-bg-weak-focus);
     }
   }
 
   &-item--selected:not(.a-list-item--two-line) {
     color: var(--base-text-default);
-    background: var(--row-effect-image),
-      map-deep-get($theme, "menu", "color--selected");
+    background: var(--row-effect-image), var(--control-bg-weak-active);
 
     a:hover,
     a.a-list-item:hover {
-      background: var(--row-effect-image),
-        map-deep-get($theme, "menu", "color--selected") !important;
+      background: var(--row-effect-image), var(--control-bg-weak-active) !important;
     }
   }
 

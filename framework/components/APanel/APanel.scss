@@ -1,17 +1,17 @@
 @import "../../styles";
 
 @include theme(a-panel) using ($theme) {
-  background: map-deep-get($theme, "panel", "bg");
-  border-color: map-deep-get($theme, "panel", "border-color");
+  background: var(--control-bg-weak-default);
+  border-color: var(--control-border-weak-default);
   color: var(--base-text-default);
-  box-shadow: map-deep-get($theme, "panel", "box-shadow");
+  box-shadow: var(--panel-shadow);
 
   &__header {
-    color: map-deep-get($theme, "panel", "header-color");
+    color: var(--base-text-default);
   }
 
   &--color-gray {
-    background: map-deep-get($theme, "panel", "bg-gray");
+    background: var(--base-bg-default);
   }
 
   &--color-white {
