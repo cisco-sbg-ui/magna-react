@@ -42,7 +42,7 @@ $accordion-divider-border-width: thin;
     /* for future thin dividers, if needed
   &--style-bordered .a-accordion__card {
     border-bottom: $accordion-divider-border-width solid
-      map-deep-get($theme, "control", "stroke-color");
+      var(--control-border-default);
   }
   */
     &--state-collapsed {

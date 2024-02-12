@@ -4,11 +4,6 @@ $footer-min-height: 35px;
 $footer-padding: 10px 20px;
 $footer-font-size: $font-size--sm;
 
-@include theme(a-footer) using ($theme) {
-  color: map-deep-get($theme, "footer", "color");
-  border-top-color: map-deep-get($theme, "divider", "color-default");
-}
-
 .a-footer {
   display: block;
   min-height: $footer-min-height;
@@ -16,6 +11,9 @@ $footer-font-size: $font-size--sm;
   font-size: $footer-font-size;
   border-top-width: $border-width;
   border-top-style: solid;
+  color: var(--base-border-default);
+  border-top-color: var(--base-border-default);
+
   &__legal {
     text-align: center;
   }

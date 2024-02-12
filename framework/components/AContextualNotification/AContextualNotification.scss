@@ -9,56 +9,6 @@ $context-arrow-margin: rem(0.3);
 $context-arrow-top: 30%;
 $context-arrow-left: 10%;
 
-@include theme(a-context) using ($theme) {
-  color: map-deep-get($theme, "label", "color");
-  background-color: map-deep-get($theme, "control", "fill-color");
-  box-shadow: map-deep-get($theme, "card", "container-shadow");
-  .a-icon-text {
-    fill: map-deep-get($theme, "control", "fill-color");
-  }
-  &--state-success {
-    border-color: map-deep-get($theme, "control", "success-color");
-
-    .a-context__icon {
-      color: $color-good;
-    }
-    .a-icon-bg {
-      fill: map-deep-get($theme, "control", "success-color");
-    }
-  }
-  &--state-info {
-    border-color: map-deep-get($theme, "control", "info-color");
-
-    .a-context__icon {
-      color: $color-information;
-    }
-
-    .a-icon-bg {
-      fill: map-deep-get($theme, "control", "info-color");
-    }
-  }
-  &--state-warning {
-    border-color: map-deep-get($theme, "control", "warning-color");
-
-    .a-context__icon {
-      color: map-deep-get($theme, "control", "warning-color");
-    }
-    .a-icon-bg {
-      fill: map-deep-get($theme, "control", "warning-color");
-    }
-  }
-  &--state-danger {
-    border-color: map-deep-get($theme, "control", "error-color");
-
-    .a-context__icon {
-      color: $color-error;
-    }
-    .a-icon-bg {
-      fill: map-deep-get($theme, "control", "error-color");
-    }
-  }
-}
-
 .a-context {
   display: inline-flex;
   align-items: flex-start;
@@ -69,9 +19,58 @@ $context-arrow-left: 10%;
   margin: 10px 0;
   padding: $context-padding;
   border-radius: $border-radius--sm;
+  color: var(--base-text-default);
+  background-color: var(--base-icon-in-default);
+  box-shadow: var(--card-shadow-lifted) var(--card-shadow-color);
   &__icon {
     margin: $context-icon-margin;
     height: 19px;
     width: 19px;
+  }
+
+  .a-icon-text {
+    fill: var(--base-icon-in-default);
+  }
+
+  &--state-success {
+    border-color: var(--positive-border-default);
+
+    .a-context__icon {
+      color: $color-good;
+    }
+    .a-icon-bg {
+      fill: var(--positive-border-default);
+    }
+  }
+  &--state-info {
+    border-color: var(--info-border-default);
+
+    .a-context__icon {
+      color: $color-information;
+    }
+
+    .a-icon-bg {
+      fill: var(--info-border-default);
+    }
+  }
+  &--state-warning {
+    border-color: var(--warning-border-default);
+
+    .a-context__icon {
+      color: var(--warning-border-default);
+    }
+    .a-icon-bg {
+      fill: var(--warning-border-default);
+    }
+  }
+  &--state-danger {
+    border-color: var(--negative-border-default);
+
+    .a-context__icon {
+      color: $color-error;
+    }
+    .a-icon-bg {
+      fill: var(--negative-border-default);
+    }
   }
 }

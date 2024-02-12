@@ -42,7 +42,7 @@
   &__last {
     margin: 0;
     .a-icon {
-      fill: map-deep-get($theme, "control", "stroke-color");
+      fill: var(--control-border-default);
     }
   }
 }

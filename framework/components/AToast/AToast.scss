@@ -6,7 +6,7 @@ $toast-max-width: 465px;
 
 @include theme(a-toast) using ($theme) {
   color: map-deep-get($theme, "toast", "color");
-  background: map-deep-get($theme, "control", "fill-color");
+  background: var(--base-icon-in-default);
 
   &__body {
     color: map-deep-get($theme, "toast", "color-message");
@@ -16,19 +16,19 @@ $toast-max-width: 465px;
   }
 
   &--success {
-    border-left-color: map-deep-get($theme, "control", "success-color");
+    border-left-color: var(--positive-border-default);
   }
 
   &--warning {
-    border-left-color: map-deep-get($theme, "control", "warning-color");
+    border-left-color: var(--warning-border-default);
   }
 
   &--danger {
-    border-left-color: map-deep-get($theme, "control", "error-color");
+    border-left-color: var(--negative-border-default);
   }
 
   &--information {
-    border-left-color: map-deep-get($theme, "control", "info-color");
+    border-left-color: var(--info-border-default);
   }
 }
 

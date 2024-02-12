@@ -224,8 +224,23 @@ $input-height-medium: 34px;
 
 //MAGNETIC SHADOWS
 $shadow-focus: 0 0 0 2px;
-$card-shadow-lifted: 0px 3px 8px 0px;
 
 :root {
   --panel-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.18);
+  --card-shadow-lifted: 0px 3px 8px 0px;
+  --warning-border-darken: darken(#cc8604, 5%);
+  --negative-border-darken: darken(#cc2d37, 5%);
+}
+
+[data-cds-theme="magnetic-light"] {
+  --card-shadow-color: rgba(0, 0, 0, 0.08);
+  --text-input-shadow-color: var(--control-border-medium-hover);
+  --row-effect-image: none;
+}
+[data-cds-theme="magnetic-dark"] {
+  --card-shadow-color: rgba(0, 0, 0, 0.48);
+  --text-input-shadow-color: #5191f080; //TODO waiting for new shadow color/tokens
+  --row-effect-image: (
+    linear-gradient(0deg, rgba(108, 158, 245, 0.25), rgba(108, 158, 245, 0.25))
+  );
 }

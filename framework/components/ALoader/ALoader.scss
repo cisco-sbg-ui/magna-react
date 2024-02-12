@@ -8,10 +8,6 @@ $generic-loader-small-font-size: 12px;
 $generic-loader-medium-font-size: 14px;
 $generic-loader-large-font-size: 16px;
 
-@include theme(a-generic-loader) using ($theme) {
-  color: map-deep-get($theme, "loader", "font-color");
-}
-
 .a-generic-loader {
   display: inline-flex;
   flex-direction: column;
@@ -22,6 +18,7 @@ $generic-loader-large-font-size: 16px;
   text-align: center;
   overflow: hidden;
   font-weight: 600;
+  color: var(--base-text-medium-default);
 
   &__container {
     position: relative;

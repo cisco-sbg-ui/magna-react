@@ -29,33 +29,11 @@ $date-picker-day-padding-bottom: 4px;
 $date-picker-day-border-radius: 4px;
 
 @include theme(a-date-picker) using ($theme) {
-  color: var(--base-text-default);
-  background-color: map-deep-get($theme, "control", "fill-color");
-  border: $border-width solid map-deep-get($theme, "control", "stroke-color");
   &__header {
     padding: 4px 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
-
-  &__prev,
-  &__next {
-    color: var(--base-text-default);
-    & span {
-      font-size: $font-size--sm;
-    }
-    &:hover {
-      & span {
-        color: var(--interact-text-hover);
-      }
-    }
-
-    &:focus {
-      & span {
-        box-shadow: var(--shadow-focus) var(--control-border-active);
-      }
-    }
   }
 
   &__calendar {
@@ -64,12 +42,8 @@ $date-picker-day-border-radius: 4px;
 
   &__day:nth-last-child(1 of .selected):not(.single-day) {
     .a-date-picker__day__label {
-      background-color: map-deep-get(
-        $theme,
-        "date-picker",
-        "background-color--selected"
-      );
-      color: map-deep-get($theme, "date-picker", "color--selected");
+      background-color: var(--control-bg-strong-default);
+      color: var(--interact-text-in-default);
     }
   }
 
@@ -83,28 +57,24 @@ $date-picker-day-border-radius: 4px;
     &.selected {
       .a-date-picker__day__label {
         border: $border-width solid;
-        border-color: map-deep-get($theme, "date-picker", "label-border-color");
+        border-color: var(--control-bg-strong-default);
         font-weight: 600;
       }
     }
 
     &.between {
       .a-date-picker__day__label {
-        background-color: map-deep-get($theme, "date-picker", "range-bg");
-        border: 2px solid map-deep-get($theme, "date-picker", "range-border");
-        color: map-deep-get($theme, "date-picker", "range-color");
+        background-color: var(--control-bg-weak-active);
+        border: 2px solid mvar(--control-border-medium-active);
+        color: var(--interact-text-default);
         font-weight: 600;
       }
     }
 
     &:hover {
       .a-date-picker__day__label {
-        background-color: map-deep-get(
-          $theme,
-          "date-picker",
-          "background-color--hover"
-        );
-        color: map-deep-get($theme, "date-picker", "label-border-color");
+        background-color: var(--control-bg-weak-hover);
+        color: var(--control-bg-strong-default);
         font-weight: 600;
       }
     }
@@ -118,12 +88,8 @@ $date-picker-day-border-radius: 4px;
 
     &.selected:hover {
       .a-date-picker__day__label {
-        background-color: map-deep-get(
-          $theme,
-          "date-picker",
-          "background-color--hover"
-        );
-        color: map-deep-get($theme, "date-picker", "label-border-color");
+        background-color: var(--control-bg-weak-hover);
+        color: var(--control-bg-strong-default);
         font-weight: 600;
       }
     }
@@ -146,7 +112,7 @@ $date-picker-day-border-radius: 4px;
     border-radius: $border-radius--lg;
 
     .a-input-base__surface:hover {
-      border-color: map-deep-get($theme, "control", "stroke-color");
+      border-color: var(--control-border-default);
     }
 
     &.inputs--hover,
@@ -166,17 +132,15 @@ $date-picker-day-border-radius: 4px;
     &.inputs--invalid {
       box-shadow: 0px 0px 0px 2px var(--negative-bg-strong-default);
       .a-input-base__surface {
-        border-color: map-deep-get(
-          $theme,
-          "color",
-          "error--state-hover"
+        border-color: var(
+          --negative-border-medium-hover
         ) !important; //Override gray border on focused field
       }
     }
 
     .a-input-base--focused {
       .a-input-base__surface {
-        border-color: map-deep-get($theme, "control", "stroke-color");
+        border-color: var(--control-border-default);
         box-shadow: none;
       }
     }
@@ -230,6 +194,10 @@ $date-picker-day-border-radius: 4px;
   max-width: $date-picker-max-width;
   border-radius: $border-radius--lg;
   z-index: $date-picker-z-index;
+  color: var(--base-text-default);
+  background-color: var(--base-icon-in-default);
+  border: $border-width solid var(--control-border-default);
+
   &__header {
     position: relative;
     padding: $date-picker-header-padding;
@@ -237,6 +205,7 @@ $date-picker-day-border-radius: 4px;
 
   &__prev,
   &__next {
+    color: var(--base-text-default);
     padding: 6px;
     & span {
       display: block;
@@ -245,15 +214,20 @@ $date-picker-day-border-radius: 4px;
       margin-left: $date-picker-nav-span-margin-left;
       top: $date-picker-nav-span-top;
       margin-top: $date-picker-nav-span-margin-top;
+      font-size: $font-size--sm;
     }
 
     &:hover {
       text-decoration: none;
+      & span {
+        color: var(--interact-text-hover);
+      }
     }
 
     &:focus {
       & span {
         text-decoration: none;
+        box-shadow: var(--shadow-focus) var(--control-border-active);
       }
     }
   }

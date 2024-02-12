@@ -80,7 +80,7 @@
   border-top-right-radius: 8px;
 }
 
-@include theme(a-card-title) using ($theme) {
+.a-card-title {
   flex: 0 1 auto;
 
   display: block;
@@ -93,29 +93,29 @@
   overflow: hidden;
   text-overflow: ellipsis;
 
-  color: map-deep-get($theme, "card", "title-color");
+  color: var(--base-text-strong-default);
 }
 
-@include theme(a-card-subtitle) using ($theme) {
+.a-card-subtitle {
   flex: 0 0 auto;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: map-deep-get($theme, "card", "subtitle-color");
+  color: var(--base-text-medium-default);
 }
 
-@include theme(a-card-container) using ($theme) {
+.a-card-container {
   @extend %a-card-base;
-  background: map-deep-get($theme, "card", "container-background");
-  box-shadow: map-deep-get($theme, "card", "container-shadow");
+  background: var(--base-bg-weak-default);
+  box-shadow: var(--card-shadow-lifted) var(--card-shadow-color);
 
   &--flat {
-    box-shadow: map-deep-get($theme, "card", "container-flat-shadow");
+    box-shadow: none;
   }
 }
 
-@include theme(a-card-basic) using ($theme) {
+.a-card-basic {
   @extend %a-card-base;
 
   border-radius: 8px;
@@ -131,43 +131,43 @@
     }
   }
 
-  background: map-deep-get($theme, "card", "basic-background");
-  box-shadow: map-deep-get($theme, "card", "basic-shadow");
-  border: 2px solid map-deep-get($theme, "card", "basic-border-color");
+  background: var(--base-bg-weak-default);
+  box-shadow: none;
+  border: 2px solid var(--control-border-weak-default);
 
   &.a-card-basic {
     &--lifted {
-      box-shadow: map-deep-get($theme, "card", "basic-lifted-shadow");
+      box-shadow: var(--card-shadow-lifted) var(--card-shadow-color);
     }
 
     &--state-dormant {
       .a-card-state {
-        background: #889099;
+        background: var(--dormant-border-default);
       }
     }
     &--state-positive {
       .a-card-state {
-        background: map-deep-get($theme, "card", "state-positive");
+        background: var(--positive-border-default);
       }
     }
     &--state-warning {
       .a-card-state {
-        background: map-deep-get($theme, "card", "state-warning");
+        background: var(--warning-border-default);
       }
     }
     &--state-negative {
       .a-card-state {
-        background: map-deep-get($theme, "card", "state-negative");
+        background: var(--negative-border-default);
       }
     }
     &--state-informational {
       .a-card-state {
-        background: map-deep-get($theme, "card", "state-informational");
+        background: var(--info-border-default);
       }
     }
     &--state-disabled {
       .a-card-state {
-        background: map-deep-get($theme, "card", "state-disabled");
+        background: var(--control-bg-disabled);
       }
     }
   }

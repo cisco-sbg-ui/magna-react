@@ -25,8 +25,8 @@ configuration environments.
         transparent;
 
       &:after {
-        border-color: map-deep-get($theme, "control", "fill-color") transparent
-          transparent transparent;
+        border-color: var(--base-icon-in-default) transparent transparent
+          transparent;
       }
     }
   }
@@ -39,8 +39,8 @@ configuration environments.
         map-deep-get($theme, "menu", "border-color") transparent;
 
       &:after {
-        border-color: transparent transparent
-          map-deep-get($theme, "control", "fill-color") transparent;
+        border-color: transparent transparent var(--base-icon-in-default)
+          transparent;
       }
     }
   }
@@ -50,8 +50,8 @@ configuration environments.
       transparent transparent;
 
     &:after {
-      border-color: transparent map-deep-get($theme, "control", "fill-color")
-        transparent transparent;
+      border-color: transparent var(--base-icon-in-default) transparent
+        transparent;
     }
   }
 
@@ -61,7 +61,7 @@ configuration environments.
 
     &:after {
       border-color: transparent transparent transparent
-        map-deep-get($theme, "control", "fill-color");
+        var(--base-icon-in-default);
     }
   }
 
@@ -70,8 +70,8 @@ configuration environments.
       transparent transparent;
 
     &:after {
-      border-color: transparent map-deep-get($theme, "control", "fill-color")
-        transparent transparent;
+      border-color: transparent var(--base-icon-in-default) transparent
+        transparent;
     }
   }
 
@@ -81,7 +81,7 @@ configuration environments.
 
     &:after {
       border-color: transparent transparent transparent
-        map-deep-get($theme, "control", "fill-color");
+        var(--base-icon-in-default);
     }
   }
 
@@ -90,8 +90,8 @@ configuration environments.
       transparent transparent;
 
     &:after {
-      border-color: transparent map-deep-get($theme, "control", "fill-color")
-        transparent transparent;
+      border-color: transparent var(--base-icon-in-default) transparent
+        transparent;
     }
   }
 
@@ -101,7 +101,7 @@ configuration environments.
 
     &:after {
       border-color: transparent transparent transparent
-        map-deep-get($theme, "control", "fill-color");
+        var(--base-icon-in-default);
     }
   }
 }

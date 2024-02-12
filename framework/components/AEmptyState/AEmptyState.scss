@@ -19,34 +19,34 @@ $container-xl: 400px;
       color: $color-good;
     }
     .a-icon-bg {
-      fill: map-deep-get($theme, "control", "success-color");
+      fill: var(--positive-border-default);
     }
   }
   &--state-info {
-    border-color: map-deep-get($theme, "control", "info-color");
+    border-color: var(--info-border-default);
 
     .a-empty-state__background {
       fill: #a6c4f5;
     }
   }
   &--state-warning {
-    border-color: map-deep-get($theme, "control", "warning-color");
+    border-color: var(--warning-border-default);
 
     .a-empty-state__icon {
       color: $color-warning;
     }
     .a-icon-bg {
-      fill: map-deep-get($theme, "control", "warning-color");
+      fill: var(--warning-border-default);
     }
   }
   &--state-danger {
-    border-color: map-deep-get($theme, "control", "error-color");
+    border-color: var(--negative-border-default);
 
     .a-empty-state__icon {
       color: $color-error;
     }
     .a-icon-bg {
-      fill: map-deep-get($theme, "control", "error-color");
+      fill: var(--negative-border-default);
     }
   }
 
@@ -55,7 +55,7 @@ $container-xl: 400px;
   }
 
   .a-empty-state__message {
-    color: map-deep-get($theme, "emptyState", "color");
+    color: var(--base-text-medium-default);
   }
 }
 

@@ -18,7 +18,7 @@ $timeline-item-transition: $transition-duration--fast;
 $timeline-transition: background-color $timeline-item-transition;
 
 @include theme(a-timeline) using ($theme) {
-  color: map-deep-get($theme, "label", "color-medium");
+  color: var(--base-text-medium-default);
   .a-timeline__title {
     color: map-deep-get($theme, "timeline", "header-text");
   }
@@ -31,25 +31,25 @@ $timeline-transition: background-color $timeline-item-transition;
     }
     &--state-success {
       .a-timeline__icon {
-        background-color: map-deep-get($theme, "icon", "positive-fill");
+        background-color: var(--positive-icon-strong-default);
       }
     }
 
     &--state-info {
       .a-timeline__icon {
-        background-color: map-deep-get($theme, "icon", "info-fill");
+        background-color: var(--info-icon-default);
       }
     }
 
     &--state-warning {
       .a-timeline__icon {
-        background-color: map-deep-get($theme, "icon", "warning-fill");
+        background-color: var(--warning-icon-strong-default);
       }
     }
 
     &--state-danger {
       .a-timeline__icon {
-        background-color: map-deep-get($theme, "icon", "negative-fill");
+        background-color: var(--negative-icon-default);
       }
     }
     &--state-inactive {

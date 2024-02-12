@@ -27,7 +27,7 @@
   }
 
   &--type-dialog {
-    background: map-deep-get($theme, "control", "fill-color");
+    background: var(--base-icon-in-default);
   }
 }
 

@@ -3,7 +3,7 @@
 @include theme(a-list) using ($theme) {
   color: var(--base-text-default);
   background: var(--base-bg-weak-default);
-  border-color: map-deep-get($theme, "control", "stroke-color");
+  border-color: var(--control-border-default);
 
   &--hoverable .a-list-item:not(.a-list-item--two-line) {
     &:hover,
@@ -19,19 +19,19 @@
 
     &:focus {
       color: var(--base-text-default);
-      background: map-deep-get($theme, "control", "row-effect-image"),
+      background: var(--row-effect-image)
         map-deep-get($theme, "menu", "color--focused");
     }
   }
 
   &-item--selected:not(.a-list-item--two-line) {
     color: var(--base-text-default);
-    background: map-deep-get($theme, "control", "row-effect-image"),
+    background: var(--row-effect-image),
       map-deep-get($theme, "menu", "color--selected");
 
     a:hover,
     a.a-list-item:hover {
-      background: map-deep-get($theme, "control", "row-effect-image"),
+      background: var(--row-effect-image),
         map-deep-get($theme, "menu", "color--selected") !important;
     }
   }

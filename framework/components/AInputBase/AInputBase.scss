@@ -51,8 +51,7 @@ $input-transition: border-color $transition-duration--extra-fast
       border: $border-width solid $color-warning;
 
       &:hover {
-        border: $border-width solid
-          map-deep-get($theme, "color", "warning--state-hover");
+        border: $border-width solid var(--severe-warning-border-hover);
       }
 
       &:active {
@@ -71,8 +70,7 @@ $input-transition: border-color $transition-duration--extra-fast
       border: $border-width solid $color-error;
 
       &:hover {
-        border: $border-width solid
-          map-deep-get($theme, "color", "error--state-hover");
+        border: $border-width solid var(--negative-border-medium-hover);
       }
 
       &:active {

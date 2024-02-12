@@ -33,17 +33,13 @@
 
     & .a-slider__handle {
       &:hover {
-        border-color: map-deep-get($theme, "color", "warning--state-hover");
+        border-color: var(--severe-warning-border-hover);
       }
 
       &:focus,
       &:active {
         box-shadow: map-deep-get($theme, "slider", "box-shadow--warning");
-        border-color: map-deep-get(
-          $theme,
-          "color",
-          "warning--state-default-hover"
-        );
+        border-color: var(--severe-warning-border-hover);
       }
     }
   }
@@ -55,16 +51,12 @@
 
     & .a-slider__handle {
       &:hover {
-        border-color: map-deep-get($theme, "color", "error--state-hover");
+        border-color: var(--negative-border-medium-hover);
       }
 
       &:focus,
       &:active {
-        border-color: map-deep-get(
-          $theme,
-          "color",
-          "error--state-default-hover"
-        );
+        border-color: var(--negative-border-hover);
         box-shadow: map-deep-get($theme, "slider", "box-shadow--danger");
       }
     }

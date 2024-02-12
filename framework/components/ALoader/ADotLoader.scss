@@ -12,18 +12,13 @@ $loader-dot-animation-delay: 1.4s;
 $loader-dot-bounce1-delay: -0.32s;
 $loader-dot-bounce2-delay: -0.16s;
 
-@include theme(a-dot-loader) using ($theme) {
-  &__dot {
-    background-color: map-deep-get($theme, "loader", "main-color");
-  }
-}
-
 .a-dot-loader {
   margin: $loader-margin;
   padding: $loader-padding;
   text-align: center;
   width: $loader-container-width-medium;
   &__dot {
+    background-color: var(--positive-bg-default);
     width: $loader-dot-diameter-medium;
     height: $loader-dot-diameter-medium;
     border-radius: 100%;

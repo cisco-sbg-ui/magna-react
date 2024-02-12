@@ -63,8 +63,8 @@ $colors: "A", "B", "C", "D", "E", "F", "G", "H", "I", "K";
   //binary check icon override
   &--binary-active {
     .a-icon--check-circle circle {
-      fill: map-deep-get($theme, "control", "info-color") !important;
-      stroke: map-deep-get($theme, "control", "info-color") !important;
+      fill: var(--info-border-default) !important;
+      stroke: var(--info-border-default) !important;
     }
   }
 
@@ -74,24 +74,24 @@ $colors: "A", "B", "C", "D", "E", "F", "G", "H", "I", "K";
     &--minus-circle {
       line,
       polyline {
-        stroke: map-deep-get($theme, "control", "fill-color");
+        stroke: var(--base-icon-in-default);
       }
     }
     &--check-circle circle {
-      fill: map-deep-get($theme, "control", "success-color");
-      stroke: map-deep-get($theme, "control", "success-color");
+      fill: var(--positive-border-default);
+      stroke: var(--positive-border-default);
     }
     &--warning-circle {
       stroke: map-get($mds-neutral, "neutral-14");
       fill: map-get($mds-neutral, "neutral-14");
       circle:first-of-type {
-        fill: map-deep-get($theme, "control", "warning-color");
-        stroke: map-deep-get($theme, "control", "warning-color");
+        fill: var(--warning-border-default);
+        stroke: var(--warning-border-default);
       }
     }
     &--x-circle circle {
-      fill: map-deep-get($theme, "control", "error-color");
-      stroke: map-deep-get($theme, "control", "error-color");
+      fill: var(--negative-border-default);
+      stroke: var(--negative-border-default);
     }
     &--minus-circle circle,
     &--prohibit {
