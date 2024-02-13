@@ -10,10 +10,10 @@
   .a-text-input {
     &__input {
       &:disabled {
-        color: map-deep-get($theme, "text-input", "color--disabled");
+        color: var(--base-text-disabled);
 
         &::placeholder {
-          color: map-deep-get($theme, "text-input", "color--disabled");
+          color: var(--base-text-disabled);
         }
       }
     }

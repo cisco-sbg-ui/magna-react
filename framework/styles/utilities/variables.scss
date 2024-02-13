@@ -225,6 +225,13 @@ $input-height-medium: 34px;
 //MAGNETIC SHADOWS
 $shadow-focus: 0 0 0 2px;
 
+$accent-colors: A #{var(--accent-a-weak-default)},
+  B #{var(--accent-b-weak-default)}, C #{var(--accent-c-weak-default)},
+  D #{var(--accent-d-weak-default)}, E #{var(--accent-e-weak-default)},
+  F #{var(--accent-f-weak-default)}, G #{var(--accent-g-weak-default)},
+  H #{var(--accent-h-weak-default)}, I #{var(--accent-i-weak-default)},
+  K #{var(--accent-k-weak-default)};
+
 :root {
   --panel-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.18);
   --card-shadow-lifted: 0px 3px 8px 0px;

@@ -20,13 +20,13 @@ $timeline-transition: background-color $timeline-item-transition;
 @include theme(a-timeline) using ($theme) {
   color: var(--base-text-medium-default);
   .a-timeline__title {
-    color: map-deep-get($theme, "timeline", "header-text");
+    color: var(--base-text-strong-default);
   }
 
   &__item {
     &--state-default {
       .a-timeline__icon {
-        background-color: map-deep-get($theme, "timeline", "icon-bg-color");
+        background-color: var(--interact-bg-default);
       }
     }
     &--state-success {
@@ -54,20 +54,18 @@ $timeline-transition: background-color $timeline-item-transition;
     }
     &--state-inactive {
       .a-timeline__icon {
-        background-color: map-deep-get($theme, "timeline", "icon-bg-inactive");
-        border: $timeline-icon-border-width solid
-          map-deep-get($theme, "timeline", "icon-border-inactive");
+        background-color: var(--base-bg-default);
+        border: $timeline-icon-border-width solid var(--control-border-default);
       }
     }
   }
 
   &__icon {
-    border: $timeline-icon-border-width solid
-      map-deep-get($theme, "timeline", "icon-border-color");
+    border: $timeline-icon-border-width solid var(--control-border-weak-default);
   }
 
   &::after {
-    background-color: map-deep-get($theme, "timeline", "icon-border-color");
+    background-color: var(--control-border-weak-default);
   }
 }
 

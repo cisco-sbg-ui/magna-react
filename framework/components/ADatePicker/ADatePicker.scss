@@ -126,7 +126,7 @@ $date-picker-day-border-radius: 4px;
     }
     &.inputs--hover:not(.a-date-picker__inputs-inputs--invalid) {
       .a-input-base__surface {
-        border-color: map-deep-get($theme, "text-input", "border-color--focus");
+        border-color: var(--control-border-focus);
       }
     }
     &.inputs--invalid {
@@ -152,10 +152,8 @@ $date-picker-day-border-radius: 4px;
         border-top-left-radius: $border-radius--xlg; //clip input's base border-radius to avoid showing above focus's border-radius
         border-bottom-left-radius: $border-radius--xlg; //clip input's base border-radius to avoid showing above focus's border-radius
         :focus {
-          border: 2px solid
-            map-deep-get($theme, "text-input", "border-color--focus");
-          box-shadow: 0px 0px 0px 2px
-            map-deep-get($theme, "text-input", "box-shadow-color--active");
+          border: 2px solid var(--control-border-focus);
+          box-shadow: 0px 0px 0px 2px var(--control-border-active);
           border-radius: $border-radius--lg;
         }
       }
@@ -166,10 +164,8 @@ $date-picker-day-border-radius: 4px;
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
         :focus {
-          border: 2px solid
-            map-deep-get($theme, "text-input", "border-color--focus");
-          box-shadow: 0px 0px 0px 2px
-            map-deep-get($theme, "text-input", "box-shadow-color--active");
+          border: 2px solid var(--control-border-focus);
+          box-shadow: 0px 0px 0px 2px var(--control-border-active);
           border-radius: $border-radius--lg;
         }
       }

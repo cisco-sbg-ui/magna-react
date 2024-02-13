@@ -16,7 +16,7 @@ $hidden-table-col-width: 45px;
       cursor: pointer;
       &:focus,
       &:hover {
-        background-color: map-deep-get($theme, "table", "header-focus");
+        background-color: var(--control-bg-weak-active);
       }
     }
   }
@@ -25,34 +25,34 @@ $hidden-table-col-width: 45px;
     .a-data-table__row {
       &[data-expandable-row="true"] {
         .a-data-table__cell:nth-last-child(2) {
-          border-color: map-deep-get($theme, "table", "cell-border-color");
+          border-color: var(--control-border-weak-default);
         }
       }
 
       .a-data-table__cell[data-expandable-content] {
-        border-color: map-deep-get($theme, "table", "cell-border-color");
-        background: map-deep-get($theme, "table", "row-hover-color");
+        border-color: var(--control-border-weak-default);
+        background: var(--control-bg-weak-hover);
       }
     }
   }
   &--sticky {
     thead {
-      box-shadow: 0 2.5px 2px -2px map-deep-get($theme, "table", "header-border");
+      box-shadow: 0 2.5px 2px -2px var(--control-border-strong-default);
       background: var(--base-bg-weak-default);
     }
   }
 
   &__row {
     &--selected {
-      background: map-deep-get($theme, "table", "row-selected");
+      background: var(--control-bg-weak-active);
 
       &:hover {
-        background: map-deep-get($theme, "table", "row-selected") !important;
+        background: var(--control-bg-weak-active) !important;
       }
     }
 
     &--key-selected {
-      background: map-deep-get($theme, "table", "row-selected");
+      background: var(--control-bg-weak-active);
     }
   }
 }

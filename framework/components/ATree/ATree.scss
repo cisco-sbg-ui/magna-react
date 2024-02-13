@@ -4,7 +4,7 @@
   &__root {
     &--active {
       background: var(--row-effect-image), var(--row-effect-image);
-      color: map-deep-get($theme, "tree", "color");
+      color: var(--base-text-default);
     }
 
     &--focus {
@@ -41,15 +41,11 @@
   &--hoverable {
     .a-tree__root {
       &--hover {
-        background-color: map-deep-get(
-          $theme,
-          "tree",
-          "background-color--hover"
-        );
-        color: map-deep-get($theme, "tree", "color");
+        background-color: var(--control-bg-weak-hover);
+        color: var(--base-text-default);
 
         .a-tree__content {
-          color: map-deep-get($theme, "tree", "color");
+          color: var(--base-text-default);
         }
       }
 

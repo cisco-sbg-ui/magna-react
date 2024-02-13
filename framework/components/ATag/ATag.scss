@@ -18,15 +18,15 @@ $icon-width: 1.167rem;
 $colors: "A", "B", "C", "D", "E", "F", "G", "H", "I", "K";
 
 @include theme(a-tag) using ($theme) {
-  background-color: map-deep-get($theme, "tag", "bg-color");
-  color: map-deep-get($theme, "tag", "color");
+  background-color: var(--control-bg-medium-disabled);
+  color: var(--base-text-default);
 
   &.interactable {
     cursor: pointer;
 
     &:hover,
     &:focus {
-      color: map-deep-get($theme, "tag", "color");
+      color: var(--base-text-default);
     }
   }
 
@@ -50,13 +50,9 @@ $colors: "A", "B", "C", "D", "E", "F", "G", "H", "I", "K";
     color: var(--base-text-default);
   }
 
-  @each $accent in $colors {
-    &--accent#{$accent} {
-      background-color: map-deep-get(
-        $theme,
-        "accent-colors",
-        "accent#{$accent}"
-      );
+  @each $accentColor, $color in $accent-colors {
+    &--accent#{$accentColor} {
+      background-color: $color;
     }
   }
 
