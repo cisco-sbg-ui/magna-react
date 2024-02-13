@@ -38,7 +38,7 @@ const ARadio = forwardRef(
       className += ` ${propsClassName}`;
     }
 
-    let content = (
+    const content = (
       <>
         <input
           type="radio"
