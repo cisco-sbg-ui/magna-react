@@ -3,6 +3,7 @@ import React, {forwardRef, useState, useCallback} from "react";
 
 import {useIsomorphicLayoutEffect} from "../../utils/hooks";
 import AThemeContext from "./AThemeContext";
+import "./ATheme.scss";
 
 const DEFAULT_THEME = "default";
 const DUSK_THEME = "dusk";
