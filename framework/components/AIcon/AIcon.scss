@@ -9,38 +9,38 @@ svg.a-icon {
 }
 
 @include theme(a-icon) using ($theme) {
-  stroke: map-deep-get($theme, "icon", "icon-color");
-  //fill:  map-deep-get($theme, "icon", "icon-color"); // if using Fill phosphor icons, uncomment
+  stroke: var(--interact-icon-weak-default);
+  //fill:  var(--interact-icon-weak-default); // if using Fill phosphor icons, uncomment
 
   &--atomic {
-    fill: map-deep-get($theme, "icon", "icon-color");
+    fill: var(--interact-icon-weak-default);
   }
 
   //Status icon text
   .a-icon-text {
-    fill: map-deep-get($theme, "control", "fill-color");
+    fill: var(--base-icon-in-default);
   }
 
   //Status icon backgrounds
   &--positive {
     .a-icon-bg {
-      fill: map-deep-get($theme, "icon", "positive-fill");
+      fill: var(--positive-icon-strong-default);
     }
   }
   &--warning {
     .a-icon-bg {
-      fill: map-deep-get($theme, "icon", "warning-fill");
+      fill: var(--warning-icon-strong-default);
     }
   }
   &--danger,
   &--negative {
     .a-icon-bg {
-      fill: map-deep-get($theme, "icon", "negative-fill");
+      fill: var(--negative-icon-default);
     }
   }
   &--info {
     .a-icon-bg {
-      fill: map-deep-get($theme, "icon", "info-fill");
+      fill: var(--info-icon-default);
     }
   }
   &--malicious,
@@ -48,30 +48,30 @@ svg.a-icon {
   &--unknown,
   &--clean,
   &--common {
-    fill: map-deep-get($theme, "icon", "disposition-fill");
+    fill: var(--base-bg-weak-default);
   }
 
   &--disposition-main-malicious {
-    fill: map-deep-get($theme, "disposition", "malicious");
+    fill: var(--negative-bg-default);
   }
   &--disposition-main-suspicious {
-    fill: map-deep-get($theme, "disposition", "suspicious");
+    fill: var(--severe-warning-bg-default);
   }
 
   &--disposition-main-unknown {
-    fill: map-deep-get($theme, "disposition", "unknown");
+    fill: var(--dormant-border-default);
   }
 
   &--disposition-main-clean {
-    fill: map-deep-get($theme, "disposition", "clean");
+    fill: var(--positive-bg-default);
   }
 
   &--disposition-main-common {
-    fill: map-deep-get($theme, "disposition", "common");
+    fill: var(--warning-bg-default);
   }
 
   &--disposition-main-stroke-common {
-    stroke: map-deep-get($theme, "disposition", "common");
+    stroke: var(--warning-bg-default);
   }
 
   /*
@@ -108,7 +108,7 @@ svg.a-icon {
   &--type_Switch,
   &--type_Systems_Manager,
   &--type_Wireless {
-    fill: map-deep-get($theme, "icon", "icon-color");
+    fill: var(--interact-icon-weak-default);
   }
 
   &--critical-stop {

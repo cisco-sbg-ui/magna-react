@@ -1,31 +1,25 @@
 @import "../../styles";
 
 @include theme(a-inline-input) using ($theme) {
-  color: map-deep-get($theme, "base", "color") !important;
+  color: var(--base-text-default) !important;
   .a-icon--pencil-simple {
-    stroke: map-deep-get($theme, "base", "color") !important;
+    stroke: var(--base-text-default) !important;
   }
 
   &__placeholder {
-    color: map-deep-get($theme, "base", "color--disabled");
+    color: var(--base-text-disabled);
   }
   &__display:hover {
-    color: map-deep-get($theme, "button", "tertiary", "alt", "color--hover");
+    color: var(--interact-text-weak-hover);
 
     .a-icon--pencil-simple {
-      stroke: map-deep-get(
-        $theme,
-        "button",
-        "tertiary",
-        "alt",
-        "color--hover"
-      ) !important;
+      stroke: var(--interact-text-weak-hover) !important;
     }
   }
 
   &--disabled {
     .a-inline-input__display {
-      color: map-deep-get($theme, "base", "color") !important;
+      color: var(--base-text-default) !important;
     }
     .a-icon--pencil-simple {
       display: none;

@@ -2,18 +2,24 @@
 
 @include theme("a-skeleton") using ($theme) {
   &__header {
-    background-color: map-deep-get($theme, "skeleton", "header-bg");
+    background-color: var(--base-border-medium-default);
   }
 
   &__block,
   &__text {
-    background-color: map-deep-get($theme, "skeleton", "content-bg");
+    background-color: var(--base-bg-default);
   }
 
   &--animated {
     .a-skeleton__block,
     .a-skeleton__text {
-      background: map-deep-get($theme, "skeleton", "animation-bg");
+      //These animation colors don't look great in dark mode), but it's what CDS uses
+      background: linear-gradient(
+        90deg,
+        var(--base-bg-default) 0%,
+        var(--base-border-medium-default) 40%,
+        var(--base-bg-default) 90%
+      );
       background-size: 400% 100%;
     }
   }

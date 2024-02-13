@@ -1,18 +1,5 @@
 @import "../../styles";
 
-@include theme(a-multiselect) using ($theme) {
-  &__tags {
-    .a-tag {
-      .a-button:focus,
-      .a-button:hover {
-        svg {
-          stroke: map-deep-get($theme, "color", "warning--state-hover");
-        }
-      }
-    }
-  }
-}
-
 .a-multiselect {
   width: unset;
 
@@ -49,6 +36,13 @@
       .a-button {
         padding: 4px;
         margin-left: 4px;
+
+        &:focus,
+        &:hover {
+          svg {
+            stroke: var(--severe-warning-border-hover);
+          }
+        }
       }
     }
   }

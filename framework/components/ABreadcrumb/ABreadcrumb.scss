@@ -1,26 +1,5 @@
 @import "../../styles";
 
-@include theme(a-breadcrumb) using ($theme) {
-  &__item {
-    > a {
-      color: map-deep-get($theme, "breadcrumb", "default-color");
-      font-size: $font-size--md;
-      font-weight: 600;
-
-      &:hover {
-        color: map-deep-get($theme, "breadcrumb", "hover-color");
-        background: none;
-        text-decoration: underline;
-      }
-    }
-
-    &__chevron,
-    &__arrow {
-      stroke: map-deep-get($theme, "breadcrumb", "divider-color");
-    }
-  }
-}
-
 .a-breadcrumb {
   list-style: none;
   background-color: transparent;
@@ -42,14 +21,27 @@
   }
 
   &__item {
+    > a {
+      color: var(--interact-text-weak-default) !important;
+      font-size: $font-size--md;
+      font-weight: 600;
+
+      &:hover {
+        color: var(--interact-text-weak-hover) !important;
+        background: none;
+        text-decoration: underline;
+      }
+    }
     &__arrow {
       vertical-align: middle;
       width: 14px;
       margin: 0 6px 0 0;
+      stroke: var(--interact-icon-weak-default);
     }
     &__chevron {
       width: 9px;
       margin: 0 6px;
+      stroke: var(--interact-icon-weak-default);
     }
   }
 }

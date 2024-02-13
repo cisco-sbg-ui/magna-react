@@ -3,25 +3,16 @@
 @include theme(a-pagination) using ($theme) {
   .a-button-group {
     .a-button {
-      color: map-deep-get($theme, "pagination", "label-color");
+      color: var(--base-text-default);
       &--selected {
-        border: 2px solid
-          map-deep-get($theme, "pagination", "label-border-color") !important;
-        color: map-deep-get($theme, "pagination", "label-color");
+        border: 2px solid var(--control-border-medium-active) !important;
+        color: var(--base-text-default);
         font-weight: 600;
       }
 
       &:hover {
-        background-color: map-deep-get(
-          $theme,
-          "pagination",
-          "background-color-hover"
-        ) !important;
-        color: map-deep-get(
-          $theme,
-          "pagination",
-          "label-color-hover"
-        ) !important;
+        background-color: var(--control-bg-weak-hover) !important;
+        color: var(--interact-text-hover) !important;
         //TODO need to stabilize width of remaining buttons on hover
         // font-weight: 600;
       }
@@ -31,7 +22,7 @@
       }
 
       &:focus:not(&--selected) {
-        color: map-deep-get($theme, "base", "inverse-color");
+        color: var(--inverse-text-default);
       }
     }
   }
@@ -42,7 +33,7 @@
   &__last {
     margin: 0;
     .a-icon {
-      fill: map-deep-get($theme, "control", "stroke-color");
+      fill: var(--control-border-default);
     }
   }
 }

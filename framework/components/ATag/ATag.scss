@@ -18,49 +18,41 @@ $icon-width: 1.167rem;
 $colors: "A", "B", "C", "D", "E", "F", "G", "H", "I", "K";
 
 @include theme(a-tag) using ($theme) {
-  background-color: map-deep-get($theme, "tag", "bg-color");
-  color: map-deep-get($theme, "tag", "color");
+  background-color: var(--control-bg-medium-disabled);
+  color: var(--base-text-default);
 
   &.interactable {
     cursor: pointer;
 
     &:hover,
     &:focus {
-      color: map-deep-get($theme, "tag", "color");
+      color: var(--base-text-default);
     }
   }
 
   &--state-information,
   &--state-info,
   &--binary-active {
-    background-color: map-deep-get(
-      $theme,
-      "button-group",
-      "background-color--selected"
-    );
-    color: map-deep-get($theme, "base", "color");
+    background-color: var(--control-bg-medium-active);
+    color: var(--base-text-default);
   }
 
   &--status-positive {
-    background-color: map-deep-get($theme, "alert", "success-bg");
-    color: map-deep-get($theme, "base", "color");
+    background-color: var(--positive-bg-strong-default);
+    color: var(--base-text-default);
   }
   &--status-warning {
-    background-color: map-deep-get($theme, "alert", "warning-bg");
-    color: map-deep-get($theme, "base", "color");
+    background-color: var(--warning-bg-strong-default);
+    color: var(--base-text-default);
   }
   &--status-negative {
-    background-color: map-deep-get($theme, "alert", "danger-bg");
-    color: map-deep-get($theme, "base", "color");
+    background-color: var(--negative-bg-strong-default);
+    color: var(--base-text-default);
   }
 
-  @each $accent in $colors {
-    &--accent#{$accent} {
-      background-color: map-deep-get(
-        $theme,
-        "accent-colors",
-        "accent#{$accent}"
-      );
+  @each $accentColor, $color in $accent-colors {
+    &--accent#{$accentColor} {
+      background-color: $color;
     }
   }
 
@@ -78,29 +70,29 @@ $colors: "A", "B", "C", "D", "E", "F", "G", "H", "I", "K";
     &--minus-circle {
       line,
       polyline {
-        stroke: map-deep-get($theme, "control", "fill-color");
+        stroke: var(--base-icon-in-default);
       }
     }
     &--check-circle circle {
-      fill: map-deep-get($theme, "control", "success-color");
-      stroke: map-deep-get($theme, "control", "success-color");
+      fill: var(--positive-border-default);
+      stroke: var(--positive-border-default);
     }
     &--warning-circle {
       stroke: map-get($mds-neutral, "neutral-14");
       fill: map-get($mds-neutral, "neutral-14");
       circle:first-of-type {
-        fill: map-deep-get($theme, "control", "warning-color");
-        stroke: map-deep-get($theme, "control", "warning-color");
+        fill: var(--warning-border-default);
+        stroke: var(--warning-border-default);
       }
     }
     &--x-circle circle {
-      fill: map-deep-get($theme, "control", "error-color");
-      stroke: map-deep-get($theme, "control", "error-color");
+      fill: var(--negative-border-default);
+      stroke: var(--negative-border-default);
     }
     &--minus-circle circle,
     &--prohibit {
-      stroke: map-deep-get($theme, "button-group", "color");
-      fill: map-deep-get($theme, "button-group", "color");
+      stroke: var(--base-text-medium-default);
+      fill: var(--base-text-medium-default);
     }
   }
 }

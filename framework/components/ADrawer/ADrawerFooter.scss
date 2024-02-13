@@ -1,7 +1,7 @@
 @import "../../styles";
 
 @include theme(a-drawer__footer) using ($theme) {
-  border-color: map-deep-get($theme, "menu", "border-color");
+  border-color: var(--control-border-default);
 }
 
 .a-drawer__footer {

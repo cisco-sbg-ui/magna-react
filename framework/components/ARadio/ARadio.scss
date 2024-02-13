@@ -30,54 +30,54 @@ $radio-transition: stroke $transition-duration--extra-fast
     }
 
     > svg {
-      background-color: map-deep-get($theme, "radio", "bg");
+      background-color: var(--control-bg-weak-default);
     }
   }
 
   &__input {
     & ~ .a-radio__box {
       .a-radio__box__outer {
-        stroke: map-deep-get($theme, "radio", "border--disabled");
+        stroke: var(--control-border-disabled);
       }
 
       &:hover .a-radio__box__outer {
-        stroke: map-deep-get($theme, "radio", "border--disabled");
+        stroke: var(--control-border-disabled);
       }
     }
 
     &:enabled ~ .a-radio__box {
       .a-radio__box__outer {
-        stroke: map-deep-get($theme, "radio", "border--enabled");
+        stroke: var(--control-border-default);
       }
 
       &:hover .a-radio__box__outer {
-        stroke: map-deep-get($theme, "radio", "box-border--enabled--hover");
+        stroke: var(--control-border-hover);
       }
     }
 
     &:focus ~ .a-radio__box {
       > svg {
-        box-shadow: map-deep-get($theme, "base", "box-shadow");
+        box-shadow: var(--shadow-focus) var(--control-border-active);
       }
 
       .a-radio__box__outer {
-        stroke: map-deep-get($theme, "radio", "box-border--enabled--hover");
+        stroke: var(--control-border-hover);
       }
     }
 
     &:enabled:checked ~ .a-radio__box {
       .a-radio__box__inner {
-        fill: map-deep-get($theme, "radio", "border--checked");
-        stroke: map-deep-get($theme, "radio", "border--checked");
+        fill: var(--control-border-strong-active);
+        stroke: var(--control-border-strong-active);
       }
 
       .a-radio__box__outer {
-        stroke: map-deep-get($theme, "radio", "border--checked");
+        stroke: var(--control-border-strong-active);
       }
 
       &:hover .a-radio__box__inner {
-        fill: map-deep-get($theme, "radio", "fill--checked--hover");
-        stroke: map-deep-get($theme, "radio", "fill--checked--hover");
+        fill: var(--control-icon-in-strong-active);
+        stroke: var(--control-icon-in-strong-active);
       }
     }
 
@@ -95,34 +95,33 @@ $radio-transition: stroke $transition-duration--extra-fast
 
     &:enabled:active ~ .a-radio__box {
       .a-radio__box__active {
-        fill: map-deep-get($theme, "radio", "fill--enabled");
+        fill: var(--control-icon-in-strong-active);
       }
 
       &:hover .a-radio__box__active {
-        fill: map-deep-get($theme, "radio", "fill--active--hover");
+        fill: var(--control-icon-in-strong-active);
       }
     }
 
     &:disabled ~ .a-radio__box .a-radio__box__outer {
-      fill: map-deep-get($theme, "radio", "box-bg--disabled");
-      opacity: map-deep-get($theme, "radio", "opacity--disabled");
+      fill: var(--control-bg-weak-disabled);
     }
 
     &:disabled ~ .a-radio__box .a-radio__box__inner {
-      fill: map-deep-get($theme, "radio", "bg--disabled");
+      fill: var(--control-bg-weak-disabled);
       stroke: none;
     }
 
     &:disabled:checked ~ .a-radio__box .a-radio__box__inner {
-      fill: map-deep-get($theme, "radio", "fill-color--disabled");
+      fill: mvar(--control-border-disabled);
     }
 
     &:disabled ~ .a-radio__label {
-      color: map-deep-get($theme, "radio", "label-color--disabled");
+      color: var(--base-text-disabled);
     }
 
     &:disabled ~ .a-radio__box .a-radio__box__outer {
-      fill: map-deep-get($theme, "radio", "box-bg--disabled");
+      fill: var(--control-bg-weak-disabled);
     }
   }
 }

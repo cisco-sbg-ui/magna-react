@@ -4,26 +4,27 @@
   &__track {
     &--low,
     &--high {
-      background-color: map-deep-get($theme, "slider", "track-color");
+      background-color: var(--base-border-medium-default);
     }
   }
 
   &__handle {
-    background-color: map-deep-get($theme, "slider", "handle-bg");
-    border-color: map-deep-get($theme, "slider", "handle-border");
+    background-color: var(--inverse-icon-strong-default);
+    border-color: var(--control-border-strong-default);
     &:hover {
-      border-color: map-deep-get($theme, "slider", "handle-border-hover");
+      border-color: var(--control-border-hover);
     }
 
     &:focus,
     &:active {
-      box-shadow: map-deep-get($theme, "slider", "box-shadow");
-      border-color: map-deep-get($theme, "slider", "handle-border-active");
+      //TODO waiting for new shadow color/tokens
+      box-shadow: var(--shadow-focus) var(--control-border-medium-hover);
+      border-color: var(--control-border-active);
     }
   }
 
   &__selection {
-    background: map-deep-get($theme, "slider", "bg");
+    background: var(--control-bg-strong-default);
   }
 
   &--warning {
@@ -33,17 +34,14 @@
 
     & .a-slider__handle {
       &:hover {
-        border-color: map-deep-get($theme, "color", "warning--state-hover");
+        border-color: var(--severe-warning-border-hover);
       }
 
       &:focus,
       &:active {
-        box-shadow: map-deep-get($theme, "slider", "box-shadow--warning");
-        border-color: map-deep-get(
-          $theme,
-          "color",
-          "warning--state-default-hover"
-        );
+        //TODO waiting for new shadow color/tokens
+        box-shadow: var(--shadow-focus) var(--warning-bg-strong-default);
+        border-color: var(--severe-warning-border-hover);
       }
     }
   }
@@ -55,30 +53,26 @@
 
     & .a-slider__handle {
       &:hover {
-        border-color: map-deep-get($theme, "color", "error--state-hover");
+        border-color: var(--negative-border-medium-hover);
       }
 
       &:focus,
       &:active {
-        border-color: map-deep-get(
-          $theme,
-          "color",
-          "error--state-default-hover"
-        );
-        box-shadow: map-deep-get($theme, "slider", "box-shadow--danger");
+        border-color: var(--negative-border-hover);
+        box-shadow: var(--shadow-focus) var(--negative-border-disabled);
       }
     }
   }
 
   &--disabled {
     & .a-slider__selection {
-      background-color: map-deep-get($theme, "slider", "selection-bg-disabled");
+      background-color: var(--control-border-strong-disabled);
     }
     & .a-slider__handle {
-      border-color: map-deep-get($theme, "slider", "handle-border-disabled");
+      border-color: var(--control-border-disabled);
       &:hover,
       &:active {
-        border-color: map-deep-get($theme, "slider", "handle-border-disabled");
+        border-color: var(--control-border-disabled);
         box-shadow: none;
       }
     }

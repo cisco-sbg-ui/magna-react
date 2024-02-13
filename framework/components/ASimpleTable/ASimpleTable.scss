@@ -45,40 +45,40 @@ $table-cell-spacious-padding-top-bottom: math.div(
 // Dusk: $table-grouped-rows-header-bg: $color-blue7;
 
 @include theme(a-simple-table) using ($theme) {
-  // background: map-deep-get($theme, "table", "bg");
+  // background: var(--base-bg-weak-default);
 
   &--striped {
     tbody tr:nth-child(even):not(:hover) {
-      background: map-deep-get($theme, "table", "row-stripe-color");
+      background: var(--base-bg-disabled);
     }
   }
 
   tbody tr:hover {
-    background: map-deep-get($theme, "table", "row-hover-color");
+    background: var(--control-bg-weak-hover);
   }
 
   th {
-    color: map-deep-get($theme, "table", "color");
-    border-bottom-color: map-deep-get($theme, "table", "header-border");
+    color: var(--base-text-default);
+    border-bottom-color: var(--control-border-strong-default);
   }
 
   &--sticky {
     thead {
-      background: map-deep-get($theme, "base", "bg");
-      box-shadow: 0 2.5px 2px -2px map-deep-get($theme, "table", "header-border");
+      background: var(--base-bg-weak-default);
+      box-shadow: 0 2.5px 2px -2px var(--control-border-strong-default);
     }
   }
 
   tr {
     td {
-      color: map-deep-get($theme, "table", "color");
+      color: var(--base-text-default);
     }
-    border-color: map-deep-get($theme, "table", "cell-border-color");
+    border-color: var(--control-border-weak-default);
   }
 
   &--alt-links {
     a {
-      color: map-deep-get($theme, "base", "color");
+      color: var(--base-text-default);
     }
   }
 }

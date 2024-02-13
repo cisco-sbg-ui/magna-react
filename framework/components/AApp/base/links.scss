@@ -1,31 +1,28 @@
-@include themeElement(a) using ($theme) {
-  color: map-deep-get($theme, "button", "tertiary", "color");
+.a-app a {
+  color: var(--interact-text-default);
 
   &:hover {
-    color: map-deep-get($theme, "button", "tertiary", "color--hover");
-    background-color: map-deep-get($theme, "button", "tertiary", "bg--hover");
+    color: var(--interact-text-hover);
+    background-color: var(--interact-bg-weak-hover);
   }
 
   &:focus {
-    color: map-deep-get($theme, "button", "tertiary", "color--focus");
-    border-color: map-deep-get($theme, "button", "tertiary", "border--focus");
-    background-color: map-deep-get($theme, "button", "tertiary", "bg--active");
+    color: var(--interact-text-focus);
+    border-color: var(--interact-border-weak-hover);
+    background-color: var(--interact-bg-weak-active);
   }
 
   &:active {
-    color: map-deep-get($theme, "button", "tertiary", "color--active");
-    background-color: map-deep-get($theme, "button", "tertiary", "bg--active");
+    color: var(--interact-text-active);
+    background-color: var(--interact-bg-weak-active);
   }
 
   &.disabled,
   &:disabled {
-    opacity: map-deep-get($theme, "button", "tertiary", "opacity--disabled");
     background-color: transparent;
-    color: map-deep-get($theme, "button", "tertiary", "color--disabled");
+    color: var(--interact-text-disabled);
   }
-}
 
-.a-app a {
   text-decoration: none;
   font-weight: 700;
   &:hover,

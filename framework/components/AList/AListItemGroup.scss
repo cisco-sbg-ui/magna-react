@@ -1,10 +1,10 @@
 @import "../../styles";
 
-@include theme(a-list-item__group) using($theme) {
+.a-list-item__group {
   &-title {
     font-size: $font-size--sm;
     padding: 6px 10px;
-    color: map-deep-get($theme, "list", "group-title-color");
+    color: var(--base-text-medium-default);
   }
 
   .a-list-item {

@@ -5,39 +5,30 @@ $input-transition: border-color $transition-duration--extra-fast
 
 @include theme(a-input-base) using ($theme) {
   &__surface {
-    background: map-deep-get($theme, "text-input", "bg");
-    border-color: map-deep-get($theme, "text-input", "border-color");
-    color: map-deep-get($theme, "base", "color");
+    background: var(--control-bg-weak-default);
+    border-color: var(--control-border-default);
+    color: var(--base-text-default);
 
     &:hover {
-      border-color: map-deep-get($theme, "text-input", "border-color--hover");
+      border-color: var(--control-border-hover);
     }
 
     &:active {
-      border-color: map-deep-get($theme, "text-input", "border-color--active");
+      border-color: var(--control-border-active);
     }
   }
 
   &--focused {
     .a-input-base__surface {
-      border-color: map-deep-get($theme, "text-input", "border-color--focus");
-      box-shadow: 0 0 0 2px
-        map-deep-get($theme, "text-input", "box-shadow-color--active");
-
-      &:active {
-        border-color: map-deep-get($theme, "text-input", "color--active");
-      }
+      border-color: var(--control-border-focus);
+      box-shadow: 0 0 0 2px var(--control-border-active);
     }
   }
 
   &--readonly {
     .a-input-base__surface {
-      border-color: map-deep-get(
-        $theme,
-        "text-input",
-        "border-color--readonly"
-      );
-      background: map-deep-get($theme, "text-input", "bg--readonly");
+      border-color: var(--control-border-default);
+      background: var(--control-border-default);
     }
   }
 
@@ -51,8 +42,7 @@ $input-transition: border-color $transition-duration--extra-fast
       border: $border-width solid $color-warning;
 
       &:hover {
-        border: $border-width solid
-          map-deep-get($theme, "color", "warning--state-hover");
+        border: $border-width solid var(--severe-warning-border-hover);
       }
 
       &:active {
@@ -71,8 +61,7 @@ $input-transition: border-color $transition-duration--extra-fast
       border: $border-width solid $color-error;
 
       &:hover {
-        border: $border-width solid
-          map-deep-get($theme, "color", "error--state-hover");
+        border: $border-width solid var(--negative-border-medium-hover);
       }
 
       &:active {
@@ -83,30 +72,26 @@ $input-transition: border-color $transition-duration--extra-fast
 
   &--disabled {
     .a-input-base__surface {
-      color: map-deep-get($theme, "text-input", "color--disabled");
-      border-color: map-deep-get(
-        $theme,
-        "text-input",
-        "border-color--disabled"
-      );
-      background: map-deep-get($theme, "text-input", "bg--disabled");
+      color: var(--base-text-disabled);
+      border-color: var(--control-border-disabled);
+      background: var(--control-bg-weak-disabled);
       cursor: not-allowed;
 
       .a-icon {
-        fill: map-deep-get($theme, "text-input", "color--disabled");
+        fill: var(--base-text-disabled);
       }
     }
   }
 
   &__append {
     .a-icon {
-      fill: map-deep-get($theme, "text-input", "icon-fill");
+      fill: var(--control-icon-weak-default);
     }
   }
 
   &__clear:focus,
   &__clear:hover {
-    fill: map-deep-get($theme, "base", "color--selected") !important;
+    fill: var(--interact-text-active) !important;
   }
 }
 

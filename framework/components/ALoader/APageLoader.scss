@@ -14,7 +14,7 @@ $page-loader-animation-delay: 1.1s;
   &:after {
     @include loader-border(
       $page-loader-medium-thickness,
-      map-deep-get($theme, "loader", "main-color"),
+      var(--positive-bg-default),
       transparent,
       transparent,
       transparent
@@ -23,26 +23,26 @@ $page-loader-animation-delay: 1.1s;
   &:before {
     @include loader-border(
       $page-loader-medium-thickness,
-      map-deep-get($theme, "loader", "background-color"),
-      map-deep-get($theme, "loader", "background-color"),
-      map-deep-get($theme, "loader", "background-color"),
-      map-deep-get($theme, "loader", "background-color")
+      var(--base-border-default),
+      var(--base-border-default),
+      var(--base-border-default),
+      var(--base-border-default)
     );
   }
   &--size-small {
     &:before {
       @include loader-border(
         $page-loader-small-thickness,
-        map-deep-get($theme, "loader", "background-color"),
-        map-deep-get($theme, "loader", "background-color"),
-        map-deep-get($theme, "loader", "background-color"),
-        map-deep-get($theme, "loader", "background-color")
+        var(--base-border-default),
+        var(--base-border-default),
+        var(--base-border-default),
+        var(--base-border-default)
       );
     }
     &:after {
       @include loader-border(
         $page-loader-small-thickness,
-        map-deep-get($theme, "loader", "main-color"),
+        var(--positive-bg-default),
         transparent,
         transparent,
         transparent
@@ -53,16 +53,16 @@ $page-loader-animation-delay: 1.1s;
     &:before {
       @include loader-border(
         $page-loader-medium-thickness,
-        map-deep-get($theme, "loader", "background-color"),
-        map-deep-get($theme, "loader", "background-color"),
-        map-deep-get($theme, "loader", "background-color"),
-        map-deep-get($theme, "loader", "background-color")
+        var(--base-border-default),
+        var(--base-border-default),
+        var(--base-border-default),
+        var(--base-border-default)
       );
     }
     &:after {
       @include loader-border(
         $page-loader-medium-thickness,
-        map-deep-get($theme, "loader", "main-color"),
+        var(--positive-bg-default),
         transparent,
         transparent,
         transparent
@@ -73,16 +73,16 @@ $page-loader-animation-delay: 1.1s;
     &:before {
       @include loader-border(
         $page-loader-large-thickness,
-        map-deep-get($theme, "loader", "background-color"),
-        map-deep-get($theme, "loader", "background-color"),
-        map-deep-get($theme, "loader", "background-color"),
-        map-deep-get($theme, "loader", "background-color")
+        var(--base-border-default),
+        var(--base-border-default),
+        var(--base-border-default),
+        var(--base-border-default)
       );
     }
     &:after {
       @include loader-border(
         $page-loader-large-thickness,
-        map-deep-get($theme, "loader", "main-color"),
+        var(--positive-bg-default),
         transparent,
         transparent,
         transparent

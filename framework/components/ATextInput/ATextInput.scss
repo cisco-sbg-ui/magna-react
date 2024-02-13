@@ -4,16 +4,16 @@
   &__prepend-icon,
   &__append-icon {
     &.interactable:focus {
-      box-shadow: map-deep-get($theme, "base", "box-shadow");
+      box-shadow: var(--shadow-focus) var(--control-border-active);
     }
   }
   .a-text-input {
     &__input {
       &:disabled {
-        color: map-deep-get($theme, "text-input", "color--disabled");
+        color: var(--base-text-disabled);
 
         &::placeholder {
-          color: map-deep-get($theme, "text-input", "color--disabled");
+          color: var(--base-text-disabled);
         }
       }
     }

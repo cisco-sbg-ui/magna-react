@@ -20,28 +20,28 @@ $tab-heading-margin: 0;
   }
 
   &__tab {
-    color: map-deep-get($theme, "tabs", "text-color");
+    color: var(--base-text-medium-default);
     &:active,
     &:focus,
     &:hover {
-      color: map-deep-get($theme, "tabs", "text-color--selected");
+      color: var(--base-text-default);
 
       @include tab-bar(
         $tab-bottom-bar-height,
-        map-deep-get($theme, "tabs", "bar-color--hover")
+        var(--brand-accent-border-hover)
       );
     }
 
     &--secondary {
-      color: map-deep-get($theme, "tabs", "text-color-secondary");
+      color: var(--interact-text-weak-default);
       &:active,
       &:focus,
       &:hover {
-        color: map-deep-get($theme, "tabs", "text-color-secondary--selected");
+        color: var(--interact-text-weak-active);
 
         @include tab-bar(
           $tab-bottom-bar-height,
-          map-deep-get($theme, "tabs", "bar-color-secondary--hover")
+          var(--interact-border-medium-hover)
         );
       }
     }
@@ -49,58 +49,57 @@ $tab-heading-margin: 0;
     &--vertical:active,
     &--vertical:focus,
     &--vertical:hover {
-      color: map-deep-get($theme, "tabs", "text-color-secondary--selected");
+      color: var(--interact-text-weak-active);
       @include vertical-tab-bar(
         $tab-bottom-bar-height,
-        map-deep-get($theme, "tabs", "bar-color-secondary--hover")
+        var(--interact-border-medium-hover)
       );
     }
 
     &--selected {
       //Primary
       &:not(.a-tab-group__tab--secondary) {
-        color: map-deep-get($theme, "tabs", "text-color--selected");
+        color: var(--base-text-default);
         @include tab-bar(
           $tab-bottom-bar-height,
-          map-deep-get($theme, "tabs", "bar-color--selected")
+          var(--brand-accent-border-active)
         );
         &:active,
         &:focus,
         &:hover {
-          color: map-deep-get($theme, "tabs", "text-color--selected");
+          color: var(--interact-text-weak-active);
           @include tab-bar(
             $tab-bottom-bar-height,
-            map-deep-get($theme, "tabs", "bar-color--selected")
+            var(--brand-accent-border-active)
           );
         }
       }
 
       //Secondary
       &.a-tab-group__tab--secondary {
-        color: map-deep-get($theme, "tabs", "text-color-secondary--selected");
+        color: var(--interact-text-weak-active);
         @include tab-bar(
           $tab-bottom-bar-height,
-          map-deep-get($theme, "tabs", "bar-color-secondary--selected")
+          var(--interact-border-medium-active)
         );
 
         &:active,
         &:focus,
         &:hover {
-          color: map-deep-get($theme, "tabs", "text-color-secondary--selected");
+          color: var(--interact-text-weak-active);
 
           @include tab-bar(
             $tab-bottom-bar-height,
-            map-deep-get($theme, "tabs", "bar-color-secondary--selected")
+            var(--interact-border-medium-active)
           );
         }
       }
 
       &--vertical {
-        color: map-deep-get($theme, "tabs", "text-color-secondary--selected");
+        color: var(--interact-text-weak-active);
         @include vertical-tab-bar(
           $tab-bottom-bar-height,
-          map-deep-get($theme, "tabs", "bar-color-secondary--selected")
-            !important
+          var(--interact-border-medium-active) !important
         );
       }
     }

@@ -13,23 +13,19 @@ $progressbar-fill-border-radius: 6px;
 $progressbar-striped-opacity: 0.5;
 $progressbar-animation-timing: 1s linear infinite !default;
 $progressbar-transition: width 0.6s ease !default;
-
+//TODO need to remove disabled and add error and info states), success should be blue
 @include theme(a-progressbar) using ($theme) {
   &__bar {
-    background: map-deep-get($theme, "progressbar", "default-bg-color");
+    background: var(--base-border-default);
   }
 
   &__fill {
-    background-color: map-deep-get($theme, "progressbar", "fill-bg-color");
+    background-color: var(--positive-border-default);
   }
 
   &--disabled {
     .a-progressbar__fill {
-      background-color: map-deep-get(
-        $theme,
-        "progressbar",
-        "disabled-bg-color"
-      );
+      background-color: var(--positive-border-default);
     }
   }
 }

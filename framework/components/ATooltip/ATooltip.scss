@@ -4,21 +4,21 @@ $tooltip-color: map-get($mds-neutral, "neutral-1");
 
 @include theme(a-tooltip) using ($theme) {
   color: $tooltip-color;
-  background-color: map-get($theme, "tooltip", "background-color");
+  background-color: var(--inverse-bg-weak-default);
   &--arrow.a-menu-base--top,
   &--arrow.a-menu-base--top-left,
   &--arrow.a-menu-base--top-right {
     .a-menu-base__pointer {
-      border-color: map-get($theme, "tooltip", "background-color") transparent
-        transparent transparent;
+      border-color: var(--inverse-bg-weak-default) transparent transparent
+        transparent;
     }
   }
   &--arrow.a-menu-base--right,
   &--arrow.a-menu-base--right-top,
   &--arrow.a-menu-base--right-bottom {
     .a-menu-base__pointer {
-      border-color: transparent map-get($theme, "tooltip", "background-color")
-        transparent transparent;
+      border-color: transparent var(--inverse-bg-weak-default) transparent
+        transparent;
     }
   }
 
@@ -26,8 +26,8 @@ $tooltip-color: map-get($mds-neutral, "neutral-1");
   &--arrow.a-menu-base--bottom-left,
   &--arrow.a-menu-base--bottom-right {
     .a-menu-base__pointer {
-      border-color: transparent transparent
-        map-get($theme, "tooltip", "background-color") transparent;
+      border-color: transparent transparent var(--inverse-bg-weak-default)
+        transparent;
     }
   }
   &--arrow.a-menu-base--left,
@@ -35,7 +35,7 @@ $tooltip-color: map-get($mds-neutral, "neutral-1");
   &--arrow.a-menu-base--left-bottom {
     .a-menu-base__pointer {
       border-color: transparent transparent transparent
-        map-get($theme, "tooltip", "background-color");
+        var(--inverse-bg-weak-default);
     }
   }
 
@@ -43,16 +43,16 @@ $tooltip-color: map-get($mds-neutral, "neutral-1");
   &--context.a-menu-base--top-left,
   &--context.a-menu-base--top-right {
     .a-menu-base__pointer {
-      border-color: map-get($theme, "control", "fill-color") transparent
-        transparent transparent !important;
+      border-color: var(--base-icon-in-default) transparent transparent
+        transparent !important;
     }
   }
   &--context.a-menu-base--right,
   &--context.a-menu-base--right-top,
   &--context.a-menu-base--right-bottom {
     .a-menu-base__pointer {
-      border-color: transparent map-get($theme, "control", "fill-color")
-        transparent transparent !important;
+      border-color: transparent var(--base-icon-in-default) transparent
+        transparent !important;
     }
   }
 
@@ -60,8 +60,8 @@ $tooltip-color: map-get($mds-neutral, "neutral-1");
   &--context.a-menu-base--bottom-left,
   &--context.a-menu-base--bottom-right {
     .a-menu-base__pointer {
-      border-color: transparent transparent
-        map-get($theme, "control", "fill-color") transparent !important;
+      border-color: transparent transparent var(--base-icon-in-default)
+        transparent !important;
     }
   }
   &--context.a-menu-base--left,
@@ -69,7 +69,7 @@ $tooltip-color: map-get($mds-neutral, "neutral-1");
   &--context.a-menu-base--left-bottom {
     .a-menu-base__pointer {
       border-color: transparent transparent transparent
-        map-get($theme, "control", "fill-color") !important;
+        var(--base-icon-in-default) !important;
     }
   }
 }

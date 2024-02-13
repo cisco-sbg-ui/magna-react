@@ -1,23 +1,5 @@
 @import "../../styles";
 
-@include theme(a-badge) using ($theme) {
-  &__badge {
-    border-color: map-deep-get($theme, "badge", "border-color");
-  }
-
-  &__badge--error {
-    background-color: map-deep-get($theme, "control", "error-color");
-  }
-
-  &__badge--info {
-    background-color: map-deep-get($theme, "control", "info-color");
-  }
-
-  &__badge--success {
-    background-color: map-deep-get($theme, "control", "success-color");
-  }
-}
-
 .a-badge {
   display: inline-block;
   line-height: 1;
@@ -34,6 +16,7 @@
   }
 
   &__badge {
+    border-color: var(--base-bg-weak-default);
     border-radius: 9px;
     color: $white;
     display: inline-flex;
@@ -77,6 +60,18 @@
       bottom: calc(100% - 5px);
       left: calc(100% - 5px);
     }
+  }
+
+  &__badge--error {
+    background-color: var(--negative-border-default);
+  }
+
+  &__badge--info {
+    background-color: var(--info-border-default);
+  }
+
+  &__badge--success {
+    background-color: var(--positive-border-default);
   }
 
   .a-button {

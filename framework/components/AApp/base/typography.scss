@@ -1,20 +1,3 @@
-@mixin theme-app($theme) {
-  background-color: map-deep-get($theme, "base", "bg-default");
-  color: map-deep-get($theme, "base", "color");
-
-  .playground {
-    background-color: map-deep-get($theme, "base", "bg-default");
-  }
-}
-
-.a-app.theme--default {
-  @include theme-app($magnetic-light);
-}
-
-.a-app.theme--dusk {
-  @include theme-app($magnetic-dark);
-}
-
 .a-app {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -29,6 +12,13 @@
   margin: 0;
   text-transform: none;
   box-sizing: border-box;
+
+  background-color: var(--base-bg-default);
+  color: var(--base-text-default);
+
+  .playground {
+    background-color: var(--base-bg-default) !important;
+  }
 
   h1,
   h2,

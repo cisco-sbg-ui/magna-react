@@ -17,56 +17,48 @@ $switch-after-transition: transform $transition-duration--fast
 
 @include theme(a-switch) using ($theme) {
   &__box {
-    background-color: map-deep-get($theme, "switch", "bg");
+    background-color: var(--base-bg-strong-default);
   }
   &__box:hover {
-    background-color: map-deep-get($theme, "switch", "bg--hover");
+    background-color: var(--base-bg-strong-hover);
   }
 
   &__input {
     ~ .a-switch__box {
       &:after {
-        background-color: map-deep-get($theme, "switch", "circle-color");
+        background-color: var(--control-icon-in-default);
       }
     }
 
     &:checked {
       ~ .a-switch__box {
-        background-color: map-deep-get($theme, "switch", "bg--checked");
+        background-color: var(--control-bg-strong-default);
       }
     }
 
     &:enabled:checked {
       ~ .a-switch__box {
-        background-color: map-deep-get($theme, "switch", "bg--checked");
+        background-color: var(--control-bg-strong-default);
         &:hover {
-          background-color: map-deep-get(
-            $theme,
-            "switch",
-            "bg--checked--hover"
-          );
+          background-color: var(--control-bg-strong-hover);
         }
       }
     }
 
     &:disabled {
       ~ .a-switch__box {
-        background-color: map-deep-get($theme, "switch", "bg--disabled");
+        background-color: var(--base-bg-strong-disabled);
         cursor: not-allowed;
       }
 
       ~ .a-switch__label {
-        color: map-deep-get($theme, "switch", "label-color--disabled");
+        color: var(--base-text-disabled);
       }
     }
 
     &:disabled:checked {
       ~ .a-switch__box {
-        background-color: map-deep-get(
-          $theme,
-          "switch",
-          "bg--disabled--checked"
-        );
+        background-color: var(--control-bg-strong-disabled);
       }
     }
   }

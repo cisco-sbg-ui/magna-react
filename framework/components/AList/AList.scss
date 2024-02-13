@@ -1,16 +1,16 @@
 @import "../../styles";
 
 @include theme(a-list) using ($theme) {
-  color: map-deep-get($theme, "base", "color");
-  background: map-deep-get($theme, "base", "bg");
-  border-color: map-deep-get($theme, "control", "stroke-color");
+  color: var(--base-text-default);
+  background: var(--base-bg-weak-default);
+  border-color: var(--control-border-default);
 
   &--hoverable .a-list-item:not(.a-list-item--two-line) {
     &:hover,
     a:hover,
     a.a-list-item:hover {
-      color: map-deep-get($theme, "base", "color") !important;
-      background-color: map-deep-get($theme, "menu", "color--hover") !important;
+      color: var(--base-text-default) !important;
+      background-color: var(--control-bg-weak-hover) !important;
     }
   }
 
@@ -18,32 +18,29 @@
     color: currentColor;
 
     &:focus {
-      color: map-deep-get($theme, "base", "color");
-      background: map-deep-get($theme, "control", "row-effect-image"),
-        map-deep-get($theme, "menu", "color--focused");
+      color: var(--base-text-default);
+      background: var(--row-effect-image) var(--control-bg-weak-focus);
     }
   }
 
   &-item--selected:not(.a-list-item--two-line) {
-    color: map-deep-get($theme, "base", "color");
-    background: map-deep-get($theme, "control", "row-effect-image"),
-      map-deep-get($theme, "menu", "color--selected");
+    color: var(--base-text-default);
+    background: var(--row-effect-image), var(--control-bg-weak-active);
 
     a:hover,
     a.a-list-item:hover {
-      background: map-deep-get($theme, "control", "row-effect-image"),
-        map-deep-get($theme, "menu", "color--selected") !important;
+      background: var(--row-effect-image), var(--control-bg-weak-active) !important;
     }
   }
 
   &-item--disabled:not(.a-list-item--two-line) {
-    color: map-deep-get($theme, "base", "color--disabled");
+    color: var(--base-text-disabled);
     background: none;
   }
 
   a.a-list-item,
   &a:not(.a-tab-group__tab) {
-    color: map-deep-get($theme, "base", "color") !important;
+    color: var(--base-text-default) !important;
     font-weight: unset;
   }
 }

@@ -15,419 +15,13 @@ $btn-transition: color $transition-duration--extra-fast
   box-shadow $transition-duration--extra-fast
     $transition-timing-function--standard !default;
 
-@include theme(a-button) using ($theme) {
-  /* Magnetic didn't have guidance for this at time of the PR, will revisit in
+/* Magnetic didn't have guidance for this at time of the PR, will revisit in
   * the future.
   &:focus-visible {
-    box-shadow: 0 0 0 2px map-deep-get($theme, "button", "focus-visible", "bg"),
-      0 0 0 4px map-deep-get($theme, "button", "focus-visible", "control");
+    box-shadow: 0 0 0 2px var(--interact-bg-weak-active),
+      0 0 0 4px var(--control-border-focus)
   }
   */
-
-  &--primary {
-    color: map-deep-get($theme, "button", "primary", "color");
-    background-color: map-deep-get($theme, "button", "primary", "bg");
-    border-color: map-deep-get($theme, "button", "primary", "border");
-
-    &:hover {
-      color: map-deep-get($theme, "button", "primary", "color");
-      background-color: map-deep-get($theme, "button", "primary", "bg--hover");
-      border-color: map-deep-get($theme, "button", "primary", "border--hover");
-    }
-
-    &:focus {
-      color: map-deep-get($theme, "button", "primary", "color");
-      background-color: map-deep-get($theme, "button", "primary", "bg--focus");
-      border-color: map-deep-get($theme, "button", "primary", "border--focus");
-    }
-
-    &:active {
-      color: map-deep-get($theme, "button", "primary", "color");
-      background-color: map-deep-get($theme, "button", "primary", "bg--active");
-      border-color: map-deep-get($theme, "button", "primary", "border--active");
-    }
-
-    &.disabled,
-    &:disabled {
-      box-shadow: none;
-      color: map-deep-get($theme, "button", "primary", "color--disabled");
-      background-color: map-deep-get(
-        $theme,
-        "button",
-        "primary",
-        "bg--disabled"
-      );
-      border-color: map-deep-get(
-        $theme,
-        "button",
-        "primary",
-        "border--disabled"
-      );
-      opacity: map-deep-get($theme, "button", "primary", "opacity--disabled");
-    }
-  }
-
-  &--primary-destructive {
-    color: map-deep-get($theme, "button", "primary", "destructive", "color");
-    background-color: map-deep-get(
-      $theme,
-      "button",
-      "primary",
-      "destructive",
-      "bg"
-    );
-    border-color: map-deep-get(
-      $theme,
-      "button",
-      "primary",
-      "destructive",
-      "border"
-    );
-    border-width: map-deep-get(
-      $theme,
-      "button",
-      "primary",
-      "destructive",
-      "border-width"
-    );
-
-    &:hover {
-      color: map-deep-get($theme, "button", "primary", "destructive", "color");
-      background-color: map-deep-get(
-        $theme,
-        "button",
-        "primary",
-        "destructive",
-        "bg--hover"
-      );
-      border-color: map-deep-get(
-        $theme,
-        "button",
-        "primary",
-        "destructive",
-        "border--hover"
-      );
-    }
-
-    &:focus {
-      color: map-deep-get($theme, "button", "primary", "destructive", "color");
-      background-color: map-deep-get(
-        $theme,
-        "button",
-        "primary",
-        "destructive",
-        "bg--focus"
-      );
-      border-color: map-deep-get(
-        $theme,
-        "button",
-        "primary",
-        "destructive",
-        "border--focus"
-      );
-    }
-
-    &:active {
-      color: map-deep-get($theme, "button", "primary", "destructive", "color");
-      background-color: map-deep-get(
-        $theme,
-        "button",
-        "primary",
-        "destructive",
-        "bg--active"
-      );
-      border-color: map-deep-get(
-        $theme,
-        "button",
-        "primary",
-        "destructive",
-        "border--active"
-      );
-    }
-
-    &.disabled,
-    &:disabled {
-      box-shadow: none;
-      color: map-deep-get(
-        $theme,
-        "button",
-        "primary",
-        "destructive",
-        "color--disabled"
-      );
-      background-color: map-deep-get(
-        $theme,
-        "button",
-        "primary",
-        "destructive",
-        "bg--disabled"
-      );
-      border-color: map-deep-get(
-        $theme,
-        "button",
-        "primary",
-        "destructive",
-        "border--disabled"
-      );
-      opacity: map-deep-get(
-        $theme,
-        "button",
-        "primary",
-        "destructive",
-        "opacity--disabled"
-      );
-    }
-  }
-
-  &--secondary {
-    color: map-deep-get($theme, "button", "secondary", "color");
-    background-color: transparent;
-    border-color: map-deep-get($theme, "button", "secondary", "border");
-
-    &:hover {
-      color: map-deep-get($theme, "button", "secondary", "color--hover");
-      background-color: map-deep-get(
-        $theme,
-        "button",
-        "secondary",
-        "bg--hover"
-      );
-      border-color: map-deep-get(
-        $theme,
-        "button",
-        "secondary",
-        "border--hover"
-      );
-    }
-
-    &:focus {
-      color: map-deep-get($theme, "button", "secondary", "color--focus");
-      background-color: map-deep-get(
-        $theme,
-        "button",
-        "secondary",
-        "bg--focus"
-      );
-      border-color: map-deep-get(
-        $theme,
-        "button",
-        "secondary",
-        "border--focus"
-      );
-    }
-
-    &:active {
-      color: map-deep-get($theme, "button", "secondary", "color--active");
-      background-color: map-deep-get(
-        $theme,
-        "button",
-        "secondary",
-        "bg--active"
-      );
-      border-color: map-deep-get(
-        $theme,
-        "button",
-        "secondary",
-        "border--active"
-      );
-    }
-
-    &.disabled,
-    &:disabled {
-      box-shadow: none;
-      color: map-deep-get($theme, "button", "secondary", "color--disabled");
-      background-color: transparent;
-      border-color: map-deep-get(
-        $theme,
-        "button",
-        "secondary",
-        "border--disabled"
-      );
-      opacity: map-deep-get($theme, "button", "secondary", "opacity--disabled");
-    }
-  }
-
-  &--secondary-destructive {
-    color: map-deep-get($theme, "button", "secondary", "destructive", "color");
-    background-color: transparent;
-    border-color: map-deep-get(
-      $theme,
-      "button",
-      "secondary",
-      "destructive",
-      "border"
-    );
-    border-width: map-deep-get(
-      $theme,
-      "button",
-      "secondary",
-      "destructive",
-      "border-width"
-    );
-
-    &:hover {
-      color: map-deep-get(
-        $theme,
-        "button",
-        "secondary",
-        "destructive",
-        "color--hover"
-      );
-      background-color: map-deep-get(
-        $theme,
-        "button",
-        "secondary",
-        "destructive",
-        "bg--hover"
-      );
-      border-color: map-deep-get(
-        $theme,
-        "button",
-        "secondary",
-        "destructive",
-        "border--hover"
-      );
-    }
-
-    &:focus {
-      color: map-deep-get(
-        $theme,
-        "button",
-        "secondary",
-        "destructive",
-        "color--focus"
-      );
-      background-color: map-deep-get(
-        $theme,
-        "button",
-        "secondary",
-        "destructive",
-        "bg--focus"
-      );
-      border-color: map-deep-get(
-        $theme,
-        "button",
-        "secondary",
-        "destructive",
-        "border--focus"
-      );
-    }
-
-    &:active {
-      color: map-deep-get(
-        $theme,
-        "button",
-        "secondary",
-        "destructive",
-        "color--active"
-      );
-      background-color: map-deep-get(
-        $theme,
-        "button",
-        "secondary",
-        "destructive",
-        "bg--active"
-      );
-      border-color: map-deep-get(
-        $theme,
-        "button",
-        "secondary",
-        "destructive",
-        "border--active"
-      );
-    }
-
-    &.disabled,
-    &:disabled {
-      box-shadow: none;
-      color: map-deep-get(
-        $theme,
-        "button",
-        "secondary",
-        "destructive",
-        "color--disabled"
-      );
-      background-color: transparent;
-      border-color: map-deep-get(
-        $theme,
-        "button",
-        "secondary",
-        "destructive",
-        "border--disabled"
-      );
-      opacity: map-deep-get(
-        $theme,
-        "button",
-        "secondary",
-        "destructive",
-        "opacity--disabled"
-      );
-    }
-  }
-
-  &--tertiary {
-    color: map-deep-get($theme, "button", "tertiary", "color");
-    &:hover {
-      color: map-deep-get($theme, "button", "tertiary", "color--hover");
-      background-color: map-deep-get($theme, "button", "tertiary", "bg--hover");
-    }
-
-    &:focus {
-      color: map-deep-get($theme, "button", "tertiary", "color--focus");
-      border-color: map-deep-get($theme, "button", "tertiary", "border--focus");
-      background-color: map-deep-get(
-        $theme,
-        "button",
-        "tertiary",
-        "bg--active"
-      );
-    }
-
-    &:active {
-      color: map-deep-get($theme, "button", "tertiary", "color--active");
-      background-color: map-deep-get(
-        $theme,
-        "button",
-        "tertiary",
-        "bg--active"
-      );
-    }
-
-    &.disabled,
-    &:disabled {
-      opacity: map-deep-get($theme, "button", "tertiary", "opacity--disabled");
-      background-color: transparent;
-      color: map-deep-get($theme, "button", "tertiary", "color--disabled");
-    }
-  }
-
-  &.a-button--tertiary-alt {
-    color: map-get($theme, "button", "tertiary", "alt", "color");
-
-    &:hover,
-    &:focus {
-      color: map-deep-get($theme, "button", "tertiary", "alt", "color--hover");
-    }
-
-    &:active {
-      background-color: transparent;
-      color: map-get($theme, "button", "tertiary", "alt", "color--active");
-    }
-
-    &.disabled,
-    &:disabled {
-      opacity: map-deep-get(
-        $theme,
-        "button",
-        "tertiary",
-        "alt",
-        "opacity--disabled"
-      );
-      background-color: transparent;
-      color: map-get($theme, "button", "tertiary", "alt", "color--disabled");
-    }
-  }
-}
 
 .a-button {
   display: inline-flex;
@@ -506,6 +100,179 @@ $btn-transition: color $transition-duration--extra-fast
 
   &.a-button--small {
     @include small-button;
+  }
+
+  &--primary {
+    color: var(--interact-text-in-default);
+    background-color: var(--interact-bg-default);
+    border-color: var(--interact-border-default);
+
+    &:hover {
+      color: var(--interact-text-in-default);
+      background-color: var(--interact-bg-hover);
+      border-color: var(--interact-border-hover);
+    }
+
+    &:focus {
+      color: var(--interact-text-in-default);
+      background-color: var(--interact-bg-focus);
+      border-color: var(--interact-border-focus);
+    }
+
+    &:active {
+      color: var(--interact-text-in-default);
+      background-color: var(--interact-bg-active);
+      border-color: var(--interact-border-active);
+    }
+
+    &.disabled,
+    &:disabled {
+      box-shadow: none;
+      color: var(--interact-text-in-disabled);
+      background-color: var(--interact-bg-disabled);
+      border-color: var(--interact-border-disabled);
+    }
+  }
+
+  &--primary-destructive {
+    color: var(--negative-text-in-default);
+    background-color: var(--negative-bg-default);
+    border-color: var(--negative-border-default);
+
+    &:hover {
+      color: var(--negative-text-in-default);
+      background-color: var(--negative-bg-hover);
+      border-color: var(--negative-border-hover);
+    }
+
+    &:focus {
+      color: var(--negative-text-in-default);
+      background-color: var(--negative-bg-focus);
+      border-color: var(--negative-border-focus);
+    }
+
+    &:active {
+      color: var(--negative-text-in-default);
+      background-color: var(--negative-bg-active);
+      border-color: var(--negative-border-active);
+    }
+
+    &.disabled,
+    &:disabled {
+      box-shadow: none;
+      color: var(--interact-text-in-disabled);
+      background-color: var(--negative-bg-disabled);
+      border-color: var(--negative-border-disabled);
+    }
+  }
+
+  &--secondary {
+    color: var(--interact-text-default);
+    background-color: var(--interact-bg-weak-default);
+    border-color: var(--interact-border-default);
+
+    &:hover {
+      color: var(--interact-text-hover);
+      background-color: var(--interact-bg-weak-hover);
+      border-color: var(--interact-border-hover);
+    }
+
+    &:focus {
+      color: var(--interact-text-focus);
+      background-color: var(--interact-bg-weak-focus);
+      border-color: var(--interact-border-focus);
+    }
+
+    &:active {
+      color: var(--interact-text-active);
+      background-color: var(--interact-bg-weak-active);
+      border-color: var(--interact-border-active);
+    }
+
+    &.disabled,
+    &:disabled {
+      box-shadow: none;
+      color: var(--interact-text-disabled);
+      background-color: var(--interact-bg-weak-disabled);
+      border-color: var(--interact-border-disabled);
+    }
+  }
+
+  &--secondary-destructive {
+    color: var(--negative-text-default);
+    background-color: var(--negative-bg-weak-default);
+    border-color: var(--negative-border-default);
+
+    &:hover {
+      color: var(--negative-text-hover);
+      background-color: var(--negative-bg-weak-hover);
+      border-color: var(--negative-border-hover);
+    }
+
+    &:focus {
+      color: var(--negative-text-hover);
+      background-color: var(--negative-bg-weak-focus);
+      border-color: var(--negative-border-focus);
+    }
+
+    &:active {
+      color: var(--negative-text-hover);
+      background-color: var(--negative-bg-weak-active);
+      border-color: var(--negative-border-active);
+    }
+
+    &.disabled,
+    &:disabled {
+      box-shadow: none;
+      color: var(--negative-text-disabled);
+      background-color: var(--negative-bg-weak-disabled);
+      border-color: var(--negative-border-disabled);
+    }
+  }
+
+  &--tertiary {
+    color: var(--interact-text-default);
+    &:hover {
+      color: var(--interact-text-hover);
+      background-color: var(--interact-bg-weak-hover);
+    }
+
+    &:focus {
+      color: var(--interact-text-focus);
+      border-color: var(--interact-border-weak-hover);
+      background-color: var(--interact-bg-weak-focus);
+    }
+
+    &:active {
+      color: var(--interact-text-active);
+      background-color: var(--interact-bg-weak-active);
+    }
+
+    &.disabled,
+    &:disabled {
+      background-color: transparent;
+      color: var(--interact-text-disabled);
+    }
+  }
+
+  &.a-button--tertiary-alt {
+    color: var(--interact-text-weak-default);
+
+    &:hover,
+    &:focus {
+      color: var(--interact-text-weak-hover);
+    }
+
+    &:active {
+      background-color: transparent;
+      color: var(--interact-text-weak-active);
+    }
+
+    &.disabled,
+    &:disabled {
+      background-color: transparent;
+      color: var(--interact-text-weak-disabled);
+    }
   }
 }
 
