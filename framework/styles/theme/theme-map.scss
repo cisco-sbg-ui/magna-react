@@ -1,4 +1,330 @@
 $themeMap: (
+  "accordion": (
+    "bg": var(--control-bg-weak-default),
+    "body-color": var(--base-text-medium-default),
+    "chevron-color": var(--interact-icon-weak-default),
+    "color": var(--base-text-default),
+    "header-focus": var(--interact-border-focus)
+  ),
+  "alert": (
+    "bg": var(--info-bg-strong-default),
+    "success-bg": var(--positive-bg-strong-default),
+    "warning-bg": var(--warning-bg-strong-default),
+    "danger-bg": var(--negative-bg-strong-default),
+    "close": var(--interact-icon-weak-default),
+    "close-hover": var(--interact-icon-weak-hover)
+  ),
+  "badge": (
+    "border-color": var(--base-bg-weak-default)
+  ),
+  "base": (
+    "bg-default": var(--base-bg-default),
+    "bg": var(--base-bg-weak-default),
+    "brand-color": var(--brand-bg-default),
+    "color": var(--base-text-default),
+    "color--active": var(--interact-text-active),
+    "color--hover": var(--interact-text-hover),
+    "color--selected": var(--interact-text-active),
+    "color--disabled": var(--base-text-disabled),
+    "inverse-color": var(--inverse-text-default),
+    "stroke-color": var(--control-border-default),
+    "box-shadow": var(--shadow-focus) var(--control-border-active),
+    "color-blue-primary": var(--control-icon-default)
+  ),
+  "breadcrumb": (
+    "divider-color": var(--interact-icon-weak-default),
+    "default-color": var(--interact-text-weak-default),
+    "hover-color": var(--interact-text-weak-hover)
+  ),
+  "button": (
+    "primary": (
+      "bg": var(--interact-bg-default),
+      "bg--active": var(--interact-bg-active),
+      "bg--hover": var(--interact-bg-hover),
+      "bg--focus": var(--interact-bg-focus),
+      "bg--disabled": var(--interact-bg-disabled),
+      "border": var(--interact-border-default),
+      "border--active": var(--interact-border-active),
+      "border--hover": var(--interact-border-hover),
+      "border--focus": var(--interact-border-focus),
+      "border--disabled": var(--interact-border-disabled),
+      "color": var(--interact-text-in-default),
+      "color--disabled": var(--interact-text-in-disabled),
+      "destructive": (
+        "bg": var(--negative-bg-default),
+        "bg--active": var(--negative-bg-active),
+        "bg--hover": var(--negative-bg-hover),
+        "bg--focus": var(--negative-bg-focus),
+        "bg--disabled": var(--negative-bg-disabled),
+        "border": var(--negative-border-default),
+        "border--active": var(--negative-border-active),
+        "border--hover": var(--negative-border-hover),
+        "border--focus": var(--negative-border-focus),
+        "border--disabled": var(--negative-border-disabled),
+        "color": var(--negative-text-in-default),
+        "color--disabled": var(--interact-text-in-disabled)
+      )
+    ),
+    "secondary": (
+      "bg": var(--interact-bg-weak-default),
+      "bg--hover": var(--interact-bg-weak-hover),
+      "bg--active": var(--interact-bg-weak-active),
+      "bg--focus": var(--interact-bg-weak-focus),
+      "bg--disabled": var(--interact-bg-weak-disabled),
+      "border": var(--interact-border-default),
+      "border--hover": var(--interact-border-hover),
+      "border--active": var(--interact-border-active),
+      "border--focus": var(--interact-border-focus),
+      "border--disabled": var(--interact-border-disabled),
+      "color": var(--interact-text-default),
+      "color--hover": var(--interact-text-hover),
+      "color--active": var(--interact-text-active),
+      "color--focus": var(--interact-text-focus),
+      "color--disabled": var(--interact-text-disabled),
+      "destructive": (
+        "bg": var(--negative-bg-weak-default),
+        "bg--hover": var(--negative-bg-weak-hover),
+        "bg--active": var(--negative-bg-weak-active),
+        "bg--focus": var(--negative-bg-weak-focus),
+        "bg--disabled": var(--negative-bg-weak-disabled),
+        "border": var(--negative-border-default),
+        "border--hover": var(--negative-border-hover),
+        "border--active": var(--negative-border-active),
+        "border--focus": var(--negative-border-focus),
+        "border--disabled": var(--negative-border-disabled),
+        "color": var(--negative-text-default),
+        "color--hover": var(--negative-text-hover),
+        "color--active": var(--negative-text-hover),
+        "color--focus": var(--negative-text-hover),
+        "color--disabled": var(--negative-text-disabled)
+      )
+    ),
+    "tertiary": (
+      "bg--hover": var(--interact-bg-weak-hover),
+      "bg--active": var(--interact-bg-weak-active),
+      "bg--focus": var(--interact-bg-weak-focus),
+      "bg--disabled": var(--interact-bg-weak-disabled),
+      "border--focus": var(--interact-border-weak-hover),
+      "color": var(--interact-text-default),
+      "color--hover": var(--interact-text-hover),
+      "color--active": var(--interact-text-active),
+      "color--focus": var(--interact-text-focus),
+      "color--disabled": var(--interact-text-disabled),
+      "alt": (
+        "color": var(--interact-text-weak-default),
+        "color--hover": var(--interact-text-weak-hover),
+        "color--active": var(--interact-text-weak-active),
+        "color--focus": var(--interact-text-weak-focus),
+        "color--disabled": var(--interact-text-weak-disabled)
+      )
+    ),
+    "focus-visible": (
+      "bg": var(--interact-bg-weak-active),
+      "control": var(--control-border-focus)
+    )
+  ),
+  "button-group": (
+    "color": var(--base-text-medium-default),
+    "color--disabled": var(--base-text-disabled),
+    "color--hover": var(--base-text-default),
+    "color--selected": var(--interact-text-weak-active),
+    "background-color": var(--control-bg-medium-default),
+    "background-color--disabled": var(--control-bg-medium-default),
+    "background-color--hover": var(--control-bg-medium-hover),
+    "background-color--selected": var(--control-bg-medium-active),
+    "background-color--selected-disabled": var(--base-bg-disabled),
+    "border-color": var(--control-border-weak-default),
+    "border-color--hover": var(--control-border-weak-default),
+    "border-color--selected": var(--control-border-active),
+    "border-color--disabled": var(--control-border-weak-default)
+  ),
+  "card": (
+    "container-background": var(--base-bg-weak-default),
+    "container-shadow": var(--card-shadow-dimensions) var(--card-shadow-color),
+    "container-flat-shadow": none,
+    "basic-background": var(--base-bg-weak-default),
+    "basic-shadow": none,
+    "basic-lifted-shadow": var(--card-shadow-lifted) var(--card-shadow-color),
+    "basic-border-color": var(--control-border-weak-default),
+    "title-color": var(--base-text-strong-default),
+    "subtitle-color": var(--base-text-medium-default),
+    "state-dormant": var(--dormant-border-default),
+    "state-positive": var(--positive-border-default),
+    "state-warning": var(--warning-border-default),
+    "state-negative": var(--negative-border-default),
+    "state-informational": var(--info-border-default),
+    "state-disabled": var(--control-bg-disabled)
+  ),
+  "checkbox": (
+    "fill-enabled": var(--control-bg-weak-default),
+    "fill-checked": var(--control-bg-strong-default),
+    "fill-checked--hover": var(--control-bg-strong-hover),
+    "fill--disabled": var(--control-bg-weak-disabled),
+    "border--enabled": var(--control-border-default),
+    "border--hover": var(--control-border-hover),
+    "border--checked": var(--control-bg-strong-default),
+    "border--disabled": var(--control-border-disabled),
+    "label-color--disabled": var(--base-text-disabled),
+    "focus-shadow-light": var(--interact-bg-weak-active),
+    "focus-shadow-dark": var(--control-border-focus)
+  ),
+  "color": (
+    "warning--state-default-hover": var(--severe-warning-border-hover),
+    "warning--state-hover": var(--severe-warning-border-hover),
+    "error--state-default-hover": var(--negative-border-hover),
+    "error--state-hover": var(--negative-border-medium-hover)
+  ),
+  "control": (
+    "fill-color": var(--base-icon-in-default),
+    "fill-color--disabled": var(--base-icon-in-disabled),
+    "stroke-color": var(--control-border-default),
+    "warning-color": var(--warning-border-default),
+    "error-color": var(--negative-border-default),
+    "info-color": var(--info-border-default),
+    "success-color": var(--positive-border-default),
+    "row-effect-color": var(--control-bg-weak-active),
+    "row-effect-image": var(--row-effect-image)
+  ),
+  "date-picker": (
+    "range-bg": var(--control-bg-weak-active),
+    "range-start-color": var(--base-text-default),
+    "range-color": var(--interact-text-default),
+    "range-border": var(--control-border-medium-active),
+    "background-color--hover": var(--control-bg-weak-hover),
+    "background-color--selected": var(--control-bg-strong-default),
+    "color--selected": var(--interact-text-in-default),
+    "label-border-color": var(--control-bg-strong-default)
+  ),
+  "disposition": (
+    "malicious": var(--negative-bg-default),
+    "suspicious": var(--severe-warning-bg-default),
+    "common": var(--warning-bg-default),
+    "unknown": var(--dormant-border-default),
+    "clean": var(--positive-bg-default),
+    "targets": var(--info-bg-default)
+  ),
+  "divider": (
+    "color-default": var(--base-border-default),
+    "color-strong": var(--base-border-strong-default)
+  ),
+  "drawer": (
+    "bg": var(--control-bg-weak-default)
+  ),
+  "emptyState": (
+    "color": var(--base-text-medium-default)
+  ),
+  "footer": (
+    "color": var(--base-border-default)
+  ),
+  "icon": (
+    "info-fill": var(--info-icon-default),
+    "positive-fill": var(--positive-icon-strong-default),
+    "negative-fill": var(--negative-icon-default),
+    "warning-fill": var(--warning-icon-strong-default),
+    "icon-color": var(--interact-icon-weak-default),
+    "disposition-fill": var(--base-bg-weak-default)
+  ),
+  "label": (
+    "color": var(--base-text-default),
+    "color-medium": var(--base-text-medium-default)
+  ),
+  "list": (
+    "group-title-color": var(--base-text-medium-default)
+  ),
+  "loader": (
+    "background-color": var(--base-border-default),
+    "main-color": var(--positive-bg-default),
+    "font-color": var(--base-text-medium-default)
+  ),
+  "menu": (
+    "bg-color": var(--control-bg-weak-default),
+    "border-color": var(--control-border-default),
+    "color--hover": var(--control-bg-weak-hover),
+    "color--selected": var(--control-bg-weak-active),
+    "color--focused": var(--control-bg-weak-focus)
+  ),
+  "pagination": (
+    "background-color-hover": var(--control-bg-weak-hover),
+    "label-border-color": var(--control-border-medium-active),
+    "label-color": var(--base-text-default),
+    "label-color-hover": var(--interact-text-hover),
+    "label-selected-hover": var(--control-border-medium-active)
+  ),
+  "panel": (
+    "bg": var(--control-bg-weak-default),
+    "bg-gray": var(--base-bg-default),
+    "header-color": var(--base-text-default),
+    "box-shadow": var(--panel-shadow),
+    "border-color": var(--control-border-weak-default)
+  ),
+  "popover": (
+    "filter": drop-shadow(var(--panel-shadow))
+  ),
+  "progressbar": (
+    //TODO need to remove disabled and add error and info states), success should be blue
+    "default-bg-color": var(--base-border-default),
+    "fill-bg-color": var(--positive-border-default),
+    "disabled-bg-color": var(--positive-border-default)
+  ),
+  "radio": (
+    "bg": var(--control-bg-weak-default),
+    "bg--disabled": var(--control-bg-weak-disabled),
+    "border--active--hover": var(--control-border-hover),
+    "border--checked": var(--control-border-strong-active),
+    "border--disabled": var(--control-border-disabled),
+    "border--enabled": var(--control-border-default),
+    "border--enabled--active": var(--control-border-default),
+    "box-bg--disabled": var(--control-bg-weak-disabled),
+    "box-border--enabled--hover": var(--control-border-hover),
+    "fill--active--hover": var(--control-icon-in-strong-active),
+    "fill--checked--hover": var(--control-icon-in-strong-active),
+    "fill--enabled": var(--control-icon-in-strong-active),
+    "fill-color--disabled": var(--control-border-disabled),
+    "label-color--disabled": var(--base-text-disabled)
+  ),
+  "spinner": (
+    "stroke-color": var(--interact-icon-weak-default),
+    "label-color": var(--base-text-medium-default)
+  ),
+  "skeleton": (
+    "header-bg": var(--base-border-medium-default),
+    "content-bg": var(--base-bg-default),
+    //These animation colors don't look great in dark mode), but it's what CDS uses
+    "animation-bg":
+      linear-gradient(
+        90deg,
+        var(--base-bg-default) 0%,
+        var(--base-border-medium-default) 40%,
+        var(--base-bg-default) 90%
+      )
+  ),
+  "slider": (
+    "selection-bg-disabled": var(--control-border-strong-disabled),
+    "handle-border-disabled": var(--control-border-disabled),
+    "handle-border": var(--control-border-strong-default),
+    "handle-border-hover": var(--control-border-hover),
+    "handle-border-active": var(--control-border-active),
+    "bg": var(--control-bg-strong-default),
+    "handle-bg": var(--inverse-icon-strong-default),
+    //TODO waiting for new shadow color/tokens
+    "box-shadow": var(--shadow-focus) var(--control-border-medium-hover),
+    "box-shadow--warning": var(--shadow-focus) var(--warning-bg-strong-default),
+    //TODO waiting for new shadow color/tokens
+    "box-shadow--danger": var(--shadow-focus) var(--negative-border-disabled),
+    "track-color": var(--base-border-medium-default)
+  ),
+  "steps": (
+    "step-main-color": var(--interact-bg-medium-default),
+    "step-active-color": var(--interact-text-in-default),
+    "step-line-active-default": var(--interact-border-medium-default),
+    "step-icon-border-color": var(--interact-border-default),
+    "step-label-active": var(--interact-text-default),
+    "step-visited-title-color": var(--base-text-default),
+    "step-icon-default-color": var(--base-text-medium-default),
+    "step-icon-default-border-color": var(--interact-border-weak-default),
+    "step-icon-disabled-color": var(--base-text-disabled),
+    "step-icon-disabled-border-color": var(--interact-border-weak-disabled)
+  ),
   "switch": (
     "bg": var(--base-bg-strong-default),
     "bg--hover": var(--base-bg-strong-hover),
