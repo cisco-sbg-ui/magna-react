@@ -4,8 +4,8 @@
 
 $radio-border--enabled: map-get($mds-neutral, "neutral-5");
 $radio-height: 15px;
-$radio-padding: 10px;
-$radio-width: 15px;
+$radio-padding: 8px;
+$radio-width: 14px;
 $radio-transition: stroke $transition-duration--extra-fast
     $transition-timing-function--standard,
   fill $transition-duration--extra-fast $transition-timing-function--standard,
@@ -130,6 +130,7 @@ $radio-transition: stroke $transition-duration--extra-fast
 .a-radio {
   display: flex;
   padding: math.div($radio-padding, 2) $radio-padding;
+  line-height: $line-height--md;
   position: relative;
   cursor: pointer;
 
@@ -150,11 +151,24 @@ $radio-transition: stroke $transition-duration--extra-fast
     }
   }
 
+  &__label-container {
+    display: flex;
+
+    .a-radio__label {
+      font-weight: bold;
+    }
+  }
+
   &__label {
     display: inline-block;
     flex: 1 1 0%;
     position: relative;
     @include text-truncate;
+  }
+
+  &__description {
+    color: var(--base-text-medium-default);
+    margin: 4px 0 0 22px;
   }
 
   &__label--wrap {
@@ -168,6 +182,31 @@ $radio-transition: stroke $transition-duration--extra-fast
     .a-radio__box:after {
       pointer-events: none;
     }
+  }
+
+  &--small {
+    font-size: $font-size--sm;
+  }
+
+  &--hasDescription {
+    flex-direction: column;
+  }
+}
+
+.a-radio-group {
+  display: flex;
+  flex-direction: column;
+
+  &--horizontal {
+    flex-direction: row;
+
+    .a-radio + .a-radio {
+      margin-left: 12px;
+    }
+  }
+
+  &--small {
+    font-size: $font-size--sm !important;
   }
 }
 

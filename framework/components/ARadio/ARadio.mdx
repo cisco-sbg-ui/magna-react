@@ -1,7 +1,7 @@
 ---
 name: Radios
 route: /components/radio
-components: ARadio
+components: ARadio, ARadioGroup
 ---
 
 # Radio Buttons
@@ -52,6 +52,10 @@ The `ARadio` component inherits passed props.
 
 <Props of="ARadio" />
 
+The `ARadioGroup` component inherits passed props.
+
+<Props of="ARadioGroup" />
+
 ## States
 
 <Playground
@@ -90,6 +94,61 @@ The `ARadio` component inherits passed props.
     </div>
   );
 }
+`}
+/>
+
+## Aligment Groups
+
+<Playground
+  code={`() => {
+  const options = ["One", "Two", "Three"];
+  const [selectedValue, setSelectedValue] = useState(null);
+  const [selectedValue2, setSelectedValue2] = useState(null);
+  return (
+    <>
+      <ARadioGroup>
+        {options.map((option, index) => (
+          <ARadio
+            name="myRadioGroup"
+            description={\`\${option} description\`}
+            key={\`myRadioGroup_\${index}\`}
+            checked={option === selectedValue}
+            onClick={() => setSelectedValue(option)}>
+            {option}
+          </ARadio>
+        ))}
+      </ARadioGroup>
+      <ADivider />
+      <ARadioGroup horizontal>
+        {options.map((option, index) => {
+          return <ARadio
+            name="myRadioGroup2"
+            key={\`myRadioGroup2_\${index}\`}
+            checked={option === selectedValue2}
+            onClick={() => setSelectedValue2(option)}>
+            {option}
+          </ARadio>
+        })}
+      </ARadioGroup>
+    </>
+  );
+}
+`}
+/>
+
+## Variants
+
+<Playground
+  code={`<div className="d-flex flex-column">
+  <ARadio small description="Wizards' Guild">Mystic gloves</ARadio>
+  <ARadio small description="Recipe for Disaster quest">Barrows gloves</ARadio>
+  <ARadio small description="Rogues' Den minigame">Rogue gloves</ARadio>
+  <ADivider />
+  <ARadioGroup horizontal small>
+    <ARadio small description="Recipe for Disaster (9 subquests)">Dragon gloves</ARadio>
+    <ARadio small description="Dropped by Giant rock crabs">Rockshell gloves</ARadio>
+  </ARadioGroup>
+</div>
 `}
 />
 

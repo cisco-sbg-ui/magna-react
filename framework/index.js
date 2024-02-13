@@ -103,7 +103,7 @@ import {
 } from "./components/APanel";
 import APopover from "./components/APopover";
 import AProgressbar from "./components/AProgressbar";
-import ARadio from "./components/ARadio";
+import {ARadio, ARadioGroup} from "./components/ARadio";
 import ASelect from "./components/ASelect";
 import ASimpleTable from "./components/ASimpleTable";
 import {
@@ -241,6 +241,7 @@ export {
   APopover,
   AProgressbar,
   ARadio,
+  ARadioGroup,
   ARow,
   ASelect,
   ASimpleTable,

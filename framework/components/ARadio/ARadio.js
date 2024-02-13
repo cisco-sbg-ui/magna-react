@@ -14,6 +14,8 @@ const ARadio = forwardRef(
       onClick,
       value,
       wrap,
+      description,
+      small,
       ...rest
     },
     ref
@@ -24,12 +26,20 @@ const ARadio = forwardRef(
       className += " a-radio--disabled";
     }
 
+    if (description) {
+      className += " a-radio--hasDescription";
+    }
+
+    if (small) {
+      className += " a-radio--small";
+    }
+
     if (propsClassName) {
       className += ` ${propsClassName}`;
     }
 
-    return (
-      <label {...rest} ref={ref} className={className}>
+    let content = (
+      <>
         <input
           type="radio"
           name={name}
@@ -49,9 +59,23 @@ const ARadio = forwardRef(
           </svg>
         </span>
         <span
-          className={`a-radio__label${wrap ? " a-radio__label--wrap" : ""}`}>
+          className={`a-radio__label${wrap ? " a-radio__label--wrap" : ""}`}
+        >
           {children}
         </span>
+      </>
+    );
+
+    return (
+      <label {...rest} ref={ref} className={className}>
+        {description ? (
+          <>
+            <div className="a-radio__label-container">{content}</div>
+            <div className={`a-radio__description`}>{description}</div>
+          </>
+        ) : (
+          content
+        )}
       </label>
     );
   }
@@ -68,6 +92,10 @@ ARadio.propTypes = {
    */
   checked: PropTypes.bool,
   /**
+   * Adds a description below the label
+   */
+  description: PropTypes.string,
+  /**
    * Toggles the `disabled` state.
    */
   disabled: PropTypes.bool,
@@ -79,6 +107,10 @@ ARadio.propTypes = {
    * A callback for handling the click event.
    */
   onClick: PropTypes.func,
+  /**
+   * Applies the small variant
+   */
+  small: PropTypes.bool,
   /**
    * The input's value.
    */
