@@ -233,6 +233,32 @@ All Accordion components (`AAccordion`, `AAccordionPanel`, `AAccordionHeader`, `
 `}
 />
 
+## Icon Placement on the Left Side
+
+<Playground
+  code={`<AAccordion>
+<AAccordionPanel>
+<AAccordionHeader>
+<AAccordionHeaderTitle
+  iconPlacement="left">
+  Accordion Item 1
+</AAccordionHeaderTitle>
+</AAccordionHeader>
+<AAccordionBody>{LoremIpsum}</AAccordionBody>
+</AAccordionPanel>
+<AAccordionPanel collapsed={false}>
+  <AAccordionHeader>
+    <AAccordionHeaderTitle
+      iconPlacement="left">
+      Accordion Item 2
+    </AAccordionHeaderTitle>
+  </AAccordionHeader>
+  <AAccordionBody>{LoremIpsum}</AAccordionBody>
+</AAccordionPanel>
+</AAccordion>
+`}
+/>
+
 ## Accessibility Notes
 
 The `AAccordionPanel` component uses the [aria-expanded](https://www.w3.org/TR/wai-aria/#aria-expanded) attribute to express the collapsed state.

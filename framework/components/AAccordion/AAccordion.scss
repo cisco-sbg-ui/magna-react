@@ -11,7 +11,8 @@ $accordion-body-padding: 15px 10px;
 $accordion-border-radius: 6px;
 $accordion-message-font-size: 13px;
 $accordion-toggle-font-size: $font-size--xs;
-$accordion-toggle-margin: 0 8px 0 0;
+$accordion-toggle-right-margin: 0 8px 0 0;
+$accordion-toggle-left-margin: 0 0 0 8px;
 $accordion-transition: visibility 0s ease, max-height $transition-duration ease,
   opacity $transition-duration--fast ease, margin $transition-duration ease;
 $accordion--state-collapsed-transition: visibility $transition-duration ease,
@@ -102,9 +103,20 @@ $accordion-divider-border-width: thin;
     .a-icon {
       height: $accordion-toggle-font-size;
       width: $accordion-toggle-font-size;
-      margin: $accordion-toggle-margin;
       vertical-align: middle;
       fill: var(--interact-icon-weak-default);
+    }
+  }
+
+  &__chevron-right {
+    .a-icon {
+      margin: $accordion-toggle-right-margin;
+    }
+  }
+
+  &__chevron-left {
+    .a-icon {
+      margin: $accordion-toggle-left-margin;
     }
   }
 

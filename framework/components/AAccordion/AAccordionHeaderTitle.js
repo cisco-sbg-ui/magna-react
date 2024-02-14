@@ -16,6 +16,7 @@ const AAccordionHeaderTitle = forwardRef(
       className: propsClassName,
       collapseIcon = "caret-up",
       expandIcon = "caret-down",
+      iconPlacement = "right",
       onBlur,
       onClick,
       onFocus,
@@ -62,11 +63,26 @@ const AAccordionHeaderTitle = forwardRef(
       onFocus && onFocus(e);
     };
 
+    const handlerProps = {
+      onBlur: handleBlur,
+      onClick: handleClick,
+      onFocus: handleFocus,
+      onKeyDown: handleKeyDown
+    };
+
     let className = "a-accordion__link",
       chevronClassName = "a-accordion__chevron";
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
+    }
+
+    if (iconPlacement === "left") {
+      chevronClassName += " a-accordion__chevron-left";
+    }
+
+    if (iconPlacement === "right") {
+      chevronClassName += " a-accordion__chevron-right";
     }
 
     const chevronIcon =
@@ -75,36 +91,30 @@ const AAccordionHeaderTitle = forwardRef(
         ? expandIcon
         : collapseIcon;
 
-    const props = {};
-
-    if (hasBody) {
-      props.tabIndex = 0;
-      props.role = "button";
-    }
+    const titleDivProps = {
+      ...(hasBody && {tabIndex: 0}),
+      ...(hasBody && {role: "button"})
+    };
 
     return (
       /* eslint-disable jsx-a11y/no-static-element-interactions */
       <>
+        {chevron && iconPlacement === "left" && (
+          <div {...handlerProps} className={chevronClassName}>
+            <AIcon size={12}>{chevronIcon}</AIcon>
+          </div>
+        )}
         <div
           {...rest}
-          {...props}
-          onBlur={handleBlur}
-          onClick={handleClick}
-          onFocus={handleFocus}
-          onKeyDown={handleKeyDown}
+          {...handlerProps}
+          {...titleDivProps}
           ref={ref}
           className={className}
         >
           {children}
         </div>
-        {chevron && (
-          <div
-            onBlur={handleBlur}
-            onClick={handleClick}
-            onFocus={handleFocus}
-            onKeyDown={handleKeyDown}
-            className={chevronClassName}
-          >
+        {chevron && iconPlacement === "right" && (
+          <div {...handlerProps} className={chevronClassName}>
             <AIcon size={12}>{chevronIcon}</AIcon>
           </div>
         )}
@@ -115,7 +125,10 @@ const AAccordionHeaderTitle = forwardRef(
 );
 
 AAccordionHeaderTitle.defaultProps = {
-  chevron: true
+  chevron: true,
+  collapseIcon: "caret-up",
+  expandIcon: "caret-down",
+  iconPlacement: "right"
 };
 
 AAccordionHeaderTitle.propTypes = {
@@ -130,7 +143,12 @@ AAccordionHeaderTitle.propTypes = {
   /**
    * Sets an alternative expand icon.
    */
-  expandIcon: PropTypes.string
+  expandIcon: PropTypes.string,
+  /**
+   * Decide where the icon will be placed in relation to the title.
+   * Default is "right".
+   */
+  iconPlacement: PropTypes.oneOf(["right", "left"])
 };
 
 AAccordionHeaderTitle.displayName = "AAccordionHeaderTitle";
