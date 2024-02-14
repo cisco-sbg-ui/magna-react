@@ -167,7 +167,7 @@ $btn-transition: color $transition-duration--extra-fast
   }
 
   &--secondary {
-    color: var(--interact-text-default);
+    color: var(--interact-text-default) !important;
     background-color: var(--interact-bg-weak-default);
     border-color: var(--interact-border-default);
 
@@ -274,6 +274,10 @@ $btn-transition: color $transition-duration--extra-fast
       color: var(--interact-text-weak-disabled);
     }
   }
+}
+
+a.a-button.a-button--primary {
+  color: var(--interact-text-in-default) !important;
 }
 
 a.disabled.a-button,
