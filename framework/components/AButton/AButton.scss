@@ -276,10 +276,6 @@ $btn-transition: color $transition-duration--extra-fast
   }
 }
 
-a.a-button.a-button--primary {
-  color: var(--interact-text-in-default) !important;
-}
-
 a.disabled.a-button,
 a:disabled.a-button {
   opacity: unset;
