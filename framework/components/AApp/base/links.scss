@@ -1,5 +1,9 @@
-.a-app a {
+.a-app a:not(.a-button):not(.a-tree__content) {
   color: var(--interact-text-default);
+
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 700;
 
   &:hover {
     color: var(--interact-text-hover);
@@ -23,17 +27,12 @@
     color: var(--interact-text-disabled);
   }
 
-  text-decoration: none;
-  font-weight: 700;
   &:hover,
   &:focus,
   &:active,
   &:visited {
     text-decoration: none;
   }
-
-  text-decoration: none;
-  cursor: pointer;
 
   &:hover,
   &:focus,
