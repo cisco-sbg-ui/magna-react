@@ -1,41 +1,19 @@
 @import "../../styles";
 
-@include theme(a-inline-input) using ($theme) {
-  color: var(--base-text-default) !important;
-  .a-icon--pencil-simple {
-    stroke: var(--base-text-default) !important;
-  }
-
-  &__placeholder {
-    color: var(--base-text-disabled);
-  }
-  &__display:hover {
-    color: var(--interact-text-weak-hover);
-
-    .a-icon--pencil-simple {
-      stroke: var(--interact-text-weak-hover) !important;
-    }
-  }
-
-  &--disabled {
-    .a-inline-input__display {
-      color: var(--base-text-default) !important;
-    }
-    .a-icon--pencil-simple {
-      display: none;
-    }
-  }
-}
-
 .a-inline-input {
   display: inline-flex;
   font-weight: normal !important;
+  color: var(--base-text-default) !important;
 
   &__display {
     display: flex;
 
     flex-direction: row;
     cursor: pointer;
+  }
+
+  &__placeholder {
+    color: var(--base-text-disabled);
   }
 
   &__editIcon,
@@ -61,15 +39,23 @@
   }
 
   &__display:hover {
+    color: var(--interact-text-weak-hover);
     .a-inline-input__editIcon,
     .a-inline-input__clearIcon {
       opacity: 1;
+    }
+    .a-icon--pencil-simple {
+      stroke: var(--interact-text-weak-hover) !important;
     }
   }
 
   &--disabled {
     .a-inline-input__display {
       cursor: default;
+      color: var(--base-text-default) !important;
+    }
+    .a-icon--pencil-simple {
+      display: none;
     }
   }
 
@@ -92,5 +78,9 @@
 
   &--size-large {
     line-height: $line-height--lg;
+  }
+
+  .a-icon--pencil-simple {
+    stroke: var(--base-text-default) !important;
   }
 }

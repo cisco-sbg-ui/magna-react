@@ -44,45 +44,6 @@ $table-cell-spacious-padding-top-bottom: math.div(
 // New in 2.1.0
 // Dusk: $table-grouped-rows-header-bg: $color-blue7;
 
-@include theme(a-simple-table) using ($theme) {
-  // background: var(--base-bg-weak-default);
-
-  &--striped {
-    tbody tr:nth-child(even):not(:hover) {
-      background: var(--base-bg-disabled);
-    }
-  }
-
-  tbody tr:hover {
-    background: var(--control-bg-weak-hover);
-  }
-
-  th {
-    color: var(--base-text-default);
-    border-bottom-color: var(--control-border-strong-default);
-  }
-
-  &--sticky {
-    thead {
-      background: var(--base-bg-weak-default);
-      box-shadow: 0 2.5px 2px -2px var(--control-border-strong-default);
-    }
-  }
-
-  tr {
-    td {
-      color: var(--base-text-default);
-    }
-    border-color: var(--control-border-weak-default);
-  }
-
-  &--alt-links {
-    a {
-      color: var(--base-text-default);
-    }
-  }
-}
-
 .a-simple-table {
   border-collapse: collapse;
   width: 100%;
@@ -103,6 +64,12 @@ $table-cell-spacious-padding-top-bottom: math.div(
     padding-top: $table__total--padding-top;
   }
 
+  &--striped {
+    tbody tr:nth-child(even):not(:hover) {
+      background: var(--base-bg-disabled);
+    }
+  }
+
   &--sticky {
     thead {
       position: sticky;
@@ -114,10 +81,19 @@ $table-cell-spacious-padding-top-bottom: math.div(
     vertical-align: middle;
   }
 
+  tbody tr:hover {
+    background: var(--control-bg-weak-hover);
+  }
+
   tr {
     height: $table-row-height;
     vertical-align: inherit;
     border-bottom: thin solid;
+
+    td {
+      color: var(--base-text-default);
+    }
+    border-color: var(--control-border-weak-default);
   }
 
   th,
@@ -135,6 +111,8 @@ $table-cell-spacious-padding-top-bottom: math.div(
     font-weight: bold;
     line-height: $table-header-line-height;
     border-bottom: $border-width solid;
+    color: var(--base-text-default);
+    border-bottom-color: var(--control-border-strong-default);
   }
 
   td {
@@ -185,6 +163,20 @@ $table-cell-spacious-padding-top-bottom: math.div(
       padding-bottom: $table-cell-spacious-padding-top-bottom;
     }
   }
+
+  &--sticky {
+    thead {
+      background: var(--base-bg-weak-default);
+      box-shadow: 0 2.5px 2px -2px var(--control-border-strong-default);
+    }
+  }
+
+  &--alt-links {
+    a {
+      color: var(--base-text-default);
+    }
+  }
+
   /*
   &--condensed {
     .tr {

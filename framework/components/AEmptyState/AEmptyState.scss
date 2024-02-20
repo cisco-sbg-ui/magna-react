@@ -13,52 +13,6 @@ $container-md: 200px;
 $container-lg: 300px;
 $container-xl: 400px;
 
-@include theme(a-empty-state) using ($theme) {
-  &--state-success {
-    .a-empty-state__icon {
-      color: $color-good;
-    }
-    .a-icon-bg {
-      fill: var(--positive-border-default);
-    }
-  }
-  &--state-info {
-    border-color: var(--info-border-default);
-
-    .a-empty-state__background {
-      fill: #a6c4f5;
-    }
-  }
-  &--state-warning {
-    border-color: var(--warning-border-default);
-
-    .a-empty-state__icon {
-      color: $color-warning;
-    }
-    .a-icon-bg {
-      fill: var(--warning-border-default);
-    }
-  }
-  &--state-danger {
-    border-color: var(--negative-border-default);
-
-    .a-empty-state__icon {
-      color: $color-error;
-    }
-    .a-icon-bg {
-      fill: var(--negative-border-default);
-    }
-  }
-
-  .a-empty-state__label {
-    border-color: var(--base-text-default);
-  }
-
-  .a-empty-state__message {
-    color: var(--base-text-medium-default);
-  }
-}
-
 .a-empty-state {
   display: flex;
   flex-direction: column;
@@ -81,6 +35,46 @@ $container-xl: 400px;
 
   &__message {
     text-align: center;
+    color: var(--base-text-medium-default);
+  }
+
+  &--state-success {
+    .a-empty-state__icon {
+      color: $color-good;
+    }
+    .a-icon-bg {
+      fill: var(--positive-border-default);
+    }
+  }
+
+  &--state-info {
+    border-color: var(--info-border-default);
+
+    .a-empty-state__background {
+      fill: #a6c4f5;
+    }
+  }
+
+  &--state-warning {
+    border-color: var(--warning-border-default);
+
+    .a-empty-state__icon {
+      color: $color-warning;
+    }
+    .a-icon-bg {
+      fill: var(--warning-border-default);
+    }
+  }
+
+  &--state-danger {
+    border-color: var(--negative-border-default);
+
+    .a-empty-state__icon {
+      color: $color-error;
+    }
+    .a-icon-bg {
+      fill: var(--negative-border-default);
+    }
   }
 
   &--xsmall {
@@ -100,6 +94,7 @@ $container-xl: 400px;
     .a-empty-state__label {
       font-weight: 700;
       font-size: 12px;
+      border-color: var(--base-text-default);
     }
 
     .a-empty-state__message {

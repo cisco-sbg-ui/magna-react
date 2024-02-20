@@ -1,20 +1,26 @@
 @import "../../styles";
 
-@include theme(a-panel) using ($theme) {
+.a-panel {
+  border-width: $border-width;
+  border-style: solid;
+  border-radius: $border-radius--xlg;
+  height: auto;
+  display: block;
+  position: relative;
+  margin: 15px;
+  overflow: hidden;
   background: var(--control-bg-weak-default);
   border-color: var(--control-border-weak-default);
   color: var(--base-text-default);
   box-shadow: var(--panel-shadow);
 
-  &__header {
-    color: var(--base-text-default);
-  }
-
   &--color-gray {
+    border: none;
     background: var(--base-bg-default);
   }
 
   &--color-white {
+    border: none;
     background: map-get($mds-neutral, "neutral-1");
     color: map-get($mds-neutral, "neutral-15");
     .a-panel__header {
@@ -27,33 +33,11 @@
   }
 
   &--type-dialog {
-    background: var(--base-icon-in-default);
-  }
-}
-
-.a-panel {
-  border-width: $border-width;
-  border-style: solid;
-  border-radius: $border-radius--xlg;
-  height: auto;
-  display: block;
-  position: relative;
-  margin: 15px;
-  overflow: hidden;
-
-  &--color-gray {
-    border: none;
-  }
-
-  &--color-white {
-    border: none;
-  }
-
-  &--type-dialog {
     .a-panel__header {
       box-shadow: $default-box-shadow;
       padding-bottom: 15px;
       padding-top: 16px;
+      background: var(--base-icon-in-default);
     }
 
     .a-panel__body {
@@ -68,6 +52,7 @@
   &__header {
     display: flex;
     padding: 20px 20px 0 20px;
+    color: var(--base-text-default);
   }
 
   &__title {

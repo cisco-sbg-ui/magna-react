@@ -7,25 +7,113 @@ When using AMenu that passes AMenuBase to AList, force override the specificity
 since the css may be imported in different orders depending on product build
 configuration environments.
 */
-@include theme("a-menu.a-list") using ($theme) {
-  border-color: var(--control-border-default) !important;
-  background-color: var(--control-bg-weak-default) !important;
-}
 
-@include theme(a-menu) using ($theme) {
+.a-menu {
+  overflow: visible;
+  min-width: 175px;
   border-color: var(--control-border-default);
   border-radius: $border-radius--lg;
   border-width: $border-width;
   background-color: var(--control-bg-weak-default);
+
+  &.a-list {
+    border-color: var(--control-border-default) !important;
+    background-color: var(--control-bg-weak-default) !important;
+  }
+  > .a-list-item {
+    padding: 8px 10px;
+    > .a-radio,
+    > .a-checkbox .a-checkbox__wrap {
+      padding: 0;
+    }
+    > label {
+      padding-left: 0;
+    }
+    &:first-child {
+      border-top-left-radius: $menu-item-first-last-border-radius !important;
+      border-top-right-radius: $menu-item-first-last-border-radius !important;
+    }
+    &:last-child {
+      border-bottom-right-radius: $menu-item-first-last-border-radius !important;
+      border-bottom-left-radius: $menu-item-first-last-border-radius !important;
+      border-top-left-radius: unset;
+      border-top-right-radius: unset;
+    }
+
+    .a-empty-state {
+      margin: 20px auto;
+    }
+  }
+  &.compact {
+    > .a-list-item {
+      padding: 4px 6px;
+    }
+  }
+
+  q &.compact {
+    > .a-list-item {
+      padding: 1.5px 15px;
+    }
+  }
+
   &--pointer.a-menu-base--top,
   &--pointer.a-menu-base--top-left,
   &--pointer.a-menu-base--top-right {
+    margin-top: -13px;
+
     .a-menu-base__pointer {
+      margin-left: -4px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 14px 9.5px 0 9.5px;
+      position: absolute;
+      bottom: -14px;
+
       border-color: var(--control-border-default) transparent transparent
         transparent;
 
       &:after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 14px 9.5px 0 9.5px;
+        position: absolute;
+        right: -9.5px;
+        top: -16px;
         border-color: var(--base-icon-in-default) transparent transparent
+          transparent;
+      }
+    }
+  }
+
+  &--pointer.a-menu-base--right,
+  &--pointer.a-menu-base--right-top,
+  &--pointer.a-menu-base--right-bottom {
+    margin-left: 13px;
+
+    .a-menu-base__pointer {
+      margin-top: -4px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 9.5px 14px 9.5px 0;
+      position: absolute;
+      left: -14px;
+      border-color: transparent transparent var(--control-border-default)
+        transparent;
+
+      &:after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 9.5px 14px 9.5px 0;
+        position: absolute;
+        right: -16px;
+        top: -9.5px;
+        border-color: transparent transparent var(--base-icon-in-default)
           transparent;
       }
     }
@@ -34,13 +122,51 @@ configuration environments.
   &--pointer.a-menu-base--bottom,
   &--pointer.a-menu-base--bottom-left,
   &--pointer.a-menu-base--bottom-right {
+    margin-top: 13px;
     .a-menu-base__pointer {
-      border-color: transparent transparent var(--control-border-default)
-        transparent;
+      margin-left: -4px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 9.5px 14px 9.5px;
+      position: absolute;
+      top: -14px;
 
       &:after {
-        border-color: transparent transparent var(--base-icon-in-default)
-          transparent;
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 9.5px 14px 9.5px;
+        position: absolute;
+        right: -9.5px;
+        top: 2px;
+      }
+    }
+  }
+
+  &--pointer.a-menu-base--left,
+  &--pointer.a-menu-base--left-top,
+  &--pointer.a-menu-base--left-bottom {
+    margin-left: -13px;
+    .a-menu-base__pointer {
+      margin-top: -4px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 9.5px 0 9.5px 14px;
+      position: absolute;
+      right: -14px;
+
+      &:after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 9.5px 0 9.5px 14px;
+        position: absolute;
+        right: 2px;
+        top: -9.5px;
       }
     }
   }
@@ -102,150 +228,6 @@ configuration environments.
     &:after {
       border-color: transparent transparent transparent
         var(--base-icon-in-default);
-    }
-  }
-}
-
-.a-menu {
-  overflow: visible;
-  min-width: 175px;
-  > .a-list-item {
-    padding: 8px 10px;
-    > .a-radio,
-    > .a-checkbox .a-checkbox__wrap {
-      padding: 0;
-    }
-    > label {
-      padding-left: 0;
-    }
-    &:first-child {
-      border-top-left-radius: $menu-item-first-last-border-radius !important;
-      border-top-right-radius: $menu-item-first-last-border-radius !important;
-    }
-    &:last-child {
-      border-bottom-right-radius: $menu-item-first-last-border-radius !important;
-      border-bottom-left-radius: $menu-item-first-last-border-radius !important;
-      border-top-left-radius: unset;
-      border-top-right-radius: unset;
-    }
-
-    .a-empty-state {
-      margin: 20px auto;
-    }
-  }
-  &.compact {
-    > .a-list-item {
-      padding: 4px 6px;
-    }
-  }
-
-  q &.compact {
-    > .a-list-item {
-      padding: 1.5px 15px;
-    }
-  }
-
-  &--pointer.a-menu-base--top,
-  &--pointer.a-menu-base--top-left,
-  &--pointer.a-menu-base--top-right {
-    margin-top: -13px;
-    .a-menu-base__pointer {
-      margin-left: -4px;
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 14px 9.5px 0 9.5px;
-      position: absolute;
-      bottom: -14px;
-
-      &:after {
-        content: "";
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 14px 9.5px 0 9.5px;
-        position: absolute;
-        right: -9.5px;
-        top: -16px;
-      }
-    }
-  }
-
-  &--pointer.a-menu-base--right,
-  &--pointer.a-menu-base--right-top,
-  &--pointer.a-menu-base--right-bottom {
-    margin-left: 13px;
-    .a-menu-base__pointer {
-      margin-top: -4px;
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 9.5px 14px 9.5px 0;
-      position: absolute;
-      left: -14px;
-
-      &:after {
-        content: "";
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 9.5px 14px 9.5px 0;
-        position: absolute;
-        right: -16px;
-        top: -9.5px;
-      }
-    }
-  }
-
-  &--pointer.a-menu-base--bottom,
-  &--pointer.a-menu-base--bottom-left,
-  &--pointer.a-menu-base--bottom-right {
-    margin-top: 13px;
-    .a-menu-base__pointer {
-      margin-left: -4px;
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 0 9.5px 14px 9.5px;
-      position: absolute;
-      top: -14px;
-
-      &:after {
-        content: "";
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 0 9.5px 14px 9.5px;
-        position: absolute;
-        right: -9.5px;
-        top: 2px;
-      }
-    }
-  }
-
-  &--pointer.a-menu-base--left,
-  &--pointer.a-menu-base--left-top,
-  &--pointer.a-menu-base--left-bottom {
-    margin-left: -13px;
-    .a-menu-base__pointer {
-      margin-top: -4px;
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 9.5px 0 9.5px 14px;
-      position: absolute;
-      right: -14px;
-
-      &:after {
-        content: "";
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 9.5px 0 9.5px 14px;
-        position: absolute;
-        right: 2px;
-        top: -9.5px;
-      }
     }
   }
 }

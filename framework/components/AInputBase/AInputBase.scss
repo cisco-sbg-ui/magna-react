@@ -3,8 +3,18 @@
 $input-transition: border-color $transition-duration--extra-fast
   $transition-timing-function--standard;
 
-@include theme(a-input-base) using ($theme) {
+.a-input-base {
+  display: block;
   &__surface {
+    display: flex;
+    box-sizing: border-box;
+    min-height: 28px;
+    width: 100%;
+    position: relative;
+    padding: 0 0 0 0;
+    border-style: solid;
+    border-width: $border-width;
+    border-radius: $border-radius--lg;
     background: var(--control-bg-weak-default);
     border-color: var(--control-border-default);
     color: var(--base-text-default);
@@ -21,12 +31,57 @@ $input-transition: border-color $transition-duration--extra-fast
   &--focused {
     .a-input-base__surface {
       border-color: var(--control-border-focus);
-      box-shadow: 0 0 0 2px var(--control-border-active);
+      box-shadow: 0 0 0 2px var(--text-input-shadow-color);
     }
+  }
+
+  &__prepend {
+    display: inline-grid;
+    align-items: center;
+    grid-auto-flow: column;
+  }
+
+  &__control {
+    flex-grow: 1;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &__append {
+    display: inline-grid;
+    align-items: center;
+    grid-auto-flow: column;
+    .a-icon {
+      fill: var(--control-icon-weak-default);
+    }
+  }
+
+  &__prepend,
+  &__append {
+    .a-button {
+      height: unset;
+    }
+  }
+
+  &--disabled {
+    .a-input-base__surface {
+      @include disabled;
+      color: var(--base-text-disabled);
+      border-color: var(--control-border-disabled);
+      background: var(--control-bg-weak-disabled);
+      cursor: not-allowed;
+
+      .a-icon {
+        fill: var(--base-text-disabled);
+      }
+    }
+    cursor: not-allowed;
   }
 
   &--readonly {
     .a-input-base__surface {
+      box-shadow: none;
+
       border-color: var(--control-border-default);
       background: var(--control-border-default);
     }
@@ -67,83 +122,6 @@ $input-transition: border-color $transition-duration--extra-fast
       &:active {
         border: $border-width solid $color-error;
       }
-    }
-  }
-
-  &--disabled {
-    .a-input-base__surface {
-      color: var(--base-text-disabled);
-      border-color: var(--control-border-disabled);
-      background: var(--control-bg-weak-disabled);
-      cursor: not-allowed;
-
-      .a-icon {
-        fill: var(--base-text-disabled);
-      }
-    }
-  }
-
-  &__append {
-    .a-icon {
-      fill: var(--control-icon-weak-default);
-    }
-  }
-
-  &__clear:focus,
-  &__clear:hover {
-    fill: var(--interact-text-active) !important;
-  }
-}
-
-.a-input-base {
-  display: block;
-  &__surface {
-    display: flex;
-    box-sizing: border-box;
-    min-height: 28px;
-    width: 100%;
-    position: relative;
-    padding: 0 0 0 0;
-    border-style: solid;
-    border-width: $border-width;
-    border-radius: $border-radius--lg;
-  }
-
-  &__prepend {
-    display: inline-grid;
-    align-items: center;
-    grid-auto-flow: column;
-  }
-
-  &__control {
-    flex-grow: 1;
-    display: inline-flex;
-    align-items: center;
-  }
-
-  &__append {
-    display: inline-grid;
-    align-items: center;
-    grid-auto-flow: column;
-  }
-
-  &__prepend,
-  &__append {
-    .a-button {
-      height: unset;
-    }
-  }
-
-  &--disabled {
-    .a-input-base__surface {
-      @include disabled;
-    }
-    cursor: not-allowed;
-  }
-
-  &--readonly {
-    .a-input-base__surface {
-      box-shadow: none;
     }
   }
 
@@ -191,6 +169,11 @@ $input-transition: border-color $transition-duration--extra-fast
   &__clear {
     padding: 0 7px;
     cursor: pointer;
+  }
+
+  &__clear:focus,
+  &__clear:hover {
+    fill: var(--interact-text-active) !important;
   }
 }
 

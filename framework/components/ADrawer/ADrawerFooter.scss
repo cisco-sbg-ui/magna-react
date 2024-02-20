@@ -1,9 +1,5 @@
 @import "../../styles";
 
-@include theme(a-drawer__footer) using ($theme) {
-  border-color: var(--control-border-default);
-}
-
 .a-drawer__footer {
   position: sticky;
   bottom: 0;
@@ -11,6 +7,7 @@
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.12);
   border-top-left-radius: $border-radius--lg;
   border-top-right-radius: $border-radius--lg;
+  border-color: var(--control-border-default);
 
   .a-drawer__content {
     display: flex;

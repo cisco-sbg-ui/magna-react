@@ -1,7 +1,21 @@
 @import "../../styles";
 
-@include theme(a-tree) using ($theme) {
+.a-tree {
   &__root {
+    display: flex;
+    height: 30px;
+    position: relative;
+    align-items: center;
+
+    &--leaf {
+      padding-left: 30px;
+    }
+
+    > .a-button {
+      position: relative;
+      flex-shrink: 0;
+    }
+
     &--active {
       background: var(--row-effect-image), var(--row-effect-image);
       color: var(--base-text-default);
@@ -28,6 +42,15 @@
   }
 
   &__content {
+    flex-grow: 1;
+    padding-right: 30px;
+    user-select: none;
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 29px;
+
     color: currentColor;
     font-weight: normal;
 
@@ -36,6 +59,17 @@
       color: currentColor;
       text-decoration: none;
     }
+
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+
+  &__level {
+    width: 17px;
+    flex-shrink: 0;
   }
 
   &--hoverable {
@@ -56,55 +90,6 @@
   }
 
   &--dense {
-    .a-tree__root > .a-button:focus:after {
-      width: 16px;
-      height: 16px;
-      left: 4px;
-      top: 4px;
-    }
-  }
-}
-
-.a-tree {
-  &__root {
-    display: flex;
-    height: 30px;
-    position: relative;
-    align-items: center;
-
-    &--leaf {
-      padding-left: 30px;
-    }
-
-    > .a-button {
-      position: relative;
-      flex-shrink: 0;
-    }
-  }
-
-  &__content {
-    flex-grow: 1;
-    padding-right: 30px;
-    user-select: none;
-    text-decoration: none;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    line-height: 29px;
-
-    &:hover,
-    &:active,
-    &:focus {
-      text-decoration: none;
-    }
-  }
-
-  &__level {
-    width: 17px;
-    flex-shrink: 0;
-  }
-
-  &--dense {
     .a-tree__root {
       height: 24px;
 
@@ -114,6 +99,13 @@
 
       > .a-button {
         padding: 7px;
+      }
+
+      > .a-button:focus:after {
+        width: 16px;
+        height: 16px;
+        left: 4px;
+        top: 4px;
       }
     }
 

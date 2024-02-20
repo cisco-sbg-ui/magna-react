@@ -8,17 +8,39 @@ svg.a-icon {
   box-sizing: content-box;
 }
 
-@include theme(a-icon) using ($theme) {
+.a-icon {
+  overflow: visible;
+  width: 24px;
   stroke: var(--interact-icon-weak-default);
-  //fill:  var(--interact-icon-weak-default); // if using Fill phosphor icons, uncomment
-
-  &--atomic {
-    fill: var(--interact-icon-weak-default);
-  }
 
   //Status icon text
   .a-icon-text {
     fill: var(--base-icon-in-default);
+  }
+
+  &--size-large {
+    width: $icon-size-large;
+  }
+
+  &--size-medium {
+    width: $icon-size-medium;
+  }
+
+  &--size-small {
+    width: $icon-size-small;
+  }
+
+  &--left {
+    margin-right: 4px;
+  }
+
+  &--right {
+    margin-left: 4px;
+  }
+
+  &--atomic {
+    stroke: unset !important;
+    fill: var(--interact-icon-weak-default);
   }
 
   //Status icon backgrounds
@@ -113,34 +135,5 @@ svg.a-icon {
 
   &--critical-stop {
     fill: map-get($mds-status, "negative") !important;
-  }
-}
-
-.a-icon {
-  overflow: visible;
-  width: 24px;
-
-  &--size-large {
-    width: $icon-size-large;
-  }
-
-  &--size-medium {
-    width: $icon-size-medium;
-  }
-
-  &--size-small {
-    width: $icon-size-small;
-  }
-
-  &--left {
-    margin-right: 4px;
-  }
-
-  &--right {
-    margin-left: 4px;
-  }
-
-  &--atomic {
-    stroke: unset !important;
   }
 }

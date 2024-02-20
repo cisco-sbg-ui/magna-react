@@ -12,29 +12,16 @@ $radio-transition: stroke $transition-duration--extra-fast
   box-shadow $transition-duration--extra-fast
     $transition-timing-function--standard;
 
-@include theme(a-radio) using ($theme) {
-  &__box {
-    &__outer {
-      fill: none;
-      stroke-width: 2px;
-    }
-
-    &__inner {
-      stroke: none;
-      fill: none;
-    }
-
-    &__active {
-      stroke: none;
-      fill: none;
-    }
-
-    > svg {
-      background-color: var(--control-bg-weak-default);
-    }
-  }
+.a-radio {
+  display: flex;
+  padding: math.div($radio-padding, 2) $radio-padding;
+  line-height: $line-height--md;
+  position: relative;
+  cursor: pointer;
 
   &__input {
+    @include hidden-input;
+
     & ~ .a-radio__box {
       .a-radio__box__outer {
         stroke: var(--control-border-disabled);
@@ -124,18 +111,6 @@ $radio-transition: stroke $transition-duration--extra-fast
       fill: var(--control-bg-weak-disabled);
     }
   }
-}
-
-.a-radio {
-  display: flex;
-  padding: math.div($radio-padding, 2) $radio-padding;
-  line-height: $line-height--md;
-  position: relative;
-  cursor: pointer;
-
-  &__input {
-    @include hidden-input;
-  }
 
   &__box {
     width: $radio-width;
@@ -144,9 +119,25 @@ $radio-transition: stroke $transition-duration--extra-fast
     display: inline-block;
     margin: 2px 8px 0 0;
 
+    &__outer {
+      fill: none;
+      stroke-width: 2px;
+    }
+
+    &__inner {
+      stroke: none;
+      fill: none;
+    }
+
+    &__active {
+      stroke: none;
+      fill: none;
+    }
+
     > svg {
       overflow: visible;
       border-radius: 50%;
+      background-color: var(--control-bg-weak-default);
     }
   }
 
