@@ -70,6 +70,7 @@ Feel free to reach out to Robert Harris (roberha2) via Webex Teams to discuss co
 ### Run Locally
 ```
 npm ci
+npm run addTokens
 npm run dev
 ```
 
