@@ -12,6 +12,7 @@ Integrate with your build to [auto-import](/#integrating), or add an import in y
 
 ```js
 import {
+  APageAlert,
   APageContainer,
   APageHeader,
   APageTitle,
@@ -97,6 +98,19 @@ return (
       <div style={{fontWeight: 600, paddingRight: "5px"}}>MX450</div>
       <ANetworkValue>e0:cb:bc:a3:03:48</ANetworkValue>
     </APageLabel>
+    <APageAlert level="info" dismissable={false}>
+      <p className="mt-0">
+        In total, completing all 10 subquests for "Recipe for Disaster" awards:
+      </p>
+      <ul>
+        <li>10 Quest points</li>
+        <li>
+          An experience lamp, which grants 20,000 experience to any skill above
+          50 (can be banked for later use)
+        </li>
+        <li>Access to buy Barrows gloves</li>
+      </ul>
+    </APageAlert>
     <ATabGroup scrolling>
       <ATab>One</ATab>
       <ATab>Two</ATab>
