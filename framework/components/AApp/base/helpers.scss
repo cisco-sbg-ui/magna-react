@@ -63,6 +63,18 @@ $helpers: (
     class: flex,
     values: wrap nowrap wrap-reverse
   ),
+  "gap": (
+    responsive: true,
+    property: gap,
+    class: gap,
+    values:
+      map-merge(
+        $spacers,
+        (
+          auto: auto
+        )
+      )
+  ),
   "justify-content": (
     responsive: true,
     property: justify-content,
