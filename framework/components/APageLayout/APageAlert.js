@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 import "./APageAlert.scss";
 import AToast from "../AToast";
