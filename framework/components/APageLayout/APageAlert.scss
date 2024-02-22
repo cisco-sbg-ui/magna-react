@@ -1,12 +1,15 @@
 @import "../../styles";
 
 .a-page-alert {
-  min-height: unset; // Reset `a-toast`
-  max-width: unset; // Reset `a-toast`
   margin: map-get($spacers, 2) 0 map-get($spacers, 3) 0;
   line-height: $line-height--md;
 
-  & .a-toast__icon {
-    margin-top: 0; // Reset `a-toast`
+  &.a-toast {
+    min-height: unset; // Reset `a-toast`
+    max-width: unset; // Reset `a-toast`
+
+    & .a-toast__icon {
+      margin-top: 0; // Reset `a-toast`
+    }
   }
 }
