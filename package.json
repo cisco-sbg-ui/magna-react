@@ -27,7 +27,7 @@
     "husky:pre-commit": "lint-staged",
     "prepare": "husky install",
     "publish-package": "rimraf lib && npm ci && npm run build && npm publish",
-    "dev": "next dev -p 8001",
+    "dev": "npm run addTokens && next dev -p 8001",
     "start": "npm run addTokens next start -p 8001",
     "start-ci": "next -p $npm_config_port || 3232",
     "test:dev": "cypress open --component",
