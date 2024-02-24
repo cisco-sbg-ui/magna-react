@@ -82,6 +82,7 @@ import AMount from "./components/AMount";
 import AMultiSelect from "./components/AMultiSelect";
 import ANetworkValue from "./components/ANetworkValue/ANetworkValue";
 import {
+  APageAlert,
   APageContainer,
   APageHeader,
   APageTitle,
@@ -221,6 +222,7 @@ export {
   AMount,
   AMultiSelect,
   ANetworkValue,
+  APageAlert,
   APageContainer,
   APageHeader,
   APageTitle,

@@ -1,3 +1,4 @@
+import APageAlert from "./APageAlert";
 import APageContainer from "./APageContainer";
 import APageHeader from "./APageHeader";
 import APageTitle from "./APageTitle";
@@ -9,6 +10,7 @@ import APageTitleContentRight from "./content/APageTitleContentRight";
 import APageTitleText from "./APageTitleText";
 
 export {
+  APageAlert,
   APageContainer,
   APageHeader,
   APageTitle,
