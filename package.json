@@ -43,7 +43,8 @@
     "transform:iconMap": "babel --plugins @babel/plugin-transform-modules-commonjs framework/components/AIcon/atomicMap.js -o scripts/iconMap/index.js",
     "copyPhosphorIcons": "npm run transform:iconMap && node scripts/copyPhosphorIcons.js",
     "copyAndBuildIcons": "npm run copyPhosphorIcons && npm run buildIcons",
-    "addTokens": "rm -rf ./tokens && mkdir ./tokens && cp -r ./node_modules/@ciscodesignsystems/* ./tokens/"
+    "modifyTokenClasses": "pwd && ls -al ./buildScripts && sh ./buildScripts/modifyCDSThemeClasses.sh",
+    "addTokens": "rm -rf ./tokens && mkdir ./tokens && cp -r ./node_modules/@ciscodesignsystems/* ./tokens/ && npm run modifyTokenClasses"
   },
   "peerDependencies": {
     "prop-types": "^15.0.0",

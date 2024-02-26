@@ -129,7 +129,7 @@ const ATheme = forwardRef(
     }
 
     return (
-      <div {...rest} ref={ref} className={className} data-cds-theme={dataTheme}>
+      <div {...rest} ref={ref} className={className}>
         <AThemeContext.Provider value={themeContext}>
           {children}
         </AThemeContext.Provider>
