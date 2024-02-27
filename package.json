@@ -1,6 +1,6 @@
 {
   "name": "@cisco-sbg-ui/magna-react",
-  "version": "1.1.0-canary.0",
+  "version": "1.1.0-tokendev.0",
   "description": "",
   "main": "lib/index.js",
   "module": "lib/index.js",
@@ -43,7 +43,8 @@
     "transform:iconMap": "babel --plugins @babel/plugin-transform-modules-commonjs framework/components/AIcon/atomicMap.js -o scripts/iconMap/index.js",
     "copyPhosphorIcons": "npm run transform:iconMap && node scripts/copyPhosphorIcons.js",
     "copyAndBuildIcons": "npm run copyPhosphorIcons && npm run buildIcons",
-    "addTokens": "rm -rf ./tokens && mkdir ./tokens && cp -r ./node_modules/@ciscodesignsystems/* ./tokens/"
+    "modifyTokenClasses": "sh ./buildScripts/modifyCDSThemeClasses.sh",
+    "addTokens": "rm -rf ./tokens && mkdir ./tokens && cp -r ./node_modules/@ciscodesignsystems/* ./tokens/ && npm run modifyTokenClasses"
   },
   "peerDependencies": {
     "prop-types": "^15.0.0",
