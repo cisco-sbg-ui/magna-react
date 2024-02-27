@@ -141,7 +141,7 @@
   a.a-list-item,
   &a:not(.a-tab-group__tab) {
     color: var(--base-text-default) !important;
-    font-weight: unset;
+    font-weight: unset !important;
   }
 
   &--medium {

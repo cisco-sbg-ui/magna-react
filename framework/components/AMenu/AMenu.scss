@@ -131,6 +131,8 @@ configuration environments.
       border-width: 0 9.5px 14px 9.5px;
       position: absolute;
       top: -14px;
+      border-color: transparent transparent var(--control-border-default)
+        transparent;
 
       &:after {
         content: "";
@@ -141,6 +143,8 @@ configuration environments.
         position: absolute;
         right: -9.5px;
         top: 2px;
+        border-color: transparent transparent var(--base-icon-in-default)
+          transparent;
       }
     }
   }
