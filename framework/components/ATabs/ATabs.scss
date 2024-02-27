@@ -12,15 +12,70 @@ $tab-margin-secondary: 24px;
 $tab-padding: 4px 0 8px 0; //doesn't match magnetic (overall height 41px, but magnetic doesn't align to the multiple of 4px pattern here either //Update - Added padding on the bottom to try to match height of the bar
 $tab-heading-margin: 0;
 
-@include theme(a-tab-group) using ($theme) {
+.a-tab-group {
+  margin: $tabs-margin;
+  padding: $tabs-padding;
+  list-style: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+
   //Remove link style from tabs
   a {
     background: unset !important;
     border-radius: unset !important;
   }
 
+  &:not(&--vertical) {
+    width: 100%;
+  }
+
+  &__tab-wrapper {
+    display: flex;
+  }
+
+  &__tab-content--vertical {
+    display: flex;
+    flex-direction: column;
+    box-shadow: inset -1px 0 map-get($mds-neutral, "neutral-4");
+  }
+
+  &__scroll-left,
+  &__scroll-right {
+    flex-shrink: 0;
+  }
+
   &__tab {
+    font-weight: 600;
+    display: inline-block;
+    margin-right: $tab-margin;
+    padding: $tab-padding;
+    border: none;
+    text-align: center;
+    user-select: none;
+    font-size: $tab-font-size;
+    background-color: transparent;
+    line-height: 25px;
+    cursor: pointer;
     color: var(--base-text-medium-default);
+    //If has tag, provide some margin
+    .a-tag {
+      margin: 0 4px 2px 4px;
+    }
+
+    &.hide {
+      display: none !important;
+    }
+    svg {
+      vertical-align: middle;
+      width: 12px;
+      margin: 0 0 2px 3px;
+    }
+
+    &:active {
+      outline: none;
+    }
+
     &:active,
     &:focus,
     &:hover {
@@ -33,6 +88,9 @@ $tab-heading-margin: 0;
     }
 
     &--secondary {
+      margin-right: $tab-margin-secondary;
+      font-size: $tab-font-size-secondary;
+
       color: var(--interact-text-weak-default);
       &:active,
       &:focus,
@@ -56,6 +114,17 @@ $tab-heading-margin: 0;
       );
     }
 
+    &--vertical {
+      min-width: 150px;
+      margin: 0 0 8px;
+      padding-top: $tab-padding-bottom;
+      height: unset;
+      line-height: unset;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+
     &--selected {
       //Primary
       &:not(.a-tab-group__tab--secondary) {
@@ -67,7 +136,7 @@ $tab-heading-margin: 0;
         &:active,
         &:focus,
         &:hover {
-          color: var(--interact-text-weak-active);
+          color: var(--base-text-default);
           @include tab-bar(
             $tab-bottom-bar-height,
             var(--brand-accent-border-active)
@@ -105,91 +174,6 @@ $tab-heading-margin: 0;
     }
   }
 
-  &:has(.a-tab-group__tab--secondary :not(.a-tab-group__tab--vertical)) {
-    border-bottom-color: transparent;
-    //TODO mark back in when UX decides on primary vs secondary
-    // border-bottom-color: map-deep-get(
-    //   $theme,
-    //   "tabs",
-    //   "border-bottom-secondary"
-    // );
-  }
-}
-
-.a-tab-group {
-  margin: $tabs-margin;
-  padding: $tabs-padding;
-  list-style: none;
-  background-color: transparent;
-  display: flex;
-  align-items: center;
-
-  &:not(&--vertical) {
-    width: 100%;
-  }
-
-  &__tab-wrapper {
-    display: flex;
-  }
-
-  &__tab-content--vertical {
-    display: flex;
-    flex-direction: column;
-    box-shadow: inset -1px 0 map-get($mds-neutral, "neutral-4");
-  }
-
-  &__scroll-left,
-  &__scroll-right {
-    flex-shrink: 0;
-  }
-
-  &__tab {
-    font-weight: 600;
-    display: inline-block;
-    margin-right: $tab-margin;
-    padding: $tab-padding;
-    border: none;
-    text-align: center;
-    user-select: none;
-    font-size: $tab-font-size;
-    background-color: transparent;
-    line-height: 25px;
-    cursor: pointer;
-    //If has tag, provide some margin
-    .a-tag {
-      margin: 0 4px 2px 4px;
-    }
-
-    &.hide {
-      display: none !important;
-    }
-    svg {
-      vertical-align: middle;
-      width: 12px;
-      margin: 0 0 2px 3px;
-    }
-
-    &:active {
-      outline: none;
-    }
-
-    &--secondary {
-      margin-right: $tab-margin-secondary;
-      font-size: $tab-font-size-secondary;
-    }
-
-    &--vertical {
-      min-width: 150px;
-      margin: 0 0 8px;
-      padding-top: $tab-padding-bottom;
-      height: unset;
-      line-height: unset;
-      &:last-of-type {
-        margin-bottom: 0;
-      }
-    }
-  }
-
   .a-tab-group__tab {
     text-decoration: none;
 
@@ -207,6 +191,13 @@ $tab-heading-margin: 0;
 
   &:has(.a-tab-group__tab--secondary :not(.a-tab-group__tab--vertical)) {
     border-bottom: 1px solid;
+    border-bottom-color: transparent;
+    //TODO mark back in when UX decides on primary vs secondary
+    // border-bottom-color: map-deep-get(
+    //   $theme,
+    //   "tabs",
+    //   "border-bottom-secondary"
+    // );
   }
 }
 

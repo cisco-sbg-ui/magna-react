@@ -1,9 +1,18 @@
 @import "../../styles";
 
-@include theme(a-list) using ($theme) {
+.a-list {
+  border-width: $border-width;
+  border-style: solid;
+  border-radius: $border-radius--sm;
+  display: flex;
+  flex-direction: column;
   color: var(--base-text-default);
   background: var(--base-bg-weak-default);
   border-color: var(--control-border-default);
+
+  &--hoverable > a {
+    font-weight: unset;
+  }
 
   &--hoverable .a-list-item:not(.a-list-item--two-line) {
     &:hover,
@@ -12,48 +21,6 @@
       color: var(--base-text-default) !important;
       background-color: var(--control-bg-weak-hover) !important;
     }
-  }
-
-  &-item:not(.a-list-item--two-line) {
-    color: currentColor;
-
-    &:focus {
-      color: var(--base-text-default);
-      background: var(--row-effect-image) var(--control-bg-weak-focus);
-    }
-  }
-
-  &-item--selected:not(.a-list-item--two-line) {
-    color: var(--base-text-default);
-    background: var(--row-effect-image), var(--control-bg-weak-active);
-
-    a:hover,
-    a.a-list-item:hover {
-      background: var(--row-effect-image), var(--control-bg-weak-active) !important;
-    }
-  }
-
-  &-item--disabled:not(.a-list-item--two-line) {
-    color: var(--base-text-disabled);
-    background: none;
-  }
-
-  a.a-list-item,
-  &a:not(.a-tab-group__tab) {
-    color: var(--base-text-default) !important;
-    font-weight: unset;
-  }
-}
-
-.a-list {
-  border-width: $border-width;
-  border-style: solid;
-  border-radius: $border-radius--sm;
-  display: flex;
-  flex-direction: column;
-
-  &--hoverable > a {
-    font-weight: unset;
   }
 
   &-item {
@@ -145,6 +112,36 @@
 
   a.a-list-item--two-line {
     text-decoration: none;
+  }
+
+  &-item:not(.a-list-item--two-line) {
+    color: currentColor;
+
+    &:focus {
+      color: var(--base-text-default);
+      background: var(--row-effect-image) var(--control-bg-weak-focus);
+    }
+  }
+
+  &-item--selected:not(.a-list-item--two-line) {
+    color: var(--base-text-default);
+    background: var(--row-effect-image), var(--control-bg-weak-active);
+
+    a:hover,
+    a.a-list-item:hover {
+      background: var(--row-effect-image), var(--control-bg-weak-active) !important;
+    }
+  }
+
+  &-item--disabled:not(.a-list-item--two-line) {
+    color: var(--base-text-disabled);
+    background: none;
+  }
+
+  a.a-list-item,
+  &a:not(.a-tab-group__tab) {
+    color: var(--base-text-default) !important;
+    font-weight: unset !important;
   }
 
   &--medium {

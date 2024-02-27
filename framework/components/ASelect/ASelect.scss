@@ -3,7 +3,7 @@
 $select-height: 28px;
 $select-padding: 6px;
 
-@include theme(a-select) using ($theme) {
+.a-select {
   &__menu-items.a-menu {
     border-color: var(--control-border-default);
   }
@@ -26,9 +26,6 @@ $select-padding: 6px;
       background-color: transparent;
     }
   }
-}
-
-.a-select {
   &__selection-wrapper {
     width: 100%;
     height: 100%;

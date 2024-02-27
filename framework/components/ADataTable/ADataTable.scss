@@ -2,61 +2,6 @@
 
 $hidden-table-col-width: 45px;
 
-@include theme(a-data-table) using ($theme) {
-  &__header {
-    &__sort {
-      &__button {
-        color: var(--base-text-default);
-      }
-    }
-
-    //border-top: 2px solid transparent;
-    //border-top-color: transparent;
-    &--sortable {
-      cursor: pointer;
-      &:focus,
-      &:hover {
-        background-color: var(--control-bg-weak-active);
-      }
-    }
-  }
-
-  &--expandable {
-    .a-data-table__row {
-      &[data-expandable-row="true"] {
-        .a-data-table__cell:nth-last-child(2) {
-          border-color: var(--control-border-weak-default);
-        }
-      }
-
-      .a-data-table__cell[data-expandable-content] {
-        border-color: var(--control-border-weak-default);
-        background: var(--control-bg-weak-hover);
-      }
-    }
-  }
-  &--sticky {
-    thead {
-      box-shadow: 0 2.5px 2px -2px var(--control-border-strong-default);
-      background: var(--base-bg-weak-default);
-    }
-  }
-
-  &__row {
-    &--selected {
-      background: var(--control-bg-weak-active);
-
-      &:hover {
-        background: var(--control-bg-weak-active) !important;
-      }
-    }
-
-    &--key-selected {
-      background: var(--control-bg-weak-active);
-    }
-  }
-}
-
 .a-data-table {
   &__header {
     transition: all 0.3s;
@@ -86,6 +31,7 @@ $hidden-table-col-width: 45px;
         margin: 0;
         background: transparent;
         cursor: pointer;
+        color: var(--base-text-default);
       }
       &.a-icon {
         vertical-align: middle;
@@ -93,6 +39,28 @@ $hidden-table-col-width: 45px;
         cursor: pointer;
         opacity: 0;
       }
+    }
+
+    &--sortable {
+      cursor: pointer;
+      &:focus,
+      &:hover {
+        background-color: var(--control-bg-weak-active);
+      }
+    }
+  }
+
+  &__row {
+    &--selected {
+      background: var(--control-bg-weak-active);
+
+      &:hover {
+        background: var(--control-bg-weak-active) !important;
+      }
+    }
+
+    &--key-selected {
+      background: var(--control-bg-weak-active);
     }
   }
 
@@ -135,6 +103,8 @@ $hidden-table-col-width: 45px;
     thead {
       position: sticky;
       top: 0;
+      box-shadow: 0 2.5px 2px -2px var(--control-border-strong-default);
+      background: var(--base-bg-weak-default);
     }
   }
 
@@ -155,6 +125,17 @@ $hidden-table-col-width: 45px;
       flex-flow: row wrap;
       height: 100%;
       min-height: 30px;
+
+      &[data-expandable-row="true"] {
+        .a-data-table__cell:nth-last-child(2) {
+          border-color: var(--control-border-weak-default);
+        }
+      }
+
+      .a-data-table__cell[data-expandable-content] {
+        border-color: var(--control-border-weak-default);
+        background: var(--control-bg-weak-hover);
+      }
 
       & .a-data-table__header {
         flex: 1;

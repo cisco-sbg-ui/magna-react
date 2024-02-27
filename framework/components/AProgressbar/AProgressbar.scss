@@ -14,21 +14,6 @@ $progressbar-striped-opacity: 0.5;
 $progressbar-animation-timing: 1s linear infinite !default;
 $progressbar-transition: width 0.6s ease !default;
 //TODO need to remove disabled and add error and info states), success should be blue
-@include theme(a-progressbar) using ($theme) {
-  &__bar {
-    background: var(--base-border-default);
-  }
-
-  &__fill {
-    background-color: var(--positive-border-default);
-  }
-
-  &--disabled {
-    .a-progressbar__fill {
-      background-color: var(--positive-border-default);
-    }
-  }
-}
 
 .a-progressbar {
   display: flex;
@@ -39,6 +24,7 @@ $progressbar-transition: width 0.6s ease !default;
     border-radius: $progressbar-border-radius;
     height: $progressbar-height-medium;
     width: 100%;
+    background: var(--base-border-default);
   }
 
   &--size-small {
@@ -73,6 +59,7 @@ $progressbar-transition: width 0.6s ease !default;
     display: block;
     height: $progressbar-fill-height;
     border-radius: $progressbar-fill-border-radius;
+    background-color: var(--positive-border-default);
   }
 
   &--striped {
@@ -104,6 +91,9 @@ $progressbar-transition: width 0.6s ease !default;
   &--disabled {
     .a-progressbar__label {
       opacity: $progressbar-striped-opacity;
+    }
+    .a-progressbar__fill {
+      background-color: var(--positive-border-default);
     }
   }
 

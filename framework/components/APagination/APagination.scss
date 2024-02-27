@@ -1,31 +1,8 @@
 @import "../../styles";
 
-@include theme(a-pagination) using ($theme) {
-  .a-button-group {
-    .a-button {
-      color: var(--base-text-default);
-      &--selected {
-        border: 2px solid var(--control-border-medium-active) !important;
-        color: var(--base-text-default);
-        font-weight: 600;
-      }
-
-      &:hover {
-        background-color: var(--control-bg-weak-hover) !important;
-        color: var(--interact-text-hover) !important;
-        //TODO need to stabilize width of remaining buttons on hover
-        // font-weight: 600;
-      }
-      &:focus {
-        box-shadow: none;
-        background-color: none !important;
-      }
-
-      &:focus:not(&--selected) {
-        color: var(--inverse-text-default);
-      }
-    }
-  }
+.a-pagination {
+  display: flex;
+  align-items: center;
 
   &__previous,
   &__next,
@@ -36,11 +13,6 @@
       fill: var(--control-border-default);
     }
   }
-}
-
-.a-pagination {
-  display: flex;
-  align-items: center;
 
   &__previous.a-button--icon,
   &__next.a-button--icon,
@@ -66,6 +38,28 @@
     margin: 0 4px;
 
     .a-button {
+      color: var(--base-text-default);
+      &--selected {
+        border: 2px solid var(--control-border-medium-active) !important;
+        color: var(--base-text-default);
+        font-weight: 600;
+      }
+
+      &:hover {
+        background-color: var(--control-bg-weak-hover) !important;
+        color: var(--interact-text-hover) !important;
+        //TODO need to stabilize width of remaining buttons on hover
+        // font-weight: 600;
+      }
+      &:focus {
+        box-shadow: none;
+        background-color: none !important;
+      }
+
+      &:focus:not(&--selected) {
+        color: var(--inverse-text-default);
+      }
+
       padding: 0 7px;
       height: 23px;
       border-radius: $border-radius--lg;

@@ -15,24 +15,55 @@ $switch-transition: background-color $transition-duration--slow ease-out;
 $switch-after-transition: transform $transition-duration--fast
   cubic-bezier(0.2, 0.8, 0.2, 1.2);
 
-@include theme(a-switch) using ($theme) {
-  &__box {
-    background-color: var(--base-bg-strong-default);
+.a-switch {
+  &__wrap {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 4px 0;
   }
-  &__box:hover {
-    background-color: var(--base-bg-strong-hover);
+
+  &__box {
+    display: flex;
+    position: relative;
+    width: $switch-width;
+    height: $switch-height;
+    border-radius: $switch-border-radius;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--base-bg-strong-default);
+
+    &:after {
+      display: block;
+      box-sizing: border-box;
+      position: absolute;
+      width: $switch__circle-width;
+      height: $switch__circle-height;
+      left: 3px;
+      border-radius: $switch__circle-border-radius;
+      content: "";
+    }
+
+    &:hover {
+      background-color: var(--base-bg-strong-hover);
+    }
   }
 
   &__input {
-    ~ .a-switch__box {
-      &:after {
-        background-color: var(--control-icon-in-default);
-      }
-    }
+    @include hidden-input;
 
     &:checked {
       ~ .a-switch__box {
         background-color: var(--control-bg-strong-default);
+        &:after {
+          transform: translateX(142%);
+        }
+      }
+    }
+
+    ~ .a-switch__box {
+      &:after {
+        background-color: var(--control-icon-in-default);
       }
     }
 
@@ -59,48 +90,6 @@ $switch-after-transition: transform $transition-duration--fast
     &:disabled:checked {
       ~ .a-switch__box {
         background-color: var(--control-bg-strong-disabled);
-      }
-    }
-  }
-}
-
-.a-switch {
-  &__wrap {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    padding: 4px 0;
-  }
-
-  &__box {
-    display: flex;
-    position: relative;
-    width: $switch-width;
-    height: $switch-height;
-    border-radius: $switch-border-radius;
-    align-items: center;
-    justify-content: center;
-
-    &:after {
-      display: block;
-      box-sizing: border-box;
-      position: absolute;
-      width: $switch__circle-width;
-      height: $switch__circle-height;
-      left: 3px;
-      border-radius: $switch__circle-border-radius;
-      content: "";
-    }
-  }
-
-  &__input {
-    @include hidden-input;
-
-    &:checked {
-      ~ .a-switch__box {
-        &:after {
-          transform: translateX(142%);
-        }
       }
     }
   }

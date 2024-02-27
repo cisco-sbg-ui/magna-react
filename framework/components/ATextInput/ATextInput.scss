@@ -1,25 +1,5 @@
 @import "../../styles";
 
-@include theme(a-text-input) using ($theme) {
-  &__prepend-icon,
-  &__append-icon {
-    &.interactable:focus {
-      box-shadow: var(--shadow-focus) var(--control-border-active);
-    }
-  }
-  .a-text-input {
-    &__input {
-      &:disabled {
-        color: var(--base-text-disabled);
-
-        &::placeholder {
-          color: var(--base-text-disabled);
-        }
-      }
-    }
-  }
-}
-
 .a-text-input {
   &--type-number {
     .a-text-input__input {
@@ -53,6 +33,9 @@
     &.interactable {
       box-shadow: none;
       cursor: pointer;
+      &:focus {
+        box-shadow: var(--shadow-focus) var(--control-border-active);
+      }
     }
   }
 
@@ -93,6 +76,18 @@
   &.a-input-base--prepend {
     .a-text-input__input {
       padding-left: 0;
+    }
+  }
+
+  .a-text-input {
+    &__input {
+      &:disabled {
+        color: var(--base-text-disabled);
+
+        &::placeholder {
+          color: var(--base-text-disabled);
+        }
+      }
     }
   }
 }

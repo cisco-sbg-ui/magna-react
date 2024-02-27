@@ -15,9 +15,18 @@ $tag-icon-font-size-sm: $font-size--xs;
 $tag-font-weight: 600;
 $icon-width: 1.167rem;
 
-$colors: "A", "B", "C", "D", "E", "F", "G", "H", "I", "K";
-
-@include theme(a-tag) using ($theme) {
+.a-tag {
+  display: inline-flex;
+  font-size: $tag-font-size;
+  min-height: $tag-height;
+  line-height: $tag-line-height;
+  align-items: center;
+  padding: $tag-padding;
+  border-radius: $tag-border-radius;
+  vertical-align: middle;
+  word-break: break-all;
+  cursor: default;
+  font-weight: $tag-font-weight;
   background-color: var(--control-bg-medium-disabled);
   color: var(--base-text-default);
 
@@ -26,7 +35,30 @@ $colors: "A", "B", "C", "D", "E", "F", "G", "H", "I", "K";
 
     &:hover,
     &:focus {
+      text-decoration: none;
       color: var(--base-text-default);
+    }
+  }
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  //Size management for any provided icons
+  .a-icon {
+    width: 14px;
+    stroke: currentColor;
+    fill: currentColor;
+  }
+  &--sm {
+    .a-icon {
+      width: 12px;
+    }
+  }
+  &--lg {
+    .a-icon {
+      width: 16px;
     }
   }
 
@@ -93,51 +125,6 @@ $colors: "A", "B", "C", "D", "E", "F", "G", "H", "I", "K";
     &--prohibit {
       stroke: var(--base-text-medium-default);
       fill: var(--base-text-medium-default);
-    }
-  }
-}
-
-.a-tag {
-  display: inline-flex;
-  font-size: $tag-font-size;
-  min-height: $tag-height;
-  line-height: $tag-line-height;
-  align-items: center;
-  padding: $tag-padding;
-  border-radius: $tag-border-radius;
-  vertical-align: middle;
-  word-break: break-all;
-  cursor: default;
-  font-weight: $tag-font-weight;
-
-  &.interactable {
-    cursor: pointer;
-
-    &:hover,
-    &:focus {
-      text-decoration: none;
-    }
-  }
-  div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  //Size management for any provided icons
-  .a-icon {
-    width: 14px;
-    stroke: currentColor;
-    fill: currentColor;
-  }
-  &--sm {
-    .a-icon {
-      width: 12px;
-    }
-  }
-  &--lg {
-    .a-icon {
-      width: 16px;
     }
   }
 

@@ -1,6 +1,10 @@
 @import "../../styles";
 
-@include theme("a-skeleton") using ($theme) {
+.a-skeleton {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+
   &__header {
     background-color: var(--base-border-medium-default);
   }
@@ -9,26 +13,6 @@
   &__text {
     background-color: var(--base-bg-default);
   }
-
-  &--animated {
-    .a-skeleton__block,
-    .a-skeleton__text {
-      //These animation colors don't look great in dark mode), but it's what CDS uses
-      background: linear-gradient(
-        90deg,
-        var(--base-bg-default) 0%,
-        var(--base-border-medium-default) 40%,
-        var(--base-bg-default) 90%
-      );
-      background-size: 400% 100%;
-    }
-  }
-}
-
-.a-skeleton {
-  display: flex;
-  flex-direction: column;
-  padding: 15px;
 
   &__header,
   &__block,
@@ -84,6 +68,14 @@
     .a-skeleton__block,
     .a-skeleton__text {
       animation: 8s a-skeleton-shine linear infinite;
+      //These animation colors don't look great in dark mode), but it's what CDS uses
+      background: linear-gradient(
+        90deg,
+        var(--base-bg-default) 0%,
+        var(--base-border-medium-default) 40%,
+        var(--base-bg-default) 90%
+      );
+      background-size: 400% 100%;
     }
   }
 

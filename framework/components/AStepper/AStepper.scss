@@ -1,96 +1,9 @@
 @import "../../styles/index.scss";
 
-@include theme(a-steps-container) using ($theme) {
-  //Typical usage will be in modal, but fallback to same color as panel for icon and container backgrounds.
-  background-color: var(--control-bg-weak-default);
-  .a-steps {
-    .a-step {
-      &__icon-container {
-        background-color: var(--control-bg-weak-default);
-      }
-
-      &__divider {
-        background-color: var(--interact-border-weak-default);
-      }
-      &__label {
-        color: mvar(--base-text-disabled);
-      }
-      &__hint {
-        color: var(--base-text-medium-default);
-      }
-      &__active {
-        .a-step__icon {
-          background: var(--interact-bg-medium-default);
-          color: var(--interact-text-in-default);
-          border: $border-width solid var(--interact-bg-medium-default);
-        }
-        .a-step__label {
-          color: var(--interact-text-default);
-        }
-      }
-      &__visited {
-        .a-step__divider {
-          height: 2px;
-          background-color: var(--interact-border-medium-default);
-        }
-        .a-step__icon {
-          border: $border-width solid var(--interact-border-default);
-
-          &__checkmark {
-            polyline {
-              stroke-width: 35; //Remove if magnetic updates icon
-            }
-          }
-        }
-
-        .a-step__label {
-          color: var(--base-text-default);
-        }
-
-        .a-step__title {
-          color: var(--base-text-default);
-        }
-      }
-      &__disabled {
-        .a-step__icon {
-          border: $border-width solid var(--interact-border-weak-disabled);
-          color: var(--base-text-disabled);
-        }
-        .a-step__title,
-        .a-step__hint {
-          color: var(--base-text-disabled);
-        }
-      }
-      &__default {
-        .a-step__icon {
-          border: $border-width solid var(--interact-border-weak-default);
-          color: var(--base-text-medium-default);
-        }
-        .a-step__title,
-        .a-step__hint {
-          color: var(--base-text-medium-default);
-        }
-      }
-
-      &--cursor {
-        cursor: pointer;
-      }
-    }
-    &--orientation-vertical {
-      .a-step__active {
-        border-right: 3px solid;
-        border-color: var(--interact-border-default);
-      }
-
-      .a-step__visited {
-        border-color: transparent;
-      }
-    }
-  }
-}
-
 .a-steps-container {
   padding: 24px 0;
+  //Typical usage will be in modal, but fallback to same color as panel for icon and container backgrounds.
+  background-color: var(--control-bg-weak-default);
 }
 
 .a-steps {
@@ -114,6 +27,10 @@
     max-width: 200px;
     overflow-wrap: anywhere;
 
+    &--cursor {
+      cursor: pointer;
+    }
+
     &__icon-container {
       z-index: 1;
       display: inherit;
@@ -121,6 +38,7 @@
       align-items: center;
       height: 38px;
       min-width: 60px;
+      background-color: var(--control-bg-weak-default);
     }
 
     &__divider {
@@ -128,6 +46,7 @@
       position: absolute;
       top: 19px;
       left: 60%;
+      background-color: var(--interact-border-weak-default);
     }
 
     &__icon {
@@ -154,15 +73,71 @@
       display: flex;
       align-items: center;
       font-weight: 600;
+      color: var(--base-text-disabled);
     }
     &__hint {
       color: map-get($grey, "darken-2");
       font-size: 12px;
       line-height: 20px;
       font-weight: 400;
+      color: var(--base-text-medium-default);
     }
     &__disabled {
       color: map-get($grey, "darken-4");
+
+      .a-step__icon {
+        border: $border-width solid var(--interact-border-weak-disabled);
+        color: var(--base-text-disabled);
+      }
+      .a-step__title,
+      .a-step__hint {
+        color: var(--base-text-disabled);
+      }
+    }
+
+    &__active {
+      .a-step__icon {
+        background: var(--interact-bg-medium-default);
+        color: var(--interact-text-in-default);
+        border: $border-width solid var(--interact-bg-medium-default);
+      }
+      .a-step__label {
+        color: var(--interact-text-default);
+      }
+    }
+    &__default {
+      .a-step__icon {
+        border: $border-width solid var(--interact-border-weak-default);
+        color: var(--base-text-medium-default);
+      }
+      .a-step__title,
+      .a-step__hint {
+        color: var(--base-text-medium-default);
+      }
+    }
+
+    &__visited {
+      .a-step__divider {
+        height: 2px;
+        background-color: var(--interact-border-medium-default);
+      }
+      .a-step__icon {
+        border: $border-width solid var(--interact-border-default);
+
+        &__checkmark {
+          polyline {
+            stroke-width: 35; //Remove if magnetic updates icon
+          }
+        }
+      }
+
+      .a-step__label {
+        color: var(--base-text-default);
+      }
+
+      .a-step__title {
+        color: var(--base-text-default);
+      }
     }
 
     &:last-child {
@@ -175,6 +150,15 @@
     display: flex;
     flex-direction: column;
     text-align: left;
+
+    .a-step__active {
+      border-right: 3px solid;
+      border-color: var(--interact-border-default);
+    }
+
+    .a-step__visited {
+      border-color: transparent;
+    }
     .a-step {
       display: flex;
       flex-direction: row;

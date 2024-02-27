@@ -4,6 +4,7 @@
   @return $rem * $font-size;
 }
 
+//Deprecated - Remove for first non-beta release
 @function map-deep-merge($parent-map, $child-map) {
   $result: $parent-map;
 
