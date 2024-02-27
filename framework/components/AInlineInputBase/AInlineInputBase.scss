@@ -33,9 +33,9 @@
 
   &__display {
     display: flex;
-
     flex-direction: row;
     cursor: pointer;
+    align-items: center;
   }
 
   &__editIcon,
