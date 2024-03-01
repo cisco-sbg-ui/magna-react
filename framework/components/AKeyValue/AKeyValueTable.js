@@ -35,7 +35,7 @@ AKeyValueTable.propTypes = {
   /**
    * The `AKeyValueTable` component requires the `AKeyValue` components value as the children.
    */
-  children: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
   /**
    * Sets the font size
    */
