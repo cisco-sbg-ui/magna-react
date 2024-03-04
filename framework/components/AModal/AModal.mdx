@@ -16,26 +16,26 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
 
 ## Usage
 
+<AAlert className="mb-2" level="info" dismissable={false}>
+  Please provide an "onClose" function for accessibility concerns, specifically to enable exiting
+  the modal upon pressing the "Escape" key. 
+</AAlert>
+
 <Playground
   fullWidthPreview
   code={`() => {
     const [open, setOpen] = useState(false);
-    const ref = useRef();
-    usePopupQuickExit({
-      popupRef: ref,
-      isEnabled: open,
-      onExit: () => setOpen(false)
-    });
     return (
       <div>
         <AButton
-            onClick={() => setOpen(true)}>
-            Open Modal
+        onClick={() => setOpen(true)}>
+          Open Modal
         </AButton>
         <AModal
             aria-labelledby='modal-title'
-            isOpen={open}>
-            <ACardBasic ref={ref} style={{ minWidth: '400px' }} type="dialog">
+            isOpen={open}
+            onClose={() => setOpen(false)}>
+            <ACardBasic style={{ minWidth: '400px' }} type="dialog">
               <ACardHeader>
                 <ACardTitle id='modal-title'>Modal Demo</ACardTitle>
               </ACardHeader>
@@ -60,12 +60,6 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
   fullWidthPreview
   code={`() => {
     const [open, setOpen] = useState(false);
-    const ref = useRef();
-    usePopupQuickExit({
-      popupRef: ref,
-      isEnabled: open,
-      onExit: () => setOpen(false)
-    });
     return (
       <div>
         <AButton
@@ -75,8 +69,10 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
         <AModal
             aria-labelledby='modal-title'
             withOverlay={false}
-            isOpen={open}>
-            <ACardBasic ref={ref} style={{ minWidth: '400px' }} type="dialog">
+            isOpen={open}
+            onClose={() => setOpen(false)}
+            closeOnOutsideClick>
+            <ACardBasic style={{ minWidth: '400px' }} type="dialog">
               <ACardHeader>
                 <ACardTitle id='modal-title'>Modal Demo</ACardTitle>
               </ACardHeader>
@@ -108,13 +104,7 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
   fullWidthPreview
   code={`() => {
     const [open, setOpen] = useState(false);
-    const ref = useRef();
     const lastScrollPos = useRef();
-    usePopupQuickExit({
-      popupRef: ref,
-      isEnabled: open,
-      onExit: () => setOpen(false)
-    });
 
     /**
       * The code below has not been verified nor
@@ -162,8 +152,9 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
         <AModal
             aria-labelledby='modal-title'
             withScrollLock={false}
-            isOpen={open}>
-          <ACardBasic ref={ref} style={{ minWidth: '400px' }} type="dialog">
+            isOpen={open}
+            onClose={() => setOpen(false)}>
+          <ACardBasic style={{ minWidth: '400px' }} type="dialog">
             <ACardHeader>
               <ACardTitle id='modal-title'>Modal Demo</ACardTitle>
             </ACardHeader>
@@ -189,12 +180,6 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
   fullWidthPreview
   code={`() => {
     const [open, setOpen] = useState(false);
-    const ref = useRef();
-    usePopupQuickExit({
-      popupRef: ref,
-      isEnabled: open,
-      onExit: () => setOpen(false)
-    });
     return (
       <div>
         <AButton
@@ -204,8 +189,9 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
         <AModal
             withCenteredContent={false}
             aria-labelledby='modal-title'
-            isOpen={open}>
-            <ACardBasic ref={ref} style={{ minWidth: '400px' }} type="dialog">
+            isOpen={open}
+            onClose={() => setOpen(false)}>
+            <ACardBasic style={{ minWidth: '400px' }} type="dialog">
               <ACardHeader>
                 <ACardTitle id='modal-title'>Modal Demo</ACardTitle>
               </ACardHeader>
@@ -230,12 +216,6 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
   fullWidthPreview
   code={`() => {
     const [open, setOpen] = useState(false);
-    const ref = useRef();
-    usePopupQuickExit({
-      popupRef: ref,
-      isEnabled: open,
-      onExit: () => setOpen(false)
-    });
     return (
       <div>
         <AButton
@@ -245,8 +225,9 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
         <AModal
             withTransitions={false}
             aria-labelledby='modal-title'
-            isOpen={open}>
-            <ACardBasic ref={ref} style={{ minWidth: '400px' }} type="dialog">
+            isOpen={open}
+            onClose={() => setOpen(false)}>
+            <ACardBasic style={{ minWidth: '400px' }} type="dialog">
               <ACardHeader>
                 <ACardTitle id='modal-title'>Modal Demo</ACardTitle>
               </ACardHeader>
@@ -271,18 +252,14 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
   code={`() => {
   const [open, setOpen] = useState(false);
   const ref = useRef();
-  usePopupQuickExit({
-    popupRef: ref,
-    isEnabled: open,
-    onExit: () => setOpen(false)
-  });
   return (
     <>
       <AButton onClick={() => setOpen(true)}>Start</AButton>
       <AModal
           aria-labelledby='modal-title'
-          isOpen={open}>
-        <ACardBasic ref={ref} style={{width: '700px'}}>
+          isOpen={open}
+          onClose={() => setOpen(false)}>
+        <ACardBasic style={{width: '700px'}}>
           <ACardHeader>
             <ACardTitle id='modal-content'>Embedded Form</ACardTitle>
           </ACardHeader>
@@ -423,12 +400,6 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
   code={`() => {
     const [open, setOpen] = useState(false);
     const [size, setSize] = useState("small");
-    const ref = useRef();
-    usePopupQuickExit({
-      popupRef: ref,
-      isEnabled: open,
-      onExit: () => setOpen(false)
-    });
     return (
       <div>
         <AButton
@@ -450,8 +421,9 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
         <AModal
             aria-labelledby='modal-title'
             isOpen={open}
+            onClose={() => setOpen(false)}
             {...{[size]: true}}>
-            <ACardBasic ref={ref} type="dialog">
+            <ACardBasic type="dialog">
             <ACardHeader>
               <ACardTitle id='modal-title'>Modal Demo</ACardTitle>
             </ACardHeader>
@@ -470,21 +442,12 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-### With onClickOutside
-
-<AAlert className="mb-2" level="info" dismissable={false}>
-  `withOverlay` must be true for the `onClickOutside` prop to take effect. If
-  you would like to integrate an outside click handler with a non-overlayed
-  `AModal`, consider using the{" "}
-  <a href="/hooks/use-outside-click#description">`useOutsideClick` hook</a>{" "}
-  alongside the `AModal`.
-</AAlert>
+### With closeOnOutsideClick
 
 <Playground
   fullWidthPreview
   code={`() => {
     const [open, setOpen] = useState(false);
-    const [size, setSize] = useState("small");
 
     return (
       <div>
@@ -496,7 +459,8 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
             aria-labelledby='modal-title'
             isOpen={open}
             onClickOutside={() => {setOpen(false)}}
-            {...{[size]: true}}>
+            onClose={() => setOpen(false)}
+            closeOnOutsideClick>
             <ACardBasic type="dialog">
             <ACardHeader>
               <ACardTitle id='modal-title'>Modal Demo</ACardTitle>
