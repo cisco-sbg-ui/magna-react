@@ -42,6 +42,10 @@ $select-padding: 6px;
     padding: 0 8px 0 12px;
   }
 
+  &__placeholder {
+    color: var(--base-text-disabled);
+  }
+
   &__chevron {
     cursor: pointer;
     padding: 0;

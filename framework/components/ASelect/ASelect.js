@@ -354,10 +354,14 @@ const ASelect = forwardRef(
           />
         );
       } else {
-        selectionContent = placeholder;
+        selectionContent = (
+          <span className="a-select__placeholder">{placeholder}</span>
+        );
       }
     } else if (!selectedItem) {
-      selectionContent = placeholder;
+      selectionContent = (
+        <span className="a-select__placeholder">{placeholder}</span>
+      );
     } else if (useTemplateForSelectedItem && itemTemplate) {
       const MenuItemComponent = itemTemplate;
 
