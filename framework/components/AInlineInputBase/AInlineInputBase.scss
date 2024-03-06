@@ -4,6 +4,8 @@
   display: inline-flex;
   font-weight: normal !important;
   color: var(--base-text-default) !important;
+  background: none;
+  border: 0;
 
   &__display {
     display: flex;
@@ -38,6 +40,7 @@
     }
   }
 
+  &:focus-within,
   &__display:hover {
     color: var(--interact-text-weak-hover);
     .a-inline-input__editIcon,

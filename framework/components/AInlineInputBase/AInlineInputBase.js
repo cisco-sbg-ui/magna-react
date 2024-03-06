@@ -199,6 +199,8 @@ const AInlineInputBase = forwardRef(
             e.preventDefault();
           }
 
+          !isEditing && setIsEditing(true);
+
           propsOnKeyDown && propsOnKeyDown(e);
         }}
         {...rest}
