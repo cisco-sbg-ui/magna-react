@@ -167,7 +167,7 @@ $btn-transition: color $transition-duration--extra-fast
   }
 
   &--secondary {
-    color: var(--interact-text-default) !important;
+    color: var(--interact-text-default);
     background-color: var(--interact-bg-weak-default);
     border-color: var(--interact-border-default);
 
