@@ -82,9 +82,7 @@ const AFieldBase = forwardRef(
             className={`a-field-base__label ${labelHidden ? "d-none" : ""}`}
           >
             {label}
-            {required && (
-              <span className="a-field-base__label--required">*</span>
-            )}
+            {required && <div className="a-field-base__label--required">*</div>}
             {infoTooltip && (
               <ATriggerTooltip
                 id={`${labelId}-tooltip`}

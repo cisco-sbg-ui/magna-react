@@ -15,6 +15,9 @@
 
     &--required {
       color: var(--negative-text-default);
+      width: 8px;
+      display: inline-block;
+      text-align: center;
     }
 
     .a-icon--information {
