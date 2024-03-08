@@ -45,7 +45,6 @@ const AModal = forwardRef(
       medium,
       large,
       xlarge,
-      onClickOutside, //***DEPRECATED***
       closeOnOutsideClick = false,
       withCenteredContent = true,
       withFocusTrap = true,
@@ -102,7 +101,7 @@ const AModal = forwardRef(
         return allowBodyScroll;
       }
     }, [withScrollLock, shouldRenderChildren]);
-  
+
     let visibilityClass = "";
 
     if (!shouldRenderChildren) {
@@ -146,6 +145,12 @@ const AModal = forwardRef(
       return null;
     }
 
+    if (rest.onClickOutside) {
+      console.warn(
+        "onClickOutside has been removed. Use onClose and set closeOnOutsideClick to true"
+      );
+    }
+
     /**
      * In the case where `AModal` is rendered inside a clickable element
      * like a button component, we want to prevent clicks and certain
@@ -163,9 +168,7 @@ const AModal = forwardRef(
      * </AButton>
      */
     const renderChildren = (
-      <span ref={childRef}>
-        {shouldRenderChildren ? children : null}
-      </span>
+      <span ref={childRef}>{shouldRenderChildren ? children : null}</span>
     );
 
     if (withOverlay) {
@@ -179,6 +182,13 @@ const AModal = forwardRef(
             const {onKeyDown: propsOnKeyDown} = rest;
             if (typeof propsOnKeyDown === "function") {
               propsOnKeyDown(e);
+            }
+          }}
+          onClick={(e) => {
+            e.stopPropagation();
+            const {target} = e;
+            if (target !== _ref.current) {
+              return;
             }
           }}
         >
@@ -315,10 +325,10 @@ You should provide either an \`aria-label\` or \`aria-labelledby\` prop to \`${c
   onClickOutside: PropTypes.func,
 
   /**
-   * Function which closes the Modal. It is necessary for accessibility concerns, 
+   * Function which closes the Modal. It is necessary for accessibility concerns,
    * specifically to enable exiting the Modal upon pressing the "Escape" key.
    */
-  onClose: PropTypes.func,
+  onClose: PropTypes.func.isRequired,
 
   /**
    * Determines if the content rendered underneath the modal should
