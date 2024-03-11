@@ -9,7 +9,7 @@ const useOutsideClick = (options) => {
       const shouldIgnore =
         ignoreEl && (e.target === ignoreEl || ignoreEl.contains(e.target));
       // Don't register as outside click if the click is coming from within a menu
-      if (!rootRef?.current?.contains(e.target) && !shouldIgnore) {
+      if (rootRef?.current && !rootRef.current?.contains(e.target) && !shouldIgnore) {
         if (typeof onClick === "function") {
           onClick(e);
         }

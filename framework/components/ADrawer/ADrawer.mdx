@@ -31,27 +31,12 @@ The drawer can slide-in from the left, right, or bottom of the page.
   code={`() => {
     const leftDrawerContentRef = useRef();
     const [isLeftOpen, setIsLeftOpen] = useState(false);
-    usePopupQuickExit({
-      popupRef: leftDrawerContentRef,
-      isEnabled: isLeftOpen,
-      onExit: () => setIsLeftOpen(false)
-    });
 
     const rightDrawerContentRef = useRef();
     const [isRightOpen, setIsRightOpen] = useState(false);
-    usePopupQuickExit({
-      popupRef: rightDrawerContentRef,
-      isEnabled: isRightOpen,
-      onExit: () => setIsRightOpen(false)
-    });
 
     const bottomDrawerContentRef = useRef();
     const [isBottomOpen, setIsBottomOpen] = useState(false);
-    usePopupQuickExit({
-      popupRef: bottomDrawerContentRef,
-      isEnabled: isBottomOpen,
-      onExit: () => setIsBottomOpen(false)
-    });
 
     return (
       <>
@@ -62,9 +47,10 @@ The drawer can slide-in from the left, right, or bottom of the page.
             slideIn='left'
             ref={leftDrawerContentRef}
             isOpen={isLeftOpen}
+            onClose={() => setIsLeftOpen(false)}
             data-test-drawer-left>
           <ADrawerHeader>
-          <ADrawerTitle onCloseButtonClick={() => setIsLeftOpen(false)}>
+          <ADrawerTitle>
             <h1 id='left-drawer-title'>Left Drawer</h1>
           </ADrawerTitle>
           <ADrawerSubtitle>Old School RuneScape is an MMORPG with adventure elements.</ADrawerSubtitle>
@@ -84,9 +70,10 @@ The drawer can slide-in from the left, right, or bottom of the page.
             slideIn='right'
             ref={rightDrawerContentRef}
             isOpen={isRightOpen}
+            onClose={() => setIsRightOpen(false)}
             data-test-drawer-right>
            <ADrawerHeader>
-          <ADrawerTitle onCloseButtonClick={() => setIsRightOpen(false)}>
+          <ADrawerTitle>
             <h1 id='left-drawer-title'>Right Drawer</h1>
           </ADrawerTitle>
           <ADrawerSubtitle>Old School RuneScape is an MMORPG with adventure elements.</ADrawerSubtitle>
@@ -106,6 +93,7 @@ The drawer can slide-in from the left, right, or bottom of the page.
             slideIn='bottom'
             ref={bottomDrawerContentRef}
             isOpen={isBottomOpen}
+            onClose={() => setIsBottomOpen(false)}
             data-test-drawer-bottom>
           <ADrawerHeader>
           <ADrawerTitle onCloseButtonClick={() => setIsBottomOpen(false)}>
@@ -126,6 +114,42 @@ The drawer can slide-in from the left, right, or bottom of the page.
 }`}
 />
 
+### With closeOnOutsideClick
+
+<Playground
+  code={`() => {
+    const [isLeftOpen, setIsLeftOpen] = useState(false);
+
+    return (
+      <>
+        <p>Left slide-in</p>
+        <AButton onClick={() => setIsLeftOpen(true)} data-test-drawer-trigger-left>Open Left</AButton>
+        <ADrawer
+            aria-labelledby='left-drawer-title'
+            slideIn='left'
+            isOpen={isLeftOpen}
+            onClose={() => setIsLeftOpen(false)}
+            closeOnOutsideClick
+            data-test-drawer-left>
+          <ADrawerHeader>
+          <ADrawerTitle>
+            <h1 id='left-drawer-title'>Left Drawer</h1>
+          </ADrawerTitle>
+          <ADrawerSubtitle>Old School RuneScape is an MMORPG with adventure elements.</ADrawerSubtitle>
+          </ADrawerHeader>
+          <ADrawerBody>
+             It features a persistent world in which players can interact with each other and the environment. The basic mechanics are largely the same as RuneScape on 10 August 2007.
+            </ADrawerBody>
+          <ADrawerFooter>
+            <AButton onClick={() => setIsLeftOpen(false)} data-test-drawer-close-left>Close</AButton>
+          </ADrawerFooter>
+        </ADrawer>
+      </>
+    )
+
+}`}
+/>
+
 ### Custom Width
 
 <Playground
@@ -133,11 +157,6 @@ The drawer can slide-in from the left, right, or bottom of the page.
 
     const rightDrawerContentRef = useRef();
     const [isRightOpen, setIsRightOpen] = useState(false);
-    usePopupQuickExit({
-      popupRef: rightDrawerContentRef,
-      isEnabled: isRightOpen,
-      onExit: () => setIsRightOpen(false)
-    });
 
     return (
       <>
@@ -149,6 +168,7 @@ The drawer can slide-in from the left, right, or bottom of the page.
             slideIn='right'
             ref={rightDrawerContentRef}
             isOpen={isRightOpen}
+            onClose={() => setIsRightOpen(false)}
             data-test-drawer-right>
            <ADrawerHeader>
           <ADrawerTitle onCloseButtonClick={() => setIsRightOpen(false)}>
@@ -285,7 +305,8 @@ To contain the drawer within something other than the viewport, you can render t
                   aria-label='Fixed drawer'
                   position='fixed'
                   ref={fixedDrawerRef}
-                  isOpen={isFixedOpen}>
+                  isOpen={isFixedOpen}
+                  onClose={() => setIsFixedOpen(false)}>
                 <ADrawerHeader divider>
                   <ADrawerTitle>
                     <h1>Fixed Drawer</h1>
@@ -314,13 +335,7 @@ Please note that when `ADrawer` is rendered as a modal, focus will be trapped in
 
 <Playground
   code={`() => {
-    const modalContentRef = useRef();
     const [modalOpen, setModalOpen] = useState(false);
-    usePopupQuickExit({
-      popupRef: modalContentRef,
-      isEnabled: modalOpen,
-      onExit: () => setModalOpen(false)
-    });
 
     const nonModalContentRef = useRef();
     const [nonModalOpen, setNonModalOpen] = useState(false);
@@ -340,10 +355,10 @@ Please note that when `ADrawer` is rendered as a modal, focus will be trapped in
         </AButton>
         <ADrawer
             aria-label='Drawer that behaves like a modal.'
-            ref={modalContentRef}
             asModal={true}
             isOpen={modalOpen}
-            slideIn='right'>
+            slideIn='right'
+            onClose={() => setModalOpen(false)}>
             <MockDrawerContent
                 title='Modal Drawer'
                 content='A Drawer that behaves as a modal.'
