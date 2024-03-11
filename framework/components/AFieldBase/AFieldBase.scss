@@ -11,8 +11,13 @@
     margin: 0 0 4px 0;
     font-size: $font-size--md;
     font-weight: 600;
-    color: var(--base-text-default) &--required {
-      color: $color-error;
+    color: var(--base-text-default);
+
+    &--required {
+      color: var(--negative-text-default);
+      width: 8px;
+      display: inline-block;
+      text-align: center;
     }
 
     .a-icon--information {
