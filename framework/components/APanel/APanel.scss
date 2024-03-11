@@ -21,10 +21,10 @@
 
   &--color-white {
     border: none;
-    background: map-get($mds-neutral, "neutral-1");
-    color: map-get($mds-neutral, "neutral-15");
+    background: var(--magnetic-color-neutral-100);
+    color: var(--magnetic-color-neutral-25);
     .a-panel__header {
-      color: map-get($mds-neutral, "neutral-15");
+      color: var(--magnetic-color-neutral-25);
     }
   }
 

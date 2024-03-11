@@ -1,6 +1,6 @@
 @import "../../styles";
 
-$base-icon-color: map-get($grey, "darken-5");
+$base-icon-color: var(--control-icon-strong-default);
 $sidebar-z-index: 1100;
 $sidebar-width: 250px;
 $sidebar--state-collapsed-width: 70px;
@@ -8,13 +8,13 @@ $sidebar-height: 100%;
 $sidebar-padding: 0 0 20px 0;
 $sidebar-bg: $base-brand-color;
 $sidebar-bg-gray: $base-color;
-$sidebar-color-gray: map-get($grey, "lighten-3");
+$sidebar-color-gray: var(--base-text-disabled);
 $sidebar__title-font-size: 18px;
 $sidebar__title-line-height: 24px;
 $sidebar__header-padding: 20px 20px 10px 30px;
 $sidebar__header-line-height: 24px;
 $sidebar__list-menu-color: $base-brand-color;
-$sidebar__list-menu-bg: $white;
+$sidebar__list-menu-bg: white;
 $sidebar__list-menu-icon-color: $base-brand-color;
 $sidebar__list-menu-icon-color-gray: $base-icon-color;
 

@@ -1,6 +1,6 @@
 @import "../../styles";
 
-$tooltip-color: map-get($mds-neutral, "neutral-1");
+$tooltip-color: var(--magnetic-color-neutral-100);
 
 .a-tooltip {
   display: inline-block;

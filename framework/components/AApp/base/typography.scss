@@ -110,7 +110,7 @@
 
     & cite {
       display: block;
-      color: map-get($grey, "darken-2");
+      color: var(--base-text-weak-default);
       font-style: italic;
 
       &:before {

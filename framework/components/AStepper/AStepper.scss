@@ -76,14 +76,14 @@
       color: var(--base-text-disabled);
     }
     &__hint {
-      color: map-get($grey, "darken-2");
+      color: var(--base-text-weak-default);
       font-size: 12px;
       line-height: 20px;
       font-weight: 400;
       color: var(--base-text-medium-default);
     }
     &__disabled {
-      color: map-get($grey, "darken-4");
+      color: var(--base-text-medium-default);
 
       .a-step__icon {
         border: $border-width solid var(--interact-border-weak-disabled);

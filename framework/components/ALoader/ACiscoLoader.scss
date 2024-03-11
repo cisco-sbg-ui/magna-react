@@ -5,7 +5,7 @@ $cisco-loader-width: 152px;
 $cisco-loader-min-width: 140px;
 $cisco-loader-bar-width: 6px;
 $cisco-loader-bar-margin: 20px;
-$cisco-loader-bar-bg: map-get($cisco-blue, "base");
+$cisco-loader-bar-bg: var(--positive-bg-default);
 $cisco-loader-bar-border-radius: 64px;
 $cisco-loader-bar-animation-duration: 1s;
 $cisco-loader-bar-height--index1: 33%;

@@ -5,7 +5,7 @@
   line-height: 16px;
   margin: 4px 0 0 0;
   font-size: $font-size--sm;
-  color: map-get($mds-neutral, "neutral-10");
+  color: var(--magnetic-color-neutral-60);
 
   &__icon.a-icon {
     height: 14px;

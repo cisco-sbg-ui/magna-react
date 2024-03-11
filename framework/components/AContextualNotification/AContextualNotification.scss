@@ -36,7 +36,7 @@ $context-arrow-left: 10%;
     border-color: var(--positive-border-default);
 
     .a-context__icon {
-      color: $color-good;
+      color: var(--accent-a-default);
     }
     .a-icon-bg {
       fill: var(--positive-border-default);
@@ -46,7 +46,7 @@ $context-arrow-left: 10%;
     border-color: var(--info-border-default);
 
     .a-context__icon {
-      color: $color-information;
+      color: $info-icon-default;
     }
 
     .a-icon-bg {
@@ -67,7 +67,7 @@ $context-arrow-left: 10%;
     border-color: var(--negative-border-default);
 
     .a-context__icon {
-      color: $color-error;
+      color: var(--negative-icon-default);
     }
     .a-icon-bg {
       fill: var(--negative-border-default);
