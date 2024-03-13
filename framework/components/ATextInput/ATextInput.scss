@@ -81,6 +81,10 @@
 
   .a-text-input {
     &__input {
+      &::placeholder {
+        color: var(--base-text-weak-default);
+      }
+
       &:disabled {
         color: var(--base-text-disabled);
 
