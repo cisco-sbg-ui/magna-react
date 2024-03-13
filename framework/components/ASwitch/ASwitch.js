@@ -123,10 +123,20 @@ const ASwitch = forwardRef(
       className: "a-switch__box"
     };
 
+    const handleKeyDown = (e) => {
+      if (["Enter", "Space"].includes(e.code)) {
+        e.preventDefault();
+
+        validate(e.target.checked);
+        onClick && onClick(e);
+      }
+    };
+
     return (
       <div {...rest} ref={combinedRef} className={className}>
         <label className="a-switch__wrap">
           <input
+            tabIndex={0}
             type="checkbox"
             className="a-switch__input"
             value={value}
@@ -139,6 +149,7 @@ const ASwitch = forwardRef(
               validate(e.target.checked);
               onClick && onClick(e);
             }}
+            onKeyDown={handleKeyDown}
             role="switch"
             ref={(el) => el && (el.checked = checked)}
           />
