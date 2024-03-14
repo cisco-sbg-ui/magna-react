@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React, {useCallback, useEffect, useRef} from "react";
 
 import {ATooltip} from "../ATooltip";
+import useEscapeKeydown from "../../hooks/useEscapeKeydown/useEscapeKeydown";
 import useToggle from "../../hooks/useToggle/useToggle";
 import useOutsideClick from "../../hooks/useOutsideClick/useOutsideClick";
 import {handleMultipleRefs} from "../../utils/helpers";
@@ -63,6 +64,8 @@ const ATriggerTooltip = ({
     onClick: close
   });
 
+  useEscapeKeydown({isEnabled: open, onKeydown: close});
+
   useEffect(() => {
     if (!content || disabled) {
       return;
@@ -76,6 +79,8 @@ const ATriggerTooltip = ({
     switch (trigger) {
       case "hover":
         childRefs.forEach((childRef) => {
+          childRef.addEventListener("focusin", open);
+          childRef.addEventListener("focusout", close);
           childRef.addEventListener("mouseenter", open);
           childRef.addEventListener("mouseleave", close);
         });
@@ -92,6 +97,8 @@ const ATriggerTooltip = ({
         if (!childRef) {
           return;
         }
+        childRef.removeEventListener("focusin", open);
+        childRef.removeEventListener("focusout", close);
         childRef.removeEventListener("mouseenter", open);
         childRef.removeEventListener("mouseleave", close);
         childRef.removeEventListener("click", toggle);
