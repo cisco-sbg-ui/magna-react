@@ -85,7 +85,7 @@ $display2-line-height: rem(2.375) !default;
 // -----------------------------------------------------------------------------
 $small-font-size: 80% !default;
 $mark-padding: rem(0.1875) !default;
-$mark-bg: map-get($status-yellow, "wash-3") !default;
+$mark-bg: var(--warning-bg-medium-default) !default;
 // -----------------------------------------------------------------------------
 // Grid breakpoints
 // -----------------------------------------------------------------------------
@@ -152,15 +152,6 @@ $display-breakpoints: (
     "only screen and (min-width: #{map-get($grid-breakpoints, 'lg')})",
   "xl-only": "only screen and (min-width: #{map-get($grid-breakpoints, 'xl')})"
 );
-// -----------------------------------------------------------------------------
-// Alert colors
-// -----------------------------------------------------------------------------
-$color-information: map-get($mds-blue, "blue-6");
-$color-information-alt: map-get($cisco-blue, "base");
-$color-good: map-get($mds-status, "positive");
-$color-warning: map-get($mds-status, "warning");
-$color-warning-alt: map-get($mds-status, "warning");
-$color-error: map-get($mds-status, "negative");
 // -----------------------------------------------------------------------------
 // Alert box shadow
 // -----------------------------------------------------------------------------

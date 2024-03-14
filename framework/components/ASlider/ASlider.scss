@@ -118,7 +118,7 @@
 
   &--warning {
     & .a-slider__selection {
-      background-color: $color-warning;
+      background-color: var(--warning-bg-default);
     }
 
     & .a-slider__handle {
@@ -137,7 +137,7 @@
 
   &--danger {
     & .a-slider__selection {
-      background-color: $color-error;
+      background-color: var(--negative-bg-default);
     }
 
     & .a-slider__handle {

@@ -89,38 +89,38 @@ $input-transition: border-color $transition-duration--extra-fast
 
   &--warning {
     &.a-input-base--focused .a-input-base__surface {
-      border: $border-width solid $color-warning;
-      box-shadow: 0 0 0 2px rgba($color-warning, 25%);
+      border: $border-width solid var(--warning-border-default);
+      box-shadow: 0 0 0 2px var(--warning-bg-medium-focus);
     }
 
     .a-input-base__surface {
-      border: $border-width solid $color-warning;
+      border: $border-width solid var(--warning-border-default);
 
       &:hover {
         border: $border-width solid var(--severe-warning-border-hover);
       }
 
       &:active {
-        border: $border-width solid $color-warning;
+        border: $border-width solid var(--warning-border-default);
       }
     }
   }
 
   &--danger {
     &.a-input-base--focused .a-input-base__surface {
-      border: $border-width solid $color-error;
-      box-shadow: 0 0 0 2px rgba($color-error, 25%);
+      border: $border-width solid var(--negative-border-default);
+      box-shadow: 0 0 0 2px var(--negative-border-disabled);
     }
 
     .a-input-base__surface {
-      border: $border-width solid $color-error;
+      border: $border-width solid var(--negative-border-default);
 
       &:hover {
         border: $border-width solid var(--negative-border-medium-hover);
       }
 
       &:active {
-        border: $border-width solid $color-error;
+        border: $border-width solid var(--negative-border-default);
       }
     }
   }

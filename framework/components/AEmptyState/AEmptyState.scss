@@ -40,7 +40,7 @@ $container-xl: 400px;
 
   &--state-success {
     .a-empty-state__icon {
-      color: $color-good;
+      color: var(--accent-a-default);
     }
     .a-icon-bg {
       fill: var(--positive-border-default);
@@ -59,10 +59,10 @@ $container-xl: 400px;
     border-color: var(--warning-border-default);
 
     .a-empty-state__icon {
-      color: $color-warning;
+      color: var(--warning-icon-default);
     }
     .a-icon-bg {
-      fill: var(--warning-border-default);
+      fill: var(--warning-bg-default);
     }
   }
 
@@ -70,7 +70,7 @@ $container-xl: 400px;
     border-color: var(--negative-border-default);
 
     .a-empty-state__icon {
-      color: $color-error;
+      color: var(--negative-text-default);
     }
     .a-icon-bg {
       fill: var(--negative-border-default);
