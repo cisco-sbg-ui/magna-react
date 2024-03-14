@@ -29,6 +29,8 @@ const ASwitch = forwardRef(
       value,
       wrap,
       small,
+      ariaLabel,
+      ariaLabelledby,
       ...rest
     },
     ref
@@ -140,8 +142,10 @@ const ASwitch = forwardRef(
             type="checkbox"
             className="a-switch__input"
             value={value}
-            aria-checked={checked}
             checked={checked}
+            aria-checked={checked}
+            aria-label={ariaLabel || children}
+            aria-labelledby={ariaLabelledby}
             aria-disabled={disabled}
             disabled={disabled}
             onChange={() => {}}
