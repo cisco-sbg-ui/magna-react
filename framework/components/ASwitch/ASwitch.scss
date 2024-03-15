@@ -130,6 +130,22 @@ $switch-after-transition: transform $transition-duration--fast
       }
     }
   }
+
+  &:focus-within {
+    .a-switch__box {
+      background-color: var(--base-bg-strong-hover);
+      outline: thin solid var(--interact-border-focus);
+      outline-offset: 2px;
+    }
+
+    .a-switch__input {
+      &:checked {
+        ~ .a-switch__box {
+          background-color: var(--interact-bg-active);
+        }
+      }
+    }
+  }
 }
 
 .a-app--animated .a-switch {
