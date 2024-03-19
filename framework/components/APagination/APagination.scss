@@ -34,6 +34,24 @@
     margin-left: 10px;
   }
 
+  &--disabled {
+    pointer-events: none;
+    > .a-button-group {
+      > .a-button-group__wrapper {
+        > .a-button {
+          color: var(--base-text-weak-default);
+          &--selected {
+            border: 2px solid var(--interact-border-disabled) !important;
+          }
+        }
+      }
+    }
+    .a-input-base__surface {
+      background: var(--base-bg-default);
+      color: var(--base-text-weak-default);
+    }
+  }
+
   .a-button-group {
     margin: 0 4px;
 

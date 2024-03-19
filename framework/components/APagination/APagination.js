@@ -25,6 +25,7 @@ const APagination = forwardRef(
       showFirstLastButtons = true,
       showSetPageInput = true,
       total,
+      disabled,
       ...rest
     },
     ref
@@ -51,6 +52,10 @@ const APagination = forwardRef(
     let className = `a-pagination`;
     if (propsClassName) {
       className += ` ${propsClassName}`;
+    }
+
+    if (disabled) {
+      className += ` ${className}--disabled`;
     }
 
     const content = () => {
@@ -117,7 +122,7 @@ const APagination = forwardRef(
             {showFirstLastButtons && (
               <AButton
                 className="a-pagination__first"
-                disabled={page === 1}
+                disabled={disabled || page === 1}
                 tertiaryAlt
                 icon
                 onClick={() => onPageChange(1)}
@@ -128,13 +133,13 @@ const APagination = forwardRef(
             )}
             <AButton
               className="a-pagination__previous"
-              disabled={page === 1}
+              disabled={disabled || page === 1}
               tertiaryAlt
               icon
               onClick={() => onPageChange(page - 1)}
               aria-label="Previous"
             >
-              <AIcon left={showText} size={ICON_SIZE}>
+              <AIcon left={showText} size={20}>
                 caret-left
               </AIcon>
             </AButton>
@@ -179,7 +184,7 @@ const APagination = forwardRef(
             </div>
             <AButton
               className="a-pagination__next"
-              disabled={page === pages}
+              disabled={disabled || page === pages}
               tertiaryAlt
               icon
               onClick={() => onPageChange(page + 1)}
@@ -192,7 +197,7 @@ const APagination = forwardRef(
             {showFirstLastButtons && (
               <AButton
                 className="a-pagination__last"
-                disabled={page === pages}
+                disabled={disabled || page === pages}
                 tertiaryAlt
                 icon
                 onClick={() => onPageChange(pages)}
@@ -247,7 +252,7 @@ const APagination = forwardRef(
           <>
             <AButton
               className="a-pagination__previous"
-              disabled={page === 1}
+              disabled={disabled || page === 1}
               tertiaryAlt
               icon={!showText}
               onClick={() => onPageChange(page - 1)}
@@ -302,7 +307,7 @@ const APagination = forwardRef(
             )}
             <AButton
               className="a-pagination__next"
-              disabled={page === total}
+              disabled={disabled || page === total}
               tertiaryAlt
               icon={!showText}
               onClick={() => onPageChange(page + 1)}
@@ -321,7 +326,7 @@ const APagination = forwardRef(
         <>
           <AButton
             className="a-pagination__previous"
-            disabled={!onPrevious}
+            disabled={disabled || !onPrevious}
             onClick={(e) => onPrevious(e)}
             aria-label="Previous"
           >
@@ -332,7 +337,7 @@ const APagination = forwardRef(
           </AButton>
           <AButton
             className="a-pagination__next"
-            disabled={!onNext}
+            disabled={disabled || !onNext}
             onClick={(e) => onNext(e)}
             aria-label="Next"
           >
@@ -397,7 +402,11 @@ APagination.propTypes = {
   /**
    * Show the set page text input. If false, shows the current page number as text.
    */
-  showSetPageInput: PropTypes.bool
+  showSetPageInput: PropTypes.bool,
+  /**
+   * Set all actionable pagination elements to disabled
+   */
+  disabled: PropTypes.bool
 };
 
 APagination.displayName = "APagination";
