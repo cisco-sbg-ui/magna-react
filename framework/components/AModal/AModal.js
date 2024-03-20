@@ -344,9 +344,11 @@ You should provide either an \`aria-label\` or \`aria-labelledby\` prop to \`${c
   /**
    * Specifies what element to autofocus when the modal is opened. By default, when omitted or undefined, the modal root is focused. When null is passed, the modal does not do any autofocus.
    */
-  autoFocusElementRef: PropTypes.oneOf([
-    null,
-    PropTypes.shape({current: PropTypes.any})
+  autoFocusElementRef: PropTypes.oneOfType([
+    PropTypes.oneOf([null]),
+    PropTypes.shape({
+      current: PropTypes.any
+    })
   ]),
 
   /**
