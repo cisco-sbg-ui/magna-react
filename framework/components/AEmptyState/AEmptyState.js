@@ -102,7 +102,7 @@ AEmptyState.propTypes = {
   /**
    * Message describing the empty state
    */
-  message: PropTypes.string,
+  message: PropTypes.node,
   /**
    * Sets the container size to small.
    */
