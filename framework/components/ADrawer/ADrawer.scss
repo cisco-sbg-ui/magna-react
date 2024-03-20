@@ -14,15 +14,15 @@ $common-transitions: transform $transition-props, width $transition-props,
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
   background: var(--control-bg-weak-default);
 
-  .a-drawer-content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-
   &--modal {
     top: unset;
     left: unset;
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
   }
 
   &--transitions {

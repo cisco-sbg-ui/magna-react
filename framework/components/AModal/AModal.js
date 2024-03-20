@@ -61,7 +61,6 @@ const AModal = forwardRef(
     const hasPortalNode = appendTo || appRef.current;
     const isOpen = !!hasPortalNode && propsIsOpen;
     const _ref = useRef();
-    const childRef = useRef();
 
     const shouldRenderChildren = useDelayUnmount({
       isOpen,
@@ -87,7 +86,7 @@ const AModal = forwardRef(
     });
 
     usePopupQuickExit({
-      popupRef: closeOnOutsideClick && childRef,
+      popupRef: closeOnOutsideClick && _ref,
       isEnabled: isOpen,
       onExit: onClose
     });
@@ -167,9 +166,7 @@ const AModal = forwardRef(
      *   </AModal>
      * </AButton>
      */
-    const renderChildren = (
-      <span ref={childRef}>{shouldRenderChildren ? children : null}</span>
-    );
+    const renderChildren = shouldRenderChildren ? children : null;
 
     if (withOverlay) {
       return ReactDOM.createPortal(
