@@ -70,7 +70,7 @@
     "babel-plugin-istanbul": "6.1.1",
     "codecov": "3.8.3",
     "cross-env": "7.0.3",
-    "cypress": "^13.6.0",
+    "cypress": "^13.7.0",
     "cypress-plugin-tab": "^1.0.5",
     "cypress-visual-regression": "1.7.0",
     "cypress-wait-until": "1.7.2",
