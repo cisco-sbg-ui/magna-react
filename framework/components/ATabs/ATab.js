@@ -22,7 +22,8 @@ const ATab = forwardRef(
       ariaControlledContentId,
       activeTabIndex,
       tabIndex,
-      handleLeftRightKeyPress,
+      handleDirectionalKeyDown,
+      isMenuChildActive,
       ...rest
     },
     ref
@@ -39,7 +40,7 @@ const ATab = forwardRef(
 
     let className = "a-tab-group__tab";
 
-    if ((tabKey && selected) || isSelected) {
+    if ((tabKey && selected) || isSelected || isMenuChildActive) {
       className += " a-tab-group__tab--selected";
 
       if (vertical) {
@@ -83,9 +84,9 @@ const ATab = forwardRef(
         onClick && onClick(e);
       },
       onKeyDown: (e) => {
-        if (!href && [keyCodes.enter].includes(e.keyCode)) {
+        if (!href && [keyCodes.enter, keyCodes.space].includes(e.keyCode)) {
           e.preventDefault();
-          !tabKey && setActiveTabIndex(tabIndex);
+          !tabKey && !menuTab && setActiveTabIndex(tabIndex);
           if (menuTab) {
             handleSiblingSelectedClass();
           }
@@ -93,7 +94,7 @@ const ATab = forwardRef(
         } else {
           onKeyDown && onKeyDown(e);
         }
-        !tabKey && handleLeftRightKeyPress(e);
+        !tabKey && handleDirectionalKeyDown(e);
       },
       onKeyUp: (e) => {
         onKeyUp && onKeyUp(e);

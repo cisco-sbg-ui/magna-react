@@ -2,13 +2,16 @@ import React, {useState, useRef, useEffect, useCallback} from "react";
 import ATab from "./ATab";
 import AIcon from "../AIcon";
 import AMenu from "../AMenu";
+import {keyCodes} from "../../utils/helpers";
 
 const OverflowMenuTab = ({
   children,
   menuOpen,
   setMenuOpen,
-  handleLeftRightKeyPress,
-  tabIndex
+  handleDirectionalKeyDown,
+  tabIndex,
+  activeTabIndex,
+  isMenuChildActive
 }) => {
   const menuRef = useRef(null);
   const menuIcon = menuOpen ? "caret-up" : "caret-down";
@@ -35,26 +38,6 @@ const OverflowMenuTab = ({
     }
   });
 
-  //If overflow item is selected, let menu know to maintain selected state once closed.
-  useEffect(() => {
-    const menuTabEl = menuRef.current;
-
-    for (let child of children) {
-      const {props} = child;
-      if (props.selected) {
-        hasSelected.current = props.selected || props.children.props.selected;
-        //Q: "Why not use react state for this?" - A: "It won't let me."
-        menuTabEl.setAttribute("aria-selected", true);
-        menuTabEl.classList.add("a-tab-group__tab--selected");
-        break; //Skip out once we find the first selected item.
-      } else if (!props.selected) {
-        hasSelected.current = false;
-        menuTabEl.setAttribute("aria-selected", false);
-        menuTabEl.classList.remove("a-tab-group__tab--selected");
-      }
-    }
-  }, [children]);
-
   return (
     <>
       <ATab
@@ -64,7 +47,9 @@ const OverflowMenuTab = ({
         selected={menuOpen || hasSelected.current}
         onClick={() => setMenuOpen(!menuOpen)}
         tabIndex={tabIndex}
-        handleLeftRightKeyPress={handleLeftRightKeyPress}
+        handleDirectionalKeyDown={handleDirectionalKeyDown}
+        activeTabIndex={activeTabIndex}
+        isMenuChildActive={isMenuChildActive}
         aria-haspopup="menu"
       >
         More <AIcon>{menuIcon}</AIcon>
@@ -76,6 +61,11 @@ const OverflowMenuTab = ({
         closeOnClick
         placement="bottom"
         onClose={() => setMenuOpen(false)}
+        onKeyDown={(e) => {
+          if ([keyCodes.esc].includes(e.keyCode)) {
+            setMenuOpen(false);
+          }
+        }}
       >
         {children}
       </AMenu>

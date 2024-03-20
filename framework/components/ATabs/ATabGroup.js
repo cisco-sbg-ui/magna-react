@@ -96,7 +96,7 @@ const ATabGroup = forwardRef(
         (child) => !child.classList.contains("hide")
       );
 
-    const handleLeftRightKeyPress = useCallback(
+    const handleDirectionalKeyDown = useCallback(
       (e) => {
         if (
           (vertical && [keyCodes.up, keyCodes.down].includes(e.keyCode)) ||
@@ -148,6 +148,17 @@ const ATabGroup = forwardRef(
     );
 
     useEffect(() => {
+      if (activeTabIndex !== false) {
+        return;
+      }
+      React.Children.forEach(children, (child, i) => {
+        if (child.props.selected && !child.props.tabKey) {
+          setActiveTabIndex(i);
+        }
+      });
+    }, [activeTabIndex, children]);
+
+    useEffect(() => {
       handleOverflow();
     }, [handleOverflow]);
 
@@ -194,7 +205,7 @@ const ATabGroup = forwardRef(
       React.cloneElement(child, {
         activeTabIndex,
         tabIndex: i,
-        handleLeftRightKeyPress
+        handleDirectionalKeyDown
       });
 
     const renderChildrenWithProps = React.Children.map(
@@ -205,6 +216,7 @@ const ATabGroup = forwardRef(
     const renderMenuChildren = React.Children.map(children, (child, i) => {
       if (!menuItems.length) return null;
       const isOverflowItem = menuItems.includes(i);
+      const handleListItemClick = () => setActiveTabIndex(i);
       if (isOverflowItem) {
         //tabKey is not recognized by AListItem and gets added to DOM so we remove it here.
         const {tabKey, ...rest} = child.props;
@@ -218,9 +230,9 @@ const ATabGroup = forwardRef(
         }
         return (
           <AListItem
-            onClick={() => setActiveTabIndex(i)}
-            selected={i === activeTabIndex}
+            onClick={handleListItemClick}
             {...rest}
+            selected={i === activeTabIndex}
           />
         );
       }
@@ -245,10 +257,11 @@ const ATabGroup = forwardRef(
               {!vertical && (
                 <OverflowMenuTab
                   activeTabIndex={activeTabIndex}
+                  isMenuChildActive={menuItems.includes(activeTabIndex)}
                   menuOpen={menuOpen}
                   setMenuOpen={setMenuOpen}
                   tabIndex={React.Children.count(children)}
-                  handleLeftRightKeyPress={handleLeftRightKeyPress}
+                  handleDirectionalKeyDown={handleDirectionalKeyDown}
                 >
                   {renderMenuChildren}
                 </OverflowMenuTab>
