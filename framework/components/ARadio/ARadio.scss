@@ -100,7 +100,7 @@ $radio-transition: stroke $transition-duration--extra-fast
     }
 
     &:disabled:checked ~ .a-radio__box .a-radio__box__inner {
-      fill: mvar(--control-border-disabled);
+      fill: var(--control-border-disabled);
     }
 
     &:disabled ~ .a-radio__label {
