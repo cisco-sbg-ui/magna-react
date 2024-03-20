@@ -3,9 +3,14 @@ import ATab from "./ATab";
 import AIcon from "../AIcon";
 import AMenu from "../AMenu";
 
-const OverflowMenuTab = ({children}) => {
+const OverflowMenuTab = ({
+  children,
+  menuOpen,
+  setMenuOpen,
+  handleLeftRightKeyPress,
+  tabIndex
+}) => {
   const menuRef = useRef(null);
-  const [menuOpen, setMenuOpen] = useState(false);
   const menuIcon = menuOpen ? "caret-up" : "caret-down";
   const hasSelected = useRef(false);
 
@@ -58,6 +63,9 @@ const OverflowMenuTab = ({children}) => {
         className={`menu-tab ${!children.length ? "hide" : ""}`}
         selected={menuOpen || hasSelected.current}
         onClick={() => setMenuOpen(!menuOpen)}
+        tabIndex={tabIndex}
+        handleLeftRightKeyPress={handleLeftRightKeyPress}
+        aria-haspopup="menu"
       >
         More <AIcon>{menuIcon}</AIcon>
       </ATab>
