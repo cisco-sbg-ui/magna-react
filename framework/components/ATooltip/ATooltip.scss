@@ -1,7 +1,5 @@
 @import "../../styles";
 
-$tooltip-color: var(--magnetic-color-neutral-100);
-
 .a-tooltip {
   display: inline-block;
   font-size: $font-size--sm;
@@ -11,7 +9,7 @@ $tooltip-color: var(--magnetic-color-neutral-100);
   padding: 8px 12px;
   border-radius: $border-radius--lg;
   z-index: 800;
-  color: $tooltip-color;
+  color: var(--base-text-in-weak-default);
   background-color: var(--inverse-bg-weak-default);
 
   &--arrow.a-menu-base--top,
