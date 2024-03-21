@@ -77,7 +77,7 @@ const ATab = forwardRef(
       ref: combinedRef,
       className,
       onClick: (e) => {
-        !tabKey && setActiveTabIndex(tabIndex);
+        !tabKey && !menuTab && setActiveTabIndex(tabIndex);
         if (menuTab) {
           handleSiblingSelectedClass();
         }
