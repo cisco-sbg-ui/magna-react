@@ -68,6 +68,7 @@ $alert-close-icon-size: 10.5px;
     @include flex-fluid;
     @include text-break-word;
   }
+
   &--fit-content-width {
     width: unset;
   }
@@ -125,4 +126,8 @@ $alert-close-icon-size: 10.5px;
       }
     }
   }
+}
+
+.a-app .a-alert p {
+  margin: 0;
 }
