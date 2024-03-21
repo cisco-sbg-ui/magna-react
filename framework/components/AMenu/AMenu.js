@@ -94,9 +94,15 @@ const AMenu = forwardRef(
         e.stopPropagation();
         const previous = getPrevious();
         previous && previous.focus();
-      } else if (e.keyCode === keyCodes.right) {
+      } else if (
+        e.keyCode === keyCodes.right &&
+        document.activeElement.tagName !== "INPUT"
+      ) {
         e.preventDefault();
-      } else if (e.keyCode === keyCodes.left) {
+      } else if (
+        e.keyCode === keyCodes.left &&
+        document.activeElement.tagName !== "INPUT"
+      ) {
         e.preventDefault();
         submenu && closeHandler(e);
       } else if (e.keyCode === keyCodes.down) {
@@ -154,7 +160,8 @@ const AMenu = forwardRef(
         placement={placement}
         anchorRef={anchorRef}
         pointer={pointer}
-        tabIndex={-1}>
+        tabIndex={-1}
+      >
         {children}
       </AList>
     );
