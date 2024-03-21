@@ -232,15 +232,7 @@ const ACheckbox = forwardRef(
           </span>
         </label>
       ) : (
-        <div
-          className="a-checkbox__wrap"
-          onClick={onClick}
-          onKeyDown={handleKeyDown}
-          aria-checked={checked}
-          aria-labelledby={children}
-          role="checkbox"
-          tabIndex={0}
-        >
+        <div className="a-checkbox__wrap" aria-labelledby={children}>
           {checkboxContent}
         </div>
       );
