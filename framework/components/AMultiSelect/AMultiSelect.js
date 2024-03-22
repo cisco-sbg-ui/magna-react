@@ -575,6 +575,10 @@ AMultiSelect.propTypes = {
    */
   readOnly: PropTypes.bool,
   /**
+   * Toggles the <input> to be readOnly, but leaves the menu active (if readOnly is false)
+   */
+  readOnlyInput: PropTypes.bool,
+  /**
    * Toggles a default rule for required values.
    */
   required: PropTypes.bool,
