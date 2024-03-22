@@ -117,7 +117,7 @@
   &-item:not(.a-list-item--two-line) {
     color: currentColor;
 
-    &:focus {
+    &:focus:not(.a-list-item--disabled) {
       color: var(--base-text-default);
       background: var(--row-effect-image) var(--control-bg-weak-focus);
     }
