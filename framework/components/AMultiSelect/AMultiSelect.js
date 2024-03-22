@@ -49,6 +49,7 @@ const AMultiSelect = forwardRef(
       placeholder,
       prependContent,
       readOnly,
+      readOnlyInput,
       required,
       rules,
       skipValidation = false,
@@ -259,7 +260,7 @@ const AMultiSelect = forwardRef(
         onSelected && onSelected([]);
         onClear && onClear(e);
       },
-      readOnly,
+      readOnly: readOnly || readOnlyInput,
       validationState: workingValidationState,
       required
     };
@@ -319,7 +320,7 @@ const AMultiSelect = forwardRef(
           ? placeholder
           : ""
         : placeholder || label,
-      readOnly,
+      readOnly: readOnly || readOnlyInput,
       value: filterValue
     };
 

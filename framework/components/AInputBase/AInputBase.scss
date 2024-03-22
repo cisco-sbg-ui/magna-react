@@ -85,6 +85,10 @@ $input-transition: border-color $transition-duration--extra-fast
       border-color: var(--control-border-default);
       background: var(--control-bg-weak-disabled);
     }
+
+    input {
+      cursor: default;
+    }
   }
 
   &--warning {
