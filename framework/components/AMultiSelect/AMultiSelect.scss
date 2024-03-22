@@ -121,6 +121,11 @@
   }
 }
 
+.a-multiselect[tabindex="0"]:hover {
+  .a-input-base__surface {
+    border-color: var(--control-border-hover);
+  }
+}
 .a-multiselect:focus-within {
   .a-input-base__surface {
     border-color: var(--control-border-focus);
