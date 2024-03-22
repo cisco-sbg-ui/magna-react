@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React, {forwardRef, useEffect, useRef, useCallback} from "react";
 
+import useFocusTrap from "../../hooks/useFocusTrap/useFocusTrap";
 import {keyCodes} from "../../utils/helpers";
 import {useCombinedRefs} from "../../utils/hooks";
 import AMenuBase from "../AMenuBase";
@@ -31,6 +32,12 @@ const AMenu = forwardRef(
   ) => {
     const menuRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, menuRef);
+
+    useFocusTrap({
+      rootRef: combinedRef,
+      isEnabled: open,
+      autoFocusElementRef: focusOnOpen && combinedRef.current
+    });
 
     const getPrevious = () => {
       const items = Array.from(
@@ -84,7 +91,6 @@ const AMenu = forwardRef(
         closeHandler(e);
         !(anchorRef instanceof DOMRect) && anchorRef.current.focus();
       } else if (e.keyCode === keyCodes.tab) {
-        closeHandler(e);
         !(anchorRef instanceof DOMRect) && anchorRef.current.focus();
       } else if (e.keyCode === keyCodes.up) {
         if (open) {
@@ -160,7 +166,7 @@ const AMenu = forwardRef(
         placement={placement}
         anchorRef={anchorRef}
         pointer={pointer}
-        tabIndex={-1}
+        tabIndex={0}
       >
         {children}
       </AList>

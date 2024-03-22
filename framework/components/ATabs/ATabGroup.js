@@ -195,12 +195,17 @@ const ATabGroup = forwardRef(
     };
 
     const renderChildren = React.Children.map(children, (child, i) => {
-      if (!menuItems.length) return null;
+      if (!menuItems.length) {
+        return null;
+      }
+
       const isOverflowItem = menuItems.includes(i);
+
       if (isOverflowItem) {
         //tabKey is not recognized by AListItem and gets added to DOM so we remove it here.
         const {tabKey, ...rest} = child.props;
         const routerLink = child.props.tab?.route;
+
         if (routerLink) {
           return (
             <AListItem component="div" {...rest}>

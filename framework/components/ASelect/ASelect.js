@@ -319,7 +319,7 @@ const ASelect = forwardRef(
       // Menu should not receive focus
       // so that the selected item can
       // be focused instead
-      focusOnOpen: selectedItem ? false : true,
+      focusOnOpen: false,
       onClose: () => {
         setIsOpen(false);
         surfaceRef.current.focus();
