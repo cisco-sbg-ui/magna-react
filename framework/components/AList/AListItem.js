@@ -82,7 +82,9 @@ const AListItem = forwardRef(
       (e) => {
         if (
           (onClick && e.keyCode === keyCodes.enter) ||
-          (onClick && e.keyCode === keyCodes.right)
+          (onClick &&
+            e.keyCode === keyCodes.right &&
+            document.activeElement.tagName !== "INPUT")
         ) {
           e.preventDefault();
           e.stopPropagation();
