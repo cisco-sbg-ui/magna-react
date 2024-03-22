@@ -231,6 +231,25 @@ const AMultiSelect = forwardRef(
       />
     );
 
+    const onKeyDown = (e) => {
+      if (e.keyCode === keyCodes.up) {
+        e.preventDefault();
+        setIsOpen(filteredItems.length || noDataContent);
+        const menuItems = menuRef.current?.querySelectorAll(
+          ".a-multiselect__menu-items__wrapper .a-list-item[tabindex]"
+        );
+        menuItems && menuItems[menuItems.length - 1]?.focus();
+      } else if (e.keyCode === keyCodes.down || e.keyCode === keyCodes.enter) {
+        e.preventDefault();
+        setIsOpen(filteredItems.length || noDataContent);
+        menuRef.current
+          ?.querySelectorAll(
+            ".a-multiselect__menu-items__wrapper .a-list-item[tabindex]"
+          )[0]
+          ?.focus();
+      }
+    };
+
     const inputBaseProps = {
       ...rest,
       ref: combinedRef,
@@ -261,6 +280,8 @@ const AMultiSelect = forwardRef(
         onClear && onClear(e);
       },
       readOnly: readOnly || readOnlyInput,
+      tabIndex: readOnlyInput && "0",
+      onKeyDown: readOnlyInput && onKeyDown,
       validationState: workingValidationState,
       required
     };
@@ -272,25 +293,6 @@ const AMultiSelect = forwardRef(
     if (!withTags) {
       inputBaseProps.className += ` ${counterClass}`;
     }
-
-    const onKeyDown = (e) => {
-      if (e.keyCode === keyCodes.up) {
-        e.preventDefault();
-        setIsOpen(filteredItems.length || noDataContent);
-        const menuItems = menuRef.current?.querySelectorAll(
-          ".a-multiselect__menu-items__wrapper .a-list-item[tabindex]"
-        );
-        menuItems && menuItems[menuItems.length - 1]?.focus();
-      } else if (e.keyCode === keyCodes.down || e.keyCode === keyCodes.enter) {
-        e.preventDefault();
-        setIsOpen(filteredItems.length || noDataContent);
-        menuRef.current
-          ?.querySelectorAll(
-            ".a-multiselect__menu-items__wrapper .a-list-item[tabindex]"
-          )[0]
-          ?.focus();
-      }
-    };
 
     const inputProps = {
       autoComplete: "off",
