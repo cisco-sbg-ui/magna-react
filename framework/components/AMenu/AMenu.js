@@ -35,8 +35,8 @@ const AMenu = forwardRef(
 
     useFocusTrap({
       rootRef: combinedRef,
-      isEnabled: open && focusOnOpen,
-      autoFocusElementRef: combinedRef.current
+      isEnabled: open,
+      autoFocusElementRef: focusOnOpen && combinedRef.current
     });
 
     const getPrevious = () => {
