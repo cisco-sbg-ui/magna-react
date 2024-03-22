@@ -156,6 +156,8 @@ The `AMultiSelect` component inherits passed props.
 
 ## Custom Filtering
 
+If the items list is of objects, and a text and or object+key search won't work, use the "filterFunction" to define custom filtering.
+
 <Playground
   code={`() => {
   const items = [
@@ -181,6 +183,41 @@ The `AMultiSelect` component inherits passed props.
         filterFunction={(val, item) => {
           return item.toLocaleLowerCase().includes(val.toLocaleLowerCase())
         }}
+      />
+    </div>
+
+);
+}
+`}
+/>
+
+## Read-only Input
+
+If you need a multiselect, but want to disable the typing search.
+
+<Playground
+  code={`() => {
+  const items = [
+    "Bread, Cereal, Rice, and Pasta",
+    "Vegetables",
+    "Fruit",
+    "Milk, Yogurt, and Cheese",
+    "Meat, Poultry, Fish",
+    "Fats, Oils, and Sweets"
+  ];
+  const [value, setValue] = useState([]);
+  return (
+    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+      <AMultiSelect
+        readOnlyInput
+        clearable
+        label="Food Group"
+        items={items}
+        placeholder="Pick a Food Group"
+        onSelected={(item) => {
+          setValue(item);
+        }}
+        value={value}
       />
     </div>
 
