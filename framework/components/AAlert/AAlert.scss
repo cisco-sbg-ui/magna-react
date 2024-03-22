@@ -128,6 +128,6 @@ $alert-close-icon-size: 10.5px;
   }
 }
 
-.a-app .a-alert p {
+.a-app .a-alert p:first-child {
   margin: 0;
 }
