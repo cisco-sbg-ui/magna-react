@@ -7,13 +7,15 @@
   --negative-border-darken: darken(#cc2d37, 5%);
 }
 
-.theme--default {
+.theme--default,
+.theme--classic-light {
   --card-shadow-color: rgba(0, 0, 0, 0.08);
   --text-input-shadow-color: var(--control-border-medium-hover);
   --row-effect-image: none;
 }
 
-.theme--dusk {
+.theme--dusk,
+.theme--classic-dark {
   --card-shadow-color: rgba(0, 0, 0, 0.48);
   --text-input-shadow-color: #5191f080; //TODO waiting for new shadow color/tokens
   --row-effect-image: (

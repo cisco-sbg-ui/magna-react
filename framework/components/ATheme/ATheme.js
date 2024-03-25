@@ -3,11 +3,8 @@ import React, {forwardRef, useState, useCallback} from "react";
 
 import {useIsomorphicLayoutEffect} from "../../utils/hooks";
 import AThemeContext from "./AThemeContext";
+import {SUPPORTED_THEMES, DEFAULT_THEME, DARK_THEMES} from "./constants";
 import "./ATheme.scss";
-
-const DEFAULT_THEME = "default";
-const DUSK_THEME = "dusk";
-const SUPPORTED_THEMES = [DEFAULT_THEME, DUSK_THEME];
 
 const DEFAULT_INITIAL_THEME = DEFAULT_THEME;
 
@@ -102,8 +99,8 @@ const ATheme = forwardRef(
       }
     }, [currentTheme]);
 
-    const isDark = currentTheme === DUSK_THEME;
-    const isLight = currentTheme !== DUSK_THEME;
+    const isDark = DARK_THEMES.includes(currentTheme);
+    const isLight = !isDark;
 
     const themeContext = {
       persist,
@@ -119,9 +116,10 @@ const ATheme = forwardRef(
 
     let className = "theme--default";
 
-    if (isDark) {
-      className = "theme--dusk";
+    if (isSupportedTheme(currentTheme)) {
+      className = `theme--${currentTheme}`;
     }
+
     if (propsClassName) {
       className += ` ${propsClassName}`;
     }
