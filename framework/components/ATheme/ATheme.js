@@ -3,8 +3,20 @@ import React, {forwardRef, useState, useCallback} from "react";
 
 import {useIsomorphicLayoutEffect} from "../../utils/hooks";
 import AThemeContext from "./AThemeContext";
-import {SUPPORTED_THEMES, DEFAULT_THEME, DARK_THEMES} from "./constants";
 import "./ATheme.scss";
+
+export const DEFAULT_THEME = "default";
+export const DUSK_THEME = "dusk";
+export const CLASSIC_LIGHT_THEME = "classic-light";
+export const CLASSIC_DARK_THEME = "classic-dark";
+export const SUPPORTED_THEMES = [
+  DEFAULT_THEME,
+  CLASSIC_LIGHT_THEME,
+  DUSK_THEME,
+  CLASSIC_DARK_THEME
+];
+export const LIGHT_THEMES = [DEFAULT_THEME, CLASSIC_LIGHT_THEME];
+export const DARK_THEMES = [DUSK_THEME, CLASSIC_DARK_THEME];
 
 const DEFAULT_INITIAL_THEME = DEFAULT_THEME;
 

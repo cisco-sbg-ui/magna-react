@@ -50,7 +50,6 @@ const ThemeSwitcher = () => {
             if (autoTheme.enabled) {
               autoTheme.disable();
             }
-            console.log("value", value);
             setCurrentTheme(value);
           }}
         >

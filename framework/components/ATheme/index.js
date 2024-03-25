@@ -1,7 +1,4 @@
-import ATheme from "./ATheme";
-import AThemeContext from "./AThemeContext";
-import useATheme from "./useATheme";
-import {
+import ATheme, {
   DEFAULT_THEME,
   DUSK_THEME,
   CLASSIC_LIGHT_THEME,
@@ -9,7 +6,9 @@ import {
   SUPPORTED_THEMES,
   LIGHT_THEMES,
   DARK_THEMES
-} from "./constants";
+} from "./ATheme";
+import AThemeContext from "./AThemeContext";
+import useATheme from "./useATheme";
 
 export {
   ATheme,

@@ -18,7 +18,7 @@ import {ATheme} from "@cisco-sbg-ui/magna-react";
 
 `ATheme` also supports automatic theming detection with the `AAutoTheme` component. When enabled, it will match a user's theming preference as determined by their operation system appearance settings. For example, a MacOS user with Apple's darkmode enabled will see the `dusk` theme in an `magna-react` application.
 
-To enable automatic theming withing an magna-react application, you can use `AAutoTheme` as a desdendant  of `AApp` or `ATheme`.
+To enable automatic theming withing an magna-react application, you can use `AAutoTheme` as a desdendant of `AApp` or `ATheme`.
 
 ```
 import {AAutoTheme} from "@cisco-sbg-ui/magna-react";
@@ -170,13 +170,11 @@ render(
     <tr>
       <td className="text-no-wrap">enabled</td>
       <td>
-        <p className='mt-0'>
+        <p className="mt-0">
           Specifies if automatic theming is enabled or disabled.
         </p>
       </td>
-      <td>
-        false
-      </td>
+      <td>false</td>
     </tr>
   </tbody>
 </ASimpleTable>
@@ -194,7 +192,7 @@ render(
     <tr>
       <td className="text-no-wrap">enable</td>
       <td>
-        <p className='mt-0'>
+        <p className="mt-0">
           Enables automatic theming within an magna-react application.
         </p>
       </td>
@@ -202,7 +200,7 @@ render(
     <tr>
       <td className="text-no-wrap">enable</td>
       <td>
-        <p className='mt-0'>
+        <p className="mt-0">
           Disables automatic theming within an magna-react application.
         </p>
       </td>
@@ -210,8 +208,10 @@ render(
     <tr>
       <td className="text-no-wrap">toggle</td>
       <td>
-        <p className='mt-0'>
-          Toggles automatic theming functionality within an magna-react application. Useful in the case of enabling/disabling automatic theming with an `ACheckbox` or `ASwitch`.
+        <p className="mt-0">
+          Toggles automatic theming functionality within an magna-react
+          application. Useful in the case of enabling/disabling automatic
+          theming with an `ACheckbox` or `ASwitch`.
         </p>
       </td>
     </tr>

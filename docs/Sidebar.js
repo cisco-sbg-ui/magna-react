@@ -41,8 +41,6 @@ const Sidebar = ({menus, currentDoc}) => {
     }
   }, []);
 
-  console.log("isDark", isDark);
-
   useEffect(() => {
     const newItems = [
       {
