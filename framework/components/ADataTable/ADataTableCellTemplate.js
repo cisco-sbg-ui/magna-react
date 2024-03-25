@@ -22,7 +22,7 @@ const ADataTableCellTemplate = ({rowItem, headerItem, headerIndex}) => {
       col-index={headerIndex}
       className={`text-${headerItem.align || "start"} ${
         headerItem.cell?.className || ""
-      }`.trim()}
+      } ${headerItem.colWidthSm ? "row-width-sm" : ""}`.trim()}
     >
       {content}
     </ADataTableCell>

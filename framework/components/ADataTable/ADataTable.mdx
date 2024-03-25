@@ -282,6 +282,7 @@ You can also pass a React element to a header's `name` key in order to handle mo
           {allSelected ? 'Unselect' : 'Select'} all
         </ACheckbox>
       ),
+      colWidthSm: true,
       cell: {
         component: (rowItem) => {
           const rowId = rowItem['firstCol'];
@@ -401,6 +402,7 @@ In this example, the associated more details drawer that is opened is used to de
     {
       name: "Details",
       align: "center",
+      colWidthSm: true,
       cell: {
         component: (item) => (
           <AButton className='ma-0 pa-0' tertiaryAlt icon onClick={() => {
@@ -638,7 +640,8 @@ const headers = [
     {
       name: "Alpha",
       key: "a",
-      align: "end"
+      align: "end",
+      colWidthSm: true,
     },
     {
       name: "Bravo",

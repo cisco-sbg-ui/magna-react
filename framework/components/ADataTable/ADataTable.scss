@@ -48,6 +48,17 @@ $hidden-table-col-width: 45px;
         background-color: var(--control-bg-weak-active);
       }
     }
+
+    &.col-width-sm {
+      width: 0 !important; //Required for other envs
+      min-width: 50px !important;
+    }
+    &.col-width-sm:not(:last-of-type) {
+      padding-right: 4px;
+    }
+    &.col-width-sm:not(:first-of-type) {
+      padding-left: 4px;
+    }
   }
 
   &__row {
@@ -61,6 +72,16 @@ $hidden-table-col-width: 45px;
 
     &--key-selected {
       background: var(--control-bg-weak-active);
+    }
+
+    .row-width-sm {
+      min-width: 0 !important;
+    }
+    .row-width-sm:not(:last-of-type) {
+      padding-right: 4px;
+    }
+    .row-width-sm:not(:first-of-type) {
+      padding-left: 4px;
     }
   }
 
