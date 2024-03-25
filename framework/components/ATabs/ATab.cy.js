@@ -78,23 +78,18 @@ describe("<ATabGroup />", () => {
       .contains("Seven");
   });
 
-  it("should maintain highlighted state if overflow menu item is selected by keystroke", () => {
-    cy.mount(<ATabTest width={"15rem"} />);
+  it("should automatically open tab when selected by keystroke", () => {
+    cy.mount(<ATabTest width={"15rem"} uncontrolled={true} />);
     cy.get(".a-tab-group__tab")
       .first()
-      .tab({shift: true})
-      .contains("More")
-      .type("{enter}")
+      .focus()
+      .type("{rightArrow}")
+      .contains("One")
       .get(".a-tab-group__tab--selected")
-      .should("exist");
-    cy.get(".a-list-item").first().next().type("{enter}");
-    cy.get("body").click(0, 0);
-    cy.get(".a-tab-group__tab--selected").should("exist");
-    cy.get(".menu-tab").click();
-    cy.get(".a-list-item")
-      .get(".a-list-item--selected")
       .should("exist")
-      .contains("Four");
+      .type("{leftArrow}")
+      .get(".tab-overflow-menu")
+      .should("exist");
   });
 
   it("should not render overflow tab if in vertical position", () => {
@@ -103,7 +98,12 @@ describe("<ATabGroup />", () => {
   });
 });
 
-const ATabTest = ({width = "30rem", vertical = false, secondary = false}) => {
+const ATabTest = ({
+  width = "30rem",
+  vertical = false,
+  secondary = false,
+  uncontrolled = false
+}) => {
   const tabs = ["One", "Two", "Three", "Four", "Five", "Six", "Seven"];
   const [activeTab, setActiveTab] = useState(tabs[2]);
   return (
@@ -112,7 +112,7 @@ const ATabTest = ({width = "30rem", vertical = false, secondary = false}) => {
         {tabs.map((x) => (
           <ATab
             key={x}
-            tabKey={x}
+            tabKey={!uncontrolled && x}
             onClick={() => setActiveTab(x)}
             selected={x === activeTab}
           >

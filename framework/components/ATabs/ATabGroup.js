@@ -232,7 +232,9 @@ const ATabGroup = forwardRef(
           <AListItem
             onClick={handleListItemClick}
             {...rest}
-            selected={i === activeTabIndex}
+            selected={
+              i === activeTabIndex || (!activeTabIndex && rest.selected)
+            }
           />
         );
       }
