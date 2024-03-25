@@ -78,7 +78,7 @@ describe("<ATabGroup />", () => {
       .contains("Seven");
   });
 
-  it("should automatically open tab when selected by keystroke", () => {
+  it("should cycle through tabs by left and right keystroke", () => {
     cy.mount(<ATabTest width={"15rem"} uncontrolled={true} />);
     cy.get(".a-tab-group__tab")
       .first()
@@ -90,6 +90,21 @@ describe("<ATabGroup />", () => {
       .type("{leftArrow}")
       .get(".tab-overflow-menu")
       .should("exist");
+  });
+
+  it("should cycle through tabs by up and down keystroke", () => {
+    cy.mount(<ATabTest width={"15rem"} uncontrolled vertical />);
+    cy.get(".a-tab-group__tab")
+      .first()
+      .focus()
+      .type("{upArrow}")
+      .type("{upArrow}")
+      .type("{upArrow}")
+      .get(".a-tab-group__tab--selected")
+      .contains("Seven")
+      .type("{downArrow}")
+      .get(".a-tab-group__tab--selected")
+      .contains("One");
   });
 
   it("should not render overflow tab if in vertical position", () => {
