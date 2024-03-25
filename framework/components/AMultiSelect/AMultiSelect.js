@@ -49,6 +49,7 @@ const AMultiSelect = forwardRef(
       placeholder,
       prependContent,
       readOnly,
+      readOnlyInput,
       required,
       rules,
       skipValidation = false,
@@ -230,6 +231,25 @@ const AMultiSelect = forwardRef(
       />
     );
 
+    const onKeyDown = (e) => {
+      if (e.keyCode === keyCodes.up) {
+        e.preventDefault();
+        setIsOpen(filteredItems.length || noDataContent);
+        const menuItems = menuRef.current?.querySelectorAll(
+          ".a-multiselect__menu-items__wrapper .a-list-item[tabindex]"
+        );
+        menuItems && menuItems[menuItems.length - 1]?.focus();
+      } else if (e.keyCode === keyCodes.down || e.keyCode === keyCodes.enter) {
+        e.preventDefault();
+        setIsOpen(filteredItems.length || noDataContent);
+        menuRef.current
+          ?.querySelectorAll(
+            ".a-multiselect__menu-items__wrapper .a-list-item[tabindex]"
+          )[0]
+          ?.focus();
+      }
+    };
+
     const inputBaseProps = {
       ...rest,
       ref: combinedRef,
@@ -259,7 +279,9 @@ const AMultiSelect = forwardRef(
         onSelected && onSelected([]);
         onClear && onClear(e);
       },
-      readOnly,
+      readOnly: readOnly || readOnlyInput,
+      tabIndex: readOnlyInput && "0",
+      onKeyDown: readOnlyInput && onKeyDown,
       validationState: workingValidationState,
       required
     };
@@ -271,25 +293,6 @@ const AMultiSelect = forwardRef(
     if (!withTags) {
       inputBaseProps.className += ` ${counterClass}`;
     }
-
-    const onKeyDown = (e) => {
-      if (e.keyCode === keyCodes.up) {
-        e.preventDefault();
-        setIsOpen(filteredItems.length || noDataContent);
-        const menuItems = menuRef.current?.querySelectorAll(
-          ".a-multiselect__menu-items__wrapper .a-list-item[tabindex]"
-        );
-        menuItems && menuItems[menuItems.length - 1]?.focus();
-      } else if (e.keyCode === keyCodes.down || e.keyCode === keyCodes.enter) {
-        e.preventDefault();
-        setIsOpen(filteredItems.length || noDataContent);
-        menuRef.current
-          ?.querySelectorAll(
-            ".a-multiselect__menu-items__wrapper .a-list-item[tabindex]"
-          )[0]
-          ?.focus();
-      }
-    };
 
     const inputProps = {
       autoComplete: "off",
@@ -319,7 +322,7 @@ const AMultiSelect = forwardRef(
           ? placeholder
           : ""
         : placeholder || label,
-      readOnly,
+      readOnly: readOnly || readOnlyInput,
       value: filterValue
     };
 
@@ -573,6 +576,10 @@ AMultiSelect.propTypes = {
    * Toggles the `readOnly` state.
    */
   readOnly: PropTypes.bool,
+  /**
+   * Toggles the <input> to be readOnly, but leaves the menu active (if readOnly is false)
+   */
+  readOnlyInput: PropTypes.bool,
   /**
    * Toggles a default rule for required values.
    */

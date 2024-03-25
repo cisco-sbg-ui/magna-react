@@ -83,7 +83,11 @@ $input-transition: border-color $transition-duration--extra-fast
       box-shadow: none;
 
       border-color: var(--control-border-default);
-      background: var(--control-border-default);
+      background: var(--control-bg-weak-default);
+    }
+
+    input {
+      cursor: default;
     }
   }
 

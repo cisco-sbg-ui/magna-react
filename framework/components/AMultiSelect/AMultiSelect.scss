@@ -120,3 +120,15 @@
     margin: 0 auto;
   }
 }
+
+.a-multiselect[tabindex="0"]:hover {
+  .a-input-base__surface {
+    border-color: var(--control-border-hover);
+  }
+}
+.a-multiselect:focus-within {
+  .a-input-base__surface {
+    border-color: var(--control-border-focus);
+    box-shadow: 0 0 0 2px var(--text-input-shadow-color);
+  }
+}
