@@ -183,6 +183,8 @@ const ACheckbox = forwardRef(
       if (["Enter", "Space"].includes(e.code)) {
         e.preventDefault();
 
+        validate(e.target.checked);
+
         onClick && onClick(e);
       }
     };
@@ -203,6 +205,7 @@ const ACheckbox = forwardRef(
             validate(e.target.checked);
             onClick && onClick(e);
           }}
+          onKeyDown={handleKeyDown}
           ref={(el) =>
             el && ((el.indeterminate = indeterminate) || (el.checked = checked))
           }
@@ -232,15 +235,7 @@ const ACheckbox = forwardRef(
           </span>
         </label>
       ) : (
-        <div
-          className="a-checkbox__wrap"
-          onClick={onClick}
-          onKeyDown={handleKeyDown}
-          aria-checked={checked}
-          aria-labelledby={children}
-          role="checkbox"
-          tabIndex={0}
-        >
+        <div className="a-checkbox__wrap" aria-labelledby={children}>
           {checkboxContent}
         </div>
       );
