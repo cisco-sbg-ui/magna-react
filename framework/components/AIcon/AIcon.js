@@ -77,6 +77,10 @@ const AIcon = forwardRef(
 
     let magneticIconDef;
 
+    if (!children) {
+      return null;
+    }
+
     if (MagnaIcons[children]) {
       // Check if it's in magna icons
 
