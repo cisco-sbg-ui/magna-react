@@ -5,9 +5,18 @@ import {useIsomorphicLayoutEffect} from "../../utils/hooks";
 import AThemeContext from "./AThemeContext";
 import "./ATheme.scss";
 
-const DEFAULT_THEME = "default";
-const DUSK_THEME = "dusk";
-const SUPPORTED_THEMES = [DEFAULT_THEME, DUSK_THEME];
+export const DEFAULT_THEME = "default";
+export const DUSK_THEME = "dusk";
+export const CLASSIC_LIGHT_THEME = "classic-light";
+export const CLASSIC_DARK_THEME = "classic-dark";
+export const SUPPORTED_THEMES = [
+  DEFAULT_THEME,
+  CLASSIC_LIGHT_THEME,
+  DUSK_THEME,
+  CLASSIC_DARK_THEME
+];
+export const LIGHT_THEMES = [DEFAULT_THEME, CLASSIC_LIGHT_THEME];
+export const DARK_THEMES = [DUSK_THEME, CLASSIC_DARK_THEME];
 
 const DEFAULT_INITIAL_THEME = DEFAULT_THEME;
 
@@ -102,8 +111,8 @@ const ATheme = forwardRef(
       }
     }, [currentTheme]);
 
-    const isDark = currentTheme === DUSK_THEME;
-    const isLight = currentTheme !== DUSK_THEME;
+    const isDark = DARK_THEMES.includes(currentTheme);
+    const isLight = !isDark;
 
     const themeContext = {
       persist,
@@ -119,9 +128,10 @@ const ATheme = forwardRef(
 
     let className = "theme--default";
 
-    if (isDark) {
-      className = "theme--dusk";
+    if (isSupportedTheme(currentTheme)) {
+      className = `theme--${currentTheme}`;
     }
+
     if (propsClassName) {
       className += ` ${propsClassName}`;
     }

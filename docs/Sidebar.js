@@ -33,8 +33,8 @@ const GitHubIcon = (props) => {
 const Sidebar = ({menus, currentDoc}) => {
   const [items, setItems] = useState([]);
   const currentDocRef = useRef();
-  const {currentTheme} = useATheme();
-  const styleColor = currentTheme === "dusk" ? "white--text" : "black--text";
+  const {currentTheme, isDark} = useATheme();
+  const styleColor = isDark ? "white--text" : "black--text";
   useEffect(() => {
     if (currentDocRef.current) {
       window.scrollTo(0, Math.max(0, currentDocRef.current.offsetTop - 65));
@@ -116,11 +116,7 @@ const Sidebar = ({menus, currentDoc}) => {
 
   return (
     <div
-      className={`root-sidebar overflow-y-scroll py-3${
-        currentTheme === "dusk"
-          ? " mds-dark-theme--background"
-          : " mds-light-theme--background"
-      }`}
+      className={`root-sidebar overflow-y-scroll py-3`}
       style={{
         position: "fixed",
         height: "100%",
@@ -128,7 +124,7 @@ const Sidebar = ({menus, currentDoc}) => {
       }}
     >
       <div
-        className={`${currentTheme === "dusk" ? "white--text" : "black--text"}`}
+        className={`${isDark ? "white--text" : "black--text"}`}
         style={{display: "flex", padding: "0 15px"}}
       >
         <h1 style={{flex: "1"}}>
