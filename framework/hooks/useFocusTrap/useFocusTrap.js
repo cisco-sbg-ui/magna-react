@@ -18,20 +18,34 @@ function createTrap(walker) {
 
     let nextNode = isTabbingForward ? walker.nextNode() : walker.previousNode();
 
+    const focusNode = (node) => {
+      if (walker.root.contains(node)) {
+        // If the node is still in the DOM
+        node.focus({focusVisible: true});
+      } else {
+        // If the node is no longer in the DOM, for example
+        // when the rendering changes and the reference is
+        // detached - reset back to the root so tabs don't
+        // stop working entirely.
+        walker.root.focus({focusVisible: false});
+        walker.currentNode = walker.root;
+      }
+    };
+
     if (!nextNode) {
       // The user is at the end of the tree, so send focus
       // to the first child of parent node.
       walker.parentNode();
       walker.firstChild();
-      walker.currentNode.focus({focusVisible: true});
+      focusNode(walker.currentNode);
     } else if (nextNode === walker.root) {
       // The user is at the top of the tree, so send focus
       // to the last child of parent node.
       walker.lastChild();
-      walker.currentNode.focus({focusVisible: true});
+      focusNode(walker.currentNode);
     } else {
       // The user is tabbing within the parent node.
-      nextNode.focus({focusVisible: true});
+      focusNode(nextNode);
     }
   };
 }
