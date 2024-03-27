@@ -135,7 +135,9 @@ ADataTableRowTemplate.propTypes = {
         className: PropTypes.string,
         /** Custom component to be rendered for each table data item */
         component: PropTypes.func
-      })
+      }),
+      /** Option to shrink col width */
+      colWidthSm: PropTypes.bool
     })
   ).isRequired,
 

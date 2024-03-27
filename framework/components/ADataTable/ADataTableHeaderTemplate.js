@@ -38,6 +38,7 @@ const ADataTableHeaderTemplate = ({
     "aria-label": headerItem.name,
     style: headerItem.style,
     wrap: headerItem.wrap,
+    colWidthSm: headerItem.colWidthSm,
     ...rest
   };
 
@@ -159,7 +160,9 @@ ADataTableHeaderTemplate.propTypes = {
       className: PropTypes.string,
       /** Custom component to be rendered for each table data item */
       component: PropTypes.func
-    })
+    }),
+    /** Option to shrink col width */
+    colWidthSm: PropTypes.bool
   }),
 
   /**
