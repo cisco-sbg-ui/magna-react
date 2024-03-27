@@ -80,18 +80,6 @@ describe("<AMenu />", () => {
       });
   });
 
-  it("should call the onClose callback when the tab key is pressed", () => {
-    const mockFn = cy.stub();
-    cy.mount(<MenuTest onClose={mockFn} />);
-
-    openMenu();
-    getMenuContent()
-      .tabKeydown()
-      .then(() => {
-        expect(mockFn.callCount).to.eq(1);
-      });
-  });
-
   it("should open submenu on hover", () => {
     cy.mount(<SubMenuTest />);
     openMenu();

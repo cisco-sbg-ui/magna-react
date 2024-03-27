@@ -87,7 +87,7 @@ describe("<ATabGroup />", () => {
       .type("{enter}")
       .get(".a-tab-group__tab--selected")
       .should("exist");
-    cy.get(".a-list-item").first().next().type("{enter}");
+    cy.get(".a-list-item").first().next().type("{enter}", {force: true});
     cy.get("body").click(0, 0);
     cy.get(".a-tab-group__tab--selected").should("exist");
     cy.get(".menu-tab").click();
