@@ -12,6 +12,7 @@ import AListItem from "../AList/AListItem";
 import ATabContext from "./ATabContext";
 import {useCombinedRefs} from "../../utils/hooks";
 import "./ATabs.scss";
+import {keyCodes} from "../../utils/helpers";
 
 const ATabGroup = forwardRef(
   (
@@ -24,8 +25,10 @@ const ATabGroup = forwardRef(
     },
     ref
   ) => {
-    const [tabChanged, setTabChanged] = useState(false);
+    const [activeTabIndex, setActiveTabIndex] = useState(false);
     const [menuItems, setMenuItems] = useState([]);
+    const [menuOpen, setMenuOpen] = useState(false);
+    const tabContentRef = useRef(null);
     const tabGroupRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, tabGroupRef);
 
@@ -87,6 +90,74 @@ const ATabGroup = forwardRef(
       setMenuItems(overflowMenuItems);
     }, [combinedRef]);
 
+    const visibleTabs =
+      tabContentRef.current &&
+      Array.from(tabContentRef.current?.children).filter(
+        (child) => !child.classList.contains("hide")
+      );
+
+    const handleDirectionalKeyDown = useCallback(
+      (e) => {
+        if (
+          (vertical && [keyCodes.up, keyCodes.down].includes(e.keyCode)) ||
+          (!vertical && [keyCodes.left, keyCodes.right].includes(e.keyCode))
+        ) {
+          const dir = e.keyCode;
+          const goForward =
+            (vertical && keyCodes.down === dir) ||
+            (!vertical && keyCodes.right === dir);
+          const goBack =
+            (vertical && keyCodes.up === dir) ||
+            (!vertical && keyCodes.left === dir);
+          const visibleIndexes = visibleTabs.map((tab) =>
+            Number(tab.dataset.tabIndex)
+          );
+          const visibleIndex = visibleIndexes.findIndex((visibleTabIndex) => {
+            return visibleTabIndex === activeTabIndex;
+          });
+          const findNextIndex = () => {
+            let nextIndex;
+            const tabGroupChildren = tabContentRef.current.children;
+
+            if (goBack) {
+              if (visibleIndex >= 0) {
+                nextIndex =
+                  visibleIndex === 0
+                    ? visibleIndexes.slice(-1)[0]
+                    : visibleIndexes[visibleIndex - 1];
+              } else {
+                nextIndex = visibleIndexes.slice(-2)[0];
+              }
+            }
+
+            if (goForward) {
+              nextIndex = visibleIndexes[visibleIndex + 1] || visibleIndexes[0];
+            }
+
+            if (tabGroupChildren[nextIndex]?.classList.contains("menu-tab")) {
+              setMenuOpen(true);
+            }
+
+            return nextIndex;
+          };
+
+          setActiveTabIndex(findNextIndex());
+        }
+      },
+      [tabContentRef, visibleTabs, setMenuOpen, activeTabIndex, vertical]
+    );
+
+    useEffect(() => {
+      if (activeTabIndex !== false) {
+        return;
+      }
+      React.Children.forEach(children, (child, i) => {
+        if (child.props.selected && !child.props.tabKey) {
+          setActiveTabIndex(i);
+        }
+      });
+    }, [activeTabIndex, children]);
+
     useEffect(() => {
       handleOverflow();
     }, [handleOverflow]);
@@ -125,14 +196,27 @@ const ATabGroup = forwardRef(
     }
 
     const tabContext = {
-      tabChanged,
-      setTabChanged,
+      setActiveTabIndex,
       vertical,
       secondary
     };
-    const renderChildren = React.Children.map(children, (child, i) => {
+
+    const cloneChildWithProps = (child, i) =>
+      React.cloneElement(child, {
+        activeTabIndex,
+        tabIndex: i,
+        handleDirectionalKeyDown
+      });
+
+    const renderChildrenWithProps = React.Children.map(
+      children,
+      cloneChildWithProps
+    );
+
+    const renderMenuChildren = React.Children.map(children, (child, i) => {
       if (!menuItems.length) return null;
       const isOverflowItem = menuItems.includes(i);
+      const handleListItemClick = () => setActiveTabIndex(i);
       if (isOverflowItem) {
         //tabKey is not recognized by AListItem and gets added to DOM so we remove it here.
         const {tabKey, ...rest} = child.props;
@@ -144,17 +228,46 @@ const ATabGroup = forwardRef(
             </AListItem>
           );
         }
-        return <AListItem {...rest} />;
+        return (
+          <AListItem
+            onClick={handleListItemClick}
+            {...rest}
+            selected={
+              i === activeTabIndex || (!activeTabIndex && rest.selected)
+            }
+          />
+        );
       }
     });
 
     return (
-      <div {...rest} role="tablist" ref={combinedRef} className={className}>
-        <div className="a-tab-group__tab-wrapper">
-          <div className={tabContentClassName}>
+      <div
+        {...rest}
+        role="tablist"
+        ref={combinedRef}
+        className={className}
+        aria-orientation={vertical ? "vertical" : "horizontal"}
+      >
+        <div className="a-tab-group__tab-wrapper" role="presentation">
+          <div
+            ref={tabContentRef}
+            className={tabContentClassName}
+            role="presentation"
+          >
             <ATabContext.Provider value={tabContext}>
-              {children}
-              {!vertical && <OverflowMenuTab>{renderChildren}</OverflowMenuTab>}
+              {renderChildrenWithProps}
+              {!vertical && (
+                <OverflowMenuTab
+                  activeTabIndex={activeTabIndex}
+                  isMenuChildActive={menuItems.includes(activeTabIndex)}
+                  menuOpen={menuOpen}
+                  setMenuOpen={setMenuOpen}
+                  tabIndex={React.Children.count(children)}
+                  handleDirectionalKeyDown={handleDirectionalKeyDown}
+                >
+                  {renderMenuChildren}
+                </OverflowMenuTab>
+              )}
             </ATabContext.Provider>
           </div>
         </div>

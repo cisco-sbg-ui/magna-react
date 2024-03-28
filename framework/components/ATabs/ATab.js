@@ -1,18 +1,10 @@
 import PropTypes from "prop-types";
-import React, {
-  forwardRef,
-  useContext,
-  useEffect,
-  useRef,
-  useState
-} from "react";
+import React, {forwardRef, useContext, useRef} from "react";
 
 import ATabContext from "./ATabContext";
 import {keyCodes} from "../../utils/helpers";
 import {useCombinedRefs} from "../../utils/hooks";
 import "./ATabs.scss";
-
-let tabCounter = 1;
 
 const ATab = forwardRef(
   (
@@ -27,46 +19,28 @@ const ATab = forwardRef(
       selected,
       tabKey,
       target,
+      ariaControlledContentId,
+      activeTabIndex,
+      tabIndex,
+      handleDirectionalKeyDown,
+      isMenuChildActive,
       ...rest
     },
     ref
   ) => {
     const tabRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, tabRef);
-    const [tabId, setTabId] = useState(null);
-    const [isSelected, setIsSelected] = useState(null);
-    const {tabChanged, setTabChanged, vertical, secondary} =
-      useContext(ATabContext);
+    const isSelected = activeTabIndex === tabIndex;
+    const {setActiveTabIndex, vertical, secondary} = useContext(ATabContext);
 
     const menuTab =
       tabRef.current && tabRef.current.classList.contains("menu-tab")
         ? tabRef.current
         : null;
 
-    useEffect(() => {
-      if (tabKey) return;
-      if (!tabId) {
-        const index = tabCounter++;
-        setTabId(index);
-        if (selected) {
-          setTabChanged(index);
-        }
-      }
-
-      setIsSelected(tabChanged === tabId);
-    }, [setIsSelected, selected, setTabChanged, tabChanged, tabId, tabKey]);
-
-    useEffect(() => {
-      if (tabKey) return;
-      if (!selected && isSelected) {
-        setTabChanged(-1);
-        setIsSelected(false);
-      }
-    }, [selected, tabKey]); // eslint-disable-line react-hooks/exhaustive-deps
-
     let className = "a-tab-group__tab";
 
-    if ((tabKey && selected) || isSelected) {
+    if ((tabKey && selected) || isSelected || isMenuChildActive) {
       className += " a-tab-group__tab--selected";
 
       if (vertical) {
@@ -103,16 +77,16 @@ const ATab = forwardRef(
       ref: combinedRef,
       className,
       onClick: (e) => {
-        !tabKey && setTabChanged(tabId);
+        !tabKey && !menuTab && setActiveTabIndex(tabIndex);
         if (menuTab) {
           handleSiblingSelectedClass();
         }
         onClick && onClick(e);
       },
       onKeyDown: (e) => {
-        if (!href && [keyCodes.enter].includes(e.keyCode)) {
+        if (!href && [keyCodes.enter, keyCodes.space].includes(e.keyCode)) {
           e.preventDefault();
-          !tabKey && setTabChanged(tabId);
+          !tabKey && !menuTab && setActiveTabIndex(tabIndex);
           if (menuTab) {
             handleSiblingSelectedClass();
           }
@@ -120,12 +94,13 @@ const ATab = forwardRef(
         } else {
           onKeyDown && onKeyDown(e);
         }
+        !tabKey && handleDirectionalKeyDown(e);
       },
       onKeyUp: (e) => {
         onKeyUp && onKeyUp(e);
       },
       role: "tab",
-      tabIndex: 0
+      tabIndex: isSelected ? 0 : -1
     };
 
     if (href) {
@@ -138,7 +113,16 @@ const ATab = forwardRef(
       TagName = component;
     }
 
-    return <TagName {...props}>{children}</TagName>;
+    return (
+      <TagName
+        {...props}
+        data-tab-index={tabIndex}
+        aria-selected={isSelected}
+        aria-controls={ariaControlledContentId}
+      >
+        {children}
+      </TagName>
+    );
   }
 );
 
@@ -162,7 +146,11 @@ ATab.propTypes = {
   /**
    * If the `href` property is defined, the target can be set (ex: `_blank`, `_self`, `_parent`, `_top`)
    */
-  target: PropTypes.string
+  target: PropTypes.string,
+  /**
+   * Aria feture which connects the tab to it's corresponding content
+   */
+  controlledContentId: PropTypes.string
 };
 
 ATab.displayName = "ATab";
