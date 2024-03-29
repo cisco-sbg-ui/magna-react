@@ -240,7 +240,12 @@ const validColorRegex =
 
 export const isValidColor = (props, propName, componentName) => {
   const color = props?.[propName];
-  if (color && !isStockColor(color) && !validColorRegex.test(color)) {
+  if (
+    color &&
+    !isStockColor(color) &&
+    !validColorRegex.test(color) &&
+    !color.startsWith("var(")
+  ) {
     return new Error(
       "Invalid value (`" +
         JSON.stringify(props[propName]) +
