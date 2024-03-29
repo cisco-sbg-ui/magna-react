@@ -1,6 +1,5 @@
 import useEscapeKeydown from "../useEscapeKeydown/useEscapeKeydown";
 import useOutsideClick from "../useOutsideClick/useOutsideClick";
-import useReturnFocusOnClose from "../useReturnFocusOnClose/useReturnFocusOnClose";
 
 const usePopupQuickExit = (options) => {
   const {popupRef, isEnabled, onExit} = options;
@@ -12,9 +11,6 @@ const usePopupQuickExit = (options) => {
   useEscapeKeydown({
     isEnabled,
     onKeydown: onExit
-  });
-  useReturnFocusOnClose({
-    isOpen: isEnabled
   });
 };
 

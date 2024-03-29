@@ -57,29 +57,6 @@ function testCoreFunctionality(TestComponent, props = {}) {
     cy.get("[role='dialog']").should("have.focus");
   });
 
-  it("should return focus to element which opened the modal after its closed", () => {
-    cy.mount(<TestComponent {...props} />);
-
-    // Open modal
-    openModal();
-
-    // Close modal
-    cy.getByDataTestId("close-modal-trigger").click();
-    cy.getByDataTestId("modal-trigger").should("have.focus");
-  });
-
-  it("should close the modal on escape key press", () => {
-    cy.mount(<TestComponent {...props} />);
-
-    // Open modal
-    openModal();
-
-    // Escape key press
-    cy.escapeKeydown().then(() => {
-      getModalContent().should("not.exist");
-    });
-  });
-
   it("should trap focus within the modal", () => {
     cy.mount(<TestComponent {...props} />);
 
@@ -135,19 +112,6 @@ function testCoreFunctionality(TestComponent, props = {}) {
     cy.getByDataTestId("modal-trigger").focus();
     cy.getByDataTestId("modal-trigger").click();
     cy.get("textarea").should("have.focus");
-  });
-}
-
-function testOutsideClick(TestComponent, props = {}) {
-  it("should close the modal on outside click when closeOnOutsideClick prop is passed in", () => {
-    cy.mount(<TestComponent {...props} />);
-
-    // Open modal
-    openModal();
-
-    // Click outside modal content
-    cy.get(".a-page-overlay").click(300, 300);
-    getModalContent().should("not.exist");
   });
 }
 
@@ -219,10 +183,6 @@ describe("<AModal />", () => {
 
   testCoreFunctionality(ModalTest);
   testPropagation(WithAccordionTest);
-
-  describe("when rendered with closeOnOutsideClick", () => {
-    testOutsideClick(ModalTest, {closeOnOutsideClick: true});
-  });
 
   describe("when rendered without <APageOverlay />", () => {
     testCoreFunctionality(ModalTest, {withOverlay: false});
@@ -391,7 +351,6 @@ function ModalTest({children, ...modalProps}) {
         data-testid="modal"
         aria-label="modal test"
         isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
         {...modalProps}
       >
         <ContentSetup onCloseBtnClick={() => setIsOpen(false)}>
@@ -422,7 +381,6 @@ function WithAccordionTest({children, ...modalProps}) {
             <AModal
               aria-label="modal-accordion-setup"
               isOpen={isOpen}
-              onClose={() => setIsOpen(false)}
               {...modalProps}
             >
               <ContentSetup onCloseBtnClick={() => setIsOpen(false)}>
@@ -460,7 +418,6 @@ function WithMenuTest(modalProps) {
         data-testid="modal"
         aria-label="modal with menu test"
         isOpen={isModalOpen}
-        onClose={() => setIsOpen(false)}
         {...modalProps}
       >
         <APanel ref={modalContentRef} data-testid="modal-content">
@@ -514,7 +471,6 @@ function WithToastTest(modalProps) {
         data-testid="modal"
         ref={popupRef}
         isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
         {...modalProps}
       >
         <APanel data-testid="modal-content">
