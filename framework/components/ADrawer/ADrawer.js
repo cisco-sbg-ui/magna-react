@@ -130,10 +130,12 @@ const ADrawer = forwardRef(
           {...rest}
           ref={shouldRenderModal ? null : ref}
           className={shouldRenderModal ? "" : className}
-          style={shouldRenderModal ? {height: "100%"} : style}
+          style={shouldRenderModal ? {height: '100%'} : style}
         >
-          {closeButton}
-          {shouldRenderChildren && children}
+          <div className="a-drawer-content">
+            {closeButton}
+            {shouldRenderChildren && children}
+          </div>
         </DrawerPanelComponent>
       </DrawerContext.Provider>
     );
@@ -193,7 +195,7 @@ ADrawer.propTypes = {
   isOpen: PropTypes.bool,
 
   /**
-   * Function which closes the Drawer. It is necessary for accessibility concerns,
+   * Function which closes the Drawer. It is necessary for accessibility concerns, 
    * specifically to enable exiting the Drawer upon pressing the "Escape" key.
    */
   onClose: PropTypes.func,
@@ -266,4 +268,6 @@ ADrawer.propTypes = {
 ADrawer.displayName = "ADrawer";
 
 export default ADrawer;
-export {DrawerContext};
+export {
+  DrawerContext
+}
