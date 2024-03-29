@@ -1,7 +1,6 @@
-import React, {forwardRef, useContext} from "react";
+import React, {forwardRef} from "react";
 import PropTypes from "prop-types";
 
-import { DrawerContext } from "./ADrawer";
 import AButton from "../AButton/AButton";
 import AIcon from "../AIcon/AIcon";
 import "./ADrawerTitle.scss";
@@ -22,7 +21,6 @@ const ADrawerTitle = forwardRef(
     },
     ref
   ) => {
-    const {onClose} = useContext(DrawerContext);
     let className = "a-drawer__title";
 
     if (propsClassName) {
@@ -33,11 +31,11 @@ const ADrawerTitle = forwardRef(
       <div className={className} ref={ref} {...rest}>
         <div className="a-drawer__title-content">{children}</div>
         <div className="a-drawer__title-close">
-          {(onClose || onCloseButtonClick) && (
+          {onCloseButtonClick && (
             <AButton
               icon
               tertiaryAlt
-              onClick={() => (onClose && onClose()) || (onCloseButtonClick && onCloseButtonClick(false))}
+              onClick={() => onCloseButtonClick && onCloseButtonClick(false)}
               {...closeBtnProps}
             >
               {closeTitle ? (

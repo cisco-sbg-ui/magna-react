@@ -15,7 +15,6 @@ import {
 
 import "./AModal.scss";
 import {useDelayUnmount} from "../../utils/hooks";
-import usePopupQuickExit from "../../hooks/usePopupQuickExit/usePopupQuickExit";
 
 /**
  * Reasons for not stopping propagation for the following keys:
@@ -40,12 +39,11 @@ const AModal = forwardRef(
       delayUnmount = 200,
       children,
       isOpen: propsIsOpen,
-      onClose,
       small,
       medium,
       large,
       xlarge,
-      closeOnOutsideClick = false,
+      onClickOutside,
       withCenteredContent = true,
       withFocusTrap = true,
       autoFocusElementRef,
@@ -61,7 +59,6 @@ const AModal = forwardRef(
     const hasPortalNode = appendTo || appRef.current;
     const isOpen = !!hasPortalNode && propsIsOpen;
     const _ref = useRef();
-    const childRef = useRef();
 
     const shouldRenderChildren = useDelayUnmount({
       isOpen,
@@ -84,12 +81,6 @@ const AModal = forwardRef(
       rootRef: _ref,
       isEnabled: withFocusTrap && shouldRenderChildren,
       autoFocusElementRef: elementRefToAutoFocus
-    });
-
-    usePopupQuickExit({
-      popupRef: closeOnOutsideClick && childRef,
-      isEnabled: isOpen,
-      onExit: onClose
     });
 
     useEffect(() => {
@@ -145,12 +136,6 @@ const AModal = forwardRef(
       return null;
     }
 
-    if (rest.onClickOutside) {
-      console.warn(
-        "onClickOutside has been removed. Use onClose and set closeOnOutsideClick to true"
-      );
-    }
-
     /**
      * In the case where `AModal` is rendered inside a clickable element
      * like a button component, we want to prevent clicks and certain
@@ -167,10 +152,6 @@ const AModal = forwardRef(
      *   </AModal>
      * </AButton>
      */
-    const renderChildren = (
-      <span ref={childRef}>{shouldRenderChildren ? children : null}</span>
-    );
-
     if (withOverlay) {
       return ReactDOM.createPortal(
         <APageOverlay
@@ -190,6 +171,8 @@ const AModal = forwardRef(
             if (target !== _ref.current) {
               return;
             }
+
+            onClickOutside && onClickOutside();
           }}
         >
           <Component
@@ -200,7 +183,7 @@ const AModal = forwardRef(
             className={contentClassName}
             {...rest}
           >
-            {renderChildren}
+            {shouldRenderChildren ? children : null}
           </Component>
         </APageOverlay>,
         appendTo || appRef.current
@@ -232,7 +215,7 @@ const AModal = forwardRef(
         }}
         {...rest}
       >
-        {renderChildren}
+        {shouldRenderChildren ? children : null}
       </Component>,
       appendTo || appRef.current
     );
@@ -280,11 +263,6 @@ You should provide either an \`aria-label\` or \`aria-labelledby\` prop to \`${c
   className: PropTypes.string,
 
   /**
-   * Enables closing the modal when clicking outside of the modal content.
-   */
-  closeOnOutsideClick: PropTypes.bool,
-
-  /**
    * When the modal is rendered `withTransitions`, there is technically a
    * delay from when you set `isOpen` to `false` to when the component
    * actually unmounts from the DOM. This is done to preserve the transition.
@@ -320,15 +298,8 @@ You should provide either an \`aria-label\` or \`aria-labelledby\` prop to \`${c
 
   /**
    * If not using the `usePopupQuickExit` hook, pass in a function to handle clicking outside of the modal event. `withOverlay` prop must be set to true.
-   * @deprecated use "closeOnOutsideClick" in conjunction with a passed in "onClose" function to close modal
    */
   onClickOutside: PropTypes.func,
-
-  /**
-   * Function which closes the Modal. It is necessary for accessibility concerns,
-   * specifically to enable exiting the Modal upon pressing the "Escape" key.
-   */
-  onClose: PropTypes.func.isRequired,
 
   /**
    * Determines if the content rendered underneath the modal should
