@@ -61,32 +61,3 @@
     display: none;
   }
 }
-
-@media screen and (min-width: 1300px) {
-  #container {
-    grid-template-columns: 0 auto;
-    grid-template-rows: 67px auto;
-  }
-}
-
-@media screen and (min-width: 1600px) {
-  .col {
-    &--right {
-      display: block;
-    }
-
-    &--center {
-      padding-right: 40px !important;
-      max-width: calc(100vw - 250px - 250px);
-    }
-  }
-}
-
-@media screen and (min-width: 2000px) {
-  .col {
-    &--center {
-      padding-left: 100px !important;
-      padding-right: 100px !important;
-    }
-  }
-}
