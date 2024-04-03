@@ -36,7 +36,7 @@ const getType = (type) => {
   return types[type.name](type.value) + (type.required ? " Required" : "");
 };
 
-export default function Props({of}) {
+export default function Props({of, inDrawer}) {
   const allProps = useContext(PropsContext);
   const props = allProps.find((x) => x.displayName === of)?.props || {};
 
@@ -45,7 +45,7 @@ export default function Props({of}) {
   }
 
   return (
-    <ACardContainer style={{margin: "10px 0"}}>
+    <ACardContainer style={{margin: inDrawer ? "10px 4px" : "10px 0"}}>
       <ASimpleTable className="mb-8">
         <thead>
           <tr>

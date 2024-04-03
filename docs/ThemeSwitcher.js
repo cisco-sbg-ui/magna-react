@@ -23,7 +23,7 @@ const ThemeSwitcher = () => {
   const autoTheme = useAAutoTheme();
 
   return (
-    <div className="theme-switcher">
+    <div id="theme-switcher" className="theme-switcher">
       <div style={groupStyle}>
         <p style={labelStyle}>Theme:</p>
         <AButtonGroup

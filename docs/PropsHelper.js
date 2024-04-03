@@ -8,7 +8,8 @@ import {
 } from "../framework";
 import Props from "./Props";
 
-const PropsHelper = ({shouldShowBtn, componentName}) => {
+const PropsHelper = ({shouldShowBtn, currentDoc}) => {
+  const {components} = currentDoc;
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   useEscapeKeydown({
     isEnabled: isDrawerOpen,
@@ -67,14 +68,18 @@ const PropsHelper = ({shouldShowBtn, componentName}) => {
           boxShadow: "0 1px 12px 0 #6f7680",
           overflowY: "auto"
         }}
-        closeBtnOnClick={() => setIsDrawerOpen(false)}
+        onClose={() => setIsDrawerOpen(false)}
         asModal={false}
         isOpen={isDrawerOpen}
         slideIn="bottom"
       >
         <ADrawerContent>
-          <h3>{componentName} Props</h3>
-          <Props of={componentName} />
+          {components.split(", ").map((c) => (
+            <span key={c}>
+              <h3 className="props-helper-header">{c} Props</h3>
+              <Props of={c} />
+            </span>
+          ))}
         </ADrawerContent>
       </ADrawer>
     </>
