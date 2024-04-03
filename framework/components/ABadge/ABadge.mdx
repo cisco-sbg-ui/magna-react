@@ -15,19 +15,7 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
 ### Usage
 
 <Playground
-  withTwoPanes
-  code={`<ABadge content="3" large>
-  <AButton icon>
-    <AIcon size={48}>bell</AIcon>
-  </AButton>
-</ABadge>`}
-/>
-
-#### Badge Sizes
-
-<Playground
   code={`<>
-<<<<<<< HEAD
   <div>
     <ABadge color="cisco-blue" content="3" large className="mr-4">
       <AButton tertiaryAlt icon className="pa-1" onClick={() => {}}>
@@ -106,61 +94,12 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
         </AButton>
       </ABadge>
     </div>
-=======
-  {["small", "medium", "large"].map((size) => {
-    const sizeProp = {
-      [size]: true,
-    };
-    return (
-      <ABadge {...sizeProp} content="3" className="mr-4">
-        <AButton icon>
-          <AIcon size={48}>bell</AIcon>
-        </AButton>
-      </ABadge>
-    );
-  })}
-</>;
-`}
-/>
->>>>>>> 13c2dec (docs: redesign the docs site)
 
-#### Badge Statuses
-
-<Playground
-  code={`<>
-  {["error", "info", "success"].map((level) => {
-    return (
-      <ABadge level={level} content="99+" large className="mr-4">
-        <AButton tertiaryAlt icon className="pa-1">
-          <AIcon size={48}>bell</AIcon>
-        </AButton>
-      </ABadge>
-    );
-  })}
 </>
 `}
 />
 
-#### With Different Button Variants
-
-<Playground
-  code={`<>
-  {["primary", "secondary", "tertiary", "tertiaryAlt"].map((btnVariant) => {
-    const variantProp = {
-      [btnVariant]: true,
-    }
-    return (
-      <ABadge content="3" large className='mr-4'>
-        <AButton {...variantProp} icon>
-          <AIcon size={48}>bell</AIcon>
-        </AButton>
-      </ABadge>
-    );
-  })}
-</>`}
-/>
-
-## Component Props
+## Badge Props
 
 The `ABadge` component inherits passed props.
 

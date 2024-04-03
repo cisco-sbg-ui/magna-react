@@ -34,6 +34,21 @@
   padding: 12px 20px;
 }
 
+.props-helper-drawer {
+  z-index: 2;
+  box-shadow: 0 1px 12px 0 #6f7680;
+  overflow-y: auto;
+
+  .a-drawer__title {
+    position: sticky;
+    top: 0;
+  }
+
+  .a-drawer__content {
+    padding: 0 24px;
+  }
+}
+
 @media screen and (max-width: 1000px) {
   #container {
     grid-template-columns: auto;

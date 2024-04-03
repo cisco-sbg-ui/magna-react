@@ -46,6 +46,10 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
   // Force initial active tab to be set on client-side
   // This prevents server and client mismatches
   useEffect(() => {
+    if (!currentDoc) {
+      return;
+    }
+
     const requestedTab = query?.page;
     const firstTab = Object.keys(currentDoc?.pageTabsMdx)[0];
     setActiveTab(requestedTab || firstTab);

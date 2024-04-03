@@ -51,7 +51,8 @@ const Playground = ({
           </div>
           <AtomicReactComponentsAndHooks.ACardContainer
             className="d-flex align-center justify-center"
-            style={{flexBasis: "50%", borderRadius: "6px"}}>
+            style={{flexBasis: "50%", borderRadius: "6px"}}
+          >
             <LiveError />
             <LivePreview />
           </AtomicReactComponentsAndHooks.ACardContainer>
@@ -68,7 +69,8 @@ const Playground = ({
       </AtomicReactComponentsAndHooks.ACardContainer>
       <div
         className="overflow-y-scroll black mt-2 mb-10"
-        style={{borderRadius: "6px"}}>
+        style={{borderRadius: "6px", maxHeight: "350px"}}
+      >
         <LiveEditor
           theme={theme}
           style={{

@@ -45,7 +45,7 @@ export default function Props({of, inDrawer}) {
   }
 
   return (
-    <ACardContainer style={{margin: inDrawer ? "10px 4px" : "10px 0"}}>
+    <ACardContainer style={{margin: inDrawer ? "10px 20px" : "10px 0"}}>
       <ASimpleTable className="mb-8">
         <thead>
           <tr>

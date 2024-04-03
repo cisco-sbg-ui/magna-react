@@ -3,13 +3,13 @@ import {
   AButton,
   ADrawer,
   ADrawerContent,
+  ADrawerTitle,
   useATheme,
   useEscapeKeydown
 } from "../framework";
 import Props from "./Props";
 
-const PropsHelper = ({shouldShowBtn, currentDoc}) => {
-  const {components} = currentDoc;
+const PropsHelper = ({shouldShowBtn, componentName}) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   useEscapeKeydown({
     isEnabled: isDrawerOpen,
@@ -24,9 +24,7 @@ const PropsHelper = ({shouldShowBtn, currentDoc}) => {
     <>
       <AButton
         onClick={() => {
-          console.log(document.getElementById("component-page"));
-          document.getElementById("component-page").scrollTo(0, 0);
-          document.getElementById("component-page").scrollTop = 0;
+          window.scrollTo(0, 0);
         }}
         className={styleColor}
         style={{
@@ -63,23 +61,16 @@ const PropsHelper = ({shouldShowBtn, currentDoc}) => {
         Show Props
       </AButton>
       <ADrawer
-        style={{
-          zIndex: "2",
-          boxShadow: "0 1px 12px 0 #6f7680",
-          overflowY: "auto"
-        }}
+        className="props-helper-drawer"
         onClose={() => setIsDrawerOpen(false)}
         asModal={false}
         isOpen={isDrawerOpen}
         slideIn="bottom"
       >
+        <ADrawerTitle onCloseButtonClick={() => setIsDrawerOpen(false)} />
         <ADrawerContent>
-          {components.split(", ").map((c) => (
-            <span key={c}>
-              <h3 className="props-helper-header">{c} Props</h3>
-              <Props of={c} />
-            </span>
-          ))}
+          <h3 className="props-helper-header">{componentName} Props</h3>
+          <Props of={componentName} inDrawer />
         </ADrawerContent>
       </ADrawer>
     </>

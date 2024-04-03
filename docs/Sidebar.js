@@ -177,14 +177,12 @@ const Sidebar = ({
 
   return (
     <ADrawer
-      slim={isSlim}
-      slimWidth="50px"
       withTransitions={false}
       position="relative"
       isOpen={true}
       id="sidebar"
       className={`root-sidebar py-4 sidebar`}
-      openWidth={300 - 12}
+      openWidth={"288px"}
       style={{
         height: "100%",
         overflowY: "auto",

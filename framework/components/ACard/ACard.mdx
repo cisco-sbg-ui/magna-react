@@ -1,29 +1,20 @@
 ---
 name: Cards
 route: /components/card
-components: ACard, ACardHeader
+components: ACardContainer, ACardBasic, ACardItem, ACardHeader, ACardTitle, ACardSubTitle, ACardContent, ACardFooter
+title: ACard
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/ACard
 ---
 
-# Cards
+## Usage
 
-## Install
+### Import
 
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+<ComponentImport components="ACardContainer, ACardBasic, ACardItem, ACardHeader, ACardTitle, ACardSubTitle, ACardContent, ACardFooter" />
 
-```
-import {
-  ACardContainer,
-  ACardBasic,
-  ACardItem,
-  ACardHeader,
-  ACardTitle,
-  ACardSubTitle,
-  ACardContent,
-  ACardFooter
-} from "@cisco-sbg-ui/magna-react";
-```
+### Usage
 
-## Container card
+#### Container card
 
 Used to group content and actions into logical sections or buckets, it can contain [Basic cards](/components/card#basic-card).
 
@@ -42,7 +33,7 @@ Used to group content and actions into logical sections or buckets, it can conta
 `}
 />
 
-### Anatomy of container
+#### Anatomy of container
 
 - Title / Subtitle are optional
 - Content area can be single or multi-column layouts
@@ -76,7 +67,7 @@ Used to group content and actions into logical sections or buckets, it can conta
 `}
 />
 
-### Flat container
+#### Flat container
 
 <Playground
   code={`
@@ -97,7 +88,7 @@ Used to group content and actions into logical sections or buckets, it can conta
 `}
 />
 
-### Composition example 1
+#### Composition example 1
 
 <Playground
   code={`
@@ -131,7 +122,7 @@ Used to group content and actions into logical sections or buckets, it can conta
 `}
 />
 
-### Composition example 2
+#### Composition example 2
 
 <Playground
   code={`
@@ -156,7 +147,7 @@ Used to group content and actions into logical sections or buckets, it can conta
 `}
 />
 
-### Composition example 3
+#### Composition example 3
 
 <Playground
   code={`
@@ -221,7 +212,7 @@ Used to group content and actions into logical sections or buckets, it can conta
 `}
 />
 
-## Basic card
+#### Basic card
 
 Cards group related information in a flexible-size containers.
 Basic cards typically contain a few short, related pieces of information and can be
@@ -262,7 +253,7 @@ For page level groupings, use [Container Cards](/components/card#container-card)
 `}
 />
 
-### Card States
+#### Card States
 
 <Playground
   code={`
@@ -388,7 +379,7 @@ For page level groupings, use [Container Cards](/components/card#container-card)
 `}
 />
 
-### Lifted card
+#### Lifted card
 
 <Playground
   code={`
@@ -408,7 +399,7 @@ For page level groupings, use [Container Cards](/components/card#container-card)
 `}
 />
 
-### Composition example
+#### Composition example
 
 <Playground
   code={`
