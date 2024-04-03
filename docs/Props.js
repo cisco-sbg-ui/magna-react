@@ -45,7 +45,7 @@ export default function Props({of}) {
   }
 
   return (
-    <ACardContainer>
+    <ACardContainer style={{margin: "10px 0"}}>
       <ASimpleTable className="mb-8">
         <thead>
           <tr>

@@ -23,7 +23,9 @@ const PropsHelper = ({shouldShowBtn, componentName}) => {
     <>
       <AButton
         onClick={() => {
-          window.scrollTo(0, 0);
+          console.log(document.getElementById("component-page"));
+          document.getElementById("component-page").scrollTo(0, 0);
+          document.getElementById("component-page").scrollTop = 0;
         }}
         className={styleColor}
         style={{

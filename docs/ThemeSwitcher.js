@@ -1,4 +1,5 @@
 import React, {forwardRef} from "react";
+import "./ThemeSwitcher.scss";
 
 import {
   AButton,
@@ -22,7 +23,7 @@ const ThemeSwitcher = () => {
   const autoTheme = useAAutoTheme();
 
   return (
-    <div>
+    <div className="theme-switcher">
       <div style={groupStyle}>
         <p style={labelStyle}>Theme:</p>
         <AButtonGroup
@@ -32,7 +33,8 @@ const ThemeSwitcher = () => {
               autoTheme.disable();
             }
             setCurrentTheme(value);
-          }}>
+          }}
+        >
           <AButton secondary data-testid="enable-default-theme" value="default">
             Light
           </AButton>
@@ -50,17 +52,20 @@ const ThemeSwitcher = () => {
               autoTheme.disable();
             }
             setCurrentTheme(value);
-          }}>
+          }}
+        >
           <AButton
             secondary
             data-testid="enable-classic-light-theme"
-            value="classic-light">
+            value="classic-light"
+          >
             Light
           </AButton>
           <AButton
             secondary
             data-testid="enable-classic-dark-theme"
-            value="classic-dark">
+            value="classic-dark"
+          >
             Dark
           </AButton>
         </AButtonGroup>

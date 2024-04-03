@@ -1,17 +1,11 @@
 @import "../../framework/styles/index.scss";
 
-@include theme(sidebar-tree) using ($theme) {
+.sidebar-tree {
   &__root {
     border-radius: 6px;
     &--active {
-      background: map-deep-get($theme, "control", "row-effect-image"),
-        map-deep-get($theme, "control", "row-effect-color");
+      background: var(--row-effect-image), var(--row-effect-color);
       // color: map-deep-get($theme, "tree", "color");
-    }
-
-    &--focus {
-      // background: map-deep-get($theme, "control", "row-effect-image"),
-      //   map-deep-get($theme, "control", "row-effect-color");
     }
 
     > .sidebar-tree__chevron.a-button:focus {
@@ -46,22 +40,17 @@
   &--hoverable {
     .sidebar-tree__root {
       &--hover {
-        background-color: map-deep-get(
-          $theme,
-          "tree",
-          "background-color--hover"
-        );
+        background-color: var(--control-bg-weak-hover);
         cursor: pointer;
-        color: map-deep-get($theme, "tree", "color");
+        color: var(--base-text-default);
 
         .sidebar-tree__content {
-          color: map-deep-get($theme, "tree", "color");
+          color: var(--base-text-default);
         }
       }
 
       &--focus {
-        background: map-deep-get($theme, "control", "row-effect-image"),
-          map-deep-get($theme, "control", "row-effect-color");
+        background: var(--row-effect-image), var(--row-effect-color);
       }
     }
   }

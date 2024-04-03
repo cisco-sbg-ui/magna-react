@@ -2,10 +2,38 @@
   background: inherit;
 }
 
+#header {
+  grid-area: header;
+}
+
+#component-page {
+  grid-area: component;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+#sidebar {
+  grid-area: sidebar;
+}
+
+#container {
+  display: grid;
+  grid-template-columns: 290px auto;
+  grid-template-rows: 67px auto;
+  grid-template-areas:
+    "header header"
+    "sidebar component";
+  overflow: hidden;
+  height: 100vh;
+}
+
+.page {
+  // max-height: 100vh;
+}
+
 .row {
   max-width: 1600px;
   margin: 0 auto;
-  padding: 0 10px;
 }
 
 .col {

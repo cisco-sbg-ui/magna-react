@@ -3,8 +3,11 @@ import {AButton, AIcon} from "../framework";
 
 const ComponentTitle = ({title, sourceCodeLink}, ref) => {
   return (
-    <div className="mb-12">
-      <div className="d-flex justify-space-between">
+    <div style={{display: "flex"}}>
+      <div
+        className="d-flex justify-space-between"
+        style={{marginRight: "20px"}}
+      >
         <h1 ref={ref} className="mb-3 mt-0" style={{fontSize: "40px"}}>
           {title}
         </h1>

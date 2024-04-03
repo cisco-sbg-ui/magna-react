@@ -16,8 +16,8 @@ import SidebarTree from "./SidebarTree";
 
 const CustomLink = ({children, href, ...rest}) => {
   return (
-    <Link href={href} passHref>
-      <a {...rest}>{children}</a>
+    <Link href={href} passHref {...rest}>
+      {children}
     </Link>
   );
 };
@@ -142,20 +142,23 @@ const Sidebar = ({
         style={{
           height: "100%",
           overflowY: "scroll"
-        }}>
+        }}
+      >
         <ADrawerContent
           style={{
             height: "100%"
           }}
           ref={ref}
-          className="pt-0">
+          className="pt-0"
+        >
           <div className="d-flex align-center justify-space-between">
             <h3 id="title">Navigation</h3>
             <AButton
               className="text-align--right align-self-end"
               icon
               tertiaryAlt
-              onClick={() => setIsDrawerOpen(false)}>
+              onClick={() => setIsDrawerOpen(false)}
+            >
               <AIcon size={24}>x</AIcon>
             </AButton>
           </div>
@@ -187,12 +190,14 @@ const Sidebar = ({
         overflowY: "auto",
         background: "inherit",
         boxShadow: "none"
-      }}>
+      }}
+    >
       <ADrawerContent
         style={{
           transition: "all 0.5s ease"
         }}
-        className="pa-0">
+        className="pa-0"
+      >
         <SidebarTree
           className={`${styleColor}`}
           hoverable

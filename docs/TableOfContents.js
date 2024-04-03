@@ -7,9 +7,6 @@ const toKebabCase = (str) => str.replaceAll(" ", "-").toLowerCase();
 const TableOfContents = ({items, activeSection, setActiveSection}) => {
   return (
     <section className="toc">
-      <h3 className="d-flex align-center">
-        <AIcon className="mr-2">notebook</AIcon> Table of contents
-      </h3>
       <ATabGroup className="ml-5" vertical>
         {items?.map((section, i) => (
           <ATab

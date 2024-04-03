@@ -6,35 +6,7 @@ const Header = ({className, onHamburgerClick}) => {
   const {isDark} = useATheme();
   return (
     <>
-      <div style={{position: "fixed", top: "0", width: "100vw", zIndex: "3"}}>
-        <ARow
-          className={`${className} py-2 d-flex white--text justify-center ${
-            isDark ? "mds-neutral--neutral-16" : "mds-neutral--neutral-1"
-          }`}
-          noGutters
-          style={{
-            //backgroundImage: "linear-gradient(to right, #373c42, #a7adb5)",
-            backgroundImage: "linear-gradient(to right, #306acf, #6c9ef5)",
-            borderBottom: isDark
-              ? "0.0625rem solid rgb(20, 21, 23)"
-              : "0.0625rem solid #e9ecef",
-            width: "100%",
-            position: "sticky",
-            top: "0",
-            zIndex: "3"
-          }}
-        >
-          <div>
-            These docs are in beta. Please report issues to{" "}
-            <a
-              className="white--text"
-              href="https://github.com/cisco-sbg-ui/magna-react/issues/new/choose"
-            >
-              GitHub
-            </a>
-            .
-          </div>
-        </ARow>
+      <div id="header">
         <ARow
           className={`${className} py-2 ${
             isDark ? "mds-neutral--neutral-16" : "mds-neutral--neutral-1"
@@ -103,12 +75,11 @@ const Header = ({className, onHamburgerClick}) => {
                   code
                 </AIcon>
               </AButton>
-              <ThemeSwitcher style={{alignSelf: "flex-end"}} />
             </div>
+            <ThemeSwitcher style={{alignSelf: "flex-end", flex: "1 0 auto"}} />
           </div>
         </ARow>
       </div>
-      <div style={{height: "113px"}} />
     </>
   );
 };

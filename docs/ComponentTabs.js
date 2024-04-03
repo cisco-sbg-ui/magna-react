@@ -8,7 +8,7 @@ const toKebabCase = (str) => str.replaceAll(" ", "-").toLowerCase();
 const ComponentTabs = ({tabs, onTabClick, activeTab}, ref) => {
   const {push, asPath} = useRouter();
   return (
-    <ATabGroup className="mb-6" ref={ref}>
+    <ATabGroup ref={ref}>
       {tabs.map((tab) => {
         const kebabTab = toKebabCase(tab);
         return (

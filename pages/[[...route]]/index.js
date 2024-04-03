@@ -4,16 +4,7 @@ import {serialize} from "next-mdx-remote/serialize";
 import {MDXRemote} from "next-mdx-remote";
 import React, {useEffect, useRef, useState} from "react";
 
-import {
-  AApp,
-  AAutoTheme,
-  ACol,
-  AContainer,
-  ARow,
-  AMount,
-  useInView
-} from "../../framework";
-import HiddenFontSwatches from "../../docs/HiddenFontSwatches";
+import {AApp, AAutoTheme, AMount, useInView} from "../../framework";
 import Sidebar from "../../docs/Sidebar";
 import PropsContext from "../../docs/PropsContext";
 
@@ -45,7 +36,6 @@ const toKebabCase = (str) => str.replaceAll(" ", "-").toLowerCase();
 
 export default function DocsPage({currentDoc, menus, propsInfo}) {
   const {query} = useRouter();
-  //const [isSlim, setIsSlim] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("usage");
   const [activeSection, setActiveSection] = useState();
@@ -70,195 +60,193 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
         <title>{`${currentDoc.name} | magna-react`}</title>
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
-      <AApp persistTheme style={{minHeight: "100vh"}}>
+      <AApp persistTheme>
         <AAutoTheme>
-          <HiddenFontSwatches />
-          <AContainer fluid className="pa-0">
+          <div id="container">
             <Header
               onHamburgerClick={() => {
                 setIsDrawerOpen(true);
               }}
               className="col"
             />
-            <ARow noGutters className="row" style={{width: "100%"}}>
-              <ACol className="col col--left" style={{maxWidth: "350px"}}>
-                <Sidebar
-                  //isSlim={isSlim}
-                  setIsDrawerOpen={setIsDrawerOpen}
-                  isDrawerOpen={isDrawerOpen}
-                  currentDoc={currentDoc}
-                  menus={menus}
-                />
-              </ACol>
-              <ACol className={`col col--center py-4`}>
-                <AMount withNewWrappingContext={true}>
-                  <div style={{width: "100%"}}>
-                    <PropsContext.Provider value={propsInfo}>
-                      <DocsPageContext.Provider
-                        value={{
-                          registerCodePlayground: (name) => (ref) => {
-                            if (!name) {
-                              return;
-                            }
-                            tableOfContentsRefs.set(name, ref);
-                          },
-                          componentName: currentDoc.title
-                        }}>
-                        <AtomicReactComponents.AInView
-                          threshold={0}
-                          onChange={(stuff) => {
-                            if (stuff.inView) {
-                              setActiveSection(null);
-                            }
-                          }}>
-                          <ComponentTitle
-                            sourceCodeLink={currentDoc.sourceCodeLink}
-                            title={currentDoc.title}
+
+            <Sidebar
+              setIsDrawerOpen={setIsDrawerOpen}
+              isDrawerOpen={isDrawerOpen}
+              currentDoc={currentDoc}
+              menus={menus}
+            />
+
+            <div id="component-page">
+              <AMount withNewWrappingContext={true}>
+                <PropsContext.Provider value={propsInfo}>
+                  <DocsPageContext.Provider
+                    value={{
+                      registerCodePlayground: (name) => (ref) => {
+                        if (!name) {
+                          return;
+                        }
+                        tableOfContentsRefs.set(name, ref);
+                      },
+                      componentName: currentDoc.title
+                    }}
+                  >
+                    <AtomicReactComponents.AInView
+                      threshold={0}
+                      onChange={(stuff) => {
+                        if (stuff.inView) {
+                          setActiveSection(null);
+                        }
+                      }}
+                    >
+                      <ComponentTitle
+                        sourceCodeLink={currentDoc.sourceCodeLink}
+                        title={currentDoc.title}
+                      />
+                    </AtomicReactComponents.AInView>
+                    <ComponentTabs
+                      ref={inViewRef}
+                      tabs={currentDoc.tabs}
+                      onTabClick={setActiveTab}
+                      activeTab={activeTab}
+                    />
+
+                    <MDXRemote
+                      {...(currentDoc?.pageTabsMdx[activeTab] ||
+                        currentDoc.source)}
+                      components={{
+                        ...components,
+                        pre: (props) => {
+                          const language =
+                            props.children.props?.className?.split("-")[1];
+                          const code = props.children.props.children;
+                          return <CodeBlock code={code} language={language} />;
+                        },
+                        blockquote: (props) => {
+                          const {combined} = getNestedChildrenText(
+                            props.children
+                          );
+
+                          let level;
+
+                          if (combined.includes(":warning:")) {
+                            level = "warning";
+                          } else if (combined.includes(":danger:")) {
+                            level = "danger";
+                          } else if (combined.includes("success")) {
+                            level = "success";
+                          } else {
+                            level = "info";
+                          }
+
+                          const alertChildren = level
+                            ? removeTextFromChildren(
+                                props.children,
+                                `:${level}:`
+                              )
+                            : props.children;
+
+                          return (
+                            <AtomicReactComponents.AAlert
+                              level={level}
+                              className="d-flex mb-4 mt-4"
+                              dismissable={false}
+                            >
+                              <div
+                                style={{
+                                  marginTop: "-20px",
+                                  marginBottom: "-20px"
+                                }}
+                              >
+                                {alertChildren}
+                              </div>
+                            </AtomicReactComponents.AAlert>
+                          );
+                        },
+                        p: (props) => (
+                          // eslint-disable-next-line
+                          <p
+                            className="mt-4 mb-4"
+                            style={{fontSize: "1rem"}}
+                            {...props}
                           />
-                        </AtomicReactComponents.AInView>
-                        <ComponentTabs
-                          ref={inViewRef}
-                          tabs={currentDoc.tabs}
-                          onTabClick={setActiveTab}
-                          activeTab={activeTab}
-                        />
-
-                        <MDXRemote
-                          {...(currentDoc?.pageTabsMdx[activeTab] ||
-                            currentDoc.source)}
-                          components={{
-                            ...components,
-                            pre: (props) => {
-                              const language =
-                                props.children.props?.className?.split("-")[1];
-                              const code = props.children.props.children;
-                              return (
-                                <CodeBlock code={code} language={language} />
-                              );
-                            },
-                            blockquote: (props) => {
-                              const {combined} = getNestedChildrenText(
-                                props.children
-                              );
-
-                              let level;
-
-                              if (combined.includes(":warning:")) {
-                                level = "warning";
-                              } else if (combined.includes(":danger:")) {
-                                level = "danger";
-                              } else if (combined.includes("success")) {
-                                level = "success";
-                              } else {
-                                level = "info";
+                        ),
+                        h2: (props) => (
+                          // eslint-disable-next-line
+                          <h2
+                            className="mt-10 mb-6"
+                            style={{fontSize: "2rem"}}
+                            {...props}
+                          />
+                        ),
+                        h3: (props) => (
+                          // eslint-disable-next-line
+                          <h3
+                            className="mt-10 mb-6"
+                            style={{fontSize: "1.5rem"}}
+                            {...props}
+                          />
+                        ),
+                        h4: (props) => (
+                          <AtomicReactComponents.AInView
+                            rootMargin="-70px 0px -90% 0px"
+                            //rootMargin="0px 0px -95%"
+                            threshold={0}
+                            onChange={(stuff) => {
+                              const {entry, inView} = stuff;
+                              if (!entry) {
+                                return;
                               }
+                              const sectionId =
+                                entry?.target?.getAttribute("id");
 
-                              const alertChildren = level
-                                ? removeTextFromChildren(
-                                    props.children,
-                                    `:${level}:`
-                                  )
-                                : props.children;
-
-                              return (
-                                <AtomicReactComponents.AAlert
-                                  level={level}
-                                  className="d-flex mb-4 mt-4"
-                                  dismissable={false}>
-                                  <div
-                                    style={{
-                                      marginTop: "-20px",
-                                      marginBottom: "-20px"
-                                    }}>
-                                    {alertChildren}
-                                  </div>
-                                </AtomicReactComponents.AAlert>
-                              );
-                            },
-                            p: (props) => (
-                              // eslint-disable-next-line
-                              <p
-                                className="mt-4 mb-4"
-                                style={{fontSize: "1rem"}}
-                                {...props}
-                              />
-                            ),
-                            h2: (props) => (
-                              // eslint-disable-next-line
-                              <h2
-                                className="mt-10 mb-6"
-                                style={{fontSize: "2rem"}}
-                                {...props}
-                              />
-                            ),
-                            h3: (props) => (
-                              // eslint-disable-next-line
-                              <h3
-                                className="mt-10 mb-6"
-                                style={{fontSize: "1.5rem"}}
-                                {...props}
-                              />
-                            ),
-                            h4: (props) => (
-                              <AtomicReactComponents.AInView
-                                rootMargin="-70px 0px -90% 0px"
-                                //rootMargin="0px 0px -95%"
-                                threshold={0}
-                                onChange={(stuff) => {
-                                  const {entry, inView} = stuff;
-                                  if (!entry) {
-                                    return;
-                                  }
-                                  const sectionId =
-                                    entry?.target?.getAttribute("id");
-
-                                  if (inView && activeSection !== sectionId) {
-                                    setActiveSection(sectionId);
-                                  }
-                                }}>
-                                {/* eslint-disable-next-line */}
-                                <h4
-                                  className="mt-6 mb-4"
-                                  style={{fontSize: "1.2rem"}}
-                                  {...props}
-                                />
-                              </AtomicReactComponents.AInView>
-                            ),
-                            h5: (props) => (
-                              // eslint-disable-next-line
-                              <h5
-                                className="mt-6 mb-5"
-                                style={{fontSize: "1rem"}}
-                                {...props}
-                              />
-                            )
-                          }}
-                        />
-                        <PropsHelper
-                          componentName={currentDoc.title}
-                          shouldShowBtn={hasScrolledPastTabs}
-                        />
-                      </DocsPageContext.Provider>
-                    </PropsContext.Provider>
-                  </div>
-                </AMount>
-              </ACol>
-              <ACol style={{maxWidth: 250}} className={`col col--right`}>
-                <TableOfContents
-                  setActiveSection={setActiveSection}
-                  activeSection={activeSection}
-                  items={currentDoc?.pageTabsData[
-                    activeTab
-                  ]?.tableOfContents.map((toc) => toc.heading || "")}
-                />
-              </ACol>
-            </ARow>
-          </AContainer>
+                              if (inView && activeSection !== sectionId) {
+                                setActiveSection(sectionId);
+                              }
+                            }}
+                          >
+                            {/* eslint-disable-next-line */}
+                            <h4
+                              className="mt-6 mb-4"
+                              style={{fontSize: "1.2rem"}}
+                              {...props}
+                            />
+                          </AtomicReactComponents.AInView>
+                        ),
+                        h5: (props) => (
+                          // eslint-disable-next-line
+                          <h5
+                            className="mt-6 mb-5"
+                            style={{fontSize: "1rem"}}
+                            {...props}
+                          />
+                        )
+                      }}
+                    />
+                    <PropsHelper
+                      componentName={currentDoc.title}
+                      shouldShowBtn={hasScrolledPastTabs}
+                    />
+                  </DocsPageContext.Provider>
+                </PropsContext.Provider>
+              </AMount>
+            </div>
+          </div>
         </AAutoTheme>
       </AApp>
     </>
   );
 }
+
+/*
+          <TableOfContents
+            setActiveSection={setActiveSection}
+            activeSection={activeSection}
+            items={currentDoc?.pageTabsData[activeTab]?.tableOfContents.map(
+              (toc) => toc.heading || ""
+            )}
+          />
+          */
 
 export async function getStaticPaths() {
   const fs = require("fs");
