@@ -17,7 +17,8 @@ const CodeBlock = ({code, children, ...rest}) => {
             ...style,
             borderRadius: "6px",
             padding: "20px",
-            fontFamily: "SFMono-Regular,Menlo,Monaco,Consolas,monospace"
+            fontFamily: "SFMono-Regular,Menlo,Monaco,Consolas,monospace",
+            whiteSpace: "wrap"
           }}
         >
           {tokens.map((line, i) => (
