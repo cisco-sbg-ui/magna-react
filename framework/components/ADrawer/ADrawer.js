@@ -1,4 +1,4 @@
-import React, {forwardRef} from "react";
+import React, {forwardRef, createContext} from "react";
 import PropTypes from "prop-types";
 
 import AModal from "../AModal/AModal";
@@ -7,6 +7,8 @@ import AIcon from "../AIcon/AIcon";
 
 import "./ADrawer.scss";
 import {useDelayUnmount} from "../../utils/hooks";
+
+const DrawerContext = createContext({});
 
 const ADrawer = forwardRef(
   (
@@ -18,6 +20,8 @@ const ADrawer = forwardRef(
       openHeight,
       openWidth,
       isOpen,
+      onClose,
+      closeOnOutsideClick,
       position = "fixed",
       slideIn = "left",
       slim = false,
@@ -121,15 +125,17 @@ const ADrawer = forwardRef(
     }
 
     const drawerPanelComponent = (
-      <DrawerPanelComponent
-        {...rest}
-        ref={shouldRenderModal ? null : ref}
-        className={shouldRenderModal ? "" : className}
-        style={shouldRenderModal ? {} : style}
-      >
-        {closeButton}
-        {shouldRenderChildren && children}
-      </DrawerPanelComponent>
+      <DrawerContext.Provider value={{onClose}}>
+        <DrawerPanelComponent
+          {...rest}
+          ref={shouldRenderModal ? null : ref}
+          className={shouldRenderModal ? "" : className}
+          style={shouldRenderModal ? {height: "100%"} : style}
+        >
+          {closeButton}
+          {shouldRenderChildren && children}
+        </DrawerPanelComponent>
+      </DrawerContext.Provider>
     );
 
     if (!shouldRenderModal) {
@@ -146,6 +152,8 @@ const ADrawer = forwardRef(
         withTransitions={false}
         isOpen={shouldRenderChildren}
         style={style}
+        onClose={onClose}
+        closeOnOutsideClick={closeOnOutsideClick}
       >
         {drawerPanelComponent}
       </AModal>
@@ -172,12 +180,23 @@ ADrawer.propTypes = {
   className: PropTypes.string,
 
   /**
+   * Enables closing the drawer when clicking outside of the drawer content.
+   */
+  closeOnOutsideClick: PropTypes.bool,
+
+  /**
    * Determines if the drawer is opened or closed. For a permanent
    * drawer, pass a constant value of `true`. An example of when this
    * might be useful is for a sidebar that toggles between its slim and
    * full version.
    */
   isOpen: PropTypes.bool,
+
+  /**
+   * Function which closes the Drawer. It is necessary for accessibility concerns,
+   * specifically to enable exiting the Drawer upon pressing the "Escape" key.
+   */
+  onClose: PropTypes.func,
 
   /**
    * The height of the drawer when it is opened. Most commonly used
@@ -247,3 +266,4 @@ ADrawer.propTypes = {
 ADrawer.displayName = "ADrawer";
 
 export default ADrawer;
+export {DrawerContext};
