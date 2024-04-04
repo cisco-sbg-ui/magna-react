@@ -2,24 +2,17 @@
 name: Timelines
 route: /components/timeline
 components: ATimeline, ATimelineItem, ATimelineItemBody, ATimelineItemTitle
+title: ATimeline
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/ATimeline
 ---
 
-# Timeline
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {
-  ATimeline,
-  ATimelineItem,
-  ATimelineItemBody,
-  ATimelineItemTitle
-} from "@cisco-sbg-ui/magna-react";
-```
-
 ## Usage
+
+### Import
+
+<ComponentImport components="ATimeline" />
+
+### Usage
 
 <Playground
   code={`<ATimeline>
@@ -69,31 +62,7 @@ import {
 `}
 />
 
-## Timeline Props
-
-The `ATimeline` component inherits passed props.
-
-<Props of="ATimeline" />
-
-## TimelineItem Props
-
-The `ATimelineItem` component inherits passed props.
-
-<Props of="ATimelineItem" />
-
-## TimelineItemBody Props
-
-The `ATimelineItemBody` component inherits passed props.
-
-<Props of="ATimelineItemBody" />
-
-## TimelineItemTitle Props
-
-The `ATimelineItemTitle` component inherits passed props.
-
-<Props of="ATimelineItemTitle" />
-
-## Centered Style
+#### Centered Style
 
 <Playground
   code={`<div className="mb-1">
@@ -137,3 +106,29 @@ The `ATimelineItemTitle` component inherits passed props.
 </div>
 `}
 />
+
+## Component Props
+
+### Timeline Props
+
+The `ATimeline` component inherits passed props.
+
+<Props of="ATimeline" />
+
+### TimelineItem Props
+
+The `ATimelineItem` component inherits passed props.
+
+<Props of="ATimelineItem" />
+
+### TimelineItemBody Props
+
+The `ATimelineItemBody` component inherits passed props.
+
+<Props of="ATimelineItemBody" />
+
+### TimelineItemTitle Props
+
+The `ATimelineItemTitle` component inherits passed props.
+
+<Props of="ATimelineItemTitle" />

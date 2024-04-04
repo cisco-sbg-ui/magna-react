@@ -3,10 +3,6 @@
 .sidebar-tree {
   &__root {
     border-radius: 6px;
-    &--active {
-      background: var(--row-effect-image), var(--row-effect-color);
-      // color: map-deep-get($theme, "tree", "color");
-    }
 
     > .sidebar-tree__chevron.a-button:focus {
       box-shadow: none;
@@ -39,7 +35,8 @@
 
   &--hoverable {
     .sidebar-tree__root {
-      &--hover {
+      &--hover,
+      &--active {
         background-color: var(--control-bg-weak-hover);
         cursor: pointer;
         color: var(--base-text-default);
@@ -47,10 +44,6 @@
         .sidebar-tree__content {
           color: var(--base-text-default);
         }
-      }
-
-      &--focus {
-        background: var(--row-effect-image), var(--row-effect-color);
       }
     }
   }

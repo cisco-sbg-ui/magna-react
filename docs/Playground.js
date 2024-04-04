@@ -11,11 +11,11 @@ import {LiveProvider, LiveEditor, LiveError, LivePreview} from "react-live";
 
 import theme from "prism-react-renderer/themes/oceanicNext";
 
-import * as AtomicReactComponentsAndHooks from "../framework";
+import * as MagnaReactComponentsAndHooks from "../framework";
 import LoremIpsum from "../framework/utils/lorem-ipsum";
 import mockImport from "./mock_modules";
 const scope = {
-  ...AtomicReactComponentsAndHooks,
+  ...MagnaReactComponentsAndHooks,
   LoremIpsum,
   useCallback,
   useEffect,
@@ -27,12 +27,7 @@ const scope = {
   mockImport
 };
 
-const Playground = ({
-  withTwoPanes = false,
-  code,
-  fullWidthPreview,
-  noInline
-}) => {
+const Playground = ({withTwoPanes = false, code, noInline}) => {
   if (withTwoPanes) {
     return (
       <LiveProvider code={code.trim()} scope={scope} noInline={noInline}>
@@ -49,13 +44,13 @@ const Playground = ({
               }}
             />
           </div>
-          <AtomicReactComponentsAndHooks.ACardContainer
+          <MagnaReactComponentsAndHooks.ACardContainer
             className="d-flex align-center justify-center"
             style={{flexBasis: "50%", borderRadius: "6px"}}
           >
             <LiveError />
-            <LivePreview />
-          </AtomicReactComponentsAndHooks.ACardContainer>
+            <LivePreview style={{width: "100%"}} />
+          </MagnaReactComponentsAndHooks.ACardContainer>
         </div>
       </LiveProvider>
     );
@@ -63,10 +58,10 @@ const Playground = ({
 
   return (
     <LiveProvider code={code.trim()} scope={scope} noInline={noInline}>
-      <AtomicReactComponentsAndHooks.ACardContainer>
+      <MagnaReactComponentsAndHooks.ACardContainer>
         <LiveError />
         <LivePreview />
-      </AtomicReactComponentsAndHooks.ACardContainer>
+      </MagnaReactComponentsAndHooks.ACardContainer>
       <div
         className="overflow-y-scroll black mt-2 mb-10"
         style={{borderRadius: "6px", maxHeight: "350px"}}

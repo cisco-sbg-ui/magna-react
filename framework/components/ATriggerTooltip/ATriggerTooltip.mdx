@@ -2,23 +2,29 @@
 name: TriggerTooltips
 route: /components/triggertooltip
 components: ATriggerTooltip
+title: ATriggerTooltip
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/ATriggerTooltip
 ---
 
-# Trigger Tooltips
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {ATriggerTooltip} from "@cisco-sbg-ui/magna-react";
-```
-
-It is necessary for `ATriggerTooltip` to be a descendant of `AApp` for mounting.
-
-Children of `ATriggerTooltip` must be able to accept a ref.
-
 ## Usage
+
+### Import
+
+<ComponentImport components="ATriggerTooltip" />
+
+### Usage
+
+<AAlert dismissable={false}>
+  It is necessary for `ATriggerTooltip` to be a descendant of `AApp` for
+  mounting.
+</AAlert>
+
+<br />
+<br />
+
+<AAlert dismissable={false}>
+  Children of `ATriggerTooltip` must be able to accept a ref.
+</AAlert>
 
 By default the openDelay is 400ms
 
@@ -58,7 +64,7 @@ return (
 </>
 ); } `} />
 
-## Anchor to element other than child
+#### Anchor to element other than child
 
 <Playground
   code={`() => {
@@ -78,7 +84,7 @@ return (
 </>
 ); } `} />
 
-## Anchor and Trigger, multiple tooltips
+#### Anchor and Trigger, multiple tooltips
 
 To avoid nested wrapping of tooltips, combining `triggerRef` and `anchorRef` allows for multiple tooltips with different triggers.
 
@@ -113,7 +119,7 @@ return (
 </>
 ); } `} />
 
-## Disable Tooltip
+#### Disable Tooltip
 
 <Playground
   code={`() => {
@@ -135,7 +141,7 @@ return (
 </>
 ); } `} />
 
-## On a disabled element
+#### On a disabled element
 
 Use `wrapChildren` to wrapper a disabled element and allow events.
 
@@ -152,7 +158,7 @@ return (
 </ATriggerTooltip>
 ); } `} />
 
-## On if anchor is truncated
+#### On if anchor is truncated
 
 Use `onlyIfTruncated` to show the tooltip only if the content is truncated.
 
@@ -186,7 +192,7 @@ return (
 </>
 ); } `} />
 
-## TriggerTooltip Props
+## Component Props
 
 The `ATriggerTooltip` component inherits passed props.
 

@@ -2,19 +2,19 @@
 name: Stepper
 route: /components/stepper
 components: AStepper
+title: AStepper
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/AStepper
 ---
 
-# Stepper
+## Usage
 
-## Install
+### Import
 
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+<ComponentImport components="AStepper" />
 
-```
-import {AStepper, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/magna-react";
-```
+### Usage
 
-## Horizontal Stepper
+#### Horizontal Stepper
 
 <Playground
   fullWidthPreview
@@ -78,7 +78,7 @@ import {AStepper, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/magna
 `}
 />
 
-## Stepper used with json data
+#### Stepper used with json data
 
 <Playground
   fullWidthPreview
@@ -138,7 +138,7 @@ import {AStepper, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/magna
 `}
 />
 
-## Vertical Stepper with icon
+#### Vertical Stepper with icon
 
 <Playground
   code={`() => {
@@ -201,7 +201,7 @@ import {AStepper, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/magna
 `}
 />
 
-### (Test Case) Stepper under modal
+#### (Test Case) Stepper under modal
 
 <Playground
   fullWidthPreview
@@ -296,20 +296,22 @@ import {AStepper, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/magna
 `}
 />
 
-## Stepper Props
+## Component Props
+
+### Stepper Props
 
 All AStepper components (AStepper, AStep, AStepTitle, AStepDescription) inherit passed props.
 
 <Props of="AStepper" />
 
-## Step Props
+### Step Props
 
 <Props of="AStep" />
 
-## Step Title Props
+### Step Title Props
 
 <Props of="AStepTitle" />
 
-## Step Description Props
+### Step Description Props
 
 <Props of="AStepDescription" />

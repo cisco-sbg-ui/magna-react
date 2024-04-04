@@ -2,24 +2,25 @@
 name: Switches
 route: /components/switch
 components: ASwitch
+title: ASwitch
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/ASwitch
 ---
 
-# Switches
+## Usage
 
-## Install
+### Import
 
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+<ComponentImport components="ASwitch" />
 
-```
-import {ASwitch} from "@cisco-sbg-ui/magna-react";
-```
+### Usage
 
-<AAlert className="mb-2" level="info" dismissable={false}>
+<AAlert dismissable={false}>
   Provide an "aria-label" or "aria-labelledby" function for accessibility
   concerns, if `children` is not a string value
 </AAlert>
 
-## Usage
+<br />
+<br />
 
 <Playground
   code={`() => {
@@ -51,7 +52,7 @@ import {ASwitch} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-## Switch Props
+## Component Props
 
 The `ASwitch` component inherits passed props.
 

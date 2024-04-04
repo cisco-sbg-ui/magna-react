@@ -2,17 +2,15 @@
 name: Themes
 route: /components/theme
 components: ATheme, AAutoTheme
+title: ATheme
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/ATheme
 ---
 
-# Themes
+## Usage
 
-## Install
+### Import
 
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {ATheme} from "@cisco-sbg-ui/magna-react";
-```
+<ComponentImport components="ATheme, AAutoTheme" />
 
 `ATheme` is bundled with `AApp`. If you use `AApp`, `ATheme` is unnecessary.
 
@@ -40,9 +38,9 @@ To access and modify the automatic theming engine (if rendering `AAutoTheme`), u
 import {useAAutoTheme} from "@cisco-sbg-ui/magna-react";
 ```
 
-## Usage
+### Usage
 
-### Basic
+#### Basic
 
 <Playground
   noInline
@@ -75,7 +73,7 @@ render(
 `}
 />
 
-### Automatic System Theme Detection
+#### Automatic System Theme Detection
 
 <Playground
   noInline
@@ -154,7 +152,7 @@ render(
 `}
 />
 
-## Props
+## Component Props
 
 <Props of="ATheme" />
 

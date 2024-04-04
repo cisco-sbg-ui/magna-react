@@ -2,26 +2,25 @@
 name: Textareas
 route: /components/textarea
 components: ATextarea
+title: ATextarea
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/ATextarea
 ---
-
-# Textareas
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {ATextarea} from "@cisco-sbg-ui/magna-react";
-```
 
 ## Usage
 
+### Import
+
+<ComponentImport components="ATextarea" />
+
+### Usage
+
 <Playground
+  withTwoPanes
   code={`() => {
   const [autoGrow, setAutoGrow] = useState(true);
   const [value, setValue] = useState(LoremIpsum);
   return (
-    <div style={{maxWidth: 250}}>
+    <div>
       <div className="mb-4">
         <ACheckbox checked={autoGrow} onClick={() => setAutoGrow(!autoGrow)}>
           Toggle autoGrow
@@ -44,15 +43,10 @@ import {ATextarea} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-## Textarea Props
-
-The `ATextarea` component inherits passed props.
-
-<Props of="ATextarea" />
-
-## Validation
+#### Validation
 
 <Playground
+  withTwoPanes
   code={`() => {
   const [comments, setComments] = useState("");
   return (
@@ -82,10 +76,11 @@ The `ATextarea` component inherits passed props.
 `}
 />
 
-## States
+#### States
 
 <Playground
-  code={`<div style={{maxWidth: 250}}>
+  withTwoPanes
+  code={`<div>
   <div className="mb-4">
     <ATextarea label="Label" placeholder="Default" hint="Hint: Default" />
   </div>
@@ -124,3 +119,9 @@ The `ATextarea` component inherits passed props.
 </div>
 `}
 />
+
+## Component Props
+
+The `ATextarea` component inherits passed props.
+
+<Props of="ATextarea" />

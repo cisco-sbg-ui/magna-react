@@ -2,26 +2,25 @@
 name: Text Inputs
 route: /components/text-input
 components: ATextInput
+title: ATextInput
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/ATextInput
 ---
-
-# Text Inputs
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {ATextInput} from "@cisco-sbg-ui/magna-react";
-```
 
 ## Usage
 
+### Import
+
+<ComponentImport components="ATextInput" />
+
+### Usage
+
 <Playground
+  withTwoPanes
   code={`() => {
   const [status, setStatus] = useState("default");
   const [value, setValue] = useState("autoFocused clearable");
   return (
-    <div style={{maxWidth: 250}}>
+    <div>
       <AContainer>
           <ARow>
             <ACol>
@@ -79,20 +78,15 @@ import {ATextInput} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-## Text Input Props
-
-The `ATextInput` component inherits passed props.
-
-<Props of="ATextInput" />
-
-## Numeric Input
+#### Numeric Input
 
 <Playground
+  withTwoPanes
   code={`() => {
   const [value1, setValue1] = useState(1);
   const [value2, setValue2] = useState("");
   return (
-    <div style={{maxWidth: 250}}>
+    <div>
       <div className="mb-4">
         <ATextInput
           type="number"
@@ -143,9 +137,10 @@ The `ATextInput` component inherits passed props.
 `}
 />
 
-## Validation
+#### Validation
 
 <Playground
+  withTwoPanes
   code={`() => {
   const [email, setEmail] = useState("");
   const [value, setValue] = useState("");
@@ -248,11 +243,12 @@ The `ATextInput` component inherits passed props.
 `}
 />
 
-## Skip internal validation rules
+#### Skip internal validation rules
 
 Override internal validation rules by specifying a `key` on the rule. Valid keys [`required`, `min`, `max`].
 
 <Playground
+  withTwoPanes
   code={`() => {
   const [value, setValue] = useState("");
   return (
@@ -285,10 +281,11 @@ Override internal validation rules by specifying a `key` on the rule. Valid keys
 `}
 />
 
-## States
+#### States
 
 <Playground
-  code={`<div style={{maxWidth: 250}}>
+  withTwoPanes
+  code={`<div>
   <div className="mb-4">
     <ATextInput label="Label" placeholder="Normal" />
   </div>
@@ -369,11 +366,12 @@ Override internal validation rules by specifying a `key` on the rule. Valid keys
 `}
 />
 
-## Extra Content
+#### Extra Content
 
 Use `append` or `prepend` to add custom content, such as a button with text, to the input.
 
 <Playground
+withTwoPanes
   code={`
   () => {
   const [isShown, setIsShown] = useState(false);
@@ -395,6 +393,12 @@ onChange={(e) => {setValue(e.target.value)}}
 />}`
 }
 />
+
+## Component Props
+
+The `ATextInput` component inherits passed props.
+
+<Props of="ATextInput" />
 
 ## Accessibility Notes
 

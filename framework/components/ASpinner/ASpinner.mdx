@@ -2,29 +2,35 @@
 name: Spinner
 route: /components/spinner
 components: ASpinner
+title: ASpinner
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/ASpinner
 ---
 
-# Spinner
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import { ASpinner } from "@cisco-sbg-ui/magna-react";
-```
-
 ## Usage
+
+### Import
+
+<ComponentImport components="ASpinner" />
+
+### Usage
+
 Spinners provide feedback to users while a process, action or content is being loaded, and are used when the specific duration or progress cannot be estimated or determined.
+
 ### When to use Spinner
- - When the load time of a process is more than 300 ms.
- - For user-initiated processes such as saving or submitting a form, applying filters, or asynchronous updates on a part of a page (section or inline content).
- - When the duration or completion status of the process cannot be estimated (indeterminate).
+
+- When the load time of a process is more than 300 ms.
+- For user-initiated processes such as saving or submitting a form, applying filters, or asynchronous updates on a part of a page (section or inline content).
+- When the duration or completion status of the process cannot be estimated (indeterminate).
+
 ### When not to use Spinner
- - When load time is 300 ms or shorter, just show the data once it is loaded.
- - For initial page load or full page refreshes, use [Skeleton](/components/skeleton).
- - When the duration or progress can be estimated, use a [Progress Bar](/components/progressbar).
-<br/>
+
+- When load time is 300 ms or shorter, just show the data once it is loaded.
+- For initial page load or full page refreshes, use [Skeleton](/components/skeleton).
+- When the duration or progress can be estimated, use a [Progress Bar](/components/progressbar).
+
+  <br />
+  <br />
+
 <Playground
   code={`
 <div>
@@ -37,7 +43,7 @@ Spinners provide feedback to users while a process, action or content is being l
 `}
 />
 
-## Sizes
+#### Sizes
 
 <Playground
   code={`
@@ -53,11 +59,13 @@ Spinners provide feedback to users while a process, action or content is being l
 `}
 />
 
-## Spinner label
+#### Spinner label
+
 Consider adding a label to communicate useful information about the process being performed.
- - Use words or phrases that concisely describe the process.
- - Avoid using “Loading” as it does not provide useful information about the process.
-<br/>
+
+- Use words or phrases that concisely describe the process.
+- Avoid using “Loading” as it does not provide useful information about the process.
+  <br />
 
 <Playground
   code={`
@@ -71,7 +79,7 @@ Consider adding a label to communicate useful information about the process bein
 `}
 />
 
-## Spinner without animation
+#### Spinner without animation
 
 <Playground
   code={`
@@ -79,9 +87,12 @@ Consider adding a label to communicate useful information about the process bein
 `}
 />
 
-## Usage examples
-### User-initiated action (applying filters)
-<br/>
+#### Usage examples
+
+##### User-initiated action (applying filters)
+
+<br />
+
 <Playground
   code={`
   <div style={{display:"flex",flexDirection:"column", alignItems:"stretch"}}>
@@ -101,8 +112,10 @@ Consider adding a label to communicate useful information about the process bein
 `}
 />
 
-### Asynchronous update in a section
-<br/>
+#### Asynchronous update in a section
+
+<br />
+
 <Playground
   code={`
   <div style={{display:"flex",flexDirection:"column", alignItems:"stretch"}}>
@@ -122,10 +135,8 @@ Consider adding a label to communicate useful information about the process bein
 `}
 />
 
-
-## Props
+## Component Props
 
 Component (`ASpinner`) inherit passed props.
 
 <Props of="ASpinner" />
-
