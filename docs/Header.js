@@ -23,7 +23,8 @@ const Header = ({className, onHamburgerClick}) => {
             className="d-flex justify-space-between align-center row"
             style={{
               height: "50px",
-              width: "100%"
+              width: "100%",
+              padding: "0 20px"
             }}
           >
             <div className="d-flex align-center">
