@@ -21,10 +21,10 @@
 
   &--color-white {
     border: none;
-    background: var(--magnetic-color-neutral-100);
-    color: var(--magnetic-color-neutral-25);
+    background: white;
+    color: var(--base-text-strong-default);
     .a-panel__header {
-      color: var(--magnetic-color-neutral-25);
+      color: var(---base-text-strong-default);
     }
   }
 
