@@ -2,21 +2,20 @@
 name: Multi Selects
 route: /components/multiselect
 components: AMultiSelect
+title: AMultiSelect
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/AMultiSelect
 ---
-
-# Multi Selects
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {AMultiSelect} from "@cisco-sbg-ui/magna-react";
-```
 
 ## Usage
 
+### Import
+
+<ComponentImport components="AMultiSelect" />
+
+### Usage
+
 <Playground
+  withTwoPanes
   code={`() => {
   const items = [
     {id: 1, name: "Bread, Cereal, Rice, and Pasta"},
@@ -75,9 +74,10 @@ import {AMultiSelect} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-## With tags
+#### With tags
 
 <Playground
+withTwoPanes
   code={`() => {
   const items = [
     "Bread, Cereal, Rice, and Pasta",
@@ -109,15 +109,10 @@ import {AMultiSelect} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-## MultiSelect Props
-
-The `AMultiSelect` component inherits passed props.
-
-<Props of="AMultiSelect" />
-
-## Validation
+#### Validation
 
 <Playground
+  withTwoPanes
   code={`() => {
   const items = [
     "Bread, Cereal, Rice, and Pasta",
@@ -154,11 +149,12 @@ The `AMultiSelect` component inherits passed props.
 `}
 />
 
-## Custom Filtering
+#### Custom Filtering
 
 If the items list is of objects, and a text and or object+key search won't work, use the "filterFunction" to define custom filtering.
 
 <Playground
+withTwoPanes
   code={`() => {
   const items = [
     "Bread, Cereal, Rice, and Pasta",
@@ -191,11 +187,12 @@ If the items list is of objects, and a text and or object+key search won't work,
 `}
 />
 
-## Read-only Input
+#### Read-only Input
 
 If you need a multiselect, but want to disable the typing search.
 
 <Playground
+withTwoPanes
   code={`() => {
   const items = [
     "Bread, Cereal, Rice, and Pasta",
@@ -226,9 +223,10 @@ If you need a multiselect, but want to disable the typing search.
 `}
 />
 
-## States
+#### States
 
 <Playground
+  withTwoPanes
   code={`<>
   <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
     <h3>Default</h3>
@@ -302,7 +300,7 @@ If you need a multiselect, but want to disable the typing search.
 `}
 />
 
-## Prepend/Append Content
+#### Prepend/Append Content
 
 <Playground
   code={`() => {
@@ -338,7 +336,7 @@ If you need a multiselect, but want to disable the typing search.
 `}
 />
 
-## Menu Item Templates
+#### Menu Item Templates
 
 If the `itemTemplate` doesn't include a checkbox to indicate selected values, `withTags` should be set to true.
 
@@ -387,6 +385,12 @@ If the `itemTemplate` doesn't include a checkbox to indicate selected values, `w
 }
 `}
 />
+
+## Component Props
+
+The `AMultiSelect` component inherits passed props.
+
+<Props of="AMultiSelect" />
 
 ## Accessibility Notes
 

@@ -2,21 +2,23 @@
 name: Mounts
 route: /components/mount
 components: AMount
+title: AMount
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/AMount
 ---
 
-# Mounts
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {AMount} from "@cisco-sbg-ui/magna-react";
-```
-
-It is necessary for `AMount` to be a descendant of `AApp`.
-
 ## Usage
+
+### Import
+
+<ComponentImport components="AMount" />
+
+### Usage
+
+<AAlert dismissable={false}>
+  It is necessary for `AMount` to be a descendant of `AApp`.
+</AAlert>
+
+<br />
 
 <Playground
   code={`() => {
@@ -60,7 +62,7 @@ It is necessary for `AMount` to be a descendant of `AApp`.
 `}
 />
 
-### With A New Wrapping Context (AKA Boundary)
+#### With A New Wrapping Context (AKA Boundary)
 
 In the example below, `AMount` creates a new boundary for any children that render menu content. If you drag the button outside of the green box, notice how the menu will stay within the playground area (since we wrapped the container in this demo with `AMount`).
 
@@ -92,7 +94,7 @@ In the example below, `AMount` creates a new boundary for any children that rend
 }`}
 />
 
-## Props
+## Component Props
 
 `AMount` inherits passed props.
 

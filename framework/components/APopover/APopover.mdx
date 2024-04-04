@@ -2,21 +2,24 @@
 name: Popovers
 route: /components/popover
 components: APopover
+title: APopover
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/APopover
 ---
 
-# Popovers
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {APopover} from "@cisco-sbg-ui/magna-react";
-```
-
-It is necessary for `APopover` to be a descendant of `AApp` for mounting.
-
 ## Usage
+
+### Import
+
+<ComponentImport components="APopover" />
+
+### Usage
+
+<AAlert dismissable={false}>
+  It is necessary for `APopover` to be a descendant of `AApp` for mounting.
+</AAlert>
+
+<br />
+<br />
 
 <Playground
   fullWidthPreview
@@ -93,13 +96,7 @@ It is necessary for `APopover` to be a descendant of `AApp` for mounting.
 `}
 />
 
-## Popover Props
-
-The `APopover` component inherits passed props.
-
-<Props of="APopover" />
-
-## Position
+#### Position
 
 <Playground
   fullWidthPreview
@@ -310,7 +307,7 @@ The `APopover` component inherits passed props.
 `}
 />
 
-## `onClose` Handling
+#### `onClose` Handling
 
 <Playground
   fullWidthPreview
@@ -367,6 +364,12 @@ The `APopover` component inherits passed props.
 }
 `}
 />
+
+## Component Props
+
+The `APopover` component inherits passed props.
+
+<Props of="APopover" />
 
 ## Accessibility Notes
 

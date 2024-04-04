@@ -2,25 +2,22 @@
 name: Panels
 route: /components/panel
 components: APanel, APanelTitle, APanelHeader, APanelBody, APanelFooter
+title: APanel
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/APanel
 ---
 
-# Panels
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {
-  APanel,
-  APanelHeader,
-  APanelFooter,
-  APanelBody,
-  APanelTitle
-} from "@cisco-sbg-ui/magna-react";
-```
-
 ## Usage
+
+<AAlert dismissable={false}>
+  Use ACardContainer or ACardBasic instead. This component will be dreprecated
+  in the future.
+</AAlert>
+
+### Import
+
+<ComponentImport components="APanel" />
+
+### Usage
 
 <Playground
   code={`<APanel>
@@ -36,19 +33,7 @@ import {
 `}
 />
 
-## Props
-
-All Panel components (`APanel`, `APanelHeader`, `APanelTitle`, `APanelBody`, `APanelFooter`) inherit passed props.
-
-### Panel Props
-
-<Props of="APanel" />
-
-### Panel Title Props
-
-<Props of="APanelTitle" />
-
-## Variants
+### Variants
 
 <Playground
   fullWidthPreview
@@ -120,7 +105,7 @@ All Panel components (`APanel`, `APanelHeader`, `APanelTitle`, `APanelBody`, `AP
 </>`}
 />
 
-## Panel Title Sizes
+### Panel Title Sizes
 
 <Playground
   code={`<>
@@ -147,3 +132,15 @@ All Panel components (`APanel`, `APanelHeader`, `APanelTitle`, `APanelBody`, `AP
 </>
 `}
 />
+
+## Component Props
+
+All Panel components (`APanel`, `APanelHeader`, `APanelTitle`, `APanelBody`, `APanelFooter`) inherit passed props.
+
+### Panel Props
+
+<Props of="APanel" />
+
+### Panel Title Props
+
+<Props of="APanelTitle" />
