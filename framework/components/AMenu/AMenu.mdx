@@ -2,21 +2,23 @@
 name: Menus
 route: /components/menu
 components: AMenu
+title: AMenu
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/AMenu
 ---
 
-# Menus
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {AMenu, AListItemDivider} from "@cisco-sbg-ui/magna-react";
-```
-
-It is necessary for `AMenu` to be a descendant of `AApp` for mounting.
-
 ## Usage
+
+### Import
+
+<ComponentImport components="AMenu" />
+
+<br />
+
+<AAlert dismissable={false}>
+  It is necessary for `AMenu` to be a descendant of `AApp` for mounting.
+</AAlert>
+
+#### Usage
 
 <Playground
   fullWidthPreview
@@ -277,7 +279,7 @@ return (
 </div>
 ); } `} />
 
-## Cascading Menus
+### Cascading Menus
 
 <Playground
   fullWidthPreview
@@ -362,7 +364,7 @@ return (
 </div>
 ); } `} />
 
-## Menu Props
+## Component Props
 
 The `AMenu` component inherits passed props.
 

@@ -1,20 +1,17 @@
 ---
 name: Inline Input Base
-route: /extend/inline-input
+route: /extend/inline-input-base
 components: AInlineInputBase
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/AInlineInputBase
 ---
 
-# Inline Inputs
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {AInlineInputBase} from "@cisco-sbg-ui/magna-react";
-```
-
 ## Usage
+
+### Import
+
+<ComponentImport components="AInlineInputBase" />
+
+### Usage
 
 `AInlineInputBase` enters edit mode on click.
 
@@ -37,7 +34,7 @@ Escape key when editing resets value to last entered.
 `}
 />
 
-## Disabled
+#### Disabled
 
 <Playground
   code={`() => {
@@ -56,7 +53,7 @@ Escape key when editing resets value to last entered.
 `}
 />
 
-## Tooltip control
+#### Tooltip control
 
 While it is not recommended to put long values in tooltips, sometimes it is more practical than a popover.
 

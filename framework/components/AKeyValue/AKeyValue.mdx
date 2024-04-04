@@ -2,25 +2,25 @@
 name: Key Value
 route: /components/keyvalue
 components: AKeyValue, AKeyValueTable
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/AKeyValue
 ---
 
-# Modals
+## Usage
 
-## Install
+### Import
 
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+<ComponentImport components="AKeyValue, AKeyValueTable" />
 
-```
-import {AKeyValue, AKeyValueTable} from "@cisco-sbg-ui/magna-react";
-```
+### Usage
 
-## Usage (Table)
+#### Table
 
 Emphasis: keys
 
 Best to use for a long list or when vertical space is a concern
 
 <Playground
+  withTwoPanes
   code={`
   <AKeyValueTable>
     <AKeyValue label="Data key">Data value</AKeyValue>
@@ -32,11 +32,12 @@ Best to use for a long list or when vertical space is a concern
 `}
 />
 
-## Usage (Value)
+#### Value
 
 Empasis: value
 
 <Playground
+  withTwoPanes
   code={`
   <>
     <AKeyValue label="Data key">Data value</AKeyValue>
@@ -46,11 +47,12 @@ Empasis: value
 `}
 />
 
-## Variants
+#### Variants
 
-### Size
+##### Size
 
 <Playground
+  withTwoPanes
   code={`
   <>
     <AKeyValueTable size="small">
@@ -66,9 +68,10 @@ Empasis: value
 `}
 />
 
-### Table Alignment
+##### Table Alignment
 
 <Playground
+  withTwoPanes
   code={`
   <>
     <AKeyValueTable rightAlignValue>
@@ -82,10 +85,12 @@ Empasis: value
 `}
 />
 
-## AKeyValueTable Props
+## Component Props
+
+#### AKeyValueTable Props
 
 <Props of="AKeyValueTable" />
 
-## AKeyValue Props
+#### AKeyValue Props
 
 <Props of="AKeyValue" />

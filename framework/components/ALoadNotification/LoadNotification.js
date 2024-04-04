@@ -1,5 +1,6 @@
 import React, {forwardRef} from "react";
 
+// deprecated?
 const LoadNotification = forwardRef((props, ref) => {
   const {
     level = "warning",

@@ -2,23 +2,21 @@
 name: Modals
 route: /components/modal
 components: AModal
+title: AModal
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/AModal
 ---
-
-# Modals
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {AModal} from "@cisco-sbg-ui/magna-react";
-```
 
 ## Usage
 
+### Import
+
+<ComponentImport components="AModal" />
+
+### Usage
+
 <AAlert className="mb-2" level="info" dismissable={false}>
-  Provide an "onClose" function for accessibility concerns, specifically to enable exiting
-  the modal upon pressing the "Escape" key. 
+  Provide an "onClose" function for accessibility concerns, specifically to
+  enable exiting the modal upon pressing the "Escape" key.
 </AAlert>
 
 <Playground
@@ -54,7 +52,7 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-### Without a Page Overlay
+#### Without a Page Overlay
 
 <Playground
   fullWidthPreview
@@ -91,7 +89,7 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-### Custom Scroll Locking
+#### Custom Scroll Locking
 
 <AAlert className="mb-2" level="warning" dismissable={false}>
   Because content outside of a modal is inaccessible, it would be considered an
@@ -174,7 +172,7 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-### Without Centered Content
+#### Without Centered Content
 
 <Playground
   fullWidthPreview
@@ -210,7 +208,7 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-### Without CSS Transitions
+#### Without CSS Transitions
 
 <Playground
   fullWidthPreview
@@ -246,7 +244,7 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-### Form Example
+#### Form Example
 
 <Playground
   code={`() => {
@@ -389,7 +387,7 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-### Size variants
+#### Size variants
 
 <AAlert className="mb-2" level="info" dismissable={false}>
   This assumes a single direct child, such as `ACard`, as the modal content.
@@ -442,7 +440,7 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-### With closeOnOutsideClick
+#### With closeOnOutsideClick
 
 <Playground
   fullWidthPreview
@@ -481,7 +479,7 @@ import {AModal} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-## Modal Props
+## Component Props
 
 <Props of="AModal" />
 
