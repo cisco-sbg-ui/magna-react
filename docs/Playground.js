@@ -27,6 +27,8 @@ const scope = {
   mockImport
 };
 
+const backgroundColor = "var(--inverse-bg-default)";
+
 const Playground = ({withTwoPanes = false, code, noInline}) => {
   if (withTwoPanes) {
     return (
@@ -37,7 +39,7 @@ const Playground = ({withTwoPanes = false, code, noInline}) => {
               theme={theme}
               style={{
                 height: "100%",
-                backgroundColor: "rgb(40, 44, 52)",
+                backgroundColor,
                 borderRadius: "6px",
                 padding: "10px",
                 fontFamily: "SFMono-Regular,Menlo,Monaco,Consolas,monospace"
@@ -69,7 +71,7 @@ const Playground = ({withTwoPanes = false, code, noInline}) => {
         <LiveEditor
           theme={theme}
           style={{
-            backgroundColor: "rgb(40, 44, 52)",
+            backgroundColor,
             padding: "10px",
             fontFamily: "SFMono-Regular,Menlo,Monaco,Consolas,monospace"
           }}

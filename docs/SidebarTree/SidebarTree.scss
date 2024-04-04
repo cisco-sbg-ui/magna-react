@@ -37,13 +37,18 @@
     .sidebar-tree__root {
       &--hover,
       &--active {
-        background-color: var(--control-bg-weak-hover);
         cursor: pointer;
         color: var(--base-text-default);
 
         .sidebar-tree__content {
           color: var(--base-text-default);
         }
+      }
+      &--hover {
+        background-color: var(--interact-bg-weak-hover);
+      }
+      &--active {
+        background-color: var(--interact-bg-weak-active);
       }
     }
   }
