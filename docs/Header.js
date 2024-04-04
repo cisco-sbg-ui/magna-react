@@ -17,20 +17,13 @@ const Header = ({className, onHamburgerClick}) => {
               ? "0.0625rem solid rgb(20, 21, 23)"
               : "0.0625rem solid #e9ecef",
             width: "100%"
-            // position: "sticky",
-            // top: "0",
-            // zIndex: "3"
           }}
         >
           <div
             className="d-flex justify-space-between align-center row"
             style={{
               height: "50px",
-              width: "100%",
-              zIndex: "9",
-              maxWidth: "1600px",
-              margin: "0 auto"
-              // padding: "0 30px"
+              width: "100%"
             }}
           >
             <div className="d-flex align-center">
