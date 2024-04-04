@@ -45,7 +45,7 @@ const Playground = ({withTwoPanes = false, code, noInline}) => {
             />
           </div>
           <MagnaReactComponentsAndHooks.ACardContainer
-            className="d-flex align-center justify-center"
+            className="d-flex align-center"
             style={{flexBasis: "50%", borderRadius: "6px"}}
           >
             <LiveError />
