@@ -646,6 +646,93 @@ To contain the drawer within something other than the viewport, you can render t
 }`}
 />
 
+## Slide Out-In
+
+### Magnetic Drawer Transition
+
+Magnetic designates that drawers slide out then back in when opening another data object on the same page. Use the `useDrawerToggle` hooks to facilitate the timing of the slide out/in.
+
+This hook can be used for cases when there isn't a global drawer controller.
+
+<Playground
+  code={`() => {
+    
+    const list = {
+      a: {
+        title: "Content A", 
+        subtitle: "content A subtitle", 
+        body: "Content A body text"
+      }, 
+      b: {
+        title: "Content B", 
+        subtitle: "content B subtitle", 
+        body: "Content B body text"
+      }
+    }
+   
+    const drawerRef = useRef();
+    const {setDrawerOpen, isDrawerOpen} = useDrawerToggle();
+    const [contentId, setContentId] = useState();
+
+    const DrawerContent = ({contentId}) => {
+      const {title, subtitle, body} = list[contentId];
+
+      return (
+        <>
+          <ADrawerHeader>
+            <ADrawerTitle>
+              <h1>{title}</h1>
+            </ADrawerTitle>
+            <ADrawerSubtitle>{subtitle}</ADrawerSubtitle>
+          </ADrawerHeader>
+          <ADrawerBody>
+            {body}
+          </ADrawerBody>
+          <ADrawerFooter>
+            <AButton onClick={() => setDrawerOpen(false)} data-test-drawer-close>Close</AButton>
+          </ADrawerFooter>
+        </>
+      );
+    };
+
+    const setDrawerContent = (newContent, open = true) => {
+      if (newContent === contentId) {
+        return;
+      }
+
+      setContentId(newContent);
+      setDrawerOpen(open);
+    }
+
+    return (
+      <>
+        <AButton onClick={() => {
+            setDrawerContent("a");
+          }}
+          data-test-drawer-trigger-a>Open Content A</AButton><br />
+        <AButton onClick={() => {
+            setDrawerContent("b");
+          }}
+          data-test-drawer-trigger-b>Open Content B</AButton>
+        <ADrawer
+            ref={drawerRef}
+            style={{display: "flex", flexDirection: "column"}}
+            asModal={false}
+            aria-labelledby='drawer-title'
+            slideIn='right'
+            isOpen={isDrawerOpen}
+            onClose={() => {
+              setDrawerContent(null, false);
+            }}
+            data-test-drawer>
+            <DrawerContent contentId={contentId} />
+        </ADrawer>
+      </>
+    )
+
+}`}
+/>
+
 ## Component Props
 
 <Props of="ADrawer" />

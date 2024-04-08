@@ -6,7 +6,7 @@ import AButton from "../AButton/AButton";
 import AIcon from "../AIcon/AIcon";
 
 import "./ADrawer.scss";
-import {useDelayUnmount} from "../../utils/hooks";
+import {useDelayUnmount, usePrevious} from "../../utils/hooks";
 
 const DrawerContext = createContext({});
 
@@ -45,6 +45,8 @@ const ADrawer = forwardRef(
     const orientation =
       slideIn === "bottom" || slideIn === "top" ? "horizontal" : "vertical";
     let className = `a-drawer a-drawer--${orientation} a-drawer--${position} a-drawer--${slideIn}`;
+
+    const prevChildren = usePrevious(children);
 
     const style = {...propsStyle};
 
@@ -107,8 +109,7 @@ const ADrawer = forwardRef(
           {...rest}
           ref={shouldRenderModal ? null : ref}
           className={shouldRenderModal ? "" : className}
-          style={shouldRenderModal ? {height: "100%"} : style}
-        >
+          style={shouldRenderModal ? {height: "100%"} : style}>
           {shouldRenderChildren && children}
         </DrawerPanelComponent>
       </DrawerContext.Provider>
@@ -129,8 +130,7 @@ const ADrawer = forwardRef(
         isOpen={shouldRenderChildren}
         style={style}
         onClose={onClose}
-        closeOnOutsideClick={closeOnOutsideClick}
-      >
+        closeOnOutsideClick={closeOnOutsideClick}>
         {drawerPanelComponent}
       </AModal>
     );
