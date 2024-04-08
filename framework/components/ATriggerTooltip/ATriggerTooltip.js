@@ -20,6 +20,7 @@ const ATriggerTooltip = ({
   wrapChildren = false,
   wrapperClass,
   onlyIfTruncated,
+  interactive,
   ...rest
 }) => {
   const childrenRef = useRef([]);
@@ -27,6 +28,7 @@ const ATriggerTooltip = ({
   const firstChildRef = {current: childrenRefCurrent[0]};
   // If an anchorRef is provided, use it. Otherwise, attach to first child.
   const tooltipAnchorRef = anchorRef || firstChildRef;
+  const tooltipRef = useRef();
 
   const checkForTruncation = useCallback(() => {
     if (!onlyIfTruncated) {
@@ -53,10 +55,15 @@ const ATriggerTooltip = ({
   } = useToggle(openDelay, closeDelay, checkForTruncation);
 
   const close = useCallback(() => {
+    const hoveringTooltip = tooltipRef?.current?.matches(":hover");
+    if (interactive && hoveringTooltip) {
+      return;
+    }
+
     toggleClose();
 
     onClose && onClose();
-  }, [toggleClose, onClose]);
+  }, [toggleClose, onClose, interactive]);
 
   useOutsideClick({
     isEnabled: triggerRef && triggerRef.current && trigger === "click",
@@ -115,6 +122,28 @@ const ATriggerTooltip = ({
     content
   ]);
 
+  useEffect(() => {
+    if (!interactive) {
+      return;
+    }
+
+    const tooltip = tooltipRef?.current;
+
+    const leave = () => {
+      const hoveringAnchor = tooltipAnchorRef?.current?.matches(":hover");
+
+      if (!hoveringAnchor) {
+        close();
+      }
+    };
+
+    tooltip?.addEventListener("mouseleave", leave);
+
+    return () => {
+      tooltip?.removeEventListener("mouseleave", leave);
+    };
+  }, [tooltipRef, tooltipAnchorRef, interactive, close]);
+
   return (
     <>
       {React.Children.map(children, (child, index) => {
@@ -137,6 +166,7 @@ const ATriggerTooltip = ({
         });
       })}
       <ATooltip
+        ref={tooltipRef}
         anchorRef={tooltipAnchorRef}
         open={isOpen}
         onClose={close}
@@ -184,7 +214,11 @@ ATriggerTooltip.propTypes = {
   /**
    * Only show tooltip if the anchor element is truncated
    */
-  onlyIfTruncated: PropTypes.bool
+  onlyIfTruncated: PropTypes.bool,
+  /**
+   * Allow hovering on tooltip for interactive elements
+   */
+  interactive: PropTypes.bool
 };
 
 ATriggerTooltip.displayName = "ATriggerTooltip";
