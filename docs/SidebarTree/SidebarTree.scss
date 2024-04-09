@@ -65,14 +65,15 @@
 
 .sidebar-tree {
   &__node {
-    margin-bottom: 5px;
+    margin-bottom: 2px;
   }
   &__root {
     display: flex;
     height: 30px;
     position: relative;
     align-items: center;
-    margin-left: 29px;
+    //margin-left: 29px;
+    margin: 0 0 2px 30px;
 
     > .a-button {
       position: relative;
