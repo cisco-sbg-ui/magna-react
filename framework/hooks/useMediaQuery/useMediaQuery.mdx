@@ -2,19 +2,17 @@
 name: useMediaQuery
 route: /hooks/use-media-query
 components: useMediaQuery
+title: useMediaQuery
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/hooks/useMediaQuery
 ---
 
-# useMediaQuery
+## Usage
 
-## Install
+### Import
 
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+<ComponentImport components="useMediaQuery" />
 
-```
-import { useMediaQuery } from "@cisco-sbg-ui/magna-react";
-```
-
-## Description
+### Description
 
 `useMediaQuery` notifies you of a matching media query in the DOM. Internally, it uses the [Window's matchMedia API](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia).
 
@@ -33,7 +31,8 @@ The second argument is a configuration object with the following keys:
 - `matches`: boolean to determine if media query matches
 - `mediaQueryList`: A [`MediaQueryList` object](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList) used internally to determine if the media query matched or not
 
-## Usage
+<br />
+<br />
 
 <Playground
   code={`() => {

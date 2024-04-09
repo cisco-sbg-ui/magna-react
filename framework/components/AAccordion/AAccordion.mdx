@@ -2,25 +2,19 @@
 name: Accordions
 route: /components/accordion
 components: AAccordion, AAccordionPanel, AAccordionHeader, AAccordionHeaderTitle, AAccordionBody
+title: AAccordion
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/AAccordion
 ---
 
-# Accordions
+## Usage
 
-## Install
+### Import
 
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+<ComponentImport components="AAccordion" />
 
-```
-import {
-  AAccordion,
-  AAccordionPanel,
-  AAccordionHeader,
-  AAccordionHeaderTitle,
-  AAccordionBody
-} from "@cisco-sbg-ui/magna-react";
-```
+### Usage
 
-## Uncontrolled Usage
+#### Uncontrolled Usage
 
 <Playground
   code={`() => {
@@ -70,7 +64,7 @@ import {
 `}
 />
 
-## Controlled Usage
+#### Controlled Usage
 
 <Playground
   code={`() => {
@@ -107,6 +101,74 @@ import {
     </AAccordion>
   );
 }
+`}
+/>
+
+#### Alternative Icons
+
+<Playground
+  code={`<AAccordion>
+  <AAccordionPanel>
+    <AAccordionHeader>
+      <AAccordionHeaderTitle
+        expandIcon="triangle-right"
+        collapseIcon="triangle-down">
+        Accordion Item 1
+      </AAccordionHeaderTitle>
+    </AAccordionHeader>
+    <AAccordionBody>{LoremIpsum}</AAccordionBody>
+  </AAccordionPanel>
+  <AAccordionPanel collapsed={false}>
+    <AAccordionHeader>
+      <AAccordionHeaderTitle expandIcon="add" collapseIcon="subtract">
+        Accordion Item 2
+      </AAccordionHeaderTitle>
+    </AAccordionHeader>
+    <AAccordionBody>{LoremIpsum}</AAccordionBody>
+  </AAccordionPanel>
+  <AAccordionPanel>
+    <AAccordionHeader>
+      <AAccordionHeaderTitle
+        expandIcon="triangle-down"
+        collapseIcon="triangle-up">
+        Accordion Item 3
+      </AAccordionHeaderTitle>
+    </AAccordionHeader>
+    <AAccordionBody>{LoremIpsum}</AAccordionBody>
+  </AAccordionPanel>
+  <AAccordionPanel collapsed={false}>
+    <AAccordionHeader>
+      <AAccordionHeaderTitle>Additional Accordion Item</AAccordionHeaderTitle>
+    </AAccordionHeader>
+    <AAccordionBody>{LoremIpsum}</AAccordionBody>
+  </AAccordionPanel>
+</AAccordion>
+`}
+/>
+
+#### Icon Placement on the Left Side
+
+<Playground
+  code={`<AAccordion>
+<AAccordionPanel>
+<AAccordionHeader>
+<AAccordionHeaderTitle
+  iconPlacement="left">
+  Accordion Item 1
+</AAccordionHeaderTitle>
+</AAccordionHeader>
+<AAccordionBody>{LoremIpsum}</AAccordionBody>
+</AAccordionPanel>
+<AAccordionPanel collapsed={false}>
+  <AAccordionHeader>
+    <AAccordionHeaderTitle
+      iconPlacement="left">
+      Accordion Item 2
+    </AAccordionHeaderTitle>
+  </AAccordionHeader>
+  <AAccordionBody>{LoremIpsum}</AAccordionBody>
+</AAccordionPanel>
+</AAccordion>
 `}
 />
 
@@ -167,7 +229,7 @@ To prevent this behavior, you should invoke the `stopPropagation()` method on th
   }`}
 />
 
-## Props
+## Component Props
 
 All Accordion components (`AAccordion`, `AAccordionPanel`, `AAccordionHeader`, `AAccordionHeaderTitle`, `AAccordionBody`) inherit passed props.
 
@@ -190,74 +252,6 @@ All Accordion components (`AAccordion`, `AAccordionPanel`, `AAccordionHeader`, `
 ### AccordionBody Props
 
 <Props of="AAccordionBody" />
-
-## Alternative Icons
-
-<Playground
-  code={`<AAccordion>
-  <AAccordionPanel>
-    <AAccordionHeader>
-      <AAccordionHeaderTitle
-        expandIcon="triangle-right"
-        collapseIcon="triangle-down">
-        Accordion Item 1
-      </AAccordionHeaderTitle>
-    </AAccordionHeader>
-    <AAccordionBody>{LoremIpsum}</AAccordionBody>
-  </AAccordionPanel>
-  <AAccordionPanel collapsed={false}>
-    <AAccordionHeader>
-      <AAccordionHeaderTitle expandIcon="add" collapseIcon="subtract">
-        Accordion Item 2
-      </AAccordionHeaderTitle>
-    </AAccordionHeader>
-    <AAccordionBody>{LoremIpsum}</AAccordionBody>
-  </AAccordionPanel>
-  <AAccordionPanel>
-    <AAccordionHeader>
-      <AAccordionHeaderTitle
-        expandIcon="triangle-down"
-        collapseIcon="triangle-up">
-        Accordion Item 3
-      </AAccordionHeaderTitle>
-    </AAccordionHeader>
-    <AAccordionBody>{LoremIpsum}</AAccordionBody>
-  </AAccordionPanel>
-  <AAccordionPanel collapsed={false}>
-    <AAccordionHeader>
-      <AAccordionHeaderTitle>Additional Accordion Item</AAccordionHeaderTitle>
-    </AAccordionHeader>
-    <AAccordionBody>{LoremIpsum}</AAccordionBody>
-  </AAccordionPanel>
-</AAccordion>
-`}
-/>
-
-## Icon Placement on the Left Side
-
-<Playground
-  code={`<AAccordion>
-<AAccordionPanel>
-<AAccordionHeader>
-<AAccordionHeaderTitle
-  iconPlacement="left">
-  Accordion Item 1
-</AAccordionHeaderTitle>
-</AAccordionHeader>
-<AAccordionBody>{LoremIpsum}</AAccordionBody>
-</AAccordionPanel>
-<AAccordionPanel collapsed={false}>
-  <AAccordionHeader>
-    <AAccordionHeaderTitle
-      iconPlacement="left">
-      Accordion Item 2
-    </AAccordionHeaderTitle>
-  </AAccordionHeader>
-  <AAccordionBody>{LoremIpsum}</AAccordionBody>
-</AAccordionPanel>
-</AAccordion>
-`}
-/>
 
 ## Accessibility Notes
 

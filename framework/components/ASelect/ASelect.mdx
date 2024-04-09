@@ -2,21 +2,20 @@
 name: Selects
 route: /components/select
 components: ASelect
+title: ASelect
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/ASelect
 ---
-
-# Selects
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {ASelect} from "@cisco-sbg-ui/magna-react";
-```
 
 ## Usage
 
+### Import
+
+<ComponentImport components="ASelect" />
+
+### Usage
+
 <Playground
+  withTwoPanes
   code={`() => {
   const items = [
     {id: 1, name: "Bread, Cereal, Rice, and Pasta"},
@@ -44,9 +43,10 @@ import {ASelect} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-### Truncating Select Options
+#### Truncating Select Options
 
 <Playground
+withTwoPanes
   code={`() => {
       const items = [
         "Magic: Casting various combat and utility spells",
@@ -70,9 +70,10 @@ import {ASelect} from "@cisco-sbg-ui/magna-react";
 }`}
 />
 
-### Wrapping Long Select Options
+#### Wrapping Long Select Options
 
 <Playground
+withTwoPanes
   code={`() => {
       const items = [
         "Magic: Casting various combat and utility spells",
@@ -96,15 +97,10 @@ import {ASelect} from "@cisco-sbg-ui/magna-react";
 }`}
 />
 
-## Select Props
-
-The `ASelect` component inherits passed props.
-
-<Props of="ASelect" />
-
-## Many Dropdown Options
+#### Many Dropdown Options
 
 <Playground
+  withTwoPanes
   code={`() => {
     const items = useMemo(() => Array.from({length: 100}, (_, i) => (i + 1).toString()), []);
     const [selectedItem, setSelectedItem] = useState();
@@ -124,9 +120,10 @@ The `ASelect` component inherits passed props.
   }`}
 />
 
-## Size Variants
+#### Size Variants
 
 <Playground
+  withTwoPanes
   code={`() => {
   const items = [
     {id: 1, name: "Bread, Cereal, Rice, and Pasta"},
@@ -176,9 +173,10 @@ The `ASelect` component inherits passed props.
 `}
 />
 
-## Validation
+#### Validation
 
 <Playground
+  withTwoPanes
   code={`() => {
   const [role, setRole] = useState(null);
   return (
@@ -204,9 +202,10 @@ The `ASelect` component inherits passed props.
 `}
 />
 
-## Alternate Usage
+#### Alternate Usage
 
 <Playground
+  withTwoPanes
   code={`() => {
   const items1 = [
     {value: 1, text: "Aaa"},
@@ -243,9 +242,10 @@ The `ASelect` component inherits passed props.
 `}
 />
 
-## States
+#### States
 
 <Playground
+  withTwoPanes
   code={`<>
   <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
     <h3>Default Select</h3>
@@ -329,7 +329,7 @@ The `ASelect` component inherits passed props.
 `}
 />
 
-## Prepend/Append Content
+#### Prepend/Append Content
 
 <Playground
   code={`() => {
@@ -351,7 +351,7 @@ The `ASelect` component inherits passed props.
 `}
 />
 
-## Menu Item Templates
+#### Menu Item Templates
 
 <Playground
   code={`() => {
@@ -385,7 +385,7 @@ The `ASelect` component inherits passed props.
 `}
 />
 
-## Menu Item Templates, use as display
+#### Menu Item Templates, use as display
 
 <Playground
   code={`() => {
@@ -420,7 +420,7 @@ The `ASelect` component inherits passed props.
 `}
 />
 
-## Custom Display Template
+#### Custom Display Template
 
 <Playground
   code={`() => {
@@ -464,6 +464,12 @@ The `ASelect` component inherits passed props.
 }
 `}
 />
+
+## Component Props
+
+The `ASelect` component inherits passed props.
+
+<Props of="ASelect" />
 
 ## Accessibility Notes
 

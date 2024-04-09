@@ -2,19 +2,17 @@
 name: Progressbars
 route: /components/progressbar
 components: AProgressbar
+title: AProgressbar
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/AProgressbar
 ---
 
-# Progressbars
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {AProgressbar} from "@cisco-sbg-ui/magna-react";
-```
-
 ## Usage
+
+### Import
+
+<ComponentImport components="AProgressbar" />
+
+### Usage
 
 <Playground
   code={`() => {
@@ -45,13 +43,7 @@ import {AProgressbar} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-## Progressbar Props
-
-The `AProgressbar` component inherits passed props.
-
-<Props of="AProgressbar" />
-
-## States
+#### States
 
 <Playground
   code={`<div className="d-flex flex-column" style={{width: 300}}>
@@ -80,7 +72,7 @@ The `AProgressbar` component inherits passed props.
 `}
 />
 
-## Size Variants
+#### Size Variants
 
 <Playground
   code={`<div>
@@ -97,7 +89,7 @@ The `AProgressbar` component inherits passed props.
 `}
 />
 
-## Custom Animation Duration
+#### Custom Animation Duration
 
 <Playground
   code={`<div>
@@ -106,6 +98,12 @@ The `AProgressbar` component inherits passed props.
 </div>
 `}
 />
+
+## Component Props
+
+The `AProgressbar` component inherits passed props.
+
+<Props of="AProgressbar" />
 
 ## Accessibility Notes
 

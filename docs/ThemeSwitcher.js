@@ -1,4 +1,5 @@
-import React from "react";
+import React, {forwardRef} from "react";
+import "./ThemeSwitcher.scss";
 
 import {
   AButton,
@@ -22,7 +23,7 @@ const ThemeSwitcher = () => {
   const autoTheme = useAAutoTheme();
 
   return (
-    <div>
+    <div id="theme-switcher" className="theme-switcher">
       <div style={groupStyle}>
         <p style={labelStyle}>Theme:</p>
         <AButtonGroup
@@ -85,4 +86,4 @@ const ThemeSwitcher = () => {
 
 ThemeSwitcher.displayName = "ThemeSwitcher";
 
-export default ThemeSwitcher;
+export default forwardRef(ThemeSwitcher);

@@ -1,20 +1,18 @@
 ---
 name: Date Pickers
 route: /components/date-picker
-components: ADatePicker, ADateRangePicker, useDateRange
+components: ADatePicker, ADateRangePicker
+title: ADatePicker
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/ADatePicker
 ---
 
-# Date Picker
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {ADatePicker, ADateRangePicker} from "@cisco-sbg-ui/magna-react";
-```
-
 ## Usage
+
+### Import
+
+<ComponentImport components="ADatePicker, ADateRangePicker" />
+
+### Usage
 
 <Playground
   code={`() => {
@@ -26,7 +24,7 @@ import {ADatePicker, ADateRangePicker} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-### With Minimum and Maximum Dates
+#### With Minimum and Maximum Dates
 
 <Playground
   code={`() => {
@@ -41,7 +39,7 @@ import {ADatePicker, ADateRangePicker} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-## Date Range
+#### Date Range
 
 <Playground
   code={`() => {
@@ -53,7 +51,7 @@ import {ADatePicker, ADateRangePicker} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-### Date Range with Initial Range
+#### Date Range with Initial Range
 
 <Playground
   code={`() => {
@@ -73,7 +71,7 @@ import {ADatePicker, ADateRangePicker} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-### Date Range with Maximum Days
+#### Date Range with Maximum Days
 
 <Playground
   code={`() => {
@@ -96,13 +94,7 @@ import {ADatePicker, ADateRangePicker} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-## Date Picker Props
-
-The `ADatePicker` component inherits passed props.
-
-<Props of="ADatePicker" />
-
-## Date Range with inputs provided
+#### Date Range with inputs provided
 
 (yyyy year format required)
 
@@ -130,7 +122,15 @@ return (
 </>
 ); } `} />
 
-## Date Range Picker Props
+## Component Props
+
+### Date Picker Props
+
+The `ADatePicker` component inherits passed props.
+
+<Props of="ADatePicker" />
+
+### Date Range Picker Props
 
 The `ADateRangePicker` component inherits passed props.
 

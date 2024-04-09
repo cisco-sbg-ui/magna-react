@@ -1,0 +1,25 @@
+// https://stackoverflow.com/a/53221672
+
+#sidebar {
+  scrollbar-width: auto;
+  // Can update color like below
+  // scrollbar-color: #8f54a0 #dd2727;
+  min-width: 290px;
+}
+
+/* Chrome, Edge, and Safari */
+#sidebar::-webkit-scrollbar {
+  width: 12px;
+  outline: none;
+  border: none;
+}
+
+#sidebar::-webkit-scrollbar-track {
+  background: transparent;
+  outline: none;
+  border: none;
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+  outline: none;
+}

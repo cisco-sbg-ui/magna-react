@@ -2,24 +2,21 @@
 name: Layouts
 route: /components/layout
 components: AContainer, ARow, ACol, ASpacer
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/ALayout
 ---
 
-# Layouts
+## Usage
 
-## Install
+### Import
 
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {
-  AContainer,
+<ComponentImport
+  components=" AContainer,
   ARow,
   ACol,
-  ASpacer
-} from "@cisco-sbg-ui/magna-react";
-```
+  ASpacer"
+/>
 
-## Usage
+### Usage
 
 <Playground
   fullWidthPreview
@@ -50,30 +47,6 @@ import {
 </AContainer>
 `}
 />
-
-## Container Props
-
-The `AContainer` component inherits passed props.
-
-<Props of="AContainer" />
-
-## Row Props
-
-The `ARow` component inherits passed props.
-
-<Props of="ARow" />
-
-## Column Props
-
-The `ACol` component inherits passed props.
-
-<Props of="ACol" />
-
-## Spacer Props
-
-The `ASpacer` component inherits passed props.
-
-<Props of="ASpacer" />
 
 ## Advanced Usage
 
@@ -132,3 +105,29 @@ The `ASpacer` component inherits passed props.
 </AContainer>
 `}
 />
+
+## Component Props
+
+### Container Props
+
+The `AContainer` component inherits passed props.
+
+<Props of="AContainer" />
+
+### Row Props
+
+The `ARow` component inherits passed props.
+
+<Props of="ARow" />
+
+### Column Props
+
+The `ACol` component inherits passed props.
+
+<Props of="ACol" />
+
+### Spacer Props
+
+The `ASpacer` component inherits passed props.
+
+<Props of="ASpacer" />

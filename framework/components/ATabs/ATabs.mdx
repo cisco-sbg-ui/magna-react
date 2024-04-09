@@ -2,27 +2,30 @@
 name: Tabs
 route: /components/tab
 components: ATabGroup, ATab
+title: AAccordion
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/ATabs
 ---
-
-# Tabs
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {ATabGroup, ATab} from "@cisco-sbg-ui/magna-react";
-```
 
 ## Usage
 
-#### \*\*\*\*Note regarding Primary v. Secondary - There is no use case for Primary currently so we are setting Secondary to true.
+### Import
 
-#### If you need primary immedaitely, set secondary to false and please reach out to magna team so we can coordinate with UX on the path forward to implimenting primary as default.
+<ComponentImport components="ATabGroup, ATab" />
 
-#### \*\*\*\*
+### Usage
 
-### Uncontrolled Mode
+<AAlert dismissable={false} level="warning">
+  Note regarding Primary v. Secondary - There is no use case for Primary
+  currently so we are setting Secondary to true.
+</AAlert>
+
+<AAlert dismissable={false}>
+  If you need primary immedaitely, set secondary to false and please reach out
+  to magna team so we can coordinate with UX on the path forward to implimenting
+  primary as default.
+</AAlert>
+
+#### Uncontrolled Mode
 
 <Playground
   code={`<>
@@ -46,7 +49,7 @@ import {ATabGroup, ATab} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-### Controlled Mode
+#### Controlled Mode
 
 <Playground
   code={`() => {
@@ -70,9 +73,10 @@ import {ATabGroup, ATab} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-## Vertical Tabs
+#### Vertical Tabs
 
 <Playground
+  withTwoPanes
   code={`<ATabGroup vertical>
   <ATab>One</ATab>
   <ATab>Two</ATab>
@@ -81,9 +85,10 @@ import {ATabGroup, ATab} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-## Menu overflow
+#### Menu overflow
 
 <Playground
+  withTwoPanes
   code={`<>
   <ATabGroup className="mb-6">
     <ATab>One</ATab>
@@ -112,7 +117,7 @@ import {ATabGroup, ATab} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-## Links
+#### Links
 
 Tabs will render in the DOM as anchor tags if the `href` property is defined.
 
@@ -127,13 +132,15 @@ Tabs will render in the DOM as anchor tags if the `href` property is defined.
 `}
 />
 
-## Tab Group Props
+## Component Props
+
+### Tab Group Props
 
 The `ATabGroup` component inherits passed props.
 
 <Props of="ATabGroup" />
 
-## Tab Props
+### Tab Props
 
 The `ATab` component inherits passed props.
 

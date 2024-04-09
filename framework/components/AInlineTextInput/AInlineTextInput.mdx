@@ -2,67 +2,77 @@
 name: Inline Text Inputs
 route: /components/inline-text-input
 components: AInlineTextInput
+title: AInlineTextInput
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/AInlineTextInput
 ---
-
-# Text Inputs
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {AInlineTextInput} from "@cisco-sbg-ui/magna-react";
-```
 
 ## Usage
 
-`AInlineTextInput` enters edit mode on click.
+### Import
 
-Escape key when editing resets value to last entered.
+<ComponentImport components="AInlineTextInput" />
 
-<Playground
-  code={`() => {
-  const [value, setValue] = useState("inline edit value");
-  return (
-    <div>
-      <AInlineTextInput value={value} onChange={(newValue) => {
-        setValue(newValue);
-      }} />
-      <br />
-      Actual Value: {value}
-    </div>
+### Usage
 
-);
-}
-`}
-/>
-
-## Clearable
+`AInlineTextInput` enters edit mode on click, and pressing the <kbd>Escape</kbd> key escapes edit mode and resets the input back to what was last enetered.
 
 <Playground
-  code={`() => {
-  const [value, setValue] = useState("inline edit value");
+  withTwoPanes
+  code={`function Example() {
+  const [value, setValue] = useState(\n\t\t"Click to edit"\n\t);
   return (
     <div>
-      <AInlineTextInput value={value} onChange={(newValue) => {
-        setValue(newValue);
-      }}
-      clearable
+      <AInlineTextInput
+        value={value}
+        onChange={(newValue) => {
+          setValue(newValue);
+        }}
       />
       <br />
-      Actual Value: {value}
+      <i
+        className='mds-neutral--neutral-10--text'
+      >
+        Actual Value: {value}
+      </i>
     </div>
-
-);
+  );
 }
 `}
 />
 
-## Input props and validation
+#### Clearable
+
+<Playground
+  code={`function Example() {
+  const [value, setValue] = useState("Click to edit");
+  return (
+    <div>
+      <AInlineTextInput
+        value={value}
+        onChange={(newValue) => {
+          setValue(newValue);
+        }}
+        clearable
+      />
+      <br />
+      <i className='mds-neutral--neutral-10--text'>
+        Actual Value: {value}
+      </i>
+    </div>
+  );
+}
+`}
+/>
+
+#### Raw Input Configuration
+
+If needed, you can pass an object to the `inputComponentProps` prop to send props down directly to the `<ATextInput />` component.
+
+Below, this is demonstrated by setting a `prependIcon` key for the `<ATextInput />`.
 
 <Playground
   code={`() => {
-  const [value, setValue] = useState("inline edit value");
+  const [value, setValue] = useState("Click to edit");
   return (
     <div>
       <AInlineTextInput
@@ -76,15 +86,38 @@ Escape key when editing resets value to last entered.
         }}
       />
       <br />
-      Actual Value: {value}
+      <i className='mds-neutral--neutral-10--text'>
+        Actual Value: {value}
+      </i>
     </div>
-
 );
 }
 `}
 />
 
-## Inline Text Input Props
+## Validation
+
+<Playground
+  code={`function Example() {
+  const [value, setValue] = useState("Click to edit");
+  return (
+    <div>
+      <AInlineTextInput
+        required
+        value={value}
+        onChange={(newValue) => {
+          setValue(newValue);
+        }}
+      />
+      <br />
+      <i className="mds-neutral--neutral-10--text">Actual Value: {value}</i>
+    </div>
+  );
+}
+`}
+/>
+
+## Component Props
 
 The `AInlineTextInput` component inherits passed props.
 

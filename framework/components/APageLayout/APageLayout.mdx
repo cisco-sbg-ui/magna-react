@@ -1,38 +1,27 @@
 ---
 name: Page Layout
 route: /components/pagelayout
-components: APageContainer, APageHeader, APageTitle, APageDescription, APageLabel,  APageTitleContent, APageTitleContentLeft, APageTitleContentRight, APageTitleText
+components: APageContainer, APageHeader, APageTitle, APageDescription, APageLabel, APageTitleContent, APageTitleContentLeft, APageTitleContentRight, APageTitleText
+title: APageContainer
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/APageLayout
 ---
 
-# Page Layout
+## Usage
 
-## Install
+### Import
 
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+<ComponentImport components="APageContainer, APageHeader, APageTitle, APageDescription, APageLabel,  APageTitleContent, APageTitleContentLeft, APageTitleContentRight, APageTitleTexttitle: AAccordion" />
 
-```js
-import {
-  APageAlert,
-  APageContainer,
-  APageHeader,
-  APageTitle,
-  APageDescription,
-  APageLabel,
-  APageTitleContent,
-  APageTitleContentLeft,
-  APageTitleContentRight,
-  APageTitleText
-} from "@cisco-sbg-ui/magna-react";
-```
+### Usage
 
-## Terminology
+#### Terminology
 
 - Top line - breadcrumbs and actions that can impact the entire page
 - Page title - may contain tags, filters, loading status, and page-level actions like “Add XXX”
 - Page description - Key top-level information to highlight
 - Page label like MAC details - can be placed next to primary tabs
 
-## Basic Usage
+#### Basic Usage
 
 <Playground
   fullWidthPreview
@@ -50,7 +39,7 @@ return (
 </APageContainer>
 ); } `} />
 
-## Advanced Usage
+#### Advanced Usage
 
 <Playground
   fullWidthPreview
@@ -145,6 +134,8 @@ return (
 
 ## Other Designs
 
+#### Detail Page
+
 <Playground
   fullWidthPreview
   previewStyle={{padding: "0 !important"}}
@@ -192,7 +183,7 @@ return (
 </APageContainer>
 ); } `} />
 
-## Right aligned content without left
+#### Right aligned content without left
 
 <Playground
   fullWidthPreview
@@ -216,35 +207,51 @@ return (
 </APageContainer>
 ); } `} />
 
-## Page Layout Props
+## Component Props
+
+### APageContainer Props
 
 The `APageContainer` component inherits passed props.
 
 <Props of="APageContainer" />
 
+### APageHeader Props
+
 The `APageHeader` component inherits passed props.
 
 <Props of="APageHeader" />
+
+### APageTitle Props
 
 The `APageTitle` component inherits passed props.
 
 <Props of="APageTitle" />
 
+### APageTitleContent Props
+
 The `APageTitleContent` component inherits passed props.
 
 <Props of="APageTitleContent" />
+
+### APageTitleContentLeft Props
 
 The `APageTitleContentLeft` component inherits passed props.
 
 <Props of="APageTitleContentLeft" />
 
+### APageTitleContentRight Props
+
 The `APageTitleContentRight` component inherits passed props.
 
 <Props of="APageTitleContentRight" />
 
+### APageDescription Props
+
 The `APageDescription` component inherits passed props.
 
 <Props of="APageDescription" />
+
+### APageLabel Props
 
 The `APageLabel` component inherits passed props.
 

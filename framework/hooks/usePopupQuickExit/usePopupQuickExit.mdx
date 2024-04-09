@@ -2,19 +2,17 @@
 name: usePopupQuickExit
 route: /hooks/use-popup-quick-exit
 components: usePopupQuickExit
+title: usePopupQuickExit
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/hooks/usePopupQuickExit
 ---
 
-# usePopupQuickExit
+## Usage
 
-## Install
+### Import
 
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+<ComponentImport components="usePopupQuickExit" />
 
-```
-import { usePopupQuickExit } from "@cisco-sbg-ui/magna-react";
-```
-
-## Description
+### Description
 
 `usePopupQuickExit` is a wrapper around both [`useOutsideClick`](/hooks/use-outside-click) and [`useEscapeKeydown`](/hooks/use-escape-keydown). Often times, when a variation of a popover UI is rendered (such as a modal, drawer, etc.), it should close on _both_ an outside click and an escape keypress. This hook just makes it so that you don't need to import two hooks to handle this behavior.
 
@@ -26,7 +24,8 @@ A configuration object with the following keys:
 - `popupRef`: A React Ref to your popup element
 - `onExit`: A function to be called when the user clicks outside of `rootRef` or presses their escape key
 
-## Usage
+<br />
+<br />
 
 <Playground
   code={`() => {
@@ -40,22 +39,16 @@ A configuration object with the following keys:
   return (
     <div>
       <AButton onClick={() => setOpen(true)}>Open Modal</AButton>
-      <AModal aria-labelledby="modal-title" isOpen={open}>
+      <AModal aria-labelledby="modal-title" isOpen={open} onClose={() => {
+        setOpen(false);
+      }}>
         <APanel ref={ref} style={{ minWidth: "400px" }} type="dialog">
           <APanelHeader>
             <APanelTitle id="modal-title">Modal Demo</APanelTitle>
-            <AButton
-              aria-label="Close modal 1"
-              onClick={() => setOpen(false)}
-              tertiaryAlt
-              icon
-            >
-              <AIcon>close</AIcon>
-            </AButton>
           </APanelHeader>
           <APanelBody>Modal content goes here.</APanelBody>
           <APanelFooter>
-            <AButton>Action</AButton>
+            <AButton onClick={() => {setOpen(false);}}>Close</AButton>
           </APanelFooter>
         </APanel>
       </AModal>

@@ -1,26 +1,21 @@
 ---
 name: Loaders
 route: /components/loader
-components: ACiscoLoader, ALoader
+components: ACiscoLoader, APageLoader, ALoader
+title: ALoader
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/ALoader
 ---
-
-# Loaders
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {
-  ACiscoLoader,
-  APageLoader,
-  ALoader
-} from "@cisco-sbg-ui/magna-react";
-```
 
 ## Usage
 
+### Import
+
+<ComponentImport components="ACiscoLoader, APageLoader, ALoader" />
+
+### Usage
+
 <Playground
+  withTwoPanes
   code={`<div>
   <h3>Cisco Loader</h3>
   <ACiscoLoader className="mx-auto" />
@@ -37,9 +32,10 @@ import {
 `}
 />
 
-## Generic Variants
+### Generic Variants
 
 <Playground
+  withTwoPanes
   code={`<div>
    <h3>Small</h3>
     <ALoader variant="spinner" size="small">Small loader</ALoader><br />
@@ -68,13 +64,15 @@ import {
 `}
 />
 
-## Cisco Loader Props
+## Component Props
+
+### Cisco Loader Props
 
 The `ACiscoLoader` component inherits passed props.
 
 <Props of="ACiscoLoader" />
 
-## Generic Loader Props
+### Generic Loader Props
 
 The `ALoader` component inherits passed props.
 

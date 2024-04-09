@@ -2,19 +2,17 @@
 name: Radios
 route: /components/radio
 components: ARadio, ARadioGroup
+title: ARadio
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/ARadio
 ---
 
-# Radio Buttons
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {ARadio} from "@cisco-sbg-ui/magna-react";
-```
-
 ## Usage
+
+### Import
+
+<ComponentImport components="ARadio, ARadioGroup" />
+
+### Usage
 
 <Playground
   code={`() => {
@@ -46,17 +44,7 @@ import {ARadio} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-## Radio Props
-
-The `ARadio` component inherits passed props.
-
-<Props of="ARadio" />
-
-The `ARadioGroup` component inherits passed props.
-
-<Props of="ARadioGroup" />
-
-## States
+#### States
 
 <Playground
   code={`<div className="d-flex flex-column">
@@ -72,7 +60,7 @@ The `ARadioGroup` component inherits passed props.
 `}
 />
 
-## Radio Groups
+#### Radio Groups
 
 <Playground
   code={`() => {
@@ -97,7 +85,7 @@ The `ARadioGroup` component inherits passed props.
 `}
 />
 
-## Aligment Groups
+#### Aligment Groups
 
 <Playground
   code={`() => {
@@ -136,7 +124,7 @@ The `ARadioGroup` component inherits passed props.
 `}
 />
 
-## Variants
+#### Variants
 
 <Playground
   code={`<div className="d-flex flex-column">
@@ -151,6 +139,16 @@ The `ARadioGroup` component inherits passed props.
 </div>
 `}
 />
+
+## Component Props
+
+The `ARadio` component inherits passed props.
+
+<Props of="ARadio" />
+
+The `ARadioGroup` component inherits passed props.
+
+<Props of="ARadioGroup" />
 
 ## Accessibility Notes
 

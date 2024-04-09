@@ -2,65 +2,43 @@
 name: Alerts
 route: /components/alert
 components: AAlert
+title: AAlert
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/AAlert
 ---
-
-# Alerts
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {AAlert} from "@cisco-sbg-ui/magna-react";
-```
 
 ## Usage
 
+### Import
+
+<ComponentImport components="AAlert" />
+
+### Usage
+
 <Playground
-  code={`() => {
-  const [alertsCount, setAlertsCount] = useState(3);
-  const [alerts, setAlerts] = useState([
-    "info",
-    "success",
-    "warning",
-    "danger"
-  ]);
-  const closeHandler = (key) => {
-    var newAlerts = alerts.slice();
-    newAlerts.splice(key, 1);
-    setAlerts(newAlerts);
-  };
-  const addHandler = () => {
-    setAlertsCount(alertsCount + 1);
-    setAlerts([
-      ...alerts,
-      ["info", "success", "warning", "danger"][Math.floor(Math.random() * 4)]
-    ]);
-  };
-  return (
-    <div>
-      <h3>Examples</h3>
-      {alerts.map((alert, index) => (
-        <div className="my-2" key={index}>
-          <AAlert
-            level={alert}
-            dismissable
-            onClose={() => closeHandler(index)}>
-            {LoremIpsum}
-          </AAlert>
-        </div>
-      ))}
-      <ADivider />
-      <p>
-        <AButton onClick={() => addHandler()}>Add Alert</AButton>
-      </p>
-    </div>
-  );
-}
+  withTwoPanes
+  code={`
+  <AAlert
+    level="success"
+    dismissable={true}
+    onClose={() => alert("closed")}>
+  Hello world!
+</AAlert>`}
+/>
+
+#### Status Levels
+
+<Playground
+  code={`<>
+  {["info", "success", "warning", "danger"].map((level) => (
+    <AAlert level={level} dismissable={false} className="mb-2" key={level}>
+      Alert with {level} level
+    </AAlert>
+  ))}
+</>
 `}
 />
 
-## Alert Props
+## Component Props
 
 The `AAlert` component inherits passed props.
 

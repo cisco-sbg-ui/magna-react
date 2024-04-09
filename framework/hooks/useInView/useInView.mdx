@@ -2,19 +2,17 @@
 name: useInView
 route: /hooks/use-in-view
 components: useInView
+title: useInView
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/hooks/useInView
 ---
 
-# useInView
+## Usage
 
-## Install
+### Import
 
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+<ComponentImport components="useInView" />
 
-```
-import { useInView } from "@cisco-sbg-ui/magna-react";
-```
-
-## Description
+### Description
 
 `useInView` detects when an element in the DOM comes into view. This can be helpful for lazily performing expensive or asynchronous operations until your target element is visible to the user.
 
@@ -30,7 +28,8 @@ The first argument is a function that will be called when the element you are ob
 
 `useInView` returns a [callback ref](https://reactjs.org/docs/refs-and-the-dom.html#callback-refs) to be applied to the element you are interested in observing in the view.
 
-## Usage
+<br />
+<br />
 
 <Playground
   fullWidthPreview
@@ -101,9 +100,9 @@ The first argument is a function that will be called when the element you are ob
 }`}
 />
 
-Sometimes, you might only want the notification once. In that case, pass `triggerOnce` to the options to `useInView`.
-
 ### Triggering Once
+
+Sometimes, you might only want the notification once. In that case, pass `triggerOnce` to the options to `useInView`.
 
 <Playground
   fullWidthPreview

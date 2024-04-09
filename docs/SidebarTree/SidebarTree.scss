@@ -1,0 +1,128 @@
+@import "../../framework/styles/index.scss";
+
+.sidebar-tree {
+  &__root {
+    border-radius: 6px;
+
+    > .sidebar-tree__chevron.a-button:focus {
+      box-shadow: none;
+      overflow: visible;
+
+      &:after {
+        content: "";
+        opacity: 0.4;
+        position: absolute;
+        width: 22px;
+        height: 22px;
+        left: 4px;
+        top: 4px;
+      }
+    }
+  }
+
+  &__content {
+    color: currentColor;
+    font-weight: 700;
+    font-family: "Inter var", CiscoSans, Arial, sans-serif;
+
+    &:hover,
+    &:focus {
+      background: transparent;
+      color: currentColor;
+      text-decoration: none;
+    }
+  }
+
+  &--hoverable {
+    .sidebar-tree__root {
+      &--hover,
+      &--active {
+        cursor: pointer;
+        color: var(--base-text-default);
+
+        .sidebar-tree__content {
+          color: var(--base-text-default);
+        }
+      }
+      &--hover {
+        background-color: var(--interact-bg-weak-hover);
+      }
+      &--active {
+        background-color: var(--interact-bg-weak-active);
+      }
+    }
+  }
+
+  &--dense {
+    .sidebar-tree__root > .a-button:focus:after {
+      width: 16px;
+      height: 16px;
+      left: 4px;
+      top: 4px;
+    }
+  }
+}
+
+.sidebar-tree {
+  &__node {
+    margin-bottom: 2px;
+  }
+  &__root {
+    display: flex;
+    height: 30px;
+    position: relative;
+    align-items: center;
+    //margin-left: 29px;
+    margin: 0 0 2px 30px;
+
+    > .a-button {
+      position: relative;
+      flex-shrink: 0;
+      padding-right: 16px;
+    }
+
+    &--icon {
+      padding-left: 0px;
+      margin-left: 0px;
+    }
+  }
+
+  &__content {
+    flex-grow: 1;
+    user-select: none;
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 29px;
+
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+
+  &__level {
+    width: 17px;
+    flex-shrink: 0;
+  }
+
+  &--dense {
+    .sidebar-tree__root {
+      height: 24px;
+
+      &--leaf {
+        padding-left: 24px;
+      }
+
+      > .a-button {
+        padding: 7px;
+      }
+    }
+
+    .sidebar-tree__content {
+      line-height: 24px;
+    }
+  }
+}

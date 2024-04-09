@@ -2,19 +2,17 @@
 name: useToggle
 route: /hooks/use-toggle
 components: useToggle
+title: useToggle
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/hooks/useToggle
 ---
 
-# useToggle
+## Usage
 
-## Install
+### Import
 
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+<ComponentImport components="useToggle" />
 
-```
-import { useToggle } from "@cisco-sbg-ui/magna-react";
-```
-
-## Description
+### Description
 
 `useToggle` handles state for `isOpen` and provides `open`, `close`, and `toggle` convenience functions
 
@@ -24,7 +22,8 @@ import { useToggle } from "@cisco-sbg-ui/magna-react";
 - `closeDelay`: Delay before `isOpen` gets set to false
 - `canOpen`: A function to check if the tooltip can be opened
 
-## Usage
+<br />
+<br />
 
 <Playground
   code={`() => {

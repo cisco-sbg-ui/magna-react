@@ -2,21 +2,17 @@
 name: Network Values
 route: /components/networkvalues
 components: ANetworkValue
+title: ANetworkValue
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/ANetworkValue
 ---
 
-# Network Value
-
-Use for MAC addresses, IP addresses, networking IDs
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```js
-import {ANetworkValue} from "@cisco-sbg-ui/magna-react";
-```
-
 ## Usage
+
+### Import
+
+<ComponentImport components="ANetworkValue" />
+
+### Usage
 
 <Playground
   code={`() => {
@@ -28,7 +24,7 @@ return (
 </>
 ); } `} />
 
-## With Copy Button
+#### With Copy Button
 
 <Playground
   code={`() => {
@@ -40,7 +36,7 @@ return (
 </>
 ); } `} />
 
-## Network Value Props
+## Component Props
 
 The `ANetworkValue` component inherits passed props.
 

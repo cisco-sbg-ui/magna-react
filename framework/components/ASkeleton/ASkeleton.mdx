@@ -2,19 +2,19 @@
 name: Skeleton
 route: /components/skeleton
 components: ASkeleton, ASkeletonHeader, ASkeletonText, ASkeletonBlock
+title: ASkeleton
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/ASkeleton
 ---
 
-# Skeleton
+## Usage
 
-## Install
+### Import
 
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+<ComponentImport components="ASkeleton, ASkeletonHeader, ASkeletonText, ASkeletonBlock" />
 
-```
-import {ASkeleton, ASkeletonHeader, ASkeletonText, ASkeletonBlock} from "@cisco-sbg-ui/magna-react";
-```
+### Usage
 
-## Simple
+#### Simple
 
 <Playground
   code={`<ASkeleton header>
@@ -25,7 +25,7 @@ import {ASkeleton, ASkeletonHeader, ASkeletonText, ASkeletonBlock} from "@cisco-
     </ASkeleton>`}
 />
 
-## Not animated
+#### Not animated
 
 <Playground
   code={`<ASkeleton header animated={false}>
@@ -36,7 +36,7 @@ import {ASkeleton, ASkeletonHeader, ASkeletonText, ASkeletonBlock} from "@cisco-
     </ASkeleton>`}
 />
 
-## Nested
+#### Nested
 
 <Playground
   code={`<ASkeleton header>
@@ -51,7 +51,7 @@ import {ASkeleton, ASkeletonHeader, ASkeletonText, ASkeletonBlock} from "@cisco-
     </ASkeleton>`}
 />
 
-## Without Panel backdrop
+#### Without Panel backdrop
 
 <Playground
   code={`<ASkeleton header hidePanelBackdrop>
@@ -66,7 +66,7 @@ import {ASkeleton, ASkeletonHeader, ASkeletonText, ASkeletonBlock} from "@cisco-
     </ASkeleton>`}
 />
 
-## Horizontal Layout
+#### Horizontal Layout
 
 <Playground
   fullWidthPreview
@@ -82,7 +82,7 @@ import {ASkeleton, ASkeletonHeader, ASkeletonText, ASkeletonBlock} from "@cisco-
     </ASkeleton>`}
 />
 
-## Horizontal Chunks
+#### Horizontal Chunks
 
 <Playground
   fullWidthPreview
@@ -103,7 +103,7 @@ import {ASkeleton, ASkeletonHeader, ASkeletonText, ASkeletonBlock} from "@cisco-
 
 />
 
-## Data Table Loading
+#### Data Table Loading
 
 <Playground
   code={`() => {
@@ -155,13 +155,13 @@ const headers = [
 
 />
 
-## Skeleton Props
+## Component Props
 
 The `ASkeleton` component inherits passed props and applies them to the `APanel` root element of the component.
 
 <Props of="ASkeleton" />
 
-## SkeletonHeader Props
+### SkeletonHeader Props
 
 The `ASkeletonHeader` component inherits passed props.
 
@@ -169,13 +169,13 @@ Use the `header` prop on `ASkeleton` for automatic header addition to the parent
 
 <Props of="ASkeletonHeader" />
 
-## SkeletonBlock Props
+### SkeletonBlock Props
 
 The `ASkeletonBlock` component inherits passed props.
 
 <Props of="ASkeletonBlock" />
 
-## ASkeletonText Props
+### ASkeletonText Props
 
 The `ASkeletonText` component inherits passed props.
 

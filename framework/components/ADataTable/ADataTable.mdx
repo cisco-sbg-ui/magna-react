@@ -2,21 +2,19 @@
 name: Data Tables
 route: /components/data-table
 components: ADataTable, useInfiniteScroll
+title: ADataTable
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/ADataTable
 ---
-
-# Data Tables
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {ADataTable} from "@cisco-sbg-ui/magna-react";
-```
 
 ## Usage
 
-### Basic
+### Import
+
+<ComponentImport components="ADataTable, useInfiniteScroll" />
+
+### Usage
+
+#### Basic
 
 <Playground
   code={`() => {
@@ -93,7 +91,7 @@ import {ADataTable} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-### Two Stage Sort
+#### Two Stage Sort
 
 By default a table column can be unsorted. Use `disableSortReset` to change sorting to flip between "asc" and "desc" on click without the unsorted state.
 
@@ -173,7 +171,7 @@ By default a table column can be unsorted. Use `disableSortReset` to change sort
 `}
 />
 
-### Selectable Rows
+#### Selectable Rows
 
 Rows can be selected by passing the `isRowSelected` prop to `ADataTable`, which is a function called for every row with the associated data in order to determine if the row should be highlighted in the selected state.
 
@@ -547,7 +545,7 @@ In this example, the associated more details drawer that is opened is used to de
 `}
 />
 
-## Conditional Expandable Rows
+#### Conditional Expandable Rows
 
 <Playground
   code={`() => {

@@ -130,4 +130,6 @@ $alert-close-icon-size: 10.5px;
 
 .a-app .a-alert p:first-child {
   margin: 0 0 ($spacing * 0.5) 0;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }

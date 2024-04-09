@@ -1,18 +1,16 @@
 ---
 name: Drawers
 route: /components/drawer
-components: ADrawer
+components: ADrawerHeader, ADrawerTitle, ADrawerSubtitle, ADrawerBody, ADrawerFooter
+title: ADrawer
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/ADrawer
 ---
 
-# Drawers
+## Usage
 
-## Install
+### Import
 
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {ADrawer} from "@cisco-sbg-ui/magna-react";
-```
+<ComponentImport components="ADrawerHeader, ADrawerTitle, ADrawerSubtitle, ADrawerBody, ADrawerFooter" />
 
 By default, `ADrawer` renders over the entire page (as a Modal) on the left side of the screen, but you can configure the drawer to your needs with the following customizations:
 
@@ -21,11 +19,11 @@ By default, `ADrawer` renders over the entire page (as a Modal) on the left side
 - Positioning strategy
 - Drawer widths
 
-## Usage
+### Usage
 
 The drawer can slide-in from the left, right, or bottom of the page.
 
-### Slide-in Directions
+#### Slide-in Directions
 
 <Playground
   code={`() => {
@@ -114,7 +112,7 @@ The drawer can slide-in from the left, right, or bottom of the page.
 }`}
 />
 
-### With closeOnOutsideClick
+#### With closeOnOutsideClick
 
 <Playground
   code={`() => {
@@ -150,7 +148,7 @@ The drawer can slide-in from the left, right, or bottom of the page.
 }`}
 />
 
-### Custom Width
+#### Custom Width
 
 <Playground
   code={`() => {
@@ -188,7 +186,90 @@ The drawer can slide-in from the left, right, or bottom of the page.
 }`}
 />
 
-### Drawer Positioning Strategies
+#### Modal Options
+
+Becuase `ADrawer` is a `fixed` element by default, it also defaults to rendering as [a modal](/components/modal). This can be easily overriden by passing `false` to the `asModal` prop of `ADrawer`.
+
+Please note that when `ADrawer` is rendered as a modal, focus will be trapped inside the opened drawer's content, and scrolling outside of the drawer will be locked.
+
+<Playground
+  code={`() => {
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const nonModalContentRef = useRef();
+    const [nonModalOpen, setNonModalOpen] = useState(false);
+    usePopupQuickExit({
+      popupRef: nonModalContentRef,
+      isEnabled: nonModalOpen,
+      onExit: () => setNonModalOpen(false)
+    });
+
+    return (
+      <>
+        <p>Modal Drawer</p>
+        <AButton
+            aria-label='Open modal drawer'
+            onClick={() => setModalOpen(true)}>
+          Open
+        </AButton>
+        <ADrawer
+            aria-label='Drawer that behaves like a modal.'
+            asModal={true}
+            isOpen={modalOpen}
+            slideIn='right'
+            onClose={() => setModalOpen(false)}>
+            <MockDrawerContent
+                title='Modal Drawer'
+                content='A Drawer that behaves as a modal.'
+                onClose={() => setModalOpen(false)} />
+        </ADrawer>
+
+        <p>Non-Modal Drawer</p>
+        <AButton
+            aria-label='Open non-modal drawer'
+            onClick={() => setNonModalOpen(prevState => !prevState)}>
+            Toggle
+        </AButton>
+        <ADrawer
+            ref={nonModalContentRef}
+            asModal={false}
+            isOpen={nonModalOpen}
+            slideIn='right'>
+          <div style={{
+            display: "flex",
+            flexDirection: "column",
+            height: "100%"
+          }}>
+            <MockDrawerContent
+                title='Non-Modal Drawer'
+                content='Focus is not trapped and scrolling is not locked.'
+                onClose={() => setNonModalOpen(false)} />
+          </div>
+        </ADrawer>
+      </>
+    )
+    function MockDrawerContent({ content, onClose, title }) {
+      return (
+        <>
+          <ADrawerHeader divider>
+            <ADrawerTitle onCloseButtonClick={onClose}>
+              <h1>{title}</h1>
+            </ADrawerTitle>
+          </ADrawerHeader>
+          <ADrawerBody>{content}</ADrawerBody>
+          <ADrawerFooter>
+            <AButton onClick={onClose}>
+              Close
+            </AButton>
+          </ADrawerFooter>
+        </>
+      )
+    }
+
+}`}
+/>
+
+## Drawer Positioning Strategies
 
 By default, `ADrawer` is rendered as a fixed element. This means that the drawer will pan the entire viewport, covering any content underneath [0].
 
@@ -327,90 +408,7 @@ To contain the drawer within something other than the viewport, you can render t
 }`}
 />
 
-### Modal Options
-
-Becuase `ADrawer` is a `fixed` element by default, it also defaults to rendering as [a modal](/components/modal). This can be easily overriden by passing `false` to the `asModal` prop of `ADrawer`.
-
-Please note that when `ADrawer` is rendered as a modal, focus will be trapped inside the opened drawer's content, and scrolling outside of the drawer will be locked.
-
-<Playground
-  code={`() => {
-    const [modalOpen, setModalOpen] = useState(false);
-
-    const nonModalContentRef = useRef();
-    const [nonModalOpen, setNonModalOpen] = useState(false);
-    usePopupQuickExit({
-      popupRef: nonModalContentRef,
-      isEnabled: nonModalOpen,
-      onExit: () => setNonModalOpen(false)
-    });
-
-    return (
-      <>
-        <p>Modal Drawer</p>
-        <AButton
-            aria-label='Open modal drawer'
-            onClick={() => setModalOpen(true)}>
-          Open
-        </AButton>
-        <ADrawer
-            aria-label='Drawer that behaves like a modal.'
-            asModal={true}
-            isOpen={modalOpen}
-            slideIn='right'
-            onClose={() => setModalOpen(false)}>
-            <MockDrawerContent
-                title='Modal Drawer'
-                content='A Drawer that behaves as a modal.'
-                onClose={() => setModalOpen(false)} />
-        </ADrawer>
-
-        <p>Non-Modal Drawer</p>
-        <AButton
-            aria-label='Open non-modal drawer'
-            onClick={() => setNonModalOpen(prevState => !prevState)}>
-            Toggle
-        </AButton>
-        <ADrawer
-            ref={nonModalContentRef}
-            asModal={false}
-            isOpen={nonModalOpen}
-            slideIn='right'>
-          <div style={{
-            display: "flex",
-            flexDirection: "column",
-            height: "100%"
-          }}>
-            <MockDrawerContent
-                title='Non-Modal Drawer'
-                content='Focus is not trapped and scrolling is not locked.'
-                onClose={() => setNonModalOpen(false)} />
-          </div>
-        </ADrawer>
-      </>
-    )
-    function MockDrawerContent({ content, onClose, title }) {
-      return (
-        <>
-          <ADrawerHeader divider>
-            <ADrawerTitle onCloseButtonClick={onClose}>
-              <h1>{title}</h1>
-            </ADrawerTitle>
-          </ADrawerHeader>
-          <ADrawerBody>{content}</ADrawerBody>
-          <ADrawerFooter>
-            <AButton onClick={onClose}>
-              Close
-            </AButton>
-          </ADrawerFooter>
-        </>
-      )
-    }
-
-}`}
-/>
-
-### Common Use Cases
+## Common Use Cases
 
 #### Application Toolbar
 
@@ -544,7 +542,7 @@ Please note that when `ADrawer` is rendered as a modal, focus will be trapped in
   }`}
 />
 
-### Persistent Sidebar
+#### Persistent Sidebar
 
 <Playground
   code={`() => {
@@ -607,7 +605,7 @@ Please note that when `ADrawer` is rendered as a modal, focus will be trapped in
   }`}
 />
 
-### Without CSS Transitions
+#### Without CSS Transitions
 
 <Playground
   code={`() => {
@@ -648,30 +646,30 @@ Please note that when `ADrawer` is rendered as a modal, focus will be trapped in
 }`}
 />
 
-## Drawer Props
+## Component Props
 
 <Props of="ADrawer" />
+
+### Drawer Header Props
+
+<Props of="ADrawerHeader" />
+
+### Drawer Title Props
+
+<Props of="ADrawerTitle" />
+
+### Drawer Subtitle Props
+
+<Props of="ADrawerSubtitle" />
+
+### Drawer Body Props
+
+<Props of="ADrawerBody" />
+
+### Drawer Footer Props
+
+<Props of="ADrawerFooter" />
 
 ## Accessibility Notes
 
 By default, `ADrawer` renders as a modal. To override this behavior, pass `ADrawer` the `asModal` prop value of `false`. For documentation on modals, reference the [`AModal` documentation](/components/modal).
-
-## Drawer Header Props
-
-<Props of="ADrawerHeader" />
-
-## Drawer Title Props
-
-<Props of="ADrawerTitle" />
-
-## Drawer Subtitle Props
-
-<Props of="ADrawerSubtitle" />
-
-## Drawer Body Props
-
-<Props of="ADrawerBody" />
-
-## Drawer Footer Props
-
-<Props of="ADrawerFooter" />

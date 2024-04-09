@@ -2,24 +2,21 @@
 name: InView
 route: /components/inview
 components: AInView
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/AInView
 ---
-
-# In View
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {AInView} from "@cisco-sbg-ui/magna-react";
-```
 
 ## Usage
 
-### Basic
+### Import
+
+<ComponentImport components="AInView" />
+
+### Usage
+
+#### Basic
 
 <Playground
-    code={`() => {
+  code={`() => {
         // The container of the AInView component ...
         // ... should almost always be scrollable
         const containerStyling = {
@@ -54,7 +51,7 @@ import {AInView} from "@cisco-sbg-ui/magna-react";
     }`}
 />
 
-### Asynchronous Actions
+#### Asynchronous Actions
 
 <Playground
   code={`() => {
@@ -96,10 +93,10 @@ import {AInView} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-### Infinite Scrolling
+#### Infinite Scrolling
 
 <Playground
-    code={`() => {
+  code={`() => {
         const createNextItems = () => [...new Array(15)].fill('Item');
         const [items, setItems] = useState(createNextItems());
         const [isLoading, setIsLoading] = useState(false);
@@ -144,12 +141,12 @@ import {AInView} from "@cisco-sbg-ui/magna-react";
     }`}
 />
 
-### Optimistic Infinite Scrolling
+#### Optimistic Infinite Scrolling
 
 In the following example, a margin is specified to indicate that the trigger can run when the observed element is within 200 pixels of the container's viewport, i.e., the `<ul>` element.
 
 <Playground
-    code={`() => {
+  code={`() => {
         const createNextItems = () => [...new Array(15)].fill('Item');
         const scrollContainer = useRef();
         const [items, setItems] = useState(createNextItems());
@@ -196,7 +193,6 @@ In the following example, a margin is specified to indicate that the trigger can
         )
     }`}
 />
-
 
 ## In View Props
 

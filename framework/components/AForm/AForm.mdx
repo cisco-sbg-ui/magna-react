@@ -2,22 +2,20 @@
 name: Forms
 route: /components/form
 components: AForm
+title: AForm
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/AForm
 ---
-
-# Forms
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {AForm, AFormContext} from "@cisco-sbg-ui/magna-react";
-```
 
 ## Usage
 
+### Import
+
+<ComponentImport components="AForm" />
+
+### Usage
+
 <Playground
-  code={`() => {
+  code={`function Example() {
   const [email, setEmail] = useState("");
   const [favNum, setFavNum] = useState("");
   const [errors, setErrors] = useState([]);
@@ -54,14 +52,14 @@ import {AForm, AFormContext} from "@cisco-sbg-ui/magna-react";
                     !["@gmail.com", "@hotmail.com"].some((v) =>
                       value.includes(v)
                     ) || "Please provide a business email address",
-                  level: "warning"
+                  level: "warning",
                 },
                 {
                   test: (value) =>
-                    /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value) ||
+                    /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,}$/i.test(value) ||
                     "Invalid Email",
-                  level: "danger"
-                }
+                  level: "danger",
+                },
               ]}
               hint="Please use a business email address"
             />
@@ -69,17 +67,17 @@ import {AForm, AFormContext} from "@cisco-sbg-ui/magna-react";
           <ACol>
             <ASelect
               items={[
-                {value: 1, text: "Read"},
-                {value: 2, text: "Write"},
-                {value: 3, text: "Admin"}
+                { value: 1, text: "Read" },
+                { value: 2, text: "Write" },
+                { value: 3, text: "Admin" },
               ]}
               label="Role"
               required
               rules={[
                 {
                   test: (v) => v.value !== 3 || "Role is set to Admin",
-                  level: "warning"
-                }
+                  level: "warning",
+                },
               ]}
               onSelected={(item) => setRole(item)}
             />
@@ -97,10 +95,9 @@ import {AForm, AFormContext} from "@cisco-sbg-ui/magna-react";
               rules={[
                 {
                   test: (v) =>
-                    v.length < 10 ||
-                    "Comments must be less than 10 characters",
-                  level: "danger"
-                }
+                    v.length < 10 || "Comments must be less than 10 characters",
+                  level: "danger",
+                },
               ]}
               validateOnBlur
               hint="Keep it short"
@@ -115,7 +112,8 @@ import {AForm, AFormContext} from "@cisco-sbg-ui/magna-react";
               onClick={() => {
                 setErrors([]);
                 form.current.reset();
-              }}>
+              }}
+            >
               Reset
             </AButton>
             <AButton onClick={() => setErrors(form.current.validate())}>
@@ -126,11 +124,11 @@ import {AForm, AFormContext} from "@cisco-sbg-ui/magna-react";
       </AContainer>
     </AForm>
   );
-}
-`}
+};
+  `}
 />
 
-## Props
+## Component Props
 
 The `AForm` component only renders children.
 

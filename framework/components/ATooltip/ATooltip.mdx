@@ -2,25 +2,30 @@
 name: Tooltips
 route: /components/tooltip
 components: ATooltip
+title: ATooltip
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/ATooltip
 ---
 
-# Tooltips
+## Usage
 
-<AAlert level="info" dismissable={false}>
-  See `ATriggerTooltip` for an easier to use tooltip with more options.
+### Import
+
+<ComponentImport components="ATooltip" />
+
+### Usage
+
+<AAlert dismissable={false}>
+  It is necessary for `ATooltip` to be a descendant of `AApp` for mounting.
 </AAlert>
 
-## Install
+<br />
+<br />
 
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+<AAlert dismissable={false} level="danger">
+  In most cases it is easier to use ATriggerTooltip.
+</AAlert>
 
-```
-import {ATooltip} from "@cisco-sbg-ui/magna-react";
-```
-
-It is necessary for `ATooltip` to be a descendant of `AApp` for mounting.
-
-## Usage (hook with delay options)
+#### Hook with delay options
 
 <Playground
   code={`() => {
@@ -46,7 +51,7 @@ return (
 </>
 ); } `} />
 
-## Manual Usage
+#### Manual Usage
 
 <Playground
   code={`() => {
@@ -103,13 +108,7 @@ return (
 `}
 />
 
-## Tooltip Props
-
-The `ATooltip` component inherits passed props.
-
-<Props of="ATooltip" />
-
-## Position
+#### Position
 
 <Playground
   fullWidthPreview
@@ -258,7 +257,7 @@ return (
 </AContainer>
 ); } `} />
 
-## Pointer
+#### Pointer
 
 <Playground
   code={`() => {
@@ -339,7 +338,7 @@ return (
 `}
 />
 
-## `onClose` Handling
+#### `onClose` Handling
 
 <Playground
   code={`() => {
@@ -370,6 +369,12 @@ return (
 }
 `}
 />
+
+## Component Props
+
+The `ATooltip` component inherits passed props.
+
+<Props of="ATooltip" />
 
 ## Accessibility Notes
 

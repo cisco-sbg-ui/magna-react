@@ -2,19 +2,17 @@
 name: Checkboxes
 route: /components/checkbox
 components: ACheckbox
+title: ACheckbox
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/ACheckbox
 ---
 
-# Checkboxes
-
-## Install
-
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
-
-```
-import {ACheckbox} from "@cisco-sbg-ui/magna-react";
-```
-
 ## Usage
+
+### Import
+
+<ComponentImport components="ACheckbox" />
+
+### Usage
 
 <Playground
   code={`() => {
@@ -70,7 +68,7 @@ import {ACheckbox} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-## Sizes
+#### Sizes
 
 <Playground
   code={`() => {
@@ -94,7 +92,7 @@ import {ACheckbox} from "@cisco-sbg-ui/magna-react";
 `}
 />
 
-## No label wrapper
+#### No label wrapper
 
 For accessibility, pass the label as `children`. When `withLabel` is set to false, the checkbox will _not_ be wrapped in the `<label`> component, but it will be set as `aria-labeledby`.
 

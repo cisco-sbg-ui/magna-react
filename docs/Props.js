@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 
-import {ASimpleTable} from "../framework";
+import {ACardContainer, ASimpleTable} from "../framework";
 import PropsContext from "./PropsContext";
 
 const types = {
@@ -36,7 +36,7 @@ const getType = (type) => {
   return types[type.name](type.value) + (type.required ? " Required" : "");
 };
 
-export default function Props({of}) {
+export default function Props({of, inDrawer}) {
   const allProps = useContext(PropsContext);
   const props = allProps.find((x) => x.displayName === of)?.props || {};
 
@@ -45,43 +45,45 @@ export default function Props({of}) {
   }
 
   return (
-    <ASimpleTable className="mb-8">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-        {Object.keys(props).map((x, index) => (
-          <tr key={index}>
-            <td className="text-no-wrap">{x}</td>
-            <td>
-              <p className="mt-0">{props[x].description}</p>
-              {props[x].required ? (
-                <>
-                  <br />
-                  <span className="status-red" style={{fontStyle: "italic"}}>
-                    Required
-                  </span>
-                </>
-              ) : (
-                ""
-              )}
-              <br />
-              <span style={{fontStyle: "italic", fontWeight: 500}}>
-                {getType(props[x].type)}
-              </span>
-            </td>
-            <td>
-              {props[x].defaultValue?.value || (
-                <span style={{fontStyle: "italic"}}>null</span>
-              )}
-            </td>
+    <ACardContainer style={{margin: inDrawer ? "10px 20px" : "10px 0"}}>
+      <ASimpleTable className="mb-8">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Default</th>
           </tr>
-        ))}
-      </tbody>
-    </ASimpleTable>
+        </thead>
+        <tbody>
+          {Object.keys(props).map((x, index) => (
+            <tr key={index}>
+              <td className="text-no-wrap">{x}</td>
+              <td>
+                <p className="mt-0">{props[x].description}</p>
+                {props[x].required ? (
+                  <>
+                    <br />
+                    <span className="status-red" style={{fontStyle: "italic"}}>
+                      Required
+                    </span>
+                  </>
+                ) : (
+                  ""
+                )}
+                <br />
+                <span style={{fontStyle: "italic", fontWeight: 500}}>
+                  {getType(props[x].type)}
+                </span>
+              </td>
+              <td>
+                {props[x].defaultValue?.value || (
+                  <span style={{fontStyle: "italic"}}>null</span>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </ASimpleTable>
+    </ACardContainer>
   );
 }

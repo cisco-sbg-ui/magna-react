@@ -2,21 +2,23 @@
 name: Menu Base
 route: /extend/menu-base
 components: AMenuBase
+title: AMenuBase
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/AMenuBase
 ---
 
-# Menu Base
+## Usage
 
-## Install
+### Import
 
-Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+<ComponentImport components="AMenuBase" />
 
-```
-import {AMenuBase} from "@cisco-sbg-ui/magna-react";
-```
+### Usage
 
-It is necessary for `AMenuBase` to be a descendant of `AApp` for mounting.
+<AAlert dismissable={false}>
+  It is necessary for `AMenuBase` to be a descendant of `AApp` for mounting.
+</AAlert>
 
-## Position
+#### Position
 
 <Playground
   fullWidthPreview
@@ -197,13 +199,7 @@ It is necessary for `AMenuBase` to be a descendant of `AApp` for mounting.
 `}
 />
 
-## Menu Base Props
-
-The `AMenuBase` component inherits passed props.
-
-<Props of="AMenuBase" />
-
-## `onClose` Handling
+#### `onClose` Handling
 
 <Playground
   code={`() => {
@@ -242,7 +238,7 @@ The `AMenuBase` component inherits passed props.
 `}
 />
 
-## Edge Detection
+#### Edge Detection
 
 <Playground
   fullWidthPreview
@@ -294,7 +290,7 @@ The `AMenuBase` component inherits passed props.
 `}
 />
 
-## Pointers
+#### Pointers
 
 <Playground
   fullWidthPreview
@@ -582,3 +578,9 @@ The `AMenuBase` component inherits passed props.
 }
 `}
 />
+
+## Component Props
+
+The `AMenuBase` component inherits passed props.
+
+<Props of="AMenuBase" />
