@@ -37,13 +37,14 @@ return (
   Trigger by hover
 </span>
 
-  <ATriggerTooltip
-    id="tooltip_usage_1"
-    placement="right"
-    content="String tooltip text">
-     <AIcon>
-    information</AIcon>
-  </ATooltip>
+{" "}
+
+<ATriggerTooltip
+  id="tooltip_usage_1"
+  placement="right"
+  content="String tooltip text">
+  <AIcon>information</AIcon>
+</ATriggerTooltip>
 
 <br />
 <br />
@@ -60,7 +61,7 @@ return (
     trigger="click">
      <AIcon>
     information</AIcon>
-  </ATooltip>
+  </ATriggerTooltip>
 </>
 ); } `} />
 
@@ -191,6 +192,33 @@ return (
   </ATriggerTooltip>
 </>
 ); } `} />
+
+#### Interactive
+
+When the tooltip has interactive elements
+
+<Playground
+  code={`() => {
+    return (
+        <>
+          <span style={{verticalAlign: "super", margin: "0 4px 0 0"}}>
+            Interactive
+          </span>
+          <ATriggerTooltip
+            interactive
+            placement="right"
+            content={<span>I'm interactive {" "}
+              <AButton onClick={() => {alert("from a tooltip!")}}>Click me</AButton>
+              </span>
+            }>
+            <AIcon>
+            information</AIcon>
+          </ATriggerTooltip>
+        </>
+    ); 
+    } 
+  `}
+/>
 
 ## Component Props
 
