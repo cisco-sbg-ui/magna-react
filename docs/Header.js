@@ -1,4 +1,11 @@
-import {AButton, AIcon, ARow, useATheme, useMediaQuery} from "../framework";
+import {
+  AAlert,
+  AButton,
+  AIcon,
+  ARow,
+  useATheme,
+  useMediaQuery
+} from "../framework";
 import ThemeSwitcher from "./ThemeSwitcher";
 
 const Header = ({className, onHamburgerClick}) => {
@@ -7,6 +14,13 @@ const Header = ({className, onHamburgerClick}) => {
   return (
     <>
       <div id="header">
+        <AAlert dismissable={false}>
+          This documentation is a work in progress for magna-react@2.0. Click{" "}
+          <a href="https://magna-react-git-release110-beta17.securex-preview.app/">
+            here
+          </a>{" "}
+          for v1 docs.
+        </AAlert>
         <ARow
           className={`${className} py-2 ${
             isDark ? "mds-neutral--neutral-16" : "mds-neutral--neutral-1"
