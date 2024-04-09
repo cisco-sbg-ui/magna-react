@@ -181,7 +181,7 @@ const Sidebar = ({
       position="relative"
       isOpen={true}
       id="sidebar"
-      className="root-sidebar py-4 px-5 sidebar"
+      className="root-sidebar py-4 px-1 sidebar"
       openWidth={"288px"}
       style={{
         height: "100%",
