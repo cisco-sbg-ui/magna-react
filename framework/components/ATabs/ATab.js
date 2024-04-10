@@ -60,16 +60,6 @@ const ATab = forwardRef(
       className += ` ${propsClassName}`;
     }
 
-    //If in controlled mode, handle previously selected class.
-    const handleSiblingSelectedClass = () => {
-      const parent = combinedRef.current.parentNode;
-      const previousSelectedEl = parent.querySelector("[aria-selected=true]");
-      if (previousSelectedEl) {
-        previousSelectedEl.classList.remove("a-tab-group__tab--selected");
-        previousSelectedEl.setAttribute("aria-selected", false);
-      }
-    };
-
     let TagName = "div";
     const props = {
       ...rest,
@@ -78,23 +68,17 @@ const ATab = forwardRef(
       className,
       onClick: (e) => {
         !tabKey && !menuTab && setActiveTabIndex(tabIndex);
-        if (menuTab) {
-          handleSiblingSelectedClass();
-        }
         onClick && onClick(e);
       },
       onKeyDown: (e) => {
         if (!href && [keyCodes.enter, keyCodes.space].includes(e.keyCode)) {
           e.preventDefault();
           !tabKey && !menuTab && setActiveTabIndex(tabIndex);
-          if (menuTab) {
-            handleSiblingSelectedClass();
-          }
           onClick && onClick(e);
         } else {
           onKeyDown && onKeyDown(e);
         }
-        !tabKey && handleDirectionalKeyDown(e);
+        handleDirectionalKeyDown(e, !!tabKey);
       },
       onKeyUp: (e) => {
         onKeyUp && onKeyUp(e);

@@ -97,27 +97,32 @@ const ATabGroup = forwardRef(
       );
 
     const handleDirectionalKeyDown = useCallback(
-      (e) => {
+      (e, controlledComponent) => {
         if (
           (vertical && [keyCodes.up, keyCodes.down].includes(e.keyCode)) ||
           (!vertical && [keyCodes.left, keyCodes.right].includes(e.keyCode))
         ) {
-          const dir = e.keyCode;
-          const goForward =
-            (vertical && keyCodes.down === dir) ||
-            (!vertical && keyCodes.right === dir);
-          const goBack =
-            (vertical && keyCodes.up === dir) ||
-            (!vertical && keyCodes.left === dir);
-          const visibleIndexes = visibleTabs.map((tab) =>
-            Number(tab.dataset.tabIndex)
-          );
-          const visibleIndex = visibleIndexes.findIndex((visibleTabIndex) => {
-            return visibleTabIndex === activeTabIndex;
-          });
           const findNextIndex = () => {
             let nextIndex;
             const tabGroupChildren = tabContentRef.current.children;
+            const dir = e.keyCode;
+            const goForward =
+              (vertical && keyCodes.down === dir) ||
+              (!vertical && keyCodes.right === dir);
+            const goBack =
+              (vertical && keyCodes.up === dir) ||
+              (!vertical && keyCodes.left === dir);
+
+            const visibleIndexes = visibleTabs.map((tab) =>
+              Number(tab.dataset.tabIndex)
+            );
+            const visibleIndex = controlledComponent
+              ? visibleTabs?.findIndex((tabEl) => {
+                  return tabEl.classList.contains("a-tab-group__tab--selected");
+                })
+              : visibleIndexes.find((visibleTabIndex) => {
+                  return visibleTabIndex === activeTabIndex;
+                });
 
             if (goBack) {
               if (visibleIndex >= 0) {
@@ -141,7 +146,8 @@ const ATabGroup = forwardRef(
             return nextIndex;
           };
 
-          setActiveTabIndex(findNextIndex());
+          visibleTabs[findNextIndex()]?.focus();
+          visibleTabs[findNextIndex()]?.click();
         }
       },
       [tabContentRef, visibleTabs, setMenuOpen, activeTabIndex, vertical]
@@ -233,12 +239,21 @@ const ATabGroup = forwardRef(
             onClick={handleListItemClick}
             {...rest}
             selected={
-              i === activeTabIndex || (!activeTabIndex && rest.selected)
+              i === activeTabIndex ||
+              (activeTabIndex === false && rest.selected)
             }
           />
         );
       }
     });
+
+    const selectedIndex =
+      activeTabIndex !== false
+        ? activeTabIndex
+        : React.Children.toArray(children).findIndex(
+            (child) => child.props.selected
+          );
+    const isMenuChildActive = menuItems.includes(selectedIndex);
 
     return (
       <div
@@ -259,7 +274,7 @@ const ATabGroup = forwardRef(
               {!vertical && (
                 <OverflowMenuTab
                   activeTabIndex={activeTabIndex}
-                  isMenuChildActive={menuItems.includes(activeTabIndex)}
+                  isMenuChildActive={isMenuChildActive}
                   menuOpen={menuOpen}
                   setMenuOpen={setMenuOpen}
                   tabIndex={React.Children.count(children)}
