@@ -2,10 +2,9 @@ import React, {useEffect, useRef, useState} from "react";
 import Link from "next/link";
 
 import {
-  AButton,
   ADrawer,
   ADrawerContent,
-  AIcon,
+  ADrawerTitle,
   useATheme,
   useMediaQuery,
   usePopupQuickExit
@@ -134,7 +133,6 @@ const Sidebar = ({
     return (
       <ADrawer
         isOpen={isDrawerOpen}
-        withTransitions={false}
         id="sidebar"
         aria-labelledby="title"
         className={`root-sidebar py-4 sidebar`}
@@ -149,21 +147,13 @@ const Sidebar = ({
             height: "100%"
           }}
           ref={ref}
-          className="pt-0"
+          className="pt-0 px-4"
         >
-          <div className="d-flex align-center justify-space-between">
-            <h3 id="title">Navigation</h3>
-            <AButton
-              className="text-align--right align-self-end"
-              icon
-              tertiaryAlt
-              onClick={() => setIsDrawerOpen(false)}
-            >
-              <AIcon size={24}>x</AIcon>
-            </AButton>
-          </div>
+          <ADrawerTitle onCloseButtonClick={() => setIsDrawerOpen(false)}>
+            <h3 id="title">Magna React</h3>
+          </ADrawerTitle>
           <SidebarTree
-            className={`${styleColor}`}
+            className={`${styleColor} mt-2`}
             hoverable
             activatable
             expandOnClick
