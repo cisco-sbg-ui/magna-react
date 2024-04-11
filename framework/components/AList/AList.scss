@@ -119,17 +119,17 @@
 
     &:focus {
       color: var(--base-text-default);
-      background: var(--row-effect-image) var(--control-bg-weak-focus);
+      background: var(--control-bg-weak-hover);
     }
   }
 
   &-item--selected:not(.a-list-item--two-line) {
     color: var(--base-text-default);
-    background: var(--row-effect-image), var(--control-bg-weak-active);
+    background: var(--control-bg-weak-hover);
 
     a:hover,
     a.a-list-item:hover {
-      background: var(--row-effect-image), var(--control-bg-weak-active) !important;
+      background: var(--control-bg-weak-hover) !important;
     }
   }
 
