@@ -197,7 +197,7 @@ const Sidebar = ({
         className="pa-0"
       >
         <SidebarTree
-          className={`${styleColor}`}
+          className={`${styleColor} ml-5`} // ml-5 to align with title text
           hoverable
           activatable
           expandOnClick
