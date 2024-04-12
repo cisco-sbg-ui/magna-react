@@ -136,7 +136,7 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
                             level = "warning";
                           } else if (combined.includes(":danger:")) {
                             level = "danger";
-                          } else if (combined.includes("success")) {
+                          } else if (combined.includes(":success:")) {
                             level = "success";
                           } else {
                             level = "info";
