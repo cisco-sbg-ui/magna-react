@@ -9,7 +9,7 @@ import Sidebar from "../../docs/Sidebar";
 import PropsContext from "../../docs/PropsContext";
 
 import MdxHeadings from "../../docs/MdxHeadings";
-import * as AtomicReactComponents from "../../framework";
+import * as MagnaReactComponents from "../../framework";
 import * as DocsComponents from "../../docs";
 import {useRouter} from "next/router";
 import ComponentTitle from "../../docs/ComponentTitle";
@@ -17,7 +17,6 @@ import ComponentTabs from "../../docs/ComponentTabs";
 import CodeBlock from "../../docs/CodeBlock";
 import Header from "../../docs/Header";
 import PropsHelper from "../../docs/PropsHelper";
-import TableOfContents from "../../docs/TableOfContents";
 import DocsPageContext from "../../docs/DocsPageContext";
 import {
   getNestedChildrenText,
@@ -25,7 +24,7 @@ import {
 } from "../../framework/utils/docs";
 
 const components = {
-  ...AtomicReactComponents,
+  ...MagnaReactComponents,
   ...DocsComponents,
   ...MdxHeadings
 };
@@ -95,7 +94,7 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
                       componentName: currentDoc.title
                     }}
                   >
-                    <AtomicReactComponents.AInView
+                    <MagnaReactComponents.AInView
                       threshold={0}
                       onChange={(stuff) => {
                         if (stuff.inView) {
@@ -107,7 +106,7 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
                         sourceCodeLink={currentDoc.sourceCodeLink}
                         title={currentDoc.title}
                       />
-                    </AtomicReactComponents.AInView>
+                    </MagnaReactComponents.AInView>
                     <ComponentTabs
                       ref={inViewRef}
                       tabs={currentDoc.tabs}
@@ -151,20 +150,13 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
                             : props.children;
 
                           return (
-                            <AtomicReactComponents.AAlert
+                            <MagnaReactComponents.AAlert
                               level={level}
                               className="d-flex mb-4 mt-4"
                               dismissable={false}
                             >
-                              <div
-                                style={{
-                                  marginTop: "-20px",
-                                  marginBottom: "-20px"
-                                }}
-                              >
-                                {alertChildren}
-                              </div>
-                            </AtomicReactComponents.AAlert>
+                              {alertChildren}
+                            </MagnaReactComponents.AAlert>
                           );
                         },
                         p: (props) => (
@@ -192,7 +184,7 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
                           />
                         ),
                         h4: (props) => (
-                          <AtomicReactComponents.AInView
+                          <MagnaReactComponents.AInView
                             rootMargin="-70px 0px -90% 0px"
                             //rootMargin="0px 0px -95%"
                             threshold={0}
@@ -215,7 +207,7 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
                               style={{fontSize: "1.2rem"}}
                               {...props}
                             />
-                          </AtomicReactComponents.AInView>
+                          </MagnaReactComponents.AInView>
                         ),
                         h5: (props) => (
                           // eslint-disable-next-line
