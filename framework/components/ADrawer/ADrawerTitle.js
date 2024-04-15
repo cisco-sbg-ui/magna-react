@@ -64,7 +64,7 @@ ADrawerTitle.propTypes = {
   /**
    * Use a custom closeButton. Set to false to remove the built-in close button.
    */
-  closeButton: PropTypes.node,
+  closeButton: PropTypes.oneOfType([PropTypes.node, PropTypes.bool]),
   /**
    * Option for close button title instead of default icon
    */
