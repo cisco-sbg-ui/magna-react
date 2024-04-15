@@ -13,7 +13,7 @@ const AFieldBase = forwardRef(
       children,
       className: propsClassName,
       error,
-      hints,
+      hints: propsHints = [],
       label,
       labelHidden = false,
       labelFor,
@@ -23,7 +23,6 @@ const AFieldBase = forwardRef(
       infoTooltip,
       infoTooltipProps = {},
       validationState = "default",
-
       ...rest
     },
     ref
@@ -45,6 +44,16 @@ const AFieldBase = forwardRef(
           {error}
         </AHint>
       );
+    }
+
+    const hints = [];
+
+    if (typeof propsHints === "string" || propsHints instanceof String) {
+      hints.unshift({
+        content: propsHints
+      });
+    } else if (Array.isArray(propsHints)) {
+      hints.push(...propsHints);
     }
 
     return (
@@ -76,7 +85,14 @@ const AFieldBase = forwardRef(
         {Array.isArray(hints) &&
           hints.map((hintObject, index) => {
             // "hints" block should be before "error" hint
-            if (hintObject.hideHintOnError && error) return null;
+            if (hintObject.hideHintOnError && error) {
+              return null;
+            }
+
+            // Custom hint
+            if (!hintObject.content) {
+              return hintObject;
+            }
 
             const objectValidationState = hintObject.validationStateOverride
               ? hintObject.validationStateOverride
@@ -106,31 +122,37 @@ AFieldBase.propTypes = {
   /**
    * Sets hint or multiple hints.
    */
-  hints: PropTypes.arrayOf(
-    PropTypes.shape({
-      /**
-       * Hint content.
-       */
-      content: PropTypes.node.isRequired,
-      /**
-       * Style the hint with the component validation state. Default: false.
-       */
-      hintUsesValidationState: PropTypes.bool,
-      /**
-       * Override the validation state of the hint by incorporating the desired state.
-       * The component validation state is disregarded when this property is configured.
-       */
-      validationStateOverride: PropTypes.oneOf([
-        "default",
-        "warning",
-        "danger"
-      ]),
-      /**
-       * Do not show hint when there are validation errors.
-       */
-      hideHintOnError: PropTypes.bool
-    })
-  ),
+  hints: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        /**
+         * Hint content.
+         */
+        content: PropTypes.node.isRequired,
+        /**
+         * Style the hint with the component validation state. Default: false.
+         */
+        hintUsesValidationState: PropTypes.bool,
+        /**
+         * Override the validation state of the hint by incorporating the desired state.
+         * The component validation state is disregarded when this property is configured.
+         */
+        validationStateOverride: PropTypes.oneOf([
+          "default",
+          "warning",
+          "danger"
+        ]),
+        /**
+         * Do not show hint when there are validation errors.
+         */
+        hideHintOnError: PropTypes.bool
+      })
+    ),
+    // Accept a string and use default AHint rendering
+    PropTypes.string,
+    // Pass a custom renderable object as the hint
+    PropTypes.node
+  ]),
   /**
    * Sets the label content.
    */
