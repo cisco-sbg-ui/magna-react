@@ -170,11 +170,6 @@ AButtonGroup.propTypes = {
     })
   ),
   /**
-   * Sets the hint content.
-   * @deprecated use "hints" property
-   */
-  hint: PropTypes.node,
-  /**
    * Sets the label content.
    */
   label: PropTypes.node,

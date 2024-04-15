@@ -27,9 +27,6 @@ const ADrawer = forwardRef(
       slim = false,
       slimHeight,
       slimWidth,
-      closeBtnOnClick, //***DEPRECATED***
-      closeTitle, //***DEPRECATED***
-      closeBtnProps, //***DEPRECATED***
       style: propsStyle,
       withTransitions = true,
       ...rest
@@ -48,7 +45,6 @@ const ADrawer = forwardRef(
     const orientation =
       slideIn === "bottom" || slideIn === "top" ? "horizontal" : "vertical";
     let className = `a-drawer a-drawer--${orientation} a-drawer--${position} a-drawer--${slideIn}`;
-    const closeButtonClassName = "a-drawer--close-button";
 
     const style = {...propsStyle};
 
@@ -105,25 +101,6 @@ const ADrawer = forwardRef(
       style.slimHeight = slimHeight;
     }
 
-    let closeButton;
-    if (closeBtnOnClick) {
-      closeButton = (
-        <AButton
-          className={closeButtonClassName}
-          onClick={closeBtnOnClick}
-          icon
-          tertiaryAlt
-          {...closeBtnProps}
-        >
-          {closeTitle ? (
-            <div className="pa-2">{closeTitle}</div>
-          ) : (
-            <AIcon>close</AIcon>
-          )}
-        </AButton>
-      );
-    }
-
     const drawerPanelComponent = (
       <DrawerContext.Provider value={{onClose}}>
         <DrawerPanelComponent
@@ -132,7 +109,6 @@ const ADrawer = forwardRef(
           className={shouldRenderModal ? "" : className}
           style={shouldRenderModal ? {height: "100%"} : style}
         >
-          {closeButton}
           {shouldRenderChildren && children}
         </DrawerPanelComponent>
       </DrawerContext.Provider>
@@ -238,29 +214,7 @@ ADrawer.propTypes = {
    * The width of the drawer when it is rendered as slim. If not specified,
    * it defaults to 50px.
    */
-  slimWidth: PropTypes.string,
-  /**
-   * ***DEPRECATED*** (use same prop on ADrawerTitle)
-   *
-   * Pass onClose handler for Drawer to handle onClose icon and action.
-   * Default: x Icon
-   */
-  closeBtnOnClick: PropTypes.func,
-  /**
-   * ***DEPRECATED*** (use same prop on ADrawerTitle)
-   *
-   * Option for close button title instead of default icon
-   */
-  closeTitle: PropTypes.string,
-  /**
-   * ***DEPRECATED*** (use same prop on ADrawerTitle)
-   *
-   * Any additional props for close button
-   */
-  closeBtnProps: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.arrayOf(PropTypes.object)
-  ])
+  slimWidth: PropTypes.string
 };
 
 ADrawer.displayName = "ADrawer";

@@ -34,7 +34,6 @@ import {
   useADateRange,
   useGetADateRange
 } from "./components/ADatePicker";
-import ADialog from "./components/ADialog";
 import ADivider from "./components/ADivider";
 import {
   ADrawer,
@@ -69,12 +68,7 @@ import {
   AListItemSubtitle,
   AListItemTitle
 } from "./components/AList";
-import {
-  ACiscoLoader,
-  ADotLoader,
-  APageLoader,
-  ALoader
-} from "./components/ALoader";
+import {ACiscoLoader, ALoader} from "./components/ALoader";
 import AMenuBase from "./components/AMenuBase";
 import AMenu from "./components/AMenu";
 import AModal from "./components/AModal";
@@ -181,9 +175,7 @@ export {
   ADataTable,
   ADatePicker,
   ADateRangePicker,
-  ADialog,
   ADivider,
-  ADotLoader,
   ADrawer,
   ADrawerBody,
   ADrawerContent,
@@ -232,7 +224,6 @@ export {
   APageTitleContentLeft,
   APageTitleContentRight,
   APageTitleText,
-  APageLoader,
   APageOverlay,
   APagination,
   APanel,

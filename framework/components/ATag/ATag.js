@@ -24,12 +24,10 @@ const ATag = forwardRef(
       children,
       className: propsClassName,
       component,
-      count = false,
       href,
       onClick,
       onKeyDown,
       target,
-      level,
       small,
       large,
       status,
@@ -158,13 +156,6 @@ ATag.propTypes = {
    */
   large: PropTypes.bool,
   /**
-   * ** Deprecated **
-   *  Style differentiation no longer necessary.
-   * Indicates if the data should represent a count - more rounded
-   *
-   */
-  count: PropTypes.bool,
-  /**
    * If specified, the component will render as an HTML link.
    */
   href: PropTypes.string,
@@ -176,17 +167,6 @@ ATag.propTypes = {
    * Specifies the display variant.
    */
   large: PropTypes.bool,
-  /**
-   * ** Deprecated **
-   *  States now handled by the status and binary props
-   */
-  level: PropTypes.oneOf([
-    "info",
-    "information",
-    "positive",
-    "warning",
-    "negative"
-  ]),
   /**
    * Will apply the icon along with the status color.
    */ status: PropTypes.oneOf([

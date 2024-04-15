@@ -26,7 +26,6 @@ const ASelect = forwardRef(
       dropdownClassName,
       dropdownStyle,
       disabled,
-      hint,
       hints,
       itemDisabled = "disabled",
       itemSelected = "selected",
@@ -397,7 +396,6 @@ const ASelect = forwardRef(
         readOnly={readOnly}
         validationState={workingValidationState}
         error={error}
-        hint={hint}
         hints={hints}
         required={required}
       >
@@ -553,11 +551,6 @@ ASelect.propTypes = {
       hideHintOnError: PropTypes.bool
     })
   ),
-  /**
-   * Sets the hint content.
-   * @deprecated use "hints" property
-   */
-  hint: PropTypes.node,
   /**
    * The property name of the value indicating a disabled option when `items` is an array of objects.
    */

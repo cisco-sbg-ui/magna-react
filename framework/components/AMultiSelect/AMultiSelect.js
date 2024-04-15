@@ -33,7 +33,6 @@ const AMultiSelect = forwardRef(
       dropdownClassName,
       dropdownStyle,
       disabled,
-      hint,
       hints,
       itemTemplate,
       itemText = "text",
@@ -260,7 +259,6 @@ const AMultiSelect = forwardRef(
       focused: Boolean(isFocused || isOpen),
       append: <AIcon {...chevronProps}>chevron-down</AIcon>,
       error,
-      hint,
       hints,
       label,
       labelFor: `a-multiselect_${multiselectId}`,
@@ -520,11 +518,6 @@ AMultiSelect.propTypes = {
       hideHintOnError: PropTypes.bool
     })
   ),
-  /**
-   * Sets the hint content.
-   * @deprecated use "hints" property
-   */
-  hint: PropTypes.node,
   /**
    * Sets a React component to use when rendering menu items. The component will be sent the following props: `item`, `index`, `aria-selected`, `children`, `className`, `onClick`, `role`, `value`.
    */

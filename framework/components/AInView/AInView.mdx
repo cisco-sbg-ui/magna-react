@@ -81,7 +81,7 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
                     </APanelHeader>
                     <APanelBody>
                         <div aria-live="polite">
-                            {isLoading ? <ADotLoader size="small" /> : <p>{status}</p>}
+                            {isLoading ? <ASpinner size="small" /> : <p>{status}</p>}
                         </div>
                     </APanelBody>
                 </APanel>
@@ -135,7 +135,7 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
                         ) : <li key={i}>{text} #{i}</li>;
                     })}
                 </ul>
-                {isLoading && items.length < 50 && <ADotLoader size="small" />}
+                {isLoading && items.length < 50 && <ASpinner size="small" />}
             </>
         )
     }`}
@@ -188,7 +188,7 @@ In the following example, a margin is specified to indicate that the trigger can
                         ) : <li key={i}>{text} #{i}</li>;
                     })}
                 </ul>
-                {isLoading && <ADotLoader size="small" />}
+                {isLoading && <ASpinner size="small" />}
             </>
         )
     }`}

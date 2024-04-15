@@ -32,7 +32,6 @@ const ASlider = forwardRef(
     {
       className: propsClassName,
       disabled,
-      hint,
       hints,
       label,
       min = 0,
@@ -286,7 +285,6 @@ const ASlider = forwardRef(
         className={className}
         label={label}
         error={error}
-        hint={hint}
         hints={hints}
         validationState={workingValidationState}
       >
@@ -519,11 +517,6 @@ ASlider.propTypes = {
       hideHintOnError: PropTypes.bool
     })
   ),
-  /**
-   * Sets the hint content.
-   * @deprecated use "hints" property
-   */
-  hint: PropTypes.node,
   /**
    * Sets the label content.
    */

@@ -375,11 +375,6 @@ ACombobox.propTypes = {
     })
   ),
   /**
-   * Sets the hint content.
-   * @deprecated use "hints" property
-   */
-  hint: PropTypes.node,
-  /**
    * Sets a React component to use when rendering menu items. The component will be sent the following props: `item`, `index`, `aria-selected`, `children`, `className`, `onClick`, `role`, `value`.
    */
   itemTemplate: PropTypes.elementType,

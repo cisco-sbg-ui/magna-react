@@ -13,9 +13,7 @@ const AFieldBase = forwardRef(
       children,
       className: propsClassName,
       error,
-      hint,
       hints,
-      hintUsesValidationState = true,
       label,
       labelHidden = false,
       labelFor,
@@ -25,7 +23,7 @@ const AFieldBase = forwardRef(
       infoTooltip,
       infoTooltipProps = {},
       validationState = "default",
-      hideHintOnError = true,
+
       ...rest
     },
     ref
@@ -40,33 +38,11 @@ const AFieldBase = forwardRef(
       className += ` ${propsClassName}`;
     }
 
-    // when removing "hint" property "error" should be preserved.
     let hintElement = null;
-    if (hint && error && !hideHintOnError) {
-      hintElement = (
-        <>
-          <AHint className="a-field-base__hint">{hint}</AHint>
-          <AHint
-            className="a-field-base__hint"
-            validationState={validationState}
-          >
-            {error}
-          </AHint>
-        </>
-      );
-    } else if (error) {
+    if (error) {
       hintElement = (
         <AHint className="a-field-base__hint" validationState={validationState}>
           {error}
-        </AHint>
-      );
-    } else if (hint) {
-      hintElement = (
-        <AHint
-          className="a-field-base__hint"
-          validationState={hintUsesValidationState && validationState}
-        >
-          {hint}
         </AHint>
       );
     }
@@ -155,21 +131,6 @@ AFieldBase.propTypes = {
       hideHintOnError: PropTypes.bool
     })
   ),
-  /**
-   * Sets the hint content.
-   * @deprecated use "hints" property
-   */
-  hint: PropTypes.node,
-  /**
-   * Style the hint with the validation state. Default: true.
-   * @deprecated use "hints" property
-   */
-  hintUsesValidationState: PropTypes.bool,
-  /**
-   * Do not show hint when there are validation errors.
-   * @deprecated use "hints" property
-   */
-  hideHintOnError: PropTypes.bool,
   /**
    * Sets the label content.
    */
