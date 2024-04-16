@@ -6,4 +6,106 @@ title: Changelog
 
 # Changelog
 
-TBD
+## 2.0.0
+
+# DEPRECATION REMOVALS
+
+### AApp
+
+- Atomic colors removed
+
+### AAutoComplete
+
+- remove `hint` property. Use `hints` instead
+
+### AButtonGroup
+
+- removed `hint` property. Use `hints` instead
+
+### ACombobox
+
+- removed `hint` property. Use `hints` instead
+
+### ADialog (removed)
+
+- Component removed
+- Use `AModal`
+
+### ADrawer
+
+- removed `closeBtnOnClick` property
+- removed `closeTitle` property
+- removed `closeBtnProps` property
+- use `onClose` as the callback for close actions
+
+### AFieldBase
+
+- removed `hint` property.
+- removed `hintUsesValidationState` property
+- removed `hideHintOnError` property
+- Use `hints` property instead
+
+### AInputBase
+
+- removed `hint` property
+- Use `hints` property instead
+
+### ADotLoader
+
+- removed component
+
+### APageLoader
+
+- removed component
+
+### ALoader
+
+- removed `dot` varient
+
+### ALoadNotification
+
+- removed component (was not documented)
+- Use AEmptyState
+
+### AModal
+
+- removed `onClickOutside` property
+- Use `onClose` instead
+
+### AMultiSelect
+
+- removed `hint` property. Use `hints` instead
+
+### ASelect
+
+- removed `hint` property. Use `hints` instead
+
+### ASlider
+
+- removed `hint` property. Use `hints` instead
+
+### ATag
+
+- removed `count` property. No longer needed
+- removed `level` property. Handled by `status` and `binary`
+
+### ATextarea
+
+- removed `hint` property. Use `hints` instead
+
+### ATextInput
+
+- removed `hint` property. Use `hints` instead
+
+### SCSS
+
+- removed `map-deep-merge` in functions.scss
+
+---
+
+# Migration Notes
+
+- The `hint` property can be safely replaced with `hints` and no other changes
+- Drawers and modals will need to migrate from `onCloseBtnClick` to `onClose`
+- `ALoadNotification` should be replaced with `AEmptyState`
+- `ADialog` should be replaced with `AModal`
