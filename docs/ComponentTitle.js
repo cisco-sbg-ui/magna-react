@@ -12,14 +12,18 @@ const ComponentTitle = ({title, sourceCodeLink}, ref) => {
           {title}
         </h1>
       </div>
-      <AButton medium className="mr-2" href={sourceCodeLink}>
-        <AIcon left>code</AIcon>
-        Source
-      </AButton>
-      <AButton medium href={`${sourceCodeLink}/${title}.mdx`}>
-        <AIcon left>pencil-simple</AIcon>
-        Edit this page
-      </AButton>
+      {sourceCodeLink && (
+        <AButton medium className="mr-2" href={sourceCodeLink}>
+          <AIcon left>code</AIcon>
+          Source
+        </AButton>
+      )}
+      {sourceCodeLink && (
+        <AButton medium href={`${sourceCodeLink}/${title}.mdx`}>
+          <AIcon left>pencil-simple</AIcon>
+          Edit this page
+        </AButton>
+      )}
     </div>
   );
 };

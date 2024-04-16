@@ -4,108 +4,104 @@ route: /changelog
 title: Changelog
 ---
 
-# Changelog
+# 2.0.0
 
-## 2.0.0
+### Migration Notes
 
-# DEPRECATION REMOVALS
+- The `hint` property can be safely replaced with `hints` and no other changes
+- Drawers and modals will need to migrate from `onCloseBtnClick` to `onClose`
+- `ALoadNotification` should be replaced with `AEmptyState`
+- `ADialog` should be replaced with `AModal`
 
-### AApp
+### Deprecation Removals
+
+#### AApp
 
 - Atomic colors removed
 
-### AAutoComplete
+#### AAutoComplete
 
 - remove `hint` property. Use `hints` instead
 
-### AButtonGroup
+#### AButtonGroup
 
 - removed `hint` property. Use `hints` instead
 
-### ACombobox
+#### ACombobox
 
 - removed `hint` property. Use `hints` instead
 
-### ADialog (removed)
+#### ADialog (removed)
 
 - Component removed
 - Use `AModal`
 
-### ADrawer
+#### ADrawer
 
 - removed `closeBtnOnClick` property
 - removed `closeTitle` property
 - removed `closeBtnProps` property
 - use `onClose` as the callback for close actions
 
-### AFieldBase
+#### AFieldBase
 
 - removed `hint` property.
 - removed `hintUsesValidationState` property
 - removed `hideHintOnError` property
 - Use `hints` property instead
 
-### AInputBase
+#### AInputBase
 
 - removed `hint` property
 - Use `hints` property instead
 
-### ADotLoader
+#### ADotLoader
 
 - removed component
 
-### APageLoader
+#### APageLoader
 
 - removed component
 
-### ALoader
+#### ALoader
 
 - removed `dot` varient
 
-### ALoadNotification
+#### ALoadNotification
 
 - removed component (was not documented)
 - Use AEmptyState
 
-### AModal
+#### AModal
 
 - removed `onClickOutside` property
 - Use `onClose` instead
 
-### AMultiSelect
+#### AMultiSelect
 
 - removed `hint` property. Use `hints` instead
 
-### ASelect
+#### ASelect
 
 - removed `hint` property. Use `hints` instead
 
-### ASlider
+#### ASlider
 
 - removed `hint` property. Use `hints` instead
 
-### ATag
+#### ATag
 
 - removed `count` property. No longer needed
 - removed `level` property. Handled by `status` and `binary`
 
-### ATextarea
+#### ATextarea
 
 - removed `hint` property. Use `hints` instead
 
-### ATextInput
+#### ATextInput
 
 - removed `hint` property. Use `hints` instead
 
-### SCSS
+#### SCSS
 
 - removed `map-deep-merge` in functions.scss
-
----
-
-# Migration Notes
-
-- The `hint` property can be safely replaced with `hints` and no other changes
-- Drawers and modals will need to migrate from `onCloseBtnClick` to `onClose`
-- `ALoadNotification` should be replaced with `AEmptyState`
-- `ADialog` should be replaced with `AModal`

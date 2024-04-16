@@ -221,6 +221,7 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
                     />
                     <PropsHelper
                       componentName={currentDoc.title}
+                      components={currentDoc.components}
                       shouldShowBtn={hasScrolledPastTabs}
                       currentDoc={currentDoc}
                     />
