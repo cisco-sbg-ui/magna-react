@@ -4,7 +4,13 @@ import {serialize} from "next-mdx-remote/serialize";
 import {MDXRemote} from "next-mdx-remote";
 import React, {useEffect, useRef, useState} from "react";
 
-import {AApp, AAutoTheme, AMount, useInView} from "../../framework";
+import {
+  AApp,
+  AAutoTheme,
+  ACardContainer,
+  AMount,
+  useInView
+} from "../../framework";
 import Sidebar from "../../docs/Sidebar";
 import PropsContext from "../../docs/PropsContext";
 
@@ -55,7 +61,93 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
     setIsDrawerOpen(false);
   }, [setActiveTab, currentDoc, query]);
 
-  if (!currentDoc) return null;
+  if (!currentDoc) {
+    return null;
+  }
+
+  let content = (
+    <MDXRemote
+      {...(currentDoc?.pageTabsMdx[activeTab] || currentDoc.source)}
+      components={{
+        ...components,
+        pre: (props) => {
+          const language = props.children.props?.className?.split("-")[1];
+          const code = props.children.props.children;
+          return <CodeBlock code={code} language={language} />;
+        },
+        blockquote: (props) => {
+          const {combined} = getNestedChildrenText(props.children);
+
+          let level;
+
+          if (combined.includes(":warning:")) {
+            level = "warning";
+          } else if (combined.includes(":danger:")) {
+            level = "danger";
+          } else if (combined.includes(":success:")) {
+            level = "success";
+          } else {
+            level = "info";
+          }
+
+          const alertChildren = level
+            ? removeTextFromChildren(props.children, `:${level}:`)
+            : props.children;
+
+          return (
+            <MagnaReactComponents.AAlert
+              level={level}
+              className="d-flex mb-4 mt-4"
+              dismissable={false}
+            >
+              {alertChildren}
+            </MagnaReactComponents.AAlert>
+          );
+        },
+        p: (props) => (
+          // eslint-disable-next-line
+          <p className="mt-4 mb-4" style={{fontSize: "1rem"}} {...props} />
+        ),
+        h2: (props) => (
+          // eslint-disable-next-line
+          <h2 className="mt-10 mb-6" style={{fontSize: "2rem"}} {...props} />
+        ),
+        h3: (props) => (
+          // eslint-disable-next-line
+          <h3 className="mt-10 mb-6" style={{fontSize: "1.5rem"}} {...props} />
+        ),
+        h4: (props) => (
+          <MagnaReactComponents.AInView
+            rootMargin="-70px 0px -90% 0px"
+            //rootMargin="0px 0px -95%"
+            threshold={0}
+            onChange={(stuff) => {
+              const {entry, inView} = stuff;
+              if (!entry) {
+                return;
+              }
+              const sectionId = entry?.target?.getAttribute("id");
+
+              if (inView && activeSection !== sectionId) {
+                setActiveSection(sectionId);
+              }
+            }}
+          >
+            {/* eslint-disable-next-line */}
+            <h4 className="mt-6 mb-4" style={{fontSize: "1.2rem"}} {...props} />
+          </MagnaReactComponents.AInView>
+        ),
+        h5: (props) => (
+          // eslint-disable-next-line
+          <h5 className="mt-6 mb-5" style={{fontSize: "1rem"}} {...props} />
+        )
+      }}
+    />
+  );
+
+  if (currentDoc.useContainer) {
+    content = <ACardContainer>{content}</ACardContainer>;
+  }
 
   return (
     <>
@@ -113,112 +205,7 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
                       onTabClick={setActiveTab}
                       activeTab={activeTab}
                     />
-
-                    <MDXRemote
-                      {...(currentDoc?.pageTabsMdx[activeTab] ||
-                        currentDoc.source)}
-                      components={{
-                        ...components,
-                        pre: (props) => {
-                          const language =
-                            props.children.props?.className?.split("-")[1];
-                          const code = props.children.props.children;
-                          return <CodeBlock code={code} language={language} />;
-                        },
-                        blockquote: (props) => {
-                          const {combined} = getNestedChildrenText(
-                            props.children
-                          );
-
-                          let level;
-
-                          if (combined.includes(":warning:")) {
-                            level = "warning";
-                          } else if (combined.includes(":danger:")) {
-                            level = "danger";
-                          } else if (combined.includes(":success:")) {
-                            level = "success";
-                          } else {
-                            level = "info";
-                          }
-
-                          const alertChildren = level
-                            ? removeTextFromChildren(
-                                props.children,
-                                `:${level}:`
-                              )
-                            : props.children;
-
-                          return (
-                            <MagnaReactComponents.AAlert
-                              level={level}
-                              className="d-flex mb-4 mt-4"
-                              dismissable={false}
-                            >
-                              {alertChildren}
-                            </MagnaReactComponents.AAlert>
-                          );
-                        },
-                        p: (props) => (
-                          // eslint-disable-next-line
-                          <p
-                            className="mt-4 mb-4"
-                            style={{fontSize: "1rem"}}
-                            {...props}
-                          />
-                        ),
-                        h2: (props) => (
-                          // eslint-disable-next-line
-                          <h2
-                            className="mt-10 mb-6"
-                            style={{fontSize: "2rem"}}
-                            {...props}
-                          />
-                        ),
-                        h3: (props) => (
-                          // eslint-disable-next-line
-                          <h3
-                            className="mt-10 mb-6"
-                            style={{fontSize: "1.5rem"}}
-                            {...props}
-                          />
-                        ),
-                        h4: (props) => (
-                          <MagnaReactComponents.AInView
-                            rootMargin="-70px 0px -90% 0px"
-                            //rootMargin="0px 0px -95%"
-                            threshold={0}
-                            onChange={(stuff) => {
-                              const {entry, inView} = stuff;
-                              if (!entry) {
-                                return;
-                              }
-                              const sectionId =
-                                entry?.target?.getAttribute("id");
-
-                              if (inView && activeSection !== sectionId) {
-                                setActiveSection(sectionId);
-                              }
-                            }}
-                          >
-                            {/* eslint-disable-next-line */}
-                            <h4
-                              className="mt-6 mb-4"
-                              style={{fontSize: "1.2rem"}}
-                              {...props}
-                            />
-                          </MagnaReactComponents.AInView>
-                        ),
-                        h5: (props) => (
-                          // eslint-disable-next-line
-                          <h5
-                            className="mt-6 mb-5"
-                            style={{fontSize: "1rem"}}
-                            {...props}
-                          />
-                        )
-                      }}
-                    />
+                    {content}
                     <PropsHelper
                       componentName={currentDoc.title}
                       components={currentDoc.components}
