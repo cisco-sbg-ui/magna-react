@@ -31,6 +31,18 @@ body {
   height: 100vh;
 }
 
+.props-helper {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  transition: "all .3s ease";
+  z-index: 1;
+
+  .a-button + .a-button {
+    margin-left: 20px;
+  }
+}
+
 .props-helper-header {
   position: sticky;
   top: 0px;
