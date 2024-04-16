@@ -34,7 +34,7 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
           onChange={(e) => {
             setValue(e.target.value);
           }}
-          hint="Hint: Normal"
+          hints="Hint: Normal"
         />
       </div>
     </div>
@@ -68,7 +68,7 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
           }
         ]}
         validateOnBlur
-        hint="Keep it short."
+        hints="Keep it short."
       />
     </div>
   );
@@ -82,14 +82,14 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
   withTwoPanes
   code={`<div>
   <div className="mb-4">
-    <ATextarea label="Label" placeholder="Default" hint="Hint: Default" />
+    <ATextarea label="Label" placeholder="Default" hints="Hint: Default" />
   </div>
   <div className="mb-4">
     <ATextarea
       label="Label"
       placeholder="Disabled"
       disabled
-      hint="Hint: Disabled"
+      hints="Hint: Disabled"
     />
   </div>
   <div className="mb-4">
@@ -97,7 +97,7 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
       label="Label"
       placeholder="Read-only State"
       readOnly
-      hint="Hint: Read-only"
+      hints="Hint: Read-only"
     />
   </div>
   <div className="mb-4">
@@ -105,7 +105,7 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
       label="Label"
       validationState="warning"
       placeholder="Warning State"
-      hint="Hint: Warning"
+      hints="Hint: Warning"
     />
   </div>
   <div className="mb-4">
@@ -113,7 +113,7 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
       label="Label"
       validationState="danger"
       placeholder="Danger State"
-      hint="Hint: Danger"
+      hints="Hint: Danger"
     />
   </div>
 </div>

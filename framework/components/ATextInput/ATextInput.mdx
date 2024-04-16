@@ -161,7 +161,7 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
             value={value}
             required
             maxLength={50}
-            hint="Your name"
+            hints="Your name"
           />
         </ACol>
       </ARow>
@@ -192,7 +192,7 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
                 level: "danger"
               }
             ]}
-            hint="Your email address"
+            hints="Your email address"
           />
         </ACol>
       </ARow>
@@ -265,7 +265,7 @@ Override internal validation rules by specifying a `key` on the rule. Valid keys
             value={value}
             required
             maxLength={50}
-            hint="Your name"
+            hints="Your name"
             rules={[
               {
               key: "required",
@@ -297,7 +297,7 @@ Override internal validation rules by specifying a `key` on the rule. Valid keys
       appendIcon="information"
       onClickAppend={() => alert("Information!")}
       onClickPrepend={() => alert("Cisco Systems!")}
-      hint="Hint: Normal"
+      hints="Hint: Normal"
     />
   </div>
   <div className="mb-4">
@@ -310,7 +310,7 @@ Override internal validation rules by specifying a `key` on the rule. Valid keys
       disabled
       prependIcon="cisco"
       appendIcon="information"
-      hint="Hint: Disabled"
+      hints="Hint: Disabled"
     />
   </div>
   <div className="mb-4">
@@ -324,7 +324,7 @@ Override internal validation rules by specifying a `key` on the rule. Valid keys
       prependIcon="cisco"
       appendIcon="information"
       onClickPrepend={() => alert("Cisco Systems!")}
-      hint="Hint: Read-only"
+      hints="Hint: Read-only"
     />
   </div>
   <div className="mb-4">
@@ -341,7 +341,7 @@ Override internal validation rules by specifying a `key` on the rule. Valid keys
       placeholder="Warning"
       prependIcon="cisco"
       appendIcon="information"
-      hint="Hint: Warning"
+      hints="Hint: Warning"
     />
   </div>
   <div className="mb-4">
@@ -359,7 +359,7 @@ Override internal validation rules by specifying a `key` on the rule. Valid keys
       prependIcon="cisco"
       appendIcon="information"
       onClickPrepend={() => alert("Cisco Systems!")}
-      hint="Hint: Danger"
+      hints="Hint: Danger"
     />
   </div>
 </div>
