@@ -35,7 +35,7 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
         itemValue="id"
         placeholder="Pick a Food Group"
         onSelected={(item) => setSelectedItem(item)}
-        hint={\`Selected Item: \${JSON.stringify(selectedItem)}\`}
+        hints={\`Selected Item: \${JSON.stringify(selectedItem)}\`}
       />
     </div>
   );
@@ -113,7 +113,7 @@ withTwoPanes
           label="Numbers"
           items={items}
           onSelected={(item) => setSelectedItem(item)}
-          hint={\`Your lucky number: \${JSON.stringify(selectedItem) || ''}\`}
+          hints={\`Your lucky number: \${JSON.stringify(selectedItem) || ''}\`}
         />
       </div>
     )
@@ -144,7 +144,7 @@ withTwoPanes
         itemValue="id"
         placeholder="Pick a Food Group"
         onSelected={(item) => setSelectedItem(item)}
-        hint={\`Default component size\`}
+        hints={\`Default component size\`}
       />
       <ADivider/>
       <ASelect
@@ -154,7 +154,7 @@ withTwoPanes
         itemValue="id"
         placeholder="Pick a Food Group"
         onSelected={(item) => setSelectedItem(item)}
-        hint={\`Medium component size\`}
+        hints={\`Medium component size\`}
       />
       <ADivider/>
       <ASelect
@@ -165,7 +165,7 @@ withTwoPanes
         itemValue="id"
         placeholder="Pick a Food Group"
         onSelected={(item) => setSelectedItem(item)}
-        hint={\`Large component size\`}
+        hints={\`Large component size\`}
       />
     </div>
   );
@@ -260,7 +260,7 @@ withTwoPanes
         "Fats, Oils, and Sweets"
       ]}
       placeholder="Pick a Food Group"
-      hint="Hint: Default"
+      hints="Hint: Default"
     />
   </div>
   <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
@@ -269,7 +269,7 @@ withTwoPanes
       disabled
       label="Food Group"
       placeholder="Pick a Food Group"
-      hint="Hint: Disabled"
+      hints="Hint: Disabled"
     />
   </div>
   <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
@@ -278,7 +278,7 @@ withTwoPanes
       readOnly
       label="Food Group"
       placeholder="Pick a Food Group"
-      hint="Hint: Read-only"
+      hints="Hint: Read-only"
       items={[
         "Bread, Cereal, Rice, and Pasta",
         "Vegetables",
@@ -295,7 +295,7 @@ withTwoPanes
       validationState="warning"
       label="Food Group"
       placeholder="Pick a Food Group"
-      hint="Hint: Warning"
+      hints="Hint: Warning"
       itemText="name"
       itemValue="id"
       items={[
@@ -314,7 +314,7 @@ withTwoPanes
       validationState="danger"
       label="Food Group"
       placeholder="Pick a Food Group"
-      hint="Hint: Danger"
+      hints="Hint: Danger"
       items={[
         "Bread, Cereal, Rice, and Pasta",
         "Vegetables",

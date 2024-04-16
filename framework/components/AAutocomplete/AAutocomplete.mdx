@@ -20,7 +20,7 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
   medium
   label="Food Group"
   placeholder="Pick a Food Group"
-  hint="Hint: Default"
+  hints="Hint: Default"
   items={[
     "Bread, Cereal, Rice, and Pasta",
     "Vegetables",
@@ -41,7 +41,28 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
   disabled
   label="Food Group"
   placeholder="Pick a Food Group"
-  hint="Hint: Disabled"
+  hints="Hint: Disabled"
+  items={[
+    "Bread, Cereal, Rice, and Pasta",
+    "Vegetables",
+    "Fruit",
+    "Milk, Yogurt, and Cheese",
+    "Meat, Poultry, Fish",
+    "Fats, Oils, and Sweets",
+  ]}
+/>
+`}
+/>
+
+#### Loading State
+
+<Playground
+  code={`<AAutocomplete
+  medium
+  loading
+  label="Food Group"
+  placeholder="Pick a Food Group"
+  hints="Hint: Disabled"
   items={[
     "Bread, Cereal, Rice, and Pasta",
     "Vegetables",
@@ -62,7 +83,7 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
   readOnly
   label="Food Group"
   placeholder="Pick a Food Group"
-  hint="Hint: Read-only"
+  hints="Hint: Read-only"
   items={[
     "Bread, Cereal, Rice, and Pasta",
     "Vegetables",
@@ -82,7 +103,7 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
   medium
   label="Food Group"
   placeholder="Pick a Food Group"
-  hint="Hint: Warning"
+  hints="Hint: Warning"
   validationState="warning"
   items={[
     "Bread, Cereal, Rice, and Pasta",
@@ -102,7 +123,7 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
   medium
   label="Food Group"
   placeholder="Pick a Food Group"
-  hint="Hint: Danger"
+  hints="Hint: Danger"
   validationState="danger"
   items={[
     "Bread, Cereal, Rice, and Pasta",

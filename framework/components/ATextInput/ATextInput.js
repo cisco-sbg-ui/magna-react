@@ -36,7 +36,6 @@ const ATextInput = forwardRef(
       className: propsClassName,
       clearable,
       disabled,
-      hint,
       hints,
       label,
       labelHidden,
@@ -382,7 +381,6 @@ const ATextInput = forwardRef(
       className: "a-text-input",
       clearable: clearable && isNonEmptyString(nativeInputValue),
       error,
-      hint,
       hints,
       label,
       labelHidden,
@@ -513,11 +511,6 @@ ATextInput.propTypes = {
       hideHintOnError: PropTypes.bool
     })
   ),
-  /**
-   * Sets the hint content.
-   * @deprecated use "hints" property
-   */
-  hint: PropTypes.node,
   /**
    * Sets the label content.
    */

@@ -20,43 +20,6 @@ describe("<AFieldBase />", () => {
     cy.get('label[for="test"]').should("exist");
   });
 
-  describe("when rendered with a hint", () => {
-    it("should render a hint", () => {
-      cy.mount(<AFieldBase {...commonProps} hint="test hint" />);
-
-      cy.get(".a-field-base__hint").should("exist");
-    });
-
-    it("should render an error in place of a hint by default", () => {
-      cy.mount(
-        <AFieldBase
-          {...commonProps}
-          hint="test hint"
-          error="test error"
-          validationState="danger"
-        />
-      );
-
-      cy.get(".a-field-base__hint").should("have.length", 1);
-      cy.get(".a-alert").should("exist");
-    });
-
-    it("should allow the default hint to render alongside an error", () => {
-      cy.mount(
-        <AFieldBase
-          {...commonProps}
-          hint="test hint"
-          error="test error"
-          validationState="danger"
-          hideHintOnError={false}
-        />
-      );
-
-      cy.get(".a-field-base__hint").should("have.length", 2); // One for hint, one for error
-      cy.get(".a-alert").should("exist");
-    });
-  });
-
   describe("when rendered with a tooltip", () => {
     it("should add an information icon", () => {
       cy.mount(<AFieldBase {...commonProps} {...tooltipProps} />);

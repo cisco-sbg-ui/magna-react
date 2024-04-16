@@ -164,13 +164,13 @@ Pass a `hint` to get the alert to render underneath the combobox.
     <>
       <ACombobox
         validationState="warning"
-        hint="Warning hint"
+        hints="Warning hint"
         label="Select an elemental rune"
         placeholder="Pick a rune"
       />
       <ACombobox
         validationState="danger"
-        hint="Danger hint"
+        hints="Danger hint"
         label="Select an elemental rune"
         placeholder="Pick a rune"
       />
@@ -423,7 +423,7 @@ In the example below, if you type "snoopy" or "snoopy dog", you will be warned t
               setFilteredItems(items.filter(item => item === userInput));
             }
           }}
-          hint={\`Your lucky number: \${JSON.stringify(comboboxValue) || ''}\`}
+          hints={\`Your lucky number: \${JSON.stringify(comboboxValue) || ''}\`}
         />
       </div>
     )

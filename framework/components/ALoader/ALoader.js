@@ -82,11 +82,11 @@ const ALoader = forwardRef(
 
 ALoader.propTypes = {
   /**
-   * Indicator type to use in the loader. Can be ADotLoader, ASpinLoader, or AProgressbar.
+   * Indicator type to use in the loader. Can be ASpinner or AProgressbar.
    */
   variant: PropTypes.oneOfType([
     PropTypes.elementType,
-    PropTypes.oneOf(["dot", "spinner", "progressbar"])
+    PropTypes.oneOf(["spinner", "progressbar"])
   ]),
   /**
    * Props to pass to the indicator

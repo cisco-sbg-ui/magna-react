@@ -1,7 +1,7 @@
 import React, {forwardRef, useContext} from "react";
 import PropTypes from "prop-types";
 
-import { DrawerContext } from "./ADrawer";
+import {DrawerContext} from "./ADrawer";
 import AButton from "../AButton/AButton";
 import AIcon from "../AIcon/AIcon";
 import "./ADrawerTitle.scss";
@@ -15,7 +15,7 @@ const ADrawerTitle = forwardRef(
       children,
       className: propsClassName,
       sticky,
-      onCloseButtonClick,
+      closeButton,
       closeTitle,
       closeBtnProps,
       ...rest
@@ -33,11 +33,12 @@ const ADrawerTitle = forwardRef(
       <div className={className} ref={ref} {...rest}>
         <div className="a-drawer__title-content">{children}</div>
         <div className="a-drawer__title-close">
-          {(onClose || onCloseButtonClick) && (
+          {closeButton}
+          {onClose && closeButton !== false && (
             <AButton
               icon
               tertiaryAlt
-              onClick={() => (onClose && onClose()) || (onCloseButtonClick && onCloseButtonClick(false))}
+              onClick={() => onClose && onClose()}
               {...closeBtnProps}
             >
               {closeTitle ? (
@@ -61,10 +62,9 @@ ADrawerTitle.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * Pass onClose handler for Drawer to handle onClose icon and action.
-   * Default: x Icon
+   * Use a custom closeButton. Set to false to remove the built-in close button.
    */
-  closeBtnOnClick: PropTypes.func,
+  closeButton: PropTypes.oneOfType([PropTypes.node, PropTypes.bool]),
   /**
    * Option for close button title instead of default icon
    */

@@ -16,7 +16,6 @@ const AInputBase = forwardRef(
       clearable,
       disabled,
       focused,
-      hint,
       hints,
       surfaceRef,
       label,
@@ -93,7 +92,6 @@ const AInputBase = forwardRef(
         labelFor={labelFor}
         labelHidden={labelHidden}
         onClickLabel={onClickLabel}
-        hint={hint}
         hints={hints}
         validationState={validationState}
       >
@@ -180,11 +178,6 @@ AInputBase.propTypes = {
       hideHintOnError: PropTypes.bool
     })
   ),
-  /**
-   * Sets the hint content.
-   * @deprecated use "hints" property
-   */
-  hint: PropTypes.node,
   /**
    * Sets the label content.
    */

@@ -145,12 +145,6 @@ const AModal = forwardRef(
       return null;
     }
 
-    if (rest.onClickOutside) {
-      console.warn(
-        "onClickOutside has been removed. Use onClose and set closeOnOutsideClick to true"
-      );
-    }
-
     /**
      * In the case where `AModal` is rendered inside a clickable element
      * like a button component, we want to prevent clicks and certain
@@ -317,12 +311,6 @@ You should provide either an \`aria-label\` or \`aria-labelledby\` prop to \`${c
    * Sets the modal width to extra large.
    */
   xlarge: PropTypes.bool,
-
-  /**
-   * If not using the `usePopupQuickExit` hook, pass in a function to handle clicking outside of the modal event. `withOverlay` prop must be set to true.
-   * @deprecated use "closeOnOutsideClick" in conjunction with a passed in "onClose" function to close modal
-   */
-  onClickOutside: PropTypes.func,
 
   /**
    * Function which closes the Modal. It is necessary for accessibility concerns,

@@ -22,7 +22,6 @@ const ATextarea = forwardRef(
       className: propsClassName,
       disabled,
       disableGrammarly,
-      hint,
       hints,
       label,
       maxLength,
@@ -162,7 +161,6 @@ const ATextarea = forwardRef(
       className: "a-textarea",
       focused: isFocused,
       error,
-      hint,
       hints,
       label,
       labelFor: `a-textarea__field_${textareaId}`,
@@ -267,11 +265,6 @@ ATextarea.propTypes = {
       hideHintOnError: PropTypes.bool
     })
   ),
-  /**
-   * Sets the hint content.
-   * @deprecated use "hints" property
-   */
-  hint: PropTypes.node,
   /**
    * Sets the label content.
    */

@@ -13,7 +13,6 @@ const AButtonGroup = forwardRef(
     {
       children,
       className: propsClassName,
-      hint,
       hints,
       label,
       multiple = false,
@@ -126,7 +125,6 @@ const AButtonGroup = forwardRef(
         className={className}
         label={label}
         error={error}
-        hint={hint}
         hints={hints}
         validationState={workingValidationState}
       >
@@ -169,11 +167,6 @@ AButtonGroup.propTypes = {
       hideHintOnError: PropTypes.bool
     })
   ),
-  /**
-   * Sets the hint content.
-   * @deprecated use "hints" property
-   */
-  hint: PropTypes.node,
   /**
    * Sets the label content.
    */
