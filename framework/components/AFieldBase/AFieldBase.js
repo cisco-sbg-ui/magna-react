@@ -89,8 +89,15 @@ const AFieldBase = forwardRef(
               return null;
             }
 
-            // Custom hint
-            if (!hintObject.content) {
+            let content = hintObject.content;
+
+            // Text in the array, or custom hint object
+            if (
+              typeof hintObject === "string" ||
+              hintObject instanceof String
+            ) {
+              content = hintObject;
+            } else if (!hintObject.content) {
               return hintObject;
             }
 
@@ -106,7 +113,7 @@ const AFieldBase = forwardRef(
                 className="a-field-base__hint"
                 validationState={objectValidationState}
               >
-                {hintObject.content}
+                {content}
               </AHint>
             );
           })}
