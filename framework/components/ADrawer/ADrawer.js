@@ -109,8 +109,9 @@ const ADrawer = forwardRef(
           {...rest}
           ref={shouldRenderModal ? null : ref}
           className={shouldRenderModal ? "" : className}
-          style={shouldRenderModal ? {height: "100%"} : style}>
-          {shouldRenderChildren && children}
+          style={shouldRenderModal ? {height: "100%"} : style}
+        >
+          {shouldRenderChildren && !isOpen ? prevChildren : children}
         </DrawerPanelComponent>
       </DrawerContext.Provider>
     );
@@ -130,7 +131,8 @@ const ADrawer = forwardRef(
         isOpen={shouldRenderChildren}
         style={style}
         onClose={onClose}
-        closeOnOutsideClick={closeOnOutsideClick}>
+        closeOnOutsideClick={closeOnOutsideClick}
+      >
         {drawerPanelComponent}
       </AModal>
     );
