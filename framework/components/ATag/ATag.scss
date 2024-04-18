@@ -110,8 +110,8 @@ $icon-width: 1.167rem;
       stroke: var(--positive-border-default);
     }
     &--warning-circle {
-      stroke: var(--magnetic-color-neutral-35);
-      fill: var(--magnetic-color-neutral-35);
+      stroke: $magnetic-color-neutral-35;
+      fill: $magnetic-color-neutral-35;
       circle:first-of-type {
         fill: var(--warning-border-default);
         stroke: var(--warning-border-default);
