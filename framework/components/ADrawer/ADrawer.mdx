@@ -707,7 +707,6 @@ This hook can be used in cases there isn't a global drawer controller.
               setDrawerContent(null, false);
             }}
             data-test-drawer>
-            <>
           <ADrawerHeader>
             <ADrawerTitle>
               <h1>{content?.title}</h1>
@@ -720,7 +719,6 @@ This hook can be used in cases there isn't a global drawer controller.
           <ADrawerFooter>
             <AButton onClick={() => setDrawerOpen(false)} data-test-drawer-close>Close</AButton>
           </ADrawerFooter>
-          </>
         </ADrawer>
       </>
     )
