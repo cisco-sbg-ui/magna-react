@@ -2,7 +2,6 @@
 
 $context-padding: $base-padding-small;
 $context-border-left-width: 6px;
-$context-icon-margin: 2px 10px 0 0;
 $context-arrow-width: rem(1);
 $context-arrow-height: rem(0.5);
 $context-arrow-margin: rem(0.3);
@@ -23,7 +22,7 @@ $context-arrow-left: 10%;
   background-color: var(--base-icon-in-default);
   box-shadow: var(--card-shadow-lifted) var(--card-shadow-color);
   &__icon {
-    margin: $context-icon-margin;
+    margin-right: 10px;
     height: 19px;
     width: 19px;
   }
@@ -46,7 +45,7 @@ $context-arrow-left: 10%;
     border-color: var(--info-border-default);
 
     .a-context__icon {
-      color: $info-icon-default;
+      color: var(--info-icon-default);
     }
 
     .a-icon-bg {
