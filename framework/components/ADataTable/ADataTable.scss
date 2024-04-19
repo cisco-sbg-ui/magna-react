@@ -50,7 +50,7 @@ $hidden-table-col-width: 45px;
     }
 
     &.col-width-sm {
-      width: 0 !important; //Required for other envs
+      width: 50px !important;
       min-width: 50px !important;
     }
     &.col-width-sm:not(:last-of-type) {
