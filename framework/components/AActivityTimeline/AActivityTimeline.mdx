@@ -1,0 +1,182 @@
+---
+name: Activity Timelines
+route: /components/activity-timeline
+components: AActivityTimeline, AActivityTimelineItem, AActivityTimelineItemBody, AActivityTimelineItemTitle, AActivityTimelineItemSubtitle
+title: AActivityTimeline
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/AActivityTimeline
+---
+
+## Usage
+
+### Import
+
+<ComponentImport components="AActivityTimeline, AActivityTimelineItem, AActivityTimelineItemBody, AActivityTimelineItemTitle, AActivityTimelineItemSubtitle" />
+
+### Usage
+
+#### Basic Usage
+
+<Playground
+  code={`<AActivityTimeline>
+  <AActivityTimelineItem>
+    <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
+      Account created
+    </AActivityTimelineItemTitle>
+  </AActivityTimelineItem>
+
+<AActivityTimelineItem>
+  <AActivityTimelineItemTitle subtitle="2022-02-14 21:12:10 UTC">
+    Tutorial island completed
+  </AActivityTimelineItemTitle>
+</AActivityTimelineItem>
+
+  <AActivityTimelineItem>
+    <AActivityTimelineItemTitle subtitle="2022-02-14 22:11:10 UTC">
+      Cook's Assistant started
+    </AActivityTimelineItemTitle>
+  </AActivityTimelineItem>
+</AActivityTimeline>`}
+/>
+
+#### Variants
+
+<Playground
+  code={`<AActivityTimeline>
+  <AActivityTimelineItem variant="neutral">
+    <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
+      Neurtal item
+    </AActivityTimelineItemTitle>
+  </AActivityTimelineItem>
+  <AActivityTimelineItem variant="complete">
+    <AActivityTimelineItemTitle subtitle="2022-02-14 21:11:10 UTC">
+      Complete item
+    </AActivityTimelineItemTitle>
+  </AActivityTimelineItem>
+  <AActivityTimelineItem variant="progress">
+    <AActivityTimelineItemTitle subtitle="2022-02-14 21:11:10 UTC">
+      Progress item
+    </AActivityTimelineItemTitle>
+  </AActivityTimelineItem>
+  <AActivityTimelineItem variant="incomplete">
+    <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
+      Incomplete item
+    </AActivityTimelineItemTitle>
+  </AActivityTimelineItem>
+  <AActivityTimelineItem variant="error">
+    <AActivityTimelineItemTitle subtitle="2022-02-14 21:11:10 UTC">
+      Error item
+    </AActivityTimelineItemTitle>
+  </AActivityTimelineItem>
+</AActivityTimeline>`}
+/>
+
+#### Single Item
+
+<Playground
+  code={`<AActivityTimeline>
+  <AActivityTimelineItem>
+    <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
+      Account created
+    </AActivityTimelineItemTitle>
+  </AActivityTimelineItem>
+</AActivityTimeline>`}
+/>
+
+#### Expandable Items
+
+<Playground
+  code={`<AActivityTimeline>
+  <AActivityTimelineItem isExpandable variant="complete">
+    <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
+      Get a bucket and pot
+    </AActivityTimelineItemTitle>
+    <AActivityTimelineItemBody>
+      A bucket spawns in the cellar of Lumbridge Castle, and a pot spawns in the kitchen on the centre table. You can also purchase both a bucket and a pot from the Lumbridge General Store, for 2 and 1 coins, respectively.
+    </AActivityTimelineItemBody>
+  </AActivityTimelineItem>
+  <AActivityTimelineItem isExpandable variant="complete">
+    <AActivityTimelineItemTitle subtitle="2022-02-14 21:11:10 UTC">
+      Get an egg
+    </AActivityTimelineItemTitle>
+    <AActivityTimelineItemBody>
+      Go east out of Lumbridge Castle and run north along the path until you reach the chicken coop north-west of Farmer Fred's house. Go into the coop and pick up an egg.
+    </AActivityTimelineItemBody>
+  </AActivityTimelineItem>
+  <AActivityTimelineItem isExpandable variant="complete">
+    <AActivityTimelineItemTitle subtitle="2022-02-14 21:11:10 UTC">
+      Get a bucket of milk
+    </AActivityTimelineItemTitle>
+    <AActivityTimelineItemBody>
+      With an empty bucket, go north into the cow pasture. Use the empty bucket on a dairy cow to get a bucket of milk. You can optionally talk to Gillie Groats for an explanation on how to milk a cow. She can be found across the river, next to the dairy cow in the eastern Lumbridge cow field.
+    </AActivityTimelineItemBody>
+  </AActivityTimelineItem>
+  <AActivityTimelineItem isExpandable variant="progress">
+    <AActivityTimelineItemTitle>
+      Get a pot of flour
+    </AActivityTimelineItemTitle>
+    <AActivityTimelineItemBody>
+      <div>
+        With an empty pot, leave the cow pasture and go south-west to the wheat field. Pick some grain, and then enter the Mill Lane Mill, found up the road to the north-east. Climb to the top floor, put the grain in the hopper, then pull the lever and climb back down to the 1st floor[US]. Finally, use an empty pot on the flour bin (which is now full of flour) to get a pot of flour. You can optionally talk to Millie Miller inside the mill for an explanation on how to make flour.
+      </div>
+      <br />
+      <div>
+        If you are a member, the easy Lumbridge & Draynor Diary requires baking bread on the Lumbridge Castle range. Since this requires obtaining another pot of flour for bread dough, you can save time by obtaining a second pot of flour now (requiring more grain). You will need to repeat the milling process for each bucket of flour you make.
+      </div>
+    </AActivityTimelineItemBody>
+  </AActivityTimelineItem>
+  <AActivityTimelineItem isExpandable variant="incomplete">
+    <AActivityTimelineItemTitle>
+      Deliver the ingredients
+    </AActivityTimelineItemTitle>
+    <AActivityTimelineItemBody>
+      After collecting the ingredients, speak to the cook to deliver them.
+    </AActivityTimelineItemBody>
+  </AActivityTimelineItem>
+  <AActivityTimelineItem variant="incomplete">
+    <AActivityTimelineItemTitle>
+      Quest complete
+    </AActivityTimelineItemTitle>
+  </AActivityTimelineItem>
+</AActivityTimeline>`}
+/>
+
+#### Long Title Text
+
+<Playground
+  code={`<AActivityTimeline>
+  <AActivityTimelineItem>
+    <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+    </AActivityTimelineItemTitle>
+  </AActivityTimelineItem>
+
+<AActivityTimelineItem>
+  <AActivityTimelineItemTitle subtitle="2022-02-14 21:12:10 UTC">
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+    Lorem Ipsum has been the industry's standard dummy text ever since the
+    1500s, when an unknown printer took a galley of type and scrambled it to
+    make a type specimen book.
+  </AActivityTimelineItemTitle>
+</AActivityTimelineItem>
+</AActivityTimeline>`}
+/>
+
+#### Long Expanded Item Text
+
+<Playground
+  code={`<AActivityTimeline>
+  <AActivityTimelineItem isExpandable>
+    <AActivityTimelineItemTitle subtitle="2022-02-14 22:11:10 UTC">
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+    </AActivityTimelineItemTitle>
+    <AActivityTimelineItemBody>
+      <p className='mt-0'>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+      <p>
+        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+      </p>
+    </AActivityTimelineItemBody>
+  </AActivityTimelineItem>
+</AActivityTimeline>`}
+/>
