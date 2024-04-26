@@ -1,0 +1,150 @@
+@import "../../styles";
+
+.a-activity-timeline {
+  position: relative;
+  list-style-type: none;
+  padding-left: 10px !important; // Offset the negative margin on circle
+  margin: 0;
+
+  &__list-item {
+    position: relative;
+    height: 100%;
+    padding-left: 25px !important; // Override global list styles
+
+    &:not(:last-child) {
+      // Add space between each list item. Padding is used instead of margin
+      // so that the left-vertical timeline bar extends to the next circle.
+      padding-bottom: 20px;
+    }
+
+    // Adds a vertical bar to each timeline item (if it is not the last one)
+    &:not(:last-child)::before,
+    &:only-child::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      height: 100%;
+      width: 2px;
+      border-left: 2px solid var(--base-border-default);
+    }
+
+    &--expandable:last-child .a-activity-timeline__divider {
+      display: none;
+    }
+
+    &--complete {
+      &:not(:last-child)::before,
+      &:only-child::before {
+        border-color: var(--interact-bg-medium-default);
+      }
+    }
+  }
+
+  &__divider {
+    margin: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding-top: 20px;
+    border-color: var(--base-border-default);
+  }
+
+  &__item {
+    display: flex;
+
+    &__body {
+      margin-top: 10px;
+
+      &--hidden {
+        display: none;
+      }
+    }
+
+    &__button {
+      display: flex;
+      border: unset;
+      padding: unset;
+      font-family: inherit;
+      background: unset;
+      text-align: left;
+      cursor: pointer;
+
+      &:focus-visible {
+        outline: var(--interact-border-focus) auto 1px !important;
+      }
+
+      &__headline {
+        display: flex;
+      }
+    }
+
+    &__title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+
+    &__subtitle {
+      color: var(--base-text-medium-default);
+    }
+
+    &__css-icon {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      left: -8px;
+      border-radius: 50%;
+
+      &--neutral {
+        background: var(--interact-bg-medium-default);
+        border: 2px solid var(--base-border-default);
+      }
+
+      &--incomplete {
+        border: 2px solid var(--control-border-default);
+        background: var(--base-bg-default);
+      }
+    }
+
+    &__svg-icon {
+      top: -2px; // Ensure that icon is overlaying previous item's vertical bar
+      position: absolute;
+      left: -11px;
+
+      &--complete {
+        stroke: var(--interact-bg-medium-default);
+
+        circle {
+          fill: var(--base-bg-default);
+        }
+      }
+
+      &--error {
+        fill: var(--base-bg-default);
+        stroke: var(--negative-bg-default);
+      }
+
+      &--progress {
+        left: -8px;
+        circle {
+          fill: var(--base-bg-default);
+          stroke: var(--base-border-default);
+        }
+      }
+    }
+
+    &__caret {
+      margin-right: 10px;
+      width: 14px !important;
+      height: 14px !important;
+    }
+  }
+}
+
+.activityTimelineSkeleton {
+  padding: 0;
+}
+
+.hide {
+  display: none;
+}
