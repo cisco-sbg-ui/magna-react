@@ -48,7 +48,7 @@ describe("<AActivityTimeline />", () => {
       </UncontrolledTimelineTest>
     );
 
-    cy.get(".a-activity-timeline__item__css-icon--neutral").should(
+    cy.getByDataTestId("AActivityTimelineItemIcon-Neutral").should(
       "be.visible"
     );
   });
