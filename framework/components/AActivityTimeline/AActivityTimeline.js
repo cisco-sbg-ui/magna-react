@@ -2,14 +2,20 @@ import React from "react";
 
 import "./AActivityTimeline.scss";
 
-function AActivityTimeline({children, className: propsClassName}) {
+function AActivityTimeline({
+  children,
+  className: propsClassName,
+  asUnorderedList = false
+}) {
   let className = "a-activity-timeline";
 
   if (propsClassName) {
     className += ` ${propsClassName}`;
   }
 
-  return <ul className={className}>{children}</ul>;
+  const ListTag = asUnorderedList ? "ul" : "ol";
+
+  return <ListTag className={className}>{children}</ListTag>;
 }
 
 export default AActivityTimeline;
