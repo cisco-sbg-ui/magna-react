@@ -28,7 +28,7 @@
       border-left: 2px solid var(--base-border-default);
     }
 
-    &--expandable:last-child .a-activity-timeline__divider {
+    &--collapsible:last-child .a-activity-timeline__divider {
       display: none;
     }
 
@@ -51,6 +51,7 @@
 
   &__item {
     display: flex;
+    display: block;
 
     &__body {
       margin-top: 10px;

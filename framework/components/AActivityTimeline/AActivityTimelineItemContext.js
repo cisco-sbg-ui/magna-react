@@ -1,8 +1,8 @@
 import {createContext} from "react";
 
 const AActivityTimelineContext = createContext({
-  isExpanded: false,
-  isExpandable: false,
+  isCollapsed: false,
+  isCollapsible: false,
   open: () => {},
   close: () => {}
 });
