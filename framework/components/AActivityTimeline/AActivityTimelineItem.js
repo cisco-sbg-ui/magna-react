@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from "react";
+import React, {forwardRef, useMemo, useState} from "react";
 import AActivityTimelineContext from "./AActivityTimelineItemContext";
 
 import ProgressIcon from "./icons/ProgressIcon";
@@ -17,7 +17,7 @@ const ICON_VARIANT_MAP = {
   error: <ErrorIcon />
 };
 
-function AActivityTimelineItem(props) {
+const AActivityTimelineItem = forwardRef((props, ref) => {
   const {
     children,
     className: propsClassName,
@@ -79,7 +79,7 @@ function AActivityTimelineItem(props) {
 
   return (
     <AActivityTimelineContext.Provider value={ctx}>
-      <li className={className}>
+      <li className={className} ref={ref}>
         <div className="a-activity-timeline__item">
           {ICON_VARIANT_MAP[variant] || ICON_VARIANT_MAP.neutral}
           <div>{children}</div>
@@ -87,6 +87,8 @@ function AActivityTimelineItem(props) {
       </li>
     </AActivityTimelineContext.Provider>
   );
-}
+});
+
+AActivityTimelineItem.displayName = "AActivityTimelineItem";
 
 export default AActivityTimelineItem;
