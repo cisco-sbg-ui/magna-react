@@ -1,34 +1,20 @@
 import React, {useMemo, useState} from "react";
-import AIcon from "../AIcon";
 import AActivityTimelineContext from "./AActivityTimelineItemContext";
 
+import ProgressIcon from "./icons/ProgressIcon";
+import ErrorIcon from "./icons/ErrorIcon";
+import IncompleteIcon from "./icons/IncompleteIcon";
+import NeutralIcon from "./icons/NeutralIcon";
+import CompleteIcon from "./icons/CompleteIcon";
+
 import "./AActivityTimeline.scss";
-import ProgressIcon from "./ProgressIcon";
 
 const ICON_VARIANT_MAP = {
-  neutral: (
-    <div className="a-activity-timeline__item__css-icon a-activity-timeline__item__css-icon--neutral" />
-  ),
-  incomplete: (
-    <div className="a-activity-timeline__item__css-icon a-activity-timeline__item__css-icon--incomplete" />
-  ),
+  neutral: <NeutralIcon />,
+  incomplete: <IncompleteIcon />,
   progress: <ProgressIcon />,
-  complete: (
-    <AIcon
-      className="a-activity-timeline__item__svg-icon a-activity-timeline__item__svg-icon--complete"
-      size={24}
-    >
-      check-circle
-    </AIcon>
-  ),
-  error: (
-    <AIcon
-      className="a-activity-timeline__item__svg-icon a-activity-timeline__item__svg-icon--error"
-      size={24}
-    >
-      x-circle
-    </AIcon>
-  )
+  complete: <CompleteIcon />,
+  error: <ErrorIcon />
 };
 
 function AActivityTimelineItem(props) {

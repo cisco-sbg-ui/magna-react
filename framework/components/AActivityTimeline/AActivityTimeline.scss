@@ -89,53 +89,10 @@
       color: var(--base-text-medium-default);
     }
 
-    &__css-icon {
-      position: absolute;
-      width: 18px;
-      height: 18px;
-      left: -8px;
-      border-radius: 50%;
-
-      &--neutral {
-        background: var(--interact-bg-medium-default);
-        border: 2px solid var(--base-border-default);
-      }
-
-      &--incomplete {
-        border: 2px solid var(--control-border-default);
-        background: var(--base-bg-default);
-      }
-    }
-
-    &__svg-icon {
+    &__status-icon {
       top: -2px; // Ensure that icon is overlaying previous item's vertical bar
       position: absolute;
-      left: -11px;
-
-      &--complete {
-        stroke: var(--interact-bg-medium-default);
-
-        circle {
-          fill: var(--base-bg-default);
-        }
-      }
-
-      &--error {
-        fill: var(--base-bg-default);
-        stroke: var(--negative-bg-default);
-
-        circle {
-          fill: var(--base-bg-default);
-        }
-      }
-
-      &--progress {
-        left: -8px;
-        circle {
-          fill: var(--base-bg-default);
-          stroke: var(--base-border-default);
-        }
-      }
+      left: -8px;
     }
 
     &__caret {
