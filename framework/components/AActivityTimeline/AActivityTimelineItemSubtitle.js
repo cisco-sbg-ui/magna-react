@@ -1,15 +1,23 @@
-import React from "react";
+import React, {forwardRef} from "react";
 
 import "./AActivityTimeline.scss";
 
-function AActivityTimelineItemSubtitle({children, className: propsClassName}) {
-  let className = "a-activity-timeline__item__subtitle";
+const AActivityTimelineItemSubtitle = forwardRef(
+  ({children, className: propsClassName}, ref) => {
+    let className = "a-activity-timeline__item__subtitle";
 
-  if (propsClassName) {
-    className += ` ${propsClassName}`;
+    if (propsClassName) {
+      className += ` ${propsClassName}`;
+    }
+
+    return (
+      <div className={className} ref={ref}>
+        {children}
+      </div>
+    );
   }
+);
 
-  return <div className={className}>{children}</div>;
-}
+AActivityTimelineItemSubtitle.displayName = "AActivityTimelineItemSubtitle";
 
 export default AActivityTimelineItemSubtitle;

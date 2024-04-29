@@ -1,4 +1,4 @@
-import {useContext} from "react";
+import {forwardRef, useContext} from "react";
 
 import AIcon from "../AIcon";
 import AActivityTimelineContext from "./AActivityTimelineItemContext";
@@ -6,7 +6,7 @@ import AActivityTimelineItemSubtitle from "./AActivityTimelineItemSubtitle";
 
 import "./AActivityTimeline.scss";
 
-function DisclosureButton({children, onClick, isCollapsed}) {
+function DisclosureButton({children, onClick, isCollapsed}, ref) {
   return (
     <button
       className="a-activity-timeline__item__button"
@@ -24,43 +24,45 @@ function DisclosureButton({children, onClick, isCollapsed}) {
   );
 }
 
-function AActivityTimelineItemTitle({
-  children,
-  className: propsClassName,
-  subtitle
-}) {
-  const {isCollapsible, isCollapsed, onCollapse} = useContext(
-    AActivityTimelineContext
-  );
+const AActivityTimelineItemTitle = forwardRef(
+  ({children, className: propsClassName, subtitle, subtitleRef}, ref) => {
+    const {isCollapsible, isCollapsed, onCollapse} = useContext(
+      AActivityTimelineContext
+    );
 
-  let className = "a-activity-timeline__item__title";
+    let className = "a-activity-timeline__item__title";
 
-  if (propsClassName) {
-    className += ` ${propsClassName}`;
+    if (propsClassName) {
+      className += ` ${propsClassName}`;
+    }
+
+    const titleContent = (
+      <>
+        <div className={className} ref={ref}>
+          {children}
+        </div>
+        {subtitle && (
+          <AActivityTimelineItemSubtitle ref={subtitleRef}>
+            {subtitle}
+          </AActivityTimelineItemSubtitle>
+        )}
+      </>
+    );
+
+    return isCollapsible ? (
+      <DisclosureButton
+        className={className}
+        isCollapsed={isCollapsed}
+        onClick={onCollapse}
+      >
+        {titleContent}
+      </DisclosureButton>
+    ) : (
+      titleContent
+    );
   }
+);
 
-  const titleContent = (
-    <>
-      <div className={className}>{children}</div>
-      {subtitle && (
-        <AActivityTimelineItemSubtitle>
-          {subtitle}
-        </AActivityTimelineItemSubtitle>
-      )}
-    </>
-  );
-
-  return isCollapsible ? (
-    <DisclosureButton
-      className={className}
-      isCollapsed={isCollapsed}
-      onClick={onCollapse}
-    >
-      {titleContent}
-    </DisclosureButton>
-  ) : (
-    titleContent
-  );
-}
+AActivityTimelineItemTitle.displayName = "AActivityTimelineItemTitle";
 
 export default AActivityTimelineItemTitle;
