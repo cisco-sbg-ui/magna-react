@@ -39,6 +39,20 @@ describe("<AActivityTimeline />", () => {
     });
   });
 
+  it("should render the neutral icon if the variant cannot be resolved", () => {
+    cy.mount(
+      <UncontrolledTimelineTest>
+        <AActivityTimelineItem variant="something-that-does-not-exist">
+          <AActivityTimelineItemTitle>Mock title</AActivityTimelineItemTitle>
+        </AActivityTimelineItem>
+      </UncontrolledTimelineTest>
+    );
+
+    cy.get(".a-activity-timeline__item__css-icon--neutral").should(
+      "be.visible"
+    );
+  });
+
   describe("when the item is not collapsible", () => {
     it("should not render a caret icon", () => {
       cy.mount(

@@ -95,7 +95,7 @@ function AActivityTimelineItem(props) {
     <AActivityTimelineContext.Provider value={ctx}>
       <li className={className}>
         <div className="a-activity-timeline__item">
-          {ICON_VARIANT_MAP[variant]}
+          {ICON_VARIANT_MAP[variant] || ICON_VARIANT_MAP.neutral}
           <div>{children}</div>
         </div>
       </li>
