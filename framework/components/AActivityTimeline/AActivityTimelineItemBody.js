@@ -5,7 +5,7 @@ import AActivityTimelineContext from "./AActivityTimelineItemContext";
 import "./AActivityTimeline.scss";
 
 function AActivityTimelineItemBody({children, className: propsClassName}) {
-  const {isExpanded, isExpandable} = useContext(AActivityTimelineContext);
+  const {isCollapsed, isCollapsible} = useContext(AActivityTimelineContext);
 
   let className = "a-activity-timeline__item__body";
 
@@ -13,9 +13,16 @@ function AActivityTimelineItemBody({children, className: propsClassName}) {
     className += ` ${propsClassName}`;
   }
 
-  if (isExpandable && !isExpanded) {
+  if (isCollapsible && isCollapsed) {
     className += ` a-activity-timeline__item__body--hidden`;
   }
+
+  return (
+    <>
+      <div className={className}>{children}</div>
+      <hr className="a-activity-timeline__divider" />
+    </>
+  );
 
   return <div className={className}>{children}</div>;
 }

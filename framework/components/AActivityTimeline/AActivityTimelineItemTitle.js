@@ -6,15 +6,18 @@ import AActivityTimelineItemSubtitle from "./AActivityTimelineItemSubtitle";
 
 import "./AActivityTimeline.scss";
 
-function DisclosureButton({children, onClick, isExpanded}) {
+function DisclosureButton({children, onClick, isCollapsed}) {
   return (
     <button
       className="a-activity-timeline__item__button"
       onClick={onClick}
-      aria-expanded={isExpanded}
+      // Explicit coercion to boolean since `isCollapsed`
+      // might not be passed in as type `boolean` from
+      // a developer
+      aria-expanded={!Boolean(isCollapsed)}
     >
       <AIcon className="a-activity-timeline__item__caret">
-        {isExpanded ? "caret-up" : "caret-down"}
+        {isCollapsed ? "caret-down" : "caret-up"}
       </AIcon>
       <div>{children}</div>
     </button>
@@ -26,7 +29,7 @@ function AActivityTimelineItemTitle({
   className: propsClassName,
   subtitle
 }) {
-  const {isExpandable, isExpanded, close, open} = useContext(
+  const {isCollapsible, isCollapsed, onCollapse} = useContext(
     AActivityTimelineContext
   );
 
@@ -36,7 +39,7 @@ function AActivityTimelineItemTitle({
     className += ` ${propsClassName}`;
   }
 
-  const content = (
+  const titleContent = (
     <>
       <div className={className}>{children}</div>
       {subtitle && (
@@ -47,16 +50,16 @@ function AActivityTimelineItemTitle({
     </>
   );
 
-  return isExpandable ? (
+  return isCollapsible ? (
     <DisclosureButton
       className={className}
-      isExpanded={isExpanded}
-      onClick={isExpanded ? close : open}
+      isCollapsed={isCollapsed}
+      onClick={onCollapse}
     >
-      {content}
+      {titleContent}
     </DisclosureButton>
   ) : (
-    content
+    titleContent
   );
 }
 

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useMemo, useState} from "react";
 import AIcon from "../AIcon";
 import AActivityTimelineContext from "./AActivityTimelineItemContext";
 
@@ -31,14 +31,50 @@ const ICON_VARIANT_MAP = {
   )
 };
 
-function AActivityTimelineItem({
-  children,
-  className: propsClassName,
-  isExpandable = false,
-  isInitExpanded = false,
-  variant = "neutral"
-}) {
-  const [isExpanded, setIsExpanded] = useState(isInitExpanded);
+function AActivityTimelineItem(props) {
+  const {
+    children,
+    className: propsClassName,
+    defaultCollapsed,
+    isCollapsed: propsIsCollapsed,
+    onCollapse: propsOnCollapse,
+    variant = "neutral"
+  } = props;
+
+  const isCollapsedStateControlled = props.hasOwnProperty("isCollapsed");
+
+  const isCollapsible =
+    isCollapsedStateControlled || props.hasOwnProperty("defaultCollapsed");
+
+  /**
+   * Only used when the collapsed state is uncontrolled, i.e., when the
+   * developer does not pass an `isCollapsed` prop.
+   */
+  const [isCollapsed, setIsCollapsed] = useState(
+    isCollapsedStateControlled ? propsIsCollapsed : defaultCollapsed || false
+  );
+
+  const handleToggle = () => {
+    setIsCollapsed((prevState) => !prevState);
+  };
+
+  const ctx = useMemo(
+    () => ({
+      isCollapsedStateControlled,
+      isCollapsed: isCollapsedStateControlled ? propsIsCollapsed : isCollapsed,
+      isCollapsible,
+      onCollapse: isCollapsedStateControlled ? propsOnCollapse : handleToggle,
+      open: () => setIsCollapsed(false),
+      close: () => setIsCollapsed(true)
+    }),
+    [
+      isCollapsed,
+      isCollapsedStateControlled,
+      isCollapsible,
+      propsIsCollapsed,
+      propsOnCollapse
+    ]
+  );
 
   let className = "a-activity-timeline__list-item";
 
@@ -46,9 +82,9 @@ function AActivityTimelineItem({
     className += " a-activity-timeline__list-item--complete";
   }
 
-  if (isExpandable) {
+  if (isCollapsible) {
     className +=
-      " a-activity-timeline__list-item--expandable a-activity-timeline__item--expandable";
+      " a-activity-timeline__list-item--collapsible a-activity-timeline__item--collapsible";
   }
 
   if (propsClassName) {
@@ -56,20 +92,12 @@ function AActivityTimelineItem({
   }
 
   return (
-    <AActivityTimelineContext.Provider
-      value={{
-        isExpanded,
-        isExpandable,
-        open: () => setIsExpanded(true),
-        close: () => setIsExpanded(false)
-      }}
-    >
+    <AActivityTimelineContext.Provider value={ctx}>
       <li className={className}>
         <div className="a-activity-timeline__item">
           {ICON_VARIANT_MAP[variant]}
           <div>{children}</div>
         </div>
-        {isExpandable && <hr className="a-activity-timeline__divider" />}
       </li>
     </AActivityTimelineContext.Provider>
   );
