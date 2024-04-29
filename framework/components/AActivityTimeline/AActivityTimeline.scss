@@ -123,6 +123,10 @@
       &--error {
         fill: var(--base-bg-default);
         stroke: var(--negative-bg-default);
+
+        circle {
+          fill: var(--base-bg-default);
+        }
       }
 
       &--progress {
