@@ -1,9 +1,6 @@
 import React from "react";
 import "../AActivityTimeline.scss";
 
-/**
- * Copied from https://magnetic-react.cisco.com/?path=/docs/components-activity-timeline--status#status-timeline
- */
 function NeutralIcon() {
   return (
     <svg

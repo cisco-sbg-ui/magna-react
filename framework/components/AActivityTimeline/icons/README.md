@@ -1,0 +1,1 @@
+All of the icons in this file are sourced from the [Magnetic React's Activity Timeline component demo](https://magnetic-react.cisco.com/?path=/docs/components-activity-timeline--status#status-timeline)
