@@ -20,12 +20,9 @@ const AActivityTimelineItemBody = forwardRef(
     }
 
     return (
-      <>
-        <div className={className} ref={ref}>
-          {children}
-        </div>
-        <hr className="a-activity-timeline__divider" />
-      </>
+      <div className={className} ref={ref}>
+        {children}
+      </div>
     );
   }
 );

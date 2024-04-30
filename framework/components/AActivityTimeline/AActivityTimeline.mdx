@@ -190,12 +190,46 @@ If you have special requirements for collapsing timeline items, you can control 
 
 #### Single Item
 
+If there is only one timeline item, then the left vertical bar is still displayed for that item.
+
 <Playground
   code={`<AActivityTimeline>
   <AActivityTimelineItem>
     <AActivityTimelineItemHeader>
       <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
         Account created
+      </AActivityTimelineItemTitle>
+    </AActivityTimelineItemHeader>
+  </AActivityTimelineItem>
+</AActivityTimeline>`}
+/>
+
+#### Dividers
+
+By default, dividers only render when the timeline item is collapsible. However, if you need to render non-collapsible items with dividers, then you can pass the `withDivider` prop to `AActivityTimelineItem`.
+
+<Playground
+  code={`<AActivityTimeline>
+  <AActivityTimelineItem withDivider>
+    <AActivityTimelineItemHeader>
+      <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
+        Account created
+      </AActivityTimelineItemTitle>
+    </AActivityTimelineItemHeader>
+  </AActivityTimelineItem>
+
+<AActivityTimelineItem withDivider>
+  <AActivityTimelineItemHeader>
+    <AActivityTimelineItemTitle subtitle="2022-02-14 21:12:10 UTC">
+      Tutorial island completed
+    </AActivityTimelineItemTitle>
+  </AActivityTimelineItemHeader>
+</AActivityTimelineItem>
+
+  <AActivityTimelineItem>
+    <AActivityTimelineItemHeader>
+      <AActivityTimelineItemTitle subtitle="2022-02-14 22:11:10 UTC">
+        Cook's Assistant started
       </AActivityTimelineItemTitle>
     </AActivityTimelineItemHeader>
   </AActivityTimelineItem>
@@ -261,7 +295,7 @@ If you have special requirements for collapsing timeline items, you can control 
 
 <Playground
   code={`<AActivityTimeline style={{ maxWidth: "350px" }}>
-  <AActivityTimelineItem>
+  <AActivityTimelineItem withDivider>
     <AActivityTimelineItemHeader>
       <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
         Account created
@@ -273,7 +307,7 @@ If you have special requirements for collapsing timeline items, you can control 
       </div>
     </AActivityTimelineItemBody>
   </AActivityTimelineItem>
-  <AActivityTimelineItem>
+  <AActivityTimelineItem withDivider>
     <AActivityTimelineItemHeader>
       <AActivityTimelineItemTitle subtitle="2022-02-14 21:12:10 UTC">
         Tutorial island completed
@@ -299,6 +333,95 @@ If you have special requirements for collapsing timeline items, you can control 
   </AActivityTimelineItem>
 </AActivityTimeline>
 `}
+/>
+
+### Mix of Collapsible and Non Collapsible Items
+
+<Playground
+  code={`<AActivityTimeline style={{ maxWidth: "350px" }}>
+  <AActivityTimelineItem withDivider defaultCollapsed={false}>
+    <AActivityTimelineItemHeader>
+      <AActivityTimelineItemTitle
+        subtitle="February 22, 2013"
+        defaultCollapsed={false}
+      >
+        Game Released
+      </AActivityTimelineItemTitle>
+      <AActivityTimelineItemTags>
+        <ATag color="accentI" small>
+          cookware
+        </ATag>
+      </AActivityTimelineItemTags>
+    </AActivityTimelineItemHeader>
+    <AActivityTimelineItemBody>
+      The game was released based on a backup of the game from August 2007.
+    </AActivityTimelineItemBody>
+  </AActivityTimelineItem>
+  <AActivityTimelineItem withDivider>
+    <AActivityTimelineItemHeader>
+      <AActivityTimelineItemTitle subtitle="March 13, 2014">
+        Wilderness is Rejuvenated
+      </AActivityTimelineItemTitle>
+      <AActivityTimelineItemTags>
+        <ATag color="accentE" small>
+          PvP
+        </ATag>
+      </AActivityTimelineItemTags>
+    </AActivityTimelineItemHeader>
+  </AActivityTimelineItem>
+  <AActivityTimelineItem defaultCollapsed>
+    <AActivityTimelineItemHeader>
+      <AActivityTimelineItemTitle subtitle="February 26, 2015">
+        Grand Exchange is Added
+      </AActivityTimelineItemTitle>
+    </AActivityTimelineItemHeader>
+    <AActivityTimelineItemBody>
+      A trading system allowing players to buy and sell items with ease is
+      introduced to the game.
+    </AActivityTimelineItemBody>
+  </AActivityTimelineItem>
+  <AActivityTimelineItem withDivider>
+    <AActivityTimelineItemHeader>
+      <AActivityTimelineItemTitle subtitle="January 5, 2017">
+        Chambers of Xeric Released
+      </AActivityTimelineItemTitle>
+      <AActivityTimelineItemTags>
+        <ATag color="accentB" small>
+          PvM
+        </ATag>
+      </AActivityTimelineItemTags>
+    </AActivityTimelineItemHeader>
+  </AActivityTimelineItem>
+  <AActivityTimelineItem withDivider>
+    <AActivityTimelineItemHeader>
+      <AActivityTimelineItemTitle subtitle="October 30, 2018">
+        Mobile Application Released
+      </AActivityTimelineItemTitle>
+      <AActivityTimelineItemTags>
+        <ATag color="accentG" small>
+          Enhancement
+        </ATag>
+      </AActivityTimelineItemTags>
+    </AActivityTimelineItemHeader>
+    <AActivityTimelineItemBody>
+      <div className="d-flex justify-end mt-5">
+        <AButton small>Install</AButton>
+      </div>
+    </AActivityTimelineItemBody>
+  </AActivityTimelineItem>
+  <AActivityTimelineItem>
+    <AActivityTimelineItemHeader>
+      <AActivityTimelineItemTitle subtitle="June 7, 2018">
+        Theatre of Blood Released
+      </AActivityTimelineItemTitle>
+      <AActivityTimelineItemTags>
+        <ATag color="accentB" small>
+          PvM
+        </ATag>
+      </AActivityTimelineItemTags>
+    </AActivityTimelineItemHeader>
+  </AActivityTimelineItem>
+</AActivityTimeline>`}
 />
 
 ### Status of Sequential Events
