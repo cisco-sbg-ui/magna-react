@@ -8,11 +8,11 @@ import {
 import {
   AActivityTimeline,
   AActivityTimelineItem,
-  AActivityTimelineItemHeader,
   AActivityTimelineItemBody,
-  AActivityTimelineItemTitle,
+  AActivityTimelineItemHeader,
+  AActivityTimelineItemSubtitle,
   AActivityTimelineItemTags,
-  AActivityTimelineItemSubtitle
+  AActivityTimelineItemTitle
 } from "./components/AActivityTimeline";
 import AAlert from "./components/AAlert";
 import AApp from "./components/AApp";
@@ -160,11 +160,11 @@ export {
   AAccordionPanel,
   AActivityTimeline,
   AActivityTimelineItem,
-  AActivityTimelineItemTags,
-  AActivityTimelineItemHeader,
   AActivityTimelineItemBody,
-  AActivityTimelineItemTitle,
+  AActivityTimelineItemHeader,
   AActivityTimelineItemSubtitle,
+  AActivityTimelineItemTags,
+  AActivityTimelineItemTitle,
   AAlert,
   AApp,
   AAutocomplete,
