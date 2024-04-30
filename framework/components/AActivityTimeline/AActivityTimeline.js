@@ -3,7 +3,10 @@ import React, {forwardRef} from "react";
 import "./AActivityTimeline.scss";
 
 const AActivityTimeline = forwardRef(
-  ({children, className: propsClassName, asUnorderedList = false}, ref) => {
+  (
+    {children, className: propsClassName, asUnorderedList = false, ...rest},
+    ref
+  ) => {
     let className = "a-activity-timeline";
 
     if (propsClassName) {
@@ -13,7 +16,7 @@ const AActivityTimeline = forwardRef(
     const ListTag = asUnorderedList ? "ul" : "ol";
 
     return (
-      <ListTag className={className} ref={ref}>
+      <ListTag className={className} {...rest} ref={ref}>
         {children}
       </ListTag>
     );
