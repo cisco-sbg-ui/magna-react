@@ -1,17 +1,17 @@
 import AActivityTimeline from "./AActivityTimeline";
-import AActivityTimelineItemBody from "./AActivityTimelineItemBody";
 import AActivityTimelineItem from "./AActivityTimelineItem";
-import AActivityTimelineItemTitle from "./AActivityTimelineItemTitle";
+import AActivityTimelineItemBody from "./AActivityTimelineItemBody";
 import AActivityTimelineItemHeader from "./AActivityTimelineItemHeader";
 import AActivityTimelineItemSubtitle from "./AActivityTimelineItemSubtitle";
 import AActivityTimelineItemTags from "./AActivityTimelineItemTags";
+import AActivityTimelineItemTitle from "./AActivityTimelineItemTitle";
 
 export {
   AActivityTimeline,
-  AActivityTimelineItemBody,
   AActivityTimelineItem,
-  AActivityTimelineItemTags,
+  AActivityTimelineItemBody,
   AActivityTimelineItemHeader,
-  AActivityTimelineItemTitle,
-  AActivityTimelineItemSubtitle
+  AActivityTimelineItemSubtitle,
+  AActivityTimelineItemTags,
+  AActivityTimelineItemTitle
 };
