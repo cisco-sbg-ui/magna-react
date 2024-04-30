@@ -1,4 +1,6 @@
-import React, {forwardRef, useMemo, useState} from "react";
+import React, {forwardRef, useCallback, useMemo, useState} from "react";
+import PropTypes from "prop-types";
+
 import AActivityTimelineContext from "./AActivityTimelineItemContext";
 
 import ProgressIcon from "./icons/ProgressIcon";
@@ -97,6 +99,47 @@ const AActivityTimelineItem = forwardRef((props, ref) => {
     </AActivityTimelineContext.Provider>
   );
 });
+
+AActivityTimelineItem.propTypes = {
+  /**
+   * Class name(s) to be applied to list item tag element.
+   */
+  className: PropTypes.string,
+
+  /**
+   * Determines if the timeline item is initially collapsed
+   * when rendering the component in uncontrolled mode. Any
+   * subsequent toggles of the timeline item are therefore
+   * handled by the internals of this component.
+   */
+  defaultCollapsed: PropTypes.bool,
+
+  /**
+   * Determines if the timeline item is collapsed. This gives
+   * you full control of the collapsed state of the timeline
+   * item.
+   */
+  isCollapsed: PropTypes.bool,
+
+  /**
+   * A callback function for when the collapse/expand button
+   * of the timeline item is being clicked. If you are controlling
+   * the state of the component (i.e. passing `isCollapsed`), then
+   * this is the right place to toggle said state.
+   */
+  onCollapse: PropTypes.func,
+
+  /**
+   * Determines which icon to render in the timeline item's bullet.
+   */
+  variant: PropTypes.oneOf([
+    "neutral",
+    "incomplete",
+    "progress",
+    "complete",
+    "error"
+  ])
+};
 
 AActivityTimelineItem.displayName = "AActivityTimelineItem";
 
