@@ -26,10 +26,12 @@ const AActivityTimelineItem = forwardRef((props, ref) => {
     defaultCollapsed,
     isCollapsed: propsIsCollapsed,
     onCollapse: propsOnCollapse,
-    variant = "neutral"
+    variant = "neutral",
+    withDivider = false
   } = props;
 
   const isCollapsedStateControlled = props.hasOwnProperty("isCollapsed");
+  const isDividerVisibilityControlled = props.hasOwnProperty("withDivider");
 
   const isCollapsible =
     isCollapsedStateControlled || props.hasOwnProperty("defaultCollapsed");
@@ -88,6 +90,14 @@ const AActivityTimelineItem = forwardRef((props, ref) => {
     className += ` ${propsClassName}`;
   }
 
+  const shouldRenderDivider = useMemo(() => {
+    if (isDividerVisibilityControlled) {
+      return withDivider;
+    } else {
+      return isCollapsible;
+    }
+  }, [isDividerVisibilityControlled, withDivider, isCollapsible]);
+
   return (
     <AActivityTimelineContext.Provider value={ctx}>
       <li className={className} ref={ref}>
@@ -95,6 +105,7 @@ const AActivityTimelineItem = forwardRef((props, ref) => {
           {ICON_VARIANT_MAP[variant] || ICON_VARIANT_MAP.neutral}
           <div>{children}</div>
         </div>
+        {shouldRenderDivider && <hr className="a-activity-timeline__divider" />}
       </li>
     </AActivityTimelineContext.Provider>
   );
@@ -138,7 +149,14 @@ AActivityTimelineItem.propTypes = {
     "progress",
     "complete",
     "error"
-  ])
+  ]),
+
+  /**
+   * Determines if the item should render with a divider at the bottom.
+   * If the component is collapsible, then this renders by default, so
+   * you can use this prop to override such behavior.
+   */
+  withDivider: PropTypes.bool
 };
 
 AActivityTimelineItem.displayName = "AActivityTimelineItem";

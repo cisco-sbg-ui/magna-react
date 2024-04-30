@@ -56,6 +56,50 @@ describe("<AActivityTimeline />", () => {
     );
   });
 
+  it("should render a divider for collapsible items by default", () => {
+    cy.mount(<UncontrolledTimelineTest itemCount={5} />);
+
+    cy.get(".a-activity-timeline__divider")
+      .should("have.lengthOf", 5)
+      .each(($el, index, list) => {
+        if (index < list.length - 1) {
+          cy.wrap($el).should("be.visible");
+        } else {
+          // The very last item's divider should not be visible
+          cy.wrap($el).should("not.be.visible");
+        }
+      });
+  });
+
+  it("should allow the divider to be conditionally rendered for collapsible items", () => {
+    cy.mount(
+      <UncontrolledTimelineTest>
+        {[...new Array(5).keys()].map((itemNum) => (
+          <AActivityTimelineItem
+            defaultCollapsed={false}
+            withDivider={false}
+            key={itemNum}
+          >
+            <AActivityTimelineItemHeader>
+              <AActivityTimelineItemTitle>
+                Mock title #{itemNum}
+              </AActivityTimelineItemTitle>
+            </AActivityTimelineItemHeader>
+            <AActivityTimelineItemBody>
+              Mock Body #{itemNum}
+            </AActivityTimelineItemBody>
+          </AActivityTimelineItem>
+        ))}
+      </UncontrolledTimelineTest>
+    );
+
+    cy.get(".a-activity-timeline__divider")
+      .should("have.lengthOf", 0)
+      .each(($el) => {
+        cy.wrap($el).should("not.be.visible");
+      });
+  });
+
   describe("when the item is not collapsible", () => {
     it("should not render a caret icon", () => {
       cy.mount(
@@ -232,7 +276,7 @@ function createTestData(count) {
 function UncontrolledTimelineTest({children, itemCount = 1}) {
   return (
     <AActivityTimeline>
-      {React.isValidElement(children)
+      {children
         ? children
         : createTestData(itemCount).map((item, index) => (
             <AActivityTimelineItem defaultCollapsed key={index}>
@@ -270,7 +314,7 @@ function ControlledTimelineTest({children, itemCount = 1}) {
 
   return (
     <AActivityTimeline>
-      {React.isValidElement(children)
+      {children
         ? children
         : createTestData(itemCount).map((item, index) => (
             <AActivityTimelineItem
