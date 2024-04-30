@@ -210,7 +210,10 @@ describe("<ATextInput />", () => {
 
     it("should delay validation error messages if specified for blur", () => {
       cy.mount(
-        <ATextInput {...commonProps} {...validationRules} validateOnBlur />
+        <>
+          <ATextInput {...commonProps} {...validationRules} validateOnBlur />
+          <button onClick={() => {}}>focusable</button>
+        </>
       );
 
       // Type and ensure validation is delayed
