@@ -1,7 +1,7 @@
 ---
 name: Activity Timelines
 route: /components/activity-timeline
-components: AActivityTimeline, AActivityTimelineItem, AActivityTimelineItemBody, AActivityTimelineItemTitle, AActivityTimelineItemSubtitle
+components: AActivityTimeline, AActivityTimelineItem, AActivityTimelineItemHeader, AActivityTimelineItemBody, AActivityTimelineItemTitle, AActivityTimelineItemSubtitle
 title: AActivityTimeline
 sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/AActivityTimeline
 ---
@@ -14,26 +14,52 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
 
 ### Usage
 
+#### Very Basic Usage
+
+<Playground
+  code={`<AActivityTimeline>
+  <AActivityTimelineItemBasic
+    title="Account created"
+    subtitle="2022-02-12 21:11:10 UTC"
+  />
+  <AActivityTimelineItemBasic
+    title="Tutorial island completed"
+    subtitle="2022-02-14 21:12:10 UTC"
+  />
+  <AActivityTimelineItemBasic
+    title="Cook's Assistant started"
+    subtitle="2022-02-14 22:11:10 UTC"
+  />
+</AActivityTimeline>;
+`}
+/>
+
 #### Basic Usage
 
 <Playground
   code={`<AActivityTimeline>
   <AActivityTimelineItem>
-    <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
-      Account created
-    </AActivityTimelineItemTitle>
+    <AActivityTimelineItemHeader>
+      <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
+        Account created
+      </AActivityTimelineItemTitle>
+    </AActivityTimelineItemHeader>
   </AActivityTimelineItem>
 
 <AActivityTimelineItem>
-  <AActivityTimelineItemTitle subtitle="2022-02-14 21:12:10 UTC">
-    Tutorial island completed
-  </AActivityTimelineItemTitle>
+  <AActivityTimelineItemHeader>
+    <AActivityTimelineItemTitle subtitle="2022-02-14 21:12:10 UTC">
+      Tutorial island completed
+    </AActivityTimelineItemTitle>
+  </AActivityTimelineItemHeader>
 </AActivityTimelineItem>
 
   <AActivityTimelineItem>
-    <AActivityTimelineItemTitle subtitle="2022-02-14 22:11:10 UTC">
-      Cook's Assistant started
-    </AActivityTimelineItemTitle>
+    <AActivityTimelineItemHeader>
+      <AActivityTimelineItemTitle subtitle="2022-02-14 22:11:10 UTC">
+        Cook's Assistant started
+      </AActivityTimelineItemTitle>
+    </AActivityTimelineItemHeader>
   </AActivityTimelineItem>
 </AActivityTimeline>`}
 />
@@ -47,27 +73,33 @@ If you have more sophisticated requirements for toggling the timeline items, you
 <Playground
   code={`<AActivityTimeline>
   <AActivityTimelineItem defaultCollapsed={false}>
-    <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
-      Account created
-    </AActivityTimelineItemTitle>
+    <AActivityTimelineItemHeader>
+      <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
+        Account created
+      </AActivityTimelineItemTitle>
+    </AActivityTimelineItemHeader>
     <AActivityTimelineItemBody>
       Your account was created under the username "zezima".
     </AActivityTimelineItemBody>
   </AActivityTimelineItem>
 
 <AActivityTimelineItem defaultCollapsed>
-  <AActivityTimelineItemTitle subtitle="2022-02-14 21:12:10 UTC">
-    Tutorial island completed
-  </AActivityTimelineItemTitle>
+  <AActivityTimelineItemHeader>
+    <AActivityTimelineItemTitle subtitle="2022-02-14 21:12:10 UTC">
+      Tutorial island completed
+    </AActivityTimelineItemTitle>
+  </AActivityTimelineItemHeader>
   <AActivityTimelineItemBody>
     You finished the tutorial. Welcome to Gielinor!
   </AActivityTimelineItemBody>
 </AActivityTimelineItem>
 
   <AActivityTimelineItem defaultCollapsed>
-    <AActivityTimelineItemTitle subtitle="2022-02-14 22:11:10 UTC">
-      Cook's Assistant started
-    </AActivityTimelineItemTitle>
+    <AActivityTimelineItemHeader>
+      <AActivityTimelineItemTitle subtitle="2022-02-14 22:11:10 UTC">
+        Cook's Assistant started
+      </AActivityTimelineItemTitle>
+    </AActivityTimelineItemHeader>
     <AActivityTimelineItemBody>
       You have started the first ever quest released in the game, which was one of the only six quests available during the game's initial launch. In this quest, you'll help the Cook of Lumbridge Castle make a birthday cake for Duke Horacio.
     </AActivityTimelineItemBody>
@@ -88,9 +120,11 @@ If you have special requirements for collapsing timeline items, you can control 
         isCollapsed={openedIndex !== 0}
         onCollapse={() => setOpenedIndex(0)}
       >
-        <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
-          Account created
-        </AActivityTimelineItemTitle>
+        <AActivityTimelineItemHeader>
+          <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
+            Account created
+          </AActivityTimelineItemTitle>
+        </AActivityTimelineItemHeader>
         <AActivityTimelineItemBody>
           Your account was created under the username "zezima".
         </AActivityTimelineItemBody>
@@ -100,9 +134,11 @@ If you have special requirements for collapsing timeline items, you can control 
         isCollapsed={openedIndex !== 1}
         onCollapse={() => setOpenedIndex(1)}
       >
-        <AActivityTimelineItemTitle subtitle="2022-02-14 21:12:10 UTC">
-          Tutorial island completed
-        </AActivityTimelineItemTitle>
+        <AActivityTimelineItemHeader>
+          <AActivityTimelineItemTitle subtitle="2022-02-14 21:12:10 UTC">
+            Tutorial island completed
+          </AActivityTimelineItemTitle>
+        </AActivityTimelineItemHeader>
         <AActivityTimelineItemBody>
           You finished the tutorial. Welcome to Gielinor!
         </AActivityTimelineItemBody>
@@ -112,9 +148,11 @@ If you have special requirements for collapsing timeline items, you can control 
         isCollapsed={openedIndex !== 2}
         onCollapse={() => setOpenedIndex(2)}
       >
-        <AActivityTimelineItemTitle subtitle="2022-02-14 22:11:10 UTC">
-          Cook's Assistant started
-        </AActivityTimelineItemTitle>
+        <AActivityTimelineItemHeader>
+          <AActivityTimelineItemTitle subtitle="2022-02-14 22:11:10 UTC">
+            Cook's Assistant started
+          </AActivityTimelineItemTitle>
+        </AActivityTimelineItemHeader>
         <AActivityTimelineItemBody>
           You have started the first ever quest released in the game, which was
           one of the only six quests available during the game's initial launch.
@@ -133,29 +171,39 @@ If you have special requirements for collapsing timeline items, you can control 
 <Playground
   code={`<AActivityTimeline>
   <AActivityTimelineItem variant="neutral">
-    <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
-      Neurtal item
-    </AActivityTimelineItemTitle>
+    <AActivityTimelineItemHeader>
+      <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
+        Neurtal item
+      </AActivityTimelineItemTitle>
+    </AActivityTimelineItemHeader>
   </AActivityTimelineItem>
   <AActivityTimelineItem variant="complete">
-    <AActivityTimelineItemTitle subtitle="2022-02-14 21:11:10 UTC">
-      Complete item
-    </AActivityTimelineItemTitle>
+    <AActivityTimelineItemHeader>
+      <AActivityTimelineItemTitle subtitle="2022-02-14 21:11:10 UTC">
+        Complete item
+      </AActivityTimelineItemTitle>
+    </AActivityTimelineItemHeader>
   </AActivityTimelineItem>
   <AActivityTimelineItem variant="progress">
-    <AActivityTimelineItemTitle subtitle="2022-02-14 21:11:10 UTC">
-      Progress item
-    </AActivityTimelineItemTitle>
+    <AActivityTimelineItemHeader>
+      <AActivityTimelineItemTitle subtitle="2022-02-14 21:11:10 UTC">
+        Progress item
+      </AActivityTimelineItemTitle>
+    </AActivityTimelineItemHeader>
   </AActivityTimelineItem>
   <AActivityTimelineItem variant="incomplete">
-    <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
-      Incomplete item
-    </AActivityTimelineItemTitle>
+    <AActivityTimelineItemHeader>
+      <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
+        Incomplete item
+      </AActivityTimelineItemTitle>
+    </AActivityTimelineItemHeader>
   </AActivityTimelineItem>
   <AActivityTimelineItem variant="error">
-    <AActivityTimelineItemTitle subtitle="2022-02-14 21:11:10 UTC">
-      Error item
-    </AActivityTimelineItemTitle>
+    <AActivityTimelineItemHeader>
+      <AActivityTimelineItemTitle subtitle="2022-02-14 21:11:10 UTC">
+        Error item
+      </AActivityTimelineItemTitle>
+    </AActivityTimelineItemHeader>
   </AActivityTimelineItem>
 </AActivityTimeline>`}
 />
@@ -165,23 +213,85 @@ If you have special requirements for collapsing timeline items, you can control 
 <Playground
   code={`<AActivityTimeline>
   <AActivityTimelineItem>
-    <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
-      Account created
-    </AActivityTimelineItemTitle>
+    <AActivityTimelineItemHeader>
+      <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
+        Account created
+      </AActivityTimelineItemTitle>
+    </AActivityTimelineItemHeader>
   </AActivityTimelineItem>
 </AActivityTimeline>`}
 />
 
+#### Tags
+
+<Playground
+  code={`<AActivityTimeline>
+  <AActivityTimelineItem>
+    <AActivityTimelineItemHeader>
+      <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
+        Account created
+      </AActivityTimelineItemTitle>
+      <AActivityTimelineItemTags>
+        <ATag color="accentK" small>
+          newbie-task
+        </ATag>
+      </AActivityTimelineItemTags>
+    </AActivityTimelineItemHeader>
+  </AActivityTimelineItem>
+</AActivityTimeline>
+`}
+/>
+
 ## Commmon Use Cases
 
-### Recording a Series of Events
+### Numbered Items
+
+<Playground
+  code={`<AActivityTimeline>
+  <AActivityTimelineItem>
+    <AActivityTimelineItemHeader>
+      <div>1)</div>
+      <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
+        Account created
+      </AActivityTimelineItemTitle>
+    </AActivityTimelineItemHeader>
+  </AActivityTimelineItem>
+
+<AActivityTimelineItem>
+  <AActivityTimelineItemHeader>
+    <div>2)</div>
+    <AActivityTimelineItemTitle subtitle="2022-02-14 21:12:10 UTC">
+      Tutorial island completed
+    </AActivityTimelineItemTitle>
+  </AActivityTimelineItemHeader>
+</AActivityTimelineItem>
+
+  <AActivityTimelineItem>
+    <AActivityTimelineItemHeader>
+      <div>3)</div>
+      <AActivityTimelineItemTitle subtitle="2022-02-14 22:11:10 UTC">
+        Cook's Assistant started
+      </AActivityTimelineItemTitle>
+    </AActivityTimelineItemHeader>
+  </AActivityTimelineItem>
+</AActivityTimeline>`}
+/>
+
+### Status of Sequential Events
 
 <Playground
   code={`<AActivityTimeline>
   <AActivityTimelineItem defaultCollapsed variant="complete">
-    <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
-      Get a bucket and pot
-    </AActivityTimelineItemTitle>
+    <AActivityTimelineItemHeader>
+      <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
+        Get a bucket and pot
+      </AActivityTimelineItemTitle>
+      <AActivityTimelineItemTags>
+        <ATag color="accentI" small>
+          cookware
+        </ATag>
+      </AActivityTimelineItemTags>
+    </AActivityTimelineItemHeader>
     <AActivityTimelineItemBody>
       A bucket spawns in the cellar of Lumbridge Castle, and a pot spawns in the
       kitchen on the centre table. You can also purchase both a bucket and a pot
@@ -189,9 +299,16 @@ If you have special requirements for collapsing timeline items, you can control 
     </AActivityTimelineItemBody>
   </AActivityTimelineItem>
   <AActivityTimelineItem defaultCollapsed variant="complete">
-    <AActivityTimelineItemTitle subtitle="2022-02-14 21:11:10 UTC">
-      Get an egg
-    </AActivityTimelineItemTitle>
+    <AActivityTimelineItemHeader>
+      <AActivityTimelineItemTitle subtitle="2022-02-14 21:11:10 UTC">
+        Get an egg
+      </AActivityTimelineItemTitle>
+      <AActivityTimelineItemTags>
+        <ATag color="accentE" small>
+          ingredients
+        </ATag>
+      </AActivityTimelineItemTags>
+    </AActivityTimelineItemHeader>
     <AActivityTimelineItemBody>
       Go east out of Lumbridge Castle and run north along the path until you
       reach the chicken coop north-west of Farmer Fred's house. Go into the coop
@@ -199,9 +316,16 @@ If you have special requirements for collapsing timeline items, you can control 
     </AActivityTimelineItemBody>
   </AActivityTimelineItem>
   <AActivityTimelineItem defaultCollapsed variant="complete">
-    <AActivityTimelineItemTitle subtitle="2022-02-14 21:11:10 UTC">
-      Get a bucket of milk
-    </AActivityTimelineItemTitle>
+    <AActivityTimelineItemHeader>
+      <AActivityTimelineItemTitle subtitle="2022-02-14 21:11:10 UTC">
+        Get a bucket of milk
+      </AActivityTimelineItemTitle>
+      <AActivityTimelineItemTags>
+        <ATag color="accentE" small>
+          ingredients
+        </ATag>
+      </AActivityTimelineItemTags>
+    </AActivityTimelineItemHeader>
     <AActivityTimelineItemBody>
       With an empty bucket, go north into the cow pasture. Use the empty bucket
       on a dairy cow to get a bucket of milk. You can optionally talk to Gillie
@@ -210,7 +334,19 @@ If you have special requirements for collapsing timeline items, you can control 
     </AActivityTimelineItemBody>
   </AActivityTimelineItem>
   <AActivityTimelineItem defaultCollapsed variant="progress">
-    <AActivityTimelineItemTitle>Get a pot of flour</AActivityTimelineItemTitle>
+    <AActivityTimelineItemHeader>
+      <AActivityTimelineItemTitle>
+        Get a pot of flour
+      </AActivityTimelineItemTitle>
+      <AActivityTimelineItemTags>
+        <ATag color="accentE" small className="m-1">
+          ingredients
+        </ATag>
+        <ATag color="accentI" small>
+          cookware
+        </ATag>
+      </AActivityTimelineItemTags>
+    </AActivityTimelineItemHeader>
     <AActivityTimelineItemBody>
       <div>
         With an empty pot, leave the cow pasture and go south-west to the wheat
@@ -232,9 +368,11 @@ If you have special requirements for collapsing timeline items, you can control 
     </AActivityTimelineItemBody>
   </AActivityTimelineItem>
   <AActivityTimelineItem defaultCollapsed variant="incomplete">
-    <AActivityTimelineItemTitle>
-      Deliver the ingredients
-    </AActivityTimelineItemTitle>
+    <AActivityTimelineItemHeader>
+      <AActivityTimelineItemTitle>
+        Deliver the ingredients
+      </AActivityTimelineItemTitle>
+    </AActivityTimelineItemHeader>
     <AActivityTimelineItemBody>
       After collecting the ingredients, speak to the cook to deliver them.
     </AActivityTimelineItemBody>
@@ -242,6 +380,6 @@ If you have special requirements for collapsing timeline items, you can control 
   <AActivityTimelineItem variant="incomplete">
     <AActivityTimelineItemTitle>Quest complete</AActivityTimelineItemTitle>
   </AActivityTimelineItem>
-</AActivityTimeline>;
+</AActivityTimeline>
 `}
 />

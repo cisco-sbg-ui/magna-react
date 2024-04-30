@@ -8,8 +8,10 @@ import {
 import {
   AActivityTimeline,
   AActivityTimelineItem,
+  AActivityTimelineItemHeader,
   AActivityTimelineItemBody,
   AActivityTimelineItemTitle,
+  AActivityTimelineItemTags,
   AActivityTimelineItemSubtitle
 } from "./components/AActivityTimeline";
 import AAlert from "./components/AAlert";
@@ -158,6 +160,8 @@ export {
   AAccordionPanel,
   AActivityTimeline,
   AActivityTimelineItem,
+  AActivityTimelineItemTags,
+  AActivityTimelineItemHeader,
   AActivityTimelineItemBody,
   AActivityTimelineItemTitle,
   AActivityTimelineItemSubtitle,
