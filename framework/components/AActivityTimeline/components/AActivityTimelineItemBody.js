@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import AActivityTimelineContext from "./AActivityTimelineItemContext";
 
-import "./AActivityTimeline.scss";
+import "../AActivityTimeline.scss";
 
 const AActivityTimelineItemBody = forwardRef(
   ({children, className: propsClassName}, ref) => {

@@ -1,11 +1,11 @@
-import React, {forwardRef} from "react";
+import {forwardRef} from "react";
 import PropTypes from "prop-types";
 
-import "./AActivityTimeline.scss";
+import "../AActivityTimeline.scss";
 
-const AActivityTimelineItemSubtitle = forwardRef(
+const AActivityTimelineItemTitle = forwardRef(
   ({children, className: propsClassName}, ref) => {
-    let className = "a-activity-timeline__item__subtitle";
+    let className = "a-activity-timeline__item__title";
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
@@ -19,13 +19,13 @@ const AActivityTimelineItemSubtitle = forwardRef(
   }
 );
 
-AActivityTimelineItemSubtitle.propTypes = {
+AActivityTimelineItemTitle.propTypes = {
   /**
    * Class name(s) to be applied to element the children are wrapped in.
    */
   className: PropTypes.string
 };
 
-AActivityTimelineItemSubtitle.displayName = "AActivityTimelineItemSubtitle";
+AActivityTimelineItemTitle.displayName = "AActivityTimelineItemTitle";
 
-export default AActivityTimelineItemSubtitle;
+export default AActivityTimelineItemTitle;

@@ -1,115 +1,35 @@
-import React, {forwardRef, useCallback, useMemo, useState} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
-import AActivityTimelineContext from "./AActivityTimelineItemContext";
+import AActivityTimelineItemBody from "./components/AActivityTimelineItemBody";
+import AActivityTimelineItemContainer from "./components/AActivityTimelineItemContainer";
+import AActivityTimelineItemHeader from "./components/AActivityTimelineItemHeader";
+import AActivityTimelineItemSubtitle from "./components/AActivityTimelineItemSubtitle";
+import AActivityTimelineItemTags from "./components/AActivityTimelineItemTags";
+import AActivityTimelineItemTitle from "./components/AActivityTimelineItemTitle";
 
-import ProgressIcon from "./icons/ProgressIcon";
-import ErrorIcon from "./icons/ErrorIcon";
-import IncompleteIcon from "./icons/IncompleteIcon";
-import NeutralIcon from "./icons/NeutralIcon";
-import CompleteIcon from "./icons/CompleteIcon";
-
-import "./AActivityTimeline.scss";
-
-const ICON_VARIANT_MAP = {
-  neutral: <NeutralIcon />,
-  incomplete: <IncompleteIcon />,
-  progress: <ProgressIcon />,
-  complete: <CompleteIcon />,
-  error: <ErrorIcon />
-};
-
-const AActivityTimelineItem = forwardRef((props, ref) => {
-  const {
-    children,
-    className: propsClassName,
-    defaultCollapsed,
-    isCollapsed: propsIsCollapsed,
-    onCollapse: propsOnCollapse,
-    variant = "neutral",
-    withDivider = false
-  } = props;
-
-  const isCollapsedStateControlled = props.hasOwnProperty("isCollapsed");
-  const isDividerVisibilityControlled = props.hasOwnProperty("withDivider");
-
-  const isCollapsible =
-    isCollapsedStateControlled || props.hasOwnProperty("defaultCollapsed");
-
-  /**
-   * Only used when the collapsed state is uncontrolled, i.e., when the
-   * developer does not pass an `isCollapsed` prop.
-   */
-  const [isCollapsed, setIsCollapsed] = useState(
-    isCollapsedStateControlled ? propsIsCollapsed : defaultCollapsed || false
-  );
-
-  const handleCollapse = useCallback(
-    (e) => {
-      if (!isCollapsedStateControlled) {
-        setIsCollapsed((prevState) => !prevState);
-      }
-
-      if (typeof propsOnCollapse === "function") {
-        propsOnCollapse(e);
-      }
-    },
-    [isCollapsedStateControlled, propsOnCollapse]
-  );
-
-  const ctx = useMemo(
-    () => ({
-      isCollapsedStateControlled,
-      isCollapsed: isCollapsedStateControlled ? propsIsCollapsed : isCollapsed,
-      isCollapsible,
-      onCollapse: handleCollapse,
-      open: () => setIsCollapsed(false),
-      close: () => setIsCollapsed(true)
-    }),
-    [
-      isCollapsed,
-      isCollapsedStateControlled,
-      isCollapsible,
-      propsIsCollapsed,
-      handleCollapse
-    ]
-  );
-
-  let className = "a-activity-timeline__list-item";
-
-  if (variant === "complete") {
-    className += " a-activity-timeline__list-item--complete";
-  }
-
-  if (isCollapsible) {
-    className +=
-      " a-activity-timeline__list-item--collapsible a-activity-timeline__item--collapsible";
-  }
-
-  if (propsClassName) {
-    className += ` ${propsClassName}`;
-  }
-
-  const shouldRenderDivider = useMemo(() => {
-    if (isDividerVisibilityControlled) {
-      return withDivider;
-    } else {
-      return isCollapsible;
-    }
-  }, [isDividerVisibilityControlled, withDivider, isCollapsible]);
-
+const AActivityTimelineItem = ({
+  children,
+  tags,
+  time,
+  title,
+  ...timelineItemContainerProps
+}) => {
   return (
-    <AActivityTimelineContext.Provider value={ctx}>
-      <li className={className} ref={ref}>
-        <div className="a-activity-timeline__item">
-          {ICON_VARIANT_MAP[variant] || ICON_VARIANT_MAP.neutral}
-          <div>{children}</div>
-        </div>
-        {shouldRenderDivider && <hr className="a-activity-timeline__divider" />}
-      </li>
-    </AActivityTimelineContext.Provider>
+    <AActivityTimelineItemContainer {...timelineItemContainerProps}>
+      <AActivityTimelineItemHeader>
+        <AActivityTimelineItemTitle>{title}</AActivityTimelineItemTitle>
+        {time && (
+          <AActivityTimelineItemSubtitle>{time}</AActivityTimelineItemSubtitle>
+        )}
+        {tags && <AActivityTimelineItemTags>{tags}</AActivityTimelineItemTags>}
+      </AActivityTimelineItemHeader>
+      {children && (
+        <AActivityTimelineItemBody>{children}</AActivityTimelineItemBody>
+      )}
+    </AActivityTimelineItemContainer>
   );
-});
+};
 
 AActivityTimelineItem.propTypes = {
   /**
@@ -143,7 +63,7 @@ AActivityTimelineItem.propTypes = {
   /**
    * Determines which icon to render in the timeline item's bullet.
    */
-  variant: PropTypes.oneOf([
+  status: PropTypes.oneOf([
     "neutral",
     "incomplete",
     "progress",
@@ -152,13 +72,26 @@ AActivityTimelineItem.propTypes = {
   ]),
 
   /**
+   * Tags to be rendered next to the title.
+   */
+  tags: PropTypes.elementType,
+
+  /**
+   * The time associated with the item.
+   */
+  time: PropTypes.elementType,
+
+  /**
+   * The title of the item.
+   */
+  title: PropTypes.elementType,
+
+  /**
    * Determines if the item should render with a divider at the bottom.
    * If the component is collapsible, then this renders by default, so
    * you can use this prop to override such behavior.
    */
   withDivider: PropTypes.bool
 };
-
-AActivityTimelineItem.displayName = "AActivityTimelineItem";
 
 export default AActivityTimelineItem;

@@ -18,30 +18,20 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
 
 <Playground
   code={`<AActivityTimeline>
-  <AActivityTimelineItem>
-    <AActivityTimelineItemHeader>
-      <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
-        Account created
-      </AActivityTimelineItemTitle>
-    </AActivityTimelineItemHeader>
-  </AActivityTimelineItem>
-
-<AActivityTimelineItem>
-  <AActivityTimelineItemHeader>
-    <AActivityTimelineItemTitle subtitle="2022-02-14 21:12:10 UTC">
-      Tutorial island completed
-    </AActivityTimelineItemTitle>
-  </AActivityTimelineItemHeader>
-</AActivityTimelineItem>
-
-  <AActivityTimelineItem>
-    <AActivityTimelineItemHeader>
-      <AActivityTimelineItemTitle subtitle="2022-02-14 22:11:10 UTC">
-        Cook's Assistant started
-      </AActivityTimelineItemTitle>
-    </AActivityTimelineItemHeader>
-  </AActivityTimelineItem>
-</AActivityTimeline>`}
+  <AActivityTimelineItem
+    time="2022-02-12 21:11:10 UTC"
+    title="Account Created"
+  />
+  <AActivityTimelineItem
+    time="2022-02-14 21:12:10 UTC"
+    title="Tutorial Island Completed"
+  />
+  <AActivityTimelineItem
+    time="2022-02-14 22:11:10 UTC"
+    title="Cook's Assistant Started"
+  />
+</AActivityTimeline>
+`}
 />
 
 #### Collapsible Usage (Uncontrolled)
@@ -52,39 +42,32 @@ If you have more sophisticated requirements for toggling the timeline items, you
 
 <Playground
   code={`<AActivityTimeline>
-  <AActivityTimelineItem defaultCollapsed={false}>
-    <AActivityTimelineItemHeader>
-      <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
-        Account created
-      </AActivityTimelineItemTitle>
-    </AActivityTimelineItemHeader>
-    <AActivityTimelineItemBody>
-      Your account was created under the username "zezima".
-    </AActivityTimelineItemBody>
+  <AActivityTimelineItem
+    defaultCollapsed={false}
+    time="2022-02-12 21:11:10 UTC"
+    title="Account Created"
+  >
+    Your account was created under the username "zezima".
   </AActivityTimelineItem>
-
-<AActivityTimelineItem defaultCollapsed>
-  <AActivityTimelineItemHeader>
-    <AActivityTimelineItemTitle subtitle="2022-02-14 21:12:10 UTC">
-      Tutorial island completed
-    </AActivityTimelineItemTitle>
-  </AActivityTimelineItemHeader>
-  <AActivityTimelineItemBody>
+  <AActivityTimelineItem
+    defaultCollapsed
+    time="2022-02-14 21:12:10 UTC"
+    title="Tutorial Island Completed"
+  >
     You finished the tutorial. Welcome to Gielinor!
-  </AActivityTimelineItemBody>
-</AActivityTimelineItem>
-
-  <AActivityTimelineItem defaultCollapsed>
-    <AActivityTimelineItemHeader>
-      <AActivityTimelineItemTitle subtitle="2022-02-14 22:11:10 UTC">
-        Cook's Assistant started
-      </AActivityTimelineItemTitle>
-    </AActivityTimelineItemHeader>
-    <AActivityTimelineItemBody>
-      You have started the first ever quest released in the game, which was one of the only six quests available during the game's initial launch. In this quest, you'll help the Cook of Lumbridge Castle make a birthday cake for Duke Horacio.
-    </AActivityTimelineItemBody>
   </AActivityTimelineItem>
-</AActivityTimeline>`}
+  <AActivityTimelineItem
+    defaultCollapsed
+    time="2022-02-14 22:11:10 UTC"
+    title="Cook's Assistant Started"
+  >
+    You have started the first ever quest released in the game, which was one of
+    the only six quests available during the game's initial launch. In this
+    quest, you'll help the Cook of Lumbridge Castle make a birthday cake for
+    Duke Horacio.
+  </AActivityTimelineItem>
+</AActivityTimeline>
+`}
 />
 
 #### Collapsible Usage (Controlled)
@@ -94,98 +77,84 @@ If you have special requirements for collapsing timeline items, you can control 
 <Playground
   code={`() => {
   const [openedIndex, setOpenedIndex] = useState(0);
+  /**
+   * Higher order function
+   */
+  const getToggleHandler = (index) => {
+    return () => {
+      if (openedIndex === index) {
+        setOpenedIndex(null)
+      } else {
+        setOpenedIndex(index)
+      }
+    }
+  }
   return (
     <AActivityTimeline>
       <AActivityTimelineItem
         isCollapsed={openedIndex !== 0}
-        onCollapse={() => setOpenedIndex(0)}
+        onCollapse={getToggleHandler(0)}
+        time="2022-02-12 21:11:10 UTC"
+        title="Account Created"
       >
-        <AActivityTimelineItemHeader>
-          <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
-            Account created
-          </AActivityTimelineItemTitle>
-        </AActivityTimelineItemHeader>
-        <AActivityTimelineItemBody>
-          Your account was created under the username "zezima".
-        </AActivityTimelineItemBody>
+        Your account was created under the username "zezima".
       </AActivityTimelineItem>
-
       <AActivityTimelineItem
         isCollapsed={openedIndex !== 1}
-        onCollapse={() => setOpenedIndex(1)}
+        onCollapse={getToggleHandler(1)}
+        time="2022-02-14 21:12:10 UTC"
+        title="Tutorial Island Completed"
       >
-        <AActivityTimelineItemHeader>
-          <AActivityTimelineItemTitle subtitle="2022-02-14 21:12:10 UTC">
-            Tutorial island completed
-          </AActivityTimelineItemTitle>
-        </AActivityTimelineItemHeader>
-        <AActivityTimelineItemBody>
-          You finished the tutorial. Welcome to Gielinor!
-        </AActivityTimelineItemBody>
+        You finished the tutorial. Welcome to Gielinor!
       </AActivityTimelineItem>
-
       <AActivityTimelineItem
         isCollapsed={openedIndex !== 2}
-        onCollapse={() => setOpenedIndex(2)}
+        onCollapse={getToggleHandler(2)}
+        time="2022-02-14 22:11:10 UTC"
+        title="Cook's Assistant Started"
       >
-        <AActivityTimelineItemHeader>
-          <AActivityTimelineItemTitle subtitle="2022-02-14 22:11:10 UTC">
-            Cook's Assistant started
-          </AActivityTimelineItemTitle>
-        </AActivityTimelineItemHeader>
-        <AActivityTimelineItemBody>
-          You have started the first ever quest released in the game, which was
-          one of the only six quests available during the game's initial launch.
-          In this quest, you'll help the Cook of Lumbridge Castle make a
-          birthday cake for Duke Horacio.
-        </AActivityTimelineItemBody>
+        You have started the first ever quest released in the game, which was
+        one of the only six quests available during the game's initial launch.
+        In this quest, you'll help the Cook of Lumbridge Castle make a birthday
+        cake for Duke Horacio.
       </AActivityTimelineItem>
     </AActivityTimeline>
-
-);
-};`}
+  );
+};
+`}
 />
 
-#### Variants
+#### Statuses
 
 <Playground
   code={`<AActivityTimeline>
-  <AActivityTimelineItem variant="neutral">
-    <AActivityTimelineItemHeader>
-      <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
-        Neurtal item
-      </AActivityTimelineItemTitle>
-    </AActivityTimelineItemHeader>
-  </AActivityTimelineItem>
-  <AActivityTimelineItem variant="complete">
-    <AActivityTimelineItemHeader>
-      <AActivityTimelineItemTitle subtitle="2022-02-14 21:11:10 UTC">
-        Complete item
-      </AActivityTimelineItemTitle>
-    </AActivityTimelineItemHeader>
-  </AActivityTimelineItem>
-  <AActivityTimelineItem variant="progress">
-    <AActivityTimelineItemHeader>
-      <AActivityTimelineItemTitle subtitle="2022-02-14 21:11:10 UTC">
-        Progress item
-      </AActivityTimelineItemTitle>
-    </AActivityTimelineItemHeader>
-  </AActivityTimelineItem>
-  <AActivityTimelineItem variant="incomplete">
-    <AActivityTimelineItemHeader>
-      <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
-        Incomplete item
-      </AActivityTimelineItemTitle>
-    </AActivityTimelineItemHeader>
-  </AActivityTimelineItem>
-  <AActivityTimelineItem variant="error">
-    <AActivityTimelineItemHeader>
-      <AActivityTimelineItemTitle subtitle="2022-02-14 21:11:10 UTC">
-        Error item
-      </AActivityTimelineItemTitle>
-    </AActivityTimelineItemHeader>
-  </AActivityTimelineItem>
-</AActivityTimeline>`}
+  <AActivityTimelineItem
+    status="neutral"
+    time="2022-02-12 21:11:10 UTC"
+    title="Neutral Item"
+  />
+  <AActivityTimelineItem
+    status="complete"
+    time="2022-02-12 21:11:10 UTC"
+    title="Complete Item"
+  />
+  <AActivityTimelineItem
+    status="progress"
+    time="2022-02-12 21:11:10 UTC"
+    title="Progress Item"
+  />
+  <AActivityTimelineItem
+    status="incomplete"
+    time="2022-02-12 21:11:10 UTC"
+    title="Incomplete Item"
+  />
+  <AActivityTimelineItem
+    status="error"
+    time="2022-02-12 21:11:10 UTC"
+    title="Error Item"
+  />
+</AActivityTimeline>
+`}
 />
 
 #### Single Item
@@ -194,14 +163,12 @@ If there is only one timeline item, then the left vertical bar is still displaye
 
 <Playground
   code={`<AActivityTimeline>
-  <AActivityTimelineItem>
-    <AActivityTimelineItemHeader>
-      <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
-        Account created
-      </AActivityTimelineItemTitle>
-    </AActivityTimelineItemHeader>
-  </AActivityTimelineItem>
-</AActivityTimeline>`}
+  <AActivityTimelineItem
+    time="2022-02-12 21:11:10 UTC"
+    title="Account Created"
+  />
+</AActivityTimeline>
+`}
 />
 
 #### Dividers
@@ -210,29 +177,20 @@ By default, dividers only render when the timeline item is collapsible. However,
 
 <Playground
   code={`<AActivityTimeline>
-  <AActivityTimelineItem withDivider>
-    <AActivityTimelineItemHeader>
-      <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
-        Account created
-      </AActivityTimelineItemTitle>
-    </AActivityTimelineItemHeader>
-  </AActivityTimelineItem>
-
-<AActivityTimelineItem withDivider>
-  <AActivityTimelineItemHeader>
-    <AActivityTimelineItemTitle subtitle="2022-02-14 21:12:10 UTC">
-      Tutorial island completed
-    </AActivityTimelineItemTitle>
-  </AActivityTimelineItemHeader>
-</AActivityTimelineItem>
-
-  <AActivityTimelineItem>
-    <AActivityTimelineItemHeader>
-      <AActivityTimelineItemTitle subtitle="2022-02-14 22:11:10 UTC">
-        Cook's Assistant started
-      </AActivityTimelineItemTitle>
-    </AActivityTimelineItemHeader>
-  </AActivityTimelineItem>
+  <AActivityTimelineItem
+    withDivider
+    time="2022-02-12 21:11:10 UTC"
+    title="Account Created"
+  />
+  <AActivityTimelineItem
+    withDivider
+    time="2022-02-14 21:12:10 UTC"
+    title="Tutorial Island Completed"
+  />
+  <AActivityTimelineItem
+    time="2022-02-14 22:11:10 UTC"
+    title="Cook's Assistant Started"
+  />
 </AActivityTimeline>`}
 />
 
@@ -240,96 +198,65 @@ By default, dividers only render when the timeline item is collapsible. However,
 
 <Playground
   code={`<AActivityTimeline>
-  <AActivityTimelineItem>
-    <AActivityTimelineItemHeader>
-      <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
-        Account created
-      </AActivityTimelineItemTitle>
-      <AActivityTimelineItemTags>
-        <ATag color="accentK" small>
+  <AActivityTimelineItem
+    tags={
+      <ATag color="accentK" small>
+        newbie-task
+      </ATag>
+    }
+    time="2022-02-12 21:11:10 UTC"
+    title="Account Created"
+  />
+  <AActivityTimelineItem
+    tags={
+      <>
+        <ATag color="accentK" small className="mr-1">
           newbie-task
         </ATag>
-      </AActivityTimelineItemTags>
-    </AActivityTimelineItemHeader>
-  </AActivityTimelineItem>
+        <ATag color="accentD" small>
+          achievement
+        </ATag>
+      </>
+    }
+    time="2022-02-12 21:11:10 UTC"
+    title="Tutorial Island Completed Created"
+  />
 </AActivityTimeline>
 `}
 />
 
 ## Commmon Use Cases
 
-### Numbered Items
-
-<Playground
-  code={`<AActivityTimeline>
-  <AActivityTimelineItem>
-    <AActivityTimelineItemHeader>
-      <div>1)</div>
-      <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
-        Account created
-      </AActivityTimelineItemTitle>
-    </AActivityTimelineItemHeader>
-  </AActivityTimelineItem>
-
-<AActivityTimelineItem>
-  <AActivityTimelineItemHeader>
-    <div>2)</div>
-    <AActivityTimelineItemTitle subtitle="2022-02-14 21:12:10 UTC">
-      Tutorial island completed
-    </AActivityTimelineItemTitle>
-  </AActivityTimelineItemHeader>
-</AActivityTimelineItem>
-
-  <AActivityTimelineItem>
-    <AActivityTimelineItemHeader>
-      <div>3)</div>
-      <AActivityTimelineItemTitle subtitle="2022-02-14 22:11:10 UTC">
-        Cook's Assistant started
-      </AActivityTimelineItemTitle>
-    </AActivityTimelineItemHeader>
-  </AActivityTimelineItem>
-</AActivityTimeline>`}
-/>
-
 ### With Actionable Body Content
 
 <Playground
   code={`<AActivityTimeline style={{ maxWidth: "350px" }}>
-  <AActivityTimelineItem withDivider>
-    <AActivityTimelineItemHeader>
-      <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
-        Account created
-      </AActivityTimelineItemTitle>
-    </AActivityTimelineItemHeader>
-    <AActivityTimelineItemBody>
-      <div className="d-flex justify-end">
-        <AButton small>View</AButton>
-      </div>
-    </AActivityTimelineItemBody>
+  <AActivityTimelineItem
+    withDivider
+    time="2022-02-12 21:11:10 UTC"
+    title="Account Created"
+  >
+    <div className="d-flex justify-end">
+      <AButton small>View</AButton>
+    </div>
   </AActivityTimelineItem>
-  <AActivityTimelineItem withDivider>
-    <AActivityTimelineItemHeader>
-      <AActivityTimelineItemTitle subtitle="2022-02-14 21:12:10 UTC">
-        Tutorial island completed
-      </AActivityTimelineItemTitle>
-    </AActivityTimelineItemHeader>
-    <AActivityTimelineItemBody>
-      <div className="d-flex justify-end">
-        <AButton small>Login</AButton>
-      </div>
-    </AActivityTimelineItemBody>
+  <AActivityTimelineItem
+    withDivider
+    time="2022-02-14 21:12:10 UTC"
+    title="Tutorial island completed"
+  >
+    <div className="d-flex justify-end">
+      <AButton small>Login</AButton>
+    </div>
   </AActivityTimelineItem>
-  <AActivityTimelineItem>
-    <AActivityTimelineItemHeader>
-      <AActivityTimelineItemTitle subtitle="2022-02-14 22:11:10 UTC">
-        Cook's Assistant started
-      </AActivityTimelineItemTitle>
-    </AActivityTimelineItemHeader>
-    <AActivityTimelineItemBody>
-      <div className="d-flex justify-end">
-        <AButton small>Guide</AButton>
-      </div>
-    </AActivityTimelineItemBody>
+  <AActivityTimelineItem
+    withDivider
+    time="2022-02-12 21:11:10 UTC"
+    title="Cook's Assistant Started"
+  >
+    <div className="d-flex justify-end">
+      <AButton small>Guide</AButton>
+    </div>
   </AActivityTimelineItem>
 </AActivityTimeline>
 `}
@@ -338,195 +265,216 @@ By default, dividers only render when the timeline item is collapsible. However,
 ### Mix of Collapsible and Non Collapsible Items
 
 <Playground
-  code={`<AActivityTimeline style={{ maxWidth: "350px" }}>
-  <AActivityTimelineItem withDivider defaultCollapsed={false}>
-    <AActivityTimelineItemHeader>
-      <AActivityTimelineItemTitle
-        subtitle="February 22, 2013"
-        defaultCollapsed={false}
-      >
-        Game Released
-      </AActivityTimelineItemTitle>
-      <AActivityTimelineItemTags>
-        <ATag color="accentI" small>
-          cookware
-        </ATag>
-      </AActivityTimelineItemTags>
-    </AActivityTimelineItemHeader>
-    <AActivityTimelineItemBody>
-      The game was released based on a backup of the game from August 2007.
-    </AActivityTimelineItemBody>
+  code={`<AActivityTimeline>
+  <AActivityTimelineItem
+    withDivider
+    defaultCollapsed={false}
+    time="February 22, 2013"
+    title="Game Released"
+    tags={
+      <ATag color="accentI" small>
+        cookware
+      </ATag>
+    }
+  >
+    The game was released based on a backup of the game from August 2007.
   </AActivityTimelineItem>
-  <AActivityTimelineItem withDivider>
-    <AActivityTimelineItemHeader>
-      <AActivityTimelineItemTitle subtitle="March 13, 2014">
-        Wilderness is Rejuvenated
-      </AActivityTimelineItemTitle>
-      <AActivityTimelineItemTags>
-        <ATag color="accentE" small>
-          PvP
-        </ATag>
-      </AActivityTimelineItemTags>
-    </AActivityTimelineItemHeader>
+  <AActivityTimelineItem
+    withDivider
+    time="March 13, 2014"
+    title="Wilderness is Rejuvenated"
+    tags={
+      <ATag color="accentE" small>
+        PvP
+      </ATag>
+    }
+  />
+  <AActivityTimelineItem
+    withDivider
+    defaultCollapsed={false}
+    time="February 26, 2015"
+    title="Grand Exchange is Added"
+  >
+    A trading system allowing players to buy and sell items with ease is
+    introduced to the game.
   </AActivityTimelineItem>
-  <AActivityTimelineItem defaultCollapsed>
-    <AActivityTimelineItemHeader>
-      <AActivityTimelineItemTitle subtitle="February 26, 2015">
-        Grand Exchange is Added
-      </AActivityTimelineItemTitle>
-    </AActivityTimelineItemHeader>
-    <AActivityTimelineItemBody>
-      A trading system allowing players to buy and sell items with ease is
-      introduced to the game.
-    </AActivityTimelineItemBody>
-  </AActivityTimelineItem>
-  <AActivityTimelineItem withDivider>
-    <AActivityTimelineItemHeader>
-      <AActivityTimelineItemTitle subtitle="January 5, 2017">
-        Chambers of Xeric Released
-      </AActivityTimelineItemTitle>
-      <AActivityTimelineItemTags>
-        <ATag color="accentB" small>
-          PvM
-        </ATag>
-      </AActivityTimelineItemTags>
-    </AActivityTimelineItemHeader>
-  </AActivityTimelineItem>
-  <AActivityTimelineItem withDivider>
-    <AActivityTimelineItemHeader>
-      <AActivityTimelineItemTitle subtitle="October 30, 2018">
-        Mobile Application Released
-      </AActivityTimelineItemTitle>
-      <AActivityTimelineItemTags>
-        <ATag color="accentG" small>
-          Enhancement
-        </ATag>
-      </AActivityTimelineItemTags>
-    </AActivityTimelineItemHeader>
-    <AActivityTimelineItemBody>
-      <div className="d-flex justify-end mt-5">
-        <AButton small>Install</AButton>
-      </div>
-    </AActivityTimelineItemBody>
-  </AActivityTimelineItem>
-  <AActivityTimelineItem>
-    <AActivityTimelineItemHeader>
-      <AActivityTimelineItemTitle subtitle="June 7, 2018">
-        Theatre of Blood Released
-      </AActivityTimelineItemTitle>
-      <AActivityTimelineItemTags>
-        <ATag color="accentB" small>
-          PvM
-        </ATag>
-      </AActivityTimelineItemTags>
-    </AActivityTimelineItemHeader>
-  </AActivityTimelineItem>
-</AActivityTimeline>`}
+  <AActivityTimelineItem
+    withDivider
+    time="January 5, 2017"
+    title="Chambers of Xeric is Released"
+    tags={
+      <ATag color="accentB" small>
+        PvM
+      </ATag>
+    }
+  />
+  <AActivityTimelineItem
+    withDivider
+    time="October 30, 2018"
+    title="Mobile Application is Released"
+    tags={
+      <ATag color="accentG" small>
+        Enhancement
+      </ATag>
+    }
+  />
+  <AActivityTimelineItem
+    withDivider
+    time="June 7, 2018"
+    title="Theatre of Blood Released"
+    tags={
+      <ATag color="accentB" small>
+        PvM
+      </ATag>
+    }
+  />
+</AActivityTimeline>;
+`}
 />
 
 ### Status of Sequential Events
 
 <Playground
   code={`<AActivityTimeline>
-  <AActivityTimelineItem defaultCollapsed variant="complete">
-    <AActivityTimelineItemHeader>
-      <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
-        Get a bucket and pot
-      </AActivityTimelineItemTitle>
-      <AActivityTimelineItemTags>
-        <ATag color="accentI" small>
-          cookware
-        </ATag>
-      </AActivityTimelineItemTags>
-    </AActivityTimelineItemHeader>
-    <AActivityTimelineItemBody>
-      A bucket spawns in the cellar of Lumbridge Castle, and a pot spawns in the
-      kitchen on the centre table. You can also purchase both a bucket and a pot
-      from the Lumbridge General Store, for 2 and 1 coins, respectively.
-    </AActivityTimelineItemBody>
+  <AActivityTimelineItem
+    defaultCollapsed
+    status="complete"
+    title="Get bucket and pot"
+    time="2022-02-12 21:11:10 UTC"
+    tags={
+      <ATag color="accentI" small>
+        cookware
+      </ATag>
+    }
+  >
+    A bucket spawns in the cellar of Lumbridge Castle, and a pot spawns in the
+    kitchen on the centre table. You can also purchase both a bucket and a pot
+    from the Lumbridge General Store, for 2 and 1 coins, respectively.
   </AActivityTimelineItem>
-  <AActivityTimelineItem defaultCollapsed variant="complete">
-    <AActivityTimelineItemHeader>
-      <AActivityTimelineItemTitle subtitle="2022-02-14 21:11:10 UTC">
-        Get an egg
-      </AActivityTimelineItemTitle>
-      <AActivityTimelineItemTags>
-        <ATag color="accentE" small>
-          ingredients
-        </ATag>
-      </AActivityTimelineItemTags>
-    </AActivityTimelineItemHeader>
-    <AActivityTimelineItemBody>
-      Go east out of Lumbridge Castle and run north along the path until you
-      reach the chicken coop north-west of Farmer Fred's house. Go into the coop
-      and pick up an egg.
-    </AActivityTimelineItemBody>
+  <AActivityTimelineItem
+    defaultCollapsed
+    status="complete"
+    time="2022-02-14 21:11:10 UTC"
+    title="Get an egg"
+    tags={
+      <ATag color="accentE" small>
+        ingredients
+      </ATag>
+    }
+  >
+    Go east out of Lumbridge Castle and run north along the path until you reach
+    the chicken coop north-west of Farmer Fred's house. Go into the coop and
+    pick up an egg.
   </AActivityTimelineItem>
-  <AActivityTimelineItem defaultCollapsed variant="complete">
-    <AActivityTimelineItemHeader>
-      <AActivityTimelineItemTitle subtitle="2022-02-14 21:11:10 UTC">
-        Get a bucket of milk
-      </AActivityTimelineItemTitle>
-      <AActivityTimelineItemTags>
-        <ATag color="accentE" small>
-          ingredients
-        </ATag>
-      </AActivityTimelineItemTags>
-    </AActivityTimelineItemHeader>
-    <AActivityTimelineItemBody>
-      With an empty bucket, go north into the cow pasture. Use the empty bucket
-      on a dairy cow to get a bucket of milk. You can optionally talk to Gillie
-      Groats for an explanation on how to milk a cow. She can be found across
-      the river, next to the dairy cow in the eastern Lumbridge cow field.
-    </AActivityTimelineItemBody>
+  <AActivityTimelineItem
+    defaultCollapsed
+    status="complete"
+    time="2022-02-14 21:11:10 UTC"
+    title="Get a bucket of milk"
+    tags={
+      <ATag color="accentE" small>
+        ingredients
+      </ATag>
+    }
+  >
+    With an empty bucket, go north into the cow pasture. Use the empty bucket on
+    a dairy cow to get a bucket of milk. You can optionally talk to Gillie
+    Groats for an explanation on how to milk a cow. She can be found across the
+    river, next to the dairy cow in the eastern Lumbridge cow field.
   </AActivityTimelineItem>
-  <AActivityTimelineItem defaultCollapsed variant="progress">
-    <AActivityTimelineItemHeader>
-      <AActivityTimelineItemTitle>
-        Get a pot of flour
-      </AActivityTimelineItemTitle>
-      <AActivityTimelineItemTags>
+  <AActivityTimelineItem
+    defaultCollapsed
+    status="progress"
+    title="Get a Pot of Flour"
+    tags={
+      <>
         <ATag color="accentE" small className="m-1">
           ingredients
         </ATag>
         <ATag color="accentI" small>
           cookware
         </ATag>
+      </>
+    }
+  >
+    <div>
+      With an empty pot, leave the cow pasture and go south-west to the wheat
+      field. Pick some grain, and then enter the Mill Lane Mill, found up the
+      road to the north-east. Climb to the top floor, put the grain in the
+      hopper, then pull the lever and climb back down to the 1st floor[US].
+      Finally, use an empty pot on the flour bin (which is now full of flour) to
+      get a pot of flour. You can optionally talk to Millie Miller inside the
+      mill for an explanation on how to make flour.
+    </div>
+    <br />
+    <div>
+      If you are a member, the easy Lumbridge & Draynor Diary requires baking
+      bread on the Lumbridge Castle range. Since this requires obtaining another
+      pot of flour for bread dough, you can save time by obtaining a second pot
+      of flour now (requiring more grain). You will need to repeat the milling
+      process for each bucket of flour you make.
+    </div>
+  </AActivityTimelineItem>
+  <AActivityTimelineItem
+    defaultCollapsed
+    status="incomplete"
+    title="Deliver the Ingredients"
+  >
+    After collecting the ingredients, speak to the cook to deliver them.
+  </AActivityTimelineItem>
+  <AActivityTimelineItem status="incomplete" title="Quest Copmlete" />
+</AActivityTimeline>
+`}
+/>
+
+## Compositional Usage
+
+> This is usually unnecessary. If your requirements extends beyond the scope of the regular `AActivityTimelineItem`, then it might be worth verifying such a requirement with a designer beforehand.
+
+### Component Composistion
+
+If you need further customization with `AActivityItemTimelineItem`, you can render the inner components instead.
+
+<Playground
+  code={`<AActivityTimeline>
+  <AActivityTimelineItemContainer defaultCollapsed status="complete">
+    <AActivityTimelineItemHeader>
+      <AActivityTimelineItemTitle>Account Created</AActivityTimelineItemTitle>
+      <AActivityTimelineItemSubtitle>
+        2022-02-12 21:11:10 UTC
+      </AActivityTimelineItemSubtitle>
+      <AActivityTimelineItemTags>
+        <ATag color="accentK" small>
+          newbie-task
+        </ATag>
       </AActivityTimelineItemTags>
     </AActivityTimelineItemHeader>
     <AActivityTimelineItemBody>
-      <div>
-        With an empty pot, leave the cow pasture and go south-west to the wheat
-        field. Pick some grain, and then enter the Mill Lane Mill, found up the
-        road to the north-east. Climb to the top floor, put the grain in the
-        hopper, then pull the lever and climb back down to the 1st floor[US].
-        Finally, use an empty pot on the flour bin (which is now full of flour)
-        to get a pot of flour. You can optionally talk to Millie Miller inside
-        the mill for an explanation on how to make flour.
-      </div>
-      <br />
-      <div>
-        If you are a member, the easy Lumbridge & Draynor Diary requires baking
-        bread on the Lumbridge Castle range. Since this requires obtaining
-        another pot of flour for bread dough, you can save time by obtaining a
-        second pot of flour now (requiring more grain). You will need to repeat
-        the milling process for each bucket of flour you make.
-      </div>
+      Your account was created under the username "zezima".
     </AActivityTimelineItemBody>
-  </AActivityTimelineItem>
-  <AActivityTimelineItem defaultCollapsed variant="incomplete">
+  </AActivityTimelineItemContainer>
+
+  <AActivityTimelineItemContainer status="progress" defaultCollapsed>
     <AActivityTimelineItemHeader>
       <AActivityTimelineItemTitle>
-        Deliver the ingredients
+        Tutorial Island Completed
       </AActivityTimelineItemTitle>
+      <AActivityTimelineItemSubtitle>
+        2022-02-12 21:11:10 UTC
+      </AActivityTimelineItemSubtitle>
+      <AActivityTimelineItemTags>
+        <ATag color="accentK" small className="mr-1">
+          newbie-task
+        </ATag>
+        <ATag color="accentD" small>
+          achievement
+        </ATag>
+      </AActivityTimelineItemTags>
     </AActivityTimelineItemHeader>
     <AActivityTimelineItemBody>
-      After collecting the ingredients, speak to the cook to deliver them.
+      You can now enter the land of Gielinor!
     </AActivityTimelineItemBody>
-  </AActivityTimelineItem>
-  <AActivityTimelineItem variant="incomplete">
-    <AActivityTimelineItemTitle>Quest complete</AActivityTimelineItemTitle>
-  </AActivityTimelineItem>
+  </AActivityTimelineItemContainer>
 </AActivityTimeline>
 `}
 />

@@ -1,11 +1,5 @@
 import React, {useState} from "react";
-import {
-  AActivityTimeline,
-  AActivityTimelineItem,
-  AActivityTimelineItemBody,
-  AActivityTimelineItemHeader,
-  AActivityTimelineItemTitle
-} from ".";
+import {AActivityTimeline, AActivityTimelineItem} from ".";
 
 describe("<AActivityTimeline />", () => {
   it("should render left borders for each inner timeline item", () => {
@@ -43,11 +37,10 @@ describe("<AActivityTimeline />", () => {
   it("should render the neutral icon if the variant cannot be resolved", () => {
     cy.mount(
       <UncontrolledTimelineTest>
-        <AActivityTimelineItem variant="something-that-does-not-exist">
-          <AActivityTimelineItemHeader>
-            <AActivityTimelineItemTitle>Mock title</AActivityTimelineItemTitle>
-          </AActivityTimelineItemHeader>
-        </AActivityTimelineItem>
+        <AActivityTimelineItem
+          variant="something-that-does-not-exist"
+          title="Mock title"
+        />
       </UncontrolledTimelineTest>
     );
 
@@ -79,15 +72,9 @@ describe("<AActivityTimeline />", () => {
             defaultCollapsed={false}
             withDivider={false}
             key={itemNum}
+            title={`Mock title #${itemNum}`}
           >
-            <AActivityTimelineItemHeader>
-              <AActivityTimelineItemTitle>
-                Mock title #{itemNum}
-              </AActivityTimelineItemTitle>
-            </AActivityTimelineItemHeader>
-            <AActivityTimelineItemBody>
-              Mock Body #{itemNum}
-            </AActivityTimelineItemBody>
+            {`Mock body content #${itemNum}`}
           </AActivityTimelineItem>
         ))}
       </UncontrolledTimelineTest>
@@ -104,13 +91,7 @@ describe("<AActivityTimeline />", () => {
     it("should not render a caret icon", () => {
       cy.mount(
         <AActivityTimeline>
-          <AActivityTimelineItem>
-            <AActivityTimelineItemHeader>
-              <AActivityTimelineItemTitle>
-                Mock Title
-              </AActivityTimelineItemTitle>
-            </AActivityTimelineItemHeader>
-          </AActivityTimelineItem>
+          <AActivityTimelineItem title="Mock Title" />
         </AActivityTimeline>
       );
 
@@ -121,15 +102,8 @@ describe("<AActivityTimeline />", () => {
     it("should never hide body content", () => {
       cy.mount(
         <AActivityTimeline>
-          <AActivityTimelineItem>
-            <AActivityTimelineItemHeader>
-              <AActivityTimelineItemTitle>
-                Mock Title
-              </AActivityTimelineItemTitle>
-            </AActivityTimelineItemHeader>
-            <AActivityTimelineItemBody>
-              <div data-testid="mock-content">Mock content</div>
-            </AActivityTimelineItemBody>
+          <AActivityTimelineItem title="Mock title">
+            <div data-testid="mock-content">Mock content</div>
           </AActivityTimelineItem>
         </AActivityTimeline>
       );
@@ -154,15 +128,8 @@ describe("<AActivityTimeline />", () => {
     it("should allow the initial collapsed state to be overridden", () => {
       cy.mount(
         <UncontrolledTimelineTest>
-          <AActivityTimelineItem defaultCollapsed={false}>
-            <AActivityTimelineItemHeader>
-              <AActivityTimelineItemTitle>
-                Mock title
-              </AActivityTimelineItemTitle>
-            </AActivityTimelineItemHeader>
-            <AActivityTimelineItemBody>
-              <div data-testid="mock-content">Mock body content</div>
-            </AActivityTimelineItemBody>
+          <AActivityTimelineItem defaultCollapsed={false} title="Mock title">
+            <div data-testid="mock-content">Mock body content</div>
           </AActivityTimelineItem>
         </UncontrolledTimelineTest>
       );
@@ -219,15 +186,8 @@ describe("<AActivityTimeline />", () => {
     it("should allow the initial state to be entirely controlled", () => {
       cy.mount(
         <ControlledTimelineTest>
-          <AActivityTimelineItem isCollapsed={false}>
-            <AActivityTimelineItemHeader>
-              <AActivityTimelineItemTitle>
-                Mock title
-              </AActivityTimelineItemTitle>
-            </AActivityTimelineItemHeader>
-            <AActivityTimelineItemBody>
-              <div data-testid="mock-content">Mock body content</div>
-            </AActivityTimelineItemBody>
+          <AActivityTimelineItem isCollapsed={false} title="Mock Title">
+            <div data-testid="mock-content">Mock body content</div>
           </AActivityTimelineItem>
         </ControlledTimelineTest>
       );
@@ -279,15 +239,12 @@ function UncontrolledTimelineTest({children, itemCount = 1}) {
       {children
         ? children
         : createTestData(itemCount).map((item, index) => (
-            <AActivityTimelineItem defaultCollapsed key={index}>
-              <AActivityTimelineItemHeader>
-                <AActivityTimelineItemTitle>
-                  {item.title}
-                </AActivityTimelineItemTitle>
-              </AActivityTimelineItemHeader>
-              <AActivityTimelineItemBody>
-                <div data-testid={`mock-content-${index}`}>{item.body}</div>
-              </AActivityTimelineItemBody>
+            <AActivityTimelineItem
+              key={index}
+              defaultCollapsed
+              title={item.title}
+            >
+              <div data-testid={`mock-content-${index}`}>{item.body}</div>
             </AActivityTimelineItem>
           ))}
     </AActivityTimeline>
@@ -318,18 +275,12 @@ function ControlledTimelineTest({children, itemCount = 1}) {
         ? children
         : createTestData(itemCount).map((item, index) => (
             <AActivityTimelineItem
+              key={index}
               isCollapsed={getCollapsedState(index)}
               onCollapse={getItemToggler(index)}
-              key={index}
+              title={item.title}
             >
-              <AActivityTimelineItemHeader>
-                <AActivityTimelineItemTitle>
-                  {item.title}
-                </AActivityTimelineItemTitle>
-              </AActivityTimelineItemHeader>
-              <AActivityTimelineItemBody>
-                <div data-testid={`mock-content-${index}`}>{item.body}</div>
-              </AActivityTimelineItemBody>
+              <div data-testid={`mock-content-${index}`}>{item.body}</div>
             </AActivityTimelineItem>
           ))}
     </AActivityTimeline>

@@ -1,10 +1,10 @@
 import {forwardRef, useContext} from "react";
 import PropTypes from "prop-types";
 
-import AIcon from "../AIcon";
+import AIcon from "../../AIcon";
 import AActivityTimelineContext from "./AActivityTimelineItemContext";
 
-import "./AActivityTimeline.scss";
+import "../AActivityTimeline.scss";
 
 const DisclosureButton = ({children, onClick, isCollapsed}) => {
   return (
