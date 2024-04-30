@@ -1,4 +1,5 @@
 import React, {forwardRef, useContext} from "react";
+import PropTypes from "prop-types";
 
 import AActivityTimelineContext from "./AActivityTimelineItemContext";
 
@@ -28,6 +29,13 @@ const AActivityTimelineItemBody = forwardRef(
     );
   }
 );
+
+AActivityTimelineItemBody.propTypes = {
+  /**
+   * Class name(s) to be applied to element the children are wrapped in.
+   */
+  className: PropTypes.string
+};
 
 AActivityTimelineItemBody.displayName = "AActivityTimelineItemBody";
 

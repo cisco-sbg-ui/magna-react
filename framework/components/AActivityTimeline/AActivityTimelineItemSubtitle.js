@@ -1,4 +1,5 @@
 import React, {forwardRef} from "react";
+import PropTypes from "prop-types";
 
 import "./AActivityTimeline.scss";
 
@@ -17,6 +18,13 @@ const AActivityTimelineItemSubtitle = forwardRef(
     );
   }
 );
+
+AActivityTimelineItemSubtitle.propTypes = {
+  /**
+   * Class name(s) to be applied to element the children are wrapped in.
+   */
+  className: PropTypes.string
+};
 
 AActivityTimelineItemSubtitle.displayName = "AActivityTimelineItemSubtitle";
 
