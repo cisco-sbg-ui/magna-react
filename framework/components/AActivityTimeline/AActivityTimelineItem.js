@@ -40,16 +40,25 @@ const AActivityTimelineItem = forwardRef((props, ref) => {
     isCollapsedStateControlled ? propsIsCollapsed : defaultCollapsed || false
   );
 
-  const handleToggle = () => {
-    setIsCollapsed((prevState) => !prevState);
-  };
+  const handleCollapse = useCallback(
+    (e) => {
+      if (!isCollapsedStateControlled) {
+        setIsCollapsed((prevState) => !prevState);
+      }
+
+      if (typeof propsOnCollapse === "function") {
+        propsOnCollapse(e);
+      }
+    },
+    [isCollapsedStateControlled, propsOnCollapse]
+  );
 
   const ctx = useMemo(
     () => ({
       isCollapsedStateControlled,
       isCollapsed: isCollapsedStateControlled ? propsIsCollapsed : isCollapsed,
       isCollapsible,
-      onCollapse: isCollapsedStateControlled ? propsOnCollapse : handleToggle,
+      onCollapse: handleCollapse,
       open: () => setIsCollapsed(false),
       close: () => setIsCollapsed(true)
     }),
@@ -58,7 +67,7 @@ const AActivityTimelineItem = forwardRef((props, ref) => {
       isCollapsedStateControlled,
       isCollapsible,
       propsIsCollapsed,
-      propsOnCollapse
+      handleCollapse
     ]
   );
 
