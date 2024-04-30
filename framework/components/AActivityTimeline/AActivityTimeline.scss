@@ -63,7 +63,6 @@
 
     &__header {
       display: grid;
-      // grid-template-columns: auto minmax(0, 1fr) auto;
       grid-template-columns: auto auto minmax(0, 1fr);
       grid-template-areas:
         "caret title tags"
@@ -73,12 +72,8 @@
       row-gap: 3px;
 
       font-weight: 600;
-      // display: flex;
-      // gap: 10px;
-      // align-items: flex-start;
 
       &--button {
-        // display: flex;
         border: unset;
         padding: unset;
         font-family: inherit;
@@ -88,10 +83,6 @@
 
         &:focus-visible {
           outline: var(--interact-border-focus) auto 1px !important;
-        }
-
-        &__headline {
-          display: flex;
         }
       }
     }
@@ -120,7 +111,6 @@
     }
 
     &__caret {
-      // margin-right: 10px;
       grid-area: caret;
       width: 14px !important;
       height: 14px !important;
