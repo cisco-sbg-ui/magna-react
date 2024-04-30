@@ -14,26 +14,6 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
 
 ### Usage
 
-#### Very Basic Usage
-
-<Playground
-  code={`<AActivityTimeline>
-  <AActivityTimelineItemBasic
-    title="Account created"
-    subtitle="2022-02-12 21:11:10 UTC"
-  />
-  <AActivityTimelineItemBasic
-    title="Tutorial island completed"
-    subtitle="2022-02-14 21:12:10 UTC"
-  />
-  <AActivityTimelineItemBasic
-    title="Cook's Assistant started"
-    subtitle="2022-02-14 22:11:10 UTC"
-  />
-</AActivityTimeline>;
-`}
-/>
-
 #### Basic Usage
 
 <Playground
@@ -275,6 +255,50 @@ If you have special requirements for collapsing timeline items, you can control 
     </AActivityTimelineItemHeader>
   </AActivityTimelineItem>
 </AActivityTimeline>`}
+/>
+
+### With Actionable Body Content
+
+<Playground
+  code={`<AActivityTimeline style={{ maxWidth: "350px" }}>
+  <AActivityTimelineItem>
+    <AActivityTimelineItemHeader>
+      <AActivityTimelineItemTitle subtitle="2022-02-12 21:11:10 UTC">
+        Account created
+      </AActivityTimelineItemTitle>
+    </AActivityTimelineItemHeader>
+    <AActivityTimelineItemBody>
+      <div className="d-flex justify-end">
+        <AButton small>View</AButton>
+      </div>
+    </AActivityTimelineItemBody>
+  </AActivityTimelineItem>
+  <AActivityTimelineItem>
+    <AActivityTimelineItemHeader>
+      <AActivityTimelineItemTitle subtitle="2022-02-14 21:12:10 UTC">
+        Tutorial island completed
+      </AActivityTimelineItemTitle>
+    </AActivityTimelineItemHeader>
+    <AActivityTimelineItemBody>
+      <div className="d-flex justify-end">
+        <AButton small>Login</AButton>
+      </div>
+    </AActivityTimelineItemBody>
+  </AActivityTimelineItem>
+  <AActivityTimelineItem>
+    <AActivityTimelineItemHeader>
+      <AActivityTimelineItemTitle subtitle="2022-02-14 22:11:10 UTC">
+        Cook's Assistant started
+      </AActivityTimelineItemTitle>
+    </AActivityTimelineItemHeader>
+    <AActivityTimelineItemBody>
+      <div className="d-flex justify-end">
+        <AButton small>Guide</AButton>
+      </div>
+    </AActivityTimelineItemBody>
+  </AActivityTimelineItem>
+</AActivityTimeline>
+`}
 />
 
 ### Status of Sequential Events
