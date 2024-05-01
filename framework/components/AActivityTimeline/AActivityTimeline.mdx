@@ -106,6 +106,41 @@ If you have more sophisticated requirements for toggling the timeline items, you
 `}
 />
 
+#### Tags Inline With Title
+
+To render tags inline with the title, you can use the `AActivityTimelineItemTitle` component and pass them as children.
+
+<Playground
+  code={`<AActivityTimeline>
+  <AActivityTimelineItem
+    time="2022-02-12 21:11:10 UTC"
+    title={
+      <AActivityTimelineItemTitle>
+        <span>Account created</span>
+        <ATag color="accentI" small>
+          account-setup
+        </ATag>
+      </AActivityTimelineItemTitle>
+    }
+  />
+  <AActivityTimelineItem
+    time="2022-02-14 21:12:10 UTC"
+    title={
+      <AActivityTimelineItemTitle>
+        <span>Tutorial Island Completed</span>
+        <ATag color="accentB" small>
+          f2p
+        </ATag>
+        <ATag color="accentG" small>
+          milestone
+        </ATag>
+      </AActivityTimelineItemTitle>
+    }
+  />
+</AActivityTimeline>
+`}
+/>
+
 #### Collapsible Usage (Controlled)
 
 If you have special requirements for collapsing timeline items, you can control the state yourself. For example, suppose that only one timeline item can be opened at a time. In that case, pass the `isCollapsible`, `isCollapsed`, and `onToggle` props to the `AActivityTimelineItem` component:
