@@ -1,14 +1,16 @@
-import React from "react";
+import React, {forwardRef} from "react";
 
 import "../AActivityTimeline.scss";
 
-function ListItem({icon, children}) {
+const AActivityTimelineListItem = forwardRef(({icon, children}, ref) => {
   return (
-    <li className="a-activity-timeline__list-item">
+    <li className="a-activity-timeline__list-item" ref={ref}>
       {icon}
       <div className="flex-grow-1">{children}</div>
     </li>
   );
-}
+});
 
-export default ListItem;
+AActivityTimelineListItem.displayName = "AActivityTimelineListItem";
+
+export default AActivityTimelineListItem;

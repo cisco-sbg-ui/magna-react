@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {forwardRef, useState} from "react";
 
 import "./AActivityTimeline.scss";
 
@@ -23,7 +23,7 @@ const ICON_STATUS_MAP = {
   error: <ErrorIcon />
 };
 
-const AActivityTimelineItem = (props) => {
+const AActivityTimelineItem = forwardRef((props, ref) => {
   const {
     children,
     defaultCollapsed,
@@ -64,7 +64,7 @@ const AActivityTimelineItem = (props) => {
   );
 
   return (
-    <AActivityTimelineListItem icon={statusIcon}>
+    <AActivityTimelineListItem icon={statusIcon} ref={ref}>
       {isCollapsible ? (
         <AActivityTimelineItemHeaderToggleButton
           isCollapsed={isCollapsed}
@@ -91,6 +91,8 @@ const AActivityTimelineItem = (props) => {
       {shouldRenderDivider && <AActivityTimelineItemDivider />}
     </AActivityTimelineListItem>
   );
-};
+});
+
+AActivityTimelineItem.displayName = "AActivityTimelineItem";
 
 export default AActivityTimelineItem;
