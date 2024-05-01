@@ -217,8 +217,8 @@ describe("<ATextInput />", () => {
       cy.get(".a-text-input__input").type("a");
       cy.get(".a-alert").should("not.exist");
 
-      // Tab out of input to trigger blur
-      cy.tab();
+      // Blur the input and check
+      cy.get(".a-text-input__input").blur();
       cy.get(".a-alert").should("exist");
     });
 
