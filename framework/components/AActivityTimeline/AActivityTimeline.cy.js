@@ -10,14 +10,14 @@ describe("<AActivityTimeline />", () => {
       // https://stackoverflow.com/a/75887385
       const subject = $el[0];
       const window = subject.ownerDocument.defaultView;
-      const before = window.getComputedStyle(subject, "before");
+      const before = window.getComputedStyle(subject, ":before");
       const borderValue = before.getPropertyValue("border-left");
 
       if (index < $list.length - 1) {
         expect(borderValue).contains("2px solid");
       } else {
         // The very last item should not have a left border
-        expect(borderValue).contains("none");
+        expect(borderValue).contains("0");
       }
     });
   });
@@ -29,7 +29,7 @@ describe("<AActivityTimeline />", () => {
       // https://stackoverflow.com/a/75887385
       const subject = $el[0];
       const window = subject.ownerDocument.defaultView;
-      const before = window.getComputedStyle(subject, "before");
+      const before = window.getComputedStyle(subject, ":before");
       const borderValue = before.getPropertyValue("border-left");
       expect(borderValue).contains("2px solid");
     });
