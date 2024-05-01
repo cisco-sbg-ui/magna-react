@@ -44,7 +44,7 @@ AKeyValue.propTypes = {
   /**
    * The `AKeyValue` component requires the data value as the only child element.
    */
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   /**
    * Add a help tooltip to the key field
    */
