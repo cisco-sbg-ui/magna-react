@@ -18,7 +18,7 @@ const AActivityTimeline = forwardRef(
 
     return (
       <ListTag className={className} ref={ref} {...rest}>
-        {props.children}
+        {children}
       </ListTag>
     );
   }
