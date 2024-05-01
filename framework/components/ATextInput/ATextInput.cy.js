@@ -210,18 +210,15 @@ describe("<ATextInput />", () => {
 
     it("should delay validation error messages if specified for blur", () => {
       cy.mount(
-        <>
-          <ATextInput {...commonProps} {...validationRules} validateOnBlur />
-          <button onClick={() => {}}>focusable</button>
-        </>
+        <ATextInput {...commonProps} {...validationRules} validateOnBlur />
       );
 
       // Type and ensure validation is delayed
       cy.get(".a-text-input__input").type("a");
       cy.get(".a-alert").should("not.exist");
 
-      // Tab out of input to trigger blur
-      cy.tab();
+      // Blur the input and check
+      cy.get(".a-text-input__input").blur();
       cy.get(".a-alert").should("exist");
     });
 
