@@ -2,7 +2,7 @@ import React from "react";
 
 import "../AActivityTimeline.scss";
 
-function BodyContent({isCollapsed = false, children}) {
+function AActivityTimelineItemBody({isCollapsed = false, children}) {
   let className = "a-activity-timeline__list-item__body";
 
   if (isCollapsed) {
@@ -12,4 +12,4 @@ function BodyContent({isCollapsed = false, children}) {
   return <div className={className}>{children}</div>;
 }
 
-export default BodyContent;
+export default AActivityTimelineItemBody;

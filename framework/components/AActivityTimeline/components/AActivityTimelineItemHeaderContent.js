@@ -2,7 +2,7 @@ import React from "react";
 
 import "../AActivityTimeline.scss";
 
-function HeaderContent({time, children}) {
+function AActivityTimelineItemHeaderContent({time, children}) {
   return (
     <>
       <div className="a-activity-timeline__list-item__title">{children}</div>
@@ -11,4 +11,4 @@ function HeaderContent({time, children}) {
   );
 }
 
-export default HeaderContent;
+export default AActivityTimelineItemHeaderContent;

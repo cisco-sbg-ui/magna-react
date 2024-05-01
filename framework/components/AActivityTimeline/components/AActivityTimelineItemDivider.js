@@ -2,8 +2,8 @@ import React from "react";
 
 import "../AActivityTimeline.scss";
 
-function BodyContentDivider() {
+function AActivityTimelineItemDivider() {
   return <hr className="a-activity-timeline__list-item__divider" />;
 }
 
-export default BodyContentDivider;
+export default AActivityTimelineItemDivider;
