@@ -86,9 +86,11 @@ const AActivityTimelineItem = forwardRef((props, ref) => {
           {headerContent}
         </AActivityTimelineItemHeader>
       )}
-      <AActivityTimelineItemBody isCollapsed={isCollapsed}>
-        {children}
-      </AActivityTimelineItemBody>
+      {children && (
+        <AActivityTimelineItemBody isCollapsed={isCollapsed}>
+          {children}
+        </AActivityTimelineItemBody>
+      )}
       {shouldRenderDivider && <AActivityTimelineItemDivider />}
     </AActivityTimelineListItem>
   );

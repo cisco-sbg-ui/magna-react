@@ -50,6 +50,7 @@
       border-left: none;
       border-right: none;
       padding-top: 16px;
+      border-width: 2px;
       border-color: var(--base-border-default);
     }
 
@@ -84,7 +85,7 @@
     &__body {
       grid-area: body;
       display: block;
-      margin-top: 10px;
+      margin-top: 12px;
 
       &--collapsed {
         display: none;
