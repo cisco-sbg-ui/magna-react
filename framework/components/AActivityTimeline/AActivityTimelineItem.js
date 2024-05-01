@@ -1,97 +1,93 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, {useState, useMemo} from "react";
 
-import AActivityTimelineItemBody from "./components/AActivityTimelineItemBody";
-import AActivityTimelineItemContainer from "./components/AActivityTimelineItemContainer";
-import AActivityTimelineItemHeader from "./components/AActivityTimelineItemHeader";
-import AActivityTimelineItemSubtitle from "./components/AActivityTimelineItemSubtitle";
-import AActivityTimelineItemTags from "./components/AActivityTimelineItemTags";
-import AActivityTimelineItemTitle from "./components/AActivityTimelineItemTitle";
+import "./AActivityTimeline.scss";
 
-const AActivityTimelineItem = ({
-  children,
-  tags,
-  time,
-  title,
-  ...timelineItemContainerProps
-}) => {
-  return (
-    <AActivityTimelineItemContainer {...timelineItemContainerProps}>
-      <AActivityTimelineItemHeader>
-        <AActivityTimelineItemTitle>{title}</AActivityTimelineItemTitle>
-        {time && (
-          <AActivityTimelineItemSubtitle>{time}</AActivityTimelineItemSubtitle>
-        )}
-        {tags && <AActivityTimelineItemTags>{tags}</AActivityTimelineItemTags>}
-      </AActivityTimelineItemHeader>
-      {children && (
-        <AActivityTimelineItemBody>{children}</AActivityTimelineItemBody>
-      )}
-    </AActivityTimelineItemContainer>
-  );
+import NeutralIcon from "./icons/NeutralIcon";
+import IncompleteIcon from "./icons/IncompleteIcon";
+import ProgressIcon from "./icons/ProgressIcon";
+import CompleteIcon from "./icons/CompleteIcon";
+import ErrorIcon from "./icons/ErrorIcon";
+import ListItem from "./components/ListItem";
+import DisclosureButton from "./components/DisclosureButton";
+import Body from "./components/Body";
+import BodyDivider from "./components/BodyDivider";
+import HeaderContent from "./components/HeaderContent";
+
+const ICON_STATUS_MAP = {
+  neutral: <NeutralIcon />,
+  incomplete: <IncompleteIcon />,
+  progress: <ProgressIcon />,
+  complete: <CompleteIcon />,
+  error: <ErrorIcon />
 };
 
-AActivityTimelineItem.propTypes = {
-  /**
-   * Class name(s) to be applied to list item tag element.
-   */
-  className: PropTypes.string,
+const AActivityTimelineItem = (props) => {
+  const {
+    withDivider,
+    children,
+    status = "neutral",
+    title,
+    time,
+    isCollapsible: propsIsCollapsible,
+    onToggle,
+    defaultCollapsed,
+    isCollapsed: propsIsCollapsed
+  } = props;
+  const isCollapsible =
+    propsIsCollapsible ||
+    props.hasOwnProperty("defaultCollapsed") ||
+    props.hasOwnProperty("isCollapsed");
+  const isDividerVisibilityControlled = props.hasOwnProperty("withDivider");
+  const isCollapsibleStateControlled = props.hasOwnProperty("isCollapsed");
+  const shouldRenderDivider = isDividerVisibilityControlled
+    ? withDivider
+    : isCollapsible;
+  const statusIcon = ICON_STATUS_MAP[status] || ICON_STATUS_MAP.neutral;
 
   /**
-   * Determines if the timeline item is initially collapsed
-   * when rendering the component in uncontrolled mode. Any
-   * subsequent toggles of the timeline item are therefore
-   * handled by the internals of this component.
+   * Internal collapsed state for when component is rendered uncontrolled
    */
-  defaultCollapsed: PropTypes.bool,
+  const [_isCollapsed, _setIsCollapsed] = useState(
+    isCollapsible ? defaultCollapsed : false
+  );
 
-  /**
-   * Determines if the timeline item is collapsed. This gives
-   * you full control of the collapsed state of the timeline
-   * item.
-   */
-  isCollapsed: PropTypes.bool,
+  const isCollapsed = isCollapsibleStateControlled
+    ? propsIsCollapsed
+    : _isCollapsed;
 
-  /**
-   * A callback function for when the collapse/expand button
-   * of the timeline item is being clicked. If you are controlling
-   * the state of the component (i.e. passing `isCollapsed`), then
-   * this is the right place to toggle said state.
-   */
-  onCollapse: PropTypes.func,
+  if (isCollapsible) {
+    return (
+      <ListItem icon={statusIcon}>
+        <DisclosureButton
+          className="a-activity-timeline__list-item__header"
+          isCollapsed={isCollapsed}
+          onClick={(e) => {
+            if (typeof onToggle === "function") {
+              onToggle(e);
+            }
 
-  /**
-   * Determines which icon to render in the timeline item's bullet.
-   */
-  status: PropTypes.oneOf([
-    "neutral",
-    "incomplete",
-    "progress",
-    "complete",
-    "error"
-  ]),
-
-  /**
-   * Tags to be rendered next to the title.
-   */
-  tags: PropTypes.elementType,
-
-  /**
-   * The time associated with the item.
-   */
-  time: PropTypes.elementType,
-
-  /**
-   * The title of the item.
-   */
-  title: PropTypes.elementType,
-
-  /**
-   * Determines if the item should render with a divider at the bottom.
-   * If the component is collapsible, then this renders by default, so
-   * you can use this prop to override such behavior.
-   */
-  withDivider: PropTypes.bool
+            if (!isCollapsibleStateControlled) {
+              _setIsCollapsed((prev) => !prev);
+            }
+          }}
+        >
+          <HeaderContent time={time}>{title}</HeaderContent>
+        </DisclosureButton>
+        <Body isCollapsed={isCollapsed}>{children}</Body>
+        {shouldRenderDivider && <BodyDivider />}
+      </ListItem>
+    );
+  } else {
+    return (
+      <ListItem icon={statusIcon}>
+        <div className="a-activity-timeline__list-item__header">
+          <HeaderContent time={time}>{title}</HeaderContent>
+        </div>
+        <Body>{children}</Body>
+        {shouldRenderDivider && <BodyDivider />}
+      </ListItem>
+    );
+  }
 };
 
 export default AActivityTimelineItem;

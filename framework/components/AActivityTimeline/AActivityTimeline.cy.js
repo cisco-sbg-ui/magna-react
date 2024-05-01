@@ -1,5 +1,6 @@
 import React, {useState} from "react";
-import {AActivityTimeline, AActivityTimelineItem} from ".";
+import AActivityTimeline from "./AActivityTimeline";
+import AActivityTimelineItem from "./AActivityTimelineItem";
 
 describe("<AActivityTimeline />", () => {
   it("should render left borders for each inner timeline item", () => {
@@ -52,7 +53,7 @@ describe("<AActivityTimeline />", () => {
   it("should render a divider for collapsible items by default", () => {
     cy.mount(<UncontrolledTimelineTest itemCount={5} />);
 
-    cy.get(".a-activity-timeline__divider")
+    cy.get(".a-activity-timeline__list-item__divider")
       .should("have.lengthOf", 5)
       .each(($el, index, list) => {
         if (index < list.length - 1) {
@@ -80,7 +81,7 @@ describe("<AActivityTimeline />", () => {
       </UncontrolledTimelineTest>
     );
 
-    cy.get(".a-activity-timeline__divider")
+    cy.get(".a-activity-timeline__list-item__divider")
       .should("have.lengthOf", 0)
       .each(($el) => {
         cy.wrap($el).should("not.be.visible");
@@ -277,7 +278,7 @@ function ControlledTimelineTest({children, itemCount = 1}) {
             <AActivityTimelineItem
               key={index}
               isCollapsed={getCollapsedState(index)}
-              onCollapse={getItemToggler(index)}
+              onToggle={getItemToggler(index)}
               title={item.title}
             >
               <div data-testid={`mock-content-${index}`}>{item.body}</div>

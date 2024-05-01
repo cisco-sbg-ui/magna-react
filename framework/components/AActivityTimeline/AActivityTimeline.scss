@@ -1,127 +1,94 @@
-@import "../../styles";
-
 .a-activity-timeline {
-  position: relative;
   list-style-type: none;
-  padding-left: 10px !important; // Offset the negative margin on circle
   margin: 0;
+  padding-left: 0 !important;
 
   &__list-item {
+    width: 100%;
     position: relative;
-    height: 100%;
-    padding-left: 25px !important; // Override global list styles
+    display: flex;
 
     &:not(:last-child) {
-      // Add space between each list item. Padding is used instead of margin
-      // so that the left-vertical timeline bar extends to the next circle.
-      padding-bottom: 20px;
+      padding-bottom: 16px;
     }
 
-    &:last-child .a-activity-timeline__divider {
+    &:last-child .a-activity-timeline__list-item__divider {
       display: none;
     }
 
-    // Adds a vertical bar to each timeline item (if it is not the last one)
+    // The last list item should not have a vertical bar
+    // unless it is the only item in the list
     &:not(:last-child)::before,
     &:only-child::before {
       content: "";
       position: absolute;
-      left: 0;
+      left: 12px;
       height: 100%;
       width: 2px;
       border-left: 2px solid var(--base-border-default);
     }
 
-    &--complete {
-      &:not(:last-child)::before,
-      &:only-child::before {
-        border-color: var(--interact-bg-medium-default);
-      }
-    }
-  }
-
-  &__divider {
-    margin: 0;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    padding-top: 20px;
-    border-color: var(--base-border-default);
-  }
-
-  &__item {
-    display: flex;
-    display: block;
-
-    &__body {
-      margin-top: 10px;
-
-      &--hidden {
-        display: none;
-      }
-    }
-
     &__header {
+      width: 100%;
       display: grid;
-      grid-template-columns: auto auto minmax(0, 1fr);
       grid-template-areas:
-        "caret title tags"
-        "..... subtitle subtitle";
+        "caret title"
+        "..... time";
+      grid-template-columns: auto auto minmax(0, 1fr);
       align-items: center;
-      column-gap: 10px;
-      row-gap: 3px;
-
-      font-weight: 600;
-
-      &--button {
-        border: unset;
-        padding: unset;
-        font-family: inherit;
-        background: unset;
-        text-align: left;
-        cursor: pointer;
-
-        &:focus-visible {
-          outline: var(--interact-border-focus) auto 1px !important;
-        }
-      }
+      row-gap: 4px;
     }
 
     &__title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
       grid-area: title;
+      font-weight: 600;
     }
 
-    &__subtitle {
+    &__divider {
+      margin: 0;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      padding-top: 16px;
+      border-color: var(--base-border-default);
+    }
+
+    &__time {
+      grid-area: time;
       font-weight: 400;
       color: var(--base-text-medium-default);
-      grid-area: subtitle;
-    }
-
-    &__tags {
-      grid-area: tags;
     }
 
     &__status-icon {
-      top: -2px; // Ensure that icon is overlaying previous item's vertical bar
-      position: absolute;
-      left: -8px;
+      grid-area: status;
+      flex-shrink: 0;
+      z-index: 1;
+      margin-right: 16px;
     }
 
-    &__caret {
-      grid-area: caret;
-      width: 14px !important;
-      height: 14px !important;
+    &__button {
+      border: unset;
+      padding: unset;
+      background: unset;
+      text-align: left;
+      cursor: pointer;
+
+      &__caret {
+        grid-area: caret;
+        width: 16px !important;
+        height: 16px !important;
+        margin-right: 16px;
+      }
+    }
+
+    &__body {
+      grid-area: body;
+      display: block;
+      margin-top: 10px;
+
+      &--collapsed {
+        display: none;
+      }
     }
   }
-}
-
-.activityTimelineSkeleton {
-  padding: 0;
-}
-
-.hide {
-  display: none;
 }

@@ -6,7 +6,7 @@ function IncompleteIcon() {
     <svg
       fill="none"
       height="18"
-      className="a-activity-timeline__item__status-icon"
+      className="a-activity-timeline__list-item__status-icon"
       viewBox="0 0 18 18"
       width="18"
       xmlns="http://www.w3.org/2000/svg"

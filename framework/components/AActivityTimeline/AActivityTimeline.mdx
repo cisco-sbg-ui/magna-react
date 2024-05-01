@@ -1,8 +1,8 @@
 ---
 name: Activity Timelines
 route: /components/activity-timeline
-components: AActivityTimeline, AActivityTimelineItem, AActivityTimelineItemHeader, AActivityTimelineItemBody, AActivityTimelineItemTitle, AActivityTimelineItemSubtitle
-title: AActivityTimeline
+components: AActivityTimeline, AActivityTimelineItem
+title: AActivityTimelineItem
 sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/AActivityTimeline
 ---
 
@@ -10,7 +10,7 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
 
 ### Import
 
-<ComponentImport components="AActivityTimeline, AActivityTimelineItem, AActivityTimelineItemBody, AActivityTimelineItemTitle, AActivityTimelineItemSubtitle" />
+<ComponentImport components="AActivityTimeline, AActivityTimelineItem" />
 
 ### Usage
 
@@ -34,9 +34,42 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
 `}
 />
 
+#### Statuses
+
+<Playground
+  code={`<AActivityTimeline>
+  <AActivityTimelineItem
+    status="neutral"
+    time="2022-02-12 21:11:10 UTC"
+    title="Neutral Item"
+  />
+  <AActivityTimelineItem
+    status="complete"
+    time="2022-02-12 21:11:10 UTC"
+    title="Complete Item"
+  />
+  <AActivityTimelineItem
+    status="progress"
+    time="2022-02-12 21:11:10 UTC"
+    title="Progress Item"
+  />
+  <AActivityTimelineItem
+    status="incomplete"
+    time="2022-02-12 21:11:10 UTC"
+    title="Incomplete Item"
+  />
+  <AActivityTimelineItem
+    status="error"
+    time="2022-02-12 21:11:10 UTC"
+    title="Error Item"
+  />
+</AActivityTimeline>
+`}
+/>
+
 #### Collapsible Usage (Uncontrolled)
 
-To make a timeline item collapsible, pass the `defaultCollapsed` prop, which will make the content you pass to `AActivityTimelineItemBody` toggle on timeline item clicks.
+To make a timeline item collapsible, pass the `defaultCollapsed` prop, which will make the content you pass to `ActivityTimelineItemBody` toggle on timeline item clicks.
 
 If you have more sophisticated requirements for toggling the timeline items, you can control the collapsed state yourself (see documentation further down the page.)
 
@@ -72,7 +105,7 @@ If you have more sophisticated requirements for toggling the timeline items, you
 
 #### Collapsible Usage (Controlled)
 
-If you have special requirements for collapsing timeline items, you can control the state yourself. For example, suppose that only one timeline item can be opened at a time. In that case, you can pass the `isCollapsed` and `onCollapse` props to the `AActivityTimelineItem` component:
+If you have special requirements for collapsing timeline items, you can control the state yourself. For example, suppose that only one timeline item can be opened at a time. In that case, you can pass the `isCollapsed` and `onToggle` props to the `AActivityTimelineItem` component:
 
 <Playground
   code={`() => {
@@ -83,17 +116,17 @@ If you have special requirements for collapsing timeline items, you can control 
   const getToggleHandler = (index) => {
     return () => {
       if (openedIndex === index) {
-        setOpenedIndex(null)
+        setOpenedIndex(null);
       } else {
-        setOpenedIndex(index)
+        setOpenedIndex(index);
       }
-    }
-  }
+    };
+  };
   return (
     <AActivityTimeline>
       <AActivityTimelineItem
         isCollapsed={openedIndex !== 0}
-        onCollapse={getToggleHandler(0)}
+        onToggle={getToggleHandler(0)}
         time="2022-02-12 21:11:10 UTC"
         title="Account Created"
       >
@@ -101,7 +134,7 @@ If you have special requirements for collapsing timeline items, you can control 
       </AActivityTimelineItem>
       <AActivityTimelineItem
         isCollapsed={openedIndex !== 1}
-        onCollapse={getToggleHandler(1)}
+        onToggle={getToggleHandler(1)}
         time="2022-02-14 21:12:10 UTC"
         title="Tutorial Island Completed"
       >
@@ -109,7 +142,7 @@ If you have special requirements for collapsing timeline items, you can control 
       </AActivityTimelineItem>
       <AActivityTimelineItem
         isCollapsed={openedIndex !== 2}
-        onCollapse={getToggleHandler(2)}
+        onToggle={getToggleHandler(2)}
         time="2022-02-14 22:11:10 UTC"
         title="Cook's Assistant Started"
       >
@@ -121,39 +154,6 @@ If you have special requirements for collapsing timeline items, you can control 
     </AActivityTimeline>
   );
 };
-`}
-/>
-
-#### Statuses
-
-<Playground
-  code={`<AActivityTimeline>
-  <AActivityTimelineItem
-    status="neutral"
-    time="2022-02-12 21:11:10 UTC"
-    title="Neutral Item"
-  />
-  <AActivityTimelineItem
-    status="complete"
-    time="2022-02-12 21:11:10 UTC"
-    title="Complete Item"
-  />
-  <AActivityTimelineItem
-    status="progress"
-    time="2022-02-12 21:11:10 UTC"
-    title="Progress Item"
-  />
-  <AActivityTimelineItem
-    status="incomplete"
-    time="2022-02-12 21:11:10 UTC"
-    title="Incomplete Item"
-  />
-  <AActivityTimelineItem
-    status="error"
-    time="2022-02-12 21:11:10 UTC"
-    title="Error Item"
-  />
-</AActivityTimeline>
 `}
 />
 
@@ -194,72 +194,56 @@ By default, dividers only render when the timeline item is collapsible. However,
 </AActivityTimeline>`}
 />
 
-#### Tags
-
-<Playground
-  code={`<AActivityTimeline>
-  <AActivityTimelineItem
-    tags={
-      <ATag color="accentK" small>
-        newbie-task
-      </ATag>
-    }
-    time="2022-02-12 21:11:10 UTC"
-    title="Account Created"
-  />
-  <AActivityTimelineItem
-    tags={
-      <>
-        <ATag color="accentK" small className="mr-1">
-          newbie-task
-        </ATag>
-        <ATag color="accentD" small>
-          achievement
-        </ATag>
-      </>
-    }
-    time="2022-02-12 21:11:10 UTC"
-    title="Tutorial Island Completed Created"
-  />
-</AActivityTimeline>
-`}
-/>
-
 ## Commmon Use Cases
 
-### With Actionable Body Content
+### As a Side Panel
 
 <Playground
-  code={`<AActivityTimeline style={{ maxWidth: "350px" }}>
-  <AActivityTimelineItem
-    withDivider
-    time="2022-02-12 21:11:10 UTC"
-    title="Account Created"
-  >
-    <div className="d-flex justify-end">
-      <AButton small>View</AButton>
-    </div>
-  </AActivityTimelineItem>
-  <AActivityTimelineItem
-    withDivider
-    time="2022-02-14 21:12:10 UTC"
-    title="Tutorial island completed"
-  >
-    <div className="d-flex justify-end">
-      <AButton small>Login</AButton>
-    </div>
-  </AActivityTimelineItem>
-  <AActivityTimelineItem
-    withDivider
-    time="2022-02-12 21:11:10 UTC"
-    title="Cook's Assistant Started"
-  >
-    <div className="d-flex justify-end">
-      <AButton small>Guide</AButton>
-    </div>
-  </AActivityTimelineItem>
-</AActivityTimeline>
-`}
+  code={`<main className="d-flex pa-2">
+  <section className="flex-grow-1 mr-4">
+    <h3>Main Content</h3>
+    <p>
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+    </p>
+    <p>
+      It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+    </p>
+  </section>
+  
+  <aside className="flex-shrink-0">
+    <ACardBasic>
+      <AActivityTimeline>
+        <AActivityTimelineItem
+          withDivider
+          time="2022-02-12 21:11:10 UTC"
+          title="Account Created"
+        >
+          <div className="d-flex justify-end">
+            <AButton small>View</AButton>
+          </div>
+        </AActivityTimelineItem>
+        <AActivityTimelineItem
+          withDivider
+          time="2022-02-14 21:12:10 UTC"
+          title="Tutorial island completed"
+        >
+          <div className="d-flex justify-end">
+            <AButton small>Login</AButton>
+          </div>
+        </AActivityTimelineItem>
+        <AActivityTimelineItem
+          withDivider
+          time="2022-02-12 21:11:10 UTC"
+          title="Cook's Assistant Started"
+        >
+          <div className="d-flex justify-end">
+            <AButton small>Guide</AButton>
+          </div>
+        </AActivityTimelineItem>
+      </AActivityTimeline>
+    </ACardBasic>
+  </aside>
+</main>`}
 />
 
 ### Mix of Collapsible and Non Collapsible Items
@@ -270,11 +254,13 @@ By default, dividers only render when the timeline item is collapsible. However,
     withDivider
     defaultCollapsed={false}
     time="February 22, 2013"
-    title="Game Released"
-    tags={
-      <ATag color="accentI" small>
-        cookware
-      </ATag>
+    title={
+      <AActivityTimelineItemTitle>
+        <div>Game Released</div>
+        <ATag color="accentI" small>
+          cookware
+        </ATag>
+      </AActivityTimelineItemTitle>
     }
   >
     The game was released based on a backup of the game from August 2007.
@@ -282,11 +268,13 @@ By default, dividers only render when the timeline item is collapsible. However,
   <AActivityTimelineItem
     withDivider
     time="March 13, 2014"
-    title="Wilderness is Rejuvenated"
-    tags={
-      <ATag color="accentE" small>
-        PvP
-      </ATag>
+    title={
+      <AActivityTimelineItemTitle>
+        <div>Wilderness is Rejuvenated</div>
+        <ATag color="accentE" small>
+          PvP
+        </ATag>
+      </AActivityTimelineItemTitle>
     }
   />
   <AActivityTimelineItem
@@ -301,35 +289,40 @@ By default, dividers only render when the timeline item is collapsible. However,
   <AActivityTimelineItem
     withDivider
     time="January 5, 2017"
-    title="Chambers of Xeric is Released"
-    tags={
-      <ATag color="accentB" small>
-        PvM
-      </ATag>
+    title={
+      <AActivityTimelineItemTitle>
+        <div>Chambers of Xeric is Released</div>
+        <ATag color="accentB" small>
+          PvM
+        </ATag>
+      </AActivityTimelineItemTitle>
     }
   />
   <AActivityTimelineItem
     withDivider
     time="October 30, 2018"
-    title="Mobile Application is Released"
-    tags={
-      <ATag color="accentG" small>
-        Enhancement
-      </ATag>
+    title={
+      <AActivityTimelineItemTitle>
+        <div>Mobile Application is Released</div>
+        <ATag color="accentG" small>
+          Enhancement
+        </ATag>
+      </AActivityTimelineItemTitle>
     }
   />
   <AActivityTimelineItem
     withDivider
     time="June 7, 2018"
-    title="Theatre of Blood Released"
-    tags={
-      <ATag color="accentB" small>
-        PvM
-      </ATag>
+    title={
+      <AActivityTimelineItemTitle>
+        <div>Theatre of Blood Released</div>
+        <ATag color="accentB" small>
+          PvM
+        </ATag>
+      </AActivityTimelineItemTitle>
     }
   />
-</AActivityTimeline>;
-`}
+</AActivityTimeline>`}
 />
 
 ### Status of Sequential Events
@@ -339,13 +332,15 @@ By default, dividers only render when the timeline item is collapsible. However,
   <AActivityTimelineItem
     defaultCollapsed
     status="complete"
-    title="Get bucket and pot"
-    time="2022-02-12 21:11:10 UTC"
-    tags={
-      <ATag color="accentI" small>
-        cookware
-      </ATag>
+    title={
+      <AActivityTimelineItemTitle>
+        <div>Get bucket and pot</div>
+        <ATag color="accentI" small>
+          cookware
+        </ATag>
+      </AActivityTimelineItemTitle>
     }
+    time="2022-02-12 21:11:10 UTC"
   >
     A bucket spawns in the cellar of Lumbridge Castle, and a pot spawns in the
     kitchen on the centre table. You can also purchase both a bucket and a pot
@@ -355,11 +350,13 @@ By default, dividers only render when the timeline item is collapsible. However,
     defaultCollapsed
     status="complete"
     time="2022-02-14 21:11:10 UTC"
-    title="Get an egg"
-    tags={
-      <ATag color="accentE" small>
-        ingredients
-      </ATag>
+    title={
+      <AActivityTimelineItemTitle>
+        <div>Get an egg</div>
+        <ATag color="accentE" small>
+          ingredients
+        </ATag>
+      </AActivityTimelineItemTitle>
     }
   >
     Go east out of Lumbridge Castle and run north along the path until you reach
@@ -370,11 +367,13 @@ By default, dividers only render when the timeline item is collapsible. However,
     defaultCollapsed
     status="complete"
     time="2022-02-14 21:11:10 UTC"
-    title="Get a bucket of milk"
-    tags={
-      <ATag color="accentE" small>
-        ingredients
-      </ATag>
+    title={
+      <AActivityTimelineItemTitle>
+        <div>Get a bucket of milk</div>
+        <ATag color="accentE" small>
+          ingredients
+        </ATag>
+      </AActivityTimelineItemTitle>
     }
   >
     With an empty bucket, go north into the cow pasture. Use the empty bucket on
@@ -385,16 +384,16 @@ By default, dividers only render when the timeline item is collapsible. However,
   <AActivityTimelineItem
     defaultCollapsed
     status="progress"
-    title="Get a Pot of Flour"
-    tags={
-      <>
+    title={
+      <AActivityTimelineItemTitle>
+        <div>Get a Pot of Flour"</div>
         <ATag color="accentE" small className="m-1">
           ingredients
         </ATag>
         <ATag color="accentI" small>
           cookware
         </ATag>
-      </>
+      </AActivityTimelineItemTitle>
     }
   >
     <div>
@@ -426,85 +425,3 @@ By default, dividers only render when the timeline item is collapsible. However,
 </AActivityTimeline>
 `}
 />
-
-## Compositional Usage
-
-> This is usually unnecessary. If your requirements extends beyond the scope of the regular `AActivityTimelineItem`, then it might be worth verifying such a requirement with a designer beforehand.
-
-### Component Composistion
-
-If you need further customization with `AActivityItemTimelineItem`, you can render the inner components instead.
-
-<Playground
-  code={`<AActivityTimeline>
-  <AActivityTimelineItemContainer defaultCollapsed status="complete">
-    <AActivityTimelineItemHeader>
-      <AActivityTimelineItemTitle>Account Created</AActivityTimelineItemTitle>
-      <AActivityTimelineItemSubtitle>
-        2022-02-12 21:11:10 UTC
-      </AActivityTimelineItemSubtitle>
-      <AActivityTimelineItemTags>
-        <ATag color="accentK" small>
-          newbie-task
-        </ATag>
-      </AActivityTimelineItemTags>
-    </AActivityTimelineItemHeader>
-    <AActivityTimelineItemBody>
-      Your account was created under the username "zezima".
-    </AActivityTimelineItemBody>
-  </AActivityTimelineItemContainer>
-
-  <AActivityTimelineItemContainer status="progress" defaultCollapsed>
-    <AActivityTimelineItemHeader>
-      <AActivityTimelineItemTitle>
-        Tutorial Island Completed
-      </AActivityTimelineItemTitle>
-      <AActivityTimelineItemSubtitle>
-        2022-02-12 21:11:10 UTC
-      </AActivityTimelineItemSubtitle>
-      <AActivityTimelineItemTags>
-        <ATag color="accentK" small className="mr-1">
-          newbie-task
-        </ATag>
-        <ATag color="accentD" small>
-          achievement
-        </ATag>
-      </AActivityTimelineItemTags>
-    </AActivityTimelineItemHeader>
-    <AActivityTimelineItemBody>
-      You can now enter the land of Gielinor!
-    </AActivityTimelineItemBody>
-  </AActivityTimelineItemContainer>
-</AActivityTimeline>
-`}
-/>
-
-## Component Props
-
-### AActivityTimeline Props
-
-<Props of="AActivityTimeline" />
-
-### AActivityTimelineItem Props
-
-<Props of="AActivityTimelineItem" />
-
-### AActivityTimelineItemBody Props
-
-<Props of="AActivityTimelineItemBody" />
-
-### AActivityTimelineItemHeader Props
-
-<Props of="AActivityTimelineItemHeader" />
-
-### AActivityTimelineItemSubtitle Props
-
-<Props of="AActivityTimelineItemSubtitle" />
-
-### AActivityTimelineItemTags Props
-
-<Props of="AActivityTimelineItemTags" />
-
-### AActivityTimelineItemTitle Props
-
-<Props of="AActivityTimelineItemTitle" />
