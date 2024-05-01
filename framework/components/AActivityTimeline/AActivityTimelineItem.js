@@ -1,17 +1,19 @@
-import React, {useState, useMemo} from "react";
+import React, {useState} from "react";
 
 import "./AActivityTimeline.scss";
 
-import NeutralIcon from "./icons/NeutralIcon";
-import IncompleteIcon from "./icons/IncompleteIcon";
-import ProgressIcon from "./icons/ProgressIcon";
+import AActivityTimelineItemBody from "./components/AActivityTimelineItemBody";
+import AActivityTimelineItemDivider from "./components/AActivityTimelineItemDivider";
+import AActivityTimelineItemHeader from "./components/AActivityTimelineItemHeader";
+import AActivityTimelineItemHeaderContent from "./components/AActivityTimelineItemHeaderContent";
+import AActivityTimelineItemHeaderToggleButton from "./components/AActivityTimelineItemHeaderToggleButton";
+import AActivityTimelineListItem from "./components/AActivityTimelineListItem";
+
 import CompleteIcon from "./icons/CompleteIcon";
 import ErrorIcon from "./icons/ErrorIcon";
-import ListItem from "./components/ListItem";
-import DisclosureButton from "./components/DisclosureButton";
-import Body from "./components/Body";
-import BodyDivider from "./components/BodyDivider";
-import HeaderContent from "./components/HeaderContent";
+import IncompleteIcon from "./icons/IncompleteIcon";
+import NeutralIcon from "./icons/NeutralIcon";
+import ProgressIcon from "./icons/ProgressIcon";
 
 const ICON_STATUS_MAP = {
   neutral: <NeutralIcon />,
@@ -23,25 +25,25 @@ const ICON_STATUS_MAP = {
 
 const AActivityTimelineItem = (props) => {
   const {
-    withDivider,
     children,
-    status = "neutral",
-    title,
-    time,
-    isCollapsible: propsIsCollapsible,
-    onToggle,
     defaultCollapsed,
-    isCollapsed: propsIsCollapsed
+    isCollapsed: propsIsCollapsed,
+    isCollapsible,
+    onToggle,
+    status = "neutral",
+    time,
+    title,
+    withDivider
   } = props;
-  const isCollapsible =
-    propsIsCollapsible ||
-    props.hasOwnProperty("defaultCollapsed") ||
-    props.hasOwnProperty("isCollapsed");
+
   const isDividerVisibilityControlled = props.hasOwnProperty("withDivider");
+
   const isCollapsibleStateControlled = props.hasOwnProperty("isCollapsed");
+
   const shouldRenderDivider = isDividerVisibilityControlled
     ? withDivider
     : isCollapsible;
+
   const statusIcon = ICON_STATUS_MAP[status] || ICON_STATUS_MAP.neutral;
 
   /**
@@ -55,11 +57,16 @@ const AActivityTimelineItem = (props) => {
     ? propsIsCollapsed
     : _isCollapsed;
 
-  if (isCollapsible) {
-    return (
-      <ListItem icon={statusIcon}>
-        <DisclosureButton
-          className="a-activity-timeline__list-item__header"
+  const headerContent = (
+    <AActivityTimelineItemHeaderContent time={time}>
+      {title}
+    </AActivityTimelineItemHeaderContent>
+  );
+
+  return (
+    <AActivityTimelineListItem icon={statusIcon}>
+      {isCollapsible ? (
+        <AActivityTimelineItemHeaderToggleButton
           isCollapsed={isCollapsed}
           onClick={(e) => {
             if (typeof onToggle === "function") {
@@ -71,23 +78,19 @@ const AActivityTimelineItem = (props) => {
             }
           }}
         >
-          <HeaderContent time={time}>{title}</HeaderContent>
-        </DisclosureButton>
-        <Body isCollapsed={isCollapsed}>{children}</Body>
-        {shouldRenderDivider && <BodyDivider />}
-      </ListItem>
-    );
-  } else {
-    return (
-      <ListItem icon={statusIcon}>
-        <div className="a-activity-timeline__list-item__header">
-          <HeaderContent time={time}>{title}</HeaderContent>
-        </div>
-        <Body>{children}</Body>
-        {shouldRenderDivider && <BodyDivider />}
-      </ListItem>
-    );
-  }
+          {headerContent}
+        </AActivityTimelineItemHeaderToggleButton>
+      ) : (
+        <AActivityTimelineItemHeader>
+          {headerContent}
+        </AActivityTimelineItemHeader>
+      )}
+      <AActivityTimelineItemBody isCollapsed={isCollapsed}>
+        {children}
+      </AActivityTimelineItemBody>
+      {shouldRenderDivider && <AActivityTimelineItemDivider />}
+    </AActivityTimelineListItem>
+  );
 };
 
 export default AActivityTimelineItem;

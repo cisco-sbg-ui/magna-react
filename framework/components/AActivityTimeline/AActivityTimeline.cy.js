@@ -129,7 +129,11 @@ describe("<AActivityTimeline />", () => {
     it("should allow the initial collapsed state to be overridden", () => {
       cy.mount(
         <UncontrolledTimelineTest>
-          <AActivityTimelineItem defaultCollapsed={false} title="Mock title">
+          <AActivityTimelineItem
+            isCollapsible
+            defaultCollapsed={false}
+            title="Mock title"
+          >
             <div data-testid="mock-content">Mock body content</div>
           </AActivityTimelineItem>
         </UncontrolledTimelineTest>
@@ -187,7 +191,11 @@ describe("<AActivityTimeline />", () => {
     it("should allow the initial state to be entirely controlled", () => {
       cy.mount(
         <ControlledTimelineTest>
-          <AActivityTimelineItem isCollapsed={false} title="Mock Title">
+          <AActivityTimelineItem
+            isCollapsible
+            isCollapsed={false}
+            title="Mock Title"
+          >
             <div data-testid="mock-content">Mock body content</div>
           </AActivityTimelineItem>
         </ControlledTimelineTest>
@@ -242,6 +250,7 @@ function UncontrolledTimelineTest({children, itemCount = 1}) {
         : createTestData(itemCount).map((item, index) => (
             <AActivityTimelineItem
               key={index}
+              isCollapsible
               defaultCollapsed
               title={item.title}
             >
@@ -277,6 +286,7 @@ function ControlledTimelineTest({children, itemCount = 1}) {
         : createTestData(itemCount).map((item, index) => (
             <AActivityTimelineItem
               key={index}
+              isCollapsible
               isCollapsed={getCollapsedState(index)}
               onToggle={getItemToggler(index)}
               title={item.title}

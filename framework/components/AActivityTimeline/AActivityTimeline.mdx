@@ -69,13 +69,14 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
 
 #### Collapsible Usage (Uncontrolled)
 
-To make a timeline item collapsible, pass the `defaultCollapsed` prop, which will make the content you pass to `ActivityTimelineItemBody` toggle on timeline item clicks.
+To make a timeline item collapsible, pass the `isCollapsible` prop to `AActivityTimelineItem`. Additionally, you can pass a `defaultCollapsed` prop to control for initial collapsed state.
 
 If you have more sophisticated requirements for toggling the timeline items, you can control the collapsed state yourself (see documentation further down the page.)
 
 <Playground
   code={`<AActivityTimeline>
   <AActivityTimelineItem
+    isCollapsible
     defaultCollapsed={false}
     time="2022-02-12 21:11:10 UTC"
     title="Account Created"
@@ -83,6 +84,7 @@ If you have more sophisticated requirements for toggling the timeline items, you
     Your account was created under the username "zezima".
   </AActivityTimelineItem>
   <AActivityTimelineItem
+    isCollapsible
     defaultCollapsed
     time="2022-02-14 21:12:10 UTC"
     title="Tutorial Island Completed"
@@ -90,6 +92,7 @@ If you have more sophisticated requirements for toggling the timeline items, you
     You finished the tutorial. Welcome to Gielinor!
   </AActivityTimelineItem>
   <AActivityTimelineItem
+    isCollapsible
     defaultCollapsed
     time="2022-02-14 22:11:10 UTC"
     title="Cook's Assistant Started"
@@ -105,7 +108,7 @@ If you have more sophisticated requirements for toggling the timeline items, you
 
 #### Collapsible Usage (Controlled)
 
-If you have special requirements for collapsing timeline items, you can control the state yourself. For example, suppose that only one timeline item can be opened at a time. In that case, you can pass the `isCollapsed` and `onToggle` props to the `AActivityTimelineItem` component:
+If you have special requirements for collapsing timeline items, you can control the state yourself. For example, suppose that only one timeline item can be opened at a time. In that case, pass the `isCollapsible`, `isCollapsed`, and `onToggle` props to the `AActivityTimelineItem` component:
 
 <Playground
   code={`() => {
@@ -125,6 +128,7 @@ If you have special requirements for collapsing timeline items, you can control 
   return (
     <AActivityTimeline>
       <AActivityTimelineItem
+        isCollapsible
         isCollapsed={openedIndex !== 0}
         onToggle={getToggleHandler(0)}
         time="2022-02-12 21:11:10 UTC"
@@ -133,6 +137,7 @@ If you have special requirements for collapsing timeline items, you can control 
         Your account was created under the username "zezima".
       </AActivityTimelineItem>
       <AActivityTimelineItem
+        isCollapsible
         isCollapsed={openedIndex !== 1}
         onToggle={getToggleHandler(1)}
         time="2022-02-14 21:12:10 UTC"
@@ -141,6 +146,7 @@ If you have special requirements for collapsing timeline items, you can control 
         You finished the tutorial. Welcome to Gielinor!
       </AActivityTimelineItem>
       <AActivityTimelineItem
+        isCollapsible
         isCollapsed={openedIndex !== 2}
         onToggle={getToggleHandler(2)}
         time="2022-02-14 22:11:10 UTC"
@@ -196,6 +202,52 @@ By default, dividers only render when the timeline item is collapsible. However,
 
 ## Commmon Use Cases
 
+### Mix of Collapsible and Non Collapsible Items
+
+<Playground
+  code={`() => {
+  const data = [
+    {
+      title: "Started Playing",
+      content: "",
+      time: "January 10, 2024",
+    },
+    {
+      title: "Completed the Cook's Assistant Quest",
+      content:
+        '1 quest point, 300 cooking experience, and permission to use the Permission to use the "Cook-o-matic 100" were granted.',
+      time: "January 20, 2024",
+    },
+    {
+      title: "Reached Level 5 Cooking",
+      content: "",
+      time: "January 15, 2024",
+    },
+    {
+      title: "Purchased Climbing Boots",
+      content: "Transaction total: 614gp",
+      time: "January 25, 2024",
+    },
+  ];
+  return (
+    <AActivityTimeline>
+      {data.map((event, index) => (
+        <AActivityTimelineItem
+          isCollapsible={event.content.length > 0}
+          defaultCollapsed
+          title={event.title}
+          time={event.time}
+          withDivider
+        >
+          {event.content.length > 0 && event.content}
+        </AActivityTimelineItem>
+      ))}
+    </AActivityTimeline>
+  );
+};
+`}
+/>
+
 ### As a Side Panel
 
 <Playground
@@ -210,7 +262,7 @@ By default, dividers only render when the timeline item is collapsible. However,
     </p>
   </section>
   
-  <aside className="flex-shrink-0">
+  <aside className="flex-shrink-0" style={{flexBasis: '350px'}}>
     <ACardBasic>
       <AActivityTimeline>
         <AActivityTimelineItem
@@ -246,90 +298,12 @@ By default, dividers only render when the timeline item is collapsible. However,
 </main>`}
 />
 
-### Mix of Collapsible and Non Collapsible Items
-
-<Playground
-  code={`<AActivityTimeline>
-  <AActivityTimelineItem
-    withDivider
-    defaultCollapsed={false}
-    time="February 22, 2013"
-    title={
-      <AActivityTimelineItemTitle>
-        <div>Game Released</div>
-        <ATag color="accentI" small>
-          cookware
-        </ATag>
-      </AActivityTimelineItemTitle>
-    }
-  >
-    The game was released based on a backup of the game from August 2007.
-  </AActivityTimelineItem>
-  <AActivityTimelineItem
-    withDivider
-    time="March 13, 2014"
-    title={
-      <AActivityTimelineItemTitle>
-        <div>Wilderness is Rejuvenated</div>
-        <ATag color="accentE" small>
-          PvP
-        </ATag>
-      </AActivityTimelineItemTitle>
-    }
-  />
-  <AActivityTimelineItem
-    withDivider
-    defaultCollapsed={false}
-    time="February 26, 2015"
-    title="Grand Exchange is Added"
-  >
-    A trading system allowing players to buy and sell items with ease is
-    introduced to the game.
-  </AActivityTimelineItem>
-  <AActivityTimelineItem
-    withDivider
-    time="January 5, 2017"
-    title={
-      <AActivityTimelineItemTitle>
-        <div>Chambers of Xeric is Released</div>
-        <ATag color="accentB" small>
-          PvM
-        </ATag>
-      </AActivityTimelineItemTitle>
-    }
-  />
-  <AActivityTimelineItem
-    withDivider
-    time="October 30, 2018"
-    title={
-      <AActivityTimelineItemTitle>
-        <div>Mobile Application is Released</div>
-        <ATag color="accentG" small>
-          Enhancement
-        </ATag>
-      </AActivityTimelineItemTitle>
-    }
-  />
-  <AActivityTimelineItem
-    withDivider
-    time="June 7, 2018"
-    title={
-      <AActivityTimelineItemTitle>
-        <div>Theatre of Blood Released</div>
-        <ATag color="accentB" small>
-          PvM
-        </ATag>
-      </AActivityTimelineItemTitle>
-    }
-  />
-</AActivityTimeline>`}
-/>
-
 ### Status of Sequential Events
 
 <Playground
   code={`<AActivityTimeline>
   <AActivityTimelineItem
+    isCollapsible
     defaultCollapsed
     status="complete"
     title={
@@ -347,6 +321,7 @@ By default, dividers only render when the timeline item is collapsible. However,
     from the Lumbridge General Store, for 2 and 1 coins, respectively.
   </AActivityTimelineItem>
   <AActivityTimelineItem
+    isCollapsible
     defaultCollapsed
     status="complete"
     time="2022-02-14 21:11:10 UTC"
@@ -364,6 +339,7 @@ By default, dividers only render when the timeline item is collapsible. However,
     pick up an egg.
   </AActivityTimelineItem>
   <AActivityTimelineItem
+    isCollapsible
     defaultCollapsed
     status="complete"
     time="2022-02-14 21:11:10 UTC"
@@ -382,6 +358,7 @@ By default, dividers only render when the timeline item is collapsible. However,
     river, next to the dairy cow in the eastern Lumbridge cow field.
   </AActivityTimelineItem>
   <AActivityTimelineItem
+    isCollapsible
     defaultCollapsed
     status="progress"
     title={
@@ -415,6 +392,7 @@ By default, dividers only render when the timeline item is collapsible. However,
     </div>
   </AActivityTimelineItem>
   <AActivityTimelineItem
+    isCollapsible
     defaultCollapsed
     status="incomplete"
     title="Deliver the Ingredients"
