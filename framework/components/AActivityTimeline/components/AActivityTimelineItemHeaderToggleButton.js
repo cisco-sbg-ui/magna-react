@@ -19,7 +19,10 @@ function AActivityTimelineItemHeaderToggleButton({
       // be "true" or "false"
       aria-expanded={!Boolean(isCollapsed)}
     >
-      <AIcon className="a-activity-timeline__list-item__button__caret">
+      <AIcon
+        className="a-activity-timeline__list-item__button__caret"
+        size={16}
+      >
         {isCollapsed ? "caret-down" : "caret-up"}
       </AIcon>
       {children}
