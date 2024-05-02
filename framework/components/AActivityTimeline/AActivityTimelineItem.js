@@ -65,7 +65,7 @@ const AActivityTimelineItem = forwardRef((props, ref) => {
   );
 
   return (
-    <AActivityTimelineListItem icon={statusIcon} ref={ref}>
+    <AActivityTimelineListItem icon={statusIcon} status={status} ref={ref}>
       {isCollapsible ? (
         <AActivityTimelineItemHeaderToggleButton
           isCollapsed={isCollapsed}

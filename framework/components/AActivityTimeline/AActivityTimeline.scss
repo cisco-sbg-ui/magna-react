@@ -28,6 +28,13 @@
       border-left: 2px solid var(--base-border-default);
     }
 
+    &--complete {
+      &:not(:last-child)::before,
+      &:only-child::before {
+        border-left-color: var(--interact-border-default);
+      }
+    }
+
     &__header {
       width: 100%;
       display: grid;

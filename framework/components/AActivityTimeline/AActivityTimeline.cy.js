@@ -2,6 +2,9 @@ import React, {useState} from "react";
 import AActivityTimeline from "./AActivityTimeline";
 import AActivityTimelineItem from "./AActivityTimelineItem";
 
+const DEFAULT_BORDER_STYLE = "2px solid rgb(225, 228, 232)";
+const NEUTRAL_STATUS_BORDER_STYLE = "2px solid rgb(29, 105, 204)";
+
 describe("<AActivityTimeline />", () => {
   it("should render left borders for each inner timeline item", () => {
     cy.mount(<UncontrolledTimelineTest itemCount={5} />);
@@ -14,7 +17,7 @@ describe("<AActivityTimeline />", () => {
       const borderValue = before.getPropertyValue("border-left");
 
       if (index < $list.length - 1) {
-        expect(borderValue).contains("2px solid");
+        expect(borderValue).contains(DEFAULT_BORDER_STYLE);
       } else {
         // The very last item should not have a left border
         expect(borderValue).contains("0");
@@ -31,7 +34,28 @@ describe("<AActivityTimeline />", () => {
       const window = subject.ownerDocument.defaultView;
       const before = window.getComputedStyle(subject, ":before");
       const borderValue = before.getPropertyValue("border-left");
-      expect(borderValue).contains("2px solid");
+      expect(borderValue).contains(DEFAULT_BORDER_STYLE);
+    });
+  });
+
+  it("should render a blue left border if the item is complete", () => {
+    cy.mount(
+      <UncontrolledTimelineTest>
+        <AActivityTimelineItem
+          status="complete"
+          time="Mock time"
+          title="Mock title"
+        />
+      </UncontrolledTimelineTest>
+    );
+
+    cy.get(".a-activity-timeline__list-item").then(($el) => {
+      // https://stackoverflow.com/a/75887385
+      const subject = $el[0];
+      const window = subject.ownerDocument.defaultView;
+      const before = window.getComputedStyle(subject, ":before");
+      const borderValue = before.getPropertyValue("border-left");
+      expect(borderValue).contains(NEUTRAL_STATUS_BORDER_STYLE);
     });
   });
 
