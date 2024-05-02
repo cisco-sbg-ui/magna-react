@@ -3,7 +3,7 @@ import AActivityTimeline from "./AActivityTimeline";
 import AActivityTimelineItem from "./AActivityTimelineItem";
 
 const DEFAULT_BORDER_STYLE = "2px solid rgb(225, 228, 232)";
-const NEUTRAL_STATUS_BORDER_STYLE = "2px solid rgb(29, 105, 204)";
+const COMPLETE_STATUS_BORDER_STYLE = "2px solid rgb(29, 105, 204)";
 
 describe("<AActivityTimeline />", () => {
   it("should render left borders for each inner timeline item", () => {
@@ -55,7 +55,7 @@ describe("<AActivityTimeline />", () => {
       const window = subject.ownerDocument.defaultView;
       const before = window.getComputedStyle(subject, ":before");
       const borderValue = before.getPropertyValue("border-left");
-      expect(borderValue).contains(NEUTRAL_STATUS_BORDER_STYLE);
+      expect(borderValue).contains(COMPLETE_STATUS_BORDER_STYLE);
     });
   });
 
