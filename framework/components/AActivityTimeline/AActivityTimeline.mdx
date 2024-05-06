@@ -1,0 +1,454 @@
+---
+name: Activity Timelines
+route: /components/activity-timeline
+components: AActivityTimeline, AActivityTimelineItem, AActivityTimelineItemTitle
+title: AActivityTimeline
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/AActivityTimeline
+---
+
+## Usage
+
+### Import
+
+<ComponentImport components="AActivityTimeline, AActivityTimelineItem, AActivityTimelineItemTitle" />
+
+### Usage
+
+#### Basic Usage
+
+<Playground
+  code={`<AActivityTimeline>
+  <AActivityTimelineItem
+    time="2022-02-12 21:11:10 UTC"
+    title="Account Created"
+  />
+  <AActivityTimelineItem
+    time="2022-02-14 21:12:10 UTC"
+    title="Tutorial Island Completed"
+  />
+  <AActivityTimelineItem
+    time="2022-02-14 22:11:10 UTC"
+    title="Cook's Assistant Started"
+  />
+</AActivityTimeline>
+`}
+/>
+
+#### Statuses
+
+<Playground
+  code={`<AActivityTimeline>
+  <AActivityTimelineItem
+    status="neutral"
+    time="2022-02-12 21:11:10 UTC"
+    title="Neutral Item"
+  />
+  <AActivityTimelineItem
+    status="complete"
+    time="2022-02-12 21:11:10 UTC"
+    title="Complete Item"
+  />
+  <AActivityTimelineItem
+    status="progress"
+    time="2022-02-12 21:11:10 UTC"
+    title="Progress Item"
+  />
+  <AActivityTimelineItem
+    status="incomplete"
+    time="2022-02-12 21:11:10 UTC"
+    title="Incomplete Item"
+  />
+  <AActivityTimelineItem
+    status="error"
+    time="2022-02-12 21:11:10 UTC"
+    title="Error Item"
+  />
+</AActivityTimeline>
+`}
+/>
+
+#### Collapsible Usage (Uncontrolled)
+
+To make a timeline item collapsible, pass the `isCollapsible` prop to `AActivityTimelineItem`. Additionally, you can pass a `defaultCollapsed` prop to control for initial collapsed state.
+
+If you have more sophisticated requirements for toggling the timeline items, you can control the collapsed state yourself (see documentation further down the page.)
+
+<Playground
+  code={`<AActivityTimeline>
+  <AActivityTimelineItem
+    isCollapsible
+    defaultCollapsed={false}
+    time="2022-02-12 21:11:10 UTC"
+    title="Account Created"
+  >
+    Your account was created under the username "zezima".
+  </AActivityTimelineItem>
+  <AActivityTimelineItem
+    isCollapsible
+    defaultCollapsed
+    time="2022-02-14 21:12:10 UTC"
+    title="Tutorial Island Completed"
+  >
+    You finished the tutorial. Welcome to Gielinor!
+  </AActivityTimelineItem>
+  <AActivityTimelineItem
+    isCollapsible
+    defaultCollapsed
+    time="2022-02-14 22:11:10 UTC"
+    title="Cook's Assistant Started"
+  >
+    You have started the first ever quest released in the game, which was one of
+    the only six quests available during the game's initial launch. In this
+    quest, you'll help the Cook of Lumbridge Castle make a birthday cake for
+    Duke Horacio.
+  </AActivityTimelineItem>
+</AActivityTimeline>
+`}
+/>
+
+#### Tags Inline With Title
+
+To render tags inline with the title, you can use the `AActivityTimelineItemTitle` component and pass them as children.
+
+<Playground
+  code={`<AActivityTimeline>
+  <AActivityTimelineItem
+    time="2022-02-12 21:11:10 UTC"
+    title={
+      <AActivityTimelineItemTitle>
+        <span>Account created</span>
+        <ATag color="accentI" small>
+          account-setup
+        </ATag>
+      </AActivityTimelineItemTitle>
+    }
+  />
+  <AActivityTimelineItem
+    time="2022-02-14 21:12:10 UTC"
+    title={
+      <AActivityTimelineItemTitle>
+        <span>Tutorial Island Completed</span>
+        <ATag color="accentB" small>
+          f2p
+        </ATag>
+        <ATag color="accentG" small>
+          milestone
+        </ATag>
+      </AActivityTimelineItemTitle>
+    }
+  />
+</AActivityTimeline>
+`}
+/>
+
+#### Collapsible Usage (Controlled)
+
+If you have special requirements for collapsing timeline items, you can control the state yourself. For example, suppose that only one timeline item can be opened at a time. In that case, pass the `isCollapsible`, `isCollapsed`, and `onToggle` props to the `AActivityTimelineItem` component:
+
+<Playground
+  code={`() => {
+  const [openedIndex, setOpenedIndex] = useState(0);
+  /**
+   * Higher order function
+   */
+  const getToggleHandler = (index) => {
+    return () => {
+      if (openedIndex === index) {
+        setOpenedIndex(null);
+      } else {
+        setOpenedIndex(index);
+      }
+    };
+  };
+  return (
+    <AActivityTimeline>
+      <AActivityTimelineItem
+        isCollapsible
+        isCollapsed={openedIndex !== 0}
+        onToggle={getToggleHandler(0)}
+        time="2022-02-12 21:11:10 UTC"
+        title="Account Created"
+      >
+        Your account was created under the username "zezima".
+      </AActivityTimelineItem>
+      <AActivityTimelineItem
+        isCollapsible
+        isCollapsed={openedIndex !== 1}
+        onToggle={getToggleHandler(1)}
+        time="2022-02-14 21:12:10 UTC"
+        title="Tutorial Island Completed"
+      >
+        You finished the tutorial. Welcome to Gielinor!
+      </AActivityTimelineItem>
+      <AActivityTimelineItem
+        isCollapsible
+        isCollapsed={openedIndex !== 2}
+        onToggle={getToggleHandler(2)}
+        time="2022-02-14 22:11:10 UTC"
+        title="Cook's Assistant Started"
+      >
+        You have started the first ever quest released in the game, which was
+        one of the only six quests available during the game's initial launch.
+        In this quest, you'll help the Cook of Lumbridge Castle make a birthday
+        cake for Duke Horacio.
+      </AActivityTimelineItem>
+    </AActivityTimeline>
+  );
+};
+`}
+/>
+
+#### Single Item
+
+If there is only one timeline item, then the left vertical bar is still displayed for that item.
+
+<Playground
+  code={`<AActivityTimeline>
+  <AActivityTimelineItem
+    time="2022-02-12 21:11:10 UTC"
+    title="Account Created"
+  />
+</AActivityTimeline>
+`}
+/>
+
+#### Dividers
+
+By default, dividers only render when the timeline item is collapsible. However, if you need to render non-collapsible items with dividers, then you can pass the `withDivider` prop to `AActivityTimelineItem`.
+
+<Playground
+  code={`<AActivityTimeline>
+  <AActivityTimelineItem
+    withDivider
+    time="2022-02-12 21:11:10 UTC"
+    title="Account Created"
+  />
+  <AActivityTimelineItem
+    withDivider
+    time="2022-02-14 21:12:10 UTC"
+    title="Tutorial Island Completed"
+  />
+  <AActivityTimelineItem
+    time="2022-02-14 22:11:10 UTC"
+    title="Cook's Assistant Started"
+  />
+</AActivityTimeline>`}
+/>
+
+## Commmon Use Cases
+
+### Mix of Collapsible and Non Collapsible Items
+
+<Playground
+  code={`() => {
+  const data = [
+    {
+      title: "Started Playing",
+      content: "",
+      time: "January 10, 2024",
+    },
+    {
+      title: "Completed the Cook's Assistant Quest",
+      content:
+        '1 quest point, 300 cooking experience, and permission to use the Permission to use the "Cook-o-matic 100" were granted.',
+      time: "January 20, 2024",
+    },
+    {
+      title: "Reached Level 5 Cooking",
+      content: "",
+      time: "January 15, 2024",
+    },
+    {
+      title: "Purchased Climbing Boots",
+      content: "Transaction total: 614gp",
+      time: "January 25, 2024",
+    },
+  ];
+  return (
+    <AActivityTimeline>
+      {data.map((event, index) => (
+        <AActivityTimelineItem
+          isCollapsible={event.content.length > 0}
+          defaultCollapsed
+          title={event.title}
+          time={event.time}
+          withDivider
+        >
+          {event.content.length > 0 && event.content}
+        </AActivityTimelineItem>
+      ))}
+    </AActivityTimeline>
+  );
+};
+`}
+/>
+
+### As a Side Panel
+
+<Playground
+  code={`<main className="d-flex pa-2">
+  <section className="flex-grow-1 mr-4">
+    <h3>Main Content</h3>
+    <p>
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+    </p>
+    <p>
+      It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+    </p>
+  </section>
+  
+  <aside className="flex-shrink-0" style={{flexBasis: '350px'}}>
+    <ACardBasic>
+      <AActivityTimeline>
+        <AActivityTimelineItem
+          withDivider
+          time="2022-02-12 21:11:10 UTC"
+          title="Account Created"
+        >
+          <div className="d-flex justify-end">
+            <AButton small>View</AButton>
+          </div>
+        </AActivityTimelineItem>
+        <AActivityTimelineItem
+          withDivider
+          time="2022-02-14 21:12:10 UTC"
+          title="Tutorial island completed"
+        >
+          <div className="d-flex justify-end">
+            <AButton small>Login</AButton>
+          </div>
+        </AActivityTimelineItem>
+        <AActivityTimelineItem
+          withDivider
+          time="2022-02-12 21:11:10 UTC"
+          title="Cook's Assistant Started"
+        >
+          <div className="d-flex justify-end">
+            <AButton small>Guide</AButton>
+          </div>
+        </AActivityTimelineItem>
+      </AActivityTimeline>
+    </ACardBasic>
+  </aside>
+</main>`}
+/>
+
+### Status of Sequential Events
+
+<Playground
+  code={`<AActivityTimeline>
+  <AActivityTimelineItem
+    isCollapsible
+    defaultCollapsed
+    status="complete"
+    title={
+      <AActivityTimelineItemTitle>
+        <div>Get bucket and pot</div>
+        <ATag color="accentI" small>
+          cookware
+        </ATag>
+      </AActivityTimelineItemTitle>
+    }
+    time="2022-02-12 21:11:10 UTC"
+  >
+    A bucket spawns in the cellar of Lumbridge Castle, and a pot spawns in the
+    kitchen on the centre table. You can also purchase both a bucket and a pot
+    from the Lumbridge General Store, for 2 and 1 coins, respectively.
+  </AActivityTimelineItem>
+  <AActivityTimelineItem
+    isCollapsible
+    defaultCollapsed
+    status="complete"
+    time="2022-02-14 21:11:10 UTC"
+    title={
+      <AActivityTimelineItemTitle>
+        <div>Get an egg</div>
+        <ATag color="accentE" small>
+          ingredients
+        </ATag>
+      </AActivityTimelineItemTitle>
+    }
+  >
+    Go east out of Lumbridge Castle and run north along the path until you reach
+    the chicken coop north-west of Farmer Fred's house. Go into the coop and
+    pick up an egg.
+  </AActivityTimelineItem>
+  <AActivityTimelineItem
+    isCollapsible
+    defaultCollapsed
+    status="complete"
+    time="2022-02-14 21:11:10 UTC"
+    title={
+      <AActivityTimelineItemTitle>
+        <div>Get a bucket of milk</div>
+        <ATag color="accentE" small>
+          ingredients
+        </ATag>
+      </AActivityTimelineItemTitle>
+    }
+  >
+    With an empty bucket, go north into the cow pasture. Use the empty bucket on
+    a dairy cow to get a bucket of milk. You can optionally talk to Gillie
+    Groats for an explanation on how to milk a cow. She can be found across the
+    river, next to the dairy cow in the eastern Lumbridge cow field.
+  </AActivityTimelineItem>
+  <AActivityTimelineItem
+    isCollapsible
+    defaultCollapsed
+    status="progress"
+    title={
+      <AActivityTimelineItemTitle>
+        <div>Get a Pot of Flour"</div>
+        <ATag color="accentE" small className="m-1">
+          ingredients
+        </ATag>
+        <ATag color="accentI" small>
+          cookware
+        </ATag>
+      </AActivityTimelineItemTitle>
+    }
+  >
+    <div>
+      With an empty pot, leave the cow pasture and go south-west to the wheat
+      field. Pick some grain, and then enter the Mill Lane Mill, found up the
+      road to the north-east. Climb to the top floor, put the grain in the
+      hopper, then pull the lever and climb back down to the 1st floor[US].
+      Finally, use an empty pot on the flour bin (which is now full of flour) to
+      get a pot of flour. You can optionally talk to Millie Miller inside the
+      mill for an explanation on how to make flour.
+    </div>
+    <br />
+    <div>
+      If you are a member, the easy Lumbridge & Draynor Diary requires baking
+      bread on the Lumbridge Castle range. Since this requires obtaining another
+      pot of flour for bread dough, you can save time by obtaining a second pot
+      of flour now (requiring more grain). You will need to repeat the milling
+      process for each bucket of flour you make.
+    </div>
+  </AActivityTimelineItem>
+  <AActivityTimelineItem
+    isCollapsible
+    defaultCollapsed
+    status="incomplete"
+    title="Deliver the Ingredients"
+  >
+    After collecting the ingredients, speak to the cook to deliver them.
+  </AActivityTimelineItem>
+  <AActivityTimelineItem status="incomplete" title="Quest Copmlete" />
+</AActivityTimeline>
+`}
+/>
+
+## Component Props
+
+### AActivityTimeline Props
+
+<Props of="AActivityTimeline" />
+
+### AActivityTimelineItem Props
+
+<Props of="AActivityTimelineItem" />
+
+### AActivityTimelineItemTitle Props
+
+<Props of="AActivityTimelineItemTitle" />

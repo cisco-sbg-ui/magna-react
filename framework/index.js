@@ -5,6 +5,11 @@ import {
   AAccordionHeaderTitle,
   AAccordionPanel
 } from "./components/AAccordion";
+import {
+  AActivityTimeline,
+  AActivityTimelineItem,
+  AActivityTimelineItemTitle
+} from "./components/AActivityTimeline";
 import AAlert from "./components/AAlert";
 import AApp from "./components/AApp";
 import AAutocomplete from "./components/AAutocomplete";
@@ -155,6 +160,9 @@ export {
   AAccordionHeader,
   AAccordionHeaderTitle,
   AAccordionPanel,
+  AActivityTimeline,
+  AActivityTimelineItem,
+  AActivityTimelineItemTitle,
   AAlert,
   AApp,
   AAutocomplete,
