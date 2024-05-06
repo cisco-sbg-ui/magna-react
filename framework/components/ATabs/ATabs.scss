@@ -78,7 +78,8 @@ $tab-heading-margin: 0;
 
     &:active,
     &:focus,
-    &:hover {
+    &:hover,
+    &--focused {
       color: var(--base-text-default);
 
       @include tab-bar(

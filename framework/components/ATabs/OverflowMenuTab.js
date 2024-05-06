@@ -3,8 +3,9 @@ import ATab from "./ATab";
 import AIcon from "../AIcon";
 import AMenu from "../AMenu";
 
-const OverflowMenuTab = ({children}) => {
+const OverflowMenuTab = ({tabGroupRef, children}) => {
   const menuRef = useRef(null);
+  const tabRef = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuIcon = menuOpen ? "caret-up" : "caret-down";
   const hasSelected = useRef(false);
@@ -32,7 +33,7 @@ const OverflowMenuTab = ({children}) => {
 
   //If overflow item is selected, let menu know to maintain selected state once closed.
   useEffect(() => {
-    const menuTabEl = menuRef.current;
+    const menuTabEl = tabRef.current;
 
     for (let child of children) {
       const {props} = child;
@@ -53,21 +54,35 @@ const OverflowMenuTab = ({children}) => {
   return (
     <>
       <ATab
-        ref={menuRef}
+        ref={tabRef}
         data-set="menu"
         className={`menu-tab ${!children.length ? "hide" : ""}`}
         selected={menuOpen || hasSelected.current}
-        onClick={() => setMenuOpen(!menuOpen)}
+        onClick={() => {
+          setMenuOpen(!menuOpen);
+
+          if (!menuOpen) {
+            tabGroupRef.current?.blur();
+            menuRef.current?.focus();
+          } else {
+            tabGroupRef.current?.focus();
+          }
+        }}
       >
         More <AIcon>{menuIcon}</AIcon>
       </ATab>
       <AMenu
+        ref={menuRef}
         className="tab-overflow-menu"
-        anchorRef={menuRef}
+        anchorRef={tabRef}
         open={menuOpen}
         closeOnClick
         placement="bottom"
-        onClose={() => setMenuOpen(false)}
+        onClose={() => {
+          setMenuOpen(false);
+
+          tabGroupRef.current?.focus();
+        }}
       >
         {children}
       </AMenu>

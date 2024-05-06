@@ -2,7 +2,7 @@
 name: Tabs
 route: /components/tab
 components: ATabGroup, ATab
-title: AAccordion
+title: ATabGroup
 sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/ATabs
 ---
 
@@ -18,7 +18,8 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
   Note regarding Primary v. Secondary - There is no use case for Primary
   currently so we are setting Secondary to true.
 </AAlert>
-
+<br />
+<br />
 <AAlert dismissable={false}>
   If you need primary immedaitely, set secondary to false and please reach out
   to magna team so we can coordinate with UX on the path forward to implimenting
@@ -117,6 +118,24 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
 `}
 />
 
+#### Select on arrow left/right
+
+In some cases accessibility standards suggest automatically selecting a tab when navigating with the arrow keys
+
+<Playground
+  code={`<ATabGroup selectOnArrow>
+  <ATab selected>One</ATab>
+  <ATab selected>Two</ATab>
+  <ATab selected>Three</ATab>
+  <ATab selected>Four</ATab>
+  <ATab href="https://www.github.com">GitHub</ATab>
+  <ATab href="https://www.cisco.com" target="_blank">
+    Cisco.com
+  </ATab>
+</ATabGroup>
+`}
+/>
+
 #### Links
 
 Tabs will render in the DOM as anchor tags if the `href` property is defined.
@@ -163,4 +182,4 @@ By default, `ATab` components are assigned the [WAI-ARIA](https://www.w3.org/WAI
 
 The `ATab` `click` event handler is triggered both by the `click` event and by the `keyDown` event for the `Enter` key.
 
-Each `ATab` component is tab-focusable with a visual overlay.
+Each `ATab` is focusable using the arrow left/right keys, as per aria guidelines. Tabs that are anchor elements will not be automatically opened even if `selectOnArrow` is set to true.
