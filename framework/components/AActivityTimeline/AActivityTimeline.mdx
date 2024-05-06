@@ -268,6 +268,7 @@ By default, dividers only render when the timeline item is collapsible. However,
     <AActivityTimeline>
       {data.map((event, index) => (
         <AActivityTimelineItem
+          key={event.title}
           isCollapsible={event.content.length > 0}
           defaultCollapsed
           title={event.title}

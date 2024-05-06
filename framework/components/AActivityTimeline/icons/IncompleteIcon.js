@@ -17,7 +17,7 @@ function IncompleteIcon() {
         fill="var(--base-bg-default)"
         r="8"
         stroke="var(--control-border-default)"
-        stroke-width="2"
+        strokeWidth="2"
       ></circle>
     </svg>
   );
