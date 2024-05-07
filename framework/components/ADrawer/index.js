@@ -5,6 +5,7 @@ import ADrawerHeader from "./ADrawerHeader";
 import ADrawerFooter from "./ADrawerFooter";
 import ADrawerSubtitle from "./ADrawerSubtitle";
 import ADrawerTitle from "./ADrawerTitle";
+import {useDrawerToggle} from "./hooks";
 
 export {
   ADrawer,
@@ -13,5 +14,6 @@ export {
   ADrawerHeader,
   ADrawerFooter,
   ADrawerSubtitle,
-  ADrawerTitle
+  ADrawerTitle,
+  useDrawerToggle
 };

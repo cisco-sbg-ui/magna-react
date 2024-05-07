@@ -47,7 +47,8 @@ import {
   ADrawerHeader,
   ADrawerFooter,
   ADrawerSubtitle,
-  ADrawerTitle
+  ADrawerTitle,
+  useDrawerToggle
 } from "./components/ADrawer";
 import AEmptyState from "./components/AEmptyState";
 import AFieldBase from "./components/AFieldBase";
@@ -276,6 +277,7 @@ export {
   ATriggerTooltip,
   useABreakpoint,
   useADateRange,
+  useDrawerToggle,
   useGetADateRange,
   useAAutoTheme,
   useATheme,
