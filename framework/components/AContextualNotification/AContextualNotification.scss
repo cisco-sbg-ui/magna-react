@@ -22,7 +22,7 @@ $context-arrow-left: 10%;
   background-color: var(--base-icon-in-default);
   box-shadow: var(--card-shadow-lifted) var(--card-shadow-color);
   &__icon {
-    margin-right: 10px;
+    margin-right: 8px;
     height: 19px;
     width: 19px;
   }
@@ -32,44 +32,15 @@ $context-arrow-left: 10%;
   }
 
   &--state-success {
-    border-color: var(--positive-border-default);
-
-    .a-context__icon {
-      color: var(--accent-a-default);
-    }
-    .a-icon-bg {
-      fill: var(--positive-border-default);
-    }
+    background: var(--positive-bg-strong-default);
   }
   &--state-info {
-    border-color: var(--info-border-default);
-
-    .a-context__icon {
-      color: var(--info-icon-default);
-    }
-
-    .a-icon-bg {
-      fill: var(--info-border-default);
-    }
+    background: var(--info-bg-strong-default);
   }
   &--state-warning {
-    border-color: var(--warning-border-default);
-
-    .a-context__icon {
-      color: var(--warning-border-default);
-    }
-    .a-icon-bg {
-      fill: var(--warning-border-default);
-    }
+    background: var(--warning-bg-strong-default);
   }
   &--state-danger {
-    border-color: var(--negative-border-default);
-
-    .a-context__icon {
-      color: var(--negative-icon-default);
-    }
-    .a-icon-bg {
-      fill: var(--negative-border-default);
-    }
+    background: var(--negative-bg-strong-default);
   }
 }
