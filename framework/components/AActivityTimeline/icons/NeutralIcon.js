@@ -18,7 +18,7 @@ function NeutralIcon() {
         fill="var(--interact-bg-default)"
         r="8"
         stroke="var(--interact-border-weak-default)"
-        stroke-width="2"
+        strokeWidth="2"
       ></circle>
     </svg>
   );

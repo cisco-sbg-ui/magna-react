@@ -151,7 +151,7 @@ AActivityTimelineItem.propTypes = {
   /**
    * The main title content. Can be a string or any other valid React Element.
    */
-  title: PropTypes.elementType,
+  title: PropTypes.node,
 
   /**
    * The time of the timeline item that is rendered underneath the bolded
