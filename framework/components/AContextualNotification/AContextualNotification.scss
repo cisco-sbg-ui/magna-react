@@ -14,8 +14,9 @@ $context-arrow-left: 10%;
   position: relative;
   width: 100%;
   min-height: 40px;
+  align-items: center;
   border-left: $context-border-left-width solid transparent;
-  margin: 10px 0;
+  margin: 12px 0;
   padding: $context-padding;
   border-radius: $border-radius--sm;
   color: var(--base-text-default);
@@ -23,8 +24,8 @@ $context-arrow-left: 10%;
   box-shadow: var(--card-shadow-lifted) var(--card-shadow-color);
   &__icon {
     margin-right: 8px;
-    height: 19px;
-    width: 19px;
+    height: 24px;
+    width: 24px;
   }
 
   .a-icon-text {
