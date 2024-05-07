@@ -13,13 +13,24 @@ import ATabContext from "./ATabContext";
 import {useCombinedRefs} from "../../utils/hooks";
 import "./ATabs.scss";
 
+const selectedNotMenu = (el) => {
+  return (
+    el?.classList?.contains("a-tab-group__tab--selected") &&
+    el.getAttribute("data-set") !== "menu"
+  );
+};
+
 const getNextFocusId = (direction, containerEl, focusedEl) => {
   let nextId, toFocus;
 
   if (direction == "ArrowLeft") {
     toFocus = focusedEl.previousSibling;
 
-    while (!toFocus || toFocus?.classList.contains("hide")) {
+    while (
+      !toFocus ||
+      toFocus?.classList?.contains("hide") ||
+      selectedNotMenu(toFocus)
+    ) {
       if (!toFocus) {
         toFocus = containerEl.lastChild;
       } else {
@@ -31,7 +42,11 @@ const getNextFocusId = (direction, containerEl, focusedEl) => {
   } else if (direction == "ArrowRight") {
     toFocus = focusedEl.nextSibling;
 
-    while (!toFocus || toFocus?.classList?.contains("hide")) {
+    while (
+      !toFocus ||
+      toFocus?.classList?.contains("hide") ||
+      selectedNotMenu(toFocus)
+    ) {
       if (!toFocus) {
         toFocus = containerEl.firstChild;
       } else {
