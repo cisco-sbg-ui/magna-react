@@ -1,10 +1,11 @@
-import React, {forwardRef, useEffect, useState} from "react";
+import React, {forwardRef, useRef, useState} from "react";
 import PropTypes from "prop-types";
 import AButton from "../AButton/AButton";
 import AContextualNotification from "../AContextualNotification/AContextualNotification";
 import AIcon from "../AIcon/AIcon";
 import ATriggerTooltip from "../ATriggerTooltip/ATriggerTooltip";
 import {copyToClipboard} from "../../utils/helpers";
+import {useCombinedRefs} from "../../utils/hooks";
 
 import "./ACopyButton.scss";
 
@@ -18,11 +19,14 @@ const ACopyButton = forwardRef(
       tertiary = true,
       tertiaryAlt,
       defaultLabel = true,
+      messageCloseDelay = 3000,
       ...rest
     },
     ref
   ) => {
-    const [clicked, setClicked] = useState(0);
+    const [clicked, setClicked] = useState(false);
+    const buttonRef = useRef();
+    const combinedRef = useCombinedRefs(ref, buttonRef);
 
     let tooltipClassName = "a-copy-button-tooltip";
 
@@ -36,30 +40,14 @@ const ACopyButton = forwardRef(
     };
 
     return (
-      <ATriggerTooltip
-        className={tooltipClassName}
-        content={
-          clicked ? (
-            <AContextualNotification variant="success">
-              Copied to clipboard
-            </AContextualNotification>
-          ) : (
-            "Copy to clipboard"
-          )
-        }
-        onClose={() => {
-          setTimeout(() => {
-            setClicked(0);
-          }, 300);
-        }}
-      >
+      <>
         <AButton
-          ref={ref}
+          ref={combinedRef}
           className="a-copy-button"
           icon
           onClick={() => {
             copyToClipboard(value, containerId);
-            setClicked(clicked + 1);
+            setClicked(true);
           }}
           {...buttonType}
           {...rest}
@@ -67,7 +55,28 @@ const ACopyButton = forwardRef(
           <AIcon left={!!children || defaultLabel}>copy</AIcon>
           {children || (defaultLabel && "Copy")}
         </AButton>
-      </ATriggerTooltip>
+        <ATriggerTooltip
+          open
+          triggerRef={combinedRef}
+          disabled={!clicked}
+          className={tooltipClassName}
+          openDelay={0}
+          content={
+            <AContextualNotification variant="success">
+              Copied to clipboard
+            </AContextualNotification>
+          }
+          onClose={() => {
+            setClicked(false);
+          }}
+        />
+        <ATriggerTooltip
+          triggerRef={combinedRef}
+          disabled={clicked}
+          className={tooltipClassName}
+          content="Copy to clipboard"
+        />
+      </>
     );
   }
 );
@@ -98,7 +107,11 @@ ACopyButton.propTypes = {
   /**
    * Show the default label as per design guidelines
    */
-  defaultLabel: PropTypes.bool
+  defaultLabel: PropTypes.bool,
+  /**
+   * Set the timeout of the copied message tooltip
+   */
+  timeout: PropTypes.number
 };
 
 export default ACopyButton;

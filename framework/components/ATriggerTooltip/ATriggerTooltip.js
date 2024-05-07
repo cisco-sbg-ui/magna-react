@@ -27,7 +27,7 @@ const ATriggerTooltip = ({
   const childrenRefCurrent = childrenRef.current;
   const firstChildRef = {current: childrenRefCurrent[0]};
   // If an anchorRef is provided, use it. Otherwise, attach to first child.
-  const tooltipAnchorRef = anchorRef || firstChildRef;
+  const tooltipAnchorRef = anchorRef || triggerRef || firstChildRef;
   const tooltipRef = useRef();
 
   const checkForTruncation = useCallback(() => {
@@ -165,16 +165,18 @@ const ATriggerTooltip = ({
           })
         });
       })}
-      <ATooltip
-        ref={tooltipRef}
-        anchorRef={tooltipAnchorRef}
-        open={isOpen}
-        onClose={close}
-        pointer
-        {...rest}
-      >
-        {content}
-      </ATooltip>
+      {!disabled && (
+        <ATooltip
+          ref={tooltipRef}
+          anchorRef={tooltipAnchorRef}
+          open={isOpen}
+          onClose={close}
+          pointer
+          {...rest}
+        >
+          {content}
+        </ATooltip>
+      )}
     </>
   );
 };
@@ -187,6 +189,13 @@ ATriggerTooltip.propTypes = {
    * trigger event on the child(ren).
    */
   anchorRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({current: PropTypes.any})
+  ]),
+  /**
+   * Sets the element that triggers the tooltip
+   */
+  triggerRef: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.shape({current: PropTypes.any})
   ]),
