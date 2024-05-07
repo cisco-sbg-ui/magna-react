@@ -37,6 +37,31 @@ describe("<ATabGroup />", () => {
   //   );
   // });
 
+  it("should navigate with arrow keystroke", () => {
+    cy.mount(<ATabTest width={"15rem"} />);
+    cy.get(".a-tab-group").focus();
+
+    cy.get(".a-tab-group").type("{rightarrow}");
+    cy.get(".a-tab-group").type("{rightarrow}");
+
+    cy.get(".a-tab-group__tab")
+      .first()
+      .next()
+      .should("have.class", "a-tab-group__tab--focused");
+
+    cy.get(".a-tab-group").type("{leftarrow}");
+    cy.get(".a-tab-group").type("{leftarrow}");
+    cy.get(".a-tab-group").type("{leftarrow}");
+    cy.get(".a-tab-group").type("{esc}"); // close the More menu
+
+    cy.get(".a-tab-group").type("{leftarrow}");
+
+    cy.get(".a-tab-group__tab")
+      .first()
+      .next()
+      .should("have.class", "a-tab-group__tab--focused");
+  });
+
   it("should have visible overflow tab", () => {
     cy.mount(<ATabTest />);
     cy.get(".menu-tab").should("be.visible");
@@ -78,15 +103,17 @@ describe("<ATabGroup />", () => {
       .contains("Seven");
   });
 
-  it("should maintain highlighted state if overflow menu item is selected by keystroke", () => {
+  it("should maintain highlighted state if overflow menu item is selected by arrow keystroke", () => {
     cy.mount(<ATabTest width={"15rem"} />);
-    cy.get(".a-tab-group__tab")
-      .first()
-      .tab({shift: true})
-      .contains("More")
-      .type("{enter}")
-      .get(".a-tab-group__tab--selected")
-      .should("exist");
+    cy.get(".a-tab-group").focus();
+
+    cy.get(".a-tab-group").type("{rightarrow}");
+    cy.get(".a-tab-group").type("{rightarrow}");
+    cy.get(".a-tab-group").type("{rightarrow}");
+    cy.get(".a-tab-group").type("{rightarrow}");
+
+    cy.get(".a-tab-group__tab--selected").should("exist");
+    cy.get(".a-menu").should("exist");
     cy.get(".a-list-item").first().next().type("{enter}");
     cy.get("body").click(0, 0);
     cy.get(".a-tab-group__tab--selected").should("exist");
