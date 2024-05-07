@@ -18,6 +18,9 @@ const ignoreStrokeReplace = [
   "negative",
   "positive",
   "warning",
+  "excellent",
+  "severe-warning",
+  "low-warning",
   "cisco",
   "dots-three",
   "dots-six",
@@ -29,7 +32,11 @@ const ignoreStrokeReplace = [
   "last-page",
   "first-page",
   "malicious",
-  "suspicious"
+  "suspicious",
+  "inactive",
+  "disabled",
+  "in-progress",
+  "allow"
   // icons that start with "type_"
 ];
 

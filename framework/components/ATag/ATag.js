@@ -6,16 +6,19 @@ import {keyCodes} from "../../utils/helpers";
 import "./ATag.scss";
 
 const STATUS_ICON = {
-  positive: "check-circle",
-  warning: "warning-circle",
-  negative: "x-circle",
-  inactive: "minus-circle",
-  disabled: "prohibit"
-};
-
-const BINARY_ICON = {
-  active: "check-circle",
-  inactive: "minus-circle"
+  excellent: "excellent",
+  positive: "positive",
+  "low-warning": "low-warning",
+  warning: "warning",
+  "severe-warning": "severe-warning",
+  negative: "negative",
+  inactive: "inactive",
+  info: "info",
+  disabled: "disabled",
+  "in-progress": "in-progress",
+  active: "positive",
+  allow: "allow",
+  deny: "disabled"
 };
 
 const ATag = forwardRef(
@@ -31,7 +34,6 @@ const ATag = forwardRef(
       small,
       large,
       status,
-      binary,
       color,
       customIcon = false,
       ...rest
@@ -56,18 +58,8 @@ const ATag = forwardRef(
       className += ` a-tag--sm`;
     }
 
-    {
-      /**
-       *Previously, binary and status tags types had different spacing and icons (binary had radio buttons).
-       *As of 10/23, These types have been redesigned to be one and the same.
-       *In order to avoid another round of breaking changes, we are tacking on binary classes to status classes.
-       *This also preserves the ability to alter easily if they diverge again in the future.
-       **/
-    }
-    if (status || binary === "inactive") {
-      className += ` a-tag--status a-tag--status-${status || binary}`;
-    } else if (binary) {
-      className += ` a-tag--status a-tag--binary-${binary}`;
+    if (status) {
+      className += ` a-tag--status a-tag--status-${status}`;
     }
 
     if (color) {
@@ -124,20 +116,6 @@ const ATag = forwardRef(
       );
     }
 
-    if (binary) {
-      tagWithIcon = (
-        <>
-          {!customIcon && (
-            <AIcon className="a-icon--binary" left>
-              {BINARY_ICON[binary]}
-            </AIcon>
-          )}
-          {React.isValidElement(customIcon) && customIcon}
-          {children}
-        </>
-      );
-    }
-
     return <TagName {...props}>{tagWithIcon || children}</TagName>;
   }
 );
@@ -170,16 +148,20 @@ ATag.propTypes = {
   /**
    * Will apply the icon along with the status color.
    */ status: PropTypes.oneOf([
+    "excellent",
     "positive",
+    "low-warning",
     "warning",
+    "severe-warning",
     "negative",
     "inactive",
-    "disabled"
+    "allow",
+    "deny",
+    "active",
+    "disabled",
+    "info",
+    "in-progress"
   ]),
-  /**
-   * Will apply the icon along with the binary color.
-   */
-  binary: PropTypes.oneOf(["active", "inactive"]),
   /**
    * Optional accent colors
    */

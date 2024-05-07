@@ -18,7 +18,7 @@ describe("<ATag />", () => {
     );
     cy.get(".a-tag--status-warning")
       .should("exist")
-      .get(".a-icon--warning-circle")
+      .get(".a-icon--warning")
       .should("exist");
   });
 
@@ -60,24 +60,6 @@ describe("<ATag />", () => {
       .get(".a-icon--circle-wavy-check")
       .should("exist");
     cy.get(".a-icon--warning-circle").should("not.exist");
-  });
-
-  it("status icon should replace binary icon when using custom icon", () => {
-    cy.mount(
-      <ATagContainer>
-        <ATag binary="active" customIcon>
-          <AIcon size="16" left>
-            circle-wavy-check
-          </AIcon>
-          Lonely tag
-        </ATag>
-      </ATagContainer>
-    );
-    cy.get(".a-tag--status")
-      .should("exist")
-      .get(".a-icon--circle-wavy-check")
-      .should("exist");
-    cy.get(".a-icon--check-circle").should("not.exist");
   });
 });
 

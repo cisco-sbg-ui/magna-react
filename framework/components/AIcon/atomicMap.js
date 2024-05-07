@@ -100,6 +100,7 @@ export const iconNameMap = {
   "email-service": "arrows-clockwise",
   "email-subject": "envelope-open",
   "event-total": "",
+  excellent: "",
   expand: "arrows-out",
   export: "",
   diverge: "now",
@@ -290,5 +291,7 @@ export const iconNameMap = {
   "web-tracking": "user-switch",
   "windows-logo": "",
   "would-have-dropped": "",
-  "bell-slash": ""
+  "bell-slash": "",
+  positive: "",
+  warning: ""
 };

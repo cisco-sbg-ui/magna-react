@@ -12,6 +12,7 @@ svg.a-icon {
   overflow: visible;
   width: 24px;
   stroke: var(--interact-icon-weak-default);
+  fill: currentColor;
 
   //Status icon text
   .a-icon-text {
@@ -38,33 +39,69 @@ svg.a-icon {
     margin-left: 4px;
   }
 
-  &--atomic {
-    stroke: unset !important;
-    fill: var(--interact-icon-weak-default);
-  }
-
   //Status icon backgrounds
+  &--excellent {
+    fill: var(--excellent-icon-default);
+    path {
+      fill: var(--excellent-icon-in-default);
+    }
+  }
   &--positive {
-    .a-icon-bg {
-      fill: var(--positive-icon-strong-default);
+    fill: var(--positive-icon-default);
+    path {
+      fill: var(--positive-icon-in-default);
+    }
+  }
+  &--low-warning {
+    fill: var(--low-warning-icon-default);
+    path {
+      fill: var(--low-warning-icon-in-default);
     }
   }
   &--warning {
-    .a-icon-bg {
-      fill: var(--warning-icon-strong-default);
+    fill: var(--warning-icon-in-default);
+    path:nth-of-type(1) {
+      fill: var(--warning-icon-default);
+    }
+  }
+  &--severe-warning {
+    fill: var(--severe-warning-icon-strong-default);
+    path:nth-of-type(2) {
+      fill: var(--severe-warning-icon-in-default);
     }
   }
   &--danger,
   &--negative {
-    .a-icon-bg {
-      fill: var(--negative-icon-default);
+    fill: var(--negative-icon-default);
+    path:nth-of-type(2) {
+      fill: var(--negative-icon-in-default);
+    }
+  }
+  &--inactive {
+    fill: var(--dormant-icon-default);
+    path {
+      fill: var(--dormant-icon-in-default);
     }
   }
   &--info {
-    .a-icon-bg {
-      fill: var(--info-icon-default);
+    fill: var(--info-icon-default);
+    path:nth-of-type(2) {
+      fill: var(--info-icon-in-default);
     }
   }
+  &--disabled {
+    fill: var(--dormant-icon-default);
+  }
+  &--in-progress {
+    fill: var(--in-progress-icon-default);
+    path {
+      fill: var(--in-progress-icon-in-default);
+    }
+  }
+  &--allow {
+    fill: var(--positive-icon-default);
+  }
+
   &--malicious,
   &--suspicious,
   &--unknown,

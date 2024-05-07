@@ -93,7 +93,8 @@ useContainer: true
 #### ATag
 
 - removed `count` property. No longer needed
-- removed `level` property. Handled by `status` and `binary`
+- removed `level` property. Handled by `status`
+- removed `binary` tag variant as all statuses are now styled the same. Handled by `status`
 
 #### ATextarea
 
@@ -110,3 +111,4 @@ useContainer: true
 - removed file color-helpers.scss as palette.scss color variables no longer exist.
   Migration steps: search for —text, —border-color, etc. and migrate them to the css vars
 - removed folder /theme which included theme-map.scss
+  import { sourceMapsEnabled } from "process"
