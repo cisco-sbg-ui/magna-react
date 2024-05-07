@@ -4,7 +4,6 @@ import React, {forwardRef} from "react";
 import {kebabify} from "../../utils/helpers";
 import Icons from "./icons.json";
 import MagnaIcons from "./magnaIcons.js";
-import {iconNameMap} from "./atomicMap.js";
 import "./AIcon.scss";
 
 /**
@@ -92,9 +91,6 @@ const AIcon = forwardRef(
       // Check if it's in magna icons
 
       magneticIconDef = MagnaIcons[children];
-    } else if (iconNameMap[children]) {
-      // check if we can map an atomic icon name to a magna icon
-      magneticIconDef = MagnaIcons[iconNameMap[children]];
     } else {
       const kebabed = kebabify(children);
 
@@ -123,8 +119,6 @@ const AIcon = forwardRef(
       );
     }
 
-    // Fallback to atomic icon for safety
-    componentProps.className += " a-icon--atomic";
     return (
       <svg {...componentProps} viewBox="0 0 16 16">
         <path d={Icons[children]} />
