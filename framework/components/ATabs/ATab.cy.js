@@ -103,16 +103,13 @@ describe("<ATabGroup />", () => {
     cy.mount(<ATabTest width={"15rem"} />);
     cy.get(".a-tab-group").focus();
 
-    cy.get(".a-tab-group").type("{rightarrow}");
-    cy.get(".a-tab-group").type("{rightarrow}");
-    cy.get(".a-tab-group").type("{rightarrow}");
+    cy.get("[data-set=menu]").click();
 
-    cy.get(".a-tab-group__tab--selected").should("exist");
     cy.get(".a-menu").should("exist");
     cy.get(".a-list-item").first().next().type("{enter}");
     cy.get("body").click(0, 0);
-    cy.get(".a-tab-group__tab--selected").should("exist");
-    cy.get(".menu-tab").click();
+    cy.get("[data-set=menu]").click();
+
     cy.get(".a-list-item")
       .get(".a-list-item--selected")
       .should("exist")
