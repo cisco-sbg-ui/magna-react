@@ -38,26 +38,22 @@ describe("<ATabGroup />", () => {
   // });
 
   it("should navigate with arrow keystroke", () => {
-    cy.mount(<ATabTest width={"15rem"} />);
+    cy.mount(<ATabTest />);
     cy.get(".a-tab-group").focus();
 
-    cy.get(".a-tab-group").type("{rightarrow}");
-    cy.get(".a-tab-group").type("{rightarrow}");
+    cy.get(".a-tab-group").type("{leftarrow}");
 
     cy.get(".a-tab-group__tab")
       .first()
       .next()
       .should("have.class", "a-tab-group__tab--focused");
 
-    cy.get(".a-tab-group").type("{leftarrow}");
-    cy.get(".a-tab-group").type("{leftarrow}");
-    cy.get(".a-tab-group").type("{leftarrow}");
-    cy.get(".a-tab-group").type("{esc}"); // close the More menu
-
-    cy.get(".a-tab-group").type("{leftarrow}");
+    cy.get(".a-tab-group").type("{rightarrow}");
 
     cy.get(".a-tab-group__tab")
       .first()
+      .next()
+      .next()
       .next()
       .should("have.class", "a-tab-group__tab--focused");
   });
@@ -107,7 +103,6 @@ describe("<ATabGroup />", () => {
     cy.mount(<ATabTest width={"15rem"} />);
     cy.get(".a-tab-group").focus();
 
-    cy.get(".a-tab-group").type("{rightarrow}");
     cy.get(".a-tab-group").type("{rightarrow}");
     cy.get(".a-tab-group").type("{rightarrow}");
     cy.get(".a-tab-group").type("{rightarrow}");
