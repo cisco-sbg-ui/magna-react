@@ -22,9 +22,7 @@ const Header = ({className, onHamburgerClick}) => {
           for v1 docs.
         </AAlert>
         <ARow
-          className={`${className} py-2 ${
-            isDark ? "mds-neutral--neutral-16" : "mds-neutral--neutral-1"
-          }`}
+          className={`${className} py-2`}
           noGutters
           style={{
             borderBottom: isDark
@@ -54,15 +52,11 @@ const Header = ({className, onHamburgerClick}) => {
               )}
               <h1
                 className="ma-0"
-                style={{fontSize: isMobile ? "1.75rem" : "2rem"}}
+                style={{
+                  fontSize: isMobile ? "1rem" : "2rem",
+                  whiteSpace: "nowrap"
+                }}
               >
-                <AButton className="pa-0" tertiaryAlt icon href="/">
-                  {/* {!isMobile && (
-                <AIcon size={24} className="mds-blue--blue-10--text">
-                  circle
-                </AIcon>
-              )} */}
-                </AButton>{" "}
                 Magna-React
               </h1>
             </div>
@@ -72,16 +66,7 @@ const Header = ({className, onHamburgerClick}) => {
                 icon
                 tertiary
               >
-                <AIcon
-                  className={
-                    isDark
-                      ? "mds-neutral--neutral-5--text"
-                      : "mds-neutral--neutral-14--text"
-                  }
-                  size={24}
-                >
-                  code
-                </AIcon>
+                <AIcon size={24}>code</AIcon>
               </AButton>
             </div>
             <ThemeSwitcher style={{alignSelf: "flex-end", flex: "1 0 auto"}} />

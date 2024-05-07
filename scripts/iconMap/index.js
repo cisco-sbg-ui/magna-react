@@ -6,8 +6,13 @@ Object.defineProperty(exports, "__esModule", {
 exports.iconNameMap = void 0;
 function cov_f48blbjub() {
   var path =
+<<<<<<< HEAD
     "/Users/roberha2/workspaces/cisco-sbg-ui/magna-react/framework/components/AIcon/iconMap.js";
   var hash = "9d307fb6f33bf94fea6a2be1f29c42205e0bef81";
+=======
+    "/Users/roberha2/workspaces/cisco-sbg-ui/magna-react/framework/components/AIcon/atomicMap.js";
+  var hash = "1fc436e872021794707edd6067bf243159b22a6e";
+>>>>>>> e14445b (Fix styling and mobile issues for docs)
   var global = new Function("return this")();
   var gcv = "__coverage__";
   var coverageData = {
@@ -19,7 +24,7 @@ function cov_f48blbjub() {
           column: 27
         },
         end: {
-          line: 294,
+          line: 298,
           column: 1
         }
       }
@@ -32,7 +37,7 @@ function cov_f48blbjub() {
     f: {},
     b: {},
     _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    hash: "9d307fb6f33bf94fea6a2be1f29c42205e0bef81"
+    hash: "1fc436e872021794707edd6067bf243159b22a6e"
   };
   var coverage = global[gcv] || (global[gcv] = {});
   if (!coverage[path] || coverage[path].hash !== hash) {
@@ -225,6 +230,8 @@ var iconNameMap = (exports.iconNameMap =
     minus: "",
     module: "puzzle-piece",
     monitor: "arrow-circle-down-right",
+    moon: "",
+    "moon-stars": "",
     "move-document": "",
     "name-empty": "",
     "nat-original-port": "",
@@ -300,6 +307,8 @@ var iconNameMap = (exports.iconNameMap =
     subscript: "",
     subscription: "rss",
     subtract: "",
+    sun: "",
+    "sun-dim": "",
     superscript: "",
     suspicious: "",
     "swc-device-id": "cloud",

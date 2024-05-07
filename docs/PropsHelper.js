@@ -16,10 +16,6 @@ const PropsHelper = ({shouldShowBtn, componentName, components}) => {
     onKeydown: () => setIsDrawerOpen(false)
   });
   const {currentTheme} = useATheme();
-  const styleColor =
-    currentTheme === "dusk"
-      ? "mds-neutral--neutral-17 mds-blue--blue-3--text"
-      : "mds-neutral--neutral-1 mds-blue--blue-12--text";
 
   return (
     <div
@@ -33,7 +29,6 @@ const PropsHelper = ({shouldShowBtn, componentName, components}) => {
         onClick={() => {
           document.getElementById("component-page").scrollTop = 0;
         }}
-        className={styleColor}
         style={{
           boxShadow: "0 1px 12px 0 #6f7680"
         }}
@@ -43,7 +38,6 @@ const PropsHelper = ({shouldShowBtn, componentName, components}) => {
       {components && (
         <AButton
           onClick={() => setIsDrawerOpen(true)}
-          className={styleColor}
           style={{
             zIndex: "1",
             boxShadow: "0 1px 12px 0 #6f7680"
@@ -64,10 +58,10 @@ const PropsHelper = ({shouldShowBtn, componentName, components}) => {
           <ADrawerContent>
             {components.split(", ").map((c) => {
               return (
-                <>
+                <span key={c}>
                   <h3 className="props-helper-header">{c} Props</h3>
                   <Props of={c} inDrawer />
-                </>
+                </span>
               );
             })}
           </ADrawerContent>
