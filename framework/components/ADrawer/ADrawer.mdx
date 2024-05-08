@@ -94,7 +94,7 @@ The drawer can slide-in from the left, right, or bottom of the page.
             onClose={() => setIsBottomOpen(false)}
             data-test-drawer-bottom>
           <ADrawerHeader>
-          <ADrawerTitle onCloseButtonClick={() => setIsBottomOpen(false)}>
+          <ADrawerTitle>
             <h1 id='left-drawer-title'>Bottom Drawer</h1>
           </ADrawerTitle>
           <ADrawerSubtitle>Old School RuneScape is an MMORPG with adventure elements.</ADrawerSubtitle>
@@ -169,7 +169,7 @@ The drawer can slide-in from the left, right, or bottom of the page.
             onClose={() => setIsRightOpen(false)}
             data-test-drawer-right>
            <ADrawerHeader>
-          <ADrawerTitle onCloseButtonClick={() => setIsRightOpen(false)}>
+          <ADrawerTitle>
             <h1 id='left-drawer-title'>Custom Width Drawer</h1>
           </ADrawerTitle>
           </ADrawerHeader>
@@ -234,7 +234,8 @@ Please note that when `ADrawer` is rendered as a modal, focus will be trapped in
             ref={nonModalContentRef}
             asModal={false}
             isOpen={nonModalOpen}
-            slideIn='right'>
+            slideIn='right'
+            onClose={() => setNonModalOpen(false)}>
           <div style={{
             display: "flex",
             flexDirection: "column",
@@ -252,7 +253,7 @@ Please note that when `ADrawer` is rendered as a modal, focus will be trapped in
       return (
         <>
           <ADrawerHeader divider>
-            <ADrawerTitle onCloseButtonClick={onClose}>
+            <ADrawerTitle>
               <h1>{title}</h1>
             </ADrawerTitle>
           </ADrawerHeader>
@@ -628,8 +629,9 @@ To contain the drawer within something other than the viewport, you can render t
             ref={rightDrawerContentRef}
             isOpen={isRightOpen}
             data-test-drawer-right>
+            onClose={() => setIsRightOpen(false)}
           <ADrawerHeader>
-            <ADrawerTitle onCloseButtonClick={() => setIsRightOpen(false)}>
+            <ADrawerTitle>
               <h1 id='left-drawer-title'>No Slide</h1>
             </ADrawerTitle>
           </ADrawerHeader>
