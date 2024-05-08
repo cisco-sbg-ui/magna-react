@@ -117,10 +117,10 @@ $icon-width: 1.167rem;
       width: 18px;
     }
     padding: 4px 8px 4px 4px;
-    + .a-tag--sm {
+    &.a-tag--sm {
       padding: 1px 8px 1px 4px;
     }
-    + .a-tag--lg {
+    &.a-tag--lg {
       padding: 4px 12px 4px 4px;
     }
   }
