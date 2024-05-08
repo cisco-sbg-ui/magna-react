@@ -166,7 +166,8 @@ svg.a-icon {
   &--type_Security,
   &--type_Switch,
   &--type_Systems_Manager,
-  &--type_Wireless {
+  &--type_Wireless,
+  &--type_Workflow {
     fill: var(--interact-icon-weak-default);
   }
 
