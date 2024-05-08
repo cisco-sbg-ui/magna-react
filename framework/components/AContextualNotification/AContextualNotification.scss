@@ -33,15 +33,15 @@ $context-arrow-left: 10%;
   }
 
   &--state-success {
-    background: var(--positive-bg-strong-default);
+    border-color: var(--positive-border-default);
   }
   &--state-info {
-    background: var(--info-bg-strong-default);
+    border-color: var(--info-border-default);
   }
   &--state-warning {
-    background: var(--warning-bg-strong-default);
+    border-color: var(--warning-border-default);
   }
   &--state-danger {
-    background: var(--negative-bg-strong-default);
+    border-color: var(--negative-border-default);
   }
 }

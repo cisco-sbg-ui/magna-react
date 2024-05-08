@@ -128,11 +128,11 @@
     &.a-menu-base--top-left,
     &.a-menu-base--top-right {
       .a-menu-base__pointer {
-        border-color: var(--warning-bg-strong-default) transparent transparent
+        border-color: var(--warning-border-default) transparent transparent
           transparent;
 
         &:after {
-          border-color: var(--warning-bg-strong-default) transparent transparent
+          border-color: var(--base-icon-in-default) transparent transparent
             transparent;
         }
       }
@@ -142,11 +142,11 @@
     &.a-menu-base--bottom-left,
     &.a-menu-base--bottom-right {
       .a-menu-base__pointer {
-        border-color: transparent transparent var(--warning-bg-strong-default)
+        border-color: transparent transparent var(--warning-border-default)
           transparent;
 
         &:after {
-          border-color: transparent transparent var(--warning-bg-strong-default)
+          border-color: transparent transparent var(--base-icon-in-default)
             transparent;
         }
       }
@@ -155,11 +155,11 @@
     &.a-menu-base--right-top .a-menu-base__pointer,
     &.a-menu-base--right .a-menu-base__pointer,
     &.a-menu-base--right-bottom .a-menu-base__pointer {
-      border-color: transparent var(--warning-bg-strong-default) transparent
+      border-color: transparent var(--warning-border-default) transparent
         transparent;
 
       &:after {
-        border-color: transparent var(--warning-bg-strong-default) transparent
+        border-color: transparent var(--warning-border-default) transparent
           transparent;
       }
     }
@@ -168,11 +168,11 @@
     &.a-menu-base--left .a-menu-base__pointer,
     &.a-menu-base--left-bottom .a-menu-base__pointer {
       border-color: transparent transparent transparent
-        var(--warning-bg-strong-default);
+        var(--warning-border-default);
 
       &:after {
         border-color: transparent transparent transparent
-          var(--warning-bg-strong-default);
+          var(--base-icon-in-default);
       }
     }
   }
@@ -181,12 +181,12 @@
     &.a-menu-base--top-left,
     &.a-menu-base--top-right {
       .a-menu-base__pointer {
-        border-color: var(--negative-bg-strong-default) transparent transparent
+        border-color: var(--negative-border-default) transparent transparent
           transparent;
 
         &:after {
-          border-color: var(--negative-bg-strong-default) transparent
-            transparent transparent;
+          border-color: var(--base-icon-in-default) transparent transparent
+            transparent;
         }
       }
     }
@@ -195,12 +195,12 @@
     &.a-menu-base--bottom-left,
     &.a-menu-base--bottom-right {
       .a-menu-base__pointer {
-        border-color: transparent transparent var(--negative-bg-strong-default)
+        border-color: transparent transparent var(--negative-border-default)
           transparent;
 
         &:after {
-          border-color: transparent transparent
-            var(--negative-bg-strong-default) transparent;
+          border-color: transparent transparent var(--base-icon-in-default)
+            transparent;
         }
       }
     }
@@ -208,11 +208,11 @@
     &.a-menu-base--right-top .a-menu-base__pointer,
     &.a-menu-base--right .a-menu-base__pointer,
     &.a-menu-base--right-bottom .a-menu-base__pointer {
-      border-color: transparent var(--negative-bg-strong-default) transparent
+      border-color: transparent var(--negative-border-default) transparent
         transparent;
 
       &:after {
-        border-color: transparent var(--negative-bg-strong-default) transparent
+        border-color: transparent var(--negative-border-default) transparent
           transparent;
       }
     }
@@ -221,11 +221,11 @@
     &.a-menu-base--left .a-menu-base__pointer,
     &.a-menu-base--left-bottom .a-menu-base__pointer {
       border-color: transparent transparent transparent
-        var(--negative-bg-strong-default);
+        var(--negative-border-default);
 
       &:after {
         border-color: transparent transparent transparent
-          var(--negative-bg-strong-default);
+          var(--base-icon-in-default);
       }
     }
   }
@@ -234,12 +234,12 @@
     &.a-menu-base--top-left,
     &.a-menu-base--top-right {
       .a-menu-base__pointer {
-        border-color: var(--positive-bg-strong-default) transparent transparent
+        border-color: var(--positive-border-default) transparent transparent
           transparent;
 
         &:after {
-          border-color: var(--positive-bg-strong-default) transparent
-            transparent transparent;
+          border-color: var(--base-icon-in-default) transparent transparent
+            transparent;
         }
       }
     }
@@ -248,12 +248,12 @@
     &.a-menu-base--bottom-left,
     &.a-menu-base--bottom-right {
       .a-menu-base__pointer {
-        border-color: transparent transparent var(--positive-bg-strong-default)
+        border-color: transparent transparent var(--positive-border-default)
           transparent;
 
         &:after {
-          border-color: transparent transparent
-            var(--positive-bg-strong-default) transparent;
+          border-color: transparent transparent var(--base-icon-in-default)
+            transparent;
         }
       }
     }
@@ -261,11 +261,11 @@
     &.a-menu-base--right-top .a-menu-base__pointer,
     &.a-menu-base--right .a-menu-base__pointer,
     &.a-menu-base--right-bottom .a-menu-base__pointer {
-      border-color: transparent var(--positive-bg-strong-default) transparent
+      border-color: transparent var(--positive-border-default) transparent
         transparent;
 
       &:after {
-        border-color: transparent var(--positive-bg-strong-default) transparent
+        border-color: transparent var(--positive-border-default) transparent
           transparent;
       }
     }
@@ -274,11 +274,11 @@
     &.a-menu-base--left .a-menu-base__pointer,
     &.a-menu-base--left-bottom .a-menu-base__pointer {
       border-color: transparent transparent transparent
-        var(--positive-bg-strong-default);
+        var(--positive-border-default);
 
       &:after {
         border-color: transparent transparent transparent
-          var(--positive-bg-strong-default);
+          var(--base-icon-in-default);
       }
     }
   }
@@ -287,11 +287,11 @@
     &.a-menu-base--top-left,
     &.a-menu-base--top-right {
       .a-menu-base__pointer {
-        border-color: var(--info-bg-strong-default) transparent transparent
+        border-color: var(--info-border-default) transparent transparent
           transparent;
 
         &:after {
-          border-color: var(--info-bg-strong-default) transparent transparent
+          border-color: var(--base-icon-in-default) transparent transparent
             transparent;
         }
       }
@@ -301,11 +301,11 @@
     &.a-menu-base--bottom-left,
     &.a-menu-base--bottom-right {
       .a-menu-base__pointer {
-        border-color: transparent transparent var(--info-bg-strong-default)
+        border-color: transparent transparent var(--info-border-default)
           transparent;
 
         &:after {
-          border-color: transparent transparent var(--info-bg-strong-default)
+          border-color: transparent transparent var(--base-icon-in-default)
             transparent;
         }
       }
@@ -314,11 +314,11 @@
     &.a-menu-base--right-top .a-menu-base__pointer,
     &.a-menu-base--right .a-menu-base__pointer,
     &.a-menu-base--right-bottom .a-menu-base__pointer {
-      border-color: transparent var(--info-bg-strong-default) transparent
+      border-color: transparent var(--info-border-default) transparent
         transparent;
 
       &:after {
-        border-color: transparent var(--info-bg-strong-default) transparent
+        border-color: transparent var(--info-border-default) transparent
           transparent;
       }
     }
@@ -327,11 +327,11 @@
     &.a-menu-base--left .a-menu-base__pointer,
     &.a-menu-base--left-bottom .a-menu-base__pointer {
       border-color: transparent transparent transparent
-        var(--info-bg-strong-default);
+        var(--info-border-default);
 
       &:after {
         border-color: transparent transparent transparent
-          var(--info-bg-strong-default);
+          var(--base-icon-in-default);
       }
     }
   }
