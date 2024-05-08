@@ -54,7 +54,7 @@ const PropsHelper = ({shouldShowBtn, componentName, components}) => {
           isOpen={isDrawerOpen}
           slideIn="bottom"
         >
-          <ADrawerTitle onCloseButtonClick={() => setIsDrawerOpen(false)} />
+          <ADrawerTitle />
           <ADrawerContent>
             {components.split(", ").map((c) => {
               return (
