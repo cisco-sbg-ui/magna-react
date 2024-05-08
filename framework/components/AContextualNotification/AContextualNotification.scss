@@ -14,17 +14,18 @@ $context-arrow-left: 10%;
   position: relative;
   width: 100%;
   min-height: 40px;
+  align-items: center;
   border-left: $context-border-left-width solid transparent;
-  margin: 10px 0;
+  margin: 12px 0;
   padding: $context-padding;
   border-radius: $border-radius--sm;
   color: var(--base-text-default);
   background-color: var(--base-icon-in-default);
   box-shadow: var(--card-shadow-lifted) var(--card-shadow-color);
   &__icon {
-    margin-right: 10px;
-    height: 19px;
-    width: 19px;
+    margin-right: 8px;
+    height: 24px;
+    width: 24px;
   }
 
   .a-icon-text {
@@ -33,43 +34,14 @@ $context-arrow-left: 10%;
 
   &--state-success {
     border-color: var(--positive-border-default);
-
-    .a-context__icon {
-      color: var(--accent-a-default);
-    }
-    .a-icon-bg {
-      fill: var(--positive-border-default);
-    }
   }
   &--state-info {
     border-color: var(--info-border-default);
-
-    .a-context__icon {
-      color: var(--info-icon-default);
-    }
-
-    .a-icon-bg {
-      fill: var(--info-border-default);
-    }
   }
   &--state-warning {
     border-color: var(--warning-border-default);
-
-    .a-context__icon {
-      color: var(--warning-border-default);
-    }
-    .a-icon-bg {
-      fill: var(--warning-border-default);
-    }
   }
   &--state-danger {
     border-color: var(--negative-border-default);
-
-    .a-context__icon {
-      color: var(--negative-icon-default);
-    }
-    .a-icon-bg {
-      fill: var(--negative-border-default);
-    }
   }
 }

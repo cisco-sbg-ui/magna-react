@@ -49,105 +49,16 @@ $icon-width: 1.167rem;
   .a-icon {
     width: 14px;
     stroke: currentColor;
-    fill: currentColor;
-  }
-  &--sm {
-    .a-icon {
-      width: 12px;
-    }
-  }
-  &--lg {
-    .a-icon {
-      width: 16px;
-    }
-  }
-
-  &--state-information,
-  &--state-info,
-  &--binary-active {
-    background-color: var(--control-bg-medium-active);
-    color: var(--base-text-default);
-  }
-
-  &--status-positive {
-    background-color: var(--positive-bg-strong-default);
-    color: var(--base-text-default);
-  }
-  &--status-warning {
-    background-color: var(--warning-bg-strong-default);
-    color: var(--base-text-default);
-  }
-  &--status-negative {
-    background-color: var(--negative-bg-strong-default);
-    color: var(--base-text-default);
-  }
-
-  @each $accentColor, $color in $accent-colors {
-    &--accent#{$accentColor} {
-      background-color: $color;
-    }
-  }
-
-  //binary check icon override
-  &--binary-active {
-    .a-icon--check-circle circle {
-      fill: var(--control-icon-medium-default) !important;
-      stroke: var(--control-icon-medium-default) !important;
-    }
-  }
-
-  .a-icon {
-    &--check-circle,
-    &--x-circle,
-    &--minus-circle {
-      line,
-      polyline {
-        stroke: var(--base-icon-in-default);
-      }
-    }
-    &--check-circle circle {
-      fill: var(--positive-border-default);
-      stroke: var(--positive-border-default);
-    }
-    &--warning-circle {
-      stroke: $magnetic-color-neutral-35;
-      fill: $magnetic-color-neutral-35;
-      circle:first-of-type {
-        fill: var(--warning-border-default);
-        stroke: var(--warning-border-default);
-      }
-    }
-    &--x-circle circle {
-      fill: var(--negative-border-default);
-      stroke: var(--negative-border-default);
-    }
-    &--minus-circle circle,
-    &--prohibit {
-      stroke: var(--base-text-medium-default);
-      fill: var(--base-text-medium-default);
-    }
-  }
-
-  //Status & binary tags
-  &--status {
-    .a-icon--status {
-      width: calc(
-        $tag-icon-font-size * 1.334
-      ); // 14px for circle - svg needs to be larger as phosphorus circle does not reach edges
-    }
-    padding-left: 6px;
-    padding-right: 8px;
-    + .a-tag--lg {
-      padding-right: 12px;
-    }
   }
 
   &--sm {
     min-height: $tag-height-sm;
     padding: $tag-padding-sm;
-
-    .a-icon--status {
-      width: calc($tag-icon-font-size * 1.143); //12px phosphorus circle
+    .a-icon {
+      width: 12px;
+      &--status {
+        width: 16px !important;
+      }
     }
   }
 
@@ -155,8 +66,68 @@ $icon-width: 1.167rem;
     min-height: $tag-height-lg;
     font-size: $tag-font-size-lg;
     line-height: $tag-line-height-lg;
+    .a-icon {
+      width: 16px;
+      &--status {
+        width: 20px !important;
+      }
+    }
+  }
+
+  &--state {
+    color: var(--base-text-default);
+  }
+  &--status-info,
+  &--status-in-progress {
+    background-color: var(--info-bg-medium-default);
+  }
+  &--status-excellent {
+    background-color: var(--excellent-bg-medium-default);
+  }
+  &--status-positive,
+  &--status-active,
+  &--status-allow {
+    background-color: var(--positive-bg-strong-default);
+  }
+  &--status-low-warning {
+    background-color: var(--low-warning-bg-medium-default);
+  }
+  &--status-warning {
+    background-color: var(--warning-bg-strong-default);
+  }
+  &--status-severe-warning {
+    background-color: var(--severe-warning-bg-medium-default);
+  }
+  &--status-negative,
+  &--status-deny {
+    background-color: var(--negative-bg-strong-default);
+    .a-icon {
+      fill: var(--negative-icon-default);
+    }
+  }
+  &--status-deny {
+    .a-icon {
+      fill: var(--negative-icon-default);
+    }
+  }
+
+  //Status tags
+  &--status {
     .a-icon--status {
-      width: calc($tag-icon-font-size * 1.524); //16px phosphorus circle
+      width: 18px;
+    }
+    padding: 4px 8px 4px 4px;
+    &.a-tag--sm {
+      padding: 1px 8px 1px 4px;
+    }
+    &.a-tag--lg {
+      padding: 4px 12px 4px 4px;
+    }
+  }
+
+  @each $accentColor, $color in $accent-colors {
+    &--accent#{$accentColor} {
+      background-color: $color;
     }
   }
 }

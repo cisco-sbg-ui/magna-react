@@ -212,7 +212,7 @@
         transparent;
 
       &:after {
-        border-color: transparentvar(--negative-border-default) transparent
+        border-color: transparent var(--negative-border-default) transparent
           transparent;
       }
     }

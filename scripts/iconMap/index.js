@@ -6,12 +6,12 @@ Object.defineProperty(exports, "__esModule", {
 exports.iconNameMap = void 0;
 function cov_f48blbjub() {
   var path =
-    "/Users/roberha2/workspaces/cisco-sbg-ui/magna-react/framework/components/AIcon/atomicMap.js";
+    "/Users/roberha2/workspaces/cisco-sbg-ui/magna-react/framework/components/AIcon/iconMap.js";
   var hash = "9d307fb6f33bf94fea6a2be1f29c42205e0bef81";
   var global = new Function("return this")();
   var gcv = "__coverage__";
   var coverageData = {
-    path: "/Users/roberha2/workspaces/cisco-sbg-ui/magna-react/framework/components/AIcon/atomicMap.js",
+    path: "/Users/roberha2/workspaces/cisco-sbg-ui/magna-react/framework/components/AIcon/iconMap.js",
     statementMap: {
       0: {
         start: {

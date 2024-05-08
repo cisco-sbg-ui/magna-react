@@ -4,7 +4,7 @@ import React, {forwardRef} from "react";
 import {kebabify} from "../../utils/helpers";
 import Icons from "./icons.json";
 import MagnaIcons from "./magnaIcons.js";
-import {iconNameMap} from "./atomicMap.js";
+import {iconNameMap} from "./iconMap.js";
 import "./AIcon.scss";
 
 /**
@@ -18,6 +18,9 @@ const ignoreStrokeReplace = [
   "negative",
   "positive",
   "warning",
+  "excellent",
+  "severe-warning",
+  "low-warning",
   "cisco",
   "dots-three",
   "dots-six",
@@ -29,7 +32,11 @@ const ignoreStrokeReplace = [
   "last-page",
   "first-page",
   "malicious",
-  "suspicious"
+  "suspicious",
+  "inactive",
+  "disabled",
+  "in-progress",
+  "allow"
   // icons that start with "type_"
 ];
 
@@ -116,8 +123,6 @@ const AIcon = forwardRef(
       );
     }
 
-    // Fallback to atomic icon for safety
-    componentProps.className += " a-icon--atomic";
     return (
       <svg {...componentProps} viewBox="0 0 16 16">
         <path d={Icons[children]} />

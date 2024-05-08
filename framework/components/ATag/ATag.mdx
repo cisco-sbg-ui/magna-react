@@ -34,7 +34,7 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
           right
           className="cursor-pointer"
           onClick={() => alert("Close icon clicked!")}>
-          close
+          x
         </AIcon>
       </ATag>
       <ATag
@@ -43,7 +43,7 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
         onClick={() => setActive(!active)}>
         {selectedOption} Tag
         <AIcon right className="cursor-pointer">
-          chevron-down
+          caret-down
         </AIcon>
       </ATag>
       <AMenu
@@ -101,63 +101,82 @@ Basic variants for the standard status states
   return (
     <>
       <div style={{minHeight: "50px"}}>
+        <ATag large status="excellent" className="ma-1">Excellent</ATag>
         <ATag large status="positive" className="ma-1">Positive</ATag>
+        <ATag large status="low-warning" className="ma-1">Low warning</ATag>
         <ATag large status="warning" className="ma-1">Warning</ATag>
+        <ATag large status="severe-warning" className="ma-1">Severe warning</ATag>
         <ATag large status="negative" className="ma-1">Negative</ATag>
-        <ATag large status="inactive" className="ma-1">Inactive</ATag>
-        <ATag large status="disabled" className="ma-1">Disabled</ATag>
       </div>
       <div style={{minHeight: "50px"}}>
+        <ATag status="excellent" className="ma-1">Excellent</ATag>
         <ATag status="positive" className="ma-1">Positive</ATag>
+        <ATag status="low-warning" className="ma-1">Low warning</ATag>
         <ATag status="warning" className="ma-1">Warning</ATag>
+        <ATag status="severe-warning" className="ma-1">Severe warning</ATag>
         <ATag status="negative" className="ma-1">Negative</ATag>
-        <ATag status="inactive" className="ma-1">Inactive</ATag>
-        <ATag status="disabled" className="ma-1">Disabled</ATag>
       </div>
       <div style={{minHeight: "50px"}}>
-        <ATag small status="positive" className="ma-1">positive</ATag>
-        <ATag small status="warning" className="ma-1">warning</ATag>
-        <ATag small status="negative" className="ma-1">negative</ATag>
-        <ATag small status="inactive" className="ma-1">inactive</ATag>
-        <ATag small status="disabled" className="ma-1">disabled</ATag>
+        <ATag small status="excellent" className="ma-1">Excellent</ATag>
+        <ATag small status="positive" className="ma-1">Positive</ATag>
+        <ATag small status="low-warning" className="ma-1">Low warning</ATag>
+        <ATag small status="warning" className="ma-1">Warning</ATag>
+        <ATag small status="severe-warning" className="ma-1">Severe warning</ATag>
+        <ATag small status="negative" className="ma-1">Negative</ATag>
       </div>
+
+      <div style={{minHeight: "50px"}}>
+        <ATag large status="inactive" className="ma-1">Inactive</ATag>
+        <ATag large status="info" className="ma-1">Info</ATag>
+        <ATag large status="disabled" className="ma-1">Disabled</ATag>
+        <ATag large status="in-progress" className="ma-1">In progress</ATag>
+      </div>
+      <div style={{minHeight: "50px"}}>
+        <ATag status="inactive" className="ma-1">Inactive</ATag>
+        <ATag status="info" className="ma-1">Info</ATag>
+        <ATag status="disabled" className="ma-1">Disabled</ATag>
+        <ATag status="in-progress" className="ma-1">In progress</ATag>
+      </div>
+      <div style={{minHeight: "50px"}}>
+        <ATag small status="inactive" className="ma-1">Inactive</ATag>
+        <ATag small status="info" className="ma-1">Info</ATag>
+        <ATag small status="disabled" className="ma-1">Disabled</ATag>
+        <ATag small status="in-progress" className="ma-1">In progress</ATag>
+      </div>
+
+      <div style={{minHeight: "50px"}}>
+        <ATag large status="allow" className="ma-1">Allow</ATag>
+        <ATag large status="deny" className="ma-1">Deny</ATag>
+      </div>
+      <div style={{minHeight: "50px"}}>
+        <ATag status="allow" className="ma-1">Allow</ATag>
+        <ATag status="deny" className="ma-1">Deny</ATag>
+      </div>
+      <div style={{minHeight: "50px"}}>
+        <ATag small status="allow" className="ma-1">Allow</ATag>
+        <ATag small status="deny" className="ma-1">Deny</ATag>
+      </div>
+
+      <div style={{minHeight: "50px"}}>
+        <ATag large status="active" className="ma-1">Active</ATag>
+        <ATag large status="inactive" className="ma-1">Inactive</ATag>
+      </div>
+      <div style={{minHeight: "50px"}}>
+        <ATag status="active" className="ma-1">Active</ATag>
+        <ATag status="inactive" className="ma-1">Inactive</ATag>
+      </div>
+      <div style={{minHeight: "50px"}}>
+        <ATag small status="active" className="ma-1">Active</ATag>
+        <ATag small status="inactive" className="ma-1">Inactive</ATag>
+      </div>
+
       <div style={{minHeight: "50px", marginTop: "10px"}}>
         <h4>With custom icon</h4>
         <ATag status="positive" className="ma-1" customIcon><AIcon size={16} left>circle-wavy-check</AIcon>Child</ATag>
         <ATag status="warning" className="ma-1" customIcon={<AIcon size={16} left>question</AIcon>}>Directly as prop</ATag>
       </div>
     </>
-);
-}
-`}
-/>
 
-#### Binary Tags
-
-Basic variants for the binary states
-
-<Playground
-  code={`() => {
-  return (
-    <>
-      <div style={{minHeight: "50px"}}>
-        <ATag large binary="active" className="ma-1">Active</ATag>
-        <ATag large binary="inactive" className="ma-1">Inactive</ATag>
-      </div>
-      <div style={{minHeight: "50px"}}>
-        <ATag binary="active" className="ma-1">Active</ATag>
-        <ATag binary="inactive" className="ma-1">Inactive</ATag>
-      </div>
-      <div style={{minHeight: "50px"}}>
-        <ATag small binary="active" className="ma-1">Active</ATag>
-        <ATag small binary="inactive" className="ma-1">Inactive</ATag>
-      </div>
-            <div style={{minHeight: "50px", marginTop: "10px"}}>
-        <h4>With custom icon</h4>
-        <ATag binary="active"  className="ma-1" customIcon><AIcon size={16} left>circle-wavy-check</AIcon>Child</ATag>
-        <ATag binary="inactive"  className="ma-1" customIcon={<AIcon size={16} left>question</AIcon>}>Directly as prop</ATag>
-      </div>
-    </>
 );
 }
 `}

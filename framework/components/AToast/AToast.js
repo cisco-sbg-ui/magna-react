@@ -53,9 +53,7 @@ const AToast = forwardRef(
 
     return (
       <div {...rest} ref={ref} className={className}>
-        <AIcon className="a-toast__icon" size={20}>
-          {icon}
-        </AIcon>
+        <AIcon className="a-toast__icon">{icon}</AIcon>
         <div className="a-toast__body">
           <div className="a-toast__title">{title}</div>
           <div className="a-toast__message">{children}</div>
