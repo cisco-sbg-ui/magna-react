@@ -109,11 +109,7 @@ const SidebarTree = forwardRef(
         "div";
       const contentProps = {
         ...item.contentProps,
-        className: `sidebar-tree__content ${
-          isDark
-            ? "mds-neutral--neutral-9--text"
-            : "mds-neutral--neutral-14--text"
-        }`,
+        className: "sidebar-tree__content",
         onFocus: (e) => {
           const allItems = {items: items.slice()};
           const thisItem = path.reduce((acc, nextIndex) => {

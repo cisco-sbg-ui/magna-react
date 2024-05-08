@@ -1,7 +1,7 @@
-const fs = require("fs");
-const {XMLParser, XMLBuilder} = require("fast-xml-parser");
-const path = require("path");
-const isEqual = require("lodash.isequal");
+import fs from "fs";
+import {XMLParser, XMLBuilder} from "fast-xml-parser";
+import path from "path";
+import isEqual from "lodash.isequal";
 
 const xmlOptions = {
   ignoreAttributes: false,

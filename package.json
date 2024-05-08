@@ -39,9 +39,8 @@
     "updateSnapshots": "start-server-and-test dev http://localhost:3000 cypress:runUpdateSnapshots",
     "upload-coverage": "codecov",
     "formatIconFile": "prettier --config ./.prettierrc.js --write ./framework/components/AIcon/magnaIcons.js",
-    "buildIcons": "node scripts/iconBuilder.js && npm run formatIconFile",
-    "transform:iconMap": "babel --plugins @babel/plugin-transform-modules-commonjs framework/components/AIcon/iconMap.js -o scripts/iconMap/index.js",
-    "copyPhosphorIcons": "npm run transform:iconMap && node scripts/copyPhosphorIcons.js",
+    "buildIcons": "node scripts/iconBuilder.mjs && npm run formatIconFile",
+    "copyPhosphorIcons": "mkdir -p tmp && cp ./framework/components/AIcon/iconMap.js tmp/iconMap.mjs && node scripts/copyPhosphorIcons.mjs && rm -rf ./tmp",
     "copyAndBuildIcons": "npm run copyPhosphorIcons && npm run buildIcons",
     "modifyTokenClasses": "sh ./buildScripts/modifyCDSThemeClasses.sh",
     "addTokens": "rm -rf ./tokens && mkdir ./tokens && cp -r ./node_modules/@ciscodesignsystems/* ./tokens/ && npm run modifyTokenClasses"
