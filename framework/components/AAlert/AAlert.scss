@@ -43,6 +43,7 @@ $alert-close-icon-size: 10.5px;
     }
 
     &.a-alert__icon--close {
+      align-self: center;
       &:focus {
         box-shadow: var(--shadow-focus) var(--control-border-active);
       }
