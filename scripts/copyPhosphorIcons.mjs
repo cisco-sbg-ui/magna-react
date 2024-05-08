@@ -1,7 +1,7 @@
-const fs = require("fs");
-const os = require("os");
-const path = require("path");
-const {iconNameMap} = require("./iconMap");
+import fs from "fs";
+import os from "os";
+import path from "path";
+import {iconNameMap} from "../tmp/iconMap.mjs";
 
 /**
  * This script will copy phospohor icons from downloads into the svg dir.
