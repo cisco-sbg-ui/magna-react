@@ -141,6 +141,7 @@ const Sidebar = ({
           height: "100%",
           overflowY: "scroll"
         }}
+        onClose={() => setIsDrawerOpen(false)}
       >
         <ADrawerContent
           style={{
@@ -149,7 +150,7 @@ const Sidebar = ({
           ref={ref}
           className="pt-0 px-4"
         >
-          <ADrawerTitle onCloseButtonClick={() => setIsDrawerOpen(false)}>
+          <ADrawerTitle>
             <h3 id="title">Magna React</h3>
           </ADrawerTitle>
           <SidebarTree
