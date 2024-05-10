@@ -33,36 +33,25 @@ const ATab = forwardRef(
   ) => {
     const tabRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, tabRef);
-    const [tabId, setTabId] = useState(null);
-    const [isSelected, setIsSelected] = useState(null);
-    const {tabChanged, setTabChanged, vertical, secondary} =
+    const tabIdRef = useRef(tabCounter++);
+    const tabId = tabKey?.toString() || tabIdRef?.current.toString();
+
+    const {selectedTab, setSelectedTab, focusedTab, vertical, secondary} =
       useContext(ATabContext);
+    const isSelected = selectedTab == tabId;
+    const isFocused = focusedTab == tabId;
 
     const menuTab =
-      tabRef.current && tabRef.current.classList.contains("menu-tab")
+      tabRef.current &&
+      tabRef.current.classList.contains("a-tab-group__menu-tab")
         ? tabRef.current
         : null;
 
     useEffect(() => {
-      if (tabKey) return;
-      if (!tabId) {
-        const index = tabCounter++;
-        setTabId(index);
-        if (selected) {
-          setTabChanged(index);
-        }
+      if (selected) {
+        setSelectedTab(tabId);
       }
-
-      setIsSelected(tabChanged === tabId);
-    }, [setIsSelected, selected, setTabChanged, tabChanged, tabId, tabKey]);
-
-    useEffect(() => {
-      if (tabKey) return;
-      if (!selected && isSelected) {
-        setTabChanged(-1);
-        setIsSelected(false);
-      }
-    }, [selected, tabKey]); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [selected, setSelectedTab, tabId]);
 
     let className = "a-tab-group__tab";
 
@@ -72,6 +61,10 @@ const ATab = forwardRef(
       if (vertical) {
         className += " a-tab-group__tab--selected--vertical";
       }
+    }
+
+    if (isFocused) {
+      className += " a-tab-group__tab--focused";
     }
 
     if (vertical) {
@@ -86,7 +79,8 @@ const ATab = forwardRef(
       className += ` ${propsClassName}`;
     }
 
-    //If in controlled mode, handle previously selected class.
+    // If in controlled mode, handle previously selected class when interacting
+    // with the overflow menu.
     const handleSiblingSelectedClass = () => {
       const parent = combinedRef.current.parentNode;
       const previousSelectedEl = parent.querySelector("[aria-selected=true]");
@@ -96,36 +90,23 @@ const ATab = forwardRef(
       }
     };
 
-    let TagName = "div";
+    let TagName = "button";
+
     const props = {
       ...rest,
-      "aria-selected": Boolean((tabKey && selected) || isSelected),
+      "data-tabid": tabId,
+      "aria-selected": isSelected,
+      tabIndex: isSelected ? 1 : -1,
       ref: combinedRef,
       className,
       onClick: (e) => {
-        !tabKey && setTabChanged(tabId);
+        setSelectedTab(tabId);
         if (menuTab) {
           handleSiblingSelectedClass();
         }
         onClick && onClick(e);
       },
-      onKeyDown: (e) => {
-        if (!href && [keyCodes.enter].includes(e.keyCode)) {
-          e.preventDefault();
-          !tabKey && setTabChanged(tabId);
-          if (menuTab) {
-            handleSiblingSelectedClass();
-          }
-          onClick && onClick(e);
-        } else {
-          onKeyDown && onKeyDown(e);
-        }
-      },
-      onKeyUp: (e) => {
-        onKeyUp && onKeyUp(e);
-      },
-      role: "tab",
-      tabIndex: 0
+      role: "tab"
     };
 
     if (href) {
