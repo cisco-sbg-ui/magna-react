@@ -13,7 +13,7 @@ import ATabContext from "./ATabContext";
 import {useCombinedRefs} from "../../utils/hooks";
 import "./ATabs.scss";
 
-const selectedNotMenu = (el) => {
+const isTabSelectedAndNotMenuTab = (el) => {
   return (
     el?.classList?.contains("a-tab-group__tab--selected") &&
     el.getAttribute("data-set") !== "menu"
@@ -29,7 +29,7 @@ const getNextFocusId = (direction, containerEl, focusedEl) => {
     while (
       !toFocus ||
       toFocus?.classList?.contains("hide") ||
-      selectedNotMenu(toFocus)
+      isTabSelectedAndNotMenuTab(toFocus)
     ) {
       if (!toFocus) {
         toFocus = containerEl.lastChild;
@@ -45,7 +45,7 @@ const getNextFocusId = (direction, containerEl, focusedEl) => {
     while (
       !toFocus ||
       toFocus?.classList?.contains("hide") ||
-      selectedNotMenu(toFocus)
+      isTabSelectedAndNotMenuTab(toFocus)
     ) {
       if (!toFocus) {
         toFocus = containerEl.firstChild;
