@@ -79,10 +79,18 @@ $tab-heading-margin: 0;
     &:active,
     &:focus,
     &:hover,
-    &--focused {
+    &--focused:not(.a-tab-group__tab--vertical) {
       color: var(--base-text-default);
 
       @include tab-bar(
+        $tab-bottom-bar-height,
+        var(--brand-accent-border-hover)
+      );
+    }
+
+    &--focused.a-tab-group__tab--vertical {
+      color: var(--base-text-default);
+      @include vertical-tab-bar(
         $tab-bottom-bar-height,
         var(--brand-accent-border-hover)
       );
