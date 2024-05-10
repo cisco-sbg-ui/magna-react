@@ -106,7 +106,7 @@ describe("<ATabGroup />", () => {
     cy.get("[data-set=menu]").click();
 
     cy.get(".a-menu").should("exist");
-    cy.get(".a-list-item").first().next().type("{enter}", {force: true});
+    cy.get(".a-list-item").first().next().type("{enter}");
     cy.get("body").click(0, 0);
     cy.get("[data-set=menu]").click();
 
