@@ -138,8 +138,11 @@ import AToast from "./components/AToast";
 import {ATooltip} from "./components/ATooltip";
 import ATree from "./components/ATree";
 import ATriggerTooltip from "./components/ATriggerTooltip";
-import {useABreakpoint} from "./components/ABreakpoint";
 import {useAToaster, AToastPlate} from "./components/AToaster";
+
+import useABreakpoint, {
+  breakpointThresholds
+} from "./hooks/useABreakpoint/useABreakpoint";
 import useEscapeKeydown from "./hooks/useEscapeKeydown/useEscapeKeydown";
 import useFocusTrap from "./hooks/useFocusTrap/useFocusTrap";
 import useKeydown from "./hooks/useKeydown/useKeydown";
@@ -275,6 +278,7 @@ export {
   ATooltip,
   ATree,
   ATriggerTooltip,
+  breakpointThresholds,
   useABreakpoint,
   useADateRange,
   useDrawerToggle,

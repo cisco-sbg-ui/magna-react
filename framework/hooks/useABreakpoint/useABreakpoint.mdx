@@ -2,13 +2,27 @@
 name: useABreakPoint
 route: /hooks/use-a-breakpoint
 components: useABreakpoint
-title: useABreakPoint
-sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/ABreakpoint
+title: useABreakpoint
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/hooks/useABreakpoint
 ---
 
 ## Usage
 
+### Import
+
 <ComponentImport components="useABreakpoint" />
+
+### Thresholds
+
+Media queries are set for the following breakpoints:
+
+- xs: 420
+- sm: 960
+- md: 1280
+- lg: 1680
+- xl: 2080
+
+These are exported as an object named `breakpointThresholds`
 
 ### Usage
 
@@ -16,7 +30,7 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
   code={`() => {
   const breakpointHelper = useABreakpoint();
   return (
-    <p>
+    <>
       {breakpointHelper.xs && "Extra Small"}
       {breakpointHelper.sm && "Small"}
       {breakpointHelper.md && "Medium"}
@@ -27,7 +41,7 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
       <pre><code>
       {JSON.stringify(breakpointHelper, null, 2)}
       </code></pre>
-    </p>
+    </>
   );
 }
 `}
