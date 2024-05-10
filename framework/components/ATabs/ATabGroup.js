@@ -77,6 +77,7 @@ const ATabGroup = forwardRef(
     const [menuItems, setMenuItems] = useState([]);
     const tabGroupRef = useRef(null);
     const tabContainerRef = useRef(null);
+    const overflowRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, tabGroupRef);
 
     const setSelectedTab = useCallback(
@@ -93,7 +94,7 @@ const ATabGroup = forwardRef(
       }
 
       //Overflow tab
-      const tab = combinedRef.current.querySelector(".menu-tab");
+      const tab = combinedRef.current.querySelector(".a-tab-group__menu-tab");
 
       if (!tab) {
         return;
@@ -130,7 +131,7 @@ const ATabGroup = forwardRef(
         //If items' total width falls under overall container width, skip
         if (tabWrapper.offsetWidth >= overflowLimit + tabWidth) {
           overflowLimit += tabWidth;
-        } else if (!classList.includes("menu-tab")) {
+        } else if (!classList.includes("a-tab-group__menu-tab")) {
           //If items' total width exceeds overall container width, hide and push to overflow menu
           item.classList.add("hide");
           overflowMenuItems.push(i);
@@ -223,6 +224,8 @@ const ATabGroup = forwardRef(
         onKeyDown={(e) => {
           e.stopPropagation();
 
+          console.log(e);
+
           const focusedEl = tabContainerRef.current?.querySelector(
             `[data-tabid='${focusedTab}']`
           );
@@ -238,7 +241,12 @@ const ATabGroup = forwardRef(
 
             if (elementToFocus.getAttribute("data-set") === "menu") {
               elementToFocus.click();
-            } else if (selectOnArrow && elementToFocus.tagName !== "A") {
+            } else {
+              overflowRef.current?.setMenuOpen(false);
+              combinedRef.current?.focus();
+            }
+
+            if (selectOnArrow && elementToFocus.tagName !== "A") {
               elementToFocus.click();
             }
           } else if (["Enter"].includes(e.key)) {
@@ -251,7 +259,10 @@ const ATabGroup = forwardRef(
             <ATabContext.Provider value={tabContext}>
               {children}
               {!vertical && (
-                <OverflowMenuTab tabGroupRef={combinedRef}>
+                <OverflowMenuTab
+                  tabGroupRef={combinedRef}
+                  passthroughRef={overflowRef}
+                >
                   {renderChildren}
                 </OverflowMenuTab>
               )}

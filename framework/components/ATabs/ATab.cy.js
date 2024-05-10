@@ -59,40 +59,40 @@ describe("<ATabGroup />", () => {
   });
 
   it("should have visible overflow tab", () => {
-    cy.mount(<ATabTest />);
-    cy.get(".menu-tab").should("be.visible");
+    cy.mount(<ATabTest width={"15rem"} />);
+    cy.get(".a-tab-group__menu-tab").should("be.visible");
   });
 
   it("overflow tab should be populated with remaining items", () => {
-    cy.mount(<ATabTest />);
-    cy.get(".menu-tab").click();
-    cy.get(".a-list-item").first().should("be.visible").contains("Six");
+    cy.mount(<ATabTest width={"15rem"} />);
+    cy.get(".a-tab-group__menu-tab").click();
+    cy.get(".a-list-item").last().should("be.visible").contains("Seven");
   });
 
   it("should move more items into overflow menu after resize", () => {
     cy.mount(<ATabTest width={"20rem"} />);
-    cy.get(".menu-tab").click();
+    cy.get(".a-tab-group__menu-tab").click();
     cy.get(".a-list-item").first().should("be.visible").contains("Four");
   });
 
   it("should move even more items into overflow menu after resize", () => {
     cy.mount(<ATabTest width={"15rem"} />);
-    cy.get(".menu-tab").click();
+    cy.get(".a-tab-group__menu-tab").click();
     cy.get(".a-list-item").first().should("be.visible").contains("Three");
   });
 
   it("should remove overflow menu tab if resized", () => {
     cy.mount(<ATabTest width={"100%"} />);
-    cy.get(".menu-tab").should("not.be.visible");
+    cy.get(".a-tab-group__menu-tab").should("not.be.visible");
   });
 
   it("should maintain highlighted state if overflow menu item is selected", () => {
     cy.mount(<ATabTest width={"15rem"} />);
-    cy.get(".menu-tab").click();
+    cy.get(".a-tab-group__menu-tab").click();
     cy.get(".a-list-item")
       .last()
       .click()
-      .get(".menu-tab")
+      .get(".a-tab-group__menu-tab")
       .click()
       .get(".a-menu-base")
       .get(".a-list-item--selected")
@@ -118,7 +118,7 @@ describe("<ATabGroup />", () => {
 
   it("should not render overflow tab if in vertical position", () => {
     cy.mount(<ATabTest width={"15rem"} vertical />);
-    cy.get(".menu-tab").should("not.exist");
+    cy.get(".a-tab-group__menu-tab").should("not.exist");
   });
 });
 

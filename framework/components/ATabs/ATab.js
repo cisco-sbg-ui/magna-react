@@ -34,8 +34,6 @@ const ATab = forwardRef(
     const tabRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, tabRef);
     const tabIdRef = useRef(tabCounter++);
-    //  const [tabId, setTabId] = useState(null);
-    //const [isSelected, setIsSelected] = useState(null);
     const tabId = tabKey?.toString() || tabIdRef?.current.toString();
 
     const {selectedTab, setSelectedTab, focusedTab, vertical, secondary} =
@@ -44,7 +42,8 @@ const ATab = forwardRef(
     const isFocused = focusedTab == tabId;
 
     const menuTab =
-      tabRef.current && tabRef.current.classList.contains("menu-tab")
+      tabRef.current &&
+      tabRef.current.classList.contains("a-tab-group__menu-tab")
         ? tabRef.current
         : null;
 
@@ -91,12 +90,13 @@ const ATab = forwardRef(
       }
     };
 
-    let TagName = "div";
+    let TagName = "button";
 
     const props = {
       ...rest,
       "data-tabid": tabId,
       "aria-selected": isSelected,
+      tabIndex: isSelected ? 1 : -1,
       ref: combinedRef,
       className,
       onClick: (e) => {

@@ -3,12 +3,14 @@ import ATab from "./ATab";
 import AIcon from "../AIcon";
 import AMenu from "../AMenu";
 
-const OverflowMenuTab = ({tabGroupRef, children}) => {
+const OverflowMenuTab = ({tabGroupRef, passthroughRef, children}) => {
   const menuRef = useRef(null);
   const tabRef = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuIcon = menuOpen ? "caret-up" : "caret-down";
   const hasSelected = useRef(false);
+
+  passthroughRef.current = {setMenuOpen};
 
   //Force remove tab styles on nested children with links.
   useEffect(() => {
@@ -56,7 +58,7 @@ const OverflowMenuTab = ({tabGroupRef, children}) => {
       <ATab
         ref={tabRef}
         data-set="menu"
-        className={`menu-tab ${!children.length ? "hide" : ""}`}
+        className={`a-tab-group__menu-tab ${!children.length ? "hide" : ""}`}
         selected={menuOpen || hasSelected.current}
         onClick={() => {
           setMenuOpen(!menuOpen);
