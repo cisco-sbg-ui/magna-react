@@ -224,8 +224,6 @@ const ATabGroup = forwardRef(
         onKeyDown={(e) => {
           e.stopPropagation();
 
-          console.log(e);
-
           const focusedEl = tabContainerRef.current?.querySelector(
             `[data-tabid='${focusedTab}']`
           );
