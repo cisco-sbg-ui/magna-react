@@ -1,3 +1,5 @@
+import React from "react";
+
 export const getRoundedBoundedClientRect = (el) => {
   const rect = el.getBoundingClientRect();
   return {
