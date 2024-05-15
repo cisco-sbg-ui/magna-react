@@ -3,15 +3,19 @@ import React, {forwardRef} from "react";
 import "../AActivityTimeline.scss";
 
 const AActivityTimelineListItem = forwardRef(
-  ({icon, children, status}, ref) => {
+  ({icon, children, className: propsClassName, status, ...rest}, ref) => {
     let className = "a-activity-timeline__list-item";
 
     if (status === "complete") {
       className += " a-activity-timeline__list-item--complete";
     }
 
+    if (propsClassName) {
+      className += ` ${propsClassName}`;
+    }
+
     return (
-      <li className={className} ref={ref}>
+      <li className={className} ref={ref} {...rest}>
         {icon}
         <div className="flex-grow-1">{children}</div>
       </li>

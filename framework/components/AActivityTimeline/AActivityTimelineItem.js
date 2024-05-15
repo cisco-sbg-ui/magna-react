@@ -27,6 +27,7 @@ const ICON_STATUS_MAP = {
 const AActivityTimelineItem = forwardRef((props, ref) => {
   const {
     children,
+    className: propsClassName,
     defaultCollapsed,
     isCollapsed: propsIsCollapsed,
     isCollapsible,
@@ -34,7 +35,8 @@ const AActivityTimelineItem = forwardRef((props, ref) => {
     status = "neutral",
     time,
     title,
-    withDivider
+    withDivider,
+    ...rest
   } = props;
 
   const isDividerVisibilityControlled = props.hasOwnProperty("withDivider");
@@ -65,7 +67,13 @@ const AActivityTimelineItem = forwardRef((props, ref) => {
   );
 
   return (
-    <AActivityTimelineListItem icon={statusIcon} status={status} ref={ref}>
+    <AActivityTimelineListItem
+      icon={statusIcon}
+      status={status}
+      ref={ref}
+      className={propsClassName}
+      {...rest}
+    >
       {isCollapsible ? (
         <AActivityTimelineItemHeaderToggleButton
           isCollapsed={isCollapsed}
