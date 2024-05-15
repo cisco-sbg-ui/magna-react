@@ -2,6 +2,14 @@ import {useState} from "react";
 
 import {useIsomorphicLayoutEffect} from "../../utils/hooks";
 
+export const breakpointThresholds = {
+  xs: 420,
+  sm: 960,
+  md: 1280,
+  lg: 1680,
+  xl: 2080
+};
+
 const useABreakpoint = () => {
   const [resizeTimeout, setResizeTimeout] = useState(0);
   const [height, setHeight] = useState(0);
@@ -12,14 +20,6 @@ const useABreakpoint = () => {
 
     update();
   }, []);
-
-  const thresholds = {
-    xs: 479,
-    sm: 767,
-    md: 992,
-    lg: 1200,
-    xl: 1440
-  };
 
   const scrollBarWidth = 20;
 
@@ -47,11 +47,12 @@ const useABreakpoint = () => {
     );
   };
 
-  const xs = width < thresholds.xs;
-  const sm = width < thresholds.sm && !xs;
-  const md = width < thresholds.md - scrollBarWidth && !(sm || xs);
-  const lg = width < thresholds.lg - scrollBarWidth && !(md || sm || xs);
-  const xl = width >= thresholds.lg - scrollBarWidth;
+  const xs = width < breakpointThresholds.xs;
+  const sm = width < breakpointThresholds.sm && !xs;
+  const md = width < breakpointThresholds.md - scrollBarWidth && !(sm || xs);
+  const lg =
+    width < breakpointThresholds.lg - scrollBarWidth && !(md || sm || xs);
+  const xl = width >= breakpointThresholds.lg - scrollBarWidth;
   const name = xs ? "xs" : sm ? "sm" : md ? "md" : lg ? "lg" : "xl";
 
   return {
