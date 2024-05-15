@@ -253,6 +253,11 @@ $btn-transition: color $transition-duration--extra-fast
       background-color: transparent;
       color: var(--interact-text-disabled);
     }
+
+    &.a-button--icon {
+      padding: 10px !important;
+      height: auto !important;
+    }
   }
 
   &.a-button--tertiary-alt {

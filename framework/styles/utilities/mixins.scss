@@ -113,6 +113,11 @@
 // -----------------------------------------------------------------------------
 // Button sizes
 // -----------------------------------------------------------------------------
+
+.remove-padding {
+  padding: 0;
+  margin: 0 12px;
+}
 @mixin medium-button {
   height: 34px;
   padding: 8px 12px;
@@ -122,6 +127,11 @@
     svg.a-icon {
       width: 16px;
     }
+  }
+
+  &.a-button--tertiary {
+    height: 20px;
+    @extend .remove-padding;
   }
 }
 
@@ -135,5 +145,9 @@
     svg.a-icon {
       width: 14px;
     }
+  }
+  &.a-button--tertiary {
+    height: 18px;
+    @extend .remove-padding;
   }
 }
