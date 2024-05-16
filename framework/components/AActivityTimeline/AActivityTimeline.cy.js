@@ -38,6 +38,30 @@ describe("<AActivityTimeline />", () => {
     });
   });
 
+  it("should always render a left border if the prop for it is passed", () => {
+    cy.mount(
+      <UncontrolledTimelineTest>
+        <AActivityTimelineItem time="Mock time" title="Mock title" />
+        <AActivityTimelineItem time="Mock time" title="Mock title" />
+        <AActivityTimelineItem
+          time="Mock time"
+          title="Mock title"
+          withConnector={true} // If not passed, the left border would be hidden by default since this is the last item
+        />
+      </UncontrolledTimelineTest>
+    );
+
+    // Every timeline item, including the last one, should have the connector
+    cy.get(".a-activity-timeline__list-item").then(($el) => {
+      // https://stackoverflow.com/a/75887385
+      const subject = $el[0];
+      const window = subject.ownerDocument.defaultView;
+      const before = window.getComputedStyle(subject, ":before");
+      const borderValue = before.getPropertyValue("border-left");
+      expect(borderValue).contains(DEFAULT_BORDER_STYLE);
+    });
+  });
+
   it("should render a blue left border if the item is complete", () => {
     cy.mount(
       <UncontrolledTimelineTest>

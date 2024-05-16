@@ -35,6 +35,7 @@ const AActivityTimelineItem = forwardRef((props, ref) => {
     status = "neutral",
     time,
     title,
+    withConnector,
     withDivider,
     ...rest
   } = props;
@@ -70,6 +71,7 @@ const AActivityTimelineItem = forwardRef((props, ref) => {
     <AActivityTimelineListItem
       icon={statusIcon}
       status={status}
+      withConnector={withConnector}
       ref={ref}
       className={propsClassName}
       {...rest}
@@ -166,6 +168,21 @@ AActivityTimelineItem.propTypes = {
    * title text. Can be a string or any other valid React Element.
    */
   time: PropTypes.elementType,
+
+  /**
+   * Determines if the item should have the vertical connector underneath the
+   * timeline item bullet circle.
+   *
+   * If not explicitly passed, then every item gets a connector except for the
+   * very last one in the list.
+   *
+   * Passing this prop can be useful if you're rendering a paginated list of data
+   * and the last item in the user's current view of the list may not actually be
+   * the very last item in the list (since it is paginated). In such cases, you
+   * would want to show the connector to indicate that the timeline is still ongoing.
+   * For this, you can explicitly pass `withConnector={true}` to guarantee it appears.
+   */
+  withConnector: PropTypes.bool,
 
   /**
    * Determines if the item should have a divider at the bottom.

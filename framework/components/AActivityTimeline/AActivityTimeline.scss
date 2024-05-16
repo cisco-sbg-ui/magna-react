@@ -17,9 +17,11 @@
     }
 
     // The last list item should not have a vertical bar
-    // unless it is the only item in the list
-    &:not(:last-child)::before,
-    &:only-child::before {
+    // unless it is the only item in the list or its being
+    // explicitly styled that way
+    &--connected::before,
+    &:not(&--disconnected):not(:last-child)::before,
+    &:not(&--disconnected):only-child::before {
       content: "";
       position: absolute;
       left: 12px;
@@ -28,11 +30,9 @@
       border-left: 2px solid var(--base-border-default);
     }
 
-    &--complete {
-      &:not(:last-child)::before,
-      &:only-child::before {
-        border-left-color: var(--interact-border-default);
-      }
+    &--complete:not(&--disconnected):not(:last-child)::before,
+    &--complete:not(&--disconnected):only-child::before {
+      border-left-color: var(--interact-border-default);
     }
 
     &__header {
