@@ -111,3 +111,12 @@ Cypress.Commands.add("hoverATooltip", (withClick = false) => {
 Cypress.Commands.add("clickATooltip", (withClick = false) => {
   return cy.getByAriaLabel("information icon").trigger("click");
 });
+
+Cypress.Commands.add("getPseudoElementStyle", ($el, pseudoElement, style) => {
+  // https://stackoverflow.com/a/75887385
+  const subject = $el[0];
+  const window = subject.ownerDocument.defaultView;
+  const pseudoElementStyles = window.getComputedStyle(subject, pseudoElement);
+
+  return pseudoElementStyles.getPropertyValue(style);
+});
