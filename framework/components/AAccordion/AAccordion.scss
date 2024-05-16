@@ -46,6 +46,11 @@ $accordion-divider-border-width: thin;
       var(--control-border-default);
   }
   */
+    &--state-collapsed {
+      .a-accordion__body {
+        display: none;
+      }
+    }
 
     &--is-focused .a-accordion__header {
       border: $border-width solid;
@@ -154,7 +159,7 @@ $accordion-divider-border-width: thin;
 .a-app--animated .a-accordion {
   .a-accordion__card {
     .a-accordion__body {
-      overflow: hidden;
+      display: block;
       padding: 0 14px;
       visibility: visible;
       opacity: 1;
