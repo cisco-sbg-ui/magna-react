@@ -19,13 +19,13 @@ describe("<AActivityTimeline />", () => {
       if (index < $list.length - 1) {
         expect(borderValue).contains(DEFAULT_BORDER_STYLE);
       } else {
-        // The very last item should not have a left border
+        // The very last item should not have a timeline item connector
         expect(borderValue).contains("0");
       }
     });
   });
 
-  it("should render a left border if there is only one timeline item", () => {
+  it("should render a timeline item connector if there is only one timeline item", () => {
     cy.mount(<UncontrolledTimelineTest itemCount={1} />);
 
     cy.get(".a-activity-timeline__list-item").then(($el) => {
@@ -38,7 +38,7 @@ describe("<AActivityTimeline />", () => {
     });
   });
 
-  it("should always render a left border if the prop for it is passed", () => {
+  it("should always render a timeline item connector if the prop for it is passed", () => {
     cy.mount(
       <UncontrolledTimelineTest>
         <AActivityTimelineItem time="Mock time" title="Mock title" />
@@ -46,7 +46,7 @@ describe("<AActivityTimeline />", () => {
         <AActivityTimelineItem
           time="Mock time"
           title="Mock title"
-          withConnector={true} // If not passed, the left border would be hidden by default since this is the last item
+          withConnector={true} // If not passed, the timeline item connector would be hidden by default since this is the last item
         />
       </UncontrolledTimelineTest>
     );
@@ -62,7 +62,7 @@ describe("<AActivityTimeline />", () => {
     });
   });
 
-  it("should render a blue left border if the item is complete", () => {
+  it("should render a blue timeline item connector if the item is complete", () => {
     cy.mount(
       <UncontrolledTimelineTest>
         <AActivityTimelineItem
