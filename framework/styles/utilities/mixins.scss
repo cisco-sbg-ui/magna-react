@@ -114,7 +114,7 @@
 // Button sizes
 // -----------------------------------------------------------------------------
 
-.remove-padding {
+.a-remove-padding {
   padding: 0;
 }
 
@@ -131,7 +131,7 @@
 
   &.a-button--inline-btn {
     height: 20px;
-    @extend .remove-padding;
+    @extend .a-remove-padding;
   }
 }
 
@@ -148,6 +148,6 @@
   }
   &.a-button--inline-btn {
     height: 18px;
-    @extend .remove-padding;
+    @extend .a-remove-padding;
   }
 }
