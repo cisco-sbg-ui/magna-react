@@ -182,7 +182,11 @@ AButton.propTypes = {
   /**
    * Automatically add a loading spinner to the button
    */
-  loading: PropTypes.bool
+  loading: PropTypes.bool,
+  /**
+   * Removes padding on any button, defaults to false
+   */
+  noPadding: PropTypes.bool
 };
 
 AButton.displayName = "AButton";
