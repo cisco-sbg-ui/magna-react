@@ -27,6 +27,7 @@ const AButton = forwardRef(
       type = "button",
       value,
       loading = false,
+      noPadding = false,
       ...rest
     },
     ref
@@ -67,6 +68,10 @@ const AButton = forwardRef(
 
     if (icon) {
       className += " a-button--icon";
+    }
+
+    if (noPadding) {
+      className += " a-button--inline-btn";
     }
 
     if (propsClassName) {
@@ -177,7 +182,11 @@ AButton.propTypes = {
   /**
    * Automatically add a loading spinner to the button
    */
-  loading: PropTypes.bool
+  loading: PropTypes.bool,
+  /**
+   * Removes padding on any button, defaults to false
+   */
+  noPadding: PropTypes.bool
 };
 
 AButton.displayName = "AButton";
