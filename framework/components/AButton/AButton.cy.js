@@ -26,4 +26,14 @@ describe("<AButton/>", () => {
 
     cy.get(".a-button .a-icon").should("be.visible");
   });
+
+  it("should have no padding", () => {
+    cy.mount(
+      <AButton noPadding tertiary>
+        No padding
+      </AButton>
+    );
+
+    cy.get(".a-button").should("have.class", "a-button--inline-btn");
+  });
 });
