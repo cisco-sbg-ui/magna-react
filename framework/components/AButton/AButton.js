@@ -27,6 +27,7 @@ const AButton = forwardRef(
       type = "button",
       value,
       loading = false,
+      noPadding = false,
       ...rest
     },
     ref
@@ -67,6 +68,10 @@ const AButton = forwardRef(
 
     if (icon) {
       className += " a-button--icon";
+    }
+
+    if (noPadding) {
+      className += " a-button--inline-btn";
     }
 
     if (propsClassName) {

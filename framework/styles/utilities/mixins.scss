@@ -116,8 +116,8 @@
 
 .remove-padding {
   padding: 0;
-  margin: 0 12px;
 }
+
 @mixin medium-button {
   height: 34px;
   padding: 8px 12px;
@@ -129,7 +129,7 @@
     }
   }
 
-  &.a-button--tertiary {
+  &.a-button--inline-btn {
     height: 20px;
     @extend .remove-padding;
   }
@@ -146,7 +146,7 @@
       width: 14px;
     }
   }
-  &.a-button--tertiary {
+  &.a-button--inline-btn {
     height: 18px;
     @extend .remove-padding;
   }
