@@ -10,35 +10,49 @@ describe("<AActivityTimeline />", () => {
     cy.mount(<UncontrolledTimelineTest itemCount={5} />);
 
     cy.get(".a-activity-timeline__list-item").each(($el, index, $list) => {
-      // https://stackoverflow.com/a/75887385
-      const subject = $el[0];
-      const window = subject.ownerDocument.defaultView;
-      const before = window.getComputedStyle(subject, ":before");
-      const borderValue = before.getPropertyValue("border-left");
-
-      if (index < $list.length - 1) {
-        expect(borderValue).contains(DEFAULT_BORDER_STYLE);
-      } else {
-        // The very last item should not have a left border
-        expect(borderValue).contains("0");
-      }
+      cy.getPseudoElementStyle($el, ":before", "border-left").then(
+        (borderStyle) => {
+          expect(borderStyle).contains(
+            index < $list.length - 1 ? DEFAULT_BORDER_STYLE : "0"
+          );
+        }
+      );
     });
   });
 
-  it("should render a left border if there is only one timeline item", () => {
+  it("should render a timeline item connector if there is only one timeline item", () => {
     cy.mount(<UncontrolledTimelineTest itemCount={1} />);
 
-    cy.get(".a-activity-timeline__list-item").then(($el) => {
-      // https://stackoverflow.com/a/75887385
-      const subject = $el[0];
-      const window = subject.ownerDocument.defaultView;
-      const before = window.getComputedStyle(subject, ":before");
-      const borderValue = before.getPropertyValue("border-left");
-      expect(borderValue).contains(DEFAULT_BORDER_STYLE);
+    cy.get(".a-activity-timeline__list-item")
+      .then(($el) => cy.getPseudoElementStyle($el, ":before", "border-left"))
+      .then((borderStyle) => {
+        expect(borderStyle).contains(DEFAULT_BORDER_STYLE);
+      });
+  });
+
+  it("should always render a timeline item connector if the prop for it is passed", () => {
+    cy.mount(
+      <UncontrolledTimelineTest>
+        <AActivityTimelineItem time="Mock time" title="Mock title" />
+        <AActivityTimelineItem time="Mock time" title="Mock title" />
+        <AActivityTimelineItem
+          time="Mock time"
+          title="Mock title"
+          withConnector={true} // If not passed, the timeline item connector would be hidden by default since this is the last item
+        />
+      </UncontrolledTimelineTest>
+    );
+
+    cy.get(".a-activity-timeline__list-item").each(($el, index, $list) => {
+      cy.getPseudoElementStyle($el, ":before", "border-left").then(
+        (borderStyle) => {
+          expect(borderStyle).contains(DEFAULT_BORDER_STYLE);
+        }
+      );
     });
   });
 
-  it("should render a blue left border if the item is complete", () => {
+  it("should render a blue timeline item connector if the item is complete", () => {
     cy.mount(
       <UncontrolledTimelineTest>
         <AActivityTimelineItem
@@ -49,14 +63,11 @@ describe("<AActivityTimeline />", () => {
       </UncontrolledTimelineTest>
     );
 
-    cy.get(".a-activity-timeline__list-item").then(($el) => {
-      // https://stackoverflow.com/a/75887385
-      const subject = $el[0];
-      const window = subject.ownerDocument.defaultView;
-      const before = window.getComputedStyle(subject, ":before");
-      const borderValue = before.getPropertyValue("border-left");
-      expect(borderValue).contains(COMPLETE_STATUS_BORDER_STYLE);
-    });
+    cy.get(".a-activity-timeline__list-item")
+      .then(($el) => cy.getPseudoElementStyle($el, ":before", "border-left"))
+      .then((borderStyle) => {
+        expect(borderStyle).contains(COMPLETE_STATUS_BORDER_STYLE);
+      });
   });
 
   it("should render the neutral icon if the variant cannot be resolved", () => {
