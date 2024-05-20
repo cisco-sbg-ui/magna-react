@@ -51,6 +51,9 @@ return (
   <div>
     <AButton
       ref={button1Ref}
+      dropdown
+      open={open1}
+      secondary
       onClick={() => setOpen1(!open1)}
       aria-haspopup="true">
       Pivot Menu
@@ -101,7 +104,6 @@ return (
     open={open1}
     placement="bottom"
     onClose={() => setOpen1(false)}
-    pointer
     className="py-3">
     <AListItem twoLine className="px-3 h3 my-0 pb-1">
       <AListItemTitle>Bottom</AListItemTitle>
