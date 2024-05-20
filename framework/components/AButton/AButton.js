@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useContext, useState} from "react";
+import React, {forwardRef, useContext} from "react";
 
 import AButtonGroupContext from "../AButtonGroup/AButtonGroupContext";
 import ASpinner from "../ASpinner";
@@ -126,7 +126,7 @@ const AButton = forwardRef(
       <TagName {...props}>
         {loading && <ASpinner size="small" />}
         {children}
-        {dropdown && <AIcon className="ml-3">{dropdownIcon}</AIcon>}
+        {dropdown && <AIcon className="ml-1">{dropdownIcon}</AIcon>}
       </TagName>
     );
   }
