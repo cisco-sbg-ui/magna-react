@@ -122,11 +122,12 @@
   height: 34px;
   padding: 8px 12px;
 
+  svg.a-icon {
+    width: 16px;
+  }
+
   &.a-button--icon {
     padding: 8.25px;
-    svg.a-icon {
-      width: 16px;
-    }
   }
 
   &.a-button--inline-btn {
@@ -140,11 +141,11 @@
   padding: 4px 8px;
   font-size: $font-size--sm;
 
+  svg.a-icon {
+    width: 14px;
+  }
   &.a-button--icon {
     padding: 8.25px;
-    svg.a-icon {
-      width: 14px;
-    }
   }
   &.a-button--inline-btn {
     height: 18px;
