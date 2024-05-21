@@ -3,11 +3,12 @@ import {useState} from "react";
 import {useIsomorphicLayoutEffect} from "../../utils/hooks";
 
 export const breakpointThresholds = {
-  xs: 420,
-  sm: 960,
-  md: 1280,
-  lg: 1680,
-  xl: 2080
+  xs: 479,
+  sm: 767,
+  md: 960,
+  lg: 1280,
+  xl: 1680,
+  xxl: 2080
 };
 
 const useABreakpoint = () => {
