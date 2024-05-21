@@ -3,6 +3,7 @@ import React, {forwardRef, useContext} from "react";
 
 import AButtonGroupContext from "../AButtonGroup/AButtonGroupContext";
 import ASpinner from "../ASpinner";
+import AIcon from "../AIcon";
 
 import "./AButton.scss";
 
@@ -28,6 +29,8 @@ const AButton = forwardRef(
       value,
       loading = false,
       noPadding = false,
+      open = false,
+      dropdown = false,
       ...rest
     },
     ref
@@ -117,10 +120,13 @@ const AButton = forwardRef(
       props.value = value;
     }
 
+    const dropdownIcon = open ? "caret-up" : "caret-down";
+
     return (
       <TagName {...props}>
         {loading && <ASpinner size="small" />}
         {children}
+        {dropdown && <AIcon className="ml-1">{dropdownIcon}</AIcon>}
       </TagName>
     );
   }
@@ -163,6 +169,14 @@ AButton.propTypes = {
    * Toggles the `tertiaryAlt` style variant.
    */
   tertiaryAlt: PropTypes.bool,
+  /**
+   * Applies dropdown icon style
+   */
+  dropdown: PropTypes.bool,
+  /**
+   * Required with dropdown prop to toggle dropdown icon
+   */
+  open: PropTypes.bool,
   /**
    * The button type.
    */

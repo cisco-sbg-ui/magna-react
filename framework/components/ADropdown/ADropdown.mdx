@@ -1,0 +1,387 @@
+---
+name: Dropdown
+route: /components/dropdown
+components: ADropdown
+title: ADropdown
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framework/components/ADropdown
+---
+
+## Usage
+
+### Import
+
+<ComponentImport components="ADropdown" />
+
+<AAlert dismissable={false}>
+  It is necessary for `ADropdown` to be a descendant of `AApp` for mounting.
+</AAlert>
+
+### Usage
+
+For more advanced use cases of dropdown see `AMenu` and `AButton`
+
+<Playground
+  code={`<>
+  <div className="d-flex gap-3 flex-wrap mb-3">
+    <ADropdown title="Dropdown">
+      <>
+        <AListItem twoLine className="px-3 h3 my-0 pb-1">
+           <AListItemTitle>Bottom</AListItemTitle>
+        </AListItem>
+        <AListItem onClick={() => alert("alert1")} className="pl-3 py-1">
+          Example
+        </AListItem>
+        <AListItem onClick={() => alert("alert2")} className="pl-3 py-1">
+          Example
+        </AListItem>
+        <AListItem
+          onClick={() => alert("should not fire")}
+          className="pl-3 py-1"
+          disabled>
+          Disabled Item
+        </AListItem>
+        <AListItemDivider className="mb-0 mt-3" />
+        <AListItem twoLine>
+          <AListItemContent className="pb-0">
+            <a onClick={() => alert("alert3")}>Connect</a>
+          </AListItemContent>
+        </AListItem>
+      </>
+    </ADropdown>
+    <ADropdown secondary title="Dropdown">
+      <>
+        <AListItem twoLine className="px-3 h3 my-0 pb-1">
+          <AListItemTitle>Bottom</AListItemTitle>
+        </AListItem>
+        <AListItem onClick={() => alert("alert1")} className="pl-3 py-1">
+          Example
+        </AListItem>
+        <AListItem onClick={() => alert("alert2")} className="pl-3 py-1">
+          Example
+        </AListItem>
+        <AListItem
+          onClick={() => alert("should not fire")}
+          className="pl-3 py-1"
+          disabled>
+          Disabled Item
+        </AListItem>
+        <AListItemDivider className="mb-0 mt-3" />
+        <AListItem twoLine>
+          <AListItemContent className="pb-0">
+            <a onClick={() => alert("alert3")}>Connect</a>
+          </AListItemContent>
+        </AListItem>
+      </>
+    </ADropdown>
+    <ADropdown tertiary title="Dropdown">
+      <>
+        <AListItem twoLine className="px-3 h3 my-0 pb-1">
+          <AListItemTitle>Bottom</AListItemTitle>
+        </AListItem>
+        <AListItem onClick={() => alert("alert1")} className="pl-3 py-1">
+          Example
+        </AListItem>
+        <AListItem onClick={() => alert("alert2")} className="pl-3 py-1">
+          Example
+        </AListItem>
+        <AListItem
+          onClick={() => alert("should not fire")}
+          className="pl-3 py-1"
+          disabled>
+          Disabled Item
+        </AListItem>
+        <AListItemDivider className="mb-0 mt-3" />
+        <AListItem twoLine>
+          <AListItemContent className="pb-0">
+            <a onClick={() => alert("alert3")}>Connect</a>
+          </AListItemContent>
+        </AListItem>
+      </>
+    </ADropdown>
+    <ADropdown tertiary noPadding title="Dropdown inline">
+      <>
+        <AListItem twoLine className="px-3 h3 my-0 pb-1">
+           <AListItemTitle>Bottom</AListItemTitle>
+         </AListItem>
+         <AListItem onClick={() => alert("alert1")} className="pl-3 py-1">
+           Example
+         </AListItem>
+         <AListItem onClick={() => alert("alert2")} className="pl-3 py-1">
+           Example
+         </AListItem>
+         <AListItem
+           onClick={() => alert("should not fire")}
+           className="pl-3 py-1"
+           disabled>
+           Disabled Item
+         </AListItem>
+         <AListItemDivider className="mb-0 mt-3" />
+         <AListItem twoLine>
+           <AListItemContent className="pb-0">
+             <a onClick={() => alert("alert3")}>Connect</a>
+           </AListItemContent>
+         </AListItem>
+      </>
+    </ADropdown>
+    <ADropdown tertiaryAlt title="Dropdown">
+      <>
+        <AListItem twoLine className="px-3 h3 my-0 pb-1">
+           <AListItemTitle>Bottom</AListItemTitle>
+        </AListItem>
+        <AListItem onClick={() => alert("alert1")} className="pl-3 py-1">
+          Example
+        </AListItem>
+        <AListItem onClick={() => alert("alert2")} className="pl-3 py-1">
+          Example
+        </AListItem>
+        <AListItem
+          onClick={() => alert("should not fire")}
+          className="pl-3 py-1"
+          disabled>
+          Disabled Item
+        </AListItem>
+        <AListItemDivider className="mb-0 mt-3" />
+        <AListItem twoLine>
+          <AListItemContent className="pb-0">
+            <a onClick={() => alert("alert3")}>Connect</a>
+          </AListItemContent>
+        </AListItem>
+      </>
+    </ADropdown>
+    <ADropdown disabled title="Dropdown disabled">
+      <>
+        <AListItem twoLine className="px-3 h3 my-0 pb-1">
+           <AListItemTitle>Bottom</AListItemTitle>
+        </AListItem>
+        <AListItem onClick={() => alert("alert1")} className="pl-3 py-1">
+          Example
+        </AListItem>
+        <AListItem onClick={() => alert("alert2")} className="pl-3 py-1">
+          Example
+        </AListItem>
+        <AListItem
+          onClick={() => alert("should not fire")}
+          className="pl-3 py-1"
+          disabled>
+          Disabled Item
+        </AListItem>
+        <AListItemDivider className="mb-0 mt-3" />
+        <AListItem twoLine>
+          <AListItemContent className="pb-0">
+            <a onClick={() => alert("alert3")}>Connect</a>
+          </AListItemContent>
+        </AListItem>
+      </>
+    </ADropdown>
+    <ADropdown destructive secondary title="Dropdown">
+      <>
+        <AListItem twoLine className="px-3 h3 my-0 pb-1">
+           <AListItemTitle>Bottom</AListItemTitle>
+         </AListItem>
+         <AListItem onClick={() => alert("alert1")} className="pl-3 py-1">
+           Example
+         </AListItem>
+         <AListItem onClick={() => alert("alert2")} className="pl-3 py-1">
+           Example
+         </AListItem>
+         <AListItem
+           onClick={() => alert("should not fire")}
+           className="pl-3 py-1"
+           disabled>
+           Disabled Item
+         </AListItem>
+         <AListItemDivider className="mb-0 mt-3" />
+         <AListItem twoLine>
+           <AListItemContent className="pb-0">
+             <a onClick={() => alert("alert3")}>Connect</a>
+           </AListItemContent>
+         </AListItem>
+      </>
+    </ADropdown>
+  </div>
+  <div className="d-flex gap-3 flex-wrap">
+     <ADropdown small title="Dropdown">
+      <>
+        <AListItem twoLine className="px-3 h3 my-0 pb-1">
+           <AListItemTitle>Bottom</AListItemTitle>
+        </AListItem>
+        <AListItem onClick={() => alert("alert1")} className="pl-3 py-1">
+          Example
+        </AListItem>
+        <AListItem onClick={() => alert("alert2")} className="pl-3 py-1">
+          Example
+        </AListItem>
+        <AListItem
+          onClick={() => alert("should not fire")}
+          className="pl-3 py-1"
+          disabled>
+          Disabled Item
+        </AListItem>
+        <AListItemDivider className="mb-0 mt-3" />
+        <AListItem twoLine>
+          <AListItemContent className="pb-0">
+            <a onClick={() => alert("alert3")}>Connect</a>
+          </AListItemContent>
+        </AListItem>
+      </>
+    </ADropdown>
+    <ADropdown small secondary title="Dropdown">
+      <>
+        <AListItem twoLine className="px-3 h3 my-0 pb-1">
+          <AListItemTitle>Bottom</AListItemTitle>
+        </AListItem>
+        <AListItem onClick={() => alert("alert1")} className="pl-3 py-1">
+          Example
+        </AListItem>
+        <AListItem onClick={() => alert("alert2")} className="pl-3 py-1">
+          Example
+        </AListItem>
+        <AListItem
+          onClick={() => alert("should not fire")}
+          className="pl-3 py-1"
+          disabled>
+          Disabled Item
+        </AListItem>
+        <AListItemDivider className="mb-0 mt-3" />
+        <AListItem twoLine>
+          <AListItemContent className="pb-0">
+            <a onClick={() => alert("alert3")}>Connect</a>
+          </AListItemContent>
+        </AListItem>
+      </>
+    </ADropdown>
+    <ADropdown small tertiary title="Dropdown">
+      <>
+        <AListItem twoLine className="px-3 h3 my-0 pb-1">
+          <AListItemTitle>Bottom</AListItemTitle>
+        </AListItem>
+        <AListItem onClick={() => alert("alert1")} className="pl-3 py-1">
+          Example
+        </AListItem>
+        <AListItem onClick={() => alert("alert2")} className="pl-3 py-1">
+          Example
+        </AListItem>
+        <AListItem
+          onClick={() => alert("should not fire")}
+          className="pl-3 py-1"
+          disabled>
+          Disabled Item
+        </AListItem>
+        <AListItemDivider className="mb-0 mt-3" />
+        <AListItem twoLine>
+          <AListItemContent className="pb-0">
+            <a onClick={() => alert("alert3")}>Connect</a>
+          </AListItemContent>
+        </AListItem>
+      </>
+    </ADropdown>
+    <ADropdown small tertiary noPadding title="Dropdown inline">
+      <>
+        <AListItem twoLine className="px-3 h3 my-0 pb-1">
+           <AListItemTitle>Bottom</AListItemTitle>
+         </AListItem>
+         <AListItem onClick={() => alert("alert1")} className="pl-3 py-1">
+           Example
+         </AListItem>
+         <AListItem onClick={() => alert("alert2")} className="pl-3 py-1">
+           Example
+         </AListItem>
+         <AListItem
+           onClick={() => alert("should not fire")}
+           className="pl-3 py-1"
+           disabled>
+           Disabled Item
+         </AListItem>
+         <AListItemDivider className="mb-0 mt-3" />
+         <AListItem twoLine>
+           <AListItemContent className="pb-0">
+             <a onClick={() => alert("alert3")}>Connect</a>
+           </AListItemContent>
+         </AListItem>
+      </>
+    </ADropdown>
+    <ADropdown small tertiaryAlt title="Dropdown">
+      <>
+        <AListItem twoLine className="px-3 h3 my-0 pb-1">
+           <AListItemTitle>Bottom</AListItemTitle>
+        </AListItem>
+        <AListItem onClick={() => alert("alert1")} className="pl-3 py-1">
+          Example
+        </AListItem>
+        <AListItem onClick={() => alert("alert2")} className="pl-3 py-1">
+          Example
+        </AListItem>
+        <AListItem
+          onClick={() => alert("should not fire")}
+          className="pl-3 py-1"
+          disabled>
+          Disabled Item
+        </AListItem>
+        <AListItemDivider className="mb-0 mt-3" />
+        <AListItem twoLine>
+          <AListItemContent className="pb-0">
+            <a onClick={() => alert("alert3")}>Connect</a>
+          </AListItemContent>
+        </AListItem>
+      </>
+    </ADropdown>
+    <ADropdown small disabled title="Dropdown disabled">
+      <>
+        <AListItem twoLine className="px-3 h3 my-0 pb-1">
+           <AListItemTitle>Bottom</AListItemTitle>
+        </AListItem>
+        <AListItem onClick={() => alert("alert1")} className="pl-3 py-1">
+          Example
+        </AListItem>
+        <AListItem onClick={() => alert("alert2")} className="pl-3 py-1">
+          Example
+        </AListItem>
+        <AListItem
+          onClick={() => alert("should not fire")}
+          className="pl-3 py-1"
+          disabled>
+          Disabled Item
+        </AListItem>
+        <AListItemDivider className="mb-0 mt-3" />
+        <AListItem twoLine>
+          <AListItemContent className="pb-0">
+            <a onClick={() => alert("alert3")}>Connect</a>
+          </AListItemContent>
+        </AListItem>
+      </>
+    </ADropdown>
+    <ADropdown small destructive secondary title="Dropdown">
+      <>
+        <AListItem twoLine className="px-3 h3 my-0 pb-1">
+           <AListItemTitle>Bottom</AListItemTitle>
+         </AListItem>
+         <AListItem onClick={() => alert("alert1")} className="pl-3 py-1">
+           Example
+         </AListItem>
+         <AListItem onClick={() => alert("alert2")} className="pl-3 py-1">
+           Example
+         </AListItem>
+         <AListItem
+           onClick={() => alert("should not fire")}
+           className="pl-3 py-1"
+           disabled>
+           Disabled Item
+         </AListItem>
+         <AListItemDivider className="mb-0 mt-3" />
+         <AListItem twoLine>
+           <AListItemContent className="pb-0">
+             <a onClick={() => alert("alert3")}>Connect</a>
+           </AListItemContent>
+         </AListItem>
+      </>
+    </ADropdown>
+  </div>
+</>
+`}
+/>
+
+## Component Props
+
+The `ADropdown` component inherits passed props.
+
+<Props of="ADropdown" />
