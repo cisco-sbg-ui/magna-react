@@ -17,6 +17,7 @@ import ABadge from "./components/ABadge";
 import ABreadcrumb from "./components/ABreadcrumb";
 import AButton from "./components/AButton";
 import AButtonGroup from "./components/AButtonGroup";
+import ADropdown from "./components/ADropdown";
 import {
   ACardContainer,
   ACardBasic,
@@ -195,6 +196,7 @@ export {
   ADrawerFooter,
   ADrawerSubtitle,
   ADrawerTitle,
+  ADropdown,
   AEmptyState,
   AFieldBase,
   AFooter,
