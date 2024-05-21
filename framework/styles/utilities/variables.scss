@@ -94,11 +94,12 @@ $page-width--max: 1440px !default;
 $grid-breakpoints: () !default;
 $grid-breakpoints: map-merge(
   (
-    "xs": 420px,
-    "sm": 960px,
-    "md": 1280px,
-    "lg": 1680px,
-    "xl": 2080px
+    "xs": 479,
+    "sm": 767,
+    "md": 960,
+    "lg": 1280,
+    "xl": 1680,
+    "xxl": 2080
   ),
   $grid-breakpoints
 );
@@ -116,7 +117,8 @@ $grid-gutters: map-merge(
     "sm": math.div($grid-gutter, 6),
     "md": math.div($grid-gutter, 3),
     "lg": math.div($grid-gutter * 2, 3),
-    "xl": $grid-gutter
+    "xl": $grid-gutter,
+    "xxl": $grid-gutter * 2
   ),
   $grid-gutters
 );
