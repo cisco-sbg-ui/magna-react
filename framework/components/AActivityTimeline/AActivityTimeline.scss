@@ -2,6 +2,7 @@
   list-style-type: none;
   margin: 0;
   padding-left: 0 !important;
+  color: var(--base-text-medium-default);
 
   &__list-item {
     width: 100%;
@@ -49,6 +50,7 @@
     &__title {
       grid-area: title;
       font-weight: 600;
+      color: var(--base-text-strong-default);
     }
 
     &__divider {
@@ -84,6 +86,7 @@
       &__caret {
         grid-area: caret;
         margin-right: 16px;
+        stroke: var(--control-icon-weak-default);
       }
     }
 
