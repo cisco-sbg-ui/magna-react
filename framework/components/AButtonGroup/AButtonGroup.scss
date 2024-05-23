@@ -78,6 +78,7 @@ $btn-group-icon-font-size: rem(1);
       color: var(--interact-text-focus);
       background-color: var(--interact-bg-weak-focus);
       border-color: var(--interact-border-focus);
+      box-shadow: none !important;
     }
 
     &:active {
