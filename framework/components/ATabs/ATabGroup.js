@@ -79,6 +79,7 @@ const ATabGroup = forwardRef(
     const tabContainerRef = useRef(null);
     const overflowRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, tabGroupRef);
+    const menuItemRefs = useRef([]);
 
     const setSelectedTab = useCallback(
       (tabId) => {
@@ -207,9 +208,26 @@ const ATabGroup = forwardRef(
         const routerLink = child.props.tab?.route;
 
         if (routerLink) {
+          const clone = React.cloneElement(child, {
+            ...child.props,
+            ref: (ref) => (childrenRef.current[i] = ref)
+          });
+
+          const onKeyDown = (e) => {
+            if (e.key !== "Enter") {
+              return;
+            }
+
+            menuItemRefs.current[i]?.children[0]?.click();
+          };
+
           return (
-            <AListItem component="div" {...rest}>
-              {child}
+            <AListItem
+              ref={(ref) => (menuItemRefs.current[i] = ref)}
+              onKeyDown={onKeyDown}
+              {...rest}
+            >
+              {clone}
             </AListItem>
           );
         }

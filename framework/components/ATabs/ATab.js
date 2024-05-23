@@ -8,7 +8,6 @@ import React, {
 } from "react";
 
 import ATabContext from "./ATabContext";
-import {keyCodes} from "../../utils/helpers";
 import {useCombinedRefs} from "../../utils/hooks";
 import "./ATabs.scss";
 
