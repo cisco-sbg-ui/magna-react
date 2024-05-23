@@ -28,7 +28,7 @@ const getNextFocusId = (direction, containerEl, focusedEl) => {
 
     while (
       !toFocus ||
-      toFocus?.classList?.contains("hide") ||
+      toFocus?.classList?.contains("a-tab-group__tab--hide") ||
       isTabSelectedAndNotMenuTab(toFocus)
     ) {
       if (!toFocus) {
@@ -44,7 +44,7 @@ const getNextFocusId = (direction, containerEl, focusedEl) => {
 
     while (
       !toFocus ||
-      toFocus?.classList?.contains("hide") ||
+      toFocus?.classList?.contains("a-tab-group__tab--hide") ||
       isTabSelectedAndNotMenuTab(toFocus)
     ) {
       if (!toFocus) {
@@ -126,7 +126,7 @@ const ATabGroup = forwardRef(
           return;
         }
         //Show all elements initially while we calculate size
-        item.classList.remove("hide");
+        item.classList.remove("a-tab-group__tab--hide");
         //Tab item's width
         const tabWidth = item.offsetWidth + tabMargin;
         //If items' total width falls under overall container width, skip
@@ -134,16 +134,16 @@ const ATabGroup = forwardRef(
           overflowLimit += tabWidth;
         } else if (!classList.includes("a-tab-group__menu-tab")) {
           //If items' total width exceeds overall container width, hide and push to overflow menu
-          item.classList.add("hide");
+          item.classList.add("a-tab-group__tab--hide");
           overflowMenuItems.push(i);
         }
       });
 
       //Handles overflow tab's visibility
       if (!overflowMenuItems.length) {
-        tab.classList.add("hide");
+        tab.classList.add("a-tab-group__tab--hide");
       } else if (overflowMenuItems.length) {
-        tab.classList.remove("hide");
+        tab.classList.remove("a-tab-group__tab--hide");
       }
 
       setMenuItems(overflowMenuItems);
@@ -208,11 +208,6 @@ const ATabGroup = forwardRef(
         const routerLink = child.props.tab?.route;
 
         if (routerLink) {
-          const clone = React.cloneElement(child, {
-            ...child.props,
-            ref: (ref) => (childrenRef.current[i] = ref)
-          });
-
           const onKeyDown = (e) => {
             if (e.key !== "Enter") {
               return;
@@ -227,7 +222,7 @@ const ATabGroup = forwardRef(
               onKeyDown={onKeyDown}
               {...rest}
             >
-              {clone}
+              {child}
             </AListItem>
           );
         }
