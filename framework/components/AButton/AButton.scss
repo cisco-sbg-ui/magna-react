@@ -115,7 +115,6 @@ $btn-transition: color $transition-duration--extra-fast
 
     &:focus {
       color: var(--interact-text-in-default);
-      background-color: var(--interact-bg-focus);
       border-color: var(--interact-border-focus);
     }
 
@@ -147,7 +146,6 @@ $btn-transition: color $transition-duration--extra-fast
 
     &:focus {
       color: var(--negative-text-in-default);
-      background-color: var(--negative-bg-focus);
       border-color: var(--negative-border-focus);
     }
 
@@ -179,7 +177,6 @@ $btn-transition: color $transition-duration--extra-fast
 
     &:focus {
       color: var(--interact-text-focus);
-      background-color: var(--interact-bg-weak-focus);
       border-color: var(--interact-border-focus);
     }
 
@@ -211,7 +208,6 @@ $btn-transition: color $transition-duration--extra-fast
 
     &:focus {
       color: var(--negative-text-hover);
-      background-color: var(--negative-bg-weak-focus);
       border-color: var(--negative-border-focus);
     }
 
@@ -240,7 +236,6 @@ $btn-transition: color $transition-duration--extra-fast
     &:focus {
       color: var(--interact-text-focus);
       border-color: var(--interact-border-weak-hover);
-      background-color: var(--interact-bg-weak-focus);
     }
 
     &:active {
@@ -253,6 +248,12 @@ $btn-transition: color $transition-duration--extra-fast
       background-color: transparent;
       color: var(--interact-text-disabled);
     }
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--interact-bg-weak-active),
+      0 0 0 4px var(--control-border-focus);
   }
 
   &.a-button--tertiary-alt {
