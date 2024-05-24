@@ -78,7 +78,7 @@ const ATabGroup = forwardRef(
     const tabGroupRef = useRef(null);
     const tabContainerRef = useRef(null);
     const overflowRef = useRef(null);
-    const overflowMenuRef = useRef(); //useCombinedRefs(ref, tabGroupRef);
+    const combinedRef = useCombinedRefs(ref, tabGroupRef);
     const menuItemRefs = useRef([]);
 
     const setSelectedTab = useCallback(
@@ -90,12 +90,12 @@ const ATabGroup = forwardRef(
     );
 
     const handleOverflow = useCallback(() => {
-      if (!overflowMenuRef.current || vertical) {
+      if (!combinedRef.current || vertical) {
         return;
       }
 
       //Overflow tab
-      const overflowTab = overflowMenuRef.current.querySelector(
+      const overflowTab = combinedRef.current.querySelector(
         ".a-tab-group__menu-tab"
       );
 
@@ -104,7 +104,7 @@ const ATabGroup = forwardRef(
       }
 
       const overflowMenuItems = [];
-      const tabWrapper = overflowMenuRef.current;
+      const tabWrapper = combinedRef.current;
 
       const contentWrapper = tabContainerRef.current;
 
@@ -143,7 +143,7 @@ const ATabGroup = forwardRef(
       }
 
       setMenuItems(overflowMenuItems);
-    }, [overflowMenuRef, vertical]);
+    }, [combinedRef, vertical]);
 
     useEffect(() => {
       handleOverflow();
@@ -234,7 +234,7 @@ const ATabGroup = forwardRef(
       <div
         {...rest}
         role="tablist"
-        ref={overflowMenuRef}
+        ref={combinedRef}
         className={className}
         tabIndex={0}
         onClick={() => {}}
@@ -258,7 +258,7 @@ const ATabGroup = forwardRef(
               elementToFocus.click();
             } else {
               overflowRef.current?.setMenuOpen(false);
-              overflowMenuRef.current?.focus();
+              combinedRef.current?.focus();
             }
 
             if (selectOnArrow && elementToFocus.tagName !== "A") {
@@ -275,7 +275,7 @@ const ATabGroup = forwardRef(
               {children}
               {!vertical && (
                 <OverflowMenuTab
-                  tabGroupRef={overflowMenuRef}
+                  tabGroupRef={combinedRef}
                   passthroughRef={overflowRef}
                 >
                   {renderChildren}
