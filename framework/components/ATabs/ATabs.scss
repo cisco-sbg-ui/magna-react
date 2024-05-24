@@ -34,6 +34,10 @@ $tab-heading-margin: 0;
     display: flex;
   }
 
+  &__tab-content {
+    overflow: hidden;
+  }
+
   &__tab-content--vertical {
     display: flex;
     flex-direction: column;
@@ -225,6 +229,14 @@ $tab-heading-margin: 0;
     a {
       width: 100%;
       color: var(--base-text-default) !important;
+    }
+  }
+
+  .a-tab-group__menu-overflow-item {
+    padding: 0 !important;
+    > a,
+    div {
+      padding: 8px 10px;
     }
   }
 }

@@ -7,10 +7,10 @@ import React, {
   useCallback
 } from "react";
 
+import {debounce} from "../../utils/helpers";
 import OverflowMenuTab from "./OverflowMenuTab";
 import AListItem from "../AList/AListItem";
 import ATabContext from "./ATabContext";
-import {useCombinedRefs} from "../../utils/hooks";
 import "./ATabs.scss";
 
 const isTabSelectedAndNotMenuTab = (el) => {
@@ -78,7 +78,7 @@ const ATabGroup = forwardRef(
     const tabGroupRef = useRef(null);
     const tabContainerRef = useRef(null);
     const overflowRef = useRef(null);
-    const combinedRef = useCombinedRefs(ref, tabGroupRef);
+    const overflowMenuRef = useRef(); //useCombinedRefs(ref, tabGroupRef);
     const menuItemRefs = useRef([]);
 
     const setSelectedTab = useCallback(
@@ -90,41 +90,37 @@ const ATabGroup = forwardRef(
     );
 
     const handleOverflow = useCallback(() => {
-      if (!combinedRef.current) {
+      if (!overflowMenuRef.current || vertical) {
         return;
       }
 
       //Overflow tab
-      const tab = combinedRef.current.querySelector(".a-tab-group__menu-tab");
+      const overflowTab = overflowMenuRef.current.querySelector(
+        ".a-tab-group__menu-tab"
+      );
 
-      if (!tab) {
+      if (!overflowTab) {
         return;
       }
 
       const overflowMenuItems = [];
-      const tabWrapper = combinedRef.current;
+      const tabWrapper = overflowMenuRef.current;
 
-      const contentWrapper = combinedRef.current.querySelector(
-        ".a-tab-group__tab-content"
-      );
+      const contentWrapper = tabContainerRef.current;
 
-      const tabStyle = window.getComputedStyle(tab);
+      const tabStyle = window.getComputedStyle(overflowTab);
 
       const tabMargin =
         parseInt(tabStyle.marginLeft) + parseInt(tabStyle.marginRight);
 
       //Calculate width of overflow tab which serves as our minimum width.
-      let overflowLimit = tab.offsetWidth + tabMargin + 5; //Increase by 5 as a width buffer on tabs with smaller words
+      let overflowLimit = overflowTab.offsetWidth + tabMargin + 5; //Increase by 5 as a width buffer on tabs with smaller words
 
       Array.from(contentWrapper.childNodes).forEach((item, i) => {
         if (!item || !item.classList) {
           return;
         }
-        //If vertical view, skip
-        const classList = Array.from(item.classList);
-        if (classList.includes("a-tab-group__tab--vertical")) {
-          return;
-        }
+
         //Show all elements initially while we calculate size
         item.classList.remove("a-tab-group__tab--hide");
         //Tab item's width
@@ -132,7 +128,7 @@ const ATabGroup = forwardRef(
         //If items' total width falls under overall container width, skip
         if (tabWrapper.offsetWidth >= overflowLimit + tabWidth) {
           overflowLimit += tabWidth;
-        } else if (!classList.includes("a-tab-group__menu-tab")) {
+        } else if (!item.classList.contains("a-tab-group__menu-tab")) {
           //If items' total width exceeds overall container width, hide and push to overflow menu
           item.classList.add("a-tab-group__tab--hide");
           overflowMenuItems.push(i);
@@ -141,29 +137,31 @@ const ATabGroup = forwardRef(
 
       //Handles overflow tab's visibility
       if (!overflowMenuItems.length) {
-        tab.classList.add("a-tab-group__tab--hide");
+        overflowTab.classList.add("a-tab-group__tab--hide");
       } else if (overflowMenuItems.length) {
-        tab.classList.remove("a-tab-group__tab--hide");
+        overflowTab.classList.remove("a-tab-group__tab--hide");
       }
 
       setMenuItems(overflowMenuItems);
-    }, [combinedRef]);
+    }, [overflowMenuRef, vertical]);
 
     useEffect(() => {
       handleOverflow();
-    }, [handleOverflow]);
+    }, [handleOverflow, selectedTab]);
 
     useEffect(() => {
-      if (!combinedRef.current) {
+      if (!tabContainerRef.current) {
         return;
       }
 
-      const target = combinedRef.current.parentNode;
-      const resizeObserver = new ResizeObserver(() => {
-        if (combinedRef.current) {
-          handleOverflow();
-        }
-      });
+      const target = tabContainerRef.current.parentNode;
+      const resizeObserver = new ResizeObserver(
+        debounce(() => {
+          if (tabContainerRef.current) {
+            handleOverflow();
+          }
+        })
+      );
 
       resizeObserver.observe(target);
 
@@ -172,7 +170,7 @@ const ATabGroup = forwardRef(
           resizeObserver.unobserve(target);
         }
       };
-    }, [combinedRef, handleOverflow]);
+    }, [tabContainerRef, handleOverflow]);
 
     let className = "a-tab-group";
     let tabContentClassName = "a-tab-group__tab-content";
@@ -220,6 +218,7 @@ const ATabGroup = forwardRef(
             <AListItem
               ref={(ref) => (menuItemRefs.current[i] = ref)}
               onKeyDown={onKeyDown}
+              className="a-tab-group__menu-overflow-item"
               {...rest}
             >
               {child}
@@ -235,7 +234,7 @@ const ATabGroup = forwardRef(
       <div
         {...rest}
         role="tablist"
-        ref={combinedRef}
+        ref={overflowMenuRef}
         className={className}
         tabIndex={0}
         onClick={() => {}}
@@ -259,7 +258,7 @@ const ATabGroup = forwardRef(
               elementToFocus.click();
             } else {
               overflowRef.current?.setMenuOpen(false);
-              combinedRef.current?.focus();
+              overflowMenuRef.current?.focus();
             }
 
             if (selectOnArrow && elementToFocus.tagName !== "A") {
@@ -270,13 +269,13 @@ const ATabGroup = forwardRef(
           }
         }}
       >
-        <div className="a-tab-group__tab-wrapper">
+        <div ref={ref} className="a-tab-group__tab-wrapper">
           <div ref={tabContainerRef} className={tabContentClassName}>
             <ATabContext.Provider value={tabContext}>
               {children}
               {!vertical && (
                 <OverflowMenuTab
-                  tabGroupRef={combinedRef}
+                  tabGroupRef={overflowMenuRef}
                   passthroughRef={overflowRef}
                 >
                   {renderChildren}
