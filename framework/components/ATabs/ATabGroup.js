@@ -8,6 +8,7 @@ import React, {
 } from "react";
 
 import {debounce} from "../../utils/helpers";
+import {useCombinedRefs} from "../../utils/hooks";
 import OverflowMenuTab from "./OverflowMenuTab";
 import AListItem from "../AList/AListItem";
 import ATabContext from "./ATabContext";
