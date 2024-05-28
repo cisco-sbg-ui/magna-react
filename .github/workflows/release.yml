@@ -1,0 +1,36 @@
+name: Release
+
+on:
+  release:
+    types:
+      - "created"
+
+jobs:
+  publish:
+    name: Publish NPM
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: |
+            echo "@ciscodesignsystems:registry=https://artifactory.devhub-cloud.cisco.com/artifactory/api/npm/magnetic-common-npm/"  >> .npmrc
+            echo "//artifactory.devhub-cloud.cisco.com/artifactory/api/npm/magnetic-common-npm/:_auth=$TOKEN"  >> .npmrc
+            echo "//artifactory.devhub-cloud.cisco.com/artifactory/api/npm/magnetic-common-npm/:always-auth=true"  >> .npmrc
+            echo "registry=https://registry.npmjs.org/"  >> .npmrc
+        env:
+          REPO_TOKEN: ${{ secrets.TEMP_PACKAGE_READ_TOKEN }}
+      - run: npm ci
+      - run: npm run build
+      - uses: JS-DevTools/npm-publish@v2
+        with:
+          registry: https://npm.pkg.github.com/
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: latest
