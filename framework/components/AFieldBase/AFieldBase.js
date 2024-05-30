@@ -13,6 +13,7 @@ const AFieldBase = forwardRef(
       children,
       className: propsClassName,
       error,
+      hint: propsHint,
       hints: propsHints = [],
       label,
       labelHidden = false,
@@ -47,6 +48,12 @@ const AFieldBase = forwardRef(
     }
 
     const hints = [];
+
+    if (propsHint) {
+      hints.unshift({
+        content: propsHint
+      });
+    }
 
     if (typeof propsHints === "string" || propsHints instanceof String) {
       hints.unshift({
@@ -126,6 +133,10 @@ const AFieldBase = forwardRef(
 const {anchorRef, ...infoTooltipProps} = ATooltipPropTypes;
 
 AFieldBase.propTypes = {
+  /**
+   * Sets a single hint
+   */
+  hint: PropTypes.node,
   /**
    * Sets hint or multiple hints.
    */

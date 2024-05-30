@@ -33,6 +33,7 @@ const AMultiSelect = forwardRef(
       dropdownClassName,
       dropdownStyle,
       disabled,
+      hint,
       hints,
       itemTemplate,
       itemText = "text",
@@ -259,6 +260,7 @@ const AMultiSelect = forwardRef(
       focused: Boolean(isFocused || isOpen),
       append: <AIcon {...chevronProps}>chevron-down</AIcon>,
       error,
+      hint,
       hints,
       label,
       labelFor: `a-multiselect_${multiselectId}`,
@@ -491,33 +493,43 @@ AMultiSelect.propTypes = {
    */
   dropdownStyle: PropTypes.object,
   /**
+   * Sets a single hint
+   */
+  hint: PropTypes.node,
+  /**
    * Sets hint or multiple hints.
    */
-  hints: PropTypes.arrayOf(
-    PropTypes.shape({
-      /**
-       * Hint content.
-       */
-      content: PropTypes.node.isRequired,
-      /**
-       * Style the hint with the component validation state. Default: false.
-       */
-      hintUsesValidationState: PropTypes.bool,
-      /**
-       * Override the validation state of the hint by incorporating the desired state.
-       * The component validation state is disregarded when this property is configured.
-       */
-      validationStateOverride: PropTypes.oneOf([
-        "default",
-        "warning",
-        "danger"
-      ]),
-      /**
-       * Do not show hint when there are validation errors.
-       */
-      hideHintOnError: PropTypes.bool
-    })
-  ),
+  hints: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        /**
+         * Hint content.
+         */
+        content: PropTypes.node.isRequired,
+        /**
+         * Style the hint with the component validation state. Default: false.
+         */
+        hintUsesValidationState: PropTypes.bool,
+        /**
+         * Override the validation state of the hint by incorporating the desired state.
+         * The component validation state is disregarded when this property is configured.
+         */
+        validationStateOverride: PropTypes.oneOf([
+          "default",
+          "warning",
+          "danger"
+        ]),
+        /**
+         * Do not show hint when there are validation errors.
+         */
+        hideHintOnError: PropTypes.bool
+      })
+    ),
+    // Accept a string and use default AHint rendering
+    PropTypes.string,
+    // Pass a custom renderable object as the hint
+    PropTypes.node
+  ]),
   /**
    * Sets a React component to use when rendering menu items. The component will be sent the following props: `item`, `index`, `aria-selected`, `children`, `className`, `onClick`, `role`, `value`.
    */

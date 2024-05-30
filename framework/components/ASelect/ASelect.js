@@ -26,6 +26,7 @@ const ASelect = forwardRef(
       dropdownClassName,
       dropdownStyle,
       disabled,
+      hint,
       hints,
       itemDisabled = "disabled",
       itemSelected = "selected",
@@ -396,6 +397,7 @@ const ASelect = forwardRef(
         readOnly={readOnly}
         validationState={workingValidationState}
         error={error}
+        hint={hint}
         hints={hints}
         required={required}
       >
@@ -524,33 +526,43 @@ ASelect.propTypes = {
    */
   dropdownStyle: PropTypes.object,
   /**
+   * Sets a single hint
+   */
+  hint: PropTypes.node,
+  /**
    * Sets hint or multiple hints.
    */
-  hints: PropTypes.arrayOf(
-    PropTypes.shape({
-      /**
-       * Hint content.
-       */
-      content: PropTypes.node.isRequired,
-      /**
-       * Style the hint with the component validation state. Default: false.
-       */
-      hintUsesValidationState: PropTypes.bool,
-      /**
-       * Override the validation state of the hint by incorporating the desired state.
-       * The component validation state is disregarded when this property is configured.
-       */
-      validationStateOverride: PropTypes.oneOf([
-        "default",
-        "warning",
-        "danger"
-      ]),
-      /**
-       * Do not show hint when there are validation errors.
-       */
-      hideHintOnError: PropTypes.bool
-    })
-  ),
+  hints: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        /**
+         * Hint content.
+         */
+        content: PropTypes.node.isRequired,
+        /**
+         * Style the hint with the component validation state. Default: false.
+         */
+        hintUsesValidationState: PropTypes.bool,
+        /**
+         * Override the validation state of the hint by incorporating the desired state.
+         * The component validation state is disregarded when this property is configured.
+         */
+        validationStateOverride: PropTypes.oneOf([
+          "default",
+          "warning",
+          "danger"
+        ]),
+        /**
+         * Do not show hint when there are validation errors.
+         */
+        hideHintOnError: PropTypes.bool
+      })
+    ),
+    // Accept a string and use default AHint rendering
+    PropTypes.string,
+    // Pass a custom renderable object as the hint
+    PropTypes.node
+  ]),
   /**
    * The property name of the value indicating a disabled option when `items` is an array of objects.
    */
