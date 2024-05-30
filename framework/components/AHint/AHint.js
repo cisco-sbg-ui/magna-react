@@ -6,7 +6,13 @@ import "./AHint.scss";
 
 const AHint = forwardRef(
   (
-    {children, className: propsClassName, validationState = "default", ...rest},
+    {
+      children,
+      hint,
+      className: propsClassName,
+      validationState = "default",
+      ...rest
+    },
     ref
   ) => {
     const hasValidationState =
@@ -21,7 +27,7 @@ const AHint = forwardRef(
     if (hasValidationState) {
       content = (
         <AAlert level={validationState} dismissable={false}>
-          {children}
+          {hint || children}
         </AAlert>
       );
     }
