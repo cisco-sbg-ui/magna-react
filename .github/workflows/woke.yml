@@ -12,7 +12,7 @@ jobs:
       WEBEX_OPSROOMID: "a34fd430-f65e-11ed-8216-57006ce5beb1"
     steps:
       - name: Checkout
-        uses: actions/checkout@v3.5.2
+        uses: actions/checkout@v34
       - name: woke
         uses: get-woke/woke-action@v0
         with:
