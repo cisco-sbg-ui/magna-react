@@ -115,7 +115,7 @@ const ATabGroup = forwardRef(
         parseInt(tabStyle.marginLeft) + parseInt(tabStyle.marginRight);
 
       //Calculate width of overflow tab which serves as our minimum width.
-      let overflowLimit = overflowTab.offsetWidth + tabMargin + 5; //Increase by 5 as a width buffer on tabs with smaller words
+      let overflowLimit = overflowTab.offsetWidth + tabMargin + 12; //Increase by 5 as a width buffer on tabs with smaller words
 
       Array.from(contentWrapper.childNodes).forEach((item, i) => {
         if (!item || !item.classList) {
@@ -151,13 +151,13 @@ const ATabGroup = forwardRef(
     }, [handleOverflow, selectedTab]);
 
     useEffect(() => {
-      if (!tabContainerRef.current) {
+      if (!combinedRef.current) {
         return;
       }
 
-      const target = tabContainerRef.current.parentNode;
+      const target = combinedRef.current;
       const resizeObserver = new ResizeObserver(
-        debounce(() => {
+        debounce((foo) => {
           if (tabContainerRef.current) {
             handleOverflow();
           }
@@ -171,7 +171,7 @@ const ATabGroup = forwardRef(
           resizeObserver.unobserve(target);
         }
       };
-    }, [tabContainerRef, handleOverflow]);
+    }, [combinedRef, tabContainerRef, handleOverflow]);
 
     let className = "a-tab-group";
     let tabContentClassName = "a-tab-group__tab-content";

@@ -36,6 +36,7 @@ $tab-heading-margin: 0;
 
   &__tab-content {
     overflow: hidden;
+    white-space: nowrap;
   }
 
   &__tab-content--vertical {
