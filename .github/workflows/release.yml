@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 18.19
       - run: |
             echo "@ciscodesignsystems:registry=https://artifactory.devhub-cloud.cisco.com/artifactory/api/npm/magnetic-common-npm/"  >> .npmrc
             echo "//artifactory.devhub-cloud.cisco.com/artifactory/api/npm/magnetic-common-npm/:_auth=$TOKEN"  >> .npmrc
