@@ -1,4 +1,4 @@
-.a-app a:not(.a-button):not(.a-tree__content) {
+.a-app a:not(.a-button):not(.a-tree__content):not(.a-tab-group__tab) {
   color: var(--interact-text-default);
 
   cursor: pointer;

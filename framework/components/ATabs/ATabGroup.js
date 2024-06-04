@@ -7,10 +7,11 @@ import React, {
   useCallback
 } from "react";
 
+import {debounce} from "../../utils/helpers";
+import {useCombinedRefs} from "../../utils/hooks";
 import OverflowMenuTab from "./OverflowMenuTab";
 import AListItem from "../AList/AListItem";
 import ATabContext from "./ATabContext";
-import {useCombinedRefs} from "../../utils/hooks";
 import "./ATabs.scss";
 
 const isTabSelectedAndNotMenuTab = (el) => {
@@ -28,7 +29,7 @@ const getNextFocusId = (direction, containerEl, focusedEl) => {
 
     while (
       !toFocus ||
-      toFocus?.classList?.contains("hide") ||
+      toFocus?.classList?.contains("a-tab-group__tab--hide") ||
       isTabSelectedAndNotMenuTab(toFocus)
     ) {
       if (!toFocus) {
@@ -44,7 +45,7 @@ const getNextFocusId = (direction, containerEl, focusedEl) => {
 
     while (
       !toFocus ||
-      toFocus?.classList?.contains("hide") ||
+      toFocus?.classList?.contains("a-tab-group__tab--hide") ||
       isTabSelectedAndNotMenuTab(toFocus)
     ) {
       if (!toFocus) {
@@ -79,6 +80,7 @@ const ATabGroup = forwardRef(
     const tabContainerRef = useRef(null);
     const overflowRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, tabGroupRef);
+    const menuItemRefs = useRef([]);
 
     const setSelectedTab = useCallback(
       (tabId) => {
@@ -89,80 +91,78 @@ const ATabGroup = forwardRef(
     );
 
     const handleOverflow = useCallback(() => {
-      if (!combinedRef.current) {
+      if (!combinedRef.current || vertical) {
         return;
       }
 
       //Overflow tab
-      const tab = combinedRef.current.querySelector(".a-tab-group__menu-tab");
+      const overflowTab = combinedRef.current.querySelector(
+        ".a-tab-group__menu-tab"
+      );
 
-      if (!tab) {
+      if (!overflowTab) {
         return;
       }
 
       const overflowMenuItems = [];
       const tabWrapper = combinedRef.current;
 
-      const contentWrapper = combinedRef.current.querySelector(
-        ".a-tab-group__tab-content"
-      );
+      const contentWrapper = tabContainerRef.current;
 
-      const tabStyle = window.getComputedStyle(tab);
+      const tabStyle = window.getComputedStyle(overflowTab);
 
       const tabMargin =
         parseInt(tabStyle.marginLeft) + parseInt(tabStyle.marginRight);
 
       //Calculate width of overflow tab which serves as our minimum width.
-      let overflowLimit = tab.offsetWidth + tabMargin + 5; //Increase by 5 as a width buffer on tabs with smaller words
+      let overflowLimit = overflowTab.offsetWidth + tabMargin + 12; //Increase by 5 as a width buffer on tabs with smaller words
 
       Array.from(contentWrapper.childNodes).forEach((item, i) => {
         if (!item || !item.classList) {
           return;
         }
-        //If vertical view, skip
-        const classList = Array.from(item.classList);
-        if (classList.includes("a-tab-group__tab--vertical")) {
-          return;
-        }
+
         //Show all elements initially while we calculate size
-        item.classList.remove("hide");
+        item.classList.remove("a-tab-group__tab--hide");
         //Tab item's width
         const tabWidth = item.offsetWidth + tabMargin;
         //If items' total width falls under overall container width, skip
         if (tabWrapper.offsetWidth >= overflowLimit + tabWidth) {
           overflowLimit += tabWidth;
-        } else if (!classList.includes("a-tab-group__menu-tab")) {
+        } else if (!item.classList.contains("a-tab-group__menu-tab")) {
           //If items' total width exceeds overall container width, hide and push to overflow menu
-          item.classList.add("hide");
+          item.classList.add("a-tab-group__tab--hide");
           overflowMenuItems.push(i);
         }
       });
 
       //Handles overflow tab's visibility
       if (!overflowMenuItems.length) {
-        tab.classList.add("hide");
+        overflowTab.classList.add("a-tab-group__tab--hide");
       } else if (overflowMenuItems.length) {
-        tab.classList.remove("hide");
+        overflowTab.classList.remove("a-tab-group__tab--hide");
       }
 
       setMenuItems(overflowMenuItems);
-    }, [combinedRef]);
+    }, [combinedRef, vertical]);
 
     useEffect(() => {
       handleOverflow();
-    }, [handleOverflow]);
+    }, [handleOverflow, selectedTab]);
 
     useEffect(() => {
       if (!combinedRef.current) {
         return;
       }
 
-      const target = combinedRef.current.parentNode;
-      const resizeObserver = new ResizeObserver(() => {
-        if (combinedRef.current) {
-          handleOverflow();
-        }
-      });
+      const target = combinedRef.current;
+      const resizeObserver = new ResizeObserver(
+        debounce(() => {
+          if (tabContainerRef.current) {
+            handleOverflow();
+          }
+        }, 10)
+      );
 
       resizeObserver.observe(target);
 
@@ -171,7 +171,7 @@ const ATabGroup = forwardRef(
           resizeObserver.unobserve(target);
         }
       };
-    }, [combinedRef, handleOverflow]);
+    }, [combinedRef, tabContainerRef, handleOverflow]);
 
     let className = "a-tab-group";
     let tabContentClassName = "a-tab-group__tab-content";
@@ -207,8 +207,21 @@ const ATabGroup = forwardRef(
         const routerLink = child.props.tab?.route;
 
         if (routerLink) {
+          const onKeyDown = (e) => {
+            if (e.key !== "Enter") {
+              return;
+            }
+
+            menuItemRefs.current[i]?.children[0]?.click();
+          };
+
           return (
-            <AListItem component="div" {...rest}>
+            <AListItem
+              ref={(ref) => (menuItemRefs.current[i] = ref)}
+              onKeyDown={onKeyDown}
+              className="a-tab-group__menu-overflow-item"
+              {...rest}
+            >
               {child}
             </AListItem>
           );
@@ -257,7 +270,7 @@ const ATabGroup = forwardRef(
           }
         }}
       >
-        <div className="a-tab-group__tab-wrapper">
+        <div ref={ref} className="a-tab-group__tab-wrapper">
           <div ref={tabContainerRef} className={tabContentClassName}>
             <ATabContext.Provider value={tabContext}>
               {children}
