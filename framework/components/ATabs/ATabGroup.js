@@ -157,7 +157,7 @@ const ATabGroup = forwardRef(
 
       const target = combinedRef.current;
       const resizeObserver = new ResizeObserver(
-        debounce((foo) => {
+        debounce(() => {
           if (tabContainerRef.current) {
             handleOverflow();
           }
