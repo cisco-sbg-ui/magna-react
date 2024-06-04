@@ -161,7 +161,7 @@ const ATabGroup = forwardRef(
           if (tabContainerRef.current) {
             handleOverflow();
           }
-        })
+        }, 10)
       );
 
       resizeObserver.observe(target);
