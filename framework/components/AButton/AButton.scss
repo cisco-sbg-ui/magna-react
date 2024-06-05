@@ -15,14 +15,6 @@ $btn-transition: color $transition-duration--extra-fast
   box-shadow $transition-duration--extra-fast
     $transition-timing-function--standard !default;
 
-/* Magnetic didn't have guidance for this at time of the PR, will revisit in
-  * the future.
-  &:focus-visible {
-    box-shadow: 0 0 0 2px var(--interact-bg-weak-active),
-      0 0 0 4px var(--control-border-focus)
-  }
-  */
-
 .a-button {
   display: inline-flex;
   align-items: center;
