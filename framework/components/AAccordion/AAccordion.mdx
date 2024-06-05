@@ -20,26 +20,55 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
   code={`() => {
   const buttonRef = useRef(null);
   const [active, setActive] = useState(false);
-  return (
+ 
+  const items = [
+  {id: 1, name: "Bread, Cereal, Rice, and Pasta"},
+  {id: 2, name: "Vegetables"},
+  {id: 3, name: "Fruit", selected: true},
+  {id: 4, name: "Milk, Yogurt, and Cheese"},
+  {id: 5, name: "Meat, Poultry, Fish", disabled: true},
+  {id: 6, name: "Fats, Oils, and Sweets"}
+  ];
+  const [selectedItem, setSelectedItem] = useState(items[2]);
+
+return (
+
     <AAccordion bordered>
       <AAccordionPanel>
         <AAccordionHeader>
           <AAccordionHeaderTitle chevron={false}>
             Accordion Item 1
           </AAccordionHeaderTitle>
-          <AButton ref={buttonRef} icon tertiaryAlt onClick={() => setActive(!active)}>
+          <AButton
+            ref={buttonRef}
+            icon
+            tertiaryAlt
+            onClick={() => setActive(!active)}>
             <AIcon>ellipsis-horizontal</AIcon>
           </AButton>
-          <AMenu anchorRef={buttonRef} open={active} onClose={() => setActive(false)}>
+          <AMenu
+            anchorRef={buttonRef}
+            open={active}
+            onClose={() => setActive(false)}>
             <AListItem>See More</AListItem>
           </AMenu>
         </AAccordionHeader>
       </AAccordionPanel>
       <AAccordionPanel collapsed={false}>
         <AAccordionHeader>
-          <AAccordionHeaderTitle>Accordion Item 2</AAccordionHeaderTitle>
+          <AAccordionHeaderTitle>Accordion Item 2 (with embedded ASelect)</AAccordionHeaderTitle>
         </AAccordionHeader>
-        <AAccordionBody>{LoremIpsum}</AAccordionBody>
+        <AAccordionBody>
+          <ASelect
+            label="Food Group"
+            items={items}
+            itemText="name"
+            itemValue="id"
+            placeholder="Pick a Food Group"
+            onSelected={(item) => setSelectedItem(item)}
+            hints={"Selected Item:" + JSON.stringify(selectedItem)}
+          />
+        </AAccordionBody>
       </AAccordionPanel>
       <AAccordionPanel>
         <AAccordionHeader>
@@ -52,17 +81,14 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/canary/framewor
       </AAccordionPanel>
       <AAccordionPanel collapsed={false}>
         <AAccordionHeader>
-          <AAccordionHeaderTitle>
-            Additional Accordion Item
-          </AAccordionHeaderTitle>
+          <AAccordionHeaderTitle>Additional Accordion Item</AAccordionHeaderTitle>
         </AAccordionHeader>
         <AAccordionBody>{LoremIpsum}</AAccordionBody>
       </AAccordionPanel>
     </AAccordion>
-  );
-}
-`}
-/>
+
+);
+} `} />
 
 #### Controlled Usage
 
