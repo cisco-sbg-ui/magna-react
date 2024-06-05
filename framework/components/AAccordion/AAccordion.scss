@@ -170,6 +170,7 @@ $accordion-divider-border-width: thin;
     &--state-collapsed {
       .a-accordion__body {
         max-height: 0;
+        overflow: hidden;
         visibility: hidden;
         opacity: 0;
         margin: 0;
