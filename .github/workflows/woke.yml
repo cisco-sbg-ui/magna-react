@@ -2,7 +2,7 @@ name: woke linter tool
 
 on:
   push:
-    branches: [ "canary" ]
+    branches: [ "main" ]
 
 jobs:
   woke:
