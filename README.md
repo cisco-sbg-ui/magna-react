@@ -1,6 +1,4 @@
-# Magna-React (BETA)
-
-## *THIS REPOSITORY AND PACKAGE IS CURRENTLY IN BETA. COMPONENT SIGNATURES AND FUNCTIONALITY MAY CHANGE AND POTENTIALLY BE BREAKING CHANGES.*
+# Magna-React
 
 ## Introduction
 
@@ -14,36 +12,34 @@ Magna-React is a React library that implements UI components according to the [A
 - Form validation
 - Extensibility
 
--------------
+---
 
 ## Usage
-
-## *THIS REPOSITORY AND PACKAGE IS CURRENTLY IN BETA. DO _NOT_ USE THIS IN PRODUCTION. ANY PRODUCTION USAGE AT THIS TIME WILL RESULT IN SEVERE CONSEQUENCES.*
 
 Magna-React is provided as an npm package from GitHub packages. To configure for use:
 
 ### Generate an access token
 
-1) Go to https://github.com/settings/tokens
-2) Click `Generate new token`
+1. Go to https://github.com/settings/tokens
+2. Click `Generate new token`
 
 ![generate token](./docs/images/github/generate_token.png)
 
-3) Enter a note to identify the token
-4) Select the `read:packages` scope
+3. Enter a note to identify the token
+4. Select the `read:packages` scope
 
 ![package scope](./docs/images/github/package_scope.png)
 
-5) Click `Generate`
-6) Copy the token
+5. Click `Generate`
+6. Copy the token
 
-8) Add the repository to your `~/.npmrc` file:
+7. Add the repository to your `~/.npmrc` file:
 
 ```
 @advthreat:registry=https://npm.pkg.github.com
 ```
 
-9) Paste the following in to your `~/.npmrc` file, replacing TOKEN with your new token:
+9. Paste the following in to your `~/.npmrc` file, replacing TOKEN with your new token:
 
 ```
 //npm.pkg.github.com/:_authToken=TOKEN
@@ -51,28 +47,29 @@ Magna-React is provided as an npm package from GitHub packages. To configure for
 
 ### Installation
 
-1) Run
+1. Run
 
 ```
-npm install @cisco-sbg-ui/magna-react@beta
+npm install @cisco-sbg-ui/magna-react
 ```
 
-2) Remove `@cisco-sbg-ui/atomic-react` from package.json
+2. Remove `@cisco-sbg-ui/atomic-react` from package.json
 
-3) Swap imports/babel config from atomic-react to magna-react
+3. Swap imports/babel config from atomic-react to magna-react
 
--------------
+---
 
 ## Component Development
 
 Feel free to reach out to Robert Harris (roberha2) via Webex Teams to discuss contributions.
+
 ## DEV ===============
+
 ### Run Locally
+
 ```
 npm ci
 npm run dev
 ```
 
--------------
-
-## *THIS REPOSITORY AND PACKAGE IS CURRENTLY IN BETA. COMPONENT SIGNATURES AND FUNCTIONALITY MAY CHANGE AND POTENTIALLY BE BREAKING CHANGES.*
+---
