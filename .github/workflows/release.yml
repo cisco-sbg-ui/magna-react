@@ -26,7 +26,7 @@ jobs:
             echo "//artifactory.devhub-cloud.cisco.com/artifactory/api/npm/magnetic-common-npm/:always-auth=true"  >> .npmrc
             echo "registry=https://registry.npmjs.org/"  >> .npmrc
         env:
-          REPO_TOKEN: ${{ secrets.TEMP_PACKAGE_READ_TOKEN }}
+          TOKEN: ${{ secrets.TEMP_PACKAGE_READ_TOKEN }}
       - run: npm ci
       - run: npm run build
       - uses: JS-DevTools/npm-publish@v2
