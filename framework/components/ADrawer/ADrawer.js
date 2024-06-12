@@ -29,6 +29,7 @@ const ADrawer = forwardRef(
       slimWidth,
       style: propsStyle,
       withTransitions = true,
+      usesDrawerToggleHook = false,
       ...rest
     },
     ref
@@ -103,6 +104,12 @@ const ADrawer = forwardRef(
       style.slimHeight = slimHeight;
     }
 
+    let renderChildren = shouldRenderChildren && children;
+
+    if (usesDrawerToggleHook) {
+      renderChildren = !isOpen ? prevChildren : children;
+    }
+
     const drawerPanelComponent = (
       <DrawerContext.Provider value={{onClose}}>
         <DrawerPanelComponent
@@ -111,7 +118,7 @@ const ADrawer = forwardRef(
           className={shouldRenderModal ? "" : className}
           style={shouldRenderModal ? {height: "100%"} : style}
         >
-          {shouldRenderChildren && !isOpen ? prevChildren : children}
+          {renderChildren}
         </DrawerPanelComponent>
       </DrawerContext.Provider>
     );
@@ -216,7 +223,11 @@ ADrawer.propTypes = {
    * The width of the drawer when it is rendered as slim. If not specified,
    * it defaults to 50px.
    */
-  slimWidth: PropTypes.string
+  slimWidth: PropTypes.string,
+  /**
+   * Set to true if using the
+   */
+  usesDrawerToggleHook: PropTypes.bool
 };
 
 ADrawer.displayName = "ADrawer";
