@@ -111,6 +111,23 @@
 }
 
 // -----------------------------------------------------------------------------
+// Global focus
+// ------
+
+@mixin a-control-focus($type: "control") {
+  @if ($type == "negative") {
+    box-shadow: 0 0 0 2px var(--negative-bg-weak-hover),
+      0 0 0 4px var(--negative-border-medium-default);
+  } @else if($type == "warning") {
+    box-shadow: 0 0 0 2px var(--warning-bg-medium-focus),
+      0 0 0 4px var(--warning-border-default);
+  } @else {
+    box-shadow: 0 0 0 2px var(--interact-bg-weak-focus),
+      0 0 0 4px var(--control-border-focus);
+  }
+}
+
+// -----------------------------------------------------------------------------
 // Button sizes
 // -----------------------------------------------------------------------------
 

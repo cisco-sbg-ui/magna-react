@@ -31,7 +31,7 @@ $input-transition: border-color $transition-duration--extra-fast
   &--focused {
     .a-input-base__surface {
       border-color: var(--control-border-focus);
-      box-shadow: 0 0 0 2px var(--text-input-shadow-color);
+      @include a-control-focus();
     }
   }
 
@@ -94,14 +94,15 @@ $input-transition: border-color $transition-duration--extra-fast
   &--warning {
     &.a-input-base--focused .a-input-base__surface {
       border: $border-width solid var(--warning-border-default);
-      box-shadow: 0 0 0 2px var(--warning-bg-medium-focus);
+      @include a-control-focus("warning");
     }
 
     .a-input-base__surface {
       border: $border-width solid var(--warning-border-default);
+      box-shadow: 0 0 0 2px var(--warning-bg-medium-focus);
 
       &:hover {
-        border: $border-width solid var(--severe-warning-border-hover);
+        border: $border-width solid var(--warning-border-hover);
       }
 
       &:active {
@@ -112,19 +113,20 @@ $input-transition: border-color $transition-duration--extra-fast
 
   &--danger {
     &.a-input-base--focused .a-input-base__surface {
-      border: $border-width solid var(--negative-border-default);
-      box-shadow: 0 0 0 2px var(--negative-border-disabled);
+      border: $border-width solid var(--negative-border-medium-default);
+      @include a-control-focus("negative");
     }
 
     .a-input-base__surface {
-      border: $border-width solid var(--negative-border-default);
+      border: $border-width solid var(--negative-border-medium-default);
+      box-shadow: 0 0 0 2px var(--negative-bg-weak-focus);
 
       &:hover {
         border: $border-width solid var(--negative-border-medium-hover);
       }
 
       &:active {
-        border: $border-width solid var(--negative-border-default);
+        border: $border-width solid var(--negative-border-medium-default);
       }
     }
   }
