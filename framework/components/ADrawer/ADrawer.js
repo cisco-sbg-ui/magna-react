@@ -5,7 +5,6 @@ import AModal from "../AModal/AModal";
 
 import "./ADrawer.scss";
 import {useDelayUnmount, usePrevious} from "../../utils/hooks";
-import useReturnFocusOnClose from "../../hooks/useReturnFocusOnClose/useReturnFocusOnClose";
 
 const DrawerContext = createContext({});
 
