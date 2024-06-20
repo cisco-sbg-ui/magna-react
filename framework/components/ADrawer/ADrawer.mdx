@@ -673,11 +673,11 @@ This hook can be used in cases there isn't a global drawer controller.
     }
    
     const drawerRef = useRef();
-    const {setDrawerOpen, isDrawerOpen} = useDrawerToggle();
+    const {setDrawerOpen, isDrawerOpen} = useDrawerToggle(drawerRef);
     const [contentId, setContentId] = useState();
 
     const setDrawerContent = (newContent, open = true) => {
-      if (newContent === contentId) {
+      if (newContent === contentId && isDrawerOpen) {
         return;
       }
 
@@ -701,13 +701,13 @@ This hook can be used in cases there isn't a global drawer controller.
         <ADrawer
             ref={drawerRef}
             style={{display: "flex", flexDirection: "column"}}
-            asModal={false}
             aria-labelledby='drawer-title'
             slideIn='right'
             isOpen={isDrawerOpen}
             usesDrawerToggleHook
+            asModal={false}
             onClose={() => {
-              setDrawerContent(null, false);
+              setDrawerOpen(false);
             }}
             data-test-drawer>
           <ADrawerHeader>

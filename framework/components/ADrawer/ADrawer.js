@@ -2,11 +2,10 @@ import React, {forwardRef, createContext} from "react";
 import PropTypes from "prop-types";
 
 import AModal from "../AModal/AModal";
-import AButton from "../AButton/AButton";
-import AIcon from "../AIcon/AIcon";
 
 import "./ADrawer.scss";
 import {useDelayUnmount, usePrevious} from "../../utils/hooks";
+import useReturnFocusOnClose from "../../hooks/useReturnFocusOnClose/useReturnFocusOnClose";
 
 const DrawerContext = createContext({});
 
@@ -48,6 +47,8 @@ const ADrawer = forwardRef(
     let className = `a-drawer a-drawer--${orientation} a-drawer--${position} a-drawer--${slideIn}`;
 
     const prevChildren = usePrevious(children);
+
+    //useReturnFocusOnClose(isOpen && usesDrawerToggleHook);
 
     const style = {...propsStyle};
 
@@ -105,15 +106,17 @@ const ADrawer = forwardRef(
     }
 
     let renderChildren = shouldRenderChildren && children;
-
+    const tabIndexProps = {};
     if (usesDrawerToggleHook) {
       renderChildren = !isOpen ? prevChildren : children;
+      tabIndexProps.tabIndex = -1;
     }
 
     const drawerPanelComponent = (
       <DrawerContext.Provider value={{onClose}}>
         <DrawerPanelComponent
           {...rest}
+          {...tabIndexProps}
           ref={shouldRenderModal ? null : ref}
           className={shouldRenderModal ? "" : className}
           style={shouldRenderModal ? {height: "100%"} : style}

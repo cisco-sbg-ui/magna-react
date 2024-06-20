@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import usePopupQuickExit from "../../hooks/usePopupQuickExit/usePopupQuickExit";
 
 export const useDrawerToggle = (drawerRef, delay = 300) => {
@@ -11,13 +11,21 @@ export const useDrawerToggle = (drawerRef, delay = 300) => {
     onExit: () => setIsOpen(false)
   });
 
+  useEffect(() => {
+    if (isDrawerOpen) {
+      setTimeout(() => {
+        drawerRef?.current?.focus();
+      }, delay);
+    }
+  }, [isDrawerOpen, drawerRef, delay]);
+
   const setDrawerOpen = (open) => {
     handler && clearTimeout(handler);
 
     if (!open) {
       setIsOpen(open);
     } else {
-      setIsOpen(false); // TODO  flushSync here to force the false
+      setIsOpen(false);
 
       handler = setTimeout(() => {
         setIsOpen(open);
