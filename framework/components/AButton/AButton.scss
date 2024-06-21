@@ -108,6 +108,7 @@ $btn-transition: color $transition-duration--extra-fast
     &:focus {
       color: var(--interact-text-in-default);
       border-color: var(--interact-border-focus);
+      @include a-control-focus();
     }
 
     &:active {
@@ -137,8 +138,9 @@ $btn-transition: color $transition-duration--extra-fast
     }
 
     &:focus {
+      outline: none;
       color: var(--negative-text-in-default);
-      border-color: var(--negative-border-focus);
+      @include a-control-focus("negative");
     }
 
     &:active {
@@ -170,6 +172,7 @@ $btn-transition: color $transition-duration--extra-fast
     &:focus {
       color: var(--interact-text-focus);
       border-color: var(--interact-border-focus);
+      @include a-control-focus();
     }
 
     &:active {
@@ -199,8 +202,10 @@ $btn-transition: color $transition-duration--extra-fast
     }
 
     &:focus {
+      outline: none;
       color: var(--negative-text-hover);
       border-color: var(--negative-border-focus);
+      @include a-control-focus("negative");
     }
 
     &:active {
@@ -227,7 +232,7 @@ $btn-transition: color $transition-duration--extra-fast
 
     &:focus {
       color: var(--interact-text-focus);
-      border-color: var(--interact-border-weak-hover);
+      @include a-control-focus();
     }
 
     &:active {
@@ -242,18 +247,15 @@ $btn-transition: color $transition-duration--extra-fast
     }
   }
 
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px var(--interact-bg-weak-active),
-      0 0 0 4px var(--control-border-focus);
-  }
-
   &.a-button--tertiary-alt {
     color: var(--interact-text-weak-default);
 
     &:hover,
     &:focus {
       color: var(--interact-text-weak-hover);
+    }
+    &:focus {
+      @include a-control-focus();
     }
 
     &:active {
