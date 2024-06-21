@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
-import AHint from "../AHint";
+import AHintContainer from "../AHint/AHintContainer";
 import AIcon from "../AIcon";
 import ATriggerTooltip from "../ATriggerTooltip";
 import {ATooltipPropTypes} from "../ATooltip";
@@ -13,7 +13,7 @@ const AFieldBase = forwardRef(
       children,
       className: propsClassName,
       error,
-      hints: propsHints = [],
+      hints,
       label,
       labelHidden = false,
       labelFor,
@@ -35,25 +35,6 @@ const AFieldBase = forwardRef(
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
-    }
-
-    let hintElement = null;
-    if (error) {
-      hintElement = (
-        <AHint className="a-field-base__hint" validationState={validationState}>
-          {error}
-        </AHint>
-      );
-    }
-
-    const hints = [];
-
-    if (typeof propsHints === "string" || propsHints instanceof String) {
-      hints.unshift({
-        content: propsHints
-      });
-    } else if (Array.isArray(propsHints)) {
-      hints.push(...propsHints);
     }
 
     return (
@@ -82,42 +63,11 @@ const AFieldBase = forwardRef(
           </label>
         )}
         {children}
-        {Array.isArray(hints) &&
-          hints.map((hintObject, index) => {
-            // "hints" block should be before "error" hint
-            if (hintObject.hideHintOnError && error) {
-              return null;
-            }
-
-            let content = hintObject.content;
-
-            // Text in the array, or custom hint object
-            if (
-              typeof hintObject === "string" ||
-              hintObject instanceof String
-            ) {
-              content = hintObject;
-            } else if (!hintObject.content) {
-              return hintObject;
-            }
-
-            const objectValidationState = hintObject.validationStateOverride
-              ? hintObject.validationStateOverride
-              : hintObject.hintUsesValidationState
-              ? validationState
-              : "default";
-
-            return (
-              <AHint
-                key={index}
-                className="a-field-base__hint"
-                validationState={objectValidationState}
-              >
-                {content}
-              </AHint>
-            );
-          })}
-        {hintElement}
+        <AHintContainer
+          hints={hints}
+          error={error}
+          validationState={validationState}
+        />
       </div>
     );
   }
