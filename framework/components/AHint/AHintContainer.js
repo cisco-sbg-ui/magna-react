@@ -93,7 +93,14 @@ AHintContainer.propTypes = {
     PropTypes.string,
     // Pass a custom renderable object as the hint
     PropTypes.node
-  ])
+  ]),
+  /**
+   * An error from a component's rules
+   */
+  error: PropTypes.string
+  /**
+   * Validation state from a component's rules
+   */
 };
 
 export default AHintContainer;
