@@ -129,6 +129,6 @@
 .a-multiselect:focus-within {
   .a-input-base__surface {
     border-color: var(--control-border-focus);
-    box-shadow: 0 0 0 2px var(--text-input-shadow-color);
+    @include a-control-focus();
   }
 }

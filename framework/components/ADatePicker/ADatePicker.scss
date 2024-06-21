@@ -242,8 +242,9 @@ $date-picker-day-border-radius: 4px;
         border-top-left-radius: $border-radius--xlg; //clip input's base border-radius to avoid showing above focus's border-radius
         border-bottom-left-radius: $border-radius--xlg; //clip input's base border-radius to avoid showing above focus's border-radius
         :focus {
-          border: 2px solid var(--control-border-focus);
-          box-shadow: 0px 0px 0px 2px var(--control-border-active);
+          outline: 2px solid var(--control-border-focus);
+          outline-offset: -2px;
+          @include a-control-focus();
           border-radius: $border-radius--lg;
         }
       }
@@ -254,8 +255,9 @@ $date-picker-day-border-radius: 4px;
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
         :focus {
-          border: 2px solid var(--control-border-focus);
-          box-shadow: 0px 0px 0px 2px var(--control-border-active);
+          outline: 2px solid var(--control-border-focus);
+          outline-offset: -2px;
+          @include a-control-focus();
           border-radius: $border-radius--lg;
         }
       }
