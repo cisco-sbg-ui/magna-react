@@ -18,10 +18,14 @@ $common-transitions: transform $transition-props, width $transition-props,
     top: unset;
     left: unset;
 
-    > span > div {
-      display: flex;
-      flex-direction: column;
+    > span {
       height: 100%;
+
+      > div {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
     }
   }
 
