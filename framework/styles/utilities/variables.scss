@@ -22,7 +22,7 @@ $font-weight-xbold: 800 !default;
 $font-weight: $font-weight-normal !default;
 
 $font-weight--bold: $font-weight-bold !default;
-$line-height: 1.25 !default;
+$line-height: rem(1.25) !default;
 $line-height--xl: rem(1.5) !default; // 24px
 $line-height--lg: rem(1.375) !default; // 22px
 $line-height--md: rem(1.25) !default; // 20px
