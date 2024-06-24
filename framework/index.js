@@ -96,6 +96,7 @@ import {
 } from "./components/APageLayout";
 import APageOverlay from "./components/APageOverlay";
 import APagination from "./components/APagination";
+import APaginator from "./components/APaginator";
 import {
   APanel,
   APanelHeader,
@@ -240,6 +241,7 @@ export {
   APageTitleText,
   APageOverlay,
   APagination,
+  APaginator,
   APanel,
   APanelHeader,
   APanelTitle,
