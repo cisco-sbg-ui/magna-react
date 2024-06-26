@@ -395,7 +395,7 @@ export const debounce = (func, timeout = 100) => {
   return (...args) => {
     clearTimeout(timer);
     timer = setTimeout(() => {
-      func.apply(this, args);
+      func.call(...args);
     }, timeout);
   };
 };
