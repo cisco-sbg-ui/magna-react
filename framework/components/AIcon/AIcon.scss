@@ -39,6 +39,11 @@ svg.a-icon {
     margin-left: 4px;
   }
 
+  // Cisco logo
+  &--cisco {
+    stroke: unset;
+  }
+
   //Status icon backgrounds
   &--excellent {
     fill: var(--excellent-icon-default);
