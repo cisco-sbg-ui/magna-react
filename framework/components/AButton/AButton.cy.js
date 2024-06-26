@@ -36,6 +36,6 @@ describe("<AButton/>", () => {
 
     cy.get(".a-button")
       .should("have.class", "a-button--inline-btn")
-      .should("have.css", "padding", "0px");
+      .should("have.css", "padding", "0px 2px");
   });
 });
