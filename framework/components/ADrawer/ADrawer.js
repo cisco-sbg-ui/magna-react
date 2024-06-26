@@ -47,8 +47,6 @@ const ADrawer = forwardRef(
 
     const prevChildren = usePrevious(children);
 
-    //useReturnFocusOnClose(isOpen && usesDrawerToggleHook);
-
     const style = {...propsStyle};
 
     if (shouldRenderModal) {

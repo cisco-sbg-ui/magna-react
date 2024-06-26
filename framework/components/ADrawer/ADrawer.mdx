@@ -691,13 +691,11 @@ This hook can be used in cases there isn't a global drawer controller.
       <>
         <AButton onClick={() => {
             setDrawerContent("a");
-          }}
-          data-test-drawer-trigger-a>Merlin's Crystal</AButton>
+          }}>Merlin's Crystal</AButton>
         <br /><br />
         <AButton onClick={() => {
             setDrawerContent("b");
-          }}
-          data-test-drawer-trigger-b>Gertrude's Cat</AButton>
+          }}>Gertrude's Cat</AButton>
         <ADrawer
             ref={drawerRef}
             style={{display: "flex", flexDirection: "column"}}
@@ -708,8 +706,7 @@ This hook can be used in cases there isn't a global drawer controller.
             asModal={false}
             onClose={() => {
               setDrawerOpen(false);
-            }}
-            data-test-drawer>
+            }}>
           <ADrawerHeader>
             <ADrawerTitle>
               <h1>{content?.title}</h1>
