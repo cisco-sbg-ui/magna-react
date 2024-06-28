@@ -10,7 +10,7 @@ const APaginatorNumbers = ({show, pages, workingPage, setWorkingPage}) => {
     <>
       {/*Button to navigate to the first page*/}
       {workingPage > 1 && (
-        <APaginatorButton tertiaryAlt onClick={setWorkingPage} index={0} />
+        <APaginatorButton tertiary onClick={setWorkingPage} index={0} />
       )}
 
       {/*Ellipsis between the first page and the current pages*/}
@@ -19,7 +19,7 @@ const APaginatorNumbers = ({show, pages, workingPage, setWorkingPage}) => {
       {/*Previous page, current page, and next page*/}
       {workingPage !== 0 && (
         <APaginatorButton
-          tertiaryAlt
+          tertiary
           onClick={setWorkingPage}
           index={workingPage - 1}
         />
@@ -34,7 +34,7 @@ const APaginatorNumbers = ({show, pages, workingPage, setWorkingPage}) => {
 
       {pages > 0 && workingPage !== pages - 1 && (
         <APaginatorButton
-          tertiaryAlt
+          tertiary
           onClick={setWorkingPage}
           index={workingPage + 1}
         />
@@ -47,11 +47,7 @@ const APaginatorNumbers = ({show, pages, workingPage, setWorkingPage}) => {
 
       {/*Button to navigate to the last page*/}
       {workingPage < pages - 2 && (
-        <APaginatorButton
-          tertiaryAlt
-          onClick={setWorkingPage}
-          index={pages - 1}
-        />
+        <APaginatorButton tertiary onClick={setWorkingPage} index={pages - 1} />
       )}
     </>
   );

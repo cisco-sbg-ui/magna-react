@@ -10,14 +10,12 @@
   &__last {
     margin: 0;
     .a-icon {
-      fill: var(--control-border-default);
+      fill: var(interact-icon-weak-default);
     }
   }
 
   .a-button,
   .a-button--selected {
-    min-width: 32px;
-    height: 32px;
     margin: 0 4px;
     color: var(--base-text);
     font-weight: $font-weight;
@@ -47,7 +45,7 @@
         > .a-button {
           color: var(--base-text-weak-default);
           &--selected {
-            border: 2px solid var(--interact-border-disabled) !important;
+            border: 2px solid var(control-border-medium-default) !important;
           }
         }
       }
