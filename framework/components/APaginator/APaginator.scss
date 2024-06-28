@@ -16,6 +16,7 @@
 
   .a-button,
   .a-button--selected {
+    height: 28px;
     margin: 0 4px;
     color: var(--base-text);
     font-weight: $font-weight;
@@ -62,7 +63,13 @@
     align-items: center;
 
     .a-select {
-      width: 88px;
+      width: 64px;
+      .a-icon {
+        padding: 0 5px;
+      }
+      &__selection {
+        padding: 0 0 0 8px;
+      }
     }
   }
 
