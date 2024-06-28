@@ -3,7 +3,7 @@ import AIcon from "../AIcon";
 import APaginatorButton from "./APaginatorButton";
 import APaginatorNumbers from "./APaginatorNumbers";
 
-const ICON_SIZE = 10;
+const ICON_SIZE = 20;
 
 const APaginatorControls = ({
   disabled,

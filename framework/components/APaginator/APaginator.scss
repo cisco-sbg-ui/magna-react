@@ -21,15 +21,6 @@
     font-weight: $font-weight;
   }
 
-  &__previous.a-button--icon,
-  &__next.a-button--icon,
-  &__first.a-button--icon,
-  &__last.a-button--icon {
-    svg {
-      width: 18px !important;
-    }
-  }
-
   &__previous {
     margin-right: 8px;
   }
@@ -50,10 +41,6 @@
         }
       }
     }
-  }
-
-  .a-button:not(.a-button--selected):not(.a-button--icon) {
-    padding: 4px 14px;
   }
 
   &__results-per-page {
