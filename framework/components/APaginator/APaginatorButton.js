@@ -9,6 +9,7 @@ const APaginatorButton = ({children, index, onClick, ...rest}) => {
       onClick={() => {
         onClick(index);
       }}
+      small
       {...rest}
     >
       {children || index + 1}

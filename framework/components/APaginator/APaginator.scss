@@ -16,7 +16,6 @@
 
   .a-button,
   .a-button--selected {
-    height: 28px;
     margin: 0 4px;
     color: var(--base-text);
     font-weight: $font-weight;
@@ -54,7 +53,6 @@
   }
 
   .a-button:not(.a-button--selected):not(.a-button--icon) {
-    height: 28px !important;
     padding: 4px 14px;
   }
 
