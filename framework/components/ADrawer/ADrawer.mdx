@@ -673,11 +673,11 @@ This hook can be used in cases there isn't a global drawer controller.
     }
    
     const drawerRef = useRef();
-    const {setDrawerOpen, isDrawerOpen} = useDrawerToggle();
+    const {setDrawerOpen, isDrawerOpen} = useDrawerToggle(drawerRef);
     const [contentId, setContentId] = useState();
 
     const setDrawerContent = (newContent, open = true) => {
-      if (newContent === contentId) {
+      if (newContent === contentId && isDrawerOpen) {
         return;
       }
 
@@ -691,25 +691,22 @@ This hook can be used in cases there isn't a global drawer controller.
       <>
         <AButton onClick={() => {
             setDrawerContent("a");
-          }}
-          data-test-drawer-trigger-a>Merlin's Crystal</AButton>
+          }}>Merlin's Crystal</AButton>
         <br /><br />
         <AButton onClick={() => {
             setDrawerContent("b");
-          }}
-          data-test-drawer-trigger-b>Gertrude's Cat</AButton>
+          }}>Gertrude's Cat</AButton>
         <ADrawer
             ref={drawerRef}
             style={{display: "flex", flexDirection: "column"}}
-            asModal={false}
             aria-labelledby='drawer-title'
             slideIn='right'
             isOpen={isDrawerOpen}
             usesDrawerToggleHook
+            asModal={false}
             onClose={() => {
-              setDrawerContent(null, false);
-            }}
-            data-test-drawer>
+              setDrawerOpen(false);
+            }}>
           <ADrawerHeader>
             <ADrawerTitle>
               <h1>{content?.title}</h1>

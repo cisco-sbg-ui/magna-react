@@ -2,6 +2,12 @@ import React, {useState, useRef} from "react";
 import AButton from "../AButton";
 import ADrawer from "./ADrawer";
 import ADrawerContent from "./ADrawerContent";
+import ADrawerHeader from "./ADrawerHeader";
+import ADrawerTitle from "./ADrawerTitle";
+import ADrawerSubtitle from "./ADrawerSubtitle";
+import ADrawerBody from "./ADrawerBody";
+import ADrawerFooter from "./ADrawerFooter";
+import {useDrawerToggle} from "./hooks";
 import AListItem from "../AList/AListItem";
 import AMenu from "../AMenu/AMenu";
 import AMount from "../AMount/AMount";
@@ -255,6 +261,63 @@ describe("<ADrawer />", () => {
       getDrawerContent().should("exist");
     });
   });
+
+  describe("when usesDrawerToggleHook", () => {
+    it("handles focus returns correctly", () => {
+      cy.mount(<DrawerHookTest />);
+
+      // Open the first drawer
+      cy.getByDataTestId("trigger-a").click();
+
+      cy.getByDataTestId("drawer-trigger").should("exist");
+
+      cy.getByDataTestId("drawer-trigger").contains("The wizard Merlin");
+
+      // Close the drawer
+      cy.get(".a-drawer__title-close").find(".a-button").click();
+
+      // Check that the opening button has focus returned to it
+      cy.getByDataTestId("trigger-a").should("have.focus");
+
+      // Make sure drawer is closed
+      cy.getByDataTestId("drawer-trigger").should("not.be.visible");
+
+      // Open the second drawer
+      cy.getByDataTestId("trigger-b").click();
+
+      cy.getByDataTestId("drawer-trigger").should("exist");
+
+      cy.getByDataTestId("drawer-trigger").contains(
+        "Gertrude has lost her cat Fluffs and desperately"
+      );
+
+      // Close the drawer
+      cy.get(".a-drawer__title-close").find(".a-button").click();
+
+      // Check that the opening button has focus returned to it
+      cy.getByDataTestId("trigger-b").should("have.focus");
+
+      // Make sure drawer is closed
+      cy.getByDataTestId("drawer-trigger").should("not.be.visible");
+
+      // Click the first trigger, check, click second tigger, check
+      cy.getByDataTestId("trigger-a").click();
+      cy.getByDataTestId("drawer-trigger").contains("The wizard Merlin");
+
+      // cy.wait(301);
+
+      cy.getByDataTestId("trigger-b").click();
+      cy.getByDataTestId("drawer-trigger").contains(
+        "Gertrude has lost her cat Fluffs and desperately"
+      );
+
+      // Close the drawer
+      cy.get(".a-drawer__title-close").find(".a-button").click();
+
+      // Check that the opening button has focus returned to it
+      cy.getByDataTestId("trigger-b").should("have.focus");
+    });
+  });
 });
 
 function MountTest(props) {
@@ -500,3 +563,82 @@ function WithPopoverTest(drawerProps) {
     </>
   );
 }
+
+const DrawerHookTest = ({}) => {
+  const list = {
+    a: {
+      title: "Merlin's Crystal",
+      subtitle: "Short",
+      body: "The wizard Merlin has been trapped in a magical crystal by the witch Morgan Le Faye. So far, King Arthur hasn't been able to figure out how to free his mentor from his crystal prison. Can you help?"
+    },
+    b: {
+      title: "Gertrude's Cat",
+      subtitle: "Very Short",
+      body: "Gertrude has lost her cat Fluffs and desperately wants to find her. Can you help bring her home?"
+    }
+  };
+
+  const drawerRef = useRef();
+  const {setDrawerOpen, isDrawerOpen} = useDrawerToggle(drawerRef);
+  const [contentId, setContentId] = useState();
+
+  const setDrawerContent = (newContent, open = true) => {
+    if (newContent === contentId && isDrawerOpen) {
+      return;
+    }
+
+    setContentId(newContent);
+    setDrawerOpen(open);
+  };
+
+  const content = list[contentId];
+
+  return (
+    <>
+      <AButton
+        onClick={() => {
+          setDrawerContent("a");
+        }}
+        data-testid="trigger-a"
+      >
+        {"Merlin's Crystal"}
+      </AButton>
+      <br />
+      <br />
+      <AButton
+        onClick={() => {
+          setDrawerContent("b");
+        }}
+        data-testid="trigger-b"
+      >
+        {"Gertrude's Cat"}
+      </AButton>
+      <ADrawer
+        ref={drawerRef}
+        style={{display: "flex", flexDirection: "column"}}
+        aria-labelledby="drawer-title"
+        slideIn="right"
+        isOpen={isDrawerOpen}
+        usesDrawerToggleHook
+        asModal={false}
+        onClose={() => {
+          setDrawerOpen(false);
+        }}
+        data-testid="drawer-trigger"
+      >
+        <ADrawerHeader>
+          <ADrawerTitle>
+            <h1>{content?.title}</h1>
+          </ADrawerTitle>
+          <ADrawerSubtitle>{content?.subtitle}</ADrawerSubtitle>
+        </ADrawerHeader>
+        <ADrawerBody>{content?.body}</ADrawerBody>
+        <ADrawerFooter>
+          <AButton onClick={() => setDrawerOpen(false)} data-test-drawer-close>
+            Close
+          </AButton>
+        </ADrawerFooter>
+      </ADrawer>
+    </>
+  );
+};
