@@ -10,15 +10,22 @@
   &__last {
     margin: 0;
     .a-icon {
-      fill: var(interact-icon-weak-default);
+      height: 20px;
+      polyline,
+      line {
+        stroke: var(--interact-icon-weak-default);
+      }
     }
   }
 
   .a-button,
   .a-button--selected {
-    margin: 0 4px;
-    color: var(--base-text);
+    margin: 0 2px;
+    color: var(--base-text-default);
     font-weight: $font-weight;
+    width: 28px;
+    height: 28px;
+    justify-content: center;
   }
 
   &__previous {
@@ -36,7 +43,7 @@
         > .a-button {
           color: var(--base-text-weak-default);
           &--selected {
-            border: 2px solid var(control-border-medium-default) !important;
+            border: 2px solid var(--interact-border-disabled) !important;
           }
         }
       }

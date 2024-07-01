@@ -1,9 +1,11 @@
 import React from "react";
 import AButton from "../AButton";
 
-const APaginatorButton = ({children, index, onClick, ...rest}) => {
+const APaginatorButton = ({children, index, onClick, disabled, ...rest}) => {
+  console.log(disabled);
   return (
     <AButton
+      disabled={disabled}
       key={index}
       className="a-paginator__page-button"
       onClick={() => {
