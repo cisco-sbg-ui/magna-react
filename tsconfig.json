@@ -1,0 +1,23 @@
+{
+  "extends": "@tsconfig/recommended/tsconfig.json",
+  "compilerOptions": {
+    "target": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "allowJs": true,
+    "jsx": "react",
+    // Import non-ES modules as default imports.
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "outDir": "./lib",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "incremental": true,
+    "isolatedModules": true
+  },
+  "include": ["framework/**/*"],
+  "exclude": ["node_modules"]
+}
