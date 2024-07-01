@@ -1,11 +1,10 @@
-import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
-
 import {kebabify} from "../../utils/helpers";
 import Icons from "./icons.json";
 import MagnaIcons from "./magnaIcons.js";
-import {iconNameMap} from "./iconMap.js";
+import {iconNameMap} from "./iconMap.ts";
 import "./AIcon.scss";
+import {AIconSize} from "./types";
 
 /**
  * For icons that should not be styled as "regular",
@@ -40,14 +39,45 @@ const ignoreStrokeReplace = [
   // icons that start with "type_"
 ];
 
-const AIcon = forwardRef(
+interface AIconProps {
+  /**
+   * Overrides the default `aria-label`, "[icon_name] icon".
+   */
+  label?: string;
+  /**
+   * Adjusts margins if on the left side of text.
+   */
+  left?: boolean;
+  /**
+   * Adjusts margins if on the right side of text.
+   */
+  right?: boolean;
+  /**
+   * Sets a custom icon width.
+   */
+  size?: AIconSize;
+  children: string;
+  className?: string;
+  ref?: React.RefObject<HTMLDivElement>;
+}
+
+interface ComponentProps {
+  ref: React.ForwardedRef<SVGSVGElement>;
+  className: string;
+  "aria-label": string;
+  style?: {
+    width?: number | string;
+    stroke?: string;
+  };
+}
+const AIcon = forwardRef<SVGSVGElement, AIconProps>(
   (
     {children, className: propsClassName, label, left, right, size, ...rest},
     ref
   ) => {
     let className = `a-icon`;
 
-    if (size && isNaN(size)) {
+    if (size && typeof size === "number" && isNaN(size)) {
       className += ` a-icon--size-${size}`;
     }
 
@@ -66,7 +96,7 @@ const AIcon = forwardRef(
     className += ` a-icon--${children}`;
 
     const ariaLabel = label || `${children} icon`,
-      componentProps = {
+      componentProps: ComponentProps = {
         style: {},
         ...rest,
         ref,
@@ -78,7 +108,7 @@ const AIcon = forwardRef(
       componentProps.style = {};
     }
 
-    if (size && !isNaN(size)) {
+    if (size && typeof size === "number" && !isNaN(size)) {
       componentProps.style.width = size;
     }
 
@@ -88,17 +118,17 @@ const AIcon = forwardRef(
       return null;
     }
 
-    if (MagnaIcons[children]) {
+    if ((MagnaIcons as any)[children]) {
       // Check if it's in magna icons
 
-      magneticIconDef = MagnaIcons[children];
+      magneticIconDef = (MagnaIcons as any)[children];
     } else if (iconNameMap[children]) {
       // check if we can map an atomic icon name to a magna icon
-      magneticIconDef = MagnaIcons[iconNameMap[children]];
+      magneticIconDef = (MagnaIcons as any)[iconNameMap[children]];
     } else {
       const kebabed = kebabify(children);
 
-      magneticIconDef = MagnaIcons[kebabed];
+      magneticIconDef = (MagnaIcons as any)[kebabed];
 
       if (magneticIconDef) {
         componentProps.className += ` a-icon--${kebabed}`;
@@ -125,38 +155,10 @@ const AIcon = forwardRef(
 
     return (
       <svg {...componentProps} viewBox="0 0 16 16">
-        <path d={Icons[children]} />
+        <path d={(Icons as any)[children]} />
       </svg>
     );
   }
 );
-
-AIcon.propTypes = {
-  /**
-   * The `AIcon` component requires the icon name as the only child element.
-   */
-  children: PropTypes.string.isRequired,
-  /**
-   * Overrides the default `aria-label`, "[icon_name] icon".
-   */
-  label: PropTypes.string,
-  /**
-   * Adjusts margins if on the left side of text.
-   */
-  left: PropTypes.bool,
-  /**
-   * Adjusts margins if on the right side of text.
-   */
-  right: PropTypes.bool,
-  /**
-   * Sets a custom icon width.
-   */
-  size: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.oneOf(["small", "medium", "large"])
-  ])
-};
-
-AIcon.displayName = "AIcon";
 
 export default AIcon;
