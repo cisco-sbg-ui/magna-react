@@ -1,13 +1,24 @@
-import PropTypes from "prop-types";
 import React, {forwardRef, useContext, useEffect, useState} from "react";
 
 import AAccordionContext from "./AAccordionContext";
 import AAccordionPanelContext from "./AAccordionPanelContext";
 import "./AAccordion.scss";
+import {BasicComponentProps} from "../../types";
 
 let accordionPanelCounter = 1;
 
-const AAccordionPanel = forwardRef(
+interface AAccordionPanelProps extends BasicComponentProps {
+  /**
+   * Sets the default collapsed state.
+   */
+  collapsed?: boolean;
+  panelKey?: string;
+  /**
+   * Handles the expand/collapse toggle event.
+   */
+  onToggle?: () => void;
+}
+const AAccordionPanel = forwardRef<HTMLDivElement, AAccordionPanelProps>(
   (
     {
       children,
@@ -20,7 +31,7 @@ const AAccordionPanel = forwardRef(
     ref
   ) => {
     const [hasBody, setHasBody] = useState(false);
-    const [panelId, setPanelId] = useState(null);
+    const [panelId, setPanelId] = useState(1);
     const [isFocused, setIsFocused] = useState(false);
     const {openedPanels, setOpenedPanels} = useContext(AAccordionContext);
 
@@ -62,10 +73,7 @@ const AAccordionPanel = forwardRef(
       onToggle
     };
 
-    const props = {};
-    if (hasBody) {
-      props["aria-expanded"] = !isCollapsed;
-    }
+    const props = hasBody && {"aria-expanded": !isCollapsed};
 
     return (
       <div {...rest} {...props} className={className} ref={ref}>
@@ -76,21 +84,6 @@ const AAccordionPanel = forwardRef(
     );
   }
 );
-
-AAccordionPanel.propTypes = {
-  /**
-   * Sets the default collapsed state.
-   */
-  collapsed: PropTypes.bool,
-  /**
-   *
-   */
-  panelKey: PropTypes.string,
-  /**
-   * Handles the expand/collapse toggle event.
-   */
-  onToggle: PropTypes.func
-};
 
 AAccordionPanel.displayName = "AAccordionPanel";
 

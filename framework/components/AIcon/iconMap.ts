@@ -1,4 +1,8 @@
-export const iconNameMap = {
+interface IconMap {
+  [key: string]: string;
+}
+
+export const iconNameMap: IconMap = {
   add: "plus",
   "add-to-list": "file-plus",
   alert: "bell",
