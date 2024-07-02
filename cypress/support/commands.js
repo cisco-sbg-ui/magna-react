@@ -101,14 +101,14 @@ keydownUtils.forEach(({key, keyCode, name}) => {
 /**
  * Specifically for `ATooltip`.
  */
-Cypress.Commands.add("hoverATooltip", (withClick = false) => {
+Cypress.Commands.add("hoverATooltip", () => {
   return cy.getByAriaLabel("information icon").trigger("mouseenter");
 });
 
 /**
  * Specifically for `ATooltip`.
  */
-Cypress.Commands.add("clickATooltip", (withClick = false) => {
+Cypress.Commands.add("clickATooltip", () => {
   return cy.getByAriaLabel("information icon").trigger("click");
 });
 

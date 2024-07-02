@@ -7,7 +7,8 @@ const files = glob.sync("./framework/components/**/index.js");
 
 const getComponents = (data) => {
   const components = [];
-  let matches = data.match(/([\{,][\s]?|  )([\w]+)/g);
+  // eslint-disable-next-line no-regex-spaces
+  let matches = data.match(/([{,][\s]?|  )([\w]+)/g);
   components.push(...matches);
   return components.map((x) => {
     return x.replace("  ", "").replace(", ", "").replace("{", "");

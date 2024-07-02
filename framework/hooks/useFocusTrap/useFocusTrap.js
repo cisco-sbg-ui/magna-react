@@ -112,6 +112,7 @@ export default function useFocusTrap({
       const trap = createTrap(treeWalker);
       document.addEventListener("keydown", trap);
 
+      // eslint-disable-next-line no-inner-declarations
       function resetTreeWalkerHeadOnClick(e) {
         const target = e.target;
 

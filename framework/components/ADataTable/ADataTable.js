@@ -27,7 +27,6 @@ const ADataTable = forwardRef(
       onSort,
       onScrollToEnd,
       sort,
-      selectedItems,
       truncateHeaders,
       stickyHeader = false,
       keyboardArrowSupport = null,

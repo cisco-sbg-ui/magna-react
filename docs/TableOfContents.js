@@ -1,4 +1,4 @@
-import {AIcon, ATab, ATabGroup} from "../framework";
+import {ATab, ATabGroup} from "../framework";
 import {getRoundedBoundedClientRect} from "../framework/utils/helpers";
 import "./TableOfContents.scss";
 

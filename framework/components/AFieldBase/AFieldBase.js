@@ -73,6 +73,7 @@ const AFieldBase = forwardRef(
   }
 );
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const {anchorRef, ...infoTooltipProps} = ATooltipPropTypes;
 
 AFieldBase.propTypes = {

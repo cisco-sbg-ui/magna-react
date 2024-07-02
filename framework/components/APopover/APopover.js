@@ -11,7 +11,6 @@ const APopover = forwardRef(
   (
     {
       anchorRef,
-      anchorDOMRect,
       children,
       className: propsClassName,
       focusOnOpen = true,

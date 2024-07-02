@@ -1,12 +1,18 @@
-import PropTypes from "prop-types";
 import React, {forwardRef, useState} from "react";
-
 import AAccordionContext from "./AAccordionContext";
 import "./AAccordion.scss";
+import {BasicComponentProps} from "../../types";
 
-const AAccordion = forwardRef(
+interface AAccordionProps extends BasicComponentProps {
+  /**
+   * Toggles the `bordered` display variant.
+   */
+  bordered?: boolean;
+}
+
+const AAccordion = forwardRef<HTMLDivElement, AAccordionProps>(
   ({bordered, children, className: propsClassName, ...rest}, ref) => {
-    const [openedPanels, setOpenedPanels] = useState([]);
+    const [openedPanels, setOpenedPanels] = useState<number[]>([]);
 
     let className = "a-accordion";
 
@@ -32,13 +38,6 @@ const AAccordion = forwardRef(
     );
   }
 );
-
-AAccordion.propTypes = {
-  /**
-   * Toggles the `bordered` display variant.
-   */
-  bordered: PropTypes.bool
-};
 
 AAccordion.displayName = "AAccordion";
 

@@ -564,7 +564,7 @@ function WithPopoverTest(drawerProps) {
   );
 }
 
-const DrawerHookTest = ({}) => {
+const DrawerHookTest = () => {
   const list = {
     a: {
       title: "Merlin's Crystal",

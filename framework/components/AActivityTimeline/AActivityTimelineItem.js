@@ -40,9 +40,15 @@ const AActivityTimelineItem = forwardRef((props, ref) => {
     ...rest
   } = props;
 
-  const isDividerVisibilityControlled = props.hasOwnProperty("withDivider");
+  const isDividerVisibilityControlled = Object.prototype.hasOwnProperty.call(
+    props,
+    "withDivider"
+  );
 
-  const isCollapsibleStateControlled = props.hasOwnProperty("isCollapsed");
+  const isCollapsibleStateControlled = Object.prototype.hasOwnProperty.call(
+    props,
+    "isCollapsed"
+  );
 
   const shouldRenderDivider = isDividerVisibilityControlled
     ? withDivider

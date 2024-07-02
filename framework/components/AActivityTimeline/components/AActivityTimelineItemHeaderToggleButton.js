@@ -17,6 +17,7 @@ function AActivityTimelineItemHeaderToggleButton({
       // might not be passed in as type `boolean` from
       // a developer, and this attribute should explicitly
       // be "true" or "false"
+      // eslint-disable-next-line no-extra-boolean-cast
       aria-expanded={!Boolean(isCollapsed)}
     >
       <AIcon

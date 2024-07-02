@@ -43,7 +43,7 @@ describe("<AActivityTimeline />", () => {
       </UncontrolledTimelineTest>
     );
 
-    cy.get(".a-activity-timeline__list-item").each(($el, index, $list) => {
+    cy.get(".a-activity-timeline__list-item").each(($el) => {
       cy.getPseudoElementStyle($el, ":before", "border-left").then(
         (borderStyle) => {
           expect(borderStyle).contains(DEFAULT_BORDER_STYLE);

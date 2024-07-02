@@ -4,18 +4,16 @@ import {
   ADrawer,
   ADrawerContent,
   ADrawerTitle,
-  useATheme,
   useEscapeKeydown
 } from "../framework";
 import Props from "./Props";
 
-const PropsHelper = ({shouldShowBtn, componentName, components}) => {
+const PropsHelper = ({shouldShowBtn, components}) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   useEscapeKeydown({
     isEnabled: isDrawerOpen,
     onKeydown: () => setIsDrawerOpen(false)
   });
-  const {currentTheme} = useATheme();
 
   return (
     <div

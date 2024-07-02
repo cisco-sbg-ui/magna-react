@@ -1,11 +1,4 @@
-import {
-  AAlert,
-  AButton,
-  AIcon,
-  ARow,
-  useATheme,
-  useMediaQuery
-} from "../framework";
+import {AButton, AIcon, ARow, useATheme, useMediaQuery} from "../framework";
 import ThemeSwitcher from "./ThemeSwitcher";
 
 const Header = ({className, onHamburgerClick}) => {
