@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import "./APageLabel.scss";
 
 const APageLabel = ({className: propsClassName, children, ...rest}) => {
@@ -15,8 +14,6 @@ const APageLabel = ({className: propsClassName, children, ...rest}) => {
     </div>
   );
 };
-
-APageLabel.propTypes = {};
 
 APageLabel.displayName = "APageLabel";
 

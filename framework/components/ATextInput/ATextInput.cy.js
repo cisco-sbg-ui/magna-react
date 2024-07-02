@@ -144,6 +144,7 @@ describe("<ATextInput />", () => {
 
   describe("when rendered with an append icon", () => {
     let mockFn;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     let appendProps;
 
     beforeEach(() => {

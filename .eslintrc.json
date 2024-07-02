@@ -3,9 +3,11 @@
     "plugin:cypress/recommended",
     "plugin:import/recommended",
     "plugin:jsx-a11y/recommended",
-    "plugin:@typescript-eslint/recommended",
     "next",
-    "prettier"
+    "prettier",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
   "globals": {
     "module": true,
@@ -27,6 +29,9 @@
   "parser": "@typescript-eslint/parser",
   "plugins": ["react-hooks", "anti-trojan-source", "@typescript-eslint"],
   "rules": {
-    "@typescript-eslint/no-explicit-any": "off"
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "react/prop-types": "off",
+    "react-hooks/rules-of-hooks": "warn"
   }
 }

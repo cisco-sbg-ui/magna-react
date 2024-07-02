@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, {forwardRef, useRef, useState} from "react";
 import PropTypes from "prop-types";
 import AButton from "../AButton/AButton";

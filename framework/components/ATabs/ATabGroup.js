@@ -203,6 +203,7 @@ const ATabGroup = forwardRef(
 
       if (isOverflowItem) {
         //tabKey is not recognized by AListItem and gets added to DOM so we remove it here.
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const {tabKey, ...rest} = child.props;
         const routerLink = child.props.tab?.route;
 

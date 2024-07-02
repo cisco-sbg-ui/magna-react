@@ -1,5 +1,3 @@
-import {getRoundedBoundedClientRect} from "../../utils/helpers";
-
 context("ADrawer", () => {
   before(() => {
     cy.visitInLightTheme("/components/drawer");
