@@ -28,7 +28,6 @@ const AInputBase = forwardRef(
       readOnly,
       validationState = "default",
       large,
-      medium,
       small,
       ...rest
     },
@@ -221,10 +220,6 @@ AInputBase.propTypes = {
    * Sets widget size to magnetic large
    */
   large: PropTypes.bool,
-  /**
-   * Sets widget size to magnetic medium
-   */
-  medium: PropTypes.bool,
   /**
    * Sets widget size to magnetic small (default)
    */

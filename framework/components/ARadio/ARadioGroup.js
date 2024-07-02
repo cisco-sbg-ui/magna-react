@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, {forwardRef} from "react";
+import React from "react";
 
 const ARadioGroup = ({
   horizontal = false,

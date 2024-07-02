@@ -25,7 +25,7 @@ module.exports = defineConfig({
   },
 
   component: {
-    setupNodeEvents(on, config) {},
+    setupNodeEvents() {},
     specPattern: "framework/**/*.cy.{js,jsx,ts,tsx}",
     devServer: {
       framework: "next",

@@ -56,27 +56,21 @@ const AListItem = forwardRef(
       [disabled, propsOnClick, submenu, handleSubmenu]
     );
 
-    const onMouseEnter = useCallback(
-      (e) => {
-        if (disabled) {
-          return;
-        }
-        subMenuSelected.current = true;
-        submenu && handleSubmenu();
-      },
-      [disabled, submenu, handleSubmenu]
-    );
+    const onMouseEnter = useCallback(() => {
+      if (disabled) {
+        return;
+      }
+      subMenuSelected.current = true;
+      submenu && handleSubmenu();
+    }, [disabled, submenu, handleSubmenu]);
 
-    const onMouseLeave = useCallback(
-      (e) => {
-        if (disabled) {
-          return;
-        }
-        subMenuSelected.current = false;
-        submenu && handleSubmenu();
-      },
-      [disabled, submenu, handleSubmenu]
-    );
+    const onMouseLeave = useCallback(() => {
+      if (disabled) {
+        return;
+      }
+      subMenuSelected.current = false;
+      submenu && handleSubmenu();
+    }, [disabled, submenu, handleSubmenu]);
 
     const onKeyDown = useCallback(
       (e) => {

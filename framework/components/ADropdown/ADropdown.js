@@ -26,10 +26,6 @@ const ADropdown = forwardRef(
     const buttonRef = useRef(null);
     const [open, setOpen] = useState(false);
 
-    if (propsClassName) {
-      className += ` ${propsClassName}`;
-    }
-
     const dropdownVariantProps = {
       primary,
       secondary,

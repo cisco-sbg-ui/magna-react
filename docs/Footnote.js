@@ -1,5 +1,3 @@
-import {ACardBasic} from "../framework";
-
 const Footnote = ({description, num, ...rest}) => {
   return (
     <span {...rest}>
