@@ -460,7 +460,7 @@ function WithMenuTest(modalProps) {
         data-testid="modal"
         aria-label="modal with menu test"
         isOpen={isModalOpen}
-        onClose={() => setIsOpen(false)}
+        onClose={() => setIsMenuOpen(false)}
         {...modalProps}
       >
         <APanel ref={modalContentRef} data-testid="modal-content">

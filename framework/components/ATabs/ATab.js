@@ -1,11 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import PropTypes from "prop-types";
-import React, {
-  forwardRef,
-  useContext,
-  useEffect,
-  useRef,
-  useState
-} from "react";
+import React, {forwardRef, useContext, useEffect, useRef} from "react";
 
 import ATabContext from "./ATabContext";
 import {useCombinedRefs} from "../../utils/hooks";

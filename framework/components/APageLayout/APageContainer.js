@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import "./APageContainer.scss";
 
 const APageContainer = ({className: propsClassName, children, ...rest}) => {
@@ -15,8 +14,6 @@ const APageContainer = ({className: propsClassName, children, ...rest}) => {
     </div>
   );
 };
-
-APageContainer.propTypes = {};
 
 APageContainer.displayName = "APageContainer";
 

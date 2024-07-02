@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
 import "./ACard.scss";
@@ -18,8 +17,6 @@ const ACardHeader = forwardRef(
     );
   }
 );
-
-ACardHeader.propTypes = {};
 
 ACardHeader.displayName = "ACardHeader";
 

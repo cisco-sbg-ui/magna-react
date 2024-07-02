@@ -21,13 +21,7 @@ const CustomLink = ({children, href, ...rest}) => {
   );
 };
 
-const Sidebar = ({
-  menus,
-  currentDoc,
-  isSlim,
-  isDrawerOpen,
-  setIsDrawerOpen
-}) => {
+const Sidebar = ({menus, currentDoc, isDrawerOpen, setIsDrawerOpen}) => {
   const ref = useRef();
   usePopupQuickExit({
     popupRef: ref,
