@@ -161,4 +161,6 @@ const AIcon = forwardRef<SVGSVGElement, AIconProps>(
   }
 );
 
+AIcon.displayName = "AIcon";
+
 export default AIcon;

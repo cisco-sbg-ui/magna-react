@@ -3,7 +3,6 @@ import AButton from "../AButton/AButton";
 import {AListItem, AListItemTitle} from "../AList";
 import AMenu from "./AMenu";
 
-const getAnchor = () => cy.getByDataTestId("menu-trigger");
 const openMenu = () => cy.getByDataTestId("menu-trigger").click();
 const getMenuContent = () => cy.get(".a-menu-base");
 

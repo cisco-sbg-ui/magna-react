@@ -1,6 +1,6 @@
 import CodeBlock from "./CodeBlock";
 
-const ComponentImport = ({children, components}) => {
+const ComponentImport = ({components}) => {
   const isLarge = Array.isArray(components) && components.length > 3;
   const componentImports = Array.isArray(components)
     ? components.join(isLarge ? ", \n  " : ", ")

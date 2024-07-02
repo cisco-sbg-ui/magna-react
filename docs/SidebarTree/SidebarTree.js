@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
 import "./SidebarTree.scss";
-import {AButton, AIcon, useATheme} from "../../framework";
+import {AButton, AIcon} from "../../framework";
 
 const SidebarTree = forwardRef(
   (
@@ -18,7 +18,6 @@ const SidebarTree = forwardRef(
     },
     ref
   ) => {
-    const {isDark} = useATheme();
     let className = "sidebar-tree";
     if (dense) {
       className = " sidebar-tree--dense";

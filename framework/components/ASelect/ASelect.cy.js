@@ -1,6 +1,5 @@
 import ASelect from "./ASelect";
 
-const getMenu = () => cy.get(".a-menu-base");
 const getSelectedItem = () => cy.get(".a-select__selection");
 const openSelect = () => getSelectedItem().click();
 
