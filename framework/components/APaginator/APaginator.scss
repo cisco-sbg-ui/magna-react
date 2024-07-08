@@ -11,10 +11,6 @@
     margin: 0;
     .a-icon {
       height: 20px;
-      polyline,
-      line {
-        stroke: var(--interact-icon-weak-default);
-      }
     }
   }
 
@@ -38,15 +34,8 @@
 
   &--disabled {
     pointer-events: none;
-    > .a-button-group {
-      > .a-button-group__wrapper {
-        > .a-button {
-          color: var(--base-text-weak-default);
-          &--selected {
-            border: 2px solid var(--interact-border-disabled) !important;
-          }
-        }
-      }
+    .a-button {
+      color: var(--base-text-weak-default) !important;
     }
   }
 

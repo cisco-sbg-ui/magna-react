@@ -1,7 +1,13 @@
 import React from "react";
 import APaginatorButton from "./APaginatorButton";
 
-const APaginatorNumbers = ({show, pages, workingPage, setWorkingPage}) => {
+const APaginatorNumbers = ({
+  show,
+  pages,
+  workingPage,
+  setWorkingPage,
+  disabled
+}) => {
   if (!show) {
     return null;
   }
@@ -10,7 +16,12 @@ const APaginatorNumbers = ({show, pages, workingPage, setWorkingPage}) => {
     <>
       {/*Button to navigate to the first page*/}
       {workingPage > 1 && (
-        <APaginatorButton tertiary onClick={setWorkingPage} index={0} />
+        <APaginatorButton
+          tertiary
+          onClick={setWorkingPage}
+          index={0}
+          disabled={disabled}
+        />
       )}
 
       {/*Ellipsis between the first page and the current pages*/}
@@ -22,6 +33,7 @@ const APaginatorNumbers = ({show, pages, workingPage, setWorkingPage}) => {
           tertiary
           onClick={setWorkingPage}
           index={workingPage - 1}
+          disabled={disabled}
         />
       )}
 
@@ -30,6 +42,7 @@ const APaginatorNumbers = ({show, pages, workingPage, setWorkingPage}) => {
         onClick={setWorkingPage}
         index={workingPage}
         className="a-button--selected"
+        disabled={disabled}
       />
 
       {pages > 0 && workingPage !== pages - 1 && (
@@ -37,6 +50,7 @@ const APaginatorNumbers = ({show, pages, workingPage, setWorkingPage}) => {
           tertiary
           onClick={setWorkingPage}
           index={workingPage + 1}
+          disabled={disabled}
         />
       )}
 
@@ -47,7 +61,12 @@ const APaginatorNumbers = ({show, pages, workingPage, setWorkingPage}) => {
 
       {/*Button to navigate to the last page*/}
       {workingPage < pages - 2 && (
-        <APaginatorButton tertiary onClick={setWorkingPage} index={pages - 1} />
+        <APaginatorButton
+          tertiary
+          onClick={setWorkingPage}
+          index={pages - 1}
+          disabled={disabled}
+        />
       )}
     </>
   );

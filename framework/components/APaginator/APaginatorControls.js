@@ -18,7 +18,7 @@ const APaginatorControls = ({
         <APaginatorButton
           className="a-paginator__first"
           disabled={disabled || workingPage === 0}
-          tertiaryAlt
+          tertiary
           icon
           index={0}
           onClick={setWorkingPage}
@@ -30,7 +30,7 @@ const APaginatorControls = ({
       <APaginatorButton
         className="a-paginator__previous"
         disabled={disabled || workingPage === 0}
-        tertiaryAlt
+        tertiary
         icon
         index={workingPage - 1}
         onClick={setWorkingPage}
@@ -43,11 +43,12 @@ const APaginatorControls = ({
         pages={pages}
         workingPage={workingPage}
         setWorkingPage={setWorkingPage}
+        disabled={disabled}
       />
       <APaginatorButton
         className="a-paginator__next"
         disabled={disabled || workingPage === pages - 1}
-        tertiaryAlt
+        tertiary
         icon
         index={workingPage + 1}
         onClick={setWorkingPage}
@@ -59,7 +60,7 @@ const APaginatorControls = ({
         <APaginatorButton
           className="a-paginator__last"
           disabled={disabled || workingPage === pages - 1}
-          tertiaryAlt
+          tertiary
           icon
           index={pages - 1}
           onClick={setWorkingPage}
