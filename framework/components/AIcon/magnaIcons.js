@@ -1894,6 +1894,54 @@ const MagnaIcons = {
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
   },
+  "caret-line-left": {
+    xml: (
+      <>
+        <polyline
+          points="192 208 112 128 192 48"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></polyline>
+        <line
+          x1="72"
+          y1="48"
+          x2="72"
+          y2="208"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></line>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  "caret-line-right": {
+    xml: (
+      <>
+        <polyline
+          points="64 48 144 128 64 208"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></polyline>
+        <line
+          x1="184"
+          y1="48"
+          x2="184"
+          y2="208"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></line>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
   "caret-right": {
     xml: (
       <>

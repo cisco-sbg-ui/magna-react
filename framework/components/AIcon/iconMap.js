@@ -30,6 +30,8 @@ export const iconNameMap = {
   "chevron-left": "caret-left",
   "chevron-right": "caret-right",
   "chevron-up": "caret-up",
+  "chevron-line-left": "caret-line-left",
+  "chevron-line-right": "caret-line-right",
   clean: "sparkle",
   cli: "terminal",
   close: "x",

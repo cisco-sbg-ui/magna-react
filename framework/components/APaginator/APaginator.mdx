@@ -1,0 +1,163 @@
+---
+name: Paginators
+route: /components/paginator
+components: APaginator
+title: APaginator
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/components/APaginator
+---
+
+## Usage
+
+### Import
+
+<ComponentImport components="APaginator" />
+
+### Usage (default)
+
+Page count is zero-indexed.
+
+<Playground
+  code={`() => {
+  const [currentPage, setCurrentPage] = useState(0);
+  return (
+    <div>
+      <div style={{border: "solid 2px #333"}} className="my-2 pa-2">
+        Page {currentPage}
+      </div>
+      <APaginator
+        onPageChange={(value) => {
+          setCurrentPage(value);
+        }}
+        page={currentPage}
+        total={15}
+      />
+    </div>
+  );
+}
+`}
+/>
+
+### Usage (simple)
+
+Page count is zero-indexed.
+
+<Playground
+  code={`() => {
+  const [currentPage, setCurrentPage] = useState(0);
+  return (
+    <div>
+      <div style={{border: "solid 2px #333"}} className="my-2 pa-2">
+        Page {currentPage}
+      </div>
+      <APaginator
+        showPageNumbers={false}
+        resultsPerPage={10}
+        onPageChange={(value) => {
+          setCurrentPage(value);
+        }}
+        page={currentPage}
+        total={50}
+      />
+    </div>
+  );
+}
+`}
+/>
+
+### Without Result Count
+
+<Playground
+  code={`() => {
+  const [currentPage, setCurrentPage] = useState(0);
+  return (
+    <div>
+      <div style={{border: "solid 2px #333"}} className="my-2 pa-2">
+        Page {currentPage}
+      </div>
+      <APaginator
+        showPageNumbers={false}
+        showPageDetail={false}
+        resultsPerPage={10}
+        onPageChange={(value) => {
+          setCurrentPage(value);
+        }}
+        page={currentPage}
+        total={50}
+      />
+    </div>
+  );
+}
+`}
+/>
+
+### Without Rows Selector or Detail
+
+<Playground
+  code={`() => {
+  const [currentPage, setCurrentPage] = useState(0);
+  return (
+    <div>
+      <div style={{border: "solid 2px #333"}} className="my-2 pa-2">
+        Page {currentPage}
+      </div>
+      <APaginator
+        showPageNumbers={false}
+        showResultCount={false}
+        showResultSelector={false}
+        showPageDetail={false}
+        resultsPerPage={10}
+        onPageChange={(value) => {
+          setCurrentPage(value);
+        }}
+        page={currentPage}
+        total={50}
+      />
+    </div>
+  );
+}
+`}
+/>
+
+### API Backed
+
+<Playground
+  code={`() => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [resultsPerPage, setResultsPerPage] = useState(5);
+  return (
+    <div>
+      <h3 className="mt-4">My API's Data</h3>
+      <div style={{border: "solid 2px #333"}} className="my-2 pa-2">
+        <ul>
+          {Array.from(
+            Array(resultsPerPage),
+            (_, x) => (currentPage - 1) * resultsPerPage + x + 1
+          )
+            .map((x) => <li key={x}>Result #{x}</li>)
+            .slice(0, 145)}
+        </ul>
+      </div>
+      <APaginator
+        onPageChange={(value) => {
+          setCurrentPage(value);
+        }}
+        onResultsPerPageChange={(value) => setResultsPerPage(value)}
+        page={currentPage}
+        resultsPerPage={resultsPerPage}
+        total={145}
+      />
+    </div>
+  );
+}
+`}
+/>
+
+## Component Props
+
+The `APaginator` component inherits passed props.
+
+<Props of="APaginator" />
+
+## Accessibility Notes
+
+Buttons utilize the `aria-label` attribute to communicate functionality.

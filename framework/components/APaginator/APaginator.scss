@@ -1,0 +1,81 @@
+@import "../../styles";
+
+.a-paginator {
+  display: flex;
+  align-items: center;
+
+  &__previous,
+  &__next,
+  &__first,
+  &__last {
+    margin: 0;
+    .a-icon {
+      height: 20px;
+    }
+  }
+
+  .a-button,
+  .a-button--selected {
+    margin: 0 2px;
+    color: var(--base-text-default);
+    font-weight: $font-weight;
+    width: 28px;
+    height: 28px;
+    justify-content: center;
+  }
+
+  &__previous {
+    margin-right: 8px;
+  }
+
+  &__next {
+    margin-left: 8px;
+  }
+
+  &--disabled {
+    pointer-events: none;
+    .a-button {
+      color: var(--base-text-weak-default) !important;
+    }
+  }
+
+  &__results-per-page {
+    display: flex;
+    align-items: center;
+
+    .a-select {
+      width: 64px;
+      .a-icon {
+        padding: 0 5px;
+      }
+      &__selection {
+        padding: 0 0 0 8px;
+      }
+    }
+  }
+
+  &__results-per-page-label {
+    white-space: nowrap;
+    margin-right: 8px;
+  }
+
+  &__results {
+    margin: 0 20px;
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+  }
+
+  > .a-button,
+  > .a-paginator__results-per-page,
+  > .a-paginator__results {
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
