@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import React, {useCallback, useEffect, useRef} from "react";
 
 import {ATooltip} from "../ATooltip";
@@ -6,6 +5,64 @@ import useEscapeKeydown from "../../hooks/useEscapeKeydown/useEscapeKeydown";
 import useToggle from "../../hooks/useToggle/useToggle";
 import useOutsideClick from "../../hooks/useOutsideClick/useOutsideClick";
 import {handleMultipleRefs} from "../../utils/helpers";
+import {ATriggerTooltipTrigger} from "./types";
+import {APlacement} from "../../types";
+
+interface ATriggerTooltipProps {
+  /**
+   * DOM event to trigger the tooltip
+   */
+  trigger?: ATriggerTooltipTrigger;
+  /**
+   * Anchors the tooltip to the specified ref, leaving
+   * trigger event on the child(ren).
+   */
+  anchorRef?: React.RefObject<HTMLElement>;
+  /**
+   * Sets the element that triggers the tooltip
+   */
+  triggerRef?: React.RefObject<HTMLElement>;
+  /**
+   * Delay in milliseconds before tooltip will open
+   */
+  openDelay?: number;
+  /**
+   * Delay in milliseconds before tooltip will close
+   */
+  closeDelay?: number;
+  /**
+   * On close callback
+   */
+  onClose?: () => void;
+  /**
+   * Tooltip content
+   */
+  content?: React.ReactNode;
+  /**
+   * Disable the tooltip
+   */
+  disabled?: boolean;
+  /**
+   * Wrap the children elements in a div to allow tooltips on
+   * disabled elements.
+   */
+  wrapChildren?: boolean;
+  /**
+   * Pass a class to the child wrapper.
+   */
+  wrapperClass?: string;
+  /**
+   * Only show tooltip if the anchor element is truncated
+   */
+  onlyIfTruncated?: boolean;
+  /**
+   * Allow hovering on tooltip for interactive elements
+   */
+  interactive?: boolean;
+  children?: React.ReactNode;
+  placement?: APlacement;
+  style?: React.CSSProperties;
+}
 
 const ATriggerTooltip = ({
   children,
@@ -22,20 +79,21 @@ const ATriggerTooltip = ({
   onlyIfTruncated,
   interactive,
   ...rest
-}) => {
-  const childrenRef = useRef([]);
+}: ATriggerTooltipProps) => {
+  const childrenRef = useRef<HTMLElement[]>([]);
   const childrenRefCurrent = childrenRef.current;
   const firstChildRef = {current: childrenRefCurrent[0]};
   // If an anchorRef is provided, use it. Otherwise, attach to first child.
   const tooltipAnchorRef = anchorRef || triggerRef || firstChildRef;
-  const tooltipRef = useRef();
+  const tooltipRef = useRef<HTMLElement>(null);
+  const triggerRefElement = triggerRef && triggerRef.current;
 
   const checkForTruncation = useCallback(() => {
     if (!onlyIfTruncated) {
       return true;
     }
 
-    const element = (anchorRef && anchorRef.current) || childrenRef.current[0];
+    const element = anchorRef?.current || childrenRef.current[0];
 
     if (!element) {
       return true;
@@ -66,7 +124,7 @@ const ATriggerTooltip = ({
   }, [toggleClose, onClose, interactive]);
 
   useOutsideClick({
-    isEnabled: triggerRef && triggerRef.current && trigger === "click",
+    isEnabled: triggerRefElement && trigger === "click",
     rootRef: triggerRef,
     onClick: close
   });
@@ -78,10 +136,9 @@ const ATriggerTooltip = ({
       return;
     }
 
-    const childRefs =
-      triggerRef && triggerRef.current
-        ? [triggerRef.current]
-        : childrenRefCurrent;
+    const childRefs = triggerRefElement
+      ? [triggerRef.current]
+      : childrenRefCurrent;
 
     switch (trigger) {
       case "hover":
@@ -119,7 +176,8 @@ const ATriggerTooltip = ({
     open,
     toggle,
     disabled,
-    content
+    content,
+    triggerRefElement
   ]);
 
   useEffect(() => {
@@ -147,11 +205,16 @@ const ATriggerTooltip = ({
   return (
     <>
       {React.Children.map(children, (child, index) => {
-        const toClone = wrapChildren ? (
+        if (!React.isValidElement(child)) {
+          return;
+        }
+        const toClone: React.ReactElement<
+          any,
+          string | React.JSXElementConstructor<any>
+        > = wrapChildren ? (
           <div
             className={wrapperClass}
-            style={{height: "fit-content", width: "fit-content"}}
-          >
+            style={{height: "fit-content", width: "fit-content"}}>
             {child}
           </div>
         ) : (
@@ -159,8 +222,8 @@ const ATriggerTooltip = ({
         );
 
         return React.cloneElement(toClone, {
-          ...toClone.props,
-          ref: handleMultipleRefs(toClone.props.ref, (node) => {
+          ...toClone?.props,
+          ref: handleMultipleRefs(toClone.props.ref, (node: HTMLElement) => {
             childrenRef.current[index] = node;
           })
         });
@@ -172,62 +235,12 @@ const ATriggerTooltip = ({
           open={isOpen}
           onClose={close}
           pointer
-          {...rest}
-        >
+          {...rest}>
           {content}
         </ATooltip>
       )}
     </>
   );
-};
-
-ATriggerTooltip.propTypes = {
-  /** DOM event to trigger the tooltip */
-  trigger: PropTypes.oneOf(["hover", "click"]),
-  /**
-   * Anchors the tooltip to the specified ref, leaving
-   * trigger event on the child(ren).
-   */
-  anchorRef: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({current: PropTypes.any})
-  ]),
-  /**
-   * Sets the element that triggers the tooltip
-   */
-  triggerRef: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({current: PropTypes.any})
-  ]),
-  /** Delay in milliseconds before tooltip will open */
-  openDelay: PropTypes.number,
-  /** Delay in milliseconds before tooltip will close */
-  closeDelay: PropTypes.number,
-  /**
-   * On close callback
-   */
-  onClose: PropTypes.func,
-  /** Tooltip content */
-  content: PropTypes.node,
-  /** Disable the tooltip */
-  disabled: PropTypes.bool,
-  /**
-   * Wrap the children elements in a div to allow tooltips on
-   * disabled elements.
-   */
-  wrapChildren: PropTypes.bool,
-  /**
-   * Pass a class to the child wrapper.
-   */
-  wrapperClass: PropTypes.string,
-  /**
-   * Only show tooltip if the anchor element is truncated
-   */
-  onlyIfTruncated: PropTypes.bool,
-  /**
-   * Allow hovering on tooltip for interactive elements
-   */
-  interactive: PropTypes.bool
 };
 
 ATriggerTooltip.displayName = "ATriggerTooltip";

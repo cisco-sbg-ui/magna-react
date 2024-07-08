@@ -6,14 +6,19 @@ import React, {
   useState
 } from "react";
 import ReactDOM from "react-dom";
-import PropTypes from "prop-types";
 
 import AAppContext from "../AApp/AAppContext";
 import {useCombinedRefs} from "../../utils/hooks";
 import {getRoundedBoundedClientRect} from "../../utils/helpers";
 import "./AMenuBase.scss";
+import {
+  AMenuBaseProps,
+  calculateMenuPositionType,
+  calculatePointerPositionType
+} from "./types";
+import {ARef} from "../../types";
 
-const calculateMenuPosition = (
+const calculateMenuPosition = ({
   combinedRef,
   appRef,
   wrapRef,
@@ -24,7 +29,7 @@ const calculateMenuPosition = (
   setInvisible,
   removeSpacer = false,
   withNewWrappingContext
-) => {
+}: calculateMenuPositionType) => {
   if (!combinedRef.current) {
     return;
   }
@@ -34,7 +39,7 @@ const calculateMenuPosition = (
   const anchorCoords =
     anchorRef instanceof DOMRect
       ? anchorRef
-      : getRoundedBoundedClientRect(anchorRef.current);
+      : getRoundedBoundedClientRect((anchorRef as ARef).current);
   const menuCoords = getRoundedBoundedClientRect(combinedRef.current);
   const magneticSpacer = removeSpacer ? 0 : 4;
 
@@ -116,40 +121,37 @@ const calculateMenuPosition = (
   }
 
   const marginLeft = parseInt(
-    window.getComputedStyle(combinedRef.current).marginLeft
+    window.getComputedStyle(combinedRef.current as HTMLElement).marginLeft
   );
   const marginTop = parseInt(
-    window.getComputedStyle(combinedRef.current).marginTop
+    window.getComputedStyle(combinedRef.current as HTMLElement).marginTop
   );
 
   let xOffset, yOffset, pageWidth, pageHeight;
-
+  const wrapRefEl = wrapRef.current as HTMLElement;
+  const appRefEl = appRef.current as HTMLElement;
   if (withNewWrappingContext) {
     // Calculate positioning relative to `AMenuBase`
-    xOffset = wrapRef.current.offsetLeft - appRef.current.scrollLeft;
-    yOffset = wrapRef.current.offsetTop - appRef.current.scrollTop;
+    xOffset = wrapRefEl.offsetLeft - appRefEl.scrollLeft;
+    yOffset = wrapRefEl.offsetTop - appRefEl.scrollTop;
 
     pageWidth = wrapCoords.width;
     pageHeight = wrapCoords.height;
   } else {
     // Calculate positioning relative to window or app/wrap elements
-    xOffset = appRef.current.offsetParent?.isSameNode(document.body)
+    xOffset = appRefEl.offsetParent?.isSameNode(document.body)
       ? window.pageXOffset
-      : wrapCoords.left - appCoords.scrollLeft;
+      : wrapCoords.left - appCoords.left; // this was incorrectly set to "scrollLeft" when scrollLeft is not a return value in appCoords
 
-    yOffset = appRef.current.offsetParent?.isSameNode(document.body)
+    yOffset = appRefEl.offsetParent?.isSameNode(document.body)
       ? window.pageYOffset
-      : wrapCoords.top - appCoords.scrollTop;
+      : wrapCoords.top - appCoords.top; // this was incorrectly set to "scrollTop" when scrollLeft is not a return value in appCoords
 
     pageWidth =
-      document.documentElement.clientWidth +
-      xOffset -
-      wrapRef.current.offsetLeft;
+      document.documentElement.clientWidth + xOffset - wrapRefEl.offsetLeft;
 
     pageHeight =
-      document.documentElement.clientHeight +
-      yOffset -
-      wrapRef.current.offsetTop;
+      document.documentElement.clientHeight + yOffset - wrapRefEl.offsetTop;
   }
 
   // Edge detection: max x
@@ -177,14 +179,14 @@ const calculateMenuPosition = (
   setInvisible(false);
 };
 
-const calculatePointerPosition = (
+const calculatePointerPosition = ({
   combinedRef,
   anchorRef, // Can be either a React Ref or DOMRect
   pointer,
   placement,
   setPointerLeft,
   setPointerTop
-) => {
+}: calculatePointerPositionType) => {
   if (!combinedRef.current) {
     return;
   }
@@ -192,7 +194,7 @@ const calculatePointerPosition = (
   const anchorCoords =
     anchorRef instanceof DOMRect
       ? anchorRef
-      : getRoundedBoundedClientRect(anchorRef.current);
+      : getRoundedBoundedClientRect((anchorRef as ARef).current);
   const menuCoords = getRoundedBoundedClientRect(combinedRef.current);
 
   // Pointer
@@ -234,7 +236,7 @@ const calculatePointerPosition = (
   }
 };
 
-const AMenuBase = forwardRef(
+const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
   (
     {
       anchorRef,
@@ -251,16 +253,16 @@ const AMenuBase = forwardRef(
     ref
   ) => {
     const {appRef, wrapRef, withNewWrappingContext} = useContext(AAppContext);
-    const menuRef = useRef(null);
-    const combinedRef = useCombinedRefs(ref, menuRef);
-    const [menuLeft, setMenuLeft] = useState(0);
-    const [menuTop, setMenuTop] = useState(0);
+    const menuRef = useRef<HTMLDivElement>(null);
+    const combinedRef: any = useCombinedRefs(ref, menuRef); //TODO Fix once combinedRef is typed
+    const [menuLeft, setMenuLeft] = useState<number>(0);
+    const [menuTop, setMenuTop] = useState<number>(0);
     const [invisible, setInvisible] = useState(true);
-    const [pointerLeft, setPointerLeft] = useState(null);
-    const [pointerTop, setPointerTop] = useState(null);
+    const [pointerLeft, setPointerLeft] = useState<number | null>(null);
+    const [pointerTop, setPointerTop] = useState<number | null>(null);
 
     useEffect(() => {
-      calculateMenuPosition(
+      const calculateMenuPositionProps = {
         combinedRef,
         appRef,
         wrapRef,
@@ -271,7 +273,8 @@ const AMenuBase = forwardRef(
         setInvisible,
         removeSpacer,
         withNewWrappingContext
-      );
+      };
+      calculateMenuPosition(calculateMenuPositionProps);
     }, [
       open,
       anchorRef,
@@ -284,19 +287,20 @@ const AMenuBase = forwardRef(
     ]);
 
     useEffect(() => {
-      calculatePointerPosition(
+      const pointerPositionProps = {
         combinedRef,
         anchorRef,
         pointer,
         placement,
         setPointerLeft,
         setPointerTop
-      );
+      };
+      calculatePointerPosition(pointerPositionProps);
     }, [anchorRef, combinedRef, placement, pointer, menuLeft, menuTop]);
 
     useEffect(() => {
       const screenChangeHandler = () => {
-        calculateMenuPosition(
+        const calculateMenuPositionProps = {
           combinedRef,
           appRef,
           wrapRef,
@@ -307,7 +311,8 @@ const AMenuBase = forwardRef(
           setInvisible,
           removeSpacer,
           withNewWrappingContext
-        );
+        };
+        calculateMenuPosition(calculateMenuPositionProps);
       };
 
       window.addEventListener("resize", screenChangeHandler);
@@ -329,7 +334,7 @@ const AMenuBase = forwardRef(
 
     useEffect(() => {
       const screenChangeHandler = () => {
-        calculateMenuPosition(
+        const calculateMenuPositionProps = {
           combinedRef,
           appRef,
           wrapRef,
@@ -340,7 +345,8 @@ const AMenuBase = forwardRef(
           setInvisible,
           removeSpacer,
           withNewWrappingContext
-        );
+        };
+        calculateMenuPosition(calculateMenuPositionProps);
       };
 
       window.addEventListener("resize", screenChangeHandler);
@@ -359,19 +365,19 @@ const AMenuBase = forwardRef(
     ]);
 
     useEffect(() => {
-      const clickOutsideHandler = (e) => {
+      const clickOutsideHandler = (e: MouseEvent) => {
         if (anchorRef instanceof DOMRect) {
           return;
         }
-
         if (
+          "current" in anchorRef &&
           anchorRef.current &&
           combinedRef.current &&
           open &&
-          !anchorRef.current.contains(e.target) &&
-          !combinedRef.current.contains(e.target)
+          !anchorRef.current.contains(e.target as Node) &&
+          !(combinedRef.current as any).contains(e.target) //TODO Fix once combinedRef is typed
         ) {
-          onClose && onClose(e);
+          onClose && onClose(e as unknown as React.MouseEvent<HTMLElement>);
         }
       };
 
@@ -402,7 +408,7 @@ const AMenuBase = forwardRef(
       };
     }
 
-    const pointerStyle = {};
+    const pointerStyle: React.CSSProperties = {};
     if (pointerLeft !== null) {
       pointerStyle.left = pointerLeft;
     }
@@ -411,82 +417,26 @@ const AMenuBase = forwardRef(
       pointerStyle.top = pointerTop;
     }
 
+    const node = (
+      <div
+        data-ignore-outside-click
+        {...rest}
+        ref={combinedRef}
+        className={className}
+        style={style}>
+        {pointer && (
+          <div className="a-menu-base__pointer" style={pointerStyle} />
+        )}
+        {children}
+      </div>
+    );
+
     return (
-      (open &&
-        appRef.current &&
-        ReactDOM.createPortal(
-          <div
-            data-ignore-outside-click
-            {...rest}
-            ref={combinedRef}
-            className={className}
-            style={style}
-          >
-            {pointer && (
-              <div className="a-menu-base__pointer" style={pointerStyle} />
-            )}
-            {children}
-          </div>,
-          appRef.current
-        )) ||
+      (open && appRef.current && ReactDOM.createPortal(node, appRef.current)) ||
       null
     );
   }
 );
-
-AMenuBase.propTypes = {
-  /**
-   * The reference to the menu anchor. Can either be a React ref or a DOMRect object.
-   */
-  anchorRef: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({current: PropTypes.any}),
-    // DOMRect shape
-    PropTypes.shape({
-      x: PropTypes.number,
-      y: PropTypes.number,
-      width: PropTypes.number,
-      height: PropTypes.number,
-      top: PropTypes.number,
-      right: PropTypes.number,
-      bottom: PropTypes.number,
-      left: PropTypes.number
-    })
-  ]).isRequired,
-  /**
-   * Handles the request to close the menu.
-   */
-  onClose: PropTypes.func,
-  /**
-   * Toggles the `open` state.
-   */
-  open: PropTypes.bool,
-  /**
-   * The placement of the menu.
-   */
-  placement: PropTypes.oneOf([
-    "top",
-    "top-right",
-    "right-top",
-    "right",
-    "right-bottom",
-    "bottom-right",
-    "bottom",
-    "bottom-left",
-    "left-bottom",
-    "left",
-    "left-top",
-    "top-left"
-  ]),
-  /**
-   * Toggles the menu pointer.
-   */
-  pointer: PropTypes.bool,
-  /**
-   * Option to remove the space between the anchor and the menu for bottom placement
-   */
-  removeSpacer: PropTypes.bool
-};
 
 AMenuBase.displayName = "AMenuBase";
 
