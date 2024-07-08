@@ -17,7 +17,7 @@ const getResultsPerPage = (resultsPerPage) => {
     : DEFAULT_PAGE_SIZE;
 };
 
-const APagination = forwardRef(
+const APaginator = forwardRef(
   (
     {
       className: propsClassName,
@@ -117,7 +117,7 @@ const APagination = forwardRef(
   }
 );
 
-APagination.propTypes = {
+APaginator.propTypes = {
   /**
    * Handles updates to the current page.
    */
@@ -160,6 +160,6 @@ APagination.propTypes = {
   disabled: PropTypes.bool
 };
 
-APagination.displayName = "APagination";
+APaginator.displayName = "APaginator";
 
-export default APagination;
+export default APaginator;
