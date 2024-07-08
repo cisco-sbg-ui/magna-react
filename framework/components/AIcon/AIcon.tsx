@@ -2,7 +2,7 @@ import React, {forwardRef} from "react";
 import {kebabify} from "../../utils/helpers";
 import Icons from "./icons.json";
 import MagnaIcons from "./magnaIcons.js";
-import {iconNameMap} from "./iconMap.ts";
+import {iconNameMap} from "./iconMap";
 import "./AIcon.scss";
 import {AIconSize} from "./types";
 
