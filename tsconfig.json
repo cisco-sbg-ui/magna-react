@@ -1,22 +1,23 @@
 {
-  "extends": "@tsconfig/recommended/tsconfig.json",
   "compilerOptions": {
+    // Target latest version of ECMAScript.
     "target": "esnext",
+    // Search under node_modules for non-relative imports.
     "moduleResolution": "node",
-    "strict": true,
+    // Process & infer types from .js files.
     "allowJs": true,
-    "jsx": "preserve",
-    // Import non-ES modules as default imports.
+    // Don't emit; allow Babel to transform files.
+    //"noEmit": true,
+    // Enable strictest settings like strictNullChecks & noImplicitAny.
+    "strict": true,
+    "jsx": "react",
     "skipLibCheck": true,
+    // Import non-ES modules as default imports.
     "esModuleInterop": true,
     "resolveJsonModule": true,
+
     "declaration": true,
-    "outDir": "./lib",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowImportingTsExtensions": true,
-    "noEmit": true,
-    "incremental": true,
-    "isolatedModules": true
+    "outDir": "./lib"
   },
   "include": ["framework/**/*"],
   "exclude": ["node_modules"]

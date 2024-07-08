@@ -4,7 +4,6 @@ import React, {forwardRef} from "react";
 import AHintContainer from "../AHint/AHintContainer";
 import AIcon from "../AIcon";
 import ATriggerTooltip from "../ATriggerTooltip";
-import {ATooltipPropTypes} from "../ATooltip";
 import "./AFieldBase.scss";
 
 const AFieldBase = forwardRef(
@@ -73,9 +72,6 @@ const AFieldBase = forwardRef(
   }
 );
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const {anchorRef, ...infoTooltipProps} = ATooltipPropTypes;
-
 AFieldBase.propTypes = {
   /**
    * Sets hint or multiple hints.
@@ -134,7 +130,7 @@ AFieldBase.propTypes = {
   /**
    * Overrides props of `ATooltip` used to display `infoTooltip`. See `ATooltip.propTypes`.
    */
-  infoTooltipProps: PropTypes.shape(infoTooltipProps),
+  // infoTooltipProps: PropTypes.shape(infoTooltipProps),
   /**
    * Handles the label's `click` event.
    */

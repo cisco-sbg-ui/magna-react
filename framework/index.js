@@ -154,6 +154,8 @@ import useOutsideClick from "./hooks/useOutsideClick/useOutsideClick";
 import usePopupQuickExit from "./hooks/usePopupQuickExit/usePopupQuickExit";
 import useToggle from "./hooks/useToggle/useToggle";
 
+// import {APlacement, AAnchorRef} from "./types";
+
 export {
   AAccordion,
   AAccordionBody,
@@ -299,3 +301,5 @@ export {
   usePopupQuickExit,
   useToggle
 };
+
+// export type {APlacement, AAnchorRef};
