@@ -2,7 +2,6 @@ import React from "react";
 import AButton from "../AButton";
 
 const APaginatorButton = ({children, index, onClick, disabled, ...rest}) => {
-  console.log(disabled);
   return (
     <AButton
       disabled={disabled}
