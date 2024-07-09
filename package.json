@@ -2,8 +2,8 @@
   "name": "@cisco-sbg-ui/magna-react",
   "version": "2.0.0",
   "description": "",
-  "main": "lib/index.js",
-  "module": "lib/index.js",
+  "main": "lib/index.ts",
+  "module": "lib/index.ts",
   "types": "lib/index.d.ts",
   "files": [
     "tokens",
@@ -72,6 +72,7 @@
     "@cypress/code-coverage": "3.12.39",
     "@cypress/webpack-dev-server": "^3.4.1",
     "@tsconfig/recommended": "1.0.7",
+    "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
     "@typescript-eslint/eslint-plugin": "7.15.0",
     "@typescript-eslint/parser": "^7.15.0",
