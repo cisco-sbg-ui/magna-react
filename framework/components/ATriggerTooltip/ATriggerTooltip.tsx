@@ -86,7 +86,6 @@ const ATriggerTooltip = ({
   // If an anchorRef is provided, use it. Otherwise, attach to first child.
   const tooltipAnchorRef = anchorRef || triggerRef || firstChildRef;
   const tooltipRef = useRef<HTMLElement>(null);
-  const triggerRefElement = triggerRef && triggerRef.current;
 
   const checkForTruncation = useCallback(() => {
     if (!onlyIfTruncated) {
@@ -124,7 +123,7 @@ const ATriggerTooltip = ({
   }, [toggleClose, onClose, interactive]);
 
   useOutsideClick({
-    isEnabled: triggerRefElement && trigger === "click",
+    isEnabled: triggerRef && triggerRef.current && trigger === "click",
     rootRef: triggerRef,
     onClick: close
   });
@@ -136,9 +135,10 @@ const ATriggerTooltip = ({
       return;
     }
 
-    const childRefs = triggerRefElement
-      ? [triggerRef.current]
-      : childrenRefCurrent;
+    const childRefs =
+      triggerRef && triggerRef.current
+        ? [triggerRef.current]
+        : childrenRefCurrent;
 
     switch (trigger) {
       case "hover":
@@ -176,8 +176,7 @@ const ATriggerTooltip = ({
     open,
     toggle,
     disabled,
-    content,
-    triggerRefElement
+    content
   ]);
 
   useEffect(() => {
