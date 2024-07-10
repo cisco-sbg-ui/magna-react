@@ -26,8 +26,8 @@
  * getting reliable tests for our use-cases.
  */
 
-// import {useRef} from "react";
-// import AButton from "../AButton/AButton";
+import {useRef} from "react";
+import AButton from "../AButton/AButton";
 import ATriggerTooltip from "./ATriggerTooltip";
 
 describe("<ATriggerTooltip />", () => {
@@ -131,118 +131,119 @@ describe("<ATriggerTooltip />", () => {
     });
   });
 
-  // describe("when rendered with the hover trigger on a custom trigger element", () => {
-  //   it("should show the tooltip when the mouse enters the trigger", () => {
-  //     cy.mount(<CustomTriggerTest />);
+  describe("when rendered with the hover trigger on a custom trigger element", () => {
+    it("should show the tooltip when the mouse enters the trigger", () => {
+      cy.mount(<CustomTriggerTest />);
 
-  //     cy.getByDataTestId("custom-trigger")
-  //       .trigger("mouseenter")
-  //       .then(() => {
-  //         cy.wait(500);
-  //         cy.getByDataTestId("tooltip-content").should("exist");
-  //       });
-  //   });
+      cy.getByDataTestId("custom-trigger")
+        .trigger("mouseenter")
+        .then(() => {
+          cy.wait(500);
+          cy.getByDataTestId("tooltip-content").should("exist");
+        });
+    });
 
-  //   it("should hide the tooltip when the mouse leaves the trigger", () => {
-  //     cy.mount(<CustomTriggerTest />);
+    it("should hide the tooltip when the mouse leaves the trigger", () => {
+      cy.mount(<CustomTriggerTest />);
 
-  //     cy.getByDataTestId("custom-trigger")
-  //       .trigger("mouseenter")
-  //       .then(($triggerEl) => {
-  //         cy.wait(500);
-  //         cy.getByDataTestId("tooltip-content").should("exist");
-  //         return cy.wrap($triggerEl).trigger("mouseleave");
-  //       })
-  //       .then(() => {
-  //         cy.wait(500);
-  //         cy.getByDataTestId("tooltip-content").should("not.exist");
-  //       });
-  //   });
-  // });
+      cy.getByDataTestId("custom-trigger")
+        .trigger("mouseenter")
+        .then(($triggerEl) => {
+          cy.wait(500);
+          cy.getByDataTestId("tooltip-content").should("exist");
+          return cy.wrap($triggerEl).trigger("mouseleave");
+        })
+        .then(() => {
+          cy.wait(500);
+          cy.getByDataTestId("tooltip-content").should("not.exist");
+        });
+    });
+  });
 
-  // describe("when rendered with the click trigger on a custom trigger element", () => {
-  //   it("should show the tooltip when the trigger is clicked", () => {
-  //     cy.mount(<CustomTriggerTest trigger="click" />);
+  describe("when rendered with the click trigger on a custom trigger element", () => {
+    it("should show the tooltip when the trigger is clicked", () => {
+      cy.mount(<CustomTriggerTest trigger="click" />);
 
-  //     // First ensure hover does not show tooltip,
-  //     // then test click
-  //     cy.getByDataTestId("custom-trigger")
-  //       .trigger("mouseenter")
-  //       .then(($customTrigger) => {
-  //         cy.wait(500);
-  //         // Should not show on hover
-  //         cy.getByDataTestId("tooltip-content").should("not.exist");
-  //         // Open with click
-  //         return cy.wrap($customTrigger).click();
-  //       })
-  //       .then(() => {
-  //         cy.wait(500);
-  //         cy.getByDataTestId("tooltip-content").should("exist");
-  //       });
-  //   });
+      // First ensure hover does not show tooltip,
+      // then test click
+      cy.getByDataTestId("custom-trigger")
+        .trigger("mouseenter")
+        .then(($customTrigger) => {
+          cy.wait(500);
+          // Should not show on hover
+          cy.getByDataTestId("tooltip-content").should("not.exist");
+          // Open with click
+          return cy.wrap($customTrigger).click();
+        })
+        .then(() => {
+          cy.wait(500);
+          cy.getByDataTestId("tooltip-content").should("exist");
+        });
+    });
 
-  //   it("should hide the tooltip when the trigger is clicked after being opened", () => {
-  //     cy.mount(<CustomTriggerTest trigger="click" />);
+    it("should hide the tooltip when the trigger is clicked after being opened", () => {
+      cy.mount(<CustomTriggerTest trigger="click" />);
 
-  //     // First ensure hover does not show tooltip,
-  //     // then test click
-  //     cy.getByDataTestId("custom-trigger")
-  //       .trigger("mouseenter")
-  //       .then(($customTrigger) => {
-  //         cy.wait(500);
-  //         // Should not show on hover
-  //         cy.getByDataTestId("tooltip-content").should("not.exist");
-  //         // Open with click
-  //         return cy.wrap($customTrigger).click();
-  //       })
-  //       .then(($customTrigger) => {
-  //         cy.wait(500);
-  //         cy.getByDataTestId("tooltip-content").should("exist");
-  //         return cy.wrap($customTrigger).click();
-  //       })
-  //       .then(() => {
-  //         cy.wait(500);
-  //         cy.getByDataTestId("tooltip-content").should("not.exist");
-  //       });
-  //   });
+      // First ensure hover does not show tooltip,
+      // then test click
+      cy.getByDataTestId("custom-trigger")
+        .trigger("mouseenter")
+        .then(($customTrigger) => {
+          cy.wait(500);
+          // Should not show on hover
+          cy.getByDataTestId("tooltip-content").should("not.exist");
+          // Open with click
+          return cy.wrap($customTrigger).click();
+        })
+        .then(($customTrigger) => {
+          cy.wait(500);
+          cy.getByDataTestId("tooltip-content").should("exist");
+          return cy.wrap($customTrigger).click();
+        })
+        .then(() => {
+          cy.wait(500);
+          cy.getByDataTestId("tooltip-content").should("not.exist");
+        });
+    });
 
-  //   it("should hide the tooltip on an outside click", () => {
-  //     cy.mount(<CustomTriggerTest trigger="click" />);
+    it("should hide the tooltip on an outside click", () => {
+      cy.mount(<CustomTriggerTest trigger="click" />);
 
-  //     cy.getByDataTestId("custom-trigger")
-  //       .trigger("mouseenter")
-  //       .then(($customTrigger) => {
-  //         cy.wait(500);
-  //         cy.getByDataTestId("tooltip-content").should("not.exist");
-  //         return cy.wrap($customTrigger).click();
-  //       })
-  //       .then(() => {
-  //         cy.wait(500);
-  //         cy.getByDataTestId("tooltip-content").should("exist");
-  //         return cy.getByDataTestId("custom-trigger-container").click();
-  //       })
-  //       .then(() => {
-  //         cy.wait(500);
-  //         cy.getByDataTestId("tooltip-content").should("not.exist");
-  //       });
-  //   });
-  // });
+      cy.getByDataTestId("custom-trigger")
+        .trigger("mouseenter")
+        .then(($customTrigger) => {
+          cy.wait(500);
+          cy.getByDataTestId("tooltip-content").should("not.exist");
+          return cy.wrap($customTrigger).click();
+        })
+        .then(() => {
+          cy.wait(500);
+          cy.getByDataTestId("tooltip-content").should("exist");
+          return cy.getByDataTestId("custom-trigger-container").click();
+        })
+        .then(() => {
+          cy.wait(500);
+          cy.getByDataTestId("tooltip-content").should("not.exist");
+        });
+    });
+  });
 });
 
-// function CustomTriggerTest(triggerTooltipProps) {
-//   const btnRef = useRef(); //TODO this is not updating in time for the test to work
+function CustomTriggerTest(triggerTooltipProps) {
+  const btnRef = useRef();
 
-//   return (
-//     <div data-testid="custom-trigger-container">
-//       <AButton data-testid="custom-trigger" ref={btnRef}>
-//         outer trigger
-//       </AButton>
-//       <ATriggerTooltip
-//         triggerRef={btnRef}
-//         content={<span data-testid="tooltip-content">test content</span>}
-//         {...triggerTooltipProps}>
-//         <span>test anchor</span>
-//       </ATriggerTooltip>
-//     </div>
-//   );
-// }
+  return (
+    <div data-testid="custom-trigger-container">
+      <AButton data-testid="custom-trigger" ref={btnRef}>
+        outer trigger
+      </AButton>
+      <ATriggerTooltip
+        triggerRef={btnRef}
+        content={<span data-testid="tooltip-content">test content</span>}
+        {...triggerTooltipProps}
+      >
+        <span>test anchor</span>
+      </ATriggerTooltip>
+    </div>
+  );
+}
