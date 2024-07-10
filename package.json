@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "build:babel-preset": "node build/generate-babel-preset.js",
-    "build:lib": "npm run clean && npm run build:types && babel --no-babelrc --config-file ./babel-lib.config.js framework --out-dir lib --copy-files",
+    "build:lib": "npm run build:types && babel --no-babelrc --config-file ./babel-lib.config.js framework --out-dir lib --copy-files",
     "build:docs": "next build",
     "build": "npm run clean && npm run addTokens && npm run build:types && npm run build:lib && npm run build:babel-preset",
     "vercel-build": "npm run addTokens && npm run build:docs",
