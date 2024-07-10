@@ -104,7 +104,7 @@ const AButton = forwardRef(
     }
 
     if (href) {
-      TagName = "a";
+      TagName = component || "a";
       if (!disabled) {
         props.href = href;
         props.target = target;
