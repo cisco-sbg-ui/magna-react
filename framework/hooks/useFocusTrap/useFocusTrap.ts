@@ -5,8 +5,10 @@ import {
   isForwardTab
 } from "../../utils/helpers";
 
-function createTrap(walker) {
-  return function trap(e) {
+type TreeWalkerNode = TreeWalker["currentNode"];
+
+function createTrap(walker: TreeWalker) {
+  return function trap(e: Event) {
     const isTabbingBack = isBackwardTab(e);
     const isTabbingForward = isForwardTab(e);
 
@@ -18,15 +20,26 @@ function createTrap(walker) {
 
     let nextNode = isTabbingForward ? walker.nextNode() : walker.previousNode();
 
-    const focusNode = (node) => {
+    const focusNode = (node: TreeWalkerNode) => {
+      if (
+        !(node instanceof HTMLElement) ||
+        !(walker.root instanceof HTMLElement)
+      ) {
+        return;
+      }
+
       if (walker.root.contains(node)) {
         // If the node is still in the DOM
+
+        // @ts-expect-error `focusVisible` is experimental, but won't break anything if not supported
         node.focus({focusVisible: true});
       } else {
         // If the node is no longer in the DOM, for example
         // when the rendering changes and the reference is
         // detached - reset back to the root so tabs don't
         // stop working entirely.
+
+        // @ts-expect-error `focusVisible` is experimental, but won't break anything if not supported
         walker.root.focus({focusVisible: false});
         walker.currentNode = walker.root;
       }
@@ -50,13 +63,20 @@ function createTrap(walker) {
   };
 }
 
-export default function useFocusTrap({
+export default function useFocusTrap<
+  TRoot extends HTMLElement,
+  TFocusTarget extends HTMLElement
+>({
   rootRef,
-  autoFocusElementRef,
-  isEnabled = true
+  isEnabled = true,
+  autoFocusElementRef
+}: {
+  rootRef: React.RefObject<TRoot>;
+  isEnabled: boolean;
+  autoFocusElementRef?: React.RefObject<TFocusTarget>;
 }) {
   const getTreeWalkerNodeDisposition = useCallback(
-    (node) => {
+    (node: TreeWalkerNode) => {
       if (node === rootRef?.current || canNodeReceiveFocus(node)) {
         return NodeFilter.FILTER_ACCEPT;
       } else {
@@ -67,7 +87,7 @@ export default function useFocusTrap({
   );
 
   useEffect(() => {
-    let trapContainerEl;
+    let trapContainerEl: HTMLElement;
 
     if (isEnabled && rootRef.current) {
       trapContainerEl = rootRef.current;
@@ -84,11 +104,13 @@ export default function useFocusTrap({
         const animationPromises = trapContainerEl
           .getAnimations({subtree: true})
           .map((animation) => animation.finished);
+
         Promise.allSettled(animationPromises).then(() => {
           const initialFocusNode =
             autoFocusElementRef.current ?? trapContainerEl;
 
           initialFocusNode.focus({
+            // @ts-expect-error `focusVisible` is experimental, but won't break anything if not supported
             focusVisible: true
           });
 
@@ -98,6 +120,7 @@ export default function useFocusTrap({
         });
       } else if (
         trapContainerEl.contains(document.activeElement) &&
+        document.activeElement &&
         getTreeWalkerNodeDisposition(document.activeElement) ===
           NodeFilter.FILTER_ACCEPT
       ) {
@@ -113,10 +136,14 @@ export default function useFocusTrap({
       document.addEventListener("keydown", trap);
 
       // eslint-disable-next-line no-inner-declarations
-      function resetTreeWalkerHeadOnClick(e) {
+      function resetTreeWalkerHeadOnClick(e: Event) {
         const target = e.target;
 
-        if (canNodeReceiveFocus(target)) {
+        if (
+          target &&
+          target instanceof HTMLElement &&
+          canNodeReceiveFocus(target)
+        ) {
           // The user is clicking a focusable element within the trap, so
           // we need to ensure that their next `Tab` or `Shift` + `Tab`
           // keydown focuses to an element closest to the one just clicked.
