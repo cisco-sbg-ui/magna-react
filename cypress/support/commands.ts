@@ -1,3 +1,4 @@
+import "./index.d.ts";
 import "cypress-wait-until";
 import compareSnapshotCommand from "cypress-visual-regression/dist/command";
 import {keyCodes} from "../../framework/utils/helpers";
@@ -48,17 +49,39 @@ Cypress.Commands.add("isCovered", function (selector) {
 });
 
 Cypress.Commands.add("waitForFonts", function () {
-  cy.get(".hidden-font-swatches_1").waitUntil(($el) => $el.width() > 40);
-  cy.get(".hidden-font-swatches_2").waitUntil(($el) => $el.width() > 40);
-  cy.get(".hidden-font-swatches_3").waitUntil(($el) => $el.width() > 40);
-  cy.get(".hidden-font-swatches_4").waitUntil(($el) => $el.width() > 40);
-  cy.get(".hidden-font-swatches_5").waitUntil(($el) => $el.width() > 40);
-  cy.get(".hidden-font-swatches_6").waitUntil(($el) => $el.width() > 40);
-  cy.get(".hidden-font-swatches_7").waitUntil(($el) => $el.width() > 40);
-  cy.get(".hidden-font-swatches_8").waitUntil(($el) => $el.width() > 40);
-  cy.get(".hidden-font-swatches_9").waitUntil(($el) => $el.width() > 40);
-  cy.get(".hidden-font-swatches_10").waitUntil(($el) => $el.width() > 40);
-  cy.get(".hidden-font-swatches_11").waitUntil(($el) => $el.width() > 40);
+  cy.get(".hidden-font-swatches_1").waitUntil(
+    ($el) => ($el?.width() || 0) > 40
+  );
+  cy.get(".hidden-font-swatches_2").waitUntil(
+    ($el) => ($el?.width() || 0) > 40
+  );
+  cy.get(".hidden-font-swatches_3").waitUntil(
+    ($el) => ($el?.width() || 0) > 40
+  );
+  cy.get(".hidden-font-swatches_4").waitUntil(
+    ($el) => ($el?.width() || 0) > 40
+  );
+  cy.get(".hidden-font-swatches_5").waitUntil(
+    ($el) => ($el?.width() || 0) > 40
+  );
+  cy.get(".hidden-font-swatches_6").waitUntil(
+    ($el) => ($el?.width() || 0) > 40
+  );
+  cy.get(".hidden-font-swatches_7").waitUntil(
+    ($el) => ($el?.width() || 0) > 40
+  );
+  cy.get(".hidden-font-swatches_8").waitUntil(
+    ($el) => ($el?.width() || 0) > 40
+  );
+  cy.get(".hidden-font-swatches_9").waitUntil(
+    ($el) => ($el?.width() || 0) > 40
+  );
+  cy.get(".hidden-font-swatches_10").waitUntil(
+    ($el) => ($el?.width() || 0) > 40
+  );
+  cy.get(".hidden-font-swatches_11").waitUntil(
+    ($el) => ($el?.width() || 0) > 40
+  );
 });
 
 Cypress.Commands.add("getByDataTestId", (id) => {
@@ -69,7 +92,13 @@ Cypress.Commands.add("getByAriaLabel", (label) => {
   return cy.get(`[aria-label="${label}"]`);
 });
 
-const keydownUtils = [
+interface KeydownUtil {
+  key: string;
+  keyCode: number;
+  name: string;
+}
+
+const keydownUtils: KeydownUtil[] = [
   {key: "Escape", keyCode: keyCodes.esc, name: "escapeKeydown"},
   {key: "Enter", keyCode: keyCodes.enter, name: "enterKeydown"},
   {key: " ", keyCode: keyCodes.space, name: "spaceKeydown"},
@@ -86,6 +115,7 @@ const keydownUtils = [
  * `cy.trigger("keydown", {keyCode: 13})` can be invoked as `cy.escapeKeydown()`
  */
 keydownUtils.forEach(({key, keyCode, name}) => {
+  // @ts-expect-error dynamic creation
   Cypress.Commands.add(name, {prevSubject: "optional"}, (subject) => {
     if (subject) {
       return cy
