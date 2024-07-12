@@ -5,6 +5,18 @@ declare namespace Cypress {
     mount(component: React.ReactNode): Chainable<unknown>;
 
     /**
+     * Custom command defined in the `cypress-plugin-tab` package.
+     * @example
+     * ```TypeScript
+     * cy.get("#focusable-item-1").should("have.focus");
+     * cy.get("body").tab();
+     * cy.get("#focusable-item-2").should("have.focus");
+     * ```
+     * @see https://github.com/kuceb/cypress-plugin-tab/blob/61db462718cdc791194d577555cc88f58c176996/src/index.d.ts#L5C3-L5C54
+     */
+    tab(options?: Partial<{shift: boolean}>): Chainable;
+
+    /**
      * Custom command to select DOM element by data-testid attribute.
      * @example getting an element by the data-testid attribute
      * ```TypeScript
