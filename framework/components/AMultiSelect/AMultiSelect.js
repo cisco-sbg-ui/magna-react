@@ -70,6 +70,7 @@ const AMultiSelect = forwardRef(
     const [hasScroll, setHasScroll] = useState(false);
     const [filterValue, setFilterValue] = useState("");
     const [error, setError] = useState("");
+    const [, setUpdate] = useState();
     const [workingValidationState, setWorkingValidationState] =
       useState(validationState);
     const {checkMenuSpacing, menuPlacement} = useMenuSpacing(
@@ -216,6 +217,22 @@ const AMultiSelect = forwardRef(
         }
       }
     }, [onSelected, withTags]);
+
+    useEffect(() => {
+      if (!withTags) {
+        return;
+      }
+
+      const resizeObserver = new ResizeObserver((entries) => {
+        setUpdate(Math.random());
+      });
+
+      resizeObserver.observe(combinedRef.current);
+
+      return () => {
+        resizeObserver.disconnect();
+      };
+    }, [combinedRef, withTags, setUpdate]);
 
     if (hasScroll && withTags) {
       className += " a-multiselect--hasScroll";
