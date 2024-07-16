@@ -89,11 +89,11 @@ $table-cell-spacious-padding-top-bottom: math.div(
     height: $table-row-height;
     vertical-align: inherit;
     border-bottom: thin solid;
+    border-color: var(--control-border-weak-default);
 
     td {
       color: var(--base-text-default);
     }
-    border-color: var(--control-border-weak-default);
   }
 
   th,

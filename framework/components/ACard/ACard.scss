@@ -121,6 +121,10 @@
   border-radius: 8px;
   padding: 0;
 
+  background: var(--base-bg-weak-default);
+  box-shadow: none;
+  border: 2px solid var(--control-border-weak-default);
+
   .a-card__content {
     margin: 12px 0;
     &:first-child {
@@ -130,10 +134,6 @@
       margin-bottom: 0;
     }
   }
-
-  background: var(--base-bg-weak-default);
-  box-shadow: none;
-  border: 2px solid var(--control-border-weak-default);
 
   &.a-card-basic {
     &--lifted {
