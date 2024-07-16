@@ -37,6 +37,8 @@ $common-transitions: transform $transition-props, width $transition-props,
   }
 
   &--hidden {
+    box-shadow: none;
+
     &.a-drawer--left {
       transform: translateX(-100%);
     }
@@ -48,8 +50,6 @@ $common-transitions: transform $transition-props, width $transition-props,
     &.a-drawer--bottom {
       transform: translateY(100%);
     }
-
-    box-shadow: none;
   }
 
   &--show {

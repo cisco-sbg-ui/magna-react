@@ -163,8 +163,9 @@ $accordion-divider-border-width: thin;
       padding: 0 14px;
       visibility: visible;
       opacity: 1;
-      @include transition($accordion-transition);
       margin: 0 0 15px 0;
+
+      @include transition($accordion-transition);
     }
 
     &--state-collapsed {
@@ -174,6 +175,7 @@ $accordion-divider-border-width: thin;
         visibility: hidden;
         opacity: 0;
         margin: 0;
+
         @include transition($accordion--state-collapsed-transition);
       }
     }

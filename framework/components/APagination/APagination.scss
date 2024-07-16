@@ -56,7 +56,15 @@
     margin: 0 4px;
 
     .a-button {
+      padding: 0 7px;
+      height: 23px;
+      border-radius: $border-radius--lg;
+      border: 2px solid transparent !important;
+      background-color: transparent !important;
+      font-weight: 400;
+      margin-right: 4px;
       color: var(--base-text-default);
+
       &--selected {
         border: 2px solid var(--control-border-medium-active) !important;
         color: var(--base-text-default);
@@ -78,13 +86,6 @@
         color: var(--inverse-text-default);
       }
 
-      padding: 0 7px;
-      height: 23px;
-      border-radius: $border-radius--lg;
-      border: 2px solid transparent !important;
-      background-color: transparent !important;
-      font-weight: 400;
-      margin-right: 4px;
       &:last-child {
         margin-right: 0;
       }

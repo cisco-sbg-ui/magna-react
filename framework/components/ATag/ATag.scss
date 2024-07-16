@@ -113,10 +113,11 @@ $icon-width: 1.167rem;
 
   //Status tags
   &--status {
+    padding: 4px 8px 4px 4px;
+
     .a-icon--status {
       width: 18px;
     }
-    padding: 4px 8px 4px 4px;
     &.a-tag--sm {
       padding: 1px 8px 1px 4px;
     }

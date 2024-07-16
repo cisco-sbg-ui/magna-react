@@ -65,7 +65,6 @@ $input-transition: border-color $transition-duration--extra-fast
 
   &--disabled {
     .a-input-base__surface {
-      @include disabled;
       color: var(--base-text-disabled);
       border-color: var(--control-border-disabled);
       background: var(--control-bg-weak-disabled);
@@ -74,8 +73,9 @@ $input-transition: border-color $transition-duration--extra-fast
       .a-icon {
         fill: var(--base-text-disabled);
       }
+
+      @include disabled;
     }
-    cursor: not-allowed;
   }
 
   &--readonly {
