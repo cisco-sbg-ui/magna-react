@@ -155,8 +155,7 @@ function ControlledAccordionTest() {
                 return panel;
               })
             )
-          }
-        >
+          }>
           <AAccordionHeader data-testid={panel.testBtnId}>
             <AAccordionHeaderTitle>{panel.name}</AAccordionHeaderTitle>
           </AAccordionHeader>
