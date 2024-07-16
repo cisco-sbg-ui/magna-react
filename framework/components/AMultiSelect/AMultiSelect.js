@@ -70,7 +70,6 @@ const AMultiSelect = forwardRef(
     const [hasScroll, setHasScroll] = useState(false);
     const [filterValue, setFilterValue] = useState("");
     const [error, setError] = useState("");
-    const [, setUpdate] = useState();
     const [workingValidationState, setWorkingValidationState] =
       useState(validationState);
     const {checkMenuSpacing, menuPlacement} = useMenuSpacing(
