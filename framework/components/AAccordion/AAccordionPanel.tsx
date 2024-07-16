@@ -16,7 +16,7 @@ interface AAccordionPanelProps extends BasicComponentProps {
   /**
    * Handles the expand/collapse toggle event.
    */
-  onToggle?: () => void;
+  onToggle?: (panelKey?: string) => void;
 }
 const AAccordionPanel = forwardRef<HTMLDivElement, AAccordionPanelProps>(
   (
