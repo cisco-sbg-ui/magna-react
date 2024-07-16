@@ -1,3 +1,4 @@
+/// <reference types="cypress" />
 /* eslint-disable jsx-a11y/no-autofocus */
 import React, {useRef} from "react";
 

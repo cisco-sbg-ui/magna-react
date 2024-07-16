@@ -1,3 +1,4 @@
+/// <reference types="cypress" />
 import React, {forwardRef, useState} from "react";
 import AAccordionContext from "./AAccordionContext";
 import "./AAccordion.scss";
