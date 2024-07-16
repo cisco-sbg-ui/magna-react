@@ -14,7 +14,7 @@ import AMenu from "../AMenu";
 import ACheckbox from "../ACheckbox";
 import {AListItem} from "../AList";
 import AEmptyState from "../AEmptyState";
-import {useCombinedRefs} from "../../utils/hooks";
+import {useCombinedRefs, useResizeObserver} from "../../utils/hooks";
 import {keyCodes, localeIncludes, handleBoldText} from "../../utils/helpers";
 import useMenuSpacing from "../AMenuBase/hooks";
 import useOutsideClick from "../../hooks/useOutsideClick/useOutsideClick";
@@ -146,6 +146,8 @@ const AMultiSelect = forwardRef(
       isEnabled: isOpen,
       onExit: () => setIsOpen(false)
     });
+
+    useResizeObserver(combinedRef);
 
     const validate = (testValue = value) => {
       if (skipValidation) {
