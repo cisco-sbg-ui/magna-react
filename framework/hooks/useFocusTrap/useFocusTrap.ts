@@ -18,7 +18,9 @@ function createTrap(walker: TreeWalker) {
 
     e.preventDefault();
 
-    let nextNode = isTabbingForward ? walker.nextNode() : walker.previousNode();
+    const nextNode = isTabbingForward
+      ? walker.nextNode()
+      : walker.previousNode();
 
     const focusNode = (node: TreeWalkerNode) => {
       if (
