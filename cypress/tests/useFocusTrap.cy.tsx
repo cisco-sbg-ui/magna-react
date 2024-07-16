@@ -1,8 +1,6 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 import React, {useRef} from "react";
-
-import useFocusTrap from "./useFocusTrap";
-import {ATextarea} from "../../index";
+import {ATextarea, useFocusTrap} from "../../framework";
 
 describe("useFocusTrap()", () => {
   it("should trap focus when tabbing forward", () => {
