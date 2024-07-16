@@ -1,5 +1,5 @@
-/// <reference types="cypress" />
 /* eslint-disable jsx-a11y/no-autofocus */
+import "../../../cypress/support/index.d.ts";
 import React, {useRef} from "react";
 
 import useFocusTrap from "./useFocusTrap";
