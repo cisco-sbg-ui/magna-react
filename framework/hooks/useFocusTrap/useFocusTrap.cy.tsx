@@ -211,8 +211,7 @@ const AutoInitialFocusTest = () => {
   const trapContainerRef = useRef<HTMLDivElement>(null);
   useFocusTrap({
     rootRef: trapContainerRef,
-    isEnabled: true,
-    autoFocusElementRef: null
+    isEnabled: true
   });
   return (
     <>
