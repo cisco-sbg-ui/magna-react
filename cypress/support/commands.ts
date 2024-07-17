@@ -1,5 +1,4 @@
 import "./index.d.ts";
-
 import "cypress-wait-until";
 import compareSnapshotCommand from "cypress-visual-regression/dist/command";
 import {keyCodes} from "../../framework/utils/helpers";
@@ -48,40 +47,23 @@ Cypress.Commands.add("isCovered", function (selector) {
       );
     });
 });
+
+type CypressElement = JQuery<HTMLElement>;
+
+const isWidthPastThreshold = ($el?: CypressElement) => ($el?.width() || 0) > 40;
+
 Cypress.Commands.add("waitForFonts", function () {
-  cy.get(".hidden-font-swatches_1").waitUntil(
-    ($el) => ($el?.width() || 0) > 40
-  );
-  cy.get(".hidden-font-swatches_2").waitUntil(
-    ($el) => ($el?.width() || 0) > 40
-  );
-  cy.get(".hidden-font-swatches_3").waitUntil(
-    ($el) => ($el?.width() || 0) > 40
-  );
-  cy.get(".hidden-font-swatches_4").waitUntil(
-    ($el) => ($el?.width() || 0) > 40
-  );
-  cy.get(".hidden-font-swatches_5").waitUntil(
-    ($el) => ($el?.width() || 0) > 40
-  );
-  cy.get(".hidden-font-swatches_6").waitUntil(
-    ($el) => ($el?.width() || 0) > 40
-  );
-  cy.get(".hidden-font-swatches_7").waitUntil(
-    ($el) => ($el?.width() || 0) > 40
-  );
-  cy.get(".hidden-font-swatches_8").waitUntil(
-    ($el) => ($el?.width() || 0) > 40
-  );
-  cy.get(".hidden-font-swatches_9").waitUntil(
-    ($el) => ($el?.width() || 0) > 40
-  );
-  cy.get(".hidden-font-swatches_10").waitUntil(
-    ($el) => ($el?.width() || 0) > 40
-  );
-  cy.get(".hidden-font-swatches_11").waitUntil(
-    ($el) => ($el?.width() || 0) > 40
-  );
+  cy.get(".hidden-font-swatches_1").waitUntil(isWidthPastThreshold);
+  cy.get(".hidden-font-swatches_2").waitUntil(isWidthPastThreshold);
+  cy.get(".hidden-font-swatches_3").waitUntil(isWidthPastThreshold);
+  cy.get(".hidden-font-swatches_4").waitUntil(isWidthPastThreshold);
+  cy.get(".hidden-font-swatches_5").waitUntil(isWidthPastThreshold);
+  cy.get(".hidden-font-swatches_6").waitUntil(isWidthPastThreshold);
+  cy.get(".hidden-font-swatches_7").waitUntil(isWidthPastThreshold);
+  cy.get(".hidden-font-swatches_8").waitUntil(isWidthPastThreshold);
+  cy.get(".hidden-font-swatches_9").waitUntil(isWidthPastThreshold);
+  cy.get(".hidden-font-swatches_10").waitUntil(isWidthPastThreshold);
+  cy.get(".hidden-font-swatches_11").waitUntil(isWidthPastThreshold);
 });
 
 Cypress.Commands.add("getByDataTestId", (id) => {
