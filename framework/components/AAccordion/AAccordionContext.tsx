@@ -1,11 +1,11 @@
 import React, {Dispatch, SetStateAction} from "react";
 
-interface AAccordionContextType {
+interface AAccordionContextProps {
   openedPanels: number[];
   setOpenedPanels: Dispatch<SetStateAction<number[]>>;
 }
 
-const AAccordionContext = React.createContext<AAccordionContextType>({
+const AAccordionContext = React.createContext<AAccordionContextProps>({
   openedPanels: [],
   setOpenedPanels: () => []
 });

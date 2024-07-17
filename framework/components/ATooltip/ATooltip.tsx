@@ -4,9 +4,9 @@ import AMenuBase from "../AMenuBase";
 import {useCombinedRefs} from "../../utils/hooks";
 import "./ATooltip.scss";
 
-import {ATooltipPropTypes} from "./types";
+import {ATooltipProps} from "./types";
 
-const ATooltip = forwardRef<HTMLElement, ATooltipPropTypes>(
+const ATooltip = forwardRef<HTMLElement, ATooltipProps>(
   (
     {
       anchorRef,

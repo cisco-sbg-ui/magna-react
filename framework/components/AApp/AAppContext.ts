@@ -1,13 +1,13 @@
 import React, {RefObject} from "react";
 import {ARef} from "../../types";
 
-interface AAppContextType {
+interface AAppContextProps {
   appRef: RefObject<HTMLElement>;
   wrapRef: ARef;
   withNewWrappingContext: boolean;
 }
 
-const AAppContext = React.createContext<AAppContextType>({
+const AAppContext = React.createContext<AAppContextProps>({
   appRef: {current: null},
   wrapRef: {
     current: ""

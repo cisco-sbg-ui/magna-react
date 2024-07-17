@@ -1,4 +1,4 @@
 import ATooltip from "./ATooltip";
-import {ATooltipPropTypes} from "./types";
+import {ATooltipProps} from "./types";
 export {ATooltip};
-export type {ATooltipPropTypes};
+export type {ATooltipProps};

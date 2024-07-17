@@ -2,16 +2,9 @@ import React, {forwardRef, useContext, useEffect} from "react";
 
 import AAccordionPanelContext from "./AAccordionPanelContext";
 import "./AAccordion.scss";
-import {BasicComponentProps} from "../../types";
+import {AAccordionProps} from "./types";
 
-interface AAccordionBodyProps extends BasicComponentProps {
-  /**
-   * Toggles the `bordered` display variant.
-   */
-  bordered?: boolean;
-}
-
-const AAccordionBody = forwardRef<HTMLDivElement, AAccordionBodyProps>(
+const AAccordionBody = forwardRef<HTMLDivElement, AAccordionProps>(
   ({children, className: propsClassName, ...rest}, ref) => {
     const context = useContext(AAccordionPanelContext);
     if (!context) {

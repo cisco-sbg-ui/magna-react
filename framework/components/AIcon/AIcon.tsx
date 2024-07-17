@@ -4,7 +4,7 @@ import Icons from "./icons.json";
 import MagnaIcons from "./magnaIcons.js";
 import {iconNameMap} from "./iconMap";
 import "./AIcon.scss";
-import {AIconSize} from "./types";
+import {AIconProps} from "./types";
 
 /**
  * For icons that should not be styled as "regular",
@@ -39,37 +39,6 @@ const ignoreStrokeReplace = [
   // icons that start with "type_"
 ];
 
-interface AIconProps {
-  /**
-   * Overrides the default `aria-label`, "[icon_name] icon".
-   */
-  label?: string;
-  /**
-   * Adjusts margins if on the left side of text.
-   */
-  left?: boolean;
-  /**
-   * Adjusts margins if on the right side of text.
-   */
-  right?: boolean;
-  /**
-   * Sets a custom icon width.
-   */
-  size?: AIconSize;
-  children: string;
-  className?: string;
-  ref?: React.RefObject<HTMLDivElement>;
-}
-
-interface ComponentProps {
-  ref: React.ForwardedRef<SVGSVGElement>;
-  className: string;
-  "aria-label": string;
-  style?: {
-    width?: number | string;
-    stroke?: string;
-  };
-}
 const AIcon = forwardRef<SVGSVGElement, AIconProps>(
   (
     {children, className: propsClassName, label, left, right, size, ...rest},
@@ -96,7 +65,7 @@ const AIcon = forwardRef<SVGSVGElement, AIconProps>(
     className += ` a-icon--${children}`;
 
     const ariaLabel = label || `${children} icon`,
-      componentProps: ComponentProps = {
+      componentProps = {
         style: {},
         ...rest,
         ref,
@@ -114,7 +83,7 @@ const AIcon = forwardRef<SVGSVGElement, AIconProps>(
 
     let magneticIconDef;
 
-    if (!children) {
+    if (!children || typeof children !== "string") {
       return null;
     }
 

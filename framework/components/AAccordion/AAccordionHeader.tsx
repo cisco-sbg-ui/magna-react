@@ -1,9 +1,8 @@
 import React, {forwardRef} from "react";
 
 import "./AAccordion.scss";
-import {BasicComponentProps} from "../../types";
 
-interface AAccordionHeaderProps extends BasicComponentProps {}
+interface AAccordionHeaderProps extends React.ComponentPropsWithRef<"div"> {}
 
 const AAccordionHeader = forwardRef<HTMLDivElement, AAccordionHeaderProps>(
   ({children, className: propsClassName, ...rest}, ref) => {

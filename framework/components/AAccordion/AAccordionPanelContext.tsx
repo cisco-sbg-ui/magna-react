@@ -1,6 +1,6 @@
 import React from "react";
 
-interface AAccordionPanelContextType {
+interface AAccordionPanelContextProps {
   hasBody: boolean;
   setHasBody: (hasBody: boolean) => void;
   panelId: number;
@@ -10,7 +10,7 @@ interface AAccordionPanelContextType {
   onToggle?: (key?: string) => void;
 }
 
-const AAccordionContext = React.createContext<AAccordionPanelContextType>({
+const AAccordionContext = React.createContext<AAccordionPanelContextProps>({
   hasBody: false,
   panelId: 1,
   isCollapsed: false,

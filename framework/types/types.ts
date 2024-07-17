@@ -1,11 +1,5 @@
 import React from "react";
 
-export type BasicComponentProps = {
-  children?: React.ReactNode;
-  className?: string;
-  ref?: React.RefObject<HTMLElement>;
-};
-
 export type ARef =
   | React.RefObject<HTMLElement>
   | {

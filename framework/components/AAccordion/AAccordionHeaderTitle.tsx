@@ -6,32 +6,8 @@ import {keyCodes} from "../../utils/helpers";
 import "./AAccordion.scss";
 
 import AIcon from "../AIcon";
-import {BasicComponentProps} from "../../types";
+import {AAccordionHeaderTitleProps} from "./types";
 
-interface AAccordionHeaderTitleProps extends BasicComponentProps {
-  /**
-   * Toggles the chevron.
-   */
-  chevron?: boolean;
-  /**
-   * Sets an alternative collapse icon.
-   */
-  collapseIcon?: string;
-  /**
-   * Sets an alternative expand icon.
-   */
-  expandIcon?: string;
-  /**
-   * Decide where the icon will be placed in relation to the title.
-   * Default is "right".
-   */
-  iconPlacement?: "right" | "left";
-
-  onBlur?: React.FocusEventHandler<HTMLDivElement>;
-  onClick?: React.MouseEventHandler<HTMLDivElement>;
-  onFocus?: React.FocusEventHandler<HTMLDivElement>;
-  onKeyDown?: React.KeyboardEventHandler<HTMLDivElement>;
-}
 const AAccordionHeaderTitle = forwardRef<
   HTMLDivElement,
   AAccordionHeaderTitleProps

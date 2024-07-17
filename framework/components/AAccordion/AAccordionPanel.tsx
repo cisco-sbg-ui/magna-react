@@ -3,21 +3,10 @@ import React, {forwardRef, useContext, useEffect, useState} from "react";
 import AAccordionContext from "./AAccordionContext";
 import AAccordionPanelContext from "./AAccordionPanelContext";
 import "./AAccordion.scss";
-import {BasicComponentProps} from "../../types";
+import {AAccordionPanelProps} from "./types";
 
 let accordionPanelCounter = 1;
 
-interface AAccordionPanelProps extends BasicComponentProps {
-  /**
-   * Sets the default collapsed state.
-   */
-  collapsed?: boolean;
-  panelKey?: string;
-  /**
-   * Handles the expand/collapse toggle event.
-   */
-  onToggle?: () => void;
-}
 const AAccordionPanel = forwardRef<HTMLDivElement, AAccordionPanelProps>(
   (
     {

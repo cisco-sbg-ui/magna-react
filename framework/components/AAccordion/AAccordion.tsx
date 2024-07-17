@@ -1,14 +1,7 @@
 import React, {forwardRef, useState} from "react";
 import AAccordionContext from "./AAccordionContext";
 import "./AAccordion.scss";
-import {BasicComponentProps} from "../../types";
-
-interface AAccordionProps extends BasicComponentProps {
-  /**
-   * Toggles the `bordered` display variant.
-   */
-  bordered?: boolean;
-}
+import {AAccordionProps} from "./types";
 
 const AAccordion = forwardRef<HTMLDivElement, AAccordionProps>(
   ({bordered, children, className: propsClassName, ...rest}, ref) => {
