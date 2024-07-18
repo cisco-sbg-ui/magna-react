@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import "./APageDescription.scss";
 
 const APageDescription = ({className: propsClassName, children, ...rest}) => {

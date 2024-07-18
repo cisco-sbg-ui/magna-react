@@ -433,7 +433,7 @@ const AMultiSelect = forwardRef(
 
       // If using a template, the children shouldn't be rendered
       // so add the click handler
-      if (!!itemTemplate) {
+      if (itemTemplate) {
         itemProps.onClick = handleClick;
         delete itemProps.children;
       }

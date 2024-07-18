@@ -2,6 +2,7 @@ import Highlight, {defaultProps} from "prism-react-renderer";
 
 import theme from "prism-react-renderer/themes/oceanicNext";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const InlineCodeSnippet = ({code, fullWidthPreview, noInline, children}) => {
   return (
     <Highlight

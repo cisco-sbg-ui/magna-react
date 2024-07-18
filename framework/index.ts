@@ -5,6 +5,7 @@ import {
   AAccordionHeaderTitle,
   AAccordionPanel
 } from "./components/AAccordion";
+
 import {
   AActivityTimeline,
   AActivityTimelineItem,
@@ -56,7 +57,7 @@ import AFieldBase from "./components/AFieldBase";
 import {AFooter, AFooterLegal} from "./components/AFooter";
 import {AForm, AFormContext} from "./components/AForm";
 import AHint from "./components/AHint";
-import AIcon from "./components/AIcon";
+
 import AInView from "./components/AInView";
 import AInlineInputBase from "./components/AInlineInputBase";
 import AInlineTextarea from "./components/AInlineTextarea";
@@ -153,8 +154,10 @@ import useMediaQuery from "./hooks/useMediaQuery/useMediaQuery";
 import useOutsideClick from "./hooks/useOutsideClick/useOutsideClick";
 import usePopupQuickExit from "./hooks/usePopupQuickExit/usePopupQuickExit";
 import useToggle from "./hooks/useToggle/useToggle";
+import AIcon from "./components/AIcon";
 
 export {
+  AIcon,
   AAccordion,
   AAccordionBody,
   AAccordionHeader,
@@ -206,7 +209,6 @@ export {
   AFormContext,
   ALoader,
   AHint,
-  AIcon,
   AInView,
   AInlineInputBase,
   AInlineTextarea,
@@ -299,3 +301,5 @@ export {
   usePopupQuickExit,
   useToggle
 };
+
+export * from "./types";

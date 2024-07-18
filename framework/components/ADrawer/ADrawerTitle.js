@@ -14,7 +14,6 @@ const ADrawerTitle = forwardRef(
     {
       children,
       className: propsClassName,
-      sticky,
       closeButton,
       closeTitle,
       closeBtnProps,

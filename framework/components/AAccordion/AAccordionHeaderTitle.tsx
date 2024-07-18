@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import React, {forwardRef, useContext} from "react";
 
 import AAccordionContext from "./AAccordionContext";
@@ -7,8 +6,12 @@ import {keyCodes} from "../../utils/helpers";
 import "./AAccordion.scss";
 
 import AIcon from "../AIcon";
+import {AAccordionHeaderTitleProps} from "./types";
 
-const AAccordionHeaderTitle = forwardRef(
+const AAccordionHeaderTitle = forwardRef<
+  HTMLDivElement,
+  AAccordionHeaderTitleProps
+>(
   (
     {
       chevron = true,
@@ -39,13 +42,16 @@ const AAccordionHeaderTitle = forwardRef(
       onToggle && onToggle(panelKey);
     };
 
-    const handleClick = (e) => {
+    const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
       hasBody && togglePanel();
       onClick && onClick(e);
     };
 
-    const handleKeyDown = (e) => {
-      if (hasBody && [keyCodes.enter, keyCodes.space].includes(e.keyCode)) {
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (
+        hasBody &&
+        [keyCodes.enter, keyCodes.space].includes(e.keyCode as 13 | 32)
+      ) {
         e.preventDefault();
         togglePanel();
       }
@@ -53,12 +59,12 @@ const AAccordionHeaderTitle = forwardRef(
       onKeyDown && onKeyDown(e);
     };
 
-    const handleBlur = (e) => {
+    const handleBlur = (e: React.FocusEvent<HTMLDivElement, Element>) => {
       hasBody && setIsFocused(false);
       onBlur && onBlur(e);
     };
 
-    const handleFocus = (e) => {
+    const handleFocus = (e: React.FocusEvent<HTMLDivElement, Element>) => {
       hasBody && setIsFocused(true);
       onFocus && onFocus(e);
     };
@@ -109,8 +115,7 @@ const AAccordionHeaderTitle = forwardRef(
           {...handlerProps}
           {...titleDivProps}
           ref={ref}
-          className={className}
-        >
+          className={className}>
           {children}
         </div>
         {chevron && iconPlacement === "right" && (
@@ -123,33 +128,6 @@ const AAccordionHeaderTitle = forwardRef(
     );
   }
 );
-
-AAccordionHeaderTitle.defaultProps = {
-  chevron: true,
-  collapseIcon: "caret-up",
-  expandIcon: "caret-down",
-  iconPlacement: "right"
-};
-
-AAccordionHeaderTitle.propTypes = {
-  /**
-   * Toggles the chevron.
-   */
-  chevron: PropTypes.bool,
-  /**
-   * Sets an alternative collapse icon.
-   */
-  collapseIcon: PropTypes.string,
-  /**
-   * Sets an alternative expand icon.
-   */
-  expandIcon: PropTypes.string,
-  /**
-   * Decide where the icon will be placed in relation to the title.
-   * Default is "right".
-   */
-  iconPlacement: PropTypes.oneOf(["right", "left"])
-};
 
 AAccordionHeaderTitle.displayName = "AAccordionHeaderTitle";
 

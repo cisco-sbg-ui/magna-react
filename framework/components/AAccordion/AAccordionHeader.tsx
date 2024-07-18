@@ -2,7 +2,9 @@ import React, {forwardRef} from "react";
 
 import "./AAccordion.scss";
 
-const AAccordionHeader = forwardRef(
+interface AAccordionHeaderProps extends React.ComponentPropsWithRef<"div"> {}
+
+const AAccordionHeader = forwardRef<HTMLDivElement, AAccordionHeaderProps>(
   ({children, className: propsClassName, ...rest}, ref) => {
     let className = "a-accordion__header";
 

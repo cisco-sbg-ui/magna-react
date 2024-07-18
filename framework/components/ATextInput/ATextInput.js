@@ -7,7 +7,6 @@ import React, {
   useState
 } from "react";
 
-import {ATooltipPropTypes} from "../ATooltip";
 import AInputBase from "../AInputBase";
 import {AFormContext} from "../AForm";
 import AIcon from "../AIcon";
@@ -455,7 +454,7 @@ const ATextInput = forwardRef(
   }
 );
 
-const {anchorRef, ...infoTooltipProps} = ATooltipPropTypes;
+// const {...infoTooltipProps} = ATooltipPropTypes;
 
 ATextInput.propTypes = {
   /**
@@ -522,7 +521,7 @@ ATextInput.propTypes = {
   /**
    * Overrides props of `ATooltip` used to display `infoTooltip`. See `ATooltip.propTypes`.
    */
-  infoTooltipProps: PropTypes.shape(infoTooltipProps),
+  // infoTooltipProps: PropTypes.shape(infoTooltipProps),
   /**
    * Sets the maximum value of a number type text input.
    */

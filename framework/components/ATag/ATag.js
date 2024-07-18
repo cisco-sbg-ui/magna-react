@@ -142,10 +142,6 @@ ATag.propTypes = {
    */
   target: PropTypes.string,
   /**
-   * Specifies the display variant.
-   */
-  large: PropTypes.bool,
-  /**
    * Will apply the icon along with the status color.
    */ status: PropTypes.oneOf([
     "excellent",

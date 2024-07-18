@@ -79,7 +79,7 @@ const isDayFirst = dateType("day") < dateType("month");
  * @returns {{dateStr: String, dateObj: Date}}
  */
 const convertToStandardDateFormat = (date) => {
-  const stabilizeLiteral = date.replace(/(\.|\-)/g, "/");
+  const stabilizeLiteral = date.replace(/(\.|-)/g, "/");
 
   if (isDayFirst) {
     const dayToMonthFormat = stabilizeLiteral.replace(
