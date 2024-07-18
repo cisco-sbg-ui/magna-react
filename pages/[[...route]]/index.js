@@ -223,16 +223,6 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
   );
 }
 
-/*
-          <TableOfContents
-            setActiveSection={setActiveSection}
-            activeSection={activeSection}
-            items={currentDoc?.pageTabsData[activeTab]?.tableOfContents.map(
-              (toc) => toc.heading || ""
-            )}
-          />
-          */
-
 export async function getStaticPaths() {
   const fs = require("fs");
   const paths = require("glob")
@@ -260,6 +250,28 @@ export async function getStaticProps({params}) {
   const fs = require("fs");
   const glob = require("glob");
   const reactDocs = require("react-docgen");
+  const reactDocsTypescript = require("react-docgen-typescript");
+  const tsConfigParser = reactDocsTypescript.withCustomConfig(
+    "./tsconfig.json",
+    {
+      savePropValueAsString: true,
+      shouldRemoveUndefinedFromOptional: true,
+      shouldExtractLiteralValuesFromEnum: true,
+      propFilter: (prop /*, component*/) => {
+        if (prop.declarations !== undefined && prop.declarations.length > 0) {
+          const hasPropAdditionalDescription = prop.declarations.find(
+            (declaration) => {
+              return !declaration.fileName.includes("node_modules");
+            }
+          );
+
+          return Boolean(hasPropAdditionalDescription);
+        }
+
+        return true;
+      }
+    }
+  );
 
   let target;
   const menus = glob.sync("./framework/**/*.mdx").map((x) => {
@@ -306,6 +318,32 @@ export async function getStaticProps({params}) {
       const componentSource = fs.readFileSync(x, {encoding: "utf8", flag: "r"});
       return reactDocs.parse(componentSource);
     });
+
+  let typescriptPropsInfo = glob
+    .sync("./framework/**/+(A)!(*.spec|*.ct|*.cy|*Context).tsx")
+    .map((x) => {
+      return tsConfigParser.parse(x);
+    });
+
+  // This doesn't seem to parse, might not be supported
+  // let types = reactDocsTypescript.parse("./framework/types.ts");
+
+  // Can't serialize undefined, so change them to null
+  typescriptPropsInfo.forEach((a) =>
+    a.forEach((b) => {
+      Object.keys(b.props).forEach((g) => {
+        Object.keys(b.props[g]).forEach((p) => {
+          if (b.props[g][p] === undefined) {
+            b.props[g][p] = null;
+          }
+        });
+      });
+    })
+  );
+
+  typescriptPropsInfo = typescriptPropsInfo.map((t) => t[0]);
+
+  propsInfo.push(...typescriptPropsInfo);
 
   const source = await serialize(target.content, {
     scope: target.data,
@@ -355,7 +393,8 @@ export async function getStaticProps({params}) {
           .flat()
       },
       menus,
-      propsInfo
+      propsInfo,
+      typescriptPropsInfo
     }
   };
 }

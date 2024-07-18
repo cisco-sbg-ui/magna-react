@@ -31,9 +31,23 @@ const types = {
 };
 
 const getType = (type) => {
-  if (type && typeof type === "string") return type;
-  if (!type || !types[type.name]) return;
-  return types[type.name](type.value) + (type.required ? " Required" : "");
+  if (!type) {
+    return null;
+  }
+
+  if (typeof type === "string") {
+    return type;
+  }
+
+  if (type?.name === "enum") {
+    let enumString = type.raw ? `${type.raw} - ` : "";
+    enumString += `[${type.value.map((v) => v.value).join(", ")}]`;
+
+    return enumString;
+  }
+
+  const mapper = types[type?.name];
+  return mapper ? mapper(type?.value) : type?.name;
 };
 
 export default function Props({of, inDrawer}) {
@@ -51,37 +65,32 @@ export default function Props({of, inDrawer}) {
           <tr>
             <th>Name</th>
             <th>Description</th>
-            <th>Default</th>
+            <th style={{textAlign: "center"}}>Required</th>
+            <th style={{textAlign: "center"}}>Default</th>
           </tr>
         </thead>
         <tbody>
-          {Object.keys(props).map((x, index) => (
-            <tr key={index}>
-              <td className="text-no-wrap">{x}</td>
-              <td>
-                <p className="mt-0">{props[x].description}</p>
-                {props[x].required ? (
-                  <>
-                    <br />
-                    <span className="status-red" style={{fontStyle: "italic"}}>
-                      Required
-                    </span>
-                  </>
-                ) : (
-                  ""
-                )}
-                <br />
-                <span style={{fontStyle: "italic", fontWeight: 500}}>
-                  {getType(props[x].type)}
-                </span>
-              </td>
-              <td>
-                {props[x].defaultValue?.value || (
-                  <span style={{fontStyle: "italic"}}>null</span>
-                )}
-              </td>
-            </tr>
-          ))}
+          {Object.keys(props).map((x, index) => {
+            const type = getType(props[x].type);
+
+            return (
+              <tr key={index}>
+                <td className="text-no-wrap">{x}</td>
+                <td>
+                  <p className="mt-0">{props[x].description}</p>
+                  <span style={{fontStyle: "italic", fontWeight: 500}}>
+                    {type}
+                  </span>
+                </td>
+                <td style={{textAlign: "center"}}>
+                  {props[x].required ? "true" : <span>-</span>}
+                </td>
+                <td style={{textAlign: "center"}}>
+                  {props[x].defaultValue?.value || <span>-</span>}
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </ASimpleTable>
     </ACardContainer>

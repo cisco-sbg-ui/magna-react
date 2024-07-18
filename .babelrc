@@ -8,6 +8,10 @@
           {
             "exclude": ["docs/*", "pages/*"]
           }
+        ],
+        [
+          "babel-plugin-typescript-to-proptypes",
+          {"mapUnknownReferenceTypesToAny": true}
         ]
       ]
     }
