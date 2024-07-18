@@ -10,18 +10,14 @@
     //"noEmit": true,
     // Enable strictest settings like strictNullChecks & noImplicitAny.
     "strict": true,
-    "jsx": "preserve", //DO NOT LET VERCEL OVERRIDE THIS DURING NPM RUN DEV.   PRESERVE IS NOT AN OPTION FOR LIBRARY.  This is an ongoing request: https://github.com/vercel/next.js/discussions/39942
+    "jsx": "react", //DO NOT LET VERCEL OVERRIDE THIS DURING NPM RUN DEV.   PRESERVE IS NOT AN OPTION FOR LIBRARY.  This is an ongoing request: https://github.com/vercel/next.js/discussions/39942
     "skipLibCheck": true,
     // Import non-ES modules as default imports.
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "declaration": true,
     "outDir": "./lib",
-    "noEmit": false, //DO NOT LET VERCEL OVERRIDE THIS DURING NPM RUN DEV.   WE NEED TO EMIT FOR LIBRARY. This is an ongoing request: https://github.com/vercel/next.js/discussions/39942
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "incremental": true,
-    "module": "esnext",
-    "isolatedModules": true
+    "noEmit": false //DO NOT LET VERCEL OVERRIDE THIS DURING NPM RUN DEV.   WE NEED TO EMIT FOR LIBRARY. This is an ongoing request: https://github.com/vercel/next.js/discussions/39942
   },
   "include": ["framework/**/*"],
   "exclude": ["node_modules"]
