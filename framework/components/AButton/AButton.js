@@ -124,7 +124,9 @@ const AButton = forwardRef(
 
     return (
       <TagName {...props}>
-        {loading && <ASpinner size="small" />}
+        {loading && (
+          <ASpinner size="small" style={{marginRight: children ? "4px" : ""}} />
+        )}
         {children}
         {dropdown && <AIcon className="ml-1">{dropdownIcon}</AIcon>}
       </TagName>
