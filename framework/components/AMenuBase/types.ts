@@ -28,6 +28,10 @@ export type AMenuBaseProps = Override<
      * Option to remove the space between the anchor and the menu for bottom placement
      */
     removeSpacer?: boolean;
+    /**
+     * Flip vertically or horizontally is the menu would otherwise render out of bounds
+     */
+    useFlipLogic?: boolean;
     style?: React.CSSProperties;
     role?: React.AriaRole;
   }
@@ -53,4 +57,9 @@ export type calculatePointerPositionType = {
   placement: APlacement;
   setPointerLeft: React.Dispatch<React.SetStateAction<number | null>>;
   setPointerTop: React.Dispatch<React.SetStateAction<number | null>>;
+};
+
+export type AMenuFlip = {
+  menuPlacement: APlacement;
+  checkMenuSpacing: () => void;
 };

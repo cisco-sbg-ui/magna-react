@@ -52,7 +52,8 @@ const ATooltip = forwardRef<HTMLElement, ATooltipProps>(
         placement={placement}
         removeSpacer={true}
         anchorRef={anchorRef}
-        pointer={pointer}>
+        pointer={pointer}
+        useFlipLogic>
         {children}
       </AMenuBase>
     );

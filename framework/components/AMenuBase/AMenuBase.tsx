@@ -10,8 +10,11 @@ import ReactDOM from "react-dom";
 import AAppContext from "../AApp/AAppContext";
 import {useCombinedRefs} from "../../utils/hooks";
 import {getRoundedBoundedClientRect} from "../../utils/helpers";
+
+import {useMenuFlip} from "./hooks";
 import "./AMenuBase.scss";
 import {
+  AMenuFlip,
   AMenuBaseProps,
   calculateMenuPositionType,
   calculatePointerPositionType
@@ -248,6 +251,7 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
       pointer,
       style: propsStyle,
       removeSpacer = false,
+      useFlipLogic = false,
       ...rest
     },
     ref
@@ -261,13 +265,29 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
     const [pointerLeft, setPointerLeft] = useState<number | null>(null);
     const [pointerTop, setPointerTop] = useState<number | null>(null);
 
+    // @ts-ignore
+    const {checkMenuSpacing, menuPlacement}: AMenuFlip = useMenuFlip(
+      useFlipLogic,
+      anchorRef,
+      combinedRef,
+      wrapRef,
+      pointer,
+      placement
+    );
+
+    useEffect(() => {
+      if (open && menuRef.current) {
+        checkMenuSpacing();
+      }
+    }, [open, checkMenuSpacing, menuRef, placement]);
+
     useEffect(() => {
       const calculateMenuPositionProps = {
         combinedRef,
         appRef,
         wrapRef,
         anchorRef,
-        placement,
+        placement: menuPlacement,
         setMenuLeft,
         setMenuTop,
         setInvisible,
@@ -279,7 +299,7 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
       open,
       anchorRef,
       combinedRef,
-      placement,
+      menuPlacement,
       appRef,
       wrapRef,
       removeSpacer,
@@ -291,12 +311,12 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
         combinedRef,
         anchorRef,
         pointer,
-        placement,
+        placement: menuPlacement,
         setPointerLeft,
         setPointerTop
       };
       calculatePointerPosition(pointerPositionProps);
-    }, [anchorRef, combinedRef, placement, pointer, menuLeft, menuTop]);
+    }, [anchorRef, combinedRef, menuPlacement, pointer, menuLeft, menuTop]);
 
     useEffect(() => {
       const screenChangeHandler = () => {
@@ -388,7 +408,7 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
       };
     }, [anchorRef, combinedRef, onClose, open]);
 
-    let className = `a-menu-base a-menu-base--${placement}`;
+    let className = `a-menu-base a-menu-base--${menuPlacement}`;
     if (!invisible && open) {
       className += " a-menu-base--active";
     }
