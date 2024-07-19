@@ -15,8 +15,15 @@ const AForm = forwardRef(({children}, ref) => {
     validate: () => {
       let errors = [];
       Object.values(fields).forEach((x) => {
+        if (x.disabled) {
+          x.reset();
+          return;
+        }
+
         let fieldError = x.validate();
-        if (fieldError) errors.push(fieldError);
+        if (fieldError) {
+          errors.push(fieldError);
+        }
       });
       return errors;
     }

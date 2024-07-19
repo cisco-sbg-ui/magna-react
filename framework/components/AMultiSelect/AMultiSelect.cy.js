@@ -177,6 +177,36 @@ describe("<AMultiSelect />", () => {
 
     getMenuContent().should("not.exist");
   });
+
+  it("should show error when required", () => {
+    cy.mount(<AMultiSelectTest required />);
+
+    cy.get(".a-multiselect__input").focus();
+
+    cy.get(".a-multiselect__input").blur();
+
+    cy.get(".a-alert--state-danger").should("exist");
+  });
+
+  it("should show error when required with empty undefined value", () => {
+    cy.mount(<AMultiSelectTest required value={undefined} />);
+
+    cy.get(".a-multiselect__input").focus();
+
+    cy.get(".a-multiselect__input").blur();
+
+    cy.get(".a-alert--state-danger").should("exist");
+  });
+
+  it("should show error when required with empty array value", () => {
+    cy.mount(<AMultiSelectTest required value={[]} />);
+
+    cy.get(".a-multiselect__input").focus();
+
+    cy.get(".a-multiselect__input").blur();
+
+    cy.get(".a-alert--state-danger").should("exist");
+  });
 });
 
 const items = [
@@ -188,7 +218,11 @@ const items = [
   {id: 6, name: "Fats, Oils, and Sweets"}
 ];
 
-const AMultiSelectTest = ({value: propsValue = [], withTags = false}) => {
+const AMultiSelectTest = ({
+  value: propsValue = [],
+  withTags = false,
+  ...rest
+}) => {
   const [value, setValue] = useState(propsValue);
 
   return (
@@ -208,6 +242,7 @@ const AMultiSelectTest = ({value: propsValue = [], withTags = false}) => {
           setValue(newValue);
         }}
         value={value}
+        {...rest}
       />
     </div>
   );

@@ -51,10 +51,11 @@ const ASwitch = forwardRef(
       if (register) {
         register(`a-switch_${switchId}`, {
           reset,
-          validate
+          validate,
+          disabled
         });
       }
-    }, [validationState, checked, value, rules]); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [validationState, checked, value, disabled, rules]); // eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
       if (unregister) {

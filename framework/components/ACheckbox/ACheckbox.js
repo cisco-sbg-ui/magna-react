@@ -61,10 +61,11 @@ const ACheckbox = forwardRef(
       if (register) {
         register(`a-checkbox_${checkboxId}`, {
           reset,
-          validate
+          validate,
+          disabled
         });
       }
-    }, [validationState, checked, value, rules]); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [validationState, checked, value, disabled, rules]); // eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
       if (unregister) {

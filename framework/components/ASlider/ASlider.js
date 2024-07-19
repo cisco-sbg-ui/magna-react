@@ -68,10 +68,11 @@ const ASlider = forwardRef(
       if (register) {
         register(`a-slider_${sliderId}`, {
           reset,
-          validate
+          validate,
+          disabled
         });
       }
-    }, [validationState, value, rules]); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [validationState, value, disabled, rules]); // eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
       if (unregister) {
