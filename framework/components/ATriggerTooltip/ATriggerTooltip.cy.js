@@ -233,7 +233,16 @@ function CustomTriggerTest(triggerTooltipProps) {
   const btnRef = useRef();
 
   return (
-    <div data-testid="custom-trigger-container">
+    <div
+      data-testid="custom-trigger-container"
+      style={{
+        height: "400px",
+        width: "400px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
+      }}
+    >
       <AButton data-testid="custom-trigger" ref={btnRef}>
         outer trigger
       </AButton>
