@@ -265,7 +265,6 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
     const [pointerLeft, setPointerLeft] = useState<number | null>(null);
     const [pointerTop, setPointerTop] = useState<number | null>(null);
 
-    // @ts-ignore
     const {checkMenuSpacing, menuPlacement}: AMenuFlip = useMenuFlip(
       useFlipLogic,
       anchorRef,
@@ -274,8 +273,6 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
       pointer,
       placement
     );
-
-    console.log("placement", placement, menuPlacement);
 
     useEffect(() => {
       if (open && menuRef.current) {
