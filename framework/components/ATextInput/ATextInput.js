@@ -130,7 +130,7 @@ const ATextInput = forwardRef(
       prependProps.onKeyDown = (e) => {
         if (
           onClickPrepend &&
-          [keyCodes.enter, keyCodes.space].includes(e.keyCode)
+          [keyCodes.enter, keyCodes.space].includes(e.code) //must be code over key for "Space"
         ) {
           e.preventDefault();
           onClickPrepend(e);
@@ -151,7 +151,7 @@ const ATextInput = forwardRef(
       appendProps.onKeyDown = (e) => {
         if (
           onClickAppend &&
-          [keyCodes.enter, keyCodes.space].includes(e.keyCode)
+          [keyCodes.enter, keyCodes.space].includes(e.code) //must be code over key for "Space"
         ) {
           e.preventDefault();
           onClickAppend(e);

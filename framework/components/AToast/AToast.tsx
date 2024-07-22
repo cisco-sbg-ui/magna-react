@@ -1,16 +1,16 @@
-import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
 import AIcon from "../AIcon";
 import {keyCodes} from "../../utils/helpers";
 import "./AToast.scss";
+import {AToastProps} from "./types";
 
-const AToast = forwardRef(
+const AToast = forwardRef<HTMLDivElement, AToastProps>(
   (
     {
       children,
       className: propsClassName,
-      dismissable = true,
+      dismissible = true,
       level = "info",
       onClose,
       placement = "top-right",
@@ -19,8 +19,12 @@ const AToast = forwardRef(
     },
     ref
   ) => {
-    const dismissableKeyDownHandler = (e) => {
-      if (onClose && [keyCodes.enter, keyCodes.space].includes(e.keyCode)) {
+    const dismissibleKeyDownHandler = (e: React.KeyboardEvent) => {
+      //must be code over key for "Space"
+      if (
+        onClose &&
+        [keyCodes.enter, keyCodes.space].includes(e.code as "Enter" | "Space")
+      ) {
         e.preventDefault();
         onClose(e);
       }
@@ -58,11 +62,11 @@ const AToast = forwardRef(
           <div className="a-toast__title">{title}</div>
           <div className="a-toast__message">{children}</div>
         </div>
-        {dismissable && (
+        {dismissible && (
           <AIcon
             className="a-toast__close focus-box-shadow"
             onClick={(e) => onClose && onClose(e)}
-            onKeyDown={dismissableKeyDownHandler}
+            onKeyDown={dismissibleKeyDownHandler}
             size={16}
             tabIndex={0}
           >
@@ -73,29 +77,6 @@ const AToast = forwardRef(
     );
   }
 );
-
-AToast.propTypes = {
-  /**
-   * Toggles the close button.
-   */
-  dismissable: PropTypes.bool,
-  /**
-   * Specifies the display variant.
-   */
-  level: PropTypes.oneOf(["info", "success", "warning", "danger"]),
-  /**
-   * A callback for handling the close event.
-   */
-  onClose: PropTypes.func,
-  /**
-   * Specifies the placement of the toast.
-   */
-  placement: PropTypes.oneOf(["bottom-right", "top", "top-right"]),
-  /**
-   * Sets the title.
-   */
-  title: PropTypes.node
-};
 
 AToast.displayName = "AToast";
 

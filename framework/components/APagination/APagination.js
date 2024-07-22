@@ -90,7 +90,7 @@ const APagination = forwardRef(
                   )
                 }
                 onKeyDown={(e) => {
-                  if (onResultsPerPageChange && e.keyCode === keyCodes.enter) {
+                  if (onResultsPerPageChange && e.key === keyCodes.enter) {
                     e.preventDefault();
                     if (!workingResultsPerPage) {
                       setWorkingResultsPerPage(1);
@@ -162,7 +162,7 @@ const APagination = forwardRef(
                     )
                   }
                   onKeyDown={(e) => {
-                    if (onPageChange && e.keyCode === keyCodes.enter) {
+                    if (onPageChange && e.key === keyCodes.enter) {
                       e.preventDefault();
                       if (!workingPage) {
                         setWorkingPage(1);

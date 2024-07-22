@@ -43,11 +43,11 @@ const APopover = forwardRef(
       if (anchorRef instanceof DOMRect) {
         return;
       }
-      if (onClose && e.keyCode === keyCodes.esc) {
+      if (onClose && e.key === keyCodes.esc) {
         e.preventDefault();
         closeHandler(e);
         anchorRef.current.focus();
-      } else if (e.keyCode === keyCodes.tab) {
+      } else if (e.key === keyCodes.tab) {
         closeHandler(e);
         anchorRef.current.focus();
       }

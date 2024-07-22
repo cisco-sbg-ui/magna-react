@@ -346,7 +346,8 @@ const ASlider = forwardRef(
                 }}
                 onKeyDown={(e) => {
                   if (disabled) return;
-                  if ([keyCodes.right, keyCodes.up].includes(e.keyCode)) {
+                  //must be code over key for "Space"
+                  if ([keyCodes.right, keyCodes.up].includes(e.code)) {
                     e.preventDefault();
                     // Increases slider value one step.
                     handleChange(
@@ -356,7 +357,7 @@ const ASlider = forwardRef(
                     return;
                   }
 
-                  if ([keyCodes.left, keyCodes.down].includes(e.keyCode)) {
+                  if ([keyCodes.left, keyCodes.down].includes(e.key)) {
                     e.preventDefault();
                     // Decreases slider value one step.
                     handleChange(
@@ -366,7 +367,7 @@ const ASlider = forwardRef(
                     return;
                   }
 
-                  if (e.keyCode === keyCodes.pageup) {
+                  if (e.key === keyCodes.pageup) {
                     e.preventDefault();
                     // Increase slider 10 steps.
                     handleChange(
@@ -376,7 +377,7 @@ const ASlider = forwardRef(
                     return;
                   }
 
-                  if (e.keyCode === keyCodes.pagedown) {
+                  if (e.key === keyCodes.pagedown) {
                     e.preventDefault();
                     // Decrease slider 10 steps.
                     handleChange(
@@ -386,14 +387,14 @@ const ASlider = forwardRef(
                     return;
                   }
 
-                  if (e.keyCode === keyCodes.home) {
+                  if (e.key === keyCodes.home) {
                     e.preventDefault();
                     // Decrease slider to minimum.
                     handleChange(0, thumb2Position);
                     return;
                   }
 
-                  if (e.keyCode === keyCodes.end) {
+                  if (e.key === keyCodes.end) {
                     e.preventDefault();
                     // Increase slider to maximum.
                     handleChange(100, thumb2Position);
@@ -423,7 +424,7 @@ const ASlider = forwardRef(
               }}
               onKeyDown={(e) => {
                 if (disabled) return;
-                if ([keyCodes.right, keyCodes.up].includes(e.keyCode)) {
+                if ([keyCodes.right, keyCodes.up].includes(e.key)) {
                   e.preventDefault();
                   // Increases slider value one step.
                   handleChange(
@@ -433,7 +434,7 @@ const ASlider = forwardRef(
                   return;
                 }
 
-                if ([keyCodes.left, keyCodes.down].includes(e.keyCode)) {
+                if ([keyCodes.left, keyCodes.down].includes(e.key)) {
                   e.preventDefault();
                   // Decreases slider value one step.
                   handleChange(
@@ -443,7 +444,7 @@ const ASlider = forwardRef(
                   return;
                 }
 
-                if (e.keyCode === keyCodes.pageup) {
+                if (e.key === keyCodes.pageup) {
                   e.preventDefault();
                   // Increase slider 10 steps.
                   handleChange(
@@ -453,7 +454,7 @@ const ASlider = forwardRef(
                   return;
                 }
 
-                if (e.keyCode === keyCodes.pagedown) {
+                if (e.key === keyCodes.pagedown) {
                   e.preventDefault();
                   // Decrease slider 10 steps.
                   handleChange(
@@ -463,14 +464,14 @@ const ASlider = forwardRef(
                   return;
                 }
 
-                if (e.keyCode === keyCodes.home) {
+                if (e.key === keyCodes.home) {
                   e.preventDefault();
                   // Decrease slider to minimum.
                   handleChange(thumb1Position, 0);
                   return;
                 }
 
-                if (e.keyCode === keyCodes.end) {
+                if (e.key === keyCodes.end) {
                   e.preventDefault();
                   // Increase slider to maximum.
                   handleChange(thumb1Position, 100);

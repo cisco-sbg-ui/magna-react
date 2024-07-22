@@ -221,14 +221,14 @@ const ACombobox = forwardRef(
         setIsFocused(true);
       },
       onKeyDown: (e) => {
-        if (e.keyCode === keyCodes.up) {
+        if (e.key === keyCodes.up) {
           e.preventDefault();
           setIsOpen(items.length || noDataContent);
           const menuItems = menuRef.current?.querySelectorAll(
             ".a-combobox__menu-items__wrapper .a-list-item[tabindex]"
           );
           menuItems && menuItems[menuItems.length - 1]?.focus();
-        } else if (e.keyCode === keyCodes.down) {
+        } else if (e.key === keyCodes.down) {
           e.preventDefault();
           setIsOpen(items.length || noDataContent);
           menuRef.current

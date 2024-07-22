@@ -1,9 +1,10 @@
-import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
 import "./AStepper.scss";
 
-const AStepTitle = forwardRef(
+interface AStepTitleProps extends React.ComponentPropsWithRef<"div"> {}
+
+const AStepTitle = forwardRef<HTMLDivElement, AStepTitleProps>(
   ({className: propsClassName = "", children, ...rest}, ref) => {
     const className = `a-step__label ${propsClassName}`.trim();
     return (
@@ -13,13 +14,6 @@ const AStepTitle = forwardRef(
     );
   }
 );
-
-AStepTitle.propTypes = {
-  /**
-   * String representing class names to be passed to component container
-   */
-  className: PropTypes.string
-};
 
 AStepTitle.displayName = "AStepTitle";
 

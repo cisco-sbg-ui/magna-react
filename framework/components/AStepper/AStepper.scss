@@ -127,6 +127,7 @@
         &__checkmark {
           polyline {
             stroke-width: 35; //Remove if magnetic updates icon
+            stroke: var(--interact-icon-default);
           }
         }
       }

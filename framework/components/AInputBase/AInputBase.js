@@ -107,7 +107,8 @@ const AInputBase = forwardRef(
                   style={{padding: 0, height: "unset"}}
                   onClick={onClear}
                   onKeyDown={(e) => {
-                    if ([keyCodes.enter, keyCodes.space].includes(e.keyCode)) {
+                    //must be code over key for "Space"
+                    if ([keyCodes.enter, keyCodes.space].includes(e.code)) {
                       e.preventDefault();
                       onClear(e);
                     }
