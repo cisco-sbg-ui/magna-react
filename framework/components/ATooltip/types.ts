@@ -9,6 +9,10 @@ export type ATooltipProps = Override<
      */
     anchorRef: AAnchorRef;
     /**
+     * Automatically flip horizontally or vertically if rendering into a boundary
+     */
+    autoFlip?: boolean;
+    /**
      * Handles the request to close the menu.
      */
     onClose?: () => void;
