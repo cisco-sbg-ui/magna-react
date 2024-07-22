@@ -150,7 +150,7 @@ export const useMenuFlip = (
   }, [anchorRef, menuRef, wrapRef, pointerAdjust, placement]);
 
   if (!enabled) {
-    return {checkMenuSpacing: () => {}, placement};
+    return {checkMenuSpacing: () => {}, menuPlacement: placement};
   }
 
   return {checkMenuSpacing, menuPlacement};

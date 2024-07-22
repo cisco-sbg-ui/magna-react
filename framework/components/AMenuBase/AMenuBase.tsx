@@ -275,6 +275,8 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
       placement
     );
 
+    console.log("placement", placement, menuPlacement);
+
     useEffect(() => {
       if (open && menuRef.current) {
         checkMenuSpacing();

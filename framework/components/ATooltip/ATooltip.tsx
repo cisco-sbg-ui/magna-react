@@ -10,6 +10,7 @@ const ATooltip = forwardRef<HTMLElement, ATooltipProps>(
   (
     {
       anchorRef,
+      autoFlip = true,
       children,
       className: propsClassName,
       onClose,
@@ -53,7 +54,7 @@ const ATooltip = forwardRef<HTMLElement, ATooltipProps>(
         removeSpacer={true}
         anchorRef={anchorRef}
         pointer={pointer}
-        useFlipLogic>
+        useFlipLogic={autoFlip}>
         {children}
       </AMenuBase>
     );
