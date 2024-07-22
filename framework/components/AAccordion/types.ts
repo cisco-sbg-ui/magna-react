@@ -46,6 +46,6 @@ export type AAccordionPanelProps = Override<
     /**
      * Handles the expand/collapse toggle event.
      */
-    onToggle?: () => void;
+    onToggle?: (panelKey?: string) => void;
   }
 >;

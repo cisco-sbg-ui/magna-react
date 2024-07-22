@@ -1,9 +1,6 @@
 /* eslint-disable jsx-a11y/no-autofocus */
-
-import {useRef} from "react";
-
-import useFocusTrap from "./useFocusTrap";
-import {ATextarea} from "../../index";
+import React, {useRef} from "react";
+import {ATextarea, useFocusTrap} from "../../framework";
 
 describe("useFocusTrap()", () => {
   it("should trap focus when tabbing forward", () => {
@@ -37,6 +34,8 @@ describe("useFocusTrap()", () => {
   it("allows inner element to autofocus itself", () => {
     cy.mount(
       <FocusTrapTest enableAutofocus={false}>
+        {/** @todo remove this ts-expect-error */}
+        {/** @ts-expect-error `ATextArea` not yet converted to TypeScript */}
         <ATextarea autoFocus />
       </FocusTrapTest>
     );
@@ -95,8 +94,14 @@ describe("useFocusTrap()", () => {
   });
 });
 
-const FocusTrapTest = ({children, enableAutofocus = true}) => {
-  const trapRef = useRef();
+const FocusTrapTest = ({
+  children,
+  enableAutofocus = true
+}: {
+  children?: React.ReactNode;
+  enableAutofocus?: boolean;
+}) => {
+  const trapRef = useRef<HTMLDivElement>(null);
   useFocusTrap({
     rootRef: trapRef,
     isEnabled: true,
@@ -109,8 +114,7 @@ const FocusTrapTest = ({children, enableAutofocus = true}) => {
           <a
             key={num}
             data-testid={`inaccessible-item-${num}`}
-            href={`#link-${num}`}
-          >
+            href={`#link-${num}`}>
             link {num}
           </a>
         ))}
@@ -139,8 +143,7 @@ const FocusTrapTest = ({children, enableAutofocus = true}) => {
             <a
               key={num}
               data-testid={`inaccessible-item-${num}`}
-              href={`#link-${num}`}
-            >
+              href={`#link-${num}`}>
               link {num}
             </a>
           ))}
@@ -150,8 +153,8 @@ const FocusTrapTest = ({children, enableAutofocus = true}) => {
 };
 
 const CustomInitialFocusTest = () => {
-  const trapContainerRef = useRef();
-  const initialFocusElRef = useRef();
+  const trapContainerRef = useRef<HTMLDivElement>(null);
+  const initialFocusElRef = useRef<HTMLInputElement>(null);
   useFocusTrap({
     rootRef: trapContainerRef,
     isEnabled: true,
@@ -164,8 +167,7 @@ const CustomInitialFocusTest = () => {
           <a
             key={num}
             data-testid={`inaccessible-item-${num}`}
-            href={`#link-${num}`}
-          >
+            href={`#link-${num}`}>
             link {num}
           </a>
         ))}
@@ -194,8 +196,7 @@ const CustomInitialFocusTest = () => {
             <a
               key={num}
               data-testid={`inaccessible-item-${num}`}
-              href={`#link-${num}`}
-            >
+              href={`#link-${num}`}>
               link {num}
             </a>
           ))}
@@ -205,11 +206,10 @@ const CustomInitialFocusTest = () => {
 };
 
 const AutoInitialFocusTest = () => {
-  const trapContainerRef = useRef();
+  const trapContainerRef = useRef<HTMLDivElement>(null);
   useFocusTrap({
     rootRef: trapContainerRef,
-    isEnabled: true,
-    autoFocusElementRef: null
+    isEnabled: true
   });
   return (
     <>
@@ -218,8 +218,7 @@ const AutoInitialFocusTest = () => {
           <a
             key={num}
             data-testid={`inaccessible-item-${num}`}
-            href={`#link-${num}`}
-          >
+            href={`#link-${num}`}>
             link {num}
           </a>
         ))}
@@ -231,6 +230,8 @@ const AutoInitialFocusTest = () => {
           <input data-testid="trapped-item-1" id="username" type="text" />
           <br />
           <label htmlFor="password">Password</label>
+          {/** @todo remove this ts-expect-error */}
+          {/** @ts-expect-error `ATextArea` not yet converted to TypeScript */}
           <ATextarea autoFocus />
           <br />
           <button data-testid="trapped-item-3">Submit</button>
@@ -244,8 +245,7 @@ const AutoInitialFocusTest = () => {
             <a
               key={num}
               data-testid={`inaccessible-item-${num}`}
-              href={`#link-${num}`}
-            >
+              href={`#link-${num}`}>
               link {num}
             </a>
           ))}

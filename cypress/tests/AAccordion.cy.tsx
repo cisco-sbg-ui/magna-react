@@ -1,9 +1,11 @@
 import React, {useState} from "react";
-import AAccordion from "./AAccordion";
-import AAccordionPanel from "./AAccordionPanel";
-import AAccordionHeader from "./AAccordionHeader";
-import AAccordionHeaderTitle from "./AAccordionHeaderTitle";
-import AAccordionBody from "./AAccordionBody";
+import {
+  AAccordion,
+  AAccordionPanel,
+  AAccordionHeader,
+  AAccordionHeaderTitle,
+  AAccordionBody
+} from "../../framework";
 
 describe("<AAccordion />", () => {
   it("should allow custom icons", () => {
@@ -155,8 +157,7 @@ function ControlledAccordionTest() {
                 return panel;
               })
             )
-          }
-        >
+          }>
           <AAccordionHeader data-testid={panel.testBtnId}>
             <AAccordionHeaderTitle>{panel.name}</AAccordionHeaderTitle>
           </AAccordionHeader>

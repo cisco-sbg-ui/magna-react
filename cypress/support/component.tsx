@@ -23,7 +23,12 @@ import "./commands";
 import {mount} from "cypress/react18";
 import AApp from "../../framework/components/AApp";
 
+// @ts-expect-error not sure how to properly type custom `mount`
 Cypress.Commands.add("mount", (component) => {
+  /**
+   * @todo type custom `mount`
+   */
+  // @ts-expect-error not sure how to properly type custom `mount`
   return mount(<AApp>{component}</AApp>);
 });
 
