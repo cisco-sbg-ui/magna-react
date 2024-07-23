@@ -82,3 +82,26 @@ export const usePrevious = (value) => {
   }, [value]);
   return ref.current;
 };
+
+export const useHasScrolled = (callback) => {
+  const _tickRef = useRef();
+
+  useEffect(() => {
+    document.addEventListener(
+      "scroll",
+      () => {
+        const lastKnownScrollPosition = window.scrollY;
+
+        if (!_tickRef.current) {
+          window.requestAnimationFrame(() => {
+            callback(lastKnownScrollPosition);
+            _tickRef.current = false;
+          });
+
+          _tickRef.current = true;
+        }
+      },
+      []
+    );
+  });
+};
