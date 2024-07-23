@@ -105,6 +105,7 @@ const AMultiSelect = forwardRef(
       counterClass = `${className}__counter`;
 
     const {register, unregister} = useContext(AFormContext);
+
     useEffect(() => {
       setWorkingValidationState(validationState);
     }, [validationState]);
@@ -117,10 +118,11 @@ const AMultiSelect = forwardRef(
       if (register) {
         register(`a-multiselect_${multiselectId}`, {
           reset,
-          validate
+          validate,
+          disabled
         });
       }
-    }, [validationState, value, rules]); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [validationState, value, disabled, rules]); // eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
       if (unregister) {
@@ -163,7 +165,9 @@ const AMultiSelect = forwardRef(
         if (required) {
           workingRules = [
             {
-              test: (v) => !!v || `${label ? label + " is r" : "R"}equired`,
+              test: (v) =>
+                (v && Array.isArray(v) && v.length > 0) ||
+                `${label ? label + " is r" : "R"}equired`,
               level: "danger"
             },
             ...workingRules
@@ -395,8 +399,6 @@ const AMultiSelect = forwardRef(
       }
 
       const handleClick = () => {
-        validate(itemValue);
-
         let newValue = Array.isArray(value) ? [...value] : [];
         if (value.includes(computedValue)) {
           newValue = newValue.filter((v) => v !== computedValue);
@@ -406,6 +408,8 @@ const AMultiSelect = forwardRef(
             (value, i, arr) => arr.indexOf(value) === i
           );
         }
+
+        validate(newValue);
 
         onSelected && onSelected(newValue);
       };

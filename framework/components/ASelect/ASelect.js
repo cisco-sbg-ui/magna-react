@@ -118,10 +118,11 @@ const ASelect = forwardRef(
       if (register) {
         register(`a-select_${selectId}`, {
           reset,
-          validate
+          validate,
+          disabled
         });
       }
-    }, [validationState, selectedItem, rules]); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [validationState, selectedItem, disabled, rules]); // eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
       if (unregister) {
@@ -238,6 +239,9 @@ const ASelect = forwardRef(
     const reset = () => {
       setWorkingValidationState(validationState);
       setError("");
+
+      setSelectedItem();
+      onSelected && onSelected();
     };
 
     const chevronProps = {

@@ -87,10 +87,11 @@ const ATextarea = forwardRef(
       if (register) {
         register(`a-textarea_${textareaId}`, {
           reset,
-          validate
+          validate,
+          disabled
         });
       }
-    }, [validationState, value, rules]); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [validationState, value, disabled, rules]); // eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
       if (unregister) {

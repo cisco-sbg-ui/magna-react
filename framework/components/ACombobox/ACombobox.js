@@ -84,10 +84,11 @@ const ACombobox = forwardRef(
       if (register) {
         register(`a-combobox_${comboboxId}`, {
           reset,
-          validate
+          validate,
+          disabled
         });
       }
-    }, [validationState, value, rules]); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [validationState, value, disabled, rules]); // eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
       if (unregister) {
