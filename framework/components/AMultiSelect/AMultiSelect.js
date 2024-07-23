@@ -55,6 +55,7 @@ const AMultiSelect = forwardRef(
       validationState,
       value = [],
       filterFunction: propsFilterFunction,
+      counterTooltipProps = {},
       ...rest
     },
     ref
@@ -356,6 +357,7 @@ const AMultiSelect = forwardRef(
         onSelected={onSelected}
         itemValue={itemValue}
         itemText={itemText}
+        {...counterTooltipProps}
       />
     );
 
@@ -607,7 +609,11 @@ AMultiSelect.propTypes = {
   /**
    * Function to filter items when the input value changes
    */
-  filterFunction: PropTypes.func
+  filterFunction: PropTypes.func,
+  /**
+   * Pass props to the tag tooltip. Can pass any props for ATooltip, including `children`
+   */
+  counterTooltipProps: PropTypes.object
 };
 
 AMultiSelect.displayName = "AMultiSelect";
