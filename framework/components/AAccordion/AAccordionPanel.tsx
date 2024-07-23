@@ -20,7 +20,7 @@ const AAccordionPanel = forwardRef<HTMLDivElement, AAccordionPanelProps>(
     ref
   ) => {
     const [hasBody, setHasBody] = useState(false);
-    const [panelId, setPanelId] = useState(1);
+    const [panelId, setPanelId] = useState(0);
     const [isFocused, setIsFocused] = useState(false);
     const {openedPanels, setOpenedPanels} = useContext(AAccordionContext);
 
