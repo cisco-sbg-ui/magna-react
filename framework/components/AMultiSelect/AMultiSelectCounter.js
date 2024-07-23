@@ -3,7 +3,14 @@ import {ATooltip} from "../ATooltip";
 import ATag from "../ATag";
 import useToggle from "../../hooks/useToggle/useToggle";
 
-const AMultiSelectCounter = ({items, value, itemValue, itemText}) => {
+const AMultiSelectCounter = ({
+  items,
+  value,
+  itemValue,
+  itemText,
+  children,
+  ...rest
+}) => {
   const {isOpen, open, close} = useToggle();
   const iconRef = useRef(null);
 
@@ -31,8 +38,9 @@ const AMultiSelectCounter = ({items, value, itemValue, itemText}) => {
         open={isOpen}
         placement="top"
         pointer
+        {...rest}
       >
-        {selectedItems.join(", ")}
+        {children ? children : selectedItems.join(", ")}
       </ATooltip>
     </>
   );
