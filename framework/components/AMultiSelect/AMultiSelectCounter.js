@@ -14,8 +14,6 @@ const AMultiSelectCounter = ({
   const {isOpen, open, close} = useToggle();
   const iconRef = useRef(null);
 
-  console.log(children, rest);
-
   const itemsMap = new Map(
     items.map((item) =>
       typeof item === "string"
