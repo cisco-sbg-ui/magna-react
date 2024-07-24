@@ -1,9 +1,15 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
+import AIcon from "../AIcon";
 
 import "./AProgressbar.scss";
 
 const baseClass = "a-progressbar";
+
+const STATUS_ICON = {
+  positive: "positive",
+  negative: "negative"
+};
 
 const AProgressbar = forwardRef(
   (
@@ -14,12 +20,13 @@ const AProgressbar = forwardRef(
       barStyle,
       fillStyle,
       animationDuration,
-      size,
+      size = "medium",
       disabled,
       displayText,
       percentage = 0,
       striped,
       indeterminate,
+      status,
       ...rest
     },
     ref
@@ -28,21 +35,7 @@ const AProgressbar = forwardRef(
       barClass = `${baseClass}__bar`,
       fillClass = `${baseClass}__fill`;
 
-    switch (size) {
-      case "small": {
-        className += ` ${baseClass}--size-small`;
-        break;
-      }
-
-      case "large": {
-        className += ` ${baseClass}--size-large`;
-        break;
-      }
-
-      default: {
-        className += ` ${baseClass}--size-medium`;
-      }
-    }
+    className += ` ${baseClass}--size-${size}`;
 
     if (disabled) {
       className += ` ${baseClass}--disabled`;
@@ -67,6 +60,10 @@ const AProgressbar = forwardRef(
 
     if (propsFillClassName) {
       fillClass += ` ${propsFillClassName}`;
+    }
+
+    if (status === "negative") {
+      fillClass += ` negative`;
     }
 
     const fixedPercentage = Math.max(0, Math.min(percentage, 100));
@@ -94,6 +91,11 @@ const AProgressbar = forwardRef(
             }}
           ></div>
         </div>
+        {status && (
+          <AIcon size="16px" style={{marginLeft: "12px"}}>
+            {STATUS_ICON[status]}
+          </AIcon>
+        )}
       </div>
     );
   }
@@ -106,9 +108,9 @@ AProgressbar.propTypes = {
    */
   animationDuration: PropTypes.string,
   /**
-   * Sets the size of the indicator.
+   * Sets the size of the indicator.  Default is medium.
    */
-  size: PropTypes.oneOf(["small", "medium", "large"]),
+  size: PropTypes.oneOf(["small", "medium"]),
   /**
    * Toggles the `disabled` state.
    */
@@ -144,7 +146,8 @@ AProgressbar.propTypes = {
   /**
    * Style to apply to the fill element
    */
-  fillStyle: PropTypes.object
+  fillStyle: PropTypes.object,
+  status: PropTypes.oneOf(["info", "positive", "negative"])
 };
 
 AProgressbar.displayName = "AProgressbar";

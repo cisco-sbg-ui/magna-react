@@ -43,11 +43,13 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
 `}
 />
 
-#### States
+#### Status
 
 <Playground
-  code={`<div className="d-flex flex-column" style={{width: 300}}>
-  Default: <AProgressbar percentage={50} />
+  code={`<div className="d-flex flex-column">
+  <h2>Positive</h2>
+   <AProgressbar status="positive" percentage={100} />
+   <AProgressbar status="negative" percentage={50} />
   With Text: <AProgressbar displayText percentage={50} />
   Disabled: <AProgressbar disabled percentage={50} />
   Striped: <AProgressbar striped percentage={50} />
@@ -82,9 +84,6 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
   Medium
   <AProgressbar size="medium" indeterminate />
   <AProgressbar size="medium" striped percentage={40} />
-  Large
-  <AProgressbar size="large" indeterminate />
-  <AProgressbar size="large" striped percentage={40} />
 </div>
 `}
 />
