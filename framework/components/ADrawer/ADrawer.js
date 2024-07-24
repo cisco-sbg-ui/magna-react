@@ -1,10 +1,11 @@
-import React, {forwardRef, createContext} from "react";
+import React, {forwardRef, createContext, useRef} from "react";
 import PropTypes from "prop-types";
 
 import AModal from "../AModal/AModal";
 
 import "./ADrawer.scss";
-import {useDelayUnmount, usePrevious} from "../../utils/hooks";
+import usePopupQuickExit from "../../hooks/usePopupQuickExit/usePopupQuickExit";
+import {useCombinedRefs, useDelayUnmount, usePrevious} from "../../utils/hooks";
 
 const DrawerContext = createContext({});
 
@@ -32,11 +33,20 @@ const ADrawer = forwardRef(
     },
     ref
   ) => {
+    const drawerRef = useRef();
+    const combinedRef = useCombinedRefs(ref, drawerRef);
     const shouldRenderChildren = useDelayUnmount({
       isOpen,
       delayTime: 300,
       isEnabled: withTransitions
     });
+
+    usePopupQuickExit({
+      popupRef: combinedRef,
+      isEnabled: !propsAsModal && isOpen,
+      onExit: onClose
+    });
+
     // A fixed drawer should automatically render as a modal unless specified
     const shouldRenderModal =
       propsAsModal || (position === "fixed" && propsAsModal == undefined);
@@ -114,7 +124,7 @@ const ADrawer = forwardRef(
         <DrawerPanelComponent
           {...rest}
           {...tabIndexProps}
-          ref={shouldRenderModal ? null : ref}
+          ref={shouldRenderModal ? null : combinedRef}
           className={shouldRenderModal ? "" : className}
           style={shouldRenderModal ? {height: "100%"} : style}
         >
@@ -130,7 +140,7 @@ const ADrawer = forwardRef(
     return (
       <AModal
         {...rest}
-        ref={ref}
+        ref={combinedRef}
         className={className}
         delayUnmount={300}
         withCenteredContent={false}
