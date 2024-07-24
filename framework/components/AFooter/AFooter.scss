@@ -1,6 +1,6 @@
 @import "../../styles";
 
-$footer-min-height: 35px;
+$footer-min-height: 36px;
 $footer-padding: 10px 20px;
 $footer-font-size: $font-size--sm;
 
@@ -11,7 +11,7 @@ $footer-font-size: $font-size--sm;
   font-size: $footer-font-size;
   border-top-width: $border-width;
   border-top-style: solid;
-  color: var(--base-border-default);
+  color: var(--base-text-default);
   border-top-color: var(--base-border-default);
 
   &__legal {
