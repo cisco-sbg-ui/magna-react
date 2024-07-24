@@ -55,8 +55,8 @@
     padding-bottom: 16px;
   }
   &--scroll .a-card__content {
-    border-top: 1px solid var(--control-border-weak-default);
-    border-bottom: 1px solid var(--control-border-weak-default);
+    border-top: thin solid var(--control-border-weak-default);
+    border-bottom: thin solid var(--control-border-weak-default);
   }
 
   .a-card__content {
