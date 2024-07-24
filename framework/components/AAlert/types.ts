@@ -10,6 +10,10 @@ export type AAlertProps = Override<
      */
     dismissible?: boolean;
     /**
+     * DEPRECATED VERSION OF DISMISSIBLE PROP.
+     */
+    dismissable?: boolean;
+    /**
      * Specifies the display variant.
      */
     level?: AAlertLevel;

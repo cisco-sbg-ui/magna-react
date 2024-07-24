@@ -12,6 +12,10 @@ export type AToastProps = Override<
      */
     dismissible?: boolean;
     /**
+     * DEPRECATED VERSION OF DISMISSIBLE PROP.
+     */
+    dismissable?: boolean;
+    /**
      * Specifies the display variant.
      */
     level?: AToastLevel;

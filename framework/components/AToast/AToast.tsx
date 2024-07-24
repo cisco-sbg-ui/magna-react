@@ -11,6 +11,7 @@ const AToast = forwardRef<HTMLDivElement, AToastProps>(
       children,
       className: propsClassName,
       dismissible = true,
+      dismissable = true,
       level = "info",
       onClose,
       placement = "top-right",
@@ -62,14 +63,13 @@ const AToast = forwardRef<HTMLDivElement, AToastProps>(
           <div className="a-toast__title">{title}</div>
           <div className="a-toast__message">{children}</div>
         </div>
-        {dismissible && (
+        {(dismissible || dismissable) && (
           <AIcon
             className="a-toast__close focus-box-shadow"
             onClick={(e) => onClose && onClose(e)}
             onKeyDown={dismissibleKeyDownHandler}
             size={16}
-            tabIndex={0}
-          >
+            tabIndex={0}>
             x
           </AIcon>
         )}
