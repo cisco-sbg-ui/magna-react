@@ -239,9 +239,6 @@ const ASelect = forwardRef(
     const reset = () => {
       setWorkingValidationState(validationState);
       setError("");
-
-      setSelectedItem();
-      onSelected && onSelected();
     };
 
     const chevronProps = {
