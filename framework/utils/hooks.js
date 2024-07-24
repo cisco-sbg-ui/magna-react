@@ -1,5 +1,7 @@
 import {useEffect, useLayoutEffect, useRef, useState} from "react";
 
+import {throttle} from "./helpers";
+
 export const useCombinedRefs = (...refs) => {
   const targetRef = useRef();
 
@@ -83,25 +85,31 @@ export const usePrevious = (value) => {
   return ref.current;
 };
 
-export const useHasScrolled = (callback) => {
+export const useHasScrolled = (enabled, callback) => {
   const _tickRef = useRef();
 
   useEffect(() => {
-    document.addEventListener(
-      "scroll",
-      () => {
-        const lastKnownScrollPosition = window.scrollY;
+    if (!enabled || !callback) {
+      return;
+    }
 
-        if (!_tickRef.current) {
-          window.requestAnimationFrame(() => {
-            callback(lastKnownScrollPosition);
-            _tickRef.current = false;
-          });
+    const handler = () => {
+      const lastKnownScrollPosition = window.scrollY;
 
-          _tickRef.current = true;
-        }
-      },
-      []
-    );
-  });
+      if (!_tickRef.current) {
+        window.requestAnimationFrame(() => {
+          throttle(callback(lastKnownScrollPosition));
+          _tickRef.current = false;
+        });
+
+        _tickRef.current = true;
+      }
+    };
+
+    window.addEventListener("scroll", handler, true);
+
+    return () => {
+      window.removeEventListener("scroll", handler, true);
+    };
+  }, [enabled, callback]);
 };

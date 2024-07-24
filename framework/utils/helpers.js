@@ -399,3 +399,20 @@ export const debounce = (func, timeout = 100) => {
     }, timeout);
   };
 };
+
+export const throttleLimit = 1000 / 60;
+
+export const throttle = (fn, limit = throttleLimit) => {
+  let inThrottle;
+
+  return function () {
+    const args = arguments;
+    if (!inThrottle) {
+      fn.apply(this, args);
+
+      inThrottle = true;
+
+      setTimeout(() => (inThrottle = false), limit);
+    }
+  };
+};
