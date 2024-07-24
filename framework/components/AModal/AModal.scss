@@ -48,31 +48,26 @@
   }
 
   .a-card-wrapper {
-    padding: 0;
     max-height: calc(100vh - 40px);
   }
 
-  .a-card-container {
-    padding: 0;
-  }
-
   .a-card__header {
-    padding: 16px 16px 0 16px;
+    padding-bottom: 16px;
   }
-
-  .a-card__footer {
-    padding: 0 16px 16px 16px;
-  }
-
-  .a-card__content {
-    padding: 0 16px 0 16px;
+  &--scroll .a-card__content {
+    border-top: 1px solid var(--control-border-weak-default);
+    border-bottom: 1px solid var(--control-border-weak-default);
   }
 
   .a-card__content {
-    overflow-y: auto;
+    margin: 0 -16px;
+    padding: 0 16px;
+    overflow: auto;
+    max-height: 705px;
   }
 
   .a-card__footer {
+    padding-top: 16px;
     justify-content: flex-end;
 
     .a-button + .a-button {

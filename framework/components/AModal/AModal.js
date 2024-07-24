@@ -1,4 +1,11 @@
-import React, {forwardRef, useContext, useEffect, useRef, useMemo} from "react";
+import React, {
+  forwardRef,
+  useContext,
+  useEffect,
+  useRef,
+  useMemo,
+  useState
+} from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 
@@ -60,6 +67,7 @@ const AModal = forwardRef(
     const Component = as;
     const hasPortalNode = appendTo || appRef.current;
     const isOpen = !!hasPortalNode && propsIsOpen;
+    const [hasScroll, setHasScroll] = useState(false);
     const _ref = useRef();
     const childRef = useRef();
 
@@ -68,6 +76,15 @@ const AModal = forwardRef(
       delayTime: delayUnmount,
       isEnabled: withTransitions || delayUnmount
     });
+
+    useEffect(() => {
+      if (document.querySelector(".a-card__content")?.scrollHeight >= 705) {
+        //705px is the maxheight of largest modal in figma
+        setHasScroll(true);
+      } else {
+        setHasScroll(false);
+      }
+    }, [isOpen, hasScroll]);
 
     const elementRefToAutoFocus = useMemo(() => {
       if (autoFocusElementRef) {
@@ -143,6 +160,10 @@ const AModal = forwardRef(
 
     if (!appendTo && !appRef.current) {
       return null;
+    }
+
+    if (hasScroll) {
+      contentClassName += " a-modal-container--scroll";
     }
 
     /**
