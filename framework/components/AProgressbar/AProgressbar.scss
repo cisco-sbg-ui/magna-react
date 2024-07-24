@@ -1,8 +1,7 @@
 @import "../../styles";
 
-$progressbar-height-small: 4px;
+$progressbar-height-small: 6px;
 $progressbar-height-medium: 8px;
-$progressbar-height-large: 12px;
 $progressbar-bg-height-small: 10px;
 $progressbar-bg-height-medium: 16px;
 $progressbar-bg-height-large: 22px;
@@ -46,20 +45,15 @@ $progressbar-transition: width 0.6s ease !default;
     }
   }
 
-  &--size-large {
-    .a-progressbar__bar {
-      height: $progressbar-height-large;
-    }
-    .a-progressbar__fill {
-      background-size: $progressbar-bg-height-large $progressbar-bg-height-large;
-    }
-  }
-
   &__fill {
     display: block;
     height: $progressbar-fill-height;
     border-radius: $progressbar-fill-border-radius;
     background-color: var(--positive-border-default);
+
+    &.negative {
+      background-color: var(--negative-border-default);
+    }
   }
 
   &--striped {

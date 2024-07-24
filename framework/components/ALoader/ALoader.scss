@@ -18,6 +18,7 @@ $generic-loader-large-font-size: 16px;
   text-align: center;
   overflow: hidden;
   font-weight: 600;
+
   color: var(--base-text-medium-default);
 
   &__container {
@@ -29,6 +30,8 @@ $generic-loader-large-font-size: 16px;
   }
 
   &--loader-AProgressbar {
+    width: max-content;
+    width: fit-content;
     .a-progressbar {
       margin: 0;
     }
