@@ -1,11 +1,4 @@
-import React, {
-  forwardRef,
-  useContext,
-  useEffect,
-  useRef,
-  useMemo,
-  useState
-} from "react";
+import React, {forwardRef, useContext, useEffect, useRef, useMemo} from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 
@@ -21,7 +14,7 @@ import {
 } from "../../utils/helpers";
 
 import "./AModal.scss";
-import {useDelayUnmount} from "../../utils/hooks";
+import {useDelayUnmount, useResizeObserver} from "../../utils/hooks";
 import usePopupQuickExit from "../../hooks/usePopupQuickExit/usePopupQuickExit";
 
 /**
@@ -67,7 +60,6 @@ const AModal = forwardRef(
     const Component = as;
     const hasPortalNode = appendTo || appRef.current;
     const isOpen = !!hasPortalNode && propsIsOpen;
-    const [hasScroll, setHasScroll] = useState(false);
     const _ref = useRef();
     const childRef = useRef();
 
@@ -77,14 +69,20 @@ const AModal = forwardRef(
       isEnabled: withTransitions || delayUnmount
     });
 
-    useEffect(() => {
-      if (document.querySelector(".a-card__content")?.scrollHeight >= 705) {
-        //705px is the maxheight of largest modal in figma
-        setHasScroll(true);
+    let hasScroll = false;
+    // If using ACard, want to check if it is scrolling, and show borders to
+    // match the design
+    if (isOpen) {
+      const contentEl = document.querySelector(".a-card__content");
+      const offsetHeight = contentEl?.offsetHeight;
+      const scrollHeight = contentEl?.scrollHeight;
+
+      if (offsetHeight < scrollHeight) {
+        hasScroll = true;
       } else {
-        setHasScroll(false);
+        hasScroll = false;
       }
-    }, [isOpen, hasScroll]);
+    }
 
     const elementRefToAutoFocus = useMemo(() => {
       if (autoFocusElementRef) {
@@ -108,6 +106,9 @@ const AModal = forwardRef(
       isEnabled: isOpen,
       onExit: onClose
     });
+
+    // To trigger scroll check
+    useResizeObserver(childRef);
 
     useEffect(() => {
       shouldRenderChildren && withScrollLock
