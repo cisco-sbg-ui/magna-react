@@ -380,6 +380,252 @@ return (
 
 } `} />
 
+#### With scroll
+
+<Playground
+  code={`() => {
+  const [open, setOpen] = useState(false);
+  const [errors, setErrors] = useState([]);
+  const ref = useRef();
+  const formRef = useRef(null);
+  const [email, setEmail] = useState("");
+  const [favNum, setFavNum] = useState("");
+  const [comments, setComments] = useState("");
+  const [role, setRole] = useState(null);
+
+return (
+
+<>
+  <AButton onClick={() => setOpen(true)}>Start</AButton>
+  <AModal
+    key="modal"
+    aria-labelledby="modal-title"
+    isOpen={open}
+    onClose={() => setOpen(false)}>
+    <ACardBasic style={{width: "700px"}}>
+      <ACardHeader>
+        <ACardTitle id="modal-content">Embedded Form</ACardTitle>
+      </ACardHeader>
+      <ACardContent>
+        {errors.length > 0 && (
+          <AAlert className="my-2" level="danger" dismissable={false}>
+            There are {errors.length} validation errors on the form.
+          </AAlert>
+        )}
+        <AForm ref={formRef}>
+          <AContainer className="pa-0">
+            <ARow>
+              <ACol cols="12" sm="6">
+                <ATextInput
+                  label="Email"
+                  required
+                  maxLength={50}
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                  validateOnBlur
+                  rules={[
+                    {
+                      test: (value) =>
+                        !["@gmail.com", "@hotmail.com"].some((v) =>
+                          value.includes(v)
+                        ) || "Please provide a business email address",
+                      level: "warning"
+                    },
+                    {
+                      test: (value) =>
+                        /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(
+                          value
+                        ) || "Invalid Email",
+                      level: "danger"
+                    }
+                  ]}
+                  hints="Please use a business email address"
+                />
+              </ACol>
+              <ACol>
+                <ASelect
+                  items={[
+                    {value: 1, text: "Read"},
+                    {value: 2, text: "Write"},
+                    {value: 3, text: "Admin"}
+                  ]}
+                  label="Role"
+                  required
+                  rules={[
+                    {
+                      test: (v) => v.value !== 3 || "Role is set to Admin",
+                      level: "warning"
+                    }
+                  ]}
+                  onSelected={(item) => setRole(item)}
+                />
+              </ACol>
+            </ARow>
+            <ARow>
+              <ACol>
+                <ATextarea
+                  label="Comments"
+                  onChange={(e) => {
+                    setComments(e.target.value);
+                  }}
+                  value={comments}
+                  required
+                  rules={[
+                    {
+                      test: (v) =>
+                        v.length < 10 ||
+                        "Comments must be less than 10 characters",
+                      level: "danger"
+                    }
+                  ]}
+                  validateOnBlur
+                  hints="Keep it short"
+                />
+              </ACol>
+            </ARow>
+            <ARow>
+              <ACol>
+                <ATextarea
+                  label="Comments"
+                  onChange={(e) => {
+                    setComments(e.target.value);
+                  }}
+                  value={comments}
+                  required
+                  rules={[
+                    {
+                      test: (v) =>
+                        v.length < 10 ||
+                        "Comments must be less than 10 characters",
+                      level: "danger"
+                    }
+                  ]}
+                  validateOnBlur
+                  hints="Keep it short"
+                />
+              </ACol>
+            </ARow>
+            <ARow>
+              <ACol>
+                <ATextarea
+                  label="Comments"
+                  onChange={(e) => {
+                    setComments(e.target.value);
+                  }}
+                  value={comments}
+                  required
+                  rules={[
+                    {
+                      test: (v) =>
+                        v.length < 10 ||
+                        "Comments must be less than 10 characters",
+                      level: "danger"
+                    }
+                  ]}
+                  validateOnBlur
+                  hints="Keep it short"
+                />
+              </ACol>
+            </ARow>
+            <ARow>
+              <ACol>
+                <ATextarea
+                  label="Comments"
+                  onChange={(e) => {
+                    setComments(e.target.value);
+                  }}
+                  value={comments}
+                  required
+                  rules={[
+                    {
+                      test: (v) =>
+                        v.length < 10 ||
+                        "Comments must be less than 10 characters",
+                      level: "danger"
+                    }
+                  ]}
+                  validateOnBlur
+                  hints="Keep it short"
+                />
+              </ACol>
+            </ARow>
+            <ARow>
+              <ACol>
+                <ATextarea
+                  label="Comments"
+                  onChange={(e) => {
+                    setComments(e.target.value);
+                  }}
+                  value={comments}
+                  required
+                  rules={[
+                    {
+                      test: (v) =>
+                        v.length < 10 ||
+                        "Comments must be less than 10 characters",
+                      level: "danger"
+                    }
+                  ]}
+                  validateOnBlur
+                  hints="Keep it short"
+                />
+              </ACol>
+            </ARow>
+            <ARow>
+              <ACol>
+                <ATextarea
+                  label="Comments"
+                  onChange={(e) => {
+                    setComments(e.target.value);
+                  }}
+                  value={comments}
+                  required
+                  rules={[
+                    {
+                      test: (v) =>
+                        v.length < 10 ||
+                        "Comments must be less than 10 characters",
+                      level: "danger"
+                    }
+                  ]}
+                  validateOnBlur
+                  hints="Keep it short"
+                />
+              </ACol>
+            </ARow>
+          </AContainer>
+        </AForm>
+      </ACardContent>
+      <ACardFooter>
+        <AButton
+          tertiary
+          onClick={() => setOpen(false)}
+          style={{marginRight: "8px"}}>
+          Close
+        </AButton>
+        <AButton
+          secondary
+          className="mr-2"
+          onClick={() => {
+            console.log("reset??");
+            setErrors([]);
+            formRef.current.reset();
+          }}>
+          Reset
+        </AButton>
+        <AButton onClick={() => setErrors(formRef.current.validate())}>
+          Validate
+        </AButton>
+      </ACardFooter>
+    </ACardBasic>
+  </AModal>
+</>
+);
+
+} `} />
+
 #### Size variants
 
 <AAlert className="mb-2" level="info" dismissable={false}>

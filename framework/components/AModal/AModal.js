@@ -14,7 +14,7 @@ import {
 } from "../../utils/helpers";
 
 import "./AModal.scss";
-import {useDelayUnmount} from "../../utils/hooks";
+import {useDelayUnmount, useResizeObserver} from "../../utils/hooks";
 import usePopupQuickExit from "../../hooks/usePopupQuickExit/usePopupQuickExit";
 
 /**
@@ -69,6 +69,21 @@ const AModal = forwardRef(
       isEnabled: withTransitions || delayUnmount
     });
 
+    let hasScroll = false;
+    // If using ACard, want to check if it is scrolling, and show borders to
+    // match the design
+    if (isOpen) {
+      const contentEl = document.querySelector(".a-card__content");
+      const offsetHeight = contentEl?.offsetHeight;
+      const scrollHeight = contentEl?.scrollHeight;
+
+      if (offsetHeight < scrollHeight) {
+        hasScroll = true;
+      } else {
+        hasScroll = false;
+      }
+    }
+
     const elementRefToAutoFocus = useMemo(() => {
       if (autoFocusElementRef) {
         return autoFocusElementRef;
@@ -91,6 +106,9 @@ const AModal = forwardRef(
       isEnabled: isOpen,
       onExit: onClose
     });
+
+    // To trigger scroll check
+    useResizeObserver(childRef);
 
     useEffect(() => {
       shouldRenderChildren && withScrollLock
@@ -143,6 +161,10 @@ const AModal = forwardRef(
 
     if (!appendTo && !appRef.current) {
       return null;
+    }
+
+    if (hasScroll) {
+      contentClassName += " a-modal-container--scroll";
     }
 
     /**
