@@ -402,11 +402,22 @@ For page level groupings, use [Container Cards](/components/card#container-card)
 #### Interactive card
 
 <Playground
+  withTwoPanes
   code={`
   <>
   <ACardBasic interactive>
     <ACardContent>
-      <div>Interactive card <AButton icon tertiary><AIcon>activity</AIcon></AButton></div>
+      <div>Interactive card 
+        <AButton icon tertiary>
+          <AIcon>activity</AIcon>
+        </AButton>
+      </div>
+    </ACardContent>
+  </ACardBasic>
+   <ADivider />
+   <ACardBasic interactive selected>
+    <ACardContent>
+      <div>Interactive selected</div>
     </ACardContent>
   </ACardBasic>
   <ADivider />

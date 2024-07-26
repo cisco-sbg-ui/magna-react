@@ -173,15 +173,19 @@
 
     &--interactive {
       box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.05);
+      cursor: pointer;
 
       &:hover {
-        border: $border-width solid var(--control-border-hover);
+        border: $border-width solid var(--control-border-weak-hover);
       }
 
-      &:focus,
-      &:focus-within {
-        border: $border-width solid var(--control-border-focus);
+      &:focus {
+        @include a-control-focus();
       }
+    }
+
+    &--selected {
+      border: $border-width solid var(--control-border-focus);
     }
 
     &--interactive.a-card-basic--state-disabled {

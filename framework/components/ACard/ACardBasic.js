@@ -13,6 +13,7 @@ const ACardBasic = forwardRef(
       stateCustomColor,
       lifted,
       interactive,
+      selected,
       ...rest
     },
     ref
@@ -29,6 +30,10 @@ const ACardBasic = forwardRef(
 
     if (interactive) {
       className += " a-card-basic--interactive";
+
+      if (selected) {
+        className += " a-card-basic--selected";
+      }
 
       if (state !== "disabled") {
         computedProps.tabIndex = 0;
@@ -108,7 +113,11 @@ ACardBasic.propTypes = {
   /**
    * This sets the interactive border on the card
    */
-  interactive: PropTypes.bool
+  interactive: PropTypes.bool,
+  /**
+   * Indicates the card is selected
+   */
+  selected: PropTypes.bool
 };
 
 ACardBasic.displayName = "ACardBasic";
