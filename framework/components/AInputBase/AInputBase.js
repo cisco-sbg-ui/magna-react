@@ -28,6 +28,7 @@ const AInputBase = forwardRef(
       readOnly,
       validationState = "default",
       large,
+      medium,
       small,
       ...rest
     },
@@ -67,6 +68,10 @@ const AInputBase = forwardRef(
 
     if (large) {
       className += " a-input-base--large";
+    } else if (medium) {
+      // technically not necessary since it defaults to medium, but clears up
+      // a prop types warning.
+      className += " a-input-base--medium";
     } else if (small) {
       className += " a-input-base--small";
     } else {
@@ -228,7 +233,11 @@ AInputBase.propTypes = {
    */
   large: PropTypes.bool,
   /**
-   * Sets widget size to magnetic small (default)
+   * Sets widget size to magnetic medium (default)
+   * */
+  medium: PropTypes.bool,
+  /**
+   * Sets widget size to magnetic small
    */
   small: PropTypes.bool
 };
