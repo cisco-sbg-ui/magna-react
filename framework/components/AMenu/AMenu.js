@@ -86,13 +86,13 @@ const AMenu = forwardRef(
     };
 
     const keyDownHandler = (e) => {
-      if (onClose && e.keyCode === keyCodes.esc) {
+      if (onClose && e.key === keyCodes.esc) {
         e.preventDefault();
         closeHandler(e);
         !(anchorRef instanceof DOMRect) && anchorRef.current.focus();
-      } else if (e.keyCode === keyCodes.tab) {
+      } else if (e.key === keyCodes.tab) {
         !(anchorRef instanceof DOMRect) && anchorRef.current.focus();
-      } else if (e.keyCode === keyCodes.up) {
+      } else if (e.key === keyCodes.up) {
         if (open) {
           e.stopPropagation();
         }
@@ -101,17 +101,17 @@ const AMenu = forwardRef(
         const previous = getPrevious();
         previous && previous.focus();
       } else if (
-        e.keyCode === keyCodes.right &&
+        e.key === keyCodes.right &&
         document.activeElement.tagName !== "INPUT"
       ) {
         e.preventDefault();
       } else if (
-        e.keyCode === keyCodes.left &&
+        e.key === keyCodes.left &&
         document.activeElement.tagName !== "INPUT"
       ) {
         e.preventDefault();
         submenu && closeHandler(e);
-      } else if (e.keyCode === keyCodes.down) {
+      } else if (e.key === keyCodes.down) {
         if (open) {
           e.stopPropagation();
         }

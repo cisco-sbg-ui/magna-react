@@ -1,11 +1,11 @@
-import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 import {keyCodes} from "../../utils/helpers";
 import AIcon from "../AIcon";
 
 import "./AStepper.scss";
+import {AStepProps} from "./types";
 
-const AStep = forwardRef(
+const AStep = forwardRef<HTMLDivElement, AStepProps>(
   (
     {
       className: propsClassName = "",
@@ -23,6 +23,7 @@ const AStep = forwardRef(
     ref
   ) => {
     let className = `a-step ${propsClassName}`.trim();
+    const childArray = children ? React.Children.toArray(children) : null;
     if (disabled) {
       className += ` a-step__disabled`;
     } else {
@@ -40,14 +41,17 @@ const AStep = forwardRef(
     }
 
     let style;
-    if (
-      React.Children.count(children) === 1 ||
-      (children[1] && !children[1].props.children)
-    ) {
-      style = {marginTop: "3px"};
+    if (children) {
+      const childArray = React.Children.toArray(children);
+      if (
+        childArray.length === 1 ||
+        (React.isValidElement(childArray[1]) && !childArray[1].props.children)
+      ) {
+        style = {marginTop: "3px"};
+      }
     }
 
-    const onClick = (e) => {
+    const onClick = (e: React.MouseEvent | React.KeyboardEvent) => {
         e.stopPropagation();
 
         if (disabled) {
@@ -56,10 +60,10 @@ const AStep = forwardRef(
 
         setActiveStep && setActiveStep(stepNumber);
       },
-      keyDownHandler = (e) => {
+      keyDownHandler = (e: React.KeyboardEvent) => {
         if (
           setActiveStep &&
-          [keyCodes.enter, keyCodes.space].includes(e.keyCode)
+          [keyCodes.enter, keyCodes.space].includes(e.code as "Enter" | "Space") //must be code over key for "Space"
         ) {
           onClick(e);
         }
@@ -67,12 +71,12 @@ const AStep = forwardRef(
 
     const titleView = isVertical ? (
       <div className="a-step__content" style={style}>
-        {children}
+        {childArray}
       </div>
     ) : (
       <>
         <span className="a-step__divider" style={dividerStyle} />
-        {children[0] || children}
+        {(childArray && childArray[0]) || childArray}
       </>
     );
 
@@ -102,37 +106,6 @@ const AStep = forwardRef(
     );
   }
 );
-
-AStep.propTypes = {
-  /**
-   * Mark step as active.
-   */
-  active: PropTypes.bool,
-  /**
-   * Mark step as visited.
-   */
-  visited: PropTypes.bool,
-  /**
-   * Mark step as disabled.
-   */
-  disabled: PropTypes.bool,
-  /**
-   * Show 'marked' icon on visited steps
-   */
-  showIconOnVisited: PropTypes.bool,
-  /**
-   * String representing class names to be passed to component container
-   */
-  className: PropTypes.string,
-  /**
-   * Step number.
-   */
-  stepNumber: PropTypes.number,
-  /**
-   * Callback to set step as active
-   * */
-  setActiveStep: PropTypes.func
-};
 
 AStep.displayName = "AStep";
 

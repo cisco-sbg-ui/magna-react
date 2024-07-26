@@ -238,14 +238,14 @@ const AMultiSelect = forwardRef(
     );
 
     const onKeyDown = (e) => {
-      if (e.keyCode === keyCodes.up) {
+      if (e.key === keyCodes.up) {
         e.preventDefault();
         setIsOpen(filteredItems.length || noDataContent);
         const menuItems = menuRef.current?.querySelectorAll(
           ".a-multiselect__menu-items__wrapper .a-list-item[tabindex]"
         );
         menuItems && menuItems[menuItems.length - 1]?.focus();
-      } else if (e.keyCode === keyCodes.down || e.keyCode === keyCodes.enter) {
+      } else if (e.key === keyCodes.down || e.key === keyCodes.enter) {
         e.preventDefault();
         setIsOpen(filteredItems.length || noDataContent);
         menuRef.current
@@ -419,7 +419,7 @@ const AMultiSelect = forwardRef(
         className: itemClass,
         role: "option",
         onKeyDown: (e) => {
-          if (e.keyCode === keyCodes.enter) {
+          if (e.key === keyCodes.enter) {
             handleClick();
           }
         },

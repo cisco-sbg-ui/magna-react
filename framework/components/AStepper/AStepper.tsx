@@ -1,10 +1,10 @@
-import PropTypes from "prop-types";
 import React, {forwardRef, useRef, useMemo} from "react";
 import {useResizeObserver} from "../../utils/hooks";
 
 import "./AStepper.scss";
+import {AStepProps, AStepperProps} from "./types";
 
-const AStepper = forwardRef(
+const AStepper = forwardRef<HTMLDivElement, AStepperProps>(
   ({className: propsClassName = "", children, vertical, ...rest}, ref) => {
     const containerRef = useRef(null);
     const {width} = useResizeObserver(containerRef);
@@ -19,20 +19,22 @@ const AStepper = forwardRef(
     }
 
     const dividerWidth = useMemo(
-      () => width / numberOfSteps,
+      () => (width ? width / numberOfSteps : 0),
       [width, numberOfSteps]
     );
 
     const renderChildren = React.Children.map(children, (child) => {
-      return React.cloneElement(child, {
-        isVertical: vertical,
-        dividerStyle: {width: `${dividerWidth}px`}
-      });
+      if (React.isValidElement<AStepProps>(child)) {
+        return React.cloneElement(child, {
+          isVertical: vertical,
+          dividerStyle: {width: `${dividerWidth}px`}
+        });
+      }
     });
 
     const renderItem = React.Children.map(children, (child) => {
-      if (child.props.active) {
-        return child.props.children;
+      if (React.isValidElement(child) && child.props.active) {
+        return React.Children.toArray(child.props.children);
       }
     });
 
@@ -41,24 +43,13 @@ const AStepper = forwardRef(
         <div {...rest} ref={ref} className={className}>
           {renderChildren}
         </div>
-        {!vertical && (
+        {!vertical && renderItem?.length && (
           <div className="a-steps__description">{renderItem[1]}</div>
         )}
       </div>
     );
   }
 );
-
-AStepper.propTypes = {
-  /**
-   *  When true, stepper orientation will be vertical
-   */
-  vertical: PropTypes.bool,
-  /**
-   * String representing class names to be passed to component container
-   */
-  className: PropTypes.string
-};
 
 AStepper.displayName = "AStepper";
 

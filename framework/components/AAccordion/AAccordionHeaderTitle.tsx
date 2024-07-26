@@ -50,7 +50,7 @@ const AAccordionHeaderTitle = forwardRef<
     const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
       if (
         hasBody &&
-        [keyCodes.enter, keyCodes.space].includes(e.keyCode as 13 | 32)
+        [keyCodes.enter, keyCodes.space].includes(e.code as "Enter" | "Space") //must be code over key for "Space"
       ) {
         e.preventDefault();
         togglePanel();

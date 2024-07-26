@@ -280,14 +280,15 @@ const ASelect = forwardRef(
         }
 
         selectionProps.onKeyDown = (e) => {
-          if ([keyCodes.enter, keyCodes.space].includes(e.keyCode)) {
+          if ([keyCodes.enter, keyCodes.space].includes(e.code)) {
+            //must be code over key for "Space"
             e.preventDefault();
             setIsOpen(!isOpen);
-          } else if (e.keyCode === keyCodes.up) {
+          } else if (e.key === keyCodes.up) {
             e.preventDefault();
             const newItem = getPreviousItem(getSelectedIndex());
             newItem && selectItem(newItem);
-          } else if (e.keyCode === keyCodes.down) {
+          } else if (e.key === keyCodes.down) {
             e.preventDefault();
             const newItem = getNextItem(getSelectedIndex());
             newItem && selectItem(newItem);

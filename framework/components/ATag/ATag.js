@@ -73,7 +73,7 @@ const ATag = forwardRef(
       className,
       onClick,
       onKeyDown: (e) => {
-        if (!href && onClick && [keyCodes.enter].includes(e.keyCode)) {
+        if (!href && onClick && [keyCodes.enter].includes(e.key)) {
           e.preventDefault();
           onClick(e);
         } else {

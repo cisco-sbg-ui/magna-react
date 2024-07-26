@@ -117,7 +117,8 @@ const ADataTableHeaderTemplate = ({
       tabIndex={0}
       onClick={onClick}
       onKeyDown={(e) => {
-        if ([keyCodes.enter, keyCodes.space].includes(e.keyCode)) {
+        //must be code over key for "Space"
+        if ([keyCodes.enter, keyCodes.space].includes(e.code)) {
           e.preventDefault();
           onClick && onClick(e);
         }

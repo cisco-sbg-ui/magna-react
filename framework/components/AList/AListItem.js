@@ -75,16 +75,16 @@ const AListItem = forwardRef(
     const onKeyDown = useCallback(
       (e) => {
         if (
-          (onClick && e.keyCode === keyCodes.enter) ||
+          (onClick && e.key === keyCodes.enter) ||
           (onClick &&
-            e.keyCode === keyCodes.right &&
+            e.key === keyCodes.right &&
             document.activeElement.tagName !== "INPUT")
         ) {
           e.preventDefault();
           e.stopPropagation();
           onClick(e);
           submenu && setSubMenuOpen(true);
-        } else if (onClick && e.keyCode === keyCodes.left && submenu) {
+        } else if (onClick && e.key === keyCodes.left && submenu) {
           e.stopPropagation();
           setSubMenuOpen(false);
         }

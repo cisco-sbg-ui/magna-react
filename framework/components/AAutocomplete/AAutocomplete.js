@@ -186,14 +186,14 @@ const AAutocomplete = forwardRef(
         setIsFocused(true);
       },
       onKeyDown: (e) => {
-        if (e.keyCode === keyCodes.up) {
+        if (e.key === keyCodes.up) {
           e.preventDefault();
           setIsOpen(true);
           const menuItems = menuRef.current?.querySelectorAll(
             ".a-autocomplete__menu-items__wrapper .a-list-item[tabindex]"
           );
           menuItems && menuItems[menuItems.length - 1]?.focus();
-        } else if (e.keyCode === keyCodes.down) {
+        } else if (e.key === keyCodes.down) {
           e.preventDefault();
           setIsOpen(true);
           menuRef.current
