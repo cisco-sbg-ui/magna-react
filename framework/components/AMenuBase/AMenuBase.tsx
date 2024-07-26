@@ -1,5 +1,6 @@
 import React, {
   forwardRef,
+  useCallback,
   useContext,
   useEffect,
   useRef,
@@ -8,7 +9,7 @@ import React, {
 import ReactDOM from "react-dom";
 
 import AAppContext from "../AApp/AAppContext";
-import {useCombinedRefs} from "../../utils/hooks";
+import {useCombinedRefs, useHasScrolled} from "../../utils/hooks";
 import {getRoundedBoundedClientRect} from "../../utils/helpers";
 
 import {useMenuFlip} from "./hooks";
@@ -280,7 +281,11 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
       }
     }, [open, checkMenuSpacing, menuRef, placement]);
 
-    useEffect(() => {
+    const calculatePosition = useCallback(() => {
+      if (!combinedRef?.current) {
+        return;
+      }
+
       const calculateMenuPositionProps = {
         combinedRef,
         appRef,
@@ -295,7 +300,6 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
       };
       calculateMenuPosition(calculateMenuPositionProps);
     }, [
-      open,
       anchorRef,
       combinedRef,
       menuPlacement,
@@ -304,6 +308,10 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
       removeSpacer,
       withNewWrappingContext
     ]);
+
+    useEffect(() => {
+      calculatePosition();
+    }, [open, calculatePosition]);
 
     useEffect(() => {
       const pointerPositionProps = {
@@ -317,21 +325,12 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
       calculatePointerPosition(pointerPositionProps);
     }, [anchorRef, combinedRef, menuPlacement, pointer, menuLeft, menuTop]);
 
+    // reposition on scroll, but only if it's open
+    useHasScrolled(open, calculatePosition);
+
     useEffect(() => {
       const screenChangeHandler = () => {
-        const calculateMenuPositionProps = {
-          combinedRef,
-          appRef,
-          wrapRef,
-          anchorRef,
-          placement,
-          setMenuLeft,
-          setMenuTop,
-          setInvisible,
-          removeSpacer,
-          withNewWrappingContext
-        };
-        calculateMenuPosition(calculateMenuPositionProps);
+        calculatePosition();
       };
 
       window.addEventListener("resize", screenChangeHandler);
@@ -341,47 +340,7 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
         window.removeEventListener("resize", screenChangeHandler);
         window.removeEventListener("fullscreenchange", screenChangeHandler);
       };
-    }, [
-      anchorRef,
-      combinedRef,
-      placement,
-      appRef,
-      wrapRef,
-      removeSpacer,
-      withNewWrappingContext
-    ]);
-
-    useEffect(() => {
-      const screenChangeHandler = () => {
-        const calculateMenuPositionProps = {
-          combinedRef,
-          appRef,
-          wrapRef,
-          anchorRef,
-          placement,
-          setMenuLeft,
-          setMenuTop,
-          setInvisible,
-          removeSpacer,
-          withNewWrappingContext
-        };
-        calculateMenuPosition(calculateMenuPositionProps);
-      };
-
-      window.addEventListener("resize", screenChangeHandler);
-
-      return () => {
-        window.removeEventListener("resize", screenChangeHandler);
-      };
-    }, [
-      anchorRef,
-      combinedRef,
-      placement,
-      appRef,
-      wrapRef,
-      removeSpacer,
-      withNewWrappingContext
-    ]);
+    }, [calculatePosition]);
 
     useEffect(() => {
       const clickOutsideHandler = (e: MouseEvent) => {
