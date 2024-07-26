@@ -123,7 +123,7 @@
 
   background: var(--base-bg-weak-default);
   box-shadow: none;
-  border: 2px solid var(--control-border-weak-default);
+  border: $border-width solid var(--control-border-weak-default);
 
   .a-card__content {
     margin: 12px 0;
@@ -169,6 +169,30 @@
       .a-card-state {
         background: var(--control-bg-disabled);
       }
+    }
+
+    &--interactive {
+      box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.05);
+      cursor: pointer;
+
+      &:hover {
+        border-color: var(--control-border-weak-hover);
+      }
+
+      &:focus {
+        @include a-control-focus();
+      }
+    }
+
+    &--selected {
+      border-color: var(--control-border-focus);
+    }
+
+    &--interactive.a-card-basic--state-disabled {
+      border: 2px solid var(--control-border-weak-default);
+      background-color: var(--control-bg-weak-default);
+      cursor: not-allowed;
+      color: var(--base-text-disabled);
     }
   }
 }

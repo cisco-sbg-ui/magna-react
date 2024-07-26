@@ -12,13 +12,33 @@ const ACardBasic = forwardRef(
       state,
       stateCustomColor,
       lifted,
+      interactive,
+      selected,
       ...rest
     },
     ref
   ) => {
+    const showState = state && state !== "disabled";
+
     let className = "a-card-basic";
 
-    if (lifted) className += " a-card-basic--lifted";
+    if (lifted) {
+      className += " a-card-basic--lifted";
+    }
+
+    const computedProps = {};
+
+    if (interactive) {
+      className += " a-card-basic--interactive";
+
+      if (selected) {
+        className += " a-card-basic--selected";
+      }
+
+      if (state !== "disabled") {
+        computedProps.tabIndex = 0;
+      }
+    }
 
     if (state === "dormant") {
       className += " a-card-basic--state-dormant";
@@ -48,8 +68,10 @@ const ACardBasic = forwardRef(
     const TagName = component || "div";
 
     return (
-      <TagName {...rest} ref={ref} className={className}>
-        {state ? <div className="a-card-state" style={stateStyle}></div> : null}
+      <TagName {...computedProps} {...rest} ref={ref} className={className}>
+        {showState ? (
+          <div className="a-card-state" style={stateStyle}></div>
+        ) : null}
 
         <div className="a-card-wrapper">{children}</div>
       </TagName>
@@ -87,7 +109,15 @@ ACardBasic.propTypes = {
   /**
    * This sets the shadow on the card
    */
-  lifted: PropTypes.bool
+  lifted: PropTypes.bool,
+  /**
+   * This sets the interactive border on the card
+   */
+  interactive: PropTypes.bool,
+  /**
+   * Indicates the card is selected
+   */
+  selected: PropTypes.bool
 };
 
 ACardBasic.displayName = "ACardBasic";
