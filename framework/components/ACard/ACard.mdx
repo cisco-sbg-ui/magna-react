@@ -399,6 +399,26 @@ For page level groupings, use [Container Cards](/components/card#container-card)
 `}
 />
 
+#### Interactive card
+
+<Playground
+  code={`
+  <>
+  <ACardBasic interactive>
+    <ACardContent>
+      <div>Interactive card <AButton icon tertiary><AIcon>activity</AIcon></AButton></div>
+    </ACardContent>
+  </ACardBasic>
+  <ADivider />
+   <ACardBasic interactive state="disabled">
+    <ACardContent>
+      <div>Interactive disabled</div>
+    </ACardContent>
+  </ACardBasic>
+  </>
+`}
+/>
+
 #### Composition example
 
 <Playground

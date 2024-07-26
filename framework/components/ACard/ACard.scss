@@ -170,5 +170,25 @@
         background: var(--control-bg-disabled);
       }
     }
+
+    &--interactive {
+      box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.05);
+
+      &:hover {
+        border: $border-width solid var(--control-border-hover);
+      }
+
+      &:focus,
+      &:focus-within {
+        border: $border-width solid var(--control-border-focus);
+      }
+    }
+
+    &--interactive.a-card-basic--state-disabled {
+      border: 2px solid var(--control-border-weak-default);
+      background-color: var(--control-bg-weak-default);
+      cursor: not-allowed;
+      color: var(--base-text-disabled);
+    }
   }
 }
