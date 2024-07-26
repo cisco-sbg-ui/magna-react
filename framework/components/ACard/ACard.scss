@@ -123,7 +123,7 @@
 
   background: var(--base-bg-weak-default);
   box-shadow: none;
-  border: 2px solid var(--control-border-weak-default);
+  border: $border-width solid var(--control-border-weak-default);
 
   .a-card__content {
     margin: 12px 0;
@@ -176,7 +176,7 @@
       cursor: pointer;
 
       &:hover {
-        border: $border-width solid var(--control-border-weak-hover);
+        border-color: var(--control-border-weak-hover);
       }
 
       &:focus {
@@ -185,7 +185,7 @@
     }
 
     &--selected {
-      border: $border-width solid var(--control-border-focus);
+      border-color: var(--control-border-focus);
     }
 
     &--interactive.a-card-basic--state-disabled {
