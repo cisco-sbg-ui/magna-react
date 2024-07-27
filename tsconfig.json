@@ -17,8 +17,17 @@
     "resolveJsonModule": true,
     "declaration": true,
     "outDir": "./lib",
+    "checkJs": false,
     "noEmit": false //DO NOT LET VERCEL OVERRIDE THIS DURING NPM RUN DEV.   WE NEED TO EMIT FOR LIBRARY. This is an ongoing request: https://github.com/vercel/next.js/discussions/39942
   },
-  "include": ["framework/**/*"],
-  "exclude": ["node_modules"]
+  "include": [
+    "./framework/components/**/*.ts",
+    "./framework/components/**/*.tsx",
+    "./framework/hooks/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "framework/components/**/*.js",
+    "framework/components/**/*.jsx"
+  ]
 }
