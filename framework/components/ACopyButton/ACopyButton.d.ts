@@ -1,3 +1,4 @@
+import React from "react";
 import {type ACopyButtonProps} from "./types";
 
 declare const ACopyButton: <C extends React.ElementType>(

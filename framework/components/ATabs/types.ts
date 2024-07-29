@@ -1,4 +1,4 @@
-import type {PolymorphicComponentPropWithRef} from "../../types";
+import type {Override, PolymorphicComponentPropWithRef} from "../../types";
 
 export type ATabProps<C extends React.ElementType> =
   PolymorphicComponentPropWithRef<
@@ -23,3 +23,17 @@ export type ATabProps<C extends React.ElementType> =
       target?: string;
     }
   >;
+
+export type ATabGroupProps = Override<
+  React.ComponentPropsWithRef<"div">,
+  {
+    /**
+     * Toggles the vertical style variant.
+     */
+    vertical?: boolean;
+    /**
+     * Color of tabs primary (default) is green, blue is secondary
+     */
+    secondary?: boolean;
+  }
+>;

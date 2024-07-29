@@ -1,3 +1,4 @@
+import React from "react";
 import {type AInlineInputBaseProps} from "./types";
 import {AInlineInputBasePropTypes} from "./AInlineInputBase";
 

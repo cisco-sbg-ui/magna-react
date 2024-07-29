@@ -1,3 +1,5 @@
+import React from "react";
+
 import {type ATabProps} from "./types";
 
 declare const ATab: <C extends React.ElementType = "div">(

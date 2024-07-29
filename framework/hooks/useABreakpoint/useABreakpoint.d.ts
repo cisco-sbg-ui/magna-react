@@ -21,5 +21,6 @@ declare const useABreakpoint: () => {
   lgAndUp: boolean;
   xlOnly: boolean;
 };
+export {breakpointThresholds};
 
-export {useABreakpoint, breakpointThresholds};
+export default useABreakpoint;

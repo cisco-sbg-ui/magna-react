@@ -21,3 +21,12 @@ export type AThemeProps = Override<
     theme?: AThemeTheme;
   }
 >;
+
+type ATheme = "default" | "dusk";
+
+export interface UseAThemeResult {
+  currentTheme?: ATheme;
+  isDark: boolean;
+  isLight: boolean;
+  setCurrentTheme: (theme: ATheme) => void;
+}

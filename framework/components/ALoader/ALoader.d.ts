@@ -1,3 +1,5 @@
+import React from "react";
+
 import {type ALoaderProps} from "./types";
 
 declare const ALoader: <
@@ -7,4 +9,4 @@ declare const ALoader: <
   props: ALoaderProps<VARIANT, C>
 ) => JSX.Element;
 
-export {ALoader};
+export default ALoader;

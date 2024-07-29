@@ -1,5 +1,7 @@
+import {ComponentPropsWithRef, type ElementType} from "react";
 import type {Override, PolymorphicComponentPropWithRef} from "../../types";
 import {AModalProps} from "../AModal/types";
+import {AButtonProps} from "../AButton/types";
 
 export type ADrawerPosition = "absolute" | "fixed" | "relative";
 
@@ -75,4 +77,94 @@ export type ADrawerProps<C extends React.ElementType> = Override<
       style?: React.CSSProperties;
     }
   >
+>;
+
+export type ADrawerHeaderProps = Override<
+  ComponentPropsWithRef<"div">,
+  {
+    /**
+     * String representing class names to be passed to drawer content container.
+     * If rendering the drawer as a modal, it will still be passed to the drawer
+     * panel content element.
+     */
+    className?: string;
+    /**
+     * Adds a divider below the header content
+     */
+    divider?: boolean;
+  }
+>;
+
+export type ADrawerFooterVariant = "shadow" | "divider";
+
+export type ADrawerFooterProps = Override<
+  ComponentPropsWithRef<"div">,
+  {
+    /**
+     * String representing class names to be passed to drawer content container.
+     * If rendering the drawer as a modal, it will still be passed to the drawer
+     * panel content element.
+     */
+    className?: string;
+    /**
+     * Replace the default box shadow with an ADivider above the footer
+     */
+    variant?: ADrawerFooterVariant;
+    /**
+     * Wrap the component children in an ADrawerContent element
+     */
+    withPadding?: boolean;
+  }
+>;
+
+export type ADrawerBodyProps = Override<
+  ComponentPropsWithRef<"div">,
+  {
+    /**
+     * String representing class names to be passed to drawer content container.
+     * If rendering the drawer as a modal, it will still be passed to the drawer
+     * panel content element.
+     */
+    className?: string;
+    /**
+     * Wrap the component children in an ADrawerContent element
+     */
+    withPadding?: boolean;
+  }
+>;
+
+export type ADrawerContentProps = React.ComponentPropsWithRef<"div">;
+
+export type ADrawerSubtitleProps = Override<
+  ComponentPropsWithRef<"div">,
+  {
+    /**
+     * String representing class names to be passed to drawer content container.
+     * If rendering the drawer as a modal, it will still be passed to the drawer
+     * panel content element.
+     */
+    className?: string;
+  }
+>;
+
+export type ADrawerTitleProps<C extends ElementType> = Override<
+  ComponentPropsWithRef<"div">,
+  {
+    /**
+     * String representing class names to be passed to drawer content container.
+     * If rendering the drawer as a modal, it will still be passed to the drawer
+     * panel content element.
+     */
+    className?: string;
+    /**
+     * Option for close button title instead of default icon
+     */
+    closeTitle?: string;
+    /**
+     * Any additional props for close button
+     */
+    closeBtnProps?: AButtonProps<C> | AButtonProps<C>[];
+
+    sticky?: boolean;
+  }
 >;

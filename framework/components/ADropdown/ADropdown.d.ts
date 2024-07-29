@@ -1,3 +1,4 @@
+import React from "react";
 import {type ADropdownProps} from "./types";
 
 declare const ADropdown: <C extends React.ElementType>(

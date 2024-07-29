@@ -1,14 +1,5 @@
-import {
-  type AActivityTimelineProps,
-  type AActivityTimelineItemProps,
-  type AActivityTimelineItemTitleProps
-} from "./types";
-declare const AActivityTimeline: (props: AActivityTimelineProps) => JSX.Element;
-declare const AActivityTimelineItem: (
-  props: AActivityTimelineItemProps
-) => JSX.Element;
-declare const AActivityTimelineItemTitle: (
-  props: AActivityTimelineItemTitleProps
-) => JSX.Element;
+import {type AActivityTimelineProps} from "./types";
 
-export {AActivityTimeline, AActivityTimelineItem, AActivityTimelineItemTitle};
+declare const AActivityTimeline: (props: AActivityTimelineProps) => JSX.Element;
+
+export default AActivityTimeline;

@@ -11,7 +11,6 @@ import ATheme, {
 } from "./ATheme";
 
 import AThemeContext from "./AThemeContext";
-import useATheme from "./useATheme";
 
 declare const ATheme: (props: AThemeProps) => JSX.Element;
 
@@ -23,7 +22,6 @@ export {
   SUPPORTED_THEMES,
   LIGHT_THEMES,
   DARK_THEMES,
-  useATheme,
   AThemeContext
 };
 

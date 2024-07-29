@@ -1,3 +1,5 @@
+import React from "react";
+
 import {type AInlineTextInputProps} from "./types";
 
 declare const AInlineTextInput: <C extends React.ElementType>(

@@ -1,3 +1,5 @@
+import React from "react";
+
 import {AInlineTextareaProps} from "./types";
 
 declare const AInlineTextarea: <C extends React.ElementType>(
