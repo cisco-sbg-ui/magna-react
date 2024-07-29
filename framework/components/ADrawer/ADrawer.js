@@ -43,7 +43,7 @@ const ADrawer = forwardRef(
 
     usePopupQuickExit({
       popupRef: combinedRef,
-      isEnabled: !propsAsModal && isOpen,
+      isEnabled: !propsAsModal && closeOnOutsideClick && isOpen,
       onExit: onClose
     });
 
