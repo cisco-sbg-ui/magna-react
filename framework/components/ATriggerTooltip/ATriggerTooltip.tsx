@@ -16,6 +16,7 @@ const ATriggerTooltip = ({
   closeDelay,
   onClose,
   content,
+  onlyIfTruncated,
   disabled = false,
   wrapChildren = false,
   wrapperClass,
@@ -29,29 +30,29 @@ const ATriggerTooltip = ({
   const tooltipAnchorRef = anchorRef || triggerRef || firstChildRef;
   const tooltipRef = useRef<HTMLElement>(null);
 
-  // const checkForTruncation = useCallback(() => {  //This does not get used in the library
-  //   if (!onlyIfTruncated) {
-  //     return true;
-  //   }
+  const checkForTruncation = useCallback(() => {
+    if (!onlyIfTruncated) {
+      return true;
+    }
 
-  //   const element = anchorRef?.current || childrenRef.current[0];
+    const element = anchorRef?.current || childrenRef.current[0];
 
-  //   if (!element) {
-  //     return true;
-  //   }
+    if (!element) {
+      return true;
+    }
 
-  //   return (
-  //     element.offsetHeight < element.scrollHeight ||
-  //     element.offsetWidth < element.scrollWidth
-  //   );
-  // }, [onlyIfTruncated, anchorRef, childrenRef]);
+    return (
+      element.offsetHeight < element.scrollHeight ||
+      element.offsetWidth < element.scrollWidth
+    );
+  }, [onlyIfTruncated, anchorRef, childrenRef]);
 
   const {
     isOpen,
     open,
     close: toggleClose,
     toggle
-  } = useToggle(openDelay, closeDelay);
+  } = useToggle(openDelay, closeDelay, checkForTruncation);
 
   const close = useCallback(() => {
     const hoveringTooltip = tooltipRef?.current?.matches(":hover");
