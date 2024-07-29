@@ -42,8 +42,8 @@ const ADrawer = forwardRef(
     });
 
     usePopupQuickExit({
-      popupRef: combinedRef,
-      isEnabled: !propsAsModal && closeOnOutsideClick && isOpen,
+      popupRef: closeOnOutsideClick && combinedRef,
+      isEnabled: !propsAsModal && isOpen,
       onExit: onClose
     });
 
