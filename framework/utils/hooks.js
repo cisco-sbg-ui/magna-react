@@ -1,7 +1,5 @@
 import {useEffect, useLayoutEffect, useRef, useState} from "react";
 
-import {throttle} from "./helpers";
-
 export const useCombinedRefs = (...refs) => {
   const targetRef = useRef();
 
@@ -94,11 +92,10 @@ export const useHasScrolled = (enabled, callback) => {
     }
 
     const handler = () => {
-      const lastKnownScrollPosition = window.scrollY;
-
       if (!_tickRef.current) {
         window.requestAnimationFrame(() => {
-          throttle(callback(lastKnownScrollPosition));
+          callback();
+
           _tickRef.current = false;
         });
 
