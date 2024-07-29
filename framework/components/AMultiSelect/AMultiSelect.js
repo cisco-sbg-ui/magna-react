@@ -337,9 +337,8 @@ const AMultiSelect = forwardRef(
     }
 
     const menuComponentProps = {
-      anchorRef:
-        inputBaseSurfaceRef?.current?.getBoundingClientRect() ||
-        inputBaseSurfaceRef,
+      anchorRef: inputBaseSurfaceRef,
+      useFlipLogic: true,
       className: menuClassName,
       closeOnClick: false,
       focusOnOpen: false,

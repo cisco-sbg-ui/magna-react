@@ -92,6 +92,7 @@ const calculateMenuPosition = ({
         menuCoords.width / 2 -
         wrapCoords.left;
       baseTop = anchorCoords.bottom - wrapCoords.top + magneticSpacer;
+
       break;
     }
     case "bottom-left": {
@@ -286,7 +287,8 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
         return;
       }
 
-      const calculateMenuPositionProps = {
+      checkMenuSpacing();
+      calculateMenuPosition({
         combinedRef,
         appRef,
         wrapRef,
@@ -297,8 +299,7 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
         setInvisible,
         removeSpacer,
         withNewWrappingContext
-      };
-      calculateMenuPosition(calculateMenuPositionProps);
+      });
     }, [
       anchorRef,
       combinedRef,
@@ -306,23 +307,25 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
       appRef,
       wrapRef,
       removeSpacer,
-      withNewWrappingContext
+      withNewWrappingContext,
+      checkMenuSpacing
     ]);
 
     useEffect(() => {
-      calculatePosition();
+      if (open) {
+        calculatePosition();
+      }
     }, [open, calculatePosition]);
 
     useEffect(() => {
-      const pointerPositionProps = {
+      calculatePointerPosition({
         combinedRef,
         anchorRef,
         pointer,
         placement: menuPlacement,
         setPointerLeft,
         setPointerTop
-      };
-      calculatePointerPosition(pointerPositionProps);
+      });
     }, [anchorRef, combinedRef, menuPlacement, pointer, menuLeft, menuTop]);
 
     // reposition on scroll, but only if it's open
@@ -330,7 +333,9 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
 
     useEffect(() => {
       const screenChangeHandler = () => {
-        calculatePosition();
+        if (open) {
+          calculatePosition();
+        }
       };
 
       window.addEventListener("resize", screenChangeHandler);
@@ -340,7 +345,7 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
         window.removeEventListener("resize", screenChangeHandler);
         window.removeEventListener("fullscreenchange", screenChangeHandler);
       };
-    }, [calculatePosition]);
+    }, [calculatePosition, open]);
 
     useEffect(() => {
       const clickOutsideHandler = (e: MouseEvent) => {
