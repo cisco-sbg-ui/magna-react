@@ -3,7 +3,10 @@ const glob = require("glob");
 
 const localDeclarations = [];
 const declarations = [];
-const files = glob.sync("./framework/components/**/index.js");
+const files = [
+  ...glob.sync("./framework/components/**/index.js"),
+  ...glob.sync("./framework/components/**/index.ts")
+];
 
 const getComponents = (data) => {
   const components = [];
