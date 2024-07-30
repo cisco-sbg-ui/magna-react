@@ -1,6 +1,8 @@
 import {type AThemeProps} from "./types";
 
-import ATheme, {
+import ATheme from "./ATheme";
+
+import {
   DEFAULT_THEME,
   DUSK_THEME,
   CLASSIC_LIGHT_THEME,
@@ -8,7 +10,7 @@ import ATheme, {
   SUPPORTED_THEMES,
   LIGHT_THEMES,
   DARK_THEMES
-} from "./ATheme";
+} from "./constants";
 
 import AThemeContext from "./AThemeContext";
 
