@@ -6,6 +6,7 @@ import ADrawerFooter from "./ADrawerFooter";
 import ADrawerSubtitle from "./ADrawerSubtitle";
 import ADrawerTitle from "./ADrawerTitle";
 import {useDrawerToggle} from "./hooks";
+import type {ADrawerProps} from "./types";
 
 export {
   ADrawer,
@@ -17,3 +18,5 @@ export {
   ADrawerTitle,
   useDrawerToggle
 };
+
+export type {ADrawerProps};

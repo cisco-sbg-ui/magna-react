@@ -1,8 +1,8 @@
 import {Override} from "../../types";
 
-export type AThemeDefaultTheme = "default" | "dusk";
+export type AThemeDefaultTheme = "default";
 
-export type AThemeTheme = "default" | "dusk";
+export type AThemeType = "default" | "dusk" | "classic-light" | "classic-dark";
 
 export type AThemeProps = Override<
   React.ComponentPropsWithRef<"div">,
@@ -18,15 +18,13 @@ export type AThemeProps = Override<
     /**
      * Sets the current theme. Changes to this prop are reflected as a current theme. Takes precedence over defaultTheme. Do not use "theme" and "persist" props at the same time. Providing a "theme" prop indicates that the theme is managed from outside and it will not be persisted.
      */
-    theme?: AThemeTheme;
+    theme?: AThemeType;
   }
 >;
 
-type ATheme = "default" | "dusk";
-
 export interface UseAThemeResult {
-  currentTheme?: ATheme;
+  currentTheme?: AThemeType;
   isDark: boolean;
   isLight: boolean;
-  setCurrentTheme: (theme: ATheme) => void;
+  setCurrentTheme: (theme: AThemeType) => void;
 }

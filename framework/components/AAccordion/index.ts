@@ -3,6 +3,7 @@ import AAccordionPanel from "./AAccordionPanel";
 import AAccordionHeader from "./AAccordionHeader";
 import AAccordionHeaderTitle from "./AAccordionHeaderTitle";
 import AAccordionBody from "./AAccordionBody";
+import type {AAccordionPanelProps} from "./types";
 
 export {
   AAccordion,
@@ -11,3 +12,5 @@ export {
   AAccordionHeaderTitle,
   AAccordionBody
 };
+
+export type {AAccordionPanelProps};

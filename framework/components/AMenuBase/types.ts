@@ -1,4 +1,3 @@
-import React from "react";
 import {AAnchorRef, APlacement, ARef, Override} from "../../types";
 
 export type AMenuBaseProps = Override<

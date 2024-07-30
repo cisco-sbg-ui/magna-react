@@ -1,4 +1,8 @@
-import ATheme, {
+import ATheme from "./ATheme";
+import AThemeContext from "./AThemeContext";
+import useATheme from "./useATheme";
+import type {AThemeType} from "./types";
+import {
   DEFAULT_THEME,
   DUSK_THEME,
   CLASSIC_LIGHT_THEME,
@@ -6,9 +10,9 @@ import ATheme, {
   SUPPORTED_THEMES,
   LIGHT_THEMES,
   DARK_THEMES
-} from "./ATheme";
-import AThemeContext from "./AThemeContext";
-import useATheme from "./useATheme";
+} from "./constants";
+
+export type {AThemeType};
 
 export {
   ATheme,

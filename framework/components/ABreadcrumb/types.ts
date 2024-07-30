@@ -1,10 +1,10 @@
 import {Override} from "../../types";
 
-export interface ABreadcrumbItems<C extends React.ElementType> {
+export type ABreadcrumbItems<C extends React.ElementType> = {
   component?: C;
   content?: React.ReactNode;
   contentProps?: React.ComponentProps<C>;
-}
+};
 
 export type ABreadcrumbProps<C extends React.ElementType> = Override<
   React.ComponentPropsWithRef<"ul">,
