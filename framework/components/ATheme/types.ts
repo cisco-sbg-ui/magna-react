@@ -2,7 +2,13 @@ import {Override} from "../../types";
 
 export type AThemeDefaultTheme = "default";
 
-export type AThemeType = "default" | "dusk" | "classic-light" | "classic-dark";
+export type AThemeType =
+  | "default"
+  | "dusk"
+  | "classic-light"
+  | "classic-dark"
+  | "theme--default"
+  | "theme--dusk";
 
 export type AThemeProps = Override<
   React.ComponentPropsWithRef<"div">,

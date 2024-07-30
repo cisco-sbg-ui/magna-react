@@ -47,6 +47,9 @@ const calculateMenuPosition = ({
   const menuCoords = getRoundedBoundedClientRect(combinedRef.current);
   const magneticSpacer = removeSpacer ? 0 : 4;
 
+  if (!anchorCoords || !menuCoords || !wrapCoords || !appCoords) {
+    return;
+  }
   let baseLeft = 0,
     baseTop = 0;
   switch (placement) {
@@ -201,6 +204,10 @@ const calculatePointerPosition = ({
       ? anchorRef
       : getRoundedBoundedClientRect(anchorRef);
   const menuCoords = getRoundedBoundedClientRect(combinedRef.current);
+
+  if (!anchorCoords || !menuCoords) {
+    return;
+  }
 
   // Pointer
   if (!pointer) {
