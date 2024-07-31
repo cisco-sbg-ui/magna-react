@@ -47,6 +47,9 @@ const calculateMenuPosition = ({
   const menuCoords = getRoundedBoundedClientRect(combinedRef.current);
   const magneticSpacer = removeSpacer ? 0 : 4;
 
+  if (!anchorCoords || !menuCoords || !wrapCoords || !appCoords) {
+    return;
+  }
   let baseLeft = 0,
     baseTop = 0;
   switch (placement) {
@@ -199,8 +202,12 @@ const calculatePointerPosition = ({
   const anchorCoords =
     anchorRef instanceof DOMRect
       ? anchorRef
-      : getRoundedBoundedClientRect((anchorRef as ARef).current);
+      : getRoundedBoundedClientRect(anchorRef);
   const menuCoords = getRoundedBoundedClientRect(combinedRef.current);
+
+  if (!anchorCoords || !menuCoords) {
+    return;
+  }
 
   // Pointer
   if (!pointer) {
@@ -260,7 +267,7 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
   ) => {
     const {appRef, wrapRef, withNewWrappingContext} = useContext(AAppContext);
     const menuRef = useRef<HTMLDivElement>(null);
-    const combinedRef: any = useCombinedRefs(ref, menuRef); //TODO Fix once combinedRef is typed
+    const combinedRef = useCombinedRefs(ref, menuRef);
     const [menuLeft, setMenuLeft] = useState<number>(0);
     const [menuTop, setMenuTop] = useState<number>(0);
     const [invisible, setInvisible] = useState(true);
@@ -357,7 +364,7 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
           anchorRef.current &&
           combinedRef.current &&
           open &&
-          !anchorRef.current.contains(e.target as Node) &&
+          !(anchorRef.current as any).contains(e.target) &&
           !(combinedRef.current as any).contains(e.target) //TODO Fix once combinedRef is typed
         ) {
           onClose && onClose(e as unknown as React.MouseEvent<HTMLElement>);
@@ -404,7 +411,7 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
       <div
         data-ignore-outside-click
         {...rest}
-        ref={combinedRef}
+        ref={combinedRef as any}
         className={className}
         style={style}>
         {pointer && (

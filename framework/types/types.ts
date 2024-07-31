@@ -1,13 +1,11 @@
-import React from "react";
-
-export type ARef =
-  | React.RefObject<HTMLElement>
-  | {
-      current?: unknown;
-    };
+export type ARef = {
+  current?: unknown;
+};
 
 export type AAnchorRef =
-  | React.RefObject<HTMLElement>
+  | {
+      current?: unknown;
+    }
   | {
       x?: number;
       y?: number;

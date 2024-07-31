@@ -16,10 +16,10 @@ const ATriggerTooltip = ({
   closeDelay,
   onClose,
   content,
+  onlyIfTruncated,
   disabled = false,
   wrapChildren = false,
   wrapperClass,
-  onlyIfTruncated,
   interactive,
   ...rest
 }: ATriggerTooltipProps) => {
@@ -71,7 +71,7 @@ const ATriggerTooltip = ({
     onClick: close
   });
 
-  useEscapeKeydown({isEnabled: open, onKeydown: close});
+  useEscapeKeydown({isEnabled: !!open, onKeydown: close});
 
   useEffect(() => {
     if (!content || disabled) {
