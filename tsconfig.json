@@ -23,6 +23,7 @@
   "include": [
     "./framework/components/**/*.ts",
     "./framework/components/**/*.tsx",
+    "./framework/index.ts",
     "./framework/hooks/**/*.ts"
   ],
   "exclude": [
