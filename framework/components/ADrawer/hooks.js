@@ -1,8 +1,13 @@
 import {useEffect, useState} from "react";
+import useReturnFocusOnClose from "../../hooks/useReturnFocusOnClose/useReturnFocusOnClose";
 
 export const useDrawerToggle = (drawerRef, delay = 300) => {
   const [isDrawerOpen, setIsOpen] = useState(false);
   let handler;
+
+  useReturnFocusOnClose({
+    isOpen: isDrawerOpen
+  });
 
   useEffect(() => {
     if (isDrawerOpen) {

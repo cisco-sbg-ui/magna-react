@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 import AModal from "../AModal/AModal";
 
 import "./ADrawer.scss";
-import usePopupQuickExit from "../../hooks/usePopupQuickExit/usePopupQuickExit";
+import useEscapeKeydown from "../../hooks/useEscapeKeydown/useEscapeKeydown";
+import useOutsideClick from "../../hooks/useOutsideClick/useOutsideClick";
 import {useCombinedRefs, useDelayUnmount, usePrevious} from "../../utils/hooks";
 
 const DrawerContext = createContext({});
@@ -41,9 +42,14 @@ const ADrawer = forwardRef(
       isEnabled: withTransitions
     });
 
-    usePopupQuickExit({
-      popupRef: closeOnOutsideClick && combinedRef,
+    useEscapeKeydown({
       isEnabled: !propsAsModal && isOpen,
+      onKeydown: onClose
+    });
+
+    useOutsideClick({
+      rootRef: !propsAsModal && combinedRef,
+      isEnabled: isOpen && closeOnOutsideClick,
       onExit: onClose
     });
 
