@@ -71,7 +71,7 @@ const ATriggerTooltip = ({
     onClick: close
   });
 
-  useEscapeKeydown({isEnabled: !!open, onKeydown: close});
+  useEscapeKeydown({isEnabled: isOpen, onKeydown: close});
 
   useEffect(() => {
     if (!content || disabled) {
