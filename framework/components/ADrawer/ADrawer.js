@@ -5,6 +5,7 @@ import AModal from "../AModal/AModal";
 
 import "./ADrawer.scss";
 import useEscapeKeydown from "../../hooks/useEscapeKeydown/useEscapeKeydown";
+import useOutsideClick from "../../hooks/useOutsideClick/useOutsideClick";
 import {useCombinedRefs, useDelayUnmount, usePrevious} from "../../utils/hooks";
 
 const DrawerContext = createContext({});
@@ -44,6 +45,12 @@ const ADrawer = forwardRef(
     useEscapeKeydown({
       isEnabled: isOpen,
       onKeydown: onClose
+    });
+
+    useOutsideClick({
+      rootRef: !propsAsModal && combinedRef,
+      isEnabled: isOpen && closeOnOutsideClick,
+      onExit: onClose
     });
 
     // A fixed drawer should automatically render as a modal unless specified
