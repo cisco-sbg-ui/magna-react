@@ -43,7 +43,7 @@ const ADrawer = forwardRef(
     });
 
     useEscapeKeydown({
-      isEnabled: isOpen,
+      isEnabled: !propsAsModal && isOpen,
       onKeydown: onClose
     });
 
