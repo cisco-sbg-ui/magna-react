@@ -202,7 +202,7 @@ const calculatePointerPosition = ({
   const anchorCoords =
     anchorRef instanceof DOMRect
       ? anchorRef
-      : getRoundedBoundedClientRect(anchorRef);
+      : getRoundedBoundedClientRect((anchorRef as ARef).current);
   const menuCoords = getRoundedBoundedClientRect(combinedRef.current);
 
   if (!anchorCoords || !menuCoords) {
