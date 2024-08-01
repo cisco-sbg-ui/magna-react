@@ -2,7 +2,13 @@ import useEscapeKeydown from "../useEscapeKeydown/useEscapeKeydown";
 import useOutsideClick from "../useOutsideClick/useOutsideClick";
 import useReturnFocusOnClose from "../useReturnFocusOnClose/useReturnFocusOnClose";
 
-const usePopupQuickExit = (options) => {
+interface PopupQuickExitProps {
+  popupRef?: React.RefObject<HTMLElement>;
+  onExit: () => void;
+  isEnabled: boolean;
+}
+
+const usePopupQuickExit = (options: PopupQuickExitProps) => {
   const {popupRef, isEnabled, onExit} = options;
   useOutsideClick({
     rootRef: popupRef,

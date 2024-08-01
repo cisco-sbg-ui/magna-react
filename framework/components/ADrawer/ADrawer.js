@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import AModal from "../AModal/AModal";
 
 import "./ADrawer.scss";
-import usePopupQuickExit from "../../hooks/usePopupQuickExit/usePopupQuickExit";
+import useEscapeKeydown from "../../hooks/useEscapeKeydown/useEscapeKeydown";
 import {useCombinedRefs, useDelayUnmount, usePrevious} from "../../utils/hooks";
 
 const DrawerContext = createContext({});
@@ -41,10 +41,9 @@ const ADrawer = forwardRef(
       isEnabled: withTransitions
     });
 
-    usePopupQuickExit({
-      popupRef: closeOnOutsideClick && combinedRef,
-      isEnabled: !propsAsModal && isOpen,
-      onExit: onClose
+    useEscapeKeydown({
+      isEnabled: isOpen,
+      onKeydown: onClose
     });
 
     // A fixed drawer should automatically render as a modal unless specified
