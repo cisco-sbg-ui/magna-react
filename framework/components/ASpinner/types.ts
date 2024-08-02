@@ -12,15 +12,21 @@ export type ASpinnerProps<C extends React.ElementType> =
       /**
        * Sets the spinner size.
        * The default spinner size is set to "medium".
+       *
+       * @defaultValue `"medium"`
        */
       size?: ASpinnerSize;
       /**
        * Sets how the label will be displayed.
        * The default label alignment is set to "right".
+       *
+       * @defaultValue `"right"`
        */
       labelAlignment?: ASpinnerLabelAlignment;
       /**
        * If stopped is set to true, the spinner will not be animated.
+       *
+       * @defaultValue `false`
        */
       stopped?: boolean;
       className?: string;

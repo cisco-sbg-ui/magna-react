@@ -27,6 +27,8 @@ export type AStepProps = Override<
     disabled?: boolean;
     /**
      * Show 'marked' icon on visited steps
+     *
+     * @defaultValue `true`
      */
     showIconOnVisited?: boolean;
     /**

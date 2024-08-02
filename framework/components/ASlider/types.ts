@@ -29,10 +29,14 @@ export type ASliderProps = Override<
     label?: React.ReactNode;
     /**
      * Sets the minimum value.
+     *
+     * @defaultValue `0`
      */
     min?: number;
     /**
      * Sets the maximum value.
+     *
+     * @defaultValue `100`
      */
     max?: number;
     /**
@@ -49,6 +53,8 @@ export type ASliderProps = Override<
     rules?: ASliderRules[];
     /**
      * Sets the increment/decrement value.
+     *
+     * @defaultValue `1`
      */
     step?: number;
     /**
@@ -57,6 +63,8 @@ export type ASliderProps = Override<
     ticks?: ASliderTicks[];
     /**
      * Applies a validation state.
+     *
+     * @defaultValue `default`
      */
     validationState?: ASliderValidationState;
     /**

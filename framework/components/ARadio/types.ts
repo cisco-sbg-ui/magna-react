@@ -5,10 +5,14 @@ export type ARadioProps = Override<
   {
     /**
      * Toggles the `checked` state.
+     *
+     * @defaultValue `false`
      */
     checked?: boolean;
     /**
      * Toggles the `disabled` state.
+     *
+     * @defaultValue `false`
      */
     disabled?: boolean;
     /**

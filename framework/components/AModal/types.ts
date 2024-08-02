@@ -10,6 +10,8 @@ export type AModalProps<C extends React.ElementType> =
       "aria-label"?: string;
       /**
        * Where the modal node should be appended to in the DOM.
+       *
+       *  @defaultValue `null`
        */
       appendTo?: HTMLElement;
       /**
@@ -17,6 +19,8 @@ export type AModalProps<C extends React.ElementType> =
        * delay from when you set `isOpen` to `false` to when the component
        * actually unmounts from the DOM. This is done to preserve the transition.
        * You can adjust that delay with this prop.
+       *
+       *  @defaultValue `200
        */
       delayUnmount?: number;
       /**
@@ -46,10 +50,14 @@ export type AModalProps<C extends React.ElementType> =
       /**
        * Determines if the content rendered underneath the modal should
        * automatically be centered vertically and horizontally.
+       *
+       * @defaultValue `true`
        */
       withCenteredContent?: boolean;
       /**
        * Determines if focus should be trapped when the modal is opened.
+       *
+       * @defaultValue `true`
        */
       withFocusTrap?: boolean;
       /**
@@ -58,16 +66,28 @@ export type AModalProps<C extends React.ElementType> =
       autoFocusElementRef?: AModalAutoFocusElementRef;
       /**
        * Determines if the modal should render with an faded backdrop.
+       *
+       * @defaultValue `true`
        */
       withOverlay?: boolean;
       /**
        * Determines if focus should be "trapped" inside the modal when
        * it is opened (encouraged and recommended).
+       *
+       * @defaultValue `true`
        */
       withScrollLock?: boolean;
       /**
        * Determines if the modal should open and close with CSS transitions.
+       *
+       * @defaultValue `true`
        */
       withTransitions?: boolean;
+      /**
+       * Enables closing the modal when clicking outside of the modal content.
+       *
+       * @defaultValue `false`
+       */
+      closeOnOutsideClick?: boolean;
     }
   >;

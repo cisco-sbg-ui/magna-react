@@ -9,14 +9,20 @@ export type AToastProps = Override<
   {
     /**
      * Toggles the close button.
+     *
+     * @defaultValue `true`
      */
     dismissible?: boolean;
     /**
      * DEPRECATED VERSION OF DISMISSIBLE PROP.
+     *
+     * @deprecated Use correct spelling of `dismissible` instead.
      */
     dismissable?: boolean;
     /**
      * Specifies the display variant.
+     *
+     *  @defaultValue `"info"`
      */
     level?: AToastLevel;
     /**
@@ -25,6 +31,8 @@ export type AToastProps = Override<
     onClose?: (e: React.MouseEvent | React.KeyboardEvent) => unknown;
     /**
      * Specifies the placement of the toast.
+     *
+     * @defaultValue `"top-right"`
      */
     placement?: AToastPlacement;
     /**

@@ -47,6 +47,8 @@ export type AContextualNotificationMenuProps<C extends React.ElementType> =
       anchorRef: AContextualNotificationMenuAnchorRef;
       /**
        * Toggles the behavior of focusing the menu on open.
+       *
+       * @defaultValue `true`
        */
       focusOnOpen?: boolean;
       /**
@@ -63,6 +65,8 @@ export type AContextualNotificationMenuProps<C extends React.ElementType> =
       placement?: AContextualNotificationMenuPlacement;
       /**
        * Sets the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role.
+       *
+       * @defaultValue `"menu"`
        */
       role?: React.AriaRole;
       /**

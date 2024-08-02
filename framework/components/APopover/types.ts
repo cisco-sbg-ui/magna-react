@@ -26,6 +26,8 @@ export type APopoverProps<C extends React.ElementType> = Override<
     anchorRef: AAnchorRef;
     /**
      * Toggles the behavior of focusing the menu on open.
+     *
+     * @defaultValue `true`
      */
     focusOnOpen?: boolean;
     /**
@@ -42,6 +44,8 @@ export type APopoverProps<C extends React.ElementType> = Override<
     placement?: APlacement;
     /**
      * Sets the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role.
+     *
+     * @defaultValue `"menu"`
      */
     role?: React.AriaRole;
   }

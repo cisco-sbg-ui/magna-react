@@ -12,6 +12,8 @@ export type AActivityTimelineProps = Override<
      * Indicates that the timeline has items that are in a random order, i.e., not sorted.
      * This ultimately determines if the timeline renders as a <ol> or <ul>.
      * The default is an ordered list.
+     *
+     * @defaultValue `false`
      */
     hasUnorderedItems?: boolean;
   }

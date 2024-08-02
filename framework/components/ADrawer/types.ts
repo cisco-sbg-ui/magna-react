@@ -51,16 +51,22 @@ export type ADrawerProps<C extends React.ElementType> = Override<
        * still cover adjacent content as it opens. A drawer specified as relative is
        * useful when the drawer should be contained within a parent, but _not_ cover
        * its adjacent content, i.e., push its adjacent content aside dynamically.
+       *
+       *   @defaultValue `"fixed"`
        */
       position?: ADrawerPosition;
       /**
        * The direction in which the drawer should slide-in from.
+       *
+       *  @defaultValue `"left"`
        */
       slideIn?: ADrawerSlideIn;
       /**
        * Determines if the drawer should render as a smaller size. The default
        * is 50px, but you can update this using a maxWidth CSS property on the drawer
        * (either via. style prop or a custom class).
+       *
+       *  @defaultValue `false`
        */
       slim?: boolean;
       /**
@@ -73,6 +79,16 @@ export type ADrawerProps<C extends React.ElementType> = Override<
        * @deprecated
        */
       closeTitle?: string;
+      /**
+       * TODO needs description
+       *  @defaultValue `true`
+       */
+      withTransitions?: boolean;
+      /**
+       *  TODO needs description
+       *  @defaultValue `false`
+       */
+      usesDrawerToggleHook?: boolean;
 
       style?: React.CSSProperties;
     }

@@ -7,6 +7,8 @@ export type ADividerProps = Override<
   {
     /**
      * Toggles the light variant.
+     *
+     *  @defaultValue `false`
      */
     light?: boolean;
     /**
@@ -15,10 +17,14 @@ export type ADividerProps = Override<
     lighter?: boolean;
     /**
      * Toggles the strong variant.
+     *
+     *  @defaultValue `false`
      */
     strong?: boolean;
     /**
      * Sets the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role.
+     *
+     *  @defaultValue `separator`
      */
     role?: ADividerRole;
   }

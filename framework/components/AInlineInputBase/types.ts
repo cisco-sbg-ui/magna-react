@@ -9,6 +9,8 @@ export type AInlineInputBaseProps<C extends React.ElementType> =
     {
       /**
        * Props passed to the input component
+       *
+       * @defaultValue `{}`
        */
       inputComponentProps?: React.ComponentProps<C>;
       /**
@@ -21,14 +23,20 @@ export type AInlineInputBaseProps<C extends React.ElementType> =
       disabled?: boolean;
       /**
        * Sets `required` on the input, and makes the value required
+       *
+       * @defaultValue `false`
        */
       required?: boolean;
       /**
        * The input's `value` attribute.
+       *
+       * @defaultValue `""`
        */
       value?: AInlineInputBaseValue;
       /**
        * The input's `placeholder` attribute.
+       *
+       * @defaultValue `"..."`
        */
       placeholder?: string;
       /**
@@ -49,7 +57,13 @@ export type AInlineInputBaseProps<C extends React.ElementType> =
       small?: boolean;
       /**
        * Show a tooltip on the displayed value
+       *
+       * @defaultValue `false`
        */
       showTooltip?: boolean;
+      /**
+       * Pass props to the tooltip component
+       */
+      tooltipProps?: React.ComponentProps<C>;
     }
   >;

@@ -7,14 +7,18 @@ export type AAlertProps = Override<
   {
     /**
      * Toggles the close button.
+     * @defaultValue `true`
      */
     dismissible?: boolean;
     /**
      * DEPRECATED VERSION OF DISMISSIBLE PROP.
+     * @deprecated Use correct spelling of `dismissible` instead.
      */
     dismissable?: boolean;
     /**
      * Specifies the display variant.
+     *
+     * @defaultValue `"info"`
      */
     level?: AAlertLevel;
     /**

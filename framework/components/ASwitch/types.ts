@@ -13,14 +13,20 @@ export type ASwitchProps = Override<
   {
     /**
      * Toggles the `checked` state.
+     *
+     * @defaultValue `false`
      */
     checked?: boolean;
     /**
      * Toggles the `disabled` state.
+     *
+     * @defaultValue `false`
      */
     disabled?: boolean;
     /**
      * Sets the hint content.
+     *
+     * @defaultValue `[]`
      */
     hints?: AHintsType;
     /**

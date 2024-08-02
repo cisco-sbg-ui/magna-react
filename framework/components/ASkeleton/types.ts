@@ -17,10 +17,14 @@ export type ASkeletonProps = Override<
     horizontal?: boolean;
     /**
      * Show a shine keyframe animation to indicate loading
+     *
+     * @defaultValue `true`
      */
     animated?: boolean;
     /**
      * Use a <span> wrapper instead of `APanel`
+     *
+     * @defaultValue `false`
      */
     hidePanelBackdrop?: boolean;
   }

@@ -66,6 +66,8 @@ export type AInputBaseProps = Override<
     surfaceRef?: AInputBaseSurfaceRef;
     /**
      * Applies a validation state.
+     *
+     * @defaultValue `"default"`
      */
     validationState?: AInputBaseValidationState;
     /**

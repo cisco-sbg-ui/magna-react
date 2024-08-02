@@ -11,6 +11,8 @@ export type AMountProps<C extends React.ElementType> =
       wrapClassName?: string;
       /**
        * Creates a new boundary for any children that render inside the container.
+       *
+       * @defaultValue `false`
        */
       withNewWrappingContext?: boolean;
     }

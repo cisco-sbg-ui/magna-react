@@ -29,6 +29,8 @@ export type ASimpleTableProps = Override<
     spacious?: boolean;
     /**
      * Enable sticky header
+     *
+     * @defaultValue `false`
      */
     stickyHeader?: boolean;
   }

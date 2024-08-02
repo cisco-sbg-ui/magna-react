@@ -47,10 +47,14 @@ export type AAutocompleteProps = Override<
     itemTemplate?: AAutocompleteItemTemplate;
     /**
      * The property name of the option text when `items` is an array of objects.
+     *
+     * @defaultValue `"text"`
      */
     itemText?: string;
     /**
      * The property name of the option value when `items` is an array of objects.
+     *
+     * @defaultValue `"value"`
      */
     itemValue?: string;
     /**

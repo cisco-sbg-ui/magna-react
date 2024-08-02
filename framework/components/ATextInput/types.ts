@@ -130,6 +130,8 @@ export type ATextInputProps = Override<
     rules?: ATextInputRules[];
     /**
      * Toggles the spinner for number type inputs.
+     *
+     * @defaultValue `true`
      */
     spinner?: boolean;
     /**
@@ -138,6 +140,8 @@ export type ATextInputProps = Override<
     step?: number;
     /**
      * Change the input type to take advantage of native behavior.
+     *
+     * @defaultValue `"text"`
      */
     type?: ATextInputType;
     /**
@@ -146,11 +150,19 @@ export type ATextInputProps = Override<
     validateOnBlur?: boolean;
     /**
      * Applies a validation state.
+     *
+     * @defaultValue `"default"`
      */
     validationState?: ATextInputValidationState;
     /**
      * The input's `value` attribute.
      */
     value?: ATextInputValue;
+    /**
+     * Skips internal and/or extra validation rules
+     *
+     * @defaultValue `false`
+     */
+    skipValidation?: boolean;
   }
 >;
