@@ -11,8 +11,8 @@ const ACardBasic = forwardRef(
       component,
       state,
       stateCustomColor,
-      lifted,
-      interactive,
+      lifted = false,
+      interactive = false,
       selected,
       ...rest
     },

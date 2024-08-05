@@ -27,6 +27,7 @@ export type AAlertProps = Override<
     onClose?: (e: React.MouseEvent | React.KeyboardEvent) => void;
     /**
      * Unset default width: 100% on the alert.
+     * @defaultValue `false`
      */
     fitContentWidth?: boolean;
   }

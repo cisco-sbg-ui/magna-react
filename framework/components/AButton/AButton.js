@@ -14,7 +14,7 @@ const AButton = forwardRef(
       className: propsClassName,
       component,
       destructive = false,
-      disabled,
+      disabled = false,
       href,
       icon,
       small = false,

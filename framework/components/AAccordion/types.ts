@@ -12,19 +12,26 @@ export type AAccordionHeaderTitleProps = Override<
   {
     /**
      * Toggles the chevron.
+     *
+     * @defaultValue `true`
      */
     chevron?: boolean;
     /**
      * Sets an alternative collapse icon.
+     *
+     * @defaultValue `"caret-up"`
      */
     collapseIcon?: string;
     /**
      * Sets an alternative expand icon.
+     *
+     * @defaultValue `"caret-down"`
      */
     expandIcon?: string;
     /**
      * Decide where the icon will be placed in relation to the title.
-     * Default is "right".
+     *
+     * @defaultValue `"right"`
      */
     iconPlacement?: "right" | "left";
 
@@ -40,6 +47,7 @@ export type AAccordionPanelProps = Override<
   {
     /**
      * Sets the default collapsed state.
+     * @defaultValue `true`
      */
     collapsed?: boolean;
     panelKey?: string;

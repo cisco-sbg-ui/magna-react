@@ -8,7 +8,7 @@ import "./ADrawerHeader.scss";
  * The area displayed at the top of the drawer.
  */
 const ADrawerHeader = forwardRef(
-  ({children, className: propsClassName, divider, ...rest}, ref) => {
+  ({children, className: propsClassName, divider = false, ...rest}, ref) => {
     let className = "a-drawer__header";
 
     if (propsClassName) {

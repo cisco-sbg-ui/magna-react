@@ -85,7 +85,11 @@ export type ADrawerProps<C extends React.ElementType> = Override<
        */
       withTransitions?: boolean;
       /**
-       *  TODO needs description
+       * When using the `useDrawerToggle` hook, set this to true. This allows the current
+       * children to remain visible while the drawer is sliding out, and the new children
+       * to show when the drawer slides back in.
+       *
+       * This is a manual open to avoid interference with other drawer management code.
        *  @defaultValue `false`
        */
       usesDrawerToggleHook?: boolean;
@@ -106,6 +110,8 @@ export type ADrawerHeaderProps = Override<
     className?: string;
     /**
      * Adds a divider below the header content
+     *
+     * @defaultValue `false`
      */
     divider?: boolean;
   }
@@ -124,10 +130,14 @@ export type ADrawerFooterProps = Override<
     className?: string;
     /**
      * Replace the default box shadow with an ADivider above the footer
+     *
+     * @defaultValue `"shadow"`
      */
     variant?: ADrawerFooterVariant;
     /**
      * Wrap the component children in an ADrawerContent element
+     *
+     * @defaultValue `true`
      */
     withPadding?: boolean;
   }

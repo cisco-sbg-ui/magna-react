@@ -110,7 +110,9 @@ export type ADataTableProps<KEY extends string, DATA> = Override<
      * @defaultValue `false`
      */
     stickyHeader?: boolean;
-
+    /**
+     * Disables pointer events on the table
+     */
     disabled?: boolean;
   }
 >;

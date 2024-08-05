@@ -27,8 +27,16 @@ export type ACardBasicProps<C extends React.ElementType> =
       stateCustomColor?: string;
       /**
        * This sets the shadow on the card
+       *
+       * @defaultValue `false`
        */
       lifted?: boolean;
+      /**
+       * Sets the card to interactive, adding hover and focus styling.
+       *
+       * @defaultValue `false`
+       */
+      interactive?: boolean;
       type?: "dialog" | "card";
     }
   >;
@@ -40,6 +48,8 @@ export type ACardContainerProps<C extends React.ElementType> =
     {
       /**
        * Removes the shadow from the card container.
+       *
+       * @defaultValue `false`
        */
       flat?: boolean;
     }
@@ -58,6 +68,8 @@ export type ACardItemProps = Override<
   {
     /**
      * Item will fill in the remaining width
+     *
+     * @defaultValue `false`
      */
     stretched?: boolean;
     /**
