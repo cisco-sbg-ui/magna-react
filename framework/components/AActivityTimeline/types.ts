@@ -38,6 +38,8 @@ export type AActivityTimelineItemProps = Override<
      * Determines if the timeline items renders as a collapsible
      * accordion. To set the initial collapsed state of the component,
      * use the `defaultCollapsed` prop.
+     *
+     * @defaultValue `false`
      */
     isCollapsible?: boolean;
 
@@ -69,6 +71,8 @@ export type AActivityTimelineItemProps = Override<
      *
      * If an invalid status is passed, then the "neutral" status is used
      * as a fallback.
+     *
+     * @defaultValue `"neutral"`
      */
     status?: AActivityTimelineItemStatus;
 

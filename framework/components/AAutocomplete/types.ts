@@ -35,6 +35,8 @@ export type AAutocompleteProps = Override<
     clearable?: boolean;
     /**
      * Toggles the disabled state.
+     *
+     * @defaultValue `false`
      */
     disabled?: boolean;
     /**

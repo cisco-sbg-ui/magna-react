@@ -4,10 +4,15 @@ import React, {forwardRef} from "react";
 import "./ACard.scss";
 
 const ACardContainer = forwardRef(
-  ({children, className: propsClassName, component, flat, ...rest}, ref) => {
+  (
+    {children, className: propsClassName, component, flat = false, ...rest},
+    ref
+  ) => {
     let className = "a-card-container";
 
-    if (flat) className += " a-card-container--flat";
+    if (flat) {
+      className += " a-card-container--flat";
+    }
 
     if (propsClassName) {
       className += ` ${propsClassName}`;

@@ -36,6 +36,8 @@ export type AComboboxProps<T extends AComboboxItem> = Override<
     clearable?: boolean;
     /**
      * Toggles the disabled state.
+     *
+     * @defaultValue `false`
      */
     disabled?: boolean;
     /**
@@ -115,6 +117,8 @@ export type AComboboxProps<T extends AComboboxItem> = Override<
     readOnly?: boolean;
     /**
      * Toggles a default rule for required values.
+     *
+     * @defaultValue `false`
      */
     required?: boolean;
     /**

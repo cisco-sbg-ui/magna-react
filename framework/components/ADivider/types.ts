@@ -12,10 +12,6 @@ export type ADividerProps = Override<
      */
     light?: boolean;
     /**
-     * Toggles the lighter variant.
-     */
-    lighter?: boolean;
-    /**
      * Toggles the strong variant.
      *
      *  @defaultValue `false`

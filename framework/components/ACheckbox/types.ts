@@ -24,7 +24,7 @@ export type ACheckboxProps = Override<
     /**
      * Specify the checkbox color. Accepts unknown stock color or CSS color value. The default value is cisco-blue base.
      */
-    color?: unknown;
+    color?: string;
     /**
      * Toggles the `disabled` state.
      *
@@ -47,6 +47,8 @@ export type ACheckboxProps = Override<
     onClick?: (e: React.MouseEvent | React.KeyboardEvent) => void;
     /**
      * Toggles a default rule for required values.
+     *
+     * @defaultValue `false`
      */
     required?: boolean;
     /**

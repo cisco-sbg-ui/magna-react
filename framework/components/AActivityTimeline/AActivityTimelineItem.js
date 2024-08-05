@@ -30,7 +30,7 @@ const AActivityTimelineItem = forwardRef((props, ref) => {
     className: propsClassName,
     defaultCollapsed,
     isCollapsed: propsIsCollapsed,
-    isCollapsible,
+    isCollapsible = false,
     onToggle,
     status = "neutral",
     time,

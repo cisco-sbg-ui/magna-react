@@ -9,6 +9,8 @@ export type AButtonProps<C extends React.ElementType> =
     {
       /**
        * Toggles the `disabled` state.
+       *
+       * @defaultValue `false`
        */
       disabled?: boolean;
       /**
