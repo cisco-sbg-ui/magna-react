@@ -7,6 +7,8 @@ export type AListProps<C extends React.ElementType> =
     {
       /**
        * Toggles the hover visualization on list items.
+       *
+       * @defaultValue `true`
        */
       hoverable?: boolean;
       /**

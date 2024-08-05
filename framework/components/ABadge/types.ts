@@ -7,6 +7,8 @@ export type ABadgeProps = Override<
   {
     /**
      * Specify the checkbox color. Accepts unknown stock color or CSS color value.
+     *
+     * TODO type this is incorrect and instead uses a custom runtime validation function. We need to figure this one out.
      */
     color?: string;
     /**
@@ -15,14 +17,20 @@ export type ABadgeProps = Override<
     content?: React.ReactNode;
     /**
      * Toggles whether the badge displays.
+     *
+     * @defaultValue `true`
      */
     display?: boolean;
     /**
      * Use to override the default `aria-label`.
+     *
+     * @defaultValue `"badge"`
      */
     label?: string;
     /**
      * Set the severity level, ignores the color prop
+     *
+     * @defaultValue `"error"`
      */
     level?: ABadgeLevel;
     small?: boolean;

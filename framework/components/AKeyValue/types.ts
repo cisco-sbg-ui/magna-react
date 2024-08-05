@@ -11,6 +11,8 @@ export type AKeyValueProps = Override<
     tooltip?: React.ReactNode;
     /**
      * Sets the icon of the help tooltip
+     *
+     * @defaultValue `"information"`
      */
     icon?: string;
     /**

@@ -17,6 +17,8 @@ export type ADatePickerProps = Override<
      * not yet selected, you should pass in the date as `null`.
      * @example supplying the starting date with an unselected ending date
      * value={[new Date(2022, 2, 28), null]}
+     *
+     *  @defaultValue `new Date()`
      */
     value?: ADatePickerValue;
     /**
@@ -47,10 +49,14 @@ export type ADateRangePickerProps = Override<
      * not yet selected, you should pass in the date as `null`.
      * @example supplying the starting date with an unselected ending date
      * value={[new Date(2022, 2, 28), null]}
+     *
+     *  @defaultValue `new Date()`
      */
     initialRange?: ADateRangePickerInitialRange;
     /**
      * Limit selection to a minimum number of days
+     *
+     *  @defaultValue `null`
      */
     maxDays?: number;
     /**

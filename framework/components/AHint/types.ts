@@ -11,6 +11,8 @@ export type AHintProps = Override<
     hint?: React.ReactNode;
     /**
      * Applies a validation state.
+     *
+     * @defaultValue `"default"`
      */
     validationState?: AHintValidationState;
   }

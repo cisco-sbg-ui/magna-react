@@ -1,6 +1,7 @@
 import {Override} from "../../types";
 import {AHintsType} from "../AFieldBase/types";
 import {AInputBaseProps} from "../AInputBase/types";
+import {ATooltipProps} from "../ATooltip";
 
 export type AMultiSelectItem = string | Record<string, unknown>;
 export type AMultiSelectItems = string[] | Record<string, unknown>[];
@@ -111,11 +112,37 @@ export type AMultiSelectProps = Override<
     validationState?: AMultiSelectValidationState;
     /**
      * Sets the text input value.
+     *
+     * @defaultValue `[]`
      */
     value?: unknown[];
     /**
      * Function to filter items when the input value changes
      */
     filterFunction?: (...args: unknown[]) => unknown;
+    /**
+     * Empty state message - NOTE: custom strings should be provided through an i18n library
+     *
+     * @defaultValue `"No matches found"`
+     */
+    noDataMessage?: string;
+    /**
+     * Applies tag style to input. Default is counter style.
+     *
+     * @defaultValue `false`
+     */
+    withTags?: boolean;
+    /**
+     * Skips internal and/or extra validation rules
+     *
+     * @defaultValue `false`
+     */
+    skipValidation?: boolean;
+    /**
+     * Pass props to the tag tooltip. Can pass any props for ATooltip, including `children`
+     * TODO I guessed - Not sure how to type this one.
+     * @defaultValue `{}`
+     */
+    counterTooltipProps?: ATooltipProps;
   }
 >;

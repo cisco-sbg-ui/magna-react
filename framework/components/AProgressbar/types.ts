@@ -24,6 +24,8 @@ export type AProgressbarProps = Override<
     displayText?: boolean;
     /**
      * The percent completed.
+     *
+     * @defaultValue `0`
      */
     percentage?: number;
     /**

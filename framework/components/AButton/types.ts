@@ -41,24 +41,52 @@ export type AButtonProps<C extends React.ElementType> =
       tertiaryAlt?: boolean;
       /**
        * The button type.
+       *
+       * @defaultValue `"button"`
        */
       type?: AButtonType;
       /**
        * Destructive - button for destructive action, should be used with confirm dialog/modal when clicked
+       *
+       *  @defaultValue `false`
        */
       destructive?: boolean;
       /**
-       * Apply Magnetic small size styles vs only re-skin styles, defaults to false
+       * Apply Magnetic small size styles vs only re-skin styles
+       *
+       * @defaultValue `false`
        */
       small?: boolean;
       /**
-       * Apply Magnetic medium size styles vs only re-skin styles, defaults to false
+       * Apply Magnetic medium size styles vs only re-skin styles.
+       *
+       * @defaultValue `true`
        */
       medium?: boolean;
       /**
        * Automatically add a loading spinner to the button
+       *
+       * @defaultValue `false`
        */
       loading?: boolean;
+      /**
+       * Removes padding on any button
+       *
+       * @defaultValue `false`
+       */
+      noPadding?: boolean;
+      /**
+       * Applies dropdown icon style
+       *
+       * @defaultValue `false`
+       */
+      dropdown?: boolean;
+      /**
+       * Required with dropdown prop to toggle dropdown icon
+       *
+       * @defaultValue `false`
+       */
+      open?: boolean;
       onClick?: React.MouseEventHandler;
       "data-testid"?: string;
     }

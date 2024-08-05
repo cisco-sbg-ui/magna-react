@@ -59,14 +59,20 @@ export type AComboboxProps<T extends AComboboxItem> = Override<
     itemTemplate?: AComboboxItemTemplate;
     /**
      * The property name of the option text when `items` is an array of objects.
+     *
+     * @defaultValue `"text"`
      */
     itemText?: string;
     /**
      * The property name of the option value when `items` is an array of objects.
+     *
+     * @defaultValue `"value"`
      */
     itemValue?: string;
     /**
      * An array of select options.
+     *
+     * @defaultValue `[]`
      */
     items?: T[];
     /**
@@ -127,5 +133,17 @@ export type AComboboxProps<T extends AComboboxItem> = Override<
      * Sets the text input value.
      */
     value?: string;
+    /**
+     * Empty state message - NOTE: custom strings should be provided through an i18n library
+     *
+     * @defaultValue `"No matches found"`
+     */
+    noDataMessage?: string;
+    /**
+     * Skips internal and/or extra validation rules
+     *
+     * @defaultValue `false`
+     */
+    skipValidation?: boolean;
   }
 >;

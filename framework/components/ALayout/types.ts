@@ -120,6 +120,8 @@ export type AContainerProps = Override<
   {
     /**
      * Removes the maximum width viewpoint restriction.
+     *
+     * @defaultValue `false`
      */
     fluid?: boolean;
   }
@@ -130,6 +132,8 @@ export type ARowProps = Override<
   {
     /**
      * Removes gutters.
+     *
+     * @defaultValue `false`
      */
     noGutters?: boolean;
   }

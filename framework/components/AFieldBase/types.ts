@@ -53,6 +53,8 @@ export type AFieldBaseProps = Override<
     infoTooltip?: string;
     /**
      * Overrides props of `ATooltip` used to display `infoTooltip`. See `ATooltip.propTypes`.
+     *
+     * @defaultValue `{}`
      */
     infoTooltipProps?: ATooltipProps;
     /**
@@ -61,7 +63,15 @@ export type AFieldBaseProps = Override<
     onClickLabel?: (...args: unknown[]) => unknown;
     /**
      * Applies a validation state.
+     *
+     * @defaultValue `"default"`
      */
     validationState?: AFieldBaseValidationState;
+    /**
+     * Hides label visually, but allows it to remain accessible to screen readers.
+     *
+     * @defaultValue `false`
+     */
+    labelHidden?: boolean;
   }
 >;

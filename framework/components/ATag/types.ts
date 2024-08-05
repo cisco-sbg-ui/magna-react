@@ -42,6 +42,8 @@ export type ATagProps<C extends React.ElementType> =
         | "accentK";
       /**
        * Option for custom icon, can pass through children or directly into props
+       *
+       * @defaultValue `false`
        */
       customIcon?: boolean | React.ReactNode;
       "data-testid"?: string;

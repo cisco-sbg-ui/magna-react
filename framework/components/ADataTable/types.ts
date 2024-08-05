@@ -55,7 +55,11 @@ export type ADataTableProps<KEY extends string, DATA> = Override<
      * Sets the table data.
      */
     items: Array<DATA | {cellLoading: true}>;
-
+    /**
+     * Keyboard arrow support for table row selection
+     *
+     *     @defaultValue `null`
+     */
     keyboardArrowSupport?: {
       onKeyboardSelect: (
         selection: {item: DATA; index: number},
@@ -84,6 +88,8 @@ export type ADataTableProps<KEY extends string, DATA> = Override<
     sort?: ADataTableSort<KEY>;
     /**
      * Disables third click of header sort icon to unset sorting.
+     *
+     * @defaultValue `false`
      */
     disableSortReset?: boolean;
     /**
@@ -100,6 +106,8 @@ export type ADataTableProps<KEY extends string, DATA> = Override<
     truncateHeaders?: boolean;
     /**
      * Enable sticky header
+     *
+     * @defaultValue `false`
      */
     stickyHeader?: boolean;
 

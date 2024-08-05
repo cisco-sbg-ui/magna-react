@@ -17,6 +17,8 @@ export type ACheckboxProps = Override<
     id?: string;
     /**
      * Toggles the `checked` state.
+     *
+     *  @defaultValue `false`
      */
     checked?: boolean;
     /**
@@ -25,6 +27,8 @@ export type ACheckboxProps = Override<
     color?: unknown;
     /**
      * Toggles the `disabled` state.
+     *
+     *  @defaultValue `false`
      */
     disabled?: boolean;
     /**
@@ -33,6 +37,8 @@ export type ACheckboxProps = Override<
     hints?: AHintsType;
     /**
      * Toggles the `indeterminate` state.
+     *
+     *  @defaultValue `false`
      */
     indeterminate?: boolean;
     /**
@@ -64,9 +70,17 @@ export type ACheckboxProps = Override<
      */
     small?: boolean;
     /**
-     * Wrap the checkbox in the <label> tag. Defaults to true
+     * Wrap the checkbox in the <label> tag.
+     *
+     * @defaultValue `true`
      */
     withLabel?: boolean;
+    /**
+     * Skips internal and/or extra validation rules
+     *
+     * @defaultValue `false`
+     */
+    skipValidation?: boolean;
     [dataAttribute: `data-${string}`]: string;
   }
 >;
