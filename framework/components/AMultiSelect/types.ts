@@ -121,7 +121,7 @@ export type AMultiSelectProps = Override<
      */
     filterFunction?: (...args: unknown[]) => unknown;
     /**
-     * Empty state message
+     * Empty state message - NOTE: custom strings should be provided through an i18n library
      *
      * @defaultValue `"No matches found"`
      */

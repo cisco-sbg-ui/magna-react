@@ -134,7 +134,7 @@ export type AComboboxProps<T extends AComboboxItem> = Override<
      */
     value?: string;
     /**
-     * Empty state message
+     * Empty state message - NOTE: custom strings should be provided through an i18n library
      *
      * @defaultValue `"No matches found"`
      */

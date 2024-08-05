@@ -12,7 +12,7 @@ export type APaginatorProps = Override<
      */
     onResultsPerPageChange?: (resultsPerPage: number) => void;
     /**
-     * Sets the current page.
+     * Sets the current page. APaginator indexes at 0 which differs from APagination components.
      *
      * @defaultValue `0`
      */
