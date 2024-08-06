@@ -29,6 +29,8 @@ const AAlert = forwardRef<HTMLDivElement, AAlertProps>(
       }
     };
 
+    const isDismissible = !dismissible || !dismissable ? false : true;
+
     let className = `a-alert focus-box-shadow a-alert--state-`,
       icon = "";
 
@@ -62,7 +64,7 @@ const AAlert = forwardRef<HTMLDivElement, AAlertProps>(
       <div {...rest} role="alert" ref={ref} className={className}>
         <AIcon className="a-alert__icon a-alert__icon--level">{icon}</AIcon>
         <div className="a-alert__message">{children}</div>
-        {(dismissible || dismissable) && (
+        {isDismissible && (
           <AIcon
             className="a-alert__icon focus-box-shadow a-alert__icon--close"
             onClick={(e) => onClose && onClose(e)}
