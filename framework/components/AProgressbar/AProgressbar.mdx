@@ -46,29 +46,46 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
 #### Status
 
 <Playground
-  code={`<div className="d-flex flex-column">
-  <h2>Positive</h2>
-   <AProgressbar status="positive" percentage={100} />
-   <AProgressbar status="negative" percentage={50} />
-  With Text: <AProgressbar displayText percentage={50} />
-  Disabled: <AProgressbar disabled percentage={50} />
-  Striped: <AProgressbar striped percentage={50} />
-  With Text and Disabled:{" "}
-  <AProgressbar disabled displayText percentage={50} />
-  With Text and Striped: <AProgressbar
-    striped
-    displayText
-    percentage={50}
-  />
-  Disabled and Striped: <AProgressbar striped disabled percentage={50} />
-  With Text and Disabled and Striped: <AProgressbar
-    displayText
-    striped
-    disabled
-    percentage={50}
-  />
-  Indeterminate: <AProgressbar
-    indeterminate />
+  code={`
+  <div>
+    <div className="mb-5">
+      <h3>Active</h3>
+      <AProgressbar status="active" percentage={50} />
+      <h3>Success</h3>
+      <AProgressbar status="success" percentage={100} />
+      <h3>Error</h3>
+      <AProgressbar status="error" percentage={50} />
+    </div>
+
+    <div className="mb-5">
+      <AProgressbar status="active" label="Label" percentage={50} />
+      <AProgressbar status="success" label="Label" percentage={100} />
+      <AProgressbar status="error" label="Label" percentage={50} />
+    </div>
+
+    <div className="mb-5">
+      <AProgressbar
+        status="active"
+        stacked
+        helperText="Helper text"
+        label="Label"
+        percentage={50}
+      />
+    </div>
+
+Disabled: <AProgressbar disabled label="Label" percentage={50} />
+
+Striped: <AProgressbar striped label="Label" percentage={50} />
+With Text and Disabled: <AProgressbar disabled displayText percentage={50} />
+With Text and Striped: <AProgressbar striped displayText percentage={50} />
+Disabled and Striped: <AProgressbar striped disabled percentage={50} />
+With Text and Disabled and Striped: <AProgressbar
+  displayText
+  striped
+  disabled
+  percentage={50}
+/>
+Indeterminate: <AProgressbar indeterminate />
 
 </div>
 `}

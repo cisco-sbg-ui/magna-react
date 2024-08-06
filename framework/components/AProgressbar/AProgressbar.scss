@@ -5,7 +5,6 @@ $progressbar-height-medium: 8px;
 $progressbar-bg-height-small: 10px;
 $progressbar-bg-height-medium: 16px;
 $progressbar-bg-height-large: 22px;
-$progressbar-margin: 20px 0;
 $progressbar-border-radius: 6px;
 $progressbar-fill-height: 100%;
 $progressbar-fill-border-radius: 6px;
@@ -17,13 +16,31 @@ $progressbar-transition: width 0.6s ease !default;
 .a-progressbar {
   display: flex;
   align-items: center;
-  margin: $progressbar-margin;
+
+  &__helper-text {
+    p {
+      margin: 5px 0 0 0;
+    }
+  }
+
+  .bar-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 2px;
+  }
 
   &__bar {
     border-radius: $progressbar-border-radius;
     height: $progressbar-height-medium;
     width: 100%;
     background: var(--base-border-default);
+  }
+
+  &__stacked {
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
   }
 
   &--size-small {
@@ -49,10 +66,16 @@ $progressbar-transition: width 0.6s ease !default;
     display: block;
     height: $progressbar-fill-height;
     border-radius: $progressbar-fill-border-radius;
-    background-color: var(--positive-border-default);
+    &.success {
+      background-color: var(--positive-border-default);
+    }
 
-    &.negative {
+    &.error {
       background-color: var(--negative-border-default);
+    }
+
+    &.active {
+      background-color: var(--info-border-default);
     }
   }
 
@@ -92,8 +115,8 @@ $progressbar-transition: width 0.6s ease !default;
   }
 
   &__label {
-    display: inline-block;
-    margin-right: 4px;
+    margin-right: 12px;
+    font-weight: 600;
   }
 
   @keyframes a-progress-bar-indeterminate {
