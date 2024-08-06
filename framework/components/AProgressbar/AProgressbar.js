@@ -7,9 +7,13 @@ import "./AProgressbar.scss";
 const baseClass = "a-progressbar";
 
 const STATUS_ICON = {
-  positive: "positive",
-  negative: "negative"
+  success: "positive",
+  error: "negative"
 };
+
+// const PROGRESSBAR_ALIGNMENT = {
+//   stacked: ""
+// }
 
 const AProgressbar = forwardRef(
   (
@@ -22,18 +26,22 @@ const AProgressbar = forwardRef(
       animationDuration,
       size = "medium",
       disabled,
-      displayText,
+      helperText,
       percentage = 0,
       striped,
       indeterminate,
       status,
+      label,
+      stacked,
+      centered,
       ...rest
     },
     ref
   ) => {
     let className = baseClass,
       barClass = `${baseClass}__bar`,
-      fillClass = `${baseClass}__fill`;
+      fillClass = `${baseClass}__fill`,
+      labelClass = `${baseClass}__label`;
 
     className += ` ${baseClass}--size-${size}`;
 
@@ -62,8 +70,16 @@ const AProgressbar = forwardRef(
       fillClass += ` ${propsFillClassName}`;
     }
 
-    if (status === "negative") {
-      fillClass += ` negative`;
+    if (status) {
+      fillClass += ` ${status}`;
+    }
+
+    if (stacked) {
+      className += ` ${baseClass}__stacked`;
+    }
+
+    if (centered) {
+      className += ` ${baseClass}__centered`;
     }
 
     const fixedPercentage = Math.max(0, Math.min(percentage, 100));
@@ -78,23 +94,32 @@ const AProgressbar = forwardRef(
         aria-valuenow={fixedPercentage}
         role="progressbar"
       >
-        {displayText && (
-          <span className={`${baseClass}__label`}>{fixedPercentage}%</span>
+        {label && (
+          <div className={labelClass}>
+            <label>{label}</label>
+          </div>
         )}
-        <div className={barClass} style={barStyle}>
-          <div
-            className={fillClass}
-            style={{
-              width: `${fixedPercentage}%`,
-              animationDuration,
-              ...fillStyle
-            }}
-          ></div>
+        <div className="bar-container">
+          <div className={barClass} style={barStyle}>
+            <div
+              className={fillClass}
+              style={{
+                width: `${fixedPercentage}%`,
+                animationDuration,
+                ...fillStyle
+              }}
+            ></div>
+          </div>
+          <div className="d-flex" style={{marginLeft: "12px"}}>
+            {status && <AIcon size={20}>{STATUS_ICON[status]}</AIcon>}
+            {status === "active" && <span>{percentage}%</span>}
+          </div>
         </div>
-        {status && (
-          <AIcon size="16px" style={{marginLeft: "12px"}}>
-            {STATUS_ICON[status]}
-          </AIcon>
+
+        {helperText && (
+          <div className={`${baseClass}__helper-text`}>
+            <p>{helperText}</p>
+          </div>
         )}
       </div>
     );
@@ -102,6 +127,7 @@ const AProgressbar = forwardRef(
 );
 
 AProgressbar.propTypes = {
+  label: PropTypes.string,
   /**
    * Determines the duration of the progress bar (if animated).
    * @example 0.3s
@@ -116,9 +142,9 @@ AProgressbar.propTypes = {
    */
   disabled: PropTypes.bool,
   /**
-   * Toggles whether the percentage is displayed additionally as text.
+   * Includes a subtext, also sets label position to top
    */
-  displayText: PropTypes.bool,
+  helperText: PropTypes.string,
   /**
    * The percent completed.
    */
