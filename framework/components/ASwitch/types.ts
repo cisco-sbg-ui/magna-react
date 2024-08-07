@@ -2,7 +2,7 @@ import {Override} from "../../types";
 import {AHintsType} from "../AFieldBase/types";
 
 export interface ASwitchRules {
-  test?: (...args: unknown[]) => unknown;
+  test?: (...args: any[]) => unknown;
   level?: string;
 }
 

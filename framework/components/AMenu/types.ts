@@ -27,7 +27,7 @@ export type AMenuProps<C extends React.ElementType> = Override<
     /**
      * Handles the request to close the menu.
      */
-    onClose?: (...args: unknown[]) => unknown;
+    onClose?: (...args: any[]) => unknown;
     /**
      * Toggles the `open` state.
      */

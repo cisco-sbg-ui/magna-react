@@ -27,6 +27,6 @@ export type ATreeProps = Override<
     /**
      * Handles change events on the items array.
      */
-    onChange?: (...args: unknown[]) => unknown;
+    onChange?: (...args: any[]) => unknown;
   }
 >;

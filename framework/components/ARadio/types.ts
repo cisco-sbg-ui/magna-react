@@ -22,7 +22,7 @@ export type ARadioProps = Override<
     /**
      * A callback for handling the click event.
      */
-    onClick?: (...args: unknown[]) => unknown;
+    onClick?: (...args: any[]) => unknown;
     /**
      * The input's value.
      */

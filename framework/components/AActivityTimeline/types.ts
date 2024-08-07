@@ -64,7 +64,7 @@ export type AActivityTimelineItemProps = Override<
      * the state of the component (i.e. passing `isCollapsed`), then
      * this is the right place to toggle said state.
      */
-    onToggle?: (...args: unknown[]) => unknown;
+    onToggle?: (...args: any[]) => unknown;
 
     /**
      * Determines which icon to render in the timeline item's bullet.

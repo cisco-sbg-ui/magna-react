@@ -54,7 +54,7 @@ export type AContextualNotificationMenuProps<C extends React.ElementType> =
       /**
        * Handles the request to close the menu.
        */
-      onClose?: (...args: unknown[]) => unknown;
+      onClose?: (...args: any[]) => unknown;
       /**
        * Toggles the `open` state.
        */

@@ -42,7 +42,7 @@ export type AStepProps = Override<
     /**
      * Callback to set step as active
      */
-    setActiveStep?: (...args: unknown[]) => unknown;
+    setActiveStep?: (...args: any[]) => unknown;
     /**
      * Set vertical view
      */

@@ -11,7 +11,7 @@ export type ASelectItemTemplate<T extends ASelectItem> = React.ComponentType<{
   "aria-selected": boolean;
   children: React.ReactNode;
   className: string;
-  onClick: (...args: unknown[]) => unknown;
+  onClick: (...args: any[]) => unknown;
   role: React.AriaRole;
   selected: boolean;
   value: string;
@@ -24,7 +24,7 @@ export type ASelectDisplayTemplate<T extends ASelectItem> =
   }>;
 
 export interface ASelectRules {
-  test?: (...args: unknown[]) => unknown;
+  test?: (...args: any[]) => unknown;
   level?: string;
 }
 

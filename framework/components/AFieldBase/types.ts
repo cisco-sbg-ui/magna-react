@@ -60,7 +60,7 @@ export type AFieldBaseProps = Override<
     /**
      * Handles the label's `click` event.
      */
-    onClickLabel?: (...args: unknown[]) => unknown;
+    onClickLabel?: (...args: any[]) => unknown;
     /**
      * Applies a validation state.
      *
