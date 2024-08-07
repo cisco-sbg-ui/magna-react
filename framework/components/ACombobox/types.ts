@@ -11,13 +11,13 @@ export type AComboboxItemTemplate = React.ComponentType<{
   "aria-selected": boolean;
   children: React.ReactNode;
   className: string;
-  onClick: (...args: unknown[]) => unknown;
+  onClick: (...args: any[]) => unknown;
   role: React.AriaRole;
   value: string;
 }>;
 
 export interface AComboboxRules {
-  test?: (...args: unknown[]) => unknown;
+  test?: (...args: any[]) => unknown;
   level?: string;
 }
 
@@ -98,7 +98,7 @@ export type AComboboxProps<T extends AComboboxItem> = Override<
     /**
      * Handles the `clear` event (for supplemental handling).
      */
-    onClear?: (...args: unknown[]) => unknown;
+    onClear?: (...args: any[]) => unknown;
     /**
      * Handles the `selected` event for when a selection is chosen in the dropdown.
      */

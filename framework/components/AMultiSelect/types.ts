@@ -12,13 +12,13 @@ export type AMultiSelectItemTemplate = React.ComponentType<{
   "aria-selected": boolean;
   children: React.ReactNode;
   className: string;
-  onClick: (...args: unknown[]) => unknown;
+  onClick: (...args: any[]) => unknown;
   role: React.AriaRole;
   value: string;
 }>;
 
 export interface AMultiSelectRules {
-  test?: (...args: unknown[]) => unknown;
+  test?: (...args: any[]) => unknown;
   level?: string;
 }
 
@@ -77,15 +77,15 @@ export type AMultiSelectProps = Override<
     /**
      * Handles the `change` event for when the text input is modified.
      */
-    onChange?: (...args: unknown[]) => unknown;
+    onChange?: (...args: any[]) => unknown;
     /**
      * Handles the `clear` event (for supplemental handling).
      */
-    onClear?: (...args: unknown[]) => unknown;
+    onClear?: (...args: any[]) => unknown;
     /**
      * Handles the `selected` event for when a selection is chosen in the dropdown.
      */
-    onSelected?: (...args: unknown[]) => unknown;
+    onSelected?: (...args: any[]) => unknown;
     /**
      * Sets the text when no option is selected.
      */
@@ -119,7 +119,7 @@ export type AMultiSelectProps = Override<
     /**
      * Function to filter items when the input value changes
      */
-    filterFunction?: (...args: unknown[]) => unknown;
+    filterFunction?: (...args: any[]) => unknown;
     /**
      * Empty state message - NOTE: custom strings should be provided through an i18n library
      *

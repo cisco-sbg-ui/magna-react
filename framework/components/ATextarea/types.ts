@@ -4,7 +4,7 @@ import {AInputBaseProps} from "../AInputBase/types";
 import {AHintsType} from "../AFieldBase/types";
 
 export interface ATextareaRules {
-  test?: (...args: unknown[]) => unknown;
+  test?: (...args: any[]) => unknown;
   level?: string;
 }
 
@@ -61,7 +61,7 @@ export type ATextareaProps = Override<
     /**
      * Handles the `paste` event.
      */
-    onPaste?: (...args: unknown[]) => unknown;
+    onPaste?: (...args: any[]) => unknown;
     /**
      * Sets the textarea placeholder text.
      */

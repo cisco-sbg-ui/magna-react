@@ -6,7 +6,7 @@ function useEscapeKeydown(parameters: {
   /**
    * Function to be called when the user presses their escape key
    */
-  onKeydown: () => void;
+  onKeydown: (e: React.KeyboardEvent) => void;
 }): void;
 
 export default useEscapeKeydown;

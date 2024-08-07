@@ -26,6 +26,10 @@ export type AEmptyStateProps = Override<
      */
     message?: string | React.ReactNode;
     /**
+     * Sets the container size to xsmall.
+     */
+    xsmall?: boolean;
+    /**
      * Sets the container size to small.
      */
     small?: boolean;

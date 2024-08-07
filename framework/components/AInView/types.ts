@@ -4,7 +4,7 @@ export type AInViewProps = React.PropsWithChildren<{
    * toggles entering and exiting the view. An object
    * with an `inView` property is passed.
    */
-  onChange?: (...args: unknown[]) => unknown;
+  onChange?: (...args: any[]) => unknown;
   /**
    * Determines if the `onChange` handler should
    * only be called on the first initial instance

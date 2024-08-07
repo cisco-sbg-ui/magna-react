@@ -40,7 +40,7 @@ export type ADateRangePickerProps = Override<
     /**
      * Handles the `change` event for when a date is entered.
      */
-    getDateRange?: (...args: unknown[]) => unknown;
+    getDateRange?: (...args: any[]) => unknown;
     /**
      * Sets the selected date(s). If selecting a single date, a JavaScript
      * `Date` object should be passed. If selecting a date range, however,
@@ -67,5 +67,9 @@ export type ADateRangePickerProps = Override<
      * The maximum date allowed for selection
      */
     maxDate?: Date;
+    /**
+     * Label for the date range field
+     */
+    label?: string;
   }
 >;
