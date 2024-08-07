@@ -67,5 +67,9 @@ export type ADateRangePickerProps = Override<
      * The maximum date allowed for selection
      */
     maxDate?: Date;
+    /**
+     * Label for the date range field
+     */
+    label?: string;
   }
 >;
