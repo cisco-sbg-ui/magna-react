@@ -341,6 +341,13 @@ const ASelect = forwardRef(
 
     const selectIcon = isOpen ? "chevron-up" : "chevron-down";
 
+    const eitherPlaceholder =
+      typeof placeholder === "string" ? (
+        <span className="a-select__placeholder">{placeholder}</span>
+      ) : (
+        placeholder
+      );
+
     let selectionContent;
 
     if (selectedDisplayTemplate) {
@@ -355,14 +362,10 @@ const ASelect = forwardRef(
           />
         );
       } else {
-        selectionContent = (
-          <span className="a-select__placeholder">{placeholder}</span>
-        );
+        selectionContent = eitherPlaceholder;
       }
     } else if (!selectedItem) {
-      selectionContent = (
-        <span className="a-select__placeholder">{placeholder}</span>
-      );
+      selectionContent = eitherPlaceholder;
     } else if (useTemplateForSelectedItem && itemTemplate) {
       const MenuItemComponent = itemTemplate;
 
@@ -603,7 +606,7 @@ ASelect.propTypes = {
   /**
    * Sets the text when no option is selected.
    */
-  placeholder: PropTypes.string,
+  placeholder: PropTypes.node,
   /**
    * Sets the content to prepend to the dropdown list.
    */
