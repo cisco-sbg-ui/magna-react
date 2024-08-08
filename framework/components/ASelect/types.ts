@@ -108,7 +108,7 @@ export type ASelectProps<T extends ASelectItem> = Override<
     /**
      * Sets the text when no option is selected.
      */
-    placeholder?: string;
+    placeholder?: React.ReactNode;
     /**
      * Sets the content to prepend to the dropdown list.
      */

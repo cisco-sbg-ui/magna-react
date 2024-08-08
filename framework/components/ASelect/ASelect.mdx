@@ -465,6 +465,31 @@ withTwoPanes
 `}
 />
 
+#### Custom Placeholder
+
+<Playground
+  code={`() => {
+  return (
+    <ASelect
+      placeholder={
+        <AListItem style={{color: "var(--base-text-weak-default)"}}>
+          <ASpinner size="small"/>
+          Select your favorite flag
+          <ASpinner size="small"/>
+        </AListItem>
+      }
+      items={[
+        {value: 1, text: "Comoros 🇰🇲"},
+        {value: 2, text: "Martinique 🇲🇶"},
+        {value: 3, text: "Slovakia 🇸🇰"},
+        {value: 4, text: "United States 🇺🇸"}
+      ]}
+    />);
+}
+`}
+/>
+
+
 ## Component Props
 
 The `ASelect` component inherits passed props.
