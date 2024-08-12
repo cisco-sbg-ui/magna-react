@@ -38,7 +38,6 @@ const calculateMenuPosition = ({
     return;
   }
 
-  const appCoords = getRoundedBoundedClientRect(appRef.current);
   const wrapCoords = getRoundedBoundedClientRect(wrapRef.current);
   const anchorCoords =
     anchorRef instanceof DOMRect
@@ -47,7 +46,7 @@ const calculateMenuPosition = ({
   const menuCoords = getRoundedBoundedClientRect(combinedRef.current);
   const magneticSpacer = removeSpacer ? 0 : 4;
 
-  if (!anchorCoords || !menuCoords || !wrapCoords || !appCoords) {
+  if (!anchorCoords || !menuCoords || !wrapCoords) {
     return;
   }
   let baseLeft = 0,
