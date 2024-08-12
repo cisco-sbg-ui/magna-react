@@ -8,12 +8,8 @@ const baseClass = "a-progressbar";
 
 const STATUS_ICON = {
   success: "positive",
-  error: "negative"
+  error: "alert"
 };
-
-// const PROGRESSBAR_ALIGNMENT = {
-//   stacked: ""
-// }
 
 const AProgressbar = forwardRef(
   (
@@ -25,11 +21,9 @@ const AProgressbar = forwardRef(
       fillStyle,
       animationDuration,
       size = "medium",
-      disabled,
       helperText,
       percentage = 0,
       striped,
-      indeterminate,
       status,
       label,
       stacked,
@@ -39,23 +33,17 @@ const AProgressbar = forwardRef(
     ref
   ) => {
     let className = baseClass,
-      barClass = `${baseClass}__bar`,
-      fillClass = `${baseClass}__fill`,
-      labelClass = `${baseClass}__label`;
+      labelClass = `${baseClass}__label`,
+      helperTextClass = `${baseClass}__helper-text`,
+      barContainerClass = `${baseClass}__bar-container`,
+      barClass = `${barContainerClass}__bar`,
+      fillClass = `${barContainerClass}__fill`,
+      contentRightClass = `${barContainerClass}__content-right`;
 
     className += ` ${baseClass}--size-${size}`;
 
-    if (disabled) {
-      className += ` ${baseClass}--disabled`;
-    }
-
     if (striped) {
       className += ` ${baseClass}--striped`;
-    }
-
-    if (indeterminate) {
-      percentage = 40;
-      className += ` ${baseClass}--indeterminate`;
     }
 
     if (propsClassName) {
@@ -99,7 +87,7 @@ const AProgressbar = forwardRef(
             <label>{label}</label>
           </div>
         )}
-        <div className="bar-container">
+        <div className={barContainerClass}>
           <div className={barClass} style={barStyle}>
             <div
               className={fillClass}
@@ -110,14 +98,14 @@ const AProgressbar = forwardRef(
               }}
             ></div>
           </div>
-          <div className="d-flex" style={{marginLeft: "12px"}}>
+          <div className={contentRightClass}>
             {status && <AIcon size={20}>{STATUS_ICON[status]}</AIcon>}
             {status === "active" && <span>{percentage}%</span>}
           </div>
         </div>
 
         {helperText && (
-          <div className={`${baseClass}__helper-text`}>
+          <div className={`${helperTextClass} ${status}`}>
             <p>{helperText}</p>
           </div>
         )}
@@ -138,10 +126,6 @@ AProgressbar.propTypes = {
    */
   size: PropTypes.oneOf(["small", "medium"]),
   /**
-   * Toggles the `disabled` state.
-   */
-  disabled: PropTypes.bool,
-  /**
    * Includes a subtext, also sets label position to top
    */
   helperText: PropTypes.string,
@@ -153,10 +137,6 @@ AProgressbar.propTypes = {
    * Toggles the striped display variant.
    */
   striped: PropTypes.bool,
-  /**
-   * Adds animation for an indeterminate progress
-   */
-  indeterminate: PropTypes.bool,
   /**
    * Class to apply to the bar element
    */

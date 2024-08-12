@@ -11,76 +11,104 @@ $progressbar-fill-border-radius: 6px;
 $progressbar-striped-opacity: 0.5;
 $progressbar-animation-timing: 1s linear infinite !default;
 $progressbar-transition: width 0.6s ease !default;
-//TODO need to remove disabled and add error and info states), success should be blue
 
 .a-progressbar {
   display: flex;
-  align-items: center;
 
-  &__helper-text {
-    p {
-      margin: 5px 0 0 0;
-    }
-  }
-
-  .bar-container {
+  &__bar-container {
     width: 100%;
     display: flex;
     align-items: center;
-    margin-top: 2px;
-  }
+    height: 20px;
 
-  &__bar {
-    border-radius: $progressbar-border-radius;
-    height: $progressbar-height-medium;
-    width: 100%;
-    background: var(--base-border-default);
+    &__bar {
+      border-radius: $progressbar-border-radius;
+      height: $progressbar-height-medium;
+      width: 100%;
+      background: var(--base-border-default);
+    }
+
+    &__fill {
+      display: block;
+      height: $progressbar-fill-height;
+      border-radius: $progressbar-fill-border-radius;
+      &.success {
+        background-color: var(--positive-border-default);
+      }
+
+      &.error {
+        background-color: var(--negative-border-default);
+      }
+
+      &.active {
+        background-color: var(--info-border-default);
+      }
+    }
+    &__content-right {
+      display: flex;
+      margin-left: 12px;
+    }
   }
 
   &__stacked {
     flex-direction: column;
     width: 100%;
     align-items: flex-start;
+
+    > .a-progressbar__bar-container {
+      padding-top: 2px;
+    }
+    > .a-progressbar__label {
+      margin-right: 0;
+    }
+  }
+
+  &__centered {
+    align-items: center;
   }
 
   &--size-small {
-    .a-progressbar__bar {
-      height: $progressbar-height-small;
+    .a-progressbar__label {
+      margin-right: 8px;
     }
-    .a-progressbar__fill {
-      background-size: $progressbar-bg-height-small $progressbar-bg-height-small;
+
+    .a-progressbar__label,
+    .a-progressbar__bar-container {
+      font-size: 12px;
+      .a-icon {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    .a-progressbar__bar-container {
+      &__bar {
+        height: $progressbar-height-small;
+      }
+      &__fill {
+        background-size: $progressbar-bg-height-small
+          $progressbar-bg-height-small;
+      }
+      &__content-right {
+        margin-left: 8px;
+      }
     }
   }
 
   &--size-medium {
-    .a-progressbar__bar {
-      height: $progressbar-height-medium;
-    }
-    .a-progressbar__fill {
-      background-size: $progressbar-bg-height-medium
-        $progressbar-bg-height-medium;
-    }
-  }
-
-  &__fill {
-    display: block;
-    height: $progressbar-fill-height;
-    border-radius: $progressbar-fill-border-radius;
-    &.success {
-      background-color: var(--positive-border-default);
-    }
-
-    &.error {
-      background-color: var(--negative-border-default);
-    }
-
-    &.active {
-      background-color: var(--info-border-default);
+    .a-progressbar__bar-container {
+      &__bar {
+        height: $progressbar-height-medium;
+      }
+      &__fill {
+        background-size: $progressbar-bg-height-medium
+          $progressbar-bg-height-medium;
+      }
     }
   }
 
   &--striped {
-    .a-progressbar__fill {
+    .a-progressbar__bar-container__fill {
       background-image: linear-gradient(
         60deg,
         rgba(255, 255, 255, 0.15) 25%,
@@ -94,43 +122,19 @@ $progressbar-transition: width 0.6s ease !default;
     }
   }
 
-  &--indeterminate {
-    overflow: hidden;
-    .a-progressbar__bar {
-      position: relative;
-      overflow-x: clip;
-    }
-    .a-progressbar__fill {
-      position: absolute;
-    }
-  }
-
-  &--disabled {
-    .a-progressbar__label {
-      opacity: $progressbar-striped-opacity;
-    }
-    .a-progressbar__fill {
-      background-color: var(--positive-border-default);
-    }
-  }
-
   &__label {
     margin-right: 12px;
     font-weight: 600;
   }
 
-  @keyframes a-progress-bar-indeterminate {
-    0% {
-      left: -100%;
+  &__helper-text {
+    color: var(--base-text-medium-default);
+    p {
+      margin: 3px 0 0 0;
+      font-size: 12px;
     }
-    25% {
-      left: -30%;
-    }
-    75% {
-      left: 80%;
-    }
-    100% {
-      left: 100%;
+    &.error {
+      color: var(--negative-text-default);
     }
   }
 
@@ -151,15 +155,6 @@ $progressbar-transition: width 0.6s ease !default;
       background-position: 0 0;
     }
   }
-
-  @keyframes progressbar-stripes-large {
-    from {
-      background-position: $progressbar-bg-height-large 0;
-    }
-    to {
-      background-position: 0 0;
-    }
-  }
 }
 
 .a-app--animated .a-progressbar {
@@ -171,16 +166,6 @@ $progressbar-transition: width 0.6s ease !default;
   &--size-medium {
     .a-progressbar__fill {
       animation: progressbar-stripes-medium $progressbar-animation-timing;
-    }
-  }
-  &--size-large {
-    .a-progressbar__fill {
-      animation: progressbar-stripes-large $progressbar-animation-timing;
-    }
-  }
-  &--indeterminate {
-    .a-progressbar__fill {
-      animation: 1s a-progress-bar-indeterminate linear infinite;
     }
   }
 }

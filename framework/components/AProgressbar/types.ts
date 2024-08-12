@@ -15,10 +15,6 @@ export type AProgressbarProps = Override<
      */
     size?: AProgressbarSize;
     /**
-     * Toggles the `disabled` state.
-     */
-    disabled?: boolean;
-    /**
      * Toggles whether the percentage is displayed additionally as text.
      */
     displayText?: boolean;
@@ -40,10 +36,6 @@ export type AProgressbarProps = Override<
      * Class to apply to the bar element
      */
     barClassName?: string;
-    /**
-     * Class to apply to the fill element
-     */
-    fillClassName?: string;
     /**
      * Style to apply to the bar element
      */
