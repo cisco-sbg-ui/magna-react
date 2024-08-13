@@ -5,10 +5,14 @@ export type ARadioProps = Override<
   {
     /**
      * Toggles the `checked` state.
+     *
+     * @defaultValue `false`
      */
     checked?: boolean;
     /**
      * Toggles the `disabled` state.
+     *
+     * @defaultValue `false`
      */
     disabled?: boolean;
     /**
@@ -18,7 +22,7 @@ export type ARadioProps = Override<
     /**
      * A callback for handling the click event.
      */
-    onClick?: (...args: unknown[]) => unknown;
+    onClick?: (...args: any[]) => unknown;
     /**
      * The input's value.
      */

@@ -10,14 +10,20 @@ export type AAppProps<C extends React.ElementType> = Override<
   {
     /**
      * Toggles animations.
+     *
+     * @defaultValue `true`
      */
     animations?: boolean;
     /**
      * Toggles styled scrollbars.
+     *
+     * @defaultValue `true`
      */
     scrollbars?: boolean;
     /**
      * Toggles whether the theme is loaded from local storage on mount, and persisted to local storage on theme change.
+     *
+     * @defaultValue `false`
      */
     persistTheme?: boolean;
     /**

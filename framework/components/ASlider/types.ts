@@ -2,7 +2,7 @@ import {Override} from "../../types";
 import {AFieldBaseProps, AHintsType} from "../AFieldBase/types";
 
 export interface ASliderRules {
-  test?: (...args: unknown[]) => unknown;
+  test?: (...args: any[]) => unknown;
   level?: string;
 }
 
@@ -29,16 +29,20 @@ export type ASliderProps = Override<
     label?: React.ReactNode;
     /**
      * Sets the minimum value.
+     *
+     * @defaultValue `0`
      */
     min?: number;
     /**
      * Sets the maximum value.
+     *
+     * @defaultValue `100`
      */
     max?: number;
     /**
      * Handles the `change` event.
      */
-    onChange?: (...args: unknown[]) => unknown;
+    onChange?: (...args: any[]) => unknown;
     /**
      * Toggles a default rule for required values.
      */
@@ -49,6 +53,8 @@ export type ASliderProps = Override<
     rules?: ASliderRules[];
     /**
      * Sets the increment/decrement value.
+     *
+     * @defaultValue `1`
      */
     step?: number;
     /**
@@ -57,6 +63,8 @@ export type ASliderProps = Override<
     ticks?: ASliderTicks[];
     /**
      * Applies a validation state.
+     *
+     * @defaultValue `default`
      */
     validationState?: ASliderValidationState;
     /**

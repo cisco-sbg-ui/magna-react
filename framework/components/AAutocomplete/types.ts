@@ -10,13 +10,13 @@ export type AAutocompleteItemTemplate = React.ComponentType<{
   "aria-selected": boolean;
   children: React.ReactNode;
   className: string;
-  onClick: (...args: unknown[]) => unknown;
+  onClick: (...args: any[]) => unknown;
   role: React.AriaRole;
   value: string;
 }>;
 
 export interface AAutocompleteRules {
-  test?: (...args: unknown[]) => unknown;
+  test?: (...args: any[]) => unknown;
   level?: string;
 }
 
@@ -35,6 +35,8 @@ export type AAutocompleteProps = Override<
     clearable?: boolean;
     /**
      * Toggles the disabled state.
+     *
+     * @defaultValue `false`
      */
     disabled?: boolean;
     /**
@@ -47,10 +49,14 @@ export type AAutocompleteProps = Override<
     itemTemplate?: AAutocompleteItemTemplate;
     /**
      * The property name of the option text when `items` is an array of objects.
+     *
+     * @defaultValue `"text"`
      */
     itemText?: string;
     /**
      * The property name of the option value when `items` is an array of objects.
+     *
+     * @defaultValue `"value"`
      */
     itemValue?: string;
     /**
@@ -72,15 +78,15 @@ export type AAutocompleteProps = Override<
     /**
      * Handles the `change` event for when the text input is modified.
      */
-    onChange?: (...args: unknown[]) => unknown;
+    onChange?: (...args: any[]) => unknown;
     /**
      * Handles the `clear` event (for supplemental handling).
      */
-    onClear?: (...args: unknown[]) => unknown;
+    onClear?: (...args: any[]) => unknown;
     /**
      * Handles the `selected` event for when a selection is chosen in the dropdown.
      */
-    onSelected?: (...args: unknown[]) => unknown;
+    onSelected?: (...args: any[]) => unknown;
     /**
      * Sets the text when no option is selected.
      */

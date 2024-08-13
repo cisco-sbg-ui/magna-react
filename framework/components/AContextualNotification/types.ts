@@ -13,6 +13,8 @@ export type AContextualNotificationProps<C extends React.ElementType> =
     {
       /**
        * Sets the display variant.
+       *
+       * @defaultValue `"info"`
        */
       variant?: AContextualNotificationVariant;
     }

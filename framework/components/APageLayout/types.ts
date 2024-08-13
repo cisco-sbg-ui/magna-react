@@ -9,6 +9,8 @@ export type APageHeaderProps = Override<
   {
     /**
      * Set to true if using a top line component such as ABreadcrumb
+     *
+     * @defaultValue `false`
      */
     hasTopLine?: boolean;
   }
@@ -46,6 +48,8 @@ export type APageTitleProps = Override<
     title?: string;
     /**
      * If not using `APageTitleContent`, set to true to wrap the content for size/alignment
+     *
+     *  @defaultValue `false`
      */
     withChildrenContainer?: boolean;
   }

@@ -2,7 +2,7 @@ import {Override} from "../../types";
 import {AHintsType} from "../AFieldBase/types";
 
 export interface ASwitchRules {
-  test?: (...args: unknown[]) => unknown;
+  test?: (...args: any[]) => unknown;
   level?: string;
 }
 
@@ -13,14 +13,20 @@ export type ASwitchProps = Override<
   {
     /**
      * Toggles the `checked` state.
+     *
+     * @defaultValue `false`
      */
     checked?: boolean;
     /**
      * Toggles the `disabled` state.
+     *
+     * @defaultValue `false`
      */
     disabled?: boolean;
     /**
      * Sets the hint content.
+     *
+     * @defaultValue `[]`
      */
     hints?: AHintsType;
     /**

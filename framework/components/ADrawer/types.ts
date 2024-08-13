@@ -51,16 +51,22 @@ export type ADrawerProps<C extends React.ElementType> = Override<
        * still cover adjacent content as it opens. A drawer specified as relative is
        * useful when the drawer should be contained within a parent, but _not_ cover
        * its adjacent content, i.e., push its adjacent content aside dynamically.
+       *
+       *   @defaultValue `"fixed"`
        */
       position?: ADrawerPosition;
       /**
        * The direction in which the drawer should slide-in from.
+       *
+       *  @defaultValue `"left"`
        */
       slideIn?: ADrawerSlideIn;
       /**
        * Determines if the drawer should render as a smaller size. The default
        * is 50px, but you can update this using a maxWidth CSS property on the drawer
        * (either via. style prop or a custom class).
+       *
+       *  @defaultValue `false`
        */
       slim?: boolean;
       /**
@@ -73,6 +79,20 @@ export type ADrawerProps<C extends React.ElementType> = Override<
        * @deprecated
        */
       closeTitle?: string;
+      /**
+       * TODO needs description
+       *  @defaultValue `true`
+       */
+      withTransitions?: boolean;
+      /**
+       * When using the `useDrawerToggle` hook, set this to true. This allows the current
+       * children to remain visible while the drawer is sliding out, and the new children
+       * to show when the drawer slides back in.
+       *
+       * This is a manual open to avoid interference with other drawer management code.
+       *  @defaultValue `false`
+       */
+      usesDrawerToggleHook?: boolean;
 
       style?: React.CSSProperties;
     }
@@ -90,6 +110,8 @@ export type ADrawerHeaderProps = Override<
     className?: string;
     /**
      * Adds a divider below the header content
+     *
+     * @defaultValue `false`
      */
     divider?: boolean;
   }
@@ -108,10 +130,14 @@ export type ADrawerFooterProps = Override<
     className?: string;
     /**
      * Replace the default box shadow with an ADivider above the footer
+     *
+     * @defaultValue `"shadow"`
      */
     variant?: ADrawerFooterVariant;
     /**
      * Wrap the component children in an ADrawerContent element
+     *
+     * @defaultValue `true`
      */
     withPadding?: boolean;
   }

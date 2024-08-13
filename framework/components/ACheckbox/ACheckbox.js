@@ -33,7 +33,7 @@ const ACheckbox = forwardRef(
       hints,
       indeterminate = false,
       onClick,
-      required,
+      required = false,
       rules,
       skipValidation = false,
       validationState,

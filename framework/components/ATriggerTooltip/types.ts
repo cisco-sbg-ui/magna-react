@@ -8,6 +8,8 @@ export type ATriggerTooltipProps = Override<
   {
     /**
      * DOM event to trigger the tooltip
+     *
+     * @defaultValue `"hover"`
      */
     trigger?: ATriggerTooltipTrigger;
     /**
@@ -21,6 +23,8 @@ export type ATriggerTooltipProps = Override<
     triggerRef?: React.RefObject<HTMLElement>;
     /**
      * Delay in milliseconds before tooltip will open
+     *
+     * @defaultValue `400`
      */
     openDelay?: number;
     /**
@@ -37,11 +41,14 @@ export type ATriggerTooltipProps = Override<
     content?: React.ReactNode;
     /**
      * Disable the tooltip
+     *
+     * @defaultValue `false`
      */
     disabled?: boolean;
     /**
      * Wrap the children elements in a div to allow tooltips on
      * disabled elements.
+     * @defaultValue `false`
      */
     wrapChildren?: boolean;
     /**

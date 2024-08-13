@@ -5,7 +5,7 @@ import "./ACard.scss";
 
 const ACardItem = forwardRef(
   (
-    {children, className: propsClassName, stretched, attached, ...rest},
+    {children, className: propsClassName, stretched = false, attached, ...rest},
     ref
   ) => {
     let className = "a-card__item";

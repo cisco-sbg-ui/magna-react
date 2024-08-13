@@ -11,7 +11,7 @@ export type ASelectItemTemplate<T extends ASelectItem> = React.ComponentType<{
   "aria-selected": boolean;
   children: React.ReactNode;
   className: string;
-  onClick: (...args: unknown[]) => unknown;
+  onClick: (...args: any[]) => unknown;
   role: React.AriaRole;
   selected: boolean;
   value: string;
@@ -24,7 +24,7 @@ export type ASelectDisplayTemplate<T extends ASelectItem> =
   }>;
 
 export interface ASelectRules {
-  test?: (...args: unknown[]) => unknown;
+  test?: (...args: any[]) => unknown;
   level?: string;
 }
 
@@ -59,9 +59,13 @@ export type ASelectProps<T extends ASelectItem> = Override<
     hints?: AHintsType;
     /**
      * The property name of the value indicating a disabled option when `items` is an array of objects.
+     *
+     * @defaultValue `"disabled"`
      */
     itemDisabled?: string;
     /**
+     *
+     * @defaultValue `"selected"`
      * The property name of the value indicating a selected option when `items` is an array of objects.
      */
     itemSelected?: string;
@@ -71,14 +75,20 @@ export type ASelectProps<T extends ASelectItem> = Override<
     itemTemplate?: ASelectItemTemplate<T>;
     /**
      * The property name of the option text when `items` is an array of objects.
+     *
+     * @defaultValue `"text"`
      */
     itemText?: string;
     /**
      * The property name of the option value when `items` is an array of objects.
+     *
+     * @defaultValue `"value"`
      */
     itemValue?: string;
     /**
      * An array of select options.
+     *
+     * @defaultValue `[]`
      */
     items?: T[];
     /**
@@ -123,14 +133,6 @@ export type ASelectProps<T extends ASelectItem> = Override<
      * Applies a validation state.
      */
     validationState?: ASelectValidationState;
-    /**
-     * Magnetic small size variant (default is medium)
-     */
-    small?: boolean;
-    /**
-     * Magnetic large size variant (default is medium)
-     */
-    large?: boolean;
     /**
      * Use the `itemTemplate` with the selectedItem in the ASelect input.
      */

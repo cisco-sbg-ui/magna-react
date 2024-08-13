@@ -7,14 +7,18 @@ export type AAlertProps = Override<
   {
     /**
      * Toggles the close button.
+     * @defaultValue `true`
      */
     dismissible?: boolean;
     /**
      * DEPRECATED VERSION OF DISMISSIBLE PROP.
+     * @deprecated Use correct spelling of `dismissible` instead.
      */
     dismissable?: boolean;
     /**
      * Specifies the display variant.
+     *
+     * @defaultValue `"info"`
      */
     level?: AAlertLevel;
     /**
@@ -23,6 +27,7 @@ export type AAlertProps = Override<
     onClose?: (e: React.MouseEvent | React.KeyboardEvent) => void;
     /**
      * Unset default width: 100% on the alert.
+     * @defaultValue `false`
      */
     fitContentWidth?: boolean;
   }

@@ -4,7 +4,7 @@ import {AInputBaseProps} from "../AInputBase/types";
 import {AHintsType} from "../AFieldBase/types";
 
 export interface ATextareaRules {
-  test?: (...args: unknown[]) => unknown;
+  test?: (...args: any[]) => unknown;
   level?: string;
 }
 
@@ -61,7 +61,7 @@ export type ATextareaProps = Override<
     /**
      * Handles the `paste` event.
      */
-    onPaste?: (...args: unknown[]) => unknown;
+    onPaste?: (...args: any[]) => unknown;
     /**
      * Sets the textarea placeholder text.
      */
@@ -76,6 +76,8 @@ export type ATextareaProps = Override<
     required?: boolean;
     /**
      * Sets the default number of rows for the textarea.
+     *
+     * @defaultValue `3`
      */
     rows?: number;
     /**
@@ -88,11 +90,19 @@ export type ATextareaProps = Override<
     validateOnBlur?: boolean;
     /**
      * Applies a validation state.
+     *
+     * @defaultValue `"default"`
      */
     validationState?: ATextareaValidationState;
     /**
      * Sets the textarea value.
      */
     value?: string;
+    /**
+     * Skips internal and/or extra validation rules
+     *
+     * @defaultValue `false`
+     */
+    skipValidation?: boolean;
   }
 >;

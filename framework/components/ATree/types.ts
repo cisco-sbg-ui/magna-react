@@ -21,11 +21,12 @@ export type ATreeProps = Override<
     hoverable?: boolean;
     /**
      * Sets an array of items to display.
+     * @defaultValue `[]`
      */
     items?: Record<string, unknown>[];
     /**
      * Handles change events on the items array.
      */
-    onChange?: (...args: unknown[]) => unknown;
+    onChange?: (...args: any[]) => unknown;
   }
 >;

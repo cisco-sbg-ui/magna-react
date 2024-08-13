@@ -2,8 +2,8 @@ import {Override} from "../../types";
 import {ASimpleTableProps} from "../ASimpleTable/types";
 
 export interface ADataTableExpandable {
-  component: (...args: unknown[]) => unknown;
-  isRowExpandable?: (...args: unknown[]) => unknown;
+  component: (...args: any[]) => unknown;
+  isRowExpandable?: (...args: any[]) => unknown;
 }
 
 export interface ADataTableHeaders<KEY extends string, DATA> {
@@ -55,7 +55,11 @@ export type ADataTableProps<KEY extends string, DATA> = Override<
      * Sets the table data.
      */
     items: Array<DATA | {cellLoading: true}>;
-
+    /**
+     * Keyboard arrow support for table row selection
+     *
+     *     @defaultValue `null`
+     */
     keyboardArrowSupport?: {
       onKeyboardSelect: (
         selection: {item: DATA; index: number},
@@ -69,11 +73,11 @@ export type ADataTableProps<KEY extends string, DATA> = Override<
      * the associated row item as the first argument, and the native event
      * object as the second.
      */
-    onRowClick?: (...args: unknown[]) => unknown;
+    onRowClick?: (...args: any[]) => unknown;
     /**
      * Called when the user reaches the bottom of the data table for the first time.
      */
-    onScrollToEnd?: (...args: unknown[]) => unknown;
+    onScrollToEnd?: (...args: any[]) => unknown;
     /**
      * Handles the `sort` event.
      */
@@ -84,6 +88,8 @@ export type ADataTableProps<KEY extends string, DATA> = Override<
     sort?: ADataTableSort<KEY>;
     /**
      * Disables third click of header sort icon to unset sorting.
+     *
+     * @defaultValue `false`
      */
     disableSortReset?: boolean;
     /**
@@ -100,9 +106,13 @@ export type ADataTableProps<KEY extends string, DATA> = Override<
     truncateHeaders?: boolean;
     /**
      * Enable sticky header
+     *
+     * @defaultValue `false`
      */
     stickyHeader?: boolean;
-
+    /**
+     * Disables pointer events on the table
+     */
     disabled?: boolean;
   }
 >;

@@ -18,6 +18,8 @@ export type AButtonGroupProps<T> = Override<
     label?: React.ReactNode;
     /**
      * Toggles whether multiple buttons can be selected.
+     *
+     * @defaultValue `false`
      */
     multiple?: boolean;
     /**
@@ -32,14 +34,20 @@ export type AButtonGroupProps<T> = Override<
     selectedValues?: AButtonGroupSelectedValues<T>;
     /**
      * Applies a validation state.
+     *
+     * @defaultValue `"default"`
      */
     validationState?: AButtonGroupValidationState;
     /**
      * Magnetic small sizing
+     *
+     *  @defaultValue `false`
      */
     small?: boolean;
     /**
      * Magnetic medium sizing
+     *
+     *  @defaultValue `true`
      */
     medium?: boolean;
   }

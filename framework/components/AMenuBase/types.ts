@@ -25,6 +25,8 @@ export type AMenuBaseProps = Override<
     pointer?: boolean;
     /**
      * Option to remove the space between the anchor and the menu for bottom placement
+     *
+     * @defaultValue `false`
      */
     removeSpacer?: boolean;
     /**

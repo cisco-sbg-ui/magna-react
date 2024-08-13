@@ -6,7 +6,7 @@ import {ATooltipProps} from "../ATooltip";
 
 export interface ATextInputRules {
   key?: string;
-  test?: (...args: unknown[]) => unknown;
+  test?: (...args: any[]) => unknown;
   level?: string;
 }
 
@@ -83,7 +83,7 @@ export type ATextInputProps = Override<
     /**
      * Handles the `clear` event (for supplemental handling).
      */
-    onClear?: (...args: unknown[]) => unknown;
+    onClear?: (...args: any[]) => unknown;
     /**
      * Handles the `click` event for the input.
      */
@@ -91,11 +91,11 @@ export type ATextInputProps = Override<
     /**
      * Handles the `click` event for an appended icon.
      */
-    onClickAppend?: (...args: unknown[]) => unknown;
+    onClickAppend?: (...args: any[]) => unknown;
     /**
      * Handles the `click` event for a prepended icon.
      */
-    onClickPrepend?: (...args: unknown[]) => unknown;
+    onClickPrepend?: (...args: any[]) => unknown;
     /**
      * Handles the `focus` event.
      */
@@ -107,7 +107,7 @@ export type ATextInputProps = Override<
     /**
      * Handles the `paste` event.
      */
-    onPaste?: (...args: unknown[]) => unknown;
+    onPaste?: (...args: any[]) => unknown;
     /**
      * The input's `placeholder` attribute.
      */
@@ -130,6 +130,8 @@ export type ATextInputProps = Override<
     rules?: ATextInputRules[];
     /**
      * Toggles the spinner for number type inputs.
+     *
+     * @defaultValue `true`
      */
     spinner?: boolean;
     /**
@@ -138,6 +140,8 @@ export type ATextInputProps = Override<
     step?: number;
     /**
      * Change the input type to take advantage of native behavior.
+     *
+     * @defaultValue `"text"`
      */
     type?: ATextInputType;
     /**
@@ -146,11 +150,19 @@ export type ATextInputProps = Override<
     validateOnBlur?: boolean;
     /**
      * Applies a validation state.
+     *
+     * @defaultValue `"default"`
      */
     validationState?: ATextInputValidationState;
     /**
      * The input's `value` attribute.
      */
     value?: ATextInputValue;
+    /**
+     * Skips internal and/or extra validation rules
+     *
+     * @defaultValue `false`
+     */
+    skipValidation?: boolean;
   }
 >;

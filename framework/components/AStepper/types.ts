@@ -27,6 +27,8 @@ export type AStepProps = Override<
     disabled?: boolean;
     /**
      * Show 'marked' icon on visited steps
+     *
+     * @defaultValue `true`
      */
     showIconOnVisited?: boolean;
     /**
@@ -40,7 +42,7 @@ export type AStepProps = Override<
     /**
      * Callback to set step as active
      */
-    setActiveStep?: (...args: unknown[]) => unknown;
+    setActiveStep?: (...args: any[]) => unknown;
     /**
      * Set vertical view
      */

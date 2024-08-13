@@ -10,6 +10,8 @@ export type ATooltipProps = Override<
     anchorRef: AAnchorRef;
     /**
      * Automatically flip horizontally or vertically if rendering into a boundary
+     *
+     * @defaultValue `true`
      */
     autoFlip?: boolean;
     /**
@@ -26,10 +28,14 @@ export type ATooltipProps = Override<
     placement?: APlacement;
     /**
      * Toggles the menu pointer.
+     *
+     * @defaultValue `true`
      */
     pointer?: boolean;
     /**
      * Sets the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role.
+     *
+     * @defaultValue `"tooltip"`
      */
     role?: React.AriaRole;
     /**

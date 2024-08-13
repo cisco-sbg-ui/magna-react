@@ -2,7 +2,7 @@ import {Override} from "../../types";
 import {AHintsType} from "../AFieldBase/types";
 
 export interface ACheckboxRules {
-  test?: (...args: unknown[]) => unknown;
+  test?: (...args: any[]) => unknown;
   level?: string;
 }
 
@@ -17,14 +17,18 @@ export type ACheckboxProps = Override<
     id?: string;
     /**
      * Toggles the `checked` state.
+     *
+     *  @defaultValue `false`
      */
     checked?: boolean;
     /**
      * Specify the checkbox color. Accepts unknown stock color or CSS color value. The default value is cisco-blue base.
      */
-    color?: unknown;
+    color?: string;
     /**
      * Toggles the `disabled` state.
+     *
+     *  @defaultValue `false`
      */
     disabled?: boolean;
     /**
@@ -33,6 +37,8 @@ export type ACheckboxProps = Override<
     hints?: AHintsType;
     /**
      * Toggles the `indeterminate` state.
+     *
+     *  @defaultValue `false`
      */
     indeterminate?: boolean;
     /**
@@ -41,6 +47,8 @@ export type ACheckboxProps = Override<
     onClick?: (e: React.MouseEvent | React.KeyboardEvent) => void;
     /**
      * Toggles a default rule for required values.
+     *
+     * @defaultValue `false`
      */
     required?: boolean;
     /**
@@ -64,9 +72,17 @@ export type ACheckboxProps = Override<
      */
     small?: boolean;
     /**
-     * Wrap the checkbox in the <label> tag. Defaults to true
+     * Wrap the checkbox in the <label> tag.
+     *
+     * @defaultValue `true`
      */
     withLabel?: boolean;
+    /**
+     * Skips internal and/or extra validation rules
+     *
+     * @defaultValue `false`
+     */
+    skipValidation?: boolean;
     [dataAttribute: `data-${string}`]: string;
   }
 >;

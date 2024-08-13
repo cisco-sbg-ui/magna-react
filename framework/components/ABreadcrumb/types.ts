@@ -15,6 +15,8 @@ export type ABreadcrumbProps<C extends React.ElementType> = Override<
     item?: (item: ABreadcrumbItems<C>) => JSX.Element;
     /**
      * Sets the array of breadcrumb data objects.
+     *
+     * @defaultValue `[]`
      */
     items?: ABreadcrumbItems<C>[];
   }

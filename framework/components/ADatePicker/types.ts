@@ -17,6 +17,8 @@ export type ADatePickerProps = Override<
      * not yet selected, you should pass in the date as `null`.
      * @example supplying the starting date with an unselected ending date
      * value={[new Date(2022, 2, 28), null]}
+     *
+     *  @defaultValue `new Date()`
      */
     value?: ADatePickerValue;
     /**
@@ -38,7 +40,7 @@ export type ADateRangePickerProps = Override<
     /**
      * Handles the `change` event for when a date is entered.
      */
-    getDateRange?: (...args: unknown[]) => unknown;
+    getDateRange?: (...args: any[]) => unknown;
     /**
      * Sets the selected date(s). If selecting a single date, a JavaScript
      * `Date` object should be passed. If selecting a date range, however,
@@ -47,10 +49,14 @@ export type ADateRangePickerProps = Override<
      * not yet selected, you should pass in the date as `null`.
      * @example supplying the starting date with an unselected ending date
      * value={[new Date(2022, 2, 28), null]}
+     *
+     *  @defaultValue `new Date()`
      */
     initialRange?: ADateRangePickerInitialRange;
     /**
      * Limit selection to a minimum number of days
+     *
+     *  @defaultValue `null`
      */
     maxDays?: number;
     /**
@@ -61,5 +67,9 @@ export type ADateRangePickerProps = Override<
      * The maximum date allowed for selection
      */
     maxDate?: Date;
+    /**
+     * Label for the date range field
+     */
+    label?: string;
   }
 >;

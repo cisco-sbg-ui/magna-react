@@ -4,7 +4,7 @@ import useReturnFocusOnClose from "../useReturnFocusOnClose/useReturnFocusOnClos
 
 interface PopupQuickExitProps {
   popupRef?: React.RefObject<HTMLElement>;
-  onExit: () => void;
+  onExit: (e: React.MouseEvent | React.KeyboardEvent) => void;
   isEnabled: boolean;
 }
 

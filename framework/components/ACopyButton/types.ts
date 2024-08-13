@@ -18,6 +18,8 @@ export type ACopyButtonProps<C extends React.ElementType> = Override<
     containerId?: string;
     /**
      * Tertiary button style
+     *
+     * @defaultValue `true`
      */
     tertiary?: boolean;
     /**
@@ -26,7 +28,15 @@ export type ACopyButtonProps<C extends React.ElementType> = Override<
     tertiaryAlt?: boolean;
     /**
      * Show the default label as per design guidelines
+     *
+     * @defaultValue `true`
      */
     defaultLabel?: boolean;
+    /**
+     * Delay in milliseconds before the message is closed
+     *
+     * @defaultValue `3000`
+     */
+    messageCloseDelay?: number;
   }
 >;

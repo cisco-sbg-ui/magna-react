@@ -1,6 +1,7 @@
 import {Override} from "../../types";
 import {AHintsType} from "../AFieldBase/types";
 import {AInputBaseProps} from "../AInputBase/types";
+import {ATooltipProps} from "../ATooltip";
 
 export type AMultiSelectItem = string | Record<string, unknown>;
 export type AMultiSelectItems = string[] | Record<string, unknown>[];
@@ -11,13 +12,13 @@ export type AMultiSelectItemTemplate = React.ComponentType<{
   "aria-selected": boolean;
   children: React.ReactNode;
   className: string;
-  onClick: (...args: unknown[]) => unknown;
+  onClick: (...args: any[]) => unknown;
   role: React.AriaRole;
   value: string;
 }>;
 
 export interface AMultiSelectRules {
-  test?: (...args: unknown[]) => unknown;
+  test?: (...args: any[]) => unknown;
   level?: string;
 }
 
@@ -76,15 +77,15 @@ export type AMultiSelectProps = Override<
     /**
      * Handles the `change` event for when the text input is modified.
      */
-    onChange?: (...args: unknown[]) => unknown;
+    onChange?: (...args: any[]) => unknown;
     /**
      * Handles the `clear` event (for supplemental handling).
      */
-    onClear?: (...args: unknown[]) => unknown;
+    onClear?: (...args: any[]) => unknown;
     /**
      * Handles the `selected` event for when a selection is chosen in the dropdown.
      */
-    onSelected?: (...args: unknown[]) => unknown;
+    onSelected?: (...args: any[]) => unknown;
     /**
      * Sets the text when no option is selected.
      */
@@ -111,11 +112,37 @@ export type AMultiSelectProps = Override<
     validationState?: AMultiSelectValidationState;
     /**
      * Sets the text input value.
+     *
+     * @defaultValue `[]`
      */
     value?: unknown[];
     /**
      * Function to filter items when the input value changes
      */
-    filterFunction?: (...args: unknown[]) => unknown;
+    filterFunction?: (...args: any[]) => unknown;
+    /**
+     * Empty state message - NOTE: custom strings should be provided through an i18n library
+     *
+     * @defaultValue `"No matches found"`
+     */
+    noDataMessage?: string;
+    /**
+     * Applies tag style to input. Default is counter style.
+     *
+     * @defaultValue `false`
+     */
+    withTags?: boolean;
+    /**
+     * Skips internal and/or extra validation rules
+     *
+     * @defaultValue `false`
+     */
+    skipValidation?: boolean;
+    /**
+     * Pass props to the tag tooltip. Can pass any props for ATooltip, including `children`
+     * TODO I guessed - Not sure how to type this one.
+     * @defaultValue `{}`
+     */
+    counterTooltipProps?: ATooltipProps;
   }
 >;

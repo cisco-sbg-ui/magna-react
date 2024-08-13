@@ -11,13 +11,13 @@ export type AComboboxItemTemplate = React.ComponentType<{
   "aria-selected": boolean;
   children: React.ReactNode;
   className: string;
-  onClick: (...args: unknown[]) => unknown;
+  onClick: (...args: any[]) => unknown;
   role: React.AriaRole;
   value: string;
 }>;
 
 export interface AComboboxRules {
-  test?: (...args: unknown[]) => unknown;
+  test?: (...args: any[]) => unknown;
   level?: string;
 }
 
@@ -36,6 +36,8 @@ export type AComboboxProps<T extends AComboboxItem> = Override<
     clearable?: boolean;
     /**
      * Toggles the disabled state.
+     *
+     * @defaultValue `false`
      */
     disabled?: boolean;
     /**
@@ -59,14 +61,20 @@ export type AComboboxProps<T extends AComboboxItem> = Override<
     itemTemplate?: AComboboxItemTemplate;
     /**
      * The property name of the option text when `items` is an array of objects.
+     *
+     * @defaultValue `"text"`
      */
     itemText?: string;
     /**
      * The property name of the option value when `items` is an array of objects.
+     *
+     * @defaultValue `"value"`
      */
     itemValue?: string;
     /**
      * An array of select options.
+     *
+     * @defaultValue `[]`
      */
     items?: T[];
     /**
@@ -90,7 +98,7 @@ export type AComboboxProps<T extends AComboboxItem> = Override<
     /**
      * Handles the `clear` event (for supplemental handling).
      */
-    onClear?: (...args: unknown[]) => unknown;
+    onClear?: (...args: any[]) => unknown;
     /**
      * Handles the `selected` event for when a selection is chosen in the dropdown.
      */
@@ -109,6 +117,8 @@ export type AComboboxProps<T extends AComboboxItem> = Override<
     readOnly?: boolean;
     /**
      * Toggles a default rule for required values.
+     *
+     * @defaultValue `false`
      */
     required?: boolean;
     /**
@@ -127,5 +137,17 @@ export type AComboboxProps<T extends AComboboxItem> = Override<
      * Sets the text input value.
      */
     value?: string;
+    /**
+     * Empty state message - NOTE: custom strings should be provided through an i18n library
+     *
+     * @defaultValue `"No matches found"`
+     */
+    noDataMessage?: string;
+    /**
+     * Skips internal and/or extra validation rules
+     *
+     * @defaultValue `false`
+     */
+    skipValidation?: boolean;
   }
 >;

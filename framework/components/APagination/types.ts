@@ -29,6 +29,8 @@ export type APaginationProps = Override<
     onResultsPerPageChange?: (resultsPerPage: number) => void;
     /**
      * Sets the current page.
+     *
+     * @defaultValue `1`
      */
     page?: number;
     /**
@@ -45,10 +47,14 @@ export type APaginationProps = Override<
     total?: number;
     /**
      * Show the jump to first and jump to last buttons.
+     *
+     *  @defaultValue `true`
      */
     showFirstLastButtons?: boolean;
     /**
      * Show the set page text input. If false, shows the current page number as text.
+     *
+     * @defaultValue `true`
      */
     showSetPageInput?: boolean;
 

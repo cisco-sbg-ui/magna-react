@@ -47,11 +47,11 @@ export type AInputBaseProps = Override<
     /**
      * Handles the `clear` event.
      */
-    onClear?: (...args: unknown[]) => unknown;
+    onClear?: (...args: any[]) => unknown;
     /**
      * Handles the label's `click` event.
      */
-    onClickLabel?: (...args: unknown[]) => unknown;
+    onClickLabel?: (...args: any[]) => unknown;
     /**
      * Prepends content to the control.
      */
@@ -66,6 +66,8 @@ export type AInputBaseProps = Override<
     surfaceRef?: AInputBaseSurfaceRef;
     /**
      * Applies a validation state.
+     *
+     * @defaultValue `"default"`
      */
     validationState?: AInputBaseValidationState;
     /**

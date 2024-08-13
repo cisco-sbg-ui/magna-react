@@ -25,7 +25,7 @@ const AAutocomplete = forwardRef(
       appendContent,
       className: propsClassName,
       clearable,
-      disabled,
+      disabled = false,
       hint,
       hints,
       itemTemplate,

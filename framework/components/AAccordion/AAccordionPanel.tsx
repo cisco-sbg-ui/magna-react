@@ -25,11 +25,16 @@ const AAccordionPanel = forwardRef<HTMLDivElement, AAccordionPanelProps>(
     const {openedPanels, setOpenedPanels} = useContext(AAccordionContext);
 
     useEffect(() => {
-      if (panelKey) return;
+      if (panelKey) {
+        return;
+      }
+
       if (!panelId) {
         const index = accordionPanelCounter++;
         setPanelId(index);
-        if (!collapsed) setOpenedPanels((existing) => [...existing, index]);
+        if (!collapsed) {
+          setOpenedPanels((existing) => [...existing, index]);
+        }
       }
     }, [panelId, collapsed, setOpenedPanels, panelKey]);
 
