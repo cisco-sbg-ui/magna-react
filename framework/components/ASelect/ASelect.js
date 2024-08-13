@@ -36,7 +36,7 @@ const ASelect = forwardRef(
       label,
       maxHeight,
       onSelected,
-      placeholder,
+      placeholder: propsPlaceholder,
       prependContent,
       readOnly,
       required,
@@ -341,11 +341,11 @@ const ASelect = forwardRef(
 
     const selectIcon = isOpen ? "chevron-up" : "chevron-down";
 
-    const eitherPlaceholder =
-      typeof placeholder === "string" ? (
-        <span className="a-select__placeholder">{placeholder}</span>
+    const placeholder =
+      typeof propsPlaceholder === "string" ? (
+        <span className="a-select__placeholder">{propsPlaceholder}</span>
       ) : (
-        placeholder
+        propsPlaceholder
       );
 
     let selectionContent;
@@ -362,10 +362,10 @@ const ASelect = forwardRef(
           />
         );
       } else {
-        selectionContent = eitherPlaceholder;
+        selectionContent = placeholder;
       }
     } else if (!selectedItem) {
-      selectionContent = eitherPlaceholder;
+      selectionContent = placeholder;
     } else if (useTemplateForSelectedItem && itemTemplate) {
       const MenuItemComponent = itemTemplate;
 
