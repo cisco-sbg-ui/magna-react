@@ -36,7 +36,7 @@ const ASelect = forwardRef(
       label,
       maxHeight,
       onSelected,
-      placeholder,
+      placeholder: propsPlaceholder,
       prependContent,
       readOnly,
       required,
@@ -341,6 +341,13 @@ const ASelect = forwardRef(
 
     const selectIcon = isOpen ? "chevron-up" : "chevron-down";
 
+    const placeholder =
+      typeof propsPlaceholder === "string" ? (
+        <span className="a-select__placeholder">{propsPlaceholder}</span>
+      ) : (
+        propsPlaceholder
+      );
+
     let selectionContent;
 
     if (selectedDisplayTemplate) {
@@ -355,14 +362,10 @@ const ASelect = forwardRef(
           />
         );
       } else {
-        selectionContent = (
-          <span className="a-select__placeholder">{placeholder}</span>
-        );
+        selectionContent = placeholder;
       }
     } else if (!selectedItem) {
-      selectionContent = (
-        <span className="a-select__placeholder">{placeholder}</span>
-      );
+      selectionContent = placeholder;
     } else if (useTemplateForSelectedItem && itemTemplate) {
       const MenuItemComponent = itemTemplate;
 
@@ -603,7 +606,7 @@ ASelect.propTypes = {
   /**
    * Sets the text when no option is selected.
    */
-  placeholder: PropTypes.string,
+  placeholder: PropTypes.node,
   /**
    * Sets the content to prepend to the dropdown list.
    */
