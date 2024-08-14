@@ -38,6 +38,7 @@ const calculateMenuPosition = ({
     return;
   }
 
+  const appCoords = getRoundedBoundedClientRect(appRef.current);
   const wrapCoords = getRoundedBoundedClientRect(wrapRef.current);
   const anchorCoords =
     anchorRef instanceof DOMRect
@@ -46,7 +47,7 @@ const calculateMenuPosition = ({
   const menuCoords = getRoundedBoundedClientRect(combinedRef.current);
   const magneticSpacer = removeSpacer ? 0 : 4;
 
-  if (!anchorCoords || !menuCoords || !wrapCoords) {
+  if (!anchorCoords || !menuCoords || !wrapCoords || !appCoords) {
     return;
   }
   let baseLeft = 0,
@@ -146,38 +147,38 @@ const calculateMenuPosition = ({
     pageHeight = wrapCoords.height;
   } else {
     // Calculate positioning relative to window or app/wrap elements
-    if (appRefEl.offsetParent?.isSameNode(document.body)) {
-      xOffset = window.pageXOffset;
+    xOffset = appRefEl.offsetParent?.isSameNode(document.body)
+      ? window.pageXOffset
+      : wrapCoords.left - appCoords.left; // this was incorrectly set to "scrollLeft" when scrollLeft is not a return value in appCoords
 
-      pageWidth =
-        document.documentElement.clientWidth + xOffset - wrapRefEl.offsetLeft;
-    }
+    yOffset = appRefEl.offsetParent?.isSameNode(document.body)
+      ? window.pageYOffset
+      : wrapCoords.top - appCoords.top; // this was incorrectly set to "scrollTop" when scrollLeft is not a return value in appCoords
 
-    if (appRefEl.offsetParent?.isSameNode(document.body)) {
-      yOffset = window.pageYOffset;
+    pageWidth =
+      document.documentElement.clientWidth + xOffset - wrapRefEl.offsetLeft;
 
-      pageHeight =
-        document.documentElement.clientHeight + yOffset - wrapRefEl.offsetTop;
-    }
+    pageHeight =
+      document.documentElement.clientHeight + yOffset - wrapRefEl.offsetTop;
   }
 
   // Edge detection: max x
-  if (pageWidth && baseLeft + menuCoords.width + marginLeft > pageWidth) {
+  if (baseLeft + menuCoords.width + marginLeft > pageWidth) {
     baseLeft = pageWidth - menuCoords.width - marginLeft;
   }
 
   // Edge detection: min x
-  if (xOffset && baseLeft + marginLeft < xOffset) {
+  if (baseLeft + marginLeft < xOffset) {
     baseLeft = xOffset - marginLeft;
   }
 
   // Edge detection: max y
-  if (pageHeight && baseTop + menuCoords.height + marginTop > pageHeight) {
+  if (baseTop + menuCoords.height + marginTop > pageHeight) {
     baseTop = pageHeight - menuCoords.height - marginTop;
   }
 
   // Edge detection: min y
-  else if (yOffset && baseTop < yOffset) {
+  else if (baseTop < yOffset) {
     baseTop = yOffset - marginTop;
   }
 
