@@ -21,6 +21,7 @@ const ACopyButton = forwardRef(
       tertiaryAlt,
       defaultLabel = true,
       messageCloseDelay = 3000,
+      className: propsClassName,
       ...rest
     },
     ref
@@ -40,11 +41,17 @@ const ACopyButton = forwardRef(
       tertiaryAlt
     };
 
+    let className = "a-copy-button";
+
+    if (propsClassName) {
+      className += ` ${propsClassName}`;
+    }
+
     return (
       <>
         <AButton
           ref={combinedRef}
-          className="a-copy-button"
+          className={className}
           icon
           onClick={() => {
             copyToClipboard(value, containerId);
