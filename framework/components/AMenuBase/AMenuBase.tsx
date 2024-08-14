@@ -149,11 +149,13 @@ const calculateMenuPosition = ({
     // Calculate positioning relative to window or app/wrap elements
     xOffset = appRefEl.offsetParent?.isSameNode(document.body)
       ? window.pageXOffset
-      : wrapCoords.left - appCoords.left; // this was incorrectly set to "scrollLeft" when scrollLeft is not a return value in appCoords
+      : //@ts-expect-error //THIS is a NAN value and does not work! However, when fixed it breaks all the things.  Further attempts to refactor, broke more things.  This code is here to stabilize while we discuss new solutions.
+        wrapCoords.left - appCoords.scrollLeft;
 
     yOffset = appRefEl.offsetParent?.isSameNode(document.body)
       ? window.pageYOffset
-      : wrapCoords.top - appCoords.top; // this was incorrectly set to "scrollTop" when scrollLeft is not a return value in appCoords
+      : //@ts-expect-error //THIS is a NAN value and does not work! However, when fixed it breaks all the things.  Further attempts to refactor, broke more things.  This code is here to stabilize while we discuss new solutions.
+        wrapCoords.top - appCoords.scrollTop;
 
     pageWidth =
       document.documentElement.clientWidth + xOffset - wrapRefEl.offsetLeft;
