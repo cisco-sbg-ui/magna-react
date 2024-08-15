@@ -321,9 +321,7 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
     ]);
 
     useEffect(() => {
-      if (open) {
-        calculatePosition();
-      }
+      calculatePosition();
     }, [open, calculatePosition]);
 
     useEffect(() => {
@@ -344,9 +342,7 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
 
     useEffect(() => {
       const screenChangeHandler = () => {
-        if (open) {
-          calculatePosition();
-        }
+        calculatePosition();
       };
 
       window.addEventListener("resize", screenChangeHandler);
@@ -356,7 +352,7 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
         window.removeEventListener("resize", screenChangeHandler);
         window.removeEventListener("fullscreenchange", screenChangeHandler);
       };
-    }, [calculatePosition, open]);
+    }, [calculatePosition]);
 
     useEffect(() => {
       const clickOutsideHandler = (e: MouseEvent) => {
