@@ -9,7 +9,7 @@ import React, {
 import ReactDOM from "react-dom";
 
 import AAppContext from "../AApp/AAppContext";
-import {useCombinedRefs, useHasScrolled} from "../../utils/hooks";
+import {useCombinedRefs} from "../../utils/hooks";
 import {getRoundedBoundedClientRect} from "../../utils/helpers";
 
 import {useMenuFlip} from "./hooks";
@@ -338,7 +338,9 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
     }, [anchorRef, combinedRef, menuPlacement, pointer, menuLeft, menuTop]);
 
     // reposition on scroll, but only if it's open
-    useHasScrolled(open, calculatePosition);
+    // TODO: revisit this - it's causing issues when the page scrolls. Need to
+    // scope it to the container the menu is in
+    // useHasScrolled(open, calculatePosition);
 
     useEffect(() => {
       const screenChangeHandler = () => {
