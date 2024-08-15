@@ -291,21 +291,11 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
       }
     }, [open, checkMenuSpacing, menuRef, placement]);
 
-    useEffect(() => {
-      calculatePointerPosition({
-        combinedRef,
-        anchorRef,
-        pointer,
-        placement: menuPlacement,
-        setPointerLeft,
-        setPointerTop
-      });
-    }, [anchorRef, combinedRef, menuPlacement, pointer, menuLeft, menuTop]);
-
     // reposition on scroll, but only if it's open
     // TODO: revisit this - it's causing issues when the page scrolls. Need to
     // scope it to the container the menu is in
     // useHasScrolled(open, calculatePosition);
+
     useEffect(() => {
       if (open && menuRef.current) {
         checkMenuSpacing();
@@ -382,6 +372,17 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
       removeSpacer,
       withNewWrappingContext
     ]);
+
+    useEffect(() => {
+      calculatePointerPosition({
+        combinedRef,
+        anchorRef,
+        pointer,
+        placement: menuPlacement,
+        setPointerLeft,
+        setPointerTop
+      });
+    }, [anchorRef, combinedRef, menuPlacement, pointer, menuLeft, menuTop]);
 
     useEffect(() => {
       const screenChangeHandler = () => {
