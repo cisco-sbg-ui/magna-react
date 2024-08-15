@@ -19,7 +19,9 @@ const ACopyButton = forwardRef(
       children,
       tertiary = true,
       tertiaryAlt,
+      copiedTooltipText,
       toooltipText,
+      tooltipPlacement,
       defaultLabel = true,
       messageCloseDelay = 3000,
       className: propsClassName,
@@ -70,9 +72,10 @@ const ACopyButton = forwardRef(
           disabled={!clicked}
           className={tooltipClassName}
           openDelay={0}
+          placement={tooltipPlacement}
           content={
             <AContextualNotification variant="success">
-              Copied to clipboard
+              {copiedTooltipText || "Copied to clipboard"}
             </AContextualNotification>
           }
           onClose={() => {
@@ -83,6 +86,7 @@ const ACopyButton = forwardRef(
           triggerRef={combinedRef}
           disabled={clicked}
           className={tooltipClassName}
+          placement={tooltipPlacement}
           content={toooltipText || "Copy to clipboard"}
         />
       </>
