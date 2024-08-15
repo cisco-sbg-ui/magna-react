@@ -19,8 +19,12 @@ const ACopyButton = forwardRef(
       children,
       tertiary = true,
       tertiaryAlt,
+      copiedTooltipText,
+      toooltipText,
+      tooltipPlacement,
       defaultLabel = true,
       messageCloseDelay = 3000,
+      className: propsClassName,
       ...rest
     },
     ref
@@ -40,11 +44,17 @@ const ACopyButton = forwardRef(
       tertiaryAlt
     };
 
+    let className = "a-copy-button";
+
+    if (propsClassName) {
+      className += ` ${propsClassName}`;
+    }
+
     return (
       <>
         <AButton
           ref={combinedRef}
-          className="a-copy-button"
+          className={className}
           icon
           onClick={() => {
             copyToClipboard(value, containerId);
@@ -62,9 +72,10 @@ const ACopyButton = forwardRef(
           disabled={!clicked}
           className={tooltipClassName}
           openDelay={0}
+          placement={tooltipPlacement}
           content={
             <AContextualNotification variant="success">
-              Copied to clipboard
+              {copiedTooltipText || "Copied to clipboard"}
             </AContextualNotification>
           }
           onClose={() => {
@@ -75,7 +86,8 @@ const ACopyButton = forwardRef(
           triggerRef={combinedRef}
           disabled={clicked}
           className={tooltipClassName}
-          content="Copy to clipboard"
+          placement={tooltipPlacement}
+          content={toooltipText || "Copy to clipboard"}
         />
       </>
     );

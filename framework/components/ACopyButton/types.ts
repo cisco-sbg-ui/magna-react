@@ -27,10 +27,23 @@ export type ACopyButtonProps<C extends React.ElementType> = Override<
      */
     tertiaryAlt?: boolean;
     /**
+     * Sets the text for the after copy tooltip
+     */
+    copiedTooltipText?: string;
+    /**
+     * Set the tooltip text
+     */
+    toooltipText?: string;
+    /**
+     * Set the placement of the tooltip
+     */
+    tooltipPlacement?: string;
+    /**
      * Show the default label as per design guidelines
      *
      * @defaultValue `true`
      */
+
     defaultLabel?: boolean;
     /**
      * Delay in milliseconds before the message is closed
