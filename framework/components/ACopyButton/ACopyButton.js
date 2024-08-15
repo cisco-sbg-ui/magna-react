@@ -20,7 +20,7 @@ const ACopyButton = forwardRef(
       tertiary = true,
       tertiaryAlt,
       copiedTooltipText,
-      toooltipText,
+      tooltipText,
       tooltipPlacement,
       defaultLabel = true,
       messageCloseDelay = 3000,
@@ -87,7 +87,7 @@ const ACopyButton = forwardRef(
           disabled={clicked}
           className={tooltipClassName}
           placement={tooltipPlacement}
-          content={toooltipText || "Copy to clipboard"}
+          content={tooltipText || "Copy to clipboard"}
         />
       </>
     );
