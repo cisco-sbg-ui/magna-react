@@ -19,6 +19,7 @@ const ACopyButton = forwardRef(
       children,
       tertiary = true,
       tertiaryAlt,
+      toooltipText,
       defaultLabel = true,
       messageCloseDelay = 3000,
       className: propsClassName,
@@ -82,7 +83,7 @@ const ACopyButton = forwardRef(
           triggerRef={combinedRef}
           disabled={clicked}
           className={tooltipClassName}
-          content="Copy to clipboard"
+          content={toooltipText || "Copy to clipboard"}
         />
       </>
     );

@@ -27,6 +27,10 @@ export type ACopyButtonProps<C extends React.ElementType> = Override<
      */
     tertiaryAlt?: boolean;
     /**
+     * Set the tooltip text
+     */
+    toooltipText?: string;
+    /**
      * Show the default label as per design guidelines
      *
      * @defaultValue `true`
