@@ -291,19 +291,13 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
       }
     }, [open, checkMenuSpacing, menuRef, placement]);
 
-    // reposition on scroll, but only if it's open
-    // TODO: revisit this - it's causing issues when the page scrolls. Need to
-    // scope it to the container the menu is in
-    // useHasScrolled(open, calculatePosition);
-
-    useEffect(() => {
-      if (open && menuRef.current) {
-        checkMenuSpacing();
+    const calculatePosition = useCallback(() => {
+      if (!combinedRef?.current) {
+        return;
       }
-    }, [open, checkMenuSpacing, menuRef, placement]);
 
-    useEffect(() => {
-      const calculateMenuPositionProps = {
+      checkMenuSpacing();
+      calculateMenuPosition({
         combinedRef,
         appRef,
         wrapRef,
@@ -314,64 +308,23 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
         setInvisible,
         removeSpacer,
         withNewWrappingContext
-      };
-      calculateMenuPosition(calculateMenuPositionProps);
+      });
     }, [
-      open,
       anchorRef,
       combinedRef,
       menuPlacement,
       appRef,
       wrapRef,
       removeSpacer,
-      withNewWrappingContext
+      withNewWrappingContext,
+      checkMenuSpacing
     ]);
 
     useEffect(() => {
-      const pointerPositionProps = {
-        combinedRef,
-        anchorRef,
-        pointer,
-        placement: menuPlacement,
-        setPointerLeft,
-        setPointerTop
-      };
-      calculatePointerPosition(pointerPositionProps);
-    }, [anchorRef, combinedRef, menuPlacement, pointer, menuLeft, menuTop]);
-
-    useEffect(() => {
-      const screenChangeHandler = () => {
-        const calculateMenuPositionProps = {
-          combinedRef,
-          appRef,
-          wrapRef,
-          anchorRef,
-          placement,
-          setMenuLeft,
-          setMenuTop,
-          setInvisible,
-          removeSpacer,
-          withNewWrappingContext
-        };
-        calculateMenuPosition(calculateMenuPositionProps);
-      };
-
-      window.addEventListener("resize", screenChangeHandler);
-      window.addEventListener("fullscreenchange", screenChangeHandler);
-
-      return () => {
-        window.removeEventListener("resize", screenChangeHandler);
-        window.removeEventListener("fullscreenchange", screenChangeHandler);
-      };
-    }, [
-      anchorRef,
-      combinedRef,
-      placement,
-      appRef,
-      wrapRef,
-      removeSpacer,
-      withNewWrappingContext
-    ]);
+      if (open) {
+        calculatePosition();
+      }
+    }, [open, calculatePosition]);
 
     useEffect(() => {
       calculatePointerPosition({
@@ -384,37 +337,26 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
       });
     }, [anchorRef, combinedRef, menuPlacement, pointer, menuLeft, menuTop]);
 
+    // reposition on scroll, but only if it's open
+    // TODO: revisit this - it's causing issues when the page scrolls. Need to
+    // scope it to the container the menu is in
+    // useHasScrolled(open, calculatePosition);
+
     useEffect(() => {
       const screenChangeHandler = () => {
-        const calculateMenuPositionProps = {
-          combinedRef,
-          appRef,
-          wrapRef,
-          anchorRef,
-          placement,
-          setMenuLeft,
-          setMenuTop,
-          setInvisible,
-          removeSpacer,
-          withNewWrappingContext
-        };
-        calculateMenuPosition(calculateMenuPositionProps);
+        if (open) {
+          calculatePosition();
+        }
       };
 
       window.addEventListener("resize", screenChangeHandler);
+      window.addEventListener("fullscreenchange", screenChangeHandler);
 
       return () => {
         window.removeEventListener("resize", screenChangeHandler);
+        window.removeEventListener("fullscreenchange", screenChangeHandler);
       };
-    }, [
-      anchorRef,
-      combinedRef,
-      placement,
-      appRef,
-      wrapRef,
-      removeSpacer,
-      withNewWrappingContext
-    ]);
+    }, [calculatePosition, open]);
 
     useEffect(() => {
       const clickOutsideHandler = (e: MouseEvent) => {
