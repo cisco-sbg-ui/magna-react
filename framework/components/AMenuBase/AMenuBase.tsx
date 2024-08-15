@@ -291,39 +291,6 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
       }
     }, [open, checkMenuSpacing, menuRef, placement]);
 
-    const calculatePosition = useCallback(() => {
-      if (!combinedRef?.current) {
-        return;
-      }
-
-      checkMenuSpacing();
-      calculateMenuPosition({
-        combinedRef,
-        appRef,
-        wrapRef,
-        anchorRef,
-        placement: menuPlacement,
-        setMenuLeft,
-        setMenuTop,
-        setInvisible,
-        removeSpacer,
-        withNewWrappingContext
-      });
-    }, [
-      anchorRef,
-      combinedRef,
-      menuPlacement,
-      appRef,
-      wrapRef,
-      removeSpacer,
-      withNewWrappingContext,
-      checkMenuSpacing
-    ]);
-
-    useEffect(() => {
-      calculatePosition();
-    }, [open, calculatePosition]);
-
     useEffect(() => {
       calculatePointerPosition({
         combinedRef,
@@ -339,10 +306,64 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
     // TODO: revisit this - it's causing issues when the page scrolls. Need to
     // scope it to the container the menu is in
     // useHasScrolled(open, calculatePosition);
+    useEffect(() => {
+      if (open && menuRef.current) {
+        checkMenuSpacing();
+      }
+    }, [open, checkMenuSpacing, menuRef, placement]);
+
+    useEffect(() => {
+      const calculateMenuPositionProps = {
+        combinedRef,
+        appRef,
+        wrapRef,
+        anchorRef,
+        placement: menuPlacement,
+        setMenuLeft,
+        setMenuTop,
+        setInvisible,
+        removeSpacer,
+        withNewWrappingContext
+      };
+      calculateMenuPosition(calculateMenuPositionProps);
+    }, [
+      open,
+      anchorRef,
+      combinedRef,
+      menuPlacement,
+      appRef,
+      wrapRef,
+      removeSpacer,
+      withNewWrappingContext
+    ]);
+
+    useEffect(() => {
+      const pointerPositionProps = {
+        combinedRef,
+        anchorRef,
+        pointer,
+        placement: menuPlacement,
+        setPointerLeft,
+        setPointerTop
+      };
+      calculatePointerPosition(pointerPositionProps);
+    }, [anchorRef, combinedRef, menuPlacement, pointer, menuLeft, menuTop]);
 
     useEffect(() => {
       const screenChangeHandler = () => {
-        calculatePosition();
+        const calculateMenuPositionProps = {
+          combinedRef,
+          appRef,
+          wrapRef,
+          anchorRef,
+          placement,
+          setMenuLeft,
+          setMenuTop,
+          setInvisible,
+          removeSpacer,
+          withNewWrappingContext
+        };
+        calculateMenuPosition(calculateMenuPositionProps);
       };
 
       window.addEventListener("resize", screenChangeHandler);
@@ -352,7 +373,47 @@ const AMenuBase = forwardRef<HTMLElement, AMenuBaseProps>(
         window.removeEventListener("resize", screenChangeHandler);
         window.removeEventListener("fullscreenchange", screenChangeHandler);
       };
-    }, [calculatePosition]);
+    }, [
+      anchorRef,
+      combinedRef,
+      placement,
+      appRef,
+      wrapRef,
+      removeSpacer,
+      withNewWrappingContext
+    ]);
+
+    useEffect(() => {
+      const screenChangeHandler = () => {
+        const calculateMenuPositionProps = {
+          combinedRef,
+          appRef,
+          wrapRef,
+          anchorRef,
+          placement,
+          setMenuLeft,
+          setMenuTop,
+          setInvisible,
+          removeSpacer,
+          withNewWrappingContext
+        };
+        calculateMenuPosition(calculateMenuPositionProps);
+      };
+
+      window.addEventListener("resize", screenChangeHandler);
+
+      return () => {
+        window.removeEventListener("resize", screenChangeHandler);
+      };
+    }, [
+      anchorRef,
+      combinedRef,
+      placement,
+      appRef,
+      wrapRef,
+      removeSpacer,
+      withNewWrappingContext
+    ]);
 
     useEffect(() => {
       const clickOutsideHandler = (e: MouseEvent) => {
