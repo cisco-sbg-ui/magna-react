@@ -8,9 +8,7 @@ $progressbar-bg-height-large: 22px;
 $progressbar-border-radius: 6px;
 $progressbar-fill-height: 100%;
 $progressbar-fill-border-radius: 6px;
-$progressbar-striped-opacity: 0.5;
-$progressbar-animation-timing: 1s linear infinite !default;
-$progressbar-transition: width 0.6s ease !default;
+$progressbar-animation-timing: 2s linear infinite !default;
 
 .a-progressbar {
   display: flex;
@@ -107,18 +105,20 @@ $progressbar-transition: width 0.6s ease !default;
     }
   }
 
-  &--striped {
+  &--animate {
     .a-progressbar__bar-container__fill {
-      background-image: linear-gradient(
-        60deg,
-        rgba(255, 255, 255, 0.15) 25%,
-        transparent 25%,
-        transparent 50%,
-        rgba(255, 255, 255, 0.15) 50%,
-        rgba(255, 255, 255, 0.15) 75%,
-        transparent 75%,
-        transparent
+      background: repeating-linear-gradient(
+        to right,
+        var(--info-border-default) 0%,
+        var(--info-bg-medium-default) 50%,
+        var(--info-border-default) 100%
       );
+      width: 100%;
+      background-size: 200% auto;
+      background-position: 0 100%;
+      animation: gradient 2s infinite;
+      animation-fill-mode: forwards;
+      animation-timing-function: linear;
     }
   }
 
@@ -138,34 +138,18 @@ $progressbar-transition: width 0.6s ease !default;
     }
   }
 
-  @keyframes progressbar-stripes-small {
-    from {
-      background-position: $progressbar-bg-height-small 0;
-    }
-    to {
+  @keyframes gradient {
+    0% {
       background-position: 0 0;
     }
-  }
-
-  @keyframes progressbar-stripes-medium {
-    from {
-      background-position: $progressbar-bg-height-medium 0;
-    }
-    to {
-      background-position: 0 0;
+    100% {
+      background-position: -200% 0;
     }
   }
 }
 
 .a-app--animated .a-progressbar {
-  &--size-small {
-    .a-progressbar__fill {
-      animation: progressbar-stripes-small $progressbar-animation-timing;
-    }
-  }
-  &--size-medium {
-    .a-progressbar__fill {
-      animation: progressbar-stripes-medium $progressbar-animation-timing;
-    }
+  .a-progressbar__bar-container__fill {
+    animation: gradient $progressbar-animation-timing;
   }
 }

@@ -19,7 +19,7 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
   <div>
     <h3 style={{textAlign: "center"}}>Status</h3>
     <div className="d-flex flex-column gap-3 mb-5">
-      <AProgressbar stacked label="Active" status="active" percentage={50} />
+         <AProgressbar stacked label="Active" status="active" percentage={50} />
       <AProgressbar stacked label="Success" status="success" percentage={100} />
       <AProgressbar stacked label="Error" status="error" percentage={50} />
     </div>
@@ -163,13 +163,13 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
 `}
 />
 
-#### Animations
+#### Animation
 
 <Playground
   code={`
   <div>
-  <AProgressbar striped percentage={40} />
-  <AProgressbar animationDuration="2s" striped percentage={40} />
+  <AProgressbar small animate percentage={40} />
+  <AProgressbar animationDuration="2.5s" animate percentage={40} />
 </div>  `}
 />
 
