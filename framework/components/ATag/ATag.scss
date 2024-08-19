@@ -126,6 +126,26 @@ $icon-width: 1.167rem;
     }
   }
 
+  &--score-critical {
+    background: var(--negative-bg-default);
+    color: var(--negative-text-in-default);
+  }
+
+  &--score-high {
+    background: var(--severe-warning-bg-default);
+    color: var(--warning-text-in-default);
+  }
+
+  &--score-medium {
+    background: var(--warning-bg-default);
+    color: var(--warning-text-in-default);
+  }
+
+  &--score-low {
+    background: var(--positive-bg-default);
+    color: var(--positive-text-in-default);
+  }
+
   @each $accentColor, $color in $accent-colors {
     &--accent#{$accentColor} {
       background-color: $color;

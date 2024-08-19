@@ -10,6 +10,10 @@ export type ATagProps<C extends React.ElementType> =
       href?: string;
       target?: string;
       /**
+       * Will apply score specific background and font color.
+       */
+      score?: number;
+      /**
        * Will apply the icon along with the status color.
        */
       status?:

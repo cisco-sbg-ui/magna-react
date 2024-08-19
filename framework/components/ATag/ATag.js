@@ -4,6 +4,7 @@ import AIcon from "../AIcon";
 
 import {keyCodes} from "../../utils/helpers";
 import "./ATag.scss";
+import {getScoreClass} from "./utils";
 
 const STATUS_ICON = {
   excellent: "excellent",
@@ -33,6 +34,7 @@ const ATag = forwardRef(
       target,
       small,
       large,
+      score,
       status,
       color,
       customIcon = false,
@@ -56,6 +58,11 @@ const ATag = forwardRef(
 
     if (small) {
       className += ` a-tag--sm`;
+    }
+
+    if (score) {
+      const scoreClass = getScoreClass(score);
+      className += ` a-tag--${scoreClass}`;
     }
 
     if (status) {
@@ -116,7 +123,7 @@ const ATag = forwardRef(
       );
     }
 
-    return <TagName {...props}>{tagWithIcon || children}</TagName>;
+    return <TagName {...props}>{tagWithIcon || score || children}</TagName>;
   }
 );
 
