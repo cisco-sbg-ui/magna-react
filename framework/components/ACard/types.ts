@@ -38,6 +38,10 @@ export type ACardBasicProps<C extends React.ElementType> =
        */
       interactive?: boolean;
       type?: "dialog" | "card";
+      /**
+       * Indicates the card is selected
+       */
+      selected?: boolean;
     }
   >;
 
