@@ -140,6 +140,7 @@ const AInlineInputBase = forwardRef(
       content = (
         <div className={displayClass}>
           <ATriggerTooltip
+            onlyIfTruncated
             content={propsDisplayValue || displayValue}
             disabled={tooltipDisabled}
             {...tooltipProps}
