@@ -39,8 +39,12 @@ svg.a-icon {
     margin-left: 4px;
   }
 
-  // Cisco logo
-  &--cisco {
+  // Unset stroke on complex icons
+  &--cisco,
+  &--intrusion,
+  &--event-total,
+  &--malware,
+  &--security-intelligence {
     stroke: unset !important;
   }
 
