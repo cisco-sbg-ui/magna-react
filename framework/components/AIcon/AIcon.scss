@@ -80,9 +80,11 @@ svg.a-icon {
     }
   }
   &--danger,
-  &--negative {
+  &--negative,
+  &--alert {
     fill: var(--negative-icon-default);
-    path:nth-of-type(2) {
+    path:nth-of-type(2),
+    path:nth-of-type(3) {
       fill: var(--negative-icon-in-default);
     }
   }

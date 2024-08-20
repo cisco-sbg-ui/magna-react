@@ -15,6 +15,7 @@ import {AIconProps} from "./types";
 const ignoreStrokeReplace = [
   "info",
   "negative",
+  "alert",
   "positive",
   "warning",
   "excellent",

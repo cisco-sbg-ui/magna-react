@@ -12,91 +12,165 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
 
 <ComponentImport components="AProgressbar" />
 
-### Usage
+#### Status
 
 <Playground
-  code={`() => {
-  const [percentage, setPercentage] = useState(0);
-  const [intervalObject, setIntervalObject] = useState();
-  return (
-    <div style={{width: 200}}>
-      <h3>File1.txt</h3>
-      <AProgressbar striped displayText percentage={percentage} />
-      <h3>File2.txt</h3>
-      <AProgressbar striped displayText percentage={percentage - 20} />
-      <AButton
-        onClick={() => {
-          clearInterval(intervalObject);
-          setPercentage(0);
-          setIntervalObject(
-            setInterval(
-              () => setPercentage((percentage) => percentage + 20),
-              1000
-            )
-          );
-        }}>
-        Upload
-      </AButton>
+  code={`
+  <div>
+    <h3 style={{textAlign: "center"}}>Status</h3>
+    <div className="d-flex flex-column gap-3 mb-5">
+         <AProgressbar stacked label="Active" status="active" percentage={50} />
+      <AProgressbar stacked label="Success" status="success" percentage={100} />
+      <AProgressbar stacked label="Error" status="error" percentage={50} />
     </div>
-  );
-}
+
+    <h3 style={{textAlign: "center"}}>Inline</h3>
+    <div className="d-flex flex-column gap-3 mb-5 mt-2">
+      <AProgressbar status="active" label="Label" percentage={50} />
+      <AProgressbar status="success" label="Label" percentage={100} />
+      <AProgressbar status="error" label="Label" percentage={50} />
+    </div>
+
+    <h3 style={{textAlign: "center"}}>Stacked</h3>
+    <div className="d-flex flex-column gap-3 mb-5">
+      <AProgressbar
+        status="active"
+        stacked
+        helperText="Helper text"
+        label="Label"
+        percentage={50}
+      />
+      <AProgressbar
+        status="success"
+        stacked
+        helperText="Helper text"
+        label="Label"
+        percentage={100}
+      />
+      <AProgressbar
+        status="error"
+        stacked
+        helperText="Helper text"
+        label="Label"
+        percentage={100}
+      />
+    </div>
+
+    <h3>Centered</h3>
+    <div className="d-flex flex-column gap-3 mb-5">
+      <AProgressbar
+        status="active"
+        stacked
+        centered
+        helperText="Helper text"
+        label="Label"
+        percentage={50}
+      />
+      <AProgressbar
+        status="success"
+        stacked
+        centered
+        helperText="Helper text"
+        label="Label"
+        percentage={100}
+      />
+      <AProgressbar
+        status="error"
+        stacked
+        centered
+        helperText="Helper text"
+        label="Label"
+        percentage={100}
+      />
+    </div>
+
+  </div>
 `}
 />
 
-#### States
+#### Size small
 
 <Playground
-  code={`<div className="d-flex flex-column" style={{width: 300}}>
-  Default: <AProgressbar percentage={50} />
-  With Text: <AProgressbar displayText percentage={50} />
-  Disabled: <AProgressbar disabled percentage={50} />
-  Striped: <AProgressbar striped percentage={50} />
-  With Text and Disabled:{" "}
-  <AProgressbar disabled displayText percentage={50} />
-  With Text and Striped: <AProgressbar
-    striped
-    displayText
-    percentage={50}
-  />
-  Disabled and Striped: <AProgressbar striped disabled percentage={50} />
-  With Text and Disabled and Striped: <AProgressbar
-    displayText
-    striped
-    disabled
-    percentage={50}
-  />
-  Indeterminate: <AProgressbar
-    indeterminate />
+  code={`
+  <div style={{width: "200px"}}>
+    <h3 style={{textAlign: "center"}}>Inline</h3>
+    <div className="d-flex flex-column gap-3 mb-5 mt-2">
+      <AProgressbar       size="small" status="active" label="Label" percentage={50} />
+      <AProgressbar       size="small" status="success" label="Label" percentage={100} />
+      <AProgressbar       size="small" status="error" label="Label" percentage={50} />
+    </div>
 
-</div>
+    <h3 style={{textAlign: "center"}}>Stacked</h3>
+    <div className="d-flex flex-column gap-3 mb-5">
+      <AProgressbar
+         size="small"
+        status="active"
+        stacked
+        helperText="Helper text"
+        label="Label"
+        percentage={50}
+      />
+      <AProgressbar
+      size="small"
+        status="success"
+        stacked
+        helperText="Helper text"
+        label="Label"
+        percentage={100}
+      />
+      <AProgressbar
+         size="small"
+        status="error"
+        stacked
+        helperText="Helper text"
+        label="Label"
+        percentage={100}
+      />
+    </div>
+
+    <h3>Centered</h3>
+    <div className="d-flex flex-column gap-3 mb-5">
+      <AProgressbar
+      size="small"
+        status="active"
+        stacked
+        centered
+        helperText="Helper text"
+        label="Label"
+        percentage={50}
+      />
+      <AProgressbar
+      size="small"
+        status="success"
+        stacked
+        centered
+        helperText="Helper text"
+        label="Label"
+        percentage={100}
+      />
+      <AProgressbar
+        size="small"
+        status="error"
+        stacked
+        centered
+        helperText="Helper text"
+        label="Label"
+        percentage={100}
+      />
+    </div>
+
+  </div>
 `}
 />
 
-#### Size Variants
+#### Animation
 
 <Playground
-  code={`<div>
-  Small
-  <AProgressbar size="small" indeterminate />
-   <AProgressbar size="small" striped percentage={40} />
-  Medium
-  <AProgressbar size="medium" indeterminate />
-  <AProgressbar size="medium" striped percentage={40} />
-  Large
-  <AProgressbar size="large" indeterminate />
-  <AProgressbar size="large" striped percentage={40} />
-</div>
-`}
-/>
-
-#### Custom Animation Duration
-
-<Playground
-  code={`<div>
-  <AProgressbar animationDuration="2s" indeterminate />
-  <AProgressbar animationDuration="2s" striped percentage={40} />
-</div>
-`}
+  code={`
+  <div>
+  <AProgressbar small animate percentage={40} />
+  <AProgressbar animationDuration="2.5s" animate percentage={40} />
+</div>  `}
 />
 
 ## Component Props
