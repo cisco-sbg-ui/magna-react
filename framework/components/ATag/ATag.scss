@@ -99,7 +99,8 @@ $icon-width: 1.167rem;
     background-color: var(--severe-warning-bg-medium-default);
   }
   &--status-negative,
-  &--status-deny {
+  &--status-deny,
+  &--status-alert {
     background-color: var(--negative-bg-strong-default);
     .a-icon {
       fill: var(--negative-icon-default);

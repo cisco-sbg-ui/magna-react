@@ -18,7 +18,8 @@ const STATUS_ICON = {
   "in-progress": "in-progress",
   active: "positive",
   allow: "allow",
-  deny: "disabled"
+  deny: "disabled",
+  alert: "alert"
 };
 
 const ATag = forwardRef(
