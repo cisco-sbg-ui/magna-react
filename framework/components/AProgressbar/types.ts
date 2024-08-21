@@ -71,7 +71,7 @@ export type AProgressbarProps = Override<
     /**
      * Label for the progress bar
      */
-    label?: string;
+    label?: React.ReactNode;
     /**
      * Label and helper text block positioning
      */

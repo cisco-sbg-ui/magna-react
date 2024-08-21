@@ -45,6 +45,8 @@ $progressbar-animation-timing: 2s linear infinite !default;
     &__content-right {
       display: flex;
       margin-left: 12px;
+      font-size: 12px;
+      font-weight: $font-weight-normal;
     }
   }
 

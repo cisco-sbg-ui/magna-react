@@ -71,8 +71,8 @@ const AProgressbar = forwardRef<HTMLDivElement, AProgressbarProps>(
     }
 
     const fixedPercentage =
-      percentage && Math.max(0, Math.min(percentage, 100));
-    const hasPercentage = percentage && percentage >= 0;
+      percentage && Math.max(0, Math.min(Math.round(percentage), 100));
+    const hasPercentage = percentage !== undefined && percentage >= 0;
     const showPercentage = status === "active" && hasPercentage;
 
     return (
@@ -101,7 +101,7 @@ const AProgressbar = forwardRef<HTMLDivElement, AProgressbarProps>(
           </div>
           <div className={contentRightClass}>
             {status && <AIcon size={20}>{STATUS_ICON[status]}</AIcon>}
-            {showPercentage && <span>{percentage}%</span>}
+            {showPercentage && <span>{fixedPercentage}%</span>}
           </div>
         </div>
 
