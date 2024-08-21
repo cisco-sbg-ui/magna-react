@@ -14,6 +14,7 @@ export type ATagProps<C extends React.ElementType> =
        */
       status?:
         | "active"
+        | "alert"
         | "allow"
         | "deny"
         | "disabled"
