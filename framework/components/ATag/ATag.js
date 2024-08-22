@@ -99,6 +99,8 @@ const ATag = forwardRef(
 
     if (component) {
       TagName = component;
+    } else if (onClick) {
+      TagName = "button";
     }
 
     let tagWithIcon = null;
