@@ -12,6 +12,7 @@ $progressbar-animation-timing: 2s linear infinite !default;
 
 .a-progressbar {
   display: flex;
+  align-items: center;
 
   &__bar-container {
     width: 100%;
@@ -60,6 +61,7 @@ $progressbar-animation-timing: 2s linear infinite !default;
     }
     > .a-progressbar__label {
       margin-right: 0;
+      font-size: 14px;
     }
   }
 
