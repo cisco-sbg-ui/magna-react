@@ -48,7 +48,7 @@ $icon-width: 1.167rem;
   //Size management for any provided icons
   .a-icon {
     width: 14px;
-    stroke: currentColor;
+    stroke: currentColor; //Do not delete! Removing this breaks color for all custom icons coming in.
   }
 
   &--sm {

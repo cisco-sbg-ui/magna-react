@@ -33,10 +33,10 @@ $btn-transition: color $transition-duration--extra-fast
   height: 34px;
   vertical-align: middle;
 
-  .a-icon {
+  & > .a-icon {
     width: 16px;
     vertical-align: text-bottom;
-    stroke: currentColor !important;
+    stroke: currentColor;
   }
 
   .a-spinner {

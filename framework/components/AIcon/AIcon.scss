@@ -40,11 +40,34 @@ svg.a-icon {
   }
 
   // Unset stroke on complex icons
+  /**
+    * In addition to unique icons, we also need to include icons with color due to css ordering issues in some envs. 
+    * Un-setting stroke acts as a failsafe if the styles are ordered differently overriding native "stroke: none;"
+  **/
   &--cisco,
   &--intrusion,
   &--event-total,
   &--malware,
-  &--security-intelligence {
+  &--security-intelligence,
+  &--positive,
+  &--excellent,
+  &--low-warning,
+  &--warning,
+  &--severe-warning,
+  &--alert,
+  &--allow,
+  &--info,
+  &--disabled,
+  &--in-progress,
+  &--inactive,
+  &--malicious,
+  &--suspicious,
+  &--unknown,
+  &--clean,
+  &--common,
+  &--type_Admin,
+  &--critical-stop,
+  &--negative {
     stroke: unset !important;
   }
 
@@ -81,7 +104,8 @@ svg.a-icon {
   }
   &--danger,
   &--negative,
-  &--alert {
+  &--alert,
+  &--critical-stop {
     fill: var(--negative-icon-default);
     path:nth-of-type(2),
     path:nth-of-type(3) {
