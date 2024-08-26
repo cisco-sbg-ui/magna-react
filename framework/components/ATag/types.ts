@@ -1,3 +1,4 @@
+import React from "react";
 import {PolymorphicComponentPropWithRef} from "../../types";
 
 export type ATagProps<C extends React.ElementType> =
@@ -7,8 +8,6 @@ export type ATagProps<C extends React.ElementType> =
     {
       small?: boolean;
       large?: boolean;
-      href?: string;
-      target?: string;
       /**
        * Will apply the icon along with the status color.
        */
@@ -48,5 +47,24 @@ export type ATagProps<C extends React.ElementType> =
        */
       customIcon?: boolean | React.ReactNode;
       "data-testid"?: string;
+      /**
+       * Set the tag to be a link
+       */
+      href?: string;
+      /**
+       * Set the target of the link
+       */
+      target?: string;
+      /**
+       * Make the tag interactive. Sets both `onClick` and `onKeyDown`. By default this changes
+       * the ATag root HTML element to a button.
+       *
+       */
+      onClick?: React.EventHandler<React.MouseEvent | React.KeyboardEvent>;
+      /**
+       * Overrides the default keydown behavior when `onClick` is set.
+       *
+       */
+      onKeyDown?: React.EventHandler<React.KeyboardEvent>;
     }
   >;
