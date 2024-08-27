@@ -94,12 +94,12 @@ $page-width--max: 1440px !default;
 $grid-breakpoints: () !default;
 $grid-breakpoints: map-merge(
   (
-    "xs": 479,
-    "sm": 767,
-    "md": 960,
-    "lg": 1280,
-    "xl": 1680,
-    "xxl": 2080
+    "xs": 479px,
+    "sm": 767px,
+    "md": 960px,
+    "lg": 1280px,
+    "xl": 1680px,
+    "xxl": 2080px
   ),
   $grid-breakpoints
 );
