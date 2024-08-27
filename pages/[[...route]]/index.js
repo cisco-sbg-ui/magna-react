@@ -306,6 +306,8 @@ export async function getStaticProps({params}) {
     }
   };
 
+  console.log("resolved babel path", babelPath);
+
   const patterns = [
     "./framework/**/+(A)!(*.spec|*.ct|*.cy|*Context).js",
     "./framework/**/+(A)!(*.spec|*.ct|*.cy|*Context).tsx"
