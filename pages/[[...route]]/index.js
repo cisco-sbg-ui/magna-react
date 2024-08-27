@@ -294,7 +294,7 @@ export async function getStaticProps({params}) {
   const parserConfig = {
     resolver,
     babelOptions: {
-      filename: ".babelrc"
+      filename: "./.babelrc"
     }
   };
   const mapFromArray = (arr) => {
