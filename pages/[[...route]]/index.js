@@ -293,7 +293,7 @@ export async function getStaticProps({params}) {
   });
 
   const resolver = new builtinResolvers.FindExportedDefinitionsResolver();
-  const babelPath = path.resolve(".babelrc");
+  const babelPath = path.resolve(".babelrc.json");
   const parserConfig = {
     resolver,
     babelOptions: {
