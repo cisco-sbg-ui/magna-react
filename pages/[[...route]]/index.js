@@ -3,6 +3,7 @@ import Head from "next/head";
 import {serialize} from "next-mdx-remote/serialize";
 import {MDXRemote} from "next-mdx-remote";
 import React, {useEffect, useRef, useState} from "react";
+import {parse as reactDocParser, builtinResolvers} from "react-docgen";
 
 import {
   AApp,
@@ -249,29 +250,6 @@ export async function getStaticProps({params}) {
   const route = params.route?.join("/") || "";
   const fs = require("fs");
   const glob = require("glob");
-  const reactDocs = require("react-docgen");
-  const reactDocsTypescript = require("react-docgen-typescript");
-  const tsConfigParser = reactDocsTypescript.withCustomConfig(
-    "./tsconfig.json",
-    {
-      savePropValueAsString: true,
-      shouldRemoveUndefinedFromOptional: true,
-      shouldExtractLiteralValuesFromEnum: true,
-      propFilter: (prop /*, component*/) => {
-        if (prop.declarations !== undefined && prop.declarations.length > 0) {
-          const hasPropAdditionalDescription = prop.declarations.find(
-            (declaration) => {
-              return !declaration.fileName.includes("node_modules");
-            }
-          );
-
-          return Boolean(hasPropAdditionalDescription);
-        }
-
-        return true;
-      }
-    }
-  );
 
   let target;
   const menus = glob.sync("./framework/**/*.mdx").map((x) => {
@@ -312,38 +290,40 @@ export async function getStaticProps({params}) {
     };
   });
 
-  const propsInfo = glob
-    .sync("./framework/**/+(A)!(*.spec|*.ct|*.cy|*Context).js")
-    .map((x) => {
-      const componentSource = fs.readFileSync(x, {encoding: "utf8", flag: "r"});
-      return reactDocs.parse(componentSource);
-    });
+  const resolver = new builtinResolvers.FindExportedDefinitionsResolver();
+  const parserConfig = {
+    resolver,
+    babelOptions: {
+      filename: ".babelrc"
+    }
+  };
+  const mapFromArray = (arr) => {
+    if (Array.isArray(arr) && arr.length > 0) {
+      return arr[0];
+    }
+  };
 
-  let typescriptPropsInfo = glob
-    .sync("./framework/**/+(A)!(*.spec|*.ct|*.cy|*Context).tsx")
-    .map((x) => {
-      return tsConfigParser.parse(x);
-    });
+  const patterns = [
+    "./framework/**/+(A)!(*.spec|*.ct|*.cy|*Context).js",
+    "./framework/**/+(A)!(*.spec|*.ct|*.cy|*Context).tsx"
+  ];
 
-  // This doesn't seem to parse, might not be supported
-  // let types = reactDocsTypescript.parse("./framework/types.ts");
+  const propsInfo = [];
 
-  // Can't serialize undefined, so change them to null
-  typescriptPropsInfo.forEach((a) =>
-    a.forEach((b) => {
-      Object.keys(b.props).forEach((g) => {
-        Object.keys(b.props[g]).forEach((p) => {
-          if (b.props[g][p] === undefined) {
-            b.props[g][p] = null;
-          }
+  patterns.forEach((pattern) => {
+    const info = glob
+      .sync(pattern)
+      .map((x) => {
+        const componentSource = fs.readFileSync(x, {
+          encoding: "utf8",
+          flag: "r"
         });
-      });
-    })
-  );
+        return reactDocParser(componentSource, parserConfig);
+      })
+      .map(mapFromArray);
 
-  typescriptPropsInfo = typescriptPropsInfo.map((t) => t[0]);
-
-  propsInfo.push(...typescriptPropsInfo);
+    propsInfo.push(...info);
+  });
 
   const source = await serialize(target.content, {
     scope: target.data,
@@ -393,8 +373,7 @@ export async function getStaticProps({params}) {
           .flat()
       },
       menus,
-      propsInfo,
-      typescriptPropsInfo
+      propsInfo
     }
   };
 }

@@ -1,4 +1,5 @@
 import React, {forwardRef} from "react";
+import PropTypes from "prop-types";
 import AIcon from "../AIcon";
 
 import {keyCodes} from "../../utils/helpers";
@@ -39,7 +40,7 @@ const ATag = forwardRef<HTMLElement, ATagProps<React.ElementType>>(
       color,
       customIcon = false,
       ...rest
-    }: ATagProps<React.ElementType>,
+    },
     ref
   ) => {
     let className = "a-tag focus-box-shadow";
@@ -128,6 +129,80 @@ const ATag = forwardRef<HTMLElement, ATagProps<React.ElementType>>(
     );
   }
 );
+
+/**
+ * NOTE:
+ * The typescript docgen parser can't seem to pick up compound component types,
+ * so leaving proptypes in for now.
+ */
+ATag.propTypes = {
+  /**
+   * Sets the base component. Useful for integrating with routers.
+   */
+  component: PropTypes.elementType,
+  /**
+   * Apply small tag style. Default is false (medium size).
+   */
+  small: PropTypes.bool,
+  /**
+   * Apply large tag style. Default is false (medium size).
+   */
+  large: PropTypes.bool,
+  /**
+   * If specified, the component will render as an HTML link.
+   */
+  href: PropTypes.string,
+  /**
+   * If the `href` property is defined, the target can be set (ex: `_blank`, `_self`, `_parent`, `_top`)
+   */
+  target: PropTypes.string,
+  /**
+   * Will apply the icon along with the status color.
+   */ status: PropTypes.oneOf([
+    "alert",
+    "excellent",
+    "positive",
+    "low-warning",
+    "warning",
+    "severe-warning",
+    "negative",
+    "inactive",
+    "allow",
+    "deny",
+    "active",
+    "disabled",
+    "info",
+    "in-progress"
+  ]),
+  /**
+   * Optional accent colors
+   */
+  color: PropTypes.oneOf([
+    "accentA",
+    "accentB",
+    "accentC",
+    "accentD",
+    "accentE",
+    "accentF",
+    "accentG",
+    "accentH",
+    "accentI",
+    "accentK"
+  ]),
+  /**
+   * Option for custom icon, can pass through children or directly into props.
+   */
+  customIcon: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
+  /**
+   * Make the tag interactive. Sets both `onClick` and `onKeyDown`. By default this changes
+   * the ATag root HTML element to a button.
+   */
+  onClick: PropTypes.func,
+  /**
+   * Overrides the default keydown behavior when `onClick` is set.
+   */
+  onKeyDown: PropTypes.func
+};
 
 ATag.displayName = "ATag";
 
