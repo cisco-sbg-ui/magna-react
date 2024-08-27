@@ -1,3 +1,7 @@
+import fs from "fs";
+import glob from "glob";
+import path from "path";
+
 import matter from "gray-matter";
 import Head from "next/head";
 import {serialize} from "next-mdx-remote/serialize";
@@ -248,8 +252,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({params}) {
   const route = params.route?.join("/") || "";
-  const fs = require("fs");
-  const glob = require("glob");
 
   let target;
   const menus = glob.sync("./framework/**/*.mdx").map((x) => {
@@ -291,10 +293,11 @@ export async function getStaticProps({params}) {
   });
 
   const resolver = new builtinResolvers.FindExportedDefinitionsResolver();
+  const babelPath = path.resolve(".babelrc");
   const parserConfig = {
     resolver,
     babelOptions: {
-      filename: "./.babelrc"
+      filename: babelPath
     }
   };
   const mapFromArray = (arr) => {
