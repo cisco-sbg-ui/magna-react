@@ -293,11 +293,10 @@ export async function getStaticProps({params}) {
   });
 
   const resolver = new builtinResolvers.FindExportedDefinitionsResolver();
-  const babelPath = path.resolve(".babelrc.json");
+  const babelPath = path.resolve("babel.config.json");
   const parserConfig = {
     resolver,
     babelOptions: {
-      cwd: babelPath.split("/").slice(0, -1).join("/"),
       filename: babelPath
     }
   };
