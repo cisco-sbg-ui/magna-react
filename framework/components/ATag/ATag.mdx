@@ -185,6 +185,25 @@ Basic variants for the standard status states
 `}
 />
 
+#### Status without icon
+
+In some cases using a status tag without an icon is helpful, such as showing
+informational counts
+
+<Playground
+  code={`() => {
+  return (
+    <>
+      <div style={{minHeight: "50px"}}>
+        <ATag hideStatusIcon status="disabled" className="ma-1">0 Products</ATag>
+        <ATag hideStatusIcon status="info" className="ma-1">6 Products</ATag>
+      </div>
+    </>
+);
+}
+`}
+/>
+
 #### Colors
 
 Accent colors

@@ -48,6 +48,8 @@ export type ATagProps<C extends React.ElementType> =
       customIcon?: boolean | React.ReactNode;
       /**
        * Hide the status icon
+       *
+       * @defaultValue `false`
        */
       hideStatusIcon?: boolean;
       "data-testid"?: string;
