@@ -37,14 +37,16 @@ const ATag = forwardRef<HTMLElement, ATagProps<React.ElementType>>(
       large,
       status,
       color,
+      hideStatusIcon = false,
       customIcon = false,
       ...rest
     },
     ref
   ) => {
+    const interactable = href || onClick;
     let className = "a-tag focus-box-shadow";
 
-    if (href || onClick) {
+    if (interactable) {
       className += ` interactable`;
     }
 
@@ -66,6 +68,10 @@ const ATag = forwardRef<HTMLElement, ATagProps<React.ElementType>>(
 
     if (color) {
       className += ` a-tag--${color}`;
+    }
+
+    if (hideStatusIcon) {
+      className += ` a-tag--hide-status-icon`;
     }
 
     let TagName: React.ElementType = "div";
@@ -108,7 +114,7 @@ const ATag = forwardRef<HTMLElement, ATagProps<React.ElementType>>(
     if (status) {
       tagWithIcon = (
         <>
-          {!customIcon && (
+          {!customIcon && !hideStatusIcon && (
             <AIcon className="a-icon--status" left>
               {STATUS_ICON[status]}
             </AIcon>

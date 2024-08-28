@@ -46,6 +46,10 @@ export type ATagProps<C extends React.ElementType> =
        * @defaultValue `false`
        */
       customIcon?: boolean | React.ReactNode;
+      /**
+       * Hide the status icon
+       */
+      hideStatusIcon?: boolean;
       "data-testid"?: string;
       /**
        * Set the tag to be a link
