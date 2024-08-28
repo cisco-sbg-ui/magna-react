@@ -302,6 +302,13 @@ export async function getStaticProps({params}) {
     });
   });
 
+  const babelConfig = fs.readFileSync(babelPath, {
+    encoding: "utf8",
+    flag: "r"
+  });
+
+  console.log(babelConfig);
+
   const parserConfig = {
     resolver,
     babelOptions: {
