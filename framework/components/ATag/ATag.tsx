@@ -23,7 +23,10 @@ const STATUS_ICON = {
   alert: "alert"
 };
 
-const ATag = forwardRef<HTMLElement, ATagProps<React.ElementType>>(
+const ATag = forwardRef<
+  HTMLElement,
+  ATagProps<React.ElementType<ATagProps<React.ElementType>>>
+>(
   (
     {
       children,
@@ -39,7 +42,7 @@ const ATag = forwardRef<HTMLElement, ATagProps<React.ElementType>>(
       color,
       customIcon = false,
       ...rest
-    }: ATagProps<React.ElementType>,
+    },
     ref
   ) => {
     let className = "a-tag focus-box-shadow";
