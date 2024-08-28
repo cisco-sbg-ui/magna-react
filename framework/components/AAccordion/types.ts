@@ -1,3 +1,4 @@
+import React from "react";
 import {Override} from "../../types";
 
 export type AAccordionProps = Override<
