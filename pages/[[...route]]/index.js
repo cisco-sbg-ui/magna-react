@@ -293,8 +293,9 @@ export async function getStaticProps({params}) {
   });
 
   const resolver = new builtinResolvers.FindExportedDefinitionsResolver();
-  const babelPath = path.resolve("babel.config.json");
+  const babelPath = path.resolve(".babelrc");
 
+  console.log("babelPath -", babelPath);
   fs.readdir(babelPath.split("/").slice(0, -1).join("/"), (err, files) => {
     files.forEach((file) => {
       console.log(file);
