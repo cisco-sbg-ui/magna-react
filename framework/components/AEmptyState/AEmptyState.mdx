@@ -30,9 +30,8 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
   withTwoPanes
   code={`
 <>
-  <AEmptyState variant="success" />
   <AEmptyState variant="positive" />
-  <AEmptyState variant="warning" />
+  <AEmptyState variant="info" />
   <AEmptyState variant="danger" />
 </>`}
 />
@@ -48,11 +47,10 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
   };
   return (
     <>
-      <AEmptyState variant="success" xsmall {...props} />
-      <AEmptyState variant="success" small {...props} />
+      <AEmptyState variant="positive" xsmall {...props} />
+      <AEmptyState variant="positive" small {...props} />
       <AEmptyState variant="positive" medium {...props} />
-      <AEmptyState variant="warning" large {...props} />
-      <AEmptyState variant="danger" xlarge {...props} />
+      <AEmptyState variant="negative" xlarge {...props} />
     </>
   );
 }
