@@ -1,6 +1,5 @@
 import fs from "fs";
 import glob from "glob";
-import path from "path";
 
 import matter from "gray-matter";
 import Head from "next/head";
@@ -293,11 +292,11 @@ export async function getStaticProps({params}) {
   });
 
   const resolver = new builtinResolvers.FindExportedDefinitionsResolver();
-  const babelPath = path.resolve("babel.config.json");
+  //const babelPath = path.resolve("babel.config.json");
   const parserConfig = {
     resolver,
     babelOptions: {
-      filename: babelPath
+      filename: "babel.config.json"
     }
   };
   const mapFromArray = (arr) => {
