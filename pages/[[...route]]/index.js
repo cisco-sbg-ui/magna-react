@@ -297,6 +297,7 @@ export async function getStaticProps({params}) {
   const parserConfig = {
     resolver,
     babelOptions: {
+      cwd: babelPath.split("/").slice(0, -1).join("/"),
       filename: babelPath
     }
   };
@@ -305,8 +306,6 @@ export async function getStaticProps({params}) {
       return arr[0];
     }
   };
-
-  console.log("resolved babel path", babelPath);
 
   const patterns = [
     "./framework/**/+(A)!(*.spec|*.ct|*.cy|*Context).js",
