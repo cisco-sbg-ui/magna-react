@@ -10,12 +10,12 @@ import React, {
 import AInputBase from "../AInputBase";
 import {AFormContext} from "../AForm";
 import AIcon from "../AIcon";
-import AMenu from "../AMenu";
+import AFloatingMenu from "../AFloatingMenu";
+import useFloatingDropwdown from "../AFloatingMenu/useFloatingDropdown";
 import {AListItem} from "../AList";
 import AEmptyState from "../AEmptyState";
 import {useCombinedRefs} from "../../utils/hooks";
 import {keyCodes} from "../../utils/helpers";
-import useMenuSpacing from "../AMenuBase/hooks";
 import "./ACombobox.scss";
 
 let comboboxCounter = 0;
@@ -56,8 +56,6 @@ const ACombobox = forwardRef(
     ref
   ) => {
     const comboboxRef = useRef(null);
-    const menuRef = useRef(null);
-    const inputBaseSurfaceRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, comboboxRef);
 
     const [comboboxId] = useState(comboboxCounter++);
@@ -66,10 +64,16 @@ const ACombobox = forwardRef(
     const [error, setError] = useState("");
     const [workingValidationState, setWorkingValidationState] =
       useState(validationState);
-    const {checkMenuSpacing, menuPlacement} = useMenuSpacing(
-      inputBaseSurfaceRef,
-      menuRef
-    );
+    const open = Boolean((items.length || noDataContent) && isOpen);
+
+    const {
+      context,
+      floatingRefs,
+      floatingStyles,
+      middlewareData,
+      getReferenceProps,
+      getFloatingProps
+    } = useFloatingDropwdown(isOpen, setIsOpen);
 
     const {register, unregister} = useContext(AFormContext);
     useEffect(() => {
@@ -97,12 +101,6 @@ const ACombobox = forwardRef(
         };
       }
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-    useEffect(() => {
-      if (isOpen && menuRef.current) {
-        checkMenuSpacing();
-      }
-    }, [isOpen, checkMenuSpacing, menuRef]);
 
     const validate = (testValue = value) => {
       if (skipValidation) {
@@ -168,8 +166,6 @@ const ACombobox = forwardRef(
 
     const inputBaseProps = {
       ...rest,
-      ref: combinedRef,
-      surfaceRef: inputBaseSurfaceRef,
       className: "a-combobox",
       clearable,
       disabled,
@@ -209,7 +205,8 @@ const ACombobox = forwardRef(
       id: `a-combobox_${comboboxId}`,
       onBlur: (e) => {
         setIsFocused(false);
-        !menuRef.current?.contains(e.relatedTarget) && validate(value);
+        !floatingRefs.floating?.current?.contains(e.relatedTarget) &&
+          validate(value);
       },
       onChange: (e) => {
         setIsOpen(items.length || noDataContent);
@@ -224,14 +221,14 @@ const ACombobox = forwardRef(
         if (e.key === keyCodes.up) {
           e.preventDefault();
           setIsOpen(items.length || noDataContent);
-          const menuItems = menuRef.current?.querySelectorAll(
+          const menuItems = floatingRefs.floating?.current?.querySelectorAll(
             ".a-combobox__menu-items__wrapper .a-list-item[tabindex]"
           );
           menuItems && menuItems[menuItems.length - 1]?.focus();
         } else if (e.key === keyCodes.down) {
           e.preventDefault();
           setIsOpen(items.length || noDataContent);
-          menuRef.current
+          floatingRefs.floating?.current
             ?.querySelectorAll(
               ".a-combobox__menu-items__wrapper .a-list-item[tabindex]"
             )[0]
@@ -249,25 +246,38 @@ const ACombobox = forwardRef(
     }
 
     const menuComponentProps = {
-      anchorRef: inputBaseSurfaceRef,
       className: menuClassName,
       closeOnClick: false,
-      focusOnOpen: false,
+      initialFocus: -1,
       onClose: () => setIsOpen(false),
-      open: Boolean((items.length || noDataContent) && isOpen),
+      open,
       role: "listbox",
       style: {
         minWidth: "max-content",
-        width: inputBaseSurfaceRef?.current?.clientWidth + 2 || "auto",
-        ...dropdownStyle
-      },
-      placement: menuPlacement
+        width: combinedRef.current?.clientWidth + 2 || "auto",
+        ...dropdownStyle,
+        ...floatingStyles,
+        visibility: middlewareData.hide?.referenceHidden ? "hidden" : "visible"
+      }
     };
 
     return (
-      <AInputBase {...inputBaseProps}>
+      <AInputBase
+        ref={combinedRef}
+        {...inputBaseProps}
+        surfaceRef={floatingRefs.setReference}
+        {...getReferenceProps()}
+      >
         <input {...inputProps} />
-        <AMenu ref={menuRef} {...menuComponentProps}>
+        <AFloatingMenu
+          ref={floatingRefs.setFloating}
+          anchorRef={floatingRefs.reference}
+          menuRef={floatingRefs.floating}
+          context={context}
+          open={open}
+          {...menuComponentProps}
+          {...getFloatingProps()}
+        >
           {prependContent}
           <div
             className={`a-combobox__menu-items__wrapper${
@@ -317,7 +327,7 @@ const ACombobox = forwardRef(
             })}
           </div>
           {appendContent}
-        </AMenu>
+        </AFloatingMenu>
       </AInputBase>
     );
   }

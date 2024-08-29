@@ -1,24 +1,14 @@
-import PropTypes from "prop-types";
-import React, {
-  forwardRef,
-  useContext,
-  useEffect,
-  useRef,
-  useState
-} from "react";
+import React, {forwardRef, useContext, useEffect, useState} from "react";
 
 import AInputBase from "../AInputBase";
 import {AFormContext} from "../AForm";
 import AIcon from "../AIcon";
-import AMenu from "../AMenu";
+import AFloatingMenu from "../AFloatingMenu";
+import useFloatingDropwdown from "../AFloatingMenu/useFloatingDropdown";
 import ACheckbox from "../ACheckbox";
 import {AListItem} from "../AList";
 import AEmptyState from "../AEmptyState";
-import {useCombinedRefs, useResizeObserver} from "../../utils/hooks";
 import {keyCodes, localeIncludes, handleBoldText} from "../../utils/helpers";
-import useMenuSpacing from "../AMenuBase/hooks";
-import useOutsideClick from "../../hooks/useOutsideClick/useOutsideClick";
-import usePopupQuickExit from "../../hooks/usePopupQuickExit/usePopupQuickExit";
 import "./AMultiSelect.scss";
 import AMultiSelectTag from "./AMultiSelectTag";
 import AMultiSelectCounter from "./AMultiSelectCounter";
@@ -60,11 +50,6 @@ const AMultiSelect = forwardRef(
     },
     ref
   ) => {
-    const multiselectRef = useRef(null);
-    const menuRef = useRef(null);
-    const inputBaseSurfaceRef = useRef(null);
-    const combinedRef = useCombinedRefs(ref, multiselectRef);
-
     const [multiselectId] = useState(multiselectCounter++);
     const [isFocused, setIsFocused] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
@@ -73,10 +58,26 @@ const AMultiSelect = forwardRef(
     const [error, setError] = useState("");
     const [workingValidationState, setWorkingValidationState] =
       useState(validationState);
-    const {checkMenuSpacing, menuPlacement} = useMenuSpacing(
-      inputBaseSurfaceRef,
-      menuRef
+    const open = Boolean((items.length || noDataContent) && isOpen);
+
+    const noDataContent = propsNoDataContent ?? (
+      <AEmptyState
+        message={noDataMessage}
+        variant="positive"
+        className="a-multiselect__nodata"
+        xsmall
+      />
     );
+
+    const {
+      context,
+      floatingRefs,
+      floatingStyles,
+      middlewareData,
+      getReferenceProps,
+      getFloatingProps
+    } = useFloatingDropwdown(open, setIsOpen);
+
     const filterFunction = propsFilterFunction
       ? propsFilterFunction
       : (val, item) => {
@@ -132,26 +133,6 @@ const AMultiSelect = forwardRef(
       }
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-    useEffect(() => {
-      if (isOpen && menuRef.current) {
-        checkMenuSpacing();
-      }
-    }, [isOpen, checkMenuSpacing, menuRef]);
-
-    useOutsideClick({
-      isEnabled: menuRef && menuRef.current && isOpen,
-      rootRef: menuRef,
-      onClick: () => setIsOpen(false)
-    });
-
-    usePopupQuickExit({
-      popupRef: menuRef,
-      isEnabled: isOpen,
-      onExit: () => setIsOpen(false)
-    });
-
-    useResizeObserver(combinedRef);
-
     const validate = (testValue = value) => {
       if (skipValidation) {
         return;
@@ -203,52 +184,47 @@ const AMultiSelect = forwardRef(
     if (!disabled && !readOnly) {
       chevronProps.onClick = () => {
         setIsOpen(!isOpen);
-        combinedRef.current.querySelector(".a-multiselect__input").focus();
+        floatingRefs.reference?.current
+          ?.querySelector(".a-multiselect__input")
+          ?.focus();
       };
     }
 
     useEffect(() => {
       if (withTags) {
-        const tagsEl = inputBaseSurfaceRef?.current?.querySelector(
+        const tagsEl = floatingRefs.reference?.current?.querySelector(
           ".a-multiselect__tags"
         );
         if (tagsEl) {
-          const inputEl = inputBaseSurfaceRef.current.querySelector(
+          const inputEl = floatingRefs.reference.current.querySelector(
             ".a-multiselect__input"
           );
           tagsEl.offsetHeight + inputEl.offsetHeight >
-          inputBaseSurfaceRef.current.offsetHeight
+          floatingRefs.reference.current.offsetHeight
             ? setHasScroll(true)
             : setHasScroll(false);
         }
       }
-    }, [onSelected, withTags]);
+    }, [onSelected, withTags, floatingRefs]);
 
     if (hasScroll && withTags) {
       className += " a-multiselect--hasScroll";
     }
 
-    const noDataContent = propsNoDataContent ?? (
-      <AEmptyState
-        message={noDataMessage}
-        variant="positive"
-        className="a-multiselect__nodata"
-        xsmall
-      />
-    );
-
     const onKeyDown = (e) => {
       if (e.key === keyCodes.up) {
         e.preventDefault();
-        setIsOpen(filteredItems.length || noDataContent);
-        const menuItems = menuRef.current?.querySelectorAll(
+        setIsOpen(!!filteredItems.length || !!noDataContent);
+        const menuItems = floatingRefs.floating?.current?.querySelectorAll(
           ".a-multiselect__menu-items__wrapper .a-list-item[tabindex]"
         );
+
         menuItems && menuItems[menuItems.length - 1]?.focus();
       } else if (e.key === keyCodes.down || e.key === keyCodes.enter) {
         e.preventDefault();
-        setIsOpen(filteredItems.length || noDataContent);
-        menuRef.current
+        setIsOpen(!!filteredItems.length || !!noDataContent);
+
+        floatingRefs.floating?.current
           ?.querySelectorAll(
             ".a-multiselect__menu-items__wrapper .a-list-item[tabindex]"
           )[0]
@@ -258,8 +234,7 @@ const AMultiSelect = forwardRef(
 
     const inputBaseProps = {
       ...rest,
-      ref: combinedRef,
-      surfaceRef: inputBaseSurfaceRef,
+      surfaceRef: floatingRefs.setReference,
       className,
       clearable: (value && !!value.length) || !!filterValue,
       disabled,
@@ -270,7 +245,9 @@ const AMultiSelect = forwardRef(
       label,
       labelFor: `a-multiselect_${multiselectId}`,
       onClear: () => {
-        const e = combinedRef.current.querySelector(".a-multiselect__input");
+        const e = floatingRefs.reference.current.querySelector(
+          ".a-multiselect__input"
+        );
         var nativeInputValueSetter = Object.getOwnPropertyDescriptor(
           window.HTMLInputElement.prototype,
           "value"
@@ -306,17 +283,18 @@ const AMultiSelect = forwardRef(
       id: `a-multiselect_${multiselectId}`,
       onBlur: (e) => {
         setIsFocused(false);
-        !menuRef.current?.contains(e.relatedTarget) && validate(value);
+        !floatingRefs.floating?.current?.contains(e.relatedTarget) &&
+          validate(value);
       },
       onChange: (e) => {
-        setIsOpen(items.length || noDataContent);
+        setIsOpen(!!items.length || !!noDataContent);
 
         setFilterValue(e.target.value);
 
         onChange && onChange(e);
       },
       onClick: () => {
-        setIsOpen(items.length || noDataContent);
+        setIsOpen(!!items.length || !!noDataContent);
       },
       onFocus: () => {
         setIsFocused(true);
@@ -337,20 +315,17 @@ const AMultiSelect = forwardRef(
     }
 
     const menuComponentProps = {
-      anchorRef: inputBaseSurfaceRef,
-      useFlipLogic: true,
       className: menuClassName,
       closeOnClick: false,
-      focusOnOpen: false,
-      onClose: () => setIsOpen(false),
-      open: Boolean((items.length || noDataContent) && isOpen),
+      initialFocus: -1,
       role: "listbox",
       style: {
         minWidth: "max-content",
-        width: inputBaseSurfaceRef?.current?.clientWidth + 2 || "auto",
-        ...dropdownStyle
-      },
-      placement: menuPlacement
+        width: floatingRefs.reference?.current?.clientWidth + 2 || "auto",
+        ...dropdownStyle,
+        ...floatingStyles,
+        visibility: middlewareData.hide?.referenceHidden ? "hidden" : "visible"
+      }
     };
 
     const counter = value && (
@@ -461,169 +436,33 @@ const AMultiSelect = forwardRef(
     );
 
     return (
-      <AInputBase {...inputBaseProps}>
+      <AInputBase ref={ref} {...inputBaseProps}>
         {inputStyleType}
-        <input {...inputProps} />
-        <AMenu ref={menuRef} {...menuComponentProps}>
+        <input
+          ref={floatingRefs.setReference}
+          {...getReferenceProps()}
+          {...inputProps}
+        />
+        <AFloatingMenu
+          ref={floatingRefs.setFloating}
+          anchorRef={floatingRefs.reference}
+          menuRef={floatingRefs.floating}
+          context={context}
+          open={open}
+          {...menuComponentProps}
+          {...getFloatingProps()}
+        >
           {prependContent}
           <div className="a-multiselect__menu-items__wrapper">
             {noData}
             {mappedMenuItems}
           </div>
           {appendContent}
-        </AMenu>
+        </AFloatingMenu>
       </AInputBase>
     );
   }
 );
-
-AMultiSelect.propTypes = {
-  /**
-   * Sets the content to append to the dropdown list.
-   */
-  appendContent: PropTypes.node,
-  /**
-   * Toggles the disabled state.
-   */
-  disabled: PropTypes.bool,
-  /**
-   * Because ASelect uses an AMenu, the dropdown interface
-   * is mounted outside of the application area. To style
-   * this portion of ASelect, a class can be provided.
-   */
-  dropdownClassName: PropTypes.string,
-  /**
-   * Similar to the dropdownClassName prop, this can be used
-   * to pass a style object to the dropdown interface
-   */
-  dropdownStyle: PropTypes.object,
-  /**
-   * Sets hint or multiple hints.
-   */
-  hints: PropTypes.oneOfType([
-    PropTypes.arrayOf(
-      PropTypes.shape({
-        /**
-         * Hint content.
-         */
-        content: PropTypes.node.isRequired,
-        /**
-         * Style the hint with the component validation state. Default: false.
-         */
-        hintUsesValidationState: PropTypes.bool,
-        /**
-         * Override the validation state of the hint by incorporating the desired state.
-         * The component validation state is disregarded when this property is configured.
-         */
-        validationStateOverride: PropTypes.oneOf([
-          "default",
-          "warning",
-          "danger"
-        ]),
-        /**
-         * Do not show hint when there are validation errors.
-         */
-        hideHintOnError: PropTypes.bool
-      })
-    ),
-    // Accept a string and use default AHint rendering
-    PropTypes.string,
-    // Pass a custom renderable object as the hint
-    PropTypes.node
-  ]),
-  /**
-   * Sets a React component to use when rendering menu items. The component will be sent the following props: `item`, `index`, `aria-selected`, `children`, `className`, `onClick`, `role`, `value`.
-   */
-  itemTemplate: PropTypes.elementType,
-  /**
-   * The property name of the option text when `items` is an array of objects.
-   */
-  itemText: PropTypes.string,
-  /**
-   * The property name of the option value when `items` is an array of objects.
-   */
-  itemValue: PropTypes.string,
-  /**
-   * An array of select options.
-   */
-  items: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.string),
-    PropTypes.arrayOf(PropTypes.object)
-  ]),
-  /**
-   * Sets the label content.
-   */
-  label: PropTypes.node,
-  /**
-   * Sets the content for when no matches are available.
-   */
-  noDataContent: PropTypes.node,
-  /**
-   * Handles the `change` event for when the text input is modified.
-   */
-  onChange: PropTypes.func,
-  /**
-   * Handles the `clear` event (for supplemental handling).
-   */
-  onClear: PropTypes.func,
-  /**
-   * Handles the `selected` event for when a selection is chosen in the dropdown.
-   */
-  onSelected: PropTypes.func,
-  /**
-   * Sets the text when no option is selected.
-   */
-  placeholder: PropTypes.string,
-  /**
-   * Sets the content to prepend to the dropdown list.
-   */
-  prependContent: PropTypes.node,
-  /**
-   * Toggles the `readOnly` state.
-   */
-  readOnly: PropTypes.bool,
-  /**
-   * Toggles the <input> to be readOnly, but leaves the menu active (if readOnly is false)
-   */
-  readOnlyInput: PropTypes.bool,
-  /**
-   * Toggles a default rule for required values.
-   */
-  required: PropTypes.bool,
-  /**
-   * Sets validation rules for the component.
-   */
-  rules: PropTypes.arrayOf(
-    PropTypes.shape({
-      test: PropTypes.func,
-      level: PropTypes.string
-    })
-  ),
-  /**
-   * Skips internal and/or extra validation rules
-   */
-  skipValidation: PropTypes.bool,
-  /**
-   * Applies tag style to input. Default is counter style.
-   */
-  withTags: PropTypes.bool,
-  /**
-   * Applies a validation state.
-   */
-  validationState: PropTypes.oneOf(["default", "warning", "danger"]),
-  /**
-   * Sets the text input value.
-   */
-  value: PropTypes.array,
-  /**
-   * Function to filter items when the input value changes
-   */
-  filterFunction: PropTypes.func,
-  /**
-   * Pass props to the tag tooltip. Can pass any props for ATooltip, including `children`
-   */
-  counterTooltipProps: PropTypes.object
-};
 
 AMultiSelect.displayName = "AMultiSelect";
 

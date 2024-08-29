@@ -10,10 +10,10 @@ import React, {
 import AInputBase from "../AInputBase";
 import {AFormContext} from "../AForm";
 import AIcon from "../AIcon";
-import AMenu from "../AMenu";
+import AFloatingMenu from "../AFloatingMenu";
+import useFloatingDropwdown from "../AFloatingMenu/useFloatingDropdown";
 import {AListItem} from "../AList";
 import {keyCodes} from "../../utils/helpers";
-import useMenuSpacing from "../AMenuBase/hooks";
 import "./ASelect.scss";
 
 let selectCounter = 0;
@@ -54,7 +54,6 @@ const ASelect = forwardRef(
     ref
   ) => {
     const menuRef = useRef(null);
-    const inputBaseSurfaceRef = useRef(null);
     const surfaceRef = useRef(null);
     const selectedItemRef = useRef(null);
     const [selectId] = useState(selectCounter++);
@@ -69,25 +68,20 @@ const ASelect = forwardRef(
     const [error, setError] = useState("");
     const [workingValidationState, setWorkingValidationState] =
       useState(validationState);
-    const {checkMenuSpacing, menuPlacement} = useMenuSpacing(
-      surfaceRef,
-      menuRef,
-      maxHeight
-    );
+
+    const {
+      context,
+      floatingRefs,
+      floatingStyles,
+      middlewareData,
+      getReferenceProps,
+      getFloatingProps
+    } = useFloatingDropwdown(isOpen, setIsOpen);
 
     const {register, unregister} = useContext(AFormContext);
     useEffect(() => {
       setWorkingValidationState(validationState);
     }, [validationState]);
-
-    useEffect(() => {
-      if (isOpen && menuRef.current) {
-        checkMenuSpacing();
-        setTimeout(() => {
-          menuRef.current.focus();
-        }, 0);
-      }
-    }, [isOpen, checkMenuSpacing, menuRef]);
 
     useEffect(() => {
       const newSelectedItem = items.find((x) => x[itemSelected]);
@@ -315,28 +309,20 @@ const ASelect = forwardRef(
     }
 
     const menuComponentProps = {
-      anchorRef: inputBaseSurfaceRef,
       className: menuClassName,
       closeOnClick: false,
-      // Menu should not receive focus
-      // so that the selected item can
-      // be focused instead
-      focusOnOpen: false,
-      onClose: () => {
-        setIsOpen(false);
-        surfaceRef.current.focus();
-      },
-      open: isOpen,
+      initialFocus: getSelectedIndex() >= 0 ? getSelectedIndex() : 0,
       role: "listbox",
       style: {
         minWidth: "max-content",
-        width: inputBaseSurfaceRef?.current?.clientWidth
-          ? inputBaseSurfaceRef.current.clientWidth + 2
+        width: floatingRefs.reference?.current?.clientWidth
+          ? floatingRefs.reference?.current.clientWidth + 2
           : "auto",
-        ...dropdownStyle
+        ...dropdownStyle,
+        ...floatingStyles,
+        visibility: middlewareData.hide?.referenceHidden ? "hidden" : "visible"
       },
-      medium,
-      placement: menuPlacement
+      medium
     };
 
     const selectIcon = isOpen ? "chevron-up" : "chevron-down";
@@ -385,7 +371,8 @@ const ASelect = forwardRef(
       <AInputBase
         {...rest}
         ref={ref}
-        surfaceRef={inputBaseSurfaceRef}
+        surfaceRef={floatingRefs.setReference}
+        {...getReferenceProps()}
         className={className}
         medium={medium}
         label={label}
@@ -406,7 +393,15 @@ const ASelect = forwardRef(
       >
         <div className="a-select__selection-wrapper">
           <div {...selectionProps}>{selectionContent}</div>
-          <AMenu ref={menuRef} {...menuComponentProps}>
+          <AFloatingMenu
+            ref={floatingRefs.setFloating}
+            anchorRef={floatingRefs.reference}
+            menuRef={floatingRefs.floating}
+            context={context}
+            open={isOpen}
+            {...menuComponentProps}
+            {...getFloatingProps()}
+          >
             {prependContent}
             <div
               className={`a-select__menu-items__wrapper${
@@ -465,6 +460,7 @@ const ASelect = forwardRef(
 
                   if (item[itemDisabled]) {
                     itemProps["aria-disabled"] = true;
+                    itemProps.disabled = true;
                     itemProps.onClick = (e) => {
                       e.stopPropagation();
                     };
@@ -501,7 +497,7 @@ const ASelect = forwardRef(
               })}
             </div>
             {appendContent}
-          </AMenu>
+          </AFloatingMenu>
         </div>
       </AInputBase>
     );

@@ -15,6 +15,22 @@ export type AListProps<C extends React.ElementType> =
        * Magnetic medium size variant
        */
       medium?: boolean;
+      /** Set the ARIA role */
+      role?: React.AriaRole;
+      /**
+       * A callback for handling the click event.
+       */
+      onClick?: (e: React.MouseEvent | React.KeyboardEvent) => void;
+      /**
+       * A callback for handling the close.
+       */
+      onClose?: (e: React.MouseEvent | React.KeyboardEvent) => void;
+      /**
+       * A callback for handling the keydown event.
+       */
+      onKeyDown?: (e: React.KeyboardEvent) => void;
+
+      style?: React.CSSProperties;
     }
   >;
 
