@@ -1,10 +1,13 @@
+import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 import AIcon from "../AIcon";
 
 import {keyCodes} from "../../utils/helpers";
 import "./ATag.scss";
 
-import {ATagProps} from "./types";
+//Keeping for docs and rendering until we can find a better solution
+//https://github.com/cisco-sbg-ui/magna-react/pull/848
+//https://github.com/cisco-sbg-ui/magna-react/pull/851
 
 const STATUS_ICON = {
   excellent: "excellent",
@@ -23,7 +26,7 @@ const STATUS_ICON = {
   alert: "alert"
 };
 
-const ATag = forwardRef<HTMLElement, ATagProps<React.ElementType>>(
+const ATag = forwardRef(
   (
     {
       children,
@@ -68,21 +71,20 @@ const ATag = forwardRef<HTMLElement, ATagProps<React.ElementType>>(
       className += ` a-tag--${color}`;
     }
 
-    let TagName: React.ElementType = "div";
-    const props: React.HTMLProps<HTMLElement> = {
+    let TagName = "div";
+    const props = {
       ...rest,
-
+      ref,
       className,
       onClick,
-      onKeyDown: (e: React.KeyboardEvent) => {
-        if (!href && onClick && [keyCodes.enter].includes(e.key as "Enter")) {
+      onKeyDown: (e) => {
+        if (!href && onClick && [keyCodes.enter].includes(e.key)) {
           e.preventDefault();
           onClick(e);
         } else {
           onKeyDown && onKeyDown(e);
         }
-      },
-      target // Add the 'target' property to the props object
+      }
     };
 
     if (href) {
@@ -119,13 +121,68 @@ const ATag = forwardRef<HTMLElement, ATagProps<React.ElementType>>(
       );
     }
 
-    return (
-      <TagName ref={ref} {...props}>
-        {tagWithIcon || children}
-      </TagName>
-    );
+    return <TagName {...props}>{tagWithIcon || children}</TagName>;
   }
 );
+
+ATag.propTypes = {
+  /**
+   * Sets the base component. Useful for integrating with routers.
+   */
+  component: PropTypes.elementType,
+  /**
+   * Apply small tag style. Default is false (medium size).
+   */
+  small: PropTypes.bool,
+  /**
+   * Apply large tag style. Default is false (medium size).
+   */
+  large: PropTypes.bool,
+  /**
+   * If specified, the component will render as an HTML link.
+   */
+  href: PropTypes.string,
+  /**
+   * If the `href` property is defined, the target can be set (ex: `_blank`, `_self`, `_parent`, `_top`)
+   */
+  target: PropTypes.string,
+  /**
+   * Will apply the icon along with the status color.
+   */ status: PropTypes.oneOf([
+    "excellent",
+    "positive",
+    "low-warning",
+    "warning",
+    "severe-warning",
+    "negative",
+    "inactive",
+    "allow",
+    "deny",
+    "active",
+    "disabled",
+    "info",
+    "in-progress"
+  ]),
+  /**
+   * Optional accent colors
+   */
+  color: PropTypes.oneOf([
+    "accentA",
+    "accentB",
+    "accentC",
+    "accentD",
+    "accentE",
+    "accentF",
+    "accentG",
+    "accentH",
+    "accentI",
+    "accentK"
+  ]),
+  /**
+   * Option for custom icon, can pass through children or directly into props.
+   */
+  customIcon: PropTypes.oneOfType([PropTypes.bool, PropTypes.node])
+};
 
 ATag.displayName = "ATag";
 
