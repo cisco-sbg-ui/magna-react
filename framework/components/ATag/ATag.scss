@@ -37,6 +37,23 @@ $icon-width: 1.167rem;
     &:focus {
       text-decoration: none;
       color: var(--base-text-default);
+      border-radius: $tag-border-radius !important;
+    }
+
+    &:focus {
+      @include a-control-focus();
+    }
+
+    &.a-tag--status-positive:focus {
+      @include a-control-focus("positive");
+    }
+
+    &.a-tag--status-warning:focus {
+      @include a-control-focus("warning");
+    }
+
+    &.a-tag--status-negative:focus {
+      @include a-control-focus("negative");
     }
   }
   div {
@@ -102,6 +119,7 @@ $icon-width: 1.167rem;
   &--status-deny,
   &--status-alert {
     background-color: var(--negative-bg-strong-default);
+
     .a-icon {
       fill: var(--negative-icon-default);
     }
@@ -113,7 +131,7 @@ $icon-width: 1.167rem;
   }
 
   //Status tags
-  &--status {
+  &--status:not(&--hide-status-icon) {
     padding: 4px 8px 4px 4px;
 
     .a-icon--status {
@@ -132,4 +150,10 @@ $icon-width: 1.167rem;
       background-color: $color;
     }
   }
+}
+
+// If ATag has an onClick, the component gets set to "button"
+// for accessibility
+button.a-tag {
+  border: 0px;
 }

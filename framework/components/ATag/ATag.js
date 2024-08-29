@@ -41,13 +41,15 @@ const ATag = forwardRef(
       status,
       color,
       customIcon = false,
+      hideStatusIcon = false,
       ...rest
     },
     ref
   ) => {
+    const interactable = href || onClick;
     let className = "a-tag focus-box-shadow";
 
-    if (href || onClick) {
+    if (interactable) {
       className += ` interactable`;
     }
 
@@ -69,6 +71,10 @@ const ATag = forwardRef(
 
     if (color) {
       className += ` a-tag--${color}`;
+    }
+
+    if (hideStatusIcon) {
+      className += ` a-tag--hide-status-icon`;
     }
 
     let TagName = "div";
@@ -110,7 +116,7 @@ const ATag = forwardRef(
     if (status) {
       tagWithIcon = (
         <>
-          {!customIcon && (
+          {!customIcon && !hideStatusIcon && (
             <AIcon className="a-icon--status" left>
               {STATUS_ICON[status]}
             </AIcon>
@@ -181,7 +187,13 @@ ATag.propTypes = {
   /**
    * Option for custom icon, can pass through children or directly into props.
    */
-  customIcon: PropTypes.oneOfType([PropTypes.bool, PropTypes.node])
+  customIcon: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
+  /**
+   * Hide the status icon
+   *
+   * default `false`
+   */
+  hideStatusIcon: PropTypes.bool
 };
 
 ATag.displayName = "ATag";
