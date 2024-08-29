@@ -37,16 +37,16 @@ const AEmptyState = forwardRef(
       className += ` ${propsClassName}`;
     }
 
-    if (variant === "success") {
+    if (variant === "success" || variant === "positive") {
       className += ` ${baseClass}--state-success`;
       icon = "positive";
     } else if (variant === "warning") {
       className += ` ${baseClass}--state-warning`;
       icon = "warning";
-    } else if (variant === "danger") {
+    } else if (variant === "danger" || variant === "negative") {
       className += ` ${baseClass}--state-danger`;
       icon = "negative";
-    } else if (!propsIcon) {
+    } else if (variant === "info" || !propsIcon) {
       className += ` ${baseClass}--state-info`;
       icon = "info";
     }
@@ -87,7 +87,22 @@ AEmptyState.propTypes = {
   /**
    * Empty state variant
    */
-  variant: PropTypes.oneOf(["success", "positive", "warning", "danger"]),
+  /**
+   * Empty state variant
+   * default `"info"`
+   *
+   * deprecations - use "negative" instead of "danger"
+   * deprecations = use "positive" instead of "success"
+   *
+   */
+  variant: PropTypes.oneOf([
+    "success",
+    "positive",
+    "negative",
+    "warning",
+    "danger",
+    "info"
+  ]),
   /**
    * Custom icn name
    */

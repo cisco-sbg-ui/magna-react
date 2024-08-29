@@ -1,12 +1,24 @@
 import {Override} from "../../types";
 
-export type AEmptyStateVariant = "success" | "positive" | "warning" | "danger";
+export type AEmptyStateVariant =
+  | "success"
+  | "positive"
+  | "warning"
+  | "danger"
+  | "negative"
+  | "info";
 
 export type AEmptyStateProps = Override<
   React.ComponentPropsWithRef<"div">,
   {
     /**
      * Empty state variant
+     * @defaultValue `"info"`
+     *
+     * deprecations - use "negative" instead of "danger"
+     * deprecations = use "positive" instead of "success"
+     * deprecations = "warning" style is deprecated
+     *
      */
     variant?: AEmptyStateVariant;
     /**

@@ -195,11 +195,13 @@ $container-xl: 400px;
     .a-empty-state__label {
       font-weight: 700;
       font-size: 30px;
+      margin-bottom: 18px;
     }
 
     .a-empty-state__message {
       font-weight: 400;
       font-size: 24px;
+      line-height: 30px;
     }
   }
 }
