@@ -85,6 +85,8 @@ const ATag = forwardRef<HTMLElement, ATagProps<React.ElementType>>(
           e.preventDefault();
           onClick(e);
         } else {
+          //TODO not sure what this error is for
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
           onKeyDown && onKeyDown(e);
         }
       },
@@ -109,7 +111,7 @@ const ATag = forwardRef<HTMLElement, ATagProps<React.ElementType>>(
       TagName = component;
     }
 
-    let tagWithIcon = null;
+    let tagWithIcon: React.ReactNode = null;
 
     if (status) {
       tagWithIcon = (
