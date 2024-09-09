@@ -6,7 +6,7 @@ import "./ATag.scss";
 
 import {ATagProps} from "./types";
 
-const STATUS_ICON = {
+const STATUS_ICON: {[key: string]: string} = {
   excellent: "excellent",
   positive: "positive",
   "low-warning": "low-warning",
