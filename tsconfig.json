@@ -11,7 +11,7 @@
     // Enable strictest settings like strictNullChecks & noImplicitAny.
     "strict": true,
     "jsx": "react", //DO NOT LET VERCEL OVERRIDE THIS DURING NPM RUN DEV.   PRESERVE IS NOT AN OPTION FOR LIBRARY.  This is an ongoing request: https://github.com/vercel/next.js/discussions/39942
-    "skipLibCheck": true,
+    "skipLibCheck": false,
     // Import non-ES modules as default imports.
     "esModuleInterop": true,
     "resolveJsonModule": true,
@@ -19,6 +19,7 @@
     "outDir": "./lib",
     "checkJs": false,
     "types": ["react"],
+    "noImplicitAny": true,
     "noEmit": false //DO NOT LET VERCEL OVERRIDE THIS DURING NPM RUN DEV.   WE NEED TO EMIT FOR LIBRARY. This is an ongoing request: https://github.com/vercel/next.js/discussions/39942
   },
   "include": [

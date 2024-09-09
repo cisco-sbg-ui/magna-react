@@ -1,6 +1,7 @@
 import {useState} from "react";
 
 import {useIsomorphicLayoutEffect} from "../../utils/hooks";
+import {TBreakpointThresholds} from "./types";
 
 export const breakpointThresholds = {
   xs: 479,
@@ -11,7 +12,7 @@ export const breakpointThresholds = {
   xxl: 2080
 };
 
-const useABreakpoint = () => {
+const useABreakpoint = (): TBreakpointThresholds => {
   const [resizeTimeout, setResizeTimeout] = useState(0);
   const [height, setHeight] = useState(0);
   const [width, setWidth] = useState(0);
