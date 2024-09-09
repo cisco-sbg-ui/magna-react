@@ -1,5 +1,3 @@
-import AInlineInputBase, {AInlineInputBasePropTypes} from "./AInlineInputBase";
+import AInlineInputBase from "./AInlineInputBase";
 
 export default AInlineInputBase;
-
-export {AInlineInputBasePropTypes};

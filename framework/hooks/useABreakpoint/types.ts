@@ -1,6 +1,4 @@
-import {breakpointThresholds} from "./useABreakpoint";
-
-declare const useABreakpoint: () => {
+export type TBreakpointThresholds = {
   name: "xs" | "sm" | "md" | "lg" | "xl";
   width: number;
   height: number;
@@ -21,6 +19,3 @@ declare const useABreakpoint: () => {
   lgAndUp: boolean;
   xlOnly: boolean;
 };
-export {breakpointThresholds};
-
-export default useABreakpoint;

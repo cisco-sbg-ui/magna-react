@@ -1,3 +1,3 @@
-import useABreakpoint, {breakpointThresholds} from "./useABreakpoint";
+import useABreakpoint from "./useABreakpoint";
 
-export {useABreakpoint, breakpointThresholds};
+export {useABreakpoint};

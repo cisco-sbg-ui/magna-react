@@ -1,4 +1,4 @@
-function useEscapeKeydown(parameters: {
+declare function useEscapeKeydown(parameters: {
   /**
    * If the hook should listen for escape keypresses
    */

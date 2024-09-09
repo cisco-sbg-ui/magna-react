@@ -1,5 +1,3 @@
-import {React} from "react";
-
 import {type AListItemProps} from "./types";
 
 declare const AListItem: <C extends React.ElementType = "div">(

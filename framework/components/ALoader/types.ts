@@ -1,11 +1,11 @@
 import {AProgressbarProps} from "../AProgressbar/types";
 import {ASpinnerProps} from "../ASpinner/types";
 
-type ALoaderVariant = "dot" | "spinner" | "progressbar";
+export type ALoaderVariant = "dot" | "spinner" | "progressbar";
 
-type ALoaderSize = "small" | "medium" | "large";
+export type ALoaderSize = "small" | "medium" | "large";
 
-type ALoaderPlacement = "top" | "bottom" | "left" | "right";
+export type ALoaderPlacement = "top" | "bottom" | "left" | "right";
 
 interface ALoaderGenericVariantProps<
   VARIANT extends ALoaderVariant,

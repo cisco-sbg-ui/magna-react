@@ -1,6 +1,6 @@
 import React from "react";
 
-import {type ALoaderProps} from "./types";
+import {type ALoaderProps, ALoaderVariant} from "./types";
 
 declare const ALoader: <
   VARIANT extends ALoaderVariant,

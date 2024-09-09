@@ -1,5 +1,7 @@
 import React, {forwardRef} from "react";
-import AInlineInputBase, {AInlineInputBasePropTypes} from "../AInlineInputBase";
+import AInlineInputBase from "../AInlineInputBase";
+import {AInlineInputBasePropTypes} from "../AInlineInputBase/AInlineInputBase";
+
 import ATextInput from "../ATextInput";
 
 const AInlineTextInput = forwardRef((props, ref) => {
