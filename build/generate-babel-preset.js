@@ -12,7 +12,9 @@ const getComponents = (data) => {
   const components = [];
   // eslint-disable-next-line no-regex-spaces
   let matches = data.match(/([{,][\s]?|  )([\w]+)/g);
-  components.push(...matches);
+  if (matches) {
+    components.push(...matches);
+  }
   return components.map((x) => {
     return x.replace("  ", "").replace(", ", "").replace("{", "");
   });
