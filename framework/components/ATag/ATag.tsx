@@ -6,7 +6,7 @@ import "./ATag.scss";
 
 import {ATagProps} from "./types";
 
-const STATUS_ICON = {
+const STATUS_ICON: {[key: string]: string} = {
   excellent: "excellent",
   positive: "positive",
   "low-warning": "low-warning",
@@ -85,6 +85,8 @@ const ATag = forwardRef<HTMLElement, ATagProps<React.ElementType>>(
           e.preventDefault();
           onClick(e);
         } else {
+          //TODO not sure what this error is for
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
           onKeyDown && onKeyDown(e);
         }
       },
@@ -109,7 +111,7 @@ const ATag = forwardRef<HTMLElement, ATagProps<React.ElementType>>(
       TagName = component;
     }
 
-    let tagWithIcon = null;
+    let tagWithIcon: React.ReactNode = null;
 
     if (status) {
       tagWithIcon = (
