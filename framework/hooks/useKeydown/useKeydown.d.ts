@@ -4,6 +4,6 @@ interface KeyDownProps {
   isEnabled: boolean;
 }
 
-declare const useOutsideClick: (props: KeyDownProps) => unknown;
+declare const useKeydown: (props: KeyDownProps) => unknown;
 
 export default useKeydown;
