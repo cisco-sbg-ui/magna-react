@@ -182,7 +182,6 @@ $btn-transition: color $transition-duration--extra-fast
 
     &.disabled,
     &:disabled {
-      box-shadow: none;
       color: var(--interact-text-disabled);
       background-color: var(--interact-bg-weak-disabled);
       border-color: var(--interact-border-disabled);
