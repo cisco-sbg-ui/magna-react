@@ -137,14 +137,19 @@
 
 @mixin medium-button {
   height: 34px;
-  padding: 8px 12px;
+  padding: 7px 12px;
 
   svg.a-icon {
     width: 16px;
   }
 
   &.a-button--icon {
-    padding: 8.25px;
+    justify-content: center;
+    padding: 0;
+    width: 34px;
+    .a-icon {
+      width: 18px;
+    }
   }
 
   &.a-button--inline-btn {
@@ -162,7 +167,12 @@
     width: 14px;
   }
   &.a-button--icon {
-    padding: 8.25px;
+    justify-content: center;
+    padding: 0;
+    width: 28px;
+    .a-icon {
+      width: 16px;
+    }
   }
   &.a-button--inline-btn {
     height: 18px;

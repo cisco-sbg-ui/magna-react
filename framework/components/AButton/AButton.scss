@@ -76,7 +76,7 @@ $btn-transition: color $transition-duration--extra-fast
     padding: 10px;
     height: auto;
     .a-spinner {
-      margin-right: unset;
+      margin-right: unset !important;
     }
   }
 
@@ -244,6 +244,12 @@ $btn-transition: color $transition-duration--extra-fast
       background-color: transparent;
       color: var(--interact-text-disabled);
     }
+  }
+
+  &--floating {
+    @extend .a-button--secondary;
+    border-radius: 60px;
+    box-shadow: var(--panel-shadow);
   }
 
   &.a-button--tertiary-alt {
