@@ -58,7 +58,9 @@ const OverflowMenuTab = ({tabGroupRef, passthroughRef, children}) => {
       <ATab
         ref={tabRef}
         data-set="menu"
-        className={`a-tab-group__menu-tab ${!children.length ? "hide" : ""}`}
+        className={`a-tab-group__menu-tab ${
+          !children.length ? "a-tab-group__tab--hide" : ""
+        }`}
         selected={menuOpen || hasSelected.current}
         onClick={() => {
           setMenuOpen(!menuOpen);
