@@ -88,6 +88,13 @@ export type AButtonProps<C extends React.ElementType> =
        *
        * @defaultValue `false`
        */
+      /**
+       *
+       * Toggles the `floating` style variant.
+       *
+       * @defaultValue `false`
+       */
+      floating?: boolean;
       open?: boolean;
       onClick?: React.MouseEventHandler;
       "data-testid"?: string;

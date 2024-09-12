@@ -3,7 +3,7 @@
 .a-contextual-notification-menu {
   margin: 0;
   width: auto;
-  box-shadow: $default-box-shadow;
+  box-shadow: var(--panel-shadow);
   overflow: visible;
   position: absolute;
 
