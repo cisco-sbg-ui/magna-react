@@ -45,6 +45,7 @@ export const iconNameMap: IconMap = {
   computer: "desktop",
   connectivity: "wifi-high",
   created: "file-plus",
+  cursor: "",
   "data-source": "database",
   delay: "clock-counter-clockwise",
   "detail-view": "file",
