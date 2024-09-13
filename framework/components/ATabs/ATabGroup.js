@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import React, {
   forwardRef,
   useEffect,
-  useLayoutEffect,
   useRef,
   useState,
   useCallback
@@ -154,7 +153,7 @@ const ATabGroup = forwardRef(
       setMenuItems(overflowMenuItems);
     }, [combinedRef, vertical]);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
       handleOverflow();
     }, [handleOverflow, selectedTab]);
 
