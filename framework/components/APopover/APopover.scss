@@ -2,7 +2,6 @@
 
 .a-popover {
   width: 600px;
-  box-shadow: $default-box-shadow;
   position: absolute !important;
   filter: drop-shadow(var(--panel-shadow));
 
@@ -14,6 +13,7 @@
 
   .a-panel__header {
     border-radius: 3px 3px 0 0;
+    align-items: center;
   }
 
   .a-panel__footer {

@@ -31,6 +31,7 @@ const AButton = forwardRef(
       noPadding = false,
       open = false,
       dropdown = false,
+      floating = false,
       ...rest
     },
     ref
@@ -47,6 +48,8 @@ const AButton = forwardRef(
       className += "tertiary";
     } else if (tertiaryAlt) {
       className += "tertiary-alt";
+    } else if (floating) {
+      className += "floating";
     } else {
       className += destructive ? "primary-destructive" : "primary";
     }
@@ -202,7 +205,11 @@ AButton.propTypes = {
   /**
    * Removes padding on any button, defaults to false
    */
-  noPadding: PropTypes.bool
+  noPadding: PropTypes.bool,
+  /**
+   * Toggles the floating variant style
+   */
+  floating: PropTypes.bool
 };
 
 AButton.displayName = "AButton";

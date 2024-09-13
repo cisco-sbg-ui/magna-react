@@ -31,5 +31,8 @@ module.exports = {
     );
 
     return config;
+  },
+  typescript: {
+    tsconfigPath: "./tsconfig.next.json"
   }
 };

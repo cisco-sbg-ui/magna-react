@@ -31,7 +31,7 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
 
 <Playground
   fullWidthPreview
-  code={`<div className="container"><div className="d-flex">
+  code={`<div className="container"><div className="d-flex flex-wrap">
   <div>
     <p>
       <AButton>Primary</AButton>
@@ -113,6 +113,27 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
     <p>
       <AButton tertiaryAlt disabled>
         Tertiary Alt Disabled
+      </AButton>
+    </p>
+  </div>
+    <div className="ml-4">
+    <p>
+      <AButton floating>Floating</AButton>
+    </p>
+    <p>
+      <AButton floating>
+        <AIcon left>edit</AIcon>
+        Floating with Icon
+      </AButton>
+    </p>
+    <p>
+      <AButton floating icon>
+        <AIcon>sync</AIcon>
+      </AButton>
+    </p>
+    <p>
+      <AButton floating disabled>
+        Floating Disabled
       </AButton>
     </p>
   </div>
@@ -207,6 +228,46 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
 `}
 />
 
+#### Size Variants
+
+<Playground
+  code={`<div className="d-flex gap-3">
+  <div>
+    <AButton small>
+      <AIcon left>edit</AIcon>
+      Small
+    </AButton>
+    <br />
+    <br />
+    <AButton>
+      <AIcon left>edit</AIcon>
+      Medium
+    </AButton>
+  </div>
+  <div>
+    <AButton secondary icon small>
+      <AIcon>sync</AIcon>
+    </AButton>
+    <br />
+    <br />
+    <AButton secondary icon>
+      <AIcon>sync</AIcon>
+    </AButton>
+  </div>
+  <div>
+    <AButton floating icon small>
+      <AIcon>sync</AIcon>
+    </AButton>
+    <br />
+    <br />
+    <AButton floating icon>
+      <AIcon>sync</AIcon>
+    </AButton>
+  </div>
+</div>
+`}
+/>
+
 #### Dropdown Button Styles
 
 Use with `AMenu`'s prop `open` to toggle the dropdown icon.
@@ -237,21 +298,6 @@ If the `href` property is used, the component will render as an HTML anchor.
 </AButton>
 </>`}
 />
-
-#### Size Variants
-
-<Playground
-  code={`() => {
-
-return (
-
-<div>
-  <AButton small>Small Magnetic Button</AButton>
-  <br />
-  <br />
-  <AButton medium>Medium Magnetic Button</AButton>
-</div>
-); } `} />
 
 ## Button Props
 
