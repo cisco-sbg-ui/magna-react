@@ -16,6 +16,7 @@ const AMount = forwardRef(
       wrapClassName: propsWrapClassName,
       // @todo remove and make this default in next major version
       withNewWrappingContext = false,
+      theme,
       ...rest
     },
     ref
@@ -46,14 +47,15 @@ const AMount = forwardRef(
       wrapRef: newWrapRef,
       toasts: toasts || toasts2,
       setToasts: setToasts || setToasts2,
-      withNewWrappingContext
+      withNewWrappingContext,
+      theme
     };
 
     const hasToastPlate =
       combinedRef.current && combinedRef.current.classList.contains("a-app");
 
     return (
-      <TagName {...rest} ref={combinedRef} className={className}>
+      <TagName {...rest} theme={theme} ref={combinedRef} className={className}>
         <AAppContext.Provider value={appContext}>
           <div ref={newWrapRef} className={wrapClassName}>
             {children}

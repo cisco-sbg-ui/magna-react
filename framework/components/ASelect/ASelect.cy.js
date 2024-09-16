@@ -14,7 +14,7 @@ describe("<ASelect />", () => {
     it("should focus to the menu when opened", () => {
       cy.mount(<StringItemsTest />);
       openSelect();
-      cy.get(".a-menu").should("have.focus");
+      cy.get(".a-select__menu-item").should("have.focus");
     });
 
     it("should select the clicked item", () => {
@@ -69,7 +69,7 @@ describe("<ASelect />", () => {
     it("should focus to the menu when opened", () => {
       cy.mount(<ObjectItemsTest />);
       openSelect();
-      cy.get(".a-menu").should("have.focus");
+      cy.get(".a-select__menu-item").should("have.focus");
     });
 
     it("should select the clicked item", () => {
@@ -140,7 +140,7 @@ describe("<ASelect />", () => {
 
       // First check for required validation rule
       openSelect();
-      cy.get("body").click();
+      cy.get("body").type("{esc}");
       cy.get(".a-alert--state-danger").should("exist");
 
       // Now check for custom validation rule
@@ -168,7 +168,7 @@ describe("<ASelect />", () => {
 
       // Focus to input and immediately tab out to make input dirty
       openSelect();
-      cy.get("body").click();
+      cy.get("body").type("{esc}");
       cy.get(".a-alert--state-danger").should("exist");
     });
 
@@ -235,7 +235,7 @@ const objectTestItems = stringTestItems.map((id) => ({
 
 function ObjectItemsTest(selectProps) {
   return (
-    <div data-testid="test-container" style={{height: "900px"}}>
+    <div data-testid="test-container" style={{height: "100%"}}>
       <ASelect
         data-testid="select-trigger"
         items={objectTestItems}
