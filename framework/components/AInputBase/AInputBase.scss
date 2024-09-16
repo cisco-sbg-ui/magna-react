@@ -4,7 +4,9 @@ $input-transition: border-color $transition-duration--extra-fast
   $transition-timing-function--standard;
 
 .a-input-base {
-  display: block;
+  &.a-field-base {
+    display: block;
+  }
   &__surface {
     display: flex;
     box-sizing: border-box;
