@@ -14,6 +14,8 @@ import AListItem from "../AList/AListItem";
 import ATabContext from "./ATabContext";
 import "./ATabs.scss";
 
+const hiddenTabClass = "a-tab-group__tab--hide";
+
 const isTabSelectedAndNotMenuTab = (el) => {
   return (
     el?.classList?.contains("a-tab-group__tab--selected") &&
@@ -29,7 +31,7 @@ const getNextFocusId = (direction, containerEl, focusedEl) => {
 
     while (
       !toFocus ||
-      toFocus?.classList?.contains("a-tab-group__tab--hide") ||
+      toFocus?.classList?.contains(hiddenTabClass) ||
       isTabSelectedAndNotMenuTab(toFocus)
     ) {
       if (!toFocus) {
@@ -45,7 +47,7 @@ const getNextFocusId = (direction, containerEl, focusedEl) => {
 
     while (
       !toFocus ||
-      toFocus?.classList?.contains("a-tab-group__tab--hide") ||
+      toFocus?.classList?.contains(hiddenTabClass) ||
       isTabSelectedAndNotMenuTab(toFocus)
     ) {
       if (!toFocus) {
@@ -104,6 +106,7 @@ const ATabGroup = forwardRef(
         return;
       }
 
+      let overflowing = false;
       const overflowMenuItems = [];
       const tabWrapper = combinedRef.current;
 
@@ -123,24 +126,28 @@ const ATabGroup = forwardRef(
         }
 
         //Show all elements initially while we calculate size
-        item.classList.remove("a-tab-group__tab--hide");
+        item.classList.remove(hiddenTabClass);
         //Tab item's width
         const tabWidth = item.offsetWidth + tabMargin;
         //If items' total width falls under overall container width, skip
-        if (tabWrapper.offsetWidth >= overflowLimit + tabWidth) {
+        if (
+          tabWrapper.offsetWidth >= overflowLimit + tabWidth &&
+          !overflowing
+        ) {
           overflowLimit += tabWidth;
         } else if (!item.classList.contains("a-tab-group__menu-tab")) {
           //If items' total width exceeds overall container width, hide and push to overflow menu
-          item.classList.add("a-tab-group__tab--hide");
+          item.classList.add(hiddenTabClass);
           overflowMenuItems.push(i);
+          overflowing = true; // Once we detect an overflow, don't bother checking the rest
         }
       });
 
       //Handles overflow tab's visibility
       if (!overflowMenuItems.length) {
-        overflowTab.classList.add("a-tab-group__tab--hide");
+        overflowTab.classList.add(hiddenTabClass);
       } else if (overflowMenuItems.length) {
-        overflowTab.classList.remove("a-tab-group__tab--hide");
+        overflowTab.classList.remove(hiddenTabClass);
       }
 
       setMenuItems(overflowMenuItems);
