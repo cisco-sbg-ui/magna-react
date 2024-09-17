@@ -36,7 +36,6 @@ const useFloatingDropdown: UseFloatingDropdown = (open, onOpenChange) => {
       offset(4),
       flip({
         boundary: document.body
-        // rootBoundary: "document"
       }),
       hide()
     ]

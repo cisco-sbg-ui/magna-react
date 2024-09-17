@@ -10,7 +10,7 @@ $common-transitions: transform $transition-props, width $transition-props,
   max-height $transition-props;
 
 .a-drawer {
-  overflow: hidden;
+  overflow: visible;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
   background: var(--control-bg-weak-default);
 
