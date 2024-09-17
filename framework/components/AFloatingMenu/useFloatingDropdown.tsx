@@ -31,7 +31,7 @@ const useFloatingDropdown: UseFloatingDropdown = (open, onOpenChange) => {
     placement: "bottom-start",
     open,
     onOpenChange,
-    middleware: [flip(), hide(), offset(4)]
+    middleware: [flip(), offset(4), hide()]
   });
 
   const dismiss = useDismiss(context);
