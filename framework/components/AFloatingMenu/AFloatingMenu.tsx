@@ -1,7 +1,11 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useCallback} from "react";
+import React, {forwardRef, useCallback, useContext, useMemo} from "react";
 
-import {FloatingArrow, FloatingFocusManager} from "@floating-ui/react";
+import {
+  FloatingArrow,
+  FloatingFocusManager,
+  FloatingPortal
+} from "@floating-ui/react";
 
 import {keyCodes} from "../../utils/helpers";
 import AFloatingMenuContainer from "./AFloatingMenuContainer";
@@ -9,6 +13,8 @@ import {AList} from "../AList";
 import "./AFloatingMenu.scss";
 
 import {AFloatingMenuProps} from "./types";
+import {AThemeContext} from "../ATheme";
+import AAppContext from "../AApp/AAppContext";
 
 const AFloatingMenu = forwardRef<
   HTMLElement,
@@ -38,6 +44,13 @@ const AFloatingMenu = forwardRef<
     },
     ref
   ) => {
+    const {appRef} = useContext(AAppContext);
+    const {currentTheme} = useContext(AThemeContext);
+
+    const isInModal = useMemo(() => {
+      return Boolean(anchorRef.current?.closest(".a-modal"));
+    }, [anchorRef]);
+
     const getPrevious = useCallback(() => {
       if (!menuRef.current) {
         return;
@@ -136,6 +149,10 @@ const AFloatingMenu = forwardRef<
       className += ` ${propsClassName}`;
     }
 
+    if (isInModal) {
+      className += ` theme--${currentTheme}`;
+    }
+
     const FloatingMenu = (
       <FloatingFocusManager
         context={context}
@@ -171,7 +188,21 @@ const AFloatingMenu = forwardRef<
       </FloatingFocusManager>
     );
 
-    return FloatingMenu;
+    /*
+     * If the menu is in a modal, we need to render it in the body to ensure it's
+     * positioned correctly.
+     */
+    if (isInModal) {
+      return (
+        <FloatingPortal root={document.body}>{FloatingMenu}</FloatingPortal>
+      );
+    }
+
+    if (appRef) {
+      return (
+        <FloatingPortal root={appRef?.current}>{FloatingMenu}</FloatingPortal>
+      );
+    }
   }
 );
 
@@ -181,7 +212,18 @@ AFloatingMenu.propTypes = {
    */
   anchorRef: PropTypes.oneOfType([
     PropTypes.func,
-    PropTypes.shape({current: PropTypes.any})
+    PropTypes.shape({current: PropTypes.any}),
+    // DOMRect shape
+    PropTypes.shape({
+      x: PropTypes.number,
+      y: PropTypes.number,
+      width: PropTypes.number,
+      height: PropTypes.number,
+      top: PropTypes.number,
+      right: PropTypes.number,
+      bottom: PropTypes.number,
+      left: PropTypes.number
+    })
   ]).isRequired,
   /**
    * Toggles the behavior of closing the menu on click.
