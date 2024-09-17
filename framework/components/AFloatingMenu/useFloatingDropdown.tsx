@@ -29,6 +29,7 @@ const useFloatingDropdown: UseFloatingDropdown = (open, onOpenChange) => {
   } = useFloating({
     whileElementsMounted: autoUpdate,
     placement: "bottom-start",
+    strategy: "fixed", // breaks it out of a container (like a modal)
     open,
     onOpenChange,
     middleware: [flip(), offset(4), hide()]
