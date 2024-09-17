@@ -13,6 +13,7 @@ type UseFloatingDropdown = (
   open: boolean,
   onOpenChange: (open: boolean) => void
 ) => {
+  context: object;
   floatingRefs: object;
   floatingStyles: React.CSSProperties;
   middlewareData: any;

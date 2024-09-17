@@ -9,5 +9,14 @@
     border-left: 0;
     white-space: nowrap;
     align-items: center;
+
+    svg {
+      height: 16px;
+      width: 16px;
+    }
+  }
+
+  .a-floating-base-arrow {
+    fill: var(--base-icon-in-default);
   }
 }

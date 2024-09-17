@@ -1,13 +1,7 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useCallback, useContext} from "react";
+import React, {forwardRef, useCallback} from "react";
 
-import {
-  FloatingArrow,
-  FloatingFocusManager,
-  FloatingPortal
-} from "@floating-ui/react";
-
-import AAppContext from "../AApp/AAppContext";
+import {FloatingArrow, FloatingFocusManager} from "@floating-ui/react";
 
 import {keyCodes} from "../../utils/helpers";
 import AFloatingMenuContainer from "./AFloatingMenuContainer";
@@ -44,8 +38,6 @@ const AFloatingMenu = forwardRef<
     },
     ref
   ) => {
-    const {appRef} = useContext(AAppContext);
-
     const getPrevious = useCallback(() => {
       if (!menuRef.current) {
         return;
@@ -144,13 +136,14 @@ const AFloatingMenu = forwardRef<
       className += ` ${propsClassName}`;
     }
 
-    const FloatingMenu = (
+    return (
       <FloatingFocusManager
         context={context}
         disabled={!focusOnOpen}
         initialFocus={initialFocus}>
         <AList
           {...rest}
+          ignoreOutsideClick
           component={AFloatingMenuContainer}
           ref={ref}
           role={role}
@@ -177,10 +170,6 @@ const AFloatingMenu = forwardRef<
           {children}
         </AList>
       </FloatingFocusManager>
-    );
-
-    return (
-      <FloatingPortal root={appRef.current}>{FloatingMenu}</FloatingPortal>
     );
   }
 );

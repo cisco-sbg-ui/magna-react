@@ -1,28 +1,46 @@
-import React, {forwardRef} from "react";
+import React, {forwardRef, useContext} from "react";
 
-import {AFloatingMenuContainerProps} from "../AFloatingMenu/types";
+import {FloatingPortal} from "@floating-ui/react";
+
+import AAppContext from "../AApp/AAppContext";
+
+import {AFloatingMenuContainerProps} from "./types";
 
 const AFloatingMenuContainer = forwardRef<
   HTMLElement,
   AFloatingMenuContainerProps
->(({children, className: propsClassName, style, ...rest}, ref) => {
-  let className = `a-floating-menu-base`;
+>(
+  (
+    {children, className: propsClassName, style, ignoreOutsideClick, ...rest},
+    ref
+  ) => {
+    const {appRef} = useContext(AAppContext);
+    const attrs: {[key: string]: any} = {};
 
-  if (propsClassName) {
-    className += ` ${propsClassName}`;
+    let className = `a-floating-menu-base`;
+
+    if (propsClassName) {
+      className += ` ${propsClassName}`;
+    }
+
+    if (ignoreOutsideClick) {
+      attrs["data-ignore-outside-click"] = true;
+    }
+
+    return (
+      <FloatingPortal root={appRef.current}>
+        <div
+          {...attrs}
+          {...rest}
+          ref={ref as any}
+          className={className}
+          style={style}>
+          {children}
+        </div>
+      </FloatingPortal>
+    );
   }
-
-  return (
-    <div
-      data-ignore-outside-click
-      {...rest}
-      ref={ref as any}
-      className={className}
-      style={style}>
-      {children}
-    </div>
-  );
-});
+);
 
 AFloatingMenuContainer.displayName = "AFloatingMenuContainer";
 

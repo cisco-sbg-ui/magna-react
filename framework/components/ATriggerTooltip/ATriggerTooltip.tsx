@@ -1,18 +1,22 @@
 import React, {useCallback, useEffect, useRef} from "react";
 
-import {ATooltip} from "../ATooltip";
 import useEscapeKeydown from "../../hooks/useEscapeKeydown/useEscapeKeydown";
 import useToggle from "../../hooks/useToggle/useToggle";
 import useOutsideClick from "../../hooks/useOutsideClick/useOutsideClick";
 import {handleMultipleRefs} from "../../utils/helpers";
+
+import ATooltipBase from "../AFloatingBase/AFloatingBase";
+import "../ATooltip/ATooltip.scss";
+
 import {ATriggerTooltipProps} from "./types";
 
 const ATriggerTooltip = ({
   children,
+  className: propsClassName,
   anchorRef,
   triggerRef,
   trigger = "hover",
-  openDelay = 400,
+  openDelay = 300,
   closeDelay,
   onClose,
   content,
@@ -21,6 +25,9 @@ const ATriggerTooltip = ({
   wrapChildren = false,
   wrapperClass,
   interactive,
+  placement = "top",
+  style: propsStyle,
+  maxWidth,
   ...rest
 }: ATriggerTooltipProps) => {
   const childrenRef = useRef<HTMLElement[]>([]);
@@ -55,19 +62,23 @@ const ATriggerTooltip = ({
   } = useToggle(openDelay, closeDelay, checkForTruncation);
 
   const close = useCallback(() => {
-    const hoveringTooltip = tooltipRef?.current?.matches(":hover");
-    if (interactive && hoveringTooltip) {
+    const tooltipHover = tooltipRef?.current?.matches(":hover");
+
+    if (interactive && tooltipHover) {
       return;
     }
 
     toggleClose();
 
     onClose && onClose();
-  }, [toggleClose, onClose, interactive]);
+  }, [toggleClose, onClose, interactive, tooltipRef]);
 
   useOutsideClick({
-    isEnabled: triggerRef && triggerRef.current && trigger === "click",
-    rootRef: triggerRef,
+    isEnabled:
+      ((triggerRef && triggerRef.current) ||
+        (tooltipAnchorRef && tooltipAnchorRef.current)) &&
+      trigger === "click",
+    rootRef: triggerRef || tooltipAnchorRef,
     onClick: close
   });
 
@@ -119,30 +130,23 @@ const ATriggerTooltip = ({
     open,
     toggle,
     disabled,
-    content
+    content,
+    interactive
   ]);
 
-  useEffect(() => {
-    if (!interactive) {
-      return;
-    }
+  let className = "a-tooltip";
 
-    const tooltip = tooltipRef?.current;
+  if (propsClassName) {
+    className += ` ${propsClassName}`;
+  }
 
-    const leave = () => {
-      const hoveringAnchor = tooltipAnchorRef?.current?.matches(":hover");
+  const style: React.CSSProperties = {
+    ...propsStyle
+  };
 
-      if (!hoveringAnchor) {
-        close();
-      }
-    };
-
-    tooltip?.addEventListener("mouseleave", leave);
-
-    return () => {
-      tooltip?.removeEventListener("mouseleave", leave);
-    };
-  }, [tooltipRef, tooltipAnchorRef, interactive, close]);
+  if (maxWidth) {
+    style.maxWidth = maxWidth;
+  }
 
   return (
     <>
@@ -171,15 +175,19 @@ const ATriggerTooltip = ({
         });
       })}
       {!disabled && (
-        <ATooltip
+        <ATooltipBase
           ref={tooltipRef}
           anchorRef={tooltipAnchorRef}
+          interactive={interactive}
+          trigger={trigger}
           open={isOpen}
+          className={className}
+          style={style}
+          placement={placement}
           onClose={close}
-          pointer
           {...rest}>
           {content}
-        </ATooltip>
+        </ATooltipBase>
       )}
     </>
   );
