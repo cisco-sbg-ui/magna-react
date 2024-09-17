@@ -1,6 +1,6 @@
 {
   "name": "@cisco-sbg-ui/magna-react",
-  "version": "2.4.3",
+  "version": "2.4.7",
   "description": "",
   "main": "lib/index.js",
   "module": "lib/index.ts",
