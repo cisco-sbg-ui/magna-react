@@ -28,7 +28,7 @@ const useFloatingDropdown: UseFloatingDropdown = (open, onOpenChange) => {
     middlewareData
   } = useFloating({
     whileElementsMounted: autoUpdate,
-    placement: "bottom",
+    placement: "bottom-start",
     open,
     onOpenChange,
     middleware: [flip(), hide(), offset(4)]
