@@ -18,7 +18,7 @@ export type AButtonProps<C extends React.ElementType> =
        */
       href?: string;
       /**
-       * Signifies an icon-only button.
+       * Signifies an icon-only button. Note* If using icon with text, adding the `icon` prop in not necessary.
        */
       icon?: boolean;
       /**
