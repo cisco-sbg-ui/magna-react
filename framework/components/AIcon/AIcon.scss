@@ -67,7 +67,8 @@ svg.a-icon {
   &--common,
   &--type_Admin,
   &--critical-stop,
-  &--negative {
+  &--negative,
+  &--variable {
     stroke: unset !important;
   }
 
@@ -202,7 +203,8 @@ svg.a-icon {
   &--type_Switch,
   &--type_Systems_Manager,
   &--type_Wireless,
-  &--type_Workflow {
+  &--type_Workflow,
+  &--variable {
     fill: var(--interact-icon-weak-default);
   }
 
