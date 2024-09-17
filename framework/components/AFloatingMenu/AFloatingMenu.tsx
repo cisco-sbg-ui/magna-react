@@ -44,13 +44,6 @@ const AFloatingMenu = forwardRef<
     },
     ref
   ) => {
-    const {appRef} = useContext(AAppContext);
-    const {currentTheme} = useContext(AThemeContext);
-
-    const isInModal = useMemo(() => {
-      return Boolean(anchorRef.current?.closest(".a-modal"));
-    }, [anchorRef]);
-
     const getPrevious = useCallback(() => {
       if (!menuRef.current) {
         return;
@@ -149,10 +142,6 @@ const AFloatingMenu = forwardRef<
       className += ` ${propsClassName}`;
     }
 
-    if (isInModal) {
-      className += ` theme--${currentTheme}`;
-    }
-
     const FloatingMenu = (
       <FloatingFocusManager
         context={context}
@@ -188,21 +177,7 @@ const AFloatingMenu = forwardRef<
       </FloatingFocusManager>
     );
 
-    /*
-     * If the menu is in a modal, we need to render it in the body to ensure it's
-     * positioned correctly.
-     */
-    if (isInModal) {
-      return (
-        <FloatingPortal root={document.body}>{FloatingMenu}</FloatingPortal>
-      );
-    }
-
-    if (appRef) {
-      return (
-        <FloatingPortal root={appRef?.current}>{FloatingMenu}</FloatingPortal>
-      );
-    }
+    return FloatingMenu;
   }
 );
 
@@ -212,18 +187,7 @@ AFloatingMenu.propTypes = {
    */
   anchorRef: PropTypes.oneOfType([
     PropTypes.func,
-    PropTypes.shape({current: PropTypes.any}),
-    // DOMRect shape
-    PropTypes.shape({
-      x: PropTypes.number,
-      y: PropTypes.number,
-      width: PropTypes.number,
-      height: PropTypes.number,
-      top: PropTypes.number,
-      right: PropTypes.number,
-      bottom: PropTypes.number,
-      left: PropTypes.number
-    })
+    PropTypes.shape({current: PropTypes.any})
   ]).isRequired,
   /**
    * Toggles the behavior of closing the menu on click.
