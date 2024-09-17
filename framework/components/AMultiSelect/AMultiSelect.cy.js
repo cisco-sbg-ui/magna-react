@@ -2,7 +2,7 @@ import {useState} from "react";
 import AMultiSelect from "./AMultiSelect";
 
 const openWidget = () => cy.get(".a-field-base__label").click();
-const getMenuContent = () => cy.get(".a-floating-menu-base");
+const getMenuContent = () => cy.get(".a-menu-base");
 
 const pressDownArrow = () => {
   return getMenuContent().downArrowKeydown();

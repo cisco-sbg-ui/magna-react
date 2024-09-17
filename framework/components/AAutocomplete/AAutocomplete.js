@@ -11,8 +11,7 @@ import ASpinner from "../ASpinner";
 import AInputBase from "../AInputBase";
 import {AFormContext} from "../AForm";
 import AIcon from "../AIcon";
-import AFloatingMenu from "../AFloatingMenu";
-import useFloatingDropwdown from "../AFloatingMenu/useFloatingDropdown";
+import AMenu from "../AMenu";
 import {AListItem} from "../AList";
 import {useCombinedRefs} from "../../utils/hooks";
 import {keyCodes, handleBoldText} from "../../utils/helpers";
@@ -52,6 +51,8 @@ const AAutocomplete = forwardRef(
     ref
   ) => {
     const autocompleteRef = useRef(null);
+    const menuRef = useRef(null);
+    const inputBaseSurfaceRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, autocompleteRef);
 
     const [autocompleteId] = useState(autocompleteCounter++);
@@ -60,23 +61,11 @@ const AAutocomplete = forwardRef(
     const [error, setError] = useState("");
     const [workingValidationState, setWorkingValidationState] =
       useState(validationState);
-    const open = Boolean(
-      items && (items.length || (!items.length && noDataContent)) && isOpen
-    );
 
     const {register, unregister} = useContext(AFormContext);
     useEffect(() => {
       setWorkingValidationState(validationState);
     }, [validationState]);
-
-    const {
-      context,
-      floatingRefs,
-      floatingStyles,
-      middlewareData,
-      getReferenceProps,
-      getFloatingProps
-    } = useFloatingDropwdown(open, setIsOpen);
 
     useEffect(() => {
       if (register) {
@@ -136,6 +125,7 @@ const AAutocomplete = forwardRef(
     const inputBaseProps = {
       ...rest,
       ref: combinedRef,
+      surfaceRef: inputBaseSurfaceRef,
       className: "a-autocomplete",
       clearable,
       disabled,
@@ -185,8 +175,7 @@ const AAutocomplete = forwardRef(
       id: `a-autocomplete_${autocompleteId}`,
       onBlur: (e) => {
         setIsFocused(false);
-        !floatingRefs.reference?.current?.contains(e.relatedTarget) &&
-          validate(value);
+        !menuRef.current?.contains(e.relatedTarget) && validate(value);
       },
       onChange: (e) => {
         setIsOpen(true);
@@ -200,14 +189,14 @@ const AAutocomplete = forwardRef(
         if (e.key === keyCodes.up) {
           e.preventDefault();
           setIsOpen(true);
-          const menuItems = floatingRefs.floating?.current?.querySelectorAll(
+          const menuItems = menuRef.current?.querySelectorAll(
             ".a-autocomplete__menu-items__wrapper .a-list-item[tabindex]"
           );
           menuItems && menuItems[menuItems.length - 1]?.focus();
         } else if (e.key === keyCodes.down) {
           e.preventDefault();
           setIsOpen(true);
-          floatingRefs.floating?.current
+          menuRef.current
             ?.querySelectorAll(
               ".a-autocomplete__menu-items__wrapper .a-list-item[tabindex]"
             )[0]
@@ -220,36 +209,25 @@ const AAutocomplete = forwardRef(
     };
 
     const menuComponentProps = {
+      anchorRef: inputBaseSurfaceRef,
       className: "a-autocomplete__menu-items",
-      initialFocus: -1,
       closeOnClick: false,
+      focusOnOpen: false,
       onClose: () => setIsOpen(false),
+      open: Boolean(
+        items && (items.length || (!items.length && noDataContent)) && isOpen
+      ),
       role: "listbox",
       style: {
         minWidth: "max-content",
-        width: floatingRefs.reference?.current?.clientWidth + 2 || "auto",
-        ...floatingStyles,
-        visibility: middlewareData.hide?.referenceHidden ? "hidden" : "visible"
+        width: inputBaseSurfaceRef?.current?.clientWidth + 2 || "auto"
       }
     };
 
     return (
-      <AInputBase
-        ref={combinedRef}
-        {...inputBaseProps}
-        surfaceRef={floatingRefs.setReference}
-        {...getReferenceProps()}
-      >
+      <AInputBase {...inputBaseProps}>
         <input {...inputProps} />
-        <AFloatingMenu
-          ref={floatingRefs.setFloating}
-          anchorRef={floatingRefs.reference}
-          menuRef={floatingRefs.floating}
-          context={context}
-          open={open}
-          {...menuComponentProps}
-          {...getFloatingProps()}
-        >
+        <AMenu ref={menuRef} {...menuComponentProps}>
           {prependContent}
           <div className="a-autocomplete__menu-items__wrapper">
             {items && !items.length && !!noDataContent && (
@@ -301,7 +279,7 @@ const AAutocomplete = forwardRef(
               })}
           </div>
           {appendContent}
-        </AFloatingMenu>
+        </AMenu>
       </AInputBase>
     );
   }
