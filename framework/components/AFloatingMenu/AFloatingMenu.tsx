@@ -1,11 +1,7 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useCallback, useContext, useMemo} from "react";
+import React, {forwardRef, useCallback} from "react";
 
-import {
-  FloatingArrow,
-  FloatingFocusManager,
-  FloatingPortal
-} from "@floating-ui/react";
+import {FloatingArrow, FloatingFocusManager} from "@floating-ui/react";
 
 import {keyCodes} from "../../utils/helpers";
 import AFloatingMenuContainer from "./AFloatingMenuContainer";
@@ -13,8 +9,6 @@ import {AList} from "../AList";
 import "./AFloatingMenu.scss";
 
 import {AFloatingMenuProps} from "./types";
-import {AThemeContext} from "../ATheme";
-import AAppContext from "../AApp/AAppContext";
 
 const AFloatingMenu = forwardRef<
   HTMLElement,
