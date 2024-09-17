@@ -58,7 +58,7 @@ const AMultiSelect = forwardRef(
     const [error, setError] = useState("");
     const [workingValidationState, setWorkingValidationState] =
       useState(validationState);
-    const open = Boolean((items.length || noDataContent) && isOpen);
+    const open = isOpen;
 
     const noDataContent = propsNoDataContent ?? (
       <AEmptyState
