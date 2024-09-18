@@ -43,13 +43,13 @@ describe("<ATabGroup />", () => {
 
     cy.get(".a-tab-group__tab--selected").should("exist").contains("Three");
 
-    cy.get(".a-tab-group").focus().type("{leftArrow}", {force: true});
+    cy.get(".a-tab-group").focus().type("{leftArrow}");
     cy.get(".a-tab-group__tab")
       .first()
       .next()
       .should("have.class", "a-tab-group__tab--focused");
 
-    cy.get(".a-tab-group").type("{rightArrow}", {force: true});
+    cy.get(".a-tab-group").type("{rightArrow}");
 
     cy.get(".a-tab-group__tab")
       .first()
