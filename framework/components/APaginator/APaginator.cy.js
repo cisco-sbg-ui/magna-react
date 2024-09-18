@@ -185,7 +185,7 @@ const APaginatorDefault = ({disabled, ...rest}) => {
   const [currentPage, setCurrentPage] = useState(0);
 
   return (
-    <div data-testid="pagination-test">
+    <div data-testid="pagination-test" style={{height: "300px"}}>
       <div>Page {currentPage}</div>
       <APaginator
         disabled={disabled}
