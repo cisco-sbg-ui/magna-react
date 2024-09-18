@@ -13,7 +13,12 @@ const AFloatingMenuContainer = forwardRef<
   }
 
   return (
-    <div {...rest} ref={ref as any} className={className} style={style}>
+    <div
+      data-ignore-outside-click
+      {...rest}
+      ref={ref as any}
+      className={className}
+      style={style}>
       {children}
     </div>
   );
