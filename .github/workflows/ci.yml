@@ -32,7 +32,8 @@ jobs:
         run: npm run cypress:install
       - name: Build
         run: npm run build
-      - name: Test Chrome
-        run: npm run test:chrome
       - name: Test Firefox
         run: npm run test:firefox
+      - name: Test Chrome
+        run: npm run test:chrome
+
