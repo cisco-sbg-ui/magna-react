@@ -39,18 +39,19 @@ describe("<ATabGroup />", () => {
 
   it("should navigate with arrow keystroke", () => {
     cy.mount(<ATabTest />);
-    cy.get(".a-tab-group").focus();
 
+    //Confirm selected tab appears
     cy.get(".a-tab-group__tab")
       .should("have.class", "a-tab-group__tab--selected")
-      .contains("Three")
-      .type("{leftArrow}");
+      .contains("Three");
+    //Focus into tab group, by tabbing in.
+    cy.get(".a-tab-group").tab().focused().type("{leftArrow}");
 
     cy.get(".a-tab-group__tab")
       .first()
       .next()
       .should("have.class", "a-tab-group__tab--focused");
-
+    //We are already tabbed in and active so we can skip the initial tab.
     cy.get(".a-tab-group").type("{rightArrow}");
 
     cy.get(".a-tab-group__tab")
