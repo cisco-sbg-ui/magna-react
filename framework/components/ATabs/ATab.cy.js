@@ -41,9 +41,11 @@ describe("<ATabGroup />", () => {
     cy.mount(<ATabTest />);
     cy.get(".a-tab-group").focus();
 
-    cy.get(".a-tab-group__tab--selected").should("exist").contains("Three");
-
-    cy.get(".a-tab-group").focus().type("{leftArrow}");
+    cy.get(".a-tab-group__tab--selected")
+      .should("exist")
+      .contains("Three")
+      .type("{leftArrow}")
+      .type("{leftArrow}");
     cy.get(".a-tab-group__tab")
       .first()
       .next()
