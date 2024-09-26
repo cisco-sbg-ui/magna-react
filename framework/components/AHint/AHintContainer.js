@@ -6,12 +6,16 @@ import AHint from "./AHint";
 const AHintContainer = ({hints: propsHints = [], error, validationState}) => {
   const hints = [];
 
-  if (typeof propsHints === "string" || propsHints instanceof String) {
+  if (Array.isArray(propsHints)) {
+    hints.push(...propsHints);
+  } else if (typeof propsHints === "string" || propsHints instanceof String) {
     hints.unshift({
       content: propsHints
     });
-  } else if (Array.isArray(propsHints)) {
-    hints.push(...propsHints);
+  } else if (typeof propsHints === "object" && !propsHints.content) {
+    hints.unshift({
+      content: propsHints
+    });
   }
 
   if (error) {
@@ -23,38 +27,37 @@ const AHintContainer = ({hints: propsHints = [], error, validationState}) => {
 
   return (
     <>
-      {Array.isArray(hints) &&
-        hints.map((hintObject, index) => {
-          // "hints" block should be before "error" hint
-          if (hintObject.hideHintOnError && error) {
-            return null;
-          }
+      {hints.map((hintObject, index) => {
+        // "hints" block should be before "error" hint
+        if (hintObject.hideHintOnError && error) {
+          return null;
+        }
 
-          let content = hintObject.content;
+        let content = hintObject.content;
 
-          // Text in the array, or custom hint object
-          if (typeof hintObject === "string" || hintObject instanceof String) {
-            content = hintObject;
-          } else if (!hintObject.content) {
-            return hintObject;
-          }
+        // Text in the array, or custom hint object
+        if (typeof hintObject === "string" || hintObject instanceof String) {
+          content = hintObject;
+        } else if (!hintObject.content) {
+          return hintObject;
+        }
 
-          const objectValidationState = hintObject.validationStateOverride
-            ? hintObject.validationStateOverride
-            : hintObject.hintUsesValidationState
-            ? validationState
-            : "default";
+        const objectValidationState = hintObject.validationStateOverride
+          ? hintObject.validationStateOverride
+          : hintObject.hintUsesValidationState
+          ? validationState
+          : "default";
 
-          return (
-            <AHint
-              key={index}
-              className="a-field-base__hint"
-              validationState={objectValidationState}
-            >
-              {content}
-            </AHint>
-          );
-        })}
+        return (
+          <AHint
+            key={index}
+            className="a-field-base__hint"
+            validationState={objectValidationState}
+          >
+            {content}
+          </AHint>
+        );
+      })}
     </>
   );
 };
