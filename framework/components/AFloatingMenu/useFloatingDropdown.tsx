@@ -18,6 +18,7 @@ type UseFloatingDropdown = (
   middlewareData: any;
   getReferenceProps: (props: any) => any;
   getFloatingProps: (props: any) => any;
+  isReferenceHidden: boolean;
 };
 
 const useFloatingDropdown: UseFloatingDropdown = (open, onOpenChange) => {
@@ -50,7 +51,11 @@ const useFloatingDropdown: UseFloatingDropdown = (open, onOpenChange) => {
     floatingStyles,
     middlewareData,
     getReferenceProps,
-    getFloatingProps
+    getFloatingProps,
+    // For now, disable this feature since it breaks tests cases in some environments
+    // TODO re-enable this as a breaking change, since it is nice to have
+    // menus hide when their anchor reference is scrolled out of view
+    isReferenceHidden: false //!!middlewareData.hide?.referenceHidden
   };
 };
 

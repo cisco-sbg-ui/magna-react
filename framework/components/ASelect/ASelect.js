@@ -73,9 +73,9 @@ const ASelect = forwardRef(
       context,
       floatingRefs,
       floatingStyles,
-      middlewareData,
       getReferenceProps,
-      getFloatingProps
+      getFloatingProps,
+      isReferenceHidden
     } = useFloatingDropwdown(isOpen, setIsOpen);
 
     const {register, unregister} = useContext(AFormContext);
@@ -320,7 +320,7 @@ const ASelect = forwardRef(
           : "auto",
         ...dropdownStyle,
         ...floatingStyles,
-        visibility: middlewareData.hide?.referenceHidden ? "hidden" : "visible"
+        visibility: isReferenceHidden ? "hidden" : "visible"
       },
       medium
     };

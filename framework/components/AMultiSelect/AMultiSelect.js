@@ -73,9 +73,9 @@ const AMultiSelect = forwardRef(
       context,
       floatingRefs,
       floatingStyles,
-      middlewareData,
       getReferenceProps,
-      getFloatingProps
+      getFloatingProps,
+      isReferenceHidden
     } = useFloatingDropwdown(open, setIsOpen);
 
     const filterFunction = propsFilterFunction
@@ -324,7 +324,7 @@ const AMultiSelect = forwardRef(
         width: floatingRefs.reference?.current?.clientWidth + 2 || "auto",
         ...dropdownStyle,
         ...floatingStyles,
-        visibility: middlewareData.hide?.referenceHidden ? "hidden" : "visible"
+        visibility: isReferenceHidden ? "hidden" : "visible"
       }
     };
 
