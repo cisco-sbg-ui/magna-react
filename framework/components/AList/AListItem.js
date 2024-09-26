@@ -98,7 +98,7 @@ const AListItem = forwardRef(
       if (
         !role &&
         combinedRef.current &&
-        combinedRef.current.closest(".a-menu") !== null
+        combinedRef.current.closest(".a-floating-menu") !== null
       ) {
         setRoleValue("menuitem");
       }
