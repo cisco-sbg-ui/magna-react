@@ -45,12 +45,13 @@ describe("<ATabGroup />", () => {
       .should("have.class", "a-tab-group__tab--selected")
       .contains("Three");
     //Focus into tab group, by tabbing in.
-    cy.get(".a-tab-group").tab().focused().type("{leftArrow}");
-
-    cy.get(".a-tab-group__tab")
-      .first()
-      .next()
+    cy.get(".a-tab-group")
+      .tab()
+      .focused()
+      .type("{leftArrow}")
+      .prev()
       .should("have.class", "a-tab-group__tab--focused");
+
     //We are already tabbed in and active so we can skip the initial tab.
     cy.get(".a-tab-group").type("{rightArrow}");
 
