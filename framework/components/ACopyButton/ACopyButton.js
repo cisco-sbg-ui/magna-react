@@ -56,7 +56,9 @@ const ACopyButton = forwardRef(
           ref={combinedRef}
           className={className}
           icon={!children && !defaultLabel}
-          onClick={() => {
+          onClick={(e) => {
+            e.stopPropagation();
+
             copyToClipboard(value, containerId);
             setClicked(true);
           }}
