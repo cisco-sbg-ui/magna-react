@@ -1,10 +1,10 @@
 import {Override} from "../../types";
 
 export type AEmptyStateVariant =
-  | "success"
+  | "success" // deprecated
   | "positive"
   | "warning"
-  | "danger"
+  | "danger" // deprecated
   | "negative"
   | "info";
 

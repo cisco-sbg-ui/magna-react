@@ -38,6 +38,7 @@ $container-xl: 400px;
     color: var(--base-text-medium-default);
   }
 
+  &--state-positive,
   &--state-success {
     .a-empty-state__icon {
       color: var(--accent-a-default);
@@ -66,6 +67,7 @@ $container-xl: 400px;
     }
   }
 
+  &--state-negative,
   &--state-danger {
     border-color: var(--negative-border-default);
 

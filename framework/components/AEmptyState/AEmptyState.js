@@ -37,14 +37,18 @@ const AEmptyState = forwardRef(
       className += ` ${propsClassName}`;
     }
 
+    // @deprecation
+    // Remove non-magnetic states and classes in next major version
     if (variant === "success" || variant === "positive") {
-      className += ` ${baseClass}--state-success`;
+      className += ` ${baseClass}--state-success`; // deprecated
+      className += ` ${baseClass}--state-positive`;
       icon = "positive";
     } else if (variant === "warning") {
       className += ` ${baseClass}--state-warning`;
       icon = "warning";
     } else if (variant === "danger" || variant === "negative") {
-      className += ` ${baseClass}--state-danger`;
+      className += ` ${baseClass}--state-danger`; // deprecated
+      className += ` ${baseClass}--state-negative`;
       icon = "negative";
     } else if (variant === "info" || !propsIcon) {
       className += ` ${baseClass}--state-info`;
