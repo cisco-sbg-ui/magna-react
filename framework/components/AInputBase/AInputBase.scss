@@ -65,6 +65,19 @@ $input-transition: border-color $transition-duration--extra-fast
     }
   }
 
+  &--readonly {
+    .a-input-base__surface {
+      box-shadow: none;
+
+      border-color: var(--control-border-default);
+      background: var(--control-bg-weak-default);
+    }
+
+    input {
+      cursor: default;
+    }
+  }
+
   &--disabled {
     .a-input-base__surface {
       @include disabled;
@@ -77,19 +90,6 @@ $input-transition: border-color $transition-duration--extra-fast
       .a-icon {
         fill: var(--base-text-disabled);
       }
-    }
-  }
-
-  &--readonly {
-    .a-input-base__surface {
-      box-shadow: none;
-
-      border-color: var(--control-border-default);
-      background: var(--control-bg-weak-default);
-    }
-
-    input {
-      cursor: default;
     }
   }
 
