@@ -24,7 +24,7 @@ import {
 import {AFloatingBaseProps} from "./types";
 import "./AFloatingBase.scss";
 
-const ATooltipBase = forwardRef<HTMLElement, AFloatingBaseProps>(
+const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
   (
     {
       anchorRef,
@@ -182,6 +182,6 @@ const ATooltipBase = forwardRef<HTMLElement, AFloatingBaseProps>(
   }
 );
 
-ATooltipBase.displayName = "ATooltipBase";
+AFloatingBase.displayName = "ATooltipBase";
 
-export default ATooltipBase;
+export default AFloatingBase;

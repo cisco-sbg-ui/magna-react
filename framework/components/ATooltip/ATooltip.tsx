@@ -1,6 +1,6 @@
 import React, {forwardRef} from "react";
 
-import ATooltipBase from "../AFloatingBase/AFloatingBase";
+import AFloatingBase from "../AFloatingBase/AFloatingBase";
 import "./ATooltip.scss";
 
 import {ATooltipProps} from "./types";
@@ -39,7 +39,7 @@ const ATooltip = forwardRef<HTMLElement, ATooltipProps>(
     }
 
     return (
-      <ATooltipBase
+      <AFloatingBase
         {...rest}
         anchorRef={anchorRef}
         style={style}
@@ -53,7 +53,7 @@ const ATooltip = forwardRef<HTMLElement, ATooltipProps>(
         pointer={pointer}
         removeSpacer={removeSpacer}>
         {children}
-      </ATooltipBase>
+      </AFloatingBase>
     );
   }
 );

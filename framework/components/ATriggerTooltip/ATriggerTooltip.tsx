@@ -5,7 +5,7 @@ import useToggle from "../../hooks/useToggle/useToggle";
 import useOutsideClick from "../../hooks/useOutsideClick/useOutsideClick";
 import {handleMultipleRefs} from "../../utils/helpers";
 
-import ATooltipBase from "../AFloatingBase/AFloatingBase";
+import AFloatingBase from "../AFloatingBase/AFloatingBase";
 import "../ATooltip/ATooltip.scss";
 
 import {ATriggerTooltipProps} from "./types";
@@ -175,7 +175,7 @@ const ATriggerTooltip = ({
         });
       })}
       {!disabled && (
-        <ATooltipBase
+        <AFloatingBase
           ref={tooltipRef}
           anchorRef={tooltipAnchorRef}
           interactive={interactive}
@@ -187,7 +187,7 @@ const ATriggerTooltip = ({
           onClose={close}
           {...rest}>
           {content}
-        </ATooltipBase>
+        </AFloatingBase>
       )}
     </>
   );
