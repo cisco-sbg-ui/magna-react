@@ -49,6 +49,7 @@ describe("<ATabGroup />", () => {
       .tab()
       .focused()
       .type("{leftArrow}")
+      .type("{leftArrow}") //In firefox, Cypress selector is no active until we type another leftArrow
       .prev()
       .should("have.class", "a-tab-group__tab--focused");
 
