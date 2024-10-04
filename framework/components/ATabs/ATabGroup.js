@@ -27,7 +27,7 @@ const getNextFocusId = (direction, containerEl, focusedEl) => {
   let nextId, toFocus;
 
   if (direction == "ArrowLeft") {
-    toFocus = focusedEl.previousSibling;
+    toFocus = focusedEl.previousElementSibling;
 
     while (
       !toFocus ||
@@ -37,7 +37,7 @@ const getNextFocusId = (direction, containerEl, focusedEl) => {
       if (!toFocus) {
         toFocus = containerEl.lastChild;
       } else {
-        toFocus = toFocus.previousSibling;
+        toFocus = toFocus.previousElementSibling;
       }
     }
 
