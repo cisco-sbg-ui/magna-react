@@ -2,6 +2,9 @@ import {Override} from "../../types";
 
 export type AToastPlacement = "bottom-right" | "top" | "top-right";
 
+/*
+ * @deprecated "danger" level is deprecated
+ */
 export type AToastLevel = "info" | "success" | "warning" | "danger";
 
 export type AToastProps = Override<

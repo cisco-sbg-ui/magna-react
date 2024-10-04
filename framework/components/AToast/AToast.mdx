@@ -14,14 +14,15 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
 
 ### Usage
 
+_Note: Level 'danger' has been deprecated, as it is no longer part of Magnetic design. Any AToast with `level="danger"` will be displayed as 'warning'._
+
 <Playground
   code={`() => {
   const [toastsCount, setToastsCount] = useState(3);
   const [toasts, setToasts] = useState([
     "info",
     "success",
-    "warning",
-    "danger"
+    "warning"
   ]);
   const closeHandler = (key) => {
     var newToasts = toasts.slice();
