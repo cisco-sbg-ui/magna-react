@@ -133,6 +133,10 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
       setIsInteractiveMounted(isMounted);
     }, [isMounted, interactive]);
 
+    if (!isMounted) {
+      return null;
+    }
+
     let tooltipContent = (
       <div
         role={role}
@@ -170,16 +174,14 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
     }
 
     return (
-      isMounted && (
-        <AFloatingMenuContainer
-          {...rest}
-          ref={combinedRef}
-          className={className}
-          style={style}
-          data-placement={placement}>
-          {tooltipContent}
-        </AFloatingMenuContainer>
-      )
+      <AFloatingMenuContainer
+        {...rest}
+        ref={combinedRef}
+        className={className}
+        style={style}
+        data-placement={placement}>
+        {tooltipContent}
+      </AFloatingMenuContainer>
     );
   }
 );

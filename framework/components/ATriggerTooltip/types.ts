@@ -2,7 +2,10 @@ import React from "react";
 
 import {AFloatingBaseProps} from "../AFloatingBase/types";
 
-export type ATriggerTooltipProps = Omit<AFloatingBaseProps, "anchorRef"> & {
+export type ATriggerTooltipProps = Omit<
+  AFloatingBaseProps,
+  "anchorRef" | "content"
+> & {
   /**
    * Sets the element that the tooltip is anchored to
    */
@@ -24,7 +27,7 @@ export type ATriggerTooltipProps = Omit<AFloatingBaseProps, "anchorRef"> & {
   /**
    * Tooltip content
    */
-  content?: React.ReactNode | null;
+  content?: React.ReactNode;
   /**
    * Disable the tooltip
    *
