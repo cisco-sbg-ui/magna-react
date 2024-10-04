@@ -8,7 +8,11 @@ export type AFloatingBaseProps = Override<
     /**
      * The reference to the tooltip anchor.
      */
-    anchorRef: React.RefObject<HTMLElement>;
+    anchorRef?: React.RefObject<HTMLElement>;
+    /**
+     * A DOMRect to allow positioning around a virtual anchor.
+     */
+    domRect?: DOMRect;
     /**
      * Handles the request to close the menu.
      */

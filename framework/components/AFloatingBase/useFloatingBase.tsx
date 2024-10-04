@@ -1,3 +1,5 @@
+import {useEffect} from "react";
+
 import {
   useFloating,
   arrow,
@@ -15,7 +17,8 @@ import {flip, shift, type Placement} from "@floating-ui/dom";
 type UseFloatingBase = (
   open: boolean,
   onOpenChange: (open: boolean) => void,
-  anchorRef: React.RefObject<HTMLElement>,
+  anchorRef: React.RefObject<HTMLElement> | undefined,
+  domRect: DOMRect | undefined,
   arrowRef: React.RefObject<SVGSVGElement>,
   placement?: Placement,
   placementOffset?: number | undefined
@@ -31,6 +34,7 @@ const useFloatingBase: UseFloatingBase = (
   open,
   onOpenChange,
   anchorRef,
+  domRect,
   arrowRef,
   placement = "top",
   placementOffset
@@ -55,18 +59,29 @@ const useFloatingBase: UseFloatingBase = (
         element: arrowRef
       })
     ],
-    elements: {reference: anchorRef.current}
+    elements: {reference: anchorRef?.current}
   });
+
+  useEffect(() => {
+    if (!domRect) {
+      return;
+    }
+
+    floatingRefs.setPositionReference({
+      getBoundingClientRect() {
+        return {
+          ...domRect
+        };
+      }
+    });
+  }, [floatingRefs, domRect]);
 
   return {
     context,
     floatingRefs,
     floatingStyles,
     middlewareData,
-    // For now, disable this feature since it breaks tests cases in some environments
-    // TODO re-enable this as a breaking change, since it is nice to have
-    // menus hide when their anchor reference is scrolled out of view
-    isReferenceHidden: false //!!middlewareData.hide?.referenceHidden
+    isReferenceHidden: !!middlewareData.hide?.referenceHidden
   };
 };
 

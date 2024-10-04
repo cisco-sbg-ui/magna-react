@@ -28,6 +28,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
   (
     {
       anchorRef,
+      domRect,
       interactive,
       trigger,
       children,
@@ -57,13 +58,14 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
       onClose && onClose();
     }, [onClose]);
 
-    const placementOffset = removeSpacer ? 0 : offset || 8;
+    const placementOffset = removeSpacer || domRect ? 0 : offset || 8;
 
     const {context, floatingRefs, floatingStyles, isReferenceHidden} =
       useFloatingBase(
         !!open,
         close,
         anchorRef,
+        domRect,
         arrowRef,
         placement,
         placementOffset
