@@ -1,3 +1,5 @@
+import {AAnchorRef, ADOMRectFull} from "../../types";
+
 import {useEffect} from "react";
 
 import {
@@ -6,20 +8,26 @@ import {
   autoUpdate,
   hide,
   offset,
+  useDismiss,
+  useInteractions,
   type FloatingContext,
   type ExtendedRefs,
   type MiddlewareData,
-  type ReferenceType
+  type ReferenceType,
+  type OpenChangeReason
 } from "@floating-ui/react";
 
 import {flip, shift, type Placement} from "@floating-ui/dom";
 
 type UseFloatingBase = (
   open: boolean,
-  onOpenChange: (open: boolean) => void,
-  anchorRef: React.RefObject<HTMLElement> | undefined,
-  domRect: DOMRect | undefined,
+  anchorRef: AAnchorRef,
   arrowRef: React.RefObject<SVGSVGElement>,
+  onOpenChange?: (
+    open: boolean,
+    event: Event,
+    reason: OpenChangeReason
+  ) => void,
   placement?: Placement,
   placementOffset?: number | undefined
 ) => {
@@ -37,10 +45,9 @@ type UseFloatingBase = (
 
 const useFloatingBase: UseFloatingBase = (
   open,
-  onOpenChange,
   anchorRef,
-  domRect,
   arrowRef,
+  onOpenChange,
   placement = "top",
   placementOffset
 ) => {
@@ -65,22 +72,36 @@ const useFloatingBase: UseFloatingBase = (
         element: arrowRef
       })
     ],
-    elements: {reference: anchorRef?.current}
+    elements: {
+      reference:
+        (anchorRef as unknown as React.RefObject<HTMLElement>)?.current || null
+    }
   });
 
+  const dismiss = useDismiss(context, {
+    enabled: !!onOpenChange
+  });
+
+  useInteractions([dismiss]);
+
   useEffect(() => {
-    if (!domRect) {
+    // If we have a ref, we don't need to set the reference element
+    if ((anchorRef as unknown as React.RefObject<HTMLElement>)?.current) {
+      return;
+    }
+
+    if (!(anchorRef as unknown as ADOMRectFull).x) {
       return;
     }
 
     floatingRefs.setPositionReference({
       getBoundingClientRect() {
         return {
-          ...domRect
+          ...(anchorRef as unknown as ADOMRectFull)
         };
       }
     });
-  }, [floatingRefs, domRect]);
+  }, [floatingRefs, anchorRef]);
 
   return {
     context,

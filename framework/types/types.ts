@@ -2,20 +2,29 @@ export type ARef = {
   current?: unknown;
 };
 
-export type AAnchorRef =
-  | {
-      current?: unknown;
-    }
-  | {
-      x?: number;
-      y?: number;
-      width?: number;
-      height?: number;
-      top?: number;
-      right?: number;
-      bottom?: number;
-      left?: number;
-    };
+export type ADOMRect = {
+  x?: number;
+  y?: number;
+  width?: number;
+  height?: number;
+  top?: number;
+  right?: number;
+  bottom?: number;
+  left?: number;
+};
+
+export type ADOMRectFull = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  top: number;
+  right: number;
+  bottom: number;
+  left: number;
+};
+
+export type AAnchorRef = ARef | ADOMRect;
 
 export type APlacement =
   | "top"

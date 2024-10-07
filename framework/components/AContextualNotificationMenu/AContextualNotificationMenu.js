@@ -36,6 +36,7 @@ const AContextualNotificationMenu = forwardRef(
     }, [open, combinedRef, focusOnOpen]);
 
     const closeHandler = (e) => {
+      console.log(anchorRef instanceof DOMRect);
       if (anchorRef instanceof DOMRect) {
         return;
       }
@@ -44,6 +45,7 @@ const AContextualNotificationMenu = forwardRef(
     };
 
     const keyDownHandler = (e) => {
+      console.log(anchorRef instanceof DOMRect);
       if (anchorRef instanceof DOMRect) {
         return;
       }

@@ -1,4 +1,4 @@
-import {Override, APlacement} from "../../types";
+import {Override, AAnchorRef, APlacement} from "../../types";
 
 export type ATriggerTooltipTrigger = "hover" | "click";
 
@@ -8,11 +8,7 @@ export type AFloatingBaseProps = Override<
     /**
      * The reference to the tooltip anchor.
      */
-    anchorRef?: React.RefObject<HTMLElement>;
-    /**
-     * A DOMRect to allow positioning around a virtual anchor.
-     */
-    domRect?: DOMRect;
+    anchorRef: AAnchorRef;
     /**
      * Handles the request to close the menu.
      */
