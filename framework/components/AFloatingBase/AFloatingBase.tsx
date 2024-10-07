@@ -60,7 +60,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
 
     const placementOffset = removeSpacer ? 0 : offset || 8;
 
-    const {context, floatingRefs, floatingStyles, isReferenceHidden} =
+    const {context, floatingRefs, floatingStyles, elements, isReferenceHidden} =
       useFloatingBase(
         !!open,
         close,
@@ -72,6 +72,13 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
       );
 
     const combinedRef: any = useMergeRefs([floatingRefs.setFloating, ref]);
+
+    // If the reference element is wider than the tooltip, the arrow needs to be offset
+    const isEdge = placement.includes("-");
+    const isSmaller =
+      (elements?.domReference?.getBoundingClientRect().width || 0) >
+      (elements?.floating?.offsetWidth || 0);
+    const isEdgeAlignedAndSmaller = isEdge && isSmaller;
 
     const {isMounted, styles: transitionStyles} = useTransitionStyles(context, {
       duration: 200,
@@ -139,6 +146,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
 
     let tooltipContent = (
       <div
+        ref={floatingRefs.setFloating}
         role={role}
         className={propsClassName}
         style={{
@@ -153,6 +161,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
             className="a-floating-base-arrow"
             width={ARROW_WIDTH}
             height={ARROW_HEIGHT}
+            staticOffset={isEdgeAlignedAndSmaller ? "15%" : null}
           />
         )}
       </div>

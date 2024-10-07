@@ -27,6 +27,11 @@ type UseFloatingBase = (
   floatingRefs: ExtendedRefs<ReferenceType>;
   floatingStyles: React.CSSProperties;
   middlewareData: MiddlewareData;
+  elements: {
+    domReference: ReferenceType | null;
+    reference: ReferenceType | null;
+    floating: HTMLElement | null;
+  };
   isReferenceHidden: boolean;
 };
 
@@ -43,7 +48,8 @@ const useFloatingBase: UseFloatingBase = (
     context,
     refs: floatingRefs,
     floatingStyles,
-    middlewareData
+    middlewareData,
+    elements
   } = useFloating({
     whileElementsMounted: autoUpdate,
     placement,
@@ -81,6 +87,7 @@ const useFloatingBase: UseFloatingBase = (
     floatingRefs,
     floatingStyles,
     middlewareData,
+    elements,
     isReferenceHidden: !!middlewareData.hide?.referenceHidden
   };
 };
