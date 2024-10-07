@@ -74,7 +74,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
     const combinedRef: any = useMergeRefs([floatingRefs.setFloating, ref]);
 
     // If the reference element is wider than the tooltip, the arrow needs to be offset
-    const isEdge = placement.includes("-left") || placement.includes("-right");
+    const isEdge = placement.includes("-start") || placement.includes("-end");
     const isSmaller =
       (elements?.domReference?.getBoundingClientRect().width || 0) >
       (elements?.floating?.offsetWidth || 0);
