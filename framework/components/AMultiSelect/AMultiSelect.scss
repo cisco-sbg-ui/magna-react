@@ -132,3 +132,7 @@
     @include a-control-focus();
   }
 }
+
+.a-field-base.a-multiselect {
+  width: unset;
+}
