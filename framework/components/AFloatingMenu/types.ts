@@ -2,11 +2,25 @@ import React from "react";
 import {AAnchorRef, APlacement, Override} from "../../types";
 import {AListProps} from "../AList/types";
 
-export type AFloatingMenuContainerProps = {
-  className?: string;
-  style: React.CSSProperties;
-  children?: React.ReactNode;
-};
+export type AFloatingMenuContainerProps = Override<
+  React.ComponentPropsWithRef<"div">,
+  {
+    /**
+     * Sets the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role.
+     *
+     * @defaultValue `"menu"`
+     */
+    role?: React.AriaRole;
+    /**
+     * Prevents propagation of the outside click event when the menu is open.
+     * This will prevent modals/drawers with the `closeOnClickOutside` prop from
+     * closing when interacting with a menu.
+     *
+     * @default `true`
+     */
+    ignoreOutsideClick?: boolean;
+  }
+>;
 
 export type AFloatingMenuProps<C extends React.ElementType> = Override<
   AListProps<C>,

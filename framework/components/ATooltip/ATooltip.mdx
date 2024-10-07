@@ -34,7 +34,7 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
 return (
 
 <>
-  By default the openDelay is 400ms
+  By default the openDelay is 300ms
   <br />
   <br />
   <AIcon ref={iconRef} onMouseEnter={open} onMouseLeave={close}>
@@ -141,6 +141,11 @@ return (
 return (
 
 <AContainer className="pa-6">
+  <p>
+    Note: Tooltips will automatically "flip" their primary axis if there is not
+    enough space to place it. In these examples, expand the browser window wide
+    for the "right" positioned tooltips.
+  </p>
   <ARow>
     <ACol cols="2" />
     <ACol className="text-right">
@@ -148,7 +153,9 @@ return (
         Top-Left
       </AButton>
       <ATooltip anchorRef={buttonRef12} open={isOpen12} placement="top-left">
-        Tooltip
+        The tooltip will be positioned to the top of the anchor, and the tooltip
+        aligned to the left edge of the anchor. Content will expand to the
+        right.
       </ATooltip>
     </ACol>
     <ACol className="text-center">
@@ -156,7 +163,7 @@ return (
         Top
       </AButton>
       <ATooltip anchorRef={buttonRef1} open={isOpen1} placement="top">
-        Tooltip
+        The tooltip will be positioned to the top center of the anchor
       </ATooltip>
     </ACol>
     <ACol>
@@ -164,7 +171,9 @@ return (
         Top-Right
       </AButton>
       <ATooltip anchorRef={buttonRef2} open={isOpen2} placement="top-right">
-        Tooltip
+        The tooltip will be positioned to the top of the anchor, and the tooltip
+        aligned to the right edge of the anchor. Content will expand to the
+        left.
       </ATooltip>
     </ACol>
     <ACol cols="2" />
@@ -175,7 +184,9 @@ return (
         Left-Top
       </AButton>
       <ATooltip anchorRef={buttonRef11} open={isOpen11} placement="left-top">
-        Tooltip
+        The tooltip will be positioned to the left of the anchor, and the
+        tooltip aligned to the top edge of the anchor. Content will expand to
+        the bottom.
       </ATooltip>
     </ACol>
     <ACol cols="6" />
@@ -184,7 +195,9 @@ return (
         Right-Top
       </AButton>
       <ATooltip anchorRef={buttonRef3} open={isOpen3} placement="right-top">
-        Tooltip
+        The tooltip will be positioned to the right of the anchor, and the
+        tooltip aligned to the top edge of the anchor. Content will expand to
+        the bottom.
       </ATooltip>
     </ACol>
   </ARow>
@@ -194,7 +207,7 @@ return (
         Left
       </AButton>
       <ATooltip anchorRef={buttonRef10} open={isOpen10} placement="left">
-        Tooltip
+        The tooltip will be positioned to the left of the anchor.
       </ATooltip>
     </ACol>
     <ACol cols="6" />
@@ -203,7 +216,7 @@ return (
         Right
       </AButton>
       <ATooltip anchorRef={buttonRef4} open={isOpen4} placement="right">
-        Tooltip
+        The tooltip will be positioned to the right of the anchor.
       </ATooltip>
     </ACol>
   </ARow>
@@ -213,7 +226,9 @@ return (
         Left-Bottom
       </AButton>
       <ATooltip anchorRef={buttonRef9} open={isOpen9} placement="left-bottom">
-        Tooltip
+        The tooltip will be positioned to the left of the anchor, and the
+        tooltip aligned to the bottom edge of the anchor. Content will expand to
+        the top.
       </ATooltip>
     </ACol>
     <ACol cols="6" />
@@ -222,7 +237,9 @@ return (
         Right-Bottom
       </AButton>
       <ATooltip anchorRef={buttonRef5} open={isOpen5} placement="right-bottom">
-        Tooltip
+        The tooltip will be positioned to the right of the anchor, and the
+        tooltip aligned to the bottom edge of the anchor. Content will expand to
+        the top.
       </ATooltip>
     </ACol>
   </ARow>
@@ -233,7 +250,9 @@ return (
         Bottom-Left
       </AButton>
       <ATooltip anchorRef={buttonRef8} open={isOpen8} placement="bottom-left">
-        Tooltip
+        The tooltip will be positioned to the bottom of the anchor, and the
+        tooltip aligned to the left edge of the anchor. Content will expand to
+        the right.
       </ATooltip>
     </ACol>
     <ACol className="text-center">
@@ -241,7 +260,7 @@ return (
         Bottom
       </AButton>
       <ATooltip anchorRef={buttonRef7} open={isOpen7} placement="bottom">
-        Tooltip
+        The tooltip will be positioned to the bottom center of the anchor.
       </ATooltip>
     </ACol>
     <ACol>
@@ -249,7 +268,9 @@ return (
         Bottom-Right
       </AButton>
       <ATooltip anchorRef={buttonRef6} open={isOpen6} placement="bottom-right">
-        Tooltip
+        The tooltip will be positioned to the bottom of the anchor, and the
+        tooltip aligned to the right edge of the anchor. Content will expand to
+        the left.
       </ATooltip>
     </ACol>
     <ACol cols="2" />
@@ -268,8 +289,8 @@ return (
   return (
     <>
       <p>
-        If the anchor is larger than the tooltip, the pointer is placed in the
-        center of the tooltip.
+        If the anchor is larger than the tooltip, the pointer is placed at an offset
+        to correspond to the secondary axis.
       </p>
       <p>
         If the tooltip is larger than the anchor, the pointer is placed in the
@@ -322,7 +343,7 @@ return (
         open={open2}
         placement="left"
         pointer>
-        Tooltip On the leftside
+        Tooltip on the leftside
       </ATooltip>
       <ATooltip
         anchorRef={buttonRef2}

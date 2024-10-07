@@ -1,7 +1,6 @@
-import React, {forwardRef, useRef} from "react";
+import React, {forwardRef} from "react";
 
-import AMenuBase from "../AMenuBase";
-import {useCombinedRefs} from "../../utils/hooks";
+import AFloatingBase from "../AFloatingBase/AFloatingBase";
 import "./ATooltip.scss";
 
 import {ATooltipProps} from "./types";
@@ -10,28 +9,27 @@ const ATooltip = forwardRef<HTMLElement, ATooltipProps>(
   (
     {
       anchorRef,
-      autoFlip = true,
-      children,
+      domRect,
       className: propsClassName,
       onClose,
       open,
-      placement,
+      placement = "top",
       pointer = true,
+      removeSpacer = false,
       role = "tooltip",
       maxWidth,
-      style: propsStyle,
+      offset,
+      style: propsStyle = {},
+      children,
       ...rest
     },
     ref
   ) => {
-    const tooltipRef = useRef(null);
-    const combinedRef: any = useCombinedRefs(ref, tooltipRef); //TODO Fix when useCombinedRefs is typed
-    const style = {...propsStyle};
+    const style: React.CSSProperties = {
+      ...propsStyle
+    };
 
     let className = `a-tooltip`;
-    if (pointer) {
-      className += " a-tooltip--arrow";
-    }
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
@@ -42,21 +40,22 @@ const ATooltip = forwardRef<HTMLElement, ATooltipProps>(
     }
 
     return (
-      <AMenuBase
+      <AFloatingBase
         {...rest}
+        anchorRef={anchorRef}
+        domRect={domRect}
         style={style}
-        ref={combinedRef}
+        placement={placement}
+        offset={offset}
+        ref={ref}
         role={role}
         className={className}
         onClose={onClose}
         open={open}
-        placement={placement}
-        removeSpacer={true}
-        anchorRef={anchorRef}
         pointer={pointer}
-        useFlipLogic={autoFlip}>
+        removeSpacer={removeSpacer}>
         {children}
-      </AMenuBase>
+      </AFloatingBase>
     );
   }
 );

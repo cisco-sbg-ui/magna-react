@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useRef, useState} from "react";
 
-const useToggle = (openDelay = 400, closeDelay, canOpen) => {
+const useToggle = (openDelay = 300, closeDelay, canOpen) => {
   const [isOpen, setIsOpen] = useState(false);
   const timeout = useRef();
 

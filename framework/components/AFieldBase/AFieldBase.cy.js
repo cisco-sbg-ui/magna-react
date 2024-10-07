@@ -32,7 +32,7 @@ describe("<AFieldBase />", () => {
 
       cy.hoverATooltip();
       cy.getByDataTestId("tooltip").should("be.visible");
-      cy.get(".a-menu-base__pointer").should("exist");
+      cy.get(".a-floating-base-arrow").should("exist");
     });
 
     it("should allow tooltip props to be customized", () => {
@@ -50,7 +50,7 @@ describe("<AFieldBase />", () => {
 
       cy.hoverATooltip();
       cy.getByDataTestId("tooltip").should("be.visible");
-      cy.get(".a-menu-base__pointer").should("not.exist");
+      cy.get(".a-floating-base-arrow").should("not.exist");
     });
   });
 
