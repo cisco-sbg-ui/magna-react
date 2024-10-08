@@ -164,8 +164,6 @@ const ATriggerTooltip = ({
           child
         );
 
-        console.log(toClone, toClone.props.ref);
-
         return React.cloneElement(toClone, {
           ...toClone?.props,
           ref: handleMultipleRefs(toClone.ref, (node: HTMLElement) => {
