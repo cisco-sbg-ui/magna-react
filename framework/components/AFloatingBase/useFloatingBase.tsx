@@ -25,8 +25,8 @@ type UseFloatingBase = (
   arrowRef: React.RefObject<SVGSVGElement>,
   onOpenChange?: (
     open: boolean,
-    event: Event,
-    reason: OpenChangeReason
+    event?: Event,
+    reason?: OpenChangeReason
   ) => void,
   placement?: Placement,
   placementOffset?: number | undefined
