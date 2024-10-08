@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
 import React, {forwardRef, useEffect, useRef} from "react";
 
-import {keyCodes} from "../../utils/helpers";
 import {useCombinedRefs} from "../../utils/hooks";
-import AMenuBase from "../AMenuBase";
+import useReturnFocusOnClose from "../../hooks/useReturnFocusOnClose/useReturnFocusOnClose";
+
+import AFloatingBase from "../AFloatingBase/AFloatingBase";
 import {APanel} from "../APanel";
 import "./APopover.scss";
 
@@ -15,7 +16,6 @@ const APopover = forwardRef(
       className: propsClassName,
       focusOnOpen = true,
       onClose,
-      onKeyDown,
       open,
       placement,
       role = "menu",
@@ -34,24 +34,7 @@ const APopover = forwardRef(
       }
     }, [open, combinedRef, focusOnOpen]);
 
-    const closeHandler = (e) => {
-      anchorRef.current && anchorRef.current.focus();
-      onClose && onClose(e);
-    };
-
-    const keyDownHandler = (e) => {
-      if (anchorRef instanceof DOMRect) {
-        return;
-      }
-      if (onClose && e.key === keyCodes.esc) {
-        e.preventDefault();
-        closeHandler(e);
-        anchorRef.current.focus();
-      } else if (e.key === keyCodes.tab) {
-        closeHandler(e);
-        anchorRef.current.focus();
-      }
-    };
+    useReturnFocusOnClose({isOpen: open});
 
     let className = `a-popover`;
     if (propsClassName) {
@@ -59,26 +42,25 @@ const APopover = forwardRef(
     }
 
     return (
-      <APanel
-        {...rest}
-        component={AMenuBase}
-        ref={combinedRef}
-        role={role}
-        className={className}
-        onClose={onClose}
-        onKeyDown={(e) => {
-          keyDownHandler(e);
-          onKeyDown && onKeyDown(e);
-        }}
-        open={open}
+      <AFloatingBase
         placement={placement}
         anchorRef={anchorRef}
-        pointer={true}
-        type="dialog"
-        tabIndex={-1}
+        className="a-popover-floating-base"
+        open={open}
+        onClose={onClose}
+        role={role}
+        pointer
       >
-        {children}
-      </APanel>
+        <APanel
+          {...rest}
+          ref={combinedRef}
+          className={className}
+          type="dialog"
+          tabIndex={-1}
+        >
+          {children}
+        </APanel>
+      </AFloatingBase>
     );
   }
 );
