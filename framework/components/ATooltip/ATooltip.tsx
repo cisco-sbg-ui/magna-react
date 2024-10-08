@@ -9,7 +9,6 @@ const ATooltip = forwardRef<HTMLElement, ATooltipProps>(
   (
     {
       anchorRef,
-      domRect,
       className: propsClassName,
       onClose,
       open,
@@ -43,7 +42,6 @@ const ATooltip = forwardRef<HTMLElement, ATooltipProps>(
       <AFloatingBase
         {...rest}
         anchorRef={anchorRef}
-        domRect={domRect}
         style={style}
         placement={placement}
         offset={offset}

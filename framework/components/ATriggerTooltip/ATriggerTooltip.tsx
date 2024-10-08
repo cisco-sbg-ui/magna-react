@@ -154,10 +154,7 @@ const ATriggerTooltip = ({
         if (!React.isValidElement(child)) {
           return;
         }
-        const toClone: React.ReactElement<
-          any,
-          string | React.JSXElementConstructor<any>
-        > = wrapChildren ? (
+        const toClone: React.FunctionComponentElement<any> = wrapChildren ? (
           <div
             className={wrapperClass}
             style={{height: "fit-content", width: "fit-content"}}>
@@ -169,7 +166,7 @@ const ATriggerTooltip = ({
 
         return React.cloneElement(toClone, {
           ...toClone?.props,
-          ref: handleMultipleRefs(toClone.props.ref, (node: HTMLElement) => {
+          ref: handleMultipleRefs(toClone.ref, (node: HTMLElement) => {
             childrenRef.current[index] = node;
           })
         });

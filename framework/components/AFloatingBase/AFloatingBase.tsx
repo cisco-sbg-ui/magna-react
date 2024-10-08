@@ -1,10 +1,4 @@
-import React, {
-  forwardRef,
-  useCallback,
-  useEffect,
-  useRef,
-  useState
-} from "react";
+import React, {forwardRef, useEffect, useRef, useState} from "react";
 
 import {
   useMergeRefs,
@@ -28,7 +22,6 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
   (
     {
       anchorRef,
-      domRect,
       interactive,
       trigger,
       children,
@@ -54,19 +47,14 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
 
     const [isInteractiveMounted, setIsInteractiveMounted] = useState(false);
 
-    const close = useCallback(() => {
-      onClose && onClose();
-    }, [onClose]);
-
     const placementOffset = removeSpacer ? 0 : offset || 8;
 
     const {context, floatingRefs, floatingStyles, elements, isReferenceHidden} =
       useFloatingBase(
         !!open,
-        close,
         anchorRef,
-        domRect,
         arrowRef,
+        onClose,
         placement,
         placementOffset
       );
@@ -110,10 +98,12 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
 
       const leave = () => {
         setTimeout(() => {
-          const hoveringAnchor = anchorRef?.current?.matches(":hover");
+          const hoveringAnchor = (
+            anchorRef as React.RefObject<HTMLElement>
+          )?.current?.matches(":hover");
 
           if (!hoveringAnchor) {
-            close();
+            onClose && onClose();
           }
         }, 300);
       };
@@ -128,7 +118,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
       anchorRef,
       interactive,
       trigger,
-      close,
+      onClose,
       isInteractiveMounted
     ]);
 
@@ -195,6 +185,6 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
   }
 );
 
-AFloatingBase.displayName = "ATooltipBase";
+AFloatingBase.displayName = "AFloatingBase";
 
 export default AFloatingBase;
