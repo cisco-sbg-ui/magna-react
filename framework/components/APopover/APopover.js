@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import React, {forwardRef, useEffect, useRef} from "react";
 
 import {useCombinedRefs} from "../../utils/hooks";
-import useReturnFocusOnClose from "../../hooks/useReturnFocusOnClose/useReturnFocusOnClose";
 
 import AFloatingBase from "../AFloatingBase/AFloatingBase";
 import {APanel} from "../APanel";
