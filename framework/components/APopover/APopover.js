@@ -33,7 +33,10 @@ const APopover = forwardRef(
       }
     }, [open, combinedRef, focusOnOpen]);
 
-    useReturnFocusOnClose({isOpen: open});
+    const closeHandler = (e) => {
+      anchorRef.current && anchorRef.current.focus();
+      onClose && onClose(e);
+    };
 
     let className = `a-popover`;
     if (propsClassName) {
@@ -46,7 +49,7 @@ const APopover = forwardRef(
         anchorRef={anchorRef}
         className="a-popover-floating-base"
         open={open}
-        onClose={onClose}
+        onClose={closeHandler}
         role={role}
         pointer
       >
