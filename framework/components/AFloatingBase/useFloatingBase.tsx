@@ -73,8 +73,7 @@ const useFloatingBase: UseFloatingBase = (
       })
     ],
     elements: {
-      reference:
-        (anchorRef as unknown as React.RefObject<HTMLElement>)?.current || null
+      reference: (anchorRef as React.RefObject<HTMLElement>)?.current || null
     }
   });
 
@@ -86,18 +85,18 @@ const useFloatingBase: UseFloatingBase = (
 
   useEffect(() => {
     // If we have a ref, we don't need to set the reference element
-    if ((anchorRef as unknown as React.RefObject<HTMLElement>)?.current) {
+    if ((anchorRef as React.RefObject<HTMLElement>)?.current) {
       return;
     }
 
-    if (!(anchorRef as unknown as ADOMRectFull).x) {
+    if (!(anchorRef as ADOMRectFull).x) {
       return;
     }
 
     floatingRefs.setPositionReference({
       getBoundingClientRect() {
         return {
-          ...(anchorRef as unknown as ADOMRectFull)
+          ...(anchorRef as ADOMRectFull)
         };
       }
     });

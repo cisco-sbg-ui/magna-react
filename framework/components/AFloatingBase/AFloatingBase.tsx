@@ -1,10 +1,4 @@
-import React, {
-  forwardRef,
-  useCallback,
-  useEffect,
-  useRef,
-  useState
-} from "react";
+import React, {forwardRef, useEffect, useRef, useState} from "react";
 
 import {
   useMergeRefs,
