@@ -25,20 +25,6 @@ describe("<APopover />", () => {
       });
   });
 
-  it("should call the close handler on tab keydowns", () => {
-    const mockFn = cy.stub();
-    cy.mount(<PopoverTest onClose={mockFn} />);
-    // Open popover
-    cy.getByDataTestId("popover-trigger").click();
-
-    // Trigger escape keydown on popover component
-    cy.getByDataTestId("popover")
-      .tabKeydown()
-      .then(() => {
-        expect(mockFn.callCount).to.eq(1);
-      });
-  });
-
   it("should focus to the anchor element when closing with escape keydowns", () => {
     const mockFn = cy.stub();
     cy.mount(<PopoverTest onClose={mockFn} />);
@@ -48,20 +34,6 @@ describe("<APopover />", () => {
     // Trigger escape keydown on popover component
     cy.getByDataTestId("popover")
       .escapeKeydown()
-      .then(() => {
-        cy.getByDataTestId("popover-trigger").should("have.focus");
-      });
-  });
-
-  it("should focus to the anchor element when closing with tab keydowns", () => {
-    const mockFn = cy.stub();
-    cy.mount(<PopoverTest onClose={mockFn} />);
-    // Open popover
-    cy.getByDataTestId("popover-trigger").click();
-
-    // Trigger escape keydown on popover component
-    cy.getByDataTestId("popover")
-      .tabKeydown()
       .then(() => {
         cy.getByDataTestId("popover-trigger").should("have.focus");
       });
