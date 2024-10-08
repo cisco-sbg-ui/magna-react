@@ -71,10 +71,7 @@ const useFloatingBase: UseFloatingBase = (
       arrow({
         element: arrowRef
       })
-    ],
-    elements: {
-      reference: (anchorRef as React.RefObject<HTMLElement>)?.current || null
-    }
+    ]
   });
 
   const dismiss = useDismiss(context, {
@@ -84,17 +81,14 @@ const useFloatingBase: UseFloatingBase = (
   useInteractions([dismiss]);
 
   useEffect(() => {
-    // If we have a ref, we don't need to set the reference element
-    if ((anchorRef as React.RefObject<HTMLElement>)?.current) {
-      return;
-    }
-
-    if (!(anchorRef as ADOMRectFull).x) {
-      return;
-    }
-
     floatingRefs.setPositionReference({
       getBoundingClientRect() {
+        if ((anchorRef as React.RefObject<HTMLElement>)?.current) {
+          return (
+            anchorRef as React.RefObject<HTMLElement>
+          )?.current!.getBoundingClientRect();
+        }
+
         return {
           ...(anchorRef as ADOMRectFull)
         };
