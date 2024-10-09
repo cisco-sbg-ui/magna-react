@@ -304,7 +304,7 @@ describe("<ADrawer />", () => {
       cy.getByDataTestId("trigger-a").click();
       cy.getByDataTestId("drawer-trigger").contains("The wizard Merlin");
 
-      // cy.wait(301);
+      //cy.wait(301);
 
       cy.getByDataTestId("trigger-b").click();
       cy.getByDataTestId("drawer-trigger").contains(
@@ -342,7 +342,7 @@ function DrawerTest({asModal = true, slideIn = "right", openWidth, ...rest}) {
         isOpen={isOpen}
         openWidth={openWidth}
         slideIn={slideIn}
-        closeBtnOnClick={() => setIsOpen(false)}
+        onClose={() => setIsOpen(false)}
         {...rest}
       >
         <ADrawerContent data-testid="drawer-content">
@@ -523,7 +523,9 @@ function WithPopoverTest(drawerProps) {
   usePopupQuickExit({
     popupRef: drawerRef,
     isEnabled: isDrawerOpen,
-    onExit: () => setIsDrawerOpen(false)
+    onExit: () => {
+      setIsDrawerOpen(false);
+    }
   });
 
   return (
@@ -553,7 +555,7 @@ function WithPopoverTest(drawerProps) {
           <APopover
             anchorRef={btnRef}
             open={isPopoverOpen}
-            placement="left-top"
+            placement="left"
             onClose={() => setIsPopoverOpen(false)}
           >
             <span data-testid="popover-content">test popover content</span>

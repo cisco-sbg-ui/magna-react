@@ -33,9 +33,12 @@ const APopover = forwardRef(
       }
     }, [open, combinedRef, focusOnOpen]);
 
-    const closeHandler = (e) => {
+    const closeHandler = (open) => {
+      if (open) {
+        return;
+      }
       anchorRef.current && anchorRef.current.focus();
-      onClose && onClose(e);
+      onClose && onClose(open);
     };
 
     let className = `a-popover`;

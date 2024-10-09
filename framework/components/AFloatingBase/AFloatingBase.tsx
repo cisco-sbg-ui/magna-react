@@ -32,6 +32,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
       offset,
       pointer = true,
       removeSpacer,
+      ignoreOutsideClick = true,
       onClose,
       open,
       ...rest
@@ -39,6 +40,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
     ref
   ) => {
     const className = `a-floating-base`;
+    const attrs: {[key: string]: any} = {};
 
     const arrowRef = useRef<SVGSVGElement>(null);
     const interactiveRef = useRef<HTMLDivElement>(null);
@@ -172,13 +174,18 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
       );
     }
 
+    if (ignoreOutsideClick) {
+      attrs["data-ignore-outside-click"] = true;
+    }
+
     return (
       <AFloatingMenuContainer
         {...rest}
         ref={combinedRef}
         className={className}
         style={style}
-        data-placement={placement}>
+        data-placement={placement}
+        {...attrs}>
         {tooltipContent}
       </AFloatingMenuContainer>
     );
