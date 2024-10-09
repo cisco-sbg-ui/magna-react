@@ -2,16 +2,16 @@
 
 @import "../../styles";
 
-$icon-xs: 20px;
-$icon-sm: 50px;
-$icon-md: 100px;
-$icon-lg: 150px;
+$icon-xs: 12px;
+$icon-sm: 16px;
+$icon-md: 52px;
+$icon-lg: 156px;
 $icon-xl: 200px;
-$container-xs: 40px;
-$container-sm: 100px;
-$container-md: 200px;
-$container-lg: 300px;
-$container-xl: 400px;
+$container-xs: 20px;
+$container-sm: 36px;
+$container-md: 72px;
+$container-lg: 224px;
+$container-xl: 300px;
 
 .a-empty-state {
   display: flex;
@@ -21,6 +21,8 @@ $container-xl: 400px;
   margin: 20px 0;
 
   &__container {
+    display: flex;
+    flex: 1 0 auto;
     position: relative;
   }
 
@@ -33,9 +35,30 @@ $container-xl: 400px;
     position: absolute;
   }
 
+  &__message-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   &__message {
     text-align: center;
     color: var(--base-text-medium-default);
+    padding: 12px 0px;
+  }
+
+  &--layout-horizontal {
+    flex-direction: row;
+
+    .a-empty-state__message-container {
+      align-items: flex-start;
+
+      margin-left: 12px;
+
+      .a-empty-state__message {
+        text-align: left;
+      }
+    }
   }
 
   &--state-positive,
@@ -121,12 +144,14 @@ $container-xl: 400px;
 
     .a-empty-state__label {
       font-weight: 700;
-      font-size: 16px;
+      font-size: $font-size--md;
+      line-height: $line-height--md;
     }
 
     .a-empty-state__message {
       font-weight: 400;
-      font-size: 12px;
+      font-size: $font-size--sm;
+      line-height: $line-height--sm;
     }
   }
 
@@ -146,12 +171,14 @@ $container-xl: 400px;
 
     .a-empty-state__label {
       font-weight: 700;
-      font-size: 18px;
+      font-size: $font-size--lg;
+      line-height: $line-height--lg;
     }
 
     .a-empty-state__message {
       font-weight: 400;
-      font-size: 14px;
+      font-size: $font-size--md;
+      line-height: $line-height--md;
     }
   }
 
@@ -172,11 +199,13 @@ $container-xl: 400px;
     .a-empty-state__label {
       font-weight: 700;
       font-size: 24px;
+      line-height: $line-height--xl;
     }
 
     .a-empty-state__message {
       font-weight: 400;
       font-size: 18px;
+      line-height: $line-height--lg;
     }
   }
 
