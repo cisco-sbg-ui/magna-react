@@ -40,6 +40,12 @@ export type AFloatingBaseProps = Override<
      * DOM event to trigger the tooltip
      */
     trigger?: ATriggerTooltipTrigger;
+    /** Ignore outside clicks - prevents usePopupQuickExit from firing when used
+     * with drawers.
+     *
+     * @default true
+     */
+    ignoreOutsideClick?: boolean;
     removeSpacer?: boolean;
     /**
      * Sets the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role.

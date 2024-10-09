@@ -1,8 +1,13 @@
 @import "../../styles";
 
+.a-popover-floating-base {
+  .a-floating-base-arrow {
+    fill: var(--control-bg-weak-default);
+  }
+}
+
 .a-popover {
   width: 600px;
-  position: absolute !important;
   filter: drop-shadow(var(--panel-shadow));
 
   &.a-panel {
