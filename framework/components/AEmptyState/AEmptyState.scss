@@ -41,10 +41,14 @@ $container-xl: 300px;
     align-items: center;
   }
 
+  &__label {
+    margin: 0 0 12px 0;
+  }
+
   &__message {
     text-align: center;
     color: var(--base-text-medium-default);
-    padding: 12px 0px;
+    margin: 0 0 12px 0;
   }
 
   &--layout-horizontal {
