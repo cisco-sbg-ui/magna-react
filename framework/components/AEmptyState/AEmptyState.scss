@@ -54,6 +54,10 @@ $container-xl: 300px;
   &--layout-horizontal {
     flex-direction: row;
 
+    .a-empty-state__container {
+      flex: 0 0 auto;
+    }
+
     .a-empty-state__message-container {
       align-items: flex-start;
 
