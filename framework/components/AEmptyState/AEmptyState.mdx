@@ -36,6 +36,22 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
 </>`}
 />
 
+#### Layout
+
+<Playground
+  code={`<>
+  <AEmptyState
+    horizontal
+    variant="positive"
+    label="Creature of Fenkenstrain"
+    message="Dr Fenkenstrain, master and sole occupant of the castle to the north-east of Canifis, needs a new servant to go on a dark errand for him. Do you have the stomach to help Fenkenstrain complete his twisted purpose?"
+  >
+    <ATag>Intermediate</ATag>
+  </AEmptyState>
+</>
+`}
+/>
+
 ##### Sizes
 
 <Playground
@@ -50,6 +66,7 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
       <AEmptyState variant="positive" xsmall {...props} />
       <AEmptyState variant="positive" small {...props} />
       <AEmptyState variant="positive" medium {...props} />
+      <AEmptyState variant="negative" large {...props} />
       <AEmptyState variant="negative" xlarge {...props} />
     </>
   );

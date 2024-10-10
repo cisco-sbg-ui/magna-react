@@ -5,6 +5,12 @@ import React, {forwardRef} from "react";
 import AIcon from "../AIcon";
 import "./AEmptyState.scss";
 
+const baseClass = "a-empty-state",
+  backgroundClass = `${baseClass}__background`,
+  labelClass = `${baseClass}__label`,
+  messageClass = `${baseClass}__message`,
+  messageContainerClass = `${baseClass}__message-container`;
+
 const AEmptyState = forwardRef(
   (
     {
@@ -20,14 +26,11 @@ const AEmptyState = forwardRef(
       medium,
       large,
       xlarge,
+      horizontal = false,
       ...rest
     },
     ref
   ) => {
-    const baseClass = "a-empty-state",
-      backgroundClass = `${baseClass}__background`,
-      labelClass = `${baseClass}__label`,
-      messageClass = `${baseClass}__message`;
     let className = baseClass,
       iconClass = `${baseClass}__icon`,
       containerClass = `${baseClass}__container`,
@@ -55,6 +58,10 @@ const AEmptyState = forwardRef(
       icon = "info";
     }
 
+    if (horizontal) {
+      className += ` ${baseClass}--layout-horizontal`;
+    }
+
     if (xsmall) {
       className += ` ${baseClass}--xsmall`;
     } else if (small) {
@@ -75,9 +82,11 @@ const AEmptyState = forwardRef(
           <AIcon className={backgroundClass}>empty-background</AIcon>
           <AIcon className={iconClass}>{propsIcon || icon}</AIcon>
         </div>
-        {label && <div className={labelClass}>{label}</div>}
-        {message && <div className={messageClass}>{message}</div>}
-        {children}
+        <div className={messageContainerClass}>
+          {label && <div className={labelClass}>{label}</div>}
+          {message && <div className={messageClass}>{message}</div>}
+          {children}
+        </div>
       </div>
     );
   }

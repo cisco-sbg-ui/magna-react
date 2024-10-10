@@ -22,6 +22,10 @@ export type AEmptyStateProps = Override<
      */
     variant?: AEmptyStateVariant;
     /**
+     * Align the icon to the left of the text
+     */
+    horizontal?: boolean;
+    /**
      * Custom icon name
      */
     icon?: string;
