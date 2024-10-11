@@ -34,6 +34,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
       pointer = true,
       removeSpacer,
       ignoreOutsideClick = true,
+      hideIfReferenceHidden = true,
       onClose,
       open,
       ...rest
@@ -89,7 +90,8 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
     const style: React.CSSProperties = {
       ...propsStyle,
       ...floatingStyles,
-      visibility: isReferenceHidden ? "hidden" : "visible"
+      visibility:
+        hideIfReferenceHidden && isReferenceHidden ? "hidden" : "visible"
     };
 
     useEffect(() => {
@@ -140,7 +142,6 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
     let tooltipContent = (
       <div
         ref={floatingRefs.setFloating}
-        role={role}
         className={propsClassName}
         style={{
           ...transitionStyles
@@ -183,6 +184,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
       <AFloatingMenuContainer
         {...rest}
         ref={combinedRef}
+        role={role}
         className={className}
         style={style}
         data-placement={placement}
