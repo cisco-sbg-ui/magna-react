@@ -143,6 +143,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
       <div
         ref={floatingRefs.setFloating}
         className={propsClassName}
+        role={role}
         style={{
           ...transitionStyles
         }}
@@ -184,7 +185,6 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
       <AFloatingMenuContainer
         {...rest}
         ref={combinedRef}
-        role={role}
         className={className}
         style={style}
         data-placement={placement}
