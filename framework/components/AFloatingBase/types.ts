@@ -26,6 +26,13 @@ export type AFloatingBaseProps = Override<
      */
     offset?: number;
     /**
+     * Manually set the open and close animation duration
+     */
+    duration?: {
+      open: number;
+      close: number;
+    };
+    /**
      * Toggles the menu pointer.
      */
     pointer?: boolean;

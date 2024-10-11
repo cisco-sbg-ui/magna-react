@@ -30,6 +30,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
       style: propsStyle,
       placement: propsPlacement = "top",
       offset,
+      duration = {open: 200, close: 200},
       pointer = true,
       removeSpacer,
       ignoreOutsideClick = true,
@@ -71,7 +72,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
     const isEdgeAlignedAndSmaller = isEdge && isSmaller;
 
     const {isMounted, styles: transitionStyles} = useTransitionStyles(context, {
-      duration: 200,
+      duration,
       initial: ({side}) => {
         return {
           opacity: 0,
