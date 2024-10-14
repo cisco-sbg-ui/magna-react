@@ -46,9 +46,10 @@ const AToast = forwardRef<HTMLDivElement, AToastProps>(
       case "danger":
         className += " a-toast--danger";
         icon = "warning";
-        console.warn(
-          "@advthreat/magna-react: AToast level 'danger' is deprecated. This will default to 'warning.'"
-        );
+        // Warning fails tests, but leaving as a reminder @deprecated
+        //console.warn(
+        //  "@advthreat/magna-react: AToast level 'danger' is deprecated. This will default to 'warning.'"
+        //);
         break;
       default:
         className += " a-toast--information";

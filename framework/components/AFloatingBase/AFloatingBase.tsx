@@ -30,8 +30,11 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
       style: propsStyle,
       placement: propsPlacement = "top",
       offset,
+      duration = {open: 200, close: 200},
       pointer = true,
       removeSpacer,
+      ignoreOutsideClick = true,
+      hideIfReferenceHidden = true,
       onClose,
       open,
       ...rest
@@ -39,6 +42,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
     ref
   ) => {
     const className = `a-floating-base`;
+    const attrs: {[key: string]: any} = {};
 
     const arrowRef = useRef<SVGSVGElement>(null);
     const interactiveRef = useRef<HTMLDivElement>(null);
@@ -69,7 +73,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
     const isEdgeAlignedAndSmaller = isEdge && isSmaller;
 
     const {isMounted, styles: transitionStyles} = useTransitionStyles(context, {
-      duration: 200,
+      duration,
       initial: ({side}) => {
         return {
           opacity: 0,
@@ -86,7 +90,8 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
     const style: React.CSSProperties = {
       ...propsStyle,
       ...floatingStyles,
-      visibility: isReferenceHidden ? "hidden" : "visible"
+      visibility:
+        hideIfReferenceHidden && isReferenceHidden ? "hidden" : "visible"
     };
 
     useEffect(() => {
@@ -137,14 +142,14 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
     let tooltipContent = (
       <div
         ref={floatingRefs.setFloating}
-        role={role}
         className={propsClassName}
+        role={role}
         style={{
           ...transitionStyles
         }}
         data-placement={placement}>
         {children}
-        {pointer && (
+        {pointer && floatingRefs?.floating?.current && (
           <FloatingArrow
             ref={arrowRef}
             context={context}
@@ -172,13 +177,18 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
       );
     }
 
+    if (ignoreOutsideClick) {
+      attrs["data-ignore-outside-click"] = true;
+    }
+
     return (
       <AFloatingMenuContainer
         {...rest}
         ref={combinedRef}
         className={className}
         style={style}
-        data-placement={placement}>
+        data-placement={placement}
+        {...attrs}>
         {tooltipContent}
       </AFloatingMenuContainer>
     );
