@@ -2,16 +2,16 @@
 
 @import "../../styles";
 
-$icon-xs: 20px;
-$icon-sm: 50px;
-$icon-md: 100px;
-$icon-lg: 150px;
-$icon-xl: 200px;
-$container-xs: 40px;
-$container-sm: 100px;
-$container-md: 200px;
-$container-lg: 300px;
-$container-xl: 400px;
+$icon-xs: 12px;
+$icon-sm: 23px;
+$icon-md: 49px;
+$icon-lg: 134px;
+$icon-xl: 192px;
+$container-xs: 20px;
+$container-sm: 36px;
+$container-md: 76px;
+$container-lg: 224px;
+$container-xl: 300px;
 
 .a-empty-state {
   display: flex;
@@ -21,6 +21,8 @@ $container-xl: 400px;
   margin: 20px 0;
 
   &__container {
+    display: flex;
+    flex: 1 0 auto;
     position: relative;
   }
 
@@ -33,9 +35,31 @@ $container-xl: 400px;
     position: absolute;
   }
 
+  &__message-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   &__message {
     text-align: center;
     color: var(--base-text-medium-default);
+  }
+
+  &--layout-horizontal {
+    flex-direction: row;
+
+    .a-empty-state__container {
+      flex: 0 0 auto;
+    }
+
+    .a-empty-state__message-container {
+      align-items: flex-start;
+
+      .a-empty-state__message {
+        text-align: left;
+      }
+    }
   }
 
   &--state-positive,
@@ -121,12 +145,15 @@ $container-xl: 400px;
 
     .a-empty-state__label {
       font-weight: 700;
-      font-size: 16px;
+      font-size: $font-size--md;
+      line-height: $line-height--md;
+      margin: 0 0 2px 0;
     }
 
     .a-empty-state__message {
       font-weight: 400;
-      font-size: 12px;
+      font-size: $font-size--sm;
+      line-height: $line-height--sm;
     }
   }
 
@@ -146,12 +173,17 @@ $container-xl: 400px;
 
     .a-empty-state__label {
       font-weight: 700;
-      font-size: 18px;
+      font-size: $font-size--lg;
+      line-height: $line-height--lg;
+      margin: 0 0 4px 0;
     }
 
     .a-empty-state__message {
       font-weight: 400;
-      font-size: 14px;
+      font-size: $font-size--md;
+      line-height: $line-height--md;
+
+      margin: 0 0 8px 0;
     }
   }
 
@@ -171,12 +203,16 @@ $container-xl: 400px;
 
     .a-empty-state__label {
       font-weight: 700;
-      font-size: 24px;
+      font-size: 18px;
+      line-height: $line-height--xl;
+      margin: 0 0 8px 0;
     }
 
     .a-empty-state__message {
       font-weight: 400;
-      font-size: 18px;
+      font-size: 16px;
+      line-height: $line-height--lg;
+      margin: 0 0 12px 0;
     }
   }
 
@@ -204,6 +240,36 @@ $container-xl: 400px;
       font-weight: 400;
       font-size: 24px;
       line-height: 30px;
+    }
+  }
+
+  &--layout-horizontal#{&}--xsmall {
+    .a-empty-state__container {
+      margin-right: 12px;
+    }
+  }
+
+  &--layout-horizontal#{&}--small {
+    .a-empty-state__container {
+      margin-right: 20px;
+    }
+  }
+
+  &--layout-horizontal#{&}--medium {
+    .a-empty-state__container {
+      margin-right: 32px;
+    }
+  }
+
+  &--layout-horizontal#{&}--large {
+    .a-empty-state__container {
+      margin-right: 40px;
+    }
+  }
+
+  &--layout-horizontal#{&}--xlarge {
+    .a-empty-state__container {
+      margin-right: 60px;
     }
   }
 }
