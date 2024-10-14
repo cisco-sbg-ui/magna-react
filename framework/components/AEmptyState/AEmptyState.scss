@@ -41,14 +41,9 @@ $container-xl: 300px;
     align-items: center;
   }
 
-  &__label {
-    margin: 0 0 12px 0;
-  }
-
   &__message {
     text-align: center;
     color: var(--base-text-medium-default);
-    margin: 0 0 12px 0;
   }
 
   &--layout-horizontal {
@@ -60,8 +55,6 @@ $container-xl: 300px;
 
     .a-empty-state__message-container {
       align-items: flex-start;
-
-      margin-left: 12px;
 
       .a-empty-state__message {
         text-align: left;
@@ -154,6 +147,7 @@ $container-xl: 300px;
       font-weight: 700;
       font-size: $font-size--md;
       line-height: $line-height--md;
+      margin: 0 0 2px 0;
     }
 
     .a-empty-state__message {
@@ -181,12 +175,15 @@ $container-xl: 300px;
       font-weight: 700;
       font-size: $font-size--lg;
       line-height: $line-height--lg;
+      margin: 0 0 4px 0;
     }
 
     .a-empty-state__message {
       font-weight: 400;
       font-size: $font-size--md;
       line-height: $line-height--md;
+
+      margin: 0 0 8px 0;
     }
   }
 
@@ -206,14 +203,16 @@ $container-xl: 300px;
 
     .a-empty-state__label {
       font-weight: 700;
-      font-size: 24px;
+      font-size: 18px;
       line-height: $line-height--xl;
+      margin: 0 0 8px 0;
     }
 
     .a-empty-state__message {
       font-weight: 400;
-      font-size: 18px;
+      font-size: 16px;
       line-height: $line-height--lg;
+      margin: 0 0 12px 0;
     }
   }
 
@@ -241,6 +240,36 @@ $container-xl: 300px;
       font-weight: 400;
       font-size: 24px;
       line-height: 30px;
+    }
+  }
+
+  &--layout-horizontal#{&}--xsmall {
+    .a-empty-state__container {
+      margin-right: 12px;
+    }
+  }
+
+  &--layout-horizontal#{&}--small {
+    .a-empty-state__container {
+      margin-right: 20px;
+    }
+  }
+
+  &--layout-horizontal#{&}--medium {
+    .a-empty-state__container {
+      margin-right: 32px;
+    }
+  }
+
+  &--layout-horizontal#{&}--large {
+    .a-empty-state__container {
+      margin-right: 40px;
+    }
+  }
+
+  &--layout-horizontal#{&}--xlarge {
+    .a-empty-state__container {
+      margin-right: 60px;
     }
   }
 }
