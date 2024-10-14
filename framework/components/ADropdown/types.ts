@@ -1,9 +1,15 @@
 import {Override} from "../../types";
 import {AButtonProps} from "../AButton/types";
+import AButton from "../AButton";
+import ATag from "../ATag";
 
 export type ADropdownProps<C extends React.ElementType> = Override<
   AButtonProps<C>,
   {
+    /**
+     * Set the root component
+     */
+    component?: typeof AButton | typeof ATag;
     /**
      * Toggles the `disabled` state.
      */
@@ -48,6 +54,10 @@ export type ADropdownProps<C extends React.ElementType> = Override<
      * Title of dropdown can be string or react element
      */
     title?: React.ReactNode;
+    /**
+     * Style the dropdown
+     */
+    dropdownStyle?: React.CSSProperties;
     /**
      * Test id
      */

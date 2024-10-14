@@ -39,11 +39,14 @@ const ATag = forwardRef<HTMLElement, ATagProps<React.ElementType>>(
       color,
       hideStatusIcon = false,
       customIcon = false,
+      dropdown = false,
+      open = false,
+      disabled = false,
       ...rest
     },
     ref
   ) => {
-    const interactable = href || onClick;
+    const interactable = (href || onClick) && !disabled;
     let className = "a-tag focus-box-shadow";
 
     if (interactable) {
@@ -79,8 +82,18 @@ const ATag = forwardRef<HTMLElement, ATagProps<React.ElementType>>(
       ...rest,
 
       className,
-      onClick,
+      onClick: (e) => {
+        if (disabled) {
+          return;
+        }
+
+        onClick && onClick(e);
+      },
       onKeyDown: (e: React.KeyboardEvent) => {
+        if (disabled) {
+          return;
+        }
+
         if (!href && onClick && [keyCodes.enter].includes(e.key as "Enter")) {
           e.preventDefault();
           onClick(e);
@@ -99,7 +112,7 @@ const ATag = forwardRef<HTMLElement, ATagProps<React.ElementType>>(
       props.target = target;
     }
 
-    if (onClick) {
+    if (onClick && !disabled) {
       props.role = "button";
     }
 
@@ -123,6 +136,16 @@ const ATag = forwardRef<HTMLElement, ATagProps<React.ElementType>>(
           )}
           {React.isValidElement(customIcon) && customIcon}
           {children}
+        </>
+      );
+    } else if (dropdown && !disabled) {
+      const dropdownIcon = open ? "caret-up" : "caret-down";
+      tagWithIcon = (
+        <>
+          {children}
+          <AIcon className="a-tag--dropdown-icon" right>
+            {dropdownIcon}
+          </AIcon>
         </>
       );
     }

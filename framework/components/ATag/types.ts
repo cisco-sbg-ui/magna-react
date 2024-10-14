@@ -72,5 +72,17 @@ export type ATagProps<C extends React.ElementType> =
        *
        */
       onKeyDown?: React.EventHandler<React.KeyboardEvent>;
+      /**
+       * Is for a dropdown menu
+       */
+      dropdown?: boolean;
+      /**
+       * Open state, if used as a menu
+       */
+      open?: boolean;
+      /**
+       *  Disable the menu, if there is an `href` or `onClick` set
+       */
+      disabled?: boolean;
     }
   >;

@@ -1,63 +1,95 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useRef, useState} from "react";
+import React, {forwardRef, useState} from "react";
+
 import AButton from "../AButton";
-import AMenu from "../AMenu";
+import AFloatingMenu from "../AFloatingMenu";
+import useFloatingDropwdown from "../AFloatingMenu/useFloatingDropdown";
 
 const ADropdown = forwardRef(
   (
     {
       className: propsClassName,
+      component = AButton,
       primary,
       secondary,
       tertiary,
       tertiaryAlt,
-      disabled,
+      disabled = false,
       destructive,
       noPadding,
       loading,
       title,
       small,
       position,
+      dropdownStyle,
       children,
       ...rest
     },
     ref
   ) => {
-    const buttonRef = useRef(null);
-    const [open, setOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+    const Component = component || AButton;
 
-    const dropdownVariantProps = {
-      primary,
-      secondary,
-      tertiary,
-      tertiaryAlt,
-      destructive,
-      disabled,
-      noPadding,
-      loading,
-      small
+    const {
+      context,
+      floatingRefs,
+      floatingStyles,
+      getReferenceProps,
+      getFloatingProps,
+      isReferenceHidden
+    } = useFloatingDropwdown(isOpen, setIsOpen);
+
+    const menuComponentProps = {
+      style: {
+        ...dropdownStyle,
+        ...floatingStyles,
+        visibility: isReferenceHidden ? "hidden" : "visible"
+      }
     };
+
+    const variantProps =
+      component === AButton
+        ? {
+            primary,
+            secondary,
+            tertiary,
+            tertiaryAlt,
+            destructive,
+            disabled,
+            noPadding,
+            loading,
+            small
+          }
+        : {
+            disabled
+          };
 
     return (
       <div {...rest} ref={ref} className={propsClassName}>
-        <AButton
-          ref={buttonRef}
+        <Component
+          ref={floatingRefs.setReference}
+          disabled={disabled}
           dropdown
-          open={open}
-          onClick={() => setOpen(!open)}
+          open={isOpen}
+          onClick={() => setIsOpen(!isOpen)}
           aria-haspopup="true"
-          {...dropdownVariantProps}
+          {...variantProps}
+          {...getReferenceProps()}
         >
           {title}
-        </AButton>
-        <AMenu
-          anchorRef={buttonRef}
-          open={open}
+        </Component>
+        <AFloatingMenu
+          ref={floatingRefs.setFloating}
+          anchorRef={floatingRefs.reference}
+          menuRef={floatingRefs.floating}
+          context={context}
+          open={isOpen}
           placement={position}
-          onClose={() => setOpen(false)}
+          {...menuComponentProps}
+          {...getFloatingProps()}
         >
           {children}
-        </AMenu>
+        </AFloatingMenu>
       </div>
     );
   }
@@ -111,7 +143,11 @@ ADropdown.propTypes = {
   /**
    * Title of dropdown can be string or react element
    */
-  title: PropTypes.node
+  title: PropTypes.node,
+  /**
+   * Style the dropdown
+   */
+  dropdownStyle: PropTypes.object
 };
 
 ADropdown.displayName = "ADropdown";

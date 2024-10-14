@@ -28,6 +28,6 @@ describe("<Dropdown/>", () => {
       </ADropdown>
     );
     cy.get(".a-button").click();
-    cy.get(".a-menu").should("exist");
+    cy.get(".a-floating-menu").should("exist");
   });
 });
