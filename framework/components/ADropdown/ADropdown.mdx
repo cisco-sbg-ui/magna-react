@@ -405,6 +405,24 @@ For more advanced use cases of dropdown see `AMenu` and `AButton`
 `}
 />
 
+### Component props
+
+Component props are passed to the anchor element
+
+<Playground
+  code={`() => {
+  const ref = useRef(null);
+  return (
+    <div>
+      <ADropdown ref={ref} component={ATag} title="Has a ref" small status="positive">
+        <AListItem onClick={() => {console.log(ref.current)}}>List item</AListItem>
+      </ADropdown>
+    </div>
+  );
+}
+`}
+/>
+
 ## Component Props
 
 The `ADropdown` component inherits passed props.

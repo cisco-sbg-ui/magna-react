@@ -139,21 +139,16 @@ const ATag = forwardRef<HTMLElement, ATagProps<React.ElementType>>(
           {children}
         </>
       );
-    } else if (dropdown && !disabled) {
-      const dropdownIcon = open ? "caret-up" : "caret-down";
-      tagWithIcon = (
-        <>
-          {children}
-          <AIcon className="a-tag--dropdown-icon" right>
-            {dropdownIcon}
-          </AIcon>
-        </>
-      );
     }
 
     return (
       <TagName ref={ref} {...props}>
         {tagWithIcon || children}
+        {dropdown && !disabled && (
+          <AIcon className="a-tag--dropdown-icon" right>
+            {open ? "caret-up" : "caret-down"}
+          </AIcon>
+        )}
       </TagName>
     );
   }
