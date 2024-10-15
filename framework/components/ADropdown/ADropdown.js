@@ -17,6 +17,7 @@ const ADropdown = forwardRef(
       menuClass,
       menuStyle,
       menuProps = {},
+      onClick: propsOnClick,
       children,
       ...rest
     },
@@ -53,7 +54,10 @@ const ADropdown = forwardRef(
           disabled={disabled}
           className={propsClassName}
           open={isOpen}
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={(e) => {
+            setIsOpen(!isOpen);
+            propsOnClick && propsOnClick(e);
+          }}
           aria-haspopup="true"
           dropdown
           {...rest}
@@ -84,7 +88,7 @@ ADropdown.propTypes = {
   /**
    * Set the root component
    */
-  component: PropTypes.node,
+  component: PropTypes.object,
   /**
    * Toggles the `disabled` state.
    */
@@ -92,7 +96,7 @@ ADropdown.propTypes = {
   /**
    * Title of dropdown can be string or react element
    */
-  title: React.ReactNode,
+  title: PropTypes.node,
   /**
    * Style the dropdown
    */
@@ -104,7 +108,11 @@ ADropdown.propTypes = {
   /**
    * Pass props to the menu component
    */
-  menuProps: PropTypes.object
+  menuProps: PropTypes.object,
+  /**
+   * Callback function when the dropdown is clicked
+   */
+  onClick: PropTypes.func
 };
 
 ADropdown.displayName = "ADropdown";
