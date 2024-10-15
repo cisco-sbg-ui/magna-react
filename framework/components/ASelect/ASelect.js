@@ -49,6 +49,7 @@ const ASelect = forwardRef(
       selectedDisplayItem,
       textWrapMenuItems,
       truncateMenuItems,
+      hideIfReferenceHidden = true,
       ...rest
     },
     ref
@@ -319,10 +320,11 @@ const ASelect = forwardRef(
           ? floatingRefs.reference?.current.clientWidth + 2
           : "auto",
         ...dropdownStyle,
-        ...floatingStyles,
-        visibility: isReferenceHidden ? "hidden" : "visible"
+        ...floatingStyles
       },
-      medium
+      medium,
+      hideIfReferenceHidden,
+      isReferenceHidden
     };
 
     const selectIcon = isOpen ? "chevron-up" : "chevron-down";

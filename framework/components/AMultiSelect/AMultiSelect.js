@@ -46,6 +46,7 @@ const AMultiSelect = forwardRef(
       value = [],
       filterFunction: propsFilterFunction,
       counterTooltipProps = {},
+      hideIfReferenceHidden = true,
       ...rest
     },
     ref
@@ -323,9 +324,10 @@ const AMultiSelect = forwardRef(
         minWidth: "max-content",
         width: floatingRefs.reference?.current?.clientWidth + 2 || "auto",
         ...dropdownStyle,
-        ...floatingStyles,
-        visibility: isReferenceHidden ? "hidden" : "visible"
-      }
+        ...floatingStyles
+      },
+      hideIfReferenceHidden,
+      isReferenceHidden
     };
 
     const counter = value && (

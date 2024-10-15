@@ -28,6 +28,7 @@ const ATriggerTooltip = ({
   placement = "top",
   style: propsStyle,
   maxWidth,
+  hideIfReferenceHidden = true,
   ...rest
 }: ATriggerTooltipProps) => {
   const childrenRef = useRef<HTMLElement[]>([]);
@@ -182,6 +183,7 @@ const ATriggerTooltip = ({
           style={style}
           placement={placement}
           onClose={close}
+          hideIfReferenceHidden={hideIfReferenceHidden}
           {...rest}>
           {content}
         </AFloatingBase>

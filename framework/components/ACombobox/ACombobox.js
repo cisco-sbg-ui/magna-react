@@ -51,6 +51,7 @@ const ACombobox = forwardRef(
       validateOnBlur,
       validationState,
       value,
+      hideIfReferenceHidden = true,
       ...rest
     },
     ref
@@ -256,9 +257,10 @@ const ACombobox = forwardRef(
         minWidth: "max-content",
         width: combinedRef.current?.clientWidth + 2 || "auto",
         ...dropdownStyle,
-        ...floatingStyles,
-        visibility: isReferenceHidden ? "hidden" : "visible"
-      }
+        ...floatingStyles
+      },
+      hideIfReferenceHidden,
+      isReferenceHidden
     };
 
     return (

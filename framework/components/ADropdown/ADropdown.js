@@ -19,6 +19,7 @@ const ADropdown = forwardRef(
       menuProps = {},
       onClick: propsOnClick,
       children,
+      hideIfReferenceHidden = true,
       ...rest
     },
     propsRef
@@ -42,9 +43,10 @@ const ADropdown = forwardRef(
       className: menuClass,
       style: {
         ...menuStyle,
-        ...floatingStyles,
-        visibility: isReferenceHidden ? "hidden" : "visible"
-      }
+        ...floatingStyles
+      },
+      hideIfReferenceHidden,
+      isReferenceHidden
     };
 
     return (

@@ -52,4 +52,5 @@ export type ATriggerTooltipProps = Omit<
    * Override the default max-width
    */
   maxWidth?: string;
+  hideIfReferenceHidden?: boolean;
 };

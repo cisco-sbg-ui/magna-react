@@ -119,5 +119,6 @@ export type AAutocompleteProps = Override<
      * Sets the text input value.
      */
     value?: string;
+    hideIfReferenceHidden?: boolean;
   }
 >;

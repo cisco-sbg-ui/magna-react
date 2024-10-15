@@ -155,5 +155,6 @@ export type ASelectProps<T extends ASelectItem> = Override<
      * ellipsis and limit width of the menu.
      */
     truncateMenuItems?: boolean;
+    hideIfReferenceHidden?: boolean;
   }
 >;

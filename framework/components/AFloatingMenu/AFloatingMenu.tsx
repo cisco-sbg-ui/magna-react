@@ -34,6 +34,9 @@ const AFloatingMenu = forwardRef<
       pointer,
       role = "menu",
       submenu = false,
+      hideIfReferenceHidden = true,
+      isReferenceHidden,
+      style,
       ...rest
     },
     ref
@@ -143,6 +146,11 @@ const AFloatingMenu = forwardRef<
         initialFocus={initialFocus}>
         <AList
           {...rest}
+          style={{
+            ...style,
+            visibility:
+              hideIfReferenceHidden && isReferenceHidden ? "hidden" : "visible"
+          }}
           ignoreOutsideClick
           component={AFloatingMenuContainer}
           ref={ref}

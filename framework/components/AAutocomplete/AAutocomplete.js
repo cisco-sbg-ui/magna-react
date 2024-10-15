@@ -47,6 +47,7 @@ const AAutocomplete = forwardRef(
       validateOnBlur,
       validationState,
       value,
+      hideIfReferenceHidden = true,
       ...rest
     },
     ref
@@ -228,9 +229,10 @@ const AAutocomplete = forwardRef(
       style: {
         minWidth: "max-content",
         width: floatingRefs.reference?.current?.clientWidth + 2 || "auto",
-        ...floatingStyles,
-        visibility: isReferenceHidden ? "hidden" : "visible"
-      }
+        ...floatingStyles
+      },
+      hideIfReferenceHidden,
+      isReferenceHidden
     };
 
     return (
