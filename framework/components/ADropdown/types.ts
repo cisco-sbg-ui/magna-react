@@ -35,5 +35,6 @@ export type ADropdownProps<C extends React.ElementType> = Override<
      * Test id
      */
     "data-testid"?: string;
+    hideIfReferenceHidden?: boolean;
   }
 >;

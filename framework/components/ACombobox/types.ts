@@ -149,5 +149,6 @@ export type AComboboxProps<T extends AComboboxItem> = Override<
      * @defaultValue `false`
      */
     skipValidation?: boolean;
+    hideIfReferenceHidden?: boolean;
   }
 >;

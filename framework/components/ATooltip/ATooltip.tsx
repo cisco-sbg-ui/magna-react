@@ -20,6 +20,7 @@ const ATooltip = forwardRef<HTMLElement, ATooltipProps>(
       offset,
       style: propsStyle = {},
       children,
+      hideIfReferenceHidden = true,
       ...rest
     },
     ref
@@ -51,7 +52,8 @@ const ATooltip = forwardRef<HTMLElement, ATooltipProps>(
         onClose={onClose}
         open={open}
         pointer={pointer}
-        removeSpacer={removeSpacer}>
+        removeSpacer={removeSpacer}
+        hideIfReferenceHidden={hideIfReferenceHidden}>
         {children}
       </AFloatingBase>
     );

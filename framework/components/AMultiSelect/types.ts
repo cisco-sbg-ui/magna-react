@@ -144,5 +144,6 @@ export type AMultiSelectProps = Override<
      * @defaultValue `{}`
      */
     counterTooltipProps?: ATooltipProps;
+    hideIfReferenceHidden?: boolean;
   }
 >;

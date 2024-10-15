@@ -8,4 +8,5 @@ export type ATooltipProps = Omit<
    * Override the default max-width
    */
   maxWidth?: string;
+  hideIfReferenceHidden?: boolean;
 };

@@ -17,4 +17,5 @@ export type APopoverProps = Omit<AFloatingBaseProps, "anchorRef"> & {
    * @defaultValue `true`
    */
   focusOnOpen?: boolean;
+  hideIfReferenceHidden?: boolean;
 };
