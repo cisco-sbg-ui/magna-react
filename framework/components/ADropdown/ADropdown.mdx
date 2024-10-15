@@ -375,8 +375,51 @@ For more advanced use cases of dropdown see `AMenu` and `AButton`
          </AListItem>
       </>
     </ADropdown>
+    <ADropdown component={ATag} title="Tag dropdown">
+      <>
+        <AListItem twoLine className="px-3 h3 my-0 pb-1">
+           <AListItemTitle>Bottom</AListItemTitle>
+         </AListItem>
+         <AListItem onClick={() => alert("alert1")} className="pl-3 py-1">
+           Example
+         </AListItem>
+         <AListItem onClick={() => alert("alert2")} className="pl-3 py-1">
+           Example
+         </AListItem>
+         <AListItem
+           onClick={() => alert("should not fire")}
+           className="pl-3 py-1"
+           disabled>
+           Disabled Item
+         </AListItem>
+         <AListItemDivider className="mb-0 mt-3" />
+         <AListItem twoLine>
+           <AListItemContent className="pb-0">
+             <a onClick={() => alert("alert3")}>Connect</a>
+           </AListItemContent>
+         </AListItem>
+      </>
+    </ADropdown>
   </div>
 </>
+`}
+/>
+
+### Component props
+
+Component props are passed to the anchor element
+
+<Playground
+  code={`() => {
+  const ref = useRef(null);
+  return (
+    <div>
+      <ADropdown ref={ref} component={ATag} title="Has a ref" small status="positive">
+        <AListItem onClick={() => {console.log(ref.current)}}>List item</AListItem>
+      </ADropdown>
+    </div>
+  );
+}
 `}
 />
 

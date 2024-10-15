@@ -1,13 +1,9 @@
-import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
+import PropTypes from "prop-types";
 import AIcon from "../AIcon";
 
 import {keyCodes} from "../../utils/helpers";
 import "./ATag.scss";
-
-//Keeping for docs and rendering until we can find a better solution
-//https://github.com/cisco-sbg-ui/magna-react/pull/848
-//https://github.com/cisco-sbg-ui/magna-react/pull/851
 
 const STATUS_ICON = {
   excellent: "excellent",
@@ -40,13 +36,16 @@ const ATag = forwardRef(
       large,
       status,
       color,
-      customIcon = false,
       hideStatusIcon = false,
+      customIcon = false,
+      dropdown = false,
+      open = false,
+      disabled = false,
       ...rest
     },
     ref
   ) => {
-    const interactable = href || onClick;
+    const interactable = (href || onClick) && !disabled;
     let className = "a-tag focus-box-shadow";
 
     if (interactable) {
@@ -77,20 +76,33 @@ const ATag = forwardRef(
       className += ` a-tag--hide-status-icon`;
     }
 
-    let TagName = "div";
+    let TagName = interactable ? "button" : "div";
     const props = {
       ...rest,
-      ref,
+
       className,
-      onClick,
+      onClick: (e) => {
+        if (disabled) {
+          return;
+        }
+
+        onClick && onClick(e);
+      },
       onKeyDown: (e) => {
+        if (disabled) {
+          return;
+        }
+
         if (!href && onClick && [keyCodes.enter].includes(e.key)) {
           e.preventDefault();
           onClick(e);
         } else {
+          //TODO not sure what this error is for
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
           onKeyDown && onKeyDown(e);
         }
-      }
+      },
+      target // Add the 'target' property to the props object
     };
 
     if (href) {
@@ -99,7 +111,7 @@ const ATag = forwardRef(
       props.target = target;
     }
 
-    if (onClick) {
+    if (onClick && !disabled) {
       props.role = "button";
     }
 
@@ -127,9 +139,20 @@ const ATag = forwardRef(
       );
     }
 
-    return <TagName {...props}>{tagWithIcon || children}</TagName>;
+    return (
+      <TagName ref={ref} {...props}>
+        {tagWithIcon || children}
+        {dropdown && !disabled && (
+          <AIcon className="a-tag--dropdown-icon" right>
+            {open ? "caret-up" : "caret-down"}
+          </AIcon>
+        )}
+      </TagName>
+    );
   }
 );
+
+ATag.displayName = "ATag";
 
 ATag.propTypes = {
   /**
@@ -193,9 +216,19 @@ ATag.propTypes = {
    *
    * default `false`
    */
-  hideStatusIcon: PropTypes.bool
+  hideStatusIcon: PropTypes.bool,
+  /**
+   * Is for a dropdown menu
+   */
+  dropdown: PropTypes.bool,
+  /**
+   * Open state, if used as a menu
+   */
+  open: PropTypes.bool,
+  /**
+   *  Disable the menu, if there is an `href` or `onClick` set
+   */
+  disabled: PropTypes.bool
 };
-
-ATag.displayName = "ATag";
 
 export default ATag;

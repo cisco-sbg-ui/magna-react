@@ -1,117 +1,110 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useRef, useState} from "react";
+import React, {forwardRef, useState} from "react";
+import {useMergeRefs} from "@floating-ui/react";
+
 import AButton from "../AButton";
-import AMenu from "../AMenu";
+import AFloatingMenu from "../AFloatingMenu";
+import useFloatingDropwdown from "../AFloatingMenu/useFloatingDropdown";
 
 const ADropdown = forwardRef(
   (
     {
       className: propsClassName,
-      primary,
-      secondary,
-      tertiary,
-      tertiaryAlt,
-      disabled,
-      destructive,
-      noPadding,
-      loading,
+      component = AButton,
+      disabled = false,
       title,
-      small,
-      position,
+      placement,
+      menuClass,
+      menuStyle,
+      menuProps = {},
       children,
       ...rest
     },
-    ref
+    propsRef
   ) => {
-    const buttonRef = useRef(null);
-    const [open, setOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+    const Component = component || AButton;
 
-    const dropdownVariantProps = {
-      primary,
-      secondary,
-      tertiary,
-      tertiaryAlt,
-      destructive,
-      disabled,
-      noPadding,
-      loading,
-      small
+    const {
+      context,
+      floatingRefs,
+      floatingStyles,
+      getReferenceProps,
+      getFloatingProps,
+      isReferenceHidden
+    } = useFloatingDropwdown(isOpen, setIsOpen);
+
+    const ref = useMergeRefs([floatingRefs.setReference, propsRef]);
+
+    const menuComponentProps = {
+      ...menuProps,
+      className: menuClass,
+      style: {
+        ...menuStyle,
+        ...floatingStyles,
+        visibility: isReferenceHidden ? "hidden" : "visible"
+      }
     };
 
     return (
-      <div {...rest} ref={ref} className={propsClassName}>
-        <AButton
-          ref={buttonRef}
-          dropdown
-          open={open}
-          onClick={() => setOpen(!open)}
+      <>
+        <Component
+          ref={ref}
+          disabled={disabled}
+          className={propsClassName}
+          open={isOpen}
+          onClick={() => setIsOpen(!isOpen)}
           aria-haspopup="true"
-          {...dropdownVariantProps}
+          dropdown
+          {...rest}
+          {...getReferenceProps()}
         >
           {title}
-        </AButton>
-        <AMenu
-          anchorRef={buttonRef}
-          open={open}
-          placement={position}
-          onClose={() => setOpen(false)}
+        </Component>
+        <AFloatingMenu
+          ref={floatingRefs.setFloating}
+          anchorRef={floatingRefs.reference}
+          menuRef={floatingRefs.floating}
+          context={context}
+          open={isOpen}
+          onClose={() => setIsOpen(false)}
+          placement={placement}
+          closeOnClick
+          {...menuComponentProps}
+          {...getFloatingProps()}
         >
           {children}
-        </AMenu>
-      </div>
+        </AFloatingMenu>
+      </>
     );
   }
 );
 
 ADropdown.propTypes = {
   /**
+   * Set the root component
+   */
+  component: PropTypes.node,
+  /**
    * Toggles the `disabled` state.
    */
   disabled: PropTypes.bool,
   /**
-   * Signifies an icon-only button.
-   */
-  icon: PropTypes.bool,
-  /**
-   * Toggles the `primary` style variant. If no style variant is chosen, `primary` is applied.
-   */
-  primary: PropTypes.bool,
-  /**
-   * Toggles the `secondary` style variant.
-   */
-  secondary: PropTypes.bool,
-  /**
-   * Toggles the `tertiary` style variant.
-   */
-  tertiary: PropTypes.bool,
-  /**
-   * Toggles the `tertiaryAlt` style variant.
-   */
-  tertiaryAlt: PropTypes.bool,
-  /**
-   * Destructive - button for destructive action, should be used with confirm dialog/modal when clicked
-   */
-  destructive: PropTypes.bool,
-  /**
-   * Apply Magnetic small size styles vs only re-skin styles, defaults to false
-   */
-  small: PropTypes.bool,
-  /**
-   * Apply Magnetic medium size styles vs only re-skin styles, defaults to false
-   */
-  medium: PropTypes.bool,
-  /**
-   * Automatically add a loading spinner to the button
-   */
-  loading: PropTypes.bool,
-  /**
-   * Removes padding on any button, defaults to false
-   */
-  noPadding: PropTypes.bool,
-  /**
    * Title of dropdown can be string or react element
    */
-  title: PropTypes.node
+  title: React.ReactNode,
+  /**
+   * Style the dropdown
+   */
+  menuStyle: PropTypes.object,
+  /**
+   * Add a className to the menu
+   */
+  menuClass: PropTypes.string,
+  /**
+   * Pass props to the menu component
+   */
+  menuProps: PropTypes.object
 };
 
 ADropdown.displayName = "ADropdown";
