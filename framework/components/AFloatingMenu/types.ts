@@ -94,5 +94,13 @@ export type AFloatingMenuProps<C extends React.ElementType> = Override<
      */
     subMenu?: boolean;
     "data-testid"?: string;
+    /**
+     * Auto hide the floating element if the anchor element scrolls out of view
+     */
+    hideIfReferenceHidden?: boolean;
+    /**
+     * Is the reference hidden - set by hook
+     */
+    isReferenceHidden?: boolean;
   }
 >;

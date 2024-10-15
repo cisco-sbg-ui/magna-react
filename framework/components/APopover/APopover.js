@@ -18,6 +18,7 @@ const APopover = forwardRef(
       open,
       placement,
       role = "menu",
+      hideIfReferenceHidden,
       ...rest
     },
     ref
@@ -54,6 +55,7 @@ const APopover = forwardRef(
         open={open}
         onClose={closeHandler}
         role={role}
+        hideIfReferenceHidden={hideIfReferenceHidden}
         pointer
       >
         <APanel
