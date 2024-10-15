@@ -5,9 +5,7 @@ import AIcon from "../AIcon";
 import {keyCodes} from "../../utils/helpers";
 import "./ATag.scss";
 
-import {ATagProps} from "./types";
-
-const STATUS_ICON: {[key: string]: string} = {
+const STATUS_ICON = {
   excellent: "excellent",
   positive: "positive",
   "low-warning": "low-warning",
@@ -24,7 +22,7 @@ const STATUS_ICON: {[key: string]: string} = {
   alert: "alert"
 };
 
-const ATag = forwardRef<HTMLElement, ATagProps<React.ElementType>>(
+const ATag = forwardRef(
   (
     {
       children,
@@ -78,8 +76,8 @@ const ATag = forwardRef<HTMLElement, ATagProps<React.ElementType>>(
       className += ` a-tag--hide-status-icon`;
     }
 
-    let TagName: React.ElementType = interactable ? "button" : "div";
-    const props: React.HTMLProps<HTMLElement> = {
+    let TagName = interactable ? "button" : "div";
+    const props = {
       ...rest,
 
       className,
@@ -90,12 +88,12 @@ const ATag = forwardRef<HTMLElement, ATagProps<React.ElementType>>(
 
         onClick && onClick(e);
       },
-      onKeyDown: (e: React.KeyboardEvent) => {
+      onKeyDown: (e) => {
         if (disabled) {
           return;
         }
 
-        if (!href && onClick && [keyCodes.enter].includes(e.key as "Enter")) {
+        if (!href && onClick && [keyCodes.enter].includes(e.key)) {
           e.preventDefault();
           onClick(e);
         } else {
@@ -125,7 +123,7 @@ const ATag = forwardRef<HTMLElement, ATagProps<React.ElementType>>(
       TagName = component;
     }
 
-    let tagWithIcon: React.ReactNode = null;
+    let tagWithIcon = null;
 
     if (status) {
       tagWithIcon = (
