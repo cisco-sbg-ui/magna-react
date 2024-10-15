@@ -2,6 +2,7 @@ import {Override} from "../../types";
 import {AButtonProps} from "../AButton/types";
 import AButton from "../AButton";
 import ATag from "../ATag";
+import {AFloatingMenuProps} from "../AFloatingMenu/types";
 
 export type ADropdownProps<C extends React.ElementType> = Override<
   AButtonProps<C>,
@@ -62,6 +63,10 @@ export type ADropdownProps<C extends React.ElementType> = Override<
      * Add a className to the menu
      */
     menuClass?: string;
+    /**
+     * Pass props to the menu component
+     */
+    menuProps?: AFloatingMenuProps<React.ElementType>;
     /**
      * Test id
      */

@@ -24,6 +24,7 @@ const ADropdown = forwardRef(
       position,
       menuClass,
       menuStyle,
+      menuProps = {},
       children,
       ...rest
     },
@@ -42,6 +43,7 @@ const ADropdown = forwardRef(
     } = useFloatingDropwdown(isOpen, setIsOpen);
 
     const menuComponentProps = {
+      ...menuProps,
       className: menuClass,
       style: {
         ...menuStyle,
@@ -87,7 +89,9 @@ const ADropdown = forwardRef(
           menuRef={floatingRefs.floating}
           context={context}
           open={isOpen}
+          onClose={() => setIsOpen(false)}
           placement={position}
+          closeOnClick
           {...menuComponentProps}
           {...getFloatingProps()}
         >
