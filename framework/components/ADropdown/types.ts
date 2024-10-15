@@ -57,7 +57,11 @@ export type ADropdownProps<C extends React.ElementType> = Override<
     /**
      * Style the dropdown
      */
-    dropdownStyle?: React.CSSProperties;
+    menuStyle?: React.CSSProperties;
+    /**
+     * Add a className to the menu
+     */
+    menuClass?: string;
     /**
      * Test id
      */

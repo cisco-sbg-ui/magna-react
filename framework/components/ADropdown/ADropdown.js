@@ -9,6 +9,7 @@ const ADropdown = forwardRef(
   (
     {
       className: propsClassName,
+
       component = AButton,
       primary,
       secondary,
@@ -21,7 +22,8 @@ const ADropdown = forwardRef(
       title,
       small,
       position,
-      dropdownStyle,
+      menuClass,
+      menuStyle,
       children,
       ...rest
     },
@@ -40,8 +42,9 @@ const ADropdown = forwardRef(
     } = useFloatingDropwdown(isOpen, setIsOpen);
 
     const menuComponentProps = {
+      className: menuClass,
       style: {
-        ...dropdownStyle,
+        ...menuStyle,
         ...floatingStyles,
         visibility: isReferenceHidden ? "hidden" : "visible"
       }
