@@ -17,8 +17,8 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
 <Playground
   code={`() => {
   const [selectedOption, setSelectedOption] = useState("Option 1");
-  const [active, setActive] = useState(false);
   const tagRef = useRef(null);
+  const tagTitle = selectedOption + " Tag"
   return (
     <div style={{minHeight: 120}}>
       <ATag>Simple Tag</ATag>
@@ -37,42 +37,30 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
           x
         </AIcon>
       </ATag>
-      <ATag
+      <ADropdown 
+        component={ATag} 
+        title={tagTitle}
         className="ma-1 grape white--text"
-        ref={tagRef}
-        onClick={() => setActive(!active)}>
-        {selectedOption} Tag
-        <AIcon right className="cursor-pointer">
-          caret-down
-        </AIcon>
-      </ATag>
-      <AMenu
-        anchorRef={tagRef}
-        open={active}
-        onClose={() => setActive(false)}
-        style={{right: 5, maxWidth: 200}}>
+        ref={tagRef}>
         <AListItem
           onClick={() => {
             setSelectedOption("Option 1");
-            setActive(!active);
           }}>
           Option 1
         </AListItem>
         <AListItem
           onClick={() => {
             setSelectedOption("Option 2");
-            setActive(!active);
           }}>
           Option 2
         </AListItem>
         <AListItem
           onClick={() => {
             setSelectedOption("Option 3");
-            setActive(!active);
           }}>
           Option 3
         </AListItem>
-      </AMenu>
+      </ADropdown>
     </div>
 );
 }
