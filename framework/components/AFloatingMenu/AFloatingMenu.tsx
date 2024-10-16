@@ -143,9 +143,7 @@ const AFloatingMenu = forwardRef<
       <FloatingFocusManager
         context={context}
         disabled={!focusOnOpen}
-        initialFocus={initialFocus}
-        order={["content", "reference"]}
-        guards={false}>
+        initialFocus={initialFocus}>
         <AList
           {...rest}
           style={{
