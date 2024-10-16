@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, {forwardRef, useCallback} from "react";
 
-import {FloatingArrow, FloatingFocusManager} from "@floating-ui/react";
+import {FloatingArrow} from "@floating-ui/react";
 
 import {keyCodes} from "../../utils/helpers";
 import AFloatingMenuContainer from "./AFloatingMenuContainer";
@@ -124,7 +124,7 @@ const AFloatingMenu = forwardRef<
       return null;
     }
 
-    let className = `a-floating-menu`;
+    let className = `a-floating-menu a-floating-menu-base`;
     if (pointer) {
       className += " a-floating-menu--pointer";
     }
@@ -140,20 +140,19 @@ const AFloatingMenu = forwardRef<
     }
 
     return (
-      <FloatingFocusManager
+      <AFloatingMenuContainer
+        ignoreOutsideClick
         context={context}
-        disabled={!focusOnOpen}
+        focusOnOpen={focusOnOpen}
         initialFocus={initialFocus}>
         <AList
+          ref={ref as any}
           {...rest}
           style={{
             ...style,
             visibility:
               hideIfReferenceHidden && isReferenceHidden ? "hidden" : "visible"
           }}
-          ignoreOutsideClick
-          component={AFloatingMenuContainer}
-          ref={ref}
           role={role}
           className={className}
           hoverable={hoverable}
@@ -177,7 +176,7 @@ const AFloatingMenu = forwardRef<
           {pointer && <FloatingArrow ref={arrowRef} context={context} />}
           {children}
         </AList>
-      </FloatingFocusManager>
+      </AFloatingMenuContainer>
     );
   }
 );

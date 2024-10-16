@@ -1,12 +1,19 @@
-import React, {forwardRef, useEffect, useRef, useState} from "react";
+import React, {
+  forwardRef,
+  useContext,
+  useEffect,
+  useRef,
+  useState
+} from "react";
 
 import {
   useMergeRefs,
   useTransitionStyles,
-  FloatingArrow
+  FloatingArrow,
+  FloatingPortal
 } from "@floating-ui/react";
 
-import AFloatingMenuContainer from "../AFloatingMenu/AFloatingMenuContainer";
+import AAppContext from "../AApp/AAppContext";
 
 import useFloatingBase from "./useFloatingBase";
 import {mapPlacement} from "./utils";
@@ -41,6 +48,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
     },
     ref
   ) => {
+    const {appRef} = useContext(AAppContext);
     const className = `a-floating-base`;
     const attrs: {[key: string]: any} = {};
 
@@ -141,7 +149,6 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
 
     let tooltipContent = (
       <div
-        ref={floatingRefs.setFloating}
         className={propsClassName}
         role={role}
         style={{
@@ -182,15 +189,17 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
     }
 
     return (
-      <AFloatingMenuContainer
-        {...rest}
-        ref={combinedRef}
-        className={className}
-        style={style}
-        data-placement={placement}
-        {...attrs}>
-        {tooltipContent}
-      </AFloatingMenuContainer>
+      <FloatingPortal root={appRef.current}>
+        <div
+          ref={combinedRef}
+          className={className}
+          style={style}
+          {...rest}
+          {...attrs}
+          data-placement={placement}>
+          {tooltipContent}
+        </div>
+      </FloatingPortal>
     );
   }
 );

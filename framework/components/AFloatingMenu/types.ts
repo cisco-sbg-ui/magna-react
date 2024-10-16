@@ -1,31 +1,38 @@
 import React from "react";
+import {type FloatingContext, type ReferenceType} from "@floating-ui/react";
 import {AAnchorRef, APlacement, Override} from "../../types";
 import {AListProps} from "../AList/types";
 
-export type AFloatingMenuContainerProps = Override<
-  React.ComponentPropsWithRef<"div">,
-  {
-    /**
-     * Sets the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role.
-     *
-     * @defaultValue `"menu"`
-     */
-    role?: React.AriaRole;
-    /**
-     * Prevents propagation of the outside click event when the menu is open.
-     * This will prevent modals/drawers with the `closeOnClickOutside` prop from
-     * closing when interacting with a menu.
-     *
-     * @default `true`
-     */
-    ignoreOutsideClick?: boolean;
-  }
->;
+export type AFloatingMenuContainerProps = {
+  children: React.ReactElement;
+  context: FloatingContext<ReferenceType>;
+  /**
+   * Sets the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role.
+   *
+   * @defaultValue `"menu"`
+   */
+  role?: React.AriaRole;
+  /**
+   * Prevents propagation of the outside click event when the menu is open.
+   * This will prevent modals/drawers with the `closeOnClickOutside` prop from
+   * closing when interacting with a menu.
+   *
+   * @default `true`
+   */
+  ignoreOutsideClick?: boolean;
+  /**
+   * Toggles the behavior of focusing the menu on open.
+   *
+   * @defaultValue `true`
+   */
+  focusOnOpen?: boolean;
+  initialFocus?: React.RefObject<HTMLDivElement>;
+};
 
 export type AFloatingMenuProps<C extends React.ElementType> = Override<
   AListProps<C>,
   {
-    context?: React.Context<any>;
+    context: FloatingContext<ReferenceType>;
     /**
      * The reference to the menu anchor. Can either be a React ref or a DOMRect object.
      */
@@ -34,9 +41,8 @@ export type AFloatingMenuProps<C extends React.ElementType> = Override<
      * The menu ref
      */
     menuRef: React.RefObject<HTMLElement>;
-    /** The arrow ref
-     *
-     *
+    /**
+     * The arrow ref
      */
     arrowRef: React.RefObject<HTMLElement>;
     /**
@@ -102,5 +108,6 @@ export type AFloatingMenuProps<C extends React.ElementType> = Override<
      * Is the reference hidden - set by hook
      */
     isReferenceHidden?: boolean;
+    initialFocus?: React.RefObject<HTMLDivElement>;
   }
 >;
