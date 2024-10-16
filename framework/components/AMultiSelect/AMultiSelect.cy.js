@@ -150,18 +150,13 @@ describe("<AMultiSelect />", () => {
   });
 
   it("should close on outside click", () => {
-    cy.mount(
-      <>
-        <div className="close-test">Close test</div>
-        <AMultiSelectTest />
-      </>
-    );
+    cy.mount(<AMultiSelectTest />);
 
     openWidget();
 
     getMenuContent().should("exist");
 
-    cy.get(".close-test").click();
+    cy.get("body").click(0, 0);
 
     getMenuContent().should("not.exist");
   });
