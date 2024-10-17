@@ -1,12 +1,20 @@
-import React, {forwardRef, useEffect, useRef, useState} from "react";
+import React, {
+  forwardRef,
+  useContext,
+  useEffect,
+  useRef,
+  useState
+} from "react";
 
 import {
   useMergeRefs,
   useTransitionStyles,
-  FloatingArrow
+  FloatingArrow,
+  FloatingPortal
 } from "@floating-ui/react";
 
-import AFloatingMenuContainer from "../AFloatingMenu/AFloatingMenuContainer";
+import AAppContext from "../AApp/AAppContext";
+import {isRealBrowser} from "../../utils/helpers";
 
 import useFloatingBase from "./useFloatingBase";
 import {mapPlacement} from "./utils";
@@ -30,7 +38,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
       style: propsStyle,
       placement: propsPlacement = "top",
       offset,
-      duration = {open: 200, close: 200},
+      duration: propsDuration = {open: 200, close: 200},
       pointer = true,
       removeSpacer,
       ignoreOutsideClick = true,
@@ -41,6 +49,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
     },
     ref
   ) => {
+    const {appRef} = useContext(AAppContext);
     const className = `a-floating-base`;
     const attrs: {[key: string]: any} = {};
 
@@ -52,6 +61,8 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
     const [isInteractiveMounted, setIsInteractiveMounted] = useState(false);
 
     const placementOffset = removeSpacer ? 0 : offset || 8;
+
+    const duration = isRealBrowser ? propsDuration : {open: 0, close: 0};
 
     const {context, floatingRefs, floatingStyles, elements, isReferenceHidden} =
       useFloatingBase(
@@ -87,11 +98,13 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
       }
     });
 
+    const shouldHide =
+      isRealBrowser && hideIfReferenceHidden && isReferenceHidden;
+
     const style: React.CSSProperties = {
       ...propsStyle,
       ...floatingStyles,
-      visibility:
-        hideIfReferenceHidden && isReferenceHidden ? "hidden" : "visible"
+      visibility: shouldHide ? "hidden" : "visible"
     };
 
     useEffect(() => {
@@ -139,9 +152,12 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
       return null;
     }
 
+    if (!open && duration.close === 0) {
+      return null;
+    }
+
     let tooltipContent = (
       <div
-        ref={floatingRefs.setFloating}
         className={propsClassName}
         role={role}
         style={{
@@ -182,15 +198,17 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
     }
 
     return (
-      <AFloatingMenuContainer
-        {...rest}
-        ref={combinedRef}
-        className={className}
-        style={style}
-        data-placement={placement}
-        {...attrs}>
-        {tooltipContent}
-      </AFloatingMenuContainer>
+      <FloatingPortal root={appRef.current}>
+        <div
+          ref={combinedRef}
+          className={className}
+          style={style}
+          {...rest}
+          {...attrs}
+          data-placement={placement}>
+          {tooltipContent}
+        </div>
+      </FloatingPortal>
     );
   }
 );
