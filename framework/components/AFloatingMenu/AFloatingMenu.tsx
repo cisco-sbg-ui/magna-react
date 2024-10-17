@@ -142,15 +142,18 @@ const AFloatingMenu = forwardRef<
     const shouldHide =
       isRealBrowser && hideIfReferenceHidden && isReferenceHidden;
 
+    const attrs: {[key: string]: any} = {};
+    attrs["data-ignore-outside-click"] = true;
+
     return (
       <AFloatingMenuContainer
-        ignoreOutsideClick
         context={context}
         focusOnOpen={focusOnOpen}
         initialFocus={initialFocus}>
         <AList
           ref={ref as React.RefObject<HTMLDivElement>}
           {...rest}
+          {...attrs}
           style={{
             ...style,
             visibility: shouldHide ? "hidden" : "visible"

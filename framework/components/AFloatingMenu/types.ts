@@ -13,14 +13,6 @@ export type AFloatingMenuContainerProps = {
    */
   role?: React.AriaRole;
   /**
-   * Prevents propagation of the outside click event when the menu is open.
-   * This will prevent modals/drawers with the `closeOnClickOutside` prop from
-   * closing when interacting with a menu.
-   *
-   * @default `true`
-   */
-  ignoreOutsideClick?: boolean;
-  /**
    * Toggles the behavior of focusing the menu on open.
    *
    * @defaultValue `true`
