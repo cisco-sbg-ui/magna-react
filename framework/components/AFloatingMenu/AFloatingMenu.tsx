@@ -3,7 +3,7 @@ import React, {forwardRef, useCallback} from "react";
 
 import {FloatingArrow} from "@floating-ui/react";
 
-import {keyCodes} from "../../utils/helpers";
+import {keyCodes, isRealBrowser} from "../../utils/helpers";
 import AFloatingMenuContainer from "./AFloatingMenuContainer";
 import {AList} from "../AList";
 import "./AFloatingMenu.scss";
@@ -139,6 +139,9 @@ const AFloatingMenu = forwardRef<
       className += ` ${propsClassName}`;
     }
 
+    const shouldHide =
+      isRealBrowser && hideIfReferenceHidden && isReferenceHidden;
+
     return (
       <AFloatingMenuContainer
         ignoreOutsideClick
@@ -150,8 +153,7 @@ const AFloatingMenu = forwardRef<
           {...rest}
           style={{
             ...style,
-            visibility:
-              hideIfReferenceHidden && isReferenceHidden ? "hidden" : "visible"
+            visibility: shouldHide ? "hidden" : "visible"
           }}
           role={role}
           className={className}

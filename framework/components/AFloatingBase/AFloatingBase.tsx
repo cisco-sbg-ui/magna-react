@@ -14,6 +14,7 @@ import {
 } from "@floating-ui/react";
 
 import AAppContext from "../AApp/AAppContext";
+import {isRealBrowser} from "../../utils/helpers";
 
 import useFloatingBase from "./useFloatingBase";
 import {mapPlacement} from "./utils";
@@ -37,7 +38,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
       style: propsStyle,
       placement: propsPlacement = "top",
       offset,
-      duration = {open: 200, close: 200},
+      duration: propsDuration = {open: 200, close: 200},
       pointer = true,
       removeSpacer,
       ignoreOutsideClick = true,
@@ -60,6 +61,8 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
     const [isInteractiveMounted, setIsInteractiveMounted] = useState(false);
 
     const placementOffset = removeSpacer ? 0 : offset || 8;
+
+    const duration = isRealBrowser ? propsDuration : {open: 0, close: 0};
 
     const {context, floatingRefs, floatingStyles, elements, isReferenceHidden} =
       useFloatingBase(
@@ -95,11 +98,13 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
       }
     });
 
+    const shouldHide =
+      isRealBrowser && hideIfReferenceHidden && isReferenceHidden;
+
     const style: React.CSSProperties = {
       ...propsStyle,
       ...floatingStyles,
-      visibility:
-        hideIfReferenceHidden && isReferenceHidden ? "hidden" : "visible"
+      visibility: shouldHide ? "hidden" : "visible"
     };
 
     useEffect(() => {
@@ -144,6 +149,10 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
     }, [isMounted, interactive]);
 
     if (!isMounted) {
+      return null;
+    }
+
+    if (!open && duration.close === 0) {
       return null;
     }
 
