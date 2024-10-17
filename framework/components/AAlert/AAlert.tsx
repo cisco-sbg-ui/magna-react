@@ -2,6 +2,7 @@ import React, {forwardRef} from "react";
 
 import {keyCodes} from "../../utils/helpers";
 import AIcon from "../AIcon";
+import AButton from "../AButton";
 import "./AAlert.scss";
 import {AAlertProps} from "./types";
 
@@ -65,14 +66,15 @@ const AAlert = forwardRef<HTMLDivElement, AAlertProps>(
         <AIcon className="a-alert__icon a-alert__icon--level">{icon}</AIcon>
         <div className="a-alert__message">{children}</div>
         {isDismissible && (
-          <AIcon
-            className="a-alert__icon focus-box-shadow a-alert__icon--close"
+          <AButton
+            className="a-alert__dismiss"
+            icon
             onClick={(e) => onClose && onClose(e)}
             onKeyDown={dismissibleKeyDownHandler}
-            size={16}
-            tabIndex={0}>
-            x
-          </AIcon>
+            tertiaryAlt
+            small>
+            <AIcon>x</AIcon>
+          </AButton>
         )}
       </div>
     );
