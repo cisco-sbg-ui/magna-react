@@ -43,6 +43,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
       removeSpacer,
       ignoreOutsideClick = true,
       hideIfReferenceHidden = true,
+      sideAlignArrow = false,
       onClose,
       open,
       ...rest
@@ -64,7 +65,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
 
     const duration = isRealBrowser ? propsDuration : {open: 0, close: 0};
 
-    const {context, floatingRefs, floatingStyles, elements, isReferenceHidden} =
+    const {context, floatingRefs, floatingStyles, isReferenceHidden} =
       useFloatingBase(
         !!open,
         anchorRef,
@@ -78,11 +79,14 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
 
     // If the reference element is wider than the tooltip, the arrow needs to be offset
     const isEdge = placement.includes("-start") || placement.includes("-end");
+    const isVertical =
+      placement.startsWith("top") || placement.startsWith("bottom");
+    /*
     const isSmaller =
       (elements?.domReference?.getBoundingClientRect().width || 0) >
       (elements?.floating?.offsetWidth || 0);
     const isEdgeAlignedAndSmaller = isEdge && isSmaller;
-
+*/
     const {isMounted, styles: transitionStyles} = useTransitionStyles(context, {
       duration,
       initial: ({side}) => {
@@ -156,6 +160,17 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
       return null;
     }
 
+    let arrowPlacement;
+
+    if (sideAlignArrow && isEdge && isVertical) {
+      console.log("foobar?");
+      if (placement.includes("-start")) {
+        arrowPlacement = {left: "12px", right: "unset"};
+      } else if (placement.includes("-end")) {
+        arrowPlacement = {right: "12px", left: "unset"};
+      }
+    }
+
     let tooltipContent = (
       <div
         className={propsClassName}
@@ -172,7 +187,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
             className="a-floating-base-arrow"
             width={ARROW_WIDTH}
             height={ARROW_HEIGHT}
-            staticOffset={isEdgeAlignedAndSmaller ? "15%" : null}
+            style={arrowPlacement}
           />
         )}
       </div>
