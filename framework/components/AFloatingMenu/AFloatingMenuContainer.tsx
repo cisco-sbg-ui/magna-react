@@ -8,18 +8,12 @@ import {AFloatingMenuContainerProps} from "./types";
 
 const AFloatingMenuContainer = ({
   children,
-  ignoreOutsideClick,
   context,
   focusOnOpen,
   initialFocus,
   ...rest
 }: AFloatingMenuContainerProps) => {
   const {appRef} = useContext(AAppContext);
-  const attrs: {[key: string]: any} = {};
-
-  if (ignoreOutsideClick) {
-    attrs["data-ignore-outside-click"] = true;
-  }
 
   return (
     <FloatingPortal root={appRef.current}>
@@ -27,7 +21,6 @@ const AFloatingMenuContainer = ({
         disabled={!focusOnOpen}
         context={context}
         initialFocus={initialFocus}
-        {...attrs}
         {...rest}
         order={["content", "reference"]}>
         {children}
