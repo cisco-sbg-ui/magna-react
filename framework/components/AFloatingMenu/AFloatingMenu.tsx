@@ -149,7 +149,7 @@ const AFloatingMenu = forwardRef<
         focusOnOpen={focusOnOpen}
         initialFocus={initialFocus}>
         <AList
-          ref={ref as any}
+          ref={ref as React.RefObject<HTMLDivElement>}
           {...rest}
           style={{
             ...style,
