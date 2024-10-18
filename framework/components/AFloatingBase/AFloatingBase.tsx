@@ -25,7 +25,6 @@ import {
 } from "../ATooltip/constants";
 import {AFloatingBaseProps} from "./types";
 import "./AFloatingBase.scss";
-import {ADOMRect} from "../../types";
 
 const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
   (
@@ -182,7 +181,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
         }}
         data-placement={placement}>
         {children}
-        {pointer && floatingRefs?.floating?.current && (
+        {pointer && !isNaN(context?.x) && floatingRefs?.floating?.current && (
           <FloatingArrow
             ref={arrowRef}
             context={context}
@@ -219,10 +218,6 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
 
     if (ignoreOutsideClick) {
       attrs["data-ignore-outside-click"] = true;
-    }
-
-    if (isNaN(context?.x)) {
-      return null;
     }
 
     return (
