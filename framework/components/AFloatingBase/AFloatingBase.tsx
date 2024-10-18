@@ -25,6 +25,7 @@ import {
 } from "../ATooltip/constants";
 import {AFloatingBaseProps} from "./types";
 import "./AFloatingBase.scss";
+import {ADOMRect} from "../../types";
 
 const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
   (
@@ -79,12 +80,15 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
 
     // If the reference element is wider than the tooltip, the arrow needs to be offset
     const isEdge = placement.includes("-start") || placement.includes("-end");
+    const isStart = placement.includes("-start");
+    const isEnd = placement.includes("-end");
     const isVertical =
       placement.startsWith("top") || placement.startsWith("bottom");
     const sideAlignArrow = alignPointerOnSide && isEdge && isVertical;
     const isSmaller =
-      (elements?.domReference?.getBoundingClientRect().width || 0) >
-      (elements?.floating?.offsetWidth || 0);
+      (elements?.domReference?.getBoundingClientRect().width ||
+        elements?.reference?.getBoundingClientRect()?.width ||
+        0) > (elements?.floating?.offsetWidth || 0);
     const isEdgeAlignedAndSmaller = isEdge && isSmaller;
 
     const {isMounted, styles: transitionStyles} = useTransitionStyles(context, {
@@ -162,9 +166,9 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
 
     let arrowPlacement;
     if (sideAlignArrow) {
-      if (placement.includes("-start")) {
+      if (isStart) {
         arrowPlacement = {left: "12px", right: "unset"};
-      } else if (placement.includes("-end")) {
+      } else if (isEnd) {
         arrowPlacement = {right: "12px", left: "unset"};
       }
     }
@@ -187,7 +191,11 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
             height={ARROW_HEIGHT}
             style={arrowPlacement}
             staticOffset={
-              isEdgeAlignedAndSmaller && !sideAlignArrow ? "15%" : null
+              isEdgeAlignedAndSmaller && !sideAlignArrow
+                ? isStart
+                  ? "90%"
+                  : "10%"
+                : null
             }
           />
         )}
