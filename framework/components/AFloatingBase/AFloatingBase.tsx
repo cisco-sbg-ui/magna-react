@@ -25,6 +25,7 @@ import {
 } from "../ATooltip/constants";
 import {AFloatingBaseProps} from "./types";
 import "./AFloatingBase.scss";
+import {ADOMRectFull} from "../../types";
 
 const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
   (
@@ -65,7 +66,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
 
     const duration = isRealBrowser ? propsDuration : {open: 0, close: 0};
 
-    const {context, floatingRefs, floatingStyles, elements, isReferenceHidden} =
+    const {context, floatingRefs, floatingStyles, isReferenceHidden} =
       useFloatingBase(
         !!open,
         anchorRef,
@@ -77,6 +78,24 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
 
     const combinedRef: any = useMergeRefs([floatingRefs.setFloating, ref]);
 
+    useEffect(() => {
+      if (open) {
+        floatingRefs.setPositionReference({
+          getBoundingClientRect() {
+            if ((anchorRef as React.RefObject<HTMLElement>)?.current) {
+              return (
+                anchorRef as React.RefObject<HTMLElement>
+              )?.current!.getBoundingClientRect();
+            }
+
+            return {
+              ...(anchorRef as ADOMRectFull)
+            };
+          }
+        });
+      }
+    }, [open]);
+
     // If the reference element is wider than the tooltip, the arrow needs to be offset
     const isEdge = placement.includes("-start") || placement.includes("-end");
     const isStart = placement.includes("-start");
@@ -84,11 +103,6 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
     const isVertical =
       placement.startsWith("top") || placement.startsWith("bottom");
     const sideAlignArrow = alignPointerOnSide && isEdge && isVertical;
-    const isSmaller =
-      (elements?.domReference?.getBoundingClientRect().width ||
-        elements?.reference?.getBoundingClientRect()?.width ||
-        0) > (elements?.floating?.offsetWidth || 0);
-    const isEdgeAlignedAndSmaller = isEdge && isSmaller;
 
     const {isMounted, styles: transitionStyles} = useTransitionStyles(context, {
       duration,
@@ -189,13 +203,6 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
             width={ARROW_WIDTH}
             height={ARROW_HEIGHT}
             style={arrowPlacement}
-            staticOffset={
-              isEdgeAlignedAndSmaller && !sideAlignArrow
-                ? isStart
-                  ? "90%"
-                  : "10%"
-                : null
-            }
           />
         )}
       </div>
