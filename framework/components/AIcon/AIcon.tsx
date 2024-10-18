@@ -42,7 +42,16 @@ const ignoreStrokeReplace = [
 
 const AIcon = forwardRef<SVGSVGElement, AIconProps>(
   (
-    {children, className: propsClassName, label, left, right, size, ...rest},
+    {
+      children,
+      className: propsClassName,
+      label,
+      left,
+      right,
+      withBg,
+      size,
+      ...rest
+    },
     ref
   ) => {
     let className = `a-icon`;
@@ -57,6 +66,9 @@ const AIcon = forwardRef<SVGSVGElement, AIconProps>(
 
     if (right) {
       className += ` a-icon--right`;
+    }
+    if (withBg) {
+      className += ` a-icon--bg`;
     }
 
     if (propsClassName) {

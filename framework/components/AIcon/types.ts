@@ -1,6 +1,6 @@
 import {Override} from "../../types";
 
-export type AIconSize = number | "small" | "medium" | "large";
+export type AIconSize = number;
 
 export type AIconProps = Override<
   React.ComponentPropsWithRef<"svg">,
@@ -19,7 +19,12 @@ export type AIconProps = Override<
     right?: boolean;
     /**
      * Sets a custom icon width.
+     * @defaultValue `24px``
      */
     size?: AIconSize;
+    /**
+     * Displays a background for status icons that are designed with a background.
+     */
+    withBg?: boolean;
   }
 >;
