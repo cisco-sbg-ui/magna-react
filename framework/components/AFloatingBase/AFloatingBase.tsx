@@ -66,7 +66,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
 
     const duration = isRealBrowser ? propsDuration : {open: 0, close: 0};
 
-    const {context, floatingRefs, floatingStyles, isReferenceHidden} =
+    const {context, floatingRefs, floatingStyles, elements, isReferenceHidden} =
       useFloatingBase(
         !!open,
         anchorRef,
@@ -103,6 +103,10 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
     const isVertical =
       placement.startsWith("top") || placement.startsWith("bottom");
     const sideAlignArrow = alignPointerOnSide && isEdge && isVertical;
+    const isSmaller =
+      (elements?.domReference?.getBoundingClientRect().width || 0) >
+      (elements?.floating?.offsetWidth || 0);
+    const isEdgeAlignedAndSmaller = isEdge && isSmaller;
 
     const {isMounted, styles: transitionStyles} = useTransitionStyles(context, {
       duration,
@@ -195,7 +199,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
         }}
         data-placement={placement}>
         {children}
-        {pointer && !isNaN(context?.x) && floatingRefs?.floating?.current && (
+        {pointer && floatingRefs?.floating?.current && (
           <FloatingArrow
             ref={arrowRef}
             context={context}
@@ -203,6 +207,9 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
             width={ARROW_WIDTH}
             height={ARROW_HEIGHT}
             style={arrowPlacement}
+            staticOffset={
+              isEdgeAlignedAndSmaller && !sideAlignArrow ? "15%" : null
+            }
           />
         )}
       </div>
@@ -225,6 +232,10 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
 
     if (ignoreOutsideClick) {
       attrs["data-ignore-outside-click"] = true;
+    }
+
+    if (isNaN(context?.x)) {
+      return null;
     }
 
     return (
