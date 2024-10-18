@@ -362,7 +362,7 @@ return (
         <h2 style={{color: "red"}}>Optionally...</h2>Can override styles
       </ATooltip>
       <p>
-        To align the button with the secondary axis, use 'sideAlignArrow'
+        To align the button with the secondary axis specifier (-left, -right), use 'alignPointerOnSide'
       </p>
       <AButton secondary ref={buttonRef3} onClick={() => setOpen3(!open3)}>
       Side aligned pointer
@@ -373,7 +373,7 @@ return (
         onClose={()=> setOpen3(false)}
         placement="bottom-left"
         pointer
-        sideAlignArrow>
+        alignPointerOnSide>
          Tooltip pointer is placed on the left edge of the tooltip and anchor alignment
       </ATooltip>
     </>
