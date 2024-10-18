@@ -165,7 +165,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
         }}
         data-placement={placement}>
         {children}
-        {pointer && floatingRefs?.floating?.current && (
+        {pointer && !isNaN(context?.x) && floatingRefs?.floating?.current && (
           <FloatingArrow
             ref={arrowRef}
             context={context}
