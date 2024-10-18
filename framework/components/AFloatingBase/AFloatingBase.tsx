@@ -104,8 +104,9 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
       placement.startsWith("top") || placement.startsWith("bottom");
     const sideAlignArrow = alignPointerOnSide && isEdge && isVertical;
     const isSmaller =
-      (elements?.domReference?.getBoundingClientRect().width || 0) >
-      (elements?.floating?.offsetWidth || 0);
+      (elements?.domReference?.getBoundingClientRect().width ||
+        elements?.reference?.getBoundingClientRect()?.width ||
+        0) > (elements?.floating?.offsetWidth || 0);
     const isEdgeAlignedAndSmaller = isEdge && isSmaller;
 
     const {isMounted, styles: transitionStyles} = useTransitionStyles(context, {
@@ -208,7 +209,11 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
             height={ARROW_HEIGHT}
             style={arrowPlacement}
             staticOffset={
-              isEdgeAlignedAndSmaller && !sideAlignArrow ? "15%" : null
+              isEdgeAlignedAndSmaller && !sideAlignArrow
+                ? isStart
+                  ? "90%"
+                  : "10%"
+                : null
             }
           />
         )}
