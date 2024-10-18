@@ -51,6 +51,8 @@
     "clean": "rm -rf lib"
   },
   "peerDependencies": {
+    "@floating-ui/dom": "^1.6.10",
+    "@floating-ui/react": "^0.26.25",
     "prop-types": "^15.0.0",
     "react": "^16.8.0 || ^17.0.2 || ^18.2.0",
     "react-dom": "^16.8.0 || ^17.0.2 || ^18.2.0"
