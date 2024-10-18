@@ -94,7 +94,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
           }
         });
       }
-    }, [open]);
+    }, [open, anchorRef, floatingRefs]);
 
     // If the reference element is wider than the tooltip, the arrow needs to be offset
     const isEdge = placement.includes("-start") || placement.includes("-end");
