@@ -69,7 +69,8 @@ const useFloatingBase: UseFloatingBase = (
       shift(),
       hide(),
       arrow({
-        element: arrowRef
+        element: arrowRef,
+        padding: 8
       })
     ]
   });
