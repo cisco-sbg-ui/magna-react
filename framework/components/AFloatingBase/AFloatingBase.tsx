@@ -43,7 +43,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
       removeSpacer,
       ignoreOutsideClick = true,
       hideIfReferenceHidden = true,
-      sideAlignArrow = false,
+      alignPointerOnSide = false,
       onClose,
       open,
       ...rest
@@ -81,6 +81,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
     const isEdge = placement.includes("-start") || placement.includes("-end");
     const isVertical =
       placement.startsWith("top") || placement.startsWith("bottom");
+    const sideAlignArrow = alignPointerOnSide && isEdge && isVertical;
 
     const {isMounted, styles: transitionStyles} = useTransitionStyles(context, {
       duration,
@@ -156,8 +157,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
     }
 
     let arrowPlacement;
-
-    if (sideAlignArrow && isEdge && isVertical) {
+    if (sideAlignArrow) {
       if (placement.includes("-start")) {
         arrowPlacement = {left: "12px", right: "unset"};
       } else if (placement.includes("-end")) {
