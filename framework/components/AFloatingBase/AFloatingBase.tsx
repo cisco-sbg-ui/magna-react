@@ -81,12 +81,7 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
     const isEdge = placement.includes("-start") || placement.includes("-end");
     const isVertical =
       placement.startsWith("top") || placement.startsWith("bottom");
-    /*
-    const isSmaller =
-      (elements?.domReference?.getBoundingClientRect().width || 0) >
-      (elements?.floating?.offsetWidth || 0);
-    const isEdgeAlignedAndSmaller = isEdge && isSmaller;
-*/
+
     const {isMounted, styles: transitionStyles} = useTransitionStyles(context, {
       duration,
       initial: ({side}) => {
@@ -163,7 +158,6 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
     let arrowPlacement;
 
     if (sideAlignArrow && isEdge && isVertical) {
-      console.log("foobar?");
       if (placement.includes("-start")) {
         arrowPlacement = {left: "12px", right: "unset"};
       } else if (placement.includes("-end")) {
