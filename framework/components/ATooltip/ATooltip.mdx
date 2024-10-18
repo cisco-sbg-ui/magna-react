@@ -284,8 +284,10 @@ return (
   code={`() => {
   const buttonRef1 = useRef(null);
   const buttonRef2 = useRef(null);
+  const buttonRef3 = useRef(null);
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
+  const [open3, setOpen3] = useState(false);
   return (
     <>
       <p>
@@ -302,6 +304,7 @@ return (
       <ATooltip
         anchorRef={buttonRef1}
         open={open1}
+        onClose={()=> setOpen1(false)}
         placement="bottom-left"
         pointer>
         Tooltip Less Wide Than Anchor
@@ -309,6 +312,7 @@ return (
       <ATooltip
         anchorRef={buttonRef1}
         open={open1}
+        onClose={()=> setOpen1(false)}
         placement="right-top"
         pointer>
         Tooltip Taller
@@ -327,6 +331,7 @@ return (
       <ATooltip
         anchorRef={buttonRef2}
         open={open2}
+        onClose={()=> setOpen2(false)}
         placement="bottom-left"
         pointer>
         Tooltip Wider Than Anchor
@@ -335,12 +340,14 @@ return (
         anchorRef={buttonRef2}
         open={open2}
         placement="right-top"
+        onClose={()=> setOpen2(false)}
         pointer>
         Tooltip Shorter Than Anchor
       </ATooltip>
       <ATooltip
         anchorRef={buttonRef2}
         open={open2}
+        onClose={()=> setOpen2(false)}
         placement="left"
         pointer>
         Tooltip on the leftside
@@ -348,10 +355,26 @@ return (
       <ATooltip
         anchorRef={buttonRef2}
         open={open2}
+        onClose={()=> setOpen2(false)}
         placement="top"
         title="Really???"
         pointer>
         <h2 style={{color: "red"}}>Optionally...</h2>Can override styles
+      </ATooltip>
+      <p>
+        To align the button with the secondary axis specifier (-left, -right), use 'alignPointerOnSide'
+      </p>
+      <AButton secondary ref={buttonRef3} onClick={() => setOpen3(!open3)}>
+      Side aligned pointer
+      </AButton>
+      <ATooltip
+        anchorRef={buttonRef3}
+        open={open3}
+        onClose={()=> setOpen3(false)}
+        placement="bottom-left"
+        pointer
+        alignPointerOnSide>
+         Tooltip pointer is placed on the left edge of the tooltip and anchor alignment
       </ATooltip>
     </>
   );
