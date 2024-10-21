@@ -18,6 +18,12 @@ export type ADividerProps = Override<
      */
     strong?: boolean;
     /**
+     * Toggles the vertical variant.
+     *
+     *  @defaultValue `false`
+     */
+    vertical?: boolean;
+    /**
      * Sets the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role.
      *
      *  @defaultValue `separator`

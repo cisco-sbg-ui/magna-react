@@ -9,6 +9,7 @@ const ADivider = forwardRef(
       className: propsClassName,
       light = false,
       strong = false,
+      vertical = false,
       role = "separator",
       ...rest
     },
@@ -22,6 +23,10 @@ const ADivider = forwardRef(
 
     if (strong) {
       className += " a-divider--strong";
+    }
+
+    if (vertical) {
+      className += " vertical";
     }
 
     if (propsClassName) {
@@ -45,6 +50,10 @@ ADivider.propTypes = {
    * Toggles the strong variant.
    */
   strong: PropTypes.bool,
+  /**
+   * Toggles the vertical variant.
+   */
+  vertical: PropTypes.bool,
   /**
    * Sets the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role.
    */
