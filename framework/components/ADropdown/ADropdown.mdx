@@ -416,6 +416,11 @@ Component props are passed to the anchor element
     <div>
       <ADropdown ref={ref} component={ATag} title="Has a ref" small status="positive">
         <AListItem onClick={() => {console.log(ref.current)}}>List item</AListItem>
+        <AListItem onClick={() => {console.log(ref.current)}}>List item</AListItem>
+        <AListItem selected onClick={() => {console.log(ref.current)}}>List item</AListItem>
+        <AListItem onClick={() => {console.log(ref.current)}}>List item</AListItem>
+        <AListItem onClick={() => {console.log(ref.current)}}>List item</AListItem>
+        <AListItem onClick={() => {console.log(ref.current)}}>List item</AListItem>
       </ADropdown>
     </div>
   );
