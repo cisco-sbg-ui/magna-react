@@ -26,7 +26,7 @@ const ADivider = forwardRef<HTMLHRElement, ADividerProps>(
     }
 
     if (vertical) {
-      className += " vertical";
+      className += " a-divider--vertical";
     }
 
     if (propsClassName) {
