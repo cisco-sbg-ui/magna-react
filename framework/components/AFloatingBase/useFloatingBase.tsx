@@ -1,6 +1,4 @@
-import {AAnchorRef, ADOMRectFull} from "../../types";
-
-import {useEffect} from "react";
+import {AAnchorRef} from "../../types";
 
 import {
   useFloating,
@@ -69,7 +67,8 @@ const useFloatingBase: UseFloatingBase = (
       shift(),
       hide(),
       arrow({
-        element: arrowRef
+        element: arrowRef,
+        padding: 12
       })
     ]
   });
@@ -79,22 +78,6 @@ const useFloatingBase: UseFloatingBase = (
   });
 
   useInteractions([dismiss]);
-
-  useEffect(() => {
-    floatingRefs.setPositionReference({
-      getBoundingClientRect() {
-        if ((anchorRef as React.RefObject<HTMLElement>)?.current) {
-          return (
-            anchorRef as React.RefObject<HTMLElement>
-          )?.current!.getBoundingClientRect();
-        }
-
-        return {
-          ...(anchorRef as ADOMRectFull)
-        };
-      }
-    });
-  }, [floatingRefs, anchorRef]);
 
   return {
     context,

@@ -2,13 +2,9 @@
 
 $alert-min-height: 48px;
 $alert-icon-font-size: $font-size;
-$alert-icon-margin-size: 16px;
-$alert-icon-margin: 0 8px 0 $alert-icon-margin-size;
-$alert-close-icon-margin: 0 $alert-icon-margin-size 0 0;
 $alert-margin: 0;
-$alert-padding-size: 12px;
-$alert-padding: $alert-padding-size 0;
-$alert-message-padding: 0 $alert-padding-size 0 0;
+$alert-padding: 12px 16px;
+$alert-message-padding: 0 8px 0 0;
 $alert-border-radius: 6px;
 $alert-body-font-size: $font-size--md;
 $alert-message-max-width: 700px;
@@ -22,6 +18,7 @@ $alert-close-icon-size: 10.5px;
   min-height: $alert-min-height;
   border-radius: $alert-border-radius;
   margin: $alert-margin;
+  align-items: center;
   padding: $alert-padding;
   background-color: var(--info-bg-strong-default);
   color: var(--base-text-default);
@@ -32,34 +29,12 @@ $alert-close-icon-size: 10.5px;
 
   &__icon {
     font-size: $alert-icon-font-size;
-
-    &--close {
-      width: $alert-close-icon-size;
-      cursor: pointer;
-      color: var(--interact-icon-weak-default);
-      &:hover {
-        color: var(--interact-icon-weak-hover);
-      }
-    }
-
-    &.a-alert__icon--close {
-      align-self: center;
-      &:focus {
-        box-shadow: var(--shadow-focus) var(--control-border-active);
-      }
-    }
-  }
-
-  &:focus {
-    box-shadow: var(--shadow-focus) var(--control-border-active);
   }
 
   &__icon--level {
-    margin: $alert-icon-margin;
+    margin-right: 8px;
   }
-  &__icon--close {
-    margin: $alert-close-icon-margin;
-  }
+
   &__message {
     font-size: $alert-body-font-size;
     max-width: $alert-message-max-width;
@@ -76,55 +51,20 @@ $alert-close-icon-size: 10.5px;
   &--state-success {
     background-color: var(--positive-bg-strong-default);
     color: var(--base-text-default);
-    .a-alert__icon--close:focus {
-      box-shadow: $success-box-shadow;
-    }
-    &:focus {
-      box-shadow: $success-box-shadow;
-    }
-
-    .a-alert__icon {
-      &--close {
-        &:focus {
-          box-shadow: $success-box-shadow;
-        }
-      }
-    }
   }
 
   &--state-warning {
     background-color: var(--warning-bg-strong-default);
     color: var(--base-text-default);
-    .a-alert__icon {
-      &--close {
-        &:focus {
-          box-shadow: $warning-box-shadow;
-        }
-      }
-    }
-
-    .a-alert__icon--close:focus {
-      box-shadow: $warning-box-shadow;
-    }
-    &:focus {
-      box-shadow: $warning-box-shadow;
+    .a-alert__dismiss:focus {
+      @include a-control-focus("warning");
     }
   }
   &--state-danger {
     background-color: var(--negative-bg-strong-default);
     color: var(--base-text-default);
-    .a-alert__icon--close:focus {
-      box-shadow: $danger-box-shadow;
-    }
-    &:focus {
-      box-shadow: $danger-box-shadow;
-    }
-    .a-alert__icon {
-      &--close {
-        &:focus {
-          box-shadow: $danger-box-shadow;
-        }
-      }
+    .a-alert__dismiss:focus {
+      @include a-control-focus("negative");
     }
   }
 }

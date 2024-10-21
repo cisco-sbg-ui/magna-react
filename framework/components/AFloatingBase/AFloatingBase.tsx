@@ -1,12 +1,20 @@
-import React, {forwardRef, useEffect, useRef, useState} from "react";
+import React, {
+  forwardRef,
+  useContext,
+  useEffect,
+  useRef,
+  useState
+} from "react";
 
 import {
   useMergeRefs,
   useTransitionStyles,
-  FloatingArrow
+  FloatingArrow,
+  FloatingPortal
 } from "@floating-ui/react";
 
-import AFloatingMenuContainer from "../AFloatingMenu/AFloatingMenuContainer";
+import AAppContext from "../AApp/AAppContext";
+import {isRealBrowser} from "../../utils/helpers";
 
 import useFloatingBase from "./useFloatingBase";
 import {mapPlacement} from "./utils";
@@ -17,6 +25,7 @@ import {
 } from "../ATooltip/constants";
 import {AFloatingBaseProps} from "./types";
 import "./AFloatingBase.scss";
+import {ADOMRectFull} from "../../types";
 
 const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
   (
@@ -30,17 +39,19 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
       style: propsStyle,
       placement: propsPlacement = "top",
       offset,
-      duration = {open: 200, close: 200},
+      duration: propsDuration = {open: 200, close: 200},
       pointer = true,
       removeSpacer,
       ignoreOutsideClick = true,
       hideIfReferenceHidden = true,
+      alignPointerOnSide = false,
       onClose,
       open,
       ...rest
     },
     ref
   ) => {
+    const {appRef} = useContext(AAppContext);
     const className = `a-floating-base`;
     const attrs: {[key: string]: any} = {};
 
@@ -53,7 +64,9 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
 
     const placementOffset = removeSpacer ? 0 : offset || 8;
 
-    const {context, floatingRefs, floatingStyles, elements, isReferenceHidden} =
+    const duration = isRealBrowser ? propsDuration : {open: 0, close: 0};
+
+    const {context, floatingRefs, floatingStyles, isReferenceHidden} =
       useFloatingBase(
         !!open,
         anchorRef,
@@ -65,12 +78,31 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
 
     const combinedRef: any = useMergeRefs([floatingRefs.setFloating, ref]);
 
+    useEffect(() => {
+      if (open) {
+        floatingRefs.setPositionReference({
+          getBoundingClientRect() {
+            if ((anchorRef as React.RefObject<HTMLElement>)?.current) {
+              return (
+                anchorRef as React.RefObject<HTMLElement>
+              )?.current!.getBoundingClientRect();
+            }
+
+            return {
+              ...(anchorRef as ADOMRectFull)
+            };
+          }
+        });
+      }
+    }, [open, anchorRef, floatingRefs]);
+
     // If the reference element is wider than the tooltip, the arrow needs to be offset
     const isEdge = placement.includes("-start") || placement.includes("-end");
-    const isSmaller =
-      (elements?.domReference?.getBoundingClientRect().width || 0) >
-      (elements?.floating?.offsetWidth || 0);
-    const isEdgeAlignedAndSmaller = isEdge && isSmaller;
+    const isStart = placement.includes("-start");
+    const isEnd = placement.includes("-end");
+    const isVertical =
+      placement.startsWith("top") || placement.startsWith("bottom");
+    const sideAlignArrow = alignPointerOnSide && isEdge && isVertical;
 
     const {isMounted, styles: transitionStyles} = useTransitionStyles(context, {
       duration,
@@ -87,11 +119,13 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
       }
     });
 
+    const shouldHide =
+      isRealBrowser && hideIfReferenceHidden && isReferenceHidden;
+
     const style: React.CSSProperties = {
       ...propsStyle,
       ...floatingStyles,
-      visibility:
-        hideIfReferenceHidden && isReferenceHidden ? "hidden" : "visible"
+      visibility: shouldHide ? "hidden" : "visible"
     };
 
     useEffect(() => {
@@ -139,9 +173,21 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
       return null;
     }
 
+    if (!open && duration.close === 0) {
+      return null;
+    }
+
+    let arrowPlacement;
+    if (sideAlignArrow) {
+      if (isStart) {
+        arrowPlacement = {left: "12px", right: "unset"};
+      } else if (isEnd) {
+        arrowPlacement = {right: "12px", left: "unset"};
+      }
+    }
+
     let tooltipContent = (
       <div
-        ref={floatingRefs.setFloating}
         className={propsClassName}
         role={role}
         style={{
@@ -149,14 +195,14 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
         }}
         data-placement={placement}>
         {children}
-        {pointer && floatingRefs?.floating?.current && (
+        {pointer && !isNaN(context?.x) && floatingRefs?.floating?.current && (
           <FloatingArrow
             ref={arrowRef}
             context={context}
             className="a-floating-base-arrow"
             width={ARROW_WIDTH}
             height={ARROW_HEIGHT}
-            staticOffset={isEdgeAlignedAndSmaller ? "15%" : null}
+            style={arrowPlacement}
           />
         )}
       </div>
@@ -182,15 +228,17 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
     }
 
     return (
-      <AFloatingMenuContainer
-        {...rest}
-        ref={combinedRef}
-        className={className}
-        style={style}
-        data-placement={placement}
-        {...attrs}>
-        {tooltipContent}
-      </AFloatingMenuContainer>
+      <FloatingPortal root={appRef.current}>
+        <div
+          ref={combinedRef}
+          className={className}
+          style={style}
+          {...rest}
+          {...attrs}
+          data-placement={placement}>
+          {tooltipContent}
+        </div>
+      </FloatingPortal>
     );
   }
 );

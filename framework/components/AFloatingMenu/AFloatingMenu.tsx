@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import React, {forwardRef, useCallback} from "react";
 
-import {FloatingArrow, FloatingFocusManager} from "@floating-ui/react";
+import {FloatingArrow} from "@floating-ui/react";
 
-import {keyCodes} from "../../utils/helpers";
+import {keyCodes, isRealBrowser} from "../../utils/helpers";
 import AFloatingMenuContainer from "./AFloatingMenuContainer";
 import {AList} from "../AList";
 import "./AFloatingMenu.scss";
@@ -25,7 +25,7 @@ const AFloatingMenu = forwardRef<
       closeOnClick = true,
       compact = false,
       focusOnOpen = true,
-      initialFocus,
+      initialFocus: propsInitialFocus,
       hoverable,
       onClick,
       onClose,
@@ -41,6 +41,23 @@ const AFloatingMenu = forwardRef<
     },
     ref
   ) => {
+    const getSelectedIndex = () => {
+      const listItems = menuRef?.current?.querySelectorAll(".a-list-item");
+
+      if (!listItems?.length) {
+        return undefined;
+      }
+
+      let index = undefined;
+      listItems.forEach((x: HTMLElement, i: number) => {
+        if (x.classList.contains("a-list-item--selected")) {
+          index = i;
+        }
+      });
+
+      return index;
+    };
+
     const getPrevious = useCallback(() => {
       if (!menuRef.current) {
         return;
@@ -124,7 +141,7 @@ const AFloatingMenu = forwardRef<
       return null;
     }
 
-    let className = `a-floating-menu`;
+    let className = `a-floating-menu a-floating-menu-base`;
     if (pointer) {
       className += " a-floating-menu--pointer";
     }
@@ -139,21 +156,27 @@ const AFloatingMenu = forwardRef<
       className += ` ${propsClassName}`;
     }
 
+    const shouldHide =
+      isRealBrowser && hideIfReferenceHidden && isReferenceHidden;
+
+    const attrs: {[key: string]: any} = {};
+    attrs["data-ignore-outside-click"] = true;
+
+    const initialFocus = propsInitialFocus || getSelectedIndex();
+
     return (
-      <FloatingFocusManager
+      <AFloatingMenuContainer
         context={context}
-        disabled={!focusOnOpen}
+        focusOnOpen={focusOnOpen}
         initialFocus={initialFocus}>
         <AList
+          ref={ref as React.RefObject<HTMLDivElement>}
           {...rest}
+          {...attrs}
           style={{
             ...style,
-            visibility:
-              hideIfReferenceHidden && isReferenceHidden ? "hidden" : "visible"
+            visibility: shouldHide ? "hidden" : "visible"
           }}
-          ignoreOutsideClick
-          component={AFloatingMenuContainer}
-          ref={ref}
           role={role}
           className={className}
           hoverable={hoverable}
@@ -177,7 +200,7 @@ const AFloatingMenu = forwardRef<
           {pointer && <FloatingArrow ref={arrowRef} context={context} />}
           {children}
         </AList>
-      </FloatingFocusManager>
+      </AFloatingMenuContainer>
     );
   }
 );

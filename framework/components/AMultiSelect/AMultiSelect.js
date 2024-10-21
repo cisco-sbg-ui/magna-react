@@ -334,7 +334,6 @@ const AMultiSelect = forwardRef(
       <AMultiSelectCounter
         items={items}
         value={value}
-        onSelected={onSelected}
         itemValue={itemValue}
         itemText={itemText}
         {...counterTooltipProps}

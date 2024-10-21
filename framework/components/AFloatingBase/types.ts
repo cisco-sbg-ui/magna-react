@@ -60,6 +60,10 @@ export type AFloatingBaseProps = Override<
      * @default true
      */
     hideIfReferenceHidden?: boolean;
+    /**
+     * By default the arrow aligns with the center of the tooltip. If this is set to true, the arrow will align with the side of the tooltip.
+     */
+    alignPointerOnSide?: boolean;
     removeSpacer?: boolean;
     /**
      * Sets the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role.

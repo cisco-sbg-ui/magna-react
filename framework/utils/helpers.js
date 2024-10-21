@@ -419,3 +419,8 @@ export const throttle = (fn, limit = throttleLimit) => {
     }
   };
 };
+
+export const isRealBrowser =
+  Object.getOwnPropertyDescriptor(globalThis, "window")
+    ?.get?.toString()
+    .includes("[native code]") ?? false;
