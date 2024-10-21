@@ -9,6 +9,7 @@ export type ADividerProps = Override<
      * Toggles the light variant.
      *
      *  @defaultValue `false`
+     *  @deprecated There is no longer a light variant in design - convert to default or strong variant.
      */
     light?: boolean;
     /**
