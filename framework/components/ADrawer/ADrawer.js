@@ -19,6 +19,7 @@ const ADrawer = forwardRef(
       children,
       openHeight,
       openWidth,
+      autoWidth,
       isOpen,
       onClose,
       closeOnOutsideClick,
@@ -91,6 +92,10 @@ const ADrawer = forwardRef(
         style.height = slimHeight;
         style.maxHeight = slimHeight;
       }
+    }
+
+    if (autoWidth) {
+      className += " a-drawer--auto-width";
     }
 
     if (isOpen && !slim && openWidth) {
@@ -211,6 +216,8 @@ ADrawer.propTypes = {
    * to 400px.
    */
   openWidth: PropTypes.string,
+
+  autoWidth: PropTypes.bool,
 
   /**
    * Specifies the positioning strategy of the drawer. A drawer specified with

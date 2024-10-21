@@ -43,6 +43,7 @@ export type ADrawerProps<C extends React.ElementType> = Override<
        * to 400px.
        */
       openWidth?: string;
+      autoWidth?: boolean;
       /**
        * Specifies the positioning strategy of the drawer. A drawer specified with
        * "fixed" is useful when the drawer should take up the entire page and cover

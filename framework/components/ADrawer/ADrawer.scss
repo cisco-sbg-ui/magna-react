@@ -147,6 +147,18 @@ $common-transitions: transform $transition-props, width $transition-props,
     left: 0;
     top: unset;
   }
+
+  &--auto-width {
+    width: 400px;
+
+    @media screen and (min-width: 1680px) {
+      width: 576px;
+    }
+
+    @media screen and (min-width: 2080px) {
+      width: 768px;
+    }
+  }
 }
 
 @media (prefers-reduced-motion) {
