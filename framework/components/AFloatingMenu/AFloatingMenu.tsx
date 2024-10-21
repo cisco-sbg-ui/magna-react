@@ -25,7 +25,7 @@ const AFloatingMenu = forwardRef<
       closeOnClick = true,
       compact = false,
       focusOnOpen = true,
-      initialFocus,
+      initialFocus: propsInitialFocus,
       hoverable,
       onClick,
       onClose,
@@ -41,6 +41,23 @@ const AFloatingMenu = forwardRef<
     },
     ref
   ) => {
+    const getSelectedIndex = () => {
+      const listItems = menuRef?.current?.querySelectorAll(".a-list-item");
+
+      if (!listItems?.length) {
+        return undefined;
+      }
+
+      let index = undefined;
+      listItems.forEach((x: HTMLElement, i: number) => {
+        if (x.classList.contains("a-list-item--selected")) {
+          index = i;
+        }
+      });
+
+      return index;
+    };
+
     const getPrevious = useCallback(() => {
       if (!menuRef.current) {
         return;
@@ -144,6 +161,8 @@ const AFloatingMenu = forwardRef<
 
     const attrs: {[key: string]: any} = {};
     attrs["data-ignore-outside-click"] = true;
+
+    const initialFocus = propsInitialFocus || getSelectedIndex();
 
     return (
       <AFloatingMenuContainer
