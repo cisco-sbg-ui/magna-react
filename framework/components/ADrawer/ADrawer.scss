@@ -5,8 +5,8 @@ $transition-timing: ease-in-out;
 $transition-props: $transition-duration $transition-timing;
 
 $drawer-width-default: 400px;
-$drawer-width-lg: 576px;
-$drawer-width-xl: 768px;
+$drawer-width-xl: 576px;
+$drawer-width-xxl: 768px;
 
 //limit transition properties to avoid animating other properties coming form outside
 $common-transitions: transform $transition-props, width $transition-props,
@@ -155,12 +155,12 @@ $common-transitions: transform $transition-props, width $transition-props,
   &--responsive-width {
     width: $drawer-width-default;
 
-    @media screen and (min-width: map-get($grid-breakpoints, "lg")) {
-      width: $drawer-width-lg;
-    }
-
     @media screen and (min-width: map-get($grid-breakpoints, "xl")) {
       width: $drawer-width-xl;
+    }
+
+    @media screen and (min-width: map-get($grid-breakpoints, "xxl")) {
+      width: $drawer-width-xxl;
     }
   }
 }
