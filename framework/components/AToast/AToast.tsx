@@ -69,7 +69,7 @@ const AToast = forwardRef<HTMLDivElement, AToastProps>(
         </div>
         {(dismissible || dismissable) && (
           <AIcon
-            className="a-toast__close focus-box-shadow"
+            className="a-toast__close"
             onClick={(e) => onClose && onClose(e)}
             onKeyDown={dismissibleKeyDownHandler}
             size={16}

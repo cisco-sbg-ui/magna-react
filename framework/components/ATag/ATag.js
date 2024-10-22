@@ -46,7 +46,7 @@ const ATag = forwardRef(
     ref
   ) => {
     const interactable = (href || onClick) && !disabled;
-    let className = "a-tag focus-box-shadow";
+    let className = "a-tag";
 
     if (interactable) {
       className += ` interactable`;

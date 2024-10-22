@@ -32,7 +32,7 @@ const AAlert = forwardRef<HTMLDivElement, AAlertProps>(
 
     const isDismissible = !dismissible || !dismissable ? false : true;
 
-    let className = `a-alert focus-box-shadow a-alert--state-`,
+    let className = `a-alert a-alert--state-`,
       icon = "";
 
     switch (level) {

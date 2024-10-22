@@ -38,7 +38,7 @@ const AButton = forwardRef(
   ) => {
     const {selectedValues, toggleValue} = useContext(AButtonGroupContext);
 
-    let className = "a-button focus-box-shadow a-button--";
+    let className = "a-button a-button--";
 
     if (primary) {
       className += destructive ? "primary-destructive" : "primary";
