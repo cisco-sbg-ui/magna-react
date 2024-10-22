@@ -6,13 +6,17 @@ import AHint from "./AHint";
 const AHintContainer = ({hints: propsHints = [], error, validationState}) => {
   const hints = [];
 
+  if (!propsHints) {
+    return null;
+  }
+
   if (Array.isArray(propsHints)) {
     hints.push(...propsHints);
   } else if (typeof propsHints === "string" || propsHints instanceof String) {
     hints.unshift({
       content: propsHints
     });
-  } else if (typeof propsHints === "object" && !propsHints.content) {
+  } else if (typeof propsHints === "object" && !propsHints?.content) {
     hints.unshift({
       content: propsHints
     });
