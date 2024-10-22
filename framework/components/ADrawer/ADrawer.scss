@@ -148,7 +148,7 @@ $common-transitions: transform $transition-props, width $transition-props,
     top: unset;
   }
 
-  &--auto-width {
+  &--responsive-width {
     width: 400px;
 
     @media screen and (min-width: 1680px) {

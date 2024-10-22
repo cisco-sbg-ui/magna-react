@@ -98,7 +98,7 @@ const ADrawer = forwardRef(
       if (openWidth) {
         style.width = openWidth;
       } else if (responsiveWidth) {
-        className += " a-drawer--auto-width";
+        className += " a-drawer--responsive-width";
       } else if (openHeight) {
         style.height = openHeight;
       }
