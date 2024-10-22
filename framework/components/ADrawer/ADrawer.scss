@@ -4,6 +4,10 @@ $transition-duration: 0.3s;
 $transition-timing: ease-in-out;
 $transition-props: $transition-duration $transition-timing;
 
+$drawer-width-default: 400px;
+$drawer-width-lg: 576px;
+$drawer-width-xl: 768px;
+
 //limit transition properties to avoid animating other properties coming form outside
 $common-transitions: transform $transition-props, width $transition-props,
   height $transition-props, max-width $transition-props,
@@ -58,7 +62,7 @@ $common-transitions: transform $transition-props, width $transition-props,
 
   &--vertical {
     height: 100vh;
-    width: 400px;
+    width: $drawer-width-default;
   }
 
   &--horizontal {
@@ -149,14 +153,14 @@ $common-transitions: transform $transition-props, width $transition-props,
   }
 
   &--responsive-width {
-    width: 400px;
+    width: $drawer-width-default;
 
-    @media screen and (min-width: 1680px) {
-      width: 576px;
+    @media screen and (min-width: map-get($grid-breakpoints, "lg")) {
+      width: $drawer-width-lg;
     }
 
-    @media screen and (min-width: 2080px) {
-      width: 768px;
+    @media screen and (min-width: map-get($grid-breakpoints, "xl")) {
+      width: $drawer-width-xl;
     }
   }
 }
