@@ -158,6 +158,10 @@ svg.a-icon {
     fill: var(--positive-icon-default);
   }
 
+  &--deny {
+    fill: var(--negative-icon-default);
+  }
+
   &--malicious,
   &--suspicious,
   &--unknown,
@@ -224,7 +228,32 @@ svg.a-icon {
   &--type_Systems_Manager,
   &--type_Wireless,
   &--type_Workflow,
-  &--variable {
+  &--variable,
+  &--placeholder,
+  &--play-circle,
+  &--loader,
+  &--wifi-high,
+  &--wifi-low,
+  &--wifi-medium,
+  &--wifi-slash,
+  &--wifi-lightning,
+  &--wifi-x,
+  &--warning-circle,
+  &--rss,
+  &--stack-port,
+  &--magnet,
+  &--passthrough,
+  &--plug-small,
+  &--application,
+  &--camera,
+  &--cellular-gateway,
+  &--generic-client,
+  &--generic-device,
+  &--sensor,
+  &--switch,
+  &--teleworker-gateway,
+  &--wan-application,
+  &--wireless-lan-controller {
     fill: var(--interact-icon-weak-default);
   }
 

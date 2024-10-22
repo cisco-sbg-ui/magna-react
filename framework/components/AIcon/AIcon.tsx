@@ -36,7 +36,23 @@ const ignoreStrokeReplace = [
   "inactive",
   "disabled",
   "in-progress",
-  "allow"
+  "allow",
+  "placeholder",
+  "wifi-lightning",
+  "stack-port",
+  "magnet",
+  "passthrough",
+  "plug-small",
+  "application",
+  "camera",
+  "cellular-gateway",
+  "generic-client",
+  "generic-device",
+  "sensor",
+  "switch",
+  "teleworker-gateway",
+  "wan-application",
+  "wireless-lan-controller"
   // icons that start with "type_"
 ];
 
