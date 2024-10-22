@@ -44,6 +44,14 @@ export type ADrawerProps<C extends React.ElementType> = Override<
        */
       openWidth?: string;
       /**
+       * Automatically adjust the width of the drawer based on the viewport
+       * width, (when not using the slim variant, and a fixed openWidth prop is
+       * not specified).
+       * The Drawer renders with the Magnetic defined widths for the Magnetic
+       * defined breakpoints.
+       */
+      responsiveWidth?: boolean;
+      /**
        * Specifies the positioning strategy of the drawer. A drawer specified with
        * "fixed" is useful when the drawer should take up the entire page and cover
        * adjacent content. A drawer specified with absolute is useful when the drawer

@@ -36,6 +36,7 @@ The drawer can slide-in from the left, right, or bottom of the page.
     const bottomDrawerContentRef = useRef();
     const [isBottomOpen, setIsBottomOpen] = useState(false);
 
+
     return (
       <>
         <p>Left slide-in</p>
@@ -175,6 +176,51 @@ The drawer can slide-in from the left, right, or bottom of the page.
           </ADrawerHeader>
           <ADrawerBody>
              This drawer has a custom width of 800px set.
+            </ADrawerBody>
+          <ADrawerFooter>
+            <AButton onClick={() => setIsRightOpen(false)} data-test-drawer-close-right>Close</AButton>
+          </ADrawerFooter>
+        </ADrawer>
+      </>
+    )
+
+}`}
+/>
+
+#### Responsive Width
+
+<Playground
+  code={`() => {
+
+    const rightDrawerContentRef = useRef();
+    const [isRightOpen, setIsRightOpen] = useState(false);
+
+    return (
+      <>
+        <p>Right slide-in</p>
+        <AButton onClick={() => setIsRightOpen(true)} data-test-drawer-trigger-right>Open Right</AButton>
+        <ADrawer
+            responsiveWidth={true}
+            aria-labelledby='right-drawer-title'
+            slideIn='right'
+            ref={rightDrawerContentRef}
+            isOpen={isRightOpen}
+            onClose={() => setIsRightOpen(false)}
+            data-test-drawer-right>
+           <ADrawerHeader>
+          <ADrawerTitle>
+            <h1 id='left-drawer-title'>Responsive Width Drawer</h1>
+          </ADrawerTitle>
+          </ADrawerHeader>
+          <ADrawerBody>
+            <p>
+              This Drawers width is set automatically to align with Magnetic breakpoints.
+            </p>
+            <ul>
+              <li>Drawer has width of 400px by default at Small and Medium breakpoints</li>
+              <li>Drawer has width of 576px at XLarge breakpoint (>1680px)</li>
+              <li>Drawer has width of 768px at XXLarge breakpoint (>2080px)</li>
+            </ul>
             </ADrawerBody>
           <ADrawerFooter>
             <AButton onClick={() => setIsRightOpen(false)} data-test-drawer-close-right>Close</AButton>
@@ -658,20 +704,20 @@ This hook can be used in cases there isn't a global drawer controller.
 
 <Playground
   code={`() => {
-    
+
     const list = {
       a: {
-        title: "Merlin's Crystal", 
-        subtitle: "Short", 
+        title: "Merlin's Crystal",
+        subtitle: "Short",
         body: "The wizard Merlin has been trapped in a magical crystal by the witch Morgan Le Faye. So far, King Arthur hasn't been able to figure out how to free his mentor from his crystal prison. Can you help?"
-      }, 
+      },
       b: {
-        title: "Gertrude's Cat", 
-        subtitle: "Very Short", 
+        title: "Gertrude's Cat",
+        subtitle: "Very Short",
         body: "Gertrude has lost her cat Fluffs and desperately wants to find her. Can you help bring her home?"
       }
     }
-   
+
     const drawerRef = useRef();
     const {setDrawerOpen, isDrawerOpen} = useDrawerToggle(drawerRef);
     const [contentId, setContentId] = useState();

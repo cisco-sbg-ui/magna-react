@@ -19,6 +19,7 @@ const ADrawer = forwardRef(
       children,
       openHeight,
       openWidth,
+      responsiveWidth,
       isOpen,
       onClose,
       closeOnOutsideClick,
@@ -93,11 +94,16 @@ const ADrawer = forwardRef(
       }
     }
 
-    if (isOpen && !slim && openWidth) {
-      style.width = openWidth;
-    } else if (isOpen && !slim && openHeight) {
-      style.height = openHeight;
+    if (isOpen && !slim) {
+      if (openWidth) {
+        style.width = openWidth;
+      } else if (responsiveWidth) {
+        className += " a-drawer--responsive-width";
+      } else if (openHeight) {
+        style.height = openHeight;
+      }
     }
+
     if (propsClassName) {
       className += ` ${propsClassName}`;
     }
@@ -211,6 +217,15 @@ ADrawer.propTypes = {
    * to 400px.
    */
   openWidth: PropTypes.string,
+
+  /**
+   * Automatically adjust the width of the drawer based on the viewport
+   * width, (when not using the slim variant, and a fixed openWidth prop is
+   * not specified).
+   * The Drawer renders with the Magnetic defined widths for the Magnetic
+   * defined breakpoints.
+   */
+  responsiveWidth: PropTypes.bool,
 
   /**
    * Specifies the positioning strategy of the drawer. A drawer specified with
