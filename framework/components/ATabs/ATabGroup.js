@@ -77,6 +77,7 @@ const ATabGroup = forwardRef(
   ) => {
     const [selectedTab, _setSelectedTab] = useState(false);
     const [focusedTab, setFocusedTab] = useState(null); // for keyboard support
+    const focusedTabRef = useRef({current: null});
     const [menuItems, setMenuItems] = useState([]);
     const tabGroupRef = useRef(null);
     const tabContainerRef = useRef(null);
@@ -87,9 +88,11 @@ const ATabGroup = forwardRef(
     const setSelectedTab = useCallback(
       (tabId) => {
         _setSelectedTab(tabId);
+
+        focusedTabRef.current = tabId;
         setFocusedTab(tabId);
       },
-      [_setSelectedTab, setFocusedTab]
+      [_setSelectedTab, setFocusedTab, focusedTabRef]
     );
 
     const handleOverflow = useCallback(() => {
@@ -251,7 +254,7 @@ const ATabGroup = forwardRef(
           e.stopPropagation();
 
           const focusedEl = tabContainerRef.current?.querySelector(
-            `[data-tabid='${focusedTab}']`
+            `[data-tabid='${focusedEl || focusedTabRef.current}']`
           );
 
           if (["ArrowLeft", "ArrowRight"].includes(e.key)) {
