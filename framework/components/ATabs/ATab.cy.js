@@ -44,12 +44,14 @@ describe("<ATabGroup />", () => {
     cy.get(".a-tab-group__tab")
       .should("have.class", "a-tab-group__tab--selected")
       .contains("Three");
-    //Focus into tab group, by tabbing in.
-    cy.get(".a-tab-group")
-      .tab()
-      .focused()
-      .type("{leftArrow}")
-      .type("{leftArrow}") //In firefox, Cypress selector is no active until we type another leftArrow
+
+    //Focus into tab group
+    cy.get(".a-tab-group").focus();
+
+    cy.get(".a-tab-group").type("{leftArrow}");
+
+    cy.get(".a-tab-group__tab")
+      .should("have.class", "a-tab-group__tab--selected")
       .prev()
       .should("have.class", "a-tab-group__tab--focused");
 
@@ -145,7 +147,6 @@ const ATabTest = ({width = "30rem", vertical = false, secondary = false}) => {
           </ATab>
         ))}
       </ATabGroup>
-      ;
     </div>
   );
 };
