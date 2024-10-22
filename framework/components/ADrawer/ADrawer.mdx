@@ -36,8 +36,6 @@ The drawer can slide-in from the left, right, or bottom of the page.
     const bottomDrawerContentRef = useRef();
     const [isBottomOpen, setIsBottomOpen] = useState(false);
 
-    const autoWidthDrawerContentRef = useRef();
-    const [isAutoWidthOpen, setIsAutoWidthOpen] = useState(false);
 
     return (
       <>
@@ -109,30 +107,6 @@ The drawer can slide-in from the left, right, or bottom of the page.
             <AButton onClick={() => setIsBottomOpen(false)} data-test-drawer-close-bottom>Close</AButton>
           </ADrawerFooter>
         </ADrawer>
-
-        <p>Auto Width Drawer</p>
-        <AButton onClick={() => setIsAutoWidthOpen(true)} data-test-drawer-trigger-bottom>Open Auto-width</AButton>
-        <ADrawer
-            aria-labelledby='bottom-drawer-title'
-            autoWidth={true}
-            slideIn='right'
-            ref={autoWidthDrawerContentRef}
-            isOpen={isAutoWidthOpen}
-            onClose={() => setIsAutoWidthOpen(false)}
-            data-test-drawer-auto-width>
-          <ADrawerHeader>
-          <ADrawerTitle>
-            <h1 id='left-drawer-title'>Auto Width Drawer</h1>
-          </ADrawerTitle>
-          <ADrawerSubtitle>Old School RuneScape is an MMORPG with adventure elements.</ADrawerSubtitle>
-          </ADrawerHeader>
-          <ADrawerBody>
-             It features a persistent world in which players can interact with each other and the environment. The basic mechanics are largely the same as RuneScape on 10 August 2007.
-            </ADrawerBody>
-          <ADrawerFooter>
-            <AButton onClick={() => setIsAutoWidthOpen(false)} data-test-drawer-close-bottom>Close</AButton>
-          </ADrawerFooter>
-        </ADrawer>
       </>
     )
 
@@ -202,6 +176,51 @@ The drawer can slide-in from the left, right, or bottom of the page.
           </ADrawerHeader>
           <ADrawerBody>
              This drawer has a custom width of 800px set.
+            </ADrawerBody>
+          <ADrawerFooter>
+            <AButton onClick={() => setIsRightOpen(false)} data-test-drawer-close-right>Close</AButton>
+          </ADrawerFooter>
+        </ADrawer>
+      </>
+    )
+
+}`}
+/>
+
+#### Responsive Width
+
+<Playground
+  code={`() => {
+
+    const rightDrawerContentRef = useRef();
+    const [isRightOpen, setIsRightOpen] = useState(false);
+
+    return (
+      <>
+        <p>Right slide-in</p>
+        <AButton onClick={() => setIsRightOpen(true)} data-test-drawer-trigger-right>Open Right</AButton>
+        <ADrawer
+            responsiveWidth={true}
+            aria-labelledby='right-drawer-title'
+            slideIn='right'
+            ref={rightDrawerContentRef}
+            isOpen={isRightOpen}
+            onClose={() => setIsRightOpen(false)}
+            data-test-drawer-right>
+           <ADrawerHeader>
+          <ADrawerTitle>
+            <h1 id='left-drawer-title'>Responsive Width Drawer</h1>
+          </ADrawerTitle>
+          </ADrawerHeader>
+          <ADrawerBody>
+            <p>
+              This Drawers width is set automatically to align with Magnetic breakpoints.
+            </p>
+            <ul>
+              <li>Drawer has width of 400px by default at Small and Medium breakpoints</li>
+              <li>Drawer has width of 576px at Large breakpoint (>1680px)</li>
+              <li>Drawer has width of 768px at XLarge breakpoint (>2080px)</li>
+            </ul>
             </ADrawerBody>
           <ADrawerFooter>
             <AButton onClick={() => setIsRightOpen(false)} data-test-drawer-close-right>Close</AButton>
