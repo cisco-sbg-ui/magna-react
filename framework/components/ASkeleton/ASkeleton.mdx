@@ -25,7 +25,7 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
     </ASkeleton>`}
 />
 
-#### Not animated
+#### Not Animated
 
 <Playground
   code={`<ASkeleton header animated={false}>
@@ -49,6 +49,18 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
         <ASkeletonText />
       </ASkeleton>
     </ASkeleton>`}
+/>
+
+#### No Wrapping Container
+
+<Playground
+  code={`<>
+      <ASkeletonHeader />
+      <ASkeletonText animated />
+      <ASkeletonBlock animated />
+      <ASkeletonBlock animated />
+      <ASkeletonBlock height={200} />
+    </>`}
 />
 
 #### Without Panel backdrop

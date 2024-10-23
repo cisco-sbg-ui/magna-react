@@ -37,9 +37,25 @@ export type ASkeletonBlockProps = Override<
      * Set a custom height in px
      */
     height?: number;
+    /**
+     * Show a shine keyframe animation to indicate loading
+     *
+     * @defaultValue `true`
+     */
+    animated?: boolean;
   }
 >;
 
 export type ASkeletonHeaderProps = React.ComponentPropsWithRef<"div">;
 
-export type ASkeletonTextProps = React.ComponentPropsWithRef<"div">;
+export type ASkeletonTextProps = Override<
+  React.ComponentPropsWithRef<"div">,
+  {
+    /**
+     * Show a shine keyframe animation to indicate loading
+     *
+     * @defaultValue `true`
+     */
+    animated?: boolean;
+  }
+>;

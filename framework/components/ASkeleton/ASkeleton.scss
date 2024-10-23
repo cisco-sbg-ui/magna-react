@@ -5,31 +5,8 @@
   flex-direction: column;
   padding: 15px;
 
-  &__header {
-    background-color: var(--base-border-medium-default);
-  }
-
-  &__block,
-  &__text {
-    background-color: var(--base-bg-default);
-  }
-
-  &__header,
-  &__block,
-  &__text {
-    margin: 3px;
-    border-radius: 8px;
-  }
-
-  &__header {
-    height: 18px;
-    width: 40%;
-    margin: 3px 3px 10px 3px;
-  }
-
   &__block {
     flex: 1 1 auto;
-    min-height: 60px;
   }
 
   &__text {
@@ -63,28 +40,56 @@
       }
     }
   }
+}
 
-  &--animated {
-    .a-skeleton__block,
-    .a-skeleton__text {
-      animation: 8s a-skeleton-shine linear infinite;
-      //These animation colors don't look great in dark mode), but it's what CDS uses
-      background: linear-gradient(
-        90deg,
-        var(--base-bg-default) 0%,
-        var(--base-border-medium-default) 40%,
-        var(--base-bg-default) 90%
-      );
-      background-size: 400% 100%;
-    }
+.a-skeleton__header {
+  background-color: var(--base-border-medium-default);
+  border-radius: 8px;
+  height: 18px;
+  width: 40%;
+  margin: 3px 3px 10px 3px;
+}
+
+.a-skeleton__block,
+.a-skeleton__text {
+  background-color: var(--base-bg-default);
+  margin: 3px;
+  border-radius: 8px;
+}
+
+.a-skeleton__block {
+  min-height: 60px;
+}
+
+@mixin skeleton-animation {
+  animation: 8s a-skeleton-shine linear infinite;
+  //These animation colors don't look great in dark mode), but it's what CDS uses
+  background: linear-gradient(
+    90deg,
+    var(--base-bg-default) 0%,
+    var(--base-border-medium-default) 40%,
+    var(--base-bg-default) 90%
+  );
+  background-size: 400% 100%;
+}
+
+.a-skeleton--animated.a-skeleton__block,
+.a-skeleton--animated.a-skeleton__text {
+  @include skeleton-animation;
+}
+
+.a-skeleton--animated {
+  .a-skeleton__block,
+  .a-skeleton__text {
+    @include skeleton-animation;
   }
+}
 
-  @keyframes a-skeleton-shine {
-    from {
-      background-position-x: 200%;
-    }
-    to {
-      background-position-x: -200%;
-    }
+@keyframes a-skeleton-shine {
+  from {
+    background-position-x: 200%;
+  }
+  to {
+    background-position-x: -200%;
   }
 }
