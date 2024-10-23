@@ -48,7 +48,7 @@ const ATag = forwardRef<HTMLElement, ATagProps<React.ElementType>>(
     ref
   ) => {
     const interactable = (href || onClick) && !disabled;
-    let className = "a-tag focus-box-shadow";
+    let className = "a-tag";
 
     if (interactable) {
       className += ` interactable`;
