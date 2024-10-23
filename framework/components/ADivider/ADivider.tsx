@@ -1,14 +1,15 @@
-import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
+import type {ADividerProps} from "./types";
 
 import "./ADivider.scss";
 
-const ADivider = forwardRef(
+const ADivider = forwardRef<HTMLHRElement, ADividerProps>(
   (
     {
       className: propsClassName,
       light = false,
       strong = false,
+      vertical = false,
       role = "separator",
       ...rest
     },
@@ -24,6 +25,10 @@ const ADivider = forwardRef(
       className += " a-divider--strong";
     }
 
+    if (vertical) {
+      className += " a-divider--vertical";
+    }
+
     if (propsClassName) {
       className += ` ${propsClassName}`;
     }
@@ -31,25 +36,6 @@ const ADivider = forwardRef(
     return <hr {...rest} role={role} ref={ref} className={className} />;
   }
 );
-
-ADivider.defaultProps = {
-  role: "separator"
-};
-
-ADivider.propTypes = {
-  /**
-   * Toggles the light variant (1px vs 2px).
-   */
-  light: PropTypes.bool,
-  /**
-   * Toggles the strong variant.
-   */
-  strong: PropTypes.bool,
-  /**
-   * Sets the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role.
-   */
-  role: PropTypes.oneOf(["separator", "presentation"])
-};
 
 ADivider.displayName = "ADivider";
 
