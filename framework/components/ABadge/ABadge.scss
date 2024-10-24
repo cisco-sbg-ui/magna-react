@@ -54,6 +54,10 @@
     }
   }
 
+  &__badge--notify {
+    background-color: var(--negative-border-default);
+  }
+
   &__badge--counter {
     background-color: var(--control-bg-medium-disabled);
     color: var(--base-text-default);
@@ -85,18 +89,5 @@
         stroke-width: 2;
       }
     }
-  }
-
-  //Level (deprecated)
-  &__badge--error {
-    background-color: var(--negative-border-default);
-  }
-
-  &__badge--info {
-    background-color: var(--info-border-default);
-  }
-
-  &__badge--success {
-    background-color: var(--positive-border-default);
   }
 }
