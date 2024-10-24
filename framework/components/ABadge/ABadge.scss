@@ -6,62 +6,88 @@
   position: relative;
 
   &__wrapper {
-    flex: 0 1;
-    height: 100%;
-    left: 0;
-    pointer-events: none;
-    position: absolute;
-    top: 0;
-    width: 100%;
+    position: relative;
+    width: calc(
+      100% + 33px
+    ); //Specific value in this wrapper centers the badge accurately according to its own width.
   }
 
   &__badge {
-    border-color: var(--base-bg-weak-default);
-    border-radius: 9px;
-    color: white;
-    display: inline-flex;
-    font-size: 12px;
-    min-height: 18px;
-    letter-spacing: 0;
-    line-height: 0;
-    min-width: 18px;
-    padding: 4px;
     position: absolute;
-    text-align: center;
-    white-space: nowrap;
-    border-width: thin;
-    border-style: solid;
-    bottom: calc(100% - 9px);
-    left: calc(100% - 9px);
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
+    white-space: nowrap;
+    left: 0;
+    right: 0;
+    width: fit-content;
+    margin-right: auto;
+    margin-left: auto;
+    outline: 2px solid var(--base-border-weak-default);
+    color: var(--negative-text-in-default);
+    font-weight: 600;
 
     &--small {
-      font-size: 9px;
-      min-width: 14px;
-      min-height: 14px;
-      border-radius: 7px;
-      bottom: calc(100% - 7px);
-      left: calc(100% - 7px);
+      font-size: 12px;
+      max-width: 40px;
+      height: 20px;
+      padding: 1px 8px;
+      border-radius: 10px;
+      bottom: calc(100% - 11px);
+    }
+
+    &--medium {
+      font-size: 14px;
+      max-width: 48px;
+      height: 26px;
+      padding: 3px 10px;
+      border-radius: 12px;
+      bottom: calc(100% - 13px);
     }
 
     &--large {
       font-size: 14px;
-      min-width: 24px;
-      min-height: 24px;
-      border-radius: 12px;
-      bottom: calc(100% - 12px);
-      left: calc(100% - 12px);
-    }
-
-    &--no-content {
-      min-height: 0;
-      min-width: 0;
-      bottom: calc(100% - 5px);
-      left: calc(100% - 5px);
+      max-width: 52px;
+      height: 30px;
+      padding: 5px 12px;
+      border-radius: 15px;
+      bottom: calc(100% - 15px);
     }
   }
 
+  &__badge--counter {
+    background-color: var(--control-bg-medium-disabled);
+    color: var(--base-text-default);
+  }
+
+  &__badge--dot {
+    height: 10px;
+    width: 10px;
+    padding: 0;
+    bottom: calc(100% - 7px);
+    left: calc(100% - 6px);
+    left: 0;
+    right: 0;
+  }
+
+  //Alert badges
+  span[class*="a-badge__badge--alert-"] {
+    outline: none;
+    svg:not(.a-icon--positive) {
+      path:nth-of-type(1) {
+        border: 2px solid var(--base-border-weak-default);
+        stroke: var(--base-border-weak-default);
+        stroke-width: 2;
+      }
+    }
+    .a-icon--positive {
+      circle {
+        stroke: var(--base-border-weak-default);
+        stroke-width: 2;
+      }
+    }
+  }
+
+  //Level (deprecated)
   &__badge--error {
     background-color: var(--negative-border-default);
   }
@@ -72,12 +98,5 @@
 
   &__badge--success {
     background-color: var(--positive-border-default);
-  }
-
-  .a-button {
-    height: unset;
-    .a-icon {
-      height: unset !important;
-    }
   }
 }

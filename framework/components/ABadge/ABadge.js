@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
 import {isStockColor, isValidColor} from "../../utils/helpers";
+import AIcon from "../AIcon";
 import "./ABadge.scss";
 
 const ABadge = forwardRef(
@@ -14,7 +15,11 @@ const ABadge = forwardRef(
       display = true,
       label = "badge",
       small,
+      medium = true,
       large,
+      alertType,
+      dot,
+      counter,
       level = "error",
       ...rest
     },
@@ -34,7 +39,11 @@ const ABadge = forwardRef(
       className: "a-badge__badge"
     };
 
-    if (level) {
+    if (counter) {
+      badgeProps.className += ` a-badge__badge--counter`;
+    } else if (alertType) {
+      badgeProps.className += ` a-badge__badge--alert-${alertType}`;
+    } else if (level) {
       badgeProps.className += ` a-badge__badge--${level}`;
     } else if (color) {
       if (isStockColor(color)) {
@@ -46,24 +55,35 @@ const ABadge = forwardRef(
       }
     }
 
-    if (!content) {
-      badgeProps.className += " a-badge__badge--no-content";
+    if (dot) {
+      badgeProps.className += " a-badge__badge--dot";
     }
 
     if (small) {
       badgeProps.className += " a-badge__badge--small";
     } else if (large) {
       badgeProps.className += " a-badge__badge--large";
+    } else if (medium) {
+      badgeProps.className += " a-badge__badge--medium";
     }
 
+    const badgeContent =
+      display && alertType ? (
+        <>
+          <AIcon>{alertType}</AIcon>
+          {content}
+        </>
+      ) : (
+        content
+      );
     return (
       <div {...rest} ref={ref} className={className}>
-        {children}
         {display && (
-          <span className="a-badge__wrapper">
-            <span {...badgeProps}>{content}</span>
-          </span>
+          <div className="a-badge__wrapper">
+            <span {...badgeProps}>{badgeContent}</span>
+          </div>
         )}
+        {children}
       </div>
     );
   }
@@ -89,7 +109,10 @@ ABadge.propTypes = {
   /**
    * Set the severity level, ignores the color prop
    */
-  level: PropTypes.oneOf(["error, info, success"])
+  level: PropTypes.oneOf(["error, info, success"]),
+  medium: PropTypes.bool,
+  dot: PropTypes.bool,
+  alertType: "string"
 };
 
 ABadge.displayName = "ABadge";

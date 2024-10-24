@@ -33,7 +33,26 @@ export type ABadgeProps = Override<
      * @defaultValue `"error"`
      */
     level?: ABadgeLevel;
+    /**
+     * Size of the badge.
+     *
+     * @defaultValue `medium`
+     */
     small?: boolean;
+    /**
+     * Size of the badge.
+     *
+     * @defaultValue `medium`
+     */
+    medium?: boolean;
+    /**
+     * Size of the badge.
+     *
+     * @defaultValue `medium`
+     */
     large?: boolean;
+    dot?: boolean;
+    counter?: boolean;
+    alertIcon?: string;
   }
 >;
