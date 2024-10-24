@@ -1,16 +1,10 @@
 import {Override} from "../../types";
 
-export type ABadgeLevel = "error" | "info" | "success";
+export type ABadgeAlert = "info" | "warning" | "negative" | "positive";
 
 export type ABadgeProps = Override<
   React.ComponentPropsWithRef<"div">,
   {
-    /**
-     * Specify the checkbox color. Accepts unknown stock color or CSS color value.
-     *
-     * TODO type this is incorrect and instead uses a custom runtime validation function. We need to figure this one out.
-     */
-    color?: string;
     /**
      * The badge content.
      */
@@ -28,12 +22,50 @@ export type ABadgeProps = Override<
      */
     label?: string;
     /**
-     * Set the severity level, ignores the color prop
+     * Size of the badge.
      *
-     * @defaultValue `"error"`
+     * @defaultValue `medium`
      */
-    level?: ABadgeLevel;
     small?: boolean;
+    /**
+     * Size of the badge.
+     *
+     * @defaultValue `medium`
+     */
+    medium?: boolean;
+    /**
+     * Size of the badge.
+     *
+     * @defaultValue `medium`
+     */
     large?: boolean;
+    /**
+     * Sets the badge to notify style.
+     *
+     * @defaultValue `true`
+     */
+    notify?: boolean;
+
+    /**
+     * Sets the badge to counter style. Default is notify style.
+     *
+     * @defaultValue `false`
+     */
+    counter?: boolean;
+    /**
+     * Sets the badge to dot style. Default is notify style.
+     *
+     * @defaultValue `false`
+     */
+    dot?: boolean;
+    alertType?: ABadgeAlert;
   }
 >;
+
+export declare type TBadgeSpanProps = {
+  ["aria-atomic"]: boolean;
+  ["aria-label"]: string;
+  ["aria-live"]: "polite" | "assertive" | "off";
+  className: string;
+  role: string;
+};

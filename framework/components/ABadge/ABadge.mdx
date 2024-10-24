@@ -14,88 +14,181 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
 
 ### Usage
 
-<Playground
-  code={`<>
-  <div>
-    <ABadge color="cisco-blue" content="3" large className="mr-4">
-      <AButton tertiaryAlt icon className="pa-1" onClick={() => {}}>
-        <AIcon size={48}>bell</AIcon>
-      </AButton>
-    </ABadge>
-    <ABadge color="status-red" content="99+" large>
-      <AButton tertiaryAlt icon className="pa-1" onClick={() => {}}>
-        <AIcon size={48}>bell</AIcon>
-      </AButton>
-    </ABadge>
-  </div>
-  <div className="mt-4">
-    <ABadge color="cisco-blue" content="3" className="mr-4">
-      <AButton secondary icon className="pa-1" onClick={() => {}}>
-        <AIcon size={24}>bell</AIcon>
-      </AButton>
-    </ABadge>
-    <ABadge color="status-red" content="99+">
-      <AButton secondary icon className="pa-1" onClick={() => {}}>
-        <AIcon size={24}>bell</AIcon>
-      </AButton>
-    </ABadge>
-  </div>
-  <div className="mt-4">
-    <ABadge color="cisco-blue" content="3" small className="mr-4">
-      <AButton primary icon className="pa-1" onClick={() => {}}>
-        <AIcon size={16}>bell</AIcon>
-      </AButton>
-    </ABadge>
-    <ABadge color="status-red" content="99+">
-      <AButton primary icon className="pa-1" onClick={() => {}}>
-        <AIcon size={16}>bell</AIcon>
-      </AButton>
-    </ABadge>
-  </div>
-  <div className="mt-4">
-      <ABadge color="cisco-blue" content="3" small className="mr-4">
-        <AButton tertiary icon className="pa-1" onClick={() => {}}>
-          <AIcon size={16}>bell</AIcon>
-        </AButton>
-      </ABadge>
-      <ABadge color="status-red" content="99+">
-        <AButton tertiary icon className="pa-1" onClick={() => {}}>
-          <AIcon size={16}>bell</AIcon>
-        </AButton>
-      </ABadge>
-    </div>
-    <div className="mt-4">
-      <ABadge color="cisco-blue" content="3" small className="mr-4">
-        <AButton tertiaryAlt icon className="pa-1" onClick={() => {}}>
-          <AIcon size={16}>bell</AIcon>
-        </AButton>
-      </ABadge>
-      <ABadge color="status-red" content="99+">
-        <AButton tertiaryAlt icon className="pa-1" onClick={() => {}}>
-          <AIcon size={16}>bell</AIcon>
-        </AButton>
-      </ABadge>
-    </div>
-    <div>Using "level" prop for themed colors</div>
-    <div className="mt-4">
-      <ABadge level="error" content="99+" large className="mr-4">
-        <AButton tertiaryAlt icon className="pa-1" onClick={() => {}}>
-          <AIcon size={16}>bell</AIcon>
-        </AButton>
-      </ABadge>
-      <ABadge level="info" content="99+" large className="mr-4">
-        <AButton tertiaryAlt icon className="pa-1" onClick={() => {}}>
-          <AIcon size={16}>bell</AIcon>
-        </AButton>
-      </ABadge>
-      <ABadge level="success" content="99+" large className="mr-4">
-        <AButton tertiaryAlt icon className="pa-1" onClick={() => {}}>
-          <AIcon size={16}>bell</AIcon>
-        </AButton>
-      </ABadge>
-    </div>
+#### Dot
 
-</>
+<Playground
+  code={`<div className="d-flex flex-column gap-10">
+    <div className="d-flex gap-10">
+      <ABadge dot small >
+        <AButton tertiaryAlt icon onClick={() => {}}>
+          <AIcon size={32}>bell</AIcon>
+        </AButton>
+      </ABadge>
+      <ABadge dot>
+        <AButton tertiaryAlt icon onClick={() => {}}>
+          <AIcon size={32}>bell</AIcon>
+        </AButton>
+      </ABadge>
+      <ABadge dot large>
+        <AButton tertiaryAlt icon onClick={() => {}}>
+          <AIcon size={32}>bell</AIcon>
+        </AButton>
+      </ABadge>
+    </div>
+    <div className="d-flex gap-10">
+      <ABadge dot small>
+        <AButton secondary icon onClick={() => {}}>
+          <AIcon>bell</AIcon>
+        </AButton>
+      </ABadge>
+      <ABadge dot>
+        <AButton secondary icon Click={() => {}}>
+          <AIcon>bell</AIcon>
+        </AButton>
+      </ABadge>
+        <ABadge dot large>
+        <AButton secondary icon onClick={() => {}}>
+          <AIcon>bell</AIcon>
+        </AButton>
+      </ABadge>
+    </div>
+  </div>
+`}
+/>
+
+#### Notifier
+
+<Playground
+  code={`<div className="d-flex flex-column gap-10">
+    <div className="d-flex gap-10">
+      <ABadge content="99+" small >
+        <AButton tertiaryAlt icon onClick={() => {}}>
+          <AIcon size={32}>bell</AIcon>
+        </AButton>
+      </ABadge>
+      <ABadge content="99+">
+        <AButton tertiaryAlt icon onClick={() => {}}>
+          <AIcon size={32}>bell</AIcon>
+        </AButton>
+      </ABadge>
+      <ABadge content="99+" large>
+        <AButton tertiaryAlt icon onClick={() => {}}>
+          <AIcon size={32}>bell</AIcon>
+        </AButton>
+      </ABadge>
+    </div>
+    <div className="d-flex gap-10">
+      <ABadge content="99+" small>
+        <AButton secondary icon onClick={() => {}}>
+          <AIcon>bell</AIcon>
+        </AButton>
+      </ABadge>
+      <ABadge content="99+">
+        <AButton secondary icon Click={() => {}}>
+          <AIcon>bell</AIcon>
+        </AButton>
+      </ABadge>
+        <ABadge content="99+" large>
+        <AButton secondary icon onClick={() => {}}>
+          <AIcon>bell</AIcon>
+        </AButton>
+      </ABadge>
+    </div>
+  </div>
+`}
+/>
+
+#### Counter
+
+<Playground
+  code={`<div className="d-flex flex-column gap-10">
+    <div className="d-flex gap-10">
+      <ABadge counter content="5" small >
+        <AButton tertiaryAlt icon onClick={() => {}}>
+          <AIcon size={32}>bell</AIcon>
+        </AButton>
+      </ABadge>
+      <ABadge counter content="5">
+        <AButton tertiaryAlt icon onClick={() => {}}>
+          <AIcon size={32}>bell</AIcon>
+        </AButton>
+      </ABadge>
+      <ABadge counter content="5" large>
+        <AButton tertiaryAlt icon onClick={() => {}}>
+          <AIcon size={32}>bell</AIcon>
+        </AButton>
+      </ABadge>
+    </div>
+    <div className="d-flex gap-10">
+      <ABadge counter content="5" small>
+        <AButton secondary icon onClick={() => {}}>
+          <AIcon>bell</AIcon>
+        </AButton>
+      </ABadge>
+      <ABadge counter content="5">
+        <AButton secondary icon Click={() => {}}>
+          <AIcon>bell</AIcon>
+        </AButton>
+      </ABadge>
+        <ABadge counter content="5" large>
+        <AButton secondary icon onClick={() => {}}>
+          <AIcon>bell</AIcon>
+        </AButton>
+      </ABadge>
+    </div>
+  </div>
+`}
+/>
+
+#### Alert
+
+<Playground
+  code={`<div className="d-flex flex-column gap-10">
+    <div className="d-flex gap-10">
+      <ABadge alertType="positive">
+        <AButton tertiaryAlt icon onClick={() => {}}>
+          <AIcon size={32}>bell</AIcon>
+        </AButton>
+      </ABadge>
+      <ABadge alertType="warning">
+        <AButton tertiaryAlt icon onClick={() => {}}>
+          <AIcon size={32}>bell</AIcon>
+        </AButton>
+      </ABadge>
+      <ABadge alertType="negative">
+        <AButton tertiaryAlt icon onClick={() => {}}>
+          <AIcon size={32}>bell</AIcon>
+        </AButton>
+      </ABadge>
+           <ABadge alertType="info">
+        <AButton tertiaryAlt icon onClick={() => {}}>
+          <AIcon size={32}>bell</AIcon>
+        </AButton>
+      </ABadge>
+    </div>
+     <div className="d-flex gap-10">
+      <ABadge alertType="positive">
+        <AButton secondary icon onClick={() => {}}>
+          <AIcon>bell</AIcon>
+        </AButton>
+      </ABadge>
+      <ABadge alertType="warning">
+        <AButton secondary icon Click={() => {}}>
+          <AIcon>bell</AIcon>
+        </AButton>
+      </ABadge>
+        <ABadge alertType="negative">
+        <AButton secondary icon onClick={() => {}}>
+          <AIcon>bell</AIcon>
+        </AButton>
+      </ABadge>
+      <ABadge alertType="info">
+        <AButton secondary icon onClick={() => {}}>
+          <AIcon>bell</AIcon>
+        </AButton>
+      </ABadge>
+    </div>
+  </div>
 `}
 />
 
