@@ -7,6 +7,11 @@
   margin: 20px 0;
   border-color: var(--base-border-default);
 
+  &--vertical {
+    border-width: thin;
+    margin: 20px;
+  }
+
   &--strong {
     border-color: var(--base-border-strong-default);
   }
