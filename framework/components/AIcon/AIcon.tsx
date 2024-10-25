@@ -36,13 +36,38 @@ const ignoreStrokeReplace = [
   "inactive",
   "disabled",
   "in-progress",
-  "allow"
+  "allow",
+  "placeholder",
+  "wifi-lightning",
+  "stack-port",
+  "magnet",
+  "passthrough",
+  "plug-small",
+  "application",
+  "camera",
+  "cellular-gateway",
+  "generic-client",
+  "generic-device",
+  "sensor",
+  "switch",
+  "teleworker-gateway",
+  "wan-application",
+  "wireless-lan-controller"
   // icons that start with "type_"
 ];
 
 const AIcon = forwardRef<SVGSVGElement, AIconProps>(
   (
-    {children, className: propsClassName, label, left, right, size, ...rest},
+    {
+      children,
+      className: propsClassName,
+      label,
+      left,
+      right,
+      withBg,
+      size,
+      ...rest
+    },
     ref
   ) => {
     let className = `a-icon`;
@@ -57,6 +82,9 @@ const AIcon = forwardRef<SVGSVGElement, AIconProps>(
 
     if (right) {
       className += ` a-icon--right`;
+    }
+    if (withBg) {
+      className += ` a-icon--bg`;
     }
 
     if (propsClassName) {

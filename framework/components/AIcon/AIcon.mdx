@@ -14,14 +14,61 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
 
 ### Usage
 
+#### Sizing
+
 <Playground
   code={`<>
-  <AIcon>warning</AIcon>
+  <AIcon size={16}>
+    warning
+  </AIcon>
   <AIcon size={32}>
     bell
   </AIcon>
-  <AIcon size="large">plus</AIcon>
+  <AIcon>
+    plus
+  </AIcon>
+  <AIcon size={16}>
+    allow
+  </AIcon>
 </>
+`}
+/>
+
+#### Status with background
+
+<Playground
+  code={`<div className="d-flex gap-3">
+  <AIcon withBg>
+    excellent
+  </AIcon>
+  <AIcon withBg>
+    positive
+  </AIcon>
+  <AIcon withBg>
+    low-warning
+  </AIcon>
+  <AIcon withBg>
+    warning
+  </AIcon>
+  <AIcon withBg>
+    severe-warning
+  </AIcon>
+  <AIcon withBg>
+    negative
+  </AIcon>
+  <AIcon withBg>
+    inactive
+  </AIcon>
+  <AIcon withBg>
+    info
+  </AIcon>
+  <AIcon withBg>
+    disabled
+  </AIcon>
+  <AIcon withBg>
+    in-progress
+  </AIcon>
+</div>
 `}
 />
 

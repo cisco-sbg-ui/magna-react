@@ -1,9 +1,5 @@
 @import "../../styles";
 
-$icon-size-large: rem(3);
-$icon-size-medium: $font-size--xl;
-$icon-size-small: $font-size;
-
 svg.a-icon {
   box-sizing: content-box;
 }
@@ -19,24 +15,18 @@ svg.a-icon {
     fill: var(--base-icon-in-default);
   }
 
-  &--size-large {
-    width: $icon-size-large;
-  }
-
-  &--size-medium {
-    width: $icon-size-medium;
-  }
-
-  &--size-small {
-    width: $icon-size-small;
-  }
-
   &--left {
     margin-right: 4px;
   }
 
   &--right {
     margin-left: 4px;
+  }
+
+  &.a-icon--bg {
+    padding: 4px;
+    border-radius: 4px;
+    width: 20px;
   }
 
   // Unset stroke on complex icons
@@ -78,11 +68,17 @@ svg.a-icon {
     path {
       fill: var(--excellent-icon-in-default);
     }
+    &.a-icon--bg {
+      background: var(--excellent-bg-medium-default);
+    }
   }
   &--positive {
     fill: var(--positive-icon-default);
     path {
       fill: var(--positive-icon-in-default);
+    }
+    &.a-icon--bg {
+      background: var(--positive-bg-medium-default);
     }
   }
   &--low-warning {
@@ -90,17 +86,26 @@ svg.a-icon {
     path {
       fill: var(--low-warning-icon-in-default);
     }
+    &.a-icon--bg {
+      background: var(--low-warning-bg-medium-default);
+    }
   }
   &--warning {
     fill: var(--warning-icon-in-default);
     path:nth-of-type(1) {
       fill: var(--warning-icon-default);
     }
+    &.a-icon--bg {
+      background: var(--warning-bg-medium-default);
+    }
   }
   &--severe-warning {
     fill: var(--severe-warning-icon-strong-default);
     path:nth-of-type(2) {
       fill: var(--severe-warning-icon-in-default);
+    }
+    &.a-icon--bg {
+      background: var(--severe-warning-bg-medium-default);
     }
   }
   &--danger,
@@ -112,11 +117,17 @@ svg.a-icon {
     path:nth-of-type(3) {
       fill: var(--negative-icon-in-default);
     }
+    &.a-icon--bg {
+      background: var(--negative-bg-medium-default);
+    }
   }
   &--inactive {
     fill: var(--dormant-icon-default);
     path {
       fill: var(--dormant-icon-in-default);
+    }
+    &.a-icon--bg {
+      background: var(--dormant-bg-medium-default);
     }
   }
   &--info {
@@ -124,18 +135,31 @@ svg.a-icon {
     path:nth-of-type(2) {
       fill: var(--info-icon-in-default);
     }
+    &.a-icon--bg {
+      background: var(--info-bg-medium-default);
+    }
   }
   &--disabled {
     fill: var(--dormant-icon-default);
+    &.a-icon--bg {
+      background: var(--dormant-bg-medium-default);
+    }
   }
   &--in-progress {
     fill: var(--in-progress-icon-default);
     path {
       fill: var(--in-progress-icon-in-default);
     }
+    &.a-icon--bg {
+      background: var(--in-progress-bg-medium-default);
+    }
   }
   &--allow {
     fill: var(--positive-icon-default);
+  }
+
+  &--deny {
+    fill: var(--negative-icon-default);
   }
 
   &--malicious,
@@ -204,7 +228,32 @@ svg.a-icon {
   &--type_Systems_Manager,
   &--type_Wireless,
   &--type_Workflow,
-  &--variable {
+  &--variable,
+  &--placeholder,
+  &--play-circle,
+  &--loader,
+  &--wifi-high,
+  &--wifi-low,
+  &--wifi-medium,
+  &--wifi-slash,
+  &--wifi-lightning,
+  &--wifi-x,
+  &--warning-circle,
+  &--rss,
+  &--stack-port,
+  &--magnet,
+  &--passthrough,
+  &--plug-small,
+  &--application,
+  &--camera,
+  &--cellular-gateway,
+  &--generic-client,
+  &--generic-device,
+  &--sensor,
+  &--switch,
+  &--teleworker-gateway,
+  &--wan-application,
+  &--wireless-lan-controller {
     fill: var(--interact-icon-weak-default);
   }
 
