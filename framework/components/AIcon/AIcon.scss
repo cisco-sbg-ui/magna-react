@@ -58,7 +58,8 @@ svg.a-icon {
   &--type_Admin,
   &--critical-stop,
   &--negative,
-  &--variable {
+  &--variable,
+  &--ubuntu {
     stroke: unset !important;
   }
 
@@ -254,6 +255,7 @@ svg.a-icon {
   &--teleworker-gateway,
   &--wan-application,
   &--wireless-lan-controller {
+  &--ubuntu {
     fill: var(--interact-icon-weak-default);
   }
 
