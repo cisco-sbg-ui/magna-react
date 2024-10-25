@@ -4,12 +4,19 @@ import React, {forwardRef} from "react";
 import "./ASkeleton.scss";
 
 const ASkeletonBlock = forwardRef(
-  ({className: propsClassName, height, style: propsStyle, ...rest}, ref) => {
+  (
+    {className: propsClassName, height, style: propsStyle, animated, ...rest},
+    ref
+  ) => {
     let className = `a-skeleton__block`,
       style = {...propsStyle};
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
+    }
+
+    if (animated) {
+      className += ` a-skeleton--animated`;
     }
 
     if (height) {
