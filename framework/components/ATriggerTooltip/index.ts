@@ -1,3 +1,3 @@
-import {ATriggerTooltipTrigger} from "../AFloatingBase/types";
+import {ATriggerTooltipTrigger as AFloatingTrigger} from "../AFloatingBase/types";
 export {default} from "./ATriggerTooltip";
-export type {ATriggerTooltipTrigger};
+export type {AFloatingTrigger as ATriggerTooltipTrigger};

@@ -34,13 +34,7 @@ const useFloatingDropdown: UseFloatingDropdown = (open, onOpenChange) => {
     strategy: "fixed", // breaks it out of a container (like a modal)
     open,
     onOpenChange,
-    middleware: [
-      offset(4),
-      flip({
-        boundary: document.body
-      }),
-      hide()
-    ]
+    middleware: [offset(4), flip(), hide()]
   });
 
   const dismiss = useDismiss(context);

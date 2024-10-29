@@ -1,0 +1,76 @@
+---
+name: TriggerPopovers
+route: /components/triggerpopover
+components: ATriggerPopover
+title: ATriggerPopover
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/components/ATriggerPopover
+---
+
+## Usage
+
+### Import
+
+<ComponentImport components="ATriggerPopover" />
+
+### Usage
+
+<AAlert dismissable={false} level="info">
+  For additional control examples, see `ATriggerTooltip`.
+</AAlert>
+
+<br />
+<br />
+
+<AAlert dismissable={false}>
+  It is necessary for `ATriggerPopover` to be a descendant of `AApp` for
+  mounting.
+</AAlert>
+
+<br />
+<br />
+
+<AAlert dismissable={false}>
+  Children of `ATriggerPopover` must be able to accept a ref.
+</AAlert>
+
+<br />
+<br />
+
+<Playground
+  code={`() => {
+return (
+
+<>
+<span style={{verticalAlign: "super", margin: "0 4px 0 0"}}>
+  Trigger by hover
+</span>
+
+<ATriggerPopover
+  id="popover_usage_1"
+  placement="right"
+  content={<>
+      <APanelHeader>
+        <APanelTitle>A Popover</APanelTitle>
+      </APanelHeader>
+      <APanelBody>
+        Popover Body. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+        do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+        veniam.
+      </APanelBody>
+    </>}>
+  <AIcon>information</AIcon>
+</ATriggerPopover>
+</>
+); } `} />
+
+## Component Props
+
+The `ATriggerPopover` component inherits passed props.
+
+<Props of="ATriggerPopover" />
+
+## Accessibility Notes
+
+By default, `ATooltip` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [tooltip](https://www.w3.org/TR/wai-aria/#tooltip).
+
+For better accessibility: add an `id` to the tooltip and set the `aria-describedby` attribute on the anchor to the new `id`.
