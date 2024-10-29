@@ -57,14 +57,9 @@ const APopover = forwardRef(
         role={role}
         hideIfReferenceHidden={hideIfReferenceHidden}
         pointer
+        tabIndex={-1}
       >
-        <APanel
-          {...rest}
-          ref={combinedRef}
-          className={className}
-          type="dialog"
-          tabIndex={-1}
-        >
+        <APanel {...rest} ref={combinedRef} className={className} type="dialog">
           {children}
         </APanel>
       </AFloatingBase>
