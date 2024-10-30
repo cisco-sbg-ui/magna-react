@@ -65,6 +65,7 @@ export type ASliderProps = Override<
      * Applies a validation state.
      *
      * @defaultValue `default`
+     * @deprecated `default` only
      */
     validationState?: ASliderValidationState;
     /**

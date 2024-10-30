@@ -318,9 +318,12 @@ const ASlider = forwardRef(
           <div className="a-slider__tick">
             {ticks &&
               ticks.map((x, index) => (
-                <div key={index} className="a-slider__tick-label">
-                  <span>{x}</span>
-                </div>
+                <>
+                  <div key={index} className="a-slider__tick-label">
+                    <span className={`a-slider__tick-mark`} />
+                    <span>{x}</span>
+                  </div>
+                </>
               ))}
           </div>
           <div className="a-slider__handles">
