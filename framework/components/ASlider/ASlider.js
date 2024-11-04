@@ -279,6 +279,26 @@ const ASlider = forwardRef(
       className += " a-slider--disabled";
     }
 
+    const tickItems =
+      ticks &&
+      ticks.map((x, i) => {
+        const num = parseInt(x);
+        const style = {};
+        if (!isNaN(num)) {
+          const width = ticks[i + 1] - num;
+          style.width = `${width}px`;
+        } else {
+          style.alignItems = "center";
+        }
+
+        return (
+          <div style={style} key={i} className="a-slider__tick-label">
+            <span className={`a-slider__tick-mark`} />
+            <span>{x}</span>
+          </div>
+        );
+      });
+
     return (
       <AFieldBase
         {...rest}
@@ -315,17 +335,7 @@ const ASlider = forwardRef(
               }}
             ></div>
           </div>
-          <div className="a-slider__tick">
-            {ticks &&
-              ticks.map((x, index) => (
-                <>
-                  <div key={index} className="a-slider__tick-label">
-                    <span className={`a-slider__tick-mark`} />
-                    <span>{x}</span>
-                  </div>
-                </>
-              ))}
-          </div>
+          <div className="a-slider__tick">{tickItems}</div>
           <div className="a-slider__handles">
             {thumb1Position !== null && (
               <div

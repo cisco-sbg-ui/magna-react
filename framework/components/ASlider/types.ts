@@ -25,6 +25,7 @@ export type ASliderProps = Override<
     hints?: AHintsType;
     /**
      * Sets the label content.
+     * Labels should `number` only as `string` labels are deprecated.
      */
     label?: React.ReactNode;
     /**

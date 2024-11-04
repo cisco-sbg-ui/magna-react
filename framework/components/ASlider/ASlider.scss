@@ -68,14 +68,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    text-align: center;
     align-content: center;
   }
 
   &__tick-label {
     display: flex;
     flex-direction: column;
-    align-items: center;
     font-size: 12px;
   }
 
@@ -85,12 +83,15 @@
     height: 4px;
     top: 10px;
     border-radius: 50%;
+    margin-left: 5px;
     background: var(--control-icon-in-strong-disabled);
   }
 
-  &__tick-label:first-child .a-slider__tick-mark {
-    align-self: flex-start;
-    margin-left: 2px;
+  &__tick-label:first-child {
+    align-items: flex-start !important;
+    .a-slider__tick-mark {
+      margin-left: 2px;
+    }
   }
   &__tick-label:last-child .a-slider__tick-mark {
     align-self: flex-end;

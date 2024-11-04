@@ -12,47 +12,36 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
 
 <ComponentImport components="ASlider" />
 
-### Usage
-
 <Playground
   fullWidthPreview
   code={`() => {
-  const [value, setValue] = useState(2);
+  const [percValue, setPercValue] = useState(25);
+  const [value, setValue] = useState([250, 1000]);
   return (
-    <ASlider
-      label="Likert Variant"
-      value={value}
-      onChange={(v) => setValue(v)}
-      ticks={["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree", "N/A"]}
-      hints={\`Value: \${value}\`}
-      rules={[{
-        test: v => [3,4].includes(v) || "You must agree"
-      }]}
-      max={5}
-    />
-  );
-}
-`}
-/>
-
-#### Range
-
-<Playground
-  fullWidthPreview
-  code={`() => {
-  const [value, setValue] = useState([0, 1000]);
-  return (
-    <ASlider
+  <>
+      <ASlider
       label="Percentage"
+      value={percValue}
+      onChange={(v) => setPercValue(v)}
+      ticks={[0, 25, 50, 75, 100]}
+      hints={\`Value: \${percValue}\`}
+      max={100}
+      step={25}
+    />
+
+    <ASlider
+      label="Range"
       value={value}
       onChange={(v) => setValue(v)}
-      ticks={[0, 250, 500, 750, 1000]}
+      ticks={[0, 90, 250, 500, 750, 800, 840, 1000]}
       hints={\`Value: \${value}\`}
       max={1000}
       step={15}
     />
-  );
-}
+
+</>
+);
+  }
 `}
 />
 
@@ -99,6 +88,31 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
         validationState="danger"
       />
     </>
+  );
+}
+`}
+/>
+
+### Usage
+
+Deprecated, use labels with numbers when possible.
+
+<Playground
+  fullWidthPreview
+  code={`() => {
+  const [value, setValue] = useState(2);
+  return (
+    <ASlider
+      label="Likert Variant"
+      value={value}
+      onChange={(v) => setValue(v)}
+      ticks={["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree", "N/A"]}
+      hints={\`Value: \${value}\`}
+      rules={[{
+        test: v => [3,4].includes(v) || "You must agree"
+      }]}
+      max={5}
+    />
   );
 }
 `}
