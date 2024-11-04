@@ -19,6 +19,8 @@ const ATriggerTooltip = ({
   trigger = "hover",
   openDelay = 300,
   closeDelay,
+  onShow,
+  onHide,
   onClose,
   content,
   onlyIfTruncated,
@@ -62,6 +64,20 @@ const ATriggerTooltip = ({
     close: toggleClose,
     toggle
   } = useToggle(openDelay, closeDelay, checkForTruncation);
+
+  useEffect(() => {
+    let timeout: number | undefined;
+
+    if (isOpen) {
+      timeout = onShow && onShow(tooltipRef);
+    } else {
+      onHide && onHide();
+    }
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [tooltipRef, onShow, onHide, isOpen]);
 
   const close = useCallback(() => {
     const tooltipHover = tooltipRef?.current?.matches(":hover");

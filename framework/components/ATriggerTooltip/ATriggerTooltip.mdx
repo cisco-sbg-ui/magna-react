@@ -218,6 +218,43 @@ When the tooltip has interactive elements
   `}
 />
 
+#### onShow / onHide
+
+Useful for tracking telemetry on open and close states
+
+<Playground
+  code={`() => {
+    return (
+        <>
+          <span style={{verticalAlign: "super", margin: "0 4px 0 0"}}>
+            Show/hide callbacks
+          </span>
+          <ATriggerTooltip
+            onShow={(tooltipRef) => {
+              // Only fire if it's been open for 1 second
+              return setTimeout(() => {
+                if (!tooltipRef?.current) {
+                  return;
+                }
+
+                console.log("Tooltip has been open for over a second");
+              }, 1000);
+            }}
+            onHide={() => {
+              console.log("Tooltip has been hidden");
+            }}
+            placement="right"
+            content="Tooltip with callbacks">
+            <AIcon>
+            information</AIcon>
+          </ATriggerTooltip>
+        </>
+    );
+    }
+
+`}
+/>
+
 ## Component Props
 
 The `ATriggerTooltip` component inherits passed props.

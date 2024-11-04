@@ -35,6 +35,14 @@ export type ATriggerBaseProps = Omit<
    */
   disabled?: boolean;
   /**
+   * Callback for when the tooltip is shown
+   */
+  onShow?: (tooltipRef?: React.RefObject<HTMLElement>) => number | undefined;
+  /**
+   * Callback for when the tooltip is hidden
+   */
+  onHide?: () => void;
+  /**
    * Wrap the children elements in a div to allow tooltips on
    * disabled elements.
    * @defaultValue `false`
