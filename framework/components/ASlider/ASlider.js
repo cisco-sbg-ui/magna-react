@@ -287,8 +287,6 @@ const ASlider = forwardRef(
         if (!isNaN(num)) {
           const width = ticks[i + 1] - num;
           style.width = `${width}px`;
-        } else {
-          style.alignItems = "center";
         }
 
         return (
