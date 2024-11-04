@@ -72,7 +72,9 @@ const AIcon = forwardRef<SVGSVGElement, AIconProps>(
   ) => {
     let className = `a-icon`;
 
-    if (size && typeof size === "number" && isNaN(size)) {
+    const isSizeNum = size && !isNaN(Number(size));
+
+    if (!isSizeNum) {
       className += ` a-icon--size-${size}`;
     }
 
@@ -106,7 +108,7 @@ const AIcon = forwardRef<SVGSVGElement, AIconProps>(
       componentProps.style = {};
     }
 
-    if (size && typeof size === "number" && !isNaN(size)) {
+    if (isSizeNum) {
       componentProps.style.width = size;
     }
 

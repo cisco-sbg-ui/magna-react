@@ -1,6 +1,6 @@
 import {Override} from "../../types";
 
-export type AIconSize = number;
+export type AIconSize = number | "small" | "medium" | "large";
 
 export type AIconProps = Override<
   React.ComponentPropsWithRef<"svg">,
