@@ -93,6 +93,31 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
 `}
 />
 
+### Usage
+
+Deprecated, use labels with numbers when possible.
+
+<Playground
+  fullWidthPreview
+  code={`() => {
+  const [value, setValue] = useState(2);
+  return (
+    <ASlider
+      label="Likert Variant"
+      value={value}
+      onChange={(v) => setValue(v)}
+      ticks={["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree", "N/A"]}
+      hints={\`Value: \${value}\`}
+      rules={[{
+        test: v => [3,4].includes(v) || "You must agree"
+      }]}
+      max={5}
+    />
+  );
+}
+`}
+/>
+
 ## Component Props
 
 The `ASlider` component inherits passed props.

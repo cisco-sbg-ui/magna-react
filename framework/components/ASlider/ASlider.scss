@@ -38,7 +38,7 @@
 
   &__handles {
     position: absolute;
-    left: 0;
+    left: 8.5px;
     right: 8.5px;
     top: 5px;
     cursor: pointer;
@@ -52,7 +52,7 @@
     height: 24px;
     border-width: $border-width;
     border-style: solid;
-    transform: translateX(-8.5px);
+    transform: translateX(-10.5px);
     background-color: var(--inverse-icon-strong-default);
     border-color: var(--control-border-strong-default);
     &:hover {
@@ -74,6 +74,7 @@
     display: flex;
     flex-direction: column;
     font-size: 12px;
+    align-items: center;
   }
 
   &__tick-mark {
@@ -82,7 +83,6 @@
     height: 4px;
     top: 10px;
     border-radius: 50%;
-    margin-left: 5px;
     background: var(--control-icon-in-strong-disabled);
   }
 
