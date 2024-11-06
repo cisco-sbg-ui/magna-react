@@ -140,6 +140,7 @@ import {ATheme, useATheme} from "./components/ATheme";
 import AToast from "./components/AToast";
 import {ATooltip} from "./components/ATooltip";
 import ATree from "./components/ATree";
+import ATriggerPopover from "./components/ATriggerPopover";
 import ATriggerTooltip from "./components/ATriggerTooltip";
 import {useAToaster, AToastPlate} from "./components/AToaster";
 
@@ -283,6 +284,7 @@ export {
   AToastPlate,
   ATooltip,
   ATree,
+  ATriggerPopover,
   ATriggerTooltip,
   breakpointThresholds,
   useABreakpoint,
