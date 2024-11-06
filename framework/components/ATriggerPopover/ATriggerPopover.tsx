@@ -1,5 +1,5 @@
 import React from "react";
-import {APanel} from "../APanel";
+import {ACardContainer} from "../ACard";
 import ATriggerBase from "../ATriggerBase/ATriggerBase";
 import "../APopover/APopover.scss";
 
@@ -7,7 +7,8 @@ import {ATriggerPopoverProps} from "./types";
 
 const ATriggerPopover = ({
   content,
-  openDelay = 0,
+  openDelay = 300,
+  container: ComponentContainer = ACardContainer,
   ...rest
 }: ATriggerPopoverProps) => {
   return (
@@ -15,9 +16,9 @@ const ATriggerPopover = ({
       baseClass="a-popover-floating-base"
       openDelay={openDelay}
       content={
-        <APanel className="a-popover" {...rest} type="dialog">
+        <ComponentContainer className="a-popover" {...rest}>
           {content}
-        </APanel>
+        </ComponentContainer>
       }
       {...rest}
     />
