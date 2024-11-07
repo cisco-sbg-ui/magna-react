@@ -15,6 +15,18 @@ svg.a-icon {
     fill: var(--base-icon-in-default);
   }
 
+  &--size-large {
+    width: 32px;
+  }
+
+  &--size-medium {
+    width: 24px;
+  }
+
+  &--size-small {
+    width: 16px;
+  }
+
   &--left {
     margin-right: 4px;
   }
@@ -257,7 +269,8 @@ svg.a-icon {
   &--wan-application,
   &--wireless-lan-controller,
   &--ubuntu,
-  &--redhat {
+  &--redhat,
+  &--rocket {
     fill: var(--interact-icon-weak-default);
   }
 
