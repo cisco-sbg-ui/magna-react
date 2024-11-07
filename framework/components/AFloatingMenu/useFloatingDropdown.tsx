@@ -4,7 +4,9 @@ import {
   useInteractions,
   autoUpdate,
   hide,
-  offset
+  offset,
+  type ExtendedRefs,
+  type ReferenceType
 } from "@floating-ui/react";
 
 import {flip} from "@floating-ui/dom";
@@ -14,11 +16,11 @@ type UseFloatingDropdown = (
   onOpenChange: (open: boolean) => void
 ) => {
   context: object;
-  floatingRefs: object;
+  floatingRefs: ExtendedRefs<ReferenceType>;
   floatingStyles: React.CSSProperties;
   middlewareData: any;
-  getReferenceProps: (props: any) => any;
-  getFloatingProps: (props: any) => any;
+  getReferenceProps: (props?: any) => any;
+  getFloatingProps: (props?: any) => any;
   isReferenceHidden: boolean;
 };
 

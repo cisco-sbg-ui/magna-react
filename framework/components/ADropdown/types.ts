@@ -36,5 +36,9 @@ export type ADropdownProps<C extends React.ElementType> = Override<
      */
     "data-testid"?: string;
     hideIfReferenceHidden?: boolean;
+    /**
+     * Icon only dropdown
+     */
+    icon?: boolean;
   }
 >;

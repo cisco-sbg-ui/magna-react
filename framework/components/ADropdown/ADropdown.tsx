@@ -4,9 +4,10 @@ import {useMergeRefs} from "@floating-ui/react";
 
 import AButton from "../AButton";
 import AFloatingMenu from "../AFloatingMenu";
-import useFloatingDropwdown from "../AFloatingMenu/useFloatingDropdown";
+import useFloatingDropdown from "../AFloatingMenu/useFloatingDropdown";
+import {ADropdownProps} from "./types";
 
-const ADropdown = forwardRef(
+const ADropdown = forwardRef<HTMLElement, ADropdownProps<React.ElementType>>(
   (
     {
       className: propsClassName,
@@ -19,6 +20,7 @@ const ADropdown = forwardRef(
       menuProps = {},
       onClick: propsOnClick,
       children,
+      icon,
       hideIfReferenceHidden = true,
       ...rest
     },
@@ -34,7 +36,7 @@ const ADropdown = forwardRef(
       getReferenceProps,
       getFloatingProps,
       isReferenceHidden
-    } = useFloatingDropwdown(isOpen, setIsOpen);
+    } = useFloatingDropdown(isOpen, setIsOpen);
 
     const ref = useMergeRefs([floatingRefs.setReference, propsRef]);
 
@@ -49,6 +51,11 @@ const ADropdown = forwardRef(
       isReferenceHidden
     };
 
+    const iconOnly = icon && {
+      icon,
+      tertiaryAlt: "tertiaryAlt"
+    };
+
     return (
       <>
         <Component
@@ -56,15 +63,15 @@ const ADropdown = forwardRef(
           disabled={disabled}
           className={propsClassName}
           open={isOpen}
-          onClick={(e) => {
+          onClick={(e: React.MouseEvent) => {
             setIsOpen(!isOpen);
             propsOnClick && propsOnClick(e);
           }}
           aria-haspopup="true"
-          dropdown
+          dropdown={!icon} //Don't display caret if icon only dropdown
+          {...iconOnly}
           {...rest}
-          {...getReferenceProps()}
-        >
+          {...getReferenceProps()}>
           {title}
         </Component>
         <AFloatingMenu
@@ -77,8 +84,7 @@ const ADropdown = forwardRef(
           placement={placement}
           closeOnClick
           {...menuComponentProps}
-          {...getFloatingProps()}
-        >
+          {...getFloatingProps()}>
           {children}
         </AFloatingMenu>
       </>
@@ -114,7 +120,11 @@ ADropdown.propTypes = {
   /**
    * Callback function when the dropdown is clicked
    */
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  /**
+   * Icon only dropdown
+   */
+  icon: PropTypes.bool
 };
 
 ADropdown.displayName = "ADropdown";
