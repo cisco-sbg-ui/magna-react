@@ -2,8 +2,8 @@ declare const useToggle: (
   openDelay?: number,
   closeDelay?: number,
   canOpen?: () => boolean,
-  onShow?: () => void,
-  onHide?: () => void
+  onOpen?: (() => any) | null,
+  onClose?: (() => any) | null
 ) => {
   isOpen: boolean;
   open: () => void;
