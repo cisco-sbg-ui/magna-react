@@ -5,16 +5,15 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    height: 44px;
+    padding-top: 8px;
   }
 
   &__track {
-    height: 6px;
-    top: 10.5px;
-    left: 8.5px;
-    right: 8.5px;
-    position: absolute;
+    position: relative;
     cursor: pointer;
     border-radius: 4px;
+    min-height: 8px;
     &--low,
     &--high {
       height: 100%;
@@ -42,17 +41,18 @@
     left: 8.5px;
     right: 8.5px;
     top: 5px;
+    cursor: pointer;
   }
 
   &__handle {
-    border-radius: 50%;
     position: absolute;
-    top: 0;
-    width: 17px;
-    height: 17px;
+    border-radius: 50%;
+    top: -5px;
+    width: 24px;
+    height: 24px;
     border-width: $border-width;
     border-style: solid;
-    transform: translateX(-8.5px);
+    transform: translateX(-10.5px);
     background-color: var(--inverse-icon-strong-default);
     border-color: var(--control-border-strong-default);
     &:hover {
@@ -60,45 +60,41 @@
       border-style: solid;
       border-color: var(--control-border-hover);
     }
-
-    &:active {
-      border-width: $border-width;
-      border-style: solid;
-      z-index: 100;
-    }
-
-    &:focus,
-    &:active {
-      //TODO waiting for new shadow color/tokens
-      box-shadow: var(--shadow-focus) var(--control-border-medium-hover);
-      border-color: var(--control-border-active);
-    }
   }
 
   &__tick {
     white-space: nowrap;
-    padding: 22px 8.5px 0;
+    padding-top: 10px;
     display: flex;
     justify-content: space-between;
-    height: 47px;
+    user-select: none;
   }
 
   &__tick-label {
-    padding-top: 4px;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    align-items: center;
+  }
 
-    span {
-      transform: translateX(-50%);
-      position: absolute;
-    }
+  &__tick-mark {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    top: 10px;
+    border-radius: 50%;
+    background: var(--control-icon-in-strong-disabled);
+  }
 
-    &:first-child span {
-      transform: translateX(-8.5px);
+  &__tick-label:first-child {
+    align-items: flex-start;
+    .a-slider__tick-mark {
+      margin-left: 2px;
     }
-
-    &:last-child span {
-      transform: translateX(calc(-100% + 8.5px));
-    }
+  }
+  &__tick-label:last-child .a-slider__tick-mark {
+    align-self: flex-end;
+    margin-right: 2px;
   }
 
   &--disabled {
@@ -166,8 +162,4 @@
       }
     }
   }
-}
-
-.a-slider-container {
-  height: 60px;
 }
