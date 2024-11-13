@@ -72,4 +72,15 @@ npm ci
 npm run dev
 ```
 
+#### Integration testing
+
+```
+npm run build
+npm pack
+```
+
+Install magna as a dependency in other application:
+
+- In the other application's `package.json`, point to the generated tar file and `npm i`
+
 ---
