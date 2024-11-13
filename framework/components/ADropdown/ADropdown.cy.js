@@ -30,4 +30,14 @@ describe("<Dropdown/>", () => {
     cy.get(".a-button").click();
     cy.get(".a-floating-menu").should("exist");
   });
+
+  it("should open from external source", () => {
+    cy.mount(
+      <ADropdown open secondary title="dropdown">
+        <p>test</p>
+      </ADropdown>
+    );
+
+    cy.get(".a-floating-menu").should("exist");
+  });
 });

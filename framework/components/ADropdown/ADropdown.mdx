@@ -430,6 +430,53 @@ For more advanced use cases of dropdown see `AMenu` and `AButton`
 `}
 />
 
+### External open state
+
+Component props are passed to the anchor element
+
+<Playground
+  code={`() => {
+  const ref = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
+
+return (
+
+<div>
+  <AButton
+    onClick={() => {
+      setIsOpen(!isOpen);
+    }}>
+    Opens the dropwdown
+  </AButton>
+  <br />
+  <br />
+  <ADropdown
+    ref={ref}
+    open={isOpen}
+    onClose={() => {
+      setIsOpen(false);
+    }}
+    title="Has a ref">
+    <AListItem
+      onClick={() => {
+        console.log(ref.current);
+      }}>
+      List item
+    </AListItem>
+    <AListItem
+      onClick={() => {
+        console.log(ref.current);
+      }}>
+      List item
+    </AListItem>
+  </ADropdown>
+</div>
+
+);
+}
+`}
+/>
+
 ### Component props
 
 Component props are passed to the anchor element
