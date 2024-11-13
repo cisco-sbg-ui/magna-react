@@ -12,6 +12,10 @@ export type ADropdownProps<C extends React.ElementType> = Override<
      */
     component?: typeof AButton | typeof ATag;
     /**
+     * Control the open state externally
+     */
+    open?: boolean;
+    /**
      * Toggles the `disabled` state.
      */
     disabled?: boolean;
@@ -31,6 +35,10 @@ export type ADropdownProps<C extends React.ElementType> = Override<
      * Pass props to the menu component
      */
     menuProps?: AFloatingMenuProps<React.ElementType>;
+    /**
+     * Callback function when the dropdown is closed
+     */
+    onClose?: () => any;
     /**
      * Test id
      */
