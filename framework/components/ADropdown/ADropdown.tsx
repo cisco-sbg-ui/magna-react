@@ -35,7 +35,6 @@ const ADropdown = forwardRef<HTMLElement, ADropdownProps<React.ElementType>>(
 
     const onOpenChange = useCallback(
       (state: boolean) => {
-        console.log("onOpenChange", state);
         setIsOpen(state);
         propsOnClose && propsOnClose(state);
       },
