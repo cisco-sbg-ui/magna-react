@@ -65,7 +65,7 @@ $table-cell-spacious-padding-top-bottom: math.div(
   }
 
   &--striped {
-    tbody tr:nth-child(even):not(:hover) {
+    tbody tr:nth-child(even) {
       background: var(--base-bg-disabled);
     }
   }
@@ -79,10 +79,6 @@ $table-cell-spacious-padding-top-bottom: math.div(
 
   tbody {
     vertical-align: middle;
-  }
-
-  tbody tr:hover {
-    background: var(--control-bg-weak-hover);
   }
 
   tr {
