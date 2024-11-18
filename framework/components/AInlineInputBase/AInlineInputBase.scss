@@ -21,6 +21,7 @@
   &__editIcon,
   &__clearIcon {
     display: flex;
+    flex: 0 0 auto;
     opacity: 0;
     align-items: center;
     margin: 0 0 0 4px;
