@@ -232,6 +232,73 @@ The drawer can slide-in from the left, right, or bottom of the page.
 }`}
 />
 
+#### Specific Size
+
+The drawer can be set to a specific Magnetic size, or an array of sizes. If an array is specified the first value in the array will be used as the smallest size. The rest will act as responsive breakpoints based on browser width.
+
+<Playground
+  code={`() => {
+    const fixedRef = useRef();
+    const [isFixedOpen, setIsFixedOpen] = useState(false);
+
+    const variableRef = useRef();
+    const [isVariableOpen, setIsVariableOpen] = useState(false);
+
+    return (
+      <>
+        <p>Fixed width by size</p>
+        <AButton onClick={() => setIsFixedOpen(true)} data-test-drawer-trigger-left>Open Fixed Large</AButton>
+        <ADrawer
+            size="lg"
+            aria-labelledby='left-drawer-title'
+            slideIn='right'
+            ref={fixedRef}
+            isOpen={isFixedOpen}
+            onClose={() => setIsFixedOpen(false)}
+            data-test-drawer-left>
+          <ADrawerHeader>
+          <ADrawerTitle>
+            <h1 id='left-drawer-title'>Fixed Width</h1>
+          </ADrawerTitle>
+          <ADrawerSubtitle>Old School RuneScape is an MMORPG with adventure elements.</ADrawerSubtitle>
+          </ADrawerHeader>
+          <ADrawerBody>
+             It features a persistent world in which players can interact with each other and the environment. The basic mechanics are largely the same as RuneScape on 10 August 2007.
+            </ADrawerBody>
+          <ADrawerFooter>
+            <AButton onClick={() => setIsFixedOpen(false)} data-test-drawer-close-left>Close</AButton>
+          </ADrawerFooter>
+        </ADrawer>
+
+        <p>Responsize width, minimum medium size</p>
+        <AButton onClick={() => setIsVariableOpen(true)} data-test-drawer-trigger-right>Open Sized Responsive</AButton>
+        <ADrawer
+            size={["md", "lg", "xl"]}
+            aria-labelledby='variable-drawer-title'
+            slideIn='right'
+            ref={variableRef}
+            isOpen={isVariableOpen}
+            onClose={() => setIsVariableOpen(false)}
+            data-test-drawer-right>
+           <ADrawerHeader>
+          <ADrawerTitle>
+            <h1 id='left-drawer-title'>Responsize with minimum width</h1>
+          </ADrawerTitle>
+          <ADrawerSubtitle>Old School RuneScape is an MMORPG with adventure elements.</ADrawerSubtitle>
+          </ADrawerHeader>
+          <ADrawerBody>
+             It features a persistent world in which players can interact with each other and the environment. The basic mechanics are largely the same as RuneScape on 10 August 2007.
+            </ADrawerBody>
+          <ADrawerFooter>
+            <AButton onClick={() => setIsVariableOpen(false)} data-test-drawer-close-right>Close</AButton>
+          </ADrawerFooter>
+        </ADrawer>
+      </>
+    )
+
+}`}
+/>
+
 #### Modal Options
 
 Becuase `ADrawer` is a `fixed` element by default, it also defaults to rendering as [a modal](/components/modal). This can be easily overriden by passing `false` to the `asModal` prop of `ADrawer`.

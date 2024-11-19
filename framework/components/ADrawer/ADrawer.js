@@ -20,6 +20,7 @@ const ADrawer = forwardRef(
       openHeight,
       openWidth,
       responsiveWidth,
+      size,
       isOpen,
       onClose,
       closeOnOutsideClick,
@@ -97,12 +98,24 @@ const ADrawer = forwardRef(
     if (isOpen && !slim) {
       if (openWidth) {
         style.width = openWidth;
+      } else if (size) {
+        if (Array.isArray(size)) {
+          // Use the first size as the smallest width
+          className += ` a-drawer--size-${size[0]}`;
+          // Make the drawer responsive to the other sizes
+          className +=
+            " " + size.map((s) => `a-drawer--responsive-${s}`).join(" ");
+        } else {
+          className += ` a-drawer--size-${size}`;
+        }
       } else if (responsiveWidth) {
         className += " a-drawer--responsive-width";
       } else if (openHeight) {
         style.height = openHeight;
       }
     }
+
+    console.log(className);
 
     if (propsClassName) {
       className += ` ${propsClassName}`;

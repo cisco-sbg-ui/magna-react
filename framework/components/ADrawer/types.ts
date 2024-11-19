@@ -7,6 +7,8 @@ export type ADrawerPosition = "absolute" | "fixed" | "relative";
 
 export type ADrawerSlideIn = "left" | "right" | "bottom";
 
+export type ADrawerSize = "sm" | "md" | "lg" | "xl";
+
 export type ADrawerProps<C extends React.ElementType> = Override<
   AModalProps<C>,
   PolymorphicComponentPropWithRef<
@@ -51,6 +53,11 @@ export type ADrawerProps<C extends React.ElementType> = Override<
        * defined breakpoints.
        */
       responsiveWidth?: boolean;
+      /**
+       * Specify the width of the drawer based on width variables. This can accept an
+       * to be responsive to specified sizes
+       */
+      size?: ADrawerSize | ADrawerSize[];
       /**
        * Specifies the positioning strategy of the drawer. A drawer specified with
        * "fixed" is useful when the drawer should take up the entire page and cover
