@@ -115,8 +115,6 @@ const ADrawer = forwardRef(
       }
     }
 
-    console.log(className);
-
     if (propsClassName) {
       className += ` ${propsClassName}`;
     }
