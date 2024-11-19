@@ -13,7 +13,7 @@ const ADropdown = forwardRef<HTMLElement, ADropdownProps<React.ElementType>>(
       className: propsClassName,
       component = AButton,
       disabled = false,
-      open,
+      isOpen: open,
       title,
       placement,
       menuClass,
