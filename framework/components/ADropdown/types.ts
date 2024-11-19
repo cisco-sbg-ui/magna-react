@@ -12,9 +12,10 @@ export type ADropdownProps<C extends React.ElementType> = Override<
      */
     component?: typeof AButton | typeof ATag;
     /**
-     * Control the open state externally
+     * Control the open state externally. Combine with `onClose` to set the external
+     * state to false when the dropdown is closed by item selection or clicking outside.
      */
-    open?: boolean;
+    isOpen?: boolean;
     /**
      * Toggles the `disabled` state.
      */
