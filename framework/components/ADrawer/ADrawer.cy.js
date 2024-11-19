@@ -103,6 +103,24 @@ describe("<ADrawer />", () => {
     testCoreFunctionality(<DrawerTest position="relative" />);
   });
 
+  describe("when the size prop is set", () => {
+    it("should render with the set size", () => {
+      cy.mount(<ADrawer data-testid="drawer" isOpen size="md" />);
+
+      getDrawer().should("have.class", "a-drawer--size-md");
+
+      getDrawer().should("have.css", "width", "576px");
+    });
+
+    it("should render with the size of the first value in the size array", () => {
+      cy.mount(<ADrawer data-testid="drawer" isOpen size={["lg", "xl"]} />);
+
+      getDrawer().should("have.class", "a-drawer--size-lg");
+
+      getDrawer().should("have.css", "width", "768px");
+    });
+  });
+
   describe("when rendered within another <AMount /> component", () => {
     testCoreFunctionality(<MountTest />);
   });
@@ -269,9 +287,9 @@ describe("<ADrawer />", () => {
       // Open the first drawer
       cy.getByDataTestId("trigger-a").click();
 
-      cy.getByDataTestId("drawer-trigger").should("exist");
+      cy.getByDataTestId("drawer-toggle").should("exist");
 
-      cy.getByDataTestId("drawer-trigger").contains("The wizard Merlin");
+      cy.getByDataTestId("drawer-toggle").contains("The wizard Merlin");
 
       // Close the drawer
       cy.get(".a-drawer__title-close").find(".a-button").click();
@@ -280,14 +298,14 @@ describe("<ADrawer />", () => {
       cy.getByDataTestId("trigger-a").should("have.focus");
 
       // Make sure drawer is closed
-      cy.getByDataTestId("drawer-trigger").should("not.be.visible");
+      cy.getByDataTestId("drawer-toggle").should("not.be.visible");
 
       // Open the second drawer
       cy.getByDataTestId("trigger-b").click();
 
-      cy.getByDataTestId("drawer-trigger").should("exist");
+      cy.getByDataTestId("drawer-toggle").should("exist");
 
-      cy.getByDataTestId("drawer-trigger").contains(
+      cy.getByDataTestId("drawer-toggle").contains(
         "Gertrude has lost her cat Fluffs and desperately"
       );
 
@@ -298,16 +316,16 @@ describe("<ADrawer />", () => {
       cy.getByDataTestId("trigger-b").should("have.focus");
 
       // Make sure drawer is closed
-      cy.getByDataTestId("drawer-trigger").should("not.be.visible");
+      cy.getByDataTestId("drawer-toggle").should("not.be.visible");
 
       // Click the first trigger, check, click second tigger, check
       cy.getByDataTestId("trigger-a").click();
-      cy.getByDataTestId("drawer-trigger").contains("The wizard Merlin");
+      cy.getByDataTestId("drawer-toggle").contains("The wizard Merlin");
 
       //cy.wait(301);
 
       cy.getByDataTestId("trigger-b").click();
-      cy.getByDataTestId("drawer-trigger").contains(
+      cy.getByDataTestId("drawer-toggle").contains(
         "Gertrude has lost her cat Fluffs and desperately"
       );
 
@@ -626,7 +644,7 @@ const DrawerHookTest = () => {
         onClose={() => {
           setDrawerOpen(false);
         }}
-        data-testid="drawer-trigger"
+        data-testid="drawer-toggle"
       >
         <ADrawerHeader>
           <ADrawerTitle>
