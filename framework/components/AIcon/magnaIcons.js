@@ -2962,6 +2962,38 @@ const MagnaIcons = {
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
   },
+  "device-mobile-speaker": {
+    xml: (
+      <>
+        <rect width="256" height="256" fill="none" />
+        <rect
+          x="24"
+          y="64"
+          width="208"
+          height="128"
+          rx="16"
+          transform="translate(256) rotate(90)"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="16"
+        />
+        <line
+          x1="96"
+          y1="56"
+          x2="160"
+          y2="56"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="16"
+        />
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
   clean: {
     xml: (
       <>
@@ -3981,6 +4013,63 @@ const MagnaIcons = {
           strokeLinejoin="round"
           strokeWidth="24"
         ></circle>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  "git-fork": {
+    xml: (
+      <>
+        <rect width="256" height="256" fill="none" />
+        <path
+          d="M64,88v24a16,16,0,0,0,16,16h96a16,16,0,0,0,16-16V88"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="16"
+        />
+        <line
+          x1="128"
+          y1="128"
+          x2="128"
+          y2="168"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="16"
+        />
+        <circle
+          cx="64"
+          cy="64"
+          r="24"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="16"
+        />
+        <circle
+          cx="128"
+          cy="192"
+          r="24"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="16"
+        />
+        <circle
+          cx="192"
+          cy="64"
+          r="24"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="16"
+        />
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
