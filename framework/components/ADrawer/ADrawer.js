@@ -20,7 +20,6 @@ const ADrawer = forwardRef(
       openHeight,
       openWidth,
       responsiveWidth,
-      size,
       isOpen,
       onClose,
       closeOnOutsideClick,
@@ -98,18 +97,25 @@ const ADrawer = forwardRef(
     if (isOpen && !slim) {
       if (openWidth) {
         style.width = openWidth;
-      } else if (size) {
-        if (Array.isArray(size)) {
+      } else if (responsiveWidth) {
+        // If it's an array, it means we want to make the drawer responsive at
+        // the corresponding breakpoints
+        if (Array.isArray(responsiveWidth)) {
           // Use the first size as the smallest width
-          className += ` a-drawer--size-${size[0]}`;
+          className += ` a-drawer--size-${responsiveWidth[0]}`;
           // Make the drawer responsive to the other sizes
           className +=
-            " " + size.map((s) => `a-drawer--responsive-${s}`).join(" ");
-        } else {
-          className += ` a-drawer--size-${size}`;
+            " " +
+            responsiveWidth.map((s) => `a-drawer--responsive-${s}`).join(" ");
         }
-      } else if (responsiveWidth) {
-        className += " a-drawer--responsive-width";
+        // For a string we want to set a fixed width
+        else if (typeof responsiveWidth === "string") {
+          className += ` a-drawer--size-${responsiveWidth}`;
+        }
+        // Otherwise let it have generic responsive breakpoints
+        else {
+          className += " a-drawer--responsive-width";
+        }
       } else if (openHeight) {
         style.height = openHeight;
       }

@@ -103,9 +103,9 @@ describe("<ADrawer />", () => {
     testCoreFunctionality(<DrawerTest position="relative" />);
   });
 
-  describe("when the size prop is set", () => {
+  describe("when the responsiveWidth prop is set", () => {
     it("should render with the set size", () => {
-      cy.mount(<ADrawer data-testid="drawer" isOpen size="md" />);
+      cy.mount(<ADrawer data-testid="drawer" isOpen responsiveWidth="md" />);
 
       getDrawer().should("have.class", "a-drawer--size-md");
 
@@ -113,7 +113,9 @@ describe("<ADrawer />", () => {
     });
 
     it("should render with the size of the first value in the size array", () => {
-      cy.mount(<ADrawer data-testid="drawer" isOpen size={["lg", "xl"]} />);
+      cy.mount(
+        <ADrawer data-testid="drawer" isOpen responsiveWidth={["lg", "xl"]} />
+      );
 
       getDrawer().should("have.class", "a-drawer--size-lg");
 

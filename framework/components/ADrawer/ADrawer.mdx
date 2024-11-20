@@ -249,7 +249,7 @@ The drawer can be set to a specific Magnetic size, or an array of sizes. If an a
         <p>Fixed width by size</p>
         <AButton onClick={() => setIsFixedOpen(true)} data-test-drawer-trigger-left>Open Fixed Large</AButton>
         <ADrawer
-            size="lg"
+            responsiveWidth="lg"
             aria-labelledby='left-drawer-title'
             slideIn='right'
             ref={fixedRef}
@@ -273,7 +273,7 @@ The drawer can be set to a specific Magnetic size, or an array of sizes. If an a
         <p>Responsize width, minimum medium size</p>
         <AButton onClick={() => setIsVariableOpen(true)} data-test-drawer-trigger-right>Open Sized Responsive</AButton>
         <ADrawer
-            size={["md", "lg", "xl"]}
+            responsiveWidth={["md", "lg", "xl"]}
             aria-labelledby='variable-drawer-title'
             slideIn='right'
             ref={variableRef}
