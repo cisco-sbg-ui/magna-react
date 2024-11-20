@@ -434,7 +434,7 @@ For more advanced use cases of dropdown see `AMenu` and `AButton`
 
 Combining `isOpen` with `onClose` allows for external control of the open state. The menu will still be interactable with clicks.
 
-Note: any extra component props are passed to the anchor element.
+The menu will respect `true` for `isOpen`, but otherwise handle clicks of menu items and outside click as normal.
 
 <Playground
   code={`() => {
