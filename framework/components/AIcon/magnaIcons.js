@@ -2965,7 +2965,6 @@ const MagnaIcons = {
   "device-mobile-speaker": {
     xml: (
       <>
-        <rect width="256" height="256" fill="none" />
         <rect
           x="24"
           y="64"
@@ -2974,10 +2973,9 @@ const MagnaIcons = {
           rx="16"
           transform="translate(256) rotate(90)"
           fill="none"
-          stroke="currentColor"
           stroke-linecap="round"
           stroke-linejoin="round"
-          stroke-width="16"
+          stroke-width="24"
         />
         <line
           x1="96"
@@ -2985,10 +2983,9 @@ const MagnaIcons = {
           x2="160"
           y2="56"
           fill="none"
-          stroke="currentColor"
           stroke-linecap="round"
           stroke-linejoin="round"
-          stroke-width="16"
+          stroke-width="24"
         />
       </>
     ),
@@ -4020,14 +4017,12 @@ const MagnaIcons = {
   "git-fork": {
     xml: (
       <>
-        <rect width="256" height="256" fill="none" />
         <path
           d="M64,88v24a16,16,0,0,0,16,16h96a16,16,0,0,0,16-16V88"
           fill="none"
-          stroke="currentColor"
           stroke-linecap="round"
           stroke-linejoin="round"
-          stroke-width="16"
+          stroke-width="24"
         />
         <line
           x1="128"
@@ -4035,40 +4030,36 @@ const MagnaIcons = {
           x2="128"
           y2="168"
           fill="none"
-          stroke="currentColor"
           stroke-linecap="round"
           stroke-linejoin="round"
-          stroke-width="16"
+          stroke-width="24"
         />
         <circle
           cx="64"
           cy="64"
           r="24"
           fill="none"
-          stroke="currentColor"
           stroke-linecap="round"
           stroke-linejoin="round"
-          stroke-width="16"
+          stroke-width="24"
         />
         <circle
           cx="128"
           cy="192"
           r="24"
           fill="none"
-          stroke="currentColor"
           stroke-linecap="round"
           stroke-linejoin="round"
-          stroke-width="16"
+          stroke-width="24"
         />
         <circle
           cx="192"
           cy="64"
           r="24"
           fill="none"
-          stroke="currentColor"
           stroke-linecap="round"
           stroke-linejoin="round"
-          stroke-width="16"
+          stroke-width="24"
         />
       </>
     ),
