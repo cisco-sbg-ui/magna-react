@@ -74,10 +74,16 @@ const ADropdown = forwardRef<HTMLElement, ADropdownProps<React.ElementType>>(
           ref={ref}
           disabled={disabled}
           className={propsClassName}
-          open={isOpen}
+          open={openState}
           onClick={(e: React.MouseEvent) => {
-            setIsOpen(!isOpen);
+            setIsOpen(!openState);
             propsOnClick && propsOnClick(e);
+
+            // If controlled by external state, call onClose if clicking on the anchor
+            // while open
+            if (open) {
+              propsOnClose && propsOnClose();
+            }
           }}
           aria-haspopup="true"
           dropdown={!icon} //Don't display caret if icon only dropdown
@@ -92,7 +98,11 @@ const ADropdown = forwardRef<HTMLElement, ADropdownProps<React.ElementType>>(
           menuRef={floatingRefs.floating}
           context={context}
           open={openState}
-          onClose={() => setIsOpen(false)}
+          onClose={() => {
+            setIsOpen(false);
+
+            propsOnClose && propsOnClose();
+          }}
           placement={placement}
           closeOnClick
           {...menuComponentProps}
