@@ -65,6 +65,20 @@ describe("<Dropdown/>", () => {
 
     cy.get(".a-floating-menu").should("not.exist");
   });
+
+  it("should be closable by clicking the anchor when manually controlled", () => {
+    cy.mount(
+      <ManualDropdown secondary title="dropdown">
+        <p>test</p>
+      </ManualDropdown>
+    );
+
+    cy.get(".a-floating-menu").should("exist");
+
+    cy.get(".a-button").click();
+
+    cy.get(".a-floating-menu").should("not.exist");
+  });
 });
 
 const ManualDropdown = ({...props}) => {
