@@ -112,10 +112,6 @@ const ADrawer = forwardRef(
         else if (typeof responsiveWidth === "string") {
           className += ` a-drawer--size-${responsiveWidth}`;
         }
-        // Otherwise let it have generic responsive breakpoints
-        else {
-          className += " a-drawer--responsive-width";
-        }
       } else if (openHeight) {
         style.height = openHeight;
       }

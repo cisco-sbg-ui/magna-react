@@ -154,18 +154,6 @@ $common-transitions: transform $transition-props, width $transition-props,
     top: unset;
   }
 
-  &--responsive-width {
-    width: $drawer-width-default;
-
-    @media screen and (min-width: map-get($grid-breakpoints, "xl")) {
-      width: $drawer-width-md;
-    }
-
-    @media screen and (min-width: map-get($grid-breakpoints, "xxl")) {
-      width: $drawer-width-lg;
-    }
-  }
-
   &--size-sm {
     width: $drawer-width-sm;
   }

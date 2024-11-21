@@ -54,7 +54,7 @@ export type ADrawerProps<C extends React.ElementType> = Override<
        * This can accept an also accept an array to be responsive to specified sizes,
        * or a string for a single fixed size.
        */
-      responsiveWidth?: boolean | ADrawerSize | ADrawerSize[];
+      responsiveWidth?: ADrawerSize | ADrawerSize[];
 
       /**
        * Specifies the positioning strategy of the drawer. A drawer specified with
