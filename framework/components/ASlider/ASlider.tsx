@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import React, {
   forwardRef,
   useCallback,
@@ -15,7 +14,7 @@ import AFieldBase from "../AFieldBase";
 import {useCombinedRefs} from "../../utils/hooks";
 import {getRoundedBoundedClientRect, keyCodes} from "../../utils/helpers";
 import "./ASlider.scss";
-import {ASliderProps, ASliderRules} from "./types";
+import {ASliderProps, ASliderRules, ASliderValidationState} from "./types";
 
 const floatSafeRemainder = (val: number, step: number) => {
   const valDecCount = (val.toString().split(".")[1] || "").length;
@@ -49,16 +48,17 @@ const ASlider = forwardRef<HTMLDivElement, ASliderProps>(
     ref
   ) => {
     const sliderRef = useRef<HTMLDivElement>(null);
-    const combinedRef = useCombinedRefs(ref, sliderRef);
+    //TODO update when combinedRefs is typed
+    const combinedRef: any = useCombinedRefs(ref, sliderRef);
     const [sliderId] = useState(sliderCounter++);
     const {appRef} = useContext(AAppContext);
     const [offset1, setOffset1] = useState(0);
     const [isDown1, setIsDown1] = useState(false);
     const [offset2, setOffset2] = useState(0);
     const [isDown2, setIsDown2] = useState(false);
-    const [error, setError] = useState<string | null>("");
+    const [error, setError] = useState<string>("");
     const [workingValidationState, setWorkingValidationState] =
-      useState<ASliderRules>(validationState);
+      useState<ASliderValidationState>(validationState);
 
     //@ts-expect-error TODO convert once AFormContext is typed
     const {register, unregister} = useContext(AFormContext);
@@ -266,7 +266,7 @@ const ASlider = forwardRef<HTMLDivElement, ASliderProps>(
         if (required) {
           workingRules = [
             {
-              test: (v) => !!v || "Required",
+              test: (v) => (v ? "" : "Required"),
               level: "danger"
             },
             ...workingRules
@@ -274,17 +274,21 @@ const ASlider = forwardRef<HTMLDivElement, ASliderProps>(
         }
 
         setWorkingValidationState("default");
-        setError(null);
+        setError("");
 
         for (let i = 0; i < workingRules.length; i++) {
-          const error = workingRules[i].test(testValue);
-          if (error !== true) {
-            setError(error);
-            setWorkingValidationState(workingRules[i].level || "danger");
-            return {
-              message: error,
-              level: workingRules[i].level || "danger"
-            };
+          const rule: ASliderRules = workingRules[i];
+          if (rule && rule.test) {
+            const error = rule.test(testValue);
+            const level: ASliderValidationState = rule.level || "danger";
+            if (error) {
+              setError(error);
+              setWorkingValidationState(level);
+              return {
+                message: error,
+                level: rule.level || "danger"
+              };
+            }
           }
         }
       }
@@ -312,10 +316,10 @@ const ASlider = forwardRef<HTMLDivElement, ASliderProps>(
     const tickItems =
       ticks &&
       ticks.map((x, i) => {
-        const num = parseInt(x);
         const style: React.CSSProperties = {};
+        const num = typeof x === "number" ? x : parseInt(x);
         if (!isNaN(num)) {
-          const width = ticks[i + 1] - num;
+          const width = (ticks[i + 1] as number) - num;
           style.width = `${width}px`;
         } else {
           style.width = "0";
@@ -369,24 +373,26 @@ const ASlider = forwardRef<HTMLDivElement, ASliderProps>(
                 role="slider"
                 aria-valuemin={min}
                 aria-valuemax={max}
-                aria-valuenow={value[0]}
+                aria-valuenow={Array.isArray(value) ? value[0] : value}
                 aria-readonly={disabled}
                 tabIndex={0}
                 style={{left: thumb1Position + "%"}}
-                onMouseDown={(e) => {
+                onMouseDown={(e: React.MouseEvent<HTMLDivElement>) => {
                   if (disabled) return;
+                  const target = e.target as HTMLDivElement;
                   setIsDown1(true);
-                  setOffset1(e.target.offsetLeft - e.clientX);
+                  setOffset1(target.offsetLeft - e.clientX);
                 }}
-                onTouchStart={(e) => {
+                onTouchStart={(e: React.TouchEvent<HTMLDivElement>) => {
                   if (disabled) return;
+                  const target = e.target as HTMLDivElement;
                   setIsDown1(true);
-                  setOffset1(e.target.offsetLeft - e.touches[0].clientX);
+                  setOffset1(target.offsetLeft - e.touches[0].clientX);
                 }}
-                onKeyDown={(e) => {
+                onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => {
                   if (disabled) return;
                   //must be code over key for "Space"
-                  if ([keyCodes.right, keyCodes.up].includes(e.code)) {
+                  if (["ArrowRight", "ArrowUp"].includes(e.key)) {
                     e.preventDefault();
                     // Increases slider value one step.
                     handleChange(
@@ -396,7 +402,7 @@ const ASlider = forwardRef<HTMLDivElement, ASliderProps>(
                     return;
                   }
 
-                  if ([keyCodes.left, keyCodes.down].includes(e.key)) {
+                  if (["ArrowLeft", "ArrowDown"].includes(e.key)) {
                     e.preventDefault();
                     // Decreases slider value one step.
                     handleChange(
@@ -452,13 +458,15 @@ const ASlider = forwardRef<HTMLDivElement, ASliderProps>(
               style={{left: thumb2Position + "%"}}
               onMouseDown={(e: React.MouseEvent<HTMLDivElement>) => {
                 if (disabled) return;
+                const target = e.target as HTMLDivElement;
                 setIsDown2(true);
-                setOffset2(e.target.offsetLeft - e.clientX);
+                setOffset2(target.offsetLeft - e.clientX);
               }}
               onTouchStart={(e: React.TouchEvent<HTMLDivElement>) => {
                 if (disabled) return;
+                const target = e.target as HTMLDivElement;
                 setIsDown2(true);
-                setOffset2(e.target.offsetLeft - e.touches[0].clientX);
+                setOffset2(target.offsetLeft - e.touches[0].clientX);
               }}
               onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => {
                 if (disabled) return;
@@ -472,7 +480,7 @@ const ASlider = forwardRef<HTMLDivElement, ASliderProps>(
                   return;
                 }
 
-                if ([keyCodes.left, keyCodes.down].includes(e.key)) {
+                if (["ArrowLeft", "ArrowDown"].includes(e.key)) {
                   e.preventDefault();
                   // Decreases slider value one step.
                   handleChange(
@@ -522,97 +530,6 @@ const ASlider = forwardRef<HTMLDivElement, ASliderProps>(
     );
   }
 );
-
-ASlider.propTypes = {
-  /**
-   * Toggles the disabled state.
-   */
-  disabled: PropTypes.bool,
-  /**
-   * Sets hint or multiple hints.
-   */
-  hints: PropTypes.oneOfType([
-    PropTypes.arrayOf(
-      PropTypes.shape({
-        /**
-         * Hint content.
-         */
-        content: PropTypes.node.isRequired,
-        /**
-         * Style the hint with the component validation state. Default: false.
-         */
-        hintUsesValidationState: PropTypes.bool,
-        /**
-         * Override the validation state of the hint by incorporating the desired state.
-         * The component validation state is disregarded when this property is configured.
-         */
-        validationStateOverride: PropTypes.oneOf([
-          "default",
-          "warning",
-          "danger"
-        ]),
-        /**
-         * Do not show hint when there are validation errors.
-         */
-        hideHintOnError: PropTypes.bool
-      })
-    ),
-    // Accept a string and use default AHint rendering
-    PropTypes.string,
-    // Pass a custom renderable object as the hint
-    PropTypes.node
-  ]),
-  /**
-   * Sets the label content.
-   */
-  label: PropTypes.node,
-  /**
-   * Sets the minimum value.
-   */
-  min: PropTypes.number,
-  /**
-   * Sets the maximum value.
-   */
-  max: PropTypes.number,
-  /**
-   * Handles the `change` event.
-   */
-  onChange: PropTypes.func,
-  /**
-   * Toggles a default rule for required values.
-   */
-  required: PropTypes.bool,
-  /**
-   * Sets validation rules for the component.
-   */
-  rules: PropTypes.arrayOf(
-    PropTypes.shape({
-      test: PropTypes.func,
-      level: PropTypes.string
-    })
-  ),
-  /**
-   * Sets the increment/decrement value.
-   */
-  step: PropTypes.number,
-  /**
-   * Sets an array of tick mark names.
-   */
-  ticks: PropTypes.arrayOf(
-    PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-  ),
-  /**
-   * Applies a validation state.
-   */
-  validationState: PropTypes.oneOf(["default", "warning", "danger"]),
-  /**
-   * Sets the slider value(s).
-   */
-  value: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.number),
-    PropTypes.number
-  ])
-};
 
 ASlider.displayName = "ASlider";
 

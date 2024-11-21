@@ -2,8 +2,8 @@ import {Override} from "../../types";
 import {AFieldBaseProps, AHintsType} from "../AFieldBase/types";
 
 export interface ASliderRules {
-  test?: (...args: any[]) => unknown;
-  level?: string;
+  test?: (...args: any[]) => string;
+  level?: ASliderValidationState;
 }
 
 export type ASliderTicks = string | number;
