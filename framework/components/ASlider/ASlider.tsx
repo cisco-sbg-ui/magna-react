@@ -15,19 +15,20 @@ import AFieldBase from "../AFieldBase";
 import {useCombinedRefs} from "../../utils/hooks";
 import {getRoundedBoundedClientRect, keyCodes} from "../../utils/helpers";
 import "./ASlider.scss";
+import {ASliderProps, ASliderRules} from "./types";
 
-const floatSafeRemainder = (val, step) => {
-  var valDecCount = (val.toString().split(".")[1] || "").length;
-  var stepDecCount = (step.toString().split(".")[1] || "").length;
-  var decCount = valDecCount > stepDecCount ? valDecCount : stepDecCount;
-  var valInt = parseInt(val.toFixed(decCount).replace(".", ""));
-  var stepInt = parseInt(step.toFixed(decCount).replace(".", ""));
+const floatSafeRemainder = (val: number, step: number) => {
+  const valDecCount = (val.toString().split(".")[1] || "").length;
+  const stepDecCount = (step.toString().split(".")[1] || "").length;
+  const decCount = valDecCount > stepDecCount ? valDecCount : stepDecCount;
+  const valInt = parseInt(val.toFixed(decCount).replace(".", ""));
+  const stepInt = parseInt(step.toFixed(decCount).replace(".", ""));
   return (valInt % stepInt) / Math.pow(10, decCount);
 };
 
 let sliderCounter = 0;
 
-const ASlider = forwardRef(
+const ASlider = forwardRef<HTMLDivElement, ASliderProps>(
   (
     {
       className: propsClassName,
@@ -42,12 +43,12 @@ const ASlider = forwardRef(
       step = 1,
       ticks,
       validationState = "default",
-      value,
+      value = 0,
       ...rest
     },
     ref
   ) => {
-    const sliderRef = useRef(null);
+    const sliderRef = useRef<HTMLDivElement>(null);
     const combinedRef = useCombinedRefs(ref, sliderRef);
     const [sliderId] = useState(sliderCounter++);
     const {appRef} = useContext(AAppContext);
@@ -55,11 +56,13 @@ const ASlider = forwardRef(
     const [isDown1, setIsDown1] = useState(false);
     const [offset2, setOffset2] = useState(0);
     const [isDown2, setIsDown2] = useState(false);
-    const [error, setError] = useState("");
+    const [error, setError] = useState<string | null>("");
     const [workingValidationState, setWorkingValidationState] =
-      useState(validationState);
+      useState<ASliderRules>(validationState);
 
+    //@ts-expect-error TODO convert once AFormContext is typed
     const {register, unregister} = useContext(AFormContext);
+
     useEffect(() => {
       setWorkingValidationState(validationState);
     }, [validationState]);
@@ -89,9 +92,9 @@ const ASlider = forwardRef(
       ? (value[1] * 100) / (max - min)
       : (value * 100) / (max - min);
 
-    const roundToStep = (val) => {
+    const roundToStep = (val: number) => {
       const realStep = (step * 100) / (max - min);
-      var resto = floatSafeRemainder(val, realStep);
+      const resto = floatSafeRemainder(val, realStep);
       if (resto <= realStep / 2) {
         return val - resto;
       }
@@ -99,9 +102,9 @@ const ASlider = forwardRef(
       return val + realStep - resto;
     };
 
-    const handleChange = (thumb1Pos, thumb2Pos) => {
+    const handleChange = (thumb1Pos: number | null, thumb2Pos: number) => {
       const splitStep = step.toString().split(".");
-      const precision = splitStep.length > 1 ? splitStep[1] : 0;
+      const precision = splitStep.length > 1 ? parseInt(splitStep[1]) : 0;
 
       if (onChange) {
         if (thumb1Pos !== null) {
@@ -155,19 +158,31 @@ const ASlider = forwardRef(
       setIsDown1(false);
     }, [setIsDown1, disabled]);
     const mouseMoveHandler1 = useCallback(
-      (e) => {
+      (e: MouseEvent | TouchEvent) => {
         if (disabled) return;
         e.preventDefault();
         if (isDown1) {
           const sliderCoords = getRoundedBoundedClientRect(combinedRef.current);
+          if (!sliderCoords) {
+            return;
+          }
+
+          let clientX: number;
+          if (e instanceof MouseEvent) {
+            clientX = e.clientX;
+          } else {
+            clientX = e.touches[0].clientX;
+          }
+
           const position = Math.min(
-            Math.max(0, (e.clientX || e.touches[0].clientX) + offset1),
+            Math.max(0, clientX + offset1),
             sliderCoords.width - 17
           );
 
           const adjustedPosition = roundToStep(
             (100 * position) / (sliderCoords.width - 17)
           );
+
           handleChange(adjustedPosition, thumb2Position);
         }
       },
@@ -179,13 +194,24 @@ const ASlider = forwardRef(
       setIsDown2(false);
     }, [setIsDown2, disabled]);
     const mouseMoveHandler2 = useCallback(
-      (e) => {
+      (e: MouseEvent | TouchEvent) => {
         if (disabled) return;
         e.preventDefault();
         if (isDown2) {
           const sliderCoords = getRoundedBoundedClientRect(combinedRef.current);
+          if (!sliderCoords) {
+            return;
+          }
+
+          let clientX: number;
+
+          if (e instanceof MouseEvent) {
+            clientX = e.clientX;
+          } else {
+            clientX = e.touches[0].clientX;
+          }
           const position = Math.min(
-            Math.max(0, (e.clientX || e.touches[0].clientX) + offset2),
+            Math.max(0, clientX + offset2),
             sliderCoords.width - 17
           );
 
@@ -200,6 +226,9 @@ const ASlider = forwardRef(
 
     useEffect(() => {
       const appRefcurrent = appRef.current;
+      if (!appRefcurrent) {
+        return;
+      }
       appRefcurrent.addEventListener("mouseup", mouseUpHandler1);
       appRefcurrent.addEventListener("mousemove", mouseMoveHandler1);
       appRefcurrent.addEventListener("touchend", mouseUpHandler1);
@@ -229,7 +258,7 @@ const ASlider = forwardRef(
 
     const validate = (testValue = value) => {
       if (rules || required) {
-        let workingRules = [];
+        let workingRules: ASliderRules[] = [];
         if (rules) {
           workingRules = [...rules];
         }
@@ -246,6 +275,7 @@ const ASlider = forwardRef(
 
         setWorkingValidationState("default");
         setError(null);
+
         for (let i = 0; i < workingRules.length; i++) {
           const error = workingRules[i].test(testValue);
           if (error !== true) {
@@ -283,7 +313,7 @@ const ASlider = forwardRef(
       ticks &&
       ticks.map((x, i) => {
         const num = parseInt(x);
-        const style = {};
+        const style: React.CSSProperties = {};
         if (!isNaN(num)) {
           const width = ticks[i + 1] - num;
           style.width = `${width}px`;
@@ -307,8 +337,7 @@ const ASlider = forwardRef(
         label={label}
         error={error}
         hints={hints}
-        validationState={workingValidationState}
-      >
+        validationState={workingValidationState}>
         <div className="a-slider__control">
           <div className="a-slider__track">
             {thumb1Position !== null && (
@@ -317,23 +346,20 @@ const ASlider = forwardRef(
                 style={{
                   left: 0,
                   width: Math.min(thumb1Position, thumb2Position) + "%"
-                }}
-              ></div>
+                }}></div>
             )}
             <div
               className="a-slider__selection"
               style={{
                 left: Math.min(thumb1Position || 0, thumb2Position) + "%",
                 width: Math.abs((thumb1Position || 0) - thumb2Position) + "%"
-              }}
-            ></div>
+              }}></div>
             <div
               className="a-slider__track--high"
               style={{
                 left: Math.max(thumb1Position || 0, thumb2Position) + "%",
                 right: 0
-              }}
-            ></div>
+              }}></div>
           </div>
           <div className="a-slider__tick">{tickItems}</div>
           <div className="a-slider__handles">
@@ -345,7 +371,7 @@ const ASlider = forwardRef(
                 aria-valuemax={max}
                 aria-valuenow={value[0]}
                 aria-readonly={disabled}
-                tabIndex="0"
+                tabIndex={0}
                 style={{left: thumb1Position + "%"}}
                 onMouseDown={(e) => {
                   if (disabled) return;
@@ -413,8 +439,7 @@ const ASlider = forwardRef(
                     handleChange(100, thumb2Position);
                     return;
                   }
-                }}
-              ></div>
+                }}></div>
             )}
             <div
               className="a-slider__handle a-slider__handle--max"
@@ -423,21 +448,21 @@ const ASlider = forwardRef(
               aria-valuemax={max}
               aria-valuenow={Array.isArray(value) ? value[1] : value}
               aria-readonly={disabled}
-              tabIndex="0"
+              tabIndex={0}
               style={{left: thumb2Position + "%"}}
-              onMouseDown={(e) => {
+              onMouseDown={(e: React.MouseEvent<HTMLDivElement>) => {
                 if (disabled) return;
                 setIsDown2(true);
                 setOffset2(e.target.offsetLeft - e.clientX);
               }}
-              onTouchStart={(e) => {
+              onTouchStart={(e: React.TouchEvent<HTMLDivElement>) => {
                 if (disabled) return;
                 setIsDown2(true);
                 setOffset2(e.target.offsetLeft - e.touches[0].clientX);
               }}
-              onKeyDown={(e) => {
+              onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => {
                 if (disabled) return;
-                if ([keyCodes.right, keyCodes.up].includes(e.key)) {
+                if (["ArrowRight", "ArrowUp"].includes(e.key)) {
                   e.preventDefault();
                   // Increases slider value one step.
                   handleChange(
@@ -490,8 +515,7 @@ const ASlider = forwardRef(
                   handleChange(thumb1Position, 100);
                   return;
                 }
-              }}
-            ></div>
+              }}></div>
           </div>
         </div>
       </AFieldBase>
