@@ -1,5 +1,6 @@
 **Please check if the PR fulfills these requirements**
-	-	[ ] This change has been integrated and tested against 2 out of 3 typescript applications
+
+  -	[ ] This change has been integrated and tested against 2 out of 3 typescript applications
 	-	[ ] This change passed unit tests in these applications
 	-	[ ] The changes are documented in component docs and changelog
 	-	[ ] The ESLint plugin has been updated if a new component is added
