@@ -2924,6 +2924,35 @@ const MagnaIcons = {
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
   },
+  "device-mobile-speaker": {
+    xml: (
+      <>
+        <rect
+          x="24"
+          y="64"
+          width="208"
+          height="128"
+          rx="16"
+          transform="translate(256) rotate(90)"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></rect>
+        <line
+          x1="96"
+          y1="56"
+          x2="160"
+          y2="56"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></line>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
   "device-mobile": {
     xml: (
       <>
@@ -2958,35 +2987,6 @@ const MagnaIcons = {
           strokeLinejoin="round"
           strokeWidth="24"
         ></line>
-      </>
-    ),
-    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
-  },
-  "device-mobile-speaker": {
-    xml: (
-      <>
-        <rect
-          x="24"
-          y="64"
-          width="208"
-          height="128"
-          rx="16"
-          transform="translate(256) rotate(90)"
-          fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="24"
-        />
-        <line
-          x1="96"
-          y1="56"
-          x2="160"
-          y2="56"
-          fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="24"
-        />
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -4020,47 +4020,47 @@ const MagnaIcons = {
         <path
           d="M64,88v24a16,16,0,0,0,16,16h96a16,16,0,0,0,16-16V88"
           fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="24"
-        />
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></path>
         <line
           x1="128"
           y1="128"
           x2="128"
           y2="168"
           fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="24"
-        />
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></line>
         <circle
           cx="64"
           cy="64"
           r="24"
           fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="24"
-        />
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></circle>
         <circle
           cx="128"
           cy="192"
           r="24"
           fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="24"
-        />
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></circle>
         <circle
           cx="192"
           cy="64"
           r="24"
           fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="24"
-        />
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></circle>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -5217,6 +5217,23 @@ const MagnaIcons = {
       </>
     ),
     props: {viewBox: "0 0 22 22", xmlns: "http://www.w3.org/2000/svg"}
+  },
+  "web-security-appliance": {
+    xml: (
+      <>
+        <g fillRule="evenodd">
+          <path
+            fill-opacity=".3"
+            d="M5 6.5L10.998 4 17 6.5v8L10.998 17 5 14.5z"
+          ></path>
+          <path
+            strokeWidth="1.5"
+            d="M11.648 11l8.638-5.895v11.791l-8.638-5.895zm-.294 10.069V11.67l8.572 5.838-8.579 3.607c0-.018.007-.03.007-.047zm-.708-9.398v9.445L2.074 17.51l8.572-5.838zm0-10.739v9.398L2.074 4.493 10.653.885s-.007.029-.007.047zm.701-.047l8.58 3.608-8.573 5.837V.932s-.007-.029-.007-.047zM1.714 5.134L10.37 11l-8.657 5.895V5.134zM20.998 17.6V4.4a.178.178 0 000-.047.34.34 0 00-.208-.278L11.138.03a.326.326 0 00-.276 0L1.218 4.085a.346.346 0 00-.217.28.138.138 0 000 .036v13.2a.173.173 0 000 .046c.015.125.095.231.21.28l9.651 4.044c.088.039.188.039.276 0l9.644-4.056a.343.343 0 00.21-.278.164.164 0 00.006-.037z"
+          ></path>
+        </g>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24"}
   },
   "paper-plane-tilt": {
     xml: (
@@ -8176,23 +8193,6 @@ const MagnaIcons = {
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
-  },
-  "web-security-application": {
-    xml: (
-      <>
-        <g fill="currentColor" fill-rule="evenodd">
-          <path
-            fill-opacity=".3"
-            d="M5 6.5L10.998 4 17 6.5v8L10.998 17 5 14.5z"
-          />
-          <path
-            strokeWidth="1.5"
-            d="M11.648 11l8.638-5.895v11.791l-8.638-5.895zm-.294 10.069V11.67l8.572 5.838-8.579 3.607c0-.018.007-.03.007-.047zm-.708-9.398v9.445L2.074 17.51l8.572-5.838zm0-10.739v9.398L2.074 4.493 10.653.885s-.007.029-.007.047zm.701-.047l8.58 3.608-8.573 5.837V.932s-.007-.029-.007-.047zM1.714 5.134L10.37 11l-8.657 5.895V5.134zM20.998 17.6V4.4a.178.178 0 000-.047.34.34 0 00-.208-.278L11.138.03a.326.326 0 00-.276 0L1.218 4.085a.346.346 0 00-.217.28.138.138 0 000 .036v13.2a.173.173 0 000 .046c.015.125.095.231.21.28l9.651 4.044c.088.039.188.039.276 0l9.644-4.056a.343.343 0 00.21-.278.164.164 0 00.006-.037z"
-          />
-        </g>
-      </>
-    ),
-    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24"}
   },
   "wifi-high": {
     xml: (
