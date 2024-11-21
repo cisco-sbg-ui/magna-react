@@ -1,13 +1,8 @@
-import React, {useState, useEffect} from "react";
-import {ASlider} from "../../framework";
-// import type {ASliderProps} from "../../framework";
-// import { ASliderProps } from "../../framework/components/ASlider/types";
+import React, {useState} from "react";
+import {ASlider, type ASliderProps} from "../../framework";
 
-const ASliderTest = ({value: propsValue = 0, ...rest}): ASliderProps => {
+const ASliderTest = ({value: propsValue = 0, ...rest}: ASliderProps) => {
   const [value, setValue] = useState(propsValue);
-  useEffect(() => {
-    console.log("CAlled");
-  });
   return (
     <ASlider
       data-testid="slider"

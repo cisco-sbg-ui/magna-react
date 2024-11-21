@@ -51,6 +51,7 @@ export * from "../components/APopover/types";
 export * from "../components/AProgressbar/types";
 export * from "../components/ARadio/types";
 export * from "../components/ASelect/types";
+export * from "../components/ASlider/types";
 export * from "../components/ASimpleTable/types";
 export * from "../components/ASkeleton/types";
 export * from "../components/ASpinner/types";
