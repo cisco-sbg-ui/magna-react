@@ -187,52 +187,7 @@ The drawer can slide-in from the left, right, or bottom of the page.
 }`}
 />
 
-#### Responsive Width
-
-<Playground
-  code={`() => {
-
-    const rightDrawerContentRef = useRef();
-    const [isRightOpen, setIsRightOpen] = useState(false);
-
-    return (
-      <>
-        <p>Right slide-in</p>
-        <AButton onClick={() => setIsRightOpen(true)} data-test-drawer-trigger-right>Open Right</AButton>
-        <ADrawer
-            responsiveWidth={true}
-            aria-labelledby='right-drawer-title'
-            slideIn='right'
-            ref={rightDrawerContentRef}
-            isOpen={isRightOpen}
-            onClose={() => setIsRightOpen(false)}
-            data-test-drawer-right>
-           <ADrawerHeader>
-          <ADrawerTitle>
-            <h1 id='left-drawer-title'>Responsive Width Drawer</h1>
-          </ADrawerTitle>
-          </ADrawerHeader>
-          <ADrawerBody>
-            <p>
-              This Drawers width is set automatically to align with Magnetic breakpoints.
-            </p>
-            <ul>
-              <li>Drawer has width of 400px by default at Small and Medium breakpoints</li>
-              <li>Drawer has width of 576px at XLarge breakpoint (>1680px)</li>
-              <li>Drawer has width of 768px at XXLarge breakpoint (>2080px)</li>
-            </ul>
-            </ADrawerBody>
-          <ADrawerFooter>
-            <AButton onClick={() => setIsRightOpen(false)} data-test-drawer-close-right>Close</AButton>
-          </ADrawerFooter>
-        </ADrawer>
-      </>
-    )
-
-}`}
-/>
-
-#### Specific Size
+#### Specific Responsive Size
 
 The drawer can be set to a specific Magnetic size, or an array of sizes. If an array is specified the first value in the array will be used as the smallest size. The rest will act as responsive breakpoints based on browser width.
 

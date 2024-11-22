@@ -238,7 +238,10 @@ ADrawer.propTypes = {
    * The Drawer renders with the Magnetic defined widths for the Magnetic
    * defined breakpoints.
    */
-  responsiveWidth: PropTypes.bool,
+  responsiveWidth: PropTypes.oneOfType([
+    PropTypes.arrayOf(["sm", "md", "lg", "xl"]),
+    PropTypes.string
+  ]),
 
   /**
    * Specifies the positioning strategy of the drawer. A drawer specified with
