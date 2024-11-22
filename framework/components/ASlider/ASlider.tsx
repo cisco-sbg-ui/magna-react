@@ -167,12 +167,8 @@ const ASlider = forwardRef<HTMLDivElement, ASliderProps>(
             return;
           }
 
-          let clientX: number;
-          if (e instanceof MouseEvent) {
-            clientX = e.clientX;
-          } else {
-            clientX = e.touches[0].clientX;
-          }
+          const clientX: number =
+            (e as MouseEvent).clientX || (e as TouchEvent).touches[0].clientX;
 
           const position = Math.min(
             Math.max(0, clientX + offset1),
@@ -203,13 +199,9 @@ const ASlider = forwardRef<HTMLDivElement, ASliderProps>(
             return;
           }
 
-          let clientX: number;
+          const clientX: number =
+            (e as MouseEvent).clientX || (e as TouchEvent).touches[0].clientX;
 
-          if (e instanceof MouseEvent) {
-            clientX = e.clientX;
-          } else {
-            clientX = e.touches[0].clientX;
-          }
           const position = Math.min(
             Math.max(0, clientX + offset2),
             sliderCoords.width - 17
