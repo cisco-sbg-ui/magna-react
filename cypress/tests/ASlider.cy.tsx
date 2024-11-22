@@ -35,22 +35,16 @@ describe("<ASlider />", () => {
     cy.get("[aria-valuenow=75]").should("exist");
   });
 
-  it("should move by 1 step", () => {
+  it("should move by 1 step with arrow key", () => {
+    // Step has a value of 1, so it should move by 1 "tick", the previous above moves by 25, so the handler should move by 25 "ticks"
+    // This is just making sure the step value is working properly and not jumping by several ticks.
     cy.mount(
-      <ASliderTest
-        value={3}
-        step={1}
-        max={10}
-        ticks={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
-      />
+      <ASliderTest value={25} step={1} max={100} ticks={[0, 25, 50, 75, 100]} />
     );
 
-    cy.get("[aria-valuenow=3]").should("exist");
-    cy.get("[role=slider]")
-      .focus()
-      .trigger("mousedown", {which: 1})
-      .trigger("mousemove", {clientX: 300, clientY: 0});
-    cy.get("[aria-valuenow=2]").should("exist");
+    cy.get("[aria-valuenow=25]").should("exist");
+    cy.get("[role=slider]").focus().type("{leftArrow}");
+    cy.get("[aria-valuenow=24]").should("exist");
   });
 
   it("should be in varying positions to match number", () => {
