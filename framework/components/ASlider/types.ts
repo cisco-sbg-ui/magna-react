@@ -1,5 +1,5 @@
-import {Override} from "../../types";
-import {AFieldBaseProps, AHintsType} from "../AFieldBase/types";
+import type {Override} from "../../types";
+import type {AFieldBaseProps, AHintsType} from "../AFieldBase/types";
 
 export interface ASliderRules {
   test?: (...args: any[]) => string;
@@ -43,7 +43,7 @@ export type ASliderProps = Override<
     /**
      * Handles the `change` event.
      */
-    onChange?: (...args: any[]) => unknown;
+    onChange?: (newVal: ASliderValue) => void;
     /**
      * Toggles a default rule for required values.
      */

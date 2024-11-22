@@ -14,8 +14,9 @@ import AFieldBase from "../AFieldBase";
 import {useCombinedRefs} from "../../utils/hooks";
 import {getRoundedBoundedClientRect, keyCodes} from "../../utils/helpers";
 import "./ASlider.scss";
-import {ASliderProps, ASliderRules, ASliderValidationState} from "./types";
+import type {ASliderProps, ASliderRules, ASliderValidationState} from "./types";
 
+//This appears to help the handler stay within the bounds of the slider.
 const floatSafeRemainder = (val: number, step: number) => {
   const valDecCount = (val.toString().split(".")[1] || "").length;
   const stepDecCount = (step.toString().split(".")[1] || "").length;

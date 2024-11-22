@@ -39,7 +39,7 @@ export default [
       "jsx-a11y": jsxA11y
     },
     rules: {
-      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/no-require-imports": "off",
       "@typescript-eslint/no-unused-expressions": "off",
       "@typescript-eslint/no-var-requires": "off",
@@ -48,6 +48,12 @@ export default [
       "react-hooks/rules-of-hooks": "warn",
       "cypress/no-unnecessary-waiting": "error",
       "cypress/unsafe-to-chain-command": "off",
+      "@typescript-eslint/consistent-type-imports": [
+        "warn",
+        {
+          prefer: "type-imports"
+        }
+      ],
       ...jsxA11y.configs.recommended.rules
     }
   }
