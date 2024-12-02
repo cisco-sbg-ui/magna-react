@@ -5,8 +5,10 @@ $transition-timing: ease-in-out;
 $transition-props: $transition-duration $transition-timing;
 
 $drawer-width-default: 400px;
-$drawer-width-xl: 576px;
-$drawer-width-xxl: 768px;
+$drawer-width-sm: 400px;
+$drawer-width-md: 576px;
+$drawer-width-lg: 768px;
+$drawer-width-xl: 992px;
 
 //limit transition properties to avoid animating other properties coming form outside
 $common-transitions: transform $transition-props, width $transition-props,
@@ -152,15 +154,39 @@ $common-transitions: transform $transition-props, width $transition-props,
     top: unset;
   }
 
-  &--responsive-width {
-    width: $drawer-width-default;
-
-    @media screen and (min-width: map-get($grid-breakpoints, "xl")) {
-      width: $drawer-width-xl;
+  &--size-sm {
+    width: $drawer-width-sm;
+  }
+  &--responsive-sm {
+    @media screen and (min-width: map-get($grid-breakpoints, "md")) {
+      width: $drawer-width-sm;
     }
+  }
 
+  &--size-md {
+    width: $drawer-width-md;
+  }
+  &--responsive-md {
+    @media screen and (min-width: map-get($grid-breakpoints, "lg")) {
+      width: $drawer-width-md;
+    }
+  }
+
+  &--size-lg {
+    width: $drawer-width-lg;
+  }
+  &--responsive-lg {
+    @media screen and (min-width: map-get($grid-breakpoints, "xl")) {
+      width: $drawer-width-lg;
+    }
+  }
+
+  &--size-xl {
+    width: $drawer-width-xl;
+  }
+  &--responsive-xl {
     @media screen and (min-width: map-get($grid-breakpoints, "xxl")) {
-      width: $drawer-width-xxl;
+      width: $drawer-width-xl;
     }
   }
 }

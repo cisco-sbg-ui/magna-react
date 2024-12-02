@@ -98,7 +98,20 @@ const ADrawer = forwardRef(
       if (openWidth) {
         style.width = openWidth;
       } else if (responsiveWidth) {
-        className += " a-drawer--responsive-width";
+        // If it's an array, it means we want to make the drawer responsive at
+        // the corresponding breakpoints
+        if (Array.isArray(responsiveWidth)) {
+          // Use the first size as the smallest width
+          className += ` a-drawer--size-${responsiveWidth[0]}`;
+          // Make the drawer responsive to the other sizes
+          className +=
+            " " +
+            responsiveWidth.map((s) => `a-drawer--responsive-${s}`).join(" ");
+        }
+        // For a string we want to set a fixed width
+        else if (typeof responsiveWidth === "string") {
+          className += ` a-drawer--size-${responsiveWidth}`;
+        }
       } else if (openHeight) {
         style.height = openHeight;
       }
@@ -225,7 +238,10 @@ ADrawer.propTypes = {
    * The Drawer renders with the Magnetic defined widths for the Magnetic
    * defined breakpoints.
    */
-  responsiveWidth: PropTypes.bool,
+  responsiveWidth: PropTypes.oneOfType([
+    PropTypes.arrayOf(["sm", "md", "lg", "xl"]),
+    PropTypes.string
+  ]),
 
   /**
    * Specifies the positioning strategy of the drawer. A drawer specified with

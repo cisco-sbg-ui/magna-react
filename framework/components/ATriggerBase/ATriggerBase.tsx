@@ -41,6 +41,8 @@ const ATriggerTooltip = ({
   const tooltipAnchorRef = anchorRef || triggerRef || firstChildRef;
   const tooltipRef = useRef<HTMLElement>(null);
 
+  console.log(tooltipAnchorRef, firstChildRef);
+
   const checkForTruncation = useCallback(() => {
     if (!onlyIfTruncated) {
       return true;
@@ -48,15 +50,26 @@ const ATriggerTooltip = ({
 
     const element = anchorRef?.current || childrenRef.current[0];
 
+    console.log("???", element);
     if (!element) {
       return true;
     }
+
+    console.log(
+      "foopbar",
+      element.offsetHeight,
+      element.scrollHeight,
+      element.offsetWidth,
+      element.scrollWidth,
+      element.offsetHeight < element.scrollHeight ||
+        element.offsetWidth < element.scrollWidth
+    );
 
     return (
       element.offsetHeight < element.scrollHeight ||
       element.offsetWidth < element.scrollWidth
     );
-  }, [onlyIfTruncated, anchorRef, childrenRef]);
+  }, [onlyIfTruncated, tooltipAnchorRef, childrenRef]);
 
   const onShow = useCallback(() => {
     propsOnShow && propsOnShow(tooltipRef);
@@ -133,6 +146,7 @@ const ATriggerTooltip = ({
   }, [
     trigger,
     childrenRefCurrent,
+    tooltipAnchorRef,
     triggerRef,
     close,
     open,

@@ -7,6 +7,8 @@ export type ADrawerPosition = "absolute" | "fixed" | "relative";
 
 export type ADrawerSlideIn = "left" | "right" | "bottom";
 
+export type ADrawerSize = "sm" | "md" | "lg" | "xl";
+
 export type ADrawerProps<C extends React.ElementType> = Override<
   AModalProps<C>,
   PolymorphicComponentPropWithRef<
@@ -49,8 +51,11 @@ export type ADrawerProps<C extends React.ElementType> = Override<
        * not specified).
        * The Drawer renders with the Magnetic defined widths for the Magnetic
        * defined breakpoints.
+       * This can accept an also accept an array to be responsive to specified sizes,
+       * or a string for a single fixed size.
        */
-      responsiveWidth?: boolean;
+      responsiveWidth?: ADrawerSize | ADrawerSize[];
+
       /**
        * Specifies the positioning strategy of the drawer. A drawer specified with
        * "fixed" is useful when the drawer should take up the entire page and cover
