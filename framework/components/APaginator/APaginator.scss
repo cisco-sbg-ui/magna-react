@@ -11,6 +11,7 @@
     margin: 0;
     .a-icon {
       height: 20px;
+      stroke: var(--interact-icon-weak-default);
     }
   }
 
@@ -22,6 +23,12 @@
     width: 28px;
     height: 28px;
     justify-content: center;
+  }
+
+  .a-button--disabled {
+    .a-icon {
+      stroke: var(--interact-icon-weak-disabled);
+    }
   }
 
   &__previous {

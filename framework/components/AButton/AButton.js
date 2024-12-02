@@ -80,6 +80,10 @@ const AButton = forwardRef(
       className += " a-button--inline-btn";
     }
 
+    if (disabled) {
+      className += " a-button--disabled";
+    }
+
     if (propsClassName) {
       className += ` ${propsClassName}`;
     }
