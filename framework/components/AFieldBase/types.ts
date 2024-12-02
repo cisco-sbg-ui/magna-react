@@ -27,6 +27,7 @@ export interface AFieldBaseHint {
 export type AFieldBaseProps = Override<
   React.ComponentPropsWithRef<"div">,
   {
+    error?: string;
     /**
      * Sets hint or multiple hints.
      */

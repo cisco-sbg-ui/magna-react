@@ -1,6 +1,5 @@
 import React from "react";
-import {AButton, AIcon, ABadge} from "../../framework";
-import type {ABadgeProps} from "../../framework";
+import {AButton, AIcon, ABadge, type ABadgeProps} from "../../framework";
 import {hexToRgb} from "./helpers";
 
 const ABadgeTest = (props: ABadgeProps) => {
