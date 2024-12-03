@@ -25,7 +25,7 @@
     justify-content: center;
   }
 
-  .a-button--disabled {
+  .a-button[disabled] {
     .a-icon {
       stroke: var(--interact-icon-weak-disabled);
     }
