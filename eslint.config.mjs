@@ -54,6 +54,7 @@ export default [
           prefer: "type-imports"
         }
       ],
+      "no-console": ["error", {allow: ["warn", "error"]}],
       ...jsxA11y.configs.recommended.rules
     }
   }
