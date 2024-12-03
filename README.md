@@ -74,13 +74,25 @@ npm run dev
 
 #### Integration testing
 
-```
-npm run build
-npm pack
-```
+1.  ```
+    npm run build
+    npm pack
+    ```
+2.  Install magna as a dependency in other application:
+    - In the other application's `package.json`, point to the generated tar file and `npm i`
 
-Install magna as a dependency in other application:
+#### PR process
 
-- In the other application's `package.json`, point to the generated tar file and `npm i`
+1. `type/#<ISSUE_NUMBER>-your-feat` ex: `chore/#243-syntax-update`
+2. Fill out PR template
+3. `rebase` and push branch:
+   ```
+   git checkout main
+   git pull
+   git checkout <YOUR_BRANCH>
+   git rebase main
+   ```
+4. Once approved click squash and merge and delete prepopulated commit comments.
+5. Merge and delete branch
 
 ---
