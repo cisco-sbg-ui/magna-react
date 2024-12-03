@@ -25,12 +25,6 @@
     justify-content: center;
   }
 
-  .a-button[disabled] {
-    .a-icon {
-      stroke: var(--interact-icon-weak-disabled);
-    }
-  }
-
   &__previous {
     margin-right: 8px;
   }
@@ -39,10 +33,18 @@
     margin-left: 8px;
   }
 
+  // Gray out all buttons when disabled
   &--disabled {
     pointer-events: none;
     .a-button {
       color: var(--base-text-weak-default) !important;
+    }
+  }
+
+  // Gray out individual disabled buttons
+  .a-button[disabled] {
+    .a-icon {
+      stroke: var(--interact-icon-weak-disabled);
     }
   }
 
