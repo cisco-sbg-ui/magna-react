@@ -95,4 +95,22 @@ npm run dev
 4. Once approved click squash and merge and delete prepopulated commit comments.
 5. Merge and delete branch
 
+#### Build and versioning process
+
+1. On main `git pull`
+2. `git checkout -b release_<RELEASE_NUMBER>`
+3. Update version in the `package.json`
+4. ```
+   npm i
+   git add .
+   git commit -m "<RELEASE_NUMBER>"
+   git push origin release_<RELEASE_NUMBER>
+   git tag v<RELEASE_NUMBER>
+   git push origin tag v<RELEASE_NUMBER>
+   ```
+5. Go to `Releases` page in Github UI
+6. Click the "Draft a new release" button
+7. Select new tag and generate release notes for review
+8. Select "Set as latest release" and publish
+
 ---
