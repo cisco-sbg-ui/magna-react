@@ -90,6 +90,83 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
 }
 `}
 />
+#### Content Alignment 
+
+Left-alignment, or align "start", is used by default but customization is available. Centered alignment is used for icons and symbols, and right alignment is used for numerical data that could potentially need to be compared. Table data cells carry whatever alignment their correspondent header has. Neither the ability to sort in the header or header truncation should not effect aligment.  
+
+<Playground
+  code={`() => {
+  const [sort, setSort] = useState();
+  const headers = [
+    {
+      name: "Alpha Bravo Charlie Delta Echo Foxtrot",
+      key: "a",
+      className: "text-capitalize",
+      sortable: false
+    },
+    {
+      name: "Bravo",
+      align: "end",
+      key: "b",
+      sortable: true,
+      sort: false
+    },
+    {
+      name: "Charlie",
+      align: "start",
+      key: "c",
+      sortable: true,
+      sort: (a, b) =>
+        a.toUpperCase() === b.toUpperCase()
+          ? 0
+          : a.toUpperCase() > b.toUpperCase()
+          ? 1
+          : -1
+    },
+    {
+      name: "Delta",
+      align: "center",
+      cell: {
+        component: (item) => (
+          <a href="/" target="_blank">
+            Details
+          </a>
+        )
+      }
+    }
+  ];
+  const items = [
+    {
+      a: 11.1,
+      b: 526,
+      c: "aardvark"
+    },
+    {
+      a: 8.9,
+      b: 611,
+      c: "Argentina"
+    },
+    {
+      a: 10.5,
+      b: 475,
+      c: "Zanzibar"
+    }
+  ];
+  return (
+    <ADataTable
+      striped
+      tight
+      headers={headers}
+      items={items}
+      className="mx-auto"
+      style={{maxWidth: 500}}
+      sort={sort}
+      onSort={(s) => setSort(s)}
+    />
+  );
+}
+`}
+/>
 
 #### Two Stage Sort
 
