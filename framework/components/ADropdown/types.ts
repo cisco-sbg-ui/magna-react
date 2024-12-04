@@ -1,8 +1,13 @@
-import {Override} from "../../types";
-import {AButtonProps} from "../AButton/types";
-import AButton from "../AButton";
-import ATag from "../ATag";
-import {AFloatingMenuProps} from "../AFloatingMenu/types";
+import type {Override} from "../../types";
+import type {AButtonProps} from "../AButton/types";
+import type AButton from "../AButton";
+import type ATag from "../ATag";
+import type {AFloatingMenuProps} from "../AFloatingMenu/types";
+
+type ExternalState<T extends boolean> = {
+  isOpen: T;
+  onClose: T extends true ? () => void : null;
+};
 
 export type ADropdownProps<C extends React.ElementType> = Override<
   AButtonProps<C>,
@@ -11,11 +16,7 @@ export type ADropdownProps<C extends React.ElementType> = Override<
      * Set the root component
      */
     component?: typeof AButton | typeof ATag;
-    /**
-     * Control the open state externally. Combine with `onClose` to set the external
-     * state to false when the dropdown is closed by item selection or clicking outside.
-     */
-    isOpen?: boolean;
+
     /**
      * Toggles the `disabled` state.
      */
@@ -36,18 +37,12 @@ export type ADropdownProps<C extends React.ElementType> = Override<
      * Pass props to the menu component
      */
     menuProps?: AFloatingMenuProps<React.ElementType>;
-    /**
-     * Callback function when the dropdown is closed
-     */
-    onClose?: () => any;
-    /**
-     * Test id
-     */
     "data-testid"?: string;
     hideIfReferenceHidden?: boolean;
     /**
      * Icon only dropdown
      */
     icon?: boolean;
-  }
+  },
+  ExternalState<boolean>
 >;

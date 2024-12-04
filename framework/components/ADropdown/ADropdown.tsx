@@ -5,7 +5,7 @@ import {useMergeRefs} from "@floating-ui/react";
 import AButton from "../AButton";
 import AFloatingMenu from "../AFloatingMenu";
 import useFloatingDropdown from "../AFloatingMenu/useFloatingDropdown";
-import {ADropdownProps} from "./types";
+import type {ADropdownProps} from "./types";
 
 const ADropdown = forwardRef<HTMLElement, ADropdownProps<React.ElementType>>(
   (
