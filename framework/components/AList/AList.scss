@@ -14,7 +14,8 @@
     font-weight: unset;
   }
 
-  &--hoverable .a-list-item:not(.a-list-item--two-line) {
+  &--hoverable
+    .a-list-item:not(.a-list-item--two-line):not(.a-list-item--disabled) {
     &:hover,
     a:hover,
     a.a-list-item:hover {
@@ -134,8 +135,9 @@
   }
 
   &-item--disabled:not(.a-list-item--two-line) {
-    color: var(--base-text-disabled);
     background: none;
+    color: var(--base-text-disabled);
+    cursor: not-allowed;
   }
 
   a.a-list-item,
