@@ -8,7 +8,7 @@ import AFloatingMenuContainer from "./AFloatingMenuContainer";
 import {AList} from "../AList";
 import "./AFloatingMenu.scss";
 
-import {AFloatingMenuProps} from "./types";
+import type {AFloatingMenuProps} from "./types";
 
 const AFloatingMenu = forwardRef<
   HTMLElement,
@@ -94,7 +94,6 @@ const AFloatingMenu = forwardRef<
 
     const closeHandler = (e: React.MouseEvent | React.KeyboardEvent) => {
       if (anchorRef instanceof DOMRect) {
-        console.log("???");
         return;
       }
       anchorRef.current && anchorRef.current.focus();
