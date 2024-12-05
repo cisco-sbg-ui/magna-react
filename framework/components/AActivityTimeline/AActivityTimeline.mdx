@@ -34,6 +34,26 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
 `}
 />
 
+##### Numbered
+
+<Playground
+  code={`<AActivityTimeline numbered>
+  <AActivityTimelineItem
+    time="2022-02-12 21:11:10 UTC"
+    title="Account Created"
+  />
+  <AActivityTimelineItem
+    time="2022-02-14 21:12:10 UTC"
+    title="Tutorial Island Completed"
+  />
+  <AActivityTimelineItem
+    time="2022-02-14 22:11:10 UTC"
+    title="Cook's Assistant Started"
+  />
+</AActivityTimeline>
+`}
+/>
+
 #### Paginated List (`withConnector` prop)
 
 When rendering a timeline from a paginated source of data, the last item in the _visible_ slice of data may not actually be the very last item in the entirety of the list. As such, the connector on the last timeline item in the slice should still exist to indicate to the user that the timeline is ongoing. In such situations, you can explicitly pass the `withConnector` prop to control its presence.
