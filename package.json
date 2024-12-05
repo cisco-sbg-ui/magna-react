@@ -59,6 +59,7 @@
     "@floating-ui/dom": "^1.6.10",
     "@floating-ui/react": "^0.26.25",
     "babel-plugin-auto-import": "1.1.0",
+    "classnames": "2.5.1",
     "react-dropzone": "14.3.5"
   },
   "devDependencies": {
