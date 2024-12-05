@@ -19,6 +19,7 @@ export type AActivityTimelineProps = Override<
     /**
      * Adds numbered timeline and associated positioning to content.
      * If `hasUnorderedItems` is set to `true`, this prop is ignored.
+     * For paginated lists, utilize the accurate number provided in paginated data list rather than `numbered` prop.
      */
     numbered?: boolean;
   }
