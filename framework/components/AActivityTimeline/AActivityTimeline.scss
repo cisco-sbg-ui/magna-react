@@ -5,12 +5,17 @@
 
   &--numbered {
     counter-reset: list-number;
-    .a-activity-timeline__list-item__header::before {
-      counter-increment: list-number;
-      content: counter(list-number) ")";
-      margin-right: 14px;
-      font-weight: 600;
-      color: var(--base-text-strong-default);
+    .a-activity-timeline__list-item {
+      &__title::before {
+        counter-increment: list-number;
+        content: counter(list-number) ")";
+        margin-right: 14px;
+        font-weight: 600;
+        color: var(--base-text-strong-default);
+      }
+      &__time {
+        padding-left: 28px;
+      }
     }
   }
 
