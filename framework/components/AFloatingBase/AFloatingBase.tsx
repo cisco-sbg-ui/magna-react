@@ -69,7 +69,6 @@ const AFloatingBase = forwardRef<HTMLElement, AFloatingBaseProps>(
     const {context, floatingRefs, floatingStyles, isReferenceHidden} =
       useFloatingBase(
         !!open,
-        anchorRef,
         arrowRef,
         onClose,
         placement,
