@@ -41,8 +41,6 @@ const ATriggerTooltip = ({
   const tooltipAnchorRef = anchorRef || triggerRef || firstChildRef;
   const tooltipRef = useRef<HTMLElement>(null);
 
-  console.log(tooltipAnchorRef, firstChildRef);
-
   const checkForTruncation = useCallback(() => {
     if (!onlyIfTruncated) {
       return true;
