@@ -708,6 +708,26 @@ const MagnaIcons = {
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
   },
+  "app-window": {
+    xml: (
+      <>
+        <rect
+          x="32"
+          y="48"
+          width="192"
+          height="160"
+          rx="8"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></rect>
+        <circle cx="76" cy="92" r="16"></circle>
+        <circle cx="124" cy="92" r="16"></circle>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
   "apple-logo": {
     xml: (
       <>
@@ -1724,6 +1744,71 @@ const MagnaIcons = {
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
   },
+  barcode: {
+    xml: (
+      <>
+        <polyline
+          points="180 52 220 52 220 92"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></polyline>
+        <polyline
+          points="76 204 36 204 36 164"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></polyline>
+        <polyline
+          points="220 164 220 204 180 204"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></polyline>
+        <polyline
+          points="36 92 36 52 76 52"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></polyline>
+        <line
+          x1="88"
+          y1="92"
+          x2="88"
+          y2="164"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></line>
+        <line
+          x1="168"
+          y1="92"
+          x2="168"
+          y2="164"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></line>
+        <line
+          x1="128"
+          y1="92"
+          x2="128"
+          y2="164"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></line>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
   "bell-slash": {
     xml: (
       <>
@@ -1823,6 +1908,27 @@ const MagnaIcons = {
         ></path>
         <path
           d="M24,200H96a32,32,0,0,1,32,32V88A32,32,0,0,0,96,56H24Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></path>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  "brackets-curly": {
+    xml: (
+      <>
+        <path
+          d="M80,40c-64,0,0,88-64,88,64,0,0,88,64,88"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></path>
+        <path
+          d="M176,40c64,0,0,88,64,88-64,0,0,88-64,88"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -2119,6 +2225,56 @@ const MagnaIcons = {
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 32 32"}
   },
+  certificate: {
+    xml: (
+      <>
+        <line
+          x1="72"
+          y1="140"
+          x2="116"
+          y2="140"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></line>
+        <line
+          x1="72"
+          y1="100"
+          x2="116"
+          y2="100"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></line>
+        <circle
+          cx="196"
+          cy="128"
+          r="44"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></circle>
+        <polyline
+          points="168 161.94 168 228 196 212 224 228 224 161.94"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></polyline>
+        <path
+          d="M168,192H40a8,8,0,0,1-8-8V56a8,8,0,0,1,8-8H216a8,8,0,0,1,8,8V94.06"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></path>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
   "chart-bar": {
     xml: (
       <>
@@ -2407,6 +2563,50 @@ const MagnaIcons = {
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
   },
+  circuitry: {
+    xml: (
+      <>
+        <rect
+          x="40"
+          y="40"
+          width="176"
+          height="176"
+          rx="8"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></rect>
+        <circle cx="168" cy="104" r="24"></circle>
+        <circle cx="88" cy="168" r="24"></circle>
+        <polyline
+          points="152 216 152 160 88 96 88 40"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></polyline>
+        <polyline
+          points="136 40 136 72 168 104"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></polyline>
+        <line
+          x1="88"
+          y1="168"
+          x2="88"
+          y2="96"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></line>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
   "clipboard-text": {
     xml: (
       <>
@@ -2509,6 +2709,34 @@ const MagnaIcons = {
       <>
         <path
           d="M80,128a80,80,0,1,1,80,80H72A56,56,0,1,1,85.92,97.74"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></path>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  "code-block": {
+    xml: (
+      <>
+        <polyline
+          points="60 32 28 64 60 96"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></polyline>
+        <polyline
+          points="108 32 140 64 108 96"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></polyline>
+        <path
+          d="M180,48h20a8,8,0,0,1,8,8V200a8,8,0,0,1-8,8H56a8,8,0,0,1-8-8V140"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -3910,6 +4138,29 @@ const MagnaIcons = {
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
   },
+  "gear-six": {
+    xml: (
+      <>
+        <circle
+          cx="128"
+          cy="128"
+          r="40"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></circle>
+        <path
+          d="M130.05,206.11c-1.34,0-2.69,0-4,0L94,224a104.61,104.61,0,0,1-34.11-19.2l-.12-36c-.71-1.12-1.38-2.25-2-3.41L25.9,147.24a99.15,99.15,0,0,1,0-38.46l31.84-18.1c.65-1.15,1.32-2.29,2-3.41l.16-36A104.58,104.58,0,0,1,94,32l32,17.89c1.34,0,2.69,0,4,0L162,32a104.61,104.61,0,0,1,34.11,19.2l.12,36c.71,1.12,1.38,2.25,2,3.41l31.85,18.14a99.15,99.15,0,0,1,0,38.46l-31.84,18.1c-.65,1.15-1.32,2.29-2,3.41l-.16,36A104.58,104.58,0,0,1,162,224Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></path>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
   gear: {
     xml: (
       <>
@@ -4214,6 +4465,53 @@ const MagnaIcons = {
         ></line>
         <circle cx="176" cy="88" r="16"></circle>
         <circle cx="176" cy="168" r="16"></circle>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  hash: {
+    xml: (
+      <>
+        <line
+          x1="48"
+          y1="96"
+          x2="224"
+          y2="96"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></line>
+        <line
+          x1="176"
+          y1="40"
+          x2="144"
+          y2="216"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></line>
+        <line
+          x1="112"
+          y1="40"
+          x2="80"
+          y2="216"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></line>
+        <line
+          x1="32"
+          y1="160"
+          x2="208"
+          y2="160"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
@@ -5822,6 +6120,67 @@ const MagnaIcons = {
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
   },
+  "seal-question": {
+    xml: (
+      <>
+        <path
+          d="M54.46,201.54c-9.2-9.2-3.1-28.53-7.78-39.85C41.82,150,24,140.5,24,128s17.82-22,22.68-33.69C51.36,83,45.26,63.66,54.46,54.46S83,51.36,94.31,46.68C106.05,41.82,115.5,24,128,24S150,41.82,161.69,46.68c11.32,4.68,30.65-1.42,39.85,7.78s3.1,28.53,7.78,39.85C214.18,106.05,232,115.5,232,128S214.18,150,209.32,161.69c-4.68,11.32,1.42,30.65-7.78,39.85s-28.53,3.1-39.85,7.78C150,214.18,140.5,232,128,232s-22-17.82-33.69-22.68C83,204.64,63.66,210.74,54.46,201.54Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></path>
+        <path
+          d="M128,144v-8c17.67,0,32-12.54,32-28s-14.33-28-32-28S96,92.54,96,108v4"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></path>
+        <circle cx="128" cy="180" r="16"></circle>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  "seal-warning": {
+    xml: (
+      <>
+        <path
+          d="M54.46,201.54c-9.2-9.2-3.1-28.53-7.78-39.85C41.82,150,24,140.5,24,128s17.82-22,22.68-33.69C51.36,83,45.26,63.66,54.46,54.46S83,51.36,94.31,46.68C106.05,41.82,115.5,24,128,24S150,41.82,161.69,46.68c11.32,4.68,30.65-1.42,39.85,7.78s3.1,28.53,7.78,39.85C214.18,106.05,232,115.5,232,128S214.18,150,209.32,161.69c-4.68,11.32,1.42,30.65-7.78,39.85s-28.53,3.1-39.85,7.78C150,214.18,140.5,232,128,232s-22-17.82-33.69-22.68C83,204.64,63.66,210.74,54.46,201.54Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></path>
+        <line
+          x1="128"
+          y1="80"
+          x2="128"
+          y2="132"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></line>
+        <circle cx="128" cy="172" r="16"></circle>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  seal: {
+    xml: (
+      <>
+        <path
+          d="M54.46,201.54c-9.2-9.2-3.1-28.53-7.78-39.85C41.82,150,24,140.5,24,128s17.82-22,22.68-33.69C51.36,83,45.26,63.66,54.46,54.46S83,51.36,94.31,46.68C106.05,41.82,115.5,24,128,24S150,41.82,161.69,46.68c11.32,4.68,30.65-1.42,39.85,7.78s3.1,28.53,7.78,39.85C214.18,106.05,232,115.5,232,128S214.18,150,209.32,161.69c-4.68,11.32,1.42,30.65-7.78,39.85s-28.53,3.1-39.85,7.78C150,214.18,140.5,232,128,232s-22-17.82-33.69-22.68C83,204.64,63.66,210.74,54.46,201.54Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></path>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
   "selection-background": {
     xml: (
       <>
@@ -6960,6 +7319,20 @@ const MagnaIcons = {
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
   },
+  "tag-chevron": {
+    xml: (
+      <>
+        <path
+          d="M32,200H187.72a8,8,0,0,0,6.65-3.56L240,128,194.37,59.56A8,8,0,0,0,187.72,56H32l48,72Z"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></path>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
   "tag-simple": {
     xml: (
       <>
@@ -6991,6 +7364,41 @@ const MagnaIcons = {
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 32 32"}
+  },
+  "terminal-window": {
+    xml: (
+      <>
+        <rect
+          x="32"
+          y="48"
+          width="192"
+          height="160"
+          rx="8"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></rect>
+        <polyline
+          points="80 96 120 128 80 160"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></polyline>
+        <line
+          x1="144"
+          y1="160"
+          x2="176"
+          y2="160"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></line>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
   },
   "text-aa": {
     xml: (
@@ -8020,6 +8428,57 @@ const MagnaIcons = {
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
   },
+  "user-focus": {
+    xml: (
+      <>
+        <polyline
+          points="180 40 216 40 216 76"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></polyline>
+        <polyline
+          points="180 216 216 216 216 180"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></polyline>
+        <polyline
+          points="76 216 40 216 40 180"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></polyline>
+        <polyline
+          points="76 40 40 40 40 76"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></polyline>
+        <circle
+          cx="128"
+          cy="112"
+          r="32"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></circle>
+        <path
+          d="M80,168a60,60,0,0,1,96,0"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></path>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
   "user-switch": {
     xml: (
       <>
@@ -8141,6 +8600,83 @@ const MagnaIcons = {
           strokeLinejoin="round"
           strokeWidth="24"
         ></path>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
+  wall: {
+    xml: (
+      <>
+        <rect
+          x="32"
+          y="56"
+          width="192"
+          height="144"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></rect>
+        <line
+          x1="128"
+          y1="104"
+          x2="128"
+          y2="56"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></line>
+        <line
+          x1="80"
+          y1="152"
+          x2="80"
+          y2="104"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></line>
+        <line
+          x1="176"
+          y1="152"
+          x2="176"
+          y2="104"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></line>
+        <line
+          x1="128"
+          y1="200"
+          x2="128"
+          y2="152"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></line>
+        <line
+          x1="32"
+          y1="104"
+          x2="224"
+          y2="104"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></line>
+        <line
+          x1="32"
+          y1="152"
+          x2="224"
+          y2="152"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}

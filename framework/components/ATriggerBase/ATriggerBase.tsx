@@ -8,7 +8,7 @@ import {handleMultipleRefs} from "../../utils/helpers";
 import AFloatingBase from "../AFloatingBase/AFloatingBase";
 import "../ATooltip/ATooltip.scss";
 
-import {ATriggerBaseProps} from "./types";
+import type {ATriggerBaseProps} from "./types";
 
 const ATriggerTooltip = ({
   children,
@@ -48,20 +48,9 @@ const ATriggerTooltip = ({
 
     const element = anchorRef?.current || childrenRef.current[0];
 
-    console.log("???", element);
     if (!element) {
       return true;
     }
-
-    console.log(
-      "foopbar",
-      element.offsetHeight,
-      element.scrollHeight,
-      element.offsetWidth,
-      element.scrollWidth,
-      element.offsetHeight < element.scrollHeight ||
-        element.offsetWidth < element.scrollWidth
-    );
 
     return (
       element.offsetHeight < element.scrollHeight ||
