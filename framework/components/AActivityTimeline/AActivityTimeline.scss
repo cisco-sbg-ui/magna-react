@@ -10,11 +10,24 @@
         counter-increment: list-number;
         content: counter(list-number) ")";
         margin-right: 14px;
-        font-weight: 600;
         color: var(--base-text-strong-default);
       }
       &__time {
         padding-left: 28px;
+      }
+      //If using numbered paginated list, hide content and apply styling.
+      &:has(.a-activity-timeline__list-item--num) {
+        .a-activity-timeline__list-item {
+          &__title {
+            &::before {
+              content: none;
+            }
+            padding-left: 15px;
+          }
+          &__time {
+            padding-left: 15px;
+          }
+        }
       }
     }
   }
@@ -61,6 +74,7 @@
       grid-template-columns: auto auto minmax(0, 1fr);
       align-items: center;
       row-gap: 4px;
+      font-weight: 600;
       padding-bottom: 12px;
     }
 
