@@ -1,4 +1,4 @@
-import {Override} from "../../types";
+import type {Override} from "../../types";
 
 export type AActivityTimelineProps = Override<
   React.ComponentPropsWithRef<"div">,
@@ -16,6 +16,12 @@ export type AActivityTimelineProps = Override<
      * @defaultValue `false`
      */
     hasUnorderedItems?: boolean;
+    /**
+     * Adds numbered timeline and associated positioning to content.
+     * If `hasUnorderedItems` is set to `true`, this prop is ignored.
+     * For paginated lists, pass the number provided in paginated data to `itemNum` in `AActivityTimelineItem`
+     */
+    numbered?: boolean;
   }
 >;
 
@@ -64,7 +70,7 @@ export type AActivityTimelineItemProps = Override<
      * the state of the component (i.e. passing `isCollapsed`), then
      * this is the right place to toggle said state.
      */
-    onToggle?: (...args: any[]) => unknown;
+    onToggle?: (...args: unknown[]) => unknown;
 
     /**
      * Determines which icon to render in the timeline item's bullet.
@@ -94,6 +100,8 @@ export type AActivityTimelineItemProps = Override<
      * for collapsible items (unless it is the last one in the list.)
      */
     withDivider?: boolean;
+    /** Option to pass number to numbered list. Useful for paginated data. */
+    itemNum?: number | string;
   }
 >;
 
