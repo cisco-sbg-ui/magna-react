@@ -1,5 +1,3 @@
-import {AAnchorRef} from "../../types";
-
 import {
   useFloating,
   arrow,
@@ -19,7 +17,6 @@ import {flip, shift, type Placement} from "@floating-ui/dom";
 
 type UseFloatingBase = (
   open: boolean,
-  anchorRef: AAnchorRef,
   arrowRef: React.RefObject<SVGSVGElement>,
   onOpenChange?: (
     open: boolean,
@@ -43,7 +40,6 @@ type UseFloatingBase = (
 
 const useFloatingBase: UseFloatingBase = (
   open,
-  anchorRef,
   arrowRef,
   onOpenChange,
   placement = "top",
