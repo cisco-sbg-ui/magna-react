@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import AActivityTimeline from "./AActivityTimeline";
 import AActivityTimelineItem from "./AActivityTimelineItem";
+import APagination from "../APagination/APagination";
 
 const DEFAULT_BORDER_STYLE = "2px solid rgb(225, 228, 232)";
 const COMPLETE_STATUS_BORDER_STYLE = "2px solid rgb(29, 105, 204)";
@@ -28,6 +29,15 @@ describe("<AActivityTimeline />", () => {
       .then((borderStyle) => {
         expect(borderStyle).contains(DEFAULT_BORDER_STYLE);
       });
+  });
+
+  it("should show the correct numbers in paginated timeline after navigating to next page", () => {
+    cy.mount(<PaginatedTimelineTest numbered />);
+
+    cy.get("[aria-label='Next']").click();
+    cy.get(
+      "[data-testid='mock-content-5'] .a-activity-timeline__list-item--num"
+    ).contains("5)");
   });
 
   it("should always render a timeline item connector if the prop for it is passed", () => {
@@ -330,5 +340,41 @@ function ControlledTimelineTest({children, itemCount = 1}) {
             </AActivityTimelineItem>
           ))}
     </AActivityTimeline>
+  );
+}
+
+function PaginatedTimelineTest(...props) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [resultsPerPage, setResultsPerPage] = useState(3);
+
+  const paginatedData = [...new Array(resultsPerPage).keys()].map((index) => {
+    const countingNumber = index + 1;
+    return (currentPage - 1) * resultsPerPage + countingNumber;
+  });
+
+  const paginatedItems = paginatedData.map((num) => (
+    <AActivityTimelineItem
+      data-testid={`mock-content-${num}`}
+      key={num}
+      title={`Mock title #${num}`}
+      time={`${num} days ago`}
+      withConnector={num < TOTAL_ITEMS}
+      itemNum={num}
+    />
+  ));
+
+  const TOTAL_ITEMS = 30;
+  return (
+    <>
+      <AActivityTimeline {...props}>{paginatedItems}</AActivityTimeline>
+      <APagination
+        className="mt-4"
+        onPageChange={(value) => setCurrentPage(value)}
+        onResultsPerPageChange={(value) => setResultsPerPage(value)}
+        page={currentPage}
+        resultsPerPage={resultsPerPage}
+        total={TOTAL_ITEMS}
+      />
+    </>
   );
 }
