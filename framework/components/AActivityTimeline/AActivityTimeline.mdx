@@ -69,13 +69,14 @@ When rendering a timeline from a paginated source of data, the last item in the 
   const TOTAL_ITEMS = 30;
   return (
     <>
-      <AActivityTimeline>
+      <AActivityTimeline numbered>
         {paginatedData.map((num) => (
           <AActivityTimelineItem
             key={num}
             title={\`Item #\${num}\`}
             time={\`\${num} days ago\`}
             withConnector={num < TOTAL_ITEMS}
+            itemNum={num}
           />
         ))}
       </AActivityTimeline>
