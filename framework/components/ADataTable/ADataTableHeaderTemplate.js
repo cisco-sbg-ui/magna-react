@@ -126,7 +126,12 @@ const ADataTableHeaderTemplate = ({
     >
       <div className="a-data-table__header__sort-wrap">
         {headerItem.align === "end" && sortIcon}
-        <button tabIndex={-1} className="a-data-table__header__sort__button">
+        <button
+          tabIndex={-1}
+          className={`a-data-table__header__sort__button justify-${
+            headerItem.align || "start"
+          } text-${headerItem.align || "start"}`}
+        >
           <span className="a-data-table__header__label">{headerItem.name}</span>
         </button>
         {headerItem.align !== "end" && sortIcon}
