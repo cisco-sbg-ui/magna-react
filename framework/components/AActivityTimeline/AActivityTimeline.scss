@@ -10,7 +10,6 @@
         counter-increment: list-number;
         content: counter(list-number) ")";
         margin-right: 14px;
-        color: var(--base-text-strong-default);
       }
       &__time {
         padding-left: 28px;
@@ -36,9 +35,14 @@
     width: 100%;
     position: relative;
     display: flex;
-
     &:not(:last-child) {
       padding-bottom: 12px;
+      .a-activity-timeline__list-item__header {
+        padding-bottom: 12px;
+      }
+      .a-activity-timeline__list-item__body {
+        margin-bottom: 16px;
+      }
     }
 
     &:last-child .a-activity-timeline__list-item__divider {
@@ -75,13 +79,12 @@
       align-items: center;
       row-gap: 4px;
       font-weight: 600;
-      padding-bottom: 12px;
+      color: var(--base-text-strong-default);
     }
 
     &__title {
       grid-area: title;
       font-weight: 600;
-      color: var(--base-text-strong-default);
       align-items: center;
     }
 
@@ -90,7 +93,7 @@
       border-top: none;
       border-left: none;
       border-right: none;
-      padding-top: 16px;
+      padding-top: 12px;
       border-bottom-width: 2px;
       border-color: var(--base-border-default);
     }
@@ -126,7 +129,7 @@
     &__body {
       grid-area: body;
       display: block;
-      margin-top: 12px;
+      color: var(--base-text-medium-default);
 
       &--collapsed {
         display: none;
