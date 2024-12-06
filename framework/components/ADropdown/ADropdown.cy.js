@@ -1,3 +1,4 @@
+import React, {useState} from "react";
 import ADropdown from "./ADropdown";
 import AIcon from "../AIcon";
 
@@ -30,4 +31,70 @@ describe("<Dropdown/>", () => {
     cy.get(".a-button").click();
     cy.get(".a-floating-menu").should("exist");
   });
+
+  it("should open from external source", () => {
+    cy.mount(
+      <ADropdown isOpen secondary title="dropdown">
+        <p>test</p>
+      </ADropdown>
+    );
+
+    cy.get(".a-floating-menu").should("exist");
+  });
+
+  it("should open from external source", () => {
+    cy.mount(
+      <ADropdown isOpen secondary title="dropdown">
+        <p>test</p>
+      </ADropdown>
+    );
+
+    cy.get(".a-floating-menu").should("exist");
+  });
+
+  it("should be closable by escape when manually controlled", () => {
+    cy.mount(
+      <ManualDropdown secondary title="dropdown">
+        <p>test</p>
+      </ManualDropdown>
+    );
+
+    cy.get(".a-floating-menu").should("exist");
+
+    cy.escapeKeydown();
+
+    cy.get(".a-floating-menu").should("not.exist");
+  });
+
+  it("should be closable by clicking the anchor when manually controlled", () => {
+    cy.mount(
+      <ManualDropdown secondary title="dropdown">
+        <p>test</p>
+      </ManualDropdown>
+    );
+
+    cy.get(".a-floating-menu").should("exist");
+
+    cy.get(".a-button").click();
+
+    cy.get(".a-floating-menu").should("not.exist");
+  });
 });
+
+const ManualDropdown = ({...props}) => {
+  const [open, setOpen] = useState(true);
+
+  return (
+    <ADropdown
+      isOpen={open}
+      title="dropdown"
+      onClick={() => setOpen(!open)}
+      onClose={() => {
+        setOpen(false);
+      }}
+      {...props}
+    >
+      <p>test</p>
+    </ADropdown>
+  );
+};

@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useState} from "react";
+import React, {forwardRef, useCallback, useState} from "react";
 import {useMergeRefs} from "@floating-ui/react";
 
 import AButton from "../AButton";
@@ -13,12 +13,14 @@ const ADropdown = forwardRef<HTMLElement, ADropdownProps<React.ElementType>>(
       className: propsClassName,
       component = AButton,
       disabled = false,
+      isOpen: open,
       title,
       placement,
       menuClass,
       menuStyle,
       menuProps = {},
       onClick: propsOnClick,
+      onClose: propsOnClose,
       children,
       icon,
       hideIfReferenceHidden = true,
@@ -29,6 +31,16 @@ const ADropdown = forwardRef<HTMLElement, ADropdownProps<React.ElementType>>(
     const [isOpen, setIsOpen] = useState(false);
     const Component = component || AButton;
 
+    const openState = open || isOpen;
+
+    const onOpenChange = useCallback(
+      (state: boolean) => {
+        setIsOpen(state);
+        propsOnClose && propsOnClose(state);
+      },
+      [setIsOpen, propsOnClose]
+    );
+
     const {
       context,
       floatingRefs,
@@ -36,7 +48,7 @@ const ADropdown = forwardRef<HTMLElement, ADropdownProps<React.ElementType>>(
       getReferenceProps,
       getFloatingProps,
       isReferenceHidden
-    } = useFloatingDropdown(isOpen, setIsOpen);
+    } = useFloatingDropdown(openState, onOpenChange);
 
     const ref = useMergeRefs([floatingRefs.setReference, propsRef]);
 
@@ -62,10 +74,16 @@ const ADropdown = forwardRef<HTMLElement, ADropdownProps<React.ElementType>>(
           ref={ref}
           disabled={disabled}
           className={propsClassName}
-          open={isOpen}
+          open={openState}
           onClick={(e: React.MouseEvent) => {
-            setIsOpen(!isOpen);
+            setIsOpen(!openState);
             propsOnClick && propsOnClick(e);
+
+            // If controlled by external state, call onClose if clicking on the anchor
+            // while open
+            if (open) {
+              propsOnClose && propsOnClose();
+            }
           }}
           aria-haspopup="true"
           dropdown={!icon} //Don't display caret if icon only dropdown
@@ -79,8 +97,12 @@ const ADropdown = forwardRef<HTMLElement, ADropdownProps<React.ElementType>>(
           anchorRef={floatingRefs.reference}
           menuRef={floatingRefs.floating}
           context={context}
-          open={isOpen}
-          onClose={() => setIsOpen(false)}
+          open={openState}
+          onClose={() => {
+            setIsOpen(false);
+
+            propsOnClose && propsOnClose();
+          }}
           placement={placement}
           closeOnClick
           {...menuComponentProps}
