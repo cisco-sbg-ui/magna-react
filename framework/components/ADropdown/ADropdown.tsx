@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useCallback, useState} from "react";
+import React, {forwardRef, useCallback, useEffect, useState} from "react";
 import {useMergeRefs} from "@floating-ui/react";
 
 import AButton from "../AButton";
@@ -29,9 +29,11 @@ const ADropdown = forwardRef<HTMLElement, ADropdownProps<React.ElementType>>(
     const [isOpen, setIsOpen] = useState(false);
     const Component = component || AButton;
 
-    if ("isOpen" in props && !propsOnClose) {
-      console.error("ADropdown: onClose must exist with isOpen");
-    }
+    useEffect(() => {
+      if (propsIsOpen !== undefined && !propsOnClose) {
+        console.error("ADropdown: onClose must exist with isOpen");
+      }
+    }, [propsIsOpen, propsOnClose]);
 
     const openState = propsIsOpen || isOpen;
 
