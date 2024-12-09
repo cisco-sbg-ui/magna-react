@@ -7,16 +7,6 @@ import AFloatingMenu from "../AFloatingMenu";
 import useFloatingDropdown from "../AFloatingMenu/useFloatingDropdown";
 import type {ADropdownProps} from "./types";
 
-export type MustExist<T, ErrorMessage extends string> = T extends () => void
-  ? ErrorMessage
-  : T;
-
-function mustExist<T>(arg: T & MustExist<T, "onClose must exist with isOpen">) {
-  if (!arg) {
-    console.error("ADropdown: onClose must exist with isOpen", arg);
-  }
-}
-
 const ADropdown = forwardRef<HTMLElement, ADropdownProps<React.ElementType>>(
   (props, propsRef) => {
     const {
@@ -39,8 +29,8 @@ const ADropdown = forwardRef<HTMLElement, ADropdownProps<React.ElementType>>(
     const [isOpen, setIsOpen] = useState(false);
     const Component = component || AButton;
 
-    if ("isOpen" in props) {
-      mustExist(propsOnClose);
+    if ("isOpen" in props && !propsOnClose) {
+      console.error("ADropdown: onClose must exist with isOpen");
     }
 
     const openState = propsIsOpen || isOpen;
