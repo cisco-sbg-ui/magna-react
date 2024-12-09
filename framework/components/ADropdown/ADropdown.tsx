@@ -5,15 +5,25 @@ import {useMergeRefs} from "@floating-ui/react";
 import AButton from "../AButton";
 import AFloatingMenu from "../AFloatingMenu";
 import useFloatingDropdown from "../AFloatingMenu/useFloatingDropdown";
-import {ADropdownProps} from "./types";
+import type {ADropdownProps} from "./types";
+
+export type MustExist<T, ErrorMessage extends string> = T extends () => void
+  ? ErrorMessage
+  : T;
+
+function mustExist<T>(arg: T & MustExist<T, "onClose must exist with isOpen">) {
+  if (!arg) {
+    console.error("ADropdown: onClose must exist with isOpen", arg);
+  }
+}
 
 const ADropdown = forwardRef<HTMLElement, ADropdownProps<React.ElementType>>(
-  (
-    {
+  (props, propsRef) => {
+    const {
       className: propsClassName,
       component = AButton,
       disabled = false,
-      isOpen: open,
+      isOpen: propsIsOpen,
       title,
       placement,
       menuClass,
@@ -25,13 +35,15 @@ const ADropdown = forwardRef<HTMLElement, ADropdownProps<React.ElementType>>(
       icon,
       hideIfReferenceHidden = true,
       ...rest
-    },
-    propsRef
-  ) => {
+    } = props;
     const [isOpen, setIsOpen] = useState(false);
     const Component = component || AButton;
 
-    const openState = open || isOpen;
+    if ("isOpen" in props) {
+      mustExist(propsOnClose);
+    }
+
+    const openState = propsIsOpen || isOpen;
 
     const onOpenChange = useCallback(
       (state: boolean) => {
@@ -81,7 +93,7 @@ const ADropdown = forwardRef<HTMLElement, ADropdownProps<React.ElementType>>(
 
             // If controlled by external state, call onClose if clicking on the anchor
             // while open
-            if (open) {
+            if (propsIsOpen) {
               propsOnClose && propsOnClose();
             }
           }}
