@@ -430,6 +430,55 @@ For more advanced use cases of dropdown see `AMenu` and `AButton`
 `}
 />
 
+### External open state
+
+Combining `isOpen` with `onClose` allows for external control of the open state. The menu will still be interactable with clicks.
+
+The menu will respect `true` for `isOpen`, but otherwise handle clicks of menu items and outside click as normal.
+
+<Playground
+  code={`() => {
+  const ref = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
+
+return (
+
+<div>
+  <AButton
+    onClick={() => {
+      setIsOpen(!isOpen);
+    }}>
+    Opens the dropdown
+  </AButton>
+  <br />
+  <br />
+  <ADropdown
+    ref={ref}
+    isOpen={isOpen}
+    onClose={() => {
+      setIsOpen(false);
+    }}
+    title="Can be opened by a state prop">
+    <AListItem
+      onClick={() => {
+        console.log(ref.current);
+      }}>
+      List item
+    </AListItem>
+    <AListItem
+      onClick={() => {
+        console.log(ref.current);
+      }}>
+      List item
+    </AListItem>
+  </ADropdown>
+</div>
+
+);
+}
+`}
+/>
+
 ### Component props
 
 Component props are passed to the anchor element

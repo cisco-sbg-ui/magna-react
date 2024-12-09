@@ -4,7 +4,7 @@ import {FloatingPortal, FloatingFocusManager} from "@floating-ui/react";
 
 import AAppContext from "../AApp/AAppContext";
 
-import {AFloatingMenuContainerProps} from "./types";
+import type {AFloatingMenuContainerProps} from "./types";
 
 const AFloatingMenuContainer = ({
   children,
@@ -14,6 +14,10 @@ const AFloatingMenuContainer = ({
   ...rest
 }: AFloatingMenuContainerProps) => {
   const {appRef} = useContext(AAppContext);
+
+  if (!appRef?.current) {
+    return null;
+  }
 
   return (
     <FloatingPortal root={appRef.current}>
