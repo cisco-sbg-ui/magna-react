@@ -1,0 +1,87 @@
+---
+name: Upload
+route: /components/upload
+components: AUpload
+title: AUpload
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/components/AUpload
+---
+
+## Usage
+
+### Import
+
+<ComponentImport components="AUpload" />
+
+### Basic Usage
+
+<Playground
+  code={`
+function BasicUpload() {
+  return (
+    <AUpload/>
+  );
+}
+  `}
+/>
+
+#### Limit File Types
+
+##### Images
+
+<Playground
+  code={`
+function ImagesUpload() {
+  return (
+    <AUpload
+      accept={{
+        "image/*": [".gif", ".jpg", ".png"],
+      }}
+      supplementalText="Images only"
+    />
+  );
+}
+  `}
+/>
+
+##### JSON
+
+<Playground
+  code={`
+function JsonUpload() {
+  return (
+    <AUpload
+      accept={{
+        "application/json": [".json"],
+      }}
+      supplementalText="JSON only"
+    />
+  );
+}
+  `}
+/>
+
+#### Loading States
+
+<Playground
+  code={`
+function LoadingUpload() {
+  const [loading, setLoading] = React.useState(false);
+
+  React.useEffect(() => {
+    if (loading) {
+      setTimeout(() => {
+        setLoading(false);
+      }, 5000);
+    }
+  }, [loading]);
+
+  return (
+    <AUpload loading={loading} onUpload={() => setLoading(true)}/>
+  );
+}
+  `}
+/>
+
+## Component Props
+
+<Props of="AUpload" />

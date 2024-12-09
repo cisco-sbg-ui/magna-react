@@ -142,6 +142,7 @@ import {ATooltip} from "./components/ATooltip";
 import ATree from "./components/ATree";
 import ATriggerPopover from "./components/ATriggerPopover";
 import ATriggerTooltip from "./components/ATriggerTooltip";
+import AUpload from "./components/AUpload";
 import {useAToaster, AToastPlate} from "./components/AToaster";
 
 import useABreakpoint, {
@@ -286,6 +287,7 @@ export {
   ATree,
   ATriggerPopover,
   ATriggerTooltip,
+  AUpload,
   breakpointThresholds,
   useABreakpoint,
   useADateRange,
