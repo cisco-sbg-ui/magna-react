@@ -5,13 +5,23 @@ import "./AActivityTimeline.scss";
 
 const AActivityTimeline = forwardRef(
   (
-    {children, className: propsClassName, hasUnorderedItems = false, ...rest},
+    {
+      children,
+      className: propsClassName,
+      hasUnorderedItems = false,
+      numbered = false,
+      ...rest
+    },
     ref
   ) => {
     let className = "a-activity-timeline";
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
+    }
+
+    if (numbered && !hasUnorderedItems) {
+      className += " a-activity-timeline--numbered";
     }
 
     const ListTag = hasUnorderedItems ? "ul" : "ol";
