@@ -1,0 +1,55 @@
+---
+name: Stepper Card
+route: /components/stepperCard
+components: AStepperCard
+title: AStepperCard
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/components/AStepperCard
+---
+
+## Usage
+
+### Import
+
+<ComponentImport components="AStepperCard" />
+
+### Usage
+
+<Playground
+  fullWidthPreview
+  code={`() => {
+  const [active, setActive] = useState(1);
+    const data = [
+    {
+      title: "Active. Long Title.",
+      description:
+        "Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    {
+      title: "Title",
+      description:
+        "Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+      title: "Default",
+      description:
+        "Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    }
+  ];
+  return ( 
+    <div>
+        <AStepperCard active={active} >
+            <AStepperCardContent title="Alpha Beta Gamma"
+                onBack={() => active > 1 && setActive(active - 1)}
+                onCancel={() => {}}
+                onNext={()=> active < steps.length -1 && setActive(active + 1)}
+            >
+                <div>
+                    Testing div stepper card content
+                </div>
+            </AStepperCardContent>
+        </AStepperCard>
+    </div>
+   );
+}
+`}
+/>
