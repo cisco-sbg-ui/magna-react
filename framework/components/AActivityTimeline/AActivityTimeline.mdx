@@ -60,33 +60,34 @@ When rendering a timeline from a paginated source of data, the last item in the 
 
 <Playground
   code={`() => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [resultsPerPage, setResultsPerPage] = useState(3);
-  const paginatedData = [...new Array(resultsPerPage).keys()].map((index) => {
-    const countingNumber = index + 1;
-    return (currentPage - 1) * resultsPerPage + countingNumber;
-  });
-  const TOTAL_ITEMS = 30;
+  const [currentPage, setCurrentPage] = useState(0);
+  const [resultsPerPage, setResultsPerPage] = useState(10);
+  const startIndex = currentPage * resultsPerPage;
+  const endIndex = currentPage * resultsPerPage + resultsPerPage;
+  const numbers = useMemo(() => Array.from({ length: 100 }, (_, i) => i + 1), []);
+  const paginatedData = numbers.slice(startIndex, endIndex);
   return (
     <>
-      <AActivityTimeline numbered>
+    <AActivityTimeline numbered>
         {paginatedData.map((num) => (
           <AActivityTimelineItem
             key={num}
             title={\`Item #\${num}\`}
             time={\`\${num} days ago\`}
-            withConnector={num < TOTAL_ITEMS}
+            withConnector={num < numbers.length}
             itemNum={num}
           />
         ))}
       </AActivityTimeline>
-      <APagination
-        className="mt-4"
-        onPageChange={(value) => setCurrentPage(value)}
+      <br/>
+      <APaginator
+        onPageChange={(value) => {
+          setCurrentPage(value);
+        }}
         onResultsPerPageChange={(value) => setResultsPerPage(value)}
-        page={currentPage}
         resultsPerPage={resultsPerPage}
-        total={TOTAL_ITEMS}
+        page={currentPage}
+        total={numbers.length}
       />
     </>
   );

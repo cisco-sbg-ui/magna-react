@@ -1,7 +1,7 @@
-import React, {useState} from "react";
+import React, {useState, useMemo} from "react";
 import AActivityTimeline from "./AActivityTimeline";
 import AActivityTimelineItem from "./AActivityTimelineItem";
-import APagination from "../APagination/APagination";
+import APaginator from "../APaginator";
 
 const DEFAULT_BORDER_STYLE = "2px solid rgb(225, 228, 232)";
 const COMPLETE_STATUS_BORDER_STYLE = "2px solid rgb(29, 105, 204)";
@@ -36,8 +36,8 @@ describe("<AActivityTimeline />", () => {
 
     cy.get("[aria-label='Next']").click();
     cy.get(
-      "[data-testid='mock-content-5'] .a-activity-timeline__list-item--num"
-    ).contains("5)");
+      "[data-testid='mock-content-15'] .a-activity-timeline__list-item--num"
+    ).contains("15)");
   });
 
   it("should always render a timeline item connector if the prop for it is passed", () => {
@@ -344,36 +344,35 @@ function ControlledTimelineTest({children, itemCount = 1}) {
 }
 
 function PaginatedTimelineTest(...props) {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [resultsPerPage, setResultsPerPage] = useState(3);
-
-  const paginatedData = [...new Array(resultsPerPage).keys()].map((index) => {
-    const countingNumber = index + 1;
-    return (currentPage - 1) * resultsPerPage + countingNumber;
-  });
-
+  const [currentPage, setCurrentPage] = useState(0);
+  const [resultsPerPage, setResultsPerPage] = useState(10);
+  const startIndex = currentPage * resultsPerPage;
+  const endIndex = currentPage * resultsPerPage + resultsPerPage;
+  const numbers = useMemo(() => Array.from({length: 100}, (_, i) => i + 1), []);
+  const paginatedData = numbers.slice(startIndex, endIndex);
   const paginatedItems = paginatedData.map((num) => (
     <AActivityTimelineItem
       data-testid={`mock-content-${num}`}
       key={num}
       title={`Mock title #${num}`}
       time={`${num} days ago`}
-      withConnector={num < TOTAL_ITEMS}
+      withConnector={num < numbers.length}
       itemNum={num}
     />
   ));
 
-  const TOTAL_ITEMS = 30;
   return (
     <>
       <AActivityTimeline {...props}>{paginatedItems}</AActivityTimeline>
-      <APagination
-        className="mt-4"
-        onPageChange={(value) => setCurrentPage(value)}
+      <br />
+      <APaginator
+        onPageChange={(value) => {
+          setCurrentPage(value);
+        }}
         onResultsPerPageChange={(value) => setResultsPerPage(value)}
-        page={currentPage}
         resultsPerPage={resultsPerPage}
-        total={TOTAL_ITEMS}
+        page={currentPage}
+        total={numbers.length}
       />
     </>
   );
