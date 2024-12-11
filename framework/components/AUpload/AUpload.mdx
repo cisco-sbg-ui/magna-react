@@ -62,6 +62,8 @@ function JsonUpload() {
 
 #### Loading States
 
+##### Spinner (Indeterminant)
+
 <Playground
   code={`
 function LoadingUpload() {
@@ -77,6 +79,45 @@ function LoadingUpload() {
 
   return (
     <AUpload loading={loading} onUpload={() => setLoading(true)}/>
+  );
+}
+  `}
+/>
+
+##### Progress Bar (Determinant)
+
+**Note:** The [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) lacks native support for tracking upload progress, making it less suitable for real-time feedback during file uploads. In contrast, [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) supports upload progress monitoring via the [upload.progress](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/upload) event, providing detailed progress information. For precise upload tracking, use XMLHttpRequest over Fetch. Axios has [built-in support](https://axios-http.com/docs/req_config#:~:text=//%20default%0A%0A%20%20//%20%60-,onUploadProgress,-%60%20allows%20handling%20of) for upload progress tracking via `onUploadProgress`.
+
+<Playground
+  code={`
+function LoadingUpload() {
+  const [loading, setLoading] = React.useState(false);
+  const [progress, setProgress] = React.useState(0);
+
+  React.useEffect(() => {
+    if (loading) {
+      setTimeout(() => {
+        setLoading(false);
+      }, 2500);
+    }
+  }, [loading]);
+
+  React.useEffect(() => {
+    if (loading) {
+      const interval = setInterval(() => {
+        setProgress((prevProgress) => (prevProgress >= 100 ? 100 : prevProgress + 10));
+      }, 250);
+
+      return () => {
+        clearInterval(interval);
+      };
+    } else {
+      setProgress(0);
+    }
+  }, [loading])
+
+  return (
+    <AUpload loading={loading} progress={progress} onUpload={() => setLoading(true)}/>
   );
 }
   `}
