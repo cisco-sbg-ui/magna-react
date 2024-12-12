@@ -34,38 +34,60 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
 `}
 />
 
+##### Numbered
+
+<Playground
+  code={`<AActivityTimeline numbered>
+  <AActivityTimelineItem
+    time="2022-02-12 21:11:10 UTC"
+    title="Account Created"
+  />
+  <AActivityTimelineItem
+    time="2022-02-14 21:12:10 UTC"
+    title="Tutorial Island Completed"
+  />
+  <AActivityTimelineItem
+    time="2022-02-14 22:11:10 UTC"
+    title="Cook's Assistant Started"
+  />
+</AActivityTimeline>
+`}
+/>
+
 #### Paginated List (`withConnector` prop)
 
 When rendering a timeline from a paginated source of data, the last item in the _visible_ slice of data may not actually be the very last item in the entirety of the list. As such, the connector on the last timeline item in the slice should still exist to indicate to the user that the timeline is ongoing. In such situations, you can explicitly pass the `withConnector` prop to control its presence.
 
 <Playground
   code={`() => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [resultsPerPage, setResultsPerPage] = useState(3);
-  const paginatedData = [...new Array(resultsPerPage).keys()].map((index) => {
-    const countingNumber = index + 1;
-    return (currentPage - 1) * resultsPerPage + countingNumber;
-  });
-  const TOTAL_ITEMS = 30;
+  const [currentPage, setCurrentPage] = useState(0);
+  const [resultsPerPage, setResultsPerPage] = useState(10);
+  const startIndex = currentPage * resultsPerPage;
+  const endIndex = currentPage * resultsPerPage + resultsPerPage;
+  const numbers = useMemo(() => Array.from({ length: 100 }, (_, i) => i + 1), []);
+  const paginatedData = numbers.slice(startIndex, endIndex);
   return (
     <>
-      <AActivityTimeline>
+    <AActivityTimeline numbered>
         {paginatedData.map((num) => (
           <AActivityTimelineItem
             key={num}
             title={\`Item #\${num}\`}
             time={\`\${num} days ago\`}
-            withConnector={num < TOTAL_ITEMS}
+            withConnector={num < numbers.length}
+            itemNum={num}
           />
         ))}
       </AActivityTimeline>
-      <APagination
-        className="mt-4"
-        onPageChange={(value) => setCurrentPage(value)}
+      <br/>
+      <APaginator
+        onPageChange={(value) => {
+          setCurrentPage(value);
+        }}
         onResultsPerPageChange={(value) => setResultsPerPage(value)}
-        page={currentPage}
         resultsPerPage={resultsPerPage}
-        total={TOTAL_ITEMS}
+        page={currentPage}
+        total={numbers.length}
       />
     </>
   );

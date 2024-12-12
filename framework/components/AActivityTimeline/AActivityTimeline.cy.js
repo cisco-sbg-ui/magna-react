@@ -1,6 +1,7 @@
-import React, {useState} from "react";
+import React, {useState, useMemo} from "react";
 import AActivityTimeline from "./AActivityTimeline";
 import AActivityTimelineItem from "./AActivityTimelineItem";
+import APaginator from "../APaginator";
 
 const DEFAULT_BORDER_STYLE = "2px solid rgb(225, 228, 232)";
 const COMPLETE_STATUS_BORDER_STYLE = "2px solid rgb(29, 105, 204)";
@@ -28,6 +29,15 @@ describe("<AActivityTimeline />", () => {
       .then((borderStyle) => {
         expect(borderStyle).contains(DEFAULT_BORDER_STYLE);
       });
+  });
+
+  it("should show the correct numbers in paginated timeline after navigating to next page", () => {
+    cy.mount(<PaginatedTimelineTest numbered />);
+
+    cy.get("[aria-label='Next']").click();
+    cy.get(
+      "[data-testid='mock-content-15'] .a-activity-timeline__list-item--num"
+    ).contains("15)");
   });
 
   it("should always render a timeline item connector if the prop for it is passed", () => {
@@ -330,5 +340,40 @@ function ControlledTimelineTest({children, itemCount = 1}) {
             </AActivityTimelineItem>
           ))}
     </AActivityTimeline>
+  );
+}
+
+function PaginatedTimelineTest(...props) {
+  const [currentPage, setCurrentPage] = useState(0);
+  const [resultsPerPage, setResultsPerPage] = useState(10);
+  const startIndex = currentPage * resultsPerPage;
+  const endIndex = currentPage * resultsPerPage + resultsPerPage;
+  const numbers = useMemo(() => Array.from({length: 100}, (_, i) => i + 1), []);
+  const paginatedData = numbers.slice(startIndex, endIndex);
+  const paginatedItems = paginatedData.map((num) => (
+    <AActivityTimelineItem
+      data-testid={`mock-content-${num}`}
+      key={num}
+      title={`Mock title #${num}`}
+      time={`${num} days ago`}
+      withConnector={num < numbers.length}
+      itemNum={num}
+    />
+  ));
+
+  return (
+    <>
+      <AActivityTimeline {...props}>{paginatedItems}</AActivityTimeline>
+      <br />
+      <APaginator
+        onPageChange={(value) => {
+          setCurrentPage(value);
+        }}
+        onResultsPerPageChange={(value) => setResultsPerPage(value)}
+        resultsPerPage={resultsPerPage}
+        page={currentPage}
+        total={numbers.length}
+      />
+    </>
   );
 }

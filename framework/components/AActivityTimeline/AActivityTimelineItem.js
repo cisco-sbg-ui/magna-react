@@ -37,6 +37,7 @@ const AActivityTimelineItem = forwardRef((props, ref) => {
     title,
     withConnector,
     withDivider,
+    itemNum,
     ...rest
   } = props;
 
@@ -73,6 +74,10 @@ const AActivityTimelineItem = forwardRef((props, ref) => {
     </AActivityTimelineItemHeaderContent>
   );
 
+  const numberedPaginatedList = itemNum ? (
+    <span className="a-activity-timeline__list-item--num">{itemNum})</span>
+  ) : null; //Null as safety for edge case of 0
+
   return (
     <AActivityTimelineListItem
       icon={statusIcon}
@@ -99,6 +104,7 @@ const AActivityTimelineItem = forwardRef((props, ref) => {
         </AActivityTimelineItemHeaderToggleButton>
       ) : (
         <AActivityTimelineItemHeader>
+          {numberedPaginatedList}
           {headerContent}
         </AActivityTimelineItemHeader>
       )}

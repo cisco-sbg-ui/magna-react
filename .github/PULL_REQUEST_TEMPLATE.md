@@ -1,6 +1,6 @@
 **Please check if the PR fulfills these requirements**
 
-- [ ] This change has been run and tested against at least 2 typescript applications
+- [ ] This change has been run and tested against at least 1 typescript application.  (If extensive change, 2 is best)
 - [ ] This change passed unit tests in the applications the build was tested against
 - [ ] The changes are documented in component docs and changelog
 - [ ] Test have been added or modified, if appropriate
