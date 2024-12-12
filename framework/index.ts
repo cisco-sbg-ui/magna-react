@@ -130,12 +130,6 @@ import {ATabGroup, ATab} from "./components/ATabs";
 import ATag from "./components/ATag";
 import ATextarea from "./components/ATextarea";
 import ATextInput from "./components/ATextInput";
-import {
-  ATimeline,
-  ATimelineItem,
-  ATimelineItemBody,
-  ATimelineItemTitle
-} from "./components/ATimeline";
 import {ATheme, useATheme} from "./components/ATheme";
 import AToast from "./components/AToast";
 import {ATooltip} from "./components/ATooltip";
@@ -276,10 +270,6 @@ export {
   ATag,
   ATextarea,
   ATextInput,
-  ATimeline,
-  ATimelineItem,
-  ATimelineItemBody,
-  ATimelineItemTitle,
   ATheme,
   AToast,
   AToastPlate,
