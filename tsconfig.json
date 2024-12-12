@@ -20,7 +20,8 @@
     "checkJs": false,
     "types": ["react"],
     "noImplicitAny": true,
-    "noEmit": false //DO NOT LET VERCEL OVERRIDE THIS DURING NPM RUN DEV.   WE NEED TO EMIT FOR LIBRARY. This is an ongoing request: https://github.com/vercel/next.js/discussions/39942
+    "noEmit": false, //DO NOT LET VERCEL OVERRIDE THIS DURING NPM RUN DEV.   WE NEED TO EMIT FOR LIBRARY. This is an ongoing request: https://github.com/vercel/next.js/discussions/39942
+    "noUncheckedIndexedAccess": true
   },
   "include": [
     "./framework/components/**/*.ts",
