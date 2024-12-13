@@ -15,13 +15,13 @@ const AUpload = ({
   accept,
   loading,
   onUpload = () => {},
-  // onUploadRejected,
-  // onUploadSuccess,
+  onUploadRejected = () => {},
+  onUploadSuccess = () => {},
   progress,
   // size = "md",
   supplementalText,
-  text = "Click or drag file to this area to upload"
-  // validate,
+  text = "Click or drag file to this area to upload",
+  validator
 }) => {
   const [file, setFile] = React.useState(null);
   const {
@@ -36,32 +36,13 @@ const AUpload = ({
     onDrop: onUpload,
     // TODO validator
     // validate: (file) => { },
-    onDropAccepted: (fileList) => {
+    onDropAccepted: (fileList, event) => {
+      onUploadSuccess(fileList, event);
       const droppedFile = fileList[0];
-      const reader = new FileReader();
-
-      // Extend the file object with preview and content
-      let extendedDroppedFile = {
-        ...droppedFile,
-        image: droppedFile.type.startsWith("image"),
-        // removes the leading `./` from the path
-        name: droppedFile.path.slice(2),
-        // a Blob URL of the file, needed to show an image preview
-        preview: URL.createObjectURL(droppedFile),
-        type: droppedFile.type
-      };
-
-      reader.onload = (e) => {
-        // the text or binary content of the file
-        extendedDroppedFile.content = e.target.result;
-      };
-
-      reader.readAsText(droppedFile);
-
-      console.log("extendedDroppedFile:", extendedDroppedFile);
-      setFile(extendedDroppedFile);
+      setFile(extendDroppedFileInfo(droppedFile));
     },
     onDropRejected: (fileList, ev) => {
+      onUploadRejected(fileList, ev);
       const droppedFile = fileList[0];
       if (fileList.length > 0) {
         console.log("Drop was rejected. Too many files!");
@@ -70,6 +51,11 @@ const AUpload = ({
       } else {
         console.error("Drop was rejected!", ev);
       }
+    },
+    validator: (fileList, event) => {
+      // TODO
+      console.log("fileList, event:", fileList, event);
+      validator(fileList, event);
     }
   });
 
@@ -84,8 +70,7 @@ const AUpload = ({
           className: classnames("a-upload", {
             "a-upload--active": isDragActive
           })
-        })}
-      >
+        })}>
         <div className="a-upload__interior">
           <>
             <input {...getInputProps()} />
@@ -103,8 +88,7 @@ const AUpload = ({
           <div
             className={classnames("a-upload__file", {
               "a-upload__file--loading": loading
-            })}
-          >
+            })}>
             <div className="a-upload__file-attachment">
               {file.type.startsWith("image") ? (
                 <img
@@ -145,6 +129,28 @@ const AUpload = ({
     </>
   );
 };
+
+function extendDroppedFileInfo(file) {
+  const reader = new FileReader();
+  let extendedDroppedFile = {
+    ...file,
+    image: file.type.startsWith("image"),
+    // removes the leading `./` from the path
+    name: file.path.slice(2),
+    // a Blob URL of the file, needed to show an image preview
+    preview: URL.createObjectURL(file),
+    type: file.type
+  };
+
+  reader.onload = (e) => {
+    // the text or binary content of the file
+    extendedDroppedFile.content = e.target.result;
+  };
+
+  reader.readAsText(file);
+
+  return extendedDroppedFile;
+}
 
 AUpload.propTypes = {
   /**
