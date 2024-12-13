@@ -1,4 +1,4 @@
-import React, {forwardRef, useRef, useMemo} from "react";
+import React, {forwardRef, useRef} from "react";
 import {
   ACardContent,
   ACardFooter,
@@ -8,18 +8,18 @@ import {
 } from "../ACard";
 import {ACol} from "../ALayout";
 import AButton from "../AButton";
-
-type AStepperCardContentProps = any; //move to types.ts
+import {AStepperCardContentProps} from "./types";
+import {AColProps} from "../ALayout/types";
 
 const AStepperCardContent = forwardRef<HTMLDivElement, AStepperCardContentProps>(
   ({className: propsClassName = "", children, title, onCancel, onBack, onNext, ...rest}, ref) => {
     const containerRef = useRef(null); //what am I using this ref for, incl ref prop
     return (
-        <ACol cols="6" {...rest}>
+        <ACol cols="7" className={`d-flex flex-column ${propsClassName}`} style={{height: "100%"}} {...rest as AColProps}>
           <ACardHeader>
             <ACardTitle>{title}</ACardTitle>
           </ACardHeader>
-          <ACardContent>{children}</ACardContent>
+          <ACardContent className="overflow-y-scroll">{children}</ACardContent>
           <ACardFooter className="justify-space-between">
             <ACardItem attached="right">
               {  onCancel && <AButton medium tertiary onClick={onCancel}>
@@ -38,7 +38,7 @@ const AStepperCardContent = forwardRef<HTMLDivElement, AStepperCardContentProps>
   }
 );
 
-//change button text
+//changeable button text
 //button disabled states, esp next
 
 export default AStepperCardContent;
