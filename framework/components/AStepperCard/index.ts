@@ -1,5 +1,6 @@
 import AStepperCard from "./AStepperCard";
 import AStepperCardContent from "./AStepperCardContent";
+import AStepper from "../AStepper/AStepper";
 
 
-export {AStepperCard, AStepperCardContent};
+export {AStepper, AStepperCard, AStepperCardContent};

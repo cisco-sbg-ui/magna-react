@@ -18,7 +18,7 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
   fullWidthPreview
   code={`() => {
   const [active, setActive] = useState(1);
-    const data = [
+    const steps = [
     {
       title: "Active. Long Title.",
       description:
@@ -36,12 +36,12 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
     }
   ];
   return ( 
-    <div>
-        <AStepperCard active={active} >
+    <div style={{height: 500}}>
+        <AStepperCard active={active} items={steps}>
             <AStepperCardContent title="Alpha Beta Gamma"
                 onBack={() => active > 1 && setActive(active - 1)}
                 onCancel={() => {}}
-                onNext={()=> active < steps.length -1 && setActive(active + 1)}
+                onNext={()=> active < steps.length && setActive(active + 1)}
             >
                 <div>
                     Testing div stepper card content
