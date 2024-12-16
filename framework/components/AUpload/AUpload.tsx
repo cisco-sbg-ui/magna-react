@@ -14,6 +14,10 @@ import classnames from "classnames";
 
 interface AUploadProps {
   /**
+   * Class name passed to the outer wrapper
+   */
+  className?: string;
+  /**
    * Options forwarded to the `useDropzone` hook from `react-dropzone`
    * @docs - https://react-dropzone.js.org/
    */
@@ -45,6 +49,7 @@ interface AUploadProps {
 }
 
 const AUpload: React.FC<AUploadProps> = ({
+  className,
   dropzoneProps: {
     onDrop,
     onDropAccepted,
@@ -56,7 +61,8 @@ const AUpload: React.FC<AUploadProps> = ({
   onFileDelete = () => {},
   progress,
   supplementalText,
-  text = "Click or drag file to this area to upload"
+  text = "Click or drag file to this area to upload",
+  ...rest
 }) => {
   const [error, setError] = useState<string | null>(null);
   const [file, setFile] = useState<ExtendedFile | null>(null);
@@ -91,8 +97,6 @@ const AUpload: React.FC<AUploadProps> = ({
       ...restDropzoneProps
     });
 
-  console.log("file:", file);
-
   function handleDelete() {
     onFileDelete?.(file);
     setFile(null);
@@ -107,9 +111,13 @@ const AUpload: React.FC<AUploadProps> = ({
     <>
       <ACardBasic
         {...getRootProps({
-          className: classnames("a-upload", {
-            "a-upload--active": isDragActive
-          })
+          className: classnames(
+            "a-upload",
+            {
+              "a-upload--active": isDragActive
+            },
+            className
+          )
         })}>
         <div className="a-upload__interior">
           <>
