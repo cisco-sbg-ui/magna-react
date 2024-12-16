@@ -33,8 +33,10 @@ function BasicUpload() {
 function ImagesUpload() {
   return (
     <AUpload
-      accept={{
-        "image/*": [".gif", ".jpg", ".png"],
+      dropzoneProps={{
+        accept: {
+          "image/*": [".gif", ".jpg", ".png"],
+        }
       }}
       supplementalText="Images only"
     />
@@ -50,10 +52,36 @@ function ImagesUpload() {
 function JsonUpload() {
   return (
     <AUpload
-      accept={{
-        "application/json": [".json"],
+      dropzoneProps={{
+        accept: {
+          "application/json": [".json"],
+        }
       }}
       supplementalText="JSON only"
+    />
+  );
+}
+  `}
+/>
+
+##### Custom Validator
+
+<Playground
+  code={`
+function JsonUpload() {
+  return (
+    <AUpload
+      dropzoneProps={{
+        validator: (file) => {
+          if (file.type === "image/jpeg") {
+            return {
+              code: "no-jpeg",
+              message: "Do I look like I know what a JPEG is?",
+            };
+          }
+        }
+      }}
+      supplementalText="Picture of a hot dog"
     />
   );
 }

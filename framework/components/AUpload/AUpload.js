@@ -1,66 +1,62 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, {useState} from "react";
 import {useDropzone} from "react-dropzone";
 
-import AIcon from "../AIcon";
+import AAlert from "../AAlert";
 import AButton from "../AButton";
 import {ACardBasic} from "../ACard";
+import AIcon from "../AIcon";
 import {ALoader} from "../ALoader";
-import AProgressBar from "../AProgressBar";
+import AProgressbar from "../AProgressbar";
 
 import "./AUpload.scss";
 import classnames from "classnames";
 
 const AUpload = ({
-  accept,
   loading,
-  onUpload = () => {},
-  onUploadRejected = () => {},
-  onUploadSuccess = () => {},
+  onCloseError = () => {},
+  onFileDelete = () => {},
   progress,
-  // size = "md",
   supplementalText,
   text = "Click or drag file to this area to upload",
-  validator
+  dropzoneProps: {
+    onDrop,
+    onDropAccepted,
+    onDropRejected,
+    ...restDropzoneProps
+  } = {}
 }) => {
-  const [file, setFile] = React.useState(null);
-  const {
-    getInputProps,
-    getRootProps,
-    //isDragAccept, // TODO pending design
-    isDragActive
-    //isDragReject  // TODO pending design
-  } = useDropzone({
-    accept,
+  const [error, setError] = useState(null);
+  const [file, setFile] = useState(null);
+  const {getInputProps, getRootProps, isDragActive} = useDropzone({
+    maxFiles: 1,
     multiple: false,
-    onDrop: onUpload,
-    // TODO validator
-    // validate: (file) => { },
-    onDropAccepted: (fileList, event) => {
-      onUploadSuccess(fileList, event);
+    onDrop: (acceptedFileList, rejectedFileList, ev) => {
+      onDrop?.(acceptedFileList, rejectedFileList, ev);
+      setError(null);
+      setFile(null);
+    },
+    onDropAccepted: (fileList, ev) => {
+      onDropAccepted?.(fileList, ev);
       const droppedFile = fileList[0];
       setFile(extendDroppedFileInfo(droppedFile));
     },
     onDropRejected: (fileList, ev) => {
-      onUploadRejected(fileList, ev);
+      onDropRejected?.(fileList, ev);
       const droppedFile = fileList[0];
-      if (fileList.length > 0) {
-        console.log("Drop was rejected. Too many files!");
-      } else if (droppedFile.size > 1024) {
-        console.log("file is too dang big bobby");
-      } else {
-        console.error("Drop was rejected!", ev);
-      }
+      setError(droppedFile.errors[0]?.message);
     },
-    validator: (fileList, event) => {
-      // TODO
-      console.log("fileList, event:", fileList, event);
-      validator(fileList, event);
-    }
+    ...restDropzoneProps
   });
 
   function handleDelete() {
+    onFileDelete?.(file);
     setFile(null);
+  }
+
+  function handleCloseError() {
+    onCloseError?.();
+    setError(null);
   }
 
   return (
@@ -70,7 +66,8 @@ const AUpload = ({
           className: classnames("a-upload", {
             "a-upload--active": isDragActive
           })
-        })}>
+        })}
+      >
         <div className="a-upload__interior">
           <>
             <input {...getInputProps()} />
@@ -88,7 +85,8 @@ const AUpload = ({
           <div
             className={classnames("a-upload__file", {
               "a-upload__file--loading": loading
-            })}>
+            })}
+          >
             <div className="a-upload__file-attachment">
               {file.type.startsWith("image") ? (
                 <img
@@ -109,7 +107,7 @@ const AUpload = ({
               {loading ? (
                 <>
                   {progress ? (
-                    <AProgressBar
+                    <AProgressbar
                       percentage={progress}
                       showPercentage={false}
                     />
@@ -125,6 +123,17 @@ const AUpload = ({
             </div>
           </div>
         </div>
+      )}
+
+      {error && (
+        <AAlert
+          level="danger"
+          dismissable={true}
+          onClose={handleCloseError}
+          className="a-upload__alert"
+        >
+          {error}
+        </AAlert>
       )}
     </>
   );
@@ -151,6 +160,20 @@ function extendDroppedFileInfo(file) {
 
   return extendedDroppedFile;
 }
+
+// function collapseErrors(fileRejections = []) {
+//   console.log("collapseErrors - fileRejections:", fileRejections);
+//   const errorRecord = {};
+//   fileRejections.forEach((fileRejection) => {
+//     const {errors = []} = fileRejection;
+//     errors.forEach((error = {}) => {
+//       const {code, message} = error;
+//       errors[code] = message;
+//     });
+//   });
+//   console.log("collapseErrors - collapsedErrors:", Object.values(errorRecord));
+//   return Object.values(errorRecord);
+// }
 
 AUpload.propTypes = {
   /**
