@@ -1,7 +1,5 @@
-// TODO: convert hex to scss vars
-
 .a-upload {
-  border: 2px dashed #e1e4e8;
+  border: 2px dashed var(--control-border-weak-default);
   min-height: 200px;
   padding: 24px;
 
@@ -9,8 +7,8 @@
   &:focus,
   &:hover,
   &:active {
-    background-color: #f0f6ff;
-    border-color: #7cadf7;
+    background-color: var(--control-bg-hover);
+    border-color: var(--control-border-weak-hover);
     cursor: pointer;
   }
 
@@ -33,18 +31,18 @@
 }
 
 .a-upload__text {
-  color: #23282e;
+  color: var(--base-text-default);
   font-size: 16px;
   font-weight: 600;
   line-height: 1.375em;
 
   &.a-upload__text--loading {
-    color: #596069;
+    color: var(--base-text-medium-default);
   }
 }
 
 .a-upload__supplemental-text {
-  color: #596069;
+  color: var(--base-text-medium-default);
   font-size: 14px;
   font-weight: 400;
   line-height: 0.7em;
@@ -56,15 +54,15 @@
 
 .a-upload__file {
   align-items: center;
-  border-top: 1px solid #e1e4e8;
-  color: #23282e;
+  border-top: 1px solid var(--control-border-weak-default);
+  color: var(--base-text-default);
   display: flex;
   height: 44px;
   justify-content: space-between;
   padding: 0 8px;
 
   &:last-child {
-    border-bottom: 1px solid #e1e4e8;
+    border-bottom: 1px solid var(--control-border-weak-default);
   }
 
   & .a-generic-loader,
@@ -74,8 +72,8 @@
 }
 
 .a-upload__file--loading * {
-  color: #c1c6cc;
-  stroke: #c1c6cc;
+  color: var(--base-text-disabled);
+  stroke: var(--base-text-disabled);
 }
 
 .a-upload__file-attachment {
