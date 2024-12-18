@@ -61,8 +61,7 @@ const AUpload: React.FC<AUploadProps> = ({
   onFileDelete = () => {},
   progress,
   supplementalText,
-  text = "Click or drag file to this area to upload",
-  ...rest
+  text = "Click or drag file to this area to upload"
 }) => {
   const [error, setError] = useState<string | null>(null);
   const [file, setFile] = useState<ExtendedFile | null>(null);
@@ -191,7 +190,7 @@ interface ExtendedFile extends File {
   content?: string;
 }
 
-function extendDroppedFileInfo(file?: File): ExtendedFile | undefined {
+export function extendDroppedFileInfo(file?: File): ExtendedFile | undefined {
   if (file) {
     const reader = new FileReader();
     const extendedDroppedFile: ExtendedFile = {
