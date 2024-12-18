@@ -1,8 +1,6 @@
 import AUpload from "./AUpload";
 
 describe("AUpload", () => {
-  beforeEach(() => {});
-
   describe("basic rendering", () => {
     it("renders with text", () => {
       const text = "Upload a picture of a hot dog";
