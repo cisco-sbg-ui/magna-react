@@ -19,7 +19,7 @@ describe("AUpload", () => {
 
     it("renders with a class name", () => {
       cy.mount(<AUpload className="hot-dog" />);
-      cy.get(".a-upload").should("have.class", "test-class");
+      cy.get(".a-upload").should("have.class", "hot-dog");
     });
   });
 
