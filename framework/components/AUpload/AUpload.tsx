@@ -164,7 +164,7 @@ const AUpload: React.FC<AUploadProps> = ({
                 </>
               ) : (
                 <AButton tertiaryAlt onClick={handleDelete}>
-                  <AIcon size={18}>trash-simple</AIcon>
+                  <AIcon size={18}>trash</AIcon>
                 </AButton>
               )}
             </div>
