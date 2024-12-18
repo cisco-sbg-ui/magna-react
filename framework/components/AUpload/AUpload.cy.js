@@ -57,7 +57,7 @@ describe("AUpload", () => {
       cy.get(".a-upload__file")
         .find(".a-icon")
         .last()
-        .should("have.class", "a-icon--trash-simple");
+        .should("have.class", "a-icon--trash");
     });
 
     it("renders a loading spinner", () => {
@@ -86,7 +86,7 @@ describe("AUpload", () => {
       cy.get(".a-upload").trigger("drop", {dataTransfer});
 
       // click the trash icon
-      cy.get(".a-upload__file").find(".a-icon--trash-simple").click();
+      cy.get(".a-upload__file").find(".a-icon--trash").click();
 
       // ensure the onFileDelete callback is called
       cy.get("@onFileDelete").should("have.been.calledOnce");
