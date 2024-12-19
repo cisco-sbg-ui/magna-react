@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useDropzone} from "react-dropzone";
-import type {DropzoneOptions, DropzoneState} from "react-dropzone";
+import type {DropzoneState} from "react-dropzone";
 
 import AAlert from "../AAlert";
 import AButton from "../AButton";
@@ -8,44 +8,31 @@ import {ACardBasic} from "../ACard";
 import AIcon from "../AIcon";
 import {ALoader} from "../ALoader";
 import AProgressbar from "../AProgressbar";
+import type {AUploadProps, ExtendedFile} from "./types";
 
 import "./AUpload.scss";
 import classnames from "classnames";
 
-interface AUploadProps {
-  /**
-   * Class name passed to the outer wrapper
-   */
-  className?: string;
-  /**
-   * Options forwarded to the `useDropzone` hook from `react-dropzone`
-   * @docs - https://react-dropzone.js.org/
-   */
-  dropzoneProps?: DropzoneOptions;
-  /**
-   * Controls loading UI state of the file
-   */
-  loading?: boolean;
-  /**
-   * Callback for when the error alert is closed
-   */
-  onCloseError?: () => void;
-  /**
-   * Callback for when the file is deleted/removed
-   */
-  onFileDelete?: (file: File | null) => void;
-  /**
-   * A percentage of progress, used for loading UI state
-   */
-  progress?: number;
-  /**
-   * The subheading beneath primary text
-   */
-  supplementalText?: string;
-  /**
-   * The primary text of the dropzone
-   */
-  text?: string;
+export function extendDroppedFileInfo(file?: File): ExtendedFile | undefined {
+  if (file) {
+    const reader = new FileReader();
+    const extendedDroppedFile: ExtendedFile = {
+      ...file,
+      image: file.type.startsWith("image"),
+      name: file.name,
+      // a Blob URL of the file, needed to show an image preview
+      preview: URL.createObjectURL(file),
+      type: file.type
+    };
+
+    reader.onload = (e) => {
+      extendedDroppedFile.content = e.target?.result as string;
+    };
+
+    reader.readAsText(file);
+
+    return extendedDroppedFile;
+  }
 }
 
 const AUpload: React.FC<AUploadProps> = ({
@@ -61,7 +48,8 @@ const AUpload: React.FC<AUploadProps> = ({
   onFileDelete = () => {},
   progress,
   supplementalText,
-  text = "Click or drag file to this area to upload"
+  text = "Click or drag file to this area to upload",
+  ...rest
 }) => {
   const [error, setError] = useState<string | null>(null);
   const [file, setFile] = useState<ExtendedFile | null>(null);
@@ -109,6 +97,7 @@ const AUpload: React.FC<AUploadProps> = ({
   return (
     <>
       <ACardBasic
+        {...rest}
         {...getRootProps({
           className: classnames(
             "a-upload",
@@ -174,7 +163,7 @@ const AUpload: React.FC<AUploadProps> = ({
       {error && (
         <AAlert
           level="danger"
-          dismissable={true}
+          dismissible
           onClose={handleCloseError}
           className="a-upload__alert">
           {error}
@@ -183,34 +172,6 @@ const AUpload: React.FC<AUploadProps> = ({
     </>
   );
 };
-
-interface ExtendedFile extends File {
-  preview: string;
-  image: boolean;
-  content?: string;
-}
-
-export function extendDroppedFileInfo(file?: File): ExtendedFile | undefined {
-  if (file) {
-    const reader = new FileReader();
-    const extendedDroppedFile: ExtendedFile = {
-      ...file,
-      image: file.type.startsWith("image"),
-      name: file.name,
-      // a Blob URL of the file, needed to show an image preview
-      preview: URL.createObjectURL(file),
-      type: file.type
-    };
-
-    reader.onload = (e) => {
-      extendedDroppedFile.content = e.target?.result as string;
-    };
-
-    reader.readAsText(file);
-
-    return extendedDroppedFile;
-  }
-}
 
 AUpload.displayName = "AUpload";
 
