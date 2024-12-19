@@ -13,7 +13,7 @@ import type {AUploadProps, ExtendedFile} from "./types";
 import "./AUpload.scss";
 import classnames from "classnames";
 
-export function extendDroppedFileInfo(file?: File): ExtendedFile | undefined {
+function extendDroppedFileInfo(file?: File): ExtendedFile | undefined {
   if (file) {
     const reader = new FileReader();
     const extendedDroppedFile: ExtendedFile = {
