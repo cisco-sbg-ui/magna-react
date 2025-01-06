@@ -144,7 +144,7 @@ const AUpload: React.FC<AUploadProps> = ({
             <div className="a-upload__file-actions">
               {loading ? (
                 <>
-                  {progress ? (
+                  {typeof progress === "number" ? (
                     <AProgressbar percentage={progress} />
                   ) : (
                     <ALoader variant="spinner" size="small" />
