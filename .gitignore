@@ -3,6 +3,7 @@
 /.vercel/
 /.nyc_output/
 /coverage/
+/cypress/downloads/
 /cypress/snapshots/actual/
 /cypress/snapshots/diff/
 /lib/
