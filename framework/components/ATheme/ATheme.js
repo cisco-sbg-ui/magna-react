@@ -96,7 +96,7 @@ const ATheme = forwardRef(
 
     // persist currentTheme on change
     useIsomorphicLayoutEffect(() => {
-      if (shouldUseThemeStorage) {
+      if (shouldUseThemeStorage && currentTheme !== theme) {
         ThemeStorage.saveTheme(currentTheme);
       }
     }, [currentTheme]);
