@@ -68,6 +68,7 @@ export * from "../components/AToaster/types";
 export * from "../components/ATooltip/types";
 export * from "../components/ATree/types";
 export * from "../components/ATriggerTooltip/types";
+export * from "../components/AUpload/types";
 export * from "../hooks/useABreakpoint/types";
 
 export type {Override, PolymorphicComponentPropWithRef};
