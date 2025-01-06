@@ -108,7 +108,12 @@ function LoadingUpload() {
   }, [loading]);
 
   return (
-    <AUpload loading={loading} onUpload={() => setLoading(true)}/>
+    <AUpload
+      loading={loading}
+      dropzoneProps={{
+        onDropAccepted: () => setLoading(true)
+      }}
+    />
   );
 }
   `}
@@ -147,7 +152,13 @@ function LoadingUpload() {
   }, [loading])
 
   return (
-    <AUpload loading={loading} progress={progress} onUpload={() => setLoading(true)}/>
+    <AUpload
+      loading={loading}
+      progress={progress}
+      dropzoneProps={{
+        onDropAccepted: () => setLoading(true)
+      }}
+    />
   );
 }
   `}
