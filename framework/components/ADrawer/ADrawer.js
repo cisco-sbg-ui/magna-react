@@ -239,7 +239,7 @@ ADrawer.propTypes = {
    * defined breakpoints.
    */
   responsiveWidth: PropTypes.oneOfType([
-    PropTypes.arrayOf(["sm", "md", "lg", "xl"]),
+    PropTypes.arrayOf(PropTypes.oneOf(["sm", "md", "lg", "xl"])),
     PropTypes.string
   ]),
 
