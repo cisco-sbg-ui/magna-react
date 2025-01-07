@@ -1,8 +1,16 @@
+import type {PropsWithChildren} from "react";
 import React from "react";
 
 import "../AActivityTimeline.scss";
 
-function AActivityTimelineItemBody({isCollapsed = false, children}) {
+interface AActivityTimelineItemBodyProps {
+  isCollapsed?: boolean;
+}
+
+function AActivityTimelineItemBody({
+  isCollapsed = false,
+  children
+}: PropsWithChildren<AActivityTimelineItemBodyProps>) {
   let className = "a-activity-timeline__list-item__body";
 
   if (isCollapsed) {
