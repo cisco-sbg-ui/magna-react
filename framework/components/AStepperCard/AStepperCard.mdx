@@ -57,7 +57,9 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
   return ( 
     <div style={{height: 500}}>
         <AStepperCard active={active} items={steps}>
-            <AStepperCardContent title={cardContent[active - 1].title}
+            <AStepperCardContent title={cardContent[active - 1].title} 
+                isNextButtonDisabled={active === cardContent.length}
+                nextButtonText={active < cardContent.length ? "Next" : "Submit"}
                 onBack={() => active > 1 && setActive(active - 1)}
                 onCancel={() => {}}
                 onNext={()=> active < steps.length && setActive(active + 1)}
@@ -70,3 +72,17 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
 }
 `}
 />
+
+## Component Props
+
+### StepperCard Props
+
+All AStepperCard components (AStepperCard, AStepperCardContent) inherit passed props.
+
+### Stepper Card Props
+
+<Props of="AStepperCard" />
+
+### Step Card Content Props
+
+<Props of="AStepperCardContent" />

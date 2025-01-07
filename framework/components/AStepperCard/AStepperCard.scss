@@ -1,0 +1,12 @@
+@import "../../styles";
+
+.a-stepper__card--col {
+  border-right: 1px solid var(--base-border-medium-default);
+  box-shadow: none;
+}
+
+.a-stepper__card__content--footer {
+  box-shadow: 0 -3px 8px #00000014;
+  padding-left: 4px;
+  padding-right: 24px;
+}

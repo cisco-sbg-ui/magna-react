@@ -9,18 +9,17 @@ import AStep from "../AStepper/AStep";
 import {AStepProps} from "../AStepper/types";
 import AStepTitle from "../AStepper/AStepTitle";
 import { AStepperCardProps } from "./types";
-import ADivider from "../ADivider";
-
+import "./AStepperCard.scss";
 //should allow visisted prop on AStep? 
 
 const AStepperCard = forwardRef<HTMLDivElement, AStepperCardProps>(
-  ({className: propsClassName = "", active, children, items, ...rest}, ref) => {
+  ({className: propsClassName = "", active, children, items, ...rest}) => {
     const containerRef = useRef(null);
     const {width} = useResizeObserver(containerRef); //compare with acardcontainer width resizer
     return (
-      <ACardContainer ref={containerRef} className="a-stepper-card-container" style={{height: "100%"}}>
-        <ARow style={{height: "100%"}}>
-        <ACol cols="4" className="dark-cool-grey white--text text-center">
+      <ACardContainer ref={containerRef} className="a-stepper-card-container pa-0" style={{height: "100%"}}>
+        <ARow style={{height: "100%"}} noGutters>
+        <ACol cols="4" className="a-stepper__card--col dark-cool-grey white--text text-center pr-0">
           <AStepper vertical>
           {items.map((item: AStepProps, index: number) => {
           const stepNumber = index + 1;
@@ -37,10 +36,8 @@ const AStepperCard = forwardRef<HTMLDivElement, AStepperCardProps>(
               </AStep>
           );
         })}
-
           </AStepper>
         </ACol>
-        <ADivider vertical/>
         {children}
         </ARow>
       </ACardContainer>
