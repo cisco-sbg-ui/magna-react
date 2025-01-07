@@ -17,7 +17,10 @@ APageAlert.propTypes = {
   /**
    * String representing class names to be passed `AToast` component.
    */
-  className: PropTypes.string
+  className: PropTypes.string,
+
+  /** Node children */
+  children: PropTypes.node
 };
 
 APageAlert.displayName = "APageAlert";
