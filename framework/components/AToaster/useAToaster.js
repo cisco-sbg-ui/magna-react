@@ -33,7 +33,7 @@ const AToasterToast = forwardRef(
     return (
       <AToast
         data-ignore-outside-click
-        dismissable={false}
+        dismissible={false}
         {...toastProps}
         ref={ref}
         className={className}

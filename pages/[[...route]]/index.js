@@ -98,7 +98,7 @@ export default function DocsPage({currentDoc, menus, propsInfo}) {
             <MagnaReactComponents.AAlert
               level={level}
               className="d-flex mb-4 mt-4"
-              dismissable={false}
+              dismissible={false}
             >
               {alertChildren}
             </MagnaReactComponents.AAlert>

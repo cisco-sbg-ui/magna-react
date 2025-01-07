@@ -4,7 +4,7 @@ import {keyCodes} from "../../utils/helpers";
 import AIcon from "../AIcon";
 import AButton from "../AButton";
 import "./AAlert.scss";
-import {AAlertProps} from "./types";
+import type {AAlertProps} from "./types";
 
 const AAlert = forwardRef<HTMLDivElement, AAlertProps>(
   (
@@ -30,7 +30,7 @@ const AAlert = forwardRef<HTMLDivElement, AAlertProps>(
       }
     };
 
-    const isDismissible = !dismissible || !dismissable ? false : true;
+    const isDismissible = dismissible && dismissable;
 
     let className = `a-alert a-alert--state-`,
       icon = "";
