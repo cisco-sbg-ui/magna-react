@@ -1,5 +1,7 @@
 import {Override} from "../../types";
 
+export type APageAlertProps = React.ComponentPropsWithRef<"div">;
+
 export type APageContainerProps = React.ComponentPropsWithRef<"div">;
 
 export type APageDescriptionProps = React.ComponentPropsWithRef<"div">;
