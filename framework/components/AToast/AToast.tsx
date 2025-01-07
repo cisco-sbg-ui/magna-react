@@ -20,7 +20,7 @@ const AToast = forwardRef<HTMLDivElement, AToastProps>(
     },
     ref
   ) => {
-    const isDismissible = !dismissible || !dismissable ? false : true;
+    const isDismissible = dismissible && dismissable;
     const dismissibleKeyDownHandler = (e: React.KeyboardEvent) => {
       //must be code over key for "Space"
       if (
