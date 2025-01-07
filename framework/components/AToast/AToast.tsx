@@ -3,7 +3,7 @@ import React, {forwardRef} from "react";
 import AIcon from "../AIcon";
 import {keyCodes} from "../../utils/helpers";
 import "./AToast.scss";
-import {AToastProps} from "./types";
+import type {AToastProps} from "./types";
 
 const AToast = forwardRef<HTMLDivElement, AToastProps>(
   (
@@ -20,6 +20,7 @@ const AToast = forwardRef<HTMLDivElement, AToastProps>(
     },
     ref
   ) => {
+    const isDismissible = !dismissible || !dismissable ? false : true;
     const dismissibleKeyDownHandler = (e: React.KeyboardEvent) => {
       //must be code over key for "Space"
       if (
@@ -67,7 +68,7 @@ const AToast = forwardRef<HTMLDivElement, AToastProps>(
           <div className="a-toast__title">{title}</div>
           <div className="a-toast__message">{children}</div>
         </div>
-        {(dismissible || dismissable) && (
+        {isDismissible && (
           <AIcon
             className="a-toast__close"
             onClick={(e) => onClose && onClose(e)}
