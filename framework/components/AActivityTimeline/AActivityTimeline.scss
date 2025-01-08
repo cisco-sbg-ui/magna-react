@@ -45,6 +45,12 @@
       }
     }
 
+    &:has(.a-activity-timeline__list-item__body) {
+      .a-activity-timeline__list-item__header {
+        padding-bottom: 12px;
+      }
+    }
+
     &:last-child .a-activity-timeline__list-item__divider {
       display: none;
     }
