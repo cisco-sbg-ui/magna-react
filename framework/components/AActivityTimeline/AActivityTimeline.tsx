@@ -29,11 +29,7 @@ const AActivityTimeline = forwardRef<
 
     const ListTag = hasUnorderedItems ? "ul" : "ol";
 
-    return React.createElement(
-      ListTag,
-      {className, ref: ref, ...rest},
-      children
-    );
+    return React.createElement(ListTag, {className, ref, ...rest}, children);
   }
 );
 
