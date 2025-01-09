@@ -1,9 +1,10 @@
-import React, {forwardRef, useRef} from "react";
+import React, {forwardRef} from "react";
 import {
   ACardContent,
   ACardFooter,
   ACardHeader,
   ACardItem,
+  ACardSubTitle,
   ACardTitle
 } from "../ACard";
 import {ACol} from "../ALayout";
@@ -13,17 +14,17 @@ import {AColProps} from "../ALayout/types";
 import "./AStepperCard.scss";
 
 const AStepperCardContent = forwardRef<HTMLDivElement, AStepperCardContentProps>(
-  ({className: propsClassName = "", children, title, onCancel, onBack, onNext, nextButtonText = "Next", isNextButtonDisabled= false, ...rest}, ref) => {
-    const containerRef = useRef(null); //what am I using this ref for, incl ref prop
+  ({className: propsClassName = "", children, title, subtitle, onCancel, onBack, onNext, nextButtonText = "Next", isNextButtonDisabled= false, contentFooter, ...rest}, ref) => {
     return (
-        <ACol cols="8" className={`d-flex flex-column ${propsClassName}`} style={{height: "100%"}} {...rest as AColProps}>
+        <ACol cols="8" className={`d-flex flex-column ${propsClassName}`} style={{height: "100%"}} ref={ref} {...rest as AColProps}>
           {title && <ACardHeader className="mx-4 mt-6">
             <ACardTitle>{title}</ACardTitle>
           </ACardHeader>
           }
+          {subtitle && <ACardSubTitle>{subtitle}</ACardSubTitle>}
           <ACardContent className="overflow-y-scroll ma-4 mb-0 pb-4">{children}</ACardContent>
-          <ACardFooter className="a-stepper__card__content--footer justify-space-between py-3">
-            <ACardItem attached="right">
+            {contentFooter ? contentFooter : <ACardFooter className="a-stepper__card__content--footer justify-space-between py-3">
+<ACardItem attached="right">
               {  onCancel && <AButton medium tertiary onClick={onCancel}>
                 Cancel
               </AButton>}
@@ -33,12 +34,11 @@ const AStepperCardContent = forwardRef<HTMLDivElement, AStepperCardContentProps>
                 Back
               </AButton>
               <AButton medium disabled={isNextButtonDisabled} onClick={onNext}>{nextButtonText}</AButton>
-            </ACardItem>
-          </ACardFooter>
+            </ACardItem></ACardFooter>}
+          
         </ACol>
     );
   }
-);
+); 
 
-// updates to storybook- props page, different useages?
 export default AStepperCardContent;
