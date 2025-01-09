@@ -1,5 +1,4 @@
-import React, {forwardRef, useRef, useMemo} from "react";
-import {useResizeObserver} from "../../utils/hooks";
+import React, {forwardRef} from "react";
 import {
   ACardContainer,
 } from "../ACard";
@@ -10,14 +9,11 @@ import {AStepProps} from "../AStepper/types";
 import AStepTitle from "../AStepper/AStepTitle";
 import { AStepperCardProps } from "./types";
 import "./AStepperCard.scss";
-//should allow visisted prop on AStep? 
 
 const AStepperCard = forwardRef<HTMLDivElement, AStepperCardProps>(
-  ({className: propsClassName = "", active, children, items, ...rest}) => {
-    const containerRef = useRef(null);
-    const {width} = useResizeObserver(containerRef); //compare with acardcontainer width resizer
+  ({className: propsClassName = "", active, children, items, stepProps, ...rest}, ref) => {
     return (
-      <ACardContainer ref={containerRef} className="a-stepper-card-container pa-0" style={{height: "100%"}}>
+      <ACardContainer className="a-stepper-card-container pa-0" style={{height: "100%"}} ref={ref} {...rest}>
         <ARow style={{height: "100%"}} noGutters>
         <ACol cols="4" className="a-stepper__card--col dark-cool-grey white--text text-center pr-0">
           <AStepper vertical>
@@ -29,7 +25,8 @@ const AStepperCard = forwardRef<HTMLDivElement, AStepperCardProps>(
               stepNumber={stepNumber}
               active={active === stepNumber}
               visited={active > stepNumber}
-              showIconOnVisited={true}>
+              {...stepProps}
+             >
               <AStepTitle className="AStepTitle">
                 {item.title}
               </AStepTitle>
