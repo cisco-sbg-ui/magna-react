@@ -42,7 +42,7 @@ $tab-heading-margin: 0;
   &__tab-content--vertical {
     display: flex;
     flex-direction: column;
-    box-shadow: inset -1px 0 $magnetic-color-neutral-90;
+    box-shadow: inset -1px 0 var(--magnetic-color-neutral-90);
   }
 
   &__scroll-left,
