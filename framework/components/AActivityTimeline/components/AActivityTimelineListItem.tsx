@@ -1,8 +1,12 @@
 import React, {forwardRef} from "react";
+import type {AActivityTimelineListItemProps} from "../types";
 
 import "../AActivityTimeline.scss";
 
-const AActivityTimelineListItem = forwardRef(
+const AActivityTimelineListItem = forwardRef<
+  HTMLLIElement,
+  AActivityTimelineListItemProps
+>(
   (
     {icon, children, className: propsClassName, status, withConnector, ...rest},
     ref
