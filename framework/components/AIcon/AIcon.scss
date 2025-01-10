@@ -72,7 +72,7 @@ svg.a-icon {
   &--negative,
   &--variable,
   &--ubuntu,
-  &--redhat {
+  &--redhat &--oracle {
     stroke: unset !important;
   }
 
@@ -172,8 +172,9 @@ svg.a-icon {
     fill: var(--positive-icon-default);
   }
 
-  &--deny {
+  &--deny path {
     fill: var(--negative-icon-default);
+    stroke: none;
   }
 
   &--malicious,
@@ -274,11 +275,32 @@ svg.a-icon {
   &--seal-warning,
   &--ubuntu,
   &--redhat,
-  &--rocket {
+  &--rocket,
+  &--centos,
+  &--oracle {
     fill: var(--interact-icon-weak-default);
   }
 
   &--critical-stop {
     fill: var(--negative-icon-default) !important;
+  }
+
+  &--android-logo,
+  &--centos,
+  &--chat-dots,
+  &--computer-tower,
+  &--hard-drive &--hard-drives,
+  &--lock,
+  &--printer,
+  &--skull &--tag {
+    circle {
+      fill: var(--interact-icon-weak-default);
+    }
+  }
+
+  &--smiley-x-eyes {
+    circle:last-of-type {
+      fill: var(--interact-icon-weak-default);
+    }
   }
 }
