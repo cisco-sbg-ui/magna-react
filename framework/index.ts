@@ -124,6 +124,10 @@ import {
   AStepTitle,
   AStepDescription
 } from "./components/AStepper";
+import {
+  AStepperCard,
+  AStepperCardContent
+} from "./components/AStepperCard";
 import ASwitch from "./components/ASwitch";
 import {AAutoTheme, useAAutoTheme} from "./components/AAutoTheme";
 import {ATabGroup, ATab} from "./components/ATabs";
@@ -269,6 +273,8 @@ export {
   AStep,
   AStepTitle,
   AStepDescription,
+  AStepperCard,
+  AStepperCardContent,
   ASwitch,
   AAutoTheme,
   ATabGroup,
