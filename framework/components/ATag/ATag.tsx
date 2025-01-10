@@ -1,11 +1,10 @@
 import React, {forwardRef} from "react";
-import PropTypes from "prop-types";
 import AIcon from "../AIcon";
 
 import {keyCodes} from "../../utils/helpers";
 import "./ATag.scss";
 
-import {ATagProps} from "./types";
+import type {ATagProps} from "./types";
 
 const STATUS_ICON: {[key: string]: string} = {
   excellent: "excellent",
@@ -24,12 +23,11 @@ const STATUS_ICON: {[key: string]: string} = {
   alert: "alert"
 };
 
-const ATag = forwardRef<HTMLElement, ATagProps<React.ElementType>>(
+const ATag = forwardRef<HTMLDivElement | HTMLAnchorElement, ATagProps>(
   (
     {
       children,
       className: propsClassName,
-      component,
       href,
       onClick,
       onKeyDown,
@@ -78,7 +76,7 @@ const ATag = forwardRef<HTMLElement, ATagProps<React.ElementType>>(
       className += ` a-tag--hide-status-icon`;
     }
 
-    let TagName: React.ElementType = interactable ? "button" : "div";
+    let TagName: React.ElementType = interactable ? "a" : "div";
     const props: React.HTMLProps<HTMLElement> = {
       ...rest,
 
@@ -117,12 +115,8 @@ const ATag = forwardRef<HTMLElement, ATagProps<React.ElementType>>(
       props.role = "button";
     }
 
-    if (href || onClick || component) {
+    if (href || onClick) {
       props.tabIndex = 0;
-    }
-
-    if (component) {
-      TagName = component;
     }
 
     let tagWithIcon: React.ReactNode = null;
@@ -141,96 +135,19 @@ const ATag = forwardRef<HTMLElement, ATagProps<React.ElementType>>(
       );
     }
 
-    return (
-      <TagName ref={ref} {...props}>
-        {tagWithIcon || children}
-        {dropdown && !disabled && (
-          <AIcon className="a-tag--dropdown-icon" right>
-            {open ? "caret-up" : "caret-down"}
-          </AIcon>
-        )}
-      </TagName>
+    return React.createElement(
+      TagName,
+      {className, ref: ref, ...props},
+      tagWithIcon || children,
+      dropdown && !disabled && (
+        <AIcon className="a-tag--dropdown-icon" right>
+          {open ? "caret-up" : "caret-down"}
+        </AIcon>
+      )
     );
   }
 );
 
 ATag.displayName = "ATag";
-
-ATag.propTypes = {
-  /**
-   * Sets the base component. Useful for integrating with routers.
-   */
-  component: PropTypes.elementType,
-  /**
-   * Apply small tag style. Default is false (medium size).
-   */
-  small: PropTypes.bool,
-  /**
-   * Apply large tag style. Default is false (medium size).
-   */
-  large: PropTypes.bool,
-  /**
-   * If specified, the component will render as an HTML link.
-   */
-  href: PropTypes.string,
-  /**
-   * If the `href` property is defined, the target can be set (ex: `_blank`, `_self`, `_parent`, `_top`)
-   */
-  target: PropTypes.string,
-  /**
-   * Will apply the icon along with the status color.
-   */ status: PropTypes.oneOf([
-    "excellent",
-    "positive",
-    "low-warning",
-    "warning",
-    "severe-warning",
-    "negative",
-    "inactive",
-    "allow",
-    "deny",
-    "active",
-    "disabled",
-    "info",
-    "in-progress"
-  ]),
-  /**
-   * Optional accent colors
-   */
-  color: PropTypes.oneOf([
-    "accentA",
-    "accentB",
-    "accentC",
-    "accentD",
-    "accentE",
-    "accentF",
-    "accentG",
-    "accentH",
-    "accentI",
-    "accentK"
-  ]),
-  /**
-   * Option for custom icon, can pass through children or directly into props.
-   */
-  customIcon: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
-  /**
-   * Hide the status icon
-   *
-   * default `false`
-   */
-  hideStatusIcon: PropTypes.bool,
-  /**
-   * Is for a dropdown menu
-   */
-  dropdown: PropTypes.bool,
-  /**
-   * Open state, if used as a menu
-   */
-  open: PropTypes.bool,
-  /**
-   *  Disable the menu, if there is an `href` or `onClick` set
-   */
-  disabled: PropTypes.bool
-};
 
 export default ATag;
