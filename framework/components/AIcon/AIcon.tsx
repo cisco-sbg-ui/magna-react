@@ -52,7 +52,9 @@ const ignoreStrokeReplace = [
   "switch",
   "teleworker-gateway",
   "wan-application",
-  "wireless-lan-controller"
+  "wireless-lan-controller",
+  "centos",
+  "deny",
   // icons that start with "type_"
 ];
 
