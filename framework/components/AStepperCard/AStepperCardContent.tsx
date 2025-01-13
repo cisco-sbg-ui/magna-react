@@ -25,15 +25,15 @@ const AStepperCardContent = forwardRef<HTMLDivElement, AStepperCardContentProps>
           <ACardContent className="overflow-y-scroll ma-4 mb-0 pb-4">{children}</ACardContent>
             {contentFooter ? contentFooter : <ACardFooter className="a-stepper__card__content--footer justify-space-between py-3">
 <ACardItem attached="right">
-              {  onCancel && <AButton medium tertiary onClick={onCancel}>
+              {  onCancel && <AButton medium tertiary onClick={onCancel} data-testid="aStepperCardContent-button-cancel">
                 Cancel
               </AButton>}
             </ACardItem>
             <ACardItem attached="right" >
-              <AButton medium secondary onClick={onBack} className="mr-3">
+              <AButton medium secondary onClick={onBack} className="mr-3" data-testid="aStepperCardContent-button-back">
                 Back
               </AButton>
-              <AButton medium disabled={isNextButtonDisabled} onClick={onNext}>{nextButtonText}</AButton>
+              <AButton medium disabled={isNextButtonDisabled} onClick={onNext} data-testid="aStepperCardContent-button-next">{nextButtonText}</AButton>
             </ACardItem></ACardFooter>}
           
         </ACol>
