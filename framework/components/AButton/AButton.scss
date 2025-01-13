@@ -245,6 +245,34 @@ $btn-transition: color $transition-duration--extra-fast
     }
   }
 
+  &--tertiary-destructive {
+    color: var(--negative-text-default);
+    background-color: transparent;
+    border-color: transparent;
+
+    &:hover {
+      color: var(--negative-text-default);
+      background-color: var(--negative-bg-weak-hover);
+    }
+
+    &:focus {
+      outline: none;
+      color: var(--negative-text-default);
+      @include a-control-focus("negative");
+    }
+
+    &:active {
+      color: var(--negative-text-default);
+      background-color: var(--negative-bg-weak-active);
+    }
+
+    &.disabled,
+    &:disabled {
+      box-shadow: none;
+      color: var(--negative-text-disabled);
+    }
+  }
+
   &--floating {
     @extend .a-button--secondary;
     border-radius: 60px;
