@@ -36,6 +36,7 @@ const ASelect = forwardRef(
       label,
       maxHeight,
       onSelected,
+      defaultValue,
       placeholder: propsPlaceholder,
       prependContent,
       readOnly,
@@ -58,12 +59,15 @@ const ASelect = forwardRef(
     const surfaceRef = useRef(null);
     const selectedItemRef = useRef(null);
     const [selectId] = useState(selectCounter++);
+    const checkSelected = (x) => {
+      return typeof x === "string" ? x === defaultValue : x[itemSelected];
+    };
+
     const [originalSelectedItem, setOriginalSelectedItem] = useState(
-      items.find((x) => x[itemSelected])
+      items.find((x) => checkSelected(x))
     );
-    const [selectedItem, setSelectedItem] = useState(
-      items.find((x) => x[itemSelected])
-    );
+
+    const [selectedItem, setSelectedItem] = useState(originalSelectedItem);
     const [isFocused, setIsFocused] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [error, setError] = useState("");
@@ -85,7 +89,7 @@ const ASelect = forwardRef(
     }, [validationState]);
 
     useEffect(() => {
-      const newSelectedItem = items.find((x) => x[itemSelected]);
+      const newSelectedItem = items.find((x) => checkSelected(x));
 
       if (
         (!["string", "object"].includes(typeof originalSelectedItem) &&
@@ -601,6 +605,10 @@ ASelect.propTypes = {
    * Handles the `selected` event.
    */
   onSelected: PropTypes.func,
+  /**
+   * Sets a default initial value for string array `items`
+   */
+  defaultValue: PropTypes.string,
   /**
    * Sets the text when no option is selected.
    */

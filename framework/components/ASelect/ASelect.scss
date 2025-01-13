@@ -12,6 +12,7 @@ $select-padding: 6px;
     &--selected {
       &::after {
         color: var(--control-icon-default);
+        top: calc(50% - 6px) !important;
       }
     }
 
@@ -138,6 +139,7 @@ $select-padding: 6px;
   max-height: 400px;
   overflow-y: auto;
   .a-list-item.a-select__menu-item {
+    height: unset;
     white-space: normal;
     text-indent: unset;
     /* preserve the original 4px padding and add the negated text-indent */

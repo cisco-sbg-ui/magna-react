@@ -57,6 +57,16 @@ describe("<ASelect />", () => {
       cy.get('[role="option"]').eq(2).enterKeydown();
       getSelectedItem().contains("2");
     });
+
+    it("should respect the default value", () => {
+      cy.mount(<StringItemsTest defaultValue="5" />);
+      openSelect();
+      cy.get('[role="option"]').eq(5).enterKeydown();
+      getSelectedItem().contains("5");
+
+      openSelect().downArrowKeydown();
+      getSelectedItem().contains("6");
+    });
   });
 
   describe("when passing an array of objects as items", () => {
