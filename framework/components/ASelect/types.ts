@@ -1,6 +1,6 @@
-import {Override} from "../../types";
-import {AHintsType} from "../AFieldBase/types";
-import {AInputBaseProps} from "../AInputBase/types";
+import type {Override} from "../../types";
+import type {AHintsType} from "../AFieldBase/types";
+import type {AInputBaseProps} from "../AInputBase/types";
 
 export type ASelectItem = string | Record<string, unknown>;
 
@@ -105,6 +105,10 @@ export type ASelectProps<T extends ASelectItem> = Override<
      * Handles the `selected` event.
      */
     onSelected?: (item: T) => void;
+    /**
+     * Sets a default initial value for string array `items`
+     */
+    defaultValue: string;
     /**
      * Sets the text when no option is selected.
      */
