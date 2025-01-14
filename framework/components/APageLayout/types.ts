@@ -1,6 +1,7 @@
 import {Override} from "../../types";
+import type AToast from "../AToast";
 
-export type APageAlertProps = React.ComponentPropsWithRef<"div">;
+export type APageAlertProps = React.ComponentPropsWithRef<typeof AToast>;
 
 export type APageContainerProps = React.ComponentPropsWithRef<"div">;
 
