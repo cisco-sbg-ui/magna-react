@@ -19,6 +19,11 @@ APageAlert.propTypes = {
    */
   className: PropTypes.string,
 
+  /**
+   * Determines if the alert can be dismissed.
+   */
+  dismissible: PropTypes.bool,
+
   /** Node children */
   children: PropTypes.node
 };
