@@ -19,7 +19,7 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
   code={`
   <AAlert
     level="success"
-    dismissable={true}
+    dismissible={true}
     onClose={() => alert("closed")}>
   Hello world!
 </AAlert>`}
@@ -30,7 +30,7 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
 <Playground
   code={`<>
   {["info", "success", "warning", "danger"].map((level) => (
-    <AAlert level={level} dismissable={false} className="mb-2" key={level}>
+    <AAlert level={level} dismissible={false} className="mb-2" key={level}>
       Alert with {level} level
     </AAlert>
   ))}

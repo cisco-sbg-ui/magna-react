@@ -130,18 +130,13 @@ import {ATabGroup, ATab} from "./components/ATabs";
 import ATag from "./components/ATag";
 import ATextarea from "./components/ATextarea";
 import ATextInput from "./components/ATextInput";
-import {
-  ATimeline,
-  ATimelineItem,
-  ATimelineItemBody,
-  ATimelineItemTitle
-} from "./components/ATimeline";
 import {ATheme, useATheme} from "./components/ATheme";
 import AToast from "./components/AToast";
 import {ATooltip} from "./components/ATooltip";
 import ATree from "./components/ATree";
 import ATriggerPopover from "./components/ATriggerPopover";
 import ATriggerTooltip from "./components/ATriggerTooltip";
+import AUpload from "./components/AUpload";
 import {useAToaster, AToastPlate} from "./components/AToaster";
 
 import useABreakpoint, {
@@ -275,10 +270,6 @@ export {
   ATag,
   ATextarea,
   ATextInput,
-  ATimeline,
-  ATimelineItem,
-  ATimelineItemBody,
-  ATimelineItemTitle,
   ATheme,
   AToast,
   AToastPlate,
@@ -286,6 +277,7 @@ export {
   ATree,
   ATriggerPopover,
   ATriggerTooltip,
+  AUpload,
   breakpointThresholds,
   useABreakpoint,
   useADateRange,

@@ -82,10 +82,7 @@ const ATriggerTooltip = ({
   }, [toggleClose, onClose, interactive, tooltipRef]);
 
   useOutsideClick({
-    isEnabled:
-      ((triggerRef && triggerRef.current) ||
-        (tooltipAnchorRef && tooltipAnchorRef.current)) &&
-      trigger === "click",
+    isEnabled: Boolean(triggerRef?.current) || Boolean(tooltipAnchorRef?.current) && trigger === "click",
     rootRef: triggerRef || tooltipAnchorRef,
     onClick: close
   });

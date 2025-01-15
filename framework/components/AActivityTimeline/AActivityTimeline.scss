@@ -2,15 +2,53 @@
   list-style-type: none;
   margin: 0;
   padding-left: 0 !important;
-  color: var(--base-text-medium-default);
+
+  &--numbered {
+    counter-reset: list-number;
+    .a-activity-timeline__list-item {
+      &__title::before {
+        counter-increment: list-number;
+        content: counter(list-number) ")";
+        margin-right: 14px;
+      }
+      &__time {
+        padding-left: 28px;
+      }
+      //If using numbered paginated list, hide content and apply styling.
+      &:has(.a-activity-timeline__list-item--num) {
+        .a-activity-timeline__list-item {
+          &__title {
+            &::before {
+              content: none;
+            }
+            padding-left: 15px;
+          }
+          &__time {
+            padding-left: 15px;
+          }
+        }
+      }
+    }
+  }
 
   &__list-item {
     width: 100%;
     position: relative;
     display: flex;
-
     &:not(:last-child) {
-      padding-bottom: 16px;
+      padding-bottom: 12px;
+      .a-activity-timeline__list-item__header {
+        padding-bottom: 12px;
+      }
+      .a-activity-timeline__list-item__body {
+        margin-bottom: 16px;
+      }
+    }
+
+    &:has(.a-activity-timeline__list-item__body) {
+      .a-activity-timeline__list-item__header {
+        padding-bottom: 12px;
+      }
     }
 
     &:last-child .a-activity-timeline__list-item__divider {
@@ -28,6 +66,7 @@
       left: 12px;
       height: 100%;
       width: 2px;
+      margin-top: 1px;
       border-left: 2px solid var(--base-border-default);
     }
 
@@ -45,12 +84,14 @@
       grid-template-columns: auto auto minmax(0, 1fr);
       align-items: center;
       row-gap: 4px;
+      font-weight: 600;
+      color: var(--base-text-strong-default);
     }
 
     &__title {
       grid-area: title;
       font-weight: 600;
-      color: var(--base-text-strong-default);
+      align-items: center;
     }
 
     &__divider {
@@ -58,7 +99,7 @@
       border-top: none;
       border-left: none;
       border-right: none;
-      padding-top: 16px;
+      padding-top: 12px;
       border-bottom-width: 2px;
       border-color: var(--base-border-default);
     }
@@ -74,6 +115,7 @@
       flex-shrink: 0;
       z-index: 1;
       margin-right: 16px;
+      margin-top: 1px;
     }
 
     &__button {
@@ -93,7 +135,7 @@
     &__body {
       grid-area: body;
       display: block;
-      margin-top: 12px;
+      color: var(--base-text-medium-default);
 
       &--collapsed {
         display: none;

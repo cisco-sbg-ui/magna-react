@@ -17,7 +17,15 @@ APageAlert.propTypes = {
   /**
    * String representing class names to be passed `AToast` component.
    */
-  className: PropTypes.string
+  className: PropTypes.string,
+
+  /**
+   * Determines if the alert can be dismissed.
+   */
+  dismissible: PropTypes.bool,
+
+  /** Node children */
+  children: PropTypes.node
 };
 
 APageAlert.displayName = "APageAlert";

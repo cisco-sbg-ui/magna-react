@@ -8,7 +8,7 @@ import AFloatingMenuContainer from "./AFloatingMenuContainer";
 import {AList} from "../AList";
 import "./AFloatingMenu.scss";
 
-import {AFloatingMenuProps} from "./types";
+import type {AFloatingMenuProps} from "./types";
 
 const AFloatingMenu = forwardRef<
   HTMLElement,

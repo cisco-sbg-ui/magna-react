@@ -45,7 +45,7 @@ const AButton = forwardRef(
     } else if (secondary) {
       className += destructive ? "secondary-destructive" : "secondary";
     } else if (tertiary) {
-      className += "tertiary";
+      className += destructive ? "tertiary-destructive" : "tertiary";
     } else if (tertiaryAlt) {
       className += "tertiary-alt";
     } else if (floating) {

@@ -86,11 +86,11 @@ const ASlider = forwardRef<HTMLDivElement, ASliderProps>(
       }
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-    const thumb1Position = Array.isArray(value)
+    const thumb1Position = Array.isArray(value) && value?.[0] !== undefined
       ? (value[0] * 100) / (max - min)
       : null;
     const thumb2Position = Array.isArray(value)
-      ? (value[1] * 100) / (max - min)
+      ? ((value?.[1] ?? 1) * 100) / (max - min)
       : (value * 100) / (max - min);
 
     const roundToStep = (val: number) => {
@@ -105,7 +105,7 @@ const ASlider = forwardRef<HTMLDivElement, ASliderProps>(
 
     const handleChange = (thumb1Pos: number | null, thumb2Pos: number) => {
       const splitStep = step.toString().split(".");
-      const precision = splitStep.length > 1 ? parseInt(splitStep[1]) : 0;
+      const precision = splitStep.length > 1 ? parseInt(splitStep?.[1] ?? "0") : 0;
 
       if (onChange) {
         if (thumb1Pos !== null) {
@@ -169,7 +169,7 @@ const ASlider = forwardRef<HTMLDivElement, ASliderProps>(
           }
 
           const clientX: number =
-            (e as MouseEvent).clientX || (e as TouchEvent).touches[0].clientX;
+            (e as MouseEvent).clientX ?? ((e as TouchEvent)?.touches as TouchList)[0]?.clientX;
 
           const position = Math.min(
             Math.max(0, clientX + offset1),
@@ -201,7 +201,7 @@ const ASlider = forwardRef<HTMLDivElement, ASliderProps>(
           }
 
           const clientX: number =
-            (e as MouseEvent).clientX || (e as TouchEvent).touches[0].clientX;
+            (e as MouseEvent).clientX ?? ((e as TouchEvent)?.touches as TouchList)[0]?.clientX;
 
           const position = Math.min(
             Math.max(0, clientX + offset2),
@@ -270,7 +270,7 @@ const ASlider = forwardRef<HTMLDivElement, ASliderProps>(
         setError("");
 
         for (let i = 0; i < workingRules.length; i++) {
-          const rule: ASliderRules = workingRules[i];
+          const rule: ASliderRules | undefined = workingRules?.[i];
           if (rule && rule.test) {
             const error = rule.test(testValue);
             const level: ASliderValidationState = rule.level || "danger";
@@ -380,7 +380,9 @@ const ASlider = forwardRef<HTMLDivElement, ASliderProps>(
                   if (disabled) return;
                   const target = e.target as HTMLDivElement;
                   setIsDown1(true);
-                  setOffset1(target.offsetLeft - e.touches[0].clientX);
+                  if (e?.touches?.[0]) {
+                    setOffset1(target.offsetLeft - e.touches[0].clientX);
+                  }
                 }}
                 onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => {
                   if (disabled) return;
@@ -459,7 +461,9 @@ const ASlider = forwardRef<HTMLDivElement, ASliderProps>(
                 if (disabled) return;
                 const target = e.target as HTMLDivElement;
                 setIsDown2(true);
-                setOffset2(target.offsetLeft - e.touches[0].clientX);
+                if (e?.touches?.[0]) {
+                  setOffset1(target.offsetLeft - e.touches[0].clientX);
+                }
               }}
               onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => {
                 if (disabled) return;

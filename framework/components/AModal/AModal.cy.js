@@ -527,7 +527,7 @@ function WithToastTest(modalProps) {
                   level: "danger",
                   title: "Danger Toast",
                   children: "test toast",
-                  dismissable: true,
+                  dismissible: true,
                   placement: "top",
                   "data-testid": "toast-content"
                 },

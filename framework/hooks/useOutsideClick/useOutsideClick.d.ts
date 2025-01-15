@@ -1,5 +1,5 @@
 interface OutsideClickProps {
-  rootRef?: React.RefObject<HTMLElement>;
+  rootRef?: React.RefObject<HTMLElement> | {current: HTMLElement | undefined};
   onClick: (event: React.MouseEvent) => void;
   isEnabled?: boolean | null;
 }

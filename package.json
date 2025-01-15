@@ -58,7 +58,9 @@
   "dependencies": {
     "@floating-ui/dom": "^1.6.10",
     "@floating-ui/react": "^0.26.25",
-    "babel-plugin-auto-import": "1.1.0"
+    "babel-plugin-auto-import": "1.1.0",
+    "classnames": "2.5.1",
+    "react-dropzone": "14.3.5"
   },
   "devDependencies": {
     "@babel/cli": "7.24.7",
@@ -68,10 +70,8 @@
     "@babel/preset-env": "7.24.7",
     "@babel/preset-react": "7.24.7",
     "@babel/preset-typescript": "7.24.7",
-    "@ciscodesignsystems/cds-magnetic-design-tokens-web-css": "1.3.11",
-    "@ciscodesignsystems/cds-magnetic-design-tokens-web-scss": "1.3.11",
-    "@ciscodesignsystems/cds-magnetic-theme-web-css": "1.3.11",
-    "@ciscodesignsystems/cds-magnetic-theme-web-scss": "1.3.11",
+    "@ciscodesignsystems/cds-magnetic-design-tokens-web-css": "1.4.1",
+    "@ciscodesignsystems/cds-magnetic-theme-web-css": "1.4.1",
     "@cypress/code-coverage": "3.13.1",
     "@cypress/webpack-dev-server": "^3.11.0",
     "@eslint/js": "9.12.0",
@@ -106,7 +106,7 @@
     "lint-staged": "13.0.3",
     "lodash.debounce": "4.0.8",
     "lodash.isequal": "^4.5.0",
-    "next": "14.2.12",
+    "next": "14.2.23",
     "next-mdx-remote": "4.4.1",
     "prettier": "2.7.1",
     "prism-react-renderer": "^1.3.5",

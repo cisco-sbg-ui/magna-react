@@ -1,5 +1,5 @@
-import {Override} from "./override";
-import {PolymorphicComponentPropWithRef} from "./polymorphicComponents";
+import type {Override} from "./override";
+import type {PolymorphicComponentPropWithRef} from "./polymorphicComponents";
 
 export * from "./types";
 
@@ -62,12 +62,12 @@ export * from "../components/ATag/types";
 export * from "../components/ATextarea/types";
 export * from "../components/ATextInput/types";
 export * from "../components/ATheme/types";
-export * from "../components/ATimeline/types";
 export * from "../components/AToast/types";
 export * from "../components/AToaster/types";
 export * from "../components/ATooltip/types";
 export * from "../components/ATree/types";
 export * from "../components/ATriggerTooltip/types";
+export * from "../components/AUpload/types";
 export * from "../hooks/useABreakpoint/types";
 
 export type {Override, PolymorphicComponentPropWithRef};

@@ -2476,6 +2476,27 @@ const MagnaIcons = {
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
   },
+  checks: {
+    xml: (
+      <>
+        <polyline
+          points="16 130.29 54.4 168 144 80"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></polyline>
+        <polyline
+          points="134.11 152 150.4 168 240 80"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></polyline>
+      </>
+    ),
+    props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
+  },
   "circle-half": {
     xml: (
       <>
