@@ -424,3 +424,42 @@ export const isRealBrowser =
   Object.getOwnPropertyDescriptor(globalThis, "window")
     ?.get?.toString()
     .includes("[native code]") ?? false;
+
+/**
+ * Filter list items from input
+ * @param {string[]} items - List of items to filter.
+ * @param {string} filterValue - The value to filter the list by.
+ * @param {function} customFilterFunction - Use custom filter, if provided.
+ * @param {string} itemText - If filtering objects, the key to filter by.
+ * @returns {string[]} The filtered list of items.
+ */
+export const filterListItems = (
+  items,
+  filterValue,
+  customFilterFunction,
+  itemText
+) => {
+  const filterFunction = customFilterFunction
+    ? customFilterFunction
+    : (val, item) => {
+        let displayValue;
+        if (typeof item === "string") {
+          displayValue = item;
+        } else if (typeof item === "object") {
+          displayValue = item[itemText];
+        }
+        return (
+          displayValue &&
+          localeIncludes(displayValue, val, {
+            usage: "search",
+            sensitivity: "base"
+          })
+        );
+      };
+
+  const filteredItems = items.filter((item) => {
+    return filterFunction(filterValue, item);
+  });
+
+  return filteredItems;
+};

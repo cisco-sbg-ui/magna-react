@@ -1,6 +1,6 @@
-import {Override} from "../../types";
-import {AHintsType} from "../AFieldBase/types";
-import {AInputBaseProps} from "../AInputBase/types";
+import type {Override} from "../../types";
+import type {AHintsType} from "../AFieldBase/types";
+import type {AInputBaseProps} from "../AInputBase/types";
 
 export type ASelectItem = string | Record<string, unknown>;
 
@@ -156,5 +156,26 @@ export type ASelectProps<T extends ASelectItem> = Override<
      */
     truncateMenuItems?: boolean;
     hideIfReferenceHidden?: boolean;
+    search?: boolean;
+    /**
+     * Handles the `change` event for when the text input is modified.
+     */
+    onChange?: (...args: any[]) => unknown; //Note when this param was set to `unknown` it caused type problems and conflicts in other TS envs
+    /**
+     * Sets the text input value.
+     *
+     * @defaultValue `[]`
+     */
+    value?: unknown[];
+    /**
+     * Empty state message - NOTE: custom strings should be provided through an i18n library
+     *
+     * @defaultValue `"No matches found"`
+     */
+    noDataMessage?: string;
+    /**
+     * Sets the content for when no matches are available.
+     */
+    noDataContent?: React.ReactNode;
   }
 >;

@@ -1,7 +1,7 @@
-import {Override} from "../../types";
-import {AHintsType} from "../AFieldBase/types";
-import {AInputBaseProps} from "../AInputBase/types";
-import {ATooltipProps} from "../ATooltip";
+import type {Override} from "../../types";
+import type {AHintsType} from "../AFieldBase/types";
+import type {AInputBaseProps} from "../AInputBase/types";
+import type {ATooltipProps} from "../ATooltip";
 
 export type AMultiSelectItem = string | Record<string, unknown>;
 export type AMultiSelectItems = string[] | Record<string, unknown>[];
@@ -119,7 +119,7 @@ export type AMultiSelectProps = Override<
     /**
      * Function to filter items when the input value changes
      */
-    filterFunction?: (...args: any[]) => unknown;
+    filterFunction?: (...args: any[]) => unknown; //Note when this param was set to `unknown` it caused type problems and conflicts in other TS envs
     /**
      * Empty state message - NOTE: custom strings should be provided through an i18n library
      *

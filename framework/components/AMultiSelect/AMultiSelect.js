@@ -8,7 +8,7 @@ import useFloatingDropwdown from "../AFloatingMenu/useFloatingDropdown";
 import ACheckbox from "../ACheckbox";
 import {AListItem} from "../AList";
 import AEmptyState from "../AEmptyState";
-import {keyCodes, localeIncludes, handleBoldText} from "../../utils/helpers";
+import {keyCodes, filterListItems, handleBoldText} from "../../utils/helpers";
 import "./AMultiSelect.scss";
 import AMultiSelectTag from "./AMultiSelectTag";
 import AMultiSelectCounter from "./AMultiSelectCounter";
@@ -64,9 +64,9 @@ const AMultiSelect = forwardRef(
     const noDataContent = propsNoDataContent ?? (
       <AEmptyState
         message={noDataMessage}
-        variant="positive"
+        variant="info"
         className="a-multiselect__nodata"
-        xsmall
+        small
       />
     );
 
@@ -79,27 +79,8 @@ const AMultiSelect = forwardRef(
       isReferenceHidden
     } = useFloatingDropwdown(open, setIsOpen);
 
-    const filterFunction = propsFilterFunction
-      ? propsFilterFunction
-      : (val, item) => {
-          let displayValue;
-          if (typeof item === "string") {
-            displayValue = item;
-          } else if (typeof item === "object") {
-            displayValue = item[itemText];
-          }
-          return (
-            displayValue &&
-            localeIncludes(displayValue, val, {
-              usage: "search",
-              sensitivity: "base"
-            })
-          );
-        };
     const filteredItems = filterValue
-      ? items.filter((item) => {
-          return filterFunction(filterValue, item);
-        })
+      ? filterListItems(items, filterValue, propsFilterFunction, itemText)
       : items;
 
     let className = "a-multiselect",
@@ -289,7 +270,6 @@ const AMultiSelect = forwardRef(
       },
       onChange: (e) => {
         setIsOpen(!!items.length || !!noDataContent);
-
         setFilterValue(e.target.value);
 
         onChange && onChange(e);
@@ -424,7 +404,6 @@ const AMultiSelect = forwardRef(
         <MenuItemComponent
           key={`a-multiselect__menu-item_${index}`}
           {...itemProps}
-          item={item}
           index={index}
         />
       );

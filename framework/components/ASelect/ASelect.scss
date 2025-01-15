@@ -4,6 +4,22 @@ $select-height: 28px;
 $select-padding: 6px;
 
 .a-select {
+  &__input {
+    background: transparent;
+    box-sizing: border-box;
+    color: currentColor;
+    width: 100%;
+    position: relative;
+    border: none;
+    appearance: none;
+    padding-left: 12px;
+    text-indent: 1px;
+    align-self: stretch;
+    &:focus {
+      outline: none;
+    }
+  }
+
   &__menu-items.a-menu {
     border-color: var(--control-border-default);
   }
