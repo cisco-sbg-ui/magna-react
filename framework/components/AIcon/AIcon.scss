@@ -289,10 +289,13 @@ svg.a-icon {
   &--centos,
   &--chat-dots,
   &--computer-tower,
-  &--hard-drive &--hard-drives,
+  &--hard-drive,
+  &--hard-drives,
+  &--image,
   &--lock,
   &--printer,
-  &--skull &--tag {
+  &--skull,
+  &--tag {
     circle {
       fill: var(--interact-icon-weak-default);
     }

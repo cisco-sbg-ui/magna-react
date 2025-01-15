@@ -3222,7 +3222,28 @@ const MagnaIcons = {
   "device-tablet-speaker": {
     xml: (
       <>
-        <path d="M192,24H64A24,24,0,0,0,40,48V208a24,24,0,0,0,24,24H192a24,24,0,0,0,24-24V48A24,24,0,0,0,192,24Zm8,184a8,8,0,0,1-8,8H64a8,8,0,0,1-8-8V48a8,8,0,0,1,8-8H192a8,8,0,0,1,8,8ZM168,64a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,64Z"></path>
+        <rect
+          x="32"
+          y="48"
+          width="192"
+          height="160"
+          rx="16"
+          transform="translate(256) rotate(90)"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></rect>
+        <line
+          x1="96"
+          y1="72"
+          x2="160"
+          y2="72"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="24"
+        ></line>
       </>
     ),
     props: {xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 256 256"}
