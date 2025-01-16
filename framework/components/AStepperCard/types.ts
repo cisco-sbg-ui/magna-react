@@ -1,22 +1,36 @@
-import { ReactNode } from 'react';
+import type {AButtonProps, Override} from "../../types";
 import { AStepProps } from '../AStepper/types';
 
-export interface AStepperCardContentProps extends React.HTMLProps<HTMLDivElement> {
-  className?: string; // String representing class names to be passed to component container
-  children?: React.ReactNode; // ReactNode to be rendered inside of AStepperCardContent
+export type AStepperCardContentProps<C extends React.ElementType = "div"> = Override<
+React.ComponentPropsWithRef<C>,
+{
+  /**
+   * Button props to be spread in the back button
+   */
+  backButtonProps?: AButtonProps<C>[];
+  /**
+   * Button props to be spread in the cancel button
+   */
+  cancelButtonProps?: AButtonProps<C>[];
   contentFooter?: React.ReactNode; // ReactNode to be rendered inside of AStepperCardContent footer
-  isNextButtonDisabled?: boolean; // Boolean to disable next button
-  nextButtonText?: string; // String representing text for next button
+  /**
+   * String representing text for next button
+   * @defaultValue `"Next"`
+   */
+  nextButtonText?: string;
+    /**
+   * Props to be spread in the "next" button
+   */
+  nextButtonProps?: AButtonProps<C>[]; 
   subtitle?: string; // String subtitle of card content area
   title?: string; // String title of card content area
-  onCancel?: () => void; // Callback to cancel action
-  onBack?: () => void; // Callback to go back
-  onNext?: () => void; // Callback to go to next step or submit
 }
-export type AStepperCardProps = {
-  className?: string;  // String representing class names to be passed to component container
+>;
+
+export type AStepperCardProps =  Override<
+React.ComponentPropsWithRef<"div">,
+{
   active: number;      // Mark step as active
-  children: ReactNode; // ReactNode to be rendered inside of AStepperCard
-  items: AStepProps[]; // Array of steps inside of AStepper
-  stepProps?: AStepProps; // AStep accepted props to be passed to AStep
+  steps: AStepProps[]; // Array of steps inside of AStepper and spreads in props to AStep
 }
+>;

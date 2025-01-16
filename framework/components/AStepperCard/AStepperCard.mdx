@@ -22,12 +22,15 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
     const steps = [
     {
       title: "Long First Stepper Title",
+      visited: false
     },
     {
       title: "Second Title",
+      visited: false
     },
     {
       title: "Final Title",
+      visited: false
     }
   ];
 
@@ -51,14 +54,11 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
 
   return ( 
     <div style={{height: 500}}>
-        <AStepperCard active={active} items={steps} data-testid={"aStepperCard-container"} stepProps={{visited: false, ["data-testid"]: "aStepperCard-step-menuitem"}}>
+        <AStepperCard active={active} steps={steps}>
             <AStepperCardContent title={cardContent[active - 1].title} 
-                data-testid={"aStepperCardContent-container"}
-                isNextButtonDisabled={active === cardContent.length}
                 nextButtonText={active < cardContent.length ? "Next" : "Submit"}
-                onBack={() => active > 1 && setActive(active - 1)}
-                onCancel={() => {}}
-                onNext={()=> active < steps.length && setActive(active + 1)}
+                backButtonProps={{onClick:() => active > 1 && setActive(active - 1)}}
+                nextButtonProps={{onClick:()=> active < steps.length && setActive(active + 1)}}
             >
                 {cardContent[active - 1].content}
             </AStepperCardContent>
@@ -112,7 +112,7 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
 
   return ( 
     <div style={{height: 500}}>
-        <AStepperCard active={active} items={steps}>
+        <AStepperCard active={active} steps={steps}>
             <AStepperCardContent title={cardContent[active - 1].title} 
                 contentFooter={<ContentFooter />}
             >
@@ -129,10 +129,10 @@ sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/
 
 ### StepperCard Props
 
-All AStepperCard components (AStepperCard, AStepperCardContent) inherit passed props.
+All AStepperCard components (AStepperCard, AStepperCardContent) inherit passed props. <br/>
+[Link to AStep Props](../components/stepper?page=component-props)
 
 ### Stepper Card Props
-
 <Props of="AStepperCard" />
 
 ### Step Card Content Props
