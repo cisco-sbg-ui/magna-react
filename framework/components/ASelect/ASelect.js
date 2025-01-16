@@ -339,6 +339,13 @@ const ASelect = forwardRef(
 
     const noData = !filteredItems.length && !!noDataContent && noDataContent;
 
+    //Manually add focus after onload of input element as it has no state or loses state after being unmounted for selection value
+    useEffect(() => {
+      if (search && !hideInput) {
+        document.querySelector(`#a-select__input_${selectId}`).focus();
+      }
+    }, [hideInput]);
+
     const onKeyDown = (e) => {
       if (e.key === keyCodes.up) {
         e.preventDefault();
@@ -475,13 +482,13 @@ const ASelect = forwardRef(
         required={required}
       >
         <div className="a-select__selection-wrapper">
-          <span>
-            {search && !hideInput ? ( //TODO this approach looks nice, but the input is losing state on mount so FloatingMenu gets the focus
+          <>
+            {search && !hideInput ? (
               <input {...inputProps} />
             ) : (
               <div {...selectionProps}>{selectionContent}</div>
             )}
-          </span>
+          </>
           <AFloatingMenu
             ref={floatingRefs.setFloating}
             anchorRef={floatingRefs.reference}
