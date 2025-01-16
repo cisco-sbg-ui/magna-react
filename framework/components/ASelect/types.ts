@@ -156,11 +156,16 @@ export type ASelectProps<T extends ASelectItem> = Override<
      */
     truncateMenuItems?: boolean;
     hideIfReferenceHidden?: boolean;
+    /**
+     * Adds search field for filtering options.
+     * @defaultValue `false`
+     */
     search?: boolean;
     /**
      * Handles the `change` event for when the text input is modified.
      */
-    onChange?: (...args: any[]) => unknown; //Note when this param was set to `unknown` it caused type problems and conflicts in other TS envs
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    onChange?: (...args: any[]) => unknown; //Note when this param was set to `unknown` it caused a type error in other TS envs
     /**
      * Sets the text input value.
      *

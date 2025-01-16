@@ -180,7 +180,7 @@ const AAutocomplete = forwardRef(
     }
 
     const inputProps = {
-      autoComplete: "on",
+      autoComplete: "off",
       className: "a-autocomplete__input",
       disabled,
       id: `a-autocomplete_${autocompleteId}`,

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, {
   forwardRef,
   useContext,
@@ -50,7 +51,7 @@ const ASelect = forwardRef(
       textWrapMenuItems,
       truncateMenuItems,
       hideIfReferenceHidden = true,
-      search = true,
+      search = false,
       onChange,
       value = "",
       filterFunction: propsFilterFunction,
@@ -64,7 +65,6 @@ const ASelect = forwardRef(
     const surfaceRef = useRef(null);
     const selectedItemRef = useRef(null);
     const [selectId] = useState(selectCounter++);
-    const [filterValue, setFilterValue] = useState("");
     const [originalSelectedItem, setOriginalSelectedItem] = useState(
       items.find((x) => x[itemSelected])
     );
@@ -74,6 +74,7 @@ const ASelect = forwardRef(
     const [isFocused, setIsFocused] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [error, setError] = useState("");
+    const [filterValue, setFilterValue] = useState("");
     const [hideInput, setHideInput] = useState(true);
     const [workingValidationState, setWorkingValidationState] =
       useState(validationState);
@@ -88,6 +89,8 @@ const ASelect = forwardRef(
     } = useFloatingDropdown(isOpen, setIsOpen);
 
     const {register, unregister} = useContext(AFormContext);
+    const isSearchInput = search && !hideInput;
+
     useEffect(() => {
       setWorkingValidationState(validationState);
     }, [validationState]);
@@ -95,9 +98,6 @@ const ASelect = forwardRef(
       ? filterListItems(items, filterValue, propsFilterFunction, itemText)
       : items;
 
-    const noDataContent = propsNoDataContent ?? (
-      <AEmptyState message={noDataMessage} variant="info" small />
-    );
     useEffect(() => {
       const newSelectedItem = items.find((x) => x[itemSelected]);
 
@@ -263,14 +263,6 @@ const ASelect = forwardRef(
       selectionProps["aria-labelledby"] = `a-select__label_${selectId}`;
     }
 
-    // useEffect(() => {
-    //   if (!disabled && !readOnly && search && isOpen) {
-    //     if (isOpen) {
-    //       setHideInput(false);
-    //     }
-    //   }
-    // }, []);
-
     if (!disabled) {
       selectionProps.ref = surfaceRef;
       selectionProps.tabIndex = 0;
@@ -337,11 +329,15 @@ const ASelect = forwardRef(
       menuClassName += " a-select__menu-items--truncate-menu-items";
     }
 
+    const noDataContent = propsNoDataContent ?? (
+      <AEmptyState message={noDataMessage} variant="info" small />
+    );
+
     const noData = !filteredItems.length && !!noDataContent && noDataContent;
 
     //Manually add focus after onload of input element as it has no state or loses state after being unmounted for selection value
     useEffect(() => {
-      if (search && !hideInput) {
+      if (isSearchInput) {
         document.querySelector(`#a-select__input_${selectId}`).focus();
       }
     }, [hideInput]);
@@ -401,7 +397,7 @@ const ASelect = forwardRef(
       className: menuClassName,
       closeOnClick: false,
       focusOnOpen: !search,
-      initialFocus: !search && getSelectedIndex() >= 0 ? getSelectedIndex() : 0,
+      initialFocus: getSelectedIndex() >= 0 ? getSelectedIndex() : 0,
       role: "listbox",
       style: {
         minWidth: "max-content",
@@ -457,6 +453,7 @@ const ASelect = forwardRef(
     } else if (typeof selectedItem === "string") {
       selectionContent = selectedItem;
     }
+
     return (
       <AInputBase
         {...rest}
@@ -482,13 +479,11 @@ const ASelect = forwardRef(
         required={required}
       >
         <div className="a-select__selection-wrapper">
-          <>
-            {search && !hideInput ? (
-              <input {...inputProps} />
-            ) : (
-              <div {...selectionProps}>{selectionContent}</div>
-            )}
-          </>
+          {isSearchInput ? (
+            <input {...inputProps} />
+          ) : (
+            <div {...selectionProps}>{selectionContent}</div>
+          )}
           <AFloatingMenu
             ref={floatingRefs.setFloating}
             anchorRef={floatingRefs.reference}
@@ -566,7 +561,7 @@ const ASelect = forwardRef(
                   } else {
                     itemProps.onClick = () => {
                       selectItem(item);
-                      if (search && !hideInput) {
+                      if (isSearchInput) {
                         setHideInput(true);
                       } else {
                         surfaceRef.current.focus();
@@ -606,5 +601,166 @@ const ASelect = forwardRef(
     );
   }
 );
+
+ASelect.propTypes = {
+  /**
+   * Sets the content to append to the dropdown list.
+   */
+  appendContent: PropTypes.node,
+  /**
+   * Toggles the disabled state.
+   */
+  disabled: PropTypes.bool,
+  /**
+   * Because ASelect uses an AMenu, the dropdown interface
+   * is mounted outside of the application area. To style
+   * this portion of ASelect, a class can be provided.
+   */
+  dropdownClassName: PropTypes.string,
+  /**
+   * Similar to the dropdownClassName prop, this can be used
+   * to pass a style object to the dropdown interface
+   */
+  dropdownStyle: PropTypes.object,
+  /**
+   * Sets hint or multiple hints.
+   */
+  hints: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        /**
+         * Hint content.
+         */
+        content: PropTypes.node.isRequired,
+        /**
+         * Style the hint with the component validation state. Default: false.
+         */
+        hintUsesValidationState: PropTypes.bool,
+        /**
+         * Override the validation state of the hint by incorporating the desired state.
+         * The component validation state is disregarded when this property is configured.
+         */
+        validationStateOverride: PropTypes.oneOf([
+          "default",
+          "warning",
+          "danger"
+        ]),
+        /**
+         * Do not show hint when there are validation errors.
+         */
+        hideHintOnError: PropTypes.bool
+      })
+    ),
+    // Accept a string and use default AHint rendering
+    PropTypes.string,
+    // Pass a custom renderable object as the hint
+    PropTypes.node
+  ]),
+  /**
+   * The property name of the value indicating a disabled option when `items` is an array of objects.
+   */
+  itemDisabled: PropTypes.string,
+  /**
+   * The property name of the value indicating a selected option when `items` is an array of objects.
+   */
+  itemSelected: PropTypes.string,
+  /**
+   * Sets a React component to use when rendering menu items. The component will be sent the following props: `item`, `index`, `aria-disabled`, `aria-selected`, `children`, `className`, `onClick`, `role`, `selected`, `value`.
+   */
+  itemTemplate: PropTypes.elementType,
+  /**
+   * The property name of the option text when `items` is an array of objects.
+   */
+  itemText: PropTypes.string,
+  /**
+   * The property name of the option value when `items` is an array of objects.
+   */
+  itemValue: PropTypes.string,
+  /**
+   * An array of select options.
+   */
+  items: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.arrayOf(PropTypes.object)
+  ]),
+  /**
+   * Sets the label content.
+   */
+  label: PropTypes.node,
+  /**
+   * Sets the max-height of the select dropdown
+   * in the case of many dropdown options needing
+   * overflow styling
+   */
+  maxHeight: PropTypes.string,
+  /**
+   * Handles the `selected` event.
+   */
+  onSelected: PropTypes.func,
+  /**
+   * Sets the text when no option is selected.
+   */
+  placeholder: PropTypes.node,
+  /**
+   * Sets the content to prepend to the dropdown list.
+   */
+  prependContent: PropTypes.node,
+  /**
+   * Toggles the `read-only` state
+   */
+  readOnly: PropTypes.bool,
+  /**
+   * Toggles a default rule for required values.
+   */
+  required: PropTypes.bool,
+  /**
+   * Sets validation rules for the component.
+   */
+  rules: PropTypes.arrayOf(
+    PropTypes.shape({
+      test: PropTypes.func,
+      level: PropTypes.string
+    })
+  ),
+  /**
+   * Delays validation until the `blur` event.
+   */
+  validateOnBlur: PropTypes.bool,
+  /**
+   * Applies a validation state.
+   */
+  validationState: PropTypes.oneOf(["default", "warning", "danger"]),
+  /**
+   * Magnetic small size variant (default is medium)
+   */
+  small: PropTypes.bool,
+  /**
+   * Magnetic large size variant (default is medium)
+   */
+  large: PropTypes.bool,
+  /**
+   * Use the `itemTemplate` with the selectedItem in the ASelect input.
+   */
+  useTemplateForSelectedItem: PropTypes.bool,
+  /**
+   * Sets a React component to use when rendering the selected menu item. The component will be sent the following props: `item`. This overrides `useTemplateForSelectedItem`.
+   */
+  selectedDisplayTemplate: PropTypes.elementType,
+  /**
+   * If set, uses a custom item rather than the selectedItem when using `selectedDisplayTemplate` */
+  selectedDisplayItem: PropTypes.object,
+  /**
+   * If item display is a string (no template), set white-space:normal on each
+   * item and limit width of the menu.
+   */
+  textWrapMenuItems: PropTypes.bool,
+  /**
+   * If item display is a string (no template), truncate the display string with
+   * ellipsis and limit width of the menu.
+   */
+  truncateMenuItems: PropTypes.bool
+};
+
+ASelect.displayName = "ASelect";
 
 export default ASelect;

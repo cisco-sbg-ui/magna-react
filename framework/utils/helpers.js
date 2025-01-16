@@ -442,7 +442,7 @@ export const filterListItems = (
   const filterFunction = customFilterFunction
     ? customFilterFunction
     : (val, item) => {
-        let displayValue;
+        let displayValue = "";
         if (typeof item === "string") {
           displayValue = item;
         } else if (typeof item === "object") {
@@ -457,9 +457,9 @@ export const filterListItems = (
         );
       };
 
-  const filteredItems = items.filter((item) => {
-    return filterFunction(filterValue, item);
-  });
+  const filteredItems = items.filter((item) =>
+    filterFunction(filterValue, item)
+  );
 
   return filteredItems;
 };

@@ -119,7 +119,8 @@ export type AMultiSelectProps = Override<
     /**
      * Function to filter items when the input value changes
      */
-    filterFunction?: (...args: any[]) => unknown; //Note when this param was set to `unknown` it caused type problems and conflicts in other TS envs
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    filterFunction?: (...args: any[]) => unknown; //Note when this param was set to `unknown` it caused a type error in other TS envs
     /**
      * Empty state message - NOTE: custom strings should be provided through an i18n library
      *
