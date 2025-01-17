@@ -1,0 +1,142 @@
+---
+name: Stepper Card
+route: /components/stepperCard
+components: AStepperCard
+title: AStepperCard
+sourceCodeLink: https://github.com/cisco-sbg-ui/magna-react/tree/main/framework/components/AStepperCard
+---
+
+## Usage
+
+### Import
+
+<ComponentImport components="AStepperCard" />
+
+### Usage
+
+#### Stepper with default action buttons
+
+<Playground
+  fullWidthPreview
+  code={`() => {
+  const [active, setActive] = useState(1);
+    const steps = [
+    {
+      title: "Long First Stepper Title",
+      visited: false
+    },
+    {
+      title: "Second Title",
+      visited: false
+    },
+    {
+      title: "Final Title",
+      visited: false
+    }
+  ];
+
+const LongContent = () => <div>
+<p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
+<h2>Header Level 2</h2>
+<ol>
+<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+<li>Aliquam tincidunt mauris eu risus.</li>
+</ol>
+<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p></blockquote>
+<h3>Header Level 3</h3>
+<ul>
+<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+<li>Aliquam tincidunt mauris eu risus.</li>
+</ul>
+
+  </div>
+  const cardContent = [{title: "Title One", subtitle: "Subtitle", content:<LongContent />}, 
+  {title: "Title Two", subtitle: "Subtitle", content:<p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>}, 
+  {title: "Title Three", content:<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>}]
+
+return (
+<div style={{height: 500}}>
+<AStepperCard active={active} steps={steps}>
+<AStepperCardContent title={cardContent[active - 1].title}
+nextButtonText={active < cardContent.length ? "Next" : "Submit"}
+backButtonProps={{onClick:() => active > 1 && setActive(active - 1)}}
+nextButtonProps={{onClick:()=> active < steps.length && setActive(active + 1)}} >
+{cardContent[active - 1].content}
+</AStepperCardContent>
+</AStepperCard>
+</div>
+);
+}
+`}
+/>
+
+#### Stepper with custom action bar
+
+<Playground
+  fullWidthPreview
+  code={`() => {
+  const [active, setActive] = useState(1);
+    const steps = [
+    {
+      title: "Long First Stepper Title",
+      description:
+        "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    {
+      title: "Second Title",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+      title: "Final Title",
+      description:
+        "Consectetur adipiscing elit."
+    }
+  ];
+
+const cardContent = [{title: "Title One", content:<p>Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>},
+{title: "Title Two", subtitle: "Subtitle", content:<p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>},
+{title: "Title Three", subtitle: "Subtitle", content:<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>}]
+
+const ContentFooter = () => <ACardFooter className="ma-3">
+<ACardItem stretched></ACardItem>
+<ACardItem attached="right">
+<AButton medium tertiary>Button</AButton>
+</ACardItem>
+<ACardItem attached="right">
+<AButton medium secondary onClick={() => active > 1 && setActive(active - 1)}>Custom Back</AButton>
+</ACardItem>
+<ACardItem>
+<AButton medium onClick={()=> active < steps.length && setActive(active + 1)}>Custom Next</AButton>
+</ACardItem>
+
+  </ACardFooter>
+
+return (
+<div style={{height: 500}}>
+<AStepperCard active={active} steps={steps}>
+<AStepperCardContent title={cardContent[active - 1].title}
+contentFooter={<ContentFooter />} >
+{cardContent[active - 1].content}
+</AStepperCardContent>
+</AStepperCard>
+</div>
+);
+}
+`}
+/>
+
+## Component Props
+
+### StepperCard Props
+
+All AStepperCard components (AStepperCard, AStepperCardContent) inherit passed props. <br/>
+[Link to AStep Props](../components/stepper?page=component-props)
+
+### Stepper Card Props
+
+<Props of="AStepperCard" />
+
+### Step Card Content Props
+
+<Props of="AStepperCardContent" />
