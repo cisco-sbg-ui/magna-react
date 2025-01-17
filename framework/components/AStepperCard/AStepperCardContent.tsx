@@ -58,7 +58,7 @@ const AStepperCardContent = forwardRef<
         ) : (
           <ACardFooter
             className={classnames(
-              `${baseClass}--footer`,
+              `${baseClass}__footer`,
               "justify-space-between py-3"
             )}>
             <ACardItem attached="right">

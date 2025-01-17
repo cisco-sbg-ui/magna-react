@@ -23,7 +23,7 @@ const AStepperCard = forwardRef<HTMLDivElement, AStepperCardProps>(
           <ACol
             cols="4"
             className={classnames(
-              `${baseClass}__card--col`,
+              `${baseClass}__card__col`,
               "text-center pr-0"
             )}>
             <AStepper vertical>
